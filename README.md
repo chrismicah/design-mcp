@@ -1,137 +1,182 @@
 # Design Intelligence MCP Server
 
-An MCP (Model Context Protocol) server that gives AI agents structured access to **6,300+ real-world design patterns** — enabling higher-quality UI generation by studying how established products handle design challenges.
+An MCP (Model Context Protocol) server that gives AI agents structured access to **7,000+ real-world design patterns** for higher-quality UI generation.
+
+Instead of hallucinating layouts and guessing at component structures, AI agents can search proven design patterns, get semantic tokens, and understand behavioral specifications before generating code.
 
 ## Why This Exists
 
-When AI agents generate UIs, they often produce generic layouts with magic numbers, poor component structure, and no understanding of UX patterns. This MCP server fixes that by providing:
+Research shows that LLMs generate significantly better UI code when given:
+- **Explicit layout types** (prevents absolute positioning hallucination)
+- **Behavioral descriptions** (how patterns work, not just how they look)
+- **Semantic tokens** (avoids magic numbers and hardcoded colors)
+- **Component structure hints** (prevents hallucinated prop interfaces)
+- **Accessibility notes** (60% reduction in inaccessibility issues)
 
-- **Structured metadata** about real-world designs (layout types, component hints, behavioral descriptions)
-- **Quality-ranked results** so agents reference the best examples first
-- **Semantic tokens** for consistent styling instead of hardcoded values
-- **Behavioral patterns** describing how UX patterns should *work*, not just *look*
-
-Research shows that **structured metadata matters more than screenshots** for LLM-driven UI generation.
+This MCP server provides all of that from a curated database of real-world examples.
 
 ## Quick Start
 
-### 1. Install Dependencies
+### 1. Clone & Install
 
 ```bash
+git clone https://github.com/chrismicah/design-mcp.git
 cd design-mcp
 python -m venv .venv
-source .venv/bin/activate  # or .venv\Scripts\Activate.ps1 on Windows
-pip install fastmcp pydantic httpx uvicorn huggingface-hub
+
+# Windows
+.venv\Scripts\Activate.ps1
+
+# macOS/Linux
+source .venv/bin/activate
+
+pip install fastmcp pydantic httpx uvicorn
 ```
 
-### 2. Configure Your MCP Host
+### 2. Connect to Claude Desktop
 
-**Claude Desktop** (`claude_desktop_config.json`):
+Add to `claude_desktop_config.json`:
+
+**Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+**macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+
 ```json
 {
   "mcpServers": {
     "design-intelligence": {
       "command": "python",
-      "args": ["path/to/design-mcp/server.py"]
+      "args": ["C:\\path\\to\\design-mcp\\server.py"]
     }
   }
 }
 ```
 
-**Cursor** (Settings → MCP Servers → Add):
-```
-Name: Design Intelligence
-Command: python path/to/design-mcp/server.py
-```
+### 3. Connect to Cursor
 
-### 3. Use It
+Settings → MCP Servers → Add:
+- Name: `design-intelligence`
+- Command: `python /path/to/design-mcp/server.py`
 
-Once configured, your AI agent has 6 new tools:
+### 4. Use It
 
-```
-"Search for fintech dashboard patterns with dark mode"
-→ Returns quality-ranked design blueprints with layout info, component hints, etc.
-
-"Compare how different products handle pricing pages"
-→ Side-by-side comparison of layout strategies and component choices
-```
+Ask your AI agent things like:
+- *"Search for dark mode dashboard designs in fintech"*
+- *"Show me pricing page patterns with glassmorphism"*
+- *"Get the behavioral spec for empty states"*
+- *"Compare how different products handle onboarding"*
 
 ## MCP Tools
 
-| Tool | Description |
-|------|-------------|
-| `search_design_patterns` | Search 6,300+ patterns by query, page type, industry, style, etc. |
-| `get_design_blueprint` | Get full design blueprint for a specific pattern |
-| `get_semantic_tokens` | Get W3C-format design tokens for consistent styling |
-| `get_design_taxonomy` | Browse available categories, page types, UI elements |
-| `get_behavioral_pattern` | Get behavioral specs (empty states, loading, error handling, etc.) |
-| `compare_design_approaches` | Compare how different products solve the same design problem |
+### `search_design_patterns`
+Search 7,000+ design patterns with filters for page type, industry, platform, color mode, and visual style.
+
+```python
+# Example: Find fintech dashboards
+results = await search_design_patterns(
+    query="analytics dashboard",
+    page_type="Dashboard",
+    industry="Fintech",
+    color_mode="dark",
+    limit=5
+)
+```
+
+### `get_design_blueprint`
+Get the full blueprint for a specific pattern, including layout info, component hints, behavioral descriptions, and accessibility notes.
+
+### `get_semantic_tokens`
+Get W3C-format semantic design tokens for consistent styling — colors, spacing, typography, borders.
+
+### `get_design_taxonomy`
+Browse the full taxonomy: 25 page types, 25 UX patterns, 47 UI elements, 15 industries, 16 visual styles.
+
+### `get_behavioral_pattern`
+Get behavioral specs for common UX patterns: empty states, skeleton loading, error handling, onboarding flows, form validation, infinite scroll, command palettes.
+
+### `compare_design_approaches`
+Compare how different products handle the same page type — side-by-side blueprints with a summary of key differences.
 
 ## Data Sources
 
-| Source | Count | Quality | Description |
-|--------|-------|---------|-------------|
-| Curated | 22 | ⭐⭐⭐ | Hand-picked from Stripe, Linear, Notion, Vercel |
-| Awwwards | 30+ | ⭐⭐⭐ | Award-winning Sites of the Day |
-| Dribbble | 151 | ⭐⭐ | Popular shots from top designers |
-| webui-7kbal | 6,134 | ⭐ | HuggingFace academic dataset with HTML/CSS/accessibility trees |
+| Source | Patterns | Description |
+|--------|----------|-------------|
+| webui-7kbal | 6,134 | HuggingFace dataset — HTML, CSS, accessibility trees from 6K+ real websites |
+| Dribbble | 284 | Popular web & product design shots from professional designers |
+| Awwwards | 300 | Site of the Day winners — award-winning web design |
+| Curated | 90 | Hand-picked patterns from top SaaS products (Stripe, Linear, Notion, etc.) |
+| Landbook | 90 | Landing page gallery screenshots |
 
-### Expanding the Dataset
-
-To add the full webui-7kbal raw data (for re-processing or enrichment):
-
-```bash
-pip install huggingface-hub
-python scripts/ingest_webui7k.py
-```
-
-This downloads ~7K web UI samples from HuggingFace and processes them into design patterns.
+**Total: 7,080 patterns**, all quality-scored 0-10.
 
 ## Quality Scoring
 
-Every pattern has a `quality_score` (0-10) based on:
-- **Metadata completeness** — layout type, color mode, behavioral description, etc.
-- **UI element richness** — diversity of components
-- **Source quality** — curated > awwwards > dribbble > webui-7kbal
-- **Accessibility info** — presence of ARIA/WCAG notes
+Every pattern is scored based on:
+- **Source quality** — curated > Awwwards > Dribbble > dataset
+- **Metadata completeness** — specific page types, industry tags, layout info
+- **Design signals** — UX patterns, component hints, accessibility notes
+- **Tag richness** — freeform tags for better search
 
-Search results are ranked by quality score, so agents always see the best examples first.
+Search results are ranked by quality score, so the best examples surface first.
+
+## Screenshots
+
+The repo includes **560+ high-resolution design screenshots** across all sources:
+- Dribbble: 284 shots (1600px wide, web design + product design)
+- Awwwards: 300 shots (1600x1200, SOTD winners)
+- Curated: 68 shots (top SaaS products)
+- Landbook: 90 shots (landing pages)
+
+## Running Tests
+
+```bash
+pip install pytest pytest-asyncio
+python -m pytest tests/ -v
+```
+
+38 tests covering schema validation, database operations, all 6 MCP tools, data quality checks, and end-to-end integration workflows.
 
 ## Project Structure
 
 ```
 design-mcp/
 ├── server.py              # FastMCP server — 6 tool definitions
-├── schema.py              # Pydantic models (DesignPattern)
-├── database.py            # JSON database with search
-├── models/
-│   ├── quality_scorer.py  # Heuristic quality scoring
-│   └── train_scorer.py    # Score all patterns
+├── schema.py              # Pydantic models (DesignPattern, Platform, LayoutType)
+├── database.py            # JSON database with search/filter
+├── enrichment.py          # LLM-based metadata enrichment (optional)
 ├── data/
-│   ├── patterns.json      # Main database (6,300+ patterns)
-│   ├── taxonomy.json      # Available categories
-│   └── tokens/            # Semantic design tokens
-├── tests/                 # 66 pytest tests
-├── scripts/               # Data ingestion scripts
-├── prompts/               # MCP prompt templates
-└── screenshots/           # Design screenshots
-```
-
-## Running Tests
-
-```bash
-pip install pytest pytest-asyncio
-pytest tests/ -v
+│   ├── patterns.json      # 7,080 design patterns (quality-sorted)
+│   ├── taxonomy.json      # Tag taxonomy
+│   └── tokens/
+│       └── semantic_tokens.json  # W3C-format semantic tokens
+├── screenshots/           # 560+ high-res design screenshots
+│   ├── dribbble/          # 284 popular shots
+│   ├── awwwards/          # 300 SOTD winners
+│   ├── curated/           # 68 top SaaS products
+│   └── landbook/          # 90 landing pages
+├── prompts/               # Prompt templates for AI agents
+├── scripts/               # Data ingestion & scraping scripts
+└── tests/
+    └── test_design_mcp.py # 38 comprehensive tests
 ```
 
 ## Using on Another Machine
 
-1. Clone this repo
-2. Create a venv and install deps: `pip install fastmcp pydantic httpx uvicorn`
-3. Configure your MCP host (see Quick Start above)
-4. Done — `patterns.json` is included in the repo with all 6,300+ patterns
+Just clone the repo — all patterns and screenshots are included. No external API keys or dataset downloads needed.
 
-The raw webui-7kbal dataset is **not** included (too large). Only the processed patterns are in the repo.
+```bash
+git clone https://github.com/chrismicah/design-mcp.git
+cd design-mcp
+python -m venv .venv && .venv/Scripts/Activate.ps1
+pip install fastmcp pydantic httpx uvicorn
+# Add to Claude Desktop or Cursor config, done!
+```
+
+## Tech Stack
+
+- **FastMCP** — MCP server framework
+- **Pydantic** — Schema validation
+- **httpx** — Async HTTP client
+- **Python 3.12+**
 
 ## License
 
