@@ -263,6 +263,26 @@ async def analyze_and_devibecode(source_code: str) -> dict:
             except Exception:
                 pass
 
+        # Get library recommendations based on component type
+        recommended_libraries = []
+        try:
+            libs_data = _load_libraries()
+            element_map = libs_data["mapping_rules"]["ui_element_to_library"]
+            if component_type in element_map:
+                lib_ids = element_map[component_type][:3]
+                for lib_id in lib_ids:
+                    for lib in libs_data["libraries"]:
+                        if lib["id"] == lib_id:
+                            recommended_libraries.append({
+                                "name": lib["name"],
+                                "install": lib["install"],
+                                "reason": f"Has a production-ready {component_type} component",
+                                "example": lib.get("example", ""),
+                            })
+                            break
+        except Exception:
+            pass
+
         return {
             "anti_patterns_found": anti_patterns_found,
             "recommended_layout": recommended_layout,
@@ -270,6 +290,8 @@ async def analyze_and_devibecode(source_code: str) -> dict:
             "suggested_component_structure": suggested_component_structure,
             "severity_summary": severity_summary,
             "refactoring_suggestions": refactoring_suggestions,
+            "recommended_libraries": recommended_libraries,
+            "detected_component_type": component_type,
         }
 
     except Exception:
@@ -280,12 +302,182 @@ async def analyze_and_devibecode(source_code: str) -> dict:
             "suggested_component_structure": [],
             "severity_summary": {"errors": 0, "warnings": 0, "info": 0},
             "refactoring_suggestions": [],
+            "recommended_libraries": [],
+            "detected_component_type": "Unknown",
         }
+
+
+# ============================================================
+# TOOL 8: Get Library Recommendations
+# ============================================================
+@mcp.tool()
+async def get_library_recommendations(
+    use_case: Optional[str] = None,
+    ui_elements: Optional[list[str]] = None,
+    visual_style: Optional[str] = None,
+    needs_animation: bool = False,
+    needs_3d: bool = False,
+    needs_charts: bool = False,
+) -> dict:
+    """
+    Get recommended frontend libraries based on your project needs.
+    Maps use cases, UI elements, visual styles, and feature requirements
+    to the best React libraries (Shadcn, Radix, Mantine, React Bits, etc.).
+
+    Args:
+        use_case: What you're building (e.g. 'dashboard', 'landing_page', 'creative_portfolio', 'saas_product', 'ecommerce')
+        ui_elements: UI elements you need (e.g. ['Button', 'Modal', 'Data Table', 'Carousel'])
+        visual_style: Target visual style (e.g. 'Minimal', 'Glassmorphism', 'Futuristic', 'Playful')
+        needs_animation: Whether you need animations/transitions
+        needs_3d: Whether you need 3D elements
+        needs_charts: Whether you need data visualization/charts
+
+    Returns:
+        Recommended libraries with install commands, code examples, and reasoning.
+    """
+    try:
+        libs_data = _load_libraries()
+        libraries = {lib["id"]: lib for lib in libs_data["libraries"]}
+        mapping = libs_data["mapping_rules"]
+
+        recommended_ids = set()
+        recommendations = []
+
+        # Map use case to libraries
+        if use_case:
+            use_case_key = use_case.lower().replace(" ", "_").replace("-", "_")
+            if use_case_key in mapping["use_case_to_library"]:
+                for lib_id in mapping["use_case_to_library"][use_case_key]:
+                    recommended_ids.add(lib_id)
+
+        # Map UI elements to libraries
+        if ui_elements:
+            element_map = mapping["ui_element_to_library"]
+            for element in ui_elements:
+                if element in element_map:
+                    for lib_id in element_map[element][:3]:  # Top 3 per element
+                        recommended_ids.add(lib_id)
+
+        # Map visual style to libraries
+        if visual_style and visual_style in mapping.get("visual_style_to_library", {}):
+            for lib_id in mapping["visual_style_to_library"][visual_style]:
+                recommended_ids.add(lib_id)
+
+        # Add based on feature flags
+        if needs_animation:
+            recommended_ids.update(["framer-motion", "gsap", "react-bits"])
+        if needs_3d:
+            recommended_ids.update(["three-js", "react-bits"])
+        if needs_charts:
+            recommended_ids.update(["recharts", "d3-js"])
+
+        # If nothing matched, return the premium stack
+        if not recommended_ids:
+            recommended_ids = set(mapping["premium_stack"]["core"])
+
+        # Build recommendation objects
+        for lib_id in recommended_ids:
+            if lib_id in libraries:
+                lib = libraries[lib_id]
+                recommendations.append({
+                    "name": lib["name"],
+                    "category": lib["category"],
+                    "description": lib["description"],
+                    "install": lib["install"],
+                    "docs": lib["docs_url"],
+                    "when_to_use": lib["when_to_use"],
+                    "example": lib.get("example", ""),
+                })
+
+        # Sort: ui_components first, then by category
+        category_order = {"ui_components": 0, "styling": 1, "animation": 2, "creative_components": 3, "3d": 4, "utility": 5}
+        recommendations.sort(key=lambda r: category_order.get(r["category"], 99))
+
+        # Also search our patterns DB for matching examples
+        pattern_examples = []
+        if use_case:
+            results = db.search(query=use_case, limit=3)
+            for r in results:
+                pattern_examples.append({
+                    "name": r.name,
+                    "page_type": r.page_type,
+                    "layout_type": r.layout_type.value if r.layout_type else None,
+                    "visual_style": r.visual_style,
+                })
+
+        return {
+            "recommendations": recommendations,
+            "premium_stack": mapping["premium_stack"],
+            "matching_design_patterns": pattern_examples,
+            "total_libraries": len(recommendations),
+        }
+
+    except Exception:
+        return {
+            "recommendations": [],
+            "premium_stack": {"core": ["tailwind-css", "shadcn-ui", "framer-motion"]},
+            "matching_design_patterns": [],
+            "total_libraries": 0,
+        }
+
+
+# ============================================================
+# TOOL 9: Get Library Details
+# ============================================================
+@mcp.tool()
+async def get_library_details(library_name: str) -> dict:
+    """
+    Get detailed information about a specific frontend library including
+    all available components, install command, code examples, and what it pairs with.
+
+    Args:
+        library_name: Library name or ID (e.g. 'shadcn', 'react-bits', 'framer-motion', 'mantine')
+
+    Returns:
+        Full library details with components list, examples, and pairing suggestions.
+    """
+    try:
+        libs_data = _load_libraries()
+        name_lower = library_name.lower().replace(" ", "-").replace("/", "-")
+
+        for lib in libs_data["libraries"]:
+            if (name_lower in lib["id"].lower() or
+                name_lower in lib["name"].lower() or
+                name_lower.replace("-", "") in lib["name"].lower().replace(" ", "").replace("/", "")):
+                return {
+                    "library": lib,
+                    "pairs_with": [
+                        {"id": pid, "name": next((l["name"] for l in libs_data["libraries"] if l["id"] == pid), pid)}
+                        for pid in lib.get("pairs_with", [])
+                    ],
+                }
+
+        # Fuzzy match
+        matches = []
+        for lib in libs_data["libraries"]:
+            searchable = f"{lib['id']} {lib['name']} {lib['description']}".lower()
+            if any(word in searchable for word in name_lower.split("-")):
+                matches.append(lib["name"])
+
+        return {
+            "error": f"Library '{library_name}' not found",
+            "did_you_mean": matches[:5],
+            "available": [lib["name"] for lib in libs_data["libraries"]],
+        }
+
+    except Exception:
+        return {"error": f"Could not load library data for '{library_name}'"}
 
 
 # ============================================================
 # Helper Functions
 # ============================================================
+
+def _load_libraries() -> dict:
+    """Load the libraries reference database."""
+    libs_path = BASE_DIR / "data" / "libraries.json"
+    with open(libs_path) as f:
+        return json.load(f)
 
 def _to_blueprint(pattern: DesignPattern) -> dict:
     """Convert a full pattern to a token-efficient blueprint."""

@@ -96,6 +96,36 @@ Get behavioral specs for common UX patterns: empty states, skeleton loading, err
 ### `compare_design_approaches`
 Compare how different products handle the same page type — side-by-side blueprints with a summary of key differences.
 
+### `analyze_and_devibecode`
+**Anti-pattern detector.** Paste raw "vibecoded" React/HTML/Tailwind code and get a structured refactoring plan with 15 anti-pattern detectors across styling, layout, and accessibility — plus library recommendations.
+
+```python
+result = await analyze_and_devibecode("""
+    <div onClick={fn} className="bg-[#FF0000] w-[300px] absolute top-[20px]">
+        <input type="text" />
+    </div>
+""")
+# Returns: anti_patterns_found, recommended_layout, semantic_tokens,
+#          suggested_component_structure, recommended_libraries, etc.
+```
+
+### `get_library_recommendations`
+Get recommended frontend libraries based on your project needs. Maps use cases, UI elements, and visual styles to the best React libraries.
+
+```python
+result = await get_library_recommendations(
+    use_case="dashboard",
+    ui_elements=["Data Table", "Modal", "Button"],
+    needs_charts=True
+)
+# Returns: shadcn/ui, Recharts, Tailwind, with install commands + examples
+```
+
+**Supported libraries:** shadcn/ui, Radix UI, Mantine, Chakra UI, NextUI, React Bits (110+ creative components), Tailwind CSS, Framer Motion, GSAP, Three.js/R3F, Recharts, D3.js, Lottie, tsParticles, Victory, Panda CSS, Vanilla Extract, React Spring.
+
+### `get_library_details`
+Get full details for any library — components list, install command, code examples, and what it pairs with.
+
 ## Data Sources
 
 | Source | Patterns | Description |
