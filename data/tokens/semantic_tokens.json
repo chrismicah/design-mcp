@@ -1,0 +1,48 @@
+{
+    "$schema": "https://design-tokens.github.io/community-group/format/",
+    "description": "Tier 2 Semantic Tokens — provide these to the LLM for consistent styling",
+    "color": {
+        "background": {
+            "primary": { "$value": "{primitive.neutral.50}", "$type": "color" },
+            "secondary": { "$value": "{primitive.neutral.100}", "$type": "color" },
+            "inverse": { "$value": "{primitive.neutral.900}", "$type": "color" },
+            "brand": { "$value": "{primitive.blue.500}", "$type": "color" },
+            "danger": { "$value": "{primitive.red.500}", "$type": "color" },
+            "success": { "$value": "{primitive.green.500}", "$type": "color" }
+        },
+        "text": {
+            "primary": { "$value": "{primitive.neutral.900}", "$type": "color" },
+            "secondary": { "$value": "{primitive.neutral.600}", "$type": "color" },
+            "on-brand": { "$value": "{primitive.white}", "$type": "color" }
+        },
+        "border": {
+            "default": { "$value": "{primitive.neutral.200}", "$type": "color" },
+            "focus": { "$value": "{primitive.blue.400}", "$type": "color" }
+        }
+    },
+    "spacing": {
+        "xs": { "$value": "4px", "$type": "dimension" },
+        "sm": { "$value": "8px", "$type": "dimension" },
+        "md": { "$value": "16px", "$type": "dimension" },
+        "lg": { "$value": "24px", "$type": "dimension" },
+        "xl": { "$value": "32px", "$type": "dimension" },
+        "2xl": { "$value": "48px", "$type": "dimension" },
+        "section": { "$value": "64px", "$type": "dimension" }
+    },
+    "borderRadius": {
+        "sm": { "$value": "4px", "$type": "dimension" },
+        "md": { "$value": "8px", "$type": "dimension" },
+        "lg": { "$value": "12px", "$type": "dimension" },
+        "full": { "$value": "9999px", "$type": "dimension" }
+    },
+    "typography": {
+        "heading": {
+            "fontFamily": { "$value": "Inter", "$type": "fontFamily" },
+            "fontWeight": { "$value": "700", "$type": "fontWeight" }
+        },
+        "body": {
+            "fontFamily": { "$value": "Inter", "$type": "fontFamily" },
+            "fontWeight": { "$value": "400", "$type": "fontWeight" }
+        }
+    }
+}
