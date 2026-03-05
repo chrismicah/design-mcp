@@ -18,6 +18,7 @@ from server import (
     get_design_taxonomy,
     get_behavioral_pattern,
     compare_design_approaches,
+    analyze_and_devibecode,
 )
 
 BASE_DIR = Path(__file__).parent.parent
@@ -292,6 +293,46 @@ class TestServerTools:
         assert "page_type" in cmp
         assert "examples" in cmp
         assert "summary" in cmp
+
+    @pytest.mark.asyncio
+    async def test_analyze_and_devibecode(self):
+        bad_code = '''
+<div className="bg-[#ff0000] w-[320px] z-[999]" style={{ padding: 10 }}>
+  <div onClick={handleClick}>
+    <input placeholder="email" className="outline-none">
+  </div>
+</div>
+'''
+        result = await analyze_and_devibecode(bad_code)
+        # Check exact schema keys
+        assert "anti_patterns_found" in result
+        assert "recommended_layout" in result
+        assert "semantic_tokens_to_apply" in result
+        assert "suggested_component_structure" in result
+        assert "severity_summary" in result
+        assert "refactoring_suggestions" in result
+        # Should find issues
+        assert len(result["anti_patterns_found"]) > 0
+        assert result["severity_summary"]["errors"] + result["severity_summary"]["warnings"] > 0
+        # Refactoring suggestions should be present
+        assert len(result["refactoring_suggestions"]) > 0
+
+    @pytest.mark.asyncio
+    async def test_analyze_and_devibecode_empty_input(self):
+        result = await analyze_and_devibecode("")
+        assert result["anti_patterns_found"] == []
+        assert result["severity_summary"] == {"errors": 0, "warnings": 0, "info": 0}
+
+    @pytest.mark.asyncio
+    async def test_analyze_and_devibecode_clean_code(self):
+        clean_code = '''
+<section className="flex flex-col gap-4 p-4">
+  <h1 className="text-2xl font-bold">Title</h1>
+  <p className="text-gray-600">Description</p>
+</section>
+'''
+        result = await analyze_and_devibecode(clean_code)
+        assert result["severity_summary"]["errors"] == 0
 
 
 # ============================================================

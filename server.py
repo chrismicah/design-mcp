@@ -1,6 +1,7 @@
 from fastmcp import FastMCP
 from schema import DesignPattern, Platform, LayoutType
 from database import DesignDatabase
+from models.analyzer import analyze_code, infer_component_type
 from typing import Optional
 from pathlib import Path
 import json
@@ -187,6 +188,99 @@ async def compare_design_approaches(
         "examples": [_to_blueprint(r) for r in results],
         "summary": _generate_comparison_summary(results)
     }
+
+
+# ============================================================
+# TOOL 7: Analyze and Devibecode
+# ============================================================
+@mcp.tool()
+async def analyze_and_devibecode(source_code: str) -> dict:
+    """
+    Static analysis anti-pattern detector for vibecoded UI code.
+    Scans source code for 15 categories of UI anti-patterns (styling hacks,
+    layout issues, accessibility gaps, structural problems) and returns
+    actionable refactoring suggestions mapped to real design system data.
+
+    Args:
+        source_code: The UI source code (JSX/TSX/HTML) to analyze.
+
+    Returns:
+        Analysis results with anti-patterns found, recommended layout,
+        semantic tokens, component structure suggestions, and severity summary.
+    """
+    try:
+        analysis = analyze_code(source_code)
+        findings = analysis["findings"]
+        component_type = analysis["component_type"]
+        severity_summary = analysis["severity_summary"]
+
+        # Human-readable anti-pattern strings
+        anti_patterns_found = []
+        for f in findings:
+            line_info = f" (line {f['line']})" if f.get("line") else ""
+            anti_patterns_found.append(f"[{f['severity'].upper()}] {f['message']}{line_info}")
+
+        # Refactoring suggestions (deduplicated)
+        seen_suggestions = set()
+        refactoring_suggestions = []
+        for f in findings:
+            if f["suggestion"] not in seen_suggestions:
+                seen_suggestions.add(f["suggestion"])
+                refactoring_suggestions.append(f["suggestion"])
+
+        # Query DB for matching patterns based on inferred component type
+        recommended_layout = {}
+        semantic_tokens_to_apply = {}
+        suggested_component_structure = []
+
+        try:
+            results = db.search(query=component_type, limit=3)
+            if results:
+                top = results[0]
+                if top.layout_type:
+                    recommended_layout["layout_type"] = top.layout_type.value
+                if top.layout_notes:
+                    recommended_layout["layout_notes"] = top.layout_notes
+                if top.semantic_tokens:
+                    semantic_tokens_to_apply = top.semantic_tokens
+                for r in results:
+                    for hint in r.component_hints:
+                        suggested_component_structure.append(hint)
+        except Exception:
+            pass
+
+        # If no semantic tokens from DB, provide defaults from token file
+        if not semantic_tokens_to_apply:
+            try:
+                tokens_path = BASE_DIR / "data" / "tokens" / "semantic_tokens.json"
+                with open(tokens_path) as f:
+                    tokens = json.load(f)
+                # Extract a flat subset relevant to common anti-patterns
+                semantic_tokens_to_apply = {
+                    "color": tokens.get("color", {}),
+                    "spacing": tokens.get("spacing", {}),
+                }
+            except Exception:
+                pass
+
+        return {
+            "anti_patterns_found": anti_patterns_found,
+            "recommended_layout": recommended_layout,
+            "semantic_tokens_to_apply": semantic_tokens_to_apply,
+            "suggested_component_structure": suggested_component_structure,
+            "severity_summary": severity_summary,
+            "refactoring_suggestions": refactoring_suggestions,
+        }
+
+    except Exception:
+        return {
+            "anti_patterns_found": [],
+            "recommended_layout": {},
+            "semantic_tokens_to_apply": {},
+            "suggested_component_structure": [],
+            "severity_summary": {"errors": 0, "warnings": 0, "info": 0},
+            "refactoring_suggestions": [],
+        }
 
 
 # ============================================================
