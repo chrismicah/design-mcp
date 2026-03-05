@@ -2,9 +2,16 @@
 
 This directory contains high-resolution design screenshots used as visual references for the design patterns database.
 
-## Downloading Screenshots
+## What's Included in Git
 
-The bulk screenshots (~600MB) are not included in the git repo to keep it lightweight. To download them:
+Only a small sample set is committed to keep the repo lightweight (~39 files):
+
+- `dribbble/` — 7 reference screenshots (original curated samples)
+- `awwwards/` — 31 reference screenshots (SOTD winners)
+
+## Downloading the Full Set (~600MB)
+
+The bulk screenshots are gitignored. To download the full collection:
 
 ```bash
 # From the project root
@@ -13,13 +20,9 @@ python scripts/download_all_screenshots.py
 
 This will populate:
 - `screenshots/dribbble/` — 284 shots from Dribbble popular pages
-- `screenshots/awwwards/` — 300 shots from Awwwards SOTD winners  
+- `screenshots/awwwards/` — 300 shots from Awwwards SOTD winners
 - `screenshots/curated/` — 68 shots from top SaaS products
 - `screenshots/landbook/` — 90 shots from landing page galleries
-
-## What's Included in Git
-
-The 7 original Dribbble reference screenshots are committed to the repo as samples.
 
 ## Quality
 
