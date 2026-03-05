@@ -470,6 +470,414 @@ async def get_library_details(library_name: str) -> dict:
 
 
 # ============================================================
+# TOOL 10: Scan Project for Anti-Patterns
+# ============================================================
+@mcp.tool()
+async def scan_project(
+    project_path: str,
+    file_extensions: Optional[list[str]] = None,
+    max_files: int = 50,
+) -> dict:
+    """
+    Scan an entire project directory for UI anti-patterns across all component files.
+    Returns a prioritized report of issues found in each file with fix suggestions.
+    Use this when someone says "make my app look professional" or "refactor my whole site".
+
+    Args:
+        project_path: Absolute path to the project directory (e.g. 'C:/Users/me/Projects/my-app/src')
+        file_extensions: File types to scan (default: ['.jsx', '.tsx', '.js', '.ts', '.html', '.vue', '.svelte'])
+        max_files: Maximum files to analyze (default 50, to keep response manageable)
+
+    Returns:
+        Project-wide analysis with per-file findings, overall health score,
+        priority fix list, and recommended libraries for the whole project.
+    """
+    try:
+        project = Path(project_path)
+        if not project.exists():
+            return {"error": f"Path not found: {project_path}"}
+        
+        extensions = file_extensions or ['.jsx', '.tsx', '.js', '.ts', '.html', '.vue', '.svelte']
+        
+        # Find all UI component files
+        ui_files = []
+        for ext in extensions:
+            if project.is_file():
+                if project.suffix in extensions:
+                    ui_files.append(project)
+            else:
+                ui_files.extend(project.rglob(f"*{ext}"))
+        
+        # Filter out node_modules, dist, build, .next, etc.
+        skip_dirs = {'node_modules', '.next', 'dist', 'build', '.git', '__pycache__', '.venv', 'coverage'}
+        ui_files = [
+            f for f in ui_files 
+            if not any(skip in f.parts for skip in skip_dirs)
+        ]
+        
+        # Limit
+        ui_files = sorted(ui_files)[:max_files]
+        
+        if not ui_files:
+            return {
+                "error": "No UI component files found",
+                "searched_path": str(project),
+                "extensions": extensions,
+                "suggestion": "Try pointing to your src/ or components/ directory"
+            }
+        
+        # Analyze each file
+        file_reports = []
+        all_findings = []
+        component_types_seen = set()
+        total_severity = {"errors": 0, "warnings": 0, "info": 0}
+        
+        for filepath in ui_files:
+            try:
+                code = filepath.read_text(encoding='utf-8', errors='ignore')
+                if len(code) < 20:  # Skip near-empty files
+                    continue
+                
+                analysis = analyze_code(code)
+                
+                if analysis["findings"]:
+                    relative_path = str(filepath.relative_to(project)) if filepath.is_relative_to(project) else str(filepath)
+                    
+                    file_report = {
+                        "file": relative_path,
+                        "component_type": analysis["component_type"],
+                        "issues_count": len(analysis["findings"]),
+                        "severity": analysis["severity_summary"],
+                        "findings": [
+                            {
+                                "type": f["type"],
+                                "severity": f["severity"],
+                                "message": f["message"],
+                                "line": f["line"],
+                                "suggestion": f["suggestion"],
+                            }
+                            for f in analysis["findings"]
+                        ],
+                    }
+                    file_reports.append(file_report)
+                    all_findings.extend(analysis["findings"])
+                    component_types_seen.add(analysis["component_type"])
+                    
+                    total_severity["errors"] += analysis["severity_summary"]["errors"]
+                    total_severity["warnings"] += analysis["severity_summary"]["warnings"]
+                    total_severity["info"] += analysis["severity_summary"]["info"]
+                    
+            except Exception:
+                continue
+        
+        # Sort files by severity (errors first, then by issue count)
+        file_reports.sort(key=lambda r: (
+            -r["severity"]["errors"],
+            -r["severity"]["warnings"],
+            -r["issues_count"]
+        ))
+        
+        # Calculate health score (0-100, higher is better)
+        total_issues = len(all_findings)
+        files_scanned = len(ui_files)
+        if files_scanned == 0:
+            health_score = 100
+        else:
+            error_penalty = total_severity["errors"] * 5
+            warning_penalty = total_severity["warnings"] * 2
+            info_penalty = total_severity["info"] * 0.5
+            raw_score = max(0, 100 - error_penalty - warning_penalty - info_penalty)
+            health_score = round(raw_score, 1)
+        
+        # Aggregate anti-pattern types across project
+        from collections import Counter
+        pattern_counts = Counter(f["type"] for f in all_findings)
+        top_issues = [
+            {"type": ptype, "count": count}
+            for ptype, count in pattern_counts.most_common(10)
+        ]
+        
+        # Build priority fix list (top 5 most impactful fixes)
+        priority_fixes = []
+        seen_fix_types = set()
+        for report in file_reports:
+            for finding in report["findings"]:
+                if finding["severity"] == "error" and finding["type"] not in seen_fix_types:
+                    priority_fixes.append({
+                        "file": report["file"],
+                        "issue": finding["message"],
+                        "fix": finding["suggestion"],
+                        "severity": "error",
+                    })
+                    seen_fix_types.add(finding["type"])
+                if len(priority_fixes) >= 10:
+                    break
+            if len(priority_fixes) >= 10:
+                break
+        
+        # Recommend libraries for the whole project
+        all_elements = list(component_types_seen)
+        project_libs = []
+        try:
+            libs_data = _load_libraries()
+            element_map = libs_data["mapping_rules"]["ui_element_to_library"]
+            lib_scores = Counter()
+            for comp_type in all_elements:
+                if comp_type in element_map:
+                    for lib_id in element_map[comp_type]:
+                        lib_scores[lib_id] += 1
+            
+            for lib_id, score in lib_scores.most_common(5):
+                for lib in libs_data["libraries"]:
+                    if lib["id"] == lib_id:
+                        project_libs.append({
+                            "name": lib["name"],
+                            "install": lib["install"],
+                            "relevance": f"Covers {score} component types in your project",
+                        })
+                        break
+        except Exception:
+            pass
+        
+        return {
+            "project_health_score": health_score,
+            "files_scanned": files_scanned,
+            "files_with_issues": len(file_reports),
+            "total_issues": total_issues,
+            "severity_summary": total_severity,
+            "top_issues": top_issues,
+            "priority_fixes": priority_fixes,
+            "recommended_libraries": project_libs,
+            "file_reports": file_reports[:20],  # Top 20 worst files
+            "component_types_found": list(component_types_seen),
+        }
+    
+    except Exception as e:
+        return {"error": f"Failed to scan project: {str(e)}"}
+
+
+# ============================================================
+# TOOL 11: Generate Refactored Code
+# ============================================================
+@mcp.tool()
+async def generate_refactored_code(
+    source_code: str,
+    target_library: str = "shadcn-ui",
+    include_imports: bool = True,
+) -> dict:
+    """
+    Takes vibecoded source code and generates a refactoring plan with
+    concrete code suggestions using the specified component library.
+    
+    This tool analyzes the code, identifies what it's trying to be,
+    finds matching design patterns in our database, and produces
+    specific code transformations mapped to real library components.
+
+    Args:
+        source_code: The raw UI code to refactor (JSX/TSX/HTML)
+        target_library: Which library to use for refactoring (default: 'shadcn-ui')
+            Options: 'shadcn-ui', 'mantine', 'chakra-ui', 'nextui', 'radix-ui'
+        include_imports: Whether to include import statements in suggestions
+
+    Returns:
+        Refactoring plan with before/after code mappings, import statements,
+        and step-by-step transformation instructions.
+    """
+    try:
+        # Analyze the code
+        analysis = analyze_code(source_code)
+        findings = analysis["findings"]
+        component_type = analysis["component_type"]
+        
+        # Load library data
+        libs_data = _load_libraries()
+        target_lib = None
+        for lib in libs_data["libraries"]:
+            if target_library.lower().replace(" ", "-") in lib["id"]:
+                target_lib = lib
+                break
+        
+        if not target_lib:
+            target_lib = next((l for l in libs_data["libraries"] if l["id"] == "shadcn-ui"), None)
+        
+        # Search for matching design patterns
+        pattern_results = db.search(query=component_type, limit=3)
+        design_reference = []
+        for p in pattern_results:
+            ref = {"name": p.name, "page_type": p.page_type}
+            if p.layout_type:
+                ref["layout_type"] = p.layout_type.value
+            if p.layout_notes:
+                ref["layout_notes"] = p.layout_notes
+            if p.semantic_tokens:
+                ref["semantic_tokens"] = p.semantic_tokens
+            if p.component_hints:
+                ref["component_hints"] = p.component_hints
+            design_reference.append(ref)
+        
+        # Get semantic tokens
+        tokens_path = BASE_DIR / "data" / "tokens" / "semantic_tokens.json"
+        semantic_tokens = {}
+        try:
+            with open(tokens_path) as f:
+                semantic_tokens = json.load(f)
+        except Exception:
+            pass
+        
+        # Build transformation instructions
+        transformations = []
+        imports_needed = set()
+        
+        # Map anti-patterns to specific transformations
+        for finding in findings:
+            transform = {
+                "issue": finding["message"],
+                "severity": finding["severity"],
+            }
+            
+            ftype = finding["type"]
+            
+            if ftype == "interactive_div" and target_lib:
+                if "Button" in target_lib.get("components", []):
+                    transform["fix"] = f"Replace <div onClick={{...}}> with <Button> from {target_lib['name']}"
+                    transform["code_hint"] = f'<Button onClick={{handler}} variant="default">Text</Button>'
+                    imports_needed.add(f"import {{ Button }} from '{_get_import_path(target_lib)}/button'")
+                elif component_type == "Dropdown" and "Select" in target_lib.get("components", []):
+                    transform["fix"] = f"Replace custom dropdown with <Select> from {target_lib['name']}"
+                    transform["code_hint"] = '<Select onValueChange={handler}>\n  <SelectTrigger><SelectValue /></SelectTrigger>\n  <SelectContent>\n    <SelectItem value="opt">Option</SelectItem>\n  </SelectContent>\n</Select>'
+                    imports_needed.add(f"import {{ Select, SelectContent, SelectItem, SelectTrigger, SelectValue }} from '{_get_import_path(target_lib)}/select'")
+            
+            elif ftype == "magic_hex_color":
+                transform["fix"] = "Replace hardcoded hex with semantic color token"
+                transform["code_hint"] = "bg-primary, text-foreground, border-input, text-muted-foreground"
+            
+            elif ftype == "hardcoded_pixels":
+                transform["fix"] = "Replace pixel values with Tailwind scale or responsive units"
+                transform["code_hint"] = "w-full sm:w-auto, p-4, h-12, rounded-lg (use scale values)"
+            
+            elif ftype == "inline_style_abuse":
+                transform["fix"] = "Move inline styles to Tailwind utility classes"
+                transform["code_hint"] = "shadow-sm, rounded-lg, etc. (extract each style to a utility)"
+            
+            elif ftype == "absolute_positioning":
+                transform["fix"] = "Replace absolute positioning with flexbox or grid"
+                transform["code_hint"] = "flex items-center justify-between gap-4"
+            
+            elif ftype == "margin_alignment_hack":
+                transform["fix"] = "Replace large margins with flexbox distribution"
+                transform["code_hint"] = "ml-auto (push right), flex justify-between, gap-4"
+            
+            elif ftype == "div_soup":
+                transform["fix"] = "Replace generic divs with semantic HTML5 elements"
+                transform["code_hint"] = "<main>, <section>, <article>, <nav>, <header>, <footer>, <aside>"
+            
+            elif ftype == "missing_aria":
+                transform["fix"] = "Add ARIA attributes for screen reader support"
+                transform["code_hint"] = 'aria-expanded={isOpen}, role="dialog", aria-modal="true"'
+            
+            elif ftype == "missing_focus_states":
+                transform["fix"] = "Add visible focus indicators"
+                transform["code_hint"] = "focus:ring-2 focus:ring-ring focus:ring-offset-2"
+            
+            elif ftype == "unlabeled_input":
+                transform["fix"] = "Add label or aria-label to input"
+                transform["code_hint"] = '<Label htmlFor="field-id">Field Name</Label>\n<Input id="field-id" />'
+                if target_lib and "Input" in target_lib.get("components", []):
+                    imports_needed.add(f"import {{ Input }} from '{_get_import_path(target_lib)}/input'")
+                    imports_needed.add(f"import {{ Label }} from '{_get_import_path(target_lib)}/label'")
+            
+            elif ftype == "zindex_abuse":
+                transform["fix"] = "Remove forced z-index, fix DOM structure instead"
+                transform["code_hint"] = "Use z-10 or z-20 max; use portals for overlays"
+            
+            elif ftype == "fixed_viewport_height":
+                transform["fix"] = "Use dynamic viewport height"
+                transform["code_hint"] = "min-h-screen or h-dvh instead of h-[100vh]"
+            
+            else:
+                transform["fix"] = finding["suggestion"]
+                transform["code_hint"] = ""
+            
+            transformations.append(transform)
+        
+        # Component-specific suggestions
+        component_suggestion = {}
+        if component_type != "Component" and target_lib:
+            components = target_lib.get("components", [])
+            if component_type in components:
+                component_suggestion = {
+                    "detected_as": component_type,
+                    "library_component": f"{target_lib['name']} <{component_type}>",
+                    "install": target_lib["install"],
+                    "docs": target_lib["docs_url"],
+                }
+            # Map common types to library components
+            component_map = {
+                "Button": "Button",
+                "Card": "Card",
+                "Dropdown": "Select",
+                "Modal": "Dialog",
+                "Form": "Form",
+                "Input": "Input",
+                "Navigation Bar": "NavigationMenu",
+                "Tabs": "Tabs",
+                "Data Table": "Table",
+                "Accordion": "Accordion",
+                "Toast": "Toast",
+                "Tooltip": "Tooltip",
+            }
+            mapped = component_map.get(component_type)
+            if mapped and mapped in components:
+                component_suggestion["use_component"] = mapped
+                imports_needed.add(f"import {{ {mapped} }} from '{_get_import_path(target_lib)}/{mapped.lower()}'")
+        
+        return {
+            "detected_component_type": component_type,
+            "total_issues": len(findings),
+            "severity_summary": analysis["severity_summary"],
+            "target_library": target_lib["name"] if target_lib else "none",
+            "imports_needed": sorted(imports_needed) if include_imports else [],
+            "transformations": transformations,
+            "component_suggestion": component_suggestion,
+            "design_reference": design_reference,
+            "semantic_tokens": {
+                "colors": {
+                    "primary": "hsl(var(--primary))",
+                    "secondary": "hsl(var(--secondary))",
+                    "destructive": "hsl(var(--destructive))",
+                    "muted": "hsl(var(--muted))",
+                    "accent": "hsl(var(--accent))",
+                    "background": "hsl(var(--background))",
+                    "foreground": "hsl(var(--foreground))",
+                    "border": "hsl(var(--border))",
+                    "input": "hsl(var(--input))",
+                    "ring": "hsl(var(--ring))",
+                },
+                "note": "Use these CSS variable-based tokens instead of hardcoded hex values"
+            },
+        }
+    
+    except Exception as e:
+        return {"error": f"Failed to generate refactoring plan: {str(e)}"}
+
+
+def _get_import_path(lib: dict) -> str:
+    """Get the import path for a library's components."""
+    lib_id = lib.get("id", "")
+    if lib_id == "shadcn-ui":
+        return "@/components/ui"
+    elif lib_id == "mantine":
+        return "@mantine/core"
+    elif lib_id == "chakra-ui":
+        return "@chakra-ui/react"
+    elif lib_id == "nextui":
+        return "@nextui-org/react"
+    elif lib_id == "radix-ui":
+        return "@radix-ui/react"
+    return lib.get("package", lib_id)
+
+
+# ============================================================
 # Helper Functions
 # ============================================================
 
