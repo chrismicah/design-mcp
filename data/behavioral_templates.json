@@ -23,49 +23,69 @@
     "behavioral_description": "Professional layout with clear information hierarchy. Hero with brand imagery and mission statement. Team section with headshots and roles. Partners/clients logo grid. Contact section with form and office locations. Careers link. Press/news section.",
     "accessibility_notes": "Team member images need name alt text. Map embed needs aria-label and keyboard fallback. Contact form follows accessible form patterns. Logo images need company name alt text."
   },
+  "SaaS": {
+    "behavioral_description": "Hero section loads instantly with above-fold content prioritized. Scroll-triggered animations for feature sections (intersection observer). CTA buttons have hover states with subtle scale/shadow transitions. Social proof section auto-rotates testimonials with pause on hover. Pricing toggle switches between monthly/annual with animated price change. Mobile: hamburger nav, stacked sections, full-width CTAs. Footer has newsletter signup with inline validation.",
+    "accessibility_notes": "Hero heading must be h1, sections use h2. Skip-to-content link at top. Auto-rotating carousels must have pause control and aria-live='polite'. CTA buttons need descriptive text (not just 'Click here'). Decorative images use aria-hidden='true', meaningful images need alt text. Color contrast: all text meets WCAG AA (4.5:1 normal, 3:1 large). Reduced motion: respect prefers-reduced-motion for animations."
+  },
+  "Documentation": {
+    "behavioral_description": "Hero section loads instantly with above-fold content prioritized. Scroll-triggered animations for feature sections (intersection observer). CTA buttons have hover states with subtle scale/shadow transitions. Social proof section auto-rotates testimonials with pause on hover. Pricing toggle switches between monthly/annual with animated price change. Mobile: hamburger nav, stacked sections, full-width CTAs. Footer has newsletter signup with inline validation.",
+    "accessibility_notes": "Hero heading must be h1, sections use h2. Skip-to-content link at top. Auto-rotating carousels must have pause control and aria-live='polite'. CTA buttons need descriptive text (not just 'Click here'). Decorative images use aria-hidden='true', meaningful images need alt text. Color contrast: all text meets WCAG AA (4.5:1 normal, 3:1 large). Reduced motion: respect prefers-reduced-motion for animations."
+  },
+  "Chat": {
+    "behavioral_description": "Hero section loads instantly with above-fold content prioritized. Scroll-triggered animations for feature sections (intersection observer). CTA buttons have hover states with subtle scale/shadow transitions. Social proof section auto-rotates testimonials with pause on hover. Pricing toggle switches between monthly/annual with animated price change. Mobile: hamburger nav, stacked sections, full-width CTAs. Footer has newsletter signup with inline validation.",
+    "accessibility_notes": "Hero heading must be h1, sections use h2. Skip-to-content link at top. Auto-rotating carousels must have pause control and aria-live='polite'. CTA buttons need descriptive text (not just 'Click here'). Decorative images use aria-hidden='true', meaningful images need alt text. Color contrast: all text meets WCAG AA (4.5:1 normal, 3:1 large). Reduced motion: respect prefers-reduced-motion for animations."
+  },
+  "Agency": {
+    "behavioral_description": "Hero section loads instantly with above-fold content prioritized. Scroll-triggered animations for feature sections (intersection observer). CTA buttons have hover states with subtle scale/shadow transitions. Social proof section auto-rotates testimonials with pause on hover. Pricing toggle switches between monthly/annual with animated price change. Mobile: hamburger nav, stacked sections, full-width CTAs. Footer has newsletter signup with inline validation.",
+    "accessibility_notes": "Hero heading must be h1, sections use h2. Skip-to-content link at top. Auto-rotating carousels must have pause control and aria-live='polite'. CTA buttons need descriptive text (not just 'Click here'). Decorative images use aria-hidden='true', meaningful images need alt text. Color contrast: all text meets WCAG AA (4.5:1 normal, 3:1 large). Reduced motion: respect prefers-reduced-motion for animations."
+  },
+  "Admin Panel": {
+    "behavioral_description": "Hero section loads instantly with above-fold content prioritized. Scroll-triggered animations for feature sections (intersection observer). CTA buttons have hover states with subtle scale/shadow transitions. Social proof section auto-rotates testimonials with pause on hover. Pricing toggle switches between monthly/annual with animated price change. Mobile: hamburger nav, stacked sections, full-width CTAs. Footer has newsletter signup with inline validation.",
+    "accessibility_notes": "Hero heading must be h1, sections use h2. Skip-to-content link at top. Auto-rotating carousels must have pause control and aria-live='polite'. CTA buttons need descriptive text (not just 'Click here'). Decorative images use aria-hidden='true', meaningful images need alt text. Color contrast: all text meets WCAG AA (4.5:1 normal, 3:1 large). Reduced motion: respect prefers-reduced-motion for animations."
+  },
+  "Media Player": {
+    "behavioral_description": "Hero section loads instantly with above-fold content prioritized. Scroll-triggered animations for feature sections (intersection observer). CTA buttons have hover states with subtle scale/shadow transitions. Social proof section auto-rotates testimonials with pause on hover. Pricing toggle switches between monthly/annual with animated price change. Mobile: hamburger nav, stacked sections, full-width CTAs. Footer has newsletter signup with inline validation.",
+    "accessibility_notes": "Hero heading must be h1, sections use h2. Skip-to-content link at top. Auto-rotating carousels must have pause control and aria-live='polite'. CTA buttons need descriptive text (not just 'Click here'). Decorative images use aria-hidden='true', meaningful images need alt text. Color contrast: all text meets WCAG AA (4.5:1 normal, 3:1 large). Reduced motion: respect prefers-reduced-motion for animations."
+  },
   "Pricing": {
     "behavioral_description": "Three pricing tiers in cards with highlighted 'popular' option. Toggle between monthly/annual billing. Feature comparison table with tooltips for details. CTA buttons change text based on tier.",
     "accessibility_notes": "Toggle has proper role and aria-checked. Feature tooltips accessible via keyboard. Price changes announced to screen readers on toggle."
-  },
-  "Chat Interface": {
-    "behavioral_description": "Messages load in reverse chronological order, scroll to bottom on new message. Typing indicator shows when other user is composing. Message input auto-resizes with content. Send on Enter, newline on Shift+Enter. Unread messages show count badge on channel. Image/file attachments show preview before sending. Message actions (reply, edit, delete) appear on hover/long-press. Timestamps group messages by day.",
-    "accessibility_notes": "Message list uses role='log' with aria-live='polite' for new messages. Each message needs aria-label with sender, time, and content. Typing indicator uses aria-live='assertive'. Send button needs aria-label. Attachment upload needs accessible file picker. Keyboard: Enter sends, Tab navigates, Escape cancels reply."
-  },
-  "Documentation": {
-    "behavioral_description": "Left sidebar navigation with collapsible sections. Search with instant results (algolia-style). Code blocks with copy button, language selector, line highlighting. Breadcrumb navigation. Previous/Next page links at bottom. Table of contents in right sidebar for current page. Version selector in header.",
-    "accessibility_notes": "Sidebar uses nav with aria-label='Documentation navigation'. Expandable sections use aria-expanded. Code blocks have aria-label with language. Copy button announces success. Search results use aria-live for dynamic updates. Breadcrumbs use nav with aria-label='Breadcrumb'."
-  },
-  "SaaS": {
-    "behavioral_description": "Hero with headline, subheadline, email capture or CTA button. Social proof bar (logos or metrics). Feature sections with alternating layout. Testimonial carousel or grid. Pricing section with toggle. FAQ accordion. Footer with sitemap, social links, legal. Sticky CTA on scroll past hero.",
-    "accessibility_notes": "Same as Landing Page. Additionally: Logo bar images need alt text (company names). Testimonials have proper cite elements. Sticky CTA doesn't obscure content and can be dismissed."
   },
   "Calendar": {
     "behavioral_description": "Multiple views: day, week, month. Events shown as colored blocks. Click to create event. Drag to resize/move events. Event popover on click shows details with edit/delete. Color coding by calendar. Mini calendar in sidebar for quick navigation.",
     "accessibility_notes": "Calendar grid uses proper table role with date headers. Events have aria-label with full details. Keyboard navigation between days/events. Screen reader announces date on focus."
   },
-  "Admin Panel": {
-    "behavioral_description": "Data table with sortable columns, inline search, and bulk actions. Row selection via checkbox with Select All in header. Pagination with page size selector. Create/Edit forms in slide-over panel or modal. Delete requires confirmation. Bulk delete shows count. Status badges with color + text (not color alone). Export to CSV/PDF from toolbar.",
-    "accessibility_notes": "Data table: proper th scope, aria-sort on sortable columns. Checkbox column: aria-label for each row selection. Bulk action toolbar announces selected count via aria-live. Slide-over panels trap focus, return focus on close. Status badges: never rely on color alone, always include text. Pagination: aria-label='Pagination', current page aria-current='page'."
+  "Social Feed": {
+    "behavioral_description": "Hero section loads instantly with above-fold content prioritized. Scroll-triggered animations for feature sections (intersection observer). CTA buttons have hover states with subtle scale/shadow transitions. Social proof section auto-rotates testimonials with pause on hover. Pricing toggle switches between monthly/annual with animated price change. Mobile: hamburger nav, stacked sections, full-width CTAs. Footer has newsletter signup with inline validation.",
+    "accessibility_notes": "Hero heading must be h1, sections use h2. Skip-to-content link at top. Auto-rotating carousels must have pause control and aria-live='polite'. CTA buttons need descriptive text (not just 'Click here'). Decorative images use aria-hidden='true', meaningful images need alt text. Color contrast: all text meets WCAG AA (4.5:1 normal, 3:1 large). Reduced motion: respect prefers-reduced-motion for animations."
+  },
+  "Checkout": {
+    "behavioral_description": "Hero section loads instantly with above-fold content prioritized. Scroll-triggered animations for feature sections (intersection observer). CTA buttons have hover states with subtle scale/shadow transitions. Social proof section auto-rotates testimonials with pause on hover. Pricing toggle switches between monthly/annual with animated price change. Mobile: hamburger nav, stacked sections, full-width CTAs. Footer has newsletter signup with inline validation.",
+    "accessibility_notes": "Hero heading must be h1, sections use h2. Skip-to-content link at top. Auto-rotating carousels must have pause control and aria-live='polite'. CTA buttons need descriptive text (not just 'Click here'). Decorative images use aria-hidden='true', meaningful images need alt text. Color contrast: all text meets WCAG AA (4.5:1 normal, 3:1 large). Reduced motion: respect prefers-reduced-motion for animations."
+  },
+  "Settings": {
+    "behavioral_description": "Hero section loads instantly with above-fold content prioritized. Scroll-triggered animations for feature sections (intersection observer). CTA buttons have hover states with subtle scale/shadow transitions. Social proof section auto-rotates testimonials with pause on hover. Pricing toggle switches between monthly/annual with animated price change. Mobile: hamburger nav, stacked sections, full-width CTAs. Footer has newsletter signup with inline validation.",
+    "accessibility_notes": "Hero heading must be h1, sections use h2. Skip-to-content link at top. Auto-rotating carousels must have pause control and aria-live='polite'. CTA buttons need descriptive text (not just 'Click here'). Decorative images use aria-hidden='true', meaningful images need alt text. Color contrast: all text meets WCAG AA (4.5:1 normal, 3:1 large). Reduced motion: respect prefers-reduced-motion for animations."
+  },
+  "CRM": {
+    "behavioral_description": "Hero section loads instantly with above-fold content prioritized. Scroll-triggered animations for feature sections (intersection observer). CTA buttons have hover states with subtle scale/shadow transitions. Social proof section auto-rotates testimonials with pause on hover. Pricing toggle switches between monthly/annual with animated price change. Mobile: hamburger nav, stacked sections, full-width CTAs. Footer has newsletter signup with inline validation.",
+    "accessibility_notes": "Hero heading must be h1, sections use h2. Skip-to-content link at top. Auto-rotating carousels must have pause control and aria-live='polite'. CTA buttons need descriptive text (not just 'Click here'). Decorative images use aria-hidden='true', meaningful images need alt text. Color contrast: all text meets WCAG AA (4.5:1 normal, 3:1 large). Reduced motion: respect prefers-reduced-motion for animations."
+  },
+  "Other": {
+    "behavioral_description": "Hero section loads instantly with above-fold content prioritized. Scroll-triggered animations for feature sections (intersection observer). CTA buttons have hover states with subtle scale/shadow transitions. Social proof section auto-rotates testimonials with pause on hover. Pricing toggle switches between monthly/annual with animated price change. Mobile: hamburger nav, stacked sections, full-width CTAs. Footer has newsletter signup with inline validation.",
+    "accessibility_notes": "Hero heading must be h1, sections use h2. Skip-to-content link at top. Auto-rotating carousels must have pause control and aria-live='polite'. CTA buttons need descriptive text (not just 'Click here'). Decorative images use aria-hidden='true', meaningful images need alt text. Color contrast: all text meets WCAG AA (4.5:1 normal, 3:1 large). Reduced motion: respect prefers-reduced-motion for animations."
   },
   "Onboarding": {
     "behavioral_description": "3-step onboarding: 1) Use case selection (radio cards), 2) Team size, 3) Template selection. Progress indicator shows current step. Skip option always visible. Demonstrates value by showing template previews.",
     "accessibility_notes": "Step changes announced via aria-live. Radio cards have proper role. Progress bar has aria-valuenow. Focus trapped within current step."
   },
-  "Settings": {
-    "behavioral_description": "Settings organized by category in left sidebar. Each section has a heading, description, and form fields. Save buttons per section (not global). Danger zone at bottom with red-bordered section for destructive actions. Confirmation modal for dangerous operations.",
-    "accessibility_notes": "Navigation sidebar has proper nav landmark. Form sections use fieldset/legend. Danger zone has aria-label warning. Confirmation dialogs trap focus."
-  },
-  "Checkout": {
-    "behavioral_description": "3-step checkout: shipping info, payment, review. Order summary sticky on right side. Form validation on blur with inline errors. Express checkout options (Apple Pay, Google Pay) at top. Progress saved between steps.",
-    "accessibility_notes": "Step progress announced to screen readers. Form errors linked via aria-describedby. Payment fields use autocomplete attributes. Express pay buttons clearly labeled."
+  "Chat Interface": {
+    "behavioral_description": "Conversation list on left, active chat on right. Messages load with infinite scroll upward. New messages appear at bottom with smooth scroll. Typing indicators show when other user is typing. Message status (sent, delivered, read) shown with icons.",
+    "accessibility_notes": "Messages use aria-live for new incoming. Conversation list is navigable by keyboard. Input has proper label. Emoji picker accessible."
   },
   "Kanban Board": {
     "behavioral_description": "Columns represent statuses (To Do, In Progress, Done). Cards show task title, assignee avatar, priority badge, and due date. Drag and drop between columns updates status. Click card opens detail modal. Add card button at column bottom. Column header shows count.",
     "accessibility_notes": "Drag and drop has keyboard alternative (select + arrow keys). Card details accessible via Enter. Column counts announced. Task priority indicated by both color and text."
-  },
-  "Social Feed": {
-    "behavioral_description": "Vertical feed of posts. Each post has author info, content, media, and engagement actions. Like/repost/reply with optimistic updates. Infinite scroll loads more posts. New posts indicator at top. Image posts expand on click.",
-    "accessibility_notes": "Images have alt text. Engagement buttons clearly labeled. New content announced via aria-live. Focus management on modal open."
   },
   "Profile": {
     "behavioral_description": "Cover image at top with overlapping avatar. Name, bio, and stats (followers, following, posts). Action buttons (Follow, Message). Tabbed content: posts feed, about info, media gallery. Edit profile button for own profile.",
@@ -83,6 +103,10 @@
     "behavioral_description": "Tabbed view: All, Unread, Mentions. Each notification shows actor avatar, action description, timestamp, and unread indicator. Mark all as read button. Individual mark as read on hover. Click notification navigates to context. Group notifications by date.",
     "accessibility_notes": "Unread status conveyed via aria. Notification actions accessible by keyboard. New notifications announced via aria-live polite. Tab panels properly linked."
   },
+  "Auth": {
+    "behavioral_description": "Hero section loads instantly with above-fold content prioritized. Scroll-triggered animations for feature sections (intersection observer). CTA buttons have hover states with subtle scale/shadow transitions. Social proof section auto-rotates testimonials with pause on hover. Pricing toggle switches between monthly/annual with animated price change. Mobile: hamburger nav, stacked sections, full-width CTAs. Footer has newsletter signup with inline validation.",
+    "accessibility_notes": "Hero heading must be h1, sections use h2. Skip-to-content link at top. Auto-rotating carousels must have pause control and aria-live='polite'. CTA buttons need descriptive text (not just 'Click here'). Decorative images use aria-hidden='true', meaningful images need alt text. Color contrast: all text meets WCAG AA (4.5:1 normal, 3:1 large). Reduced motion: respect prefers-reduced-motion for animations."
+  },
   "Login": {
     "behavioral_description": "Split layout with brand visual on left, form on right. Social login buttons (Google, GitHub) above divider. Email/password below. Form validation on blur. Password visibility toggle. Forgot password link below form.",
     "accessibility_notes": "Form labels properly associated. Password field has show/hide toggle with aria-label. Error messages linked via aria-describedby. Autofill supported."
@@ -90,6 +114,10 @@
   "404 Page": {
     "behavioral_description": "Engaging 404 with custom illustration or animation. Friendly headline ('Page not found' or creative variant). Brief explanation. Primary CTA to go home, secondary to go back. Optional search bar.",
     "accessibility_notes": "Meaningful alt text on illustration. CTAs clearly labeled. Page title updated to indicate error."
+  },
+  "Search Results": {
+    "behavioral_description": "Hero section loads instantly with above-fold content prioritized. Scroll-triggered animations for feature sections (intersection observer). CTA buttons have hover states with subtle scale/shadow transitions. Social proof section auto-rotates testimonials with pause on hover. Pricing toggle switches between monthly/annual with animated price change. Mobile: hamburger nav, stacked sections, full-width CTAs. Footer has newsletter signup with inline validation.",
+    "accessibility_notes": "Hero heading must be h1, sections use h2. Skip-to-content link at top. Auto-rotating carousels must have pause control and aria-live='polite'. CTA buttons need descriptive text (not just 'Click here'). Decorative images use aria-hidden='true', meaningful images need alt text. Color contrast: all text meets WCAG AA (4.5:1 normal, 3:1 large). Reduced motion: respect prefers-reduced-motion for animations."
   },
   "Blog Post": {
     "behavioral_description": "Article list with card layout: image, title, excerpt, author, date. Category/tag filter without page reload. Article page: large header image, readable width (65ch max), table of contents sidebar for long articles. Code blocks with syntax highlighting and copy button. Related articles at bottom. Newsletter CTA inline or sticky.",

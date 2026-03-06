@@ -12,31 +12,31 @@
     "library": "shadcn"
   },
   "Sidebar": {
-    "code": "import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupLabel, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from \"@/components/ui/sidebar\"\n\n<Sidebar>\n  <SidebarContent>\n    <SidebarGroup>\n      <SidebarGroupLabel>Platform</SidebarGroupLabel>\n      <SidebarMenu>\n        <SidebarMenuItem>\n          <SidebarMenuButton asChild>\n            <a href=\"/dashboard\"><LayoutDashboard className=\"mr-2 h-4 w-4\" />Dashboard</a>\n          </SidebarMenuButton>\n        </SidebarMenuItem>\n      </SidebarMenu>\n    </SidebarGroup>\n  </SidebarContent>\n</Sidebar>",
+    "code": "[component:Sidebar]",
     "library": "shadcn"
   },
   "Card": {
-    "code": "import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from \"@/components/ui/card\"\n\n<Card>\n  <CardHeader>\n    <CardTitle>Card Title</CardTitle>\n    <CardDescription>Card description goes here.</CardDescription>\n  </CardHeader>\n  <CardContent>\n    <p>Card content</p>\n  </CardContent>\n  <CardFooter>\n    <Button>Action</Button>\n  </CardFooter>\n</Card>",
+    "code": "[component:Card]",
     "library": "shadcn"
   },
   "DataTable": {
-    "code": "import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from \"@/components/ui/table\"\n\n<Table>\n  <TableHeader>\n    <TableRow>\n      <TableHead>Name</TableHead>\n      <TableHead>Status</TableHead>\n      <TableHead className=\"text-right\">Amount</TableHead>\n    </TableRow>\n  </TableHeader>\n  <TableBody>\n    {data.map((row) => (\n      <TableRow key={row.id}>\n        <TableCell className=\"font-medium\">{row.name}</TableCell>\n        <TableCell><Badge variant={row.status}>{row.status}</Badge></TableCell>\n        <TableCell className=\"text-right\">{row.amount}</TableCell>\n      </TableRow>\n    ))}\n  </TableBody>\n</Table>",
+    "code": "[component:DataTable]",
     "library": "shadcn"
   },
   "Badge": {
-    "code": "import { Badge } from \"@/components/ui/badge\"\n\n<Badge variant=\"default\">Active</Badge>\n<Badge variant=\"secondary\">Draft</Badge>\n<Badge variant=\"destructive\">Error</Badge>\n<Badge variant=\"outline\">Pending</Badge>",
+    "code": "[component:Badge]",
     "library": "shadcn"
   },
   "Tabs": {
-    "code": "import { Tabs, TabsContent, TabsList, TabsTrigger } from \"@/components/ui/tabs\"\n\n<Tabs defaultValue=\"tab1\" className=\"w-full\">\n  <TabsList>\n    <TabsTrigger value=\"tab1\">Overview</TabsTrigger>\n    <TabsTrigger value=\"tab2\">Analytics</TabsTrigger>\n    <TabsTrigger value=\"tab3\">Settings</TabsTrigger>\n  </TabsList>\n  <TabsContent value=\"tab1\">Overview content</TabsContent>\n  <TabsContent value=\"tab2\">Analytics content</TabsContent>\n  <TabsContent value=\"tab3\">Settings content</TabsContent>\n</Tabs>",
+    "code": "[component:Tabs]",
     "library": "shadcn"
   },
   "Avatar": {
-    "code": "import { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\"\n\n<Avatar>\n  <AvatarImage src=\"/avatar.jpg\" alt=\"User Name\" />\n  <AvatarFallback>UN</AvatarFallback>\n</Avatar>",
+    "code": "[component:Avatar]",
     "library": "shadcn"
   },
   "Dropdown": {
-    "code": "import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from \"@/components/ui/select\"\n\n<Select>\n  <SelectTrigger className=\"w-[180px]\">\n    <SelectValue placeholder=\"Select option\" />\n  </SelectTrigger>\n  <SelectContent>\n    <SelectItem value=\"option1\">Option 1</SelectItem>\n    <SelectItem value=\"option2\">Option 2</SelectItem>\n    <SelectItem value=\"option3\">Option 3</SelectItem>\n  </SelectContent>\n</Select>",
+    "code": "[component:Dropdown]",
     "library": "shadcn"
   },
   "Chart": {
@@ -55,16 +55,16 @@
     "code": "<footer className=\"border-t bg-background\">\n  <div className=\"mx-auto max-w-7xl px-6 py-12 lg:px-8\">\n    <div className=\"grid grid-cols-2 gap-8 md:grid-cols-4\">\n      {footerLinks.map((section) => (\n        <div key={section.title}>\n          <h3 className=\"text-sm font-semibold text-foreground\">{section.title}</h3>\n          <ul className=\"mt-4 space-y-2\">\n            {section.links.map((link) => (\n              <li key={link.label}>\n                <a href={link.href} className=\"text-sm text-muted-foreground hover:text-foreground\">{link.label}</a>\n              </li>\n            ))}\n          </ul>\n        </div>\n      ))}\n    </div>\n    <div className=\"mt-12 border-t pt-8 text-center text-sm text-muted-foreground\">\n      &copy; 2026 Company. All rights reserved.\n    </div>\n  </div>\n</footer>",
     "library": "tailwind"
   },
+  "PricingTable": {
+    "code": "<div className=\"grid gap-8 md:grid-cols-3\">\n  {plans.map((plan) => (\n    <Card key={plan.name} className={plan.popular ? \"border-primary shadow-lg\" : \"\"}>\n      <CardHeader>\n        {plan.popular && <Badge className=\"w-fit\">Most Popular</Badge>}\n        <CardTitle>{plan.name}</CardTitle>\n        <div className=\"text-3xl font-bold\">${plan.price}<span className=\"text-sm font-normal text-muted-foreground\">/mo</span></div>\n      </CardHeader>\n      <CardContent>\n        <ul className=\"space-y-2\">\n          {plan.features.map((f) => (\n            <li key={f} className=\"flex items-center gap-2\">\n              <Check className=\"h-4 w-4 text-primary\" />{f}\n            </li>\n          ))}\n        </ul>\n      </CardContent>\n      <CardFooter>\n        <Button className=\"w-full\" variant={plan.popular ? \"default\" : \"outline\"}>\n          {plan.cta}\n        </Button>\n      </CardFooter>\n    </Card>\n  ))}\n</div>",
+    "library": "shadcn"
+  },
   "Form": {
     "code": "import { Input } from \"@/components/ui/input\"\nimport { Label } from \"@/components/ui/label\"\nimport { Button } from \"@/components/ui/button\"\n\n<form onSubmit={handleSubmit}>\n  <div className=\"grid gap-4\">\n    <div className=\"grid gap-2\">\n      <Label htmlFor=\"email\">Email</Label>\n      <Input id=\"email\" type=\"email\" placeholder=\"you@example.com\" required />\n    </div>\n    <div className=\"grid gap-2\">\n      <Label htmlFor=\"password\">Password</Label>\n      <Input id=\"password\" type=\"password\" required />\n    </div>\n    <Button type=\"submit\" className=\"w-full\">Sign In</Button>\n  </div>\n</form>",
     "library": "shadcn"
   },
   "Modal": {
     "code": "import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from \"@/components/ui/dialog\"\n\n<Dialog>\n  <DialogTrigger asChild><Button variant=\"outline\">Open</Button></DialogTrigger>\n  <DialogContent className=\"sm:max-w-[425px]\">\n    <DialogHeader>\n      <DialogTitle>Edit Profile</DialogTitle>\n      <DialogDescription>Make changes to your profile here.</DialogDescription>\n    </DialogHeader>\n    <div className=\"grid gap-4 py-4\">\n      {/* Form fields */}\n    </div>\n    <DialogFooter>\n      <Button type=\"submit\">Save changes</Button>\n    </DialogFooter>\n  </DialogContent>\n</Dialog>",
-    "library": "shadcn"
-  },
-  "PricingTable": {
-    "code": "<div className=\"grid gap-8 md:grid-cols-3\">\n  {plans.map((plan) => (\n    <Card key={plan.name} className={plan.popular ? \"border-primary shadow-lg\" : \"\"}>\n      <CardHeader>\n        {plan.popular && <Badge className=\"w-fit\">Most Popular</Badge>}\n        <CardTitle>{plan.name}</CardTitle>\n        <div className=\"text-3xl font-bold\">${plan.price}<span className=\"text-sm font-normal text-muted-foreground\">/mo</span></div>\n      </CardHeader>\n      <CardContent>\n        <ul className=\"space-y-2\">\n          {plan.features.map((f) => (\n            <li key={f} className=\"flex items-center gap-2\">\n              <Check className=\"h-4 w-4 text-primary\" />{f}\n            </li>\n          ))}\n        </ul>\n      </CardContent>\n      <CardFooter>\n        <Button className=\"w-full\" variant={plan.popular ? \"default\" : \"outline\"}>\n          {plan.cta}\n        </Button>\n      </CardFooter>\n    </Card>\n  ))}\n</div>",
     "library": "shadcn"
   }
 }

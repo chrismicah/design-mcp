@@ -26,6 +26,8 @@ class LayoutType(str, Enum):
     HOLY_GRAIL = "holy_grail"
     STICKY_HEADER = "sticky_header"
     EDITORIAL = "editorial"
+    ASYMMETRIC = "asymmetric"
+    HERO_CENTERED = "hero_centered"
 
 
 class DesignPattern(BaseModel):
