@@ -578,6 +578,7 @@ async def scan_project(
         ))
         
         # Calculate health score (0-100, higher is better)
+        # Accounts for both anti-patterns (penalties) and good practices (bonuses)
         total_issues = len(all_findings)
         files_scanned = len(ui_files)
         if files_scanned == 0:
@@ -586,7 +587,38 @@ async def scan_project(
             error_penalty = total_severity["errors"] * 5
             warning_penalty = total_severity["warnings"] * 2
             info_penalty = total_severity["info"] * 0.5
-            raw_score = max(0, 100 - error_penalty - warning_penalty - info_penalty)
+            raw_penalty = error_penalty + warning_penalty + info_penalty
+            
+            # Bonus for good practices (scan all code for positive signals)
+            all_code = ""
+            for filepath in ui_files:
+                try:
+                    all_code += filepath.read_text(encoding='utf-8', errors='ignore')
+                except Exception:
+                    pass
+            
+            import re as _re
+            bonus = 0
+            # Semantic HTML usage
+            semantic_count = len(_re.findall(r'<(?:section|article|aside|main|header|footer|nav)\b', all_code))
+            if semantic_count > 0:
+                bonus += min(semantic_count * 1.5, 15)  # Up to 15 points
+            # ARIA attributes
+            aria_count = len(_re.findall(r'aria-(?:label|labelledby|describedby|expanded|hidden|live|modal|role)\b', all_code))
+            if aria_count > 0:
+                bonus += min(aria_count * 0.5, 10)  # Up to 10 points
+            # role attributes
+            role_count = len(_re.findall(r'role\s*=\s*["\'](?:button|dialog|alert|progressbar|navigation|complementary|main|banner)', all_code))
+            if role_count > 0:
+                bonus += min(role_count * 1, 5)  # Up to 5 points
+            # Focus management
+            focus_count = len(_re.findall(r'focus(?:-visible)?:(?:ring|outline|border|shadow)', all_code))
+            if focus_count > 0:
+                bonus += min(focus_count * 0.5, 5)  # Up to 5 points
+            
+            # Bonus can offset up to 50% of penalties, not create score from nothing
+            effective_bonus = min(bonus, raw_penalty * 0.5)
+            raw_score = max(0, min(100, 100 - raw_penalty + effective_bonus))
             health_score = round(raw_score, 1)
         
         # Aggregate anti-pattern types across project

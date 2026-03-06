@@ -248,18 +248,29 @@ def detect_margin_alignment(code: str) -> list[dict]:
 
 
 def detect_absolute_positioning(code: str) -> list[dict]:
-    """Detect absolute positioning with explicit coordinates."""
+    """Detect absolute positioning with explicit coordinates (outside of proper relative containers)."""
     findings = []
     lines = code.split('\n')
     
     for i, line_text in enumerate(lines, 1):
         if RE_ABSOLUTE_POS.search(line_text) and RE_DIRECTIONAL.search(line_text):
+            # Check if this is inside a relative parent (proper pattern)
+            # Look at nearby lines for 'relative' class
+            context_start = max(0, i - 5)
+            context = '\n'.join(lines[context_start:i])
+            if 'relative' in context:
+                continue  # absolute inside relative is the correct pattern
+            
+            # Also skip common good patterns: overlays, tooltips, floating elements
+            if any(keyword in line_text.lower() for keyword in ('overlay', 'tooltip', 'popover', 'dropdown', 'float', 'badge', 'indicator')):
+                continue
+            
             findings.append(finding(
                 type="absolute_positioning",
                 severity="warning",
                 message=f"Absolute positioning with explicit coordinates",
                 line=i,
-                suggestion="Replace absolute positioning with flexbox or grid layout for document flow"
+                suggestion="Replace absolute positioning with flexbox or grid layout, or ensure parent has 'relative' class"
             ))
     
     return findings
@@ -282,34 +293,49 @@ def detect_fixed_heights(code: str) -> list[dict]:
     return findings
 
 
+RE_STACKING_CLASSES = re.compile(r'\b(?:space-[xy]-\d+|divide-[xy]|gap-\d+)\b')
+
 def detect_missing_flex_grid(code: str) -> list[dict]:
-    """Detect containers with multiple children but no flex/grid."""
+    """Detect containers with multiple children but no flex/grid layout."""
     findings = []
     
-    # Simple heuristic: look for divs with className but no flex/grid
-    # that seem to have multiple child elements
+    # Match both divs and other container elements
     div_pattern = re.compile(
-        r'<div\s+(?:className|class)\s*=\s*["\']([^"\']*)["\']',
+        r'<(div|section|article|aside|main|header|footer|nav)\s+(?:className|class)\s*=\s*["\']([^"\']*)["\']',
         re.IGNORECASE
     )
     
     for match in div_pattern.finditer(code):
-        classes = match.group(1)
-        if not RE_FLEX_GRID.search(classes):
-            # Check if this div likely has multiple children by looking ahead
-            start = match.end()
-            # Count child elements in the next ~500 chars
-            snippet = code[start:start+500]
-            child_opens = len(re.findall(r'<(?:div|span|p|a|button|input|img|h[1-6])\b', snippet))
-            if child_opens >= 3:
-                line = code[:match.start()].count('\n') + 1
-                findings.append(finding(
-                    type="missing_flex_grid",
-                    severity="info",
-                    message=f"Container with multiple children lacks flex/grid layout",
-                    line=line,
-                    suggestion="Add 'flex' or 'grid' class for proper layout distribution"
-                ))
+        tag = match.group(1).lower()
+        classes = match.group(2)
+        
+        # Skip if already has flex/grid/stacking layout
+        if RE_FLEX_GRID.search(classes):
+            continue
+        if RE_STACKING_CLASSES.search(classes):
+            continue  # space-y-*, divide-y, gap-* = intentional stacking
+        
+        # Semantic containers with aria-label are likely intentional wrappers — less severe
+        is_semantic = tag in ('section', 'article', 'aside', 'main', 'header', 'footer', 'nav')
+        
+        # Check if this container likely has multiple children
+        start = match.end()
+        snippet = code[start:start+500]
+        child_opens = len(re.findall(r'<(?:div|span|p|a|button|input|img|h[1-6]|section|article)\b', snippet))
+        
+        if child_opens >= 3:
+            # Semantic elements with clear purpose get a pass on needing flex/grid
+            if is_semantic:
+                continue  # Block flow is valid for semantic sections
+            
+            line = code[:match.start()].count('\n') + 1
+            findings.append(finding(
+                type="missing_flex_grid",
+                severity="info",
+                message=f"Container <{tag}> with multiple children lacks explicit layout",
+                line=line,
+                suggestion="Add 'flex' or 'grid' class, or use a semantic element (<section>, <article>) for block flow"
+            ))
     
     return findings
 
@@ -381,16 +407,24 @@ def detect_div_soup(code: str) -> list[dict]:
             suggestion="Replace generic divs with semantic tags: <main>, <section>, <article>, <nav>, <header>, <footer>"
         ))
     
-    # Also check for total lack of semantic tags
-    has_semantic = bool(re.search(r'<(?:' + '|'.join(semantic_tags) + r')\b', code))
+    # Check ratio of semantic tags to divs
+    semantic_count = len(re.findall(r'<(?:' + '|'.join(semantic_tags) + r')\b', code))
     div_count = len(re.findall(r'<div\b', code))
-    if div_count > 5 and not has_semantic:
+    if div_count > 5 and semantic_count == 0:
         findings.append(finding(
             type="div_soup",
             severity="warning",
             message=f"No semantic HTML5 tags found among {div_count} div elements",
             line=None,
             suggestion="Add semantic landmarks (<main>, <nav>, <section>) for screen reader navigation"
+        ))
+    elif div_count > 10 and semantic_count > 0 and div_count / max(semantic_count, 1) > 10:
+        findings.append(finding(
+            type="div_soup",
+            severity="info",
+            message=f"Low semantic tag ratio: {semantic_count} semantic vs {div_count} divs",
+            line=None,
+            suggestion="Consider replacing more wrapper divs with semantic tags"
         ))
     
     return findings
