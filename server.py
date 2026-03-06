@@ -2,6 +2,11 @@ from fastmcp import FastMCP
 from schema import DesignPattern, Platform, LayoutType
 from database import DesignDatabase
 from models.analyzer import analyze_code, infer_component_type
+from models.visual_analyzer import (
+    analyze_visual, generate_color_palette, 
+    FONT_PAIRINGS, TYPE_SCALE, SPACING_SYSTEM,
+    extract_colors, contrast_ratio
+)
 from typing import Optional
 from pathlib import Path
 import json
@@ -671,6 +676,39 @@ async def scan_project(
         except Exception:
             pass
         
+        # Run visual analysis on all code combined
+        visual_summary = {"findings": [], "severity_summary": {"errors": 0, "warnings": 0, "info": 0}}
+        try:
+            visual_summary = analyze_visual(all_code)
+            # Add visual findings to totals
+            for f in visual_summary["findings"]:
+                all_findings.append(f)
+                sev = f.get("severity", "info")
+                if sev == "error":
+                    total_severity["errors"] += 1
+                elif sev == "warning":
+                    total_severity["warnings"] += 1
+                else:
+                    total_severity["info"] += 1
+            # Rebuild pattern counts with visual findings
+            pattern_counts = Counter(f["type"] for f in all_findings)
+            top_issues = [
+                {"type": ptype, "count": count}
+                for ptype, count in pattern_counts.most_common(10)
+            ]
+            total_issues = len(all_findings)
+            
+            # Recalculate health score with visual issues
+            error_penalty = total_severity["errors"] * 5
+            warning_penalty = total_severity["warnings"] * 2
+            info_penalty = total_severity["info"] * 0.5
+            raw_penalty = error_penalty + warning_penalty + info_penalty
+            effective_bonus = min(bonus, raw_penalty * 0.5)
+            raw_score = max(0, min(100, 100 - raw_penalty + effective_bonus))
+            health_score = round(raw_score, 1)
+        except Exception:
+            pass
+        
         return {
             "project_health_score": health_score,
             "files_scanned": files_scanned,
@@ -682,6 +720,7 @@ async def scan_project(
             "recommended_libraries": project_libs,
             "file_reports": file_reports[:20],  # Top 20 worst files
             "component_types_found": list(component_types_seen),
+            "visual_issues": visual_summary["findings"][:10],  # Top 10 visual issues
         }
     
     except Exception as e:
@@ -1080,6 +1119,239 @@ def _generate_comparison_summary(patterns: list[DesignPattern]) -> str:
         f"Layout strategies: {', '.join(layouts) if layouts else 'varied'}. "
         f"Visual styles: {', '.join(styles) if styles else 'varied'}."
     )
+
+
+# ============================================================
+# TOOL 12: Visual Design Suggestions
+# ============================================================
+@mcp.tool()
+async def get_visual_suggestions(
+    source_code: str,
+    primary_color: Optional[str] = None,
+    brand_style: str = "clean_modern",
+    spacing_density: str = "comfortable",
+) -> dict:
+    """
+    Analyze code for visual design quality and generate improvement suggestions
+    for colors, typography, and spacing. Returns a complete visual design system
+    with actionable CSS/Tailwind values.
+
+    Use this when someone says "make it look better", "improve the design",
+    "fix the colors", or "it looks amateur". Also useful for establishing
+    a design system from scratch.
+
+    Args:
+        source_code: The UI code to analyze (JSX/TSX/HTML/CSS)
+        primary_color: Optional hex color to build palette from (e.g. '#3b82f6').
+            If not provided, extracts the most prominent color from the code.
+        brand_style: Font pairing style. Options:
+            'clean_modern' (Inter — SaaS/dashboards),
+            'editorial' (Playfair Display + Source Sans — blogs/luxury),
+            'geometric' (Space Grotesk + DM Sans — tech/startups),
+            'friendly' (Nunito — consumer/education),
+            'professional' (Plus Jakarta Sans — enterprise/fintech),
+            'brutalist' (Instrument Serif + IBM Plex — agency/creative)
+        spacing_density: Spacing system density. Options:
+            'compact' (dashboards, data-heavy),
+            'comfortable' (general purpose),
+            'spacious' (marketing, landing pages)
+
+    Returns:
+        Visual analysis findings, color palette with CSS variables,
+        typography scale, spacing system, and specific fix suggestions.
+    """
+    try:
+        # Run visual analysis
+        visual = analyze_visual(source_code)
+        
+        # Determine primary color
+        if not primary_color:
+            colors = extract_colors(source_code)
+            # Find the most used non-neutral color
+            from collections import Counter
+            color_counts = Counter()
+            for c in colors:
+                if c.get('source') == 'tailwind' and c.get('name'):
+                    name = c['name'].split('-')[0]
+                    if name not in ('white', 'black', 'slate', 'gray', 'zinc', 'neutral', 'stone'):
+                        color_counts[c['hex']] += 1
+                elif c.get('source') == 'hex':
+                    from models.visual_analyzer import hex_to_rgb, rgb_to_hsl
+                    r, g, b = hex_to_rgb(c['hex'])
+                    h, s, l = rgb_to_hsl(r, g, b)
+                    if s > 15 and 10 < l < 90:  # Chromatic, not too dark/light
+                        color_counts[c['hex']] += 1
+            
+            if color_counts:
+                primary_color = color_counts.most_common(1)[0][0]
+            else:
+                primary_color = '#3b82f6'  # Default blue
+        
+        # Generate color palette
+        palette = generate_color_palette(primary_color)
+        
+        # Get font pairing
+        fonts = FONT_PAIRINGS.get(brand_style, FONT_PAIRINGS["clean_modern"])
+        
+        # Get type scale (match to brand)
+        if brand_style in ("editorial", "brutalist"):
+            type_scale = TYPE_SCALE["perfect_fourth"]
+        else:
+            type_scale = TYPE_SCALE["major_third"]
+        
+        # Get spacing system
+        spacing = SPACING_SYSTEM.get(spacing_density, SPACING_SYSTEM["comfortable"])
+        
+        # Combine structural + visual findings
+        structural = analyze_code(source_code)
+        
+        # Build actionable CSS snippet
+        css_snippet = _build_css_snippet(palette, fonts, type_scale)
+        tailwind_config = _build_tailwind_config(palette, fonts)
+        
+        return {
+            "visual_analysis": {
+                "findings": visual["findings"],
+                "severity_summary": visual["severity_summary"],
+                "total_visual_issues": len(visual["findings"]),
+            },
+            "structural_analysis": {
+                "findings_count": len(structural["findings"]),
+                "severity_summary": structural["severity_summary"],
+            },
+            "color_palette": palette,
+            "typography": {
+                "font_pairing": fonts,
+                "type_scale": type_scale,
+            },
+            "spacing": spacing,
+            "implementation": {
+                "css_variables": css_snippet,
+                "tailwind_config": tailwind_config,
+                "google_fonts_import": _google_fonts_url(fonts),
+            },
+            "quick_wins": _generate_quick_wins(visual["findings"], structural["findings"]),
+        }
+    
+    except Exception as e:
+        return {"error": f"Failed to generate visual suggestions: {str(e)}"}
+
+
+def _build_css_snippet(palette: dict, fonts: dict, type_scale: dict) -> str:
+    """Build a ready-to-paste CSS variables block."""
+    lines = [":root {"]
+    
+    # Colors
+    if "light_theme" in palette:
+        for key, val in palette["light_theme"].items():
+            lines.append(f"  --color-{key.replace('_', '-')}: {val};")
+    lines.append(f"  --color-primary: {palette['primary']['hex']};")
+    if "accent" in palette:
+        lines.append(f"  --color-accent: {palette['accent']['hex']};")
+    for name, color in palette.get("semantic", {}).items():
+        lines.append(f"  --color-{name}: {color};")
+    
+    # Typography
+    lines.append(f"  --font-heading: '{fonts['heading']}', sans-serif;")
+    lines.append(f"  --font-body: '{fonts['body']}', sans-serif;")
+    lines.append(f"  --font-mono: '{fonts['mono']}', monospace;")
+    
+    lines.append("}")
+    
+    # Dark mode
+    if "dark_theme" in palette:
+        lines.append("")
+        lines.append(".dark, [data-theme='dark'] {")
+        for key, val in palette["dark_theme"].items():
+            lines.append(f"  --color-{key.replace('_', '-')}: {val};")
+        lines.append("}")
+    
+    return "\n".join(lines)
+
+
+def _build_tailwind_config(palette: dict, fonts: dict) -> dict:
+    """Build Tailwind config theme extensions."""
+    config = {
+        "extend": {
+            "colors": {
+                "primary": {
+                    "DEFAULT": palette["primary"]["hex"],
+                },
+                "accent": {
+                    "DEFAULT": palette.get("accent", {}).get("hex", "#6366f1"),
+                },
+            },
+            "fontFamily": {},
+        }
+    }
+    
+    # Add shade scale
+    if "shades" in palette.get("primary", {}):
+        config["extend"]["colors"]["primary"].update(palette["primary"]["shades"])
+    
+    # Fonts
+    if fonts.get("heading") == fonts.get("body"):
+        config["extend"]["fontFamily"]["sans"] = [fonts["heading"], "system-ui", "sans-serif"]
+    else:
+        config["extend"]["fontFamily"]["sans"] = [fonts["body"], "system-ui", "sans-serif"]
+        config["extend"]["fontFamily"]["display"] = [fonts["heading"], "sans-serif"]
+    config["extend"]["fontFamily"]["mono"] = [fonts["mono"], "monospace"]
+    
+    return config
+
+
+def _google_fonts_url(fonts: dict) -> str:
+    """Generate Google Fonts import URL."""
+    families = set()
+    for key in ("heading", "body"):
+        font = fonts.get(key, "")
+        if font:
+            families.add(font.replace(" ", "+") + ":wght@400;500;600;700")
+    mono = fonts.get("mono", "")
+    if mono:
+        families.add(mono.replace(" ", "+") + ":wght@400;500")
+    
+    if not families:
+        return ""
+    
+    params = "&".join(f"family={f}" for f in sorted(families))
+    return f"https://fonts.googleapis.com/css2?{params}&display=swap"
+
+
+def _generate_quick_wins(visual_findings: list, structural_findings: list) -> list[dict]:
+    """Generate top 5 highest-impact visual improvements."""
+    quick_wins = []
+    
+    # Priority order for visual impact
+    priority_types = [
+        ("low_contrast", "Fix contrast — biggest accessibility and readability win"),
+        ("heading_hierarchy", "Fix heading sizes — establishes visual hierarchy immediately"),
+        ("typography_scale", "Reduce text sizes — fewer sizes = more professional"),
+        ("color_proliferation", "Consolidate colors — fewer colors = more cohesive"),
+        ("spacing_inconsistency", "Standardize spacing — consistent rhythm looks polished"),
+        ("missing_dark_mode", "Add dark mode — expected by most users today"),
+        ("missing_font_weights", "Add font weight variation — creates hierarchy without changing sizes"),
+        ("text_too_small", "Increase body text size — improves readability significantly"),
+        ("flat_weight_hierarchy", "Vary font weights — bold headings + normal body = instant hierarchy"),
+        ("near_duplicate_colors", "Remove near-duplicate colors — simplifies maintenance"),
+    ]
+    
+    seen = set()
+    for finding_type, impact in priority_types:
+        for f in visual_findings + structural_findings:
+            if f["type"] == finding_type and finding_type not in seen:
+                quick_wins.append({
+                    "priority": len(quick_wins) + 1,
+                    "issue": f["message"],
+                    "fix": f["suggestion"],
+                    "impact": impact,
+                })
+                seen.add(finding_type)
+                break
+        if len(quick_wins) >= 5:
+            break
+    
+    return quick_wins
 
 
 if __name__ == "__main__":
