@@ -18,68 +18,47 @@ This MCP server provides all of that from a curated database of real-world examp
 
 ---
 
-## Installation
+## Quick Install
 
-### Prerequisites
-
-- **Python 3.12+**
-- **Git**
-
-### Step 1: Clone & Install Dependencies
-
-**macOS / Linux:**
-```bash
-git clone https://github.com/chrismicah/design-mcp.git
-cd design-mcp
-python3 -m venv .venv
-source .venv/bin/activate
-pip install fastmcp pydantic httpx uvicorn
-```
-
-**Windows (PowerShell):**
-```powershell
-git clone https://github.com/chrismicah/design-mcp.git
-cd design-mcp
-python -m venv .venv
-.venv\Scripts\Activate.ps1
-pip install fastmcp pydantic httpx uvicorn
-```
-
-### Step 2: Verify Installation
+### One command to add to Claude Code:
 
 ```bash
-python -m pytest tests/ -q
-# Expected: 212 passed
+pip install git+https://github.com/chrismicah/design-mcp.git
+claude mcp add -s user design-mcp -- design-mcp serve
+```
+
+That's it. Works on **macOS, Linux, and Windows**.
+
+> **Tip:** Use a virtualenv or `pipx` if you prefer isolated installs:
+> ```bash
+> pipx install git+https://github.com/chrismicah/design-mcp.git
+> claude mcp add -s user design-mcp -- design-mcp serve
+> ```
+
+### Verify it's working:
+
+```bash
+claude mcp list          # Should show design-mcp
+design-mcp version       # Should show 0.1.0
+```
+
+### Remove:
+
+```bash
+claude mcp remove design-mcp
 ```
 
 ---
 
-## Connecting to AI Tools
+## Alternative Installation Methods
 
-### Claude Code CLI (Recommended)
+### From source (for development)
 
-The fastest way to add the MCP to Claude Code:
-
-**macOS / Linux:**
 ```bash
-claude mcp add design-intelligence -- \
-  /path/to/design-mcp/.venv/bin/python \
-  /path/to/design-mcp/server.py
-```
-
-**Windows (PowerShell):**
-```powershell
-claude mcp add-json design-intelligence '{\"command\":\"C:\\path\\to\\design-mcp\\.venv\\Scripts\\python.exe\",\"args\":[\"C:\\path\\to\\design-mcp\\server.py\"]}'
-```
-
-To verify it's registered:
-```bash
-claude mcp list
-```
-
-To remove:
-```bash
-claude mcp remove design-intelligence
+git clone https://github.com/chrismicah/design-mcp.git
+cd design-mcp
+pip install -e .
+claude mcp add -s user design-mcp -- design-mcp serve
 ```
 
 ### Claude Desktop
@@ -92,30 +71,31 @@ Add to your config file:
 ```json
 {
   "mcpServers": {
-    "design-intelligence": {
-      "command": "/path/to/design-mcp/.venv/bin/python",
-      "args": ["/path/to/design-mcp/server.py"]
+    "design-mcp": {
+      "command": "design-mcp",
+      "args": ["serve"]
     }
   }
 }
 ```
 
-> **Windows paths:** Use double backslashes in JSON:  
-> `"command": "C:\\Users\\you\\Projects\\design-mcp\\.venv\\Scripts\\python.exe"`
+> If `design-mcp` isn't on your PATH, use the full path:  
+> `"command": "/path/to/venv/bin/design-mcp"` (macOS/Linux)  
+> `"command": "C:\\path\\to\\venv\\Scripts\\design-mcp.exe"` (Windows)
 
 ### Cursor
 
 Settings → MCP Servers → Add:
-- **Name:** `design-intelligence`
-- **Command:** `/path/to/design-mcp/.venv/bin/python /path/to/design-mcp/server.py`
+- **Name:** `design-mcp`
+- **Command:** `design-mcp serve`
 
-### Windsurf / Other MCP Clients
+### Any MCP Client
 
-Any MCP-compatible client can connect. The server uses **stdio** transport (FastMCP default). Point your client to:
+The server uses **stdio** transport. Point your client to:
 
 ```
-command: /path/to/.venv/bin/python
-args: ["/path/to/server.py"]
+command: design-mcp
+args: ["serve"]
 ```
 
 ---
@@ -331,32 +311,11 @@ design-mcp/
 
 ## Using on Another Machine
 
-Just clone the repo — all patterns, screenshots, and reference data are included. No external API keys or dataset downloads needed.
+Just install and add — all patterns, screenshots, and reference data are bundled. No API keys needed.
 
-**macOS:**
 ```bash
-git clone https://github.com/chrismicah/design-mcp.git
-cd design-mcp
-python3 -m venv .venv
-source .venv/bin/activate
-pip install fastmcp pydantic httpx uvicorn
-
-# Add to Claude Code
-claude mcp add design-intelligence -- \
-  "$(pwd)/.venv/bin/python" \
-  "$(pwd)/server.py"
-```
-
-**Windows:**
-```powershell
-git clone https://github.com/chrismicah/design-mcp.git
-cd design-mcp
-python -m venv .venv
-.venv\Scripts\Activate.ps1
-pip install fastmcp pydantic httpx uvicorn
-
-# Add to Claude Code
-claude mcp add-json design-intelligence ('{{"command":"{0}\\.venv\\Scripts\\python.exe","args":["{0}\\server.py"]}}' -f (Get-Location).Path)
+pip install git+https://github.com/chrismicah/design-mcp.git
+claude mcp add -s user design-mcp -- design-mcp serve
 ```
 
 ---
