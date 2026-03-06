@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import Optional
+from typing import Optional, Union
 from enum import Enum
 
 
@@ -16,9 +16,16 @@ class LayoutType(str, Enum):
     BENTO_GRID = "bento_grid"
     SINGLE_COLUMN = "single_column"
     SIDEBAR_MAIN = "sidebar_main"
+    SIDEBAR_DETAIL = "sidebar_detail"
     SPLIT_SCREEN = "split_screen"
     MASONRY = "masonry"
     STACKED = "stacked"
+    FULL_BLEED = "full_bleed"
+    CARD_GRID = "card_grid"
+    DASHBOARD_PANELS = "dashboard_panels"
+    HOLY_GRAIL = "holy_grail"
+    STICKY_HEADER = "sticky_header"
+    EDITORIAL = "editorial"
 
 
 class DesignPattern(BaseModel):
@@ -101,7 +108,7 @@ class DesignPattern(BaseModel):
     )
 
     # === SEMANTIC TOKENS (High impact — avoids magic numbers) ===
-    semantic_tokens: Optional[dict] = Field(
+    semantic_tokens: Optional[Union[dict, str]] = Field(
         default=None,
         description=(
             "Tier 2 semantic tokens observed or inferred. E.g.: "

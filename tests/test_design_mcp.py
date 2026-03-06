@@ -241,8 +241,11 @@ class TestServerTools:
     @pytest.mark.asyncio
     async def test_get_semantic_tokens(self):
         tokens = await get_semantic_tokens()
-        assert "color" in tokens
-        assert "spacing" in tokens
+        assert "light" in tokens or "dark" in tokens
+        # Check that light/dark modes have actual token values
+        if "light" in tokens:
+            assert "color-background" in tokens["light"]
+            assert "spacing-4" in tokens["light"]
 
     @pytest.mark.asyncio
     async def test_behavioral_pattern_exact(self):
@@ -425,7 +428,7 @@ class TestIntegration:
         
         # 4. Get tokens for styling
         tokens = await get_semantic_tokens()
-        assert "color" in tokens
+        assert "light" in tokens or "dark" in tokens
         
         # 5. Get behavioral pattern
         behavior = await get_behavioral_pattern("empty_state")

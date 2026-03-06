@@ -887,23 +887,99 @@ def _load_libraries() -> dict:
     with open(libs_path) as f:
         return json.load(f)
 
+def _load_reference_data():
+    """Load reference data files (tokens, templates, component code) for resolving references."""
+    data = {"tokens": {}, "layouts": {}, "behaviors": {}, "component_code": {}}
+    try:
+        tokens_path = BASE_DIR / "data" / "tokens" / "semantic_tokens.json"
+        if tokens_path.exists():
+            with open(tokens_path) as f:
+                data["tokens"] = json.load(f)
+    except Exception:
+        pass
+    try:
+        layouts_path = BASE_DIR / "data" / "layout_templates.json"
+        if layouts_path.exists():
+            with open(layouts_path) as f:
+                data["layouts"] = json.load(f)
+    except Exception:
+        pass
+    try:
+        behaviors_path = BASE_DIR / "data" / "behavioral_templates.json"
+        if behaviors_path.exists():
+            with open(behaviors_path) as f:
+                data["behaviors"] = json.load(f)
+    except Exception:
+        pass
+    try:
+        code_path = BASE_DIR / "data" / "component_code.json"
+        if code_path.exists():
+            with open(code_path) as f:
+                data["component_code"] = json.load(f)
+    except Exception:
+        pass
+    return data
+
+
+# Load reference data once at startup
+_ref_data = _load_reference_data()
+
+
+def _resolve_tokens(value):
+    """Resolve token reference to actual token set."""
+    if isinstance(value, str) and value in ("light", "dark"):
+        return _ref_data["tokens"].get(value, value)
+    return value
+
+
+def _resolve_layout(value, page_type):
+    """Resolve layout template reference to actual code."""
+    if isinstance(value, str) and value.startswith("[template:"):
+        pt = value[10:-1]
+        return _ref_data["layouts"].get(pt, value)
+    return value
+
+
+def _resolve_component_code(hints):
+    """Resolve component code references to actual code."""
+    if not hints:
+        return hints
+    resolved = []
+    for h in hints:
+        if isinstance(h, dict):
+            code = h.get("code", "")
+            if isinstance(code, str) and code.startswith("[component:"):
+                name = code[11:-1]
+                template = _ref_data["component_code"].get(name, {})
+                h = dict(h)
+                h["code"] = template.get("code", code)
+            resolved.append(h)
+        else:
+            resolved.append(h)
+    return resolved
+
+
 def _to_blueprint(pattern: DesignPattern) -> dict:
-    """Convert a full pattern to a token-efficient blueprint."""
+    """Convert a full pattern to a comprehensive blueprint with all actionable data.
+    Resolves references to actual tokens, layout code, and component code."""
     blueprint = {
         "id": pattern.id,
         "name": pattern.name,
         "page_type": pattern.page_type,
         "layout_type": pattern.layout_type.value if pattern.layout_type else None,
-        "layout_notes": pattern.layout_notes,
+        "layout_notes": _resolve_layout(pattern.layout_notes, pattern.page_type),
         "ux_patterns": pattern.ux_patterns,
         "ui_elements": pattern.ui_elements,
         "color_mode": pattern.color_mode,
         "visual_style": pattern.visual_style,
         "behavioral_description": pattern.behavioral_description,
+        "accessibility_notes": pattern.accessibility_notes,
+        "semantic_tokens": _resolve_tokens(pattern.semantic_tokens),
+        "component_hints": _resolve_component_code(pattern.component_hints),
         "source_url": pattern.source_url,
     }
-    # Remove None values to save tokens
-    return {k: v for k, v in blueprint.items() if v is not None}
+    # Remove None/empty values to save tokens
+    return {k: v for k, v in blueprint.items() if v is not None and v != [] and v != {}}
 
 
 def _load_behavioral_patterns() -> dict:

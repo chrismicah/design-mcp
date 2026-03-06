@@ -1,0 +1,98 @@
+{
+  "Landing Page": {
+    "behavioral_description": "Hero section loads instantly with above-fold content prioritized. Scroll-triggered animations for feature sections (intersection observer). CTA buttons have hover states with subtle scale/shadow transitions. Social proof section auto-rotates testimonials with pause on hover. Pricing toggle switches between monthly/annual with animated price change. Mobile: hamburger nav, stacked sections, full-width CTAs. Footer has newsletter signup with inline validation.",
+    "accessibility_notes": "Hero heading must be h1, sections use h2. Skip-to-content link at top. Auto-rotating carousels must have pause control and aria-live='polite'. CTA buttons need descriptive text (not just 'Click here'). Decorative images use aria-hidden='true', meaningful images need alt text. Color contrast: all text meets WCAG AA (4.5:1 normal, 3:1 large). Reduced motion: respect prefers-reduced-motion for animations."
+  },
+  "Dashboard": {
+    "behavioral_description": "Dashboard shows overview metrics in cards at top, recent activity in data table below. Empty state educates on first use with illustration and CTA. Loading shows skeleton matching exact card + table layout. Error states preserve context with inline retry.",
+    "accessibility_notes": "ARIA landmarks for nav, main, complementary. Data table has proper th scope. All interactive elements have visible focus indicators. Color contrast meets WCAG AA."
+  },
+  "Analytics": {
+    "behavioral_description": "Top KPI cards show key metrics with sparklines. Date range picker in top right. Charts update on date change with loading animation. Data table below charts with export and filter options. Skeleton loading matches exact card + chart + table layout.",
+    "accessibility_notes": "Charts have text alternatives. Data table sortable by keyboard. Date picker accessible. Color is not sole indicator of trends."
+  },
+  "Portfolio": {
+    "behavioral_description": "Project grid with hover overlay showing title and category. Lightbox or detail page on click with full case study. Filter by category/tag with animated transitions. Lazy-loaded images with blur-up placeholder. About section with bio, skills, and contact CTA. Smooth scroll between sections.",
+    "accessibility_notes": "Project images need descriptive alt text. Lightbox traps focus and closes on Escape. Filter buttons use aria-pressed for active state. Smooth scroll respects prefers-reduced-motion. Contact form follows standard accessible form patterns."
+  },
+  "E-commerce": {
+    "behavioral_description": "Product grid loads with skeleton cards. Filters update results without page reload. Add-to-cart shows micro-animation (icon bounce, count update). Product images support zoom on hover, swipe gallery on mobile. Price displays with strike-through for discounts. Out-of-stock items show 'Notify me' instead of add-to-cart. Cart persists across sessions via localStorage/cookies. Quick-view modal shows key details without leaving the listing.",
+    "accessibility_notes": "Product cards need descriptive labels: 'Product Name, $Price, Rating'. Image galleries need keyboard navigation (left/right arrows). Add-to-cart button announces success via aria-live region. Filters use fieldset/legend grouping. Price ranges use aria-valuemin/max. Sort dropdown uses native select or combobox pattern with ARIA. Focus management: after adding to cart, focus stays on product."
+  },
+  "Corporate": {
+    "behavioral_description": "Professional layout with clear information hierarchy. Hero with brand imagery and mission statement. Team section with headshots and roles. Partners/clients logo grid. Contact section with form and office locations. Careers link. Press/news section.",
+    "accessibility_notes": "Team member images need name alt text. Map embed needs aria-label and keyboard fallback. Contact form follows accessible form patterns. Logo images need company name alt text."
+  },
+  "Pricing": {
+    "behavioral_description": "Three pricing tiers in cards with highlighted 'popular' option. Toggle between monthly/annual billing. Feature comparison table with tooltips for details. CTA buttons change text based on tier.",
+    "accessibility_notes": "Toggle has proper role and aria-checked. Feature tooltips accessible via keyboard. Price changes announced to screen readers on toggle."
+  },
+  "Chat Interface": {
+    "behavioral_description": "Messages load in reverse chronological order, scroll to bottom on new message. Typing indicator shows when other user is composing. Message input auto-resizes with content. Send on Enter, newline on Shift+Enter. Unread messages show count badge on channel. Image/file attachments show preview before sending. Message actions (reply, edit, delete) appear on hover/long-press. Timestamps group messages by day.",
+    "accessibility_notes": "Message list uses role='log' with aria-live='polite' for new messages. Each message needs aria-label with sender, time, and content. Typing indicator uses aria-live='assertive'. Send button needs aria-label. Attachment upload needs accessible file picker. Keyboard: Enter sends, Tab navigates, Escape cancels reply."
+  },
+  "Documentation": {
+    "behavioral_description": "Left sidebar navigation with collapsible sections. Search with instant results (algolia-style). Code blocks with copy button, language selector, line highlighting. Breadcrumb navigation. Previous/Next page links at bottom. Table of contents in right sidebar for current page. Version selector in header.",
+    "accessibility_notes": "Sidebar uses nav with aria-label='Documentation navigation'. Expandable sections use aria-expanded. Code blocks have aria-label with language. Copy button announces success. Search results use aria-live for dynamic updates. Breadcrumbs use nav with aria-label='Breadcrumb'."
+  },
+  "SaaS": {
+    "behavioral_description": "Hero with headline, subheadline, email capture or CTA button. Social proof bar (logos or metrics). Feature sections with alternating layout. Testimonial carousel or grid. Pricing section with toggle. FAQ accordion. Footer with sitemap, social links, legal. Sticky CTA on scroll past hero.",
+    "accessibility_notes": "Same as Landing Page. Additionally: Logo bar images need alt text (company names). Testimonials have proper cite elements. Sticky CTA doesn't obscure content and can be dismissed."
+  },
+  "Calendar": {
+    "behavioral_description": "Multiple views: day, week, month. Events shown as colored blocks. Click to create event. Drag to resize/move events. Event popover on click shows details with edit/delete. Color coding by calendar. Mini calendar in sidebar for quick navigation.",
+    "accessibility_notes": "Calendar grid uses proper table role with date headers. Events have aria-label with full details. Keyboard navigation between days/events. Screen reader announces date on focus."
+  },
+  "Admin Panel": {
+    "behavioral_description": "Data table with sortable columns, inline search, and bulk actions. Row selection via checkbox with Select All in header. Pagination with page size selector. Create/Edit forms in slide-over panel or modal. Delete requires confirmation. Bulk delete shows count. Status badges with color + text (not color alone). Export to CSV/PDF from toolbar.",
+    "accessibility_notes": "Data table: proper th scope, aria-sort on sortable columns. Checkbox column: aria-label for each row selection. Bulk action toolbar announces selected count via aria-live. Slide-over panels trap focus, return focus on close. Status badges: never rely on color alone, always include text. Pagination: aria-label='Pagination', current page aria-current='page'."
+  },
+  "Onboarding": {
+    "behavioral_description": "3-step onboarding: 1) Use case selection (radio cards), 2) Team size, 3) Template selection. Progress indicator shows current step. Skip option always visible. Demonstrates value by showing template previews.",
+    "accessibility_notes": "Step changes announced via aria-live. Radio cards have proper role. Progress bar has aria-valuenow. Focus trapped within current step."
+  },
+  "Settings": {
+    "behavioral_description": "Settings organized by category in left sidebar. Each section has a heading, description, and form fields. Save buttons per section (not global). Danger zone at bottom with red-bordered section for destructive actions. Confirmation modal for dangerous operations.",
+    "accessibility_notes": "Navigation sidebar has proper nav landmark. Form sections use fieldset/legend. Danger zone has aria-label warning. Confirmation dialogs trap focus."
+  },
+  "Checkout": {
+    "behavioral_description": "3-step checkout: shipping info, payment, review. Order summary sticky on right side. Form validation on blur with inline errors. Express checkout options (Apple Pay, Google Pay) at top. Progress saved between steps.",
+    "accessibility_notes": "Step progress announced to screen readers. Form errors linked via aria-describedby. Payment fields use autocomplete attributes. Express pay buttons clearly labeled."
+  },
+  "Kanban Board": {
+    "behavioral_description": "Columns represent statuses (To Do, In Progress, Done). Cards show task title, assignee avatar, priority badge, and due date. Drag and drop between columns updates status. Click card opens detail modal. Add card button at column bottom. Column header shows count.",
+    "accessibility_notes": "Drag and drop has keyboard alternative (select + arrow keys). Card details accessible via Enter. Column counts announced. Task priority indicated by both color and text."
+  },
+  "Social Feed": {
+    "behavioral_description": "Vertical feed of posts. Each post has author info, content, media, and engagement actions. Like/repost/reply with optimistic updates. Infinite scroll loads more posts. New posts indicator at top. Image posts expand on click.",
+    "accessibility_notes": "Images have alt text. Engagement buttons clearly labeled. New content announced via aria-live. Focus management on modal open."
+  },
+  "Profile": {
+    "behavioral_description": "Cover image at top with overlapping avatar. Name, bio, and stats (followers, following, posts). Action buttons (Follow, Message). Tabbed content: posts feed, about info, media gallery. Edit profile button for own profile.",
+    "accessibility_notes": "Avatar has alt text. Stats are semantically marked up. Tab panels properly linked to tabs."
+  },
+  "Marketplace": {
+    "behavioral_description": "Filter sidebar with category checkboxes, price range slider, rating filter. Product grid shows image, title, price, rating. Sort by relevance/price/rating. Lazy load images. Product cards have hover effect showing quick-view button.",
+    "accessibility_notes": "Filter changes announced. Product images have alt text. Price and discount clearly labeled. Grid layout announced to screen readers."
+  },
+  "File Explorer": {
+    "behavioral_description": "Folder tree in sidebar, files in main area. Toggle between grid (thumbnails) and list (detail) view. Breadcrumb navigation. Drag and drop for moving files. Right-click context menu for actions. Multi-select with Shift/Ctrl+Click for bulk operations.",
+    "accessibility_notes": "File list uses proper grid role. Context menu accessible via keyboard (Shift+F10). Drag and drop has cut/paste keyboard alternative. File type indicated by both icon and text."
+  },
+  "Notifications": {
+    "behavioral_description": "Tabbed view: All, Unread, Mentions. Each notification shows actor avatar, action description, timestamp, and unread indicator. Mark all as read button. Individual mark as read on hover. Click notification navigates to context. Group notifications by date.",
+    "accessibility_notes": "Unread status conveyed via aria. Notification actions accessible by keyboard. New notifications announced via aria-live polite. Tab panels properly linked."
+  },
+  "Login": {
+    "behavioral_description": "Split layout with brand visual on left, form on right. Social login buttons (Google, GitHub) above divider. Email/password below. Form validation on blur. Password visibility toggle. Forgot password link below form.",
+    "accessibility_notes": "Form labels properly associated. Password field has show/hide toggle with aria-label. Error messages linked via aria-describedby. Autofill supported."
+  },
+  "404 Page": {
+    "behavioral_description": "Engaging 404 with custom illustration or animation. Friendly headline ('Page not found' or creative variant). Brief explanation. Primary CTA to go home, secondary to go back. Optional search bar.",
+    "accessibility_notes": "Meaningful alt text on illustration. CTAs clearly labeled. Page title updated to indicate error."
+  },
+  "Blog Post": {
+    "behavioral_description": "Article list with card layout: image, title, excerpt, author, date. Category/tag filter without page reload. Article page: large header image, readable width (65ch max), table of contents sidebar for long articles. Code blocks with syntax highlighting and copy button. Related articles at bottom. Newsletter CTA inline or sticky.",
+    "accessibility_notes": "Articles use proper heading hierarchy (h1 title, h2/h3 sections). Images have descriptive alt text. Code blocks use aria-label. Table of contents uses nav with aria-label='Table of contents'. Reading time estimate for screen readers. Link text is descriptive (not 'Read more' \u2014 use 'Read: Article Title')."
+  }
+}

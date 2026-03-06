@@ -103,8 +103,12 @@ class TestGetDesignBlueprint:
     async def test_get_condensed(self, mock_db):
         from server import get_design_blueprint
         result = await get_design_blueprint("test-curated-001", detailed=False)
-        # Condensed blueprint should not include component_hints
-        assert "component_hints" not in result
+        # Condensed blueprint should include actionable data
+        assert "name" in result
+        assert "page_type" in result
+        # Now includes component_hints, accessibility_notes, semantic_tokens
+        assert "component_hints" in result
+        assert "accessibility_notes" in result
 
 
 class TestGetSemanticTokens:
