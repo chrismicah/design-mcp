@@ -23,6 +23,51 @@ mcp = FastMCP(
 
 db = DesignDatabase(str(BASE_DIR / "data" / "patterns.json"))
 
+# Load indexed token sets and decision trees for resolution
+_token_sets = []
+_decision_trees_indexed = []
+_anti_pattern_fixes = {}
+
+def _load_indexed_data():
+    global _token_sets, _decision_trees_indexed, _anti_pattern_fixes
+    token_path = BASE_DIR / "data" / "tokens" / "token_sets.json"
+    if token_path.exists():
+        with open(token_path) as f:
+            _token_sets = json.load(f)
+    tree_path = BASE_DIR / "data" / "decision_trees_indexed.json"
+    if tree_path.exists():
+        with open(tree_path) as f:
+            _decision_trees_indexed = json.load(f)
+    fix_path = BASE_DIR / "data" / "anti_pattern_fixes.json"
+    if fix_path.exists():
+        with open(fix_path) as f:
+            _anti_pattern_fixes = json.load(f)
+
+_load_indexed_data()
+
+
+def _resolve_tokens(pattern_dict: dict) -> dict:
+    """Resolve indexed token reference to actual token dict."""
+    tokens = pattern_dict.get("semantic_tokens")
+    if isinstance(tokens, int) and 0 <= tokens < len(_token_sets):
+        pattern_dict["semantic_tokens"] = _token_sets[tokens]
+    elif isinstance(tokens, str):
+        # Legacy string ref — resolve from old token file
+        try:
+            old_tokens = json.load(open(BASE_DIR / "data" / "tokens" / "semantic_tokens.json"))
+            pattern_dict["semantic_tokens"] = old_tokens.get(tokens, {})
+        except Exception:
+            pass
+    return pattern_dict
+
+
+def _resolve_decision_tree(pattern_dict: dict) -> dict:
+    """Resolve indexed decision tree reference."""
+    tree = pattern_dict.get("decision_tree")
+    if isinstance(tree, int) and 0 <= tree < len(_decision_trees_indexed):
+        pattern_dict["decision_tree"] = _decision_trees_indexed[tree]
+    return pattern_dict
+
 
 # ============================================================
 # TOOL 1: Search Design Patterns
@@ -634,18 +679,25 @@ async def scan_project(
             for ptype, count in pattern_counts.most_common(10)
         ]
         
-        # Build priority fix list (top 5 most impactful fixes)
+        # Build priority fix list with CONCRETE code examples
         priority_fixes = []
         seen_fix_types = set()
         for report in file_reports:
             for finding in report["findings"]:
-                if finding["severity"] == "error" and finding["type"] not in seen_fix_types:
-                    priority_fixes.append({
+                if finding["type"] not in seen_fix_types and finding["severity"] in ("error", "warning"):
+                    fix_entry = {
                         "file": report["file"],
                         "issue": finding["message"],
                         "fix": finding["suggestion"],
-                        "severity": "error",
-                    })
+                        "severity": finding["severity"],
+                    }
+                    # Attach concrete code example if available
+                    if finding["type"] in _anti_pattern_fixes:
+                        apf = _anti_pattern_fixes[finding["type"]]
+                        fix_entry["before_code"] = apf.get("before", "")
+                        fix_entry["after_code"] = apf.get("after", "")
+                        fix_entry["detailed_fix"] = apf.get("fix", "")
+                    priority_fixes.append(fix_entry)
                     seen_fix_types.add(finding["type"])
                 if len(priority_fixes) >= 10:
                     break
@@ -1033,6 +1085,29 @@ def _resolve_component_code(hints):
 def _to_blueprint(pattern: DesignPattern) -> dict:
     """Convert a full pattern to a comprehensive blueprint with all actionable data.
     Resolves references to actual tokens, layout code, and component code."""
+    # Resolve tokens from index
+    raw_tokens = pattern.semantic_tokens
+    if isinstance(raw_tokens, int):
+        resolved = _token_sets[raw_tokens] if 0 <= raw_tokens < len(_token_sets) else {}
+    elif isinstance(raw_tokens, dict):
+        resolved = raw_tokens
+    elif isinstance(raw_tokens, str):
+        resolved = _resolve_tokens({"semantic_tokens": raw_tokens}).get("semantic_tokens", {})
+    else:
+        resolved = {}
+    
+    # Resolve decision tree from index
+    raw_tree = pattern.decision_tree if hasattr(pattern, 'decision_tree') else None
+    if raw_tree is None:
+        # Try from raw data
+        raw_tree = getattr(pattern, '_raw', {}).get('decision_tree')
+    if isinstance(raw_tree, int):
+        resolved_tree = _decision_trees_indexed[raw_tree] if 0 <= raw_tree < len(_decision_trees_indexed) else None
+    elif isinstance(raw_tree, dict):
+        resolved_tree = raw_tree
+    else:
+        resolved_tree = None
+    
     blueprint = {
         "id": pattern.id,
         "name": pattern.name,
@@ -1041,12 +1116,14 @@ def _to_blueprint(pattern: DesignPattern) -> dict:
         "layout_notes": _resolve_layout(pattern.layout_notes, pattern.page_type),
         "ux_patterns": pattern.ux_patterns,
         "ui_elements": pattern.ui_elements,
+        "primary_colors": pattern.primary_colors,
         "color_mode": pattern.color_mode,
         "visual_style": pattern.visual_style,
         "behavioral_description": pattern.behavioral_description,
         "accessibility_notes": pattern.accessibility_notes,
-        "semantic_tokens": _resolve_tokens(pattern.semantic_tokens),
+        "semantic_tokens": resolved,
         "component_hints": _resolve_component_code(pattern.component_hints),
+        "decision_tree": resolved_tree,
         "source_url": pattern.source_url,
     }
     # Remove None/empty values to save tokens

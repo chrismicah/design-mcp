@@ -110,13 +110,27 @@ class DesignPattern(BaseModel):
     )
 
     # === SEMANTIC TOKENS (High impact — avoids magic numbers) ===
-    semantic_tokens: Optional[Union[dict, str]] = Field(
+    semantic_tokens: Optional[Union[dict, str, int]] = Field(
         default=None,
         description=(
-            "Tier 2 semantic tokens observed or inferred. E.g.: "
-            "{'color-background-primary': '#1a1a2e', 'spacing-section': '48px', "
-            "'border-radius-card': '12px', 'font-heading': 'Inter'}"
+            "Tier 2 semantic tokens. Can be a dict of token values, "
+            "a string ref ('light'/'dark'), or an int index into token_sets.json."
         )
+    )
+
+    # === DECISION GUIDANCE ===
+    decision_tree: Optional[Union[dict, int]] = Field(
+        default=None,
+        description=(
+            "Decision tree for AI component selection. "
+            "Dict of category -> guidance, or int index into decision_trees_indexed.json."
+        )
+    )
+
+    # === DATA QUALITY ===
+    data_quality_score: Optional[int] = Field(
+        default=None,
+        description="Internal quality score (0-11) based on data completeness."
     )
 
     # === META ===
