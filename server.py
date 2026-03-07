@@ -424,20 +424,18 @@ async def analyze_and_devibecode(source_code: str) -> dict:
         recipe_suggestions = {}
         finding_types = set(f["type"] for f in findings)
         if "inline_style_abuse" in finding_types or "magic_hex_color" in finding_types:
-            if "depth_layers" in _visual_recipes:
-                recipe_suggestions["depth_layers"] = _visual_recipes["depth_layers"]
-            if "text_hierarchy" in _visual_recipes:
-                recipe_suggestions["text_hierarchy"] = _visual_recipes["text_hierarchy"]
+            if "depth_system" in _visual_recipes:
+                recipe_suggestions["depth_system"] = _visual_recipes["depth_system"]
+            if "color_restraint" in _visual_recipes:
+                recipe_suggestions["color_restraint"] = _visual_recipes["color_restraint"]
         if "missing_flex_grid" in finding_types:
-            if "spacing_rhythm" in _visual_recipes:
-                recipe_suggestions["spacing_rhythm"] = _visual_recipes["spacing_rhythm"]
-        if any(t in finding_types for t in ["div_soup", "missing_aria"]):
-            pass  # Structural, not visual
-        # Always include glass_card and motion for polish
-        if "glass_card" in _visual_recipes:
-            recipe_suggestions["glass_card"] = _visual_recipes["glass_card"]
-        if "motion_system" in _visual_recipes:
-            recipe_suggestions["motion_system"] = _visual_recipes["motion_system"]
+            if "whitespace_as_design" in _visual_recipes:
+                recipe_suggestions["whitespace_as_design"] = _visual_recipes["whitespace_as_design"]
+        # Always include core design principles
+        if "typography_is_design" in _visual_recipes:
+            recipe_suggestions["typography_is_design"] = _visual_recipes["typography_is_design"]
+        if "component_design" in _visual_recipes:
+            recipe_suggestions["component_design"] = _visual_recipes["component_design"]
 
         return {
             "anti_patterns_found": anti_patterns_found,
@@ -1075,7 +1073,7 @@ async def generate_refactored_code(
                 if (ftype := f["type"]) in _anti_pattern_fixes
             ][:5],
             "visual_recipes": {
-                k: _visual_recipes[k] for k in ["glass_card", "depth_layers", "text_hierarchy", "gradient_accent", "motion_system"]
+                k: _visual_recipes[k] for k in ["color_restraint", "depth_system", "typography_is_design", "component_design", "whitespace_as_design"]
                 if k in _visual_recipes
             },
         }
@@ -1212,16 +1210,20 @@ def _to_blueprint(pattern: DesignPattern) -> dict:
     
     # Select relevant visual recipes for this page type
     recipe_relevance = {
-        "Dashboard": ["glass_card", "depth_layers", "text_hierarchy", "icon_treatment",
-                     "motion_system", "data_visualization", "table_polish", "sidebar_design"],
-        "Landing Page": ["glass_card", "gradient_accent", "depth_layers", "text_hierarchy",
-                       "motion_system", "surface_texture"],
-        "E-commerce": ["glass_card", "depth_layers", "text_hierarchy", "icon_treatment", "table_polish"],
-        "Login": ["glass_card", "gradient_accent", "depth_layers", "text_hierarchy"],
-        "Pricing": ["glass_card", "gradient_accent", "depth_layers", "text_hierarchy"],
+        "Dashboard": ["color_restraint", "depth_system", "typography_is_design", "component_design",
+                     "whitespace_as_design", "motion_restraint", "layout_hierarchy"],
+        "Landing Page": ["color_restraint", "depth_system", "typography_is_design",
+                       "whitespace_as_design", "surface_treatment", "layout_hierarchy"],
+        "E-commerce": ["color_restraint", "depth_system", "typography_is_design", "component_design",
+                     "whitespace_as_design"],
+        "Login": ["color_restraint", "depth_system", "typography_is_design", "component_design"],
+        "Pricing": ["color_restraint", "depth_system", "typography_is_design", "component_design",
+                   "layout_hierarchy"],
+        "Blog Post": ["typography_is_design", "whitespace_as_design", "depth_system"],
+        "Documentation": ["typography_is_design", "component_design", "depth_system", "whitespace_as_design"],
     }
     page = pattern.page_type or ""
-    recipe_keys = recipe_relevance.get(page, ["glass_card", "depth_layers", "text_hierarchy"])
+    recipe_keys = recipe_relevance.get(page, ["color_restraint", "depth_system", "typography_is_design"])
     visual_recipes = {k: _visual_recipes[k] for k in recipe_keys if k in _visual_recipes}
 
     blueprint = {
@@ -1396,17 +1398,18 @@ async def get_visual_recipe(
     # Filter by page type relevance
     if page_type:
         relevance = {
-            "Dashboard": ["glass_card", "depth_layers", "text_hierarchy", "icon_treatment",
-                         "motion_system", "spacing_rhythm", "data_visualization", "table_polish", "sidebar_design"],
-            "Landing Page": ["glass_card", "gradient_accent", "depth_layers", "text_hierarchy",
-                           "motion_system", "spacing_rhythm", "surface_texture"],
-            "E-commerce": ["glass_card", "depth_layers", "text_hierarchy", "icon_treatment",
-                         "spacing_rhythm", "table_polish"],
-            "Login": ["glass_card", "gradient_accent", "depth_layers", "text_hierarchy", "surface_texture"],
-            "Pricing": ["glass_card", "gradient_accent", "depth_layers", "text_hierarchy", "spacing_rhythm"],
-            "Portfolio": ["glass_card", "depth_layers", "motion_system", "surface_texture"],
-            "Blog Post": ["depth_layers", "text_hierarchy", "spacing_rhythm"],
-            "Documentation": ["depth_layers", "text_hierarchy", "sidebar_design", "table_polish"],
+            "Dashboard": ["color_restraint", "depth_system", "typography_is_design", "component_design",
+                         "whitespace_as_design", "motion_restraint", "layout_hierarchy"],
+            "Landing Page": ["color_restraint", "depth_system", "typography_is_design",
+                           "whitespace_as_design", "surface_treatment", "layout_hierarchy"],
+            "E-commerce": ["color_restraint", "depth_system", "typography_is_design", "component_design",
+                         "whitespace_as_design"],
+            "Login": ["color_restraint", "depth_system", "typography_is_design", "component_design"],
+            "Pricing": ["color_restraint", "depth_system", "typography_is_design", "component_design",
+                       "layout_hierarchy"],
+            "Portfolio": ["color_restraint", "depth_system", "typography_is_design", "surface_treatment"],
+            "Blog Post": ["typography_is_design", "whitespace_as_design", "depth_system"],
+            "Documentation": ["typography_is_design", "component_design", "depth_system", "whitespace_as_design"],
         }
         relevant_keys = relevance.get(page_type, list(_visual_recipes.keys()))
         return {k: _visual_recipes[k] for k in relevant_keys if k in _visual_recipes}
