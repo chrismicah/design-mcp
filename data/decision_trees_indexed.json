@@ -10,8 +10,9 @@
     "social_proof": "If you have recognizable logos, show a logo bar. If you have quotes, use testimonial cards. If you have numbers (users, revenue), show stat counters. Place social proof immediately after the hero."
   },
   {
-    "layout": "Center the form vertically and horizontally. Max width: 400px. Logo above form. Social logins below form, separated by 'or' divider.",
-    "validation": "Validate email format on blur. Password: show requirements as the user types (length, special chars). Show/hide password toggle. Error messages appear below the field, not in alerts."
+    "layout": "If the app has a brand identity, use a split-screen with brand visual on one side. If minimal, use a centered card (max-w-md). If enterprise/B2B, add SSO options prominently above email/password.",
+    "social_auth": "If targeting developers, show GitHub + Google. If targeting enterprise, show SSO/SAML prominently. If consumer app, show Google + Apple. Use 'Continue with X' phrasing, not 'Login with X'.",
+    "validation": "If email field loses focus, validate format inline. If password fails, show specific requirement that failed (not generic 'invalid'). When auth request is in-flight, disable submit and show spinner. If login fails, shake the form and preserve the email."
   },
   {
     "filters": "If <10 filter options, show inline chips. If 10-30, use a sidebar filter panel. If >30, use a modal/drawer filter. Always show active filter count and clear-all button.",

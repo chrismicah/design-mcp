@@ -101,11 +101,20 @@ def generate_accessible_palette(primary_hex, color_mode="dark"):
     # Verify contrast and fix if needed
     passes, ratio = check_wcag_aa(bg, fg)
     if not passes:
-        # Push fg further from bg
         if color_mode == "dark":
             fg = "#f8fafc"
         else:
             fg = "#020617"
+    
+    # Ensure primary is visible on background (ratio >= 2.5:1)
+    primary_visible = primary_hex
+    primary_ratio = contrast_ratio(bg, primary_hex)
+    if primary_ratio < 2.5:
+        # Push primary to a lighter shade in dark mode, darker in light mode
+        if color_mode == "dark":
+            primary_visible = scale["400"] if contrast_ratio(bg, scale["400"]) >= 2.5 else scale["300"]
+        else:
+            primary_visible = scale["600"] if contrast_ratio(bg, scale["600"]) >= 2.5 else scale["700"]
     
     tokens = {
         "color-background": bg,
@@ -114,7 +123,7 @@ def generate_accessible_palette(primary_hex, color_mode="dark"):
         "color-foreground": fg,
         "color-foreground-secondary": fg_secondary,
         "color-foreground-muted": fg_muted,
-        "color-primary": primary_hex,
+        "color-primary": primary_visible,
         "color-primary-foreground": "#ffffff" if l < 60 else "#000000",
         "color-accent": accent_hex,
         "color-border": border,
@@ -290,8 +299,9 @@ DECISION_TREES = {
         "filters": "If <10 filter options, show inline chips. If 10-30, use a sidebar filter panel. If >30, use a modal/drawer filter. Always show active filter count and clear-all button.",
     },
     "Login": {
-        "layout": "Center the form vertically and horizontally. Max width: 400px. Logo above form. Social logins below form, separated by 'or' divider.",
-        "validation": "Validate email format on blur. Password: show requirements as the user types (length, special chars). Show/hide password toggle. Error messages appear below the field, not in alerts.",
+        "layout": "If the app has a brand identity, use a split-screen with brand visual on one side. If minimal, use a centered card (max-w-md). If enterprise/B2B, add SSO options prominently above email/password.",
+        "validation": "If email field loses focus, validate format inline. If password fails, show specific requirement that failed (not generic 'invalid'). When auth request is in-flight, disable submit and show spinner. If login fails, shake the form and preserve the email.",
+        "social_auth": "If targeting developers, show GitHub + Google. If targeting enterprise, show SSO/SAML prominently. If consumer app, show Google + Apple. Use 'Continue with X' phrasing, not 'Login with X'.",
     },
 }
 
@@ -440,9 +450,10 @@ def main():
     print(f"  Real tokens generated: {tokens_generated}")
     
     # For patterns WITHOUT colors, generate tokens from color_mode only
+    # Also regenerate for patterns that only have an int index (from prior runs)
     generic_generated = 0
     for p in patterns:
-        if isinstance(p.get("semantic_tokens"), str) or not p.get("semantic_tokens"):
+        if isinstance(p.get("semantic_tokens"), (str, int)) or not p.get("semantic_tokens"):
             color_mode = p.get("color_mode", "light")
             # Use a sensible default primary based on visual style
             styles = p.get("visual_style", [])
