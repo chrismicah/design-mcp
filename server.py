@@ -139,7 +139,15 @@ async def get_design_blueprint(pattern_id: str, detailed: bool = False) -> dict:
     if not pattern:
         return {"error": f"Pattern '{pattern_id}' not found"}
     if detailed:
-        return pattern.model_dump(exclude_none=True)
+        dump = pattern.model_dump(exclude_none=True)
+        # Resolve indexed references even in detailed mode
+        if isinstance(dump.get("semantic_tokens"), int):
+            idx = dump["semantic_tokens"]
+            dump["semantic_tokens"] = _token_sets[idx] if 0 <= idx < len(_token_sets) else {}
+        if isinstance(dump.get("decision_tree"), int):
+            idx = dump["decision_tree"]
+            dump["decision_tree"] = _decision_trees_indexed[idx] if 0 <= idx < len(_decision_trees_indexed) else None
+        return dump
     return _to_blueprint(pattern)
 
 
@@ -147,23 +155,73 @@ async def get_design_blueprint(pattern_id: str, detailed: bool = False) -> dict:
 # TOOL 3: Get Semantic Tokens
 # ============================================================
 @mcp.tool()
-async def get_semantic_tokens(style: Optional[str] = None) -> dict:
+async def get_semantic_tokens(
+    style: Optional[str] = None,
+    primary_color: Optional[str] = None,
+    color_mode: Optional[str] = None,
+) -> dict:
     """
-    Get semantic design tokens (Tier 2) for consistent styling.
-    These tokens encode the INTENT of design decisions, not just raw values.
-    Use these instead of hardcoding hex colors and pixel values.
+    Get semantic design tokens for consistent styling.
+    Returns real hex color values, spacing scale, typography sizes, and border radii.
+    Use these instead of hardcoding magic numbers.
 
     Args:
-        style: Optional style preset ('light', 'dark', 'brand').
-               Returns the default token set if not specified.
+        style: Optional style preset ('light', 'dark', 'brand', 'minimal', 'bold').
+        primary_color: Optional hex color to generate tokens from (e.g. '#3b82f6').
+            If provided, generates a full WCAG-AA-compliant token set from this color.
+        color_mode: 'light' or 'dark' (default: inferred from style or 'dark').
 
     Returns:
-        W3C-format semantic tokens for colors, spacing, typography, and borders.
+        Complete semantic token set with color-background, color-foreground,
+        color-primary, spacing, typography, and border-radius values.
     """
+    # If a primary color is given, generate a fresh token set
+    if primary_color:
+        mode = color_mode or ("light" if style == "light" else "dark")
+        try:
+            from scripts.rebuild_pipeline import generate_accessible_palette
+            tokens, scale, accent_scale = generate_accessible_palette(primary_color, mode)
+            return {
+                "tokens": tokens,
+                "primary_shades": scale,
+                "accent_shades": accent_scale,
+                "color_mode": mode,
+                "wcag_aa_verified": True,
+            }
+        except Exception:
+            pass
+    
+    # Return curated token sets from the indexed collection
+    if _token_sets:
+        # Find light vs dark token sets
+        light_sets = []
+        dark_sets = []
+        for i, ts in enumerate(_token_sets):
+            if ts is None:
+                continue
+            bg = ts.get("color-background", "")
+            if bg == "#ffffff" or bg.startswith("#f"):
+                light_sets.append(ts)
+            elif bg.startswith("#0") or bg.startswith("#1") or bg.startswith("#2"):
+                dark_sets.append(ts)
+        
+        if style == "light" and light_sets:
+            return {"tokens": light_sets[0], "color_mode": "light", "total_available": len(_token_sets)}
+        elif style == "dark" and dark_sets:
+            return {"tokens": dark_sets[0], "color_mode": "dark", "total_available": len(_token_sets)}
+        else:
+            # Return both light and dark examples
+            result = {"total_available": len(_token_sets)}
+            if light_sets:
+                result["light"] = light_sets[0]
+            if dark_sets:
+                result["dark"] = dark_sets[0]
+            return result
+    
+    # Fallback to old file
     tokens_path = BASE_DIR / "data" / "tokens" / "semantic_tokens.json"
     with open(tokens_path) as f:
-        tokens = json.load(f)
-    return tokens
+        return json.load(f)
 
 
 # ============================================================
@@ -291,27 +349,36 @@ async def analyze_and_devibecode(source_code: str) -> dict:
                     recommended_layout["layout_type"] = top.layout_type.value
                 if top.layout_notes:
                     recommended_layout["layout_notes"] = top.layout_notes
-                if top.semantic_tokens:
-                    semantic_tokens_to_apply = top.semantic_tokens
+                # Resolve tokens from int index
+                raw_tokens = top.semantic_tokens
+                if isinstance(raw_tokens, int) and 0 <= raw_tokens < len(_token_sets):
+                    semantic_tokens_to_apply = _token_sets[raw_tokens]
+                elif isinstance(raw_tokens, dict):
+                    semantic_tokens_to_apply = raw_tokens
+                # Get decision tree
+                raw_tree = top.decision_tree if hasattr(top, 'decision_tree') else None
+                if isinstance(raw_tree, int) and 0 <= raw_tree < len(_decision_trees_indexed):
+                    recommended_layout["decision_tree"] = _decision_trees_indexed[raw_tree]
+                elif isinstance(raw_tree, dict):
+                    recommended_layout["decision_tree"] = raw_tree
                 for r in results:
                     for hint in r.component_hints:
                         suggested_component_structure.append(hint)
         except Exception:
             pass
 
-        # If no semantic tokens from DB, provide defaults from token file
+        # If no semantic tokens from DB, provide a default from token_sets
         if not semantic_tokens_to_apply:
-            try:
-                tokens_path = BASE_DIR / "data" / "tokens" / "semantic_tokens.json"
-                with open(tokens_path) as f:
-                    tokens = json.load(f)
-                # Extract a flat subset relevant to common anti-patterns
-                semantic_tokens_to_apply = {
-                    "color": tokens.get("color", {}),
-                    "spacing": tokens.get("spacing", {}),
-                }
-            except Exception:
-                pass
+            if _token_sets:
+                semantic_tokens_to_apply = _token_sets[0]
+            else:
+                try:
+                    tokens_path = BASE_DIR / "data" / "tokens" / "semantic_tokens.json"
+                    with open(tokens_path) as f:
+                        tokens = json.load(f)
+                    semantic_tokens_to_apply = tokens.get("dark", tokens.get("light", {}))
+                except Exception:
+                    pass
 
         # Get library recommendations based on component type
         recommended_libraries = []
@@ -333,6 +400,21 @@ async def analyze_and_devibecode(source_code: str) -> dict:
         except Exception:
             pass
 
+        # Attach concrete code fix examples for each finding type
+        code_fixes = []
+        seen_fix_types = set()
+        for f in findings:
+            ftype = f["type"]
+            if ftype in _anti_pattern_fixes and ftype not in seen_fix_types:
+                apf = _anti_pattern_fixes[ftype]
+                code_fixes.append({
+                    "issue_type": ftype,
+                    "fix": apf.get("fix", ""),
+                    "before": apf.get("before", ""),
+                    "after": apf.get("after", ""),
+                })
+                seen_fix_types.add(ftype)
+
         return {
             "anti_patterns_found": anti_patterns_found,
             "recommended_layout": recommended_layout,
@@ -340,6 +422,7 @@ async def analyze_and_devibecode(source_code: str) -> dict:
             "suggested_component_structure": suggested_component_structure,
             "severity_summary": severity_summary,
             "refactoring_suggestions": refactoring_suggestions,
+            "code_fixes": code_fixes,
             "recommended_libraries": recommended_libraries,
             "detected_component_type": component_type,
         }
@@ -832,20 +915,15 @@ async def generate_refactored_code(
                 ref["layout_type"] = p.layout_type.value
             if p.layout_notes:
                 ref["layout_notes"] = p.layout_notes
-            if p.semantic_tokens:
-                ref["semantic_tokens"] = p.semantic_tokens
+            # Resolve tokens from int index
+            raw_tokens = p.semantic_tokens
+            if isinstance(raw_tokens, int) and 0 <= raw_tokens < len(_token_sets):
+                ref["semantic_tokens"] = _token_sets[raw_tokens]
+            elif isinstance(raw_tokens, dict):
+                ref["semantic_tokens"] = raw_tokens
             if p.component_hints:
                 ref["component_hints"] = p.component_hints
             design_reference.append(ref)
-        
-        # Get semantic tokens
-        tokens_path = BASE_DIR / "data" / "tokens" / "semantic_tokens.json"
-        semantic_tokens = {}
-        try:
-            with open(tokens_path) as f:
-                semantic_tokens = json.load(f)
-        except Exception:
-            pass
         
         # Build transformation instructions
         transformations = []
@@ -963,21 +1041,14 @@ async def generate_refactored_code(
             "transformations": transformations,
             "component_suggestion": component_suggestion,
             "design_reference": design_reference,
-            "semantic_tokens": {
-                "colors": {
-                    "primary": "hsl(var(--primary))",
-                    "secondary": "hsl(var(--secondary))",
-                    "destructive": "hsl(var(--destructive))",
-                    "muted": "hsl(var(--muted))",
-                    "accent": "hsl(var(--accent))",
-                    "background": "hsl(var(--background))",
-                    "foreground": "hsl(var(--foreground))",
-                    "border": "hsl(var(--border))",
-                    "input": "hsl(var(--input))",
-                    "ring": "hsl(var(--ring))",
-                },
-                "note": "Use these CSS variable-based tokens instead of hardcoded hex values"
-            },
+            "semantic_tokens": design_reference[0].get("semantic_tokens", {}) if design_reference else (
+                _token_sets[0] if _token_sets else {}
+            ),
+            "code_fixes": [
+                {"issue_type": ftype, **_anti_pattern_fixes[ftype]}
+                for f in findings
+                if (ftype := f["type"]) in _anti_pattern_fixes
+            ][:5],
         }
     
     except Exception as e:
@@ -1048,8 +1119,8 @@ def _load_reference_data():
 _ref_data = _load_reference_data()
 
 
-def _resolve_tokens(value):
-    """Resolve token reference to actual token set."""
+def _resolve_legacy_tokens(value):
+    """Resolve legacy string token reference to actual token set."""
     if isinstance(value, str) and value in ("light", "dark"):
         return _ref_data["tokens"].get(value, value)
     return value
@@ -1092,7 +1163,9 @@ def _to_blueprint(pattern: DesignPattern) -> dict:
     elif isinstance(raw_tokens, dict):
         resolved = raw_tokens
     elif isinstance(raw_tokens, str):
-        resolved = _resolve_tokens({"semantic_tokens": raw_tokens}).get("semantic_tokens", {})
+        resolved = _resolve_legacy_tokens(raw_tokens)
+        if isinstance(resolved, str):
+            resolved = {}
     else:
         resolved = {}
     
@@ -1133,6 +1206,45 @@ def _to_blueprint(pattern: DesignPattern) -> dict:
 def _load_behavioral_patterns() -> dict:
     """Load behavioral pattern definitions."""
     return {
+        "dashboard": {
+            "description": "Data-rich overview screen showing KPIs, charts, and activity feeds.",
+            "best_practice": "Lead with 3-6 KPI stat cards in a grid. Each card: metric name, value, trend indicator (up/down arrow + percentage). Below: split between a data table and chart section. Use skeleton loading matching exact card/table dimensions. Sidebar navigation if >5 sections.",
+            "required_elements": ["stat_cards_grid", "trend_indicators", "data_table_or_chart", "date_range_picker", "skeleton_loading"],
+            "anti_patterns": ["Spinner instead of skeleton", "KPIs without trend context", "No date range control", "Everything in one scrolling page"],
+            "decision_tree": {
+                "layout": "If >5 nav items: sidebar_main. If <5: top tabs. If data-heavy: collapsible sidebar.",
+                "data_display": "If >10 rows: paginated table. If 3-6 KPIs: stat cards. If trends: line/area chart. If proportions: donut chart.",
+            },
+            "reference": "Stripe Dashboard, Linear, Vercel Dashboard"
+        },
+        "modal_dialog": {
+            "description": "Overlay that requires user attention or input before continuing.",
+            "best_practice": "Focus trap inside modal. Close on Escape and backdrop click (for non-destructive). Destructive actions: require explicit close button, no backdrop dismiss. Animate in with scale+fade. Keep content under 400px width for simple dialogs, 600px for forms.",
+            "required_elements": ["focus_trap", "escape_to_close", "backdrop_overlay", "close_button", "aria_modal_true", "role_dialog"],
+            "anti_patterns": ["No focus trap", "No Escape key handler", "Scrolling background visible", "No aria-modal"],
+            "reference": "Radix Dialog, Headless UI Dialog"
+        },
+        "toast_notification": {
+            "description": "Non-blocking feedback message that auto-dismisses.",
+            "best_practice": "Position top-right or bottom-right. Auto-dismiss after 5s for info, persist for errors. Show progress bar for auto-dismiss timer. Stack multiple toasts with 8px gap. Swipe to dismiss on mobile.",
+            "required_elements": ["auto_dismiss_timer", "close_button", "severity_icon", "stack_support", "aria_live_polite"],
+            "anti_patterns": ["Blocking the UI", "No close button", "No severity differentiation", "Center of screen placement"],
+            "reference": "Sonner, React Hot Toast"
+        },
+        "data_table": {
+            "description": "Tabular data display with sorting, filtering, and pagination.",
+            "best_practice": "Sticky header on scroll. Sort indicators (chevrons) on sortable columns. Row hover highlight. Pagination with current range ('1-10 of 247'). Column resizing if >6 columns. Checkbox column for bulk actions.",
+            "required_elements": ["sticky_header", "sort_indicators", "pagination", "row_hover_state", "empty_state"],
+            "anti_patterns": ["No sticky header", "Sort without visual indicator", "Loading replaces entire table", "No empty state"],
+            "reference": "TanStack Table, Stripe Tables"
+        },
+        "search": {
+            "description": "Search input with results display.",
+            "best_practice": "Debounce input (300ms). Show loading indicator in input. Display results immediately below input. Highlight matching text in results. Support keyboard navigation (arrow keys). Show recent searches when input is empty.",
+            "required_elements": ["debounced_input", "loading_indicator", "highlighted_matches", "keyboard_navigation", "recent_searches"],
+            "anti_patterns": ["Search on every keystroke", "Full page reload", "No loading state", "Results on separate page"],
+            "reference": "Algolia, Command palette pattern"
+        },
         "empty_state": {
             "description": "Screen shown when there's no data to display yet.",
             "best_practice": "Stripe pattern: Educate the user on the feature's value. Show a relevant illustration. Provide a single, prominent CTA to create the first item. Never just say 'No data found'.",
