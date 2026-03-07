@@ -27,9 +27,10 @@ db = DesignDatabase(str(BASE_DIR / "data" / "patterns.json"))
 _token_sets = []
 _decision_trees_indexed = []
 _anti_pattern_fixes = {}
+_visual_recipes = {}
 
 def _load_indexed_data():
-    global _token_sets, _decision_trees_indexed, _anti_pattern_fixes
+    global _token_sets, _decision_trees_indexed, _anti_pattern_fixes, _visual_recipes
     token_path = BASE_DIR / "data" / "tokens" / "token_sets.json"
     if token_path.exists():
         with open(token_path) as f:
@@ -42,6 +43,10 @@ def _load_indexed_data():
     if fix_path.exists():
         with open(fix_path) as f:
             _anti_pattern_fixes = json.load(f)
+    recipe_path = BASE_DIR / "data" / "visual_recipes.json"
+    if recipe_path.exists():
+        with open(recipe_path) as f:
+            _visual_recipes = json.load(f)
 
 _load_indexed_data()
 
@@ -415,6 +420,25 @@ async def analyze_and_devibecode(source_code: str) -> dict:
                 })
                 seen_fix_types.add(ftype)
 
+        # Select visual recipes relevant to detected anti-patterns
+        recipe_suggestions = {}
+        finding_types = set(f["type"] for f in findings)
+        if "inline_style_abuse" in finding_types or "magic_hex_color" in finding_types:
+            if "depth_layers" in _visual_recipes:
+                recipe_suggestions["depth_layers"] = _visual_recipes["depth_layers"]
+            if "text_hierarchy" in _visual_recipes:
+                recipe_suggestions["text_hierarchy"] = _visual_recipes["text_hierarchy"]
+        if "missing_flex_grid" in finding_types:
+            if "spacing_rhythm" in _visual_recipes:
+                recipe_suggestions["spacing_rhythm"] = _visual_recipes["spacing_rhythm"]
+        if any(t in finding_types for t in ["div_soup", "missing_aria"]):
+            pass  # Structural, not visual
+        # Always include glass_card and motion for polish
+        if "glass_card" in _visual_recipes:
+            recipe_suggestions["glass_card"] = _visual_recipes["glass_card"]
+        if "motion_system" in _visual_recipes:
+            recipe_suggestions["motion_system"] = _visual_recipes["motion_system"]
+
         return {
             "anti_patterns_found": anti_patterns_found,
             "recommended_layout": recommended_layout,
@@ -423,6 +447,7 @@ async def analyze_and_devibecode(source_code: str) -> dict:
             "severity_summary": severity_summary,
             "refactoring_suggestions": refactoring_suggestions,
             "code_fixes": code_fixes,
+            "visual_recipes": recipe_suggestions,
             "recommended_libraries": recommended_libraries,
             "detected_component_type": component_type,
         }
@@ -1049,6 +1074,10 @@ async def generate_refactored_code(
                 for f in findings
                 if (ftype := f["type"]) in _anti_pattern_fixes
             ][:5],
+            "visual_recipes": {
+                k: _visual_recipes[k] for k in ["glass_card", "depth_layers", "text_hierarchy", "gradient_accent", "motion_system"]
+                if k in _visual_recipes
+            },
         }
     
     except Exception as e:
@@ -1181,6 +1210,20 @@ def _to_blueprint(pattern: DesignPattern) -> dict:
     else:
         resolved_tree = None
     
+    # Select relevant visual recipes for this page type
+    recipe_relevance = {
+        "Dashboard": ["glass_card", "depth_layers", "text_hierarchy", "icon_treatment",
+                     "motion_system", "data_visualization", "table_polish", "sidebar_design"],
+        "Landing Page": ["glass_card", "gradient_accent", "depth_layers", "text_hierarchy",
+                       "motion_system", "surface_texture"],
+        "E-commerce": ["glass_card", "depth_layers", "text_hierarchy", "icon_treatment", "table_polish"],
+        "Login": ["glass_card", "gradient_accent", "depth_layers", "text_hierarchy"],
+        "Pricing": ["glass_card", "gradient_accent", "depth_layers", "text_hierarchy"],
+    }
+    page = pattern.page_type or ""
+    recipe_keys = recipe_relevance.get(page, ["glass_card", "depth_layers", "text_hierarchy"])
+    visual_recipes = {k: _visual_recipes[k] for k in recipe_keys if k in _visual_recipes}
+
     blueprint = {
         "id": pattern.id,
         "name": pattern.name,
@@ -1197,6 +1240,7 @@ def _to_blueprint(pattern: DesignPattern) -> dict:
         "semantic_tokens": resolved,
         "component_hints": _resolve_component_code(pattern.component_hints),
         "decision_tree": resolved_tree,
+        "visual_recipes": visual_recipes,
         "source_url": pattern.source_url,
     }
     # Remove None/empty values to save tokens
@@ -1313,6 +1357,63 @@ def _generate_comparison_summary(patterns: list[DesignPattern]) -> str:
 # ============================================================
 # TOOL 12: Visual Design Suggestions
 # ============================================================
+@mcp.tool()
+async def get_visual_recipe(
+    recipe: Optional[str] = None,
+    page_type: Optional[str] = None,
+    color_mode: str = "dark",
+) -> dict:
+    """
+    Get specific visual design recipes — the craft techniques that separate
+    polished UI from vibecoded output. Returns CSS/Tailwind snippets for
+    glassmorphism, depth layers, text hierarchy, animations, and more.
+
+    Args:
+        recipe: Specific recipe name (glass_card, gradient_accent, depth_layers,
+            text_hierarchy, icon_treatment, motion_system, spacing_rhythm,
+            surface_texture, data_visualization, table_polish, sidebar_design).
+            If None, returns all recipes.
+        page_type: If specified (Dashboard, Landing Page, etc.), returns only
+            recipes relevant to that page type.
+        color_mode: 'dark' or 'light' — affects which variant is returned.
+
+    Returns:
+        Visual recipes with ready-to-use CSS and Tailwind classes.
+    """
+    if not _visual_recipes:
+        return {"error": "Visual recipes not loaded"}
+
+    if recipe and recipe in _visual_recipes:
+        return _visual_recipes[recipe]
+
+    if recipe:
+        # Fuzzy match
+        matches = {k: v for k, v in _visual_recipes.items() if recipe.lower() in k.lower()}
+        if matches:
+            return matches
+        return {"error": f"Recipe '{recipe}' not found. Available: {list(_visual_recipes.keys())}"}
+
+    # Filter by page type relevance
+    if page_type:
+        relevance = {
+            "Dashboard": ["glass_card", "depth_layers", "text_hierarchy", "icon_treatment",
+                         "motion_system", "spacing_rhythm", "data_visualization", "table_polish", "sidebar_design"],
+            "Landing Page": ["glass_card", "gradient_accent", "depth_layers", "text_hierarchy",
+                           "motion_system", "spacing_rhythm", "surface_texture"],
+            "E-commerce": ["glass_card", "depth_layers", "text_hierarchy", "icon_treatment",
+                         "spacing_rhythm", "table_polish"],
+            "Login": ["glass_card", "gradient_accent", "depth_layers", "text_hierarchy", "surface_texture"],
+            "Pricing": ["glass_card", "gradient_accent", "depth_layers", "text_hierarchy", "spacing_rhythm"],
+            "Portfolio": ["glass_card", "depth_layers", "motion_system", "surface_texture"],
+            "Blog Post": ["depth_layers", "text_hierarchy", "spacing_rhythm"],
+            "Documentation": ["depth_layers", "text_hierarchy", "sidebar_design", "table_polish"],
+        }
+        relevant_keys = relevance.get(page_type, list(_visual_recipes.keys()))
+        return {k: _visual_recipes[k] for k in relevant_keys if k in _visual_recipes}
+
+    return _visual_recipes
+
+
 @mcp.tool()
 async def get_visual_suggestions(
     source_code: str,

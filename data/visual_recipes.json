@@ -1,0 +1,184 @@
+{
+  "glass_card": {
+    "name": "Glass Card",
+    "description": "Frosted glass card with depth and subtle glow. Use for primary content cards, stat cards, and elevated surfaces.",
+    "when_to_use": "Any card that needs to feel elevated above the background. Dashboard stat cards, feature cards, pricing cards.",
+    "css": "background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));\nbackdrop-filter: blur(20px);\n-webkit-backdrop-filter: blur(20px);\nborder: 1px solid rgba(255,255,255,0.06);\nborder-radius: 16px;",
+    "tailwind": "bg-white/5 backdrop-blur-xl border border-white/[0.06] rounded-2xl",
+    "light_variant": "bg-white/70 backdrop-blur-xl border border-black/[0.06] rounded-2xl shadow-lg shadow-black/5",
+    "hover": "hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/10 hover:border-primary/20 transition-all duration-300",
+    "glow_variant": "shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_4px_24px_-4px_rgba(var(--accent-rgb),0.25)]"
+  },
+  "gradient_accent": {
+    "name": "Gradient Accent",
+    "description": "Gradient backgrounds for CTAs, badges, and accent elements. Never use raw solid colors for primary buttons — gradients add depth.",
+    "when_to_use": "Primary CTA buttons, active navigation indicators, brand elements, badges.",
+    "css_button": "background: linear-gradient(135deg, var(--accent), var(--accent-dark));\nbox-shadow: 0 2px 12px -2px rgba(var(--accent-rgb), 0.4);\nborder: none;",
+    "tailwind_button": "bg-gradient-to-br from-primary to-primary/80 shadow-lg shadow-primary/25 border-0",
+    "hover": "hover:brightness-110 hover:shadow-xl hover:shadow-primary/30 active:brightness-95 transition-all duration-200",
+    "subtle_variant": "bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/10"
+  },
+  "depth_layers": {
+    "name": "Depth & Layering System",
+    "description": "A 4-level depth system using background colors, borders, and shadows. This is what separates flat vibecoded UIs from designed ones.",
+    "levels": {
+      "base": {
+        "description": "App background. Deepest layer.",
+        "dark": "bg-[#0b0e1a]",
+        "light": "bg-gray-50"
+      },
+      "raised": {
+        "description": "Sidebar, header backgrounds. One level up.",
+        "dark": "bg-[#111427]",
+        "light": "bg-white"
+      },
+      "surface": {
+        "description": "Cards, modals, dropdowns. Interactive surfaces.",
+        "dark": "bg-[#161a2e] border border-white/[0.06]",
+        "light": "bg-white border border-gray-200 shadow-sm"
+      },
+      "overlay": {
+        "description": "Tooltips, popovers, command palettes. Highest level.",
+        "dark": "bg-[#1c2140]/95 backdrop-blur-xl border border-white/10 shadow-2xl",
+        "light": "bg-white/95 backdrop-blur-xl border border-gray-200 shadow-2xl"
+      }
+    },
+    "rule": "Every UI element must belong to exactly one depth level. No two adjacent elements should be on the same level — if they look flat, one needs to go up or down."
+  },
+  "text_hierarchy": {
+    "name": "Text Hierarchy System",
+    "description": "A 4-tier text color system. This is the #1 thing that makes UI look designed vs vibecoded.",
+    "tiers": {
+      "primary": {
+        "use": "Headings, important values, KPI numbers",
+        "dark": "text-white",
+        "light": "text-gray-900",
+        "weight": "font-bold or font-semibold"
+      },
+      "secondary": {
+        "use": "Body text, table cell content, descriptions",
+        "dark": "text-gray-300",
+        "light": "text-gray-600",
+        "weight": "font-medium or font-normal"
+      },
+      "tertiary": {
+        "use": "Labels, metadata, timestamps, helper text",
+        "dark": "text-gray-500",
+        "light": "text-gray-400",
+        "weight": "font-medium"
+      },
+      "muted": {
+        "use": "Placeholders, disabled text, decorative",
+        "dark": "text-gray-600",
+        "light": "text-gray-300",
+        "weight": "font-normal"
+      }
+    },
+    "rule": "Every text element must use exactly one tier. If you find yourself using the same tier for a label and its value, the hierarchy is wrong — the value should be one tier higher."
+  },
+  "icon_treatment": {
+    "name": "Icon Treatment",
+    "description": "How to make icons look professional instead of amateur.",
+    "rules": [
+      "NEVER use emoji in professional UI. Use Lucide, Heroicons, or Phosphor.",
+      "Icons in navigation: 16-18px, stroke-width 1.5-2, match text color tier",
+      "Icons in stat cards: wrap in a 40px rounded-xl container with tinted background (primary/10)",
+      "Icons in buttons: 16px, same color as button text, placed before the label",
+      "Decorative icons: can be larger (24-32px) but lower opacity"
+    ],
+    "stat_card_icon": "w-10 h-10 rounded-xl flex items-center justify-center bg-primary/10",
+    "nav_icon": "w-4 h-4 stroke-[1.8]"
+  },
+  "motion_system": {
+    "name": "Motion & Animation",
+    "description": "Entrance animations and micro-interactions that make UI feel alive.",
+    "entrance": {
+      "stagger_cards": "Stagger each card by 80-120ms. Use translateY(16px) → 0 + opacity 0 → 1. Easing: cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+      "fade_section": "Sections fade in on scroll with IntersectionObserver or Framer Motion whileInView",
+      "table_rows": "Rows stagger in with 40-60ms delay each, opacity only"
+    },
+    "micro": {
+      "card_hover": "translateY(-2px) + shadow increase. Duration 300ms ease-out.",
+      "button_press": "scale(0.98) on active. Duration 100ms.",
+      "nav_active": "Background color transition 200ms with subtle left-border or dot indicator",
+      "row_hover": "Background color shift + text color accent on the primary column"
+    },
+    "framer_motion_snippet": {
+      "stagger_container": "{ initial: 'hidden', animate: 'show', variants: { show: { transition: { staggerChildren: 0.1 } } } }",
+      "stagger_item": "{ variants: { hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } } } }"
+    }
+  },
+  "spacing_rhythm": {
+    "name": "Spacing & Rhythm",
+    "description": "Intentional spacing creates visual rhythm. Equal spacing everywhere = boring.",
+    "rules": [
+      "Section gaps: 24-32px (gap-6 to gap-8). NOT equal to card internal padding.",
+      "Card internal padding: 20-24px (p-5 to p-6).",
+      "Between label and value: 4-8px (space-y-1 to space-y-2).",
+      "Between icon container and text: 12-16px (gap-3 to gap-4).",
+      "Header to content: 24px. Content sections: 24px. Footer: 12-16px.",
+      "Sidebar width: 220-260px. NOT 300px (wastes space).",
+      "Table cell padding: px-6 py-3.5 for comfortable density, px-4 py-2.5 for compact."
+    ],
+    "anti_patterns": [
+      "Same padding everywhere (p-4 on everything)",
+      "No breathing room between sections",
+      "Sidebar wider than 280px",
+      "Card internal spacing matches section spacing"
+    ]
+  },
+  "surface_texture": {
+    "name": "Surface Texture",
+    "description": "Subtle visual texture prevents the 'flat digital void' look.",
+    "techniques": {
+      "noise_overlay": "Subtle SVG noise at 1-2% opacity over the base background. Adds analog warmth.",
+      "gradient_mesh": "Very subtle radial gradients (opacity 5-10%) behind key content areas to create focal points.",
+      "border_glow": "Cards with box-shadow: 0 0 0 1px rgba(255,255,255,0.06) instead of solid borders. Creates glass-like edge.",
+      "inner_glow": "Radial gradient at 30% 30% position inside containers for a subtle light source effect."
+    },
+    "noise_css": "background-image: url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\");\nopacity: 0.015;\npointer-events: none;\nposition: fixed;\ninset: 0;",
+    "gradient_mesh_css": "background: radial-gradient(ellipse at 20% 50%, rgba(var(--accent-rgb), 0.08), transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(var(--accent-rgb), 0.05), transparent 50%);"
+  },
+  "data_visualization": {
+    "name": "Chart & Data Polish",
+    "description": "How to make charts look designed instead of default Recharts output.",
+    "rules": [
+      "Remove axis lines (axisLine={false}), keep only tick labels",
+      "Use dashed grid lines at very low opacity (stroke rgba(255,255,255,0.04))",
+      "Area charts: gradient fill from color/25 to transparent, stroke-width 2-2.5",
+      "Donut charts: add center label with total value",
+      "Custom tooltip: glass card style, small text (text-xs), compact padding",
+      "Use brand colors for data series, not random Recharts defaults",
+      "Legend: inline in the card header, not below the chart"
+    ],
+    "area_gradient": "linearGradient from stopColor={color} stopOpacity={0.25} to stopOpacity={0}",
+    "tooltip_style": "bg-surface/95 backdrop-blur-xl border border-white/10 rounded-lg px-3 py-2 text-xs shadow-xl"
+  },
+  "table_polish": {
+    "name": "Table Design",
+    "description": "Data tables that look professional.",
+    "rules": [
+      "Header: uppercase tracking-wider text-[11px] font-semibold in muted color",
+      "Row hover: subtle background shift + accent color on primary column text",
+      "Status indicators: small dot (w-1.5 h-1.5) + text, NOT full badges for inline status",
+      "Amounts: tabular-nums font-feature, green for positive, red for negative",
+      "Monospace for IDs and codes: font-mono text-xs in muted color",
+      "Pagination: compact, show count ('1-10 of 247'), chevron icons not text buttons",
+      "Border: only top border on rows (border-t), not full grid"
+    ]
+  },
+  "sidebar_design": {
+    "name": "Sidebar Navigation",
+    "description": "Professional sidebar that doesn't look like every template.",
+    "rules": [
+      "Width: 220-260px, never 300+",
+      "Active item: gradient background (primary/20 to primary/8) with inset border, NOT solid bg-primary",
+      "Active indicator: small dot or left border accent, not just background color",
+      "Section labels: 10-11px uppercase tracking-widest in muted color",
+      "Icons: 16px stroke-[1.8], slightly bolder for active item",
+      "Spacing: py-2.5 per item, space-y-0.5 between items",
+      "Bottom section: user avatar + name, separated by border-t",
+      "Optional: upgrade CTA card with gradient background and subtle glow"
+    ]
+  }
+}
