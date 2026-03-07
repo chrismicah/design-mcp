@@ -14,6 +14,12 @@ data/webui-7kbal/
 .pytest_cache/
 *.egg
 
-# Screenshots are included in the repo (742 files, ~200MB)
-!screenshots/
+# Screenshots are optional (742 files, 600MB) — stored in Git LFS
+# The MCP runs off data/patterns.json, not screenshots
+# To download: git lfs pull
+screenshots/awwwards/
+screenshots/dribbble/
+screenshots/curated/
+screenshots/landbook/
+!screenshots/README.md
 

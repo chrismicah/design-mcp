@@ -311,11 +311,20 @@ design-mcp/
 
 ## Using on Another Machine
 
-Just install and add — all patterns, screenshots, and reference data are bundled. No API keys needed.
+Just install and add — all pattern data is bundled. No API keys needed.
 
 ```bash
 pip install git+https://github.com/chrismicah/design-mcp.git
 claude mcp add -s user design-mcp -- design-mcp serve
+```
+
+### Screenshots (optional, 600 MB)
+
+The 742 design screenshots are stored in Git LFS and **not downloaded by default**. The MCP runs entirely off `data/patterns.json` — screenshots are only needed if you want to browse source designs or re-run vision analysis.
+
+```bash
+# Only if you want the screenshots:
+git lfs pull
 ```
 
 ---

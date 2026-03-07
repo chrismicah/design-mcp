@@ -1,29 +1,30 @@
-# Screenshots
+# Screenshots (Optional)
 
-This directory contains high-resolution design screenshots used as visual references for the design patterns database.
+This directory contains **742 high-resolution design screenshots** used to build the patterns database.
 
-## What's Included in Git
+**You don't need these to use the MCP.** The server runs entirely off `data/patterns.json`, which already contains all extracted design intelligence (page types, colors, layouts, UI elements, quality scores).
 
-Only a small sample set is committed to keep the repo lightweight (~39 files):
+## When you'd want them
 
-- `dribbble/` — 7 reference screenshots (original curated samples)
-- `awwwards/` — 31 reference screenshots (SOTD winners)
+- Browsing source designs for visual inspiration
+- Re-running vision analysis to update `data/vision_results.json`
+- Adding new screenshots and re-building the database
 
-## Downloading the Full Set (~600MB)
+## How to download
 
-The bulk screenshots are gitignored. To download the full collection:
+Screenshots are stored in Git LFS. After cloning:
 
 ```bash
-# From the project root
-python scripts/download_all_screenshots.py
+git lfs pull
 ```
 
-This will populate:
-- `screenshots/dribbble/` — 284 shots from Dribbble popular pages
-- `screenshots/awwwards/` — 300 shots from Awwwards SOTD winners
-- `screenshots/curated/` — 68 shots from top SaaS products
-- `screenshots/landbook/` — 90 shots from landing page galleries
+This downloads all 742 screenshots (~600 MB).
 
-## Quality
+## Contents
 
-All screenshots are high-resolution (1600px+ wide) and filtered for quality (>50KB minimum file size).
+| Directory | Files | Size | Source |
+|-----------|-------|------|--------|
+| `awwwards/` | 300 | 312 MB | Site of the Day winners |
+| `dribbble/` | 284 | 260 MB | Popular web design shots |
+| `curated/` | 68 | 24 MB | Top SaaS products (Stripe, Linear, etc.) |
+| `landbook/` | 90 | 6 MB | Landing page gallery |
