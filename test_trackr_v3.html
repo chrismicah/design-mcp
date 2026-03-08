@@ -1,0 +1,366 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trackr - Project Management</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Inter', system-ui, sans-serif; font-feature-settings: 'cv02' 1, 'cv03' 1, 'cv11' 1; }
+    body { background: #0d0d12; color: #ebebef; -webkit-font-smoothing: antialiased; }
+    .t { font-variant-numeric: tabular-nums; font-feature-settings: 'tnum' 1, 'cv02' 1; }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="flex min-h-screen">
+
+    <!-- SIDEBAR (from component_classes.sidebar) -->
+    <aside class="fixed left-0 top-0 bottom-0 w-[220px] border-r border-[#1e1e2a] bg-[#0d0d12] flex flex-col z-10">
+      <div class="px-4 h-12 flex items-center gap-2">
+        <div class="w-[22px] h-[22px] rounded-[5px] bg-[#5e6ad2] flex items-center justify-center text-[10px] font-bold text-white leading-none">T</div>
+        <span class="text-[13px] font-semibold text-[#ebebef] tracking-[-0.01em]">Trackr</span>
+      </div>
+      <nav class="flex-1 px-2 pt-1 flex flex-col gap-[1px]">
+        <a href="#" class="flex items-center gap-2 px-2.5 py-[5px] rounded-[5px] text-[12.5px] font-medium text-[#ebebef] bg-white/[0.06]">
+          <svg class="w-[14px] h-[14px] opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25a2.25 2.25 0 0 1-2.25-2.25v-2.25Z"/></svg>
+          Overview
+        </a>
+        <a href="#" class="flex items-center gap-2 px-2.5 py-[5px] rounded-[5px] text-[12.5px] font-medium text-[#8b8b9e] hover:text-[#ebebef] hover:bg-white/[0.03] transition-colors duration-150">
+          <svg class="w-[14px] h-[14px] opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25Z"/></svg>
+          Issues
+        </a>
+        <a href="#" class="flex items-center gap-2 px-2.5 py-[5px] rounded-[5px] text-[12.5px] font-medium text-[#8b8b9e] hover:text-[#ebebef] hover:bg-white/[0.03] transition-colors duration-150">
+          <svg class="w-[14px] h-[14px] opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"/></svg>
+          Cycles
+        </a>
+        <a href="#" class="flex items-center gap-2 px-2.5 py-[5px] rounded-[5px] text-[12.5px] font-medium text-[#8b8b9e] hover:text-[#ebebef] hover:bg-white/[0.03] transition-colors duration-150">
+          <svg class="w-[14px] h-[14px] opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+          Timeline
+        </a>
+        <div class="px-2.5 mt-5 mb-1 text-[10px] font-medium uppercase tracking-[0.08em] text-[#4a4a5e]">Workspace</div>
+        <a href="#" class="flex items-center gap-2 px-2.5 py-[5px] rounded-[5px] text-[12.5px] font-medium text-[#8b8b9e] hover:text-[#ebebef] hover:bg-white/[0.03] transition-colors duration-150">
+          <svg class="w-[14px] h-[14px] opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"/></svg>
+          Members
+        </a>
+        <a href="#" class="flex items-center gap-2 px-2.5 py-[5px] rounded-[5px] text-[12.5px] font-medium text-[#8b8b9e] hover:text-[#ebebef] hover:bg-white/[0.03] transition-colors duration-150">
+          <svg class="w-[14px] h-[14px] opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z"/><path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
+          Settings
+        </a>
+      </nav>
+      <div class="px-2 py-2 border-t border-[#1e1e2a]">
+        <div class="flex items-center gap-2 px-2.5 py-[5px] rounded-[5px] hover:bg-white/[0.03] transition-colors duration-150 cursor-pointer">
+          <div class="w-[22px] h-[22px] rounded-full bg-[#2a2a3a] flex items-center justify-center text-[9px] font-medium text-[#8b8b9e]">AL</div>
+          <span class="text-[12.5px] text-[#8b8b9e]">Alex Lee</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="ml-[220px] flex-1 min-h-screen">
+      <!-- Header -->
+      <header class="flex items-center justify-between px-6 h-12 border-b border-[#1e1e2a]">
+        <h1 class="text-[13px] font-semibold text-[#ebebef]">Sprint Overview</h1>
+        <div class="flex items-center gap-1.5">
+          <div class="flex items-center rounded-[5px] border border-[#2a2a3a] overflow-hidden">
+            <button class="w-8 h-[26px] text-[10.5px] font-medium text-[#ebebef] bg-white/[0.06]">1W</button>
+            <button class="w-8 h-[26px] text-[10.5px] font-medium text-[#5a5a6e] hover:text-[#8b8b9e] transition-colors">2W</button>
+            <button class="w-8 h-[26px] text-[10.5px] font-medium text-[#5a5a6e] hover:text-[#8b8b9e] transition-colors">1M</button>
+          </div>
+          <button class="h-[26px] px-2.5 rounded-[5px] text-[10.5px] font-medium text-[#8b8b9e] hover:text-[#ebebef] border border-[#2a2a3a] hover:border-[#3a3a4e] transition-colors">
+            New Issue
+          </button>
+        </div>
+      </header>
+
+      <div class="px-6 pt-5">
+
+        <!-- HERO KPI: Sprint Progress (composition rule 1) -->
+        <div class="rounded-md border border-[#1e1e2a] bg-[#14141e] px-6 pt-5 pb-4">
+          <div class="flex items-start justify-between">
+            <div>
+              <div class="text-[10.5px] font-medium uppercase tracking-[0.06em] text-[#5a5a6e]">Sprint 24 Progress</div>
+              <div class="mt-1.5 text-[2.5rem] font-semibold tracking-[-0.035em] text-[#ebebef] leading-[1] t">73%</div>
+              <div class="mt-2 flex items-baseline gap-1.5">
+                <span class="text-[11px] font-medium text-[#5e6ad2] t">44 of 60 points</span>
+                <span class="text-[11px] text-[#4a4a5e]">completed</span>
+              </div>
+            </div>
+            <div class="mt-2 w-[160px]">
+              <!-- Progress bar -->
+              <div class="w-full h-2 rounded-full bg-[#1e1e2a] overflow-hidden">
+                <div class="h-full rounded-full bg-[#5e6ad2]" style="width:73%"></div>
+              </div>
+              <div class="flex justify-between mt-1.5 text-[9px] text-[#4a4a5e] t">
+                <span>5 days left</span>
+                <span>Mar 14</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECONDARY KPIs: 3 cols (composition rule 2), mt-5 -->
+        <div class="grid grid-cols-3 gap-3 mt-5">
+          <div class="rounded-[5px] border border-[#1a1a26] bg-[#11111a] px-4 py-3 flex items-baseline justify-between">
+            <div>
+              <div class="text-[10px] text-[#5a5a6e]">Open Issues</div>
+              <span class="text-[20px] font-semibold tracking-[-0.02em] text-[#ebebef] t">16</span>
+            </div>
+            <span class="text-[10.5px] font-medium text-red-400/50 t">+3</span>
+          </div>
+          <div class="rounded-[5px] border border-[#1a1a26] bg-[#11111a] px-4 py-3 flex items-baseline justify-between">
+            <div>
+              <div class="text-[10px] text-[#5a5a6e]">In Progress</div>
+              <span class="text-[20px] font-semibold tracking-[-0.02em] text-[#ebebef] t">8</span>
+            </div>
+            <span class="text-[10.5px] font-medium text-[#5e6ad2]/70 t">active</span>
+          </div>
+          <div class="rounded-[5px] border border-[#1a1a26] bg-[#11111a] px-4 py-3 flex items-baseline justify-between">
+            <div>
+              <div class="text-[10px] text-[#5a5a6e]">Completed</div>
+              <span class="text-[20px] font-semibold tracking-[-0.02em] text-[#ebebef] t">36</span>
+            </div>
+            <span class="text-[10.5px] font-medium text-emerald-400/70 t">+7 this week</span>
+          </div>
+        </div>
+
+        <!-- CHART: Velocity, full width (composition rule 3), mt-5 -->
+        <div class="rounded-md border border-[#1e1e2a] bg-[#14141e] mt-5">
+          <div class="flex items-center justify-between px-5 pt-4 pb-0">
+            <h2 class="text-[12px] font-medium text-[#8b8b9e]">Sprint Velocity</h2>
+            <div class="flex items-center gap-4">
+              <span class="flex items-center gap-1 text-[10px] text-[#5a5a6e]"><span class="w-1 h-1 rounded-full bg-[#ebebef]"></span>Completed</span>
+              <span class="flex items-center gap-1 text-[10px] text-[#5a5a6e]"><span class="w-1 h-1 rounded-full bg-[#3a3a4e]"></span>Planned</span>
+            </div>
+          </div>
+          <div class="h-[200px] relative px-5 pt-3">
+            <div class="absolute left-0 top-3 bottom-0 w-[36px] flex flex-col justify-between py-1 pr-2 text-right text-[9px] text-[#4a4a5e] t">
+              <span>80</span><span>60</span><span>40</span><span>20</span><span>0</span>
+            </div>
+            <div class="ml-[36px] h-full flex items-end gap-[3px] pb-0">
+              <!-- Bar chart: 8 sprints -->
+              <div class="flex-1 flex flex-col items-center gap-0">
+                <div class="w-full flex flex-col gap-px">
+                  <div class="w-full rounded-t-[2px] bg-[#3a3a4e]" style="height:10px"></div>
+                  <div class="w-full rounded-b-[2px] bg-[#ebebef]/80" style="height:50px"></div>
+                </div>
+              </div>
+              <div class="flex-1 flex flex-col items-center gap-0">
+                <div class="w-full flex flex-col gap-px">
+                  <div class="w-full rounded-t-[2px] bg-[#3a3a4e]" style="height:15px"></div>
+                  <div class="w-full rounded-b-[2px] bg-[#ebebef]/80" style="height:45px"></div>
+                </div>
+              </div>
+              <div class="flex-1 flex flex-col items-center gap-0">
+                <div class="w-full flex flex-col gap-px">
+                  <div class="w-full rounded-t-[2px] bg-[#3a3a4e]" style="height:8px"></div>
+                  <div class="w-full rounded-b-[2px] bg-[#ebebef]/80" style="height:55px"></div>
+                </div>
+              </div>
+              <div class="flex-1 flex flex-col items-center gap-0">
+                <div class="w-full flex flex-col gap-px">
+                  <div class="w-full rounded-t-[2px] bg-[#3a3a4e]" style="height:5px"></div>
+                  <div class="w-full rounded-b-[2px] bg-[#ebebef]/80" style="height:60px"></div>
+                </div>
+              </div>
+              <div class="flex-1 flex flex-col items-center gap-0">
+                <div class="w-full flex flex-col gap-px">
+                  <div class="w-full rounded-t-[2px] bg-[#3a3a4e]" style="height:12px"></div>
+                  <div class="w-full rounded-b-[2px] bg-[#ebebef]/80" style="height:52px"></div>
+                </div>
+              </div>
+              <div class="flex-1 flex flex-col items-center gap-0">
+                <div class="w-full flex flex-col gap-px">
+                  <div class="w-full rounded-t-[2px] bg-[#3a3a4e]" style="height:18px"></div>
+                  <div class="w-full rounded-b-[2px] bg-[#ebebef]/80" style="height:42px"></div>
+                </div>
+              </div>
+              <div class="flex-1 flex flex-col items-center gap-0">
+                <div class="w-full flex flex-col gap-px">
+                  <div class="w-full rounded-t-[2px] bg-[#3a3a4e]" style="height:3px"></div>
+                  <div class="w-full rounded-b-[2px] bg-[#ebebef]/80" style="height:65px"></div>
+                </div>
+              </div>
+              <!-- Current sprint - highlighted -->
+              <div class="flex-1 flex flex-col items-center gap-0">
+                <div class="w-full flex flex-col gap-px">
+                  <div class="w-full rounded-t-[2px] bg-[#5e6ad2]/40" style="height:16px"></div>
+                  <div class="w-full rounded-b-[2px] bg-[#5e6ad2]" style="height:44px"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ml-[36px] flex justify-between px-5 pt-1 text-[9px] text-[#4a4a5e] t">
+            <span>S17</span><span>S18</span><span>S19</span><span>S20</span><span>S21</span><span>S22</span><span>S23</span><span class="text-[#5e6ad2] font-medium">S24</span>
+          </div>
+          <!-- Docked footer stats (docking rule) -->
+          <div class="mx-5 mt-3 mb-4 pt-3 border-t border-[#1a1a26] flex items-center">
+            <div class="flex-1 flex items-baseline gap-1.5 px-1">
+              <span class="text-[10px] text-[#5a5a6e]">Avg. Velocity</span>
+              <span class="text-[11.5px] font-medium text-[#8b8b9e] t">54 pts</span>
+            </div>
+            <div class="w-px h-3 bg-[#2a2a3a]"></div>
+            <div class="flex-1 flex items-baseline gap-1.5 px-3">
+              <span class="text-[10px] text-[#5a5a6e]">Scope Change</span>
+              <span class="text-[11.5px] font-medium text-amber-400/60 t">+4 pts</span>
+            </div>
+            <div class="w-px h-3 bg-[#2a2a3a]"></div>
+            <div class="flex-1 flex items-baseline gap-1.5 px-3">
+              <span class="text-[10px] text-[#5a5a6e]">Carry Over</span>
+              <span class="text-[11.5px] font-medium text-[#8b8b9e] t">2 issues</span>
+            </div>
+            <div class="w-px h-3 bg-[#2a2a3a]"></div>
+            <div class="flex-1 flex items-baseline gap-1.5 px-3">
+              <span class="text-[10px] text-[#5a5a6e]">Team</span>
+              <span class="text-[11.5px] font-medium text-[#8b8b9e] t">6</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- TABLE + ASIDE (composition rule 4), mt-5 -->
+        <div class="grid grid-cols-[1fr_260px] gap-4 mt-5 pb-6">
+
+          <!-- Issue table -->
+          <div class="rounded-md border border-[#1e1e2a] bg-[#14141e] overflow-hidden">
+            <div class="flex items-center justify-between px-5 h-10">
+              <h2 class="text-[12px] font-medium text-[#8b8b9e]">Active Issues</h2>
+              <button class="text-[10.5px] text-[#5a5a6e] hover:text-[#8b8b9e] transition-colors">All issues</button>
+            </div>
+            <table class="w-full">
+              <thead>
+                <tr class="border-y border-[#1a1a26] bg-[#10101a]">
+                  <th class="px-5 py-2 text-left text-[9.5px] font-medium uppercase tracking-[0.08em] text-[#4a4a5e] w-[52px] whitespace-nowrap">ID</th>
+                  <th class="px-4 py-2 text-left text-[9.5px] font-medium uppercase tracking-[0.08em] text-[#4a4a5e]">Title</th>
+                  <th class="px-4 py-2 text-left text-[9.5px] font-medium uppercase tracking-[0.08em] text-[#4a4a5e] w-[70px]">Priority</th>
+                  <th class="px-4 py-2 text-left text-[9.5px] font-medium uppercase tracking-[0.08em] text-[#4a4a5e] w-[80px]">Status</th>
+                  <th class="px-4 py-2 text-left text-[9.5px] font-medium uppercase tracking-[0.08em] text-[#4a4a5e] w-[80px]">Assignee</th>
+                  <th class="pr-5 pl-4 py-2 text-right text-[9.5px] font-medium uppercase tracking-[0.08em] text-[#4a4a5e] w-[46px]">Pts</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-[#151520] hover:bg-white/[0.012] transition-colors duration-75">
+                  <td class="px-5 py-[9px] text-[11.5px] text-[#5a5a6e] t">T-412</td>
+                  <td class="px-4 py-[9px] text-[11.5px] font-medium text-[#ebebef]">Migrate auth service to OAuth 2.1</td>
+                  <td class="px-4 py-[9px]"><span class="inline-flex items-center gap-1 text-[10.5px] text-[#5a5a6e]"><span class="w-[5px] h-[5px] rounded-full bg-red-400/60"></span>Urgent</span></td>
+                  <td class="px-4 py-[9px]"><span class="inline-flex items-center gap-1 text-[10.5px] text-[#5e6ad2]/80"><span class="w-[5px] h-[5px] rounded-full bg-[#5e6ad2]/60"></span>Active</span></td>
+                  <td class="px-4 py-[9px] text-[11px] text-[#5a5a6e]">Sarah C.</td>
+                  <td class="pr-5 pl-4 py-[9px] text-[11px] font-semibold text-right t text-[#ebebef]">8</td>
+                </tr>
+                <tr class="border-b border-[#151520] hover:bg-white/[0.012] transition-colors duration-75">
+                  <td class="px-5 py-[9px] text-[11.5px] text-[#5a5a6e] t">T-409</td>
+                  <td class="px-4 py-[9px] text-[11.5px] font-medium text-[#ebebef]">Add CSV export to reports module</td>
+                  <td class="px-4 py-[9px]"><span class="inline-flex items-center gap-1 text-[10.5px] text-[#5a5a6e]"><span class="w-[5px] h-[5px] rounded-full bg-amber-400/50"></span>High</span></td>
+                  <td class="px-4 py-[9px]"><span class="inline-flex items-center gap-1 text-[10.5px] text-[#5e6ad2]/80"><span class="w-[5px] h-[5px] rounded-full bg-[#5e6ad2]/60"></span>Active</span></td>
+                  <td class="px-4 py-[9px] text-[11px] text-[#5a5a6e]">Mike T.</td>
+                  <td class="pr-5 pl-4 py-[9px] text-[11px] font-semibold text-right t text-[#ebebef]">5</td>
+                </tr>
+                <tr class="border-b border-[#151520] hover:bg-white/[0.012] transition-colors duration-75">
+                  <td class="px-5 py-[9px] text-[11.5px] text-[#5a5a6e] t">T-407</td>
+                  <td class="px-4 py-[9px] text-[11.5px] font-medium text-[#ebebef]">Fix timezone handling in scheduler</td>
+                  <td class="px-4 py-[9px]"><span class="inline-flex items-center gap-1 text-[10.5px] text-[#5a5a6e]"><span class="w-[5px] h-[5px] rounded-full bg-amber-400/50"></span>High</span></td>
+                  <td class="px-4 py-[9px]"><span class="inline-flex items-center gap-1 text-[10.5px] text-[#8b8b9e]"><span class="w-[5px] h-[5px] rounded-full bg-[#8b8b9e]/40"></span>Review</span></td>
+                  <td class="px-4 py-[9px] text-[11px] text-[#5a5a6e]">Alex L.</td>
+                  <td class="pr-5 pl-4 py-[9px] text-[11px] font-semibold text-right t text-[#ebebef]">3</td>
+                </tr>
+                <tr class="border-b border-[#151520] hover:bg-white/[0.012] transition-colors duration-75">
+                  <td class="px-5 py-[9px] text-[11.5px] text-[#5a5a6e] t">T-405</td>
+                  <td class="px-4 py-[9px] text-[11.5px] font-medium text-[#ebebef]">Implement dark mode for settings page</td>
+                  <td class="px-4 py-[9px]"><span class="inline-flex items-center gap-1 text-[10.5px] text-[#5a5a6e]"><span class="w-[5px] h-[5px] rounded-full bg-[#5a5a6e]/60"></span>Medium</span></td>
+                  <td class="px-4 py-[9px]"><span class="inline-flex items-center gap-1 text-[10.5px] text-[#5e6ad2]/80"><span class="w-[5px] h-[5px] rounded-full bg-[#5e6ad2]/60"></span>Active</span></td>
+                  <td class="px-4 py-[9px] text-[11px] text-[#5a5a6e]">Jen P.</td>
+                  <td class="pr-5 pl-4 py-[9px] text-[11px] font-semibold text-right t text-[#ebebef]">3</td>
+                </tr>
+                <tr class="border-b border-[#151520] hover:bg-white/[0.012] transition-colors duration-75">
+                  <td class="px-5 py-[9px] text-[11.5px] text-[#5a5a6e] t">T-403</td>
+                  <td class="px-4 py-[9px] text-[11.5px] font-medium text-[#ebebef]">Optimize image pipeline for mobile</td>
+                  <td class="px-4 py-[9px]"><span class="inline-flex items-center gap-1 text-[10.5px] text-[#5a5a6e]"><span class="w-[5px] h-[5px] rounded-full bg-[#5a5a6e]/60"></span>Medium</span></td>
+                  <td class="px-4 py-[9px]"><span class="inline-flex items-center gap-1 text-[10.5px] text-[#5a5a6e]"><span class="w-[5px] h-[5px] rounded-full bg-[#5a5a6e]/40"></span>To Do</span></td>
+                  <td class="px-4 py-[9px] text-[11px] text-[#5a5a6e]">Sarah C.</td>
+                  <td class="pr-5 pl-4 py-[9px] text-[11px] font-semibold text-right t text-[#ebebef]">5</td>
+                </tr>
+                <tr class="border-b border-[#151520] hover:bg-white/[0.012] transition-colors duration-75">
+                  <td class="px-5 py-[9px] text-[11.5px] text-[#5a5a6e] t">T-401</td>
+                  <td class="px-4 py-[9px] text-[11.5px] font-medium text-[#ebebef]">Update API rate limiting config</td>
+                  <td class="px-4 py-[9px]"><span class="inline-flex items-center gap-1 text-[10.5px] text-[#5a5a6e]"><span class="w-[5px] h-[5px] rounded-full bg-[#5a5a6e]/40"></span>Low</span></td>
+                  <td class="px-4 py-[9px]"><span class="inline-flex items-center gap-1 text-[10.5px] text-[#5a5a6e]"><span class="w-[5px] h-[5px] rounded-full bg-[#5a5a6e]/40"></span>To Do</span></td>
+                  <td class="px-4 py-[9px] text-[11px] text-[#5a5a6e]">Mike T.</td>
+                  <td class="pr-5 pl-4 py-[9px] text-[11px] font-semibold text-right t text-[#ebebef]">2</td>
+                </tr>
+                <tr class="hover:bg-white/[0.012] transition-colors duration-75">
+                  <td class="px-5 py-[9px] text-[11.5px] text-[#5a5a6e] t">T-398</td>
+                  <td class="px-4 py-[9px] text-[11.5px] font-medium text-[#ebebef]">Write integration tests for payments</td>
+                  <td class="px-4 py-[9px]"><span class="inline-flex items-center gap-1 text-[10.5px] text-[#5a5a6e]"><span class="w-[5px] h-[5px] rounded-full bg-amber-400/50"></span>High</span></td>
+                  <td class="px-4 py-[9px]"><span class="inline-flex items-center gap-1 text-[10.5px] text-[#5a5a6e]"><span class="w-[5px] h-[5px] rounded-full bg-[#5a5a6e]/40"></span>To Do</span></td>
+                  <td class="px-4 py-[9px] text-[11px] text-[#5a5a6e]">Jen P.</td>
+                  <td class="pr-5 pl-4 py-[9px] text-[11px] font-semibold text-right t text-[#ebebef]">5</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="px-5 py-2 flex items-center justify-between text-[10px] text-[#4a4a5e] border-t border-[#1a1a26] t">
+              <span>1-7 of 16 issues</span>
+              <div class="flex items-center gap-0.5 text-[11px]">
+                <button class="w-5 h-5 rounded flex items-center justify-center text-[#2a2a3a]">&lsaquo;</button>
+                <button class="w-5 h-5 rounded flex items-center justify-center text-[#8b8b9e] hover:text-[#ebebef] transition-colors">&rsaquo;</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ASIDE: Team + Labels -->
+          <div class="rounded-md border border-[#1e1e2a] bg-[#14141e] p-4">
+            <h2 class="text-[12px] font-medium text-[#8b8b9e] mb-4">Team Load</h2>
+            <div class="space-y-[11px]">
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-[11px] text-[#8b8b9e]">Sarah C.</span>
+                  <span class="text-[11px] font-medium text-[#ebebef] t">18 pts</span>
+                </div>
+                <div class="w-full h-[3px] rounded-full bg-[#1e1e2a]"><div class="h-full rounded-full bg-[#5e6ad2]" style="width:72%"></div></div>
+              </div>
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-[11px] text-[#8b8b9e]">Mike T.</span>
+                  <span class="text-[11px] font-medium text-[#ebebef] t">12 pts</span>
+                </div>
+                <div class="w-full h-[3px] rounded-full bg-[#1e1e2a]"><div class="h-full rounded-full bg-[#5e6ad2]/70" style="width:48%"></div></div>
+              </div>
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-[11px] text-[#8b8b9e]">Jen P.</span>
+                  <span class="text-[11px] font-medium text-[#ebebef] t">11 pts</span>
+                </div>
+                <div class="w-full h-[3px] rounded-full bg-[#1e1e2a]"><div class="h-full rounded-full bg-[#5e6ad2]/70" style="width:44%"></div></div>
+              </div>
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-[11px] text-[#8b8b9e]">Alex L.</span>
+                  <span class="text-[11px] font-medium text-[#ebebef] t">3 pts</span>
+                </div>
+                <div class="w-full h-[3px] rounded-full bg-[#1e1e2a]"><div class="h-full rounded-full bg-[#5e6ad2]/50" style="width:12%"></div></div>
+              </div>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-[#1a1a26]">
+              <div class="text-[10px] font-medium uppercase tracking-[0.06em] text-[#4a4a5e] mb-2">Burndown</div>
+              <div class="flex items-baseline gap-1.5">
+                <span class="text-[18px] font-semibold text-[#ebebef] t tracking-[-0.02em]">16</span>
+                <span class="text-[10px] text-[#4a4a5e]">pts remaining</span>
+              </div>
+              <div class="text-[10px] text-[#4a4a5e] mt-0.5">3.2 pts/day needed</div>
+            </div>
+
+            <div class="mt-4 pt-4 border-t border-[#1a1a26]">
+              <div class="text-[10px] font-medium uppercase tracking-[0.06em] text-[#4a4a5e] mb-2">Blockers</div>
+              <div class="flex items-baseline gap-1.5">
+                <span class="text-[18px] font-semibold text-amber-400/70 t tracking-[-0.02em]">2</span>
+                <span class="text-[10px] text-[#4a4a5e]">issues blocked</span>
+              </div>
+              <div class="text-[10px] text-red-400/50 mt-0.5">Needs attention</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
+
