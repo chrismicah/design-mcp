@@ -1,0 +1,349 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pulse Finance â€” V3</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Inter', system-ui, sans-serif; font-feature-settings: 'cv02' 1, 'cv03' 1, 'cv11' 1; }
+    body { background: #0a0a0c; color: #fafafa; -webkit-font-smoothing: antialiased; }
+    .t { font-variant-numeric: tabular-nums; font-feature-settings: 'tnum' 1, 'cv02' 1; }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="flex min-h-screen">
+
+    <!-- SIDEBAR -->
+    <aside class="fixed left-0 top-0 bottom-0 w-[220px] border-r border-[#1a1a1e] bg-[#0a0a0c] flex flex-col z-10">
+      <div class="px-4 h-12 flex items-center gap-2">
+        <div class="w-[22px] h-[22px] rounded-[5px] bg-emerald-500/90 flex items-center justify-center text-[10px] font-bold text-white leading-none">P</div>
+        <span class="text-[13px] font-semibold text-zinc-100 tracking-[-0.01em]">Pulse Finance</span>
+      </div>
+
+      <nav class="flex-1 px-2 pt-1 flex flex-col gap-[1px]">
+        <a href="#" class="flex items-center gap-2 px-2.5 py-[5px] rounded-[5px] text-[12.5px] font-medium text-zinc-200 bg-white/[0.06]">
+          <svg class="w-[14px] h-[14px] opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25a2.25 2.25 0 0 1-2.25-2.25v-2.25Z"/></svg>
+          Overview
+        </a>
+        <a href="#" class="flex items-center gap-2 px-2.5 py-[5px] rounded-[5px] text-[12.5px] font-medium text-zinc-500 hover:text-zinc-300 hover:bg-white/[0.03] transition-colors duration-150">
+          <svg class="w-[14px] h-[14px] opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z"/></svg>
+          Accounts
+        </a>
+        <a href="#" class="flex items-center gap-2 px-2.5 py-[5px] rounded-[5px] text-[12.5px] font-medium text-zinc-500 hover:text-zinc-300 hover:bg-white/[0.03] transition-colors duration-150">
+          <svg class="w-[14px] h-[14px] opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"/></svg>
+          Transfers
+        </a>
+        <a href="#" class="flex items-center gap-2 px-2.5 py-[5px] rounded-[5px] text-[12.5px] font-medium text-zinc-500 hover:text-zinc-300 hover:bg-white/[0.03] transition-colors duration-150">
+          <svg class="w-[14px] h-[14px] opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"/></svg>
+          Analytics
+        </a>
+        <div class="px-2.5 mt-5 mb-1 text-[10px] font-medium uppercase tracking-[0.08em] text-zinc-700">Manage</div>
+        <a href="#" class="flex items-center gap-2 px-2.5 py-[5px] rounded-[5px] text-[12.5px] font-medium text-zinc-500 hover:text-zinc-300 hover:bg-white/[0.03] transition-colors duration-150">
+          <svg class="w-[14px] h-[14px] opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"/></svg>
+          Team
+        </a>
+        <a href="#" class="flex items-center gap-2 px-2.5 py-[5px] rounded-[5px] text-[12.5px] font-medium text-zinc-500 hover:text-zinc-300 hover:bg-white/[0.03] transition-colors duration-150">
+          <svg class="w-[14px] h-[14px] opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z"/><path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
+          Settings
+        </a>
+      </nav>
+
+      <div class="px-2 py-2 border-t border-[#1a1a1e]">
+        <div class="flex items-center gap-2 px-2.5 py-[5px] rounded-[5px] hover:bg-white/[0.03] transition-colors duration-150 cursor-pointer">
+          <div class="w-[22px] h-[22px] rounded-full bg-zinc-800 flex items-center justify-center text-[9px] font-medium text-zinc-400">JD</div>
+          <span class="text-[12.5px] text-zinc-500">James Denton</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="ml-[220px] flex-1 min-h-screen bg-[#0a0a0c]">
+      <header class="flex items-center justify-between px-6 h-12 border-b border-[#1a1a1e]">
+        <h1 class="text-[13px] font-semibold text-zinc-300">Overview</h1>
+        <div class="flex items-center gap-1.5">
+          <div class="flex items-center rounded-[5px] border border-[#1e1e22] overflow-hidden">
+            <button class="w-8 h-[26px] text-[10.5px] font-medium text-zinc-300 bg-white/[0.06]">7D</button>
+            <button class="w-8 h-[26px] text-[10.5px] font-medium text-zinc-600 hover:text-zinc-400 transition-colors">30D</button>
+            <button class="w-8 h-[26px] text-[10.5px] font-medium text-zinc-600 hover:text-zinc-400 transition-colors">90D</button>
+            <button class="w-8 h-[26px] text-[10.5px] font-medium text-zinc-600 hover:text-zinc-400 transition-colors">1Y</button>
+          </div>
+          <button class="h-[26px] px-2.5 rounded-[5px] text-[10.5px] font-medium text-zinc-500 hover:text-zinc-300 border border-[#1e1e22] hover:border-[#2a2a2e] transition-colors">
+            Export
+          </button>
+        </div>
+      </header>
+
+      <!-- All content uses a locked 20px vertical rhythm -->
+      <div class="px-6 pt-5">
+
+        <!-- HERO AUM -->
+        <div class="rounded-lg border border-[#1a1a1e] bg-[#101012] px-6 pt-5 pb-4">
+          <div class="flex items-start justify-between">
+            <div>
+              <div class="text-[10.5px] font-medium uppercase tracking-[0.06em] text-zinc-600">Total Assets Under Management</div>
+              <div class="mt-1.5 text-[2.75rem] font-semibold tracking-[-0.04em] text-zinc-50 leading-[1] t">$4,218,340</div>
+              <div class="mt-2 flex items-baseline gap-1.5">
+                <span class="text-[11px] font-medium text-emerald-400/80 t">+12.5%</span>
+                <span class="text-[11px] text-zinc-700">vs prev. 7d</span>
+              </div>
+            </div>
+            <svg width="120" height="44" viewBox="0 0 120 44" fill="none" class="mt-2">
+              <path d="M0 38 C8 36, 15 34, 24 30 C33 26, 38 28, 47 23 C56 18, 62 20, 71 15 C80 10, 86 11, 95 7 C104 3, 112 5, 120 2" stroke="#d4d4d8" stroke-width="1" fill="none" opacity="0.25"/>
+              <path d="M0 38 C8 36, 15 34, 24 30 C33 26, 38 28, 47 23 C56 18, 62 20, 71 15 C80 10, 86 11, 95 7 C104 3, 112 5, 120 2 V44 H0 Z" fill="url(#sg)"/>
+              <circle cx="120" cy="2" r="2" fill="#d4d4d8" opacity="0.3"/>
+              <defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="44"><stop offset="0%" stop-color="rgba(212,212,216,0.05)"/><stop offset="100%" stop-color="rgba(212,212,216,0)"/></linearGradient></defs>
+            </svg>
+          </div>
+        </div>
+
+        <!-- STAT ROW â€” 20px below hero -->
+        <div class="grid grid-cols-3 gap-3 mt-5">
+          <div class="rounded-md border border-[#16161a] bg-[#0e0e10] px-4 py-3 flex items-baseline justify-between">
+            <div>
+              <div class="text-[10px] text-zinc-600">Revenue</div>
+              <span class="text-[20px] font-semibold tracking-[-0.02em] text-zinc-200 t">$67,240</span>
+            </div>
+            <span class="text-[10.5px] font-medium text-emerald-400/70 t">+8.3%</span>
+          </div>
+          <div class="rounded-md border border-[#16161a] bg-[#0e0e10] px-4 py-3 flex items-baseline justify-between">
+            <div>
+              <div class="text-[10px] text-zinc-600">Clients</div>
+              <span class="text-[20px] font-semibold tracking-[-0.02em] text-zinc-200 t">1,847</span>
+            </div>
+            <span class="text-[10.5px] font-medium text-emerald-400/70 t">+34</span>
+          </div>
+          <div class="rounded-md border border-[#16161a] bg-[#0e0e10] px-4 py-3 flex items-baseline justify-between">
+            <div>
+              <div class="text-[10px] text-zinc-600">Margin</div>
+              <span class="text-[20px] font-semibold tracking-[-0.02em] text-zinc-200 t">14.7%</span>
+            </div>
+            <span class="text-[10.5px] font-medium text-red-400/50 t">-2.1%</span>
+          </div>
+        </div>
+
+        <!-- CHART â€” 20px below stats -->
+        <div class="rounded-lg border border-[#1a1a1e] bg-[#101012] mt-5">
+          <div class="flex items-center justify-between px-5 pt-4 pb-0">
+            <h2 class="text-[12px] font-medium text-zinc-400">Portfolio Performance</h2>
+            <div class="flex items-center gap-4">
+              <span class="flex items-center gap-1 text-[10px] text-zinc-600"><span class="w-1 h-1 rounded-full bg-zinc-300"></span>Actual</span>
+              <span class="flex items-center gap-1 text-[10px] text-zinc-600"><span class="w-1 h-1 rounded-full bg-zinc-600"></span>Projected</span>
+            </div>
+          </div>
+          <div class="h-[240px] relative px-5 pb-0 pt-3">
+            <!-- Y axis -->
+            <div class="absolute left-0 top-3 bottom-0 w-[42px] flex flex-col justify-between py-1 pr-2 text-right text-[9px] text-zinc-700 t">
+              <span>$5M</span><span>$4M</span><span>$3M</span><span>$2M</span><span>$1M</span>
+            </div>
+            <div class="ml-[42px] h-full">
+              <svg class="w-full h-full" viewBox="0 0 700 220" preserveAspectRatio="none">
+                <line x1="0" y1="44" x2="700" y2="44" stroke="rgba(255,255,255,0.025)"/>
+                <line x1="0" y1="88" x2="700" y2="88" stroke="rgba(255,255,255,0.025)"/>
+                <line x1="0" y1="132" x2="700" y2="132" stroke="rgba(255,255,255,0.025)"/>
+                <line x1="0" y1="176" x2="700" y2="176" stroke="rgba(255,255,255,0.025)"/>
+                <!-- Area -->
+                <path d="M0 200 C25 196, 50 190, 85 178 C120 166, 145 172, 185 155 C225 138, 260 132, 300 118 C340 104, 370 112, 410 98 C450 84, 480 76, 520 62 C560 48, 590 44, 640 32 L700 24 V220 H0 Z" fill="url(#cf)"/>
+                <!-- Main line -->
+                <path d="M0 200 C25 196, 50 190, 85 178 C120 166, 145 172, 185 155 C225 138, 260 132, 300 118 C340 104, 370 112, 410 98 C450 84, 480 76, 520 62 C560 48, 590 44, 640 32 L700 24" fill="none" stroke="#b4b4ba" stroke-width="1.25"/>
+                <!-- End dot -->
+                <circle cx="700" cy="24" r="2.5" fill="#b4b4ba"/>
+                <!-- Projected -->
+                <path d="M0 208 C25 204, 50 198, 85 190 C120 182, 145 186, 185 172 C225 158, 260 152, 300 140 C340 128, 370 132, 410 122 C450 112, 480 104, 520 92 C560 80, 590 74, 640 65 L700 58" fill="none" stroke="#2a2a30" stroke-width="1" stroke-dasharray="3 4"/>
+                <defs><linearGradient id="cf" x1="0" y1="0" x2="0" y2="220"><stop offset="0%" stop-color="rgba(180,180,186,0.05)"/><stop offset="80%" stop-color="rgba(180,180,186,0)"/></linearGradient></defs>
+              </svg>
+            </div>
+          </div>
+          <!-- X axis + inline stats as chart footer -->
+          <div class="ml-[42px] flex justify-between px-5 pt-1 text-[9px] text-zinc-700 t">
+            <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+          </div>
+          <div class="mx-5 mt-3 mb-4 pt-3 border-t border-[#16161a] flex items-center">
+            <div class="flex-1 flex items-baseline gap-1.5 px-1">
+              <span class="text-[10px] text-zinc-600">Avg. Portfolio</span>
+              <span class="text-[11.5px] font-medium text-zinc-400 t">$2.28M</span>
+            </div>
+            <div class="w-px h-3 bg-[#1e1e22]"></div>
+            <div class="flex-1 flex items-baseline gap-1.5 px-3">
+              <span class="text-[10px] text-zinc-600">Win Rate</span>
+              <span class="text-[11.5px] font-medium text-zinc-400 t">68.4%</span>
+            </div>
+            <div class="w-px h-3 bg-[#1e1e22]"></div>
+            <div class="flex-1 flex items-baseline gap-1.5 px-3">
+              <span class="text-[10px] text-zinc-600">Sharpe</span>
+              <span class="text-[11.5px] font-medium text-zinc-400 t">1.42</span>
+            </div>
+            <div class="w-px h-3 bg-[#1e1e22]"></div>
+            <div class="flex-1 flex items-baseline gap-1.5 px-3">
+              <span class="text-[10px] text-zinc-600">Pending</span>
+              <span class="text-[11.5px] font-medium text-amber-400/60 t">23</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- TABLE + ALLOCATION â€” 20px below chart -->
+        <div class="grid grid-cols-[1fr_260px] gap-4 mt-5 pb-6">
+
+          <!-- TABLE -->
+          <div class="rounded-lg border border-[#1a1a1e] bg-[#101012] overflow-hidden">
+            <div class="flex items-center justify-between px-5 h-10">
+              <h2 class="text-[12px] font-medium text-zinc-400">Recent Transactions</h2>
+              <button class="text-[10.5px] text-zinc-600 hover:text-zinc-400 transition-colors">View all â†’</button>
+            </div>
+            <table class="w-full" style="border-collapse: separate; border-spacing: 0;">
+              <thead>
+                <tr class="border-y border-[#16161a] bg-[#0c0c0e]">
+                  <th class="px-5 py-2 text-left text-[9.5px] font-medium uppercase tracking-[0.08em] text-zinc-700 w-[90px]">Ref</th>
+                  <th class="px-4 py-2 text-left text-[9.5px] font-medium uppercase tracking-[0.08em] text-zinc-700">Client</th>
+                  <th class="px-4 py-2 text-left text-[9.5px] font-medium uppercase tracking-[0.08em] text-zinc-700 w-[52px]">Type</th>
+                  <th class="px-4 py-2 text-left text-[9.5px] font-medium uppercase tracking-[0.08em] text-zinc-700 w-[72px]">Status</th>
+                  <th class="px-4 py-2 text-right text-[9.5px] font-medium uppercase tracking-[0.08em] text-zinc-700 w-[100px]">Amount</th>
+                  <th class="pr-5 pl-4 py-2 text-right text-[9.5px] font-medium uppercase tracking-[0.08em] text-zinc-700 w-[62px]">Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-[#131315] hover:bg-white/[0.012] transition-colors duration-75">
+                  <td class="px-5 py-[9px] text-[11.5px] text-zinc-600 t">4821</td>
+                  <td class="px-4 py-[9px] text-[11.5px] font-medium text-zinc-300">Meridian Capital</td>
+                  <td class="px-4 py-[9px] text-[11.5px] text-zinc-600">Wire</td>
+                  <td class="px-4 py-[9px]"><span class="inline-flex items-center gap-1 text-[10.5px] text-zinc-600"><span class="w-[5px] h-[5px] rounded-full bg-emerald-500/50"></span>Done</span></td>
+                  <td class="px-4 py-[9px] text-[11.5px] font-semibold text-right t text-emerald-400/80">+$284,500</td>
+                  <td class="pr-5 pl-4 py-[9px] text-[10.5px] text-zinc-700 text-right t whitespace-nowrap">Mar 7</td>
+                </tr>
+                <tr class="border-b border-[#131315] hover:bg-white/[0.012] transition-colors duration-75">
+                  <td class="px-5 py-[9px] text-[11.5px] text-zinc-600 t">4820</td>
+                  <td class="px-4 py-[9px] text-[11.5px] font-medium text-zinc-300">Blackridge Fund</td>
+                  <td class="px-4 py-[9px] text-[11.5px] text-zinc-600">ACH</td>
+                  <td class="px-4 py-[9px]"><span class="inline-flex items-center gap-1 text-[10.5px] text-zinc-600"><span class="w-[5px] h-[5px] rounded-full bg-emerald-500/50"></span>Done</span></td>
+                  <td class="px-4 py-[9px] text-[11.5px] font-semibold text-right t text-red-400/60">-$42,180</td>
+                  <td class="pr-5 pl-4 py-[9px] text-[10.5px] text-zinc-700 text-right t whitespace-nowrap">Mar 6</td>
+                </tr>
+                <tr class="border-b border-[#131315] hover:bg-white/[0.012] transition-colors duration-75">
+                  <td class="px-5 py-[9px] text-[11.5px] text-zinc-600 t">4819</td>
+                  <td class="px-4 py-[9px] text-[11.5px] font-medium text-zinc-300">Summit Advisors</td>
+                  <td class="px-4 py-[9px] text-[11.5px] text-zinc-600">Wire</td>
+                  <td class="px-4 py-[9px]"><span class="inline-flex items-center gap-1 text-[10.5px] text-amber-400/60"><span class="w-[5px] h-[5px] rounded-full bg-amber-400/50"></span>Pending</span></td>
+                  <td class="px-4 py-[9px] text-[11.5px] font-semibold text-right t text-emerald-400/80">+$156,000</td>
+                  <td class="pr-5 pl-4 py-[9px] text-[10.5px] text-zinc-700 text-right t whitespace-nowrap">Mar 6</td>
+                </tr>
+                <tr class="border-b border-[#131315] hover:bg-white/[0.012] transition-colors duration-75">
+                  <td class="px-5 py-[9px] text-[11.5px] text-zinc-600 t">4818</td>
+                  <td class="px-4 py-[9px] text-[11.5px] font-medium text-zinc-300">Apex Ventures</td>
+                  <td class="px-4 py-[9px] text-[11.5px] text-zinc-600">Check</td>
+                  <td class="px-4 py-[9px]"><span class="inline-flex items-center gap-1 text-[10.5px] text-zinc-600"><span class="w-[5px] h-[5px] rounded-full bg-emerald-500/50"></span>Done</span></td>
+                  <td class="px-4 py-[9px] text-[11.5px] font-semibold text-right t text-emerald-400/80">+$89,750</td>
+                  <td class="pr-5 pl-4 py-[9px] text-[10.5px] text-zinc-700 text-right t whitespace-nowrap">Mar 5</td>
+                </tr>
+                <tr class="border-b border-[#131315] hover:bg-white/[0.012] transition-colors duration-75">
+                  <td class="px-5 py-[9px] text-[11.5px] text-zinc-600 t">4817</td>
+                  <td class="px-4 py-[9px] text-[11.5px] font-medium text-zinc-300">Crestview LLC</td>
+                  <td class="px-4 py-[9px] text-[11.5px] text-zinc-600">ACH</td>
+                  <td class="px-4 py-[9px]"><span class="inline-flex items-center gap-1 text-[10.5px] text-zinc-600"><span class="w-[5px] h-[5px] rounded-full bg-emerald-500/50"></span>Done</span></td>
+                  <td class="px-4 py-[9px] text-[11.5px] font-semibold text-right t text-red-400/60">-$31,200</td>
+                  <td class="pr-5 pl-4 py-[9px] text-[10.5px] text-zinc-700 text-right t whitespace-nowrap">Mar 5</td>
+                </tr>
+                <tr class="border-b border-[#131315] hover:bg-white/[0.012] transition-colors duration-75">
+                  <td class="px-5 py-[9px] text-[11.5px] text-zinc-600 t">4816</td>
+                  <td class="px-4 py-[9px] text-[11.5px] font-medium text-zinc-300">Horizon Partners</td>
+                  <td class="px-4 py-[9px] text-[11.5px] text-zinc-600">Wire</td>
+                  <td class="px-4 py-[9px]"><span class="inline-flex items-center gap-1 text-[10.5px] text-zinc-600"><span class="w-[5px] h-[5px] rounded-full bg-emerald-500/50"></span>Done</span></td>
+                  <td class="px-4 py-[9px] text-[11.5px] font-semibold text-right t text-emerald-400/80">+$412,000</td>
+                  <td class="pr-5 pl-4 py-[9px] text-[10.5px] text-zinc-700 text-right t whitespace-nowrap">Mar 4</td>
+                </tr>
+                <tr class="border-b border-[#131315] hover:bg-white/[0.012] transition-colors duration-75">
+                  <td class="px-5 py-[9px] text-[11.5px] text-zinc-600 t">4815</td>
+                  <td class="px-4 py-[9px] text-[11.5px] font-medium text-zinc-300">Oakmont Wealth</td>
+                  <td class="px-4 py-[9px] text-[11.5px] text-zinc-600">ACH</td>
+                  <td class="px-4 py-[9px]"><span class="inline-flex items-center gap-1 text-[10.5px] text-zinc-600"><span class="w-[5px] h-[5px] rounded-full bg-emerald-500/50"></span>Done</span></td>
+                  <td class="px-4 py-[9px] text-[11.5px] font-semibold text-right t text-red-400/60">-$18,900</td>
+                  <td class="pr-5 pl-4 py-[9px] text-[10.5px] text-zinc-700 text-right t whitespace-nowrap">Mar 4</td>
+                </tr>
+                <tr class="hover:bg-white/[0.012] transition-colors duration-75">
+                  <td class="px-5 py-[9px] text-[11.5px] text-zinc-600 t">4814</td>
+                  <td class="px-4 py-[9px] text-[11.5px] font-medium text-zinc-300">Redstone Capital</td>
+                  <td class="px-4 py-[9px] text-[11.5px] text-zinc-600">Wire</td>
+                  <td class="px-4 py-[9px]"><span class="inline-flex items-center gap-1 text-[10.5px] text-zinc-600"><span class="w-[5px] h-[5px] rounded-full bg-emerald-500/50"></span>Done</span></td>
+                  <td class="px-4 py-[9px] text-[11.5px] font-semibold text-right t text-emerald-400/80">+$67,500</td>
+                  <td class="pr-5 pl-4 py-[9px] text-[10.5px] text-zinc-700 text-right t whitespace-nowrap">Mar 3</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="px-5 py-2 flex items-center justify-between text-[10px] text-zinc-700 border-t border-[#16161a]">
+              <span class="t">1â€“8 of 247</span>
+              <div class="flex items-center gap-0.5 text-[11px]">
+                <button class="w-5 h-5 rounded flex items-center justify-center text-zinc-800">â€¹</button>
+                <button class="w-5 h-5 rounded flex items-center justify-center text-zinc-500 hover:text-zinc-300 transition-colors">â€º</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ALLOCATION â€” fixed 260px -->
+          <div class="rounded-lg border border-[#1a1a1e] bg-[#101012] p-4">
+            <h2 class="text-[12px] font-medium text-zinc-400 mb-4">Allocation</h2>
+
+            <div class="space-y-[11px]">
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-[11px] text-zinc-400">Equities</span>
+                  <span class="text-[11px] font-medium text-zinc-300 t">42.3%</span>
+                </div>
+                <div class="w-full h-[3px] rounded-full bg-[#1a1a1e]"><div class="h-full rounded-full bg-zinc-400" style="width:42.3%"></div></div>
+              </div>
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-[11px] text-zinc-400">Fixed Income</span>
+                  <span class="text-[11px] font-medium text-zinc-300 t">28.1%</span>
+                </div>
+                <div class="w-full h-[3px] rounded-full bg-[#1a1a1e]"><div class="h-full rounded-full bg-zinc-500" style="width:28.1%"></div></div>
+              </div>
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-[11px] text-zinc-400">Real Estate</span>
+                  <span class="text-[11px] font-medium text-zinc-300 t">15.8%</span>
+                </div>
+                <div class="w-full h-[3px] rounded-full bg-[#1a1a1e]"><div class="h-full rounded-full bg-zinc-600" style="width:15.8%"></div></div>
+              </div>
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-[11px] text-zinc-400">Alternatives</span>
+                  <span class="text-[11px] font-medium text-zinc-300 t">9.4%</span>
+                </div>
+                <div class="w-full h-[3px] rounded-full bg-[#1a1a1e]"><div class="h-full rounded-full bg-zinc-700" style="width:9.4%"></div></div>
+              </div>
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-[11px] text-zinc-400">Cash</span>
+                  <span class="text-[11px] font-medium text-zinc-300 t">4.4%</span>
+                </div>
+                <div class="w-full h-[3px] rounded-full bg-[#1a1a1e]"><div class="h-full rounded-full bg-zinc-800" style="width:4.4%"></div></div>
+              </div>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-[#16161a]">
+              <div class="text-[10px] font-medium uppercase tracking-[0.06em] text-zinc-700 mb-2">Rebalance</div>
+              <div class="flex items-center gap-2">
+                <div class="flex-1 h-[3px] rounded-full bg-[#1a1a1e]"><div class="h-full rounded-full bg-emerald-500/40" style="width:78%"></div></div>
+                <span class="text-[10.5px] font-medium text-zinc-500 t">78%</span>
+              </div>
+              <div class="text-[10px] text-zinc-700 mt-1">3 accounts need attention</div>
+            </div>
+
+            <div class="mt-4 pt-4 border-t border-[#16161a]">
+              <div class="text-[10px] font-medium uppercase tracking-[0.06em] text-zinc-700 mb-2">Risk Score</div>
+              <div class="flex items-baseline gap-1.5">
+                <span class="text-[18px] font-semibold text-zinc-300 t tracking-[-0.02em]">72</span>
+                <span class="text-[10px] text-zinc-600">/ 100</span>
+              </div>
+              <div class="text-[10px] text-zinc-700 mt-0.5">Moderate Â· within target</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
+

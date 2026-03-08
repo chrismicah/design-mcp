@@ -1,0 +1,450 @@
+{
+  "_purpose": "Anti-Generic Design System: These are SPECIFIC CSS/Tailwind overrides that make AI output look human-designed. Every value here was chosen because it DIFFERS from what LLMs generate by default. The AI should copy these values directly — not interpret them.",
+
+  "font_system": {
+    "_why": "Font is the #1 tell of AI-generated UI. LLMs default to 'font-sans' (Inter/system-ui) with no OpenType features. Human designers use specific font stacks with tracking, tabular numerals, and optical sizing.",
+    
+    "imports": {
+      "geist": "@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap');",
+      "inter_display": "@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');",
+      "geist_mono": "@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap');"
+    },
+
+    "tailwind_theme": {
+      "@theme": {
+        "--font-sans": "\"Geist\", \"Inter\", ui-sans-serif, system-ui, sans-serif",
+        "--font-mono": "\"Geist Mono\", \"JetBrains Mono\", ui-monospace, monospace",
+        "--font-sans--font-feature-settings": "\"cv02\", \"cv03\", \"cv04\", \"cv11\"",
+        "--font-mono--font-feature-settings": "\"ss01\", \"ss02\""
+      }
+    },
+
+    "critical_css": {
+      "tabular_numerals": "font-variant-numeric: tabular-nums; font-feature-settings: 'tnum' 1;",
+      "tight_headings": "letter-spacing: -0.025em;",
+      "kpi_numbers": "letter-spacing: -0.03em; font-variant-numeric: tabular-nums; font-feature-settings: 'tnum' 1, 'cv02' 1;",
+      "small_labels": "letter-spacing: 0.01em; font-size: 0.8125rem;",
+      "monospace_data": "font-family: 'Geist Mono', 'JetBrains Mono', ui-monospace, monospace; font-size: 0.75rem; font-feature-settings: 'ss01' 1;"
+    },
+
+    "tailwind_classes": {
+      "kpi_value": "text-4xl font-semibold tracking-tight tabular-nums [font-feature-settings:'tnum'_1,'cv02'_1]",
+      "kpi_label": "text-[13px] font-medium text-muted-foreground tracking-[0.01em]",
+      "kpi_delta": "text-sm font-medium tabular-nums",
+      "section_heading": "text-[15px] font-semibold tracking-[-0.01em]",
+      "table_header": "text-[11px] font-medium uppercase tracking-[0.05em] text-muted-foreground",
+      "table_cell": "text-[13px] font-normal tabular-nums",
+      "table_amount": "text-[13px] font-medium tabular-nums text-right [font-feature-settings:'tnum'_1]",
+      "sidebar_item": "text-[13px] font-medium",
+      "sidebar_label": "text-[11px] font-medium uppercase tracking-[0.04em] text-muted-foreground/60",
+      "chart_axis": "text-[10px] font-normal text-muted-foreground/50 tabular-nums",
+      "chart_label": "text-[11px] font-medium text-muted-foreground",
+      "page_title": "text-[15px] font-semibold tracking-[-0.01em]",
+      "nav_item": "text-[13px] font-medium"
+    },
+
+    "anti_defaults": [
+      "NEVER use text-base (16px) in a dashboard. Use text-[13px] or text-sm (14px) as body size.",
+      "NEVER use default Tailwind tracking. KPI numbers need tracking-tight or tracking-[-0.03em].",
+      "ALWAYS add tabular-nums to any number that might change or appear in columns.",
+      "ALWAYS add font-feature-settings to the root. Use Geist features: cv02, cv03, cv04, cv11.",
+      "Headings use -0.025em tracking. Labels use +0.01em. Numbers use -0.03em. These DIFFER.",
+      "Table headers are 11px uppercase with 0.05em tracking — NOT the same size as table cells."
+    ]
+  },
+
+  "spacing_system": {
+    "_why": "AI-generated UIs have uniform spacing. Human-designed UIs use intentionally varied spacing that creates visual rhythm and hierarchy.",
+
+    "page_level": {
+      "content_max_width": "max-w-[1400px]",
+      "content_padding_x": "px-8",
+      "content_padding_y": "py-6",
+      "section_gap": "gap-8",
+      "kpi_row_gap": "gap-5"
+    },
+
+    "card_level": {
+      "standard": "p-6",
+      "compact": "p-5",
+      "stat_card": "px-6 py-5",
+      "chart_card": "p-6 pb-4",
+      "table_wrapper": "p-0 overflow-hidden"
+    },
+
+    "internal_rhythm": {
+      "label_to_value": "mt-1",
+      "value_to_delta": "mt-2",
+      "heading_to_content": "mt-4",
+      "between_table_rows": "py-3",
+      "icon_to_text": "gap-2",
+      "inline_items": "gap-3",
+      "filter_chips": "gap-2"
+    },
+
+    "sidebar": {
+      "width": "w-[240px]",
+      "padding": "px-3 py-4",
+      "item_padding": "px-3 py-[7px]",
+      "item_gap": "gap-0.5",
+      "section_gap": "mt-6",
+      "icon_size": "w-4 h-4"
+    },
+
+    "anti_defaults": [
+      "Card stat padding is px-6 py-5, NOT p-4 or p-5 (creates slight vertical asymmetry).",
+      "KPI row uses gap-5 (20px), NOT gap-4 (16px) — slightly wider than default feels intentional.",
+      "Table wrapper has p-0 with overflow-hidden — the table edges touch the card border.",
+      "Chart cards use pb-4 (less than top padding) — charts need less bottom breathing room.",
+      "Sidebar items use py-[7px] — NOT py-2 (8px). The 1px difference feels less mechanical."
+    ]
+  },
+
+  "color_overrides": {
+    "_why": "LLMs pick colors from their training data: saturated greens, reds, and purples. Human designers use muted, desaturated variants. These specific hex values break AI color defaults.",
+
+    "dark_dashboard": {
+      "bg": "#09090b",
+      "surface": "#111113",
+      "elevated": "#18181b",
+      "hover": "#1c1c1f",
+      "border": "rgba(255,255,255,0.06)",
+      "border_hover": "rgba(255,255,255,0.1)",
+      "fg": "#fafafa",
+      "fg_secondary": "#a1a1aa",
+      "fg_muted": "#52525b",
+      "fg_placeholder": "#3f3f46",
+      "accent": "#3b82f6",
+      "accent_muted": "rgba(59,130,246,0.15)",
+      "success": "#22c55e",
+      "success_muted": "rgba(34,197,94,0.15)",
+      "success_text": "#4ade80",
+      "danger": "#ef4444",
+      "danger_muted": "rgba(239,68,68,0.12)",
+      "danger_text": "#f87171",
+      "warning": "#eab308",
+      "warning_text": "#facc15",
+      "chart_primary": "#e4e4e7",
+      "chart_secondary": "#52525b",
+      "chart_grid": "rgba(255,255,255,0.04)",
+      "skeleton": "#18181b"
+    },
+
+    "mercury_profile": {
+      "bg": "#0a0d10",
+      "surface": "#12161c",
+      "elevated": "#1a1f28",
+      "border": "rgba(255,255,255,0.06)",
+      "fg": "#e4e7eb",
+      "fg_secondary": "#8b949e",
+      "accent": "#3fb950",
+      "success_text": "#56d364",
+      "danger_text": "#f85149"
+    },
+
+    "linear_profile": {
+      "bg": "#0d0d12",
+      "surface": "#14141e",
+      "elevated": "#1c1c2a",
+      "border": "rgba(255,255,255,0.06)",
+      "fg": "#ebebef",
+      "fg_secondary": "#8b8b9e",
+      "accent": "#5e6ad2",
+      "accent_hover": "#6c77e0"
+    },
+
+    "stripe_profile": {
+      "bg": "#f6f9fc",
+      "surface": "#ffffff",
+      "elevated": "#ffffff",
+      "border": "#e3e8ee",
+      "fg": "#0a2540",
+      "fg_secondary": "#425466",
+      "fg_muted": "#8898aa",
+      "accent": "#635bff"
+    },
+
+    "delta_colors": {
+      "_why": "AI defaults to saturated green (#22c55e) and red (#ef4444). Mercury uses muted variants on dark backgrounds. The delta text should be subdued, not screaming.",
+      "positive": {
+        "text": "#4ade80",
+        "bg": "rgba(34,197,94,0.1)",
+        "class": "text-emerald-400/80"
+      },
+      "negative": {
+        "text": "#f87171",
+        "bg": "rgba(239,68,68,0.08)",
+        "class": "text-red-400/70"
+      },
+      "neutral": {
+        "text": "#a1a1aa",
+        "class": "text-zinc-400"
+      }
+    },
+
+    "anti_defaults": [
+      "Background is #09090b (zinc-950), NOT #000000 or #111111. Pure black is harsh; zinc-950 is warm.",
+      "Surface is #111113, NOT #1a1a1a. The slight blue undertone creates depth.",
+      "Borders are rgba(255,255,255,0.06), NOT #333 or border-gray-700. Opacity borders adapt.",
+      "Delta green is text-emerald-400/80, NOT text-green-500. Desaturated + opacity = professional.",
+      "Delta red is text-red-400/70, NOT text-red-500. Muted reds don't scream.",
+      "Chart grid lines are rgba(255,255,255,0.04) — BARELY visible. AI makes them too strong."
+    ]
+  },
+
+  "component_code": {
+    "_why": "Instead of placeholder [component:X] references, these are actual Tailwind class strings the AI should use directly.",
+
+    "stat_card_dark": {
+      "wrapper": "rounded-xl border border-white/[0.06] bg-[#111113] px-6 py-5",
+      "label": "text-[13px] font-medium text-zinc-400",
+      "value": "mt-1 text-3xl font-semibold tracking-tight text-zinc-50 tabular-nums",
+      "large_value": "mt-1 text-[2.5rem] font-semibold tracking-[-0.03em] text-zinc-50 tabular-nums leading-none",
+      "delta_positive": "mt-2 flex items-center gap-1 text-sm font-medium text-emerald-400/80",
+      "delta_negative": "mt-2 flex items-center gap-1 text-sm font-medium text-red-400/70",
+      "delta_neutral": "mt-2 flex items-center gap-1 text-sm font-medium text-zinc-500",
+      "delta_subtext": "text-zinc-500 ml-1"
+    },
+
+    "primary_stat_card_dark": {
+      "_note": "Use for the MAIN KPI — spans 2 columns, larger value. Creates asymmetry.",
+      "wrapper": "col-span-2 rounded-xl border border-white/[0.06] bg-[#111113] px-6 py-5",
+      "label": "text-[13px] font-medium text-zinc-400",
+      "value": "mt-1 text-[2.75rem] font-semibold tracking-[-0.03em] text-zinc-50 tabular-nums leading-none",
+      "delta": "mt-3 flex items-center gap-1.5 text-sm font-medium"
+    },
+
+    "sidebar_dark": {
+      "container": "fixed left-0 top-0 bottom-0 w-[240px] border-r border-white/[0.06] bg-[#09090b] flex flex-col",
+      "logo_area": "px-4 py-4 flex items-center gap-2.5",
+      "logo_icon": "w-7 h-7 rounded-lg bg-zinc-800 flex items-center justify-center text-[13px] font-semibold text-zinc-50",
+      "logo_text": "text-[14px] font-semibold text-zinc-50",
+      "nav_section": "flex-1 px-2 py-2 flex flex-col gap-0.5",
+      "nav_item": "flex items-center gap-2.5 px-3 py-[7px] rounded-lg text-[13px] font-medium text-zinc-500 hover:text-zinc-300 hover:bg-white/[0.04] transition-colors duration-150",
+      "nav_item_active": "flex items-center gap-2.5 px-3 py-[7px] rounded-lg text-[13px] font-medium text-zinc-100 bg-white/[0.06]",
+      "nav_icon": "w-4 h-4 opacity-60",
+      "nav_icon_active": "w-4 h-4 opacity-100",
+      "section_label": "px-3 mt-6 mb-1 text-[11px] font-medium uppercase tracking-[0.04em] text-zinc-600",
+      "user_area": "mt-auto px-3 py-3 border-t border-white/[0.06] flex items-center gap-2.5",
+      "user_avatar": "w-7 h-7 rounded-full bg-zinc-700 flex items-center justify-center text-[11px] font-medium text-zinc-300",
+      "user_name": "text-[13px] font-medium text-zinc-300"
+    },
+
+    "table_dark": {
+      "wrapper": "rounded-xl border border-white/[0.06] bg-[#111113] overflow-hidden",
+      "header_row": "border-b border-white/[0.06] bg-[#0d0d0f]",
+      "header_cell": "px-6 py-3 text-left text-[11px] font-medium uppercase tracking-[0.05em] text-zinc-500",
+      "body_row": "border-b border-white/[0.04] hover:bg-white/[0.02] transition-colors duration-100",
+      "body_row_last": "hover:bg-white/[0.02] transition-colors duration-100",
+      "cell": "px-6 py-3.5 text-[13px] text-zinc-400",
+      "cell_primary": "px-6 py-3.5 text-[13px] font-medium text-zinc-200",
+      "cell_amount": "px-6 py-3.5 text-[13px] font-medium text-right tabular-nums",
+      "cell_amount_positive": "px-6 py-3.5 text-[13px] font-medium text-right tabular-nums text-emerald-400/80",
+      "cell_amount_negative": "px-6 py-3.5 text-[13px] font-medium text-right tabular-nums text-red-400/70",
+      "cell_badge": "inline-flex items-center gap-1.5 text-[12px] font-medium",
+      "badge_dot": "w-1.5 h-1.5 rounded-full",
+      "pagination": "px-6 py-3 flex items-center justify-between text-[12px] text-zinc-500 border-t border-white/[0.04]"
+    },
+
+    "chart_dark": {
+      "wrapper": "rounded-xl border border-white/[0.06] bg-[#111113] p-6 pb-4",
+      "header": "flex items-center justify-between mb-6",
+      "title": "text-[15px] font-semibold text-zinc-200 tracking-[-0.01em]",
+      "legend_item": "flex items-center gap-1.5 text-[11px] font-medium text-zinc-500",
+      "legend_dot": "w-2 h-2 rounded-full",
+      "axis_tick": "text-[10px] fill-zinc-500/60 tabular-nums",
+      "grid_line": "stroke-white/[0.04] stroke-dasharray-3",
+      "tooltip": "bg-[#18181b] border border-white/[0.08] rounded-md px-3 py-2 text-[12px] shadow-lg",
+      "primary_line": "stroke-zinc-200 stroke-width-1.5 fill-none",
+      "secondary_line": "stroke-zinc-600 stroke-width-1 stroke-dasharray-4 fill-none",
+      "area_fill": "fill-zinc-200/[0.04]",
+      "bar": "fill-zinc-300 rx-1.5",
+      "bar_secondary": "fill-zinc-600 rx-1.5"
+    },
+
+    "header_dark": {
+      "wrapper": "flex items-center justify-between px-8 py-4 border-b border-white/[0.06]",
+      "page_title": "text-[15px] font-semibold text-zinc-100 tracking-[-0.01em]",
+      "actions": "flex items-center gap-2",
+      "icon_button": "w-8 h-8 rounded-lg border border-white/[0.06] flex items-center justify-center text-zinc-500 hover:text-zinc-300 hover:bg-white/[0.04] transition-colors duration-150",
+      "tab_group": "flex items-center rounded-lg border border-white/[0.06] overflow-hidden",
+      "tab": "px-3 py-1.5 text-[12px] font-medium text-zinc-500 hover:text-zinc-300 transition-colors duration-150",
+      "tab_active": "px-3 py-1.5 text-[12px] font-medium text-zinc-100 bg-white/[0.06]",
+      "primary_button": "px-4 py-2 rounded-lg bg-zinc-100 text-[13px] font-medium text-zinc-900 hover:bg-white transition-colors duration-150"
+    }
+  },
+
+  "layout_patterns": {
+    "_why": "Specific grid patterns that create hierarchy. AI defaults to equal columns.",
+
+    "dashboard_4_kpi": {
+      "description": "Primary KPI spans 2 cols, 3 secondary take remaining space. Creates clear hierarchy.",
+      "grid": "grid grid-cols-4 gap-5",
+      "primary": "col-span-2",
+      "secondary": "col-span-1",
+      "jsx_skeleton": "<div className=\"grid grid-cols-4 gap-5\">\n  <StatCard className=\"col-span-2\" label=\"...\" value=\"$4.2M\" delta=\"+12.5%\" primary />\n  <StatCard label=\"...\" value=\"$67K\" delta=\"+8.3%\" />\n  <StatCard label=\"...\" value=\"14.7%\" delta=\"-2.1%\" />\n</div>"
+    },
+
+    "dashboard_6_kpi": {
+      "description": "Primary KPI full width on own row, 4 secondary below. Dramatic hierarchy.",
+      "grid_top": "grid grid-cols-1 mb-5",
+      "grid_bottom": "grid grid-cols-4 gap-5",
+      "jsx_skeleton": "<div className=\"space-y-5\">\n  <StatCard label=\"Total AUM\" value=\"$4.2M\" delta=\"+12.5%\" primary size=\"hero\" />\n  <div className=\"grid grid-cols-4 gap-5\">\n    <StatCard label=\"...\" value=\"...\" />\n    <StatCard label=\"...\" value=\"...\" />\n    <StatCard label=\"...\" value=\"...\" />\n    <StatCard label=\"...\" value=\"...\" />\n  </div>\n</div>"
+    },
+
+    "dashboard_main_area": {
+      "description": "Main content takes 2/3, sidebar panel takes 1/3. Not equal.",
+      "grid": "grid grid-cols-3 gap-5",
+      "main": "col-span-2",
+      "aside": "col-span-1"
+    },
+
+    "anti_defaults": [
+      "NEVER put 4 equal stat cards in a row. The primary KPI MUST be larger (col-span-2 or different text size).",
+      "NEVER split chart and table 50/50. Use 2:1 ratio (col-span-2 + col-span-1).",
+      "NEVER center-align KPI values. Left-align everything.",
+      "NEVER use justify-center on stat card content. Use text-left.",
+      "Gap between KPI cards is gap-5 (20px), NOT gap-4 (16px) — breaks the 'default' feel."
+    ]
+  },
+
+  "aesthetic_profiles": {
+    "_why": "Named profiles let the AI say 'use Mercury style' and get a complete, specific set of values. Each profile is a verified set of tokens that work together.",
+
+    "mercury": {
+      "font": "\"Inter\", system-ui, sans-serif",
+      "font_features": "cv02, cv03, cv11",
+      "bg": "#0a0d10",
+      "surface": "#12161c",
+      "fg": "#e4e7eb",
+      "fg_muted": "#8b949e",
+      "accent": "#3fb950",
+      "border": "rgba(255,255,255,0.06)",
+      "kpi_size": "text-[2.5rem]",
+      "kpi_tracking": "-0.03em",
+      "body_size": "13px",
+      "radius": "0.75rem",
+      "vibe": "near-black + green surgical accent + stark monochrome charts + zero decoration"
+    },
+
+    "linear": {
+      "font": "\"Inter\", system-ui, sans-serif",
+      "font_features": "cv02, cv03",
+      "bg": "#0d0d12",
+      "surface": "#14141e",
+      "fg": "#ebebef",
+      "fg_muted": "#8b8b9e",
+      "accent": "#5e6ad2",
+      "border": "rgba(255,255,255,0.06)",
+      "kpi_size": "text-4xl",
+      "kpi_tracking": "-0.025em",
+      "body_size": "13px",
+      "radius": "0.5rem",
+      "vibe": "deep indigo-black + purple-blue accent + progress bars as primary visual + minimal icons"
+    },
+
+    "vercel": {
+      "font": "\"Geist\", system-ui, sans-serif",
+      "font_features": "cv02, cv03, cv04, cv11",
+      "bg": "#000000",
+      "surface": "#0a0a0a",
+      "fg": "#ededed",
+      "fg_muted": "#666666",
+      "accent": "#0070f3",
+      "border": "rgba(255,255,255,0.08)",
+      "kpi_size": "text-4xl",
+      "kpi_tracking": "-0.025em",
+      "body_size": "14px",
+      "radius": "0.75rem",
+      "vibe": "true black + blue accent + Geist typeface + pixel-perfect grid + zero warmth"
+    },
+
+    "stripe": {
+      "font": "\"Inter\", system-ui, sans-serif",
+      "font_features": "cv02",
+      "bg": "#f6f9fc",
+      "surface": "#ffffff",
+      "fg": "#0a2540",
+      "fg_muted": "#8898aa",
+      "accent": "#635bff",
+      "border": "#e3e8ee",
+      "kpi_size": "text-3xl",
+      "kpi_tracking": "-0.02em",
+      "body_size": "14px",
+      "radius": "0.5rem",
+      "vibe": "warm white-blue + purple accent + generous whitespace + shadows over borders"
+    },
+
+    "notion": {
+      "font": "\"Inter\", system-ui, sans-serif",
+      "font_features": "normal",
+      "bg": "#ffffff",
+      "surface": "#ffffff",
+      "fg": "#37352f",
+      "fg_muted": "#787774",
+      "accent": "#2eaadc",
+      "border": "#e9e9e7",
+      "kpi_size": "text-3xl",
+      "kpi_tracking": "-0.02em",
+      "body_size": "14px",
+      "radius": "0.375rem",
+      "vibe": "warm off-white + content-first + minimal chrome + warm grays (not blue-grays)"
+    }
+  },
+
+  "global_anti_patterns": {
+    "_critical": "These are the MOST COMMON AI-generated design mistakes. If the generated code contains ANY of these, the MCP has failed.",
+    "patterns": [
+      {
+        "name": "The Equal Grid",
+        "description": "4 stat cards in a row, all same size. No hierarchy.",
+        "fix": "Make primary KPI span 2 columns or use significantly larger text (text-[2.5rem] vs text-3xl)."
+      },
+      {
+        "name": "The Purple Default",
+        "description": "Using indigo/purple as the primary accent. This is the #1 AI color choice.",
+        "fix": "Choose a color that matches the domain. Finance: green or blue. Project management: violet. Health: teal."
+      },
+      {
+        "name": "The Glass Card",
+        "description": "backdrop-blur + bg-white/10 on cards. Nobody ships this in production dashboards.",
+        "fix": "Solid background + 1px border. bg-[#111113] border border-white/[0.06]. Done."
+      },
+      {
+        "name": "The Gradient Button",
+        "description": "bg-gradient-to-r on primary buttons.",
+        "fix": "Solid bg-zinc-100 text-zinc-900 (dark mode) or bg-zinc-900 text-white (light mode)."
+      },
+      {
+        "name": "The Glow Effect",
+        "description": "Box shadows with colored glow. shadow-[0_0_20px_rgba(99,102,241,0.3)].",
+        "fix": "No shadows in dark mode. In light mode: shadow-sm at most."
+      },
+      {
+        "name": "The 16px Body",
+        "description": "Using text-base (16px) as the default body size in a dashboard.",
+        "fix": "Dashboards use text-[13px] body, text-sm (14px) max. Information density matters."
+      },
+      {
+        "name": "The Centered Everything",
+        "description": "justify-center and text-center on stat cards and content.",
+        "fix": "Left-align everything. Real dashboards are left-aligned. Only center hero text on landing pages."
+      },
+      {
+        "name": "The Icon Container",
+        "description": "40px colored circle with icon inside stat cards.",
+        "fix": "No icons in stat cards. The number IS the visual. If icons are needed: inline, 16px, muted color."
+      },
+      {
+        "name": "The Rainbow Status",
+        "description": "Multiple saturated colors for status badges (green, red, yellow, blue, purple).",
+        "fix": "Use colored dots (w-1.5 h-1.5 rounded-full) next to text. NOT full colored badges."
+      },
+      {
+        "name": "The Default Font",
+        "description": "font-sans with no tracking, no font-feature-settings, no tabular-nums.",
+        "fix": "Add tracking-tight to KPIs, tracking-[0.05em] to table headers, tabular-nums to all numbers. Add font-feature-settings: 'cv02', 'cv03' to Inter/Geist."
+      }
+    ]
+  }
+}

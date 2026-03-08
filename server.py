@@ -28,9 +28,10 @@ _token_sets = []
 _decision_trees_indexed = []
 _anti_pattern_fixes = {}
 _visual_recipes = {}
+_anti_generic = {}
 
 def _load_indexed_data():
-    global _token_sets, _decision_trees_indexed, _anti_pattern_fixes, _visual_recipes
+    global _token_sets, _decision_trees_indexed, _anti_pattern_fixes, _visual_recipes, _anti_generic
     token_path = BASE_DIR / "data" / "tokens" / "token_sets.json"
     if token_path.exists():
         with open(token_path) as f:
@@ -47,6 +48,10 @@ def _load_indexed_data():
     if recipe_path.exists():
         with open(recipe_path) as f:
             _visual_recipes = json.load(f)
+    anti_generic_path = BASE_DIR / "data" / "anti_generic_system.json"
+    if anti_generic_path.exists():
+        with open(anti_generic_path) as f:
+            _anti_generic = json.load(f)
 
 _load_indexed_data()
 
@@ -461,6 +466,74 @@ async def analyze_and_devibecode(source_code: str) -> dict:
             "recommended_libraries": [],
             "detected_component_type": "Unknown",
         }
+
+
+# ============================================================
+# TOOL 7.5: Get Anti-Generic Design System
+# ============================================================
+@mcp.tool()
+async def get_design_system(
+    page_type: Optional[str] = "Dashboard",
+    color_mode: Optional[str] = "dark",
+    aesthetic: Optional[str] = None,
+) -> dict:
+    """
+    Get the anti-generic design system: specific Tailwind classes, font settings,
+    color tokens, spacing values, and component code that make AI output look
+    human-designed. USE THIS before generating any UI code.
+
+    These values are intentionally different from LLM defaults. Copy them directly.
+
+    Args:
+        page_type: The type of page ('Dashboard', 'Landing Page', 'E-commerce', etc.)
+        color_mode: 'dark' or 'light'
+        aesthetic: Optional named profile ('mercury', 'linear', 'vercel', 'stripe', 'notion')
+
+    Returns:
+        Complete design system with font imports, Tailwind classes for every component,
+        color tokens, spacing values, layout patterns, and anti-patterns to avoid.
+    """
+    if not _anti_generic:
+        return {"error": "Anti-generic design system not loaded"}
+
+    result = {
+        "font_system": _anti_generic.get("font_system", {}),
+        "spacing_system": _anti_generic.get("spacing_system", {}),
+        "global_anti_patterns": _anti_generic.get("global_anti_patterns", {}),
+    }
+
+    # Color tokens based on mode
+    color_overrides = _anti_generic.get("color_overrides", {})
+    if color_mode == "dark":
+        result["color_tokens"] = color_overrides.get("dark_dashboard", {})
+    result["delta_colors"] = color_overrides.get("delta_colors", {})
+
+    # Component code
+    component_code = _anti_generic.get("component_code", {})
+    suffix = "_dark" if color_mode == "dark" else "_light"
+    result["component_classes"] = {}
+    for key in ["stat_card", "primary_stat_card", "sidebar", "table", "chart", "header"]:
+        code_key = f"{key}{suffix}"
+        if code_key in component_code:
+            result["component_classes"][key] = component_code[code_key]
+
+    # Layout patterns for dashboards/data pages
+    is_data_heavy = page_type in ("Dashboard", "Analytics", "Admin Panel", "CRM", "E-commerce")
+    if is_data_heavy:
+        result["layout_patterns"] = _anti_generic.get("layout_patterns", {})
+
+    # Aesthetic profile
+    profiles = _anti_generic.get("aesthetic_profiles", {})
+    if aesthetic and aesthetic.lower() in profiles:
+        result["aesthetic_profile"] = profiles[aesthetic.lower()]
+    elif aesthetic:
+        # Fuzzy match
+        for pname, profile in profiles.items():
+            if aesthetic.lower() in pname or pname in aesthetic.lower():
+                result["aesthetic_profile"] = profile
+                break
+
+    return result
 
 
 # ============================================================
@@ -1226,6 +1299,59 @@ def _to_blueprint(pattern: DesignPattern) -> dict:
     recipe_keys = recipe_relevance.get(page, ["color_restraint", "depth_system", "typography_is_design"])
     visual_recipes = {k: _visual_recipes[k] for k in recipe_keys if k in _visual_recipes}
 
+    # Build anti-generic design system injection
+    design_system = {}
+    if _anti_generic:
+        mode = pattern.color_mode or "dark"
+        page = pattern.page_type or ""
+        is_dashboard = page in ("Dashboard", "Analytics", "Admin Panel", "CRM", "Settings")
+        is_data_heavy = page in ("Dashboard", "Analytics", "Admin Panel", "CRM", "E-commerce", "Marketplace")
+
+        # Always inject font system and anti-patterns
+        design_system["font_system"] = _anti_generic.get("font_system", {})
+        design_system["global_anti_patterns"] = _anti_generic.get("global_anti_patterns", {})
+
+        # Inject color overrides based on mode
+        color_overrides = _anti_generic.get("color_overrides", {})
+        if mode == "dark":
+            design_system["color_tokens"] = color_overrides.get("dark_dashboard", {})
+        design_system["delta_colors"] = color_overrides.get("delta_colors", {})
+
+        # Inject component code for data-heavy pages
+        if is_data_heavy:
+            component_code = _anti_generic.get("component_code", {})
+            if mode == "dark":
+                design_system["component_classes"] = {
+                    "stat_card": component_code.get("stat_card_dark", {}),
+                    "primary_stat_card": component_code.get("primary_stat_card_dark", {}),
+                    "sidebar": component_code.get("sidebar_dark", {}),
+                    "table": component_code.get("table_dark", {}),
+                    "chart": component_code.get("chart_dark", {}),
+                    "header": component_code.get("header_dark", {}),
+                }
+
+        # Inject layout patterns for dashboards
+        if is_dashboard:
+            design_system["layout_patterns"] = _anti_generic.get("layout_patterns", {})
+            design_system["spacing_system"] = _anti_generic.get("spacing_system", {})
+
+        # Match aesthetic profile from pattern colors/style
+        profiles = _anti_generic.get("aesthetic_profiles", {})
+        colors = pattern.primary_colors or []
+        name_lower = (pattern.name or "").lower()
+        matched_profile = None
+        for pname, profile in profiles.items():
+            if pname.startswith("_") or not isinstance(profile, dict):
+                continue
+            if pname in name_lower:
+                matched_profile = profile
+                break
+            if profile.get("accent") in colors:
+                matched_profile = profile
+                break
+        if matched_profile:
+            design_system["aesthetic_profile"] = matched_profile
+
     blueprint = {
         "id": pattern.id,
         "name": pattern.name,
@@ -1243,6 +1369,7 @@ def _to_blueprint(pattern: DesignPattern) -> dict:
         "component_hints": _resolve_component_code(pattern.component_hints),
         "decision_tree": resolved_tree,
         "visual_recipes": visual_recipes,
+        "design_system": design_system,
         "source_url": pattern.source_url,
     }
     # Remove None/empty values to save tokens
