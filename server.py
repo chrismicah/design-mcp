@@ -502,6 +502,12 @@ async def get_design_system(
         "global_anti_patterns": _anti_generic.get("global_anti_patterns", {}),
     }
 
+    # Elevation system
+    elevation = _anti_generic.get("elevation_system", {})
+    if color_mode == "dark" and elevation:
+        result["elevation"] = elevation.get("dark", {})
+        result["elevation_rules"] = elevation.get("rules", [])
+
     # Color tokens based on mode
     color_overrides = _anti_generic.get("color_overrides", {})
     if color_mode == "dark":
@@ -512,15 +518,18 @@ async def get_design_system(
     component_code = _anti_generic.get("component_code", {})
     suffix = "_dark" if color_mode == "dark" else "_light"
     result["component_classes"] = {}
-    for key in ["stat_card", "primary_stat_card", "sidebar", "table", "chart", "header"]:
+    for key in ["hero_kpi", "secondary_kpi", "sidebar", "table", "chart",
+                "header", "allocation", "stat_card", "primary_stat_card"]:
         code_key = f"{key}{suffix}"
         if code_key in component_code:
             result["component_classes"][key] = component_code[code_key]
 
-    # Layout patterns for dashboards/data pages
+    # Composition rules and layout patterns for dashboards/data pages
     is_data_heavy = page_type in ("Dashboard", "Analytics", "Admin Panel", "CRM", "E-commerce")
     if is_data_heavy:
-        result["layout_patterns"] = _anti_generic.get("layout_patterns", {})
+        composition = _anti_generic.get("composition_rules", {})
+        if composition:
+            result["composition_rules"] = composition
 
     # Aesthetic profile
     profiles = _anti_generic.get("aesthetic_profiles", {})
@@ -1317,22 +1326,30 @@ def _to_blueprint(pattern: DesignPattern) -> dict:
             design_system["color_tokens"] = color_overrides.get("dark_dashboard", {})
         design_system["delta_colors"] = color_overrides.get("delta_colors", {})
 
+        # Inject elevation system
+        elevation = _anti_generic.get("elevation_system", {})
+        if mode == "dark" and elevation:
+            design_system["elevation"] = elevation.get("dark", {})
+            design_system["elevation_rules"] = elevation.get("rules", [])
+
         # Inject component code for data-heavy pages
         if is_data_heavy:
             component_code = _anti_generic.get("component_code", {})
-            if mode == "dark":
-                design_system["component_classes"] = {
-                    "stat_card": component_code.get("stat_card_dark", {}),
-                    "primary_stat_card": component_code.get("primary_stat_card_dark", {}),
-                    "sidebar": component_code.get("sidebar_dark", {}),
-                    "table": component_code.get("table_dark", {}),
-                    "chart": component_code.get("chart_dark", {}),
-                    "header": component_code.get("header_dark", {}),
-                }
+            suffix = "_dark" if mode == "dark" else "_light"
+            classes = {}
+            for key in ["hero_kpi", "secondary_kpi", "sidebar", "table", "chart",
+                        "header", "allocation", "stat_card", "primary_stat_card"]:
+                code_key = f"{key}{suffix}"
+                if code_key in component_code:
+                    classes[key] = component_code[code_key]
+            if classes:
+                design_system["component_classes"] = classes
 
-        # Inject layout patterns for dashboards
+        # Inject composition rules and spacing for dashboards
         if is_dashboard:
-            design_system["layout_patterns"] = _anti_generic.get("layout_patterns", {})
+            composition = _anti_generic.get("composition_rules", {})
+            if composition:
+                design_system["composition_rules"] = composition
             design_system["spacing_system"] = _anti_generic.get("spacing_system", {})
 
         # Match aesthetic profile from pattern colors/style
