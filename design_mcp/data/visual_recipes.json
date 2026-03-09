@@ -1,0 +1,247 @@
+{
+  "_philosophy": "Real design is about RESTRAINT, not effects. The best sites (Stripe, Linear, Vercel, Mercury) are 90% neutral colors with surgical accent use. Glass, gradients, and glow are the #1 sign of AI-generated UI. These recipes encode what human designers actually do.",
+  
+  "color_restraint": {
+    "name": "Color Restraint",
+    "description": "The single most important rule: use FEWER colors, not more. The best sites are nearly monochromatic. Study Stripe (#635bff + #0a2540 + #f6f9fc), Vercel (#000 + #fff + #0070f3), Mercury (near-black + white + one teal). Accent color appears in <5% of pixels.",
+    "rules": [
+      "Pick ONE accent color. Use it ONLY for: primary CTAs, active nav state, links, and key data highlights.",
+      "Everything else is neutral: greys for text (3-4 shades), near-white or near-black for backgrounds.",
+      "Never use accent color for backgrounds or large surfaces. It's a scalpel, not a paintbrush.",
+      "Status colors (green/red/yellow) are semantic, not decorative. They appear only with data.",
+      "If you need a second color, use it for a DIFFERENT purpose (e.g., accent=actions, second=data category). Never for decoration.",
+      "Test: take a screenshot, desaturate it. If you can't tell where the accent was, you used it right — it guided the eye to what matters."
+    ],
+    "palettes": {
+      "stripe_style": {
+        "bg": "#f6f9fc", "surface": "#ffffff", "fg": "#0a2540", "fg_secondary": "#425466", "fg_muted": "#8898aa", "accent": "#635bff", "border": "#e3e8ee"
+      },
+      "vercel_style": {
+        "bg": "#000000", "surface": "#111111", "fg": "#ededed", "fg_secondary": "#888888", "fg_muted": "#666666", "accent": "#0070f3", "border": "#333333"
+      },
+      "mercury_style": {
+        "bg": "#0c0f12", "surface": "#141820", "fg": "#e4e7eb", "fg_secondary": "#8b949e", "fg_muted": "#484f58", "accent": "#3fb950", "border": "#21262d"
+      },
+      "linear_style": {
+        "bg": "#111118", "surface": "#1a1a24", "fg": "#e5e5e5", "fg_secondary": "#8b8b8b", "fg_muted": "#555555", "accent": "#5e6ad2", "border": "#2a2a35"
+      },
+      "notion_style": {
+        "bg": "#ffffff", "surface": "#ffffff", "fg": "#37352f", "fg_secondary": "#787774", "fg_muted": "#b4b4b0", "accent": "#2eaadc", "border": "#e9e9e7"
+      }
+    },
+    "anti_patterns": [
+      "Gradient backgrounds on cards",
+      "Glass/blur effects on everything",
+      "Purple/indigo as primary color (the #1 AI default)",
+      "Accent color on sidebar backgrounds, card backgrounds, or large areas",
+      "Multiple saturated colors visible at once",
+      "Colored borders or glowing shadows"
+    ]
+  },
+
+  "depth_system": {
+    "name": "Depth Through Subtlety",
+    "description": "Real depth comes from tiny border and background shifts, NOT from glass/blur/glow. Study Vercel: black bg → #111 card → #222 hover. That's it. No blur, no gradients.",
+    "dark": {
+      "base": "#0a0a0a",
+      "surface": "#111111",
+      "elevated": "#171717",
+      "hover": "#1a1a1a",
+      "border": "rgba(255, 255, 255, 0.08)",
+      "border_subtle": "rgba(255, 255, 255, 0.04)"
+    },
+    "light": {
+      "base": "#fafafa",
+      "surface": "#ffffff",
+      "elevated": "#ffffff",
+      "hover": "#f5f5f5",
+      "border": "#eaeaea",
+      "border_subtle": "#f0f0f0"
+    },
+    "rules": [
+      "Cards: solid background + 1px border. NOT glass, NOT gradient, NOT glow.",
+      "Hover: darken/lighten background by one step. No transform, no shadow increase.",
+      "Shadows: extremely subtle or none. Real dashboards rarely use shadows. Stripe uses 0 1px 3px rgba(0,0,0,0.08).",
+      "Focus rings: 2px solid accent color. Simple.",
+      "Sidebar: same as base or one step up. Not a different color universe."
+    ]
+  },
+
+  "typography_is_design": {
+    "name": "Typography IS The Design",
+    "description": "In the best dashboards, typography does 80% of the visual work. Size, weight, color, and spacing create hierarchy — not borders, badges, or icons. Study Mercury: the numbers ARE the design.",
+    "system": {
+      "display": { "size": "text-3xl or text-4xl", "weight": "font-semibold", "tracking": "tracking-tight", "use": "Page-level KPI values ($4.2M)" },
+      "heading": { "size": "text-lg or text-xl", "weight": "font-semibold", "tracking": "tracking-tight", "use": "Section titles, card headings" },
+      "subheading": { "size": "text-sm", "weight": "font-medium", "color": "secondary", "use": "Card labels, table headers, metadata labels" },
+      "body": { "size": "text-sm", "weight": "font-normal", "color": "secondary", "use": "Descriptions, table cells, content" },
+      "caption": { "size": "text-xs", "weight": "font-normal", "color": "muted", "use": "Timestamps, helper text, footnotes" },
+      "mono": { "size": "text-xs", "weight": "font-mono", "color": "muted", "use": "IDs, codes, technical values" }
+    },
+    "rules": [
+      "Use text-sm (14px) as your base, not text-base (16px). Dashboards are information-dense.",
+      "KPI values should be the LARGEST text on the page. They are the hero content.",
+      "Labels are SMALL and MUTED. They describe, they don't compete with values.",
+      "Inter/Geist/SF Pro for UI. Don't use display fonts in dashboards.",
+      "Line height: 1.5 for body, 1.2 for headings and values.",
+      "Letter spacing: -0.02em on large values (tracking-tight), normal on body."
+    ],
+    "anti_patterns": [
+      "All text the same size",
+      "Labels and values in the same color/weight",
+      "Display font in a dashboard",
+      "Text larger than 2.5rem in a dashboard context",
+      "Missing font-feature-settings: 'tnum' on numbers (tabular-nums)"
+    ]
+  },
+
+  "whitespace_as_design": {
+    "name": "Whitespace as Design Element",
+    "description": "The #1 difference between designed and AI-generated UI is whitespace. AI packs everything tight. Human designers leave room to breathe. Study Stripe's dashboard: massive margins, generous padding, no crowding.",
+    "rules": [
+      "Page padding: px-8 py-6 minimum. Real sites often use px-12 or more.",
+      "Between sections: gap-8 (32px) or more. NOT gap-4.",
+      "Card padding: p-6 minimum. The content should float inside, not touch edges.",
+      "Between label and value: mb-1 (4px). Small gap = strong association.",
+      "Between cards in a grid: gap-4 to gap-6. Not gap-2.",
+      "Header height: py-4 to py-5. Not py-2.",
+      "Table rows: py-4 for comfortable, py-3 for dense. Not py-2.",
+      "Empty space is not wasted space. It directs attention."
+    ],
+    "anti_patterns": [
+      "Cards touching each other (gap-1 or gap-2)",
+      "Content pressed against card edges (p-3 or p-4 in a dashboard card)",
+      "No vertical breathing room between sections",
+      "Everything crammed above the fold — real dashboards scroll"
+    ]
+  },
+
+  "component_design": {
+    "name": "Component Design Principles",
+    "description": "How individual components should look in a professional dashboard.",
+    "stat_card": {
+      "structure": "Label (small, muted) on top → Value (large, bold) → Change indicator (small, colored)",
+      "tailwind_dark": "bg-[#111] border border-[#222] rounded-lg p-6",
+      "tailwind_light": "bg-white border border-gray-200 rounded-lg p-6",
+      "label": "text-sm font-medium text-gray-500",
+      "value": "text-3xl font-semibold tracking-tight mt-1",
+      "change": "text-sm font-medium mt-2 flex items-center gap-1",
+      "icon": "OPTIONAL. If used: small (16px), muted color, inline with label. NOT a 40px icon container.",
+      "anti_patterns": [
+        "Icon in a colored circle container (AI signature move)",
+        "Glass/gradient background",
+        "Hover transform/glow",
+        "Badge-style change indicator (just use text + arrow)"
+      ]
+    },
+    "sidebar": {
+      "structure": "Logo → Nav items → Bottom: user or settings",
+      "width": "w-60 (240px) or w-56 (224px). Never w-72 (288px)+",
+      "active_state": "bg-[#1a1a1a] text-white (dark) or bg-gray-100 text-gray-900 (light). ONE flat color, no gradient.",
+      "inactive": "text-gray-500 hover:text-gray-300 hover:bg-[#1a1a1a] (dark)",
+      "icons": "w-4 h-4, same color as text. Lucide with strokeWidth={1.5}",
+      "anti_patterns": [
+        "Gradient on active item",
+        "Glow or shadow on active item",
+        "Section labels in ALL CAPS with tracking-widest (overdesigned)",
+        "Upgrade CTA card (every AI template has this)"
+      ]
+    },
+    "data_table": {
+      "header": "text-xs font-medium text-gray-500 uppercase tracking-wider. Border-bottom only.",
+      "row": "border-t border-[#222]. Hover: bg-[#1a1a1a]. Text: text-sm.",
+      "emphasis_column": "font-medium text-white (the primary data column)",
+      "secondary_columns": "text-gray-400",
+      "amounts": "tabular-nums, text-right, font-medium. Green/red for +/-.",
+      "status": "Small text with a colored dot, NOT a full badge",
+      "pagination": "text-xs text-gray-500. 'Showing 1-10 of 247'. Minimal arrows.",
+      "anti_patterns": [
+        "Full colored badges for status",
+        "Hover effects that lift rows",
+        "Alternating row colors",
+        "Heavy borders between rows"
+      ]
+    },
+    "button": {
+      "primary": "bg-white text-black rounded-lg px-4 py-2 text-sm font-medium (dark mode). bg-black text-white (light mode). That's it. No gradient.",
+      "secondary": "border border-[#333] text-gray-300 rounded-lg px-4 py-2 text-sm font-medium. Hover: bg-[#1a1a1a].",
+      "ghost": "text-gray-400 hover:text-gray-200. No border, no background.",
+      "anti_patterns": [
+        "Gradient buttons",
+        "Buttons with glow/shadow",
+        "Buttons with icons AND text AND badge"
+      ]
+    },
+    "chart": {
+      "area_chart": "Stroke 1.5-2px, fill with gradient to transparent (opacity 0.1 to 0). One color per series.",
+      "grid": "Horizontal only, dashed, very faint (opacity 0.05). No vertical grid.",
+      "axes": "No axis lines. Ticks only, text-xs, muted color.",
+      "tooltip": "Simple bg-[#1a1a1a] border border-[#333] rounded-md px-3 py-2 text-xs. NOT glass.",
+      "legend": "Inline in the card header, not below the chart.",
+      "anti_patterns": [
+        "Default Recharts styling",
+        "Glass tooltip",
+        "Multiple bright colors",
+        "3D effects or heavy shadows"
+      ]
+    }
+  },
+
+  "motion_restraint": {
+    "name": "Motion with Restraint",
+    "description": "Real apps use minimal motion. Linear animates list items with 150ms opacity. Vercel uses 200ms transitions. Nobody uses staggered entrance animations on a dashboard — that's a landing page technique.",
+    "rules": [
+      "Dashboards: transition-colors duration-150 on hover. That's it for most elements.",
+      "Page transitions: 200ms fade or none. Users revisit dashboards hundreds of times — animation gets old.",
+      "Entrance animations: ONLY on first load of fresh data, and only opacity (no translateY).",
+      "Stagger animations: ONLY on landing pages and marketing sites. Never on dashboards.",
+      "Loading states: skeleton screens that match the layout. No spinners, no shimmer.",
+      "Charts: subtle draw-in on data change. Not on page load."
+    ],
+    "anti_patterns": [
+      "Framer Motion stagger on dashboard cards",
+      "translateY entrance on every section",
+      "Hover: scale or translateY (lifting cards)",
+      "Glow effects on hover",
+      "Any animation that plays every time the page loads"
+    ]
+  },
+
+  "surface_treatment": {
+    "name": "Surface Treatment",
+    "description": "How to add visual interest WITHOUT glass/blur/gradients.",
+    "techniques": {
+      "subtle_border": "1px border in a color barely distinguishable from background. This IS the design.",
+      "background_steps": "Background colors that differ by just 2-3% lightness between levels.",
+      "dot_pattern": "Subtle dot pattern (1px dots at 3% opacity, 24px grid) for empty areas. Vercel does this.",
+      "gradient_text": "Gradient on HERO TEXT ONLY (landing pages). Never in a dashboard.",
+      "muted_icons": "Icons at 40-50% opacity, same hue as text. They inform, they don't decorate."
+    },
+    "anti_patterns": [
+      "Noise texture overlay (trendy AI move)",
+      "Gradient mesh backgrounds",
+      "Glassmorphism (backdrop-blur)",
+      "Box shadows on cards in dark mode",
+      "Colored borders",
+      "Inner glow effects"
+    ]
+  },
+
+  "layout_hierarchy": {
+    "name": "Layout Hierarchy",
+    "description": "Not everything gets equal space. The most important content gets the most visual weight.",
+    "rules": [
+      "If you have 4 KPIs and they're all the same size, none of them is important. Make the primary one 2x width or significantly larger text.",
+      "The primary chart takes 2/3 width. Secondary takes 1/3. Never equal.",
+      "Navigation is infrastructure — it should be quiet. Content is king.",
+      "Data tables are the most important element in most dashboards. Give them room.",
+      "Filters and controls go ABOVE the content they affect, in a single row. Not in a sidebar."
+    ],
+    "anti_patterns": [
+      "4 identical stat cards in a row (no hierarchy)",
+      "Two charts taking equal space when one is clearly primary",
+      "Sidebar taking more visual attention than the main content",
+      "Everything above the fold (dashboards should scroll)"
+    ]
+  }
+}
