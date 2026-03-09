@@ -1,0 +1,52 @@
+{
+  "div_soup": {
+    "fix": "Replace <div> wrappers with semantic HTML: <header>, <nav>, <main>, <section>, <article>, <aside>, <footer>. Rule: if a div has a role description (navigation, content area, sidebar), it should be a semantic element.",
+    "before": "<div className=\"header\"><div className=\"nav\">...</div></div>",
+    "after": "<header><nav aria-label=\"Main navigation\">...</nav></header>"
+  },
+  "missing_flex_grid": {
+    "fix": "Add flex or grid layout to containers with multiple children. Use 'flex' for 1D layouts (row or column), 'grid' for 2D layouts (cards, dashboards).",
+    "before": "<div className=\"p-4\"><Card /><Card /><Card /></div>",
+    "after": "<div className=\"grid grid-cols-1 md:grid-cols-3 gap-4 p-4\"><Card /><Card /><Card /></div>"
+  },
+  "low_contrast": {
+    "fix": "Ensure text-to-background contrast meets WCAG AA (4.5:1 for normal text, 3:1 for large text). Use the pattern's semantic tokens: color-foreground on color-background.",
+    "before": "<p className=\"text-gray-400 bg-gray-800\">Hard to read</p>",
+    "after": "<p className=\"text-gray-200 bg-gray-900\">Easy to read (7.5:1 ratio)</p>"
+  },
+  "inline_style_abuse": {
+    "fix": "Replace inline styles with Tailwind utilities or CSS variables. Inline styles can't use media queries, pseudo-classes, or be overridden by theme.",
+    "before": "<div style={{width: \"300px\", backgroundColor: \"#1a1a2e\"}}>",
+    "after": "<div className=\"w-[300px] bg-[--color-background]\">"
+  },
+  "missing_aria": {
+    "fix": "Add ARIA attributes to interactive elements and landmarks. Every form input needs a label. Every icon button needs aria-label. Every section needs a heading or aria-label.",
+    "before": "<button onClick={toggle}><MenuIcon /></button>",
+    "after": "<button onClick={toggle} aria-label=\"Toggle menu\" aria-expanded={isOpen}><MenuIcon aria-hidden=\"true\" /></button>"
+  },
+  "hardcoded_pixels": {
+    "fix": "Replace hardcoded pixel values with the spacing scale or responsive units. Use rem for typography, spacing scale for padding/margin, and viewport units for layout.",
+    "before": "<div className=\"w-[347px] h-[52px] mt-[23px]\">",
+    "after": "<div className=\"w-full max-w-sm h-13 mt-6\">"
+  },
+  "color_proliferation": {
+    "fix": "Limit to 1-2 brand colors + neutrals. Define colors as CSS variables or Tailwind theme, then reference semantically. Every color should have a purpose: primary (CTAs), accent (highlights), neutral (backgrounds/text), semantic (success/error/warning).",
+    "before": "bg-[#3b82f6] text-[#1e40af] border-[#60a5fa] ring-[#93c5fd]",
+    "after": "bg-primary text-primary-foreground border-primary/30 ring-primary/50"
+  },
+  "typography_scale": {
+    "fix": "Limit to 4-6 text sizes with clear hierarchy: display (page title), heading (section), subhead (card title), body (content), caption (metadata). Map to Tailwind: text-4xl, text-2xl, text-lg, text-base, text-sm.",
+    "before": "text-[13px] text-[17px] text-[21px] text-[28px] text-[36px] text-[42px] text-[11px]",
+    "after": "text-sm text-base text-lg text-2xl text-4xl (5 sizes, clear hierarchy)"
+  },
+  "spacing_inconsistency": {
+    "fix": "Use a consistent spacing scale: 1 (4px), 2 (8px), 3 (12px), 4 (16px), 6 (24px), 8 (32px), 12 (48px), 16 (64px). Stick to 6-8 values project-wide.",
+    "before": "p-3 mt-5 mb-7 gap-[18px] px-[22px]",
+    "after": "p-4 mt-6 mb-8 gap-4 px-6 (all on the 8pt grid)"
+  },
+  "absolute_positioning": {
+    "fix": "Replace absolute positioning with flexbox or grid for layout. Absolute is only appropriate for: overlays, tooltips, dropdown menus, and decorative elements positioned relative to a parent.",
+    "before": "<div className=\"absolute top-[120px] left-[240px] w-[300px]\">",
+    "after": "<div className=\"ml-60 mt-auto w-full max-w-xs\"> (or use grid placement)"
+  }
+}
