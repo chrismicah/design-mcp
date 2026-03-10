@@ -82,7 +82,7 @@ def _resolve_decision_tree(pattern_dict: dict) -> dict:
 # ============================================================
 # TOOL 1: Search Design Patterns
 # ============================================================
-@mcp.tool()
+@mcp.tool(description="Search 7,000+ real-world UI patterns by page type, industry, style, or natural language query. Use BEFORE generating any UI.")
 async def search_design_patterns(
     query: str,
     page_type: Optional[str] = None,
@@ -130,7 +130,7 @@ async def search_design_patterns(
 # ============================================================
 # TOOL 2: Get Full Blueprint
 # ============================================================
-@mcp.tool()
+@mcp.tool(description="Get the full design blueprint for a specific pattern including layout, tokens, behavior, and component structure.")
 async def get_design_blueprint(pattern_id: str, detailed: bool = False) -> dict:
     """
     Get the full design blueprint for a specific pattern.
@@ -164,7 +164,7 @@ async def get_design_blueprint(pattern_id: str, detailed: bool = False) -> dict:
 # ============================================================
 # TOOL 3: Get Semantic Tokens
 # ============================================================
-@mcp.tool()
+@mcp.tool(description="Get semantic design tokens (colors, spacing, typography, radii) for consistent styling. Generates WCAG-AA palettes from any hex color.")
 async def get_semantic_tokens(
     style: Optional[str] = None,
     primary_color: Optional[str] = None,
@@ -237,7 +237,7 @@ async def get_semantic_tokens(
 # ============================================================
 # TOOL 4: Get Taxonomy
 # ============================================================
-@mcp.tool()
+@mcp.tool(description="List all available page types, UX patterns, UI elements, industries, and visual styles in the database.")
 async def get_design_taxonomy() -> dict:
     """
     Get the full taxonomy of design categories available in the database.
@@ -255,7 +255,7 @@ async def get_design_taxonomy() -> dict:
 # ============================================================
 # TOOL 5: Get Behavioral Pattern
 # ============================================================
-@mcp.tool()
+@mcp.tool(description="Get behavioral specs for UX patterns: empty states, loading, error handling, forms, onboarding, etc. Describes HOW it should work, not just look.")
 async def get_behavioral_pattern(pattern_name: str) -> dict:
     """
     Get the behavioral specification for a common UX pattern.
@@ -283,7 +283,7 @@ async def get_behavioral_pattern(pattern_name: str) -> dict:
 # ============================================================
 # TOOL 6: Compare Patterns
 # ============================================================
-@mcp.tool()
+@mcp.tool(description="Compare how different real products handle the same page type, showing different layout and component strategies side-by-side.")
 async def compare_design_approaches(
     page_type: str,
     limit: int = 3
@@ -311,7 +311,7 @@ async def compare_design_approaches(
 # ============================================================
 # TOOL 7: Analyze and Devibecode
 # ============================================================
-@mcp.tool()
+@mcp.tool(description="Scan UI code (JSX/TSX/HTML) for 15 categories of anti-patterns — styling hacks, layout issues, accessibility gaps — and get actionable fix suggestions with code examples.")
 async def analyze_and_devibecode(source_code: str) -> dict:
     """
     Static analysis anti-pattern detector for vibecoded UI code.
@@ -471,7 +471,7 @@ async def analyze_and_devibecode(source_code: str) -> dict:
 # ============================================================
 # TOOL 7.5: Get Anti-Generic Design System
 # ============================================================
-@mcp.tool()
+@mcp.tool(description="Get a complete anti-generic design system with specific Tailwind classes, fonts, colors, spacing, and component code that makes AI output look human-designed.")
 async def get_design_system(
     page_type: Optional[str] = "Dashboard",
     color_mode: Optional[str] = "dark",
@@ -548,7 +548,7 @@ async def get_design_system(
 # ============================================================
 # TOOL 8: Get Library Recommendations
 # ============================================================
-@mcp.tool()
+@mcp.tool(description="Get recommended React component libraries (Shadcn, Radix, Mantine, etc.) based on use case, needed UI elements, visual style, and feature requirements.")
 async def get_library_recommendations(
     use_case: Optional[str] = None,
     ui_elements: Optional[list[str]] = None,
@@ -662,7 +662,7 @@ async def get_library_recommendations(
 # ============================================================
 # TOOL 9: Get Library Details
 # ============================================================
-@mcp.tool()
+@mcp.tool(description="Get full details on a specific frontend library: all components, install command, code examples, and what it pairs well with.")
 async def get_library_details(library_name: str) -> dict:
     """
     Get detailed information about a specific frontend library including
@@ -710,7 +710,7 @@ async def get_library_details(library_name: str) -> dict:
 # ============================================================
 # TOOL 10: Scan Project for Anti-Patterns
 # ============================================================
-@mcp.tool()
+@mcp.tool(description="Scan an entire project directory for UI anti-patterns across all component files. Returns health score, priority fixes, and per-file reports.")
 async def scan_project(
     project_path: str,
     file_extensions: Optional[list[str]] = None,
@@ -970,7 +970,7 @@ async def scan_project(
 # ============================================================
 # TOOL 11: Generate Refactored Code
 # ============================================================
-@mcp.tool()
+@mcp.tool(description="Analyze vibecoded UI and generate a concrete refactoring plan with before/after code using a real component library (Shadcn, Mantine, etc.).")
 async def generate_refactored_code(
     source_code: str,
     target_library: str = "shadcn-ui",
@@ -1503,7 +1503,7 @@ def _generate_comparison_summary(patterns: list[DesignPattern]) -> str:
 # ============================================================
 # TOOL 12: Visual Design Suggestions
 # ============================================================
-@mcp.tool()
+@mcp.tool(description="Get visual design recipes — craft techniques (glassmorphism, depth layers, text hierarchy, animations) with ready-to-use CSS/Tailwind snippets.")
 async def get_visual_recipe(
     recipe: Optional[str] = None,
     page_type: Optional[str] = None,
@@ -1561,7 +1561,7 @@ async def get_visual_recipe(
     return _visual_recipes
 
 
-@mcp.tool()
+@mcp.tool(description="Analyze UI code for visual design quality (colors, typography, spacing) and generate a complete design system with palette, font pairings, and CSS variables.")
 async def get_visual_suggestions(
     source_code: str,
     primary_color: Optional[str] = None,
@@ -1613,7 +1613,7 @@ async def get_visual_suggestions(
                     if name not in ('white', 'black', 'slate', 'gray', 'zinc', 'neutral', 'stone'):
                         color_counts[c['hex']] += 1
                 elif c.get('source') == 'hex':
-                    from models.visual_analyzer import hex_to_rgb, rgb_to_hsl
+                    from .models.visual_analyzer import hex_to_rgb, rgb_to_hsl
                     r, g, b = hex_to_rgb(c['hex'])
                     h, s, l = rgb_to_hsl(r, g, b)
                     if s > 15 and 10 < l < 90:  # Chromatic, not too dark/light
