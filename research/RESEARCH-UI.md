@@ -1,0 +1,26 @@
+# How strong interfaces are composed
+
+I inspected the three Awwwards publisher images referenced below, award-page element descriptions, and source text from Apple, Linear, and Instrument. The award images are submitted stills. The award-page motion labels describe the published examples. Live behavior, computed mobile styles and motion timing remain for the final GUI lane. [Source receipt](../evidence/research/UI-SOURCES.md)
+
+| Reference | Observed design move | Transfer to new work |
+| --- | --- | --- |
+| Studio D by Exo Ape, Site of the Day | A wide canal and architectural rendering surround an inset ivory stage. The left-aligned sans headline crosses the inset photo boundary once, contrasting with one small italic serif line. The exact site being designed provides the imagery. The award page calls out project and services navigation as separate elements. | Use the project artifact itself as proof. Pick one place a grid boundary can be broken and give the text tested contrast across that edge. On narrow screens put the caption and media in reading order. [Award](https://www.awwwards.com/sites/studio-d) |
+| A24 experimental filmography, Site of the Day | A thin frame and quiet central navigation anchor dramatically cropped discs arranged diagonally. Film information occupies compact ruled rows at top left. The books-and-records cadence is tied to the collection by the actual title art. The award page distinguishes detail and collection transitions. | In an archive, let one content artifact own the composition and preserve a fast, accessible index. Motion can express selection or a change of context. Cropped objects or transitions need a usable linear counterpart. [Award](https://www.awwwards.com/sites/a24) |
+| Agrumea Farm by Studio K95, Site of the Day | The actual preserves jars are oversized and angled across a pale ground with an oxblood graphic and orange lettering. Their packaging creates the palette variation. The small white product action has space to stand out against the large graphic. The award identifies separate product, hover and scroll elements. | Let packaging or another subject-specific image establish shape and palette. Use a dominant asset and one restrained action. Under reduced motion, show the same product information and action directly. [Award](https://www.awwwards.com/sites/agrumea-farm) |
+| Apple MacBook Air | The source separates design, performance and feature sections. “Built to go places” is immediately supported by 2.7 pounds, less than half an inch, and physical size choices. Four color options, model sizes, color-matched cable and AR are each attached to the object they describe. Its stylesheet defines the hero headline at 64, 56 and 32 px by breakpoint, with a 17 px typography body style. | Use proof next to the claim. Pair each product feature with a specific asset, fact, meaningful control, and short caption. Treat Apple font choices and slogans as their brand, with no transfer to this corpus. [Apple product page](https://www.apple.com/macbook-air/) |
+| Linear and Instrument | Linear shows named issue items, branch state and changed files as content. Instrument’s work index leads with named outcomes and case-study paths for Electronic Arts, Oura, ServiceNow and Nike. | Use believable populated records and selected states on product screens. For an agency, lead with relevant work and a link to the resulting case study. [Linear](https://linear.app/) · [Instrument work index](https://www.instrument.com/work/) |
+
+## Art-direction record
+
+Use these as fields authors can prove on a rendered page. Capture what the subject contributes before picking treatments.
+
+| Field | Acceptance |
+| --- | --- |
+| Type roles | Name licensed display and workhorse faces, weights and fallbacks. For prominent display copy, use the brief’s 2.5–5× display/body range and −0.02 to −0.04em tracking as starting targets. Check line breaks, contrast, loaded type, long text and 390 px. |
+| Grid and rhythm | Specify anchors, content spans, gutters and narrower reading order. Describe one asymmetric, offset, overlapping or full-bleed moment and what content earns it. Make the hierarchy visible in a grayscale blur. |
+| Ink, paper and accent | Give the palette roles, measured foreground/background pairings, and one place the accent leads the eye. Preserve semantic status cues. |
+| Art direction | Describe subject, crop, lighting or medium and asset provenance. Show the actual product or an original, purpose-built artifact. Keep legibility independent of the hero image. |
+| Motion | Give one signature interaction a job, specify the trigger and reduced-motion equivalent, and use 200–400 ms ease-out as the brief’s default for ordinary transitions. Validate the revealed state and keyboard path. |
+| Copy and content | Back the primary claim with an observable product fact, artifact, or named example. Use an action label that predicts the result. |
+
+For final QA, use the three references as benchmarks for observable techniques. Compare the generated dashboard and mobile app on task hierarchy, readability and handling of states as well as visual craft. An editorial effect should have a visible job in that context. Keep an objective check for horizontal overflow and a separate blind comparison for composition and distinctiveness.

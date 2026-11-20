@@ -1,0 +1,73 @@
+{
+ "note": "Authoritative detection record for the banned-tell sample in probe.py (SLOP). Supersedes the substring-based slop_sample_detection field in summary.json, which also matches echoed input and boilerplate.",
+ "sample_contains": [
+  "Inter+system-ui brand font",
+  "purple-to-blue gradient",
+  "ALL-CAPS eyebrow + centered hero + two buttons",
+  "Elevate/Seamless/supercharge copy",
+  "exclamation",
+  "Get started CTA",
+  "3 identical rounded shadow cards",
+  "emoji bullet",
+  "glass nav"
+ ],
+ "devibecode_anti_patterns": [
+  "[WARNING] React inline style object detected (line 4)",
+  "[INFO] Container <div> with multiple children lacks explicit layout (line 4)",
+  "[WARNING] Modal/dialog pattern detected without aria-modal or role=\"dialog\""
+ ],
+ "devibecode_component_type": "Navigation Bar",
+ "visual_finding_types": [
+  "missing_line_height",
+  "flat_weight_hierarchy",
+  "missing_dark_mode"
+ ],
+ "visual_score": {
+  "severity_summary": {
+   "errors": 0,
+   "warnings": 0,
+   "info": 3
+  },
+  "total_visual_issues": 3
+ },
+ "visual_recommended_font": "Inter",
+ "visual_recommended_primary": "#3b82f6",
+ "scan_health_score": 95.5,
+ "scan_top_issues": [
+  {
+   "type": "inline_style_abuse",
+   "count": 1
+  },
+  {
+   "type": "missing_flex_grid",
+   "count": 1
+  },
+  {
+   "type": "missing_aria",
+   "count": 1
+  },
+  {
+   "type": "missing_line_height",
+   "count": 1
+  },
+  {
+   "type": "flat_weight_hierarchy",
+   "count": 1
+  },
+  {
+   "type": "missing_dark_mode",
+   "count": 1
+  }
+ ],
+ "scan_visual_issues": [
+  "missing_line_height",
+  "flat_weight_hierarchy",
+  "missing_dark_mode"
+ ],
+ "refactor_transformations": [
+  "{'issue': 'React inline style object detected', 'severity': 'warning', 'fix': 'Move inline",
+  "{'issue': 'Container <div> with multiple children lacks explicit layout', 'severity': 'inf",
+  "{'issue': 'Modal/dialog pattern detected without aria-modal or role=\"dialog\"', 'severity':"
+ ],
+ "refactor_returns_code": false
+}

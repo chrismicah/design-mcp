@@ -1,0 +1,20 @@
+# Target user and first useful result
+
+The direct caller is an AI coding client over MCP. The target person is a developer, founder, or small-team product generalist who ships interfaces through that client and can approve what feels right. Existing onboarding also addresses Claude Desktop and Cursor users. There is no product telemetry, customer interview, or observed usage sample in the baseline, so these segments and blockers are testable hypotheses. The 2025 Stack Overflow survey reports that 66% of responding developers cited AI solutions that are “almost right, but not quite” as a frustration, adjacent evidence for the cost of output correction. It does not identify Design MCP users. [Repository onboarding](../README.md) · [Stack Overflow survey](https://survey.stackoverflow.co/2025/ai)
+
+**Job.** “Give me a design that looks good to me, fast.” Operationalize that as fast time to a rendered screen that fits the intent, has a recognizable reading order, supports the core action, and survives a blind comparison. Taste preferences are recorded per user and task. The common rubric covers coherent composition, craft, accessibility, and distinctiveness.
+
+| Hypothesized blocker | Shortest response |
+| --- | --- |
+| “I don’t know what to call it.” | Read ordinary intent and existing project constraints. Convert “premium” for a coffee roaster into a retail brief centered on a specific product photograph, harvest facts and a legible buying choice. |
+| “I don’t know what I want yet.” | Supply one reversible default with a concise rationale. If no usable content is present, describe the missing input and make a credible provisional direction. |
+| “Both look okay.” | Reserve a comparison for a meaningful fork. Hold the content fixed and distinguish alternatives by an observable consequence, such as photography-first versus availability-first. |
+| “There are too many choices.” | Deliver one recommendation. Ask at most two short multiple-choice questions, with a default, only where a missing answer substantially changes composition, accessibility, or the main action. |
+
+A strong first direction names the audience, most important action, focal content, type roles, grid and mobile behavior, palette logic, interaction or motion, and the reason those decisions fit. Request only information the agent cannot responsibly infer. Give the user a one-tap or one-word correction with a predictable change in the next render. [Guidelines for Human-AI Interaction](https://www.microsoft.com/en-us/research/publication/guidelines-for-human-ai-interaction/) · [Reaction mapping](RESEARCH-TASTE.md)
+
+## Acceptance experiment
+
+Use a fixed prompt set for landing page, dashboard, mobile app, portfolio, pricing and editorial. Include “make it premium,” “throw some glass cards at it,” and “idk make this good,” adapting each to context. Include some incomplete asset briefs and some misleading adjectives. Use scripted non-designer responses chosen before the experiment. Log exact prompt, input context, version/model, seed if supported, elapsed time to first render, number of questions, short reactions, changed design fields, and elapsed time to first pass. Count tool calls separately and retain failed runs.
+
+Run the same model and repo context with the baseline and rebuilt MCP. Randomize pair order, conceal tool provenance, and score rendered desktop and 390 px with the same brief. Assess the blur, font check, tell sweep and 2–3 Awwwards benchmark contact sheets. Record a functioning main action and accessibility gate. Product targets are a passing first render on the clear prompts, a passing and visibly improved render within two reactions on ambiguous prompts, and lower median time/interactions without a lower blind preference rate. Keep the full distributions and denominator. Treat this as simulated acceptance and label human usability evidence separately. [UI benchmark candidates](RESEARCH-UI.md)

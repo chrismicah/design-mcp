@@ -1,0 +1,93 @@
+# Design MCP rebuild plan
+
+**Ready for owner review. Product work starts after explicit approval of this plan.** The standing branch, credential and spending rules apply.
+Baseline `82fe6e3`. This proposal incorporates the runtime and corpus audits, seven research files, and the independent pre-approval review. [Runtime audit](AUDIT.md) · [Corpus audit](CONTENT-AUDIT.md) · [Research](research/) · [Review](evidence/REVIEW.md)
+
+## 1. Approach
+
+Add a small new surface beside the existing tools, prove it on a six-brief pilot, and expand only where a measured difference justifies it.
+
+| New tool | Does | Response cap |
+|---|---|---|
+| `direct` | brief → one art direction, with at most two multiple-choice questions that each state a default | 6,000 characters |
+| `react` | direction + `calmer` / `bolder` / `too generic` / `more like <id>` → revised direction and expected visible differences | 3,200 characters |
+| `check` | HTML/JSX/CSS → static tell findings with rule id and line | 2,400 characters |
+
+A direction record uses the six fields in `RESEARCH-UI.md` plus rationale, citations with a strength label (`evidence`, `hypothesis`, `house target`), source ids, and reviewer. The server instructions and README make `direct` the first call for a new brief. Preserve a reversible default and ask a question only when its answer changes the chosen composition or primary action.
+
+## 2. Compatibility during the pilot
+
+- All 14 current tools stay registered through the pilot. A setting selects `legacy`, `both` or `v2`; default `both`. Switching back is a config change.
+- Fixes to legacy tools are limited to defects with runtime proof: the two unpackaged imports and the embedded boilerplate in search results (AUDIT §2).
+- Before any tool is retired, record its callers: README examples, the three prompt files, tests, and client configs that name it. External callers are unknown. Keep the legacy switch while clients migrate and document any eventual deprecation with the replacement tool.
+
+## 3. Corpus and cull procedure
+
+- The revised rubric covers 7,080 pattern rows. It identifies 6,285 cull candidates, 277 conditional on source recovery, 26 duplicate merges, 470 candidates to rewrite from source and 22 textual references. Zero qualify for the new library as written. [Actions](evidence/content/action_list.csv)
+- During the pilot, the new entry point reads only the six reviewed directions. Before broad rollout, checkpoint the baseline and apply exclusions through a reversible manifest. Remove excluded records from the new runtime library and keep their original source in Git history. Keep useful legacy data available while the compatibility switch is supported.
+- Choose each rewrite candidate for a demonstrated need and a verifiable source. Require the full art-direction record and separate review. Resize the corpus based on coverage and benchmark results.
+
+## 4. Slices
+
+Each slice is one branch **stacked on the previous slice's verified commit** (its check passed and a reviewer file exists). A failed slice blocks its dependants; nothing branches from unverified work. Checks are internal, not owner gates.
+
+| Slice | Work | Check (proof file) |
+|---|---|---|
+| A Baseline | Six briefs × two arms (no MCP, current MCP), same model and prompt. Static tells on all 12 outputs; render three briefs per arm at 1440 and 390 | `evidence/baseline/`: prompts, outputs, findings, six render pairs |
+| B Design checks | Static tell rules with fixtures (banned sample, Trackr, clean cases) | Fixture results; false-positive list |
+| C Pilot records | **One direction per brief (six)**, authored from a verified source | Schema pass, static check, one different-session review file each |
+| D Engine | `direct`, `react`, `check` behind the surface setting | Six briefs: caps met, zero static tells, each reaction changes its listed fields only |
+| E Ablation | Same three briefs as A, pilot arm, plus one arm with rationale and citations stripped | Paired renders with provenance hidden; scores; similarity across outputs |
+| F Sample fixes + challenger | Fix what E found; one challenger session per lane attacks its output once | Findings fixed or rebutted in writing |
+| G Decide | Coordinator compares E and F against A | Written recommendation: expand, change, or stop |
+
+Size expansion from the pilot results. Require a passing first render for clear briefs and a passing, visibly improved render within two quick reactions for vague ones. Measure elapsed time from the initial prompt to first rendered pass, question count and reactions. Review initial pilot pass rate and diversity against the no-MCP and legacy arms. If the pilot misses, use the written findings to narrow the next fix and rerun the affected paired cases.
+
+Before launch, run all six briefs across the clear, vague, misleading and minimal-input cases. Use separate adversarial reviewers to file every failure and retest it after fixes. The final GPT computer-use lane runs last under a short checklist, installs from the README in a fresh clone and real client, exercises every exposed tool, and saves scored desktop and 390 px screenshots, the font check, blur, tell sweep, award comparisons and suite results in `SMOKE-RECEIPTS.md`. Allow native mobile claims only with separate native device or simulator evidence. [Final acceptance brief](research/RESEARCH-USER.md#acceptance-experiment)
+
+## 5. Proof types
+
+| Claim | Proof required |
+|---|---|
+| Banned font, gradient class, glass utility, banned copy, emoji bullet, exclamation CTA | **Static**: rule match on source text |
+| Centred-everything, symmetric card grid, identical section padding, type-scale contrast, overflow | **Rendered**: headless browser DOM geometry and computed styles |
+| Squint test, comparison with two or three genre-relevant references from the award set | **Rendered and judged**: screenshots, blind pairing, a scorer other than the author |
+| Mobile | A 390 px browser viewport proves responsive web only. A native app claim needs a simulator or device screen, which is outside the pilot; the "mobile app" brief is scored as mobile web and labelled so |
+| Better than a competitor | Only against tools run on the same prompts. Freely installable ones are run; paid or sign-in ones (for example the paid Refero MCP) are compared on public documentation and published samples and marked "not run". The no-MCP and current-MCP arms are the primary comparators and need no third party |
+| Less convergence | Similarity across the six outputs per arm (shared fonts, palettes, layout skeletons), following the clustering idea in the Boussioux study receipt |
+
+## 6. Constraints (no approval needed)
+
+- **Usage.** Smallest capable model per slice; one author and one reviewer; no new session where an existing one can do it. Per-task token counts are not observable here, so slices are bounded by inputs and attempts: send each worker only the needed evidence and prefer existing sessions. Escalate with the failure log after at most two cheap-tier retries. Write a root cause before retrying beyond three attempts with the same approach. Record tool-visible usage in the ledger where available.
+- **Fonts.** Only faces under an open or free-for-commercial licence that load from a public host; the record names the licence. A face whose licence cannot be confirmed is not used.
+- **Machine.** Rendering runs under the shared heavy-job lease, one job at a time, and not below 20 GiB free.
+- **Rights.** No third-party pixels in the wheel.
+
+## 7. Gaps
+
+- Competitive research covers public workflows, rules, sample artifacts and published studies. Stronger performance claims require controlled runs. Shortlist PyModel for art direction, UI UX Pro Max for rule-driven systems, and a same-host frontend-design skill for prompt scaffolding. Use Refero and Claude Design for published feature comparisons where access requires payment or sign-in. [Market research](research/RESEARCH-COMPETITORS.md)
+- The independent review covers the baseline and experiment design. Rendered results still require separate model reviewers and final QA. [Review](evidence/REVIEW.md)
+- The "Tyre" book was not found; nothing here cites it.
+- The existing suite passed 297 tests and failed the optional-screenshot count test. The rebuild will check packaged imports directly and replace the file-count assertion with checks of available, referenced source evidence. [Baseline test log](evidence/runtime/baseline-pytest.log)
+- The award stills are untracked; slice E must re-fetch and hash-match them (`UI-SOURCES.md`).
+
+## 8. Evidence map
+
+| Evidence | Effect |
+|---|---|
+| AUDIT §2–§3 | Ranking is replaced by authored directions for the new surface; legacy defects with proof get fixed |
+| `CONTENT-AUDIT.md` §0; `ablation_no_priors.json`; `judged_sample.md` | §3: no deletion, no fixed counts, sources chosen per brief |
+| Shin et al. and Boussioux et al. receipts (`market/studies.md`) | Convergence is measured across outputs, not asserted (§5) |
+| `RESEARCH-PSYCHOLOGY.md` typicality/novelty; hypothesis caveats | Recognisable skeleton plus one novel decision; strength labels on citations |
+| `RESEARCH-CANON.md` closing note | Ratio, tracking and duration ranges are house targets |
+| `RESEARCH-TASTE.md` reactions table | `react` implements those four reactions |
+| `RESEARCH-USER.md` | Six briefs plus vague prompts; targets are experiment targets, since no user data exists |
+| `RESEARCH-UI.md`; `UI-SOURCES.md` | Record fields; three award stills as the benchmark, compared on technique |
+| `REFERENCE-MATERIAL.md` | Trackr as a rejection fixture; awards are not quality scores; README screenshot claims dropped when docs are rewritten |
+
+## 9. Acceptance against alternatives
+
+- Give the same host, prompt, brand facts and assets to each runnable MCP or skill arm. Trial PyModel or UI UX Pro Max in the pilot only if it can run without new credentials or charges. Evaluate a plain agent and legacy Design MCP on the full set. Treat hosted products as separate comparisons.
+- Check the first call provides one actionable direction and a first-viewport and 390 px reading order. Log the context size and time. Hold the navigation task constant when testing the contribution of art direction. [Study synthesis](research/RESEARCH-WHY-AI-SLOP.md)
+- Conceal identifying copy, tool labels and color when testing if the composition distinguishes the six tasks. Check for repeated skeletons and choose a leading direction using the independent written evidence.
+- In the full benchmark, target passing first drafts in five of six tasks and all six within two reactions. Use the same rubric for candidate and comparators, report ties and exact sample sizes, and record task completion separately. Use the stronger scope in the competitor gates for any claim against a named product. [Competitive acceptance gates](research/RESEARCH-COMPETITORS.md#beat-them-list)

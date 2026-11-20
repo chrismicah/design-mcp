@@ -1,0 +1,74 @@
+# docs/install facts @ 82fe6e3
+## README claims
+3:An MCP (Model Context Protocol) server that gives AI agents structured access to **7,000+ real-world design patterns** for higher-quality UI generation — including visual design analysis, anti-pattern detection, and actionable improvement suggestions.
+117:## MCP Tools (12)
+122:Search 7,000+ design patterns with filters for page type, industry, platform, color mode, and visual style.
+242:**Total: 7,080 patterns**, all quality-scored 0-10, with 742 vision-analyzed screenshots.
+248:| Semantic tokens | 100% (7,080/7,080) |
+249:| Behavioral descriptions | 97% (6,882/7,080) |
+250:| Accessibility notes | 97% (6,882/7,080) |
+251:| Component hints | 47% (3,356/7,080) |
+252:| Vision analysis (colors, layout) | 742 screenshots |
+268:- Server tools (28 tests)
+270:- Integration workflows (28 tests)
+278:├── server.py                    # FastMCP server — 12 MCP tools
+285:│   ├── patterns.json            # 7,080 design patterns (11.7 MB, optimized)
+286:│   ├── vision_results.json      # 742 screenshot analysis results
+294:├── screenshots/                 # 742 high-res design screenshots
+323:The 742 design screenshots are stored in Git LFS and **not downloaded by default**. The MCP runs entirely off `data/patterns.json` — screenshots are only needed if you want to browse source designs or re-run vision analysis.
+336:- **Python 3.12+** — No external AI/ML dependencies required
+## actual
+tools registered: 14
+README-undocumented tools:
+  get_design_system
+  get_visual_recipe
+patterns.json bytes:  10092399
+screenshots tracked:        1
+tests collected (def test_): 298
+CI config: none
+duplicate trees: data/ vs design_mcp/data identical=yes; models/ identical=no
+## claude_desktop_config.json
+{
+    "mcpServers": {
+        "design-intelligence": {
+            "command": "python",
+            "args": ["C:\\Users\\<redacted>\\Projects\\design-mcp\\server.py"],
+            "env": {
+                "PYTHONPATH": "C:\\Users\\<redacted>\\Projects\\design-mcp"
+            }
+        }
+    }
+}
+## unpackaged imports in runtime
+design_mcp/server.py:192:            from scripts.rebuild_pipeline import generate_accessible_palette
+design_mcp/server.py:1616:                    from models.visual_analyzer import hex_to_rgb, rgb_to_hsl
+## tests import target
+  11 import pytest
+   9 import sys
+   9 from pathlib import Path
+   7 import json
+   4 import asyncio
+   4 from schema import DesignPattern, Platform, LayoutType
+   4 from database import DesignDatabase
+   2 import os
+   2 from server import (
+   2 from models.visual_analyzer import (
+   1 import tempfile
+   1 import math
+## root-level stray artifacts
+.gitattributes
+.gitignore
+DESIGN_DOC.md
+README.md
+RESEARCH_PROMPT.md
+claude_desktop_config.json
+database.py
+enrichment.py
+pyproject.toml
+schema.py
+server.py
+test_dashboard.html
+test_output.json
+test_server.py
+test_trackr_v3.html
+test_with_data.py

@@ -1,0 +1,26 @@
+# Source material audit
+
+Baseline `82fe6e3749acccf80aecfd523e531be4302865e3`. These are editorial disposition decisions for the rebuild. The working tree still contains the baseline sources.
+
+| Actual source | Extract for reuse | Drop or rewrite for production | Evidence |
+| --- | --- | --- | --- |
+| Implementation plan | Record interaction states, use composable structure, and carry explicit focus and contrast requirements. | Retire the old directory/install recipes, the six-tool plan, and uncited effect sizes. Treat the Inter example as a fixture for rejection. | [DESIGN_DOC.md](../../DESIGN_DOC.md) §§3, 5–8 |
+| Original research brief | Preserve its controlled same-prompt, same-model, blind comparison. Carry forward hypotheses for provenance joins and patterned repetition. | Recalculate every dated count and field-coverage claim against the packaged baseline. Remove self-reported output improvements and unverified quality claims from public copy. | [RESEARCH_PROMPT.md](../../RESEARCH_PROMPT.md), “Data Quality” and questions 1–7 |
+| Screen analysis prompt | Extract visible hierarchy, grouping, typography and palette, with evidence for each. | A still cannot establish click behavior, DOM layout, keyboard behavior or ARIA. Require accessible markup or interaction evidence before reporting them as observed. | [analyze_screen.md](../../design_mcp/prompts/analyze_screen.md), steps 2, 5, 7 |
+| Compare prompt | Compare functionally matched references and identify a useful differentiator. | Replace the unqualified majority-vote expectation with a rationale tied to task and audience. | [compare_patterns.md](../../design_mcp/prompts/compare_patterns.md), steps 3–5 |
+| Generate prompt | Keep behavior, token and accessibility checks. | Remove “most common layout strategy” as a default and replace the preliminary search/template/token chain with one contextual direction. | [generate_blueprint.md](../../design_mcp/prompts/generate_blueprint.md), steps 1–4 |
+| Awwwards harvest instructions | Capture the original page, credited maker, selected observable design move and date. | Do not convert site awards into record-level quality ratings. Keep publisher genre and technology tags separate from observations. | [awwwards_plan.md](../../scraping/awwwards_plan.md) |
+| Dribbble harvest instructions | Respect attribution. Keep standalone compositions as leads for controlled review. | Drop entries whose only value is genre labels, title-based style inference, or inferred product behavior from a single still. | [dribbble_plan.md](../../scraping/dribbble_plan.md) |
+| Screenshot guide | Preserve reference-image optionality and retrieval provenance. | Rewrite the current checkout's `git lfs pull` instructions and the assertion that `patterns.json` includes all extracted design intelligence. | [screenshots/README.md](../../screenshots/README.md), Git receipts below |
+| README and demo claims | Keep concrete client invocation examples as install test inputs. Use Trackr and the earlier dashboard as baseline fixtures. | Reconcile README with wheel and runtime. Trackr globally applies Inter, a banned brand font in the current brief. Withdraw “proves system generalizes” until multiple held-out genres have passing comparison receipts. | [README.md](../../README.md), [test_trackr_v3.html](../../test_trackr_v3.html#L10), [test_dashboard.html](../../test_dashboard.html), commit `6aaa13d` |
+| WebUI dataset source card | Use as provenance for observation-only rows and trace them back to original sites. | Before redistributing pixels, check rights for the underlying site assets per the dataset card. Popularity, URL presence and dataset metadata establish neither ownership nor visual quality. | [Hugging Face card](https://huggingface.co/datasets/biglab/webui-7kbal), [linked copyright note](https://github.com/js0nwu/webui/blob/main/COPYRIGHT.txt) |
+
+The three root `prompts/*.md` files are byte-identical to their packaged counterparts at baseline. Keep a single owner for each prompt in the rebuild.
+
+## “Tyre” book and historical asset availability
+
+No “Tyre” title, matching filename, book file, PDF, EPUB, MOBI or AZW3 surfaced in the worktree or reachable fetched refs. The search also covered tracked Markdown/Python and related commit names. References to Landbook identify a design gallery. Do not infer an author or substitute another book. If a copy becomes available, record its edition and independently review its actual chapters before citing or extracting from it.
+
+At `5f2f990`, `git ls-tree -r --name-only 5f2f990 screenshots` reports 743 paths including the guide. A sample historical blob is a Git LFS pointer with SHA-256 `9e0f798b21d80d1228e93bd23cecacba82eb16468056d5036ca5784441f22e09` and size 175,959. Commit `0526905` removed those pointers from the active tree. `git ls-files screenshots` returns only `screenshots/README.md`. No historical pixels were restored or judged in this audit. Retain accessible JSON observations subject to their rubric and record the original screenshot availability separately.
+
+[Canon research and public excerpts](../../research/RESEARCH-CANON.md) · [Corpus audit](../../CONTENT-AUDIT.md)
