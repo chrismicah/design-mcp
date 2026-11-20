@@ -100,7 +100,7 @@ Supplemental (271 records): rewrite 240, **keep-as-reference 29** (18 libraries 
 
 ## 6. Sampled judgments vs heuristic
 
-`evidence/content/judged_sample.md` covers 22 pattern rows (a seeded stratified draw plus 2 viewed assets) and 13 supplemental records, all read by one model, **not independent human taste**. It was written against the rev-1 scorer. In that sample every disagreement found the heuristic too lenient, and rev 2 removes the leniency the sample exposed: seed rows are no longer kept, and remote URLs no longer count as present. The rev-2 dispositions were not re-sampled, which is a gap given the token cap.
+`evidence/content/judged_sample.md` covers 22 pattern rows (a seeded stratified draw plus 2 viewed assets) and 13 supplemental records, all read by one model, **not independent human taste**. It was written against the rev-1 scorer. In that sample every disagreement found the heuristic too lenient, and rev 2 removes the leniency the sample exposed: seed rows are no longer kept, and remote URLs no longer count as present. A separate GPT-6.2 Sol review sampled 17 rev-2 pattern dispositions and five supplemental records across the action categories and checked all 26 merge pairings. It supported the dispositions for triage and added checks for synthetic reference labels and merge provenance. [Independent rev-2 sample](evidence/content/REV2-SAMPLE.md)
 
 ## 7. Limits
 
@@ -108,7 +108,7 @@ Supplemental (271 records): rewrite 240, **keep-as-reference 29** (18 libraries 
 - No source site was re-crawled. "Rewrite-from-source" (470 rows) and "cull-unless-blob-recovered" (277) depend on recovering the blobs through the `5f2f990` LFS pointers or the public pages. That is untested: the pointers are verified, the blobs are not. Any row whose blob can't be recovered falls to cull.
 - Source and reference documents are audited by the owner and root session (`REFERENCE-MATERIAL.md`), not here.
 - Taste is scored from entry text and metadata. Visual taste was judged on 2 assets only.
-- 11 supplemental "keep" records were heuristic-only. The `component_code.*_dark` strings and two `anti_pattern_fixes` entries were not read individually.
+- Supplemental reference candidates are scoped examples. The two supplemental references drawn in the independent sample were read in full. The remaining candidates still need review before any reuse. [Independent rev-2 sample](evidence/content/REV2-SAMPLE.md)
 
 ## 8. Reproduce
 
