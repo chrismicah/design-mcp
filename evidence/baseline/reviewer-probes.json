@@ -1,0 +1,48 @@
+{
+ "inputs": {
+  "slop_jsx(9 tells)": "\nexport default function Hero() {\n  return (\n    <div className=\"bg-gradient-to-r from-purple-600 to-blue-500 text-center py-20\" style={{fontFamily: \"Inter, system-ui\"}}>\n      <p className=\"uppercase tracking-widest text-sm\">INTRODUCING ACME</p>\n      <h1 className=\"text-6xl font-bold\">Elevate your workflow</h1>\n      <p className=\"text-gray-200\">Seamless collaboration to supercharge your team!</p>\n      <button className=\"bg-blue-500 rounded-2xl shadow-lg px-6 py-3\">Get started</button>\n      <button className=\"rounded-2xl border px-6 py-3\">Learn more</button>\n      <div className=\"grid grid-cols-3 gap-8 mt-16\">\n        {[1,2,3].map(i => <div key={i} className=\"bg-white rounded-2xl shadow-md p-6\"><span>\ud83d\ude80</span><h3 className=\"font-bold\">Feature</h3><p>Text</p></div>)}\n      </div>\n      <nav className=\"backdrop-blur-md bg-white/30 fixed top-0\">Nav</nav>\n    </div>\n  )\n}\n",
+  "font_css_var": "<!doctype html><html><head><style>:root{--f:'Inter',sans-serif} body{font-family:var(--f)}</style></head><body><h1>Cinder Supply</h1></body></html>",
+  "font_shorthand": "<!doctype html><html><head><style>body{font:16px/1.5 Inter,sans-serif}</style></head><body><h1>x</h1></body></html>",
+  "font_link_only": "<link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;700'><!doctype html><html><head><style>body{font-family:var(--x)}</style></head><body><p>a</p></body></html>",
+  "FP_inter_tight": "<!doctype html><html><head><style>h1{font-family:'Inter Tight',sans-serif} body{font-family:'Roboto Slab',serif}</style></head><body><h1>x</h1></body></html>",
+  "fallback_ok": "<!doctype html><html><head><style>body{font-family:'Fraunces',Inter,system-ui,serif}</style></head><body><h1>x</h1></body></html>",
+  "gradient_unlisted_hex": "<!doctype html><html><head><style>.hero{background:linear-gradient(135deg,#667eea,#764ba2)}</style></head><body><div class=hero><h1>x</h1></div></body></html>",
+  "glass_nav": "<!doctype html><html><head><style>nav{backdrop-filter:blur(12px);background:rgba(255,255,255,.3)}</style></head><body><nav>Menu</nav></body></html>",
+  "copy_variants": "<!doctype html><html><head><style></style></head><body><button>Start your free trial!</button><a>Get Started Free</a><h1>Now elevate your roast</h1><p>Unlock seamless brewing</p><li>\u2705 Fast</li></body></html>",
+  "three_cards": "<!doctype html><html><head><style>.g{display:grid;grid-template-columns:repeat(3,1fr)}.c{border-radius:16px;box-shadow:0 4px 12px rgba(0,0,0,.08);background:#fff}</style></head><body><div class=g><div class=c><svg></svg><h3>T</h3><p>x</p></div><div class=c><svg></svg><h3>T</h3><p>x</p></div><div class=c><svg></svg><h3>T</h3><p>x</p></div></div></body></html>",
+  "centered_all": "<!doctype html><html><head><style>*{text-align:center}section{padding:96px 0}</style></head><body><section><h1>a</h1></section><section><h2>b</h2></section><section><h2>c</h2></section></body></html>",
+  "clean_with_colour_words": "<!doctype html><html><head><style>body{font-family:'Archivo',sans-serif;color:#1b1a17;background:#f4efe6}h1{font-family:'Fraunces',serif;letter-spacing:-.03em}.accent{color:#c2410c}</style></head><body><h1>Indigo-dyed linen, Blue Ridge wool</h1><p class=accent>12 bolts left</p><button>Reserve a bolt</button></body></html>"
+ },
+ "findings": {
+  "slop_jsx(9 tells)": [
+   "centered-hero",
+   "generic-copy",
+   "generic-cta",
+   "glass-nav",
+   "purple-blue-gradient",
+   "rounded-shadow",
+   "startup-blue"
+  ],
+  "font_css_var": [],
+  "font_shorthand": [],
+  "font_link_only": [],
+  "FP_inter_tight": [
+   "brand-font"
+  ],
+  "fallback_ok": [],
+  "gradient_unlisted_hex": [],
+  "glass_nav": [
+   "glass-nav"
+  ],
+  "copy_variants": [
+   "emoji-bullet",
+   "exclamation-cta",
+   "generic-cta"
+  ],
+  "three_cards": [
+   "rounded-shadow"
+  ],
+  "centered_all": [],
+  "clean_with_colour_words": []
+ }
+}

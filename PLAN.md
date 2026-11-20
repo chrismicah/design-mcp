@@ -1,11 +1,11 @@
 # Design MCP rebuild plan
 
-**Ready for owner review. Product work starts after explicit approval of this plan.** The standing branch, credential and spending rules apply.
+**Approved by the owner on 2026-11-20.** Run A–G on stacked branches. If the direction engine improves on the baseline, continue through corpus exclusions, rewrites from verified sources, expansion, adversarial QA, and the full real-client smoke run. If the comparison falls short, document why, fix the failure, and rerun the affected cases. The standing branch, credential and spending rules apply.
 Baseline `82fe6e3`. This proposal incorporates the runtime and corpus audits, seven research files, and the independent pre-approval review. [Runtime audit](AUDIT.md) · [Corpus audit](CONTENT-AUDIT.md) · [Research](research/) · [Review](evidence/REVIEW.md)
 
 ## 1. Approach
 
-Add a small new surface beside the existing tools, prove it on a six-brief pilot, and expand only where a measured difference justifies it.
+Start with a measured six-brief comparison and use the result to guide the full rebuild. Preserve a reversible legacy surface during migration.
 
 | New tool | Does | Response cap |
 |---|---|---|
@@ -76,7 +76,7 @@ Before launch, run all six briefs across the clear, vague, misleading and minima
 | Evidence | Effect |
 |---|---|
 | AUDIT §2–§3 | Ranking is replaced by authored directions for the new surface; legacy defects with proof get fixed |
-| `CONTENT-AUDIT.md` §0; `ablation_no_priors.json`; `judged_sample.md` | §3: no deletion, no fixed counts, sources chosen per brief |
+| `CONTENT-AUDIT.md` §0; `judged_sample.md`; `REV2-SAMPLE.md` | §3: no deletion, no fixed counts, sources chosen per brief |
 | Shin et al. and Boussioux et al. receipts (`market/studies.md`) | Convergence is measured across outputs, not asserted (§5) |
 | `RESEARCH-PSYCHOLOGY.md` typicality/novelty; hypothesis caveats | Recognisable skeleton plus one novel decision; strength labels on citations |
 | `RESEARCH-CANON.md` closing note | Ratio, tracking and duration ranges are house targets |
