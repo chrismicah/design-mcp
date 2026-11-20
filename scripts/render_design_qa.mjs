@@ -89,6 +89,16 @@ try {
             const navigation = await send("Page.navigate", {url: pathToFileURL(resolve(input)).href});
             if (navigation.errorText) throw new Error(navigation.errorText);
             await loaded;
+            const caseId = basename(input, ".html");
+            const labels = {
+                landing: /add.*bag|add.*carmo/i,
+                dashboard: /focus|show.*delay|filter.*delay/i,
+                mobile: /show.*ticket|reveal.*ticket|view.*ticket/i,
+            };
+            const label = labels[caseId];
+            const locateAction = label ? `[...document.querySelectorAll("button,summary")].find(
+                control => ${label}.test(control.textContent ?? "") && control.getBoundingClientRect().width
+            )` : `document.querySelector("[data-qa-action]")`;
             const {result, exceptionDetails} = await send("Runtime.evaluate", {
                 expression: `(async () => {
                     await Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 2500))]);
@@ -96,7 +106,7 @@ try {
                     const body = getComputedStyle(document.body);
                     const heading = h && getComputedStyle(h);
                     const main = document.querySelector('main');
-                    const action = main?.querySelector('[data-qa-action],button:not([disabled]),a[href]') ?? null;
+                    const action = ${locateAction} ?? main?.querySelector("button:not([disabled]),a[href]") ?? null;
                     const before = action?.getBoundingClientRect();
                     const sections = [...document.querySelectorAll("main > section, main > article")];
                     const geometry = sections.map(section => {
@@ -127,9 +137,35 @@ try {
             await writeFile(join(output, name), screenshot);
             const blurName = name.replace(".png", "-blur.png");
             await writeFile(join(output, blurName), Buffer.from(blurred.data, "base64"));
+            let actionCheck = {status: "no target"};
+            if (label) {
+                const measureAction = `(() => {
+                    const control = ${locateAction};
+                    if (!control) return {found: false};
+                    const panelId = control.getAttribute("aria-controls");
+                    const panel = panelId && document.getElementById(panelId);
+                    return {found: true, text: control.textContent.trim(), pressed: control.getAttribute("aria-pressed"),
+                        expanded: control.getAttribute("aria-expanded"), panelHidden: panel?.hidden,
+                        statuses: [...document.querySelectorAll('[role="status"],[aria-live]')].map(el => el.textContent),
+                        visibleRows: [...document.querySelectorAll("tr")].filter(row => row.getBoundingClientRect().height).length,
+                        activeDialog: !!document.querySelector("dialog[open]"),
+                        ticketVisible: [...document.querySelectorAll("code")].some(el => el.getBoundingClientRect().height)};
+                })()`;
+                const before = await send("Runtime.evaluate", {expression: measureAction, returnByValue: true});
+                if (before.result.value.found) {
+                    await send("Runtime.evaluate", {expression: `(${locateAction}).focus()`});
+                    await send("Input.dispatchKeyEvent", {type: "rawKeyDown", key: " ", code: "Space",
+                        windowsVirtualKeyCode: 32, nativeVirtualKeyCode: 32});
+                    await send("Input.dispatchKeyEvent", {type: "keyUp", key: " ", code: "Space",
+                        windowsVirtualKeyCode: 32, nativeVirtualKeyCode: 32});
+                    const after = await send("Runtime.evaluate", {expression: measureAction, returnByValue: true});
+                    actionCheck = {status: JSON.stringify(before.result.value) === JSON.stringify(after.result.value)
+                        ? "no measured change" : "state changed", before: before.result.value, after: after.result.value};
+                }
+            }
             report.captures.push({file: input, width, height, screenshot: name, squint: blurName,
                 sourceSha256: createHash("sha256").update(content).digest("hex"),
-                imageSha256: createHash("sha256").update(screenshot).digest("hex"), ...result.value});
+                imageSha256: createHash("sha256").update(screenshot).digest("hex"), ...result.value, actionCheck});
         }
     }
     await writeFile(join(output, "report.json"), JSON.stringify(report, null, 2) + "\n");
