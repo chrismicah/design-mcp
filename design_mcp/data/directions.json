@@ -1,0 +1,353 @@
+[
+  {
+    "id": "object-hero",
+    "surface": "landing",
+    "title": "Object hero: the product is the page",
+    "summary": "One featured product, shot like a specimen, with the buy control fixed to the object. Use for single-item launches.",
+    "tags": [
+      "single product",
+      "small-batch goods",
+      "provenance",
+      "first purchase"
+    ],
+    "type": {
+      "display": "Fraunces",
+      "body": "Instrument Sans",
+      "ratio": 4.0,
+      "tracking": -0.03,
+      "weight": 600,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#2a1610",
+      "paper": "#f3ebe0",
+      "accent": "#6b2148"
+    },
+    "layout": {
+      "skeleton": "7/5 split; the product image sits left, offset 1 column, and overlaps into a facts band",
+      "focus": "the featured product, with its price and one provenance fact beside it",
+      "desktop": "product name as a 72px display line over the image edge; brief facts (size, notes, date) as a 3-line ledger",
+      "mobile": "product full-width at 62vh, ledger below, sticky add bar",
+      "rhythm": "96px between bands; the ledger uses a 24px baseline"
+    },
+    "imagery": {
+      "subject": "the product on a plain surface with a few raw-material props",
+      "crop": "tight, with the product cut by the right edge",
+      "fallback": "a CSS label block: product name in ink on a material-tone panel"
+    },
+    "motion": {
+      "trigger": "add to bag",
+      "effect": "bag count ticks and the pill settles 4px",
+      "duration_ms": 240,
+      "reduced": "instant count change"
+    },
+    "action": {
+      "instruction": "One primary action attached to the product. Fill it from the brief's product, size and price, and never repeat it in a hero band",
+      "label": "Add [product], [size] — [price]"
+    },
+    "why": "A first-time buyer needs one choice, not a catalogue. Making the object the hero and stating the brief's exact facts reads warm and exact.",
+    "sources": [
+      {
+        "url": "https://assets.awwwards.com/awards/submissions/2026/09/6aacf2ed22405670949235.jpg",
+        "observation": "Agrumea Farm hero: the product jars are the hero on cream paper with an oxblood shape and type set on a curve; the only CTA is a small pill on the featured jar ('Scopri il prodotto').",
+        "strength": "evidence"
+      },
+      {
+        "url": "https://www.apple.com/v/macbook-air/z/built/styles/main.built.css",
+        "observation": ".typography-hero-headline is 64px; .typography-body is 17px (a ratio of about 3.8).",
+        "strength": "evidence"
+      }
+    ],
+    "credit": "Agrumea Farm site (Awwwards submission; designer not verified)"
+  },
+  {
+    "id": "exception-first",
+    "surface": "dashboard",
+    "title": "Exception first: the problem owns the screen",
+    "summary": "The most urgent item is promoted out of the list into a full-width strip, with its position in the queue; every other row stays quiet. Use for time-pressured operations queues.",
+    "tags": [
+      "operations queue",
+      "dispatch",
+      "exception handling",
+      "time to act"
+    ],
+    "type": {
+      "display": "IBM Plex Sans Condensed",
+      "body": "IBM Plex Sans",
+      "ratio": 2.5,
+      "tracking": -0.02,
+      "weight": 600,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#EEF0EC",
+      "paper": "#14181B",
+      "accent": "#FFAA72"
+    },
+    "layout": {
+      "skeleton": "exception strip on top (item ID, location, deviation), the full queue table below, a due-next rail on the right",
+      "focus": "the deviation value at 40px tabular figures, with an 'n / total' position label",
+      "desktop": "12-col; strip spans 12, table 8, rail 4 holding the next item due",
+      "mobile": "strip, then rail, then table as stacked rows",
+      "rhythm": "8px base; 40px rows; no cards"
+    },
+    "imagery": {
+      "subject": "none; location codes act as the visuals",
+      "crop": "n/a",
+      "fallback": "location code set at 24px tabular figures"
+    },
+    "motion": {
+      "trigger": "deviation changes",
+      "effect": "the value cross-fades; the strip edge pulses once",
+      "duration_ms": 240,
+      "reduced": "value swaps, no pulse"
+    },
+    "action": {
+      "instruction": "Focus jumps the table filter to the exception. Fill it from the brief's most urgent item",
+      "label": "Focus [item ID] at [location]"
+    },
+    "why": "An operator on the clock should see the one problem before the list. Calm comes from making everything except the exception quiet.",
+    "sources": [
+      {
+        "url": "https://linear.app/",
+        "observation": "Linear's home page product mock (server HTML) shows one focused issue 'DRV-8852' with a '1 / 84' queue position, a sidebar of 'Inbox | My issues | Reviews', and a properties rail ('In Progress | Medium | Karri'): one item in focus, its place in the queue, and its state beside it.",
+        "strength": "evidence"
+      }
+    ],
+    "credit": "Linear (Linear Orbit), home page product mock"
+  },
+  {
+    "id": "platform-sign",
+    "surface": "mobile",
+    "title": "Platform sign: departure as signage",
+    "summary": "Time and place set like a station sign; the credential opens in one tap. Use for on-the-move transit, tickets or boarding.",
+    "tags": [
+      "transit",
+      "departure",
+      "mobile ticket",
+      "glanceable"
+    ],
+    "type": {
+      "display": "Archivo Narrow",
+      "body": "Atkinson Hyperlegible",
+      "ratio": 3.5,
+      "tracking": -0.02,
+      "weight": 700,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#111111",
+      "paper": "#f7f5ef",
+      "accent": "#ffcc00"
+    },
+    "layout": {
+      "skeleton": "sign block (time, destination, platform) on an ink band, then the credential reveal, then alternatives and pass options",
+      "focus": "departure time at 60px plus a platform badge",
+      "desktop": "centered 420px column; the rest of the page is empty paper",
+      "mobile": "sign band fills the top 40%; reveal button in the thumb zone",
+      "rhythm": "16px base; 32px between blocks"
+    },
+    "imagery": {
+      "subject": "none",
+      "crop": "n/a",
+      "fallback": "yellow platform badge"
+    },
+    "motion": {
+      "trigger": "reveal credential",
+      "effect": "the credential slides up from the sign band to show the code",
+      "duration_ms": 280,
+      "reduced": "instant swap"
+    },
+    "action": {
+      "instruction": "The button names the credential from the brief, not 'View'",
+      "label": "Show ticket [ticket ID]"
+    },
+    "why": "A walking rider reads at a glance. Signage-scale numerals and a single reveal beat card-stacked layouts for speed.",
+    "sources": [
+      {
+        "url": "https://design-system.service.gov.uk/components/button/",
+        "observation": "GOV.UK: 'Write button text in sentence case, describing the action it performs.'",
+        "strength": "evidence"
+      },
+      {
+        "url": "https://www.apple.com/v/macbook-air/z/built/styles/main.built.css",
+        "observation": ".typography-body is 17px at -0.022em, a readable body floor.",
+        "strength": "evidence"
+      }
+    ],
+    "credit": "GOV.UK Design System (Government Digital Service)"
+  },
+  {
+    "id": "ground-plane",
+    "surface": "portfolio",
+    "title": "Ground plane: full-bleed built work",
+    "summary": "The lead project opens as a full-bleed site photograph under a serif title; the other projects sit small and off the grid. Use for spatial practices.",
+    "tags": [
+      "landscape architecture",
+      "architecture",
+      "spatial practice",
+      "case study"
+    ],
+    "type": {
+      "display": "Instrument Serif",
+      "body": "Archivo",
+      "ratio": 5.0,
+      "tracking": -0.04,
+      "weight": 400,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#22261F",
+      "paper": "#E9EFF0",
+      "accent": "#465733"
+    },
+    "layout": {
+      "skeleton": "full-bleed lead project; title split across two lines; secondary projects offset at 1/3 width; contact in a quiet footer",
+      "focus": "lead project title at 120px, with its scale and completion year from the brief",
+      "desktop": "Title bottom-left on an opaque paper panel overlapping the image edge. Facts align in a right-hand column.",
+      "mobile": "image at 70vh; title below it, not overlaid",
+      "rhythm": "160px section gaps; empty space as the material"
+    },
+    "imagery": {
+      "subject": "the built site at ground or eye level, with planting or material in the foreground",
+      "crop": "horizon at the lower third",
+      "fallback": "site-plan line drawing in ink on paper"
+    },
+    "motion": {
+      "trigger": "scroll into a project",
+      "effect": "the image scales 1.04 to 1 (the one signature move)",
+      "duration_ms": 400,
+      "reduced": "static"
+    },
+    "action": {
+      "instruction": "Primary link opens the lead case study; contact is plain text",
+      "label": "Open the [project] case study"
+    },
+    "why": "Spacious and material: built work needs room. A serif display paired with a quiet sans and a full-bleed ground reads as real work, not a template.",
+    "sources": [
+      {
+        "url": "https://assets.awwwards.com/awards/submissions/2026/02/69a01956b8d34010634085.png",
+        "observation": "Studio Dado (viewed): the serif display 'FORM FOLLOWS FEELING' is set full-bleed over warm material photography, with a small sans nav on an offset grid.",
+        "strength": "evidence"
+      },
+      {
+        "url": "https://studiod.nu/en/",
+        "observation": "Studio D live HTML: 'Spatial design at eye level', positioning spatial practice in plain words.",
+        "strength": "evidence"
+      }
+    ],
+    "credit": "Studio Dado (Awwwards submission); Studio D"
+  },
+  {
+    "id": "scale-ledger",
+    "surface": "pricing",
+    "title": "Scale ledger: plans as stops on one quantity",
+    "summary": "Plans are compared along the single quantity buyers pay for, not shown as identical cards. Use when tiers differ mainly by an amount.",
+    "tags": [
+      "pricing",
+      "usage tiers",
+      "subscription",
+      "plan comparison"
+    ],
+    "type": {
+      "display": "Bricolage Grotesque",
+      "body": "Atkinson Hyperlegible",
+      "ratio": 3.0,
+      "tracking": -0.03,
+      "weight": 700,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#15171c",
+      "paper": "#fbfaf7",
+      "accent": "#1f6f5c"
+    },
+    "layout": {
+      "skeleton": "a horizontal bar from 0 to the largest tier's quantity, with each plan as a stop; feature differences listed under each stop",
+      "focus": "the recommended middle stop, labelled with its quantity and key feature",
+      "desktop": "bar spans 10 cols, with stops placed proportionally; prices sit above the stops",
+      "mobile": "bar turns vertical; stops become rows",
+      "rhythm": "12px base; 48px between the bar and the details"
+    },
+    "imagery": {
+      "subject": "none; the bar is the image",
+      "crop": "n/a",
+      "fallback": "n/a"
+    },
+    "motion": {
+      "trigger": "select a stop",
+      "effect": "the fill moves to the stop",
+      "duration_ms": 300,
+      "reduced": "instant fill"
+    },
+    "action": {
+      "instruction": "Continue with the chosen plan, naming the plan and price from the brief",
+      "label": "Continue with [plan] — [price]/[period]"
+    },
+    "why": "Buyers pay for a quantity. One proportional scale makes the choice legible, and naming the plan and price on the button is assured, not loud.",
+    "sources": [
+      {
+        "url": "https://design-system.service.gov.uk/components/button/",
+        "observation": "GOV.UK: button text should describe 'the action it performs'.",
+        "strength": "evidence"
+      }
+    ],
+    "credit": "house target; GOV.UK Design System (GDS)"
+  },
+  {
+    "id": "margin-front",
+    "surface": "editorial",
+    "title": "Margin front: feature at reading width",
+    "summary": "The lead story runs at reading width with an italic deck; secondary items run in a narrow margin column. Use for small editorial homes.",
+    "tags": [
+      "magazine",
+      "field report",
+      "editorial home",
+      "recipe"
+    ],
+    "type": {
+      "display": "Newsreader",
+      "body": "Source Sans 3",
+      "ratio": 4.5,
+      "tracking": -0.03,
+      "weight": 500,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#1d2a2e",
+      "paper": "#efe9dc",
+      "accent": "#a3401f"
+    },
+    "layout": {
+      "skeleton": "feature title across 8 cols, standfirst at 62ch; a 3-col margin column holds the secondary dispatch and a recipe card",
+      "focus": "feature title, with byline and read time from the brief",
+      "desktop": "asymmetric 8/1/3 split; the title breaks into the margin",
+      "mobile": "feature first, then dispatch, then recipe",
+      "rhythm": "28px baseline; 1px rules instead of boxes"
+    },
+    "imagery": {
+      "subject": "the feature's setting or material, top-down",
+      "crop": "wide strip, 3:1",
+      "fallback": "an ink rule plus a large italic drop numeral of the read time"
+    },
+    "motion": {
+      "trigger": "Open the feature by tap or keyboard",
+      "effect": "Reveal the standfirst and underline the active link as the reading view opens",
+      "duration_ms": 240,
+      "reduced": "Open the reading view immediately and preserve focus"
+    },
+    "action": {
+      "instruction": "Headline and button both open the feature",
+      "label": "Read [feature title]"
+    },
+    "why": "Tactile, observant reading wants a comfortable measure and print logic: rules, margins and an italic voice instead of card grids.",
+    "sources": [
+      {
+        "url": "https://practicaltypography.com/line-length.html",
+        "observation": "Butterick: 'Aim for an average line length of 45–90 characters, including spaces.'",
+        "strength": "evidence"
+      }
+    ],
+    "credit": "Butterick's Practical Typography (Matthew Butterick)"
+  }
+]
