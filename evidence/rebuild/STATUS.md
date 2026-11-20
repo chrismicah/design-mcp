@@ -7,9 +7,9 @@ Owner approval is recorded in [PLAN.md](../../PLAN.md). The active product line 
 | A | `design-mcp/a-baseline` | 12 source outputs, frozen checker hash, 12 1440/390 captures across three briefs. [Baseline](../baseline/README.md) |
 | B | `design-mcp/b-design-checks` | Static rule fixtures pass. [Check log](checks-pytest.log) |
 | C | `design-mcp/c-reviewed-directions` | Six validated direction records, two independent review passes and 11 font license receipts. [Final review](pilot-review.md) |
-| D | `design-mcp/d-engine` | Three new calls, 14 compatible tool names, compact payloads, installed-path palette import fixed. [Engine receipt](engine-receipt.json) |
+| D | `design-mcp/d-engine` | Three new calls, 14 compatible tool names, compact payloads, palette generation moved inside the package. [Engine receipt](engine-receipt.json) |
 | E | `design-mcp/e-ablation` | Sources and frozen tell checks complete. Candidate screenshots and independent paired scores remain pending. [Comparison](comparison/README.md) |
-| F | `design-mcp/f-held-out-fixes` | Fixed a held-out operations-board route and stale screenshot test. 307 tests pass. [Results](suite.log) |
+| F | `design-mcp/f-held-out-fixes` | Fixed a held-out operations-board route, stale screenshot test, font loading, and three primary controls. 307 tests pass. [Results](suite.log) · [Source challenge](challenge-response.md) |
 | G | Pending | Compare control and direction screenshots and check task completion before using the results to expand. |
 
 The direction arm had 0 static findings across six briefs, compared with 8 in N and 7 in L. The ablated arm had 0 across three. Static score improvement shows the implemented rules caught fewer tells in the source outputs. Visual preference, task success and the value of rationale and citations require rendered comparison.

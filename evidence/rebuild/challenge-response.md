@@ -9,4 +9,4 @@ Fable reviewed landing, dashboard, and mobile without launching a browser. Prese
 | Dashboard toggle, row selection, and focus | Keep the toggle label stable with `aria-pressed`. Filter by load ID and leave focus on the toggle. Put the table in a labelled keyboard-scrollable region. |
 | Ticket disclosure announcement | Keep the native button and its expanded state. Remove the additional live region. |
 
-The source checker remains frozen for the comparison. Its original zero counts remain source-only results. The fix pass still needs action, type load, and 390 px receipt under the shared render lease. [Independent source review](challenge-review.md)
+The source checker remains frozen for the comparison. Its original zero counts remain source-only results. The fix pass still needs action, type load, and 390 px receipt under the shared render lease. [Independent source review](challenge-review.md) · [Stylesheet HTTP receipts](font-css-receipts.json) · [Handler checks](challenge-handler-checks.json)
