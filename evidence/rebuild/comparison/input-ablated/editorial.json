@@ -1,0 +1,56 @@
+{
+  "direction": {
+    "id": "margin-front",
+    "surface": "editorial",
+    "title": "Margin front: feature at reading width",
+    "summary": "The lead story runs at reading width with an italic deck; secondary items run in a narrow margin column. Use for small editorial homes.",
+    "type": {
+      "display": "Newsreader",
+      "body": "Source Sans 3",
+      "ratio": 4.5,
+      "tracking": -0.03,
+      "weight": 500,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#1d2a2e",
+      "paper": "#efe9dc",
+      "accent": "#a3401f"
+    },
+    "layout": {
+      "skeleton": "feature title across 8 cols, standfirst at 62ch; a 3-col margin column holds the secondary dispatch and a recipe card",
+      "focus": "feature title, with byline and read time from the brief",
+      "desktop": "asymmetric 8/1/3 split; the title breaks into the margin",
+      "mobile": "feature first, then dispatch, then recipe",
+      "rhythm": "28px baseline; 1px rules instead of boxes"
+    },
+    "imagery": {
+      "subject": "the feature's setting or material, top-down",
+      "crop": "wide strip, 3:1",
+      "fallback": "an ink rule plus a large italic drop numeral of the read time"
+    },
+    "motion": {
+      "trigger": "Open the feature by tap or keyboard",
+      "effect": "Reveal the standfirst and underline the active link as the reading view opens",
+      "duration_ms": 240,
+      "reduced": "Open the reading view immediately and preserve focus"
+    },
+    "action": {
+      "instruction": "Headline and button both open the feature",
+      "label": "Read [feature title]"
+    }
+  },
+  "interaction": {
+    "accent_foreground": "#efe9dc",
+    "easing": "ease-out",
+    "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+    "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+    "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+  },
+  "assumptions": [
+    "Use editorial as the surface.",
+    "Use only the project facts and assets in the brief."
+  ],
+  "questions": [],
+  "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Verify the action, reading order and legibility at 390 px."
+}

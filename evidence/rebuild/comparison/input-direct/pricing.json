@@ -1,0 +1,65 @@
+{
+  "direction": {
+    "id": "scale-ledger",
+    "surface": "pricing",
+    "title": "Scale ledger: plans as stops on one quantity",
+    "summary": "Plans are compared along the single quantity buyers pay for, not shown as identical cards. Use when tiers differ mainly by an amount.",
+    "type": {
+      "display": "Bricolage Grotesque",
+      "body": "Atkinson Hyperlegible",
+      "ratio": 3.0,
+      "tracking": -0.03,
+      "weight": 700,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#15171c",
+      "paper": "#fbfaf7",
+      "accent": "#1f6f5c"
+    },
+    "layout": {
+      "skeleton": "a horizontal bar from 0 to the largest tier's quantity, with each plan as a stop; feature differences listed under each stop",
+      "focus": "the recommended middle stop, labelled with its quantity and key feature",
+      "desktop": "bar spans 10 cols, with stops placed proportionally; prices sit above the stops",
+      "mobile": "bar turns vertical; stops become rows",
+      "rhythm": "12px base; 48px between the bar and the details"
+    },
+    "imagery": {
+      "subject": "none; the bar is the image",
+      "crop": "n/a",
+      "fallback": "n/a"
+    },
+    "motion": {
+      "trigger": "select a stop",
+      "effect": "the fill moves to the stop",
+      "duration_ms": 300,
+      "reduced": "instant fill"
+    },
+    "action": {
+      "instruction": "Continue with the chosen plan, naming the plan and price from the brief",
+      "label": "Continue with [plan] — [price]/[period]"
+    },
+    "why": "Buyers pay for a quantity. One proportional scale makes the choice legible, and naming the plan and price on the button is assured, not loud.",
+    "sources": [
+      {
+        "url": "https://design-system.service.gov.uk/components/button/",
+        "observation": "GOV.UK: button text should describe 'the action it performs'.",
+        "strength": "evidence"
+      }
+    ],
+    "credit": "house target; GOV.UK Design System (GDS)"
+  },
+  "interaction": {
+    "accent_foreground": "#fbfaf7",
+    "easing": "ease-out",
+    "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+    "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+    "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+  },
+  "assumptions": [
+    "Use pricing as the surface.",
+    "Use only the project facts and assets in the brief."
+  ],
+  "questions": [],
+  "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Verify the action, reading order and legibility at 390 px."
+}

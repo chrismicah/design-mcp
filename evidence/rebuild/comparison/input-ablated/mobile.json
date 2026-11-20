@@ -1,0 +1,56 @@
+{
+  "direction": {
+    "id": "platform-sign",
+    "surface": "mobile",
+    "title": "Platform sign: departure as signage",
+    "summary": "Time and place set like a station sign; the credential opens in one tap. Use for on-the-move transit, tickets or boarding.",
+    "type": {
+      "display": "Archivo Narrow",
+      "body": "Atkinson Hyperlegible",
+      "ratio": 3.5,
+      "tracking": -0.02,
+      "weight": 700,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#111111",
+      "paper": "#f7f5ef",
+      "accent": "#ffcc00"
+    },
+    "layout": {
+      "skeleton": "sign block (time, destination, platform) on an ink band, then the credential reveal, then alternatives and pass options",
+      "focus": "departure time at 60px plus a platform badge",
+      "desktop": "centered 420px column; the rest of the page is empty paper",
+      "mobile": "sign band fills the top 40%; reveal button in the thumb zone",
+      "rhythm": "16px base; 32px between blocks"
+    },
+    "imagery": {
+      "subject": "none",
+      "crop": "n/a",
+      "fallback": "yellow platform badge"
+    },
+    "motion": {
+      "trigger": "reveal credential",
+      "effect": "the credential slides up from the sign band to show the code",
+      "duration_ms": 280,
+      "reduced": "instant swap"
+    },
+    "action": {
+      "instruction": "The button names the credential from the brief, not 'View'",
+      "label": "Show ticket [ticket ID]"
+    }
+  },
+  "interaction": {
+    "accent_foreground": "#111111",
+    "easing": "ease-out",
+    "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+    "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+    "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+  },
+  "assumptions": [
+    "Use mobile as the surface.",
+    "Use only the project facts and assets in the brief."
+  ],
+  "questions": [],
+  "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Verify the action, reading order and legibility at 390 px."
+}
