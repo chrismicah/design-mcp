@@ -11,7 +11,8 @@ from .models.visual_analyzer import contrast_ratio
 _CAPS = {"direct": 6000, "react": 3200, "check": 2400}
 _TERMS = {
     "pricing": ("pricing", "price plan", "subscription tiers", "compare plans", "tier", "month"),
-    "dashboard": ("dashboard", "dispatcher", "analytics", "metrics", "admin panel", "table", "reporting"),
+    "dashboard": ("dashboard", "dispatcher", "analytics", "metrics", "admin panel", "table", "reporting",
+                  "turnaround board", "operations board", "work queue", "dispatch board"),
     "mobile": ("mobile", "ticket", "platform", "boarding pass", "commuter", "onboarding", "qr"),
     "portfolio": ("portfolio", "case study", "work index", "studio project", "landscape", "architecture"),
     "editorial": ("editorial", "magazine", "article", "journal", "recipe", "field report"),

@@ -52,3 +52,13 @@ async def test_source_tool_is_bounded_and_exposes_render_scope():
     assert result["finding_count"] == 500
     assert result["truncated"] and result["render_checks"]
     assert len(json.dumps(result, ensure_ascii=False)) <= 2400
+
+
+@pytest.mark.asyncio
+async def test_held_out_briefs_infer_surface_without_clarification():
+    path = Path(__file__).resolve().parents[1] / "evidence" / "rebuild" / "spec" / "held-out.json"
+    for case in json.loads(path.read_text()):
+        result = await direct(case["brief"])
+        assert result["direction"]["surface"] == case["surface"], case["id"]
+        assert not result["questions"]
+        assert (await react(result["direction"]["id"], "too generic"))["changes"]["composition"]

@@ -381,12 +381,15 @@ class TestDataQuality:
         scores = [p.get("quality_score", 0) for p in patterns[:10]]
         assert scores == sorted(scores, reverse=True)
 
-    def test_screenshot_files_exist(self):
-        """At least some screenshot directories should have files."""
-        screenshot_dir = BASE_DIR / "screenshots"
-        assert screenshot_dir.exists()
-        total = sum(1 for _ in screenshot_dir.rglob("*") if _.is_file())
-        assert total >= 100
+    def test_packaged_observations_identify_their_capture(self, patterns):
+        """Optional screenshot pixels need not be distributed with the package."""
+        observations = json.loads((BASE_DIR / "design_mcp" / "data" / "vision_results.json").read_text())
+        by_capture = {pattern.get("image_url"): pattern for pattern in patterns}
+        assert observations
+        for capture, observed in observations.items():
+            assert capture.startswith("screenshots/")
+            assert capture in by_capture
+            assert observed["page_type"] == by_capture[capture]["page_type"]
 
 
 # ============================================================
