@@ -2,6 +2,7 @@
 
 import json
 import re
+from urllib.parse import urlencode
 
 from .design_checks import inspect_design
 from .direction_records import Surface, library
@@ -59,10 +60,14 @@ async def direct(brief: str, surface: Surface | None = None, avoid: list[str] | 
         questions = [{"question": "What will people use this screen for?",
                       "options": ["Explore an offering", "Work with information", "Read a story"],
                       "default": "Explore an offering"}]
+    font_query = [("family", f"{choice.type.display}:wght@{choice.type.weight}"),
+                  ("family", choice.type.body), ("display", "swap")]
+    font_stylesheet = "https://fonts.googleapis.com/css2?" + urlencode(font_query)
     palette = choice.palette
     accent_text = max((palette.ink, palette.paper), key=lambda color: contrast_ratio(color, palette.accent))
     output = {
         "direction": choice.model_dump(exclude={"tags"}),
+        "font_stylesheet": font_stylesheet,
         "interaction": {"accent_foreground": accent_text, "easing": "ease-out",
                         "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
                         "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
@@ -71,7 +76,7 @@ async def direct(brief: str, surface: Surface | None = None, avoid: list[str] | 
         "questions": questions,
         "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. "
                    "Fill label slots only with facts supplied by the brief. Use the source as design evidence. "
-                   "Verify the action, reading order and legibility at 390 px.",
+                   "Load the named fonts and verify they render. Test the action, reading order and legibility at 390 px.",
     }
     return _bounded("direct", output)
 

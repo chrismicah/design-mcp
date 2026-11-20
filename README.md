@@ -33,7 +33,7 @@ For Claude Desktop, Cursor, or another stdio client:
 
 > Make this look good. Build a theatre turnaround board so a stage manager can find the room that's running late. Studio B is six minutes late and Hall A is ready.
 
-The agent calls `direct` first. Pass the audience, task, real content, and any existing brand constraints as ordinary language. A very short brief can produce one optional question with a default. Apply the direction to the project's data and test the main action.
+The agent calls `direct` first. Pass the audience, task, real content, and any existing brand constraints as ordinary language. A very short brief can produce one optional question with a default. Apply the direction to the project's data, load its licensed typefaces, and test the main action.
 
 | Tool | Arguments | Result |
 | --- | --- | --- |
