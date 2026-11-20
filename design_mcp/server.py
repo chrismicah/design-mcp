@@ -1,11 +1,13 @@
 from fastmcp import FastMCP
 from .schema import DesignPattern, Platform, LayoutType
 from .database import DesignDatabase
+from .directions import check, direct, react
+from .palettes import generate_accessible_palette
 from .models.analyzer import analyze_code, infer_component_type
 from .models.visual_analyzer import (
     analyze_visual, generate_color_palette,
     FONT_PAIRINGS, TYPE_SCALE, SPACING_SYSTEM,
-    extract_colors, contrast_ratio
+    extract_colors, contrast_ratio, hex_to_rgb, rgb_to_hsl
 )
 from typing import Optional
 from pathlib import Path
@@ -15,13 +17,30 @@ import os
 # Resolve paths relative to this file
 BASE_DIR = Path(__file__).parent
 
-mcp = FastMCP(
-    "DesignIntelligence",
-    instructions="Provides AI agents with structured access to real-world design patterns, "
-                 "UI blueprints, and semantic tokens for high-fidelity UI generation."
-)
+SURFACE = os.environ.get("DESIGN_MCP_SURFACE", "both").strip().lower()
+if SURFACE not in {"legacy", "both", "v2"}:
+    raise ValueError("DESIGN_MCP_SURFACE must be legacy, both, or v2")
 
-db = DesignDatabase(str(BASE_DIR / "data" / "patterns.json"))
+instructions = (
+    "Start with direct for a new interface brief. Apply one sourced design direction to the actual content. "
+    "Use react for short feedback and check to locate static design issues."
+    if SURFACE != "legacy"
+    else "Provides structured access to design patterns, UI blueprints, and semantic tokens."
+)
+mcp = FastMCP("DesignIntelligence", instructions=instructions)
+if SURFACE != "legacy":
+    mcp.tool(direct)
+    mcp.tool(react)
+    mcp.tool(check)
+
+
+def legacy_tool(function):
+    if SURFACE != "v2":
+        mcp.tool(function)
+    return function
+
+
+db = DesignDatabase(str(BASE_DIR / "data" / "patterns.json")) if SURFACE != "v2" else None
 
 # Load indexed token sets and decision trees for resolution
 _token_sets = []
@@ -82,7 +101,7 @@ def _resolve_decision_tree(pattern_dict: dict) -> dict:
 # ============================================================
 # TOOL 1: Search Design Patterns
 # ============================================================
-@mcp.tool()
+@legacy_tool
 async def search_design_patterns(
     query: str,
     page_type: Optional[str] = None,
@@ -121,7 +140,8 @@ async def search_design_patterns(
         visual_style=visual_style,
         limit=limit
     )
-    blueprints = [_to_blueprint(r) for r in results]
+    include_guidance = bool(fields and {"visual_recipes", "design_system"}.intersection(fields))
+    blueprints = [_to_blueprint(r, include_guidance=include_guidance) for r in results]
     if fields:
         blueprints = [{k: v for k, v in bp.items() if k in fields or k == "id"} for bp in blueprints]
     return blueprints
@@ -130,7 +150,7 @@ async def search_design_patterns(
 # ============================================================
 # TOOL 2: Get Full Blueprint
 # ============================================================
-@mcp.tool()
+@legacy_tool
 async def get_design_blueprint(pattern_id: str, detailed: bool = False) -> dict:
     """
     Get the full design blueprint for a specific pattern.
@@ -164,7 +184,7 @@ async def get_design_blueprint(pattern_id: str, detailed: bool = False) -> dict:
 # ============================================================
 # TOOL 3: Get Semantic Tokens
 # ============================================================
-@mcp.tool()
+@legacy_tool
 async def get_semantic_tokens(
     style: Optional[str] = None,
     primary_color: Optional[str] = None,
@@ -189,7 +209,6 @@ async def get_semantic_tokens(
     if primary_color:
         mode = color_mode or ("light" if style == "light" else "dark")
         try:
-            from scripts.rebuild_pipeline import generate_accessible_palette
             tokens, scale, accent_scale = generate_accessible_palette(primary_color, mode)
             return {
                 "tokens": tokens,
@@ -198,9 +217,9 @@ async def get_semantic_tokens(
                 "color_mode": mode,
                 "wcag_aa_verified": True,
             }
-        except Exception:
-            pass
-    
+        except ValueError as error:
+            return {"error": f"Invalid primary color: {error}"}
+
     # Return curated token sets from the indexed collection
     if _token_sets:
         # Find light vs dark token sets
@@ -237,7 +256,7 @@ async def get_semantic_tokens(
 # ============================================================
 # TOOL 4: Get Taxonomy
 # ============================================================
-@mcp.tool()
+@legacy_tool
 async def get_design_taxonomy() -> dict:
     """
     Get the full taxonomy of design categories available in the database.
@@ -255,7 +274,7 @@ async def get_design_taxonomy() -> dict:
 # ============================================================
 # TOOL 5: Get Behavioral Pattern
 # ============================================================
-@mcp.tool()
+@legacy_tool
 async def get_behavioral_pattern(pattern_name: str) -> dict:
     """
     Get the behavioral specification for a common UX pattern.
@@ -283,7 +302,7 @@ async def get_behavioral_pattern(pattern_name: str) -> dict:
 # ============================================================
 # TOOL 6: Compare Patterns
 # ============================================================
-@mcp.tool()
+@legacy_tool
 async def compare_design_approaches(
     page_type: str,
     limit: int = 3
@@ -311,7 +330,7 @@ async def compare_design_approaches(
 # ============================================================
 # TOOL 7: Analyze and Devibecode
 # ============================================================
-@mcp.tool()
+@legacy_tool
 async def analyze_and_devibecode(source_code: str) -> dict:
     """
     Static analysis anti-pattern detector for vibecoded UI code.
@@ -471,7 +490,7 @@ async def analyze_and_devibecode(source_code: str) -> dict:
 # ============================================================
 # TOOL 7.5: Get Anti-Generic Design System
 # ============================================================
-@mcp.tool()
+@legacy_tool
 async def get_design_system(
     page_type: Optional[str] = "Dashboard",
     color_mode: Optional[str] = "dark",
@@ -548,7 +567,7 @@ async def get_design_system(
 # ============================================================
 # TOOL 8: Get Library Recommendations
 # ============================================================
-@mcp.tool()
+@legacy_tool
 async def get_library_recommendations(
     use_case: Optional[str] = None,
     ui_elements: Optional[list[str]] = None,
@@ -662,7 +681,7 @@ async def get_library_recommendations(
 # ============================================================
 # TOOL 9: Get Library Details
 # ============================================================
-@mcp.tool()
+@legacy_tool
 async def get_library_details(library_name: str) -> dict:
     """
     Get detailed information about a specific frontend library including
@@ -710,7 +729,7 @@ async def get_library_details(library_name: str) -> dict:
 # ============================================================
 # TOOL 10: Scan Project for Anti-Patterns
 # ============================================================
-@mcp.tool()
+@legacy_tool
 async def scan_project(
     project_path: str,
     file_extensions: Optional[list[str]] = None,
@@ -970,7 +989,7 @@ async def scan_project(
 # ============================================================
 # TOOL 11: Generate Refactored Code
 # ============================================================
-@mcp.tool()
+@legacy_tool
 async def generate_refactored_code(
     source_code: str,
     target_library: str = "shadcn-ui",
@@ -1262,7 +1281,7 @@ def _resolve_component_code(hints):
     return resolved
 
 
-def _to_blueprint(pattern: DesignPattern) -> dict:
+def _to_blueprint(pattern: DesignPattern, *, include_guidance: bool = True) -> dict:
     """Convert a full pattern to a comprehensive blueprint with all actionable data.
     Resolves references to actual tokens, layout code, and component code."""
     # Resolve tokens from index
@@ -1385,8 +1404,8 @@ def _to_blueprint(pattern: DesignPattern) -> dict:
         "semantic_tokens": resolved,
         "component_hints": _resolve_component_code(pattern.component_hints),
         "decision_tree": resolved_tree,
-        "visual_recipes": visual_recipes,
-        "design_system": design_system,
+        "visual_recipes": visual_recipes if include_guidance else None,
+        "design_system": design_system if include_guidance else None,
         "source_url": pattern.source_url,
     }
     # Remove None/empty values to save tokens
@@ -1503,7 +1522,7 @@ def _generate_comparison_summary(patterns: list[DesignPattern]) -> str:
 # ============================================================
 # TOOL 12: Visual Design Suggestions
 # ============================================================
-@mcp.tool()
+@legacy_tool
 async def get_visual_recipe(
     recipe: Optional[str] = None,
     page_type: Optional[str] = None,
@@ -1561,7 +1580,7 @@ async def get_visual_recipe(
     return _visual_recipes
 
 
-@mcp.tool()
+@legacy_tool
 async def get_visual_suggestions(
     source_code: str,
     primary_color: Optional[str] = None,
@@ -1613,7 +1632,6 @@ async def get_visual_suggestions(
                     if name not in ('white', 'black', 'slate', 'gray', 'zinc', 'neutral', 'stone'):
                         color_counts[c['hex']] += 1
                 elif c.get('source') == 'hex':
-                    from models.visual_analyzer import hex_to_rgb, rgb_to_hsl
                     r, g, b = hex_to_rgb(c['hex'])
                     h, s, l = rgb_to_hsl(r, g, b)
                     if s > 15 and 10 < l < 90:  # Chromatic, not too dark/light
