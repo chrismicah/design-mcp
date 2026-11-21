@@ -68,4 +68,4 @@ python -m pytest tests
 python scripts/smoke_design_mcp.py design-mcp serve
 ```
 
-The smoke script exercises every tool in the selected mode. Set `DESIGN_MCP_SURFACE` to verify each mode. The comparison harness and its limitations are documented with the evidence. [Baseline](evidence/baseline/README.md) · [Comparison](evidence/rebuild/comparison/README.md) · [Corpus audit](CONTENT-AUDIT.md)
+The smoke script exercises every tool in the selected mode. Set `DESIGN_MCP_SURFACE` to verify each mode. [Live smoke](SMOKE-RECEIPTS.md) · [Baseline](evidence/baseline/README.md) · [Comparison](evidence/rebuild/comparison/README.md) · [Corpus audit](CONTENT-AUDIT.md)
