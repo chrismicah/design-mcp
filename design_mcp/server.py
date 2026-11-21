@@ -1,4 +1,5 @@
 from fastmcp import FastMCP
+from mcp.types import ToolAnnotations
 from .schema import DesignPattern, Platform, LayoutType
 from .database import DesignDatabase
 from .directions import check, direct, react
@@ -29,9 +30,10 @@ instructions = (
 )
 mcp = FastMCP("DesignIntelligence", instructions=instructions)
 if SURFACE != "legacy":
-    mcp.tool(direct)
-    mcp.tool(react)
-    mcp.tool(check)
+    local_read = ToolAnnotations(readOnlyHint=True, destructiveHint=False, idempotentHint=True, openWorldHint=False)
+    mcp.tool(direct, annotations=local_read)
+    mcp.tool(react, annotations=local_read)
+    mcp.tool(check, annotations=local_read)
 
 
 def legacy_tool(function):

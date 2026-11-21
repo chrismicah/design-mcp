@@ -26,7 +26,7 @@ async def main():
         transport = StdioTransport(command=command, args=arguments,
                                    env={"DESIGN_MCP_SURFACE": mode, "FASTMCP_SHOW_SERVER_BANNER": "false"})
         async with Client(transport, timeout=30) as client:
-            tools = [tool.name for tool in await client.list_tools()]
+            tools = await client.list_tools()
             handlers = {
                 "direct": {"brief": "Build a mobile ticket screen for a train rider."},
                 "react": {"direction_id": "platform-sign", "reaction": "calmer"},
@@ -46,7 +46,13 @@ async def main():
                 "get_visual_recipe": {"page_type": "Dashboard"},
                 "get_visual_suggestions": {"source_code": SAMPLE},
             }
-            for name in tools:
+            for tool in tools:
+                name = tool.name
+                if name in {"direct", "react", "check"}:
+                    annotations = tool.annotations
+                    assert annotations is not None, f"{name} has no capability annotations"
+                    assert annotations.readOnlyHint is True, f"{name} must advertise read-only behavior"
+                    assert annotations.openWorldHint is False, f"{name} runs entirely on local data"
                 start = monotonic()
                 response = await client.call_tool(name, handlers[name])
                 body = response.structured_content

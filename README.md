@@ -15,6 +15,18 @@ claude mcp get design-mcp
 
 An alternative in an active virtual environment is `python -m pip install .`. Use the full path to `design-mcp` when it is outside the client's PATH. The MCP runs over stdio and the direction tools use bundled data. They require no API key.
 
+For Codex, add the server to your Codex configuration. The `writes` approval mode uses the read-only annotation on the three direction tools.
+
+```toml
+[mcp_servers.design-mcp]
+command = "design-mcp"
+args = ["serve"]
+default_tools_approval_mode = "writes"
+
+[mcp_servers.design-mcp.env]
+DESIGN_MCP_SURFACE = "v2"
+```
+
 For Claude Desktop, Cursor, or another stdio client:
 
 ```json
