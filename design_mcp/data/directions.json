@@ -117,6 +117,57 @@
     "credit": "Linear (Linear Orbit), home page product mock"
   },
   {
+    "id": "stage-call-sheet",
+    "surface": "dashboard",
+    "title": "Stage call sheet",
+    "summary": "A working stage document. Put the room list on warm paper and mark the delayed room directly in its row. The list is the main composition.",
+    "tags": ["theatre", "theater", "stage manager", "stage management", "rehearsal", "turnaround board", "room readiness", "delayed rooms"],
+    "type": {
+      "display": "Newsreader",
+      "body": "Instrument Sans",
+      "ratio": 3.25,
+      "tracking": -0.035,
+      "weight": 500,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#27201D",
+      "paper": "#F5EFE2",
+      "accent": "#842E3D"
+    },
+    "layout": {
+      "skeleton": "Print-like masthead, then a single ruled cue ledger. Pair the room name and the actual status across the rule. Apply the accent to the delayed row's status cell and keep the ready row quiet.",
+      "focus": "A large room name beside a compact burgundy status cell showing the actual delay. No copy of the exception above the list and no secondary rail repeating room status.",
+      "desktop": "Align the masthead and ledger on one edge. Give the room name three quarters of the row with a narrow, consistently aligned status column. Place the filter above the ledger.",
+      "mobile": "Masthead, filter, then the same two-column ledger in document order. Wrap the status before squeezing the room name. Each room appears once.",
+      "rhythm": "Wide gap after the masthead. Thin rules and square edges mark the ledger. Use compact control text and generous row height."
+    },
+    "imagery": {
+      "subject": "The room names and cue marks carry the visual identity.",
+      "crop": "No image slot for the operations view.",
+      "fallback": "Use real room names and thin typographic rules."
+    },
+    "motion": {
+      "trigger": "The stage manager changes the room filter.",
+      "effect": "Fade the newly updated row list in from .78 opacity. Focus stays on the filter and the live status announces the new room count.",
+      "duration_ms": 220,
+      "reduced": "Apply filter and status immediately with the same focus behavior."
+    },
+    "action": {
+      "instruction": "Use two pressed-state buttons above the rows to choose the full room list or delays only. The same control switches the list back. Retain each room's exact supplied status.",
+      "label": "Delayed only"
+    },
+    "why": "Stage management reads a cue against its corresponding information. Aligning each delay with its room reduces scanning while the paper, rules, and cue color relate the tool to that work.",
+    "sources": [
+      {
+        "url": "https://www.theatrecrafts.com/pages/home/topics/stage-management/the-prompt-book/",
+        "observation": "The Prompt Book explains that the deputy stage manager uses the book to run rehearsals. It describes cues set opposite the corresponding script lines with lines connecting each cue to its trigger. The color palette and filter treatment are original adaptations.",
+        "strength": "evidence"
+      }
+    ],
+    "credit": "Theatrecrafts, The Prompt Book"
+  },
+  {
     "id": "platform-sign",
     "surface": "mobile",
     "title": "Platform sign: departure as signage",

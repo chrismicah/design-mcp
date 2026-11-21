@@ -13,7 +13,8 @@ _CAPS = {"direct": 6000, "react": 3200, "check": 2400}
 _TERMS = {
     "pricing": ("pricing", "price plan", "subscription tiers", "compare plans", "tier", "month"),
     "dashboard": ("dashboard", "dispatcher", "analytics", "metrics", "admin panel", "table", "reporting",
-                  "turnaround board", "operations board", "work queue", "dispatch board"),
+                  "turnaround board", "operations board", "work queue", "dispatch board", "stage manager",
+                  "room readiness"),
     "mobile": ("mobile", "ticket", "platform", "boarding pass", "commuter", "onboarding", "qr"),
     "portfolio": ("portfolio", "case study", "work index", "studio project", "landscape", "architecture"),
     "editorial": ("editorial", "magazine", "article", "journal", "recipe", "field report"),
@@ -76,7 +77,8 @@ async def direct(brief: str, surface: Surface | None = None, avoid: list[str] | 
         "questions": questions,
         "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. "
                    "Fill label slots only with facts supplied by the brief. Use the source as design evidence. "
-                   "Load the named fonts and verify they render. Test the action, reading order and legibility at 390 px.",
+                   "Omit support regions that would only repeat facts. Keep visual and document order aligned. "
+                   "Load the named fonts. Test the action, reading order and legibility at 390 px.",
     }
     return _bounded("direct", output)
 

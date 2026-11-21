@@ -34,6 +34,17 @@ async def test_vague_request_has_a_default_and_rejection_is_explicit():
 
 
 @pytest.mark.asyncio
+async def test_stage_turnaround_and_dispatch_get_distinct_directions():
+    theatre = await direct("Make it feel premium. The stage manager needs to see which rehearsal room is late.")
+    logistics = await direct("Dispatch board for a dispatcher tracking a late load.")
+    assert theatre["direction"]["id"] == "stage-call-sheet"
+    assert logistics["direction"]["id"] == "exception-first"
+    assert theatre["questions"] == []
+    alternate = await direct("Theatre turnaround board", avoid=["stage-call-sheet"])
+    assert alternate["direction"]["id"] == "exception-first"
+
+
+@pytest.mark.asyncio
 async def test_reactions_have_visible_deltas_with_bounded_responses():
     for direction in library().values():
         calmer = await react(direction.id, "Calmer.")

@@ -1,5 +1,7 @@
 # Design MCP live smoke
 
+The owner rejected the original visual output after the functional pass. The theatre follow-up has its own direction and browser receipt. [Theatre call sheet revision](evidence/rebuild/live-smoke/theatre-revision.md)
+
 **Functional pass for one generated app.** On November 20, 2026, Codex CLI called the candidate MCP and generated an interactive theatre turnaround board from a short brief. GPT Computer Use drove it in Chrome at desktop width and at a measured 390 CSS pixels. This run covers the source checkout and one brief. The fresh-package install, six-brief comparison and post-cull smoke remain pending.
 
 ## Candidate and client
