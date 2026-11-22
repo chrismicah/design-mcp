@@ -1,20 +1,18 @@
 """Schema and loading for reviewed design direction records."""
 
 from functools import lru_cache
-from pathlib import Path
-import json
 from typing import Annotated, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints, field_validator, model_validator
 
 from .models.visual_analyzer import contrast_ratio
+from .resources import read_json
 
 
 Surface = Literal["landing", "dashboard", "mobile", "portfolio", "pricing", "editorial"]
 Text = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=420)]
 Slug = Annotated[str, StringConstraints(pattern=r"^[a-z0-9]+(?:-[a-z0-9]+)*$", max_length=64)]
 Hex = Annotated[str, StringConstraints(pattern=r"^#[0-9a-fA-F]{6}$")]
-_DATA = Path(__file__).parent / "data" / "directions.json"
 
 
 class _Record(BaseModel):
@@ -111,7 +109,7 @@ class Direction(_Record):
 
 @lru_cache(maxsize=1)
 def library() -> dict[str, Direction]:
-    rows = [Direction.model_validate(item) for item in json.loads(_DATA.read_text(encoding="utf-8"))]
+    rows = [Direction.model_validate(item) for item in read_json("directions.json")]
     result = {row.id: row for row in rows}
     if not rows or len(result) != len(rows):
         raise ValueError("The direction library needs unique IDs and at least one record")

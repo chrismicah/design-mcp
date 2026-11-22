@@ -1,7 +1,9 @@
 from fastmcp import FastMCP
+from anyio import to_thread
 from mcp.types import ToolAnnotations
 from .schema import DesignPattern, Platform, LayoutType
 from .database import DesignDatabase
+from .resources import ResourceError, read_json
 from .directions import check, direct, react
 from .palettes import generate_accessible_palette
 from .models.analyzer import analyze_code, infer_component_type
@@ -11,12 +13,9 @@ from .models.visual_analyzer import (
     extract_colors, contrast_ratio, hex_to_rgb, rgb_to_hsl
 )
 from typing import Optional
+from functools import cache, partial
 from pathlib import Path
-import json
 import os
-
-# Resolve paths relative to this file
-BASE_DIR = Path(__file__).parent
 
 SURFACE = os.environ.get("DESIGN_MCP_SURFACE", "both").strip().lower()
 if SURFACE not in {"legacy", "both", "v2"}:
@@ -42,50 +41,28 @@ def legacy_tool(function):
     return function
 
 
-db = DesignDatabase(str(BASE_DIR / "data" / "patterns.json")) if SURFACE != "v2" else None
+db = DesignDatabase() if SURFACE != "v2" else None
 
-# Load indexed token sets and decision trees for resolution
-_token_sets = []
-_decision_trees_indexed = []
-_anti_pattern_fixes = {}
-_visual_recipes = {}
-_anti_generic = {}
 
-def _load_indexed_data():
-    global _token_sets, _decision_trees_indexed, _anti_pattern_fixes, _visual_recipes, _anti_generic
-    token_path = BASE_DIR / "data" / "tokens" / "token_sets.json"
-    if token_path.exists():
-        with open(token_path) as f:
-            _token_sets = json.load(f)
-    tree_path = BASE_DIR / "data" / "decision_trees_indexed.json"
-    if tree_path.exists():
-        with open(tree_path) as f:
-            _decision_trees_indexed = json.load(f)
-    fix_path = BASE_DIR / "data" / "anti_pattern_fixes.json"
-    if fix_path.exists():
-        with open(fix_path) as f:
-            _anti_pattern_fixes = json.load(f)
-    recipe_path = BASE_DIR / "data" / "visual_recipes.json"
-    if recipe_path.exists():
-        with open(recipe_path) as f:
-            _visual_recipes = json.load(f)
-    anti_generic_path = BASE_DIR / "data" / "anti_generic_system.json"
-    if anti_generic_path.exists():
-        with open(anti_generic_path) as f:
-            _anti_generic = json.load(f)
+async def _search_patterns(**filters) -> list[DesignPattern]:
+    # A cold legacy lookup can wait for the network while direction tools stay available.
+    return await to_thread.run_sync(partial(db.search, **filters))
 
-_load_indexed_data()
+
+# Only the legacy handlers that use these shared tables need to load them.
+_reference = cache(read_json)
 
 
 def _resolve_tokens(pattern_dict: dict) -> dict:
     """Resolve indexed token reference to actual token dict."""
+    _token_sets = _reference("tokens/token_sets.json")
     tokens = pattern_dict.get("semantic_tokens")
     if isinstance(tokens, int) and 0 <= tokens < len(_token_sets):
         pattern_dict["semantic_tokens"] = _token_sets[tokens]
     elif isinstance(tokens, str):
         # Legacy string ref — resolve from old token file
         try:
-            old_tokens = json.load(open(BASE_DIR / "data" / "tokens" / "semantic_tokens.json"))
+            old_tokens = read_json("tokens/semantic_tokens.json")
             pattern_dict["semantic_tokens"] = old_tokens.get(tokens, {})
         except Exception:
             pass
@@ -94,6 +71,7 @@ def _resolve_tokens(pattern_dict: dict) -> dict:
 
 def _resolve_decision_tree(pattern_dict: dict) -> dict:
     """Resolve indexed decision tree reference."""
+    _decision_trees_indexed = _reference("decision_trees_indexed.json")
     tree = pattern_dict.get("decision_tree")
     if isinstance(tree, int) and 0 <= tree < len(_decision_trees_indexed):
         pattern_dict["decision_tree"] = _decision_trees_indexed[tree]
@@ -133,7 +111,7 @@ async def search_design_patterns(
         List of design pattern blueprints with metadata, layout info,
         behavioral descriptions, and component hints.
     """
-    results = db.search(
+    results = await _search_patterns(
         query=query,
         page_type=page_type,
         platform=platform,
@@ -167,10 +145,12 @@ async def get_design_blueprint(pattern_id: str, detailed: bool = False) -> dict:
     Returns:
         Complete design blueprint with layout, behavior, tokens, and component structure.
     """
-    pattern = db.get(pattern_id)
+    pattern = await to_thread.run_sync(db.get, pattern_id)
     if not pattern:
         return {"error": f"Pattern '{pattern_id}' not found"}
     if detailed:
+        _token_sets = _reference("tokens/token_sets.json")
+        _decision_trees_indexed = _reference("decision_trees_indexed.json")
         dump = pattern.model_dump(exclude_none=True)
         # Resolve indexed references even in detailed mode
         if isinstance(dump.get("semantic_tokens"), int):
@@ -223,6 +203,7 @@ async def get_semantic_tokens(
             return {"error": f"Invalid primary color: {error}"}
 
     # Return curated token sets from the indexed collection
+    _token_sets = _reference("tokens/token_sets.json")
     if _token_sets:
         # Find light vs dark token sets
         light_sets = []
@@ -250,9 +231,7 @@ async def get_semantic_tokens(
             return result
     
     # Fallback to old file
-    tokens_path = BASE_DIR / "data" / "tokens" / "semantic_tokens.json"
-    with open(tokens_path) as f:
-        return json.load(f)
+    return read_json("tokens/semantic_tokens.json")
 
 
 # ============================================================
@@ -268,9 +247,7 @@ async def get_design_taxonomy() -> dict:
     Returns:
         Complete taxonomy with all available filter values.
     """
-    taxonomy_path = BASE_DIR / "data" / "taxonomy.json"
-    with open(taxonomy_path) as f:
-        return json.load(f)
+    return read_json("taxonomy.json")
 
 
 # ============================================================
@@ -321,7 +298,7 @@ async def compare_design_approaches(
     Returns:
         Comparison object with patterns and a summary of key differences.
     """
-    results = db.search(page_type=page_type, limit=limit)
+    results = await _search_patterns(page_type=page_type, limit=limit)
     return {
         "page_type": page_type,
         "examples": [_to_blueprint(r) for r in results],
@@ -347,6 +324,10 @@ async def analyze_and_devibecode(source_code: str) -> dict:
         Analysis results with anti-patterns found, recommended layout,
         semantic tokens, component structure suggestions, and severity summary.
     """
+    _token_sets = _reference("tokens/token_sets.json")
+    _decision_trees_indexed = _reference("decision_trees_indexed.json")
+    _anti_pattern_fixes = _reference("anti_pattern_fixes.json")
+    _visual_recipes = _reference("visual_recipes.json")
     try:
         analysis = analyze_code(source_code)
         findings = analysis["findings"]
@@ -373,7 +354,7 @@ async def analyze_and_devibecode(source_code: str) -> dict:
         suggested_component_structure = []
 
         try:
-            results = db.search(query=component_type, limit=3)
+            results = await _search_patterns(query=component_type, limit=3)
             if results:
                 top = results[0]
                 if top.layout_type:
@@ -395,6 +376,8 @@ async def analyze_and_devibecode(source_code: str) -> dict:
                 for r in results:
                     for hint in r.component_hints:
                         suggested_component_structure.append(hint)
+        except ResourceError:
+            raise
         except Exception:
             pass
 
@@ -404,9 +387,7 @@ async def analyze_and_devibecode(source_code: str) -> dict:
                 semantic_tokens_to_apply = _token_sets[0]
             else:
                 try:
-                    tokens_path = BASE_DIR / "data" / "tokens" / "semantic_tokens.json"
-                    with open(tokens_path) as f:
-                        tokens = json.load(f)
+                    tokens = read_json("tokens/semantic_tokens.json")
                     semantic_tokens_to_apply = tokens.get("dark", tokens.get("light", {}))
                 except Exception:
                     pass
@@ -476,6 +457,8 @@ async def analyze_and_devibecode(source_code: str) -> dict:
             "detected_component_type": component_type,
         }
 
+    except ResourceError:
+        raise
     except Exception:
         return {
             "anti_patterns_found": [],
@@ -514,6 +497,7 @@ async def get_design_system(
         Complete design system with font imports, Tailwind classes for every component,
         color tokens, spacing values, layout patterns, and anti-patterns to avoid.
     """
+    _anti_generic = _reference("anti_generic_system.json")
     if not _anti_generic:
         return {"error": "Anti-generic design system not loaded"}
 
@@ -655,7 +639,7 @@ async def get_library_recommendations(
         # Also search our patterns DB for matching examples
         pattern_examples = []
         if use_case:
-            results = db.search(query=use_case, limit=3)
+            results = await _search_patterns(query=use_case, limit=3)
             for r in results:
                 pattern_examples.append({
                     "name": r.name,
@@ -671,6 +655,8 @@ async def get_library_recommendations(
             "total_libraries": len(recommendations),
         }
 
+    except ResourceError:
+        raise
     except Exception:
         return {
             "recommendations": [],
@@ -889,6 +875,7 @@ async def scan_project(
         ]
         
         # Build priority fix list with CONCRETE code examples
+        _anti_pattern_fixes = _reference("anti_pattern_fixes.json")
         priority_fixes = []
         seen_fix_types = set()
         for report in file_reports:
@@ -1015,6 +1002,9 @@ async def generate_refactored_code(
         Refactoring plan with before/after code mappings, import statements,
         and step-by-step transformation instructions.
     """
+    _token_sets = _reference("tokens/token_sets.json")
+    _anti_pattern_fixes = _reference("anti_pattern_fixes.json")
+    _visual_recipes = _reference("visual_recipes.json")
     try:
         # Analyze the code
         analysis = analyze_code(source_code)
@@ -1033,7 +1023,7 @@ async def generate_refactored_code(
             target_lib = next((l for l in libs_data["libraries"] if l["id"] == "shadcn-ui"), None)
         
         # Search for matching design patterns
-        pattern_results = db.search(query=component_type, limit=3)
+        pattern_results = await _search_patterns(query=component_type, limit=3)
         design_reference = []
         for p in pattern_results:
             ref = {"name": p.name, "page_type": p.page_type}
@@ -1207,52 +1197,12 @@ def _get_import_path(lib: dict) -> str:
 
 def _load_libraries() -> dict:
     """Load the libraries reference database."""
-    libs_path = BASE_DIR / "data" / "libraries.json"
-    with open(libs_path) as f:
-        return json.load(f)
-
-def _load_reference_data():
-    """Load reference data files (tokens, templates, component code) for resolving references."""
-    data = {"tokens": {}, "layouts": {}, "behaviors": {}, "component_code": {}}
-    try:
-        tokens_path = BASE_DIR / "data" / "tokens" / "semantic_tokens.json"
-        if tokens_path.exists():
-            with open(tokens_path) as f:
-                data["tokens"] = json.load(f)
-    except Exception:
-        pass
-    try:
-        layouts_path = BASE_DIR / "data" / "layout_templates.json"
-        if layouts_path.exists():
-            with open(layouts_path) as f:
-                data["layouts"] = json.load(f)
-    except Exception:
-        pass
-    try:
-        behaviors_path = BASE_DIR / "data" / "behavioral_templates.json"
-        if behaviors_path.exists():
-            with open(behaviors_path) as f:
-                data["behaviors"] = json.load(f)
-    except Exception:
-        pass
-    try:
-        code_path = BASE_DIR / "data" / "component_code.json"
-        if code_path.exists():
-            with open(code_path) as f:
-                data["component_code"] = json.load(f)
-    except Exception:
-        pass
-    return data
-
-
-# Load reference data once at startup
-_ref_data = _load_reference_data()
-
+    return read_json("libraries.json")
 
 def _resolve_legacy_tokens(value):
     """Resolve legacy string token reference to actual token set."""
     if isinstance(value, str) and value in ("light", "dark"):
-        return _ref_data["tokens"].get(value, value)
+        return _reference("tokens/semantic_tokens.json").get(value, value)
     return value
 
 
@@ -1260,7 +1210,7 @@ def _resolve_layout(value, page_type):
     """Resolve layout template reference to actual code."""
     if isinstance(value, str) and value.startswith("[template:"):
         pt = value[10:-1]
-        return _ref_data["layouts"].get(pt, value)
+        return _reference("layout_templates.json").get(pt, value)
     return value
 
 
@@ -1274,7 +1224,7 @@ def _resolve_component_code(hints):
             code = h.get("code", "")
             if isinstance(code, str) and code.startswith("[component:"):
                 name = code[11:-1]
-                template = _ref_data["component_code"].get(name, {})
+                template = _reference("component_code.json").get(name, {})
                 h = dict(h)
                 h["code"] = template.get("code", code)
             resolved.append(h)
@@ -1286,6 +1236,10 @@ def _resolve_component_code(hints):
 def _to_blueprint(pattern: DesignPattern, *, include_guidance: bool = True) -> dict:
     """Convert a full pattern to a comprehensive blueprint with all actionable data.
     Resolves references to actual tokens, layout code, and component code."""
+    _token_sets = _reference("tokens/token_sets.json")
+    _decision_trees_indexed = _reference("decision_trees_indexed.json")
+    _visual_recipes = _reference("visual_recipes.json")
+    _anti_generic = _reference("anti_generic_system.json")
     # Resolve tokens from index
     raw_tokens = pattern.semantic_tokens
     if isinstance(raw_tokens, int):
@@ -1547,6 +1501,7 @@ async def get_visual_recipe(
     Returns:
         Visual recipes with ready-to-use CSS and Tailwind classes.
     """
+    _visual_recipes = _reference("visual_recipes.json")
     if not _visual_recipes:
         return {"error": "Visual recipes not loaded"}
 
