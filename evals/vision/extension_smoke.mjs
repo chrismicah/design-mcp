@@ -119,6 +119,19 @@ try {
     }
     return output.result.value;
   };
+  const painted = (sessionId, selector, state) => inspect(sessionId, `(() => {
+    const ready = () => {
+      const node = document.querySelector(${JSON.stringify(selector)});
+      return document.readyState === 'complete' &&
+        document.body?.dataset.state === ${JSON.stringify(state)} &&
+        node?.checkVisibility() && !node.disabled && Boolean(node.textContent.trim());
+    };
+    if (document.body?.dataset.state === 'problem' && ${JSON.stringify(state)} === 'result') {
+      throw new Error(document.querySelector('#status').textContent);
+    }
+    if (!ready()) return false;
+    return new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve(ready()))));
+  })()`);
   const image = async (session, name) => {
     const shot = await send("Page.captureScreenshot", { format: "png" }, session);
     await writeFile(join(output, name), Buffer.from(shot.data, "base64"));
@@ -139,9 +152,11 @@ try {
     return {x:r.x,y:r.y,width:r.width,height:r.height,viewport:[innerWidth,innerHeight]};
   })()`));
   const isPopup = item => /^chrome-extension:\/\/[a-p]{32}\/popup\.html$/.test(item.url);
+  let openedAt;
   if (mac) {
     proof.phase = "toolbar shortcut";
     assert.equal(await findTarget(isPopup), undefined, "Popup must start closed");
+    openedAt = performance.now();
     key("Command+Shift+Y");
   } else {
     const windowId = execFileSync("xdotool", ["search", "--onlyvisible", "--name", "Evening shuttle dispatch"],
@@ -149,10 +164,17 @@ try {
     execFileSync("xdotool", ["windowfocus", "--sync", windowId]);
     key("ctrl+shift+y");
   }
-  const target = await until("toolbar popup", () => findTarget(isPopup));
+  const target = await until("toolbar popup", () => findTarget(isPopup), 10000, mac ? 15 : 120);
   const extensionId = new URL(target.url).hostname;
   proof.extensionId = extensionId;
   const popup = await attach(target);
+  if (mac) {
+    await until("painted initial Scan control", () => painted(popup, "#scan", "idle"), 5000, 15);
+    proof.firstActivation = {
+      openMs: performance.now() - openedAt,
+      drivers: {open: "macOS shortcut", scan: "CDP keyboard"},
+    };
+  }
   const observePopup = () => inspect(popup, `(() => {
     if (location.href !== ${JSON.stringify(target.url)} || document.readyState !== 'complete') return null;
     const scan = document.querySelector('#scan');
@@ -224,7 +246,10 @@ try {
   }
   if (mac) {
     assert.equal((await observePopup()).focus, "scan");
+    const scannedAt = performance.now();
     await browserKey(popup, "Enter", 13, 36, "\r");
+    await until("painted first finding", () => painted(popup, "#finding", "result"), 10000, 15);
+    proof.firstActivation.scanMs = performance.now() - scannedAt;
     proof.hostRetryInput = await inspect(popup, "window.__reviewSmokeInput");
     assert(proof.hostRetryInput.some(event => event.type === "click" && event.target === "scan" && event.trusted),
       "Chrome did not deliver a trusted click to the focused Scan control");
@@ -332,17 +357,6 @@ try {
         trials: [],
       };
       const findPopup = () => findTarget(isPopup);
-      const painted = (sessionId, selector, state) => inspect(sessionId, `(() => {
-        const ready = () => {
-          const node = document.querySelector(${JSON.stringify(selector)});
-          return document.readyState === 'complete' &&
-            document.body?.dataset.state === ${JSON.stringify(state)} &&
-            node?.checkVisibility() && !node.disabled && Boolean(node.textContent.trim());
-        };
-        if (document.body?.dataset.state === 'problem') throw new Error(document.querySelector('#status').textContent);
-        if (!ready()) return false;
-        return new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve(ready()))));
-      })()`);
       assert((await send("Target.closeTarget", {targetId: newTarget.targetId})).success);
       let previousPopupId = target.targetId;
       for (let trial = 0; trial < latencyRuns; trial++) {

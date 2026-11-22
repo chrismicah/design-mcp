@@ -15,6 +15,7 @@ jobs:
     env:
       CHROME_VERSION: '158.0.8127.36'
       DESIGN_MCP_CANDIDATE: '2fcd31221671590152401d958b904141e438e453'
+      FIRST_ACTIVATION_TRIALS: '3'
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
         with:
@@ -82,8 +83,47 @@ jobs:
           }
           path.write_text(json.dumps(manifest))
           PY
-          REVIEW_LATENCY_RUNS=3 DESIGN_MCP_CHROME_KEY_HELPER="$RUNNER_TEMP/chrome_smoke_key" \
-            node --experimental-websocket evals/vision/extension_smoke.mjs "$chrome" "$cli" "$extension" "$proof"
+          export DESIGN_MCP_CHROME_KEY_HELPER="$RUNNER_TEMP/chrome_smoke_key"
+          for ((sample=1; sample<=FIRST_ACTIVATION_TRIALS; sample++)); do
+            trial="$proof"
+            [[ $sample == 1 ]] || trial="$proof/sample-$sample"
+            if node --experimental-websocket evals/vision/extension_smoke.mjs "$chrome" "$cli" "$extension" "$trial"; then
+              printf 'Trial %s completed\n' "$sample"
+            else
+              printf 'Trial %s failed with exit code %s\n' "$sample" "$?"
+            fi
+          done
+          python - "$proof" "$FIRST_ACTIVATION_TRIALS" "$CHROME_VERSION" <<'PY'
+          from math import ceil, isfinite
+          from pathlib import Path
+          import json, sys
+
+          root, count, version = Path(sys.argv[1]), int(sys.argv[2]), sys.argv[3]
+          rows = []
+          for sample in range(1, count + 1):
+              trial = root if sample == 1 else root / f'sample-{sample}'
+              receipt = trial / 'extension-review.json'
+              record = json.loads(receipt.read_text()) if receipt.exists() else {}
+              timings = record.get('firstActivation', {})
+              passed = (record.get('browserChecksPassed') is True and record.get('browser') == f'Chrome/{version}'
+                        and all(type(timings.get(key)) in (int, float) and isfinite(timings[key]) and timings[key] > 0
+                                for key in ('openMs', 'scanMs')))
+              rows.append({'sample': sample, 'passed': passed, 'timings': timings,
+                           'error': record.get('error') if record else 'missing receipt',
+                           'profile': record.get('chromeProfile')})
+          distinct_profiles = len({row['profile'] for row in rows if row['profile']}) == count
+          report = {'scope': 'First keyboard toolbar activation in separate Chrome processes and empty profiles. '
+                             'Scan follows the profile-scoped native-host install. Includes observation overhead.',
+                    'expected_trials': count, 'trials': rows, 'distinct_profiles': distinct_profiles}
+          if count >= 30 and distinct_profiles and all(row['passed'] for row in rows):
+              report['p95'] = {
+                  metric: sorted(row['timings'][metric] for row in rows)[ceil(count * .95) - 1]
+                  for metric in ('openMs', 'scanMs')
+              }
+          (root / 'first-activation-series.json').write_text(json.dumps(report, indent=2) + '\n')
+          if not distinct_profiles or not all(row['passed'] for row in rows):
+              raise SystemExit('One or more first-activation trials failed')
+          PY
       - name: Verify and archive the visibly masked saved capture
         shell: bash
         run: |
@@ -138,6 +178,7 @@ jobs:
             ${{ runner.temp }}/extension-mac-proof/*.log
             ${{ runner.temp }}/extension-mac-proof/*.json
             ${{ runner.temp }}/extension-mac-proof/*.png
+            ${{ runner.temp }}/extension-mac-proof/sample-*/extension-review.json
             ${{ runner.temp }}/extension-mac-proof/saved-preview/
           if-no-files-found: warn
           retention-days: 7
