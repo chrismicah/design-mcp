@@ -19,6 +19,7 @@ SAMPLE = "<main><h1>Departure board</h1><button>Show ticket</button></main>"
 async def main():
     command = sys.argv[1] if len(sys.argv) > 1 else sys.executable
     arguments = sys.argv[2:] or ["-m", "design_mcp.cli", "serve"]
+    review_enabled = "--review" in arguments
     outcomes = {}
     with TemporaryDirectory(prefix="design-mcp-smoke-") as folder:
         Path(folder, "index.html").write_text(SAMPLE, encoding="utf-8")
@@ -51,6 +52,18 @@ async def main():
             }
             for tool in tools:
                 name = tool.name
+                if name == "review_page":
+                    start = monotonic()
+                    result = await client.call_tool(
+                        name, {"url": "file:///design-mcp-smoke"}, raise_on_error=False
+                    )
+                    body = result.structured_content
+                    if not result.is_error or not body or body.get("ok") is not False:
+                        raise RuntimeError("review_page did not reject a non-web URL")
+                    if any(item.type != "text" for item in result.content):
+                        raise RuntimeError("Rejected browser reviews must return only text")
+                    outcomes[name] = {"keys": list(body), "milliseconds": round((monotonic() - start) * 1000)}
+                    continue
                 if name in {"direct", "react", "check"}:
                     annotations = tool.annotations
                     assert annotations is not None, f"{name} has no capability annotations"
@@ -62,7 +75,8 @@ async def main():
                 if not body or body.get("error"):
                     raise RuntimeError(f"{name}: {body!r}")
                 outcomes[name] = {"keys": list(body), "milliseconds": round((monotonic() - start) * 1000)}
-    assert len(outcomes) == {"legacy": 14, "both": 17, "v2": 3}[mode]
+    assert ("review_page" in outcomes) == review_enabled
+    assert len(outcomes) == {"legacy": 14, "both": 17, "v2": 3}[mode] + review_enabled
     print(json.dumps({"fastmcp": version("fastmcp"), "mode": mode, "tools": outcomes}, indent=2))
 
 
