@@ -11,7 +11,7 @@ Owner approval is recorded in [PLAN.md](../../PLAN.md). The active product line 
 | E | `design-mcp/e-ablation` | Sources and frozen tell checks complete. Candidate screenshots and independent paired scores remain pending. [Comparison](comparison/README.md) |
 | F | `design-mcp/f-held-out-fixes` | Fixed a held-out operations-board route, stale screenshot test, font loading, and three primary controls. 307 tests pass. [Results](suite.log) · [Source challenge](challenge-response.md) |
 | F live smoke | `52540b5` | Fixed Codex approval blocking the v2 tools. Codex called `direct`, produced a theatre board, and GPT Computer Use verified the filter and restore at desktop width and 390 px. [Live proof](../../SMOKE-RECEIPTS.md) |
-| F theatre follow-up | `design-mcp/f-held-out-fixes` | The owner rejected the initial visuals. Theatre briefs now get a stage call sheet instead of the dispatch layout. The reference implementation passed desktop and 390 px interaction checks. [Revision](live-smoke/theatre-revision.md) |
+| F theatre follow-up | `design-mcp/f-held-out-fixes` | The owner rejected both visual drafts. The stage call sheet reference passed desktop and 390 px interaction checks. Visual acceptance remains open. [Revision](live-smoke/theatre-revision.md) |
 | G | Pending | Compare control and direction screenshots and check task completion before using the results to expand. |
 
 The direction arm had 0 static findings across six briefs, compared with 8 in N and 7 in L. The ablated arm had 0 across three. Static score improvement shows the implemented rules caught fewer tells in the source outputs. Visual preference, task success and the value of rationale and citations require rendered comparison.

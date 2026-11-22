@@ -1,6 +1,8 @@
 # Theatre call sheet revision
 
-The owner rejected the first theatre board. The generic dispatch direction specified a dark exception strip, queue and status rail. The agent repeated the same two rooms in the summary, list and support rail. On mobile it changed the visual order without changing the document order.
+**Visual verdict: rejected.** The owner rejected both the original dark dashboard and the revised call sheet shown at 390 px. The filter and restore results below are functional evidence. Keep both screenshots as examples of the visual quality gap.
+
+The original dispatch direction specified a dark exception strip, queue and status rail. The agent repeated the same two rooms in the summary, list and support rail. On mobile it changed the visual order without changing the document order.
 
 ## Product fix
 
