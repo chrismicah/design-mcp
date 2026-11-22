@@ -1,0 +1,329 @@
+{
+  "calibration": {
+    "coherence": 7.5,
+    "originality": 4.5,
+    "craft": 7,
+    "usability": 6
+  },
+  "screens": {
+    "A-1440": {
+      "coherence": 7.5,
+      "originality": 7.5,
+      "craft": 8,
+      "usability": 7,
+      "weighted_score": 7.5,
+      "primary_action": {
+        "input": "Tab to “Focus load,” then Enter.",
+        "expected": "Isolate LS-057 at Bay 4, 19 minutes late, while keeping the next deadline readable.",
+        "observed": "The manifest narrowed to LS-057 and keyboard focus moved to the outlined “Focused load” heading. LS-061’s deadline disappeared."
+      },
+      "edge_observation": "“Exit focus” replaced the original button beneath the bay illustration, slightly higher as the panel shortened. Shift+Tab, then Space restored all five rows and returned focus to “Focus load.” On a second pass, “All loads 5” also restored the rows and kept focus on that filter.",
+      "fact_check": "Five rows appeared initially. LS-061 was second with “Due in 9 min.” That value returned with the full manifest.",
+      "strength": "The illustrated Bay 4 door identifies the location at a glance. The amber late time and blue upcoming deadline are easy to distinguish in the adjacent table.",
+      "weakness": "The focused table leaves ample space below LS-057 while removing the next dispatch deadline.",
+      "repair": "Keep a compact “LS-061 · Due in 9 min” line beside the focused manifest.",
+      "captures": [
+        "A-1440-before.png",
+        "A-1440-after.png",
+        "A-1440-restored.png"
+      ],
+      "arm": "plain",
+      "html_sha256": "5424fc3eb3059bc4310a61a49354cde68110990179e060a3990de0e46b80a63c",
+      "weighted": 7.5,
+      "before": {
+        "sha256": "1314800b8161e0ee8920bdfd5bba3bc0c0f1836d2cac8c3fa75d9ede4806d8cf",
+        "file": "A-1440-before.png",
+        "tool_call_id": "item_2"
+      },
+      "after": {
+        "sha256": "db0b2d1cc562bfc94f53da916cd1835628648c8546a3e056e24cbfa1e677b1a2",
+        "file": "A-1440-after.png",
+        "tool_call_id": "item_5"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Space"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ]
+    },
+    "A-390": {
+      "coherence": 8,
+      "originality": 7.5,
+      "craft": 8.5,
+      "usability": 7,
+      "weighted_score": 7.75,
+      "primary_action": {
+        "input": "Tab to “Focus load,” then Enter.",
+        "expected": "Focus the delayed load and retain a readable nine-minute deadline.",
+        "observed": "The outlined “Focused load” heading received keyboard focus. The single row showed LS-057, Bay 4 and “19 min late.” LS-061 and its deadline disappeared."
+      },
+      "edge_observation": "“Exit focus” occupied the same button position below the delay, left of the bay drawing. Shift+Tab, then Space restored all five rows and put the focus ring back on “Focus load.” The alternate “All loads 5” route kept focus on the filter.",
+      "fact_check": "All five initial rows fit on screen. “Due in 9 min” was readable on one line in LS-061’s row before focus and after restoration.",
+      "strength": "The compact bay drawing leaves room for the action and a legible three-column manifest in the same viewport.",
+      "weakness": "Checking the upcoming deadline requires leaving the focused view.",
+      "repair": "Show LS-061 and its deadline directly beneath the focused row.",
+      "captures": [
+        "A-390-before.png",
+        "A-390-after.png",
+        "A-390-restored.png"
+      ],
+      "arm": "plain",
+      "html_sha256": "5424fc3eb3059bc4310a61a49354cde68110990179e060a3990de0e46b80a63c",
+      "weighted": 7.75,
+      "before": {
+        "sha256": "6d57a77708b6e1ae11e6108ecfca6167c21fa34a73f1716c63f72d7599b67c04",
+        "file": "A-390-before.png",
+        "tool_call_id": "item_13"
+      },
+      "after": {
+        "sha256": "28c2887bff333863cdafb562ef80788a499b2eebb121942776a688c6f50a2680",
+        "file": "A-390-after.png",
+        "tool_call_id": "item_16"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Space"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ]
+    },
+    "B-1440": {
+      "coherence": 9,
+      "originality": 8.5,
+      "craft": 8.5,
+      "usability": 9,
+      "weighted_score": 8.75,
+      "primary_action": {
+        "input": "Tab to “Focus LS-057,” then Enter.",
+        "expected": "Focus the matching manifest row and keep LS-061’s deadline visible.",
+        "observed": "Keyboard focus landed on the outlined LS-057 row showing Bay 4 and “19 min late.” The manifest read “1 of 5 loads,” and the right-hand “Upcoming load” panel still showed LS-061 due in 9 min."
+      },
+      "edge_observation": "The original button became the text “Focused in manifest.” The next Tab reached “Show all 5 loads” directly beneath the row. Space restored five rows and returned visible keyboard focus to “Focus LS-057” in the upper panel.",
+      "fact_check": "The initial manifest contained five rows. Both the second row and the upcoming-load panel gave LS-061’s deadline as “Due in 9 min.”",
+      "strength": "The oversized Bay 4 sign aligns with the upcoming-load panel. The dispatcher can read the selected bay and the next deadline even while the table is filtered.",
+      "weakness": "The wide upper panel puts a large gap between LS-057, its delay and its action. The line closest to the ID gives its row number.",
+      "repair": "Group “19 min late” and the focus action nearer LS-057 in the upper panel.",
+      "captures": [
+        "B-1440-before.png",
+        "B-1440-after.png",
+        "B-1440-restored.png"
+      ],
+      "arm": "design-mcp",
+      "html_sha256": "2bcc76b4fb2043b915d6393a1268a85bf848819baa8ab7961a5116d6016d30b6",
+      "weighted": 8.75,
+      "before": {
+        "sha256": "926f7f8830dd254dcc019e22d6bf4115cfa4bb3ea589d85f7c280103c6b8ddca",
+        "file": "B-1440-before.png",
+        "tool_call_id": "item_25"
+      },
+      "after": {
+        "sha256": "4fcc08f5a44c954822c7eb150795adaf48071b5355d73bea48913b5e98a73c05",
+        "file": "B-1440-after.png",
+        "tool_call_id": "item_28"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Space"
+        }
+      ]
+    },
+    "B-390": {
+      "coherence": 9,
+      "originality": 8.5,
+      "craft": 9,
+      "usability": 9,
+      "weighted_score": 8.85,
+      "primary_action": {
+        "input": "Tab to “Focus LS-057,” then Enter.",
+        "expected": "Focus LS-057 and keep the next deadline readable at phone width.",
+        "observed": "The focus ring enclosed the LS-057 row, with Bay 4 beneath the ID and “19 min late” on the right. The strip immediately above the manifest still showed LS-061 and “Due in 9 min.”"
+      },
+      "edge_observation": "“Show all 5 loads” appeared below the single row and was the next Tab stop. Space restored all five rows and returned visible focus to “Focus LS-057” in the upper panel.",
+      "fact_check": "All five rows fit in the initial viewport. The upcoming deadline, focused row and reversal button were readable together without scrolling.",
+      "strength": "Putting Bay 4 under the row ID gives timing its own column. The upcoming-load strip stays close enough to read both timing values in one glance.",
+      "weakness": "During focus, “5 loads,” “Manifest row 1 / 5” and “1 of 5 loads” all occupy the phone screen. The row-position label separates LS-057 from its delay.",
+      "repair": "Remove the row-position line from the upper panel so the delay sits directly beneath LS-057.",
+      "captures": [
+        "B-390-before.png",
+        "B-390-after.png",
+        "B-390-restored.png"
+      ],
+      "arm": "design-mcp",
+      "html_sha256": "2bcc76b4fb2043b915d6393a1268a85bf848819baa8ab7961a5116d6016d30b6",
+      "weighted": 8.85,
+      "before": {
+        "sha256": "2944bda83e4b39d1e9cb74e5e565d95b52feccacfcd97382205ea99c9d7d6dd0",
+        "file": "B-390-before.png",
+        "tool_call_id": "item_33"
+      },
+      "after": {
+        "sha256": "8a023c147e027f156c01dd210471058f37fbaf5adf502f6a630e3c4d3b85cb89",
+        "file": "B-390-after.png",
+        "tool_call_id": "item_36"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Space"
+        }
+      ]
+    }
+  },
+  "preference": {
+    "winner": "B",
+    "reason": "B kept LS-061’s nine-minute deadline readable at both widths while keyboard focus landed directly on the delayed row. One forward Tab reached the reversal control, and restoring all five rows returned focus to the initiating button. A also restored focus reliably, but the dispatcher had to leave focus mode to read the next deadline."
+  },
+  "unsupported_claims": [
+    "Both views showed three rows labeled “ID unavailable” and supplied no bay for LS-061. Those identities and that bay are unverified.",
+    "The captures verify the displayed nine-minute deadline. Live countdown updates were untested."
+  ],
+  "case": "dashboard-clear",
+  "verified_screens": 4,
+  "required_screens": 4,
+  "browser": "Chrome/157.0.8103.79",
+  "evaluator_thread": "01a20309-11b7-7593-99ae-b20e27ea48c6",
+  "usage": {
+    "input_tokens": 602765,
+    "cached_input_tokens": 560128,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 5364,
+    "reasoning_output_tokens": 2598
+  },
+  "trace_sha256": "dc39989b54a22b78b981dd785036d0520018bcf688c829ab5bc9cc4ac648b4da",
+  "browser_audit_sha256": "d3ec8530ed11c6ebff2fa7449415f82f2456f3b726874f24e7b03a31af85aa41",
+  "model": "gpt-6.2-astra",
+  "effort": "max",
+  "playwriter": "0.12.0",
+  "reaction_number": 2,
+  "source_commit": "2fcd31221671590152401d958b904141e438e453",
+  "uncached_input_tokens": 42637,
+  "critic_prompt_sha256": "cc21bc04e7233434803bcd8d0669b41aae94ccf994176c727e44f41ad8eace6d",
+  "pilot_outcomes": {
+    "plain": {
+      "user_reactions": 2,
+      "clarification_turns": 0,
+      "reached_9_5": false,
+      "generation_seconds_total": 1007.55,
+      "visual_scores_by_round": [
+        [
+          8.7,
+          8.45
+        ],
+        [
+          8.0,
+          7.85
+        ],
+        [
+          7.5,
+          7.75
+        ]
+      ]
+    },
+    "design-mcp": {
+      "user_reactions": 2,
+      "clarification_turns": 0,
+      "reached_9_5": false,
+      "generation_seconds_total": 891.42,
+      "visual_scores_by_round": [
+        [
+          8.55,
+          8.3
+        ],
+        [
+          8.5,
+          8.25
+        ],
+        [
+          8.75,
+          8.85
+        ]
+      ]
+    }
+  }
+}

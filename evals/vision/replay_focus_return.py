@@ -27,7 +27,7 @@ def key_is(row, choices):
 def returned_focus(rows, screen):
     """Return an observed control name when an action moves focus and recovery returns it.
 
-    The answer describes the visible tag and label. This trace has no DOM node identity.
+    The answer describes the tag and label reported with the browser's focus-visible flag.
     """
     before_label, after_label = (f"{screen}-{name}" for name in ("before", "after"))
     captures = {row["label"]: index for index, row in enumerate(rows)
@@ -84,7 +84,7 @@ def replay(run, ballot_path):
         marker = next(i for i, row in enumerate(rows) if row.get("label") == f"{screen}-after")
         recovery = next(i for i in range(marker + 1, len(rows)) if key_is(rows[i], RECOVER))
         negatives = {}
-        for name, key, value in (("invisible", "visible", False), ("embedded", "embedded", True),
+        for name, key, value in (("no_focus_visible_flag", "visible", False), ("embedded", "embedded", True),
                                   ("other_control", "label", "Different control")):
             variant = deepcopy(rows)
             variant[recovery]["observation"]["focus"][key] = value
