@@ -20,10 +20,11 @@ import time
 from contextlib import contextmanager
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.request import urlopen
+from urllib.request import ProxyHandler, build_opener
 
 from .address import public_target
 from .evidence import MAX_REGIONS, SCHEMA
+from .network import public_proxy
 
 VIEWPORTS = ((1440, 900), (390, 844))
 DEFAULT_CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
@@ -37,16 +38,12 @@ class CaptureError(RuntimeError):
         self.message = message
 
 
-# Only web requests to public-looking hosts leave the separate browser.
+# The proxy checks the resolved connection destination, including redirect targets.
 _ROUTE_JS = r"""
 await context.route('**/*', route => {
   let target;
   try { target = new URL(route.request().url()); } catch (error) { return route.abort(); }
-  const host = target.hostname;
-  const local = host === 'localhost' || /\.(localhost|local|internal|lan)$/.test(host) ||
-    /^(0|10|127)\./.test(host) || /^169\.254\./.test(host) || /^192\.168\./.test(host) ||
-    /^172\.(1[6-9]|2\d|3[01])\./.test(host) || /^\[(::1|f[cd]|fe[89ab])/i.test(host);
-  if (!/^https?:$/.test(target.protocol) || local) return route.abort();
+  if (!/^https?:$/.test(target.protocol)) return route.abort();
   return route.continue();
 });
 """
@@ -187,6 +184,50 @@ async def _drive(url, playwriter, env, scratch, web_socket):
     }
 
 
+def _browser_arguments(chrome, profile, proxy_port):
+    return [
+        str(chrome), "--headless", "--disable-extensions", "--disable-sync", "--disable-background-networking",
+        "--no-first-run", "--no-default-browser-check", f"--user-data-dir={profile}",
+        f"--proxy-server=socks5://127.0.0.1:{proxy_port}", "--proxy-bypass-list=<-loopback>",
+        "--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE 127.0.0.1",
+        "--disable-quic", "--force-webrtc-ip-handling-policy=disable_non_proxied_udp",
+    ]
+
+
+async def _capture_browser(url, host, address, chrome, playwriter, scratch, resolve):
+    profile, home = scratch / "profile", scratch / "home"
+    home.mkdir()
+    relay_port = _free_port()
+    env = {key: value for key, value in os.environ.items() if not key.startswith("PLAYWRITER_")}
+    env.update(HOME=str(home), PLAYWRITER_PORT=str(relay_port))
+    async with public_proxy(host, address, resolve) as proxy_port:
+        chrome_args = _browser_arguments(chrome, profile, proxy_port) + [
+            "--remote-debugging-address=127.0.0.1", "--remote-debugging-port=0", "about:blank",
+        ]
+        with _child(chrome_args, scratch / "chrome.log") as browser:
+            def devtools_port():
+                lines = (profile / "DevToolsActivePort").read_text().splitlines()
+                if not lines:
+                    raise ValueError("the port is not written yet")
+                return int(lines[0])
+
+            port = await asyncio.to_thread(_wait_ready, browser, devtools_port)
+            local_opener = build_opener(ProxyHandler({}))
+
+            def version():
+                with local_opener.open(f"http://127.0.0.1:{port}/json/version", timeout=1) as reply:
+                    return json.load(reply)
+
+            web_socket = (await asyncio.to_thread(_wait_ready, browser, version))["webSocketDebuggerUrl"]
+            with _child([str(playwriter), "serve", "--host", "127.0.0.1"], scratch / "relay.log", env=env) as relay:
+                def relay_ready():
+                    with socket.create_connection(("127.0.0.1", relay_port), timeout=1):
+                        return True
+
+                await asyncio.to_thread(_wait_ready, relay, relay_ready)
+                return await asyncio.wait_for(_drive(url, playwriter, env, scratch, web_socket), SESSION_SECONDS)
+
+
 def capture(url, playwriter=None, chrome=None, resolve=socket.getaddrinfo):
     """Capture one public page at both benchmark widths and return a page-evidence bundle."""
     clean, host, address = public_target(url, resolve)
@@ -202,40 +243,7 @@ def capture(url, playwriter=None, chrome=None, resolve=socket.getaddrinfo):
         raise CaptureError(f"No Chrome at {chrome}. Pass --chrome with its location.")
     scratch = Path(tempfile.mkdtemp(prefix="design-mcp-review-"))
     try:
-        profile, home = scratch / "profile", scratch / "home"
-        home.mkdir()
-        relay_port = _free_port()
-        env = {key: value for key, value in os.environ.items() if not key.startswith("PLAYWRITER_")}
-        env.update(HOME=str(home), PLAYWRITER_PORT=str(relay_port))
-        pinned = f"[{address}]" if ":" in address else address
-        chrome_args = [
-            str(chrome), "--headless", "--disable-extensions", "--disable-sync", "--disable-background-networking",
-            "--no-first-run", "--no-default-browser-check", f"--user-data-dir={profile}",
-            f"--host-resolver-rules=MAP {host} {pinned}",
-            "--remote-debugging-address=127.0.0.1", "--remote-debugging-port=0", "about:blank",
-        ]
-        with _child(chrome_args, scratch / "chrome.log") as browser:
-            def devtools_port():
-                lines = (profile / "DevToolsActivePort").read_text().splitlines()
-                if not lines:
-                    raise ValueError("the port is not written yet")
-                return int(lines[0])
-
-            port = _wait_ready(browser, devtools_port)
-
-            def version():
-                with urlopen(f"http://127.0.0.1:{port}/json/version", timeout=1) as reply:
-                    return json.load(reply)
-
-            web_socket = _wait_ready(browser, version)["webSocketDebuggerUrl"]
-            with _child([str(playwriter), "serve", "--host", "127.0.0.1"], scratch / "relay.log", env=env) as relay:
-                def relay_ready():
-                    with socket.create_connection(("127.0.0.1", relay_port), timeout=1):
-                        return True
-
-                _wait_ready(relay, relay_ready)
-                return asyncio.run(asyncio.wait_for(
-                    _drive(clean, playwriter, env, scratch, web_socket), SESSION_SECONDS))
+        return asyncio.run(_capture_browser(clean, host, address, chrome, playwriter, scratch, resolve))
     except Exception as error:  # an external browser and tool: report one plain sentence, keep the cause
         raise CaptureError(f"The page could not be captured in the separate browser: {error}") from error
     finally:

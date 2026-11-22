@@ -16,13 +16,30 @@ _NOT_FOUND = "That address could not be found. Check the spelling and try again.
 
 def local_address_reason(url):
     """Why an address is not a public page, judged from the address alone. None when it looks public."""
-    host = urlsplit(url).hostname or ""
+    return NOT_PUBLIC if is_private_host(urlsplit(url).hostname or "") else None
+
+
+def canonical_host(host):
+    return host.lower().rstrip(".")
+
+
+def is_public_ip(address):
+    if isinstance(address, ipaddress.IPv6Address):
+        if address.scope_id is not None or address.sixtofour is not None:
+            return False
+        if address.ipv4_mapped:
+            address = address.ipv4_mapped
+    return address.is_global and not address.is_multicast and not address.is_reserved
+
+
+def is_private_host(host):
+    host = canonical_host(host)
     if host == "localhost" or host.endswith(_LOCAL_SUFFIXES) or ("." not in host and ":" not in host):
-        return NOT_PUBLIC
+        return True
     try:
-        return None if ipaddress.ip_address(host).is_global else NOT_PUBLIC
+        return not is_public_ip(ipaddress.ip_address(host))
     except ValueError:
-        return None
+        return False
 
 
 def credentials_reason(removed):
@@ -42,12 +59,17 @@ def public_target(url, resolve=socket.getaddrinfo):
     clean, removed = inspect_url(url)
     if removed:
         raise EvidenceError("credentials-in-url", credentials_reason(removed))
-    if local_address_reason(clean):
-        raise EvidenceError("private-address", NOT_PUBLIC)
     parts = urlsplit(clean)
+    port = parts.port or (443 if parts.scheme == "https" else 80)
+    return clean, parts.hostname, resolve_public_host(parts.hostname, port, resolve)
+
+
+def resolve_public_host(host, port, resolve=socket.getaddrinfo):
+    """Resolve a connection target and return a checked numeric address."""
+    if is_private_host(host):
+        raise EvidenceError("private-address", NOT_PUBLIC)
     try:
-        answers = resolve(parts.hostname, parts.port or (443 if parts.scheme == "https" else 80),
-                          type=socket.SOCK_STREAM)
+        answers = resolve(host, port, type=socket.SOCK_STREAM)
     except OSError:
         raise EvidenceError("unresolved", _NOT_FOUND) from None
     addresses = []
@@ -56,10 +78,10 @@ def public_target(url, resolve=socket.getaddrinfo):
             address = ipaddress.ip_address(answer[4][0])
         except ValueError:
             raise EvidenceError("private-address", NOT_PUBLIC) from None
-        if not address.is_global:
+        if not is_public_ip(address):
             raise EvidenceError("private-address", NOT_PUBLIC)
         addresses.append(address)
     if not addresses:
         raise EvidenceError("unresolved", _NOT_FOUND)
     chosen = next((address for address in addresses if address.version == 4), addresses[0])
-    return clean, parts.hostname, str(chosen)
+    return str(chosen)
