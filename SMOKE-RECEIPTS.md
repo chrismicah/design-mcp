@@ -22,7 +22,11 @@ In 30 further Linux trials, each keyboard toolbar activation opened a fresh popu
 
 Two 30-trial diagnostic runs reduced injected key dispatch from 45 ms to 7 ms at the median. Both runs measured 299 ms p95 from shortcut to observed control. The popup document started around 249 ms after the shortcut in both runs. Most of the observed wait occurs before the popup's code can run. The reference Mac pointer measurement is still open. [Timing breakdown and raw receipt hashes](evidence/benchmark-v1/chrome-popup-latency-linux.json)
 
-Two hosted macOS repeats each recorded one popup activation and scan before the next toolbar shortcut timed out. The run configured to dismiss the popup with Escape timed out before its first measured popup, so it never reached Escape. The raw receipts show two individual timings and leave macOS p95 unverified. [Run receipts and hashes](evidence/benchmark-v1/chrome-popup-latency-mac-diagnostics.json)
+Two hosted macOS repeats each recorded one popup activation and scan before the next toolbar shortcut timed out. The run configured to dismiss the popup with Escape timed out before its first measured popup, so it never reached Escape. The two individual timings leave the warm-profile macOS p95 unverified. [Run receipts and hashes](evidence/benchmark-v1/chrome-popup-latency-mac-diagnostics.json)
+
+A separate hosted macOS 15 test completed **30 of 30** keyboard trials by using an empty profile and a new Chrome process for each first activation. After the fixture loaded, p95 was **720 ms to the enabled popup** and **317 ms from Scan to the finding**. The popup missed 250 ms and the scan cleared 1 second. Median elapsed time to observe the popup target was 327 ms, including keyboard dispatch. The final mask archive failed because the first saved preview had aged out of the 20-review history. All 30 previews opened and reopened during their individual trials. [Audited timings](evidence/benchmark-v1/chrome-first-activation-mac.json)
+
+The archive fix preserved the first saved preview on the next run. **25 of 30** trials completed. Trials 3, 8, 12, 16 and 22 timed out at the toolbar shortcut. The run withheld p95 and skipped the hosted mask step. Replaying that verifier locally on a copy confirmed the archived preview's mask pixels, screenshot hash and absence of the seeded field value from the preview and evidence. The next measurement uses the pointer on the reference Mac. [Repeat run and mask replay](evidence/benchmark-v1/chrome-first-activation-mac.json)
 
 ## Fresh-package benchmark smoke, November 21
 
@@ -36,9 +40,11 @@ A later desktop preflight ran after the previous QA owner released the Mac. The 
 
 At the 12:06 UTC handoff check, the ML QA owner had released its slot. The workspace inventory showed Swipe Clean frontmost, a TextEdit dialog, and two displays. GPT Computer Use enumerated apps and again reported that the browser access host was unavailable. The staging check saved both displays locally and sent no input.
 
+At the subsequent read-only check, GPT Computer Use could still enumerate apps, with Chrome absent from the running inventory and the browser access host unavailable. No desktop input was sent.
+
 ## Hosted Chrome extension smoke, November 22
 
-A fresh package install on hosted Linux opened the real toolbar popup by keyboard on a synthetic shuttle dispatch board. Scan started focused. With the host missing, the popup gave the install command and returned focus to Scan. After installing the host into the isolated Chrome user data directory, Enter scanned eight regions, opened a saved preview, and the Right Arrow switched to After. The archived capture masked the seeded field and the private value was absent from the saved HTML and JSON. The popup reported 87 ms on this run. macOS extension smoke, p95 timing and blind visual scoring remain open. [Run and screenshots](https://github.com/chrismicah/design-mcp/actions/runs/44994211431) · [Receipt and hashes](evidence/benchmark-v1/vision-extension-proof.json)
+A fresh package install on hosted Linux opened the real toolbar popup by keyboard on a synthetic shuttle dispatch board. Scan started focused. With the host missing, the popup gave the install command and returned focus to Scan. After installing the host into the isolated Chrome user data directory, Enter scanned eight regions, opened a saved preview, and the Right Arrow switched to After. The archived capture masked the seeded field and the private value was absent from the saved HTML and JSON. The popup reported 87 ms on this run. The hosted macOS runs described above add fresh-profile evidence. Reference-Mac pointer timing, GPT Computer Use smoke and blind visual scoring remain open. [Run and screenshots](https://github.com/chrismicah/design-mcp/actions/runs/44994211431) · [Receipt and hashes](evidence/benchmark-v1/vision-extension-proof.json)
 
 ## Hosted Electron window smoke, November 22
 
