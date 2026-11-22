@@ -8,14 +8,14 @@ The public Ventura base image resolved to `ghcr.io/cirruslabs/macos-ventura-base
 
 The Tart 2.42.0 pull stopped at 56% when available space reached 20.46 GiB. Memory pressure was normal. The workspace-local partial uses about 24 GiB. Preserve it and resume from the same state and image digest after the Data volume has sufficient space for the remaining image, guest writes, and the 20 GiB reserve. Tart reuses the partial disk and checks completed chunks against the image digests. The pull stopped before guest boot, so the install and MCP smoke checks remain open. [Tart disk pull implementation](https://github.com/cirruslabs/tart/blob/2.42.0/Sources/tart/OCI/Layerizer/DiskV2.swift)
 
-The staged guest bundle contains `a29d405b40ed49383c1fc7b91ba0bc51cee5135f`, the revision verified by the eight-job direct Git matrix. The host preflight checked the archive and uv checksums and the commit embedded by Git. The archive SHA-256 is `8fdde74fbc67def5afe8624cc26c4d0aa99499e75e3f45e16dde862c5bdd8990`. The workspace-local boot script accepts the full revision and `--check-input` to verify the staged files before invoking Tart. The guest has yet to run. [Direct Git install matrix](https://github.com/chrismicah/design-mcp/actions/runs/45001580472)
+The staged guest bundle contains `2fcd31221671590152401d958b904141e438e453`, the revision verified by the eight-job direct Git matrix. The host preflight checked the archive and uv checksums and the commit embedded by Git. The archive SHA-256 is `0d12360b1b85927d0b14ccc35b364f8ace014f04f347751c1dac751993e72936`. The workspace-local boot script accepts the full revision and `--check-input` to verify the staged files before invoking Tart. The guest has yet to run. [Direct Git install matrix](https://github.com/chrismicah/design-mcp/actions/runs/45010831792)
 
 Under the shared lease, clone the pinned image into a workspace-scoped `TART_HOME`, mount the checksummed bundle read-only and boot headless. Use `tart exec` to run the staged guest script. It verifies macOS 13 and arm64, then fetches the public Git revision without credentials. With the verified bootstrap uv on the guest path, the install loop is:
 
 ```sh
 run=$(mktemp -d)
 repo=https://github.com/chrismicah/design-mcp.git
-rev=a29d405b40ed49383c1fc7b91ba0bc51cee5135f
+rev=2fcd31221671590152401d958b904141e438e453
 export GIT_TERMINAL_PROMPT=0
 git init -q "$run/source"
 git -C "$run/source" fetch --no-tags --depth=1 "$repo" "$rev"
