@@ -3,6 +3,7 @@
 Usage:
     design-mcp serve     Start the MCP server (stdio transport)
     design-mcp version   Show version
+    design-mcp doctor    Check the installation and local stdio connection
 """
 import sys
 
@@ -16,6 +17,7 @@ def main():
         print("Usage:")
         print("  design-mcp serve      Start the MCP server (stdio transport)")
         print("  design-mcp version    Show version")
+        print("  design-mcp doctor [--repair]    Check the interpreter, resources, and local stdio client")
         print()
         print("Add to Claude Code:")
         print("  claude mcp add -s user design-mcp -- design-mcp serve")
@@ -32,6 +34,14 @@ def main():
         from design_mcp.server import mcp
         mcp.run()
         return
+
+    if command == "doctor":
+        import argparse
+        from design_mcp.doctor import run
+
+        parser = argparse.ArgumentParser(prog="design-mcp doctor", description="Check the local installation.")
+        parser.add_argument("--repair", action="store_true", help="Rebuild a missing or corrupt legacy cache.")
+        sys.exit(run(repair=parser.parse_args(args[1:]).repair))
 
     print(f"Unknown command: {command}", file=sys.stderr)
     print("Run 'design-mcp --help' for usage", file=sys.stderr)

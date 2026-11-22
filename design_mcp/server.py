@@ -1,7 +1,9 @@
 from fastmcp import FastMCP
 from mcp.types import ToolAnnotations
+from .corpus import CorpusError
 from .schema import DesignPattern, Platform, LayoutType
 from .database import DesignDatabase
+from .resources import read_json
 from .directions import check, direct, react
 from .palettes import generate_accessible_palette
 from .models.analyzer import analyze_code, infer_component_type
@@ -12,11 +14,7 @@ from .models.visual_analyzer import (
 )
 from typing import Optional
 from pathlib import Path
-import json
 import os
-
-# Resolve paths relative to this file
-BASE_DIR = Path(__file__).parent
 
 SURFACE = os.environ.get("DESIGN_MCP_SURFACE", "both").strip().lower()
 if SURFACE not in {"legacy", "both", "v2"}:
@@ -42,7 +40,7 @@ def legacy_tool(function):
     return function
 
 
-db = DesignDatabase(str(BASE_DIR / "data" / "patterns.json")) if SURFACE != "v2" else None
+db = DesignDatabase() if SURFACE != "v2" else None
 
 # Load indexed token sets and decision trees for resolution
 _token_sets = []
@@ -51,30 +49,12 @@ _anti_pattern_fixes = {}
 _visual_recipes = {}
 _anti_generic = {}
 
-def _load_indexed_data():
-    global _token_sets, _decision_trees_indexed, _anti_pattern_fixes, _visual_recipes, _anti_generic
-    token_path = BASE_DIR / "data" / "tokens" / "token_sets.json"
-    if token_path.exists():
-        with open(token_path) as f:
-            _token_sets = json.load(f)
-    tree_path = BASE_DIR / "data" / "decision_trees_indexed.json"
-    if tree_path.exists():
-        with open(tree_path) as f:
-            _decision_trees_indexed = json.load(f)
-    fix_path = BASE_DIR / "data" / "anti_pattern_fixes.json"
-    if fix_path.exists():
-        with open(fix_path) as f:
-            _anti_pattern_fixes = json.load(f)
-    recipe_path = BASE_DIR / "data" / "visual_recipes.json"
-    if recipe_path.exists():
-        with open(recipe_path) as f:
-            _visual_recipes = json.load(f)
-    anti_generic_path = BASE_DIR / "data" / "anti_generic_system.json"
-    if anti_generic_path.exists():
-        with open(anti_generic_path) as f:
-            _anti_generic = json.load(f)
-
-_load_indexed_data()
+if SURFACE != "v2":
+    _token_sets = read_json("tokens/token_sets.json")
+    _decision_trees_indexed = read_json("decision_trees_indexed.json")
+    _anti_pattern_fixes = read_json("anti_pattern_fixes.json")
+    _visual_recipes = read_json("visual_recipes.json")
+    _anti_generic = read_json("anti_generic_system.json")
 
 
 def _resolve_tokens(pattern_dict: dict) -> dict:
@@ -85,7 +65,7 @@ def _resolve_tokens(pattern_dict: dict) -> dict:
     elif isinstance(tokens, str):
         # Legacy string ref — resolve from old token file
         try:
-            old_tokens = json.load(open(BASE_DIR / "data" / "tokens" / "semantic_tokens.json"))
+            old_tokens = read_json("tokens/semantic_tokens.json")
             pattern_dict["semantic_tokens"] = old_tokens.get(tokens, {})
         except Exception:
             pass
@@ -250,9 +230,7 @@ async def get_semantic_tokens(
             return result
     
     # Fallback to old file
-    tokens_path = BASE_DIR / "data" / "tokens" / "semantic_tokens.json"
-    with open(tokens_path) as f:
-        return json.load(f)
+    return read_json("tokens/semantic_tokens.json")
 
 
 # ============================================================
@@ -268,9 +246,7 @@ async def get_design_taxonomy() -> dict:
     Returns:
         Complete taxonomy with all available filter values.
     """
-    taxonomy_path = BASE_DIR / "data" / "taxonomy.json"
-    with open(taxonomy_path) as f:
-        return json.load(f)
+    return read_json("taxonomy.json")
 
 
 # ============================================================
@@ -395,6 +371,8 @@ async def analyze_and_devibecode(source_code: str) -> dict:
                 for r in results:
                     for hint in r.component_hints:
                         suggested_component_structure.append(hint)
+        except CorpusError:
+            raise
         except Exception:
             pass
 
@@ -404,9 +382,7 @@ async def analyze_and_devibecode(source_code: str) -> dict:
                 semantic_tokens_to_apply = _token_sets[0]
             else:
                 try:
-                    tokens_path = BASE_DIR / "data" / "tokens" / "semantic_tokens.json"
-                    with open(tokens_path) as f:
-                        tokens = json.load(f)
+                    tokens = read_json("tokens/semantic_tokens.json")
                     semantic_tokens_to_apply = tokens.get("dark", tokens.get("light", {}))
                 except Exception:
                     pass
@@ -476,6 +452,8 @@ async def analyze_and_devibecode(source_code: str) -> dict:
             "detected_component_type": component_type,
         }
 
+    except CorpusError:
+        raise
     except Exception:
         return {
             "anti_patterns_found": [],
@@ -671,6 +649,8 @@ async def get_library_recommendations(
             "total_libraries": len(recommendations),
         }
 
+    except CorpusError:
+        raise
     except Exception:
         return {
             "recommendations": [],
@@ -1207,46 +1187,20 @@ def _get_import_path(lib: dict) -> str:
 
 def _load_libraries() -> dict:
     """Load the libraries reference database."""
-    libs_path = BASE_DIR / "data" / "libraries.json"
-    with open(libs_path) as f:
-        return json.load(f)
+    return read_json("libraries.json")
 
 def _load_reference_data():
     """Load reference data files (tokens, templates, component code) for resolving references."""
-    data = {"tokens": {}, "layouts": {}, "behaviors": {}, "component_code": {}}
-    try:
-        tokens_path = BASE_DIR / "data" / "tokens" / "semantic_tokens.json"
-        if tokens_path.exists():
-            with open(tokens_path) as f:
-                data["tokens"] = json.load(f)
-    except Exception:
-        pass
-    try:
-        layouts_path = BASE_DIR / "data" / "layout_templates.json"
-        if layouts_path.exists():
-            with open(layouts_path) as f:
-                data["layouts"] = json.load(f)
-    except Exception:
-        pass
-    try:
-        behaviors_path = BASE_DIR / "data" / "behavioral_templates.json"
-        if behaviors_path.exists():
-            with open(behaviors_path) as f:
-                data["behaviors"] = json.load(f)
-    except Exception:
-        pass
-    try:
-        code_path = BASE_DIR / "data" / "component_code.json"
-        if code_path.exists():
-            with open(code_path) as f:
-                data["component_code"] = json.load(f)
-    except Exception:
-        pass
-    return data
+    return {
+        "tokens": read_json("tokens/semantic_tokens.json"),
+        "layouts": read_json("layout_templates.json"),
+        "behaviors": read_json("behavioral_templates.json"),
+        "component_code": read_json("component_code.json"),
+    }
 
 
 # Load reference data once at startup
-_ref_data = _load_reference_data()
+_ref_data = _load_reference_data() if SURFACE != "v2" else {}
 
 
 def _resolve_legacy_tokens(value):

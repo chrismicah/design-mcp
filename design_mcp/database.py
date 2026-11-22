@@ -1,7 +1,12 @@
 import json
+from functools import cached_property
 from pathlib import Path
-from .schema import DesignPattern
+from threading import Lock
 from typing import Optional
+
+from . import corpus
+from .resources import data_file
+from .schema import DesignPattern
 
 
 class DesignDatabase:
@@ -11,21 +16,44 @@ class DesignDatabase:
     This is optimized for the 24-hour build timeline.
     """
 
-    def __init__(self, path: str):
-        self.path = Path(path)
-        self.path.parent.mkdir(parents=True, exist_ok=True)
-        self._patterns: list[DesignPattern] = []
-        self._load()
+    def __init__(self, path: str | Path | None = None):
+        self._records: list[DesignPattern] | None = None
+        self._load_lock = Lock()
+        self._uses_corpus = path is None
+        if path is not None:
+            self.path = Path(path)
+            self.path.parent.mkdir(parents=True, exist_ok=True)
+            self._load()
+
+    @cached_property
+    def path(self) -> Path:
+        # Preserve the historical path in a checkout or a full install.
+        bundled = data_file("patterns.json")
+        if isinstance(bundled, Path) and bundled.is_file():
+            return bundled
+        return corpus.cache_path()
+
+    @property
+    def _patterns(self) -> list[DesignPattern]:
+        with self._load_lock:
+            if self._records is None:
+                self._records = [DesignPattern(**row) for row in json.loads(corpus.read_corpus())]
+            return self._records
 
     def _load(self):
         if self.path.exists():
             with open(self.path) as f:
                 data = json.load(f)
-            self._patterns = [DesignPattern(**d) for d in data]
+                self._records = [DesignPattern(**d) for d in data]
+        else:
+            self._records = []
 
     def _save(self):
+        if self._uses_corpus and self.path == corpus.cache_path():
+            raise ValueError("The verified corpus cache is read-only. Pass a writable path to DesignDatabase.")
+        patterns = self._patterns
         with open(self.path, "w") as f:
-            json.dump([p.model_dump() for p in self._patterns], f, indent=2)
+            json.dump([p.model_dump() for p in patterns], f, indent=2)
 
     def add(self, pattern: DesignPattern):
         self._patterns.append(pattern)

@@ -4,7 +4,15 @@ Turn a brief into one sourced art direction. The response gives the coding agent
 
 ## Install
 
-From a checkout with Python 3.12 or later, install with either `pipx install .` or `uv tool install .`. Verify the installed executable with `design-mcp version`.
+From a checkout, choose one installer and the interpreter it should use.
+
+```bash
+pipx install --python python3.10 .
+# or
+uv tool install --python 3.13 .
+```
+
+Run `design-mcp doctor` in the installed environment. It reports the interpreter and executable, validates bundled resources, and uses a local stdio client to discover the selected tools and call one. Each check reports pass, fail, or skip. A failed check gives a nonzero exit status.
 
 ### Claude Code
 
@@ -63,11 +71,17 @@ Try “calmer” after the first draft. The result adjusts focal spacing, the si
 
 `DESIGN_MCP_SURFACE=v2` exposes the three tools above. `both` (the default) also exposes the 14 historical pattern, token, library, and analysis tools. `legacy` exposes only those historical tools. In the legacy search, request `visual_recipes` or `design_system` explicitly in `fields` to include the corresponding guidance.
 
+The package requires Python 3.10 or later. Python 3.10 selects FastMCP 4.1.8. Python 3.11 and later select the 4.2 patch series starting at 4.2.4. [FastMCP 4.1.8](https://pypi.org/project/fastmcp/4.1.8/) · [FastMCP 4.2.4](https://pypi.org/project/fastmcp/4.2.4/)
+
+Reviewed directions work offline. A checkout or older installation with the bundled pattern corpus uses its local copy. In a slim installation, the first tool call that needs historical patterns fetches 10,092,399 bytes from a pinned Git commit and verifies SHA-256 `dd51bf8db34f9295253b846ee8719cfd9b76b775ff029f591e49d9e7d16806a5`. Later calls use the local cache. [Pinned pattern corpus](https://github.com/chrismicah/design-mcp/blob/82fe6e3749acccf80aecfd523e531be4302865e3/design_mcp/data/patterns.json)
+
+Plain `design-mcp doctor` works offline and prints the cache location. Run `design-mcp doctor --repair` to prepare that cache before going offline or to replace a corrupt copy. Repair uses a verified bundle when available and otherwise needs access to the pinned download.
+
 The new direction library and the historical pattern data have separate roles. Historical metadata may be templated, incomplete, or missing its original screenshot. Treat source records as review inputs. The directions carry observable source evidence or clearly labelled hypotheses. The direction and results can be checked separately.
 
 ## Verified results
 
-The pinned baseline passed 308 tests. Fresh pipx and uv installs each served 17/17 tools on both Intel and Apple Silicon macOS 15 with Python 3.12 and 3.13. Python 3.10 and 3.11 are excluded by the current package metadata. The first two of 36 matched briefs averaged 91.7 without the MCP and 95.8 with it, with one win and one tie. [Benchmark and install receipts](EVALS.md)
+The pinned baseline passed 308 tests. Its Apple Silicon receipts cover fresh pipx on Python 3.12.13 and uv on Python 3.13.3, each serving 17/17 tools. [Baseline benchmark and install receipts](EVALS.md)
 
 ## Verify locally
 
