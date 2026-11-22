@@ -91,7 +91,7 @@ The new direction library and the historical pattern data have separate roles. H
 
 ## Verified results
 
-The pinned Git commands passed all eight clean-install jobs on Intel and Apple Silicon macOS 15 with Python 3.10–3.13. Each installer verified the package commit, passed `doctor` and exercised all 17 compatibility tools. macOS 13 and fresh Tart VM verification remain open. [Install matrix](https://github.com/chrismicah/design-mcp/actions/runs/45010831792)
+The pinned Git commands passed all eight clean-install jobs on Intel and Apple Silicon macOS 15 with Python 3.10–3.13. Each installer verified the package commit, passed `doctor` and exercised all 17 compatibility tools. The macOS 13 dependency preflight passed all eight wheel checks. Ventura runtime and fresh Tart verification remain open. [Install matrix](https://github.com/chrismicah/design-mcp/actions/runs/45010831792) · [Ventura preflight](evidence/benchmark-v1/ventura-wheel-preflight.json)
 
 All 36 matched design briefs have blinded scores. The plain generator averaged 92.7 and frozen Design MCP v2 averaged 94.1, with 17 wins, 11 ties, and eight losses. The paired 95% interval of −0.46 to +3.13 points leaves the average advantage inconclusive. [Benchmark and receipts](EVALS.md)
 
