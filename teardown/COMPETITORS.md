@@ -79,10 +79,10 @@ Design Library's earlier short settings query returned a result. Its empty full-
 | --- | ---: | ---: |
 | Plain generator | 8 / 36 | 93.2 |
 | Design MCP v2 | 8 / 36 | 95.8 |
-| Inspo hosted | 0 / 36 | Ceramics browser captures complete. Blind review pending. |
+| Inspo hosted | 1 / 36 | 87.5 on ceramics. Design MCP scored 91.7 on the matched brief. |
 | Other credential-free competitor configurations above | 0 / 36 each | Pending |
 | Credentialed and hosted configurations above | 0 / 36 each | Access or isolated fixture required |
 
 The retrieval probe is a separate test of tool behavior. A visual score requires generation and blinded browser captures on the same 36 briefs. The earlier market inventory covers additional products and publisher examples, including PyModel Designer Skill, Refero, Better Design and Claude Design. [Eval status](../EVALS.md) · [Earlier market inventory](../research/RESEARCH-COMPETITORS.md)
 
-The public Inspo endpoint completed `recommend` on the frozen ceramics brief. It suggested Marquee Hero from an evidence set of 24 sites. The original run required `search_screens` and flagged the cell. The documented `recommend` endpoint also supplies relevant art direction. Replaying the original trace with both documented tools eligible verified the generation and its unchanged HTML hash. The source trace and original eligibility result remain preserved. The hosted renderer captured the same HTML at both widths. [Tool documentation](https://github.com/Nutlope/inspo/blob/main/apps/mcp/README.md) · [Capture run](https://github.com/chrismicah/design-mcp/actions/runs/44989604073)
+The public Inspo endpoint completed `recommend` on the frozen ceramics brief. It suggested Marquee Hero from an evidence set of 24 sites. The original run required `search_screens` and flagged the cell. The documented `recommend` endpoint also supplies relevant art direction. Replaying the original trace with both documented tools eligible verified the generation and its unchanged HTML hash. The blind critic found stronger typography and accessibility evidence in Design MCP, and could not confirm the completed bag action in either capture. The comparison covers one brief and the hosted build. [Paired ballot, browser receipts, and token counts](../evidence/benchmark-v1/hosted-inspo-ceramics.json) · [Tool documentation](https://github.com/Nutlope/inspo/blob/main/apps/mcp/README.md) · [Capture run](https://github.com/chrismicah/design-mcp/actions/runs/44989604073)
