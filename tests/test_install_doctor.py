@@ -51,7 +51,8 @@ def test_distribution_data_selection_and_canonical_source_bytes():
                 for pattern in config["package-data"]["design_mcp"]
                 for path in (ROOT / "design_mcp").glob(pattern)}
     selected.difference_update(config["exclude-package-data"]["design_mcp"])
-    assert "data/patterns.json" not in selected
+    assert not (selected & {"data/patterns.json", "data/batch_list.json", "data/remaining_vision.json",
+                            "data/vision_results.json"})
     assert {"data/directions.json", "data/tokens/token_sets.json", "prompts/analyze_screen.md"} <= selected
     assert corpus.read_bundled() == (ROOT / "data" / "patterns.json").read_bytes()
 
@@ -164,7 +165,28 @@ def test_doctor_checks_installed_metadata_and_detects_a_shadowed_package(tmp_pat
         doctor._installation(script)
 
 
-def test_doctor_default_is_read_only_and_repair_is_explicit(tmp_path, monkeypatch, capsys):
+@pytest.mark.asyncio
+async def test_curated_default_never_opens_legacy_data(monkeypatch, capsys):
+    monkeypatch.delenv("DESIGN_MCP_SURFACE", raising=False)
+    monkeypatch.setattr(corpus, "read_corpus", lambda: pytest.fail("Default contacted corpus"))
+    monkeypatch.setattr(corpus, "read_bundled", lambda: pytest.fail("Default checked bundled corpus"))
+    monkeypatch.setattr(corpus, "cache_path", lambda: pytest.fail("Default checked legacy cache"))
+    api = runpy.run_module("design_mcp.server", run_name="design_mcp._default_server", alter_sys=True)
+    assert {tool.name for tool in await api["mcp"].list_tools()} == {"direct", "react", "check"}
+    result = await api["direct"]("Stage manager turnaround board")
+    assert result["direction"]["id"] == "stage-call-sheet"
+
+    async def local_client(command, args, mode):
+        assert mode == "v2"
+        return "fixture call"
+
+    monkeypatch.setattr(doctor, "_stdio", local_client)
+    assert await asyncio.to_thread(doctor.run) == 0
+    assert "SKIP legacy corpus and cache" in capsys.readouterr().out
+
+
+def test_doctor_legacy_cache_is_read_only_and_repair_is_explicit(tmp_path, monkeypatch, capsys):
+    monkeypatch.setenv("DESIGN_MCP_SURFACE", "both")
     payload = b"[]"
     cached = tmp_path / "cache" / "patterns.json"
     monkeypatch.setattr(corpus, "SIZE", len(payload))

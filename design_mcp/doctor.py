@@ -6,6 +6,8 @@ import os
 from pathlib import Path
 import sys
 
+from . import DEFAULT_SURFACE
+
 
 DIRECTION_TOOLS = {"direct", "react", "check"}
 LEGACY_TOOLS = {
@@ -165,9 +167,12 @@ def run(*, repair: bool = False) -> int:
         command, args = sys.executable, ["-m", "design_mcp.cli", "serve"]
     check("bundled directions", _directions)
     check("bundled references", _references)
-    check("bundled corpus", _bundled_corpus)
-    check("legacy cache", lambda: _legacy_cache(repair))
-    mode = os.environ.get("DESIGN_MCP_SURFACE", "both").strip().lower()
+    mode = os.environ.get("DESIGN_MCP_SURFACE", DEFAULT_SURFACE).strip().lower()
+    if repair or mode in {"legacy", "both"}:
+        check("bundled corpus", _bundled_corpus)
+        check("legacy cache", lambda: _legacy_cache(repair))
+    else:
+        print("SKIP legacy corpus and cache — use doctor --repair to prepare the legacy cache")
     check("stdio tools/call", lambda: asyncio.run(asyncio.wait_for(_stdio(command, args, mode), timeout=30)))
     print("SKIP external client — a model session in your configured client is a separate check")
     return int(failed)
