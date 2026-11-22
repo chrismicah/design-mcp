@@ -601,7 +601,8 @@ class PreviewTests(unittest.TestCase):
         page = Page(document)
         self.assert_inert(document, page)
         self.assertIn("Local checks found nothing to fix in this view.", document)
-        self.assertIn("needs a visual review, which this build does not run", document)
+        self.assertIn("Checked for sideways scroll", document)
+        self.assertIn("Visual review by a model: not run", document)
         self.assertEqual(page.named("input"), [])
         self.assertEqual(page.named("rect", **{"class": "mark"}), [])
 
@@ -686,6 +687,30 @@ class PipelineTests(unittest.TestCase):
 
 
 class HostTests(unittest.TestCase):
+    def test_review_url_rejects_private_or_signed_addresses_before_chrome_starts(self):
+        with tempfile.TemporaryDirectory() as folder, mock.patch.object(isolated, "_capture_browser") as launch:
+            for address, code in (("https://127.0.0.1/", "private-address"),
+                                  ("https://example.com/?token=fixture", "credentials-in-url"),
+                                  (None, "unsupported-url")):
+                result = host.handle({"type": "review-url", "url": address}, folder)
+                self.assertEqual(result["code"], code)
+                self.assertFalse(result["ok"])
+            launch.assert_not_called()
+            self.assertEqual(list(Path(folder).iterdir()), [])
+
+    def test_review_url_returns_the_local_finding_and_the_saved_preview(self):
+        bundle = board()
+        bundle["capture"]["source"] = "pasted-url"
+        bundle["thumbnail"] = "data:image/jpeg;base64,fixture"
+        with tempfile.TemporaryDirectory() as folder, mock.patch.object(isolated, "capture_pasted_url", return_value=bundle):
+            result = host.handle({"type": "review-url", "url": bundle["capture"]["url"]}, folder)
+            self.assertTrue(result["ok"])
+            self.assertTrue(result["has_after"])
+            self.assertTrue(Path(result["preview_path"]).is_file())
+            self.assertEqual(result["thumbnail"], bundle["thumbnail"])
+            saved = json.loads(Path(result["preview_path"]).with_name("evidence.json").read_text())
+            self.assertNotIn("thumbnail", saved)
+
     def serve(self, request, argv=None, root=None):
         stdout = io.BytesIO()
         with contextlib.redirect_stderr(io.StringIO()):
@@ -957,7 +982,7 @@ class ExtensionTests(unittest.TestCase):
     def test_the_extension_asks_only_for_the_active_tab_and_the_local_reviewer(self):
         manifest = json.loads(self.read("manifest.json"))
         self.assertEqual(manifest["manifest_version"], 3)
-        self.assertEqual(sorted(manifest["permissions"]), ["activeTab", "nativeMessaging", "scripting"])
+        self.assertEqual(sorted(manifest["permissions"]), ["activeTab", "nativeMessaging", "scripting", "storage"])
         for key in ("host_permissions", "optional_permissions", "optional_host_permissions", "content_scripts",
                     "background", "web_accessible_resources", "externally_connectable", "key", "update_url"):
             self.assertNotIn(key, manifest)
@@ -976,14 +1001,14 @@ class ExtensionTests(unittest.TestCase):
                    if tag == "button" and "primary" in (attrs.get("class") or "").split() and not hidden]
         self.assertEqual([attrs["id"] for attrs in primary], ["scan"])
         self.assertIn("autofocus", primary[0])
-        self.assertEqual([attrs.get("src") for attrs in page.named("script")], ["collector.js", "popup.js"])
+        self.assertEqual([attrs.get("src") for attrs in page.named("script")], ["collector.js", "mask.js", "popup.js"])
         self.assertTrue(all("defer" in attrs for attrs in page.named("script")))
         self.assertEqual([attrs.get("href") for attrs in page.named("link")], ["popup.css"])
         self.assertEqual(page.named("img") + page.named("iframe") + page.named("style"), [])
         for tag, attrs in page.tags:
             self.assertFalse(any(name.startswith("on") or name == "style" for name in attrs), tag)
-        self.assertEqual(len(page.named("p", role="status")), 1)
-        for name in ("popup.html", "popup.css", "popup.js", "collector.js", "manifest.json"):
+        self.assertEqual(len(page.named("p", role="status")), 2)
+        for name in ("popup.html", "popup.css", "popup.js", "collector.js", "mask.js", "manifest.json"):
             self.assertIsNone(re.search(r"https?://[a-z0-9]", self.read(name), re.I), name)
 
     def test_nothing_is_requested_or_sent_before_the_person_presses_the_button(self):
@@ -992,14 +1017,18 @@ class ExtensionTests(unittest.TestCase):
                        "innerHTML", "outerHTML", "insertAdjacentHTML", "document.write", "eval(", "new Function"):
             self.assertNotIn(banned, script)
         capture_start, render_start = script.index("async function capture()"), script.index("function render(")
-        scan_start, paste_start = script.index("async function scan()"), script.index("function openPasted(")
+        scan_start = script.index("async function scan()")
+        url_start = script.index("async function reviewAddress(")
+        paste_start = script.index("async function openPasted(")
         for call in ("chrome.tabs.query(", "chrome.scripting.executeScript(", "chrome.tabs.captureVisibleTab("):
             positions = [match.start() for match in re.finditer(re.escape(call), script)]
             self.assertTrue(positions and all(capture_start < position < render_start for position in positions), call)
-        self.assertEqual(script.count("chrome.runtime.sendNativeMessage("), 1)
-        self.assertTrue(scan_start < script.index("chrome.runtime.sendNativeMessage(") < paste_start)
-        self.assertLess(script.index("await blankOut(picture"), script.index("frame.masks.applied = true"))
-        self.assertTrue(script.rstrip().endswith("show('idle', IDLE_TEXT);"))
+        self.assertEqual(script.count("chrome.runtime.sendNativeMessage("), 2)
+        self.assertIn("{type: 'review', bundle}", script[scan_start:url_start])
+        self.assertIn("{type: 'review-url', url}", script[url_start:paste_start])
+        self.assertLess(script.index("await maskPagePicture(picture"), script.index("frame.masks.applied = true"))
+        self.assertIn("chrome.runtime.getURL('popup.html?view=url#' + key)", script)
+        self.assertNotIn("chrome.tabs.create({url: target.href})", script)
         self.assertIn(f"const SCHEMA = '{SCHEMA}';", script)
         self.assertIn(f"const HOST = '{host.HOST_NAME}';", script)
         self.assertIn("user_triggered: true", script)

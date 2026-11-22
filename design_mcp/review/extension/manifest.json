@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Design MCP page review",
   "short_name": "Page review",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Scan the page you are on and get the first thing to fix, with a before and after. Runs on this computer.",
   "minimum_chrome_version": "111",
   "incognito": "not_allowed",
@@ -10,7 +10,7 @@
     "default_title": "Review this page",
     "default_popup": "popup.html"
   },
-  "permissions": ["activeTab", "scripting", "nativeMessaging"],
+  "permissions": ["activeTab", "scripting", "nativeMessaging", "storage"],
   "content_security_policy": {
     "extension_pages": "default-src 'none'; script-src 'self'; style-src 'self'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
   }

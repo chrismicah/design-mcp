@@ -15,6 +15,7 @@ import re
 import shutil
 import socket
 import subprocess
+import sys
 import tempfile
 import time
 from contextlib import contextmanager
@@ -208,9 +209,8 @@ async def _capture_browser(url, host, address, chrome, playwriter, scratch, reso
     started = time.perf_counter()
     profile, home = scratch / "profile", scratch / "home"
     home.mkdir()
-    relay_port = _free_port()
     env = {key: value for key, value in os.environ.items() if not key.startswith("PLAYWRITER_")}
-    env.update(HOME=str(home), PLAYWRITER_PORT=str(relay_port))
+    env.update(HOME=str(home))
     async with public_proxy(host, address, resolve) as proxy_port:
         chrome_args = _browser_arguments(chrome, profile, proxy_port) + [
             "--remote-debugging-address=127.0.0.1", "--remote-debugging-port=0", "about:blank",
@@ -232,15 +232,23 @@ async def _capture_browser(url, host, address, chrome, playwriter, scratch, reso
 
             web_socket = (await asyncio.to_thread(_wait_ready, browser, version))["webSocketDebuggerUrl"]
             chrome_ready = time.perf_counter()
-            with _child([str(playwriter), "serve", "--host", "127.0.0.1"], scratch / "relay.log", env=env) as relay:
-                def relay_ready():
-                    with socket.create_connection(("127.0.0.1", relay_port), timeout=1):
-                        return True
+            if playwriter is None:
+                from .direct_capture import capture_page
 
-                await asyncio.to_thread(_wait_ready, relay, relay_ready)
-                relay_ready_at = time.perf_counter()
-                bundle = await asyncio.wait_for(_drive(url, playwriter, env, scratch, web_socket), SESSION_SECONDS)
-                drive_done = time.perf_counter()
+                bundle = await asyncio.wait_for(capture_page(url, web_socket), 30)
+                relay_ready_at = chrome_ready
+            else:
+                relay_port = _free_port()
+                env["PLAYWRITER_PORT"] = str(relay_port)
+                with _child([str(playwriter), "serve", "--host", "127.0.0.1"], scratch / "relay.log", env=env) as relay:
+                    def relay_ready():
+                        with socket.create_connection(("127.0.0.1", relay_port), timeout=1):
+                            return True
+
+                    await asyncio.to_thread(_wait_ready, relay, relay_ready)
+                    relay_ready_at = time.perf_counter()
+                    bundle = await asyncio.wait_for(_drive(url, playwriter, env, scratch, web_socket), SESSION_SECONDS)
+            drive_done = time.perf_counter()
     bundle["url_capture_ms"].update({
         "proxy_setup": _ms(started, chrome_started),
         "chrome_ready": _ms(chrome_started, chrome_ready),
@@ -251,26 +259,32 @@ async def _capture_browser(url, host, address, chrome, playwriter, scratch, reso
     return bundle
 
 
-def capture(url, playwriter=None, chrome=None, resolve=socket.getaddrinfo):
-    """Capture one public page at both benchmark widths and return a page-evidence bundle."""
+def _capture(url, playwriter, chrome, resolve, *, direct=False):
     started = time.perf_counter()
     clean, host, address = public_target(url, resolve)
-    if playwriter is None:
-        playwriter = shutil.which("playwriter")
-        if playwriter is None:
+    if not direct:
+        playwriter = playwriter or shutil.which("playwriter")
+        if not playwriter:
             raise CaptureError("Playwriter was not found on PATH. Install it or pass --playwriter with its path.")
-    playwriter = Path(playwriter).expanduser().absolute()
-    chrome = Path(chrome or DEFAULT_CHROME)
-    if not playwriter.is_file():
-        raise CaptureError(f"No Playwriter executable at {playwriter}.")
+        playwriter = Path(playwriter).expanduser().absolute()
+        if not playwriter.is_file():
+            raise CaptureError(f"No Playwriter executable at {playwriter}.")
+    chrome = Path(chrome or (DEFAULT_CHROME if sys.platform == "darwin" else
+                             shutil.which("google-chrome") or shutil.which("chromium") or DEFAULT_CHROME))
     if not chrome.is_file():
+        if direct:
+            raise CaptureError("Chrome couldn't be found in its standard location. Open the page in Chrome and use Review this page.")
         raise CaptureError(f"No Chrome at {chrome}. Pass --chrome with its location.")
     scratch = Path(tempfile.mkdtemp(prefix="design-mcp-review-"))
     prepared = time.perf_counter()
     try:
         bundle = asyncio.run(_capture_browser(clean, host, address, chrome, playwriter, scratch, resolve))
         browser_done = time.perf_counter()
+    except (CaptureError, EvidenceError):
+        raise
     except Exception as error:  # an external browser and tool: report one plain sentence, keep the cause
+        if direct:
+            raise CaptureError("Chrome couldn't finish reviewing this page. Try again or review it from its open tab.") from error
         raise CaptureError(f"The page could not be captured in the separate browser: {error}") from error
     finally:
         shutil.rmtree(scratch, ignore_errors=True)
@@ -279,3 +293,13 @@ def capture(url, playwriter=None, chrome=None, resolve=socket.getaddrinfo):
         "scratch_cleanup": _ms(browser_done, time.perf_counter()),
     })
     return bundle
+
+
+def capture(url, playwriter=None, chrome=None, resolve=socket.getaddrinfo):
+    """Capture both benchmark widths through Playwriter."""
+    return _capture(url, playwriter, chrome, resolve)
+
+
+def capture_pasted_url(url):
+    """Capture the desktop viewport in disposable Chrome for the extension."""
+    return _capture(url, None, None, socket.getaddrinfo, direct=True)

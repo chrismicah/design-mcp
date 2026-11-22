@@ -13,8 +13,7 @@ from .preview import after_matrix, build_preview
 
 KEEP_REVIEWS = 20
 NO_FINDING = (
-    "Local checks found nothing to fix in this view: no sideways scroll, nothing fixed on top of the main "
-    "button, and no low-contrast text on flat backgrounds. Whether the page looks right needs a visual review."
+    "No issues flagged in this view. Checked sideways scroll, covered buttons and text contrast on flat backgrounds."
 )
 FRONTIER = {
     "status": "not-run",

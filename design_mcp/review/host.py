@@ -14,7 +14,7 @@ from pathlib import Path
 
 from design_mcp import __version__
 
-from .evidence import SCHEMA
+from .evidence import SCHEMA, EvidenceError
 from .pipeline import review, state_dir
 
 HOST_NAME = "com.design_mcp.review"
@@ -77,6 +77,19 @@ def handle(message, root=None):
         return {"ok": True, "host": HOST_NAME, "version": __version__, "schema": SCHEMA}
     if kind == "review":
         return review(message.get("bundle"), root, keep_latest=True)
+    if kind == "review-url":
+        from .isolated import CaptureError, capture_pasted_url
+
+        try:
+            bundle = capture_pasted_url(message.get("url"))
+        except EvidenceError as error:
+            return {"ok": False, "code": error.code, "message": error.message}
+        except CaptureError as error:
+            return {"ok": False, "code": "capture-failed", "message": error.message}
+        result = review(bundle, root, keep_latest=True)
+        if result["ok"]:
+            result["thumbnail"] = bundle.get("thumbnail")
+        return result
     return {"ok": False, "code": "unknown-request", "message": "The local reviewer did not understand the request."}
 
 

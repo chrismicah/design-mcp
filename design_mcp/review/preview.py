@@ -179,9 +179,8 @@ def build_preview(evidence, findings):
     else:
         position = "no local findings"
         heading = "Local checks found nothing to fix in this view."
-        fix = ('<p class="fix">Checked: sideways scroll, anything fixed on top of the main button, and text '
-               "contrast on flat backgrounds. Whether the page looks right needs a visual review, which this "
-               "build does not run.</p>")
+        fix = ('<p class="fix">Checked for sideways scroll, a covered main button, and low-contrast text '
+               'on flat backgrounds.</p>')
 
     outlined = " The outlined area is where the change applies." if mark else ""
     if after_layer:

@@ -9,10 +9,10 @@ The installed CLI captured the USWDS address form at desktop and mobile widths t
 | Start from | Do this | What happens |
 | --- | --- | --- |
 | The page you are on | Click the toolbar button, then **Review this page** | The extension reads what is visible in that tab, blanks out fields in the picture and hands the capture to the local reviewer |
-| A pasted address | Paste it in the popup and press **Open**, or run `design-mcp review example.com/status` | The public page opens in a tab. You start the scan there with the toolbar button |
+| A pasted address | Paste it in the popup and press **Review URL** | A Design MCP tab runs the scan and shows the result. Chrome captures a 1440 × 900 viewport with an empty profile |
 | A pasted address, no extension | `design-mcp review example.com/status --playwriter` | The page is captured at 1440 × 900 and 390 × 844 in a separate Chrome with a new empty profile |
 
-Install Playwriter 0.12.0 on PATH or supply its executable after `--playwriter`. URL capture uses the new isolated Playwriter session for every browser command. Add `--no-open` to preview the command's intent without starting Chrome. [Pinned Playwriter MCP guide](https://github.com/remorses/playwriter/blob/playwriter%400.12.0/MCP.md)
+The extension's **Review URL** uses the local reviewer and the standard Chrome installation. For the CLI's two-width Playwriter route, install Playwriter 0.12.0 on PATH or supply its executable after `--playwriter`. Add `--no-open` to the CLI command to preview its intent. [Pinned Playwriter MCP guide](https://github.com/remorses/playwriter/blob/playwriter%400.12.0/MCP.md)
 
 Pasted-URL capture checks the resolved address before opening each browser TCP connection. The first hostname stays pinned to its checked address, and assets on other hosts go through the same address check. Hosted Chrome refused an owned loopback fixture both by IP and by a test name that resolved to that IP. Use the toolbar for pages you already have open on a private network. [Browser proof](../../evidence/benchmark-v1/browser-public-network-7bccfc1.json)
 
@@ -59,7 +59,7 @@ Only the contrast finding has an after view. For the other two the preview says 
 - Refused outright: pages that are not http or https, captures nobody started, captures with fields that were not blanked out, and oversized or malformed input.
 - Results go to a private folder in your user directory (`~/Library/Application Support/design-mcp/reviews` on macOS). A host installed with `--chrome-user-data-dir` saves under `Design MCP/reviews` in that directory. The newest 20 are kept in each history.
 
-The extension asks for `activeTab`, `scripting` and `nativeMessaging`. It has no host permissions, no content scripts, no background worker, and its pages cannot make network requests. The local reviewer opens no port. It serves one request from one pinned extension origin, refuses requests over 24 MiB before reading them, and keeps replies under 512 KiB.
+The extension uses `activeTab`, `scripting`, `nativeMessaging`, and in-memory `storage` to hand a pasted link to the review tab. It has no site-wide permissions, content scripts, or background worker. For a pasted link, the local reviewer uses a temporary Chrome profile and loopback-only proxy and debugger. The host serves one request from the pinned extension origin, refuses requests over 24 MiB, and keeps replies under 512 KiB.
 
 ## Check command
 
