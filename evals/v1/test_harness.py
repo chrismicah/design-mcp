@@ -5,7 +5,7 @@ from tempfile import TemporaryDirectory
 from types import SimpleNamespace
 import unittest
 
-from generate import PROMPT, mcp_table, parse_cell, sha256
+from generate import PROMPT, hosted_mcp_table, mcp_table, parse_cell, sha256
 from judge import WIDTHS, create_pair, load, summarize, write
 from probe_competitors import decode_results, ranked_identifiers
 
@@ -120,6 +120,14 @@ class BenchmarkTests(unittest.TestCase):
         config = mcp_table("/test fixtures/start", "inspo", ["--stdio"], {"MODE": "local"})
         self.assertIn('command="/test fixtures/start"', config)
         self.assertIn('env={"MODE"="local"}', config)
+
+    def test_hosted_comparator_accepts_public_https_without_credentials(self):
+        config = hosted_mcp_table("https://example.com/mcp?images=none", "hosted")
+        self.assertEqual(config, 'mcp_servers={"hosted"={url="https://example.com/mcp?images=none",'
+                                 'required=true,default_tools_approval_mode="writes"}}')
+        for url in ("http://example.com/mcp", "https://user:password@example.com/mcp", "https://example.com/#secret"):
+            with self.assertRaisesRegex(ValueError, "public HTTPS"):
+                hosted_mcp_table(url, "hosted")
 
 
 if __name__ == "__main__":

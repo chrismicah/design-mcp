@@ -11,6 +11,7 @@ import re
 import subprocess
 import sys
 import time
+from urllib.parse import urlsplit
 
 BASE_DIR = Path(__file__).resolve().parent
 HOSTED_API_ENV = ("OPENAI_API_KEY", "CODEX_API_KEY", "OPENAI_BASE_URL", "OPENAI_API_BASE")
@@ -52,6 +53,15 @@ def mcp_table(command, name, server_args, server_env):
     return (f"mcp_servers={{{json.dumps(name)}={{command={json.dumps(str(command))},"
             f"args={json.dumps(server_args)},required=true,default_tools_approval_mode=\"writes\","
             f"env={{{environment}}}}}}}")
+
+
+def hosted_mcp_table(url, name):
+    parsed = urlsplit(url)
+    if (parsed.scheme != "https" or not parsed.hostname or parsed.username is not None
+            or parsed.password is not None or parsed.fragment):
+        raise ValueError("The hosted comparator must be a public HTTPS endpoint")
+    return (f"mcp_servers={{{json.dumps(name)}={{url={json.dumps(url)},required=true,"
+            'default_tools_approval_mode="writes"}}')
 
 
 def read_trace(path):
@@ -109,7 +119,7 @@ def run_cell(args, case, arm):
     cell = args.out / case["id"] / arm
     cell.mkdir(parents=True, exist_ok=True)
     prompt = PROMPT.format(brief=case["brief"])
-    config = mcp_table(args.server, args.server_name, args.server_args, args.server_env) if arm != "none" else "mcp_servers={}"
+    config = args.mcp_config if arm != "none" else "mcp_servers={}"
     identity = dict(case=case["id"], arm=arm, model=args.model, effort=args.effort, client=args.client_version,
                     prompt_sha256=sha256(prompt.encode()))
     if arm not in {"none", "v2"}:
@@ -168,7 +178,9 @@ def run_case(args, case):
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--out", required=True, type=lambda path: Path(path).resolve())
-    p.add_argument("--server", required=True, type=lambda path: Path(path).resolve())
+    server = p.add_mutually_exclusive_group(required=True)
+    server.add_argument("--server", type=lambda path: Path(path).resolve())
+    server.add_argument("--server-url", help="Public credential-free HTTPS endpoint for a separate hosted comparator")
     p.add_argument("--competitor-config", type=Path, help="JSON object with name, args, env and expected_tool")
     p.add_argument("--treatment-only", action="store_true", help="Reuse sealed controls from the same benchmark")
     p.add_argument("--treatment-label", help="Output arm name for an isolated build of Design MCP")
@@ -208,6 +220,15 @@ def main():
         ):
             p.error("Treatment labels must be lowercase slugs and cannot be combined with a competitor config")
         args.treatment = args.treatment_label
+    if args.server_url:
+        if not args.competitor_config or args.server_args or args.server_env:
+            p.error("A hosted comparator requires a separate name and tool in --competitor-config")
+        try:
+            args.mcp_config = hosted_mcp_table(args.server_url, args.server_name)
+        except ValueError as error:
+            p.error(str(error))
+    else:
+        args.mcp_config = mcp_table(args.server, args.server_name, args.server_args, args.server_env)
     args.client_version = subprocess.check_output([args.codex, "--version"], text=True, env=clean_env()).strip()
     args.scratch = args.out / ".empty-client-workspace"
     args.scratch.mkdir(parents=True, exist_ok=True)
