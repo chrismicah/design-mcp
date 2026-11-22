@@ -60,6 +60,10 @@ Apply the same prompts, asset policy and scoring to each candidate. Preserve fai
 
 Both specific-landing v2 controls were scored again alongside the candidate. Their rescored values differ from the earlier v2-versus-plain ballots. Use the scores within each pair for candidate decisions. Both comparisons used the original benchmark rubric for captured states.
 
+## Compact vision experiment
+
+Across two briefs, the compact packets used 48,695 input tokens versus 51,112 with full screenshots, a 4.7% reduction. The theatre comparison kept both scores. The ceramics comparison moved from a tie to a 4.2-point lead for the plain generator. The compact run changed image size and supplied region measurements, so this comparison cannot isolate either change. Keep the full-size packets for the benchmark and measure region detection, decision agreement, and token savings on unseen examples before using compact packets by default. [Blind ballots and usage](evidence/benchmark-v1/compact-vision.json)
+
 ## Competitor search coverage
 
 All four pinned credential-free tools were installed in CI and called on all 36 original briefs. Three returned matches for every brief and Design Library's keyword mode returned none when given the full brief. The earlier keyword preflight yielded a settings result, so the generator comparison allows the agent to choose search terms. On the frozen ceramics brief, Design MCP scored 91.7 against 87.5 for hosted Inspo and tied Offline Designer at 91.7. Both comparisons cover one brief. [Retrieval and visual scoreboard](teardown/COMPETITORS.md#retrieval-with-the-full-benchmark-briefs) · [Inspo receipt](evidence/benchmark-v1/hosted-inspo-ceramics.json) · [Offline Designer receipt](evidence/benchmark-v1/offline-designer-ceramics.json)
