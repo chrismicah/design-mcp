@@ -37,3 +37,12 @@ After the critic submits a ballot, audit the anonymous run against the generatio
 ```sh
 python3 evals/reactions/audit_review.py --run "$LIVE_REVIEW" --cells "$PILOT_OUTPUT" --case dashboard-clear
 ```
+
+Save the audited ballot as JSON before resuming either arm. The follow-up runner uses the original client version, package pin, and thread. It checks both viewport scores against the same draft and selects the next reaction from the sealed case.
+
+```sh
+python3 evals/reactions/follow_up.py --case dashboard-clear --arm design-mcp \
+  --previous "$PILOT_OUTPUT/dashboard-clear/design-mcp" --ballot "$AUDITED_BALLOT" \
+  --out "$NEXT_ROUND/dashboard-clear/design-mcp" --kit "$VERIFIED_INSTALL_KIT" \
+  --scratch "$PILOT_OUTPUT/empty-client-workspace" --quota-probe "$SUBSCRIPTION_QUOTA_PROBE"
+```
