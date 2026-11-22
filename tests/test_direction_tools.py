@@ -57,6 +57,8 @@ async def test_stage_turnaround_and_dispatch_get_distinct_directions():
     ("Neighbors can vote on a meeting time on their phones.", "question-column"),
     ("A sign-up asking for email only.", "question-column"),
     ("A single-field screen for a reader's suggestion.", "question-column"),
+    ("Collect a group contact, email, group size and choice of tour on a form.", "grouped-fieldsets"),
+    ("On a form, record the account name and one choice of delivery channel.", "grouped-fieldsets"),
     ("Collect a bag weight and a drop-off location, then show confirmation.", "grouped-fieldsets"),
     ("Ask for pickup day and item quantity. Keep entries on invalid submission.", "grouped-fieldsets"),
 ])
