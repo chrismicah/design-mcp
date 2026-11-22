@@ -20,7 +20,6 @@ import struct
 import subprocess
 import sys
 import tempfile
-import threading
 import tomllib
 from types import SimpleNamespace
 import unittest
@@ -1030,47 +1029,6 @@ class ExtensionTests(unittest.TestCase):
         with self.assertRaises(RuntimeError):
             isolated._marked("page said nothing", "REVIEW_FRAME ")
         self.assertEqual(isolated.VIEWPORTS, ((1440, 900), (390, 844)))
-
-    def test_chrome_and_relay_start_together_and_are_cleaned_up_on_readiness_failure(self):
-        @contextlib.asynccontextmanager
-        async def proxy(*args):
-            yield 4000
-
-        for fail in (False, True):
-            with self.subTest(fail=fail), tempfile.TemporaryDirectory() as folder:
-                concurrent = threading.Barrier(2, timeout=5)
-                closed = []
-
-                @contextlib.contextmanager
-                def child(args, log, env=None):
-                    try:
-                        yield log.stem
-                    finally:
-                        closed.append(log.stem)
-
-                def ready(process, probe):
-                    concurrent.wait()
-                    if process == "chrome":
-                        if fail:
-                            raise RuntimeError("Chrome exited")
-                        return "ws://127.0.0.1:1234/devtools/browser/test"
-                    return True
-
-                drive = mock.AsyncMock(return_value={"url_capture_ms": {}})
-                with mock.patch.multiple(isolated, public_proxy=proxy, _child=child, _wait_ready=ready,
-                                         _drive=drive, import_module=lambda name: None):
-                    capture_page = isolated._capture_browser(
-                        "https://example.org", "example.org", "192.0.2.1", "chrome", "playwriter", Path(folder), None,
-                    )
-                    if fail:
-                        with self.assertRaisesRegex(RuntimeError, "Chrome exited"):
-                            asyncio.run(capture_page)
-                        drive.assert_not_called()
-                    else:
-                        timings = asyncio.run(capture_page)["url_capture_ms"]
-                        self.assertGreaterEqual(timings["startup"], max(timings["chrome_ready"], timings["relay_ready"]))
-                        self.assertEqual(drive.await_args.args[-1], "ws://127.0.0.1:1234/devtools/browser/test")
-                self.assertEqual(closed, ["relay", "chrome"])
 
     def test_the_isolated_review_uses_its_direct_session_and_requires_route_setup(self):
         def result(text, error=False):

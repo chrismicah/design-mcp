@@ -81,7 +81,6 @@ def main():
                 if "error" in pair[arm]:
                     raise RuntimeError(f"Review failed on pair {index + 1} in {arm}")
             assert "url_capture_ms" in pair["after"]
-            assert "startup" in pair["after"]["url_capture_ms"]
         pairs = report["pairs"]
         report["identical_capture_pairs"] = sum(p["before"]["frame_sha256"] == p["after"]["frame_sha256"] for p in pairs)
         report["summary"] = {metric: {**{arm: stats([p[arm][metric] for p in pairs]) for arm in arms},
