@@ -12,7 +12,7 @@ pipx install 'git+https://github.com/chrismicah/design-mcp.git@2fcd3122167159015
 uv tool install 'git+https://github.com/chrismicah/design-mcp.git@2fcd31221671590152401d958b904141e438e453'
 ```
 
-For a local checkout, pass `.` to your installer. [Verified installs](evidence/benchmark-v1/direct-git-install.json)
+For a local checkout, pass `.` to your installer. [Verified installs](evidence/benchmark-v1/direct-git-install-2fcd312.json)
 
 Run `design-mcp doctor` in the installed environment. It reports the interpreter and executable, validates bundled resources, and uses a local stdio client to discover the selected tools and call one. Each check reports pass, fail, or skip. A failed check gives a nonzero exit status.
 
