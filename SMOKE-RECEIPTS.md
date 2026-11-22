@@ -24,7 +24,7 @@ GPT Computer Use opened a separate Chrome window. Its clipboard operation confli
 
 On November 22, GPT Computer Use could enumerate native apps and the browser access host still reported unavailable. Chrome was closed during that check. The native smoke was deferred. Separately, hosted Playwriter verified invalid submission, keyboard entry, local confirmation, and editing on the two exact maintenance benchmark pages at both widths. [Maintenance replay](evidence/benchmark-v1/maintenance-actions.json)
 
-A later desktop preflight ran after the previous QA owner released the Mac. The browser access host again reported unavailable with Chrome closed. The workspace stager recorded both displays and flagged Notes and TextEdit windows. The preflight preserved those windows and sent no input. Native extension activation and reopening the preview remain unverified.
+A later desktop preflight ran after the previous QA owner released the Mac. The workspace stager recorded both displays and flagged Notes and TextEdit windows. The browser access host reported unavailable with Chrome closed, including on the 09:10 UTC recheck. Both checks preserved those windows and sent no input. Native extension activation and reopening the preview remain unverified.
 
 ## Hosted Chrome extension smoke, November 22
 

@@ -1,0 +1,157 @@
+{
+  "fixture_sha256": "8c09ce4f7cf39b5aeab3f3c8be4238e59bc0f73ed4e155c193f1bb5649e88ef1",
+  "client": "codex-cli 0.170.0",
+  "model": "gpt-6.2-sol",
+  "effort": "max",
+  "shell_tool": false,
+  "cases": {
+    "catalog-kits": {
+      "passed": true,
+      "observed_direction": "search-recovery",
+      "observed_intent": "try_suggested_query",
+      "completed_tool_calls": 1,
+      "usage": {
+        "input_tokens": 66000,
+        "cached_input_tokens": 41728,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1723,
+        "reasoning_output_tokens": 1568
+      },
+      "exit_code": 0,
+      "prompt_sha256": "aa0d2d6c5eb785a2942e3c757ce670b5c7da2b06ddd78335b8bb9520c2dd0644",
+      "trace_sha256": "3d4a37e42af4f5727df3095ca4a322aa8777189a2e8a21503c4e669a3b314232",
+      "brief": "A neighborhood lending library search for seed trays shows no results. The patron can press a button to try the catalog's suggested search for planting kits and see the matching kit.",
+      "arguments": {
+        "brief": "A neighborhood lending library patron searches the catalog for “seed trays” and gets no results. Show a button that lets the patron try the catalog’s suggested search for “planting kits”. When the patron presses the button, run the suggested search and show the matching kit.",
+        "task_intent": "try_suggested_query"
+      },
+      "expected_direction": "search-recovery"
+    },
+    "archive-first-slot": {
+      "passed": true,
+      "observed_direction": "first-available-shift",
+      "observed_intent": "reserve_first_shift",
+      "completed_tool_calls": 1,
+      "usage": {
+        "input_tokens": 63303,
+        "cached_input_tokens": 40192,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 440,
+        "reasoning_output_tokens": 281
+      },
+      "exit_code": 0,
+      "prompt_sha256": "652d96e42035e89a609fbfbaa24bac978d18c0f79a6ee134c1bda088ad937b81",
+      "trace_sha256": "e64d342163a6f23eebd5cbed92828e3afd5f83a23ddab2713dafc13ad3d6f624",
+      "brief": "A volunteer for the community archive opens their schedule and has nothing upcoming. Let them take the only offered Tuesday indexing slot and see it booked in that same view.",
+      "arguments": {
+        "brief": "Design the personal schedule view for a community archive volunteer. They have nothing upcoming and can book the only available shift, a Tuesday indexing slot. Give the volunteer one clear booking action and, once it succeeds, show the Tuesday shift as booked in their upcoming schedule on the same screen.",
+        "task_intent": "reserve_first_shift"
+      },
+      "expected_direction": "first-available-shift"
+    },
+    "populated-catalog": {
+      "passed": true,
+      "observed_direction": "object-hero",
+      "observed_intent": null,
+      "completed_tool_calls": 1,
+      "usage": {
+        "input_tokens": 64750,
+        "cached_input_tokens": 41216,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1247,
+        "reasoning_output_tokens": 1131
+      },
+      "exit_code": 0,
+      "prompt_sha256": "690f6ff0d45848de058aac29248bf222b567d982014bd24b47c497ac5e3c186f",
+      "trace_sha256": "db64142b17f9d0f87af285357603c3fc2be40c809cc893d18514b0e46cecc262",
+      "brief": "Show the community library's four current results for leaf rakes. Let patrons filter to available tools and sort by size.",
+      "arguments": {
+        "brief": "Show the community library's four current results for leaf rakes. Let patrons filter to available tools and sort by size."
+      },
+      "expected_direction": null
+    },
+    "library-metrics": {
+      "passed": true,
+      "observed_direction": "exception-first",
+      "observed_intent": null,
+      "completed_tool_calls": 1,
+      "usage": {
+        "input_tokens": 63854,
+        "cached_input_tokens": 40960,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 878,
+        "reasoning_output_tokens": 756
+      },
+      "exit_code": 0,
+      "prompt_sha256": "fa398a43dfe99fd89b98cc349a43ca44f5d0bc63894646630657c4228e058a43",
+      "trace_sha256": "cf4b653d0fe18c596947bc9e220300d1181fc85c2d355c3bf953f3a91ae4b891",
+      "brief": "Design a staff analytics dashboard with zero-result search rates and the most common suggested searches, both compared with last week.",
+      "arguments": {
+        "brief": "Design a staff analytics dashboard with zero-result search rates and the most common suggested searches, both compared with last week.",
+        "surface": "dashboard"
+      },
+      "expected_direction": null
+    },
+    "staff-rota": {
+      "passed": true,
+      "observed_direction": "exception-first",
+      "observed_intent": null,
+      "completed_tool_calls": 1,
+      "usage": {
+        "input_tokens": 64181,
+        "cached_input_tokens": 21120,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1192,
+        "reasoning_output_tokens": 1034
+      },
+      "exit_code": 0,
+      "prompt_sha256": "a005f929e9c30811cb10291040594a07b40fa0a09ea4da3860a1cb14ca045e48",
+      "trace_sha256": "217b1841ba22253025a9cbebc55c99637501b6d63c9d795bf371ec901830cb09",
+      "brief": "Build a supervisor's complete volunteer staff rota with assigned shifts, open slots, and a control to assign another volunteer.",
+      "arguments": {
+        "brief": "Design a scheduling dashboard for a volunteer supervisor. Show the complete staff rota with shift times, assigned volunteers, and open slots. The supervisor should be able to scan coverage, spot gaps, and assign another volunteer to a shift directly from the rota. Keep the schedule easy to scan and place assignment controls consistently across shifts.",
+        "surface": "dashboard"
+      },
+      "expected_direction": null
+    },
+    "previous-booking": {
+      "passed": true,
+      "observed_direction": "object-hero",
+      "observed_intent": null,
+      "completed_tool_calls": 1,
+      "usage": {
+        "input_tokens": 64293,
+        "cached_input_tokens": 57728,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1011,
+        "reasoning_output_tokens": 887
+      },
+      "exit_code": 0,
+      "prompt_sha256": "c5b5c2369c11ad0f00b01ccf3f3843cc1a14819aa3e81411d2151e96a933d338",
+      "trace_sha256": "1ee5544a2dff03f28d2eb339d33178dcdf555285726a18e980f9dc421cbee153",
+      "brief": "A volunteer already reserved one Wednesday Packing shift. Make the existing booking easy to find and let them view instructions for the day.",
+      "arguments": {
+        "brief": "A volunteer has already reserved one Wednesday Packing shift. Make that existing booking easy to find and give the volunteer a clear way to open the instructions for the day."
+      },
+      "expected_direction": null
+    }
+  },
+  "skipped": [],
+  "positive_correct": 2,
+  "positive_total": 2,
+  "negative_specializations": 0,
+  "negative_total": 4,
+  "total_usage": {
+    "input_tokens": 386381,
+    "cached_input_tokens": 242944,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 6491,
+    "reasoning_output_tokens": 5657
+  },
+  "candidate": "aaa7e787fe995053d9b642e7d191fdd3d7d9ad1b",
+  "control": "81ad2b3c2b877451f3c17859ab5f54f4c9c67a44",
+  "schema_sha256": "d43d072fc38420b919a99d68eeb33bb0e77cbc2f4f4d2fefa2c604bab6eb76ae",
+  "old_schema_sha256": "81d68dae1f616f65ad51016519df36408e03cbd875717af4ec614b01692c050b",
+  "runtime": "Candidate source executed with shared installed Python 3.13 dependencies.",
+  "local_raw_receipts": ".context/factory/benchmark-v1/explicit-task-intent-probes-aaa7e78"
+}

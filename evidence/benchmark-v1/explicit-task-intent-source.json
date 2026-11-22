@@ -1,0 +1,75 @@
+{
+  "parent": "81ad2b3c2b877451f3c17859ab5f54f4c9c67a44",
+  "candidate": "aaa7e787fe995053d9b642e7d191fdd3d7d9ad1b",
+  "optional_schema": {
+    "anyOf": [
+      {
+        "enum": [
+          "try_suggested_query",
+          "reserve_first_shift"
+        ],
+        "type": "string"
+      },
+      {
+        "type": "null"
+      }
+    ],
+    "default": null,
+    "description": "Use try_suggested_query when a failed search offers a replacement search the person can choose. Use reserve_first_shift when an empty personal volunteer schedule offers one shift to reserve. Name the task only when clear from the brief and otherwise omit this field. Keep intent names and catalog IDs internal to the tool call."
+  },
+  "tool_descriptions_sha256": "9afd4cf2daee960de7b368c725475130a8840b9e51f6d6e38201e2f4f69e72e7",
+  "old_schema_sha256": "81d68dae1f616f65ad51016519df36408e03cbd875717af4ec614b01692c050b",
+  "new_schema_sha256": "d43d072fc38420b919a99d68eeb33bb0e77cbc2f4f4d2fefa2c604bab6eb76ae",
+  "old_direct_schema_bytes": 354,
+  "new_direct_schema_bytes": 826,
+  "omitted_intent_parity": 288,
+  "null_intent_parity": 288,
+  "parity_fields": [
+    "structured",
+    "content"
+  ],
+  "parity_sha256": "38d810fd89f928e2e24d2445acd5fe16414fea961516dc7b7f407398fe518e91",
+  "invalid_rejected": true,
+  "results": {
+    "empty-search": {
+      "frozen_tool": {
+        "without_intent": "platform-sign",
+        "with_intent": "search-recovery",
+        "intent": "try_suggested_query",
+        "null_matches": true,
+        "avoided_matches": true,
+        "conflict_matches": true,
+        "reply_sha256": "21cfe7f1feb4a0b2a4db5bf09c87a33571350da2e85f027a8cdc5825925a6d68"
+      },
+      "last_unhinted_tool": {
+        "without_intent": "object-hero",
+        "with_intent": "search-recovery",
+        "intent": "try_suggested_query",
+        "null_matches": true,
+        "avoided_matches": true,
+        "conflict_matches": true,
+        "reply_sha256": "21cfe7f1feb4a0b2a4db5bf09c87a33571350da2e85f027a8cdc5825925a6d68"
+      }
+    },
+    "empty-shifts": {
+      "frozen_tool": {
+        "without_intent": "exception-first",
+        "with_intent": "first-available-shift",
+        "intent": "reserve_first_shift",
+        "null_matches": true,
+        "avoided_matches": true,
+        "conflict_matches": true,
+        "reply_sha256": "1db8f802c9ac750af9922e25f055a8f462793a78861afd284bf57ea5bf4e88a8"
+      },
+      "last_unhinted_tool": {
+        "without_intent": "exception-first",
+        "with_intent": "first-available-shift",
+        "intent": "reserve_first_shift",
+        "null_matches": true,
+        "avoided_matches": true,
+        "conflict_matches": true,
+        "reply_sha256": "1db8f802c9ac750af9922e25f055a8f462793a78861afd284bf57ea5bf4e88a8"
+      }
+    }
+  }
+}
