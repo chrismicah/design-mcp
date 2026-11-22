@@ -200,7 +200,7 @@ try {
   assert.equal(proof.result.requestCount, 0);
   assert.match(proof.result.status, /1 fields or frames blanked out/);
   if (mac) {
-    assert.match(proof.result.finding, /^Boarding begins at 6:30 p\.m\. measured .+ below 4\.5:1\.$/);
+    assert.match(proof.result.finding, /^“Boarding begins at 6:30 p\.m\.” is hard to read at \d+ px wide: its text color #9d958d on #f6f2eb measures 2\.6 to 1, and text this size needs at least 4\.5 to 1\.$/);
   }
   await image(popup, "popup-result.png");
 

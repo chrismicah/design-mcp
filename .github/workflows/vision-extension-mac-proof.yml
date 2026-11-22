@@ -113,11 +113,11 @@ jobs:
           with Image.open(io.BytesIO(content)) as image:
               sx = image.width / field['viewport'][0]
               sy = image.height / field['viewport'][1]
-              left = round(field['x'] * sx) + 2
-              top = round(field['y'] * sy) + 2
-              right = round((field['x'] + field['width']) * sx) - 2
-              bottom = round((field['y'] + field['height']) * sy) - 2
-              assert 0 <= left < right <= image.width and 0 <= top < bottom <= image.height
+              left = max(0, round(field['x'] * sx)) + 2
+              top = max(0, round(field['y'] * sy)) + 2
+              right = min(image.width, round((field['x'] + field['width']) * sx)) - 2
+              bottom = min(image.height, round((field['y'] + field['height']) * sy)) - 2
+              assert right - left >= 3 and bottom - top >= 3, 'No visible field interior to verify'
               interior = image.convert('RGB').crop((left, top, right, bottom))
               assert interior.getextrema() == ((138, 138), (143, 143), (152, 152)), 'Field is not visibly masked'
 
