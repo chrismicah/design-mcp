@@ -19,6 +19,7 @@ import tempfile
 import time
 from contextlib import contextmanager
 from datetime import datetime, timezone
+from importlib import import_module
 from pathlib import Path
 from urllib.request import ProxyHandler, build_opener
 
@@ -217,35 +218,44 @@ async def _capture_browser(url, host, address, chrome, playwriter, scratch, reso
         ]
         chrome_started = time.perf_counter()
         with _child(chrome_args, scratch / "chrome.log") as browser:
-            def devtools_port():
+            local_opener = build_opener(ProxyHandler({}))
+
+            def chrome_target():
                 lines = (profile / "DevToolsActivePort").read_text().splitlines()
                 if not lines:
                     raise ValueError("the port is not written yet")
-                return int(lines[0])
-
-            port = await asyncio.to_thread(_wait_ready, browser, devtools_port)
-            local_opener = build_opener(ProxyHandler({}))
-
-            def version():
+                port = int(lines[0])
                 with local_opener.open(f"http://127.0.0.1:{port}/json/version", timeout=1) as reply:
-                    return json.load(reply)
+                    return json.load(reply)["webSocketDebuggerUrl"]
 
-            web_socket = (await asyncio.to_thread(_wait_ready, browser, version))["webSocketDebuggerUrl"]
-            chrome_ready = time.perf_counter()
+            def relay_ready():
+                with socket.create_connection(("127.0.0.1", relay_port), timeout=1):
+                    return True
+
+            async def timed(call, *args):
+                result = await asyncio.to_thread(call, *args)
+                return result, time.perf_counter()
+
+            relay_started = time.perf_counter()
             with _child([str(playwriter), "serve", "--host", "127.0.0.1"], scratch / "relay.log", env=env) as relay:
-                def relay_ready():
-                    with socket.create_connection(("127.0.0.1", relay_port), timeout=1):
-                        return True
-
-                await asyncio.to_thread(_wait_ready, relay, relay_ready)
-                relay_ready_at = time.perf_counter()
+                import_started = time.perf_counter()
+                # Prepare the client while the two owned processes start. Wait for the
+                # relay before opening the session so Playwriter never starts another one.
+                (web_socket, chrome_ready), (_, relay_ready_at), (_, driver_ready) = await asyncio.gather(
+                    timed(_wait_ready, browser, chrome_target),
+                    timed(_wait_ready, relay, relay_ready),
+                    timed(import_module, "fastmcp.client.transports"),
+                )
+                drive_started = time.perf_counter()
                 bundle = await asyncio.wait_for(_drive(url, playwriter, env, scratch, web_socket), SESSION_SECONDS)
                 drive_done = time.perf_counter()
     bundle["url_capture_ms"].update({
         "proxy_setup": _ms(started, chrome_started),
         "chrome_ready": _ms(chrome_started, chrome_ready),
-        "relay_ready": _ms(chrome_ready, relay_ready_at),
-        "drive": _ms(relay_ready_at, drive_done),
+        "relay_ready": _ms(relay_started, relay_ready_at),
+        "driver_import": _ms(import_started, driver_ready),
+        "startup": _ms(chrome_started, drive_started),
+        "drive": _ms(drive_started, drive_done),
         "process_cleanup": _ms(drive_done, time.perf_counter()),
     })
     return bundle

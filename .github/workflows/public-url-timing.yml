@@ -21,7 +21,7 @@ jobs:
       - name: Install both revisions and the shared browser tools
         shell: bash
         env:
-          BEFORE: 7bccfc14d4ce5652f81ee85f14bd56ee452a4aae
+          BEFORE: 853e2e49ba88d7ccaf237be28fe5d30325b46086
           AFTER: ${{ github.sha }}
         run: |
           proof="$RUNNER_TEMP/url-timing-proof"
@@ -40,6 +40,15 @@ jobs:
           npm install --prefix "$RUNNER_TEMP/playwriter" --ignore-scripts --no-fund --no-audit 'playwriter@0.12.0'
           curl -fsSL https://storage.googleapis.com/chrome-for-testing-public/158.0.8127.36/mac-arm64/chrome-mac-arm64.zip -o "$RUNNER_TEMP/chrome.zip"
           unzip -q "$RUNNER_TEMP/chrome.zip" -d "$RUNNER_TEMP/browser"
+      - name: Verify private destinations are refused on both installs
+        shell: bash
+        run: |
+          chrome="$RUNNER_TEMP/browser/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
+          cd "$RUNNER_TEMP"
+          for arm in BEFORE AFTER; do
+            "$RUNNER_TEMP/$arm/bin/python" "$GITHUB_WORKSPACE/evals/vision/verify_browser_proxy.py" \
+              "$chrome" "$RUNNER_TEMP/url-timing-proof/$arm-private-route.json"
+          done
       - name: Alternate ten pairs of fresh-profile captures
         shell: bash
         run: |
