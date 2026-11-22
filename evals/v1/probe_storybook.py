@@ -12,7 +12,7 @@ from fastmcp import Client
 
 
 COMPONENT = "maintenance-disclosure"
-STORY = "WithEscalation"
+STORY = "maintenance-disclosure--with-escalation"
 DESCRIPTION = "Reveals maintenance escalation instructions."
 PROP = "Question shown in the disclosure control."
 EXAMPLE = "Call dispatch if there is standing water."
@@ -24,14 +24,17 @@ async def probe(endpoint):
     async with Client(endpoint, timeout=30) as client:
         tools = await client.list_tools()
 
-        async def lookup(label, name, args, expected=(), *, missing=False):
+        async def lookup(label, name, args, expected=(), *, missing=None):
             started = monotonic()
             reply = await client.call_tool(name, args, raise_on_error=False)
             payload = json.dumps([part.model_dump(mode="json") for part in reply.content], sort_keys=True).encode()
             body = "\n".join(part.text for part in reply.content if part.type == "text")
             found = [phrase for phrase in expected if phrase in body]
-            if missing:
-                passed = bool(MISSING.search(body)) and not any(phrase in body for phrase in (DESCRIPTION, PROP, EXAMPLE))
+            if missing is not None:
+                passed = (
+                    reply.is_error and missing in body and bool(MISSING.search(body))
+                    and not any(phrase in body for phrase in (DESCRIPTION, PROP, EXAMPLE))
+                )
             else:
                 passed = not reply.is_error and len(found) == len(expected)
             calls[label] = {
@@ -46,13 +49,14 @@ async def probe(endpoint):
                 "text": body[:10000],
             }
 
-        await lookup("catalog", "docs-list", {}, (COMPONENT,))
+        await lookup("catalog", "docs-list", {"withStoryIds": True}, (COMPONENT, STORY))
         await lookup("component", "docs-show", {"id": COMPONENT}, (DESCRIPTION, PROP))
-        await lookup("story", "docs-show-story", {"componentId": COMPONENT, "storyName": STORY}, (EXAMPLE,))
-        await lookup("missing-component", "docs-show", {"id": "design-mcp-missing-component"}, missing=True)
-        await lookup("missing-story", "docs-show-story", {
-            "componentId": COMPONENT, "storyName": "DesignMcpMissingStory",
-        }, missing=True)
+        await lookup("story", "docs-show-story", {"storyId": STORY}, (EXAMPLE,))
+        absent_component = "design-mcp-missing-component"
+        await lookup("missing-component", "docs-show", {"id": absent_component}, missing=absent_component)
+        absent_story = "DesignMcpMissingStory"
+        await lookup("missing-story", "docs-show-story",
+                     {"componentId": COMPONENT, "storyName": absent_story}, missing=absent_story)
     return {
         "scope": "Local Storybook development server with generated documentation for an owned React fixture. No visual scoring.",
         "tools": {tool.name: tool.model_dump(by_alias=True, exclude_none=True)["inputSchema"] for tool in tools},
