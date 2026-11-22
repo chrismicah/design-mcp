@@ -60,6 +60,19 @@ Four pinned competitors initialized over stdio using isolated GitHub runners. Ea
 
 All four returned no matches for the nonsense query. Response sizes describe serialized protocol content, including any encoded images. Visual generation and independent preference remain separate measures.
 
+### Retrieval with the full benchmark briefs
+
+Each pinned tool received the same 36 unedited briefs and a three-result limit. All 144 calls returned an interpretable tool response. These timings came from one hosted process per tool and include the search call and serialized reply. [Hosted run](https://github.com/chrismicah/design-mcp/actions/runs/44988114989) · [Per-brief receipts](../evidence/benchmark-v1/competitor-brief-retrieval.json)
+
+| Configuration | Briefs with matches | Distinct first choices | Median call | Median matched payload |
+| --- | ---: | ---: | ---: | ---: |
+| Offline Designer MCP | 36 / 36 | 23 | 7 ms | 7.5 kB |
+| Design Library MCP, keyword | 0 / 36 | 0 | 54 ms | — |
+| Inspo, lexical | 36 / 36 | 14 | 80 ms | 71.0 kB |
+| Screenshots Design Inspiration | 36 / 36 | 17 | 15 ms | 28.1 kB |
+
+Design Library's earlier short settings query returned a result. Its empty full-brief results make query formulation an important part of its generator trial. Inspect the actual generator traces for search terms and use the same briefs, model and tool policy in every arm. Offline Designer responded with the widest range of first choices in this probe. Relevance has yet to be scored.
+
 ## Visual scoreboard
 
 | Configuration | Matched briefs judged | Score / 100 |

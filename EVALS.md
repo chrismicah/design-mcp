@@ -57,3 +57,7 @@ The LLM judge sees the brief, browser observations and four screenshots for each
 The final portability candidate also returned the same structured results as the frozen baseline for all 17 stdio smoke calls at each of two fixed Python hash seeds. The comparison and library tools vary their ordering with the seed in both versions. The matched test verifies the package change independently of that existing behavior. [Stdio parity receipt](evidence/benchmark-v1/portable-stdio-parity.json)
 
 Apply the same prompts, asset policy and scoring to each candidate. Preserve failed runs and report coverage alongside quality and tokens.
+
+## Competitor search coverage
+
+All four pinned credential-free tools were installed in CI and called on all 36 original briefs. Three returned matches for every brief and Design Library's keyword mode returned none when given the full brief. The earlier keyword preflight yielded a settings result, so the generator comparison will allow the agent to choose search terms. The visual scoreboard stays separate. [Retrieval and visual scoreboard](teardown/COMPETITORS.md#retrieval-with-the-full-benchmark-briefs)
