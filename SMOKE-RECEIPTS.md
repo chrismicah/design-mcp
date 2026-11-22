@@ -4,6 +4,12 @@
 
 Both README commands installed `7bccfc1` directly from Git on clean macOS 15 runners. All eight Intel and Apple Silicon jobs passed on Python 3.10–3.13. The archived logs show 16 installs, 16 doctor checks, and 32 smoke runs across the default and compatibility surfaces. Each install verified the exact Git commit in its package metadata. Fresh Ventura remains open. [Current job and source receipts](evidence/benchmark-v1/direct-git-install-7bccfc1.json) · [Native walkthrough install pin](evidence/benchmark-v1/direct-git-install-f17bd6f.json)
 
+## Reference Mac pasted URL, November 22
+
+An offline uv install from the checksummed `7bccfc1` Git archive passed `doctor` and all three default stdio tools on the reference Apple Silicon Mac. The dedicated Chrome profile used byte-identical extension assets and a native host bound to that installed executable. GPT Computer Use entered the public USWDS address-form URL in the extension, opened it in a new tab, scanned it by keyboard and reloaded the same saved preview. Chrome showed the no-finding state and four masked fields. The popup reported 184 ms in that scan. The saved PNG passed a 35,000-pixel interior check of the Street address mask. [Install, actions and file hashes](evidence/benchmark-v1/reference-mac-pasted-url-7bccfc1.json)
+
+The same installed CLI captured the public form through Playwriter at 1440 and 390 CSS px using a separate Chrome profile. It reported nine masks across both views. The saved preview displayed the desktop capture, whose Street address mask passed a 9,408-pixel interior check. [CLI capture and mask receipt](evidence/benchmark-v1/reference-mac-pasted-url-7bccfc1.json)
+
 ## Reference Mac GPT Computer Use, November 22
 
 A fresh uv install of the verified `f17bd6f` Git archive passed `doctor` and the three default stdio calls on Apple Silicon macOS 26.5.2. GPT Computer Use controlled installed Chrome 157 through its native accessibility tree while the browser bridge was unavailable. It loaded the five verified extension files in a disposable profile, opened the real toolbar, confirmed that a missing native host returned focus to Scan, then installed the host inside that profile. [Install, layout and interaction receipts](evidence/benchmark-v1/reference-mac-chrome-f17bd6f.json)

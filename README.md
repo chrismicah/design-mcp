@@ -79,6 +79,8 @@ GPT Computer Use verified the `f17bd6f` Chrome extension on the reference Mac. I
 
 On a hosted Mac, ten fresh Chrome profiles took a median **7.68 seconds** each to review the same public URL at both widths and save the local preview. All ten produced the expected masked images. [Public URL timing](evidence/benchmark-v1/public-url-paired-timing.json)
 
+GPT Computer Use tested the pasted-address flow on the current `7bccfc1` install. It opened the public address form from the Chrome extension, scanned it, and reloaded the locally saved preview. The scan reported four masked fields in 184 ms. The same install separately captured the page with Playwriter at desktop and mobile widths. [Reference Mac proof](evidence/benchmark-v1/reference-mac-pasted-url-7bccfc1.json)
+
 GPT Computer Use also exercised the SwiftUI and Electron fixtures on the reference Mac. SwiftUI exposed a new control after Reveal, and the installed CLI counted five then six controls in the hosted geometry captures. In Electron, Tab and Return revealed the covered button. The installed CLI reviewed the fresh local captures and reported that occlusion cleared while clipping persisted. [SwiftUI evidence](evidence/benchmark-v1/reference-mac-desktop-f17bd6f.json) · [Electron evidence](evidence/benchmark-v1/reference-mac-electron-f17bd6f.json)
 
 ## Compatibility
