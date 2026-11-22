@@ -74,6 +74,9 @@ def test_lazy_fetch_then_reopen_offline(snapshot, monkeypatch):
     assert [p.id for p in DesignDatabase().search(query="dashboard")] == ["high", "low"]
     with pytest.raises(ValueError, match="read-only"):
         db.save()
+    with pytest.raises(ValueError, match="read-only"):
+        db.add_batch([db.get("high")])
+    assert db.count() == 2
 
 
 @pytest.mark.parametrize(("response", "message"), [

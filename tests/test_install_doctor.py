@@ -1,15 +1,18 @@
 import asyncio
 import hashlib
 from importlib import metadata
+import json
 from pathlib import Path
+import runpy
 import sys
+from threading import Event
 import zipfile
 
 import pytest
 from packaging.requirements import Requirement
 from packaging.specifiers import SpecifierSet
 
-from design_mcp import corpus, doctor, resources
+from design_mcp import cli, corpus, doctor, resources
 from design_mcp.direction_records import library
 from design_mcp.directions import check, direct, react
 
@@ -73,6 +76,58 @@ async def test_archive_resources_keep_directions_offline(tmp_path, monkeypatch):
             library.cache_clear()
 
 
+@pytest.mark.asyncio
+async def test_default_server_lists_tools_and_serves_directions_during_a_cold_lookup(monkeypatch,
+                                                                                     curated_pattern_data):
+    started, release = Event(), Event()
+    calls = []
+
+    def cold_read():
+        calls.append(True)
+        started.set()
+        assert release.wait(5)
+        return json.dumps([curated_pattern_data]).encode()
+
+    monkeypatch.setenv("DESIGN_MCP_SURFACE", "both")
+    monkeypatch.setattr(corpus, "read_corpus", cold_read)
+    monkeypatch.setattr(corpus, "cache_path", lambda: pytest.fail("Unexpected cache path lookup"))
+    api = runpy.run_module("design_mcp.server", run_name="design_mcp._cold_server", alter_sys=True)
+    tools = await api["mcp"].list_tools()
+    assert len(tools) == 17 and not calls
+    search = asyncio.create_task(api["search_design_patterns"]("dashboard", limit=1))
+    other_reader = asyncio.create_task(api["get_design_blueprint"](curated_pattern_data["id"]))
+    try:
+        assert await asyncio.to_thread(started.wait, 3)
+        direction = await api["direct"]("Stage manager turnaround board")
+        assert direction["direction"]["id"] == "stage-call-sheet" and not search.done()
+    finally:
+        release.set()
+        matches, blueprint = await asyncio.gather(search, other_reader)
+    assert matches[0]["id"] == blueprint["id"] == curated_pattern_data["id"] and len(calls) == 1
+
+
+@pytest.mark.asyncio
+async def test_corrupt_cache_reaches_the_client_and_directions_still_work(tmp_path, monkeypatch):
+    from fastmcp import Client
+
+    cache_file = tmp_path / "patterns.json"
+    cache_file.write_bytes(b"broken")
+    monkeypatch.setenv("DESIGN_MCP_SURFACE", "both")
+    monkeypatch.setattr(corpus, "read_bundled", lambda: None)
+    monkeypatch.setattr(corpus, "cache_path", lambda: cache_file)
+    monkeypatch.setattr(corpus, "_download", lambda: pytest.fail("Unexpected automatic repair"))
+    api = runpy.run_module("design_mcp.server", run_name="design_mcp._corrupt_server", alter_sys=True)
+    async with Client(api["mcp"]) as client:
+        for name, arguments in (("search_design_patterns", {"query": "dashboard"}),
+                                ("analyze_and_devibecode", {"source_code": "<main>Board</main>"}),
+                                ("get_library_recommendations", {"use_case": "dashboard"})):
+            reply = await client.call_tool(name, arguments, raise_on_error=False)
+            assert reply.is_error and "doctor --repair" in reply.content[0].text
+        direction = await client.call_tool("direct", {"brief": "Stage manager turnaround board"})
+        assert direction.structured_content["direction"]["id"] == "stage-call-sheet"
+    assert cache_file.read_bytes() == b"broken"
+
+
 @pytest.mark.parametrize(("mode", "count", "key"), [
     ("both", 17, "direction"), ("legacy", 14, "page_types"), ("v2", 3, "direction"),
 ])
@@ -117,21 +172,25 @@ def test_doctor_default_is_read_only_and_repair_is_explicit(tmp_path, monkeypatc
     monkeypatch.setattr(corpus, "cache_path", lambda: cached)
     monkeypatch.setattr(corpus, "read_bundled", lambda: None)
     monkeypatch.setattr(corpus, "_download", lambda: pytest.fail("Plain doctor must work offline"))
-    monkeypatch.setattr(sys, "argv", ["cli.py", "doctor"])
+    def invoke(*options):
+        monkeypatch.setattr(sys, "argv", ["cli.py", "doctor", *options])
+        with pytest.raises(SystemExit) as result:
+            cli.main()
+        return result.value.code
 
     async def local_client(command, args, mode):
         assert command == sys.executable and args == ["-m", "design_mcp.cli", "serve"]
         return "fixture call"
 
     monkeypatch.setattr(doctor, "_stdio", local_client)
-    assert doctor.run() == 0
+    assert invoke() == 0
     report = capsys.readouterr().out
     assert "SKIP installed entry point" in report and "SKIP external client" in report
     assert "SKIP legacy cache" in report and not cached.parent.exists()
     cached.parent.mkdir()
     cached.write_bytes(b"xx")
-    assert doctor.run() == 1 and cached.read_bytes() == b"xx"
+    assert invoke() == 1 and cached.read_bytes() == b"xx"
     assert "FAIL legacy cache" in capsys.readouterr().out
     monkeypatch.setattr(corpus, "read_bundled", lambda: payload)
-    assert doctor.run(repair=True) == 0 and cached.read_bytes() == payload
+    assert invoke("--repair") == 0 and cached.read_bytes() == payload
     assert "PASS legacy cache" in capsys.readouterr().out

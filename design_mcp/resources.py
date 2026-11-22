@@ -2,6 +2,11 @@
 
 import json
 from importlib.resources import files
+from zipfile import BadZipFile
+
+
+class ResourceError(RuntimeError):
+    """A required design-mcp resource could not be read."""
 
 
 def data_file(name: str):
@@ -15,5 +20,5 @@ def read_json(name: str):
     try:
         with data_file(name).open("r", encoding="utf-8") as stream:
             return json.load(stream)
-    except (OSError, ValueError) as error:
-        raise RuntimeError(f"Cannot read bundled data/{name}. Reinstall design-mcp. {error}") from error
+    except (OSError, ValueError, BadZipFile) as error:
+        raise ResourceError(f"Cannot read bundled data/{name}. Reinstall design-mcp. {error}") from error

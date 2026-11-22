@@ -5,10 +5,11 @@ import io
 import os
 from pathlib import Path
 from tempfile import NamedTemporaryFile
+from zipfile import BadZipFile
 
 from platformdirs import user_cache_path
 
-from .resources import data_file
+from .resources import ResourceError, data_file
 
 
 # Git blob 79d9995bc1322213b16b212aea01057980ea1aaa at this public commit.
@@ -21,7 +22,7 @@ SIZE = 10_092_399
 REPAIR = "Run design-mcp doctor --repair to rebuild the legacy cache."
 
 
-class CorpusError(RuntimeError):
+class CorpusError(ResourceError):
     """The legacy tools cannot use the requested corpus."""
 
 
@@ -49,7 +50,7 @@ def _read(entry, advice: str) -> bytes | None:
         return None
     except IntegrityError as error:
         raise IntegrityError(f"{error} {advice}") from error
-    except OSError as error:
+    except (OSError, BadZipFile) as error:
         raise CorpusError(f"Cannot read {entry}. {error}") from error
 
 

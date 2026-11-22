@@ -74,8 +74,10 @@ def _references():
         "layout_templates.json", "behavioral_templates.json", "component_code.json", "taxonomy.json",
     )
     for name in names:
-        if not read_json(name):
-            raise ValueError(f"Empty bundled data/{name}. Reinstall design-mcp.")
+        expected = list if name in {"tokens/token_sets.json", "decision_trees_indexed.json"} else dict
+        data = read_json(name)
+        if not isinstance(data, expected) or not data:
+            raise ValueError(f"Expected a nonempty {expected.__name__} in data/{name}. Reinstall design-mcp.")
     return f"{len(names)} legacy reference files"
 
 

@@ -48,18 +48,23 @@ class DesignDatabase:
         else:
             self._records = []
 
-    def _save(self):
+    def _require_writable(self):
         if self._uses_corpus and self.path == corpus.cache_path():
             raise ValueError("The verified corpus cache is read-only. Pass a writable path to DesignDatabase.")
+
+    def _save(self):
+        self._require_writable()
         patterns = self._patterns
         with open(self.path, "w") as f:
             json.dump([p.model_dump() for p in patterns], f, indent=2)
 
     def add(self, pattern: DesignPattern):
+        self._require_writable()
         self._patterns.append(pattern)
 
     def add_batch(self, patterns: list[DesignPattern]):
         """Add multiple patterns and save once (much faster for bulk ingestion)."""
+        self._require_writable()
         self._patterns.extend(patterns)
         self._save()
 
