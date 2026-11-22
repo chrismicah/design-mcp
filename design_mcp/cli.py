@@ -35,6 +35,10 @@ def main():
         mcp.run()
         return
 
+    if command == "review":
+        from design_mcp.review.cli import main as review_main
+        sys.exit(review_main(args[1:]))
+
     if command == "doctor":
         import argparse
         from design_mcp.doctor import run
