@@ -30,14 +30,28 @@ jobs:
           proof="$RUNNER_TEMP/design-library-proof"
           mkdir "$repo" "$proof" "$RUNNER_TEMP/probe-home"
           python -m pip install 'uv==0.13.9' 'fastmcp==4.2.4'
-          probe_python="$(command -v python)"
+          uv --no-config python install 3.12.13
+          semantic_python="$(uv --no-config python find --managed-python 3.12.13)"
+          "$semantic_python" -c 'import sqlite3; sqlite3.connect(":memory:").enable_load_extension(True)'
           git -C "$repo" init
           git -C "$repo" fetch --depth 1 https://github.com/Ashan-Iduranga/design-library-mcp.git "$LIBRARY_REVISION"
           git -C "$repo" checkout --detach FETCH_HEAD
           test "$(git -C "$repo" rev-parse HEAD)" = "$LIBRARY_REVISION"
           test "$(git -C "$repo" rev-parse HEAD:library/entries)" = "$ENTRIES_TREE"
           cd "$repo"
-          uv sync --locked --no-dev --group semantic --python "$probe_python"
+          uv sync --locked --no-dev --group semantic --python "$semantic_python"
+          "$repo/.venv/bin/python" - <<'PY' > "$proof/sqlite.txt"
+          import sqlite3
+          import sys
+          import sqlite_vec
+
+          connection = sqlite3.connect(":memory:")
+          connection.enable_load_extension(True)
+          sqlite_vec.load(connection)
+          connection.enable_load_extension(False)
+          print(sys.version)
+          print("SQLite", sqlite3.sqlite_version, "sqlite-vec", connection.execute("SELECT vec_version()").fetchone()[0])
+          PY
           uv pip freeze --python "$repo/.venv/bin/python" > "$proof/dependencies.txt"
           shasum -a 256 uv.lock > "$proof/lock.sha256"
           sw_vers > "$proof/platform.txt"
