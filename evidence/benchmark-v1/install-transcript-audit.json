@@ -1,0 +1,208 @@
+{
+  "scope": "Offline transcript audit on archived macOS 15 evidence. No new macOS runtime tests.",
+  "qualified_run": "https://github.com/chrismicah/design-mcp/actions/runs/45044811603",
+  "qualified_transcripts": "Four archived CI cells per architecture combined in Python minor order with the current serial footer.",
+  "audited_matrices": {
+    "arm64": {
+      "macos": "15.8.2",
+      "arch": "arm64",
+      "commit": "7bccfc14d4ce5652f81ee85f14bd56ee452a4aae",
+      "transcript_sha256": "c157ec1bb56de4b538928aace4948b930286c9ecc0b50c89120451aa1d220ea6",
+      "cells": {
+        "3.10": {
+          "python": "3.10.22",
+          "installers": [
+            "pipx",
+            "uv"
+          ],
+          "smoke_tool_counts": [
+            3,
+            17,
+            3,
+            17
+          ]
+        },
+        "3.11": {
+          "python": "3.11.18",
+          "installers": [
+            "pipx",
+            "uv"
+          ],
+          "smoke_tool_counts": [
+            3,
+            17,
+            3,
+            17
+          ]
+        },
+        "3.12": {
+          "python": "3.12.16",
+          "installers": [
+            "pipx",
+            "uv"
+          ],
+          "smoke_tool_counts": [
+            3,
+            17,
+            3,
+            17
+          ]
+        },
+        "3.13": {
+          "python": "3.13.18",
+          "installers": [
+            "pipx",
+            "uv"
+          ],
+          "smoke_tool_counts": [
+            3,
+            17,
+            3,
+            17
+          ]
+        }
+      },
+      "pinned_installs": 8,
+      "doctor_passes": 8,
+      "stdio_smoke_runs": 16
+    },
+    "x86_64": {
+      "macos": "15.7.9",
+      "arch": "x86_64",
+      "commit": "7bccfc14d4ce5652f81ee85f14bd56ee452a4aae",
+      "transcript_sha256": "c6c35c0031052be666427193a8cefc0a75630c7afa9bb08fc2a0345d87da99dd",
+      "cells": {
+        "3.10": {
+          "python": "3.10.22",
+          "installers": [
+            "pipx",
+            "uv"
+          ],
+          "smoke_tool_counts": [
+            3,
+            17,
+            3,
+            17
+          ]
+        },
+        "3.11": {
+          "python": "3.11.18",
+          "installers": [
+            "pipx",
+            "uv"
+          ],
+          "smoke_tool_counts": [
+            3,
+            17,
+            3,
+            17
+          ]
+        },
+        "3.12": {
+          "python": "3.12.16",
+          "installers": [
+            "pipx",
+            "uv"
+          ],
+          "smoke_tool_counts": [
+            3,
+            17,
+            3,
+            17
+          ]
+        },
+        "3.13": {
+          "python": "3.13.18",
+          "installers": [
+            "pipx",
+            "uv"
+          ],
+          "smoke_tool_counts": [
+            3,
+            17,
+            3,
+            17
+          ]
+        }
+      },
+      "pinned_installs": 8,
+      "doctor_passes": 8,
+      "stdio_smoke_runs": 16
+    }
+  },
+  "historical_serial_run": "https://github.com/chrismicah/design-mcp/actions/runs/45043118927",
+  "historical_serial_arm64": {
+    "macos": "15.8.2",
+    "arch": "arm64",
+    "commit": "7bccfc14d4ce5652f81ee85f14bd56ee452a4aae",
+    "transcript_sha256": "78433d8d7bc338fd49126aff79884920147a73b073052672249164b0698914ce",
+    "cells": {
+      "3.10": {
+        "python": "3.10.22",
+        "installers": [
+          "pipx",
+          "uv"
+        ],
+        "smoke_tool_counts": [
+          3,
+          17,
+          3,
+          17
+        ]
+      },
+      "3.11": {
+        "python": "3.11.18",
+        "installers": [
+          "pipx",
+          "uv"
+        ],
+        "smoke_tool_counts": [
+          3,
+          17,
+          3,
+          17
+        ]
+      },
+      "3.12": {
+        "python": "3.12.16",
+        "installers": [
+          "pipx",
+          "uv"
+        ],
+        "smoke_tool_counts": [
+          3,
+          17,
+          3,
+          17
+        ]
+      },
+      "3.13": {
+        "python": "3.13.18",
+        "installers": [
+          "pipx",
+          "uv"
+        ],
+        "smoke_tool_counts": [
+          3,
+          17,
+          3,
+          17
+        ]
+      }
+    },
+    "pinned_installs": 8,
+    "doctor_passes": 8,
+    "stdio_smoke_runs": 16
+  },
+  "rejected_cases": {
+    "wrong-os": "Install matrix audit failed: Observed macOS 15.7.9, expected major 13",
+    "translated-intel": "Install matrix audit failed: Unexpected Rosetta",
+    "truncated": "Install matrix audit failed: Missing or incorrect final matrix result",
+    "missing-minor": "Install matrix audit failed: Expected one install log for each Python minor",
+    "wrong-pin": "Install matrix audit failed: Python 3.10: expected two pinned Git installs",
+    "duplicate-installer": "Install matrix audit failed: Python 3.10: expected distinct pipx and uv entry points",
+    "missing-doctor": "Install matrix audit failed: Python 3.10 via pipx: expected a passing doctor call",
+    "missing-tool": "Install matrix audit failed: Python 3.10 via pipx: incomplete both tool results",
+    "actual-timed-out-intel": "Install matrix audit failed: Expected one install log for each Python minor"
+  }
+}

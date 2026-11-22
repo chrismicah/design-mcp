@@ -23,9 +23,18 @@ The verifier passed all eight hosted macOS 15 cells with the staged script bytes
 On the Intel Ventura test machine, use its native uv. The pinned arm64 and x86_64 uv archives have separate SHA-256 digests, `5aeca67f2283f75235de40d0bd9c0a5bbc5fce23b6d48b3bf9fa1b2db08382ca` and `617a3211261b0fc739562f0071aa34e9739797c510208ede8e2977c30903d041`, respectively. Run the preflight before installing anything. [uv 0.13.9 assets](https://github.com/astral-sh/uv/releases/tag/0.13.9)
 
 ```sh
+set -o pipefail
 bash scripts/verify_install_matrix.sh --check-host 13 x86_64
 bash scripts/verify_install_matrix.sh 13 x86_64 \
-  7bccfc14d4ce5652f81ee85f14bd56ee452a4aae "$(command -v uv)" "$NEW_EVIDENCE_DIRECTORY"
+  7bccfc14d4ce5652f81ee85f14bd56ee452a4aae "$(command -v uv)" "$NEW_EVIDENCE_DIRECTORY" \
+  2>&1 | tee "$MATRIX_LOG"
+```
+
+Use the Tart launcher's `guest-install.log` on arm64 and the saved terminal log on Intel. Audit each full transcript with the expected architecture. The receipt records the SHA-256 of the original log and verifies both installer entry points and the exact tool names for each Python version. The audit accepted the archived complete arm64 run and both matrices assembled from hosted cells. It rejected the timed-out Intel run and eight altered transcripts. [Audit evidence](install-transcript-audit.json)
+
+```sh
+python3 scripts/audit_install_matrix.py 13 "$EXPECTED_ARCH" \
+  7bccfc14d4ce5652f81ee85f14bd56ee452a4aae "$MATRIX_LOG" > "$MATRIX_RECEIPT"
 ```
 
 Verify the guest reports macOS 13 before counting these results toward support on Ventura. Tart 2.42.0 requires macOS 14 or later on the host for `tart exec` and a running guest agent. The base-image template available at the upload date installs the agent through launchd. Verify the agent connection at runtime. If the pinned guest cannot boot or exposes no guest agent, preserve the failure evidence and retry on compatible hardware or a prepared image. [Host requirement](https://github.com/openai/tart/blob/2.42.0/Sources/tart/Commands/Exec.swift) · [Guest template at upload](https://github.com/cirruslabs/macos-image-templates/blob/db71c44bc1aaf11ca0db08522f6fe3c0ff1440cc/templates/base.pkr.hcl#L155-L178)
