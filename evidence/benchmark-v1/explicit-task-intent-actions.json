@@ -1,0 +1,249 @@
+{
+  "candidate": "aaa7e787fe995053d9b642e7d191fdd3d7d9ad1b",
+  "control": "81ad2b3c2b877451f3c17859ab5f54f4c9c67a44",
+  "scope": "Source-backed Codex generation and isolated Playwriter keyboard replays",
+  "cases": {
+    "empty-search": {
+      "tool_call": {
+        "arguments": {
+          "brief": "Design one responsive, accessible public tool library search page for someone trying to borrow a tool. The initial query is 'chain saw' and has zero matches. Make the reason clear in the empty state and make the related query 'pruning saw' the obvious recovery action. Selecting it changes the query and shows one available result named 'Folding Pruning Saw'. This is a self-contained HTML document reviewed at 1440 and 390 pixels, with original inline illustration or CSS and optional Google Fonts. Use only supplied facts. Choose a distinctive, practical, welcoming public-library visual direction with one focal detail specific to the subject.",
+          "task_intent": "try_suggested_query"
+        },
+        "direction": "search-recovery"
+      },
+      "generation": {
+        "usage": {
+          "input_tokens": 63395,
+          "cached_input_tokens": 57216,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 18412,
+          "reasoning_output_tokens": 14196
+        },
+        "tool_calls": [
+          {
+            "type": "mcp_tool_call",
+            "server": "design-mcp",
+            "tool": "direct",
+            "status": "completed"
+          }
+        ],
+        "client_errors": [],
+        "treatment_call": true,
+        "direct_call": true,
+        "status": "passed",
+        "observed_directions": [
+          "search-recovery"
+        ],
+        "case": "empty-search",
+        "arm": "explicit-intent",
+        "model": "gpt-6.2-sol",
+        "effort": "max",
+        "client": "codex-cli 0.170.0",
+        "prompt_sha256": "ec1fc5defc9fb73906e9e6c71b5dfb4a090de213e27cd3188a7866a74ab0c4ed",
+        "expected_direction": "search-recovery",
+        "shell_tool": false,
+        "mcp_config_sha256": "c42f2fd83a9bd795503bc95e80fc86e08e64d88179ebd30ecf61514da8950cd3",
+        "elapsed_seconds": 374.11,
+        "exit_code": 0,
+        "trace_sha256": "6e2165c20c9eca2f2eb8749077bdab85f5bf88a19c9c3e3c32de6f2059895966",
+        "html_sha256": "9a92c472e93fe7d822768095d2bc8ff0ba938e767a1d019791b62f703fe2a9fb"
+      },
+      "interaction": {
+        "renderer": "0.12.0",
+        "browser": "Chrome/157.0.8103.79",
+        "input_sha256": "9a92c472e93fe7d822768095d2bc8ff0ba938e767a1d019791b62f703fe2a9fb",
+        "captures": {
+          "1440": {
+            "viewport": 1440,
+            "width": 1440,
+            "height": 900,
+            "title": "Find a tool | Tool Library",
+            "h1": "Find a tool",
+            "loadedFonts": [
+              "Atkinson Hyperlegible Next",
+              "Barlow Condensed"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- banner: Tool Library\n- main:\n  - heading \"Find a tool\" [level=1]\n  - search:\n    - text: Search the tool catalog\n    - searchbox \"Search the tool catalog\": chain saw\n    - button \"Search\"\n  - region \"No matches for “chain saw”\":\n    - heading \"No matches for “chain saw”\" [level=2]\n    - paragraph: Related search\n    - button \"Search for pruning saw\"\n    - paragraph:\n      - strong: \"1\"\n      - text: tool available\n  - status",
+            "status": "rendered",
+            "sha256": "3b4dcee19a022cbfc890da84b10546edb486c6b671a11bdb2a05de502cb8a138",
+            "interaction": {
+              "checks": {
+                "before": true,
+                "visibleNextStep": true,
+                "matched": true,
+                "focusReturned": true,
+                "announced": true,
+                "recoveredAfterClear": true,
+                "staysLocal": true
+              },
+              "restricted": [],
+              "pageErrors": [],
+              "passed": true,
+              "matched_sha256": "c17913769f74b271cf70c081c276b0cc46a011b4b0200d1ede4ad6675b50801e"
+            },
+            "initial_capture": ".context/factory/benchmark-v1/explicit-task-intent-full-aaa7e78/empty-search/explicit-intent/1440.png",
+            "changed_capture": ".context/factory/benchmark-v1/explicit-task-intent-full-aaa7e78/empty-search/explicit-intent/1440-matched.png"
+          },
+          "390": {
+            "viewport": 390,
+            "width": 390,
+            "height": 844,
+            "title": "Find a tool | Tool Library",
+            "h1": "Find a tool",
+            "loadedFonts": [
+              "Atkinson Hyperlegible Next",
+              "Barlow Condensed"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- banner: Tool Library\n- main:\n  - heading \"Find a tool\" [level=1]\n  - search:\n    - text: Search the tool catalog\n    - searchbox \"Search the tool catalog\": chain saw\n    - button \"Search\"\n  - region \"No matches for “chain saw”\":\n    - heading \"No matches for “chain saw”\" [level=2]\n    - paragraph: Related search\n    - button \"Search for pruning saw\"\n    - paragraph:\n      - strong: \"1\"\n      - text: tool available\n  - status",
+            "status": "rendered",
+            "sha256": "57ac29d2230298a69e865a0d596774a09b7e7cc355caee836b2df5c14733cfb2",
+            "interaction": {
+              "checks": {
+                "before": true,
+                "visibleNextStep": true,
+                "matched": true,
+                "focusReturned": true,
+                "announced": true,
+                "recoveredAfterClear": true,
+                "staysLocal": true
+              },
+              "restricted": [],
+              "pageErrors": [],
+              "passed": true,
+              "matched_sha256": "01c991c60318a2be73dde622006c59c63cfaab0495681ae1723b7bec39348846"
+            },
+            "initial_capture": ".context/factory/benchmark-v1/explicit-task-intent-full-aaa7e78/empty-search/explicit-intent/390.png",
+            "changed_capture": ".context/factory/benchmark-v1/explicit-task-intent-full-aaa7e78/empty-search/explicit-intent/390-matched.png"
+          }
+        }
+      }
+    },
+    "empty-shifts": {
+      "tool_call": {
+        "arguments": {
+          "surface": "dashboard",
+          "task_intent": "reserve_first_shift",
+          "brief": "Create a single responsive personal schedule page for a food-bank volunteer. Initially their upcoming shifts are empty. Present one available shift, Wednesday 4–6 pm, Packing, with one clear action to reserve it. Confirm the reservation and show the booked shift in Upcoming shifts on that same page. All interactions are local. Only these supplied facts can appear, with no invented organization name, venue, shift date, availability count or account data. Deliver one HTML document with inline CSS, JavaScript and original inline illustrations or CSS visuals, with optional Google Fonts. The page will be reviewed in Chrome at widths of 1440 and 390 pixels. Suggest one distinctive, warm and practical design direction with a focal visual drawn from food-bank packing, readable type, clear mobile flow and restrained motion."
+        },
+        "direction": "first-available-shift"
+      },
+      "generation": {
+        "usage": {
+          "input_tokens": 63489,
+          "cached_input_tokens": 20608,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 16068,
+          "reasoning_output_tokens": 12643
+        },
+        "tool_calls": [
+          {
+            "type": "mcp_tool_call",
+            "server": "design-mcp",
+            "tool": "direct",
+            "status": "completed"
+          }
+        ],
+        "client_errors": [],
+        "treatment_call": true,
+        "direct_call": true,
+        "status": "passed",
+        "observed_directions": [
+          "first-available-shift"
+        ],
+        "case": "empty-shifts",
+        "arm": "explicit-intent",
+        "model": "gpt-6.2-sol",
+        "effort": "max",
+        "client": "codex-cli 0.170.0",
+        "prompt_sha256": "d813e2c43660b30daeb38821dd13a3f61ae8f01355d23ec2fd4471e9f6bf4eee",
+        "expected_direction": "first-available-shift",
+        "shell_tool": false,
+        "mcp_config_sha256": "c42f2fd83a9bd795503bc95e80fc86e08e64d88179ebd30ecf61514da8950cd3",
+        "elapsed_seconds": 329.28,
+        "exit_code": 0,
+        "trace_sha256": "6a595ee52f7f4c4b2e514f58341eb69f58ec1e9f643b63e77c662bae477c1ed6",
+        "html_sha256": "a1e7f3b2923c7d9a9b18d9f79a5d9a0645414ee9c431fcd895af67d0f60e47ea"
+      },
+      "interaction": {
+        "renderer": "0.12.0",
+        "browser": "Chrome/157.0.8103.79",
+        "input_sha256": "a1e7f3b2923c7d9a9b18d9f79a5d9a0645414ee9c431fcd895af67d0f60e47ea",
+        "captures": {
+          "1440": {
+            "viewport": 1440,
+            "width": 1440,
+            "height": 900,
+            "title": "Upcoming shifts | Food bank volunteering",
+            "h1": "Upcoming shifts",
+            "loadedFonts": [
+              "Archivo Narrow",
+              "Source Sans 3"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- banner: Food bank volunteering\n- main:\n  - region \"Upcoming shifts\":\n    - heading \"Upcoming shifts\" [level=1]\n    - paragraph: No shifts scheduled\n  - region \"Available shift\":\n    - article \"Packing\":\n      - text: Wednesday 4–6 pm\n      - heading \"Packing\" [level=2]\n      - text: Available\n      - button \"Reserve shift\"\n  - status",
+            "status": "rendered",
+            "sha256": "7a4fb8b7e1219bc399ef2a87f42f5aa8c607af00202688394ebf43deec3e7456",
+            "interaction": {
+              "checks": {
+                "before": true,
+                "visibleBefore": true,
+                "booked": true,
+                "focusOnBooked": true,
+                "announced": true,
+                "staysLocal": true
+              },
+              "restricted": [],
+              "pageErrors": [],
+              "passed": true,
+              "booked_sha256": "771ac7636857ccd0848ac8bcf47b5744433a58cac1b2947083445e0235903fb7"
+            },
+            "initial_capture": ".context/factory/benchmark-v1/explicit-task-intent-full-aaa7e78/empty-shifts/explicit-intent/1440.png",
+            "changed_capture": ".context/factory/benchmark-v1/explicit-task-intent-full-aaa7e78/empty-shifts/explicit-intent/1440-booked.png"
+          },
+          "390": {
+            "viewport": 390,
+            "width": 390,
+            "height": 844,
+            "title": "Upcoming shifts | Food bank volunteering",
+            "h1": "Upcoming shifts",
+            "loadedFonts": [
+              "Archivo Narrow",
+              "Source Sans 3"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- banner: Food bank volunteering\n- main:\n  - region \"Upcoming shifts\":\n    - heading \"Upcoming shifts\" [level=1]\n    - paragraph: No shifts scheduled\n  - region \"Available shift\":\n    - article \"Packing\":\n      - text: Wednesday 4–6 pm\n      - heading \"Packing\" [level=2]\n      - text: Available\n      - button \"Reserve shift\"\n  - status",
+            "status": "rendered",
+            "sha256": "5e41c4b2ecc66e6999c8d91c41c6ee5124822540d2a0575ec86ee2ceaa7b8e62",
+            "interaction": {
+              "checks": {
+                "before": true,
+                "visibleBefore": true,
+                "booked": true,
+                "focusOnBooked": true,
+                "announced": true,
+                "staysLocal": true
+              },
+              "restricted": [],
+              "pageErrors": [],
+              "passed": true,
+              "booked_sha256": "b061a690f59807b88703915e3276e5a935b0217d34709059d26011bbe78198ec"
+            },
+            "initial_capture": ".context/factory/benchmark-v1/explicit-task-intent-full-aaa7e78/empty-shifts/explicit-intent/390.png",
+            "changed_capture": ".context/factory/benchmark-v1/explicit-task-intent-full-aaa7e78/empty-shifts/explicit-intent/390-booked.png"
+          }
+        }
+      }
+    }
+  },
+  "passed_browser_replays": 4
+}
