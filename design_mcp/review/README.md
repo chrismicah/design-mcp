@@ -10,7 +10,9 @@ The installed CLI captured the USWDS address form at desktop and mobile widths t
 | --- | --- | --- |
 | The page you are on | Click the toolbar button, then **Review this page** | The extension reads what is visible in that tab, blanks out fields in the picture and hands the capture to the local reviewer |
 | A pasted address | Paste it in the popup and press **Open**, or run `design-mcp review example.com/status` | The public page opens in a tab. You start the scan there with the toolbar button |
-| A pasted address, no extension | `design-mcp review example.com/status --playwriter PATH` | The page is captured at 1440 × 900 and 390 × 844 in a separate Chrome with a new empty profile |
+| A pasted address, no extension | `design-mcp review example.com/status --playwriter` | The page is captured at 1440 × 900 and 390 × 844 in a separate Chrome with a new empty profile |
+
+Install Playwriter 0.12.0 on PATH or supply its executable after `--playwriter`. URL capture uses the new isolated Playwriter session for every browser command. Add `--no-open` to preview the command's intent without starting Chrome. [Pinned Playwriter MCP guide](https://github.com/remorses/playwriter/blob/playwriter%400.12.0/MCP.md)
 
 Each route produces the same capture format and goes through the same steps: scrub, three local checks, one finding, one preview file.
 

@@ -6,6 +6,7 @@ The board below is a hand-written capture in the page-evidence format, shaped li
 board in the benchmark briefs. It is test input, not a recorded result from a real page.
 """
 
+import asyncio
 import base64
 import contextlib
 import hashlib
@@ -20,6 +21,7 @@ import subprocess
 import sys
 import tempfile
 import tomllib
+from types import SimpleNamespace
 import unittest
 import zlib
 from html.parser import HTMLParser
@@ -888,6 +890,18 @@ class CliTests(unittest.TestCase):
         self.assertEqual((status, opened), (0, []))
         self.assertIn("Would open https://boards.example/rooms in your browser.", out)
 
+    def test_playwriter_flag_accepts_the_installed_command_or_an_explicit_path(self):
+        with tempfile.TemporaryDirectory() as folder:
+            for extra, program in [((), None), (("./playwriter",), "./playwriter")]:
+                with self.subTest(program=program), mock.patch.object(isolated, "capture", return_value=board()) as run:
+                    status, _, error, opened = self.run_cli("boards.example/rooms", "--playwriter", *extra, "--out", folder)
+                    self.assertEqual((status, error, opened), (0, "", []))
+                    run.assert_called_once_with("https://boards.example/rooms", program, None)
+        with mock.patch.object(isolated, "capture", side_effect=AssertionError("a dry run cannot start a browser")):
+            status, out, error, opened = self.run_cli("boards.example/rooms", "--playwriter", "--no-open")
+            self.assertEqual((status, error, opened), (0, "", []))
+            self.assertIn("Would capture https://boards.example/rooms in a separate browser.", out)
+
     def test_addresses_that_are_not_public_pages_are_refused_with_the_reason(self):
         cases = (
             ("file:///etc/hosts", "Only http and https pages"),
@@ -1000,6 +1014,57 @@ class ExtensionTests(unittest.TestCase):
         with self.assertRaises(RuntimeError):
             isolated._marked("page said nothing", "REVIEW_FRAME ")
         self.assertEqual(isolated.VIEWPORTS, ((1440, 900), (390, 844)))
+
+    def test_the_isolated_review_uses_its_direct_session_and_requires_route_setup(self):
+        def result(text, error=False):
+            return SimpleNamespace(is_error=error, content=[SimpleNamespace(type="text", text=text)])
+
+        class Relay:
+            fail_routing = False
+
+            def __init__(self, *args, **kwargs):
+                self.calls = []
+
+            async def __aenter__(self):
+                return self
+
+            async def __aexit__(self, *args):
+                pass
+
+            async def call_tool(self, tool, arguments):
+                self.calls.append((tool, arguments))
+                if tool == "session_new":
+                    return result("Session isolated-review created")
+                if tool == "execute" and arguments.get("session") != "isolated-review":
+                    return result("The default session is unavailable", error=True)
+                code = arguments["code"]
+                if "context.route" in code:
+                    return result("Route setup failed", error=self.fail_routing)
+                if "state.page.goto" in code:
+                    return result("REVIEW_LOAD 42")
+                if "state.page.screenshot" in code:
+                    match = re.search(r'path: ("[^"]+")', code)
+                    Path(json.loads(match[1])).write_bytes(png())
+                    return result('REVIEW_FRAME {"frame": {}, "capture_ms": 12}')
+                return result("")
+
+        for fail_routing in (False, True):
+            with self.subTest(fail_routing=fail_routing), tempfile.TemporaryDirectory() as folder:
+                relay = Relay()
+                relay.fail_routing = fail_routing
+                modules = {"fastmcp": SimpleNamespace(Client=lambda *a, **kw: relay),
+                           "fastmcp.client.transports": SimpleNamespace(StdioTransport=mock.Mock())}
+                with mock.patch.dict(sys.modules, modules):
+                    review_page = isolated._drive("https://boards.example/rooms", "playwriter", {},
+                                                  Path(folder), "ws://127.0.0.1:1234/devtools/browser/test")
+                    if fail_routing:
+                        with self.assertRaisesRegex(RuntimeError, "Route setup failed"):
+                            asyncio.run(review_page)
+                        self.assertEqual(len(relay.calls), 2)
+                    else:
+                        self.assertEqual(len(asyncio.run(review_page)["frames"]), 2)
+                        self.assertEqual(len(relay.calls), 8)
+                    self.assertTrue(all(args["session"] == "isolated-review" for _, args in relay.calls[1:]))
 
     def test_the_extension_ships_in_the_package_and_review_needs_no_third_party_code(self):
         with open(ROOT / "pyproject.toml", "rb") as stream:

@@ -2,7 +2,7 @@ name: Installed public URL review proof
 
 on:
   push:
-    branches: [design-mcp/vision-url-proof, design-mcp/review-integration]
+    branches: [design-mcp/vision-url-proof, design-mcp/review-integration, design-mcp/url-session-proof]
 
 permissions:
   contents: read
@@ -36,9 +36,9 @@ jobs:
           "$chrome" --version > "$proof/browser-version.txt"
           "$playwright" --version > "$proof/playwriter-version.txt"
           cd "$RUNNER_TEMP"
-          TMPDIR="$RUNNER_TEMP/review-tmp" "$RUNNER_TEMP/design-review/bin/design-mcp" review \
+          PATH="$(dirname "$playwright"):$PATH" TMPDIR="$RUNNER_TEMP/review-tmp" "$RUNNER_TEMP/design-review/bin/design-mcp" review \
             https://designsystem.digital.gov/templates/form-templates/address-form/ \
-            --playwriter "$playwright" --chrome "$chrome" --out "$proof/review" --json \
+            --playwriter --chrome "$chrome" --out "$proof/review" --json \
             > "$proof/result.json" 2> "$proof/attempt.log"
           python - "$proof" <<'PY'
           from pathlib import Path

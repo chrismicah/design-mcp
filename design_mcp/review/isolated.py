@@ -4,8 +4,7 @@ This follows evals/v1/render.py, the renderer the benchmark already uses: an own
 a new empty profile, an owned Playwriter relay and one stdio MCP session. The person's own browser
 profile, cookies and extensions are never involved, and the page under review is only read.
 
-The address rules live in address.py and have tests. The browser session in this module has not been
-run yet: it needs the shared render lease.
+The address rules live in address.py. The browser starts with a fresh profile for each capture.
 """
 
 import asyncio
@@ -136,14 +135,23 @@ async def _drive(url, playwriter, env, scratch, web_socket):
 
     transport = StdioTransport(command=str(playwriter), args=[], env=env, cwd=str(scratch))
     async with Client(transport, timeout=60) as client:
-        async def execute(code):
-            result = await client.call_tool("execute", {"code": code, "timeout": 30000})
+        def result_text(result):
             return "\n".join(block.text for block in result.content if block.type == "text")
 
         session = await client.call_tool("session_new", {"direct": web_socket})
-        opened = "\n".join(block.text for block in session.content if block.type == "text")
-        if not re.search(r"Session .+ created", opened):
+        opened = result_text(session)
+        match = re.search(r"^Session (\S+) created\b", opened, re.MULTILINE)
+        if session.is_error or not match:
             raise RuntimeError(f"cannot open the separate Playwriter session: {opened[-400:]}")
+        session_id = match[1]
+
+        async def execute(code):
+            result = await client.call_tool("execute", {"session": session_id, "code": code, "timeout": 30000})
+            output = result_text(result)
+            if result.is_error:
+                raise RuntimeError(f"the separate Playwriter session stopped: {output[-400:]}")
+            return output
+
         await execute(_ROUTE_JS)
         collect = json.dumps(collect_expression())
         frames, loads, captures = [], [], []
@@ -179,9 +187,13 @@ async def _drive(url, playwriter, env, scratch, web_socket):
     }
 
 
-def capture(url, playwriter, chrome=None, resolve=socket.getaddrinfo):
+def capture(url, playwriter=None, chrome=None, resolve=socket.getaddrinfo):
     """Capture one public page at both benchmark widths and return a page-evidence bundle."""
     clean, host, address = public_target(url, resolve)
+    if playwriter is None:
+        playwriter = shutil.which("playwriter")
+        if playwriter is None:
+            raise CaptureError("Playwriter was not found on PATH. Install it or pass --playwriter with its path.")
     playwriter = Path(playwriter).expanduser().absolute()
     chrome = Path(chrome or DEFAULT_CHROME)
     if not playwriter.is_file():

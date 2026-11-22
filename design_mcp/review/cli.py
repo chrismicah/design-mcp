@@ -27,8 +27,8 @@ def _parser():
                         help="folder for the preview (default: a private folder in your user directory)")
     parser.add_argument("--json", action="store_true", help="print the full result as JSON")
     parser.add_argument("--no-open", action="store_true", help="say what would open without opening a browser")
-    parser.add_argument("--playwriter", metavar="PATH",
-                        help="capture the URL in a separate, cookie-free Chrome through this Playwriter executable")
+    parser.add_argument("--playwriter", nargs="?", const="", metavar="PATH",
+                        help="capture the URL in a separate, cookie-free Chrome using Playwriter on PATH")
     parser.add_argument("--chrome", metavar="PATH", help="Chrome executable to use with --playwriter")
     parser.add_argument("--extension-path", action="store_true",
                         help="print the folder to load in chrome://extensions")
@@ -94,25 +94,28 @@ def _review_url(args, opener):
     if removed:
         print(credentials_reason(removed), file=sys.stderr)
         return 1
+    reason = local_address_reason(clean)
+    if reason:
+        print(reason, file=sys.stderr)
+        return 1
 
-    if args.playwriter:
+    if args.playwriter is not None:
+        if args.no_open:
+            print(f"Would capture {clean} in a separate browser.")
+            return 0
         from .isolated import CaptureError, capture
 
         try:
-            bundle = capture(clean, args.playwriter, args.chrome)
+            bundle = capture(clean, args.playwriter or None, args.chrome)
         except (CaptureError, EvidenceError) as error:
             print(error.message, file=sys.stderr)
             return 1
         return _report(review(bundle, args.out), args.json)
 
-    reason = local_address_reason(clean)
-    if reason:
-        print(reason, file=sys.stderr)
-        return 1
     print(f"{'Would open' if args.no_open else 'Opening'} {clean} in your browser.")
     print("On that tab in Chrome, click the Design MCP button, then “Review this page”.")
     print("No button yet? Run: design-mcp review --extension-path")
-    print("To scan without the extension, add --playwriter PATH: the page is captured in a separate, "
+    print("To scan without the extension, add --playwriter after the address. This uses a separate, "
           "cookie-free Chrome.")
     if not args.no_open:
         opener(clean)
