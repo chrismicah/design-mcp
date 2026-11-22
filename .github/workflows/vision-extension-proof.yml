@@ -45,7 +45,7 @@ jobs:
           path.write_text(json.dumps(manifest))
           PY
           node --version
-          REVIEW_LATENCY_RUNS=30 CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox \
+          REVIEW_LATENCY_RUNS=30 REVIEW_TEST_KEY_DELAY_MS=0 CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox \
             xvfb-run -a -s '-screen 0 1600x1040x24' node --experimental-websocket \
             evals/vision/extension_smoke.mjs "$chrome" "$cli" "$extension" "$proof"
           "$RUNNER_TEMP/design-review/bin/python" - "$proof" <<'PY'

@@ -33,6 +33,11 @@ const browser = spawn(chrome, [
 const proof = {};
 let socket;
 const key = (...keys) => execFileSync("xdotool", ["key", "--clearmodifiers", ...keys]);
+const timingKeyDelay = Number(process.env.REVIEW_TEST_KEY_DELAY_MS ?? 12);
+assert.ok(Number.isInteger(timingKeyDelay) && timingKeyDelay >= 0 && timingKeyDelay <= 100);
+const timedKey = name => execFileSync("xdotool", [
+  "key", "--clearmodifiers", "--delay", String(timingKeyDelay), name,
+]);
 async function until(description, check, milliseconds = 10000, interval = 120) {
   const deadline = Date.now() + milliseconds;
   while (Date.now() < deadline) {
@@ -177,7 +182,7 @@ try {
   if (latencyRuns) {
     const latency = proof.latency = {
       scope: "Fresh popup documents and one-request native host processes in a warm Chrome session",
-      expectedTrials: latencyRuns, trials: [],
+      expectedTrials: latencyRuns, keyDelayMs: timingKeyDelay, trials: [],
     };
     const painted = (session, selector, state) => inspect(session, `(() => {
       const node = document.querySelector(${JSON.stringify(selector)});
@@ -194,7 +199,7 @@ try {
       await until("previous popup to close", async () => !(await findPopup()), 5000, 15);
       const activatedEpoch = Date.now();
       const activated = performance.now();
-      key("ctrl+shift+y");
+      timedKey("ctrl+shift+y");
       const inputMs = performance.now() - activated;
       const fresh = await until("fresh toolbar popup", findPopup, 5000, 15);
       const targetMs = performance.now() - activated;
@@ -206,7 +211,7 @@ try {
         firstContentfulPaint: performance.getEntriesByName('first-contentful-paint')[0]?.startTime ?? null
       })`);
       const scanned = performance.now();
-      key("Return");
+      timedKey("Return");
       await until("painted local finding", () => painted(session, "#finding", "result"), 10000, 15);
       const scanMs = performance.now() - scanned;
       assert.equal(await inspect(session, "!document.querySelector('#fix').hidden"), true);
