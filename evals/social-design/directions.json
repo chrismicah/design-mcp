@@ -63,8 +63,8 @@
   {
     "id": "level-cross-section",
     "surface": "editorial",
-    "title": "Read the floodwall",
-    "summary": "Make a single waterfront scene where the water meets a stenciled flood gauge. A selectable elevation changes the gauge, the landmarks and the plain-text closure report.",
+    "title": "Read the shoreline",
+    "summary": "Make an editorial field report. Three selectable heights change a single shoreline in plan view and update the plain-text closure report.",
     "tags": [
       "water level",
       "elevations",
@@ -73,53 +73,58 @@
       "rising river"
     ],
     "type": {
-      "display": "Archivo Black",
+      "display": "Instrument Serif",
       "body": "IBM Plex Sans",
       "ratio": 3.6,
       "tracking": -0.024,
-      "weight": 700,
+      "weight": 400,
       "license": "OFL-1.1"
     },
     "palette": {
-      "ink": "#132E36",
-      "paper": "#E9E5D8",
-      "accent": "#176167"
+      "ink": "#172B30",
+      "paper": "#E7EBE7",
+      "accent": "#1E4A50"
     },
     "layout": {
-      "skeleton": "Give the reader an immediate answer next to three level choices, then one wide waterfront scene with a foreground stenciled height gauge. Place the actual crossings in the scene. Leave out the separate legend and inset charts.",
-      "focus": "Let the water sit against a vertical gauge painted on the floodwall. Water covers the lowest gauge marks. The actual crossing shapes change visually as they close.",
-      "desktop": "Run the complete scene across the main reading width at no more than 415 px tall. Keep the result and level choices close together above it and fit all of it in 900 px. Make the selected elevation the visual anchor of both.",
-      "mobile": "Put the result and level choices above the waterfront in the first viewport. Compose a separate compact frame around the gauge and largest landmark shapes. Set the 2 m, 4 m and 6 m gauge marks in legible HTML at 17 px or larger and align them to the painted wall.",
-      "rhythm": "Put visual weight on the paint and concrete meeting the water. Keep the surrounding type and controls quiet and readable."
+      "skeleton": "Place three direct level choices and the complete result in a compact reading column next to a wide shoreline viewed from above. Set the title editorially. Use normal HTML labels and tabular numerals for the readings.",
+      "focus": "A single continuous shoreline steps outward on the three selections. Three fixed survey marks locate the thresholds. Keep the river edge itself as the visual identity.",
+      "desktop": "Use a broad landscape frame opposite the reading column. Show the complete scene and all results together in the first 900 px. Use regular HTML for the threshold readings outside the linework.",
+      "mobile": "Put the level choices and complete result first. Fit the selection, all closures and an abbreviated shoreline view within 390 × 844 px. Keep every label at 16 px or larger. Compose for the narrower shape.",
+      "rhythm": "Use strong horizontal alignment and spare survey marks. Let the continuous silhouette and editorial title carry the design. Omit cards, small landmarks and decorative grids."
     },
     "imagery": {
-      "subject": "Create a bold editorial image from broad concrete and tidal green planes. Set the floodwall in limestone with wet stone #7FABB2 around the water. Use brass #E0AC44 for closure markers. Cover the path with water when it closes, show the stopped ferry floating rather than submerged, and close the footbridge with a visible marker.",
-      "crop": "Keep the full wall gauge, the changing waterline and the crossing silhouettes in the first viewport at both widths. Leave small lettering out of the drawing.",
-      "fallback": "Keep the readable gauge with the current elevation and the complete written closure report. Reduce scene detail before reducing the text."
+      "subject": "Draw an original illustrative shoreline with three nested water edges of the same bank. Use enamel #B4D6D1 for survey marks and mulberry #793C53 for closure indicators. Use a simple CSS or canvas drawing. Omit ferry, bridge and path illustrations, stock photography and invented coordinates.",
+      "crop": "Preserve the distinctive bend and all three thresholds in the wide and phone compositions. Label the scene as an illustration. Keep all words readable outside the drawing.",
+      "fallback": "Preserve the three threshold marks and the complete report. Use three static shoreline states if needed."
     },
     "motion": {
       "trigger": "Selecting a level",
-      "effect": "Move the waterline as one gesture. Change the crossing indicators and the complete text together.",
+      "effect": "Update the complete text immediately. Shift the continuous water edge as the one visible motion.",
       "duration_ms": 250,
-      "reduced": "Use the immediate new level and matching list without the marker animation."
+      "reduced": "Set the edge and report together without motion."
     },
     "action": {
       "instruction": "Use three named level controls with a visible persistent selected state. Update the current level, waterline and cumulative text outcome together. Preserve all supplied facts and the visible keyboard focus.",
       "label": "Use each supplied level and its units"
     },
-    "why": "The stenciled gauge attaches the level to a physical place. The changing conditions and the readable report make the cumulative closures clear.",
+    "why": "The shoreline establishes a sense of place and explains rising levels. Plain type keeps the readings and closures immediately legible.",
     "sources": [
+      {
+        "url": "https://joaogeneroso.com/design/amazonia",
+        "observation": "The Igaratype tool makes actual river geometry the focus of the identity. The reader controls remain separate from that geometry.",
+        "strength": "evidence"
+      },
+      {
+        "url": "https://www.reddit.com/r/logodesign/comments/1sjdiwh/opinion_on_brazils_new_tourism_brand_identity/",
+        "observation": "Readers praised the river-derived shapes and identified readability problems in the curved lettering. Keep the scene expressive and use ordinary type for the readings.",
+        "strength": "evidence"
+      },
       {
         "url": "https://neal.fun/space-elevator/",
         "observation": "The ascent orders the exhibits by real altitude. The Kármán line is one of the named markers.",
         "strength": "evidence"
-      },
-      {
-        "url": "https://neal.fun/deep-sea/",
-        "observation": "Depth provides the organizing scale of an explorable ocean story.",
-        "strength": "evidence"
       }
     ],
-    "credit": "Original waterfront study inspired by Neal Agarwal's single-axis stories."
+    "credit": "Original shoreline study inspired by the Amazônia identity's use of river geometry and the measured progression of Neal Agarwal's Space Elevator."
   }
 ]
