@@ -42,6 +42,18 @@ python3 evals/v1/judge.py \
 
 The renderer starts its own Chrome and Playwriter processes and shuts them down when it finishes. The judge verifies screenshot and HTML hashes. `judge/summary.json` records coverage, paired scores and each cell’s token receipt. Retain the generation and judging traces for any published score. [Scoring rubric](rubric.md)
 
+### Compact live review
+
+Use the opt-in adapter to give an independent critic a bounded set of browser controls during development. Serve the anonymous fixtures on loopback and start a dedicated headless Chrome with an empty profile and a loopback CDP listener. Start Playwriter 0.12.0 on its own loopback relay port. Keep the pairing key outside the critic's prompt.
+
+Configure the adapter with the pinned executable in `playwriter`, the integer `relay_port`, and the exact loopback WebSocket URL from Chrome's `/json/version` in `cdp`. Set `pages` to a map from neutral IDs to full loopback fixture URLs and `evidence_dir` to an empty directory beneath the client's working directory. Launch it as a stdio server in the installed test environment.
+
+```sh
+python -B evals/v1/live_browser.py --config "$REVIEW_CONFIG"
+```
+
+The critic uses `open_view`, `act`, and `capture`. Complete one view before opening the next. Each open starts with fresh fixture storage, while a reload through `act` preserves it. The capture returns a compact preview and archives the original PNG with its hash. Keep `audit.jsonl`, the critic trace, and the original images together. Use the original images for the full-resolution release review. [Real driver probe](../../evidence/benchmark-v1/compact-live-browser-probe.json) · [Blind comparison](../../evidence/benchmark-v1/compact-live-repair-ballot.json)
+
 Use `audit_scoreboard.py` to export completed frozen-baseline ballots without making new model calls. Give it the combined captures, the original generation runs, the blind ballots, and the downloaded capture artifacts in separate folders named by GitHub Actions run ID. It checks the generation trace, judge trace, blind images, and exact hosted archive before attaching a run link. The report retains the number of completed pairs out of the original 36.
 
 ```bash
