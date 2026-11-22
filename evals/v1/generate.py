@@ -105,10 +105,11 @@ def parse_cell(events, expect_mcp, server_name="design-mcp", expected_tool="dire
     failures.extend(i.get("error") for i in completed_items if i.get("status") == "failed")
     result["client_errors"] = [f for f in failures if f]
     eligible_tools = {expected_tool} if isinstance(expected_tool, str) else set(expected_tool)
-    eligible_calls = [
+    matching_calls = [
         item for item in completed_items if item.get("type") == "mcp_tool_call" and item.get("server") == server_name
-        and item.get("tool") in eligible_tools and item.get("status") == "completed" and not item.get("error")
+        and item.get("tool") in eligible_tools
     ]
+    eligible_calls = [item for item in matching_calls if item.get("status") == "completed" and not item.get("error")]
     result["treatment_call"] = bool(eligible_calls)
     if server_name == "design-mcp" and expected_tool == "direct":
         result["direct_call"] = result["treatment_call"]
@@ -122,7 +123,7 @@ def parse_cell(events, expect_mcp, server_name="design-mcp", expected_tool="dire
     elif expect_mcp and not result["treatment_call"]:
         result["status"] = "mcp-unused-or-failed"
     if expected_direction is not None:
-        observed = [direct_direction(item) for item in eligible_calls]
+        observed = [direct_direction(item) if item in eligible_calls else None for item in matching_calls]
         result["observed_directions"] = observed
         if result["status"] == "passed" and observed != [expected_direction]:
             result["status"] = "unexpected-design-direction"

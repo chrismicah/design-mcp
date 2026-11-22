@@ -66,6 +66,11 @@ class BenchmarkTests(unittest.TestCase):
                 self.assertEqual(result["status"], status)
                 self.assertEqual(result["observed_directions"], directions)
                 self.assertEqual(html, "<body>Test</body>\n")
+        failed = reply(None)
+        failed["item"]["status"] = "failed"
+        retry, _ = parse_cell([failed, reply(expected), message, turn], True, expected_direction=expected)
+        self.assertEqual(retry["status"], "unexpected-design-direction")
+        self.assertEqual(retry["observed_directions"], [None, expected])
         historical, _ = parse_cell([reply("object-hero"), message, turn], True)
         self.assertEqual(historical["status"], "passed")
         self.assertNotIn("observed_directions", historical)
