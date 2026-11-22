@@ -89,6 +89,20 @@ jobs:
             [[ $sample == 1 ]] || trial="$proof/sample-$sample"
             if node --experimental-websocket evals/vision/extension_smoke.mjs "$chrome" "$cli" "$extension" "$trial"; then
               printf 'Trial %s completed\n' "$sample"
+              if [[ $sample == 1 ]]; then
+                python - "$proof" <<'PY'
+          from pathlib import Path
+          import json, shutil, sys
+
+          root = Path(sys.argv[1])
+          report = json.loads((root / 'extension-review.json').read_text())
+          preview = Path(report['previewFolder'])
+          saved = root / 'saved-preview'
+          saved.mkdir()
+          for name in ('preview.html', 'evidence.json'):
+              shutil.copyfile(preview / name, saved / name)
+          PY
+              fi
             else
               printf 'Trial %s failed with exit code %s\n' "$sample" "$?"
             fi
@@ -131,14 +145,14 @@ jobs:
           "$RUNNER_TEMP/design-review/bin/python" - "$proof" "$CHROME_VERSION" <<'PY' 2>&1 | tee "$proof/mask-verification.log"
           from pathlib import Path
           from PIL import Image
-          import base64, hashlib, io, json, re, shutil, sys
+          import base64, hashlib, io, json, re, sys
 
           root = Path(sys.argv[1])
           proof_path = root / 'extension-review.json'
           proof = json.loads(proof_path.read_text())
           assert proof['browserChecksPassed'], proof
           assert proof['browser'] == f'Chrome/{sys.argv[2]}', proof['browser']
-          preview = Path(proof['previewFolder'])
+          preview = root / 'saved-preview'
           html = (preview / 'preview.html').read_text()
           evidence = (preview / 'evidence.json').read_text()
           assert 'fixture-redaction-sentinel-' not in html + evidence
@@ -161,10 +175,6 @@ jobs:
               interior = image.convert('RGB').crop((left, top, right, bottom))
               assert interior.getextrema() == ((138, 138), (143, 143), (152, 152)), 'Field is not visibly masked'
 
-          saved = root / 'saved-preview'
-          saved.mkdir()
-          for name in ('preview.html', 'evidence.json'):
-              shutil.copyfile(preview / name, saved / name)
           proof.update(passed=True, phase='complete', verifiedMaskInterior=True, privateValueAbsentFromArtifacts=True)
           proof_path.write_text(json.dumps(proof, indent=2) + '\n')
           print('Verified the saved capture masks the seeded field with the expected pixels.')
