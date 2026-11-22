@@ -1,14 +1,16 @@
 import assert from "node:assert/strict";
 import { execFileSync, spawn } from "node:child_process";
 import { once } from "node:events";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
-import { openSync } from "node:fs";
+import { mkdir, mkdtemp, readFile, writeFile } from "node:fs/promises";
+import { closeSync, openSync } from "node:fs";
 import { createServer } from "node:http";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { setTimeout as delay } from "node:timers/promises";
 
 const [chrome, cli, extension, output, fixturePath] = process.argv.slice(2);
+const mac = process.platform === "darwin";
+const macKeyHelper = process.env.DESIGN_MCP_CHROME_KEY_HELPER;
 await mkdir(output, { recursive: true });
 const fixture = await readFile(fixturePath || new URL("fixtures/shuttle-dispatch.html", import.meta.url));
 const host = createServer((request, response) => {
@@ -16,24 +18,21 @@ const host = createServer((request, response) => {
   response.writeHead(200, { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store" });
   response.end(fixture);
 });
-host.listen(0, "127.0.0.1");
-await once(host, "listening");
-const fixtureUrl = `http://127.0.0.1:${host.address().port}/dispatch`;
-const profile = join(output, "chrome-profile");
-const debugLog = openSync(join(output, "browser.log"), "w");
-const browser = spawn(chrome, [
-  `--user-data-dir=${profile}`, "--no-first-run", "--no-default-browser-check",
-  "--disable-background-networking", "--disable-sync", "--disable-component-update",
-  `--disable-extensions-except=${extension}`, `--load-extension=${extension}`,
-  "--remote-debugging-port=0", "--remote-debugging-address=127.0.0.1",
-  "--window-size=1440,940", fixtureUrl,
-], { stdio: ["ignore", debugLog, debugLog] });
 const proof = {};
+let browser;
+let browserError;
 let socket;
-const key = (...keys) => execFileSync("xdotool", ["key", "--clearmodifiers", ...keys]);
+const runMacKeyHelper = (...args) => execFileSync(macKeyHelper, args, { encoding: "utf8", timeout: 8000 });
+const key = name => {
+  if (!mac) return execFileSync("xdotool", ["key", "--clearmodifiers", name]);
+  assert(browser.pid && browser.exitCode === null && browser.signalCode === null, "Owned Chrome is not running");
+  proof.lastKey = name;
+  return runMacKeyHelper(String(browser.pid), name);
+};
 async function until(description, check, milliseconds = 10000) {
   const deadline = Date.now() + milliseconds;
   while (Date.now() < deadline) {
+    if (browserError) throw browserError;
     const value = await check();
     if (value) return value;
     if (browser.exitCode !== null || browser.signalCode !== null) {
@@ -45,18 +44,48 @@ async function until(description, check, milliseconds = 10000) {
 }
 
 try {
+  if (mac) {
+    proof.passed = false;
+    proof.phase = "desktop input preflight";
+    assert(macKeyHelper, "Set DESIGN_MCP_CHROME_KEY_HELPER for the macOS keyboard proof");
+    proof.inputPreflight = runMacKeyHelper("--preflight").trim();
+  }
+  host.listen(0, "127.0.0.1");
+  await once(host, "listening");
+  const fixtureUrl = `http://127.0.0.1:${host.address().port}/dispatch`;
+  const profile = mac ? await mkdtemp(join(output, "chrome-profile-")) : join(output, "chrome-profile");
+  const debugLog = openSync(join(output, "browser.log"), "w");
+  try {
+    browser = spawn(chrome, [
+      `--user-data-dir=${profile}`, "--no-first-run", "--no-default-browser-check",
+      "--disable-background-networking", "--disable-sync", "--disable-component-update",
+      `--disable-extensions-except=${extension}`, `--load-extension=${extension}`,
+      "--remote-debugging-port=0", "--remote-debugging-address=127.0.0.1",
+      "--window-size=1440,940", fixtureUrl,
+    ], { stdio: ["ignore", debugLog, debugLog] });
+    browser.on("error", error => { browserError = error; });
+  } finally {
+    closeSync(debugLog);
+  }
+  if (mac) {
+    proof.phase = "browser startup";
+    proof.chromePid = browser.pid;
+    proof.chromeProfile = profile;
+  }
   const endpoint = await until("isolated Chrome", async () => {
     try {
       const [port] = (await readFile(join(profile, "DevToolsActivePort"), "utf8")).split("\n");
+      if (!/^\d+$/.test(port)) return undefined;
       const info = await fetch(`http://127.0.0.1:${port}/json/version`).then(reply => reply.json());
       proof.browser = info.Browser;
-      return info.webSocketDebuggerUrl;
+      const url = new URL(info.webSocketDebuggerUrl);
+      if (url.origin === `ws://127.0.0.1:${port}`) return url.href;
     } catch {
       return undefined;
     }
   });
   socket = new WebSocket(endpoint);
-  await once(socket, "open");
+  await once(socket, "open", { signal: AbortSignal.timeout(5000) });
   let messageId = 0;
   const pending = new Map();
   socket.addEventListener("message", event => {
@@ -101,11 +130,18 @@ try {
     const r = field.getBoundingClientRect();
     return {x:r.x,y:r.y,width:r.width,height:r.height,viewport:[innerWidth,innerHeight]};
   })()`));
-  const windowId = execFileSync("xdotool", ["search", "--onlyvisible", "--name", "Evening shuttle dispatch"],
-    { encoding: "utf8" }).trim().split("\n")[0];
-  execFileSync("xdotool", ["windowfocus", "--sync", windowId]);
-  key("ctrl+shift+y");
-  const target = await until("toolbar popup", () => findTarget(item => /^chrome-extension:\/\/[a-p]{32}\/popup\.html$/.test(item.url)));
+  const isPopup = item => /^chrome-extension:\/\/[a-p]{32}\/popup\.html$/.test(item.url);
+  if (mac) {
+    proof.phase = "toolbar shortcut";
+    assert.equal(await findTarget(isPopup), undefined, "Popup must start closed");
+    key("Command+Shift+Y");
+  } else {
+    const windowId = execFileSync("xdotool", ["search", "--onlyvisible", "--name", "Evening shuttle dispatch"],
+      { encoding: "utf8" }).trim().split("\n")[0];
+    execFileSync("xdotool", ["windowfocus", "--sync", windowId]);
+    key("ctrl+shift+y");
+  }
+  const target = await until("toolbar popup", () => findTarget(isPopup));
   const extensionId = new URL(target.url).hostname;
   proof.extensionId = extensionId;
   const popup = await attach(target);
@@ -117,6 +153,7 @@ try {
       enabled: !document.querySelector('#scan').disabled,
       status: document.querySelector('#status').textContent,
       command: document.querySelector('#command-text').textContent,
+      finding: document.querySelector('#result').hidden ? null : document.querySelector('#finding').textContent,
       requestCount: performance.getEntriesByType('resource').filter(entry => /^https?:/.test(entry.name)).length,
       previewUrl: document.querySelector('#open').dataset.url || null
     };
@@ -127,51 +164,114 @@ try {
   });
   assert.equal(proof.idle.requestCount, 0);
   await image(popup, "popup-idle.png");
+  if (mac) proof.phase = "missing native host";
   key("Return");
   proof.missingHost = await until("missing host recovery", async () => {
     const result = await observePopup();
     return result?.state === "problem" && result.focus === "scan" && result.enabled ? result : null;
   });
   assert.equal(proof.missingHost.command, `design-mcp review --install-host ${extensionId}`);
+  if (mac) {
+    assert.match(proof.missingHost.status, /One step left: connect the local reviewer/);
+    await image(popup, "popup-missing-host.png");
+    proof.phase = "profile-scoped native host install and retry";
+  }
   execFileSync(cli, ["review", "--install-host", extensionId, "--chrome-user-data-dir", profile], { encoding: "utf8" });
+  if (mac) {
+    proof.nativeHostManifest = join(profile, "NativeMessagingHosts", "com.design_mcp.review.json");
+    const manifest = JSON.parse(await readFile(proof.nativeHostManifest, "utf8"));
+    proof.nativeHostLauncher = manifest.path;
+    assert.deepEqual(manifest.allowed_origins, [`chrome-extension://${extensionId}/`]);
+    assert.equal(manifest.path, join(dirname(proof.nativeHostManifest), "design-mcp-review-host"));
+  }
   key("Return");
+  let retryStarted = false;
   proof.result = await until("installed native review result", async () => {
     const result = await observePopup();
-    if (result?.state === "problem") throw new Error(result.status);
+    if (mac) proof.retryPopup = result;
+    if (result?.state === "busy") retryStarted = true;
+    // The previous problem can remain visible while macOS delivers the new Return.
+    if (result?.state === "problem" && (!mac || retryStarted || result.status !== proof.missingHost.status)) {
+      throw new Error(result.status);
+    }
     return result?.state === "result" ? result : null;
   }, 15000);
   assert.equal(proof.result.focus, "open");
   assert.equal(proof.result.requestCount, 0);
   assert.match(proof.result.status, /1 fields or frames blanked out/);
+  if (mac) {
+    assert.match(proof.result.finding, /^Boarding begins at 6:30 p\.m\. measured .+ below 4\.5:1\.$/);
+  }
   await image(popup, "popup-result.png");
 
+  if (mac) proof.phase = "open saved preview and switch by keyboard";
   key("Return");
   const previewTarget = await until("preview tab after the popup action", () => findTarget(item => item.url === proof.result.previewUrl));
   const preview = await attach(previewTarget);
-  const observePreview = () => inspect(preview, `(() => {
+  const observePreview = (session = preview) => inspect(session, `(() => {
     const after = document.querySelector('#view-after');
     if (!after || document.readyState !== 'complete') return null;
     return {
       focus: document.activeElement?.id,
       title: document.title,
+      finding: document.querySelector('h1').textContent,
+      before: document.querySelector('#view-before').checked,
       visible: getComputedStyle(document.querySelector('.state-after')).display !== 'none',
+      afterImageVisible: getComputedStyle(document.querySelector('.shot .after')).display !== 'none',
       after: after.checked
     };
   })()`);
-  await until("loaded Before and After controls", observePreview);
-  for (let step = 0; step < 8 && (await observePreview()).focus !== "view-before"; step++) key("Tab");
+  const initial = await until("loaded Before and After controls", observePreview);
+  if (mac) {
+    assert.equal(initial.before, true);
+    assert.equal(initial.visible, false);
+    assert.equal(initial.afterImageVisible, false);
+    assert.equal(initial.finding, proof.result.finding);
+  }
+  for (let step = 0; step < 8 && (await observePreview()).focus !== "view-before"; step++) {
+    key("Tab");
+    if (mac) await delay(120);
+  }
   assert.equal((await observePreview()).focus, "view-before");
   await image(preview, "preview-before.png");
   key("Right");
-  proof.preview = await observePreview();
+  proof.preview = await until("keyboard-selected After", async () => {
+    const state = await observePreview();
+    return state?.after && state.visible ? state : null;
+  });
   assert.equal(proof.preview.after, true);
   assert.equal(proof.preview.visible, true);
   await image(preview, "preview-after.png");
   proof.previewFolder = dirname(fileURLToPath(proof.result.previewUrl));
-  proof.passed = true;
+  if (mac) {
+    assert.equal(proof.preview.focus, "view-after");
+    assert.equal(proof.preview.afterImageVisible, true);
+    proof.phase = "reopen saved preview";
+    assert((await send("Target.closeTarget", { targetId: previewTarget.targetId })).success);
+    const reopened = await send("Target.createTarget", { url: proof.result.previewUrl });
+    assert.notEqual(reopened.targetId, previewTarget.targetId);
+    const newTarget = await until("reopened file tab", () => findTarget(item =>
+      item.targetId === reopened.targetId && item.url === proof.result.previewUrl));
+    const session = await attach(newTarget);
+    proof.reopened = await until("reopened local preview", () => observePreview(session));
+    assert.equal(proof.reopened.title, initial.title);
+    assert.equal(proof.reopened.finding, initial.finding);
+    assert.equal(proof.reopened.before, true);
+    assert.equal(proof.reopened.visible, false);
+    assert.equal(proof.reopened.afterImageVisible, false);
+    await image(session, "preview-reopened.png");
+    proof.phase = "browser checks complete";
+    proof.browserChecksPassed = true;
+  } else {
+    proof.passed = true;
+  }
+} catch (error) {
+  proof.passed = false;
+  proof.error = error.stack || String(error);
+  throw error;
 } finally {
-  await writeFile(join(output, "extension-review.json"), JSON.stringify(proof, null, 2) + "\n");
   socket?.close();
   host.close();
-  if (browser.exitCode === null) browser.kill();
+  if (browser?.exitCode === null) browser.kill();
+  await writeFile(join(output, "extension-review.json"), JSON.stringify(proof, null, 2) + "\n");
 }

@@ -1,0 +1,143 @@
+name: macOS Chrome review extension keyboard proof
+
+on:
+  push:
+    branches: [design-mcp/chrome-mac-proof]
+
+permissions:
+  contents: read
+
+jobs:
+  popup:
+    if: github.event.repository.private == false
+    runs-on: macos-15
+    timeout-minutes: 12
+    env:
+      CHROME_VERSION: '158.0.8127.36'
+      DESIGN_MCP_CANDIDATE: '2fcd31221671590152401d958b904141e438e453'
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: '${{ env.DESIGN_MCP_CANDIDATE }}'
+          path: pinned-source
+          persist-credentials: false
+      - name: Record runner and checkout identity
+        shell: bash
+        run: |
+          proof="$RUNNER_TEMP/extension-mac-proof"
+          mkdir -p "$proof"
+          {
+            sw_vers
+            uname -m
+            printf 'Harness %s\n' "$(git rev-parse HEAD)"
+            printf 'Candidate %s\n' "$(git -C pinned-source rev-parse HEAD)"
+            node --version
+          } | tee "$proof/runner.txt"
+          test "$(uname -m)" = arm64
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(git -C pinned-source rev-parse HEAD)" = "$DESIGN_MCP_CANDIDATE"
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Install the checkout and prepare the pinned browser
+        shell: bash
+        run: |
+          proof="$RUNNER_TEMP/extension-mac-proof"
+          app="$RUNNER_TEMP/browser/chrome-mac-arm64/Google Chrome for Testing.app"
+          exec > >(tee "$proof/setup.log") 2>&1
+          python -m venv "$RUNNER_TEMP/design-review"
+            "$RUNNER_TEMP/design-review/bin/python" -m pip install ./pinned-source 'pillow>=11,<13'
+          curl -fsSL "https://storage.googleapis.com/chrome-for-testing-public/$CHROME_VERSION/mac-arm64/chrome-mac-arm64.zip" -o "$RUNNER_TEMP/chrome.zip"
+          unzip -q "$RUNNER_TEMP/chrome.zip" -d "$RUNNER_TEMP/browser"
+          version=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$app/Contents/Info.plist")
+          bundle_id=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$app/Contents/Info.plist")
+          {
+            printf 'Google Chrome for Testing %s\n%s\n' "$version" "$bundle_id"
+            file "$app/Contents/MacOS/Google Chrome for Testing"
+          } | tee "$proof/browser-version.txt"
+          test "$version" = "$CHROME_VERSION"
+          xcrun swiftc evals/vision/chrome_smoke_key.swift -o "$RUNNER_TEMP/chrome_smoke_key"
+      - name: Exercise the real toolbar popup and reopen the saved preview
+        shell: bash
+        run: |
+          proof="$RUNNER_TEMP/extension-mac-proof"
+          cli="$RUNNER_TEMP/design-review/bin/design-mcp"
+          extension="$RUNNER_TEMP/review-extension"
+          chrome="$RUNNER_TEMP/browser/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
+          exec > >(tee "$proof/attempt.log") 2>&1
+          installed=$("$cli" review --extension-path)
+            diff -qr pinned-source/design_mcp/review/extension "${installed%%$'\n'*}"
+          cp -R "${installed%%$'\n'*}" "$extension"
+          python - "$extension/manifest.json" <<'PY'
+          from pathlib import Path
+          import json, sys
+
+          path = Path(sys.argv[1])
+          manifest = json.loads(path.read_text())
+          manifest.setdefault('commands', {})['_execute_action'] = {
+              'suggested_key': {'default': 'Ctrl+Shift+Y', 'mac': 'Command+Shift+Y'}
+          }
+          path.write_text(json.dumps(manifest))
+          PY
+          DESIGN_MCP_CHROME_KEY_HELPER="$RUNNER_TEMP/chrome_smoke_key" \
+            node --experimental-websocket evals/vision/extension_smoke.mjs "$chrome" "$cli" "$extension" "$proof"
+      - name: Verify and archive the visibly masked saved capture
+        shell: bash
+        run: |
+          proof="$RUNNER_TEMP/extension-mac-proof"
+          "$RUNNER_TEMP/design-review/bin/python" - "$proof" "$CHROME_VERSION" <<'PY' 2>&1 | tee "$proof/mask-verification.log"
+          from pathlib import Path
+          from PIL import Image
+          import base64, hashlib, io, json, re, shutil, sys
+
+          root = Path(sys.argv[1])
+          proof_path = root / 'extension-review.json'
+          proof = json.loads(proof_path.read_text())
+          assert proof['browserChecksPassed'], proof
+          assert proof['browser'] == f'Chrome/{sys.argv[2]}', proof['browser']
+          preview = Path(proof['previewFolder'])
+          html = (preview / 'preview.html').read_text()
+          evidence = (preview / 'evidence.json').read_text()
+          assert 'fixture-redaction-sentinel-' not in html + evidence
+          frame = json.loads(evidence)['frames'][0]
+          assert frame['masks']['applied'] and frame['masks']['counts']['field'] == 1
+          match = re.search(r'data:image/png;base64,([A-Za-z0-9+/=]+)', html)
+          assert match, 'Saved preview is missing the embedded capture'
+          content = base64.b64decode(match[1], validate=True)
+          assert hashlib.sha256(content).hexdigest() == frame['screenshot']['sha256']
+
+          field = proof['field']
+          with Image.open(io.BytesIO(content)) as image:
+              sx = image.width / field['viewport'][0]
+              sy = image.height / field['viewport'][1]
+              left = round(field['x'] * sx) + 2
+              top = round(field['y'] * sy) + 2
+              right = round((field['x'] + field['width']) * sx) - 2
+              bottom = round((field['y'] + field['height']) * sy) - 2
+              assert 0 <= left < right <= image.width and 0 <= top < bottom <= image.height
+              interior = image.convert('RGB').crop((left, top, right, bottom))
+              assert interior.getextrema() == ((138, 138), (143, 143), (152, 152)), 'Field is not visibly masked'
+
+          saved = root / 'saved-preview'
+          saved.mkdir()
+          for name in ('preview.html', 'evidence.json'):
+              shutil.copyfile(preview / name, saved / name)
+          proof.update(passed=True, phase='complete', verifiedMaskInterior=True, privateValueAbsentFromArtifacts=True)
+          proof_path.write_text(json.dumps(proof, indent=2) + '\n')
+          print('Verified the saved capture masks the seeded field with the expected pixels.')
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: extension-mac-review-receipt
+          path: |
+            ${{ runner.temp }}/extension-mac-proof/*.txt
+            ${{ runner.temp }}/extension-mac-proof/*.log
+            ${{ runner.temp }}/extension-mac-proof/*.json
+            ${{ runner.temp }}/extension-mac-proof/*.png
+            ${{ runner.temp }}/extension-mac-proof/saved-preview/
+          if-no-files-found: warn
+          retention-days: 7
