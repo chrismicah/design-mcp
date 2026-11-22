@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+- Keep previews and their 20-review retention limit inside an explicitly selected Chrome data directory. Reinstall an existing custom host to update its launcher. [Extension setup](design_mcp/review/README.md#set-up-the-extension)
+
 - Added size-aware contrast checks to local review. Chrome flagged a 2.0-to-1 large label and previewed a recolor that meets its 3-to-1 minimum. [Browser and regression receipts](evidence/benchmark-v1/large-text-contrast.json)
 
 - Added the 36-brief matched benchmark with clean-session token accounting, Playwriter captures, blind judging, and competitor adapters. All 36 verified pairs averaged 92.7 without the MCP and 94.1 with frozen v2. The paired 95% interval for the difference was −0.46 to +3.13 points. [Benchmark](EVALS.md)

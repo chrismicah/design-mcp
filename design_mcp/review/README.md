@@ -28,7 +28,7 @@ design-mcp review --install-host <extension id>
 
 That writes two files: Chrome's host manifest for `com.design_mcp.review`, and a launcher that starts the reviewer for that one extension. `--dry-run` prints both paths without writing. `--uninstall-host` removes them.
 
-If Chrome was launched with a custom `--user-data-dir`, add `--chrome-user-data-dir` with that directory's absolute path when installing or removing the host. Each directory keeps its own launcher and allowed extension ID.
+If Chrome was launched with a custom `--user-data-dir`, add `--chrome-user-data-dir` with that directory's absolute path when installing or removing the host. Each directory keeps its own launcher, allowed extension ID, and preview history. Run the installation command again to update an existing custom launcher.
 
 ## What the first result contains
 
@@ -53,7 +53,7 @@ Only the contrast finding has an after view. For the other two the preview says 
 - Kept per region: role, name, landmark, nearest heading, short locator, reading order, box as fractions of the view, font family, size and weight, text color, fill color, whether the fill is flat, pressed and disabled state. At most 8 regions per view. Missing values are stored as `unknown`.
 - Removed before anything is stored: sign-in details in the address, credential-like query values, everything after `#`, `data:` and `file:` addresses, typed field values, and PNG text chunks. Fields, editable areas and embedded frames are painted over in the picture.
 - Refused outright: pages that are not http or https, captures nobody started, captures with fields that were not blanked out, and oversized or malformed input.
-- Results go to a private folder in your user directory (`~/Library/Application Support/design-mcp/reviews` on macOS). The newest 20 are kept.
+- Results go to a private folder in your user directory (`~/Library/Application Support/design-mcp/reviews` on macOS). A host installed with `--chrome-user-data-dir` saves under `Design MCP/reviews` in that directory. The newest 20 are kept in each history.
 
 The extension asks for `activeTab`, `scripting` and `nativeMessaging`. It has no host permissions, no content scripts, no background worker, and its pages cannot make network requests. The local reviewer opens no port. It serves one request from one pinned extension origin, refuses requests over 24 MiB before reading them, and keeps replies under 512 KiB.
 

@@ -22,6 +22,7 @@ MAX_REQUEST = 24 * 1024 * 1024
 MAX_REPLY = 512 * 1024  # Chrome drops replies over 1 MB; a critique is a few kilobytes.
 _ORIGIN = re.compile(r"chrome-extension://[a-p]{32}/\Z")
 _EXTENSION_ID = re.compile(r"[a-p]{32}\Z")
+_PROFILE_REVIEW_DIR = "--profile-review-dir="
 
 
 class FrameError(ValueError):
@@ -75,15 +76,21 @@ def handle(message, root=None):
     if kind == "ping":
         return {"ok": True, "host": HOST_NAME, "version": __version__, "schema": SCHEMA}
     if kind == "review":
-        return review(message.get("bundle"), root)
+        return review(message.get("bundle"), root, keep_latest=True)
     return {"ok": False, "code": "unknown-request", "message": "The local reviewer did not understand the request."}
 
 
 def main(argv=None, stdin=None, stdout=None, root=None):
-    """Serve one request. The first two arguments pin the only origin allowed to call."""
+    """Serve one request for the launcher-pinned origin and optional profile directory."""
     argv = list(sys.argv[1:] if argv is None else argv)
     allowed = argv[1] if len(argv) >= 2 and argv[0] == "--allowed-origin" else None
-    callers = [value for value in argv[2:] if not value.startswith("--")]
+    chrome_args = argv[2:]
+    if chrome_args and chrome_args[0].startswith(_PROFILE_REVIEW_DIR):
+        root = Path(chrome_args.pop(0).removeprefix(_PROFILE_REVIEW_DIR))
+        if not root.is_absolute():
+            print("design-mcp review host: the profile review directory must be absolute.", file=sys.stderr)
+            return 2
+    callers = [value for value in chrome_args if not value.startswith("--")]
     if not (allowed and _ORIGIN.match(allowed) and callers[:1] == [allowed]):
         print("design-mcp review host: the caller is not the allowed extension.", file=sys.stderr)
         return 2
@@ -130,11 +137,15 @@ def plan_install(extension_id, home=None, python=None, platform=None, chrome_use
     platform = platform or sys.platform
     origin = f"chrome-extension://{extension_id}/"
     manifest_path, launcher_path = _installation_files(home, platform, chrome_user_data_dir)
+    profile_arg = ""
+    if chrome_user_data_dir is not None:
+        reviews = manifest_path.parent.parent / "Design MCP" / "reviews"
+        profile_arg = " " + shlex.quote(f"{_PROFILE_REVIEW_DIR}{reviews}")
     launcher = (
         "#!/bin/sh\n"
         "# Written by `design-mcp review --install-host`. Starts the local reviewer for one extension only.\n"
         f"exec {shlex.quote(str(python or sys.executable))} -I -m design_mcp.review.host "
-        f'--allowed-origin {shlex.quote(origin)} "$@"\n'
+        f'--allowed-origin {shlex.quote(origin)}{profile_arg} "$@"\n'
     )
     manifest = {
         "name": HOST_NAME,

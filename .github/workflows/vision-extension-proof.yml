@@ -2,13 +2,18 @@ name: Chrome review extension keyboard proof
 
 on:
   push:
-    branches: [design-mcp/vision-extension-proof, design-mcp/review-integration, design-mcp/large-text-contrast]
+    branches:
+      - design-mcp/vision-extension-proof
+      - design-mcp/review-integration
+      - design-mcp/large-text-contrast
+      - design-mcp/profile-review-isolation
 
 permissions:
   contents: read
 
 jobs:
   popup:
+    if: github.event.repository.private == false
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
@@ -56,6 +61,7 @@ jobs:
           proof_path = root/'extension-review.json'
           proof = json.loads(proof_path.read_text())
           assert proof['passed'], proof
+          assert proof['profileHistoryVerified'], proof
           preview = Path(proof['previewFolder'])
           evidence = preview/'evidence.json'
           html = (preview/'preview.html').read_text()

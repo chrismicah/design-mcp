@@ -13,6 +13,7 @@ import io
 import json
 import os
 import re
+import shlex
 import stat
 import struct
 import subprocess
@@ -701,6 +702,7 @@ class HostTests(unittest.TestCase):
             ["--allowed-origin", "chrome-extension://*/", "chrome-extension://*/"],
             ["--allowed-origin", ORIGIN + "\n", ORIGIN + "\n"],
             ["--allowed-origin", ORIGIN, "--parent-window=1", "https://evil.example/"],
+            ["--allowed-origin", ORIGIN, "--profile-review-dir=relative", ORIGIN],
         )
         for argv in refused:
             with self.subTest(argv=argv):
@@ -782,6 +784,36 @@ class HostTests(unittest.TestCase):
             self.assertTrue(second_plan["launcher_path"].is_file())
             with self.assertRaises(host.InstallError):
                 host.plan_install(EXTENSION_ID, home=home, platform="linux", chrome_user_data_dir="relative")
+
+    def test_custom_chrome_host_saves_and_prunes_inside_its_own_profile(self):
+        with tempfile.TemporaryDirectory() as folder:
+            home = Path(folder)
+            profile = home / "Chrome profile"
+            profile.mkdir()
+            regular = pipeline.state_dir(home=home) / "reviews"
+            scoped = profile / "Design MCP" / "reviews"
+            for history in (regular, scoped):
+                for index in range(pipeline.KEEP_REVIEWS):
+                    old = history / f"c-{index:012x}"
+                    old.mkdir(parents=True)
+                    (old / "preview.html").write_text("old", encoding="utf-8")
+                    os.utime(old, (index, index))
+
+            plan = host.install(EXTENSION_ID, home=home, chrome_user_data_dir=profile)
+            command = shlex.split(plan["launcher_path"].read_text().splitlines()[-1])
+            chrome_args = command[command.index("--allowed-origin"):-1] + [ORIGIN, "--parent-window=7"]
+            request = framed({"type": "review", "bundle": board()})
+            with mock.patch.dict(os.environ, {"HOME": str(home)}):
+                status, reply = self.serve(request, chrome_args)
+
+            self.assertEqual(status, 0)
+            preview_path = Path(unframed(reply)["preview_path"])
+            self.assertEqual(preview_path.parent.parent, scoped)
+            self.assertTrue(preview_path.is_file())
+            self.assertFalse((scoped / "c-000000000000").exists())
+            self.assertTrue((regular / "c-000000000000" / "preview.html").is_file())
+            self.assertEqual(len(list(regular.iterdir())), pipeline.KEEP_REVIEWS)
+            self.assertEqual(len(list(scoped.iterdir())), pipeline.KEEP_REVIEWS)
 
     def test_install_refuses_anything_that_is_not_exactly_one_extension_id(self):
         for bad in ("", "*", "abc", EXTENSION_ID + "/", EXTENSION_ID + "\n", EXTENSION_ID.upper(),

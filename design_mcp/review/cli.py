@@ -36,7 +36,7 @@ def _parser():
                         help="let the extension with this ID start the local reviewer")
     parser.add_argument("--uninstall-host", action="store_true", help="remove what --install-host wrote")
     parser.add_argument("--chrome-user-data-dir", metavar="DIR",
-                        help="Chrome's user data directory for host installation or removal")
+                        help="use this Chrome data directory for the host and its saved reviews")
     parser.add_argument("--dry-run", action="store_true", help="with --install-host, show the files without writing")
     return parser
 

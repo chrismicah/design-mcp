@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { execFileSync, spawn } from "node:child_process";
 import { once } from "node:events";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, realpath, writeFile } from "node:fs/promises";
 import { openSync } from "node:fs";
 import { createServer } from "node:http";
 import { dirname, join } from "node:path";
@@ -168,6 +168,9 @@ try {
   assert.equal(proof.preview.visible, true);
   await image(preview, "preview-after.png");
   proof.previewFolder = dirname(fileURLToPath(proof.result.previewUrl));
+  const scopedHistory = await realpath(join(profile, "Design MCP", "reviews"));
+  assert.equal(dirname(await realpath(proof.previewFolder)), scopedHistory);
+  proof.profileHistoryVerified = true;
   proof.passed = true;
 } finally {
   await writeFile(join(output, "extension-review.json"), JSON.stringify(proof, null, 2) + "\n");

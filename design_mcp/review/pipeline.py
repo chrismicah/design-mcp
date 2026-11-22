@@ -68,11 +68,12 @@ def _ms(start, end):
     return round((end - start) * 1000, 1)
 
 
-def review(bundle, root=None):
+def review(bundle, root=None, *, keep_latest=False):
     """Run the local review of one capture.
 
     Always returns a JSON-safe dict. `ok` False carries a stable `code` and a `message` for the person
     scanning. With no `root`, results go to this tool's private folder and only the newest are kept.
+    Managed profile directories use the same limit with `keep_latest`.
     """
     started = time.perf_counter()
     try:
@@ -84,8 +85,10 @@ def review(bundle, root=None):
     checked = time.perf_counter()
     document = build_preview(evidence, findings)
 
-    own_root = root is None
-    root = state_dir() / "reviews" if own_root else Path(root)
+    if root is None:
+        root = state_dir() / "reviews"
+        keep_latest = True
+    root = Path(root)
     folder = root / evidence["capture"]["id"]
     preview_path = folder / "preview.html"
     try:
@@ -95,7 +98,7 @@ def review(bundle, root=None):
         _write_private(folder / "evidence.json",
                        json.dumps(_without_pixels(evidence), indent=2, ensure_ascii=False) + "\n")
         os.utime(folder)
-        if own_root:
+        if keep_latest:
             _prune(root, KEEP_REVIEWS, folder.name)
     except OSError as error:
         return {
