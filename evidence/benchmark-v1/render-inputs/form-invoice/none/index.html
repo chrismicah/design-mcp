@@ -1,0 +1,750 @@
+<!doctype html>
+<!--
+  A customer specifies a binding, quantity, and reply address in a calm,
+  focused form, then reviews the request. A cloth cover sits beside the
+  paper form and stacks above it on mobile. The loose spine thread is
+  the focal detail. Mist #E7EDE7, Paper #FAFBF5, Ink #20332F, Spruce
+  #183E3B, Sage #52665C, and Brass #DDB97D set the palette. Instrument
+  Serif sets the headings and Instrument Sans sets the controls.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bookbinding quote request</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;family=Instrument+Serif&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --mist: #e7ede7;
+      --paper: #fafbf5;
+      --ink: #20332f;
+      --spruce: #183e3b;
+      --sage: #52665c;
+      --brass: #ddb97d;
+      --rule: #c7d1c6;
+      --wash: #eaf0e8;
+      --error: #963b32;
+      --display: "Instrument Serif", Georgia, serif;
+      --body: "Instrument Sans", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      min-height: 100svh;
+      margin: 0;
+      padding: clamp(16px, 5vw, 64px);
+      display: grid;
+      place-items: center;
+      background: radial-gradient(ellipse at 20% 0%, #f5f7f0, transparent 76%), var(--mist);
+      color: var(--ink);
+      font: 400 1rem/1.45 var(--body);
+    }
+
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    [hidden] { display: none !important; }
+
+    .spread {
+      width: min(100%, 1120px);
+      display: grid;
+      grid-template-columns: minmax(0, 44fr) minmax(0, 56fr);
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      border-radius: 7px;
+      background: var(--paper);
+      box-shadow: 0 2px 0 #becabd, 0 5px 0 -2px #d2dbd0, 0 22px 48px -32px #263e36;
+    }
+
+    .cover {
+      position: relative;
+      overflow: hidden;
+      padding: 36px 38px;
+      color: var(--paper);
+      background:
+        linear-gradient(90deg, transparent 96%, #0c292850),
+        repeating-linear-gradient(0deg, #e2d7ad09 0 1px, transparent 1px 3px),
+        repeating-linear-gradient(90deg, #091f2329 0 1px, transparent 1px 4px),
+        radial-gradient(ellipse at 43% 44%, #39635b, var(--spruce) 74%);
+    }
+
+    .cover::before {
+      position: absolute;
+      inset: 16px;
+      border: 1px solid #ddb97d50;
+      content: "";
+      pointer-events: none;
+    }
+
+    .wordmark {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0;
+      font: 400 1.9rem/1 var(--display);
+    }
+
+    .wordmark svg {
+      flex: none;
+      color: var(--brass);
+    }
+
+    .cover-art {
+      position: absolute;
+      top: 55%;
+      left: 50%;
+      display: block;
+      width: 102%;
+      height: auto;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .request {
+      min-width: 0;
+      min-height: 625px;
+      display: flex;
+      flex-direction: column;
+      padding: 47px clamp(30px, 4.65vw, 64px) 45px;
+    }
+
+    .request-header {
+      margin-bottom: 24px;
+      padding-bottom: 21px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    h1 {
+      margin: 0;
+      font: 400 clamp(3rem, 4.75vw, 4.4rem)/.98 var(--display);
+      letter-spacing: -.024em;
+    }
+
+    h1:focus { outline: none; }
+
+    .quote-form, .summary {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      gap: 19px;
+    }
+
+    fieldset {
+      min-width: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    legend, .field > label {
+      display: block;
+      margin: 0 0 8px;
+      padding: 0;
+      font-size: .9375rem;
+      font-weight: 600;
+    }
+
+    .choices {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 11px;
+    }
+
+    .choice { position: relative; }
+
+    .choice input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: 0;
+      clip-path: inset(50%);
+    }
+
+    .choice label {
+      min-height: 84px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-content: space-between;
+      align-items: start;
+      gap: 5px;
+      padding: 11px 14px 10px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      background: #fffefa;
+      cursor: pointer;
+    }
+
+    .choice-name {
+      grid-column: 1 / -1;
+      font-size: .9375rem;
+      font-weight: 600;
+    }
+
+    .format-icon { color: #365f55; }
+
+    .radio-mark {
+      width: 17px;
+      height: 17px;
+      display: grid;
+      place-items: center;
+      margin-top: 2px;
+      border: 1px solid #748a7e;
+      border-radius: 50%;
+      color: var(--spruce);
+    }
+
+    .radio-mark::after {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: currentColor;
+      content: "";
+      opacity: 0;
+    }
+
+    .choice input:checked + label {
+      border-color: var(--spruce);
+      background: var(--wash);
+    }
+
+    .choice input:checked + label .radio-mark { border-color: currentColor; }
+    .choice input:checked + label .radio-mark::after { opacity: 1; }
+
+    .copies-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px 15px;
+    }
+
+    .stepper {
+      display: grid;
+      grid-template-columns: 44px 66px 44px;
+      min-height: 48px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      background: #fffefa;
+    }
+
+    .stepper button {
+      display: grid;
+      place-items: center;
+      padding: 0;
+      border: 0;
+      background: var(--wash);
+      color: var(--spruce);
+    }
+
+    .stepper button:first-child { border-radius: 3px 0 0 3px; }
+    .stepper button:last-child { border-radius: 0 3px 3px 0; }
+
+    .stepper button[aria-disabled="true"] {
+      color: #82938a;
+      cursor: default;
+    }
+
+    .stepper input {
+      width: 100%;
+      min-width: 0;
+      padding: 0 3px;
+      border: 0;
+      border-inline: 1px solid var(--rule);
+      border-radius: 0;
+      appearance: textfield;
+      background: transparent;
+      color: var(--ink);
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .stepper input::-webkit-inner-spin-button,
+    .stepper input::-webkit-outer-spin-button {
+      margin: 0;
+      appearance: none;
+    }
+
+    .hint {
+      color: var(--sage);
+      font-size: .875rem;
+    }
+
+    .email-input {
+      width: 100%;
+      min-height: 49px;
+      padding: 9px 13px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      background: #fffefa;
+      color: var(--ink);
+    }
+
+    .email-input::placeholder {
+      color: var(--sage);
+      opacity: 1;
+    }
+
+    .choice input:focus-visible + label,
+    .stepper:has(input:focus-visible),
+    .email-input:focus-visible,
+    .action:focus-visible {
+      outline: 2px solid var(--spruce);
+      outline-offset: 3px;
+    }
+
+    .stepper input:focus-visible { outline: none; }
+
+    .stepper button:focus-visible {
+      outline: 2px solid var(--spruce);
+      outline-offset: -4px;
+    }
+
+    .choice input[aria-invalid="true"] + label,
+    .stepper:has([aria-invalid="true"]),
+    .email-input[aria-invalid="true"] {
+      border-color: var(--error);
+    }
+
+    .error {
+      margin: 0;
+      color: var(--error);
+      font-size: .875rem;
+    }
+
+    .error:not(:empty) { margin-top: 6px; }
+
+    .action {
+      width: 100%;
+      min-height: 53px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: auto;
+      padding: 11px 16px;
+      border: 1px solid var(--spruce);
+      border-radius: 4px;
+      background: var(--spruce);
+      color: var(--paper);
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .action svg { color: var(--brass); }
+
+    .edit {
+      background: transparent;
+      color: var(--spruce);
+    }
+
+    @media (hover: hover) {
+      .choice input:not(:checked) + label:hover { border-color: var(--sage); }
+      .stepper button[aria-disabled="false"]:hover { background: #dce7dd; }
+      .action:hover { background: #24534c; }
+      .edit:hover { background: var(--wash); }
+    }
+
+    .summary-list { margin: 0; }
+
+    .summary-list > div {
+      display: grid;
+      grid-template-columns: minmax(7rem, .38fr) minmax(0, 1fr);
+      gap: 12px;
+      align-items: baseline;
+      padding: 17px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .summary-list dt {
+      color: var(--sage);
+      font-size: .9375rem;
+    }
+
+    .summary-list dd {
+      margin: 0;
+      font-weight: 600;
+      overflow-wrap: anywhere;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .summary:not([hidden]) { animation: reveal 220ms ease-out both; }
+
+      @keyframes reveal {
+        from { opacity: 0; transform: translateY(5px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }
+
+    @media (max-width: 800px) {
+      body {
+        align-items: start;
+        padding: 14px;
+      }
+
+      .spread {
+        max-width: 530px;
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .cover {
+        min-height: clamp(154px, 43vw, 192px);
+        display: flex;
+        align-items: center;
+        padding: 18px 23px;
+      }
+
+      .cover::before { inset: 9px; }
+
+      .wordmark {
+        display: grid;
+        gap: 8px;
+        font-size: 1.8rem;
+        line-height: .94;
+      }
+
+      .wordmark span { max-width: 8rem; }
+      .wordmark svg { width: 23px; height: 23px; }
+
+      .cover-art {
+        top: 50%;
+        right: 1%;
+        left: auto;
+        width: min(61%, 235px);
+        transform: translateY(-50%);
+      }
+
+      .request {
+        min-height: 0;
+        padding: 25px 22px 24px;
+      }
+
+      .request-header {
+        margin-bottom: 17px;
+        padding-bottom: 15px;
+      }
+
+      h1 { font-size: clamp(2.55rem, 11.4vw, 3.5rem); }
+
+      .quote-form, .summary { gap: 16px; }
+      .choice label { min-height: 76px; padding: 9px 11px 8px; }
+      .action { min-height: 50px; }
+      .summary-list > div { padding: 13px 0; }
+    }
+  </style>
+</head>
+<body>
+  <main class="spread">
+    <div class="cover">
+      <p class="wordmark">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
+             stroke="currentColor" stroke-width="1.25" stroke-linejoin="round" aria-hidden="true">
+          <path d="M14 8c-3-2.8-6-3.5-10-3v15c4-.5 7 .2 10 3 3-2.8 6-3.5 10-3V5c-4-.5-7 .2-10 3Z"/>
+          <path d="M14 8v15M7 9c1.6.1 3.1.6 4.5 1.4M7 13c1.6.1 3.1.6 4.5 1.4m9.5-5.4c-1.6.1-3.1.6-4.5 1.4M21 13c-1.6.1-3.1.6-4.5 1.4"/>
+        </svg>
+        <span>Independent bookbinding</span>
+      </p>
+
+      <svg class="cover-art" viewBox="0 28 480 410" fill="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="cloth-face" x1="4%" y1="0%" x2="93%" y2="100%">
+            <stop stop-color="#5a8b7c"/>
+            <stop offset=".56" stop-color="#386a62"/>
+            <stop offset="1" stop-color="#214d4e"/>
+          </linearGradient>
+          <linearGradient id="cloth-spine" x1="0%" y1="45%" x2="100%" y2="55%">
+            <stop stop-color="#284e48"/>
+            <stop offset="1" stop-color="#102f32"/>
+          </linearGradient>
+          <linearGradient id="flax-face" x1="12%" y1="15%" x2="91%" y2="100%">
+            <stop stop-color="#e2c18a"/>
+            <stop offset="1" stop-color="#a48048"/>
+          </linearGradient>
+          <linearGradient id="page-edge" x1="30%" y1="0%" x2="68%" y2="100%">
+            <stop stop-color="#f7eed2"/>
+            <stop offset="1" stop-color="#c5b389"/>
+          </linearGradient>
+          <pattern id="weave" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(-24)">
+            <path d="M0 .5h4M.5 0v4" stroke="#f7edcd" stroke-opacity=".18" stroke-width=".65"/>
+            <path d="M0 2.5h4M2.5 0v4" stroke="#123330" stroke-opacity=".22" stroke-width=".7"/>
+          </pattern>
+          <filter id="book-shadow" x="-25%" y="-35%" width="150%" height="180%">
+            <feGaussianBlur stdDeviation="13"/>
+          </filter>
+          <path id="flax-shape" d="M141 95q1-6 8-5l239 43q6 1 5 7l-42 224q-1 6-8 5L97 324q-7-1-5-8Z"/>
+          <path id="cloth-shape" d="M56 149 246 64q5-2 8 3l140 203q4 6-2 9l-192 90q-6 3-9-2L51 161q-5-8 5-12Z"/>
+        </defs>
+
+        <path d="m49 312 109-159 229 60 35 129-78 53-143 13Z"
+              fill="#071e20" opacity=".67" filter="url(#book-shadow)"/>
+
+        <path d="m97 319 253 45-1 16q-1 5-7 4L94 339q-6-1-5-7Z" fill="#977341" stroke="#624b30"/>
+        <path d="m100 319 246 44-2 15-247-44Z" fill="url(#page-edge)"/>
+        <path d="m99 326 247 45M98 330l247 45" stroke="#9c875f" stroke-opacity=".63"/>
+        <use href="#flax-shape" fill="url(#flax-face)" stroke="#ecd3a2" stroke-width="1.4"/>
+        <use href="#flax-shape" fill="url(#weave)" opacity=".6"/>
+        <path d="m158 103 221 41-39 212-229-42Z" stroke="#735a39" stroke-opacity=".63"/>
+        <path d="m368 150-35 193" stroke="#f3d8a6" stroke-opacity=".68"/>
+
+        <path d="M54 179 247 92q5-2 8 3l142 201q4 6-2 10l-193 92q-6 3-10-2L49 194q-6-9 5-15Z"
+              fill="#173c3b" stroke="#6d9080" stroke-width="1.35"/>
+        <path d="m189 364 204-93 .7 25q0 4-5 6l-189 90q-5 2-8-4l-7-13Z" fill="url(#page-edge)"/>
+        <path d="m198 374 192-91m-191 95 191-91m-190 95 190-91m-189 95 188-90"
+              stroke="#937b52" stroke-opacity=".65" stroke-width=".9"/>
+        <path d="m52 155 143 210q8 11 5 26l-2 7q-4 2-9-6L46 186q-8-12-1-23Z"
+              fill="url(#cloth-spine)" stroke="#183c39" stroke-width="1.3"/>
+        <path d="m47 174 146 213" stroke="#8aab90" stroke-opacity=".38"/>
+        <use href="#cloth-shape" fill="url(#cloth-face)" stroke="#8bb09b" stroke-width="1.3"/>
+        <use href="#cloth-shape" fill="url(#weave)"/>
+        <path d="m82 153 162-73 132 192-172 81Z" stroke="#e4c38b" stroke-opacity=".76"/>
+        <path d="m90 155 152-68 126 183-163 77Z" stroke="#e4c38b" stroke-opacity=".38"/>
+
+        <g transform="matrix(.91 -.41 .53 .78 225 214)" stroke="#dcbd83" stroke-linejoin="round">
+          <path d="M-49-47h98v94h-98z" stroke-opacity=".34"/>
+          <path d="M0 20C-13 9-27 7-37 9v-31c13-1 26 2 37 12 11-10 24-13 37-12V9C27 7 13 9 0 20Z"
+                stroke-width="1.7"/>
+          <path d="M0-10v30m-30-34c9 0 16 3 23 7m-23 1c9 0 16 3 23 7m37-15c-9 0-16 3-23 7m23 1c-9 0-16 3-23 7"
+                stroke-width="1.25"/>
+          <path d="M-12 31h24" stroke-opacity=".65"/>
+        </g>
+
+        <g fill="#1b3833">
+          <circle cx="71" cy="181" r="2.8"/>
+          <circle cx="91" cy="211" r="2.8"/>
+          <circle cx="111" cy="241" r="2.8"/>
+          <circle cx="131" cy="271" r="2.8"/>
+          <circle cx="151" cy="301" r="2.8"/>
+          <circle cx="171" cy="331" r="2.8"/>
+          <circle cx="190" cy="359" r="2.8"/>
+        </g>
+        <path d="M71 181q-8 0-11 8m31 22q-8 0-11 8m31 22q-8 0-11 8m31 22q-8 0-11 8m31 22q-8 0-11 8m31 22q-8 0-11 8m30 20q-8-1-11 7"
+              stroke="#edcb8a" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M190 361c21 30 60 29 96 28 29-1 51 8 43 19-8 10-31 7-31-2 0-11 36-12 67-10 31 2 55-3 64-21"
+              stroke="#0f302d" stroke-opacity=".6" stroke-width="4" stroke-linecap="round"/>
+        <path d="M190 359c21 30 60 29 96 28 29-1 51 8 43 19-8 10-31 7-31-2 0-11 36-12 67-10 31 2 55-3 64-21"
+              stroke="#edcb8a" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <section class="request" aria-labelledby="request-title">
+      <header class="request-header">
+        <h1 id="request-title" tabindex="-1">Request a quote</h1>
+      </header>
+
+      <form class="quote-form" id="quote-form" novalidate>
+        <fieldset aria-describedby="binding-error">
+          <legend>Binding format</legend>
+          <div class="choices">
+            <div class="choice">
+              <input type="radio" name="binding" id="paperback" value="Paperback" required>
+              <label for="paperback">
+                <svg class="format-icon" width="29" height="28" viewBox="0 0 29 28"
+                     fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"
+                     stroke-linejoin="round" aria-hidden="true">
+                  <path d="M6 4c5 1 10.5.7 16-1v19c-5.5 1.9-11 2.4-16 1V4Z" fill="#e1eae0"/>
+                  <path d="M8.5 7c4.2.6 7.6.1 10.5-.7M9 20c3.7.4 7 0 10.5-.9M6 23c4.6 2 10.4 1.8 16-.1"/>
+                </svg>
+                <span class="radio-mark" aria-hidden="true"></span>
+                <span class="choice-name">Paperback</span>
+              </label>
+            </div>
+            <div class="choice">
+              <input type="radio" name="binding" id="hardcover" value="Hardcover" required>
+              <label for="hardcover">
+                <svg class="format-icon" width="29" height="28" viewBox="0 0 29 28"
+                     fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"
+                     stroke-linejoin="round" aria-hidden="true">
+                  <path d="M8 3h15v19H8a2.5 2.5 0 0 0 0 5h15v-2H8a.5.5 0 0 1 0-1h15"
+                        transform="translate(0 -1)" fill="#d3e2d7"/>
+                  <path d="M5.5 23.5V5A3 3 0 0 1 8 2m2 1v17m4-13h5m-5 3h3"/>
+                </svg>
+                <span class="radio-mark" aria-hidden="true"></span>
+                <span class="choice-name">Hardcover</span>
+              </label>
+            </div>
+          </div>
+          <p class="error" id="binding-error" aria-live="polite"></p>
+        </fieldset>
+
+        <div class="field">
+          <label for="copies">Number of copies</label>
+          <div class="copies-row">
+            <div class="stepper">
+              <button type="button" id="fewer-copies" aria-label="Decrease copies" aria-disabled="true">
+                <svg width="17" height="17" viewBox="0 0 17 17" fill="none" aria-hidden="true">
+                  <path d="M4 8.5h9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </button>
+              <input type="number" id="copies" name="copies" min="1" max="100" step="1"
+                     inputmode="numeric" aria-describedby="copies-range copies-error" required>
+              <button type="button" id="more-copies" aria-label="Increase copies" aria-disabled="false">
+                <svg width="17" height="17" viewBox="0 0 17 17" fill="none" aria-hidden="true">
+                  <path d="M4 8.5h9m-4.5-4.5v9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </button>
+            </div>
+            <span class="hint" id="copies-range">1–100 copies</span>
+          </div>
+          <p class="error" id="copies-error" aria-live="polite"></p>
+        </div>
+
+        <div class="field">
+          <label for="email">Contact email</label>
+          <input class="email-input" type="email" id="email" name="email" autocomplete="email"
+                 autocapitalize="none" spellcheck="false" placeholder="you@example.com"
+                 aria-describedby="email-error" required>
+          <p class="error" id="email-error" aria-live="polite"></p>
+        </div>
+
+        <button class="action" type="submit">
+          <span>Review request</span>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M3 10h13m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </form>
+
+      <div class="summary" id="request-summary" hidden>
+        <dl class="summary-list">
+          <div>
+            <dt>Binding format</dt>
+            <dd id="summary-binding"></dd>
+          </div>
+          <div>
+            <dt>Number of copies</dt>
+            <dd id="summary-copies"></dd>
+          </div>
+          <div>
+            <dt>Contact email</dt>
+            <dd id="summary-email"></dd>
+          </div>
+        </dl>
+        <button class="action edit" type="button" id="edit-details">Edit details</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById("quote-form");
+    const summary = document.getElementById("request-summary");
+    const title = document.getElementById("request-title");
+    const bindings = Array.from(form.querySelectorAll('input[name="binding"]'));
+    const copies = document.getElementById("copies");
+    const email = document.getElementById("email");
+    const fewerCopies = document.getElementById("fewer-copies");
+    const moreCopies = document.getElementById("more-copies");
+    const minimum = Number(copies.min);
+    const maximum = Number(copies.max);
+
+    function selectedBinding() {
+      return bindings.find(binding => binding.checked);
+    }
+
+    const fields = [
+      {
+        controls: bindings,
+        error: document.getElementById("binding-error"),
+        getError() {
+          return selectedBinding() ? "" : "Choose a binding format.";
+        }
+      },
+      {
+        controls: [copies],
+        error: document.getElementById("copies-error"),
+        getError() {
+          if (copies.validity.valid) return "";
+          if (copies.validity.valueMissing && !copies.validity.badInput) {
+            return "Enter the number of copies.";
+          }
+          return "Enter a whole number from 1 to 100.";
+        }
+      },
+      {
+        controls: [email],
+        error: document.getElementById("email-error"),
+        getError() {
+          if (email.validity.valid) return "";
+          if (email.validity.valueMissing) return "Enter your contact email.";
+          return "Enter an email address like you@example.com.";
+        }
+      }
+    ];
+
+    function validate(field) {
+      const message = field.getError();
+      field.error.textContent = message;
+
+      for (const control of field.controls) {
+        if (message) {
+          control.setAttribute("aria-invalid", "true");
+        } else {
+          control.removeAttribute("aria-invalid");
+        }
+      }
+
+      return !message;
+    }
+
+    function updateCopyButtons() {
+      const count = copies.valueAsNumber;
+      const hasCount = Number.isFinite(count);
+      fewerCopies.setAttribute("aria-disabled", String(!hasCount || count <= minimum));
+      moreCopies.setAttribute("aria-disabled", String(hasCount && count >= maximum));
+    }
+
+    function adjustCopies(button, direction) {
+      if (button.getAttribute("aria-disabled") === "true") return;
+
+      const count = copies.valueAsNumber;
+      let next = minimum;
+      if (Number.isFinite(count)) {
+        next = direction > 0 ? Math.floor(count) + 1 : Math.ceil(count) - 1;
+      }
+
+      copies.value = String(Math.max(minimum, Math.min(maximum, next)));
+      copies.dispatchEvent(new Event("input", { bubbles: true }));
+    }
+
+    fewerCopies.addEventListener("click", () => adjustCopies(fewerCopies, -1));
+    moreCopies.addEventListener("click", () => adjustCopies(moreCopies, 1));
+    updateCopyButtons();
+
+    form.addEventListener("input", event => {
+      if (event.target === copies) updateCopyButtons();
+
+      const field = fields.find(item => item.controls.includes(event.target));
+      if (field && field.error.textContent) validate(field);
+    });
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      email.value = email.value.trim();
+
+      const invalidFields = fields.filter(field => !validate(field));
+      if (invalidFields.length) {
+        invalidFields[0].controls[0].focus();
+        return;
+      }
+
+      document.getElementById("summary-binding").textContent = selectedBinding().value;
+      document.getElementById("summary-copies").textContent = String(copies.valueAsNumber);
+      document.getElementById("summary-email").textContent = email.value;
+
+      form.hidden = true;
+      summary.hidden = false;
+      title.textContent = "Request summary";
+      title.focus();
+    });
+
+    document.getElementById("edit-details").addEventListener("click", () => {
+      summary.hidden = true;
+      form.hidden = false;
+      title.textContent = "Request a quote";
+      selectedBinding().focus();
+    });
+  </script>
+</body>
+</html>

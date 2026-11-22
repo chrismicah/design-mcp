@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ef">
+  <title>East footbridge · Cliff Loop</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@700&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #111111;
+      --paper: #f7f5ef;
+      --chalk: #fffdf7;
+      --signal: #ffcc00;
+      --graphite: #4f524c;
+      --spruce: #174936;
+      --display: "Archivo Narrow", "Liberation Sans Narrow", sans-serif;
+      --body: "Atkinson Hyperlegible", Verdana, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--body);
+    }
+
+    .page {
+      width: min(calc(100% - 5rem), 70rem);
+      margin-inline: auto;
+      padding-block: clamp(1.5rem, 5vw, 4.5rem) 2rem;
+    }
+
+    .masthead {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-block-end: 1.375rem;
+      font-size: 1.1875rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .masthead::after {
+      content: "";
+      flex: 1;
+      border-block-start: 1px solid var(--graphite);
+      margin-inline-start: .5rem;
+      opacity: .45;
+    }
+
+    .masthead-icon {
+      display: grid;
+      flex: none;
+      place-items: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      background: var(--signal);
+    }
+
+    .record {
+      border: 2px solid var(--ink);
+    }
+
+    .sign {
+      display: grid;
+      grid-template-columns: 46% 54%;
+      align-items: center;
+      min-height: 26.75rem;
+      background: var(--ink);
+      color: var(--chalk);
+    }
+
+    .sign-copy {
+      padding: 2.75rem 0 2.75rem clamp(1.75rem, 4vw, 3.5rem);
+    }
+
+    .trail,
+    .defect {
+      display: flex;
+      align-items: center;
+      gap: .625rem;
+      margin: 0;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .trail {
+      font-size: 1.375rem;
+    }
+
+    .trail svg,
+    .defect svg {
+      flex: none;
+      color: var(--signal);
+    }
+
+    h1 {
+      margin: .875rem 0 0;
+      font: 700 clamp(3.375rem, 6.75vw, 6.5rem) / .91 var(--display);
+      letter-spacing: -.035em;
+    }
+
+    h1 span {
+      display: block;
+    }
+
+    .defect {
+      margin-block-start: 1.75rem;
+      font-size: 1.5rem;
+    }
+
+    .bridge-art {
+      min-width: 0;
+      margin-inline: 0 1.5rem;
+    }
+
+    .bridge-art svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .inspection {
+      display: grid;
+      grid-template-columns: 1fr minmax(17rem, 32%);
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.625rem clamp(1.75rem, 4vw, 3.5rem);
+      background: var(--chalk);
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      gap: .875rem;
+      min-width: 0;
+    }
+
+    .status-icon {
+      display: grid;
+      flex: none;
+      place-items: center;
+      width: 3rem;
+      height: 3rem;
+      border: 2px solid var(--ink);
+      background: var(--paper);
+    }
+
+    .status-label {
+      margin: 0 0 .125rem;
+      color: var(--graphite);
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .status-value {
+      margin: 0;
+      font-size: clamp(1.625rem, 2.2vw, 2rem);
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .action {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .875rem;
+      width: 100%;
+      min-height: 4rem;
+      padding: .75rem 1.125rem;
+      border: 2px solid var(--ink);
+      border-radius: 0;
+      background: var(--signal);
+      color: var(--ink);
+      font: 700 1.25rem / 1.2 var(--body);
+      text-align: start;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+
+    .action svg {
+      flex: none;
+    }
+
+    .action:focus-visible {
+      outline: 3px solid var(--ink);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 3px var(--chalk);
+    }
+
+    .action:active {
+      box-shadow: inset 0 2px 0 rgb(17 17 17 / 24%);
+    }
+
+    [data-inspected="false"] .when-inspected,
+    [data-inspected="true"] .when-pending {
+      display: none;
+    }
+
+    [data-inspected="true"] .status-icon {
+      border-color: var(--spruce);
+      background: var(--spruce);
+      color: var(--chalk);
+    }
+
+    [data-inspected="true"] .status-value {
+      color: var(--spruce);
+    }
+
+    [data-inspected="true"] .action {
+      background: var(--chalk);
+    }
+
+    @media (hover: hover) {
+      .action:hover {
+        background: color-mix(in srgb, var(--signal), var(--ink) 8%);
+      }
+
+      [data-inspected="true"] .action:hover {
+        background: var(--paper);
+      }
+    }
+
+    @media (max-width: 46rem) {
+      .page {
+        width: calc(100% - 2rem);
+        padding-block: 1.375rem 1.5rem;
+      }
+
+      .masthead {
+        margin-block-end: 1rem;
+      }
+
+      .sign {
+        grid-template-columns: 1fr;
+        min-height: 0;
+      }
+
+      .sign-copy {
+        padding: 1.5rem 1.375rem 0;
+      }
+
+      .trail {
+        font-size: 1.25rem;
+      }
+
+      h1 {
+        margin-block-start: .75rem;
+        font-size: clamp(3.125rem, 16vw, 5.25rem);
+      }
+
+      .defect {
+        margin-block-start: 1.25rem;
+        font-size: 1.25rem;
+      }
+
+      .bridge-art {
+        width: min(calc(100% - 1.5rem), 29rem);
+        margin: .125rem auto .5rem;
+      }
+
+      .inspection {
+        grid-template-columns: 1fr;
+        gap: 1.125rem;
+        padding: 1.25rem 1.375rem 1.375rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="masthead">
+      <span class="masthead-icon" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M3 16h18M6 7v12m12-12v12M6 10h12m-8 0v6m4-6v6"
+                stroke="currentColor" stroke-width="1.8" stroke-linecap="square"/>
+        </svg>
+      </span>
+      <span>Trail inspection</span>
+    </header>
+
+    <main class="record" aria-labelledby="location">
+      <div class="sign">
+        <div class="sign-copy">
+          <p class="trail">
+            <svg width="23" height="23" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"
+                    stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <circle cx="12" cy="10" r="2.25" fill="currentColor"/>
+            </svg>
+            Cliff Loop
+          </p>
+          <h1 id="location">East <span>footbridge</span></h1>
+          <p class="defect">
+            <svg width="23" height="23" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3 22 20H2L12 3Z"
+                    stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M12 9v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="12" cy="16.25" r="1.1" fill="currentColor"/>
+            </svg>
+            Deck boards loose
+          </p>
+        </div>
+
+        <div class="bridge-art" aria-hidden="true">
+          <svg viewBox="0 0 520 286" fill="none" focusable="false">
+            <defs>
+              <pattern id="draft-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                <path d="M20 0H0V20" stroke="#f7f5ef" stroke-opacity=".14"/>
+              </pattern>
+              <radialGradient id="grid-fade">
+                <stop offset=".32" stop-color="white"/>
+                <stop offset="1" stop-color="white" stop-opacity="0"/>
+              </radialGradient>
+              <mask id="grid-mask">
+                <rect width="520" height="286" fill="url(#grid-fade)"/>
+              </mask>
+              <pattern id="edge-hatch" width="6" height="6" patternUnits="userSpaceOnUse"
+                       patternTransform="rotate(35)">
+                <path d="M0 0v6" stroke="#f7f5ef" stroke-opacity=".34"/>
+              </pattern>
+            </defs>
+
+            <rect width="520" height="286" fill="url(#draft-grid)" mask="url(#grid-mask)"/>
+
+            <g stroke="#f7f5ef" stroke-width="1.5" stroke-opacity=".52" stroke-linejoin="round">
+              <path d="M32 174 171 253 487 108 348 29Z" fill="#111111"/>
+              <path d="M32 174 171 253 487 108v12L171 265 32 186Z" fill="#4f524c"/>
+              <path d="M32 174 171 253 487 108v12L171 265 32 186Z" fill="url(#edge-hatch)"/>
+              <path d="M171 253v12"/>
+            </g>
+
+            <g fill="#f7f5ef" fill-opacity=".10" stroke="#f7f5ef" stroke-opacity=".67"
+               stroke-width="1.5" stroke-linejoin="round">
+              <path d="M34 173 73 155 212 234 173 252Z"/>
+              <path d="M79 152 118 134 257 213 218 231Z"/>
+              <path d="M124 131 163 113 302 192 263 210Z"/>
+              <path d="M214 89 253 71 392 150 353 168Z"/>
+              <path d="M259 68 298 50 437 129 398 147Z"/>
+              <path d="M304 47 343 29 482 108 443 126Z"/>
+            </g>
+
+            <g stroke="#f7f5ef" stroke-opacity=".32" stroke-width="1.3" stroke-linecap="round">
+              <path d="M61 168c29 15 46 29 76 43s32 21 48 28"/>
+              <path d="M107 150c39 21 59 35 83 47s21 12 33 19"/>
+              <path d="M157 129c24 14 37 19 56 32s38 22 57 33"/>
+              <path d="M247 88c25 12 41 24 59 34s34 19 53 30"/>
+              <path d="M293 67c25 15 45 23 63 35s31 18 46 25"/>
+              <path d="M337 46c19 12 40 21 60 33s34 19 54 30"/>
+            </g>
+
+            <g fill="#f7f5ef" fill-opacity=".72">
+              <circle cx="54" cy="170" r="2"/>
+              <circle cx="192" cy="239" r="2"/>
+              <circle cx="99" cy="149" r="2"/>
+              <circle cx="237" cy="218" r="2"/>
+              <circle cx="144" cy="128" r="2"/>
+              <circle cx="282" cy="197" r="2"/>
+              <circle cx="234" cy="86" r="2"/>
+              <circle cx="372" cy="155" r="2"/>
+              <circle cx="279" cy="65" r="2"/>
+              <circle cx="417" cy="134" r="2"/>
+              <circle cx="324" cy="44" r="2"/>
+              <circle cx="462" cy="113" r="2"/>
+            </g>
+
+            <g stroke="#ffcc00" stroke-width="1.5" stroke-opacity=".65" stroke-dasharray="4 5">
+              <path d="M169 110 208 92 347 171 308 189Z"/>
+              <path d="M169 68v42m139 65v14m39-34v16"/>
+            </g>
+
+            <path d="M169 62 308 169 347 151v8l-39 18L169 70Z"
+                  fill="#ffcc00" stroke="#111111" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M169 62 308 169 347 151v8l-39 18L169 70Z" fill="#111111" opacity=".28"/>
+            <path d="M169 62 208 44 347 151 308 169Z"
+                  fill="#ffcc00" stroke="#111111" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M188 70c33 24 53 42 79 61s23 16 37 27M211 55c25 20 39 28 50 38m9 8c20 13 35 27 56 44"
+                  stroke="#111111" stroke-opacity=".38" stroke-width="1.4" stroke-linecap="round"/>
+            <g fill="#111111">
+              <circle cx="192" cy="63" r="2.3"/>
+              <circle cx="205" cy="57" r="2.3"/>
+              <circle cx="311" cy="155" r="2.3"/>
+              <circle cx="324" cy="149" r="2.3"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <section class="inspection" id="inspection" data-inspected="false" aria-labelledby="status-label">
+        <div class="status">
+          <span class="status-icon" aria-hidden="true">
+            <svg class="when-pending" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="7.5" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <svg class="when-inspected" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="m5 12 4.5 4.5L19 7" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <div>
+            <p class="status-label" id="status-label">Inspection status</p>
+            <p class="status-value" id="status-value" role="status">Not inspected</p>
+          </div>
+        </div>
+
+        <button class="action" id="inspection-action" type="button">
+          <span id="action-label">Mark as inspected</span>
+          <svg class="when-pending" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m5 12 4.5 4.5L19 7" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <svg class="when-inspected" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m9 5-5 5 5 5M4 10h10a5 5 0 0 1 0 10h-2"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const inspection = document.getElementById("inspection");
+    const statusValue = document.getElementById("status-value");
+    const action = document.getElementById("inspection-action");
+    const actionLabel = document.getElementById("action-label");
+    const storageKey = "trail-inspection:cliff-loop:east-footbridge";
+
+    let inspected = false;
+    try {
+      inspected = localStorage.getItem(storageKey) === "true";
+    } catch {
+      // The control remains usable for this page session.
+    }
+
+    function renderInspection() {
+      inspection.dataset.inspected = String(inspected);
+      statusValue.textContent = inspected ? "Inspected" : "Not inspected";
+      actionLabel.textContent = inspected ? "Undo inspection" : "Mark as inspected";
+    }
+
+    if (inspected) {
+      renderInspection();
+    }
+
+    action.addEventListener("click", () => {
+      inspected = !inspected;
+      renderInspection();
+
+      try {
+        localStorage.setItem(storageKey, String(inspected));
+      } catch {
+        // The current state is still available in memory.
+      }
+    });
+  </script>
+</body>
+</html>

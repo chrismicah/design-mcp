@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Request a return label | Record store</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&amp;family=Instrument+Sans:wght@400..700&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --linen: #f3ebe0;
+      --paper: #fcf8f2;
+      --ink: #2a1610;
+      --cherry: #371829;
+      --mulberry: #6b2148;
+      --rose: #dca9b5;
+      --rule: color-mix(in srgb, var(--ink) 22%, var(--paper));
+      --field-border: color-mix(in srgb, var(--ink) 50%, var(--paper));
+      --muted: color-mix(in srgb, var(--ink) 73%, var(--paper));
+      --error: color-mix(in srgb, var(--mulberry) 72%, firebrick);
+      --selection: color-mix(in srgb, var(--rose) 23%, var(--paper));
+      --display: "Fraunces", Georgia, serif;
+      --body: "Instrument Sans", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+
+    body {
+      margin: 0;
+      background: var(--linen);
+      color: var(--ink);
+      font: 400 1rem / 1.45 var(--body);
+    }
+
+    button, input { font: inherit; }
+
+    :where(button, input):focus-visible {
+      outline: 2px solid var(--mulberry);
+      outline-offset: 3px;
+    }
+
+    .page-width {
+      width: min(1184px, calc(100% - 64px));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 76px;
+      border-bottom: 1px solid var(--rule);
+      font-size: 1.1875rem;
+      font-weight: 650;
+      letter-spacing: -.025em;
+    }
+
+    .store-mark {
+      width: 28px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        var(--linen) 0 8%,
+        var(--rose) 9% 21%,
+        var(--cherry) 22% 42%,
+        var(--rose) 43% 45%,
+        var(--cherry) 46%
+      );
+    }
+
+    .return-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+      min-height: 620px;
+      margin-block: 43px 52px;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      border-radius: 7px;
+      background: var(--paper);
+      box-shadow: 0 3px 0 rgb(42 22 16 / 5%);
+    }
+
+    .intro {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      padding: clamp(36px, 4vw, 57px);
+      background: var(--cherry);
+      color: var(--paper);
+    }
+
+    .intro-copy { position: relative; z-index: 1; }
+
+    h1, h2 {
+      margin: 0;
+      font-family: var(--display);
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: clamp(3.15rem, 5.25vw, 4.7rem);
+      line-height: .99;
+      letter-spacing: -.045em;
+    }
+
+    .intro p {
+      max-width: 18.5rem;
+      margin: 17px 0 0;
+      color: color-mix(in srgb, var(--paper) 87%, var(--rose));
+      font-size: 1.0625rem;
+      line-height: 1.45;
+    }
+
+    .record-art {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      aspect-ratio: 1.76;
+      pointer-events: none;
+    }
+
+    .disc {
+      --vinyl: color-mix(in srgb, var(--cherry) 46%, black);
+      --sheen: color-mix(in srgb, var(--cherry) 74%, var(--paper));
+      position: absolute;
+      top: 2%;
+      left: 41%;
+      width: 56%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      transform: rotate(11deg);
+      background:
+        radial-gradient(circle, transparent 63%, rgb(0 0 0 / 48%) 72%),
+        repeating-radial-gradient(
+          circle,
+          transparent 0 2px,
+          rgb(252 248 242 / 15%) 3px,
+          transparent 4px 5.5px
+        ),
+        conic-gradient(
+          from -32deg,
+          var(--vinyl) 0deg,
+          var(--sheen) 45deg,
+          var(--vinyl) 105deg,
+          var(--vinyl) 173deg,
+          var(--sheen) 221deg,
+          var(--vinyl) 275deg 360deg
+        );
+      box-shadow: 0 18px 36px rgb(13 4 10 / 45%);
+    }
+
+    .disc::before {
+      content: "";
+      position: absolute;
+      inset: 1.1%;
+      border: 1px solid rgb(252 248 242 / 19%);
+      border-radius: 50%;
+    }
+
+    .disc-label {
+      position: absolute;
+      inset: 33%;
+      border-radius: 50%;
+      background: linear-gradient(155deg, var(--paper) 0 34%, var(--rose) 34%);
+      box-shadow: 0 0 0 4px rgb(13 4 10 / 29%);
+    }
+
+    .disc-label::before, .disc-label::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .disc-label::before {
+      inset: 9%;
+      border: 1px solid rgb(55 24 41 / 32%);
+    }
+
+    .disc-label::after {
+      inset: 46%;
+      background: var(--cherry);
+    }
+
+    .sleeve {
+      position: absolute;
+      top: 20%;
+      left: 9%;
+      width: 52%;
+      aspect-ratio: 1;
+      overflow: hidden;
+      transform: rotate(-13deg);
+      background:
+        linear-gradient(90deg, rgb(55 24 41 / 16%) 0 2.6%, transparent 2.8%),
+        linear-gradient(
+          145deg,
+          color-mix(in srgb, var(--rose) 66%, var(--paper)),
+          var(--rose) 58%,
+          color-mix(in srgb, var(--rose) 78%, var(--mulberry))
+        );
+      box-shadow: 3px 14px 24px rgb(13 4 10 / 47%),
+        inset 0 0 0 1px rgb(55 24 41 / 14%);
+    }
+
+    .sleeve::before, .sleeve::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgb(55 24 41 / 19%);
+    }
+
+    .sleeve::before { inset: 6%; }
+
+    .sleeve::after {
+      right: -21%;
+      bottom: -52%;
+      width: 107%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      box-shadow: 0 0 0 18px rgb(55 24 41 / 5%);
+    }
+
+    .shipping-label {
+      position: absolute;
+      top: 18%;
+      left: 15%;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 62%;
+      aspect-ratio: 2.2;
+      padding-inline: 8%;
+      transform: rotate(3deg);
+      background: var(--paper);
+      box-shadow: 0 2px 3px rgb(55 24 41 / 14%);
+    }
+
+    .label-arrow {
+      position: relative;
+      width: 31%;
+      height: 36%;
+      border: 2px solid var(--mulberry);
+      border-left: 0;
+      border-radius: 0 1em 1em 0;
+    }
+
+    .label-arrow::before {
+      content: "";
+      position: absolute;
+      top: -2px;
+      left: 0;
+      width: clamp(5px, .55vw, 8px);
+      aspect-ratio: 1;
+      transform: translate(-16%, -38%) rotate(45deg);
+      border-bottom: 2px solid var(--mulberry);
+      border-left: 2px solid var(--mulberry);
+    }
+
+    .label-bars {
+      width: 42%;
+      height: 43%;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--ink) 0 1px,
+        transparent 1px 3px,
+        var(--ink) 3px 5px,
+        transparent 5px 7px,
+        var(--ink) 7px 8px,
+        transparent 8px 11px
+      );
+    }
+
+    .form-panel {
+      display: grid;
+      align-content: center;
+      min-width: 0;
+      padding: 48px clamp(30px, 4.1vw, 58px);
+    }
+
+    .return-form {
+      display: grid;
+      gap: 22px;
+    }
+
+    .field > label, .reason-field legend {
+      display: block;
+      margin-bottom: 7px;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .field > input {
+      display: block;
+      width: 100%;
+      min-height: 49px;
+      padding: 10px 13px;
+      border: 1px solid var(--field-border);
+      border-radius: 4px;
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    .field > input[aria-invalid="true"] { border-color: var(--error); }
+
+    .reason-field {
+      min-width: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    .reason-field legend { padding: 0; }
+
+    .reason-options { border-block: 1px solid var(--rule); }
+
+    .reason-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 46px;
+      padding: 9px 12px;
+      cursor: pointer;
+    }
+
+    .reason-option + .reason-option { border-top: 1px solid var(--rule); }
+
+    .reason-option input {
+      appearance: none;
+      flex: none;
+      width: 18px;
+      height: 18px;
+      margin: 0;
+      border: 1px solid var(--field-border);
+      border-radius: 50%;
+      background: var(--paper);
+      cursor: pointer;
+    }
+
+    .reason-option input:checked {
+      border-color: var(--mulberry);
+      background: var(--mulberry);
+      box-shadow: inset 0 0 0 3px var(--paper);
+    }
+
+    .reason-option:has(input:checked) {
+      background: var(--selection);
+      font-weight: 650;
+    }
+
+    .reason-field:has(input[aria-invalid="true"]) .reason-options {
+      border-color: var(--error);
+    }
+
+    .field-error {
+      margin: 6px 0 0;
+      color: var(--error);
+      font-size: .875rem;
+      font-weight: 600;
+    }
+
+    .submit-button, .edit-button {
+      display: block;
+      width: 100%;
+      min-height: 51px;
+      padding: 12px 16px;
+      border: 1px solid var(--mulberry);
+      border-radius: 4px;
+      font-weight: 700;
+      line-height: 1.25;
+      cursor: pointer;
+    }
+
+    .submit-button {
+      background: var(--mulberry);
+      color: var(--paper);
+    }
+
+    .submit-button:focus-visible {
+      outline-color: var(--ink);
+      box-shadow: 0 0 0 3px var(--paper);
+    }
+
+    .edit-button {
+      margin-top: 23px;
+      background: var(--paper);
+      color: var(--mulberry);
+    }
+
+    @media (hover: hover) {
+      .submit-button:hover { background: var(--cherry); }
+      .edit-button:hover, .reason-option:hover { background: var(--selection); }
+    }
+
+    .confirmation {
+      min-width: 0;
+      animation: confirmation-in 220ms ease-out both;
+    }
+
+    .confirmation-mark {
+      position: relative;
+      display: block;
+      width: 43px;
+      aspect-ratio: 1;
+      margin-bottom: 15px;
+      border: 1px solid var(--mulberry);
+      border-radius: 50%;
+      background: var(--selection);
+      color: var(--mulberry);
+    }
+
+    .confirmation-mark::before {
+      content: "";
+      position: absolute;
+      top: 13px;
+      left: 12px;
+      width: 17px;
+      height: 9px;
+      transform: rotate(-45deg);
+      border-bottom: 2px solid currentColor;
+      border-left: 2px solid currentColor;
+    }
+
+    .confirmation h2 {
+      font-size: clamp(2rem, 3.2vw, 2.7rem);
+      line-height: 1.08;
+      letter-spacing: -.04em;
+    }
+
+    .receipt { margin: 23px 0 0; }
+
+    .receipt > div {
+      padding: 11px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .receipt > .receipt-reason {
+      padding: 13px 15px;
+      border: 0;
+      border-left: 3px solid var(--mulberry);
+      background: var(--selection);
+    }
+
+    .receipt dt {
+      color: var(--muted);
+      font-size: .875rem;
+      font-weight: 650;
+    }
+
+    .receipt dd {
+      margin: 2px 0 0;
+      overflow-wrap: anywhere;
+      font-weight: 600;
+    }
+
+    .receipt-reason dd {
+      color: var(--mulberry);
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    @keyframes confirmation-in {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 800px) {
+      .page-width { width: min(560px, calc(100% - 36px)); }
+
+      .site-header {
+        min-height: 63px;
+        font-size: 1.125rem;
+      }
+
+      .store-mark { width: 25px; }
+
+      .return-layout {
+        grid-template-columns: minmax(0, 1fr);
+        min-height: 0;
+        margin-block: 18px 30px;
+      }
+
+      .intro {
+        min-height: 216px;
+        padding: 24px 23px 27px;
+      }
+
+      h1 { font-size: clamp(2.25rem, 10.6vw, 3.6rem); }
+
+      .intro p {
+        max-width: 13rem;
+        margin-top: 13px;
+        font-size: .9375rem;
+      }
+
+      .record-art {
+        inset: auto -45px -15px auto;
+        width: clamp(165px, 51vw, 260px);
+        height: clamp(120px, 36.4vw, 168px);
+        aspect-ratio: auto;
+      }
+
+      .disc {
+        top: 0;
+        left: 14%;
+        width: 73%;
+      }
+
+      .sleeve {
+        top: 48%;
+        left: 0;
+        width: 68%;
+      }
+
+      .form-panel { padding: 25px 23px 27px; }
+      .return-form { gap: 19px; }
+      .field > input { min-height: 47px; }
+    }
+
+    @media (max-width: 345px) {
+      .record-art { right: -62px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .confirmation { animation: none; }
+    }
+
+    @media (forced-colors: active) {
+      .reason-option input { appearance: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header page-width">
+    <span class="store-mark" aria-hidden="true"></span>
+    <span>Record store</span>
+  </header>
+
+  <main class="return-layout page-width" aria-labelledby="page-title">
+    <section class="intro">
+      <div class="intro-copy">
+        <h1 id="page-title">Request a<br>return label</h1>
+        <p>Enter your order details and choose a return reason.</p>
+      </div>
+
+      <div class="record-art" aria-hidden="true">
+        <div class="disc"><span class="disc-label"></span></div>
+        <div class="sleeve">
+          <div class="shipping-label">
+            <span class="label-arrow"></span>
+            <span class="label-bars"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="form-panel">
+      <form class="return-form" id="return-form" aria-label="Return label request" novalidate>
+        <div class="field">
+          <label for="order-number">Order number</label>
+          <input id="order-number" name="order-number" type="text"
+            autocapitalize="off" spellcheck="false" aria-describedby="order-error" required>
+          <p class="field-error" id="order-error" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="email">Email address</label>
+          <input id="email" name="email" type="email" autocomplete="email"
+            autocapitalize="off" spellcheck="false" aria-describedby="email-error" required>
+          <p class="field-error" id="email-error" hidden></p>
+        </div>
+
+        <fieldset class="reason-field">
+          <legend>Reason for return</legend>
+          <div class="reason-options">
+            <label class="reason-option">
+              <input type="radio" name="reason" value="damaged"
+                aria-describedby="reason-error" required>
+              <span>Damaged</span>
+            </label>
+            <label class="reason-option">
+              <input type="radio" name="reason" value="wrong-item"
+                aria-describedby="reason-error" required>
+              <span>Wrong item</span>
+            </label>
+            <label class="reason-option">
+              <input type="radio" name="reason" value="changed-mind"
+                aria-describedby="reason-error" required>
+              <span>Changed mind</span>
+            </label>
+          </div>
+          <p class="field-error" id="reason-error" hidden></p>
+        </fieldset>
+
+        <button class="submit-button" type="submit">Request return label</button>
+      </form>
+
+      <section class="confirmation" id="confirmation" aria-labelledby="confirmation-title" hidden>
+        <span class="confirmation-mark" aria-hidden="true"></span>
+        <h2 id="confirmation-title" tabindex="-1"
+          aria-describedby="receipt-reason-label receipt-reason">Request confirmed</h2>
+
+        <dl class="receipt">
+          <div class="receipt-reason">
+            <dt id="receipt-reason-label">Reason for return</dt>
+            <dd id="receipt-reason"></dd>
+          </div>
+          <div>
+            <dt>Order number</dt>
+            <dd id="receipt-order"></dd>
+          </div>
+          <div>
+            <dt>Email address</dt>
+            <dd id="receipt-email"></dd>
+          </div>
+        </dl>
+
+        <button class="edit-button" id="edit-details" type="button">Edit details</button>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const form = document.getElementById("return-form");
+    const orderNumber = document.getElementById("order-number");
+    const email = document.getElementById("email");
+    const reasons = Array.from(form.querySelectorAll('input[name="reason"]'));
+    const confirmation = document.getElementById("confirmation");
+    const confirmationTitle = document.getElementById("confirmation-title");
+
+    // Order identifiers can contain letters, numbers and separators.
+    const fields = [
+      {
+        controls: [orderNumber],
+        error: document.getElementById("order-error"),
+        message() {
+          const value = orderNumber.value.trim();
+          if (!value) return "Enter your order number.";
+          if (!/[\p{L}\p{N}]/u.test(value)) {
+            return "Enter the order number as it appears on your order.";
+          }
+          return "";
+        }
+      },
+      {
+        controls: [email],
+        error: document.getElementById("email-error"),
+        message() {
+          if (email.validity.valueMissing) return "Enter your email address.";
+          if (email.validity.typeMismatch) {
+            return "Enter an email address like name@example.com.";
+          }
+          return "";
+        }
+      },
+      {
+        controls: reasons,
+        error: document.getElementById("reason-error"),
+        message() {
+          return reasons.some((reason) => reason.checked)
+            ? ""
+            : "Choose a reason for the return.";
+        }
+      }
+    ];
+
+    function showError(field, message) {
+      field.error.textContent = message;
+      field.error.hidden = !message;
+
+      for (const control of field.controls) {
+        if (message) {
+          control.setAttribute("aria-invalid", "true");
+        } else {
+          control.removeAttribute("aria-invalid");
+        }
+      }
+    }
+
+    for (const field of fields) {
+      for (const control of field.controls) {
+        control.addEventListener("input", () => {
+          if (!field.error.hidden) showError(field, field.message());
+        });
+      }
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      let firstInvalidControl = null;
+
+      for (const field of fields) {
+        const message = field.message();
+        showError(field, message);
+        if (message && !firstInvalidControl) {
+          firstInvalidControl = field.controls[0];
+        }
+      }
+
+      if (firstInvalidControl) {
+        firstInvalidControl.focus();
+        return;
+      }
+
+      const selectedReason = reasons.find((reason) => reason.checked);
+      document.getElementById("receipt-reason").textContent =
+        selectedReason.labels[0].textContent.trim();
+      document.getElementById("receipt-order").textContent = orderNumber.value.trim();
+      document.getElementById("receipt-email").textContent = email.value.trim();
+
+      // Keep the original controls and their values available for editing.
+      form.hidden = true;
+      confirmation.hidden = false;
+      confirmationTitle.focus();
+    });
+
+    document.getElementById("edit-details").addEventListener("click", () => {
+      confirmation.hidden = true;
+      form.hidden = false;
+      orderNumber.focus();
+    });
+  </script>
+</body>
+</html>

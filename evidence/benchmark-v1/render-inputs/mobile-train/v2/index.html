@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Train 487 to Milwaukee</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@700&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #111111;
+      --paper: #f7f5ef;
+      --signal: #ffcc00;
+      --stone: #e8e5db;
+      --rail: #373631;
+      --light-label: rgb(247 245 239 / 78%);
+      --display: "Archivo Narrow", sans-serif;
+      --body: "Atkinson Hyperlegible", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      display: grid;
+      align-content: start;
+      justify-items: center;
+      min-block-size: 100svh;
+      margin: 0;
+      padding: clamp(2rem, calc(48svh - 13rem), 11.5rem)
+        clamp(1rem, 4.6vw, 2rem) 2rem;
+      background: var(--stone);
+      color: var(--ink);
+      font: 1rem / 1.45 var(--body);
+    }
+
+    @media (max-width: 32rem) {
+      body {
+        padding-block-start: clamp(1.5rem, 12svh, 6rem);
+      }
+    }
+
+    .journey {
+      --gutter: clamp(1.125rem, 6.25cqi, 1.75rem);
+      inline-size: min(100%, 27rem);
+      container-type: inline-size;
+    }
+
+    .board {
+      overflow: clip;
+      border-radius: 0.625rem;
+      background: var(--paper);
+      box-shadow: 0 0 0 1px rgb(17 17 17 / 8%),
+        0 18px 42px rgb(17 17 17 / 11%);
+    }
+
+    .sign {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .train {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      margin: 0;
+      padding: 1rem var(--gutter);
+      border-block-end: 1px solid var(--rail);
+      font-size: 1.0625rem;
+      font-weight: 700;
+    }
+
+    .train svg {
+      flex: none;
+    }
+
+    .destination {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      padding: 1.375rem var(--gutter) 2.125rem;
+    }
+
+    .destination-label {
+      margin: 0 0 0.35rem;
+      color: var(--light-label);
+      line-height: 1.25;
+    }
+
+    h1 {
+      margin: 0;
+      font: 700 clamp(2.375rem, 17.6cqi, 4.875rem) / 0.94 var(--display);
+      letter-spacing: -0.037em;
+      overflow-wrap: anywhere;
+    }
+
+    .trackwork {
+      position: absolute;
+      z-index: -1;
+      inset-inline-end: 0;
+      inset-block-end: 0;
+      inline-size: 49%;
+      block-size: auto;
+      color: var(--rail);
+      mask-image: linear-gradient(to right, transparent, black 42%);
+      pointer-events: none;
+    }
+
+    .departure-facts {
+      display: grid;
+      grid-template-columns: minmax(0, 1.62fr) minmax(0, 1fr);
+      margin: 0;
+      border-block-start: 1px solid var(--rail);
+    }
+
+    .fact {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 0.4375rem;
+      padding: 1.1875rem var(--gutter) 1.125rem;
+    }
+
+    .fact dt {
+      line-height: 1.2;
+    }
+
+    .fact dd {
+      align-self: end;
+      margin: 0;
+      font-family: var(--display);
+      font-weight: 700;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+
+    .fact-time dt {
+      color: var(--light-label);
+    }
+
+    .fact-time dd {
+      font-size: clamp(2.35rem, 19.3cqi, 5.25rem);
+      line-height: 0.88;
+      letter-spacing: -0.035em;
+    }
+
+    .fact-platform {
+      background: var(--signal);
+      color: var(--ink);
+    }
+
+    .fact-platform dt {
+      font-weight: 700;
+    }
+
+    .fact-platform dd {
+      font-size: clamp(4.25rem, 26cqi, 7.25rem);
+      line-height: 0.86;
+    }
+
+    .ticket-tray {
+      padding: 1.375rem var(--gutter) 1.5rem;
+    }
+
+    .ticket-toggle {
+      display: grid;
+      grid-template-columns: 1.5rem minmax(0, 1fr) 1.25rem;
+      align-items: center;
+      gap: 0.75rem;
+      inline-size: 100%;
+      min-block-size: 3.75rem;
+      padding: 0.75rem 1rem;
+      border: 1px solid transparent;
+      border-radius: 0.375rem;
+      background: var(--ink);
+      color: var(--paper);
+      cursor: pointer;
+      font: 700 1.125rem / 1.25 var(--body);
+      text-align: start;
+    }
+
+    @media (hover: hover) {
+      .ticket-toggle:hover {
+        background: var(--rail);
+      }
+    }
+
+    .ticket-toggle:active {
+      background: var(--rail);
+    }
+
+    .ticket-toggle:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 3px var(--paper);
+    }
+
+    .ticket-toggle[aria-expanded="true"] .plus-stem {
+      visibility: hidden;
+    }
+
+    .ticket-details {
+      margin-block-start: 1.375rem;
+      padding-block-start: 1.125rem;
+      border-block-start: 1px dashed rgb(17 17 17 / 38%);
+    }
+
+    .ticket-details h2,
+    .ticket-details h3 {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+
+    .ticket-number {
+      margin: 0.1875rem 0 1rem;
+      font: 700 clamp(2rem, 11cqi, 2.875rem) / 1 var(--display);
+      letter-spacing: 0.025em;
+      overflow-wrap: anywhere;
+    }
+
+    .text-version {
+      padding-inline-start: 0.75rem;
+      border-inline-start: 2px solid var(--ink);
+    }
+
+    .text-version p {
+      margin: 0.25rem 0 0;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .ticket-details:not([hidden]) {
+        animation: ticket-reveal 240ms ease-out;
+      }
+    }
+
+    @keyframes ticket-reveal {
+      from {
+        opacity: 0;
+        transform: translateY(0.5rem);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (forced-colors: active) {
+      .board,
+      .ticket-toggle {
+        border: 1px solid ButtonText;
+      }
+
+      .fact-platform {
+        border-inline-start: 1px solid CanvasText;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="journey">
+    <article class="board" aria-labelledby="destination">
+      <header class="sign">
+        <p class="train">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
+            stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+            stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <rect x="6" y="3.5" width="16" height="17" rx="4"/>
+            <path d="M6 12h16m-11.5 4.5h.25m6.5 0h.25M10 20.5 7 24m11-3.5 3 3.5"/>
+          </svg>
+          Train 487
+        </p>
+
+        <div class="destination">
+          <p class="destination-label">To</p>
+          <h1 id="destination">Milwaukee</h1>
+          <svg class="trackwork" width="204" height="104" viewBox="0 0 204 104"
+            fill="none" stroke="currentColor" stroke-width="1.4"
+            aria-hidden="true" focusable="false">
+            <path d="M0 76h204M0 89h204M56 76h15c29 0 49-9 69-28L192 0M105 76c17-5 31-13 45-26L204 0"/>
+            <path d="M36 76v13m14-13v13m14-13v13m14-13v13m14-13v13m14-13v13m14-13v13m14-13v13m14-13v13m14-13v13m14-13v13m14-13v13M143 45l6 7m5-17 6 7m5-17 6 7m5-17 6 7m5-17 6 7"/>
+          </svg>
+        </div>
+
+        <dl class="departure-facts">
+          <div class="fact fact-time">
+            <dt>Departs</dt>
+            <dd><time datetime="17:42">17:42</time></dd>
+          </div>
+          <div class="fact fact-platform">
+            <dt>Platform</dt>
+            <dd>6</dd>
+          </div>
+        </dl>
+      </header>
+
+      <div class="ticket-tray">
+        <button class="ticket-toggle" id="ticket-toggle" type="button"
+          aria-expanded="false" aria-controls="ticket">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+            stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M4 6.5h16a1 1 0 0 1 1 1v2.2a2.3 2.3 0 0 0 0 4.6v2.2a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-2.2a2.3 2.3 0 0 0 0-4.6V7.5a1 1 0 0 1 1-1Z"/>
+            <path d="M14.5 9v.5m0 2.25v.5m0 2.25v.5"/>
+          </svg>
+          <span id="ticket-toggle-label">Show ticket</span>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+            stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+            aria-hidden="true" focusable="false">
+            <path d="M4.5 10h11"/>
+            <path class="plus-stem" d="M10 4.5v11"/>
+          </svg>
+        </button>
+
+        <section class="ticket-details" id="ticket" aria-labelledby="ticket-title" hidden>
+          <h2 id="ticket-title">Ticket number</h2>
+          <p class="ticket-number">T487-MK02</p>
+          <div class="text-version">
+            <h3>Text version</h3>
+            <p>Train 487 to Milwaukee departs at 17:42 from platform 6. Ticket number T487-MK02.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+  </main>
+
+  <script>
+    const ticketToggle = document.getElementById("ticket-toggle");
+    const ticketToggleLabel = document.getElementById("ticket-toggle-label");
+    const ticket = document.getElementById("ticket");
+
+    ticketToggle.addEventListener("click", () => {
+      const showTicket = ticket.hidden;
+      ticket.hidden = !showTicket;
+      ticketToggle.setAttribute("aria-expanded", String(showTicket));
+      ticketToggleLabel.textContent = showTicket ? "Hide ticket" : "Show ticket";
+    });
+  </script>
+</body>
+</html>
