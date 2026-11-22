@@ -243,14 +243,24 @@ try {
   }
   await image(popup, "popup-result.png");
 
+  const findPreview = () => findTarget(item => item.url === proof.result.previewUrl);
+  let previewTarget;
   if (mac) {
     proof.phase = "open saved preview and switch by keyboard";
     assert.equal((await observePopup()).focus, "open");
-    await browserKey(popup, "Enter", 13, 36, "\r");
+    assert.equal(await findPreview(), undefined, "The saved preview must start closed");
+    // Opening a tab can close the toolbar popup before Chrome acknowledges Enter.
+    const [input, observed] = await Promise.allSettled([
+      browserKey(popup, "Enter", 13, 36, "\r"),
+      until("new saved preview tab", findPreview),
+    ]);
+    proof.previewOpenInput = input.status === "fulfilled" ? "acknowledged" : String(input.reason);
+    if (observed.status === "rejected") throw observed.reason;
+    previewTarget = observed.value;
   } else {
     key("Return");
+    previewTarget = await until("preview tab after the popup action", findPreview);
   }
-  const previewTarget = await until("preview tab after the popup action", () => findTarget(item => item.url === proof.result.previewUrl));
   const preview = await attach(previewTarget);
   const observePreview = (session = preview) => inspect(session, `(() => {
     const after = document.querySelector('#view-after');
