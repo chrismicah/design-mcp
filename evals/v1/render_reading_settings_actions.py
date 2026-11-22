@@ -88,6 +88,25 @@ const checks = {
 const persistsOnReopen = reopened.large && reopened.compact && reopened.controlsVisible &&
   reopened.sample.size === changed.sample.size && reopened.sample.leading === changed.sample.leading;
 const resetPersistsOnReopen = matchesDefaults(reopenedAfterReset);
+if (__CHECK_STORAGE_FAILURE__) {
+  const storageKeys = await page.evaluate(() => Object.keys(localStorage));
+  if (storageKeys.length !== 1) throw new Error('Expected one preference record after reset');
+  await page.evaluate(key => localStorage.setItem(key,'{'), storageKeys[0]);
+  checks.corruptRecordUsesDefaults = matchesDefaults(await reopen());
+  await page.addInitScript(() => {
+    const deny = () => { throw new DOMException('Storage unavailable in this test','SecurityError'); };
+    Object.defineProperty(Storage.prototype, 'getItem', {value:deny, configurable:true});
+    Object.defineProperty(Storage.prototype, 'setItem', {value:deny, configurable:true});
+  });
+  checks.deniedReadUsesDefaults = matchesDefaults(await reopen());
+  await tabTo(standard);
+  await page.keyboard.press('ArrowRight');
+  const unavailableChange = await settings();
+  const announcement = await page.getByRole('status').innerText();
+  checks.deniedWriteKeepsControlsWorking = unavailableChange.large && unavailableChange.comfortable &&
+    unavailableChange.sample.size > initial.sample.size &&
+    /large/i.test(announcement) && !/\b(saved|persisted)\b/i.test(announcement);
+}
 console.log('READING_ACTIONS '+JSON.stringify({checks, persistsOnReopen, resetPersistsOnReopen, states:{
   initial,resized,changed,reopened,beforeReset,restored,reopenedAfterReset
 }, restricted, pageErrors:state.pageErrors, passed:Object.values(checks).every(Boolean) && !state.pageErrors.length}));
@@ -96,7 +115,7 @@ console.log('READING_ACTIONS '+JSON.stringify({checks, persistsOnReopen, resetPe
 
 async def interact(client, cell, width):
     paths = {state: cell / f"{width}-{state}.png" for state in ("changed", "reopened", "restored")}
-    script = ACTIONS
+    script = ACTIONS.replace("__CHECK_STORAGE_FAILURE__", json.dumps(cell.name == "settings-persistence"))
     for state, path in paths.items():
         script = script.replace(f"__{state.upper()}__", json.dumps(str(path)))
     result = await execute(client, script)
