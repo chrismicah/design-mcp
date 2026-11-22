@@ -6,21 +6,21 @@ The baseline pins Design MCP at `fd6035d8732d177b811f81a0f5863e99134a85ca`. The 
 
 | Configuration | Judged pairs | Score / 100 |
 | --- | ---: | ---: |
-| Same generator without MCP | 16 / 36 | 91.9 |
-| Same generator with Design MCP v2 | 16 / 36 | 94.5 |
+| Same generator without MCP | 20 / 36 | 91.9 |
+| Same generator with Design MCP v2 | 20 / 36 | 94.6 |
 
-The sixteen verified pairs yielded a **+2.6-point** mean difference, with eight wins, seven ties, one loss, and a paired bootstrap interval of −0.3 to 5.2 points. The judged set covers all six landing pages, all six dashboards, and four forms. The return-label request scored 87.5 without the MCP and 91.7 with it. The garden request scored 91.7 and 95.8, respectively. The workshop reservation tied at 91.7. The maintenance form scored 95.8 without the MCP and 83.3 with it. The critic cited an illustration that pushed the form down on mobile and a clipped hint in the two-column row. The separate form-routing candidate targets this failure. The judges scored captured states under the original benchmark rubric. The release rubric requires live evaluation. [Paired ballots, hashes and token receipts](evidence/benchmark-v1/paired-progress.json) · [Release rubric](evals/vision/rubric.md)
+The twenty verified pairs yielded a **+2.7-point** mean difference, with eleven wins, eight ties, one loss, and a paired bootstrap interval of 0.4 to 4.8 points. The judged set covers all six landing pages, six dashboards, six forms, and two mobile briefs. The exhibition form and both mobile briefs improved from 91.7 to 95.8. The invoice form and workshop reservation tied at 91.7. The maintenance form scored 95.8 without the MCP and 83.3 with it. The critic cited an illustration that pushed the form down on mobile and a clipped hint in the two-column row. The separate form-routing candidate targets this failure. The judges scored captured states under the original benchmark rubric. The release rubric requires live evaluation. [Paired ballots, hashes and token receipts](evidence/benchmark-v1/paired-progress.json) · [Release rubric](evals/vision/rubric.md)
 
 The first dashboard attempt called `direct` successfully and reached the client’s 240-second timeout before returning HTML. There was no completed-turn token receipt. The paired run uses a 900-second allowance for both arms and retains the first attempt separately. Playwriter MCP `0.12.0` rendered the isolated Chrome 157 control at both widths. The injected failure control detected narrow viewport overflow and the expected JavaScript error. [Tracked receipts](evidence/benchmark-v1/preflight.json)
 
-GitHub’s standard macOS runner captured the judged pairs with Playwriter 0.12.0 and Chrome for Testing 158.0.8127.36 at both preset widths. All 64 judged captures had no page errors or document-level horizontal overflow. The critic found that the maintenance field still clipped its hint within the control. [First run](https://github.com/chrismicah/design-mcp/actions/runs/44984687051) · [Second run](https://github.com/chrismicah/design-mcp/actions/runs/44988686124) · [Third run](https://github.com/chrismicah/design-mcp/actions/runs/44991749251) · [Fourth run](https://github.com/chrismicah/design-mcp/actions/runs/44995146562)
+GitHub’s standard macOS runner captured the judged pairs with Playwriter 0.12.0 and Chrome for Testing 158.0.8127.36 at both preset widths. All 80 judged captures had no page errors or document-level horizontal overflow. The critic found that the maintenance field still clipped its hint within the control. [First run](https://github.com/chrismicah/design-mcp/actions/runs/44984687051) · [Second run](https://github.com/chrismicah/design-mcp/actions/runs/44988686124) · [Third run](https://github.com/chrismicah/design-mcp/actions/runs/44991749251) · [Fourth run](https://github.com/chrismicah/design-mcp/actions/runs/44995146562)
 
 An interaction replay on the exact maintenance pages passed all four arm-by-viewport checks. Empty submission focused the invalid Building field. Keyboard entry and urgency selection produced a local confirmation with the supplied details. Editing restored focus and retained every value. At 390 px the frozen v2 hint measured 124 px of text in 93 px of available space. Its first field began 110 px lower than in the plain layout. The form candidate must fix the geometry and preserve the workflow. [Keyboard and geometry receipts](evidence/benchmark-v1/maintenance-actions.json) · [Hosted replay](https://github.com/chrismicah/design-mcp/actions/runs/44992860729)
 
 | Median per judged brief | Input tokens | Cached input | Output tokens | Seconds |
 | --- | ---: | ---: | ---: | ---: |
-| Plain generator | 29,271 | 11,136 | 22,404 | 453 |
-| Design MCP v2 | 63,371 | 41,216 | 21,607 | 439 |
+| Plain generator | 20,544 | 11,136 | 22,404 | 453 |
+| Design MCP v2 | 63,832 | 41,472 | 21,607 | 439 |
 
 ## Direction coverage
 

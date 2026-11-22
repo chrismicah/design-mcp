@@ -79,8 +79,8 @@ Fresh local installs reproduced the full-brief match counts for Screenshots and 
 
 | Configuration | Matched briefs judged | Score / 100 |
 | --- | ---: | ---: |
-| Plain generator | 16 / 36 | 91.9 |
-| Design MCP v2 | 16 / 36 | 94.5 |
+| Plain generator | 20 / 36 | 91.9 |
+| Design MCP v2 | 20 / 36 | 94.6 |
 | Inspo hosted | 1 / 36 | 87.5 on ceramics. Design MCP scored 91.7 on the matched brief. |
 | Offline Designer MCP | 1 / 36 | 91.7 on ceramics. Design MCP also scored 91.7. |
 | Screenshots Design Inspiration | 0 / 36 | The ceramics generation made no MCP call and was excluded from scoring. |

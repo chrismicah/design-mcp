@@ -1,29 +1,29 @@
 {
   "summary": {
     "requested_pairs": 36,
-    "judged_pairs": 16,
-    "none": 91.92708333333333,
-    "v2": 94.53125,
-    "difference": 2.6041666666666696,
+    "judged_pairs": 20,
+    "none": 91.875,
+    "v2": 94.58333333333333,
+    "difference": 2.7083333333333384,
     "wins_ties_losses": [
+      11,
       8,
-      7,
       1
     ],
     "paired_bootstrap_95_interval": [
-      -0.26041666666666075,
-      5.208333333333336
+      0.41666666666666996,
+      4.791666666666671
     ],
     "median_usage": {
       "none": {
-        "input_tokens": 29270.5,
+        "input_tokens": 20543.5,
         "cached_input_tokens": 11136.0,
         "output_tokens": 22404.0,
         "elapsed_seconds": 453.345
       },
       "v2": {
-        "input_tokens": 63371.0,
-        "cached_input_tokens": 41216.0,
+        "input_tokens": 63832.0,
+        "cached_input_tokens": 41472.0,
         "output_tokens": 21607.0,
         "elapsed_seconds": 439.01
       }
@@ -2844,6 +2844,714 @@
           "B-390.png": "82e4c474a133301d8be3b0fa9829e5bc03936cc616c50eb28c81fc0914dec728"
         },
         "judge_prompt_sha256": "179e21bebea73c87de175cc8e845bfcdf489d1fb2916552fbf08de24d0e3ebb2"
+      }
+    },
+    "form-exhibition": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44995146562",
+      "cells": {
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 65922,
+              "cached_input_tokens": 53376,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 22892,
+              "reasoning_output_tokens": 16469
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "form-exhibition",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "4704e50326e6c6f8fc948714d7f9eb64a4d9b1b4a91295e5b3836a8b69c45734",
+            "elapsed_seconds": 463.85,
+            "exit_code": 0,
+            "trace_sha256": "0531ade33c5861f74954572e5b61af9ce9b160366ffb96528db942e466c2ddcb",
+            "html_sha256": "2f9061e6294add3eb18d70e7b1c996253946c67f43d0c74078a8480a539e1c7f"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "a6750620cb525231bede8795bbd2bb7441bff5b3a5cfdbf4f511b86c345c9b73",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "be2e352ab37131cca9aefabe89ff023df3d413be764c60ff41da3ce9f8aed6f0",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 20546,
+              "cached_input_tokens": 0,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 28995,
+              "reasoning_output_tokens": 22104
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "form-exhibition",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "4704e50326e6c6f8fc948714d7f9eb64a4d9b1b4a91295e5b3836a8b69c45734",
+            "elapsed_seconds": 582.93,
+            "exit_code": 0,
+            "trace_sha256": "2d6520a9c2633435eac67ec05de1e1234aed22724a97ee97b15e8393a2177487",
+            "html_sha256": "3d4c3b4a85ddf7deee8cab09e7dc288cb66037ca2a6395a8abd9761bad16eed1"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "25bc6d904754d6d24f39cdc98e9add2401d892a0b06b4c305230c6477faeacd4",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "c5678b9a306fd7b67374bb7094e6be05affb645d68dba04831fa8c11ac779efe",
+              "viewport": 390,
+              "width": 375,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "form-exhibition",
+        "surface": "form",
+        "blind_key": {
+          "A": "v2",
+          "B": "none"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The title leads directly into the desktop form, and the shallow mobile artwork keeps the first field and the dark \u201cConfirm request\u201d button visible together."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The contact fields share a row on desktop and stack on matching margins on mobile, while the 1\u201325 hint stays beside its stepper at both widths."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The serif title fits on one line at both widths, and the italic privacy note is easy to distinguish from the bold sans-serif field labels."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Forest green connects the gallery illustration to the confirmation button, and the muted minus beside the darker plus signals the lower limit at one."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "At both widths, the browser tree corroborates the visible labels with named textboxes, a group-size spinbutton, grouped visit-type radios, a disabled decrease button and a status region."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both layouts show every requested input and the on-page privacy promise, leaving local data handling and a confirmation naming the chosen group size and visit type unverified."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "\u201cVisit details\u201d clearly marks the desktop form, though the two-line title, gallery and second heading place the first mobile field halfway down the screen."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The vertical desktop divider becomes a horizontal break on mobile, where the text fields, paired visit choices and confirmation button share the same outer edges."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The tall serif steps down in size from the page title to \u201cVisit details,\u201d while the bold sans-serif labels remain legible across the phone form."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Cobalt links the museum badge and confirmation button at both widths, while navy labels read clearly on pale gray and yellow picks out the sculpture within the gallery."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Labels sit beside or above their controls at both widths, and both browser trees describe the illustration, name the visit-type group and expose the decrease button as disabled at one."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "The contact fields, 1\u201325 range and both visit choices are explicit, but the initial views establish only the button label and privacy promise, leaving the confirmation contents and local data handling unverified."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26414,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5765,
+          "reasoning_output_tokens": 5113
+        },
+        "scores": {
+          "v2": 95.83333333333334,
+          "none": 91.66666666666666
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "a6750620cb525231bede8795bbd2bb7441bff5b3a5cfdbf4f511b86c345c9b73",
+          "A-390.png": "be2e352ab37131cca9aefabe89ff023df3d413be764c60ff41da3ce9f8aed6f0",
+          "B-1440.png": "25bc6d904754d6d24f39cdc98e9add2401d892a0b06b4c305230c6477faeacd4",
+          "B-390.png": "c5678b9a306fd7b67374bb7094e6be05affb645d68dba04831fa8c11ac779efe"
+        },
+        "judge_prompt_sha256": "853deaa0a5ed4ea609d8a4dec414ce25881510479941b96a4ee63a31603ed18a"
+      }
+    },
+    "form-invoice": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44995146562",
+      "cells": {
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 64368,
+              "cached_input_tokens": 58752,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 24378,
+              "reasoning_output_tokens": 18015
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "form-invoice",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "f482c0746fdd5fa9370765404787b76ab18cb4273584a7a9daddb1cf2de43fc2",
+            "elapsed_seconds": 495.04,
+            "exit_code": 0,
+            "trace_sha256": "86a19922e83ec360e77b56e8e249a6ecd72247b3d61e7d41f9f602cfcf7c8feb",
+            "html_sha256": "9d6b6ef2ee748e5e2f56535a0e9efdfaf390ca152d1fd86f13fd425284321599"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "6e8ef85273d878355b2d3ac146e47ce6cc59bda003c0790924653c3785a95012",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "7d4ac55e3887c538ab5117d6a47a3ffa659b769edeaf0ed79d51f41fc518af5e",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 20541,
+              "cached_input_tokens": 0,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 26420,
+              "reasoning_output_tokens": 18910
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "form-invoice",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "f482c0746fdd5fa9370765404787b76ab18cb4273584a7a9daddb1cf2de43fc2",
+            "elapsed_seconds": 532.39,
+            "exit_code": 0,
+            "trace_sha256": "f02312fba180de24635fccae03349c95b7d20a045172ce1a449f7a0bcedb9720",
+            "html_sha256": "09050afb6bd648ba457094528b2ac9bf125b8276c6e6f89872b37796004c512c"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "268cad4dcc9f8a2be737a6671f89012a2a1871a86de9d0a9620e3b7506d4e96e",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "54deeccbd5a9a08e5bfc84a994e510ade26260e01a5493be748493d5155b624b",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "form-invoice",
+        "surface": "form",
+        "blind_key": {
+          "A": "v2",
+          "B": "none"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, \u201cRequest a quote\u201d is the largest text, and the sequence from format to copies to email ends at the prominent yellow \u201cReview request\u201d button."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "Even at 390 px, the format cards share a row, the copy limit sits beside its input, and each label is closer to its own field than to the preceding field."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The condensed heading fits on one line at 390 px, and bold field labels remain easy to distinguish from the lighter copy limit and email example."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The gold of the book\u2019s edges and loose thread reappears on the review button, making the main action stand out against the cream form."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "Both browser trees corroborate the visible labels with named radios, a copies spinbutton, an email textbox and a review button, while keyboard focus and validation feedback remain unverified."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both views show Paperback, Hardcover, the 1\u2013100 copy range, contact email and \u201cReview request,\u201d with no interaction receipt showing validation, the resulting summary or a return to editing."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The bookbinder identity moves from the left panel to a compact mobile header, leaving the large quote heading and dark review button to mark the form\u2019s start and finish at both widths."
+            },
+            "spacing": {
+              "score": 3,
+              "evidence": "The format cards and quantity hint stay neatly paired at both widths, though the roughly 60 px gap below the desktop email field leaves the review action visually detached."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "On mobile, the serif bookbinder name wraps cleanly onto two lines and the quote heading fits on one, with bold sans-serif labels distinguishing fields from hints at both widths."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The deep green binding and gold stitching carry through to the review button and its arrow, while the muted minus sign distinguishes the disabled control from the active plus."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "The field labels stay legible on mobile, and both browser trees give the stepper buttons explicit action names and identify the visibly muted \u201cDecrease copies\u201d control as disabled."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "The two binding choices, 1\u2013100 copy range, contact email and review action match the brief at both widths, with validation, summary display and subsequent editing unverified by an interaction receipt."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26203,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4242,
+          "reasoning_output_tokens": 3558
+        },
+        "scores": {
+          "v2": 91.66666666666666,
+          "none": 91.66666666666666
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "6e8ef85273d878355b2d3ac146e47ce6cc59bda003c0790924653c3785a95012",
+          "A-390.png": "7d4ac55e3887c538ab5117d6a47a3ffa659b769edeaf0ed79d51f41fc518af5e",
+          "B-1440.png": "268cad4dcc9f8a2be737a6671f89012a2a1871a86de9d0a9620e3b7506d4e96e",
+          "B-390.png": "54deeccbd5a9a08e5bfc84a994e510ade26260e01a5493be748493d5155b624b"
+        },
+        "judge_prompt_sha256": "b5f91ab5df5002c60be78dd5178b5e31e0947fe03baa7c5e6456a16474c555f4"
+      }
+    },
+    "mobile-train": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44995146562",
+      "cells": {
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 64420,
+              "cached_input_tokens": 41472,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 14558,
+              "reasoning_output_tokens": 11266
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "mobile-train",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "e3a592ba2273aafd82f954a4d8fb7194e71708835b295743abb35b02a92654e1",
+            "elapsed_seconds": 300.64,
+            "exit_code": 0,
+            "trace_sha256": "a81bf55981ca171ae298c8c30f6b9c3725bbccb3a104c3798271822cde962126",
+            "html_sha256": "1f1fff59669024bb2a79076c98f8a2ec70cba3c3291ef9a1a236ab90fc556a8b"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "300b73f5202ee781f239058d094d3f9f588cc5d51add86239aae5f9536ddb5b6",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "1e947e2bc861d8cb1c3d7f3475c59c56b591be9f714d5897ede465ee420d3fdd",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 42171,
+              "cached_input_tokens": 40704,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 19263,
+              "reasoning_output_tokens": 15637
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "mobile-train",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "e3a592ba2273aafd82f954a4d8fb7194e71708835b295743abb35b02a92654e1",
+            "elapsed_seconds": 390.85,
+            "exit_code": 0,
+            "trace_sha256": "80fb7063ea7c3cd17ce1fe030c27116ceeb26f9f32509621de7f937242e1959d",
+            "html_sha256": "8ef330b2826d9fa919b8e6806341535c5942f29a2a8084c06bf35812bd8288a4"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "2b75158d103edf0e498b9776fe3aa44240649850cc582d69ef082a7af6c9d55f",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "b78c9571db65cd892b6ab80301210fbdcf80251b9502014ee1c2df9d7d80be0a",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "mobile-train",
+        "surface": "mobile",
+        "blind_key": {
+          "A": "v2",
+          "B": "none"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, Milwaukee establishes the destination at a glance, the next row pairs 17:42 with a prominent platform 6, and the single ticket action sits directly below."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The destination, departure time and button edge share a left inset at both widths, while the padded footer separates the action from the boarding details."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The bold, condensed heading keeps Milwaukee on one line at phone width, and the large numerals remain easy to scan beneath the smaller Departs and Platform labels."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Yellow is reserved for the platform panel, making the boarding location easy to find while the pale destination and time stand out against black."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "At both widths, the browser tree confirms the Milwaukee heading, labeled time and platform values, and a button whose accessible name matches the visible \u201cShow ticket\u201d label."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both views show Train 487 to Milwaukee, 17:42, platform 6 and one \u201cShow ticket\u201d button, while the closed state leaves T487-MK02, the text fallback and the credential format unverified."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "Milwaukee leads at both widths, with the departure time and hanging platform sign aligned in the next row and \u201cShow ticket\u201d clearly identifiable below."
+            },
+            "spacing": {
+              "score": 3,
+              "evidence": "The labels and values align across both layouts, though the track illustration leaves about 80 pixels between the mobile platform sign and its ticket button, loosening their visual connection."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The heavy destination heading stays on one line, and the matching size and baseline of 17:42 and 6 make both boarding details easy to scan even at 390 pixels."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The yellow platform sign stands out against navy at both widths, and the smaller yellow ticket icon draws attention to the action while keeping the platform dominant."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Both browser trees expose the destination heading, departure and platform label\u2013value pairs, and the named \u201cShow ticket\u201d button, matching the readable layout at each width."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Train 487, Milwaukee, 17:42, platform 6 and one \u201cShow ticket\u201d action are visible at both widths, with no opened-ticket view to verify T487-MK02, the text fallback or the credential format."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 25916,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4808,
+          "reasoning_output_tokens": 4122
+        },
+        "scores": {
+          "v2": 95.83333333333334,
+          "none": 91.66666666666666
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "300b73f5202ee781f239058d094d3f9f588cc5d51add86239aae5f9536ddb5b6",
+          "A-390.png": "1e947e2bc861d8cb1c3d7f3475c59c56b591be9f714d5897ede465ee420d3fdd",
+          "B-1440.png": "2b75158d103edf0e498b9776fe3aa44240649850cc582d69ef082a7af6c9d55f",
+          "B-390.png": "b78c9571db65cd892b6ab80301210fbdcf80251b9502014ee1c2df9d7d80be0a"
+        },
+        "judge_prompt_sha256": "37b8a8362915ca20def9bd27cd76fa95a859d390be5ca6a5ad1aba5b103b8d9f"
+      }
+    },
+    "mobile-field": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44995146562",
+      "cells": {
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 20535,
+              "cached_input_tokens": 11136,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 20180,
+              "reasoning_output_tokens": 15125
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "mobile-field",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "246a9e836ba6e7e7eface97e138dde1585f1635f9060bef4a6f415623f87c00b",
+            "elapsed_seconds": 406.77,
+            "exit_code": 0,
+            "trace_sha256": "b217ffef6475058af95bac2bc862e5487adc582009b721213bc5bef8bf47192c",
+            "html_sha256": "b3e9418509cb864312951dd3875da08fad9bd117ef914ed215d951ada05d1398"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "df47b5ce8bb56857934ffd9e1c54259f19fb6d6a6946cc02317ded782d3e3c0f",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "8ade9fe732f7aa0c2846cfeaef72214bb7c899453ef439d9d34ef1923fd31e95",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 64446,
+              "cached_input_tokens": 20352,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 16203,
+              "reasoning_output_tokens": 11450
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "mobile-field",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "246a9e836ba6e7e7eface97e138dde1585f1635f9060bef4a6f415623f87c00b",
+            "elapsed_seconds": 332.7,
+            "exit_code": 0,
+            "trace_sha256": "06051f098b383b6b3baa89de5681a3984b4a523306f6f4b3680805dcfa62cca3",
+            "html_sha256": "dd69a0608df921b653487d97edc1d8d056107b3c9cec4a9c5ac060b4f92611b6"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "4cfde1ceeda676e53a28578658940c2041aa10e86d36d39b21cb3dd611eb4b11",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "b823027e948e53f8be21e028763cabace758ee079d493bae40b7398229f4719d",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "mobile-field",
+        "surface": "mobile",
+        "blind_key": {
+          "A": "none",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "At both widths, \u201cCliff Loop\u201d dominates the first glance, and the crew must read a smaller line beneath it to identify East footbridge as the repair site."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "A divider separates the location from the reported issue, and the footer places status beside the action on desktop and directly above the wide button on mobile."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The condensed type keeps \u201cDeck boards loose\u201d and \u201cNeeds inspection\u201d on one line each at 390 px, and both remain distinctly larger than their labels."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Yellow highlights the affected boards and the clock tile for the pending inspection, while the dark green button gives its white action label strong contrast."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "The clock tile accompanies an explicit \u201cNeeds inspection\u201d label, and both browser trees expose that text as a status and \u201cMark as inspected\u201d as a named button."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both widths show \u201cCliff Loop,\u201d \u201cEast footbridge,\u201d \u201cDeck boards loose\u201d and \u201cMark as inspected,\u201d with Undo unverified in the supplied initial state."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The Cliff Loop pin label leads into the dominant \u201cEast footbridge\u201d heading, and the contrasting footer makes \u201cNot inspected\u201d and the inspection action easy to locate at both widths."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The desktop view places the issue beside its diagram, and the phone stacks them while keeping the heading, status tile and wide button aligned to a common left edge."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "\u201cEast footbridge\u201d breaks cleanly between words at both widths, and the bold \u201cNot inspected\u201d text remains prominent beneath its smaller label on the phone."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The yellow warning triangle matches the lifted yellow plank, and the yellow inspection button stands out against the pale footer with a high-contrast black label."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "\u201cNot inspected\u201d spells out the state beside the circle icon, and both browser trees group the status and named action button within the \u201cInspection status\u201d region."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both views identify Cliff Loop, East footbridge and the loose deck boards and show \u201cMark as inspected,\u201d leaving the requested Undo action unverified."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 25876,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5010,
+          "reasoning_output_tokens": 4355
+        },
+        "scores": {
+          "none": 91.66666666666666,
+          "v2": 95.83333333333334
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "df47b5ce8bb56857934ffd9e1c54259f19fb6d6a6946cc02317ded782d3e3c0f",
+          "A-390.png": "8ade9fe732f7aa0c2846cfeaef72214bb7c899453ef439d9d34ef1923fd31e95",
+          "B-1440.png": "4cfde1ceeda676e53a28578658940c2041aa10e86d36d39b21cb3dd611eb4b11",
+          "B-390.png": "b823027e948e53f8be21e028763cabace758ee079d493bae40b7398229f4719d"
+        },
+        "judge_prompt_sha256": "7168d45297b953086933cff0b70c38ae1e97008211d599125f19007d12c69ad8"
       }
     }
   }
