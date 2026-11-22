@@ -23,6 +23,8 @@ KEYS = frozenset("Tab Shift+Tab Enter Space Backspace Escape ArrowUp ArrowDown "
                  "ArrowLeft ArrowRight ControlOrMeta+a".split())
 IDENTIFIER = re.compile(r"[A-Za-z0-9][A-Za-z0-9_-]{0,31}")
 RECEIPT = re.compile(r"^\[return value\] LIVE_VIEW (.+)$", re.MULTILINE)
+# Leave room for base64 and metadata within the observed one-MiB client result.
+MAX_ORIGINAL_PNG_BYTES = 750 * 1024
 
 # A fresh context starts with empty local and session storage. Its route also
 # covers the first request of a popup and leaves other browser contexts alone.
@@ -234,6 +236,15 @@ state.journeyActivated = true;
                 png = path.with_suffix(".pending").read_bytes()
                 if not png.startswith(b"\x89PNG\r\n\x1a\n"):
                     raise ValueError("Missing screenshot evidence")
+                record.update(path=path.name, sha256=sha256(png))
+                if self.original_capture and len(png) > MAX_ORIGINAL_PNG_BYTES:
+                    path.with_suffix(".pending").replace(path)
+                    self.audit({**record, "status": "error", "reason": "capture-too-large"})
+                    return ToolResult(content=[TextContent(
+                        type="text",
+                        text="The full-size screenshot exceeds the review client's image limit. "
+                             "The original was archived. Mark this view unscored.",
+                    )], is_error=True)
                 if self.original_capture:
                     image = ImageContent(type="image", data=base64.b64encode(png).decode("ascii"),
                                          mimeType="image/png")
@@ -241,7 +252,6 @@ state.journeyActivated = true;
                     image = images[0]
                 else:
                     raise ValueError("Missing preview image")
-                record.update(path=path.name, sha256=sha256(png))
                 metadata = {**output, "path": path.name, "sha256": record["sha256"]}
                 output = ToolResult(content=[TextContent(type="text", text=json.dumps(metadata)), image])
                 path.with_suffix(".pending").replace(path)

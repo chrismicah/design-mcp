@@ -14,6 +14,7 @@ from mcp.types import ImageContent, TextContent
 import pytest
 import pytest_asyncio
 
+import live_browser
 from live_browser import LiveBrowser, create_server
 
 URL = "http://127.0.0.1:49100/view.html"
@@ -130,6 +131,24 @@ async def test_tool_schema_and_observed_operations(connected):
     desktop = (await judge.call_tool("open_view", {"page_id": "B", "width": 1440})).data
     assert (desktop["width"], desktop["height"], desktop["ax"]) == (1440, 900, "textbox: ")
     assert [op for op, _ in relay.calls].count("session_new") == 1
+
+
+@pytest.mark.asyncio
+async def test_oversized_original_is_archived_and_ineligible(config, monkeypatch):
+    monkeypatch.setattr(live_browser, "MAX_ORIGINAL_PNG_BYTES", len(PNG) - 1)
+    browser = LiveBrowser({**config, "original_capture": True})
+    playwriter = FakePlaywriter()
+    async with Client(playwriter.server) as relay, Client(create_server(browser)) as judge:
+        await browser.connect(relay)
+        await judge.call_tool("open_view", {"page_id": "A", "width": 1440})
+        captured = await judge.call_tool("capture", {"label": "A-1440-before"}, raise_on_error=False)
+    assert captured.is_error
+    assert [block.type for block in captured.content] == ["text"]
+    assert "Mark this view unscored" in captured.content[0].text
+    assert (browser.evidence / "A-1440-before.png").read_bytes() == PNG
+    row = json.loads((browser.evidence / "audit.jsonl").read_text().splitlines()[-1])
+    assert row["status"] == "error" and row["reason"] == "capture-too-large"
+    assert row["sha256"] == hashlib.sha256(PNG).hexdigest()
 
 
 @pytest.mark.parametrize("url", [

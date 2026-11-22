@@ -73,6 +73,8 @@ python -B evals/v1/live_browser.py --config "$REVIEW_CONFIG"
 
 The critic uses `open_view`, `act`, and `capture`. Complete one view before opening the next. Each open starts with fresh fixture storage, while a reload through `act` preserves it. By default, capture returns a compact preview and archives the original PNG with its hash. Set `"original_capture": true` for release review to send the archived PNG itself to the critic. Keep `audit.jsonl`, the critic trace, and the original images together. [Real driver probe](../../evidence/benchmark-v1/compact-live-browser-probe.json) · [Blind comparison](../../evidence/benchmark-v1/compact-live-repair-ballot.json)
 
+Original-capture mode archives and flags a PNG over 750 KiB without sending it to the critic. This leaves room for base64 and metadata within the observed client result limit. The view stays unscored. [Truncated capture receipt](../../evidence/benchmark-v1/social-lighting-r5-capture-limit.json)
+
 Use `audit_scoreboard.py` to export completed frozen-baseline ballots without making new model calls. Give it the combined captures, the original generation runs, the blind ballots, and the downloaded capture artifacts in separate folders named by GitHub Actions run ID. It checks the generation trace, judge trace, blind images, and exact hosted archive before attaching a run link. The report retains the number of completed pairs out of the original 36.
 
 ```bash
