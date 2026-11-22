@@ -153,11 +153,15 @@ try {
   })()`));
   const isPopup = item => /^chrome-extension:\/\/[a-p]{32}\/popup\.html$/.test(item.url);
   let openedAt;
+  let keyReturnedAt;
   if (mac) {
     proof.phase = "toolbar shortcut";
     assert.equal(await findTarget(isPopup), undefined, "Popup must start closed");
+    await send("Page.bringToFront", {}, fixtureSession);
+    await until("focused dispatch fixture", () => inspect(fixtureSession, "document.hasFocus()"), 5000, 15);
     openedAt = performance.now();
     key("Command+Shift+Y");
+    keyReturnedAt = performance.now();
   } else {
     const windowId = execFileSync("xdotool", ["search", "--onlyvisible", "--name", "Evening shuttle dispatch"],
       { encoding: "utf8" }).trim().split("\n")[0];
@@ -165,6 +169,7 @@ try {
     key("ctrl+shift+y");
   }
   const target = await until("toolbar popup", () => findTarget(isPopup), 10000, mac ? 15 : 120);
+  const targetObservedAt = performance.now();
   const extensionId = new URL(target.url).hostname;
   proof.extensionId = extensionId;
   const popup = await attach(target);
@@ -172,8 +177,12 @@ try {
     await until("painted initial Scan control", () => painted(popup, "#scan", "idle"), 5000, 15);
     proof.firstActivation = {
       openMs: performance.now() - openedAt,
+      keyDispatchMs: keyReturnedAt - openedAt,
+      popupTargetObservedMs: targetObservedAt - openedAt,
       drivers: {open: "macOS shortcut", scan: "CDP keyboard"},
     };
+    proof.firstActivation.documentPaintMs = await inspect(popup,
+      "performance.getEntriesByName('first-contentful-paint')[0]?.startTime ?? null");
   }
   const observePopup = () => inspect(popup, `(() => {
     if (location.href !== ${JSON.stringify(target.url)} || document.readyState !== 'complete') return null;
