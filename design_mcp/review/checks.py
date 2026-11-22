@@ -9,6 +9,7 @@ import math
 from .evidence import UNKNOWN
 
 MIN_CONTRAST = 4.5
+MIN_LARGE_TEXT_CONTRAST = 3.0
 _PRIORITY = ("covered-control", "overflow", "contrast")
 
 
@@ -147,13 +148,13 @@ def _low_contrast(frame):
                 or UNKNOWN in (ink, fill, font["size_px"]) or fill[3] < 1):
             continue
         bold = font["weight"] != UNKNOWN and font["weight"] >= 700
-        if font["size_px"] >= 24 or (bold and font["size_px"] >= 18.66):
-            continue
+        large = font["size_px"] >= 24 or (bold and font["size_px"] >= 14 * 4 / 3)
+        target = MIN_LARGE_TEXT_CONTRAST if large else MIN_CONTRAST
         seen = composite(ink, fill)
         ratio = contrast_ratio(seen, fill)
-        if ratio >= MIN_CONTRAST:
+        if ratio >= target:
             continue
-        better = suggest_ink(seen, fill)
+        better = suggest_ink(seen, fill, target)
         if better is None:
             continue
         label = _label(region, "this text")
@@ -162,9 +163,9 @@ def _low_contrast(frame):
         yield ratio, _finding(
             "contrast", frame, region,
             problem=_sentence(f"{label} is hard to read at {width} px wide: its text color {before} on {ground} "
-                              f"measures {_ratio(ratio)} to 1, and text this size needs at least 4.5 to 1."),
+                              f"measures {_ratio(ratio)} to 1, and text this size needs at least {target:g} to 1."),
             change=f"Change the text color of {label} from {before} to {after}.",
-            outcome=_sentence(f"{label} measures at least 4.5 to 1 against its background "
+            outcome=_sentence(f"{label} measures at least {target:g} to 1 against its background "
                               f"({_ratio(new_ratio)} to 1 with {after})."),
             evidence={
                 "ink": before,

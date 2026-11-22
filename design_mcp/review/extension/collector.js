@@ -279,15 +279,17 @@ function designMcpCollect(options) {
     return value <= 0.04045 ? value / 12.92 : Math.pow((value + 0.055) / 1.055, 2.4);
   };
   const luminance = color => 0.2126 * linear(color[0]) + 0.7152 * linear(color[1]) + 0.0722 * linear(color[2]);
-  const contrast = record => {
+  const contrastFraction = record => {
     const region = record.region;
-    if (!region.has_text || region.disabled || region.fill_flat !== true || !region.ink || !region.fill) return 99;
-    if (region.font.size_px >= 24 || (region.font.size_px >= 18.66 && region.font.weight >= 700)) return 99;
+    if (!region.has_text || region.masked || region.disabled || region.fill_flat !== true ||
+        !region.ink || !region.fill || region.fill[3] < 1) return Infinity;
+    const large = region.font.size_px >= 24 || (region.font.size_px >= 14 * 4 / 3 && region.font.weight >= 700);
+    const target = large ? 3 : 4.5;
     const alpha = region.ink[3];
     const ink = [0, 1, 2].map(index => alpha * region.ink[index] + (1 - alpha) * region.fill[index]);
     const a = luminance(ink);
     const b = luminance(region.fill);
-    return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
+    return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05) / target;
   };
   const chosen = [];
   const take = record => {
@@ -296,8 +298,8 @@ function designMcpCollect(options) {
   take(found.find(record => record.level === 1) || found.find(record => record.isHeading));
   take(primary);
   take(found.find(record => inContent(record) && record.region.masked && record.region.name));
-  found.map(record => ({record, ratio: contrast(record)})).filter(item => item.ratio < 4.5)
-    .sort((a, b) => a.ratio - b.ratio).slice(0, 3).forEach(item => take(item.record));
+  found.map(record => ({record, fraction: contrastFraction(record)})).filter(item => item.fraction < 1)
+    .sort((a, b) => a.fraction - b.fraction).slice(0, 3).forEach(item => take(item.record));
   take(found.find(record => record.status && inContent(record)) || found.find(record => record.status));
   found.filter(record => inContent(record) && (record.isHeading || record.control || record.region.masked)).forEach(take);
   found.filter(record => record.isHeading || record.control || record.status).forEach(take);

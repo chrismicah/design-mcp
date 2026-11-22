@@ -44,7 +44,7 @@ Local checks, most blocking first:
 
 1. A fixed or sticky layer on top of the main button
 2. Sideways scroll of more than 1 CSS pixel
-3. Text under 4.5 to 1 on a flat fill (large text is exempt)
+3. Text on a flat fill below 4.5 to 1, or below 3 to 1 when it is at least 24 CSS px or 14 pt and bold. [WCAG contrast minimum](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)
 
 Only the contrast finding has an after view. For the other two the preview says so and shows the outlined capture. A visual review by a model is not part of this build. The result says "not run" and never substitutes an invented answer.
 
