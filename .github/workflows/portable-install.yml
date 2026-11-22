@@ -2,7 +2,7 @@ name: Portable package install and doctor
 
 on:
   push:
-    branches: [master, design-mcp/portable-package-ci, design-mcp/curated-default, design-mcp/form-rollout]
+    branches: [master, design-mcp/portable-package-ci, design-mcp/curated-default, design-mcp/form-rollout, design-mcp/direct-install-proof]
   pull_request:
     branches: [master]
   workflow_dispatch:
@@ -34,7 +34,7 @@ jobs:
         uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
         with:
           python-version: ${{ matrix.python }}
-      - name: Install from the clean checkout using pipx and uv
+      - name: Install from the pinned Git revision using pipx and uv
         shell: bash
         env:
           EXPECTED_PYTHON: ${{ matrix.python }}
@@ -42,4 +42,5 @@ jobs:
           PYTHON_EXECUTABLE: ${{ steps.python.outputs.python-path }}
         run: |
           echo "Architecture: $(uname -m), $(sw_vers -productVersion), $("$PYTHON_EXECUTABLE" -V)" >> "$GITHUB_STEP_SUMMARY"
-          bash scripts/verify_clean_install.sh "$GITHUB_WORKSPACE" "$PYTHON_EXECUTABLE" "$RUNNER_TEMP/design-install"
+          bash scripts/verify_clean_install.sh "$GITHUB_WORKSPACE" "$PYTHON_EXECUTABLE" \
+            "$RUNNER_TEMP/design-install" "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY.git"
