@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+<!--
+  A supplier digest reader needs to set a delivery schedule and confirm the saved choice.
+  The screen should feel calm and precise. Keep the content focused on scheduling.
+  Mist #EEF2F3, chalk #FFFEFA, ink #152E39, tide #0B5368, sea glass #DDECE9,
+  and apricot #F8B96D. DM Serif Text sets the title and saved schedule.
+  Instrument Sans sets the controls. The saved schedule sits beside the form
+  and stacks below it on mobile. An apricot date mark anchors the illustration.
+-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Supplier digest preferences</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&amp;family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --mist: #eef2f3;
+      --chalk: #fffefa;
+      --ink: #152e39;
+      --tide: #0b5368;
+      --glass: #ddece9;
+      --apricot: #f8b96d;
+      --muted: color-mix(in srgb, var(--ink) 77%, var(--chalk));
+      --line: color-mix(in srgb, var(--ink) 20%, var(--chalk));
+      --control-line: color-mix(in srgb, var(--ink) 55%, var(--chalk));
+      --serif: "DM Serif Text", Georgia, serif;
+      --sans: "Instrument Sans", sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--mist);
+      color: var(--ink);
+      font: 400 1rem / 1.5 var(--sans);
+    }
+
+    .page {
+      width: min(69rem, calc(100% - 5rem));
+      margin-inline: auto;
+      padding-block: 1.625rem 3.5rem;
+    }
+
+    .masthead {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding-block-end: 1rem;
+      border-block-end: 1px solid var(--line);
+      font-weight: 700;
+    }
+
+    .masthead-mark {
+      display: grid;
+      place-items: center;
+      width: 2.125rem;
+      height: 2.125rem;
+      border-radius: .45rem;
+      background: var(--tide);
+      color: var(--chalk);
+    }
+
+    .intro {
+      margin-block: 3rem 2.125rem;
+    }
+
+    h1 {
+      margin: 0;
+      font: 400 clamp(2.625rem, 5.55vw, 4.85rem) / 1.02 var(--serif);
+      letter-spacing: -.04em;
+    }
+
+    .intro p {
+      margin: .625rem 0 0;
+      max-width: 56ch;
+      color: var(--muted);
+      font-size: 1.125rem;
+    }
+
+    .preferences {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: .875rem;
+      background: var(--chalk);
+    }
+
+    .settings {
+      min-width: 0;
+      padding: 2.25rem 2.5rem 2rem;
+    }
+
+    fieldset {
+      min-width: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    legend,
+    .field-label {
+      display: block;
+      padding: 0;
+      font-size: 1.0625rem;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .frequencies {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .625rem;
+      margin-block-start: .625rem;
+    }
+
+    .choice {
+      display: flex;
+      align-items: center;
+      gap: .625rem;
+      min-height: 3.75rem;
+      padding-inline: .875rem;
+      border: 1px solid var(--line);
+      border-radius: .5rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 120ms ease, border-color 120ms ease;
+    }
+
+    .choice input {
+      flex: 0 0 auto;
+      width: 1.125rem;
+      height: 1.125rem;
+      margin: 0;
+      accent-color: var(--tide);
+      cursor: inherit;
+    }
+
+    .choice:has(input:checked) {
+      border-color: var(--tide);
+      background: var(--glass);
+    }
+
+    .choice:has(input:focus-visible) {
+      z-index: 1;
+      outline: 3px solid var(--tide);
+      outline-offset: 3px;
+    }
+
+    .day-field {
+      margin-block-start: 1.5rem;
+    }
+
+    .day-field[hidden] {
+      display: none;
+    }
+
+    .select-wrap {
+      position: relative;
+      max-width: 19rem;
+      margin-block-start: .5rem;
+    }
+
+    select {
+      appearance: none;
+      width: 100%;
+      min-height: 3.125rem;
+      padding: .625rem 2.75rem .625rem .875rem;
+      border: 1px solid var(--control-line);
+      border-radius: .5rem;
+      background: var(--chalk);
+      color: var(--ink);
+      font: 600 1rem / 1.4 var(--sans);
+      cursor: pointer;
+    }
+
+    .select-wrap svg {
+      position: absolute;
+      top: 50%;
+      right: .875rem;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: .625rem 1rem;
+      margin-block-start: 1.75rem;
+      padding-block-start: 1.25rem;
+      border-block-start: 1px solid var(--line);
+    }
+
+    button {
+      min-height: 3rem;
+      padding: .625rem 1.125rem;
+      border: 1px solid transparent;
+      border-radius: .5rem;
+      background: var(--tide);
+      color: var(--chalk);
+      font: 700 1rem / 1.35 var(--sans);
+      cursor: pointer;
+      transition: background-color 120ms ease;
+    }
+
+    button:hover,
+    button:active {
+      background: var(--ink);
+    }
+
+    button:focus-visible,
+    select:focus-visible {
+      outline: 3px solid var(--tide);
+      outline-offset: 3px;
+    }
+
+    .feedback {
+      margin: 0;
+      color: var(--muted);
+      font-size: .875rem;
+      font-weight: 600;
+    }
+
+    .receipt {
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+      gap: .5rem;
+      padding: 2.125rem 2rem 1rem;
+      border-inline-start: 1px dashed var(--control-line);
+      background: var(--glass);
+    }
+
+    .receipt h2 {
+      margin: 0 0 .375rem;
+      font-size: .9375rem;
+      font-weight: 700;
+    }
+
+    .schedule {
+      margin: 0;
+      font: 400 clamp(1.75rem, 3vw, 2.375rem) / 1.1 var(--serif);
+      letter-spacing: -.025em;
+    }
+
+    .dispatch-art {
+      position: relative;
+      min-width: 0;
+      min-height: 0;
+    }
+
+    .dispatch-art svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 48rem) {
+      .page {
+        width: calc(100% - 2rem);
+        padding-block: 1rem 2rem;
+      }
+
+      .masthead {
+        padding-block-end: .875rem;
+      }
+
+      .masthead-mark {
+        width: 1.875rem;
+        height: 1.875rem;
+      }
+
+      .intro {
+        margin-block: 1.75rem 1.375rem;
+      }
+
+      h1 {
+        font-size: clamp(2.4rem, 10.8vw, 3.65rem);
+      }
+
+      .intro p {
+        margin-block-start: .375rem;
+        font-size: 1rem;
+      }
+
+      .preferences {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .settings {
+        padding: 1.25rem;
+      }
+
+      .frequencies {
+        gap: .4375rem;
+      }
+
+      .choice {
+        min-height: 3.125rem;
+        gap: .4375rem;
+        padding-inline: .5rem;
+        font-size: .9375rem;
+      }
+
+      .choice input {
+        width: 1rem;
+        height: 1rem;
+      }
+
+      .select-wrap {
+        max-width: none;
+      }
+
+      .actions {
+        margin-block-start: 1.375rem;
+        padding-block-start: 1rem;
+      }
+
+      .receipt {
+        grid-template-columns: minmax(0, 1fr) clamp(5.5rem, 32vw, 12rem);
+        grid-template-rows: auto;
+        align-items: center;
+        min-height: 8rem;
+        padding: 1rem 1.25rem;
+        border-inline-start: 0;
+        border-block-start: 1px dashed var(--control-line);
+      }
+
+      .schedule {
+        font-size: clamp(1.5rem, 6.5vw, 2rem);
+      }
+
+      .dispatch-art {
+        align-self: stretch;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .choice,
+      button {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="masthead">
+      <span class="masthead-mark" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" focusable="false">
+          <path d="M6 3.75h8.75L18 7v13.25H6zM14.75 3.75V7H18M9 11h6m-6 4h6"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      Preferences
+    </header>
+
+    <main>
+      <div class="intro">
+        <h1>Supplier digest</h1>
+        <p>Choose when your digest arrives.</p>
+      </div>
+
+      <div class="preferences">
+        <form class="settings" id="digest-form" aria-label="Supplier digest preferences" autocomplete="off">
+          <fieldset>
+            <legend>Frequency</legend>
+            <div class="frequencies">
+              <label class="choice">
+                <input type="radio" name="frequency" value="daily">
+                <span>Daily</span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="frequency" value="weekly" checked>
+                <span>Weekly</span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="frequency" value="off">
+                <span>Off</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="day-field" id="day-field">
+            <label class="field-label" for="delivery-day">Delivery day</label>
+            <div class="select-wrap">
+              <select name="weekday" id="delivery-day">
+                <option selected>Monday</option>
+                <option>Tuesday</option>
+                <option>Wednesday</option>
+                <option>Thursday</option>
+                <option>Friday</option>
+                <option>Saturday</option>
+                <option>Sunday</option>
+              </select>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" focusable="false">
+                <path d="m4.5 7 4.5 4.5L13.5 7" stroke="currentColor" stroke-width="1.5"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button type="submit">Save preferences</button>
+            <p class="feedback" role="status" aria-atomic="true"><span id="feedback"></span><span class="visually-hidden" id="announcement"></span></p>
+          </div>
+        </form>
+
+        <section class="receipt" aria-labelledby="saved-heading">
+          <div>
+            <h2 id="saved-heading">Saved schedule</h2>
+            <p class="schedule" id="saved-schedule">Weekly on Monday</p>
+          </div>
+
+          <div class="dispatch-art" aria-hidden="true">
+            <svg viewBox="0 0 350 220" fill="none" focusable="false">
+              <ellipse cx="176" cy="199" rx="123" ry="10" fill="var(--ink)" opacity=".1"/>
+              <path d="M23 139h25m-16 10h14m260-49h20m-13 10h13m-21-52v14m-7-7h14"
+                    stroke="var(--tide)" stroke-width="1.5" stroke-linecap="round" opacity=".48"/>
+              <g transform="rotate(-7 170 122)" stroke="var(--ink)" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <path d="M59 106 164 44a11 11 0 0 1 12 0l105 62v82a8 8 0 0 1-8 8H67a8 8 0 0 1-8-8z"
+                      fill="var(--ink)"/>
+                <g transform="rotate(13 170 115)">
+                  <path d="M107 31h108l22 22v112H101V37a6 6 0 0 1 6-6z" fill="var(--chalk)"/>
+                  <path d="M215 31v17a5 5 0 0 0 5 5h17z" fill="var(--glass)"/>
+                  <path d="M117 52h63m-63 10h39" stroke="var(--tide)"/>
+                  <rect x="117" y="75" width="100" height="52" rx="4" fill="var(--glass)" stroke-width="1.25"/>
+                  <path d="M117 92h100m-100 17h100m-75-17v35m25-35v35m25-35v35"
+                        stroke-width="1" opacity=".46"/>
+                  <path d="M128 82h17m8 0h11" stroke="var(--tide)" stroke-width="1.25"/>
+                  <rect x="121" y="95" width="17" height="11" rx="2" fill="var(--apricot)" stroke="none"/>
+                  <path d="m126 100 2.5 2.5 4.5-4.5" stroke-width="1.15"/>
+                </g>
+                <path d="m59 106 111 53 111-53v82a8 8 0 0 1-8 8H67a8 8 0 0 1-8-8z" fill="var(--tide)"/>
+                <path d="m65 189 77-43m56 0 77 43" stroke="var(--glass)" stroke-width="1.35" opacity=".45"/>
+                <path d="M78 180h24m-24-7h16" stroke="var(--glass)" stroke-width="1.5" opacity=".8"/>
+              </g>
+            </svg>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const form = document.getElementById("digest-form");
+    const frequency = form.elements.namedItem("frequency");
+    const dayField = document.getElementById("day-field");
+    const deliveryDay = document.getElementById("delivery-day");
+    const savedSchedule = document.getElementById("saved-schedule");
+    const feedback = document.getElementById("feedback");
+    const announcement = document.getElementById("announcement");
+
+    function updateDayField() {
+      const isWeekly = frequency.value === "weekly";
+      dayField.hidden = !isWeekly;
+      deliveryDay.disabled = !isWeekly;
+    }
+
+    function describeSelection() {
+      switch (frequency.value) {
+        case "weekly":
+          return `Weekly on ${deliveryDay.value}`;
+        case "daily":
+          return "Daily";
+        default:
+          return "Off";
+      }
+    }
+
+    form.addEventListener("change", () => {
+      updateDayField();
+      feedback.textContent = describeSelection() === savedSchedule.textContent
+        ? ""
+        : "Unsaved changes";
+      announcement.textContent = "";
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const selection = describeSelection();
+      savedSchedule.textContent = selection;
+      feedback.textContent = "Preferences saved";
+      announcement.textContent = `. ${selection}.`;
+    });
+
+    updateDayField();
+  </script>
+</body>
+</html>
