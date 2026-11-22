@@ -2,6 +2,7 @@
 
 import json
 import os
+from pathlib import Path
 
 from render import execute, main, sha256
 
@@ -35,6 +36,25 @@ const axeContrast = () => page.evaluate(async () => {
     passedNodes: result.passes.reduce((total, row) => total + row.nodes.length, 0)};
 });
 const contrast = {};
+async function inspectUnresolved(scan, statePath, backgroundPath) {
+  if (!scan.incomplete.length) return;
+  const selectors = scan.incomplete.map(row => row.target[0]);
+  const elements = await page.evaluate(values => values.map(selector => {
+    const node = document.querySelector(selector);
+    const {left, top, right, bottom} = node.getBoundingClientRect();
+    const style = getComputedStyle(node);
+    const svg = node instanceof SVGElement;
+    return {selector, box: [left,top,right,bottom], color: svg ? style.fill : style.color, svg};
+  }), selectors);
+  await page.screenshot({path: statePath, animations: 'disabled'});
+  const rule = await page.addStyleTag({content: selectors.join(',') + '{opacity:0!important}'});
+  try {
+    await page.screenshot({path: backgroundPath, animations: 'disabled'});
+  } finally {
+    await rule.evaluate(el => el.remove());
+  }
+  scan.sample = {elements, statePath, backgroundPath};
+}
 """
 
 _COFFEE = r"""
@@ -57,6 +77,7 @@ if (reached) {
   correctBag = added && copy.includes('Alto Carmo') && copy.includes('$19');
   await page.screenshot({path: __PATH__, animations: 'disabled'});
   contrast.after = await axeContrast();
+  await inspectUnresolved(contrast.after, __PATH__, __AFTER_BG__);
   await page.keyboard.press('Escape');
   await bag.waitFor({state: 'hidden', timeout: 2000}).catch(() => {});
   restored = !(await bag.isVisible()) && await isFocused(openedOnAdd ? buy : openBag);
@@ -87,6 +108,7 @@ if (reached) {
   revealed = await ticket.isVisible();
   await page.screenshot({path: __PATH__, animations: 'disabled'});
   contrast.after = await axeContrast();
+  await inspectUnresolved(contrast.after, __PATH__, __AFTER_BG__);
   await page.keyboard.press('Enter');
   restored = !(await ticket.isVisible()) && await isFocused(control);
 }
@@ -99,9 +121,16 @@ async def interact(client, cell, width):
     path = cell / f"{width}-action.png"
     task = {"landing": _COFFEE, "mobile": _TRAIN}[cell.parent.name]
     axe_path = json.dumps(os.environ["PILOT_AXE_SCRIPT"])
-    setup = f"await page.addScriptTag({{path:{axe_path}}});\n"
-    result = await execute(client, _COMMON + setup + "contrast.initial = await axeContrast();\n"
-                           + task.replace("__PATH__", json.dumps(str(path))) + """
+    def capture_path(label):
+        return json.dumps(str(cell / f"{width}-{label}.png"))
+
+    setup = (f"await page.addScriptTag({{path:{axe_path}}});\n"
+             "contrast.initial = await axeContrast();\n"
+             f"await inspectUnresolved(contrast.initial,{capture_path('initial-unresolved')},"
+             f"{capture_path('initial-background')});\n")
+    exercise = task.replace("__PATH__", json.dumps(str(path))).replace("__AFTER_BG__",
+                                                                       capture_path("after-background"))
+    result = await execute(client, _COMMON + setup + exercise + """
 const local = page.url() === originalUrl && requests.length === 0;
 console.log('PILOT_ACTION ' + JSON.stringify({...outcome, viewport: initial, local,
   contrast, pageErrors: state.pageErrors, passed: outcome.passed && local && state.pageErrors.length === 0}));
@@ -110,6 +139,12 @@ console.log('PILOT_ACTION ' + JSON.stringify({...outcome, viewport: initial, loc
     if line is None:
         raise RuntimeError(f"Missing pilot action receipt for {cell} at {width}: {result[-700:]}")
     outcome, _ = json.JSONDecoder().raw_decode(line.split("PILOT_ACTION ", 1)[1])
+    for score in outcome["contrast"].values():
+        if "sample" not in score:
+            continue
+        for key in ("statePath", "backgroundPath"):
+            image = Path(score["sample"].pop(key))
+            score["sample"][key] = {"file": image.name, "sha256": sha256(image.read_bytes())}
     outcome["action_sha256"] = sha256(path.read_bytes()) if path.is_file() else None
     return outcome
 
