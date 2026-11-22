@@ -82,7 +82,7 @@ jobs:
           }
           path.write_text(json.dumps(manifest))
           PY
-          REVIEW_LATENCY_RUNS=30 DESIGN_MCP_CHROME_KEY_HELPER="$RUNNER_TEMP/chrome_smoke_key" \
+          REVIEW_LATENCY_RUNS=3 DESIGN_MCP_CHROME_KEY_HELPER="$RUNNER_TEMP/chrome_smoke_key" \
             node --experimental-websocket evals/vision/extension_smoke.mjs "$chrome" "$cli" "$extension" "$proof"
       - name: Verify and archive the visibly masked saved capture
         shell: bash

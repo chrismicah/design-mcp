@@ -5,6 +5,7 @@ enum SmokeKey: String {
     case shortcut = "Command+Shift+Y"
     case tab = "Tab"
     case enter = "Return"
+    case escape = "Escape"
     case right = "Right"
 
     var code: CGKeyCode {
@@ -12,6 +13,7 @@ enum SmokeKey: String {
         case .shortcut: return 0x10 // ANSI Y
         case .tab: return 0x30
         case .enter: return 0x24
+        case .escape: return 0x35
         case .right: return 0x7C
         }
     }
@@ -44,7 +46,7 @@ if arguments == ["--preflight"] {
 
 guard arguments.count == 2, let pid = pid_t(arguments[0]), pid > 1,
       let key = SmokeKey(rawValue: arguments[1]) else {
-    fail("Usage: chrome_smoke_key --preflight | CHROME_PID {Command+Shift+Y|Tab|Return|Right}")
+    fail("Usage: chrome_smoke_key --preflight | CHROME_PID {Command+Shift+Y|Tab|Return|Escape|Right}")
 }
 requireInputAccess()
 

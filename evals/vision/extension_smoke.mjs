@@ -327,7 +327,7 @@ try {
       proof.phase = "measure hosted popup and local finding";
       proof.latency = {
         scope: "Fresh popup documents and one-request native hosts in a warm hosted Chrome session",
-        drivers: {open: "macOS shortcut", scan: "CDP keyboard"},
+        drivers: {open: "macOS shortcut", scan: "CDP keyboard", dismiss: "macOS Escape"},
         expectedTrials: latencyRuns,
         trials: [],
       };
@@ -344,6 +344,7 @@ try {
         return new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve(ready()))));
       })()`);
       assert((await send("Target.closeTarget", {targetId: newTarget.targetId})).success);
+      let previousPopupId = target.targetId;
       for (let trial = 0; trial < latencyRuns; trial++) {
         await until("previous popup closed", async () => !(await findPopup()), 5000, 15);
         await send("Page.bringToFront", {}, fixtureSession);
@@ -354,6 +355,7 @@ try {
         const openedAt = performance.now();
         key("Command+Shift+Y");
         const opened = await until("fresh toolbar popup", findPopup, 5000, 15);
+        assert.notEqual(opened.targetId, previousPopupId, "Expected a new popup target");
         const tab = await attach(opened);
         await until("painted enabled Scan", () => painted(tab, "#scan", "idle"), 5000, 15);
         const openMs = performance.now() - openedAt;
@@ -364,7 +366,9 @@ try {
         const scanMs = performance.now() - scannedAt;
         assert.match(await inspect(tab, "document.querySelector('#finding').textContent"), /2\.6 to 1/);
         proof.latency.trials.push({number: trial + 1, openMs, scanMs});
-        assert((await send("Target.closeTarget", {targetId: opened.targetId})).success);
+        previousPopupId = opened.targetId;
+        key("Escape");
+        await until("Escape dismissed the toolbar popup", async () => !(await findPopup()), 5000, 15);
       }
       const p95 = metric => proof.latency.trials.map(row => row[metric]).toSorted((a, b) => a - b)[
         Math.ceil(latencyRuns * .95) - 1];
