@@ -15,6 +15,7 @@ from generate import BASE_DIR, shadcn_item_names, sha256
 SHADCN_ITEM = re.compile(r"^- ([\w@][\w./@-]*) (?:\(([^)]+)\))?", re.M)
 SKILL_FIELDS = ("Style Category", "Pattern Name", "Product Type", "Guideline", "Category",
                 "Font Pairing Name", "Pattern", "Topic", "Name")
+SHADCN_QUERY_KINDS = ("full_brief", "task_query", "component_name")
 
 
 def lines(text):
@@ -147,19 +148,20 @@ async def shadcn_task_queries(cwd, launch, tasks, plan):
         for index, case in enumerate(tasks):
             target = plan[case["id"]]
             expected = set(target["components"])
-            queries = [("full_brief", case["brief"]), ("task_query", target["query"])]
-            if index % 2:
-                queries.reverse()
+            queries = list(zip(SHADCN_QUERY_KINDS, (case["brief"], target["query"], target["components"][0]),
+                               strict=True))
+            offset = index % len(queries)
+            queries = queries[offset:] + queries[:offset]
             outcomes = {kind: await search(query, expected) for kind, query in queries}
             cases.append({"case": case["id"], "surface": case["surface"], **outcomes})
     return {
-        "scope": "Installed shadcn UI-registry retrieval. Each brief and its preregistered task query were searched in the same session.",
+        "scope": "Installed shadcn UI-registry retrieval. Each brief, short query and first preregistered component name were searched in the same session.",
         "tool": tool, "controls": controls, "cases": cases,
         "counts": {kind: {
             "relevant": sum(bool(case[kind]["matched"]) for case in cases),
             **{status: sum(case[kind]["status"] == status for case in cases)
                for status in ("matches", "empty", "tool-error", "unrecognized-response")},
-        } for kind in ("full_brief", "task_query")},
+        } for kind in SHADCN_QUERY_KINDS},
     }
 
 
