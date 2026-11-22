@@ -105,7 +105,7 @@ async def execute(client, code):
     return result_text(await client.call_tool("execute", {"code": code, "timeout": 15000}))
 
 
-async def capture(client, cell, width, height, url):
+async def capture(client, cell, width, height, url, interact=None):
     path = cell / f"{width}.png"
     await execute(client, """
       state.page = await context.newPage();
@@ -143,12 +143,14 @@ async def capture(client, cell, width, height, url):
         payload = line.split("EVAL_RESULT ", 1)[1]
         metrics, _ = json.JSONDecoder().raw_decode(payload)
         metrics.update(status="rendered", sha256=sha256(path.read_bytes()))
+        if interact:
+            metrics["interaction"] = await interact(client, cell, width)
         return metrics
     finally:
         await execute(client, "await state.page.close();")
 
 
-async def render_all(args, chrome, server, env, web_socket):
+async def render_all(args, chrome, server, env, web_socket, interact=None):
     transport = StdioTransport(command=str(args.playwriter), args=[], env=env, cwd=str(args.scratch))
     async with Client(transport, timeout=40) as client:
         tools = {tool.name for tool in await client.list_tools()}
@@ -180,7 +182,7 @@ async def render_all(args, chrome, server, env, web_socket):
             captures = {}
             for width, height in VIEWPORTS:
                 try:
-                    captures[width] = await capture(client, cell, width, height, url)
+                    captures[width] = await capture(client, cell, width, height, url, interact)
                 except (RuntimeError, ValueError, TimeoutError) as error:
                     captures[width] = {"status": "render-error", "message": str(error)}
             record = {"renderer": args.renderer, "browser": chrome, "input_sha256": sha256(server.fixture),
@@ -190,7 +192,7 @@ async def render_all(args, chrome, server, env, web_socket):
                   {width: value["status"] for width, value in captures.items()}, flush=True)
 
 
-def main():
+def main(interact=None):
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--cells", type=lambda path: Path(path).resolve(), required=True)
     p.add_argument("--playwriter", type=lambda path: Path(path).absolute(), required=True)
@@ -221,7 +223,7 @@ def main():
                     return True
 
             wait_ready(relay, relay_ready)
-            asyncio.run(render_all(args, version["Browser"], server, env, version["webSocketDebuggerUrl"]))
+            asyncio.run(render_all(args, version["Browser"], server, env, version["webSocketDebuggerUrl"], interact))
 
 
 if __name__ == "__main__":
