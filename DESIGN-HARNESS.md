@@ -1,0 +1,19 @@
+# Design MCP harness
+
+The workflow follows Anthropic's planner, generator, and evaluator design. Keep the acceptance contract and evidence independent of the builder. Use repeatable checks for routine changes and separate browser evaluation where the result depends on judgment or real interaction. [Anthropic's harness report](https://www.anthropic.com/engineering/harness-design-long-running-apps)
+
+1. **Specify the user outcome.** The planner states the user, goal, preserved facts, required actions, evidence, and what would fail the change. The evaluator challenges the contract before the builder starts. Keep adversarial inputs in a separate file outside the builder's working tree. For a contained bug, a passing example and a reproducing edge case are enough.
+2. **Build and record.** The builder produces one candidate per meaningful revision. Run deterministic checks for schemas, tokens, overflow, and expected state. Record the exact commit, model, elapsed time, token receipts when available, and test results. A fresh session can resume from those artifacts and the next concrete failure.
+3. **Exercise the page in Playwriter.** Use a fresh browser profile and confirm the page and build identity. Test at desktop and 390 CSS px with keyboard as well as pointer. Check the resulting focus, visible output, and persisted state where relevant. Keep screenshots, geometry, and accessibility observations. [Connect Playwriter](evals/v1/README.md#connect-playwriter)
+4. **Judge visuals blind.** A fresh evaluator scores coherence, originality, craft, and usability with full-size images and grounded browser facts. Keep authorship, version labels, and previous scores hidden. A release requires at least 9.5 on every required screen alongside independent interaction, privacy, and speed passes. Save the strongest verified revision and retest the smallest observable repair. Change direction if the same premise keeps failing. [Release rubric](evals/vision/rubric.md)
+5. **Run the final native smoke.** Use GPT Computer Use to verify the actual user path from installation and activation to the first result, preview, and export where present. Confirm the correct app and browser before input. Keep the native attempt and scripted Playwriter evidence separately. Save exact-build receipts and the screenshots. [Smoke evidence](SMOKE-RECEIPTS.md)
+
+## Edge cases
+
+At minimum, cover the successful flow and one realistic failure. For browser features, include a changed tab during capture, denied or unavailable browser access, an unsupported URL, empty results, a loading or slow page, overlong text, 390 px reflow, keyboard focus and restoration, and sensitive form data. Test a recovery that gets the user back to the task. If the feature previews a fix, verify the current page and its working actions survive preview and export. Record which cases apply to the slice.
+
+## Recurring improvement
+
+The [source review workflow](.github/workflows/design-source-review.yml) checks public design-system and browser-tool releases and searches for recent UI engineering research. It puts the results in the GitHub Actions run summary. GitHub runs the weekly schedule from the default branch. Routine discovery uses no model call. Run it locally any time with `python3 scripts/watch_design_sources.py`.
+
+For each promising candidate, read the source, verify rights and current behavior, and write one measurable hypothesis. For an existing failure, keep the original reproduction and test the smallest useful change on a held-out brief. Check visual quality, task completion, runtime, and token cost against the frozen comparator. Promote source-reviewed concepts and workflow changes through normal branches. Revisit costly scaffolding when a stronger model or browser tool can cover the same checks with less work. [Research](research/NOTES.md) · [Benchmark](EVALS.md)

@@ -91,3 +91,7 @@ Before launch, run all six briefs across the clear, vague, misleading and minima
 - Check the first call provides one actionable direction and a first-viewport and 390 px reading order. Log the context size and time. Hold the navigation task constant when testing the contribution of art direction. [Study synthesis](research/RESEARCH-WHY-AI-SLOP.md)
 - Conceal identifying copy, tool labels and color when testing if the composition distinguishes the six tasks. Check for repeated skeletons and choose a leading direction using the independent written evidence.
 - In the full benchmark, target passing first drafts in five of six tasks and all six within two reactions. Use the same rubric for candidate and comparators, report ties and exact sample sizes, and record task completion separately. Use the stronger scope in the competitor gates for any claim against a named product. [Competitive acceptance gates](research/RESEARCH-COMPETITORS.md#beat-them-list)
+
+## 10. Standing development workflow
+
+Use the planner, builder, and independent evaluator roles for subsequent slices. Freeze each slice's acceptance contract and hold out realistic adversarial inputs. Use Playwriter for browser checks and GPT Computer Use for the final user flow. Treat the blind visual floor and functional checks as separate requirements. Revisit the harness and direction catalog as new public research, design examples, and tooling become available. [Design MCP harness](DESIGN-HARNESS.md)

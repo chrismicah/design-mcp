@@ -39,3 +39,19 @@ The parser and scoring tests run without subscriptions or Chrome.
 ```bash
 python3 -m unittest discover -s evals/v1 -v
 ```
+
+## Connect Playwriter
+
+For repeatable screenshots and benchmarks, use the isolated renderer above. It connects to a disposable Chrome profile through Playwriter's direct session.
+
+For interactive debugging, install Playwriter's Chrome extension and click its icon on the intended test tab. When the icon turns green, add the pinned stdio server to your client and start a new session. [Playwriter extension](https://chromewebstore.google.com/detail/playwriter/jfeammnjpkecdekppnclgkkffahnhfhe) · [Pinned Playwriter MCP guide](https://github.com/remorses/playwriter/blob/playwriter%400.12.0/MCP.md)
+
+```sh
+# Codex
+codex mcp add playwriter -- npx -y playwriter@0.12.0
+
+# Claude Code
+claude mcp add -s user playwriter -- npx -y playwriter@0.12.0
+```
+
+Call `session_list` to identify the connected browser, then verify the intended tab's URL and one visible heading before interacting. If the agent cannot see the tab, confirm the extension is active on that tab and reconnect the session. For the launch proof, run the actual installation and final user flow with GPT Computer Use and save a separate receipt. [Development harness](../../DESIGN-HARNESS.md)
