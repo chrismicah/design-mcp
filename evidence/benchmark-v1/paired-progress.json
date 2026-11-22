@@ -1,31 +1,31 @@
 {
   "summary": {
     "requested_pairs": 36,
-    "judged_pairs": 32,
-    "none": 92.44791666666666,
-    "v2": 94.53125,
-    "difference": 2.0833333333333375,
+    "judged_pairs": 36,
+    "none": 92.70833333333333,
+    "v2": 94.09722222222223,
+    "difference": 1.388888888888892,
     "wins_ties_losses": [
       17,
-      9,
-      6
+      11,
+      8
     ],
     "paired_bootstrap_95_interval": [
-      0.13020833333333837,
-      3.9062500000000098
+      -0.46296296296296113,
+      3.125000000000005
     ],
     "median_usage": {
       "none": {
-        "input_tokens": 20543.5,
+        "input_tokens": 20543.0,
         "cached_input_tokens": 11136.0,
-        "output_tokens": 20042.5,
-        "elapsed_seconds": 406.17999999999995
+        "output_tokens": 20257.0,
+        "elapsed_seconds": 408.49
       },
       "v2": {
-        "input_tokens": 64389.5,
+        "input_tokens": 64402.0,
         "cached_input_tokens": 41472.0,
-        "output_tokens": 20811.0,
-        "elapsed_seconds": 423.275
+        "output_tokens": 20182.0,
+        "elapsed_seconds": 411.125
       }
     }
   },
@@ -5676,6 +5676,714 @@
           "B-390.png": "4c9994fee7d997a61eda10d3782fb741b96cbd09d9ecf52f1458c1618b6b81f9"
         },
         "judge_prompt_sha256": "b3972f04fce8a3cc4ae12debf232fa32c4185093443e4ae7094d1bfd7e60b801"
+      }
+    },
+    "empty-search": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/45003626443",
+      "cells": {
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 64422,
+              "cached_input_tokens": 41472,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 18433,
+              "reasoning_output_tokens": 13902
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "empty-search",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "ec1fc5defc9fb73906e9e6c71b5dfb4a090de213e27cd3188a7866a74ab0c4ed",
+            "elapsed_seconds": 376.93,
+            "exit_code": 0,
+            "trace_sha256": "feb383e6a9334c9b8fc0ac501e2434633f55c32225251638c7940a48c686bf6d",
+            "html_sha256": "2a5db8d7f39c99cd30e8d8f1a057185574b54c3562ee982a817b1e6206b120eb"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "4ad3030b4cdabfceaaa03249bbb9fbc3b5f33fe234717792606f5f35ee5254d7",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "400a4915d2826efdccf9d85737cf6c03cee2bcd5e85332d94d185f863370df8b",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 20544,
+              "cached_input_tokens": 20352,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 21587,
+              "reasoning_output_tokens": 16482
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "empty-search",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "ec1fc5defc9fb73906e9e6c71b5dfb4a090de213e27cd3188a7866a74ab0c4ed",
+            "elapsed_seconds": 435.21,
+            "exit_code": 0,
+            "trace_sha256": "9dc81f050bcc0f547b3271f19dde9a3621d458d86c3dedc33e7cdae1b94086bd",
+            "html_sha256": "2b0774c1b666593c75e92087117b0cc38cf2ed4a9d023b081795f2c157c86106"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "ef8854bf8b6a7ad9830d8387b7814a6508863577effdeb26593be114fbf8777e",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "729fd0e5caeb6451768b2b38c6c74299dc217c3c8fd7749ebf22f6cb2bce0421",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "empty-search",
+        "surface": "empty-state",
+        "blind_key": {
+          "A": "v2",
+          "B": "none"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, the large no-match heading names the failed query and leads directly to the yellow \u201cSearch for \u2018pruning saw\u2019\u201d button."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The desktop search field aligns with the saw illustration, and the mobile layout gives the field, message, recovery button and illustration a common left edge."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The bold condensed heading keeps \u201cchain saw\u201d together on its own line at both widths, while the smaller prompt and button labels remain easy to read."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Yellow connects the wrench mark, saw handle and recovery button, while the neutral Search button keeps the two actions visually distinct."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "Both browser trees identify the \u201cTool name\u201d searchbox and the recovery button, with the no-match heading serving as the sole semantic status cue."
+            },
+            "fidelity": {
+              "score": 2,
+              "evidence": "Both views show that \u201cchain saw\u201d has zero matches and offer \u201cpruning saw,\u201d leaving the available-tool count and the exact label \u201cFolding Pruning Saw\u201d unverified."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, the no-match heading leads to a yellow recovery button whose \u201c1 available tool\u201d line tells the reader what the related search offers."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The desktop results panel separates the message and pegboard into columns, and the mobile panel preserves even insets around the copy and full-width recovery button above the artwork."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The serif headings clearly distinguish the page title and result message from the controls, and the mobile button\u2019s bold action label and smaller availability count are easy to scan."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Dark green ties the masthead to the Search button, pale sage keeps the pegboard secondary, and yellow singles out the related-search action."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Both browser trees expose the \u201cSearch by tool name\u201d field, a status role and a named \u201cSearch results\u201d region containing the no-match heading and the \u201cSearch for pruning saw\u201d button."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "The \u201cchain saw\u201d empty state offers \u201cpruning saw\u201d and explicitly states \u201c1 available tool,\u201d leaving only the result label \u201cFolding Pruning Saw\u201d unverified."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26058,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3847,
+          "reasoning_output_tokens": 3194
+        },
+        "scores": {
+          "v2": 87.5,
+          "none": 95.83333333333334
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "4ad3030b4cdabfceaaa03249bbb9fbc3b5f33fe234717792606f5f35ee5254d7",
+          "A-390.png": "400a4915d2826efdccf9d85737cf6c03cee2bcd5e85332d94d185f863370df8b",
+          "B-1440.png": "ef8854bf8b6a7ad9830d8387b7814a6508863577effdeb26593be114fbf8777e",
+          "B-390.png": "729fd0e5caeb6451768b2b38c6c74299dc217c3c8fd7749ebf22f6cb2bce0421"
+        },
+        "judge_prompt_sha256": "64c5293f17714ac5405f334a31c8fe818df25f02b25ae13268af5e8562d250a9"
+      }
+    },
+    "empty-handoff": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/45003626443",
+      "cells": {
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 64411,
+              "cached_input_tokens": 41472,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 21063,
+              "reasoning_output_tokens": 15841
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "empty-handoff",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "93b51e106da17bec48de912642e7a1430943c4f8ed19b16f69549ef47e70ebc8",
+            "elapsed_seconds": 428.77,
+            "exit_code": 0,
+            "trace_sha256": "c3da69d0b72be450f3e4953941aa7687834edc8c5f059444ab6effc1ac4d787c",
+            "html_sha256": "60950ffa935f77cc6d50bffadbd403ee68d14fe005d3cfd1528fabaab666c2eb"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "391ecdd6d2f24083c08da37b5ef4b9c87b6a9acba24adcb7dce90cddab852b18",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "26f14f9ad3caabc3937c6f032d3745f74adaaeb18f7f13463ba19377b7d7cbf2",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 20543,
+              "cached_input_tokens": 0,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 23231,
+              "reasoning_output_tokens": 17839
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "empty-handoff",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "93b51e106da17bec48de912642e7a1430943c4f8ed19b16f69549ef47e70ebc8",
+            "elapsed_seconds": 473.73,
+            "exit_code": 0,
+            "trace_sha256": "d93215fcbae6fdf5784842819ae835f9d9c828c22223edec71045eec16406c48",
+            "html_sha256": "98eed69bffd44bc1dc4b8b41dba9ffd0413777d876c4e177daba12a5ada623cc"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "1a3a9ac020e1b6e8c5d50937281fea8d0389607f3eb71e5402e8d2780a41eb4d",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "b93912cc249aa3cef83047c8962adcb4ae7a00136543ed5dd5d8292a04d82b3e",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "empty-handoff",
+        "surface": "empty-state",
+        "blind_key": {
+          "A": "v2",
+          "B": "none"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "The desktop leads from \u201cHandoff log\u201d to the empty-state message and action, while the phone places a prominent loaf illustration ahead of the message and button."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The title and card share a left edge at both widths, and the card\u2019s padding groups the prompt and button while the device notice sits separately below."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The bold, condensed headings retain distinct sizes on the phone, where the lighter handoff instruction wraps cleanly across two lines."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The bakery mark and loaf repeat the yellow of the \u201cAdd a note\u201d button, whose navy label and border remain distinct against the pale card."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "At both widths the browser tree exposes \u201cHandoff log\u201d and \u201cNo notes yet\u201d as successive heading levels, \u201cAdd a note\u201d as a button and the visible device-storage message as a status."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "The empty log offers \u201cAdd a note\u201d and says notes stay on this device, though the supplied evidence ends before note entry, saving or replacement of the empty state."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths the title leads directly to \u201cNo notes yet\u201d and \u201cAdd first note,\u201d with the phone placing the entire task above the illustration."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The bakery badge, title and card align at both widths, and the mobile button spans the padded text area with clear space above and below."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The serif title and smaller serif state heading remain distinct at 390 px, where the sans-serif instruction fits on one line and the bold button label is easy to scan."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The solid plum button echoes the bakery badge, and its white label stands out on the cream text panel beside or above the golden illustration."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Both browser trees expose \u201cNo notes yet\u201d as a named region and \u201cAdd first note\u201d as a button, and the phone gives that action a wide, clearly labeled target."
+            },
+            "fidelity": {
+              "score": 2,
+              "evidence": "\u201cAdd first note\u201d names the next shift\u2019s action precisely, with no visible device-storage cue or interaction receipt showing a note entered, saved and displayed in place of the empty state."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 25945,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5185,
+          "reasoning_output_tokens": 4526
+        },
+        "scores": {
+          "v2": 91.66666666666666,
+          "none": 91.66666666666666
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "391ecdd6d2f24083c08da37b5ef4b9c87b6a9acba24adcb7dce90cddab852b18",
+          "A-390.png": "26f14f9ad3caabc3937c6f032d3745f74adaaeb18f7f13463ba19377b7d7cbf2",
+          "B-1440.png": "1a3a9ac020e1b6e8c5d50937281fea8d0389607f3eb71e5402e8d2780a41eb4d",
+          "B-390.png": "b93912cc249aa3cef83047c8962adcb4ae7a00136543ed5dd5d8292a04d82b3e"
+        },
+        "judge_prompt_sha256": "ed9c6d177ed818d921e19add09ae8dbac41757f32c0cfb30f0e520ceb2a3018b"
+      }
+    },
+    "empty-exhibits": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/45003626443",
+      "cells": {
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 65341,
+              "cached_input_tokens": 59008,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 15417,
+              "reasoning_output_tokens": 12170
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "empty-exhibits",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "58e2d5c7abecd9b44dc9d233714144633340337c3bfe1a19e89982a68b43c5af",
+            "elapsed_seconds": 315.28,
+            "exit_code": 0,
+            "trace_sha256": "d8a0c457dca20395921f5a10e9da04e4076c4f57538a44d1fcb993f68f5e4800",
+            "html_sha256": "59bc023a4105bc5c93ea10432ecca1b9c41b33451725209dbebd50929e6c0a91"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "a3ea9762a5a16b71fac823fad9221b337fbc5a9c1f64d011e3fdf326fafd26ab",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "cb9aaeac68503193837340e9a53c93f071cec246690cfd615b5dd6d91b8ba6c6",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 20536,
+              "cached_input_tokens": 0,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 18430,
+              "reasoning_output_tokens": 14795
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "empty-exhibits",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "58e2d5c7abecd9b44dc9d233714144633340337c3bfe1a19e89982a68b43c5af",
+            "elapsed_seconds": 372.62,
+            "exit_code": 0,
+            "trace_sha256": "838892fd20cf4243edddd63818f3a949079b93334d2c99697b0e39b63af929b2",
+            "html_sha256": "9ac6f9bbf01e81c4195c3e3768292354ae313c293cb198ed0f4ef230ceca366a"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "6bfa877f1a96283791d93d6284c6429274370ed5b23a041342701643a2b0a3d0",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "3c8c45be2b587fe208199de2bbba161d645e4d6561a8b898568d390dbf42d87a",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "empty-exhibits",
+        "surface": "empty-state",
+        "blind_key": {
+          "A": "v2",
+          "B": "none"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, the page title establishes the shortlist and the empty-state instruction points directly down to the two Add buttons."
+            },
+            "spacing": {
+              "score": 3,
+              "evidence": "The ruled rows keep each name and button easy to pair on mobile, although the wide desktop rows require a long horizontal scan between them."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The bold page title scales to one line at 390 pixels, and the section heading, exhibit names and lighter instructions remain distinct."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The peach accent ties the museum bookmark to the zero count and Add buttons, making the empty state and available actions easy to spot against charcoal."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "The large Add buttons have exhibit-specific names in both browser trees, which also expose the count, a heading for each exhibit and a status role."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "The supplied empty state shows zero exhibits and gives Light Studies and Objects in Transit one Add button each in text-only rows."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "Saved exhibits and Suggested exhibits sit side by side on desktop and stack in that order on mobile, making the Add action and its destination clear at a glance."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The desktop sections share a header baseline and bottom edge, and the mobile list keeps exhibit titles and Add buttons aligned in two evenly spaced rows."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The serif title and empty-state message stand apart from the bold sans-serif exhibit names, which remain easy to scan on a single line each at 390 pixels."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The pale blue panel identifies the saved-list destination, and saturated blue buttons with white labels mark both available actions at either width."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "The visible Add controls have explicit names such as \u201cAdd Light Studies to the shortlist\u201d in both browser trees, alongside named regions, the count and a status role."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both requested titles have Add buttons in the supplied empty state, but the abstract thumbnails occupy a column on mobile without adding a detail the teacher can use to plan the trip."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26232,
+          "cached_input_tokens": 26112,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5306,
+          "reasoning_output_tokens": 4689
+        },
+        "scores": {
+          "v2": 95.83333333333334,
+          "none": 95.83333333333334
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "a3ea9762a5a16b71fac823fad9221b337fbc5a9c1f64d011e3fdf326fafd26ab",
+          "A-390.png": "cb9aaeac68503193837340e9a53c93f071cec246690cfd615b5dd6d91b8ba6c6",
+          "B-1440.png": "6bfa877f1a96283791d93d6284c6429274370ed5b23a041342701643a2b0a3d0",
+          "B-390.png": "3c8c45be2b587fe208199de2bbba161d645e4d6561a8b898568d390dbf42d87a"
+        },
+        "judge_prompt_sha256": "1b33e9c782bda687c17d0832b7adbca6885c8a3c5e9537d43725f3954a9b5eb5"
+      }
+    },
+    "empty-shifts": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/45003626443",
+      "cells": {
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 19603,
+              "cached_input_tokens": 11136,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 27156,
+              "reasoning_output_tokens": 21819
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "empty-shifts",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "d813e2c43660b30daeb38821dd13a3f61ae8f01355d23ec2fd4471e9f6bf4eee",
+            "elapsed_seconds": 546.99,
+            "exit_code": 0,
+            "trace_sha256": "bc55416eae79f227a81622f44f709283ece29d5d34636fc4643b7a90734ff16a",
+            "html_sha256": "fb4d18207aff46d806f7a8254c2246ae7048f221052ef8222ab8f09535751ab0"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "a59f3ce431ff41f0b026c1fe9f0b7203c96ef04714ea67ab754a5534826da511",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "91cd54de9889b09b1e8867ef6c2a4d45105f4390f9d10e9926f393709feeb07e",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 63788,
+              "cached_input_tokens": 41472,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 18780,
+              "reasoning_output_tokens": 13691
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "empty-shifts",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "d813e2c43660b30daeb38821dd13a3f61ae8f01355d23ec2fd4471e9f6bf4eee",
+            "elapsed_seconds": 383.8,
+            "exit_code": 0,
+            "trace_sha256": "029421f5b0bd2d9568c7d74e3eacd1981aedca361eaca652f4868c80229a07b7",
+            "html_sha256": "f519a9e7e4f5e72bebd6f2dd1a9e7023611a42560dc54a98994741ef0ab00c70"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "9a981424d729901eb077dbf5d8926d833e38cf61c154faf617c87b1bbe701ff2",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "16a12bcc5f9d22fda12ed41b2d0f1d4dea7a7a0604160b6508c361ffcb130a23",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "empty-shifts",
+        "surface": "empty-state",
+        "blind_key": {
+          "A": "none",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "\u201cUpcoming shifts\u201d establishes the purpose, and the empty-state instruction leads to the single \u201cReserve shift\u201d button beside the panel on desktop and below it on mobile."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The desktop panels share top and bottom edges, and the mobile layout stacks them with consistent insets and fits the day and time on one line above the button."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "Distinct serif sizes separate the page title, empty status and \u201cPacking\u201d heading, while the sans-serif schedule details remain easy to read at 390 px."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The pale green panel groups the empty status, the yellow band identifies the available shift, and the dark green button stands out on the white ticket."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "At both widths, the browser tree confirms two named regions, an explicit \u201cNo shifts booked\u201d heading and a button whose accessible name matches its visible \u201cReserve shift\u201d label."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both widths show one Wednesday 4\u20136 pm Packing shift and explain that reserving adds it here, though neither includes interaction evidence confirming the local booking and its same-view result."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "The orange reservation button is easy to spot, but the large illustrated empty panel gives the status more visual weight than the available shift at both widths."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The desktop row aligns the role, schedule and action across three columns, while the mobile card places the schedule directly under \u201cPacking\u201d and gives the button its own full-width line."
+            },
+            "typography": {
+              "score": 3,
+              "evidence": "The condensed page title stays legible at both widths, though \u201cAvailable shift\u201d and \u201cPacking\u201d are nearly identical in size and weight on mobile."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Orange connects the food-box mark to the reservation action, and the solid orange button with dark lettering is distinct against the charcoal shift row."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Both browser trees expose the written empty status and group the shift heading, schedule and named \u201cReserve shift\u201d button within the \u201cPacking\u201d article."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both widths show an empty schedule and exactly one Wednesday 4\u20136 pm Packing offer with \u201cReserve shift\u201d, while the local reservation and same-view booked state remain unverified."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26070,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 6330,
+          "reasoning_output_tokens": 5672
+        },
+        "scores": {
+          "none": 95.83333333333334,
+          "v2": 87.5
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "a59f3ce431ff41f0b026c1fe9f0b7203c96ef04714ea67ab754a5534826da511",
+          "A-390.png": "91cd54de9889b09b1e8867ef6c2a4d45105f4390f9d10e9926f393709feeb07e",
+          "B-1440.png": "9a981424d729901eb077dbf5d8926d833e38cf61c154faf617c87b1bbe701ff2",
+          "B-390.png": "16a12bcc5f9d22fda12ed41b2d0f1d4dea7a7a0604160b6508c361ffcb130a23"
+        },
+        "judge_prompt_sha256": "4f336e6aef8f874fc850703adb0e5e871507ebd24442c6214eacfa9e943a6f68"
       }
     }
   }

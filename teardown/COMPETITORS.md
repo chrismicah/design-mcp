@@ -88,8 +88,8 @@ The full-brief calls measure direct search behavior. Visual trials give the gene
 
 | Configuration | Matched briefs judged | Score / 100 |
 | --- | ---: | ---: |
-| Plain generator | 32 / 36 | 92.4 |
-| Design MCP v2 | 32 / 36 | 94.5 |
+| Plain generator | 36 / 36 | 92.7 |
+| Design MCP v2 | 36 / 36 | 94.1 |
 | Inspo hosted | 1 / 36 | 87.5 on ceramics. Design MCP scored 91.7 on the matched brief. |
 | Offline Designer MCP | 1 / 36 | 91.7 on ceramics. Design MCP also scored 91.7. |
 | Screenshots Design Inspiration | 1 / 36 | 91.7 on the gallery label. Design MCP also scored 91.7 in the matched Astra run. |

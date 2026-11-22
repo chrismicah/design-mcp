@@ -6,14 +6,16 @@ The baseline pins Design MCP at `fd6035d8732d177b811f81a0f5863e99134a85ca`. The 
 
 | Configuration | Judged pairs | Score / 100 |
 | --- | ---: | ---: |
-| Same generator without MCP | 32 / 36 | 92.4 |
-| Same generator with Design MCP v2 | 32 / 36 | 94.5 |
+| Same generator without MCP | 36 / 36 | 92.7 |
+| Same generator with Design MCP v2 | 36 / 36 | 94.1 |
 
-The 32 verified pairs yielded a **+2.1-point** mean difference, with 17 wins, nine ties, six losses, and a paired bootstrap interval of 0.1 to 3.9 points. The judged set covers all six briefs in each of landing pages, dashboards, forms, mobile web, and settings, plus two empty states. The maintenance form lost 95.8 to 83.3 after its illustration pushed the fields down and its Building hint clipped. The pantry screen lost 95.8 to 87.5 with transit typography and no text label for the address. Five other mobile briefs improved. Settings produced three wins, a tie, and two losses. The reading and digest screens each lost 100.0 to 95.8 when a preview or saved schedule took priority over the controls. Saved trails lost 95.8 to 91.7, and article drafts lost 91.7 to 87.5. The judges used captured states under the original benchmark rubric. The release rubric requires live evaluation. [Paired ballots, hashes and token receipts](evidence/benchmark-v1/paired-progress.json) · [Release rubric](evals/vision/rubric.md)
+Across all 36 paired briefs, frozen v2 averaged **1.39 points higher**, with 17 wins, 11 ties, and eight losses. The paired 95% bootstrap interval was −0.46 to +3.13 points, so the average advantage is inconclusive. The maintenance form lost 95.8 to 83.3 after its illustration pushed the fields down and its Building hint clipped. The pantry screen lost 95.8 to 87.5 with transit typography and no text label for the address. Five other mobile briefs improved. Settings produced three wins, a tie, and two losses. The reading and digest screens each lost 100.0 to 95.8 when a preview or saved schedule took priority over the controls.
+
+The empty-state cohort had four losses and two ties. Saved trails and article drafts lost 4.2 points each. Tool search and shift reservation lost 8.3 points each. The critic could verify fewer supplied details in the tool search capture, and the shift reservation gave its empty illustration more visual weight than the available shift. These are judgments of the captured states. The release rubric requires live evaluation. [Paired ballots, hashes and token receipts](evidence/benchmark-v1/paired-progress.json) · [Release rubric](evals/vision/rubric.md)
 
 The first dashboard attempt called `direct` successfully and reached the client’s 240-second timeout before returning HTML. There was no completed-turn token receipt. The paired run uses a 900-second allowance for both arms and retains the first attempt separately. Playwriter MCP `0.12.0` rendered the isolated Chrome 157 control at both widths. The injected failure control detected narrow viewport overflow and the expected JavaScript error. [Tracked receipts](evidence/benchmark-v1/preflight.json)
 
-GitHub’s standard macOS runner captured the judged pairs with Playwriter 0.12.0 and Chrome for Testing 158.0.8127.36 at both preset widths. Across 128 judged captures, Playwriter recorded zero page errors and zero instances of document-level horizontal overflow. The maintenance hint clipped within its field. [First run](https://github.com/chrismicah/design-mcp/actions/runs/44984687051) · [Second run](https://github.com/chrismicah/design-mcp/actions/runs/44988686124) · [Third run](https://github.com/chrismicah/design-mcp/actions/runs/44991749251) · [Fourth run](https://github.com/chrismicah/design-mcp/actions/runs/44995146562) · [Fifth run](https://github.com/chrismicah/design-mcp/actions/runs/44998013520) · [Sixth run](https://github.com/chrismicah/design-mcp/actions/runs/45001223462)
+GitHub’s standard macOS runner captured the judged pairs with Playwriter 0.12.0 and Chrome for Testing 158.0.8127.36 at both preset widths. Across 144 judged captures, Playwriter recorded zero page errors and zero instances of document-level horizontal overflow. The maintenance hint clipped within its field. [First run](https://github.com/chrismicah/design-mcp/actions/runs/44984687051) · [Second run](https://github.com/chrismicah/design-mcp/actions/runs/44988686124) · [Third run](https://github.com/chrismicah/design-mcp/actions/runs/44991749251) · [Fourth run](https://github.com/chrismicah/design-mcp/actions/runs/44995146562) · [Fifth run](https://github.com/chrismicah/design-mcp/actions/runs/44998013520) · [Sixth run](https://github.com/chrismicah/design-mcp/actions/runs/45001223462) · [Final run](https://github.com/chrismicah/design-mcp/actions/runs/45003626443)
 
 An interaction replay on the exact maintenance pages passed all four arm-by-viewport checks. Empty submission focused the invalid Building field. Keyboard entry and urgency selection produced a local confirmation with the supplied details. Editing restored focus and retained every value. At 390 px the frozen v2 hint measured 124 px of text in 93 px of available space. Its first field began 110 px lower than in the plain layout. The form candidate must fix the geometry and preserve the workflow. [Keyboard and geometry receipts](evidence/benchmark-v1/maintenance-actions.json) · [Hosted replay](https://github.com/chrismicah/design-mcp/actions/runs/44992860729)
 
@@ -27,12 +29,12 @@ Both frozen saved-trails pages moved Cedar Bend from the suggestion to the saved
 
 | Median per judged brief | Input tokens | Cached input | Output tokens | Seconds |
 | --- | ---: | ---: | ---: | ---: |
-| Plain generator | 20,544 | 11,136 | 20,043 | 406 |
-| Design MCP v2 | 64,390 | 41,472 | 20,811 | 423 |
+| Plain generator | 20,543 | 11,136 | 20,257 | 408 |
+| Design MCP v2 | 64,402 | 41,472 | 20,182 | 411 |
 
 ## Direction coverage
 
-A separate stdio probe supplied the exact briefs to `direct` with the surface omitted. All 36 calls returned a direction. **32/36 returned `object-hero`.** All six forms and all six settings briefs received landing-page guidance. Only two dashboards and one mobile brief matched their requested surface. The production API has no form, settings or empty-state surface. This probe measures default retrieval, while the rendered comparison measures what the generator does with the tool available. [Per-brief direction returns](evidence/benchmark-v1/preflight.json)
+A separate stdio probe supplied the exact briefs to `direct` with the surface omitted. All 36 calls returned a direction. **32/36 returned `object-hero`.** All six forms and all six settings briefs received landing-page guidance. Only two dashboards and one mobile brief matched their requested surface. The frozen v2 API had no form, settings or empty-state surface. This probe measures default retrieval, while the rendered comparison measures what the generator does with the tool available. [Per-brief direction returns](evidence/benchmark-v1/preflight.json)
 
 ## Installation at the baseline revision
 
