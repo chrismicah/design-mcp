@@ -96,6 +96,7 @@ def run_draft(args, case, brief, arm, client_version):
     )
     (cell / "receipt.json").write_text(json.dumps(receipt, indent=2) + "\n")
     print(json.dumps({key: receipt[key] for key in ("case", "arm", "status", "elapsed_seconds", "usage")}), flush=True)
+    return receipt
 
 
 def main():
@@ -108,6 +109,8 @@ def main():
     parser.add_argument("--effort", default="max")
     parser.add_argument("--timeout", type=int, default=900)
     args = parser.parse_args()
+    if args.timeout <= 0:
+        parser.error("--timeout must be positive")
     args.no_shell = True
     identity = json.loads((args.kit / "kit.json").read_bytes())
     if identity["source_commit"] != PACKAGE_COMMIT:
@@ -126,8 +129,9 @@ def main():
         random.Random(case).shuffle(arms)
         with ThreadPoolExecutor(max_workers=2) as pool:
             results = [pool.submit(run_draft, args, case, brief, arm, client) for arm in arms]
-            for result in results:
-                result.result()
+            receipts = [result.result() for result in results]
+        if any(row["status"] == "client-error" and not row["usage"] for row in receipts):
+            raise SystemExit("Client failed before returning usage. Inspect the preserved trace.")
 
 
 if __name__ == "__main__":
