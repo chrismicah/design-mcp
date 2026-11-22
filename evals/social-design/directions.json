@@ -2,8 +2,8 @@
   {
     "id": "cue-stage",
     "surface": "portfolio",
-    "title": "The cue changes the stage",
-    "summary": "Let the producer operate the lighting designer's portfolio through the selected cue. The stage itself is the work sample.",
+    "title": "A rehearsal in light",
+    "summary": "Give a producer one half-open stage curtain and three cues. The folded fabric and its hem reveal exactly what each light does.",
     "tags": [
       "lighting cues",
       "lighting designer",
@@ -11,41 +11,41 @@
       "stage lighting"
     ],
     "type": {
-      "display": "Fraunces",
-      "body": "IBM Plex Sans",
-      "ratio": 3.3,
+      "display": "Barlow Condensed",
+      "body": "Barlow",
+      "ratio": 3.0,
       "tracking": -0.025,
-      "weight": 700,
+      "weight": 600,
       "license": "OFL-1.1"
     },
     "palette": {
-      "ink": "#241C2F",
-      "paper": "#F1E7EB",
-      "accent": "#753966"
+      "ink": "#191C20",
+      "paper": "#F5F3EB",
+      "accent": "#508BFF"
     },
     "layout": {
-      "skeleton": "Lead with a short identity and one cinematic proscenium. Set a named cue inspector beside the stage on wide screens and directly below it on mobile.",
-      "focus": "An original performer mid-gesture and its long shadow make the direction of each light visible. Show light spilling across the backcloth and slanting across the floor.",
-      "desktop": "Start the stage within 144 CSS px of the top at 1440 × 900. Compose the full stage, the three cue controls and current technique within the initial viewport.",
-      "mobile": "Give the figure at least 45% of the stage height at 390 px and keep the tip of the shadow inside the frame. Keep the visible Choose a cue label, three controls and technique close below.",
-      "rhythm": "Make the header a compact masthead, with a 48–64 px identity on desktop and a single title line or two short lines on mobile. Give the remaining height to the stage."
+      "skeleton": "Give the viewing frame one half-open curtain on a stage. Put three named cue choices and the selected technique together 16 px below the frame. Keep the brand in a compact title line.",
+      "focus": "One curtain, three broad folds and one turned hem make the light direction visible. The same folds and floor stay fixed in every cue.",
+      "desktop": "Compose a 960 × 420 stage centered in a 960 px column. Center a compact controls block directly below. Fit frame, choices and technique in the 900 px viewport.",
+      "mobile": "Use 16 px side margins and a 358 × 300 scene. Keep the lit hem, choice row and matching technique visible together in the initial 390 × 844 view.",
+      "rhythm": "Separate the three choices by at least 8 px. Keep the current technique close below them. Let the full-width stage and its folds carry the composition."
     },
     "imagery": {
-      "subject": "Draw an expressive performer mid-gesture in an original, clean theatre scene. Use broad gradients, fabric folds and sharply shaped shadows. Keep the pose fixed across cues. Skip procedural grain and noisy textures.",
-      "crop": "Compose a genuine 390 px view with a larger performer and legible, sharply drawn floor shadow. Preserve the beam and shadow tips on mobile.",
-      "fallback": "Use three original stills composed with the same stage framing and pose. Describe each light effect in accessible text."
+      "subject": "Draw a half-open slate #626B74 stage curtain with three broad folds and a turned hem. Amber #E8A348 washes the folds, hard white side light catches one edge and casts a sharp floor shadow, and blue light from behind reveals the gap.",
+      "crop": "Keep both the high folds and the lit hem inside the frame at both widths. Draw the broad folds without procedural grain.",
+      "fallback": "Use three original stills of the same cloth and stage. Supply a short technique label and an accessible description of the illuminated folds."
     },
     "motion": {
       "trigger": "Selecting a named cue",
-      "effect": "Switch the scene, technique text and filled selection immediately. Fade in only the selected cue marker.",
+      "effect": "Switch light, readable technique and the selected marker immediately. Fade a small selection marker alone.",
       "duration_ms": 220,
-      "reduced": "Switch the light, current cue text, and underline immediately."
+      "reduced": "Change the lighting and every state together without motion."
     },
     "action": {
-      "instruction": "Label the group Choose a cue. Use native buttons with aria-pressed. Give the selected cue a persistent plum fill, light text and a lamp marker even when unfocused. Give focus its own two-tone outline. Update the image description and printed technique together.",
+      "instruction": "Use native controls labeled Choose a cue. Keep a persistent filled selection and a separate inset focus outline. Let the keyboard choose every cue and make the matching technique and description update immediately.",
       "label": "Use the actual cue name"
     },
-    "why": "The first interaction demonstrates the actual craft and lets a producer compare techniques without finding a separate demo.",
+    "why": "A curtain familiar to a theatre producer turns the action into a practical demonstration of wash, side light and backlight.",
     "sources": [
       {
         "url": "https://bruno-simon.com/",
@@ -81,20 +81,20 @@
       "license": "OFL-1.1"
     },
     "palette": {
-      "ink": "#163759",
-      "paper": "#EDF4F6",
-      "accent": "#254D9C"
+      "ink": "#092538",
+      "paper": "#EBF5F6",
+      "accent": "#2053A6"
     },
     "layout": {
-      "skeleton": "Compose one illustrated river field sheet. Place the current elevation on the report edge alongside the labeled level selector and current closure list. Continue the same elevation into a thick waterline across one bank cutaway.",
-      "focus": "Show a real river section with a low path on the bank, a ferry beside its middle landing, and a footbridge spanning the water at the upper mark. A single waterline changes which labeled places close.",
-      "desktop": "Use the full chart and result together. Give the report column enough room for the large selected elevation and all closures. Keep the cutaway proportionate to the answer.",
-      "mobile": "Keep the level selector and complete closure result inside the initial viewport. Then show a 240–300 px cutaway with large silhouettes at all three labeled marks.",
-      "rhythm": "Use the waterline and the equal elevation steps to carry the rhythm across the sheet. Reduce separate decoration and tiny terrain marks."
+      "skeleton": "Use a clean three-step bank section. Give each physically distinct crossing a large original silhouette and put its short HTML name on a separate label rail aligned to that step.",
+      "focus": "A bold teal waterline climbs the three visible bank steps. Show the visual moment it reaches the path, ferry or bridge along with the cumulative readable result.",
+      "desktop": "Use a compact header and keep the selector and complete answer adjacent to the bank section. Keep the primary graphic within 440 px of height.",
+      "mobile": "Place the level selector and full closure result first. Follow with a 250–300 px stepped chart. Reserve at least 100 px of separate label rail and keep the place names at 16 px or larger.",
+      "rhythm": "Use the three equal threshold heights to form confident graphic steps and leave visible space between large crossing shapes and their label rail."
     },
     "imagery": {
-      "subject": "Hand draw the low bank path, ferry at its landing, and a bridge spanning the high channel, all large enough to recognize. Use #9BC7DF water and #EABB62 with a text label for each closed crossing.",
-      "crop": "Place large recognizable crossings and 16 px labels in the mobile view. Simplify bank texture and keep the visual relationship between each threshold and the waterline.",
+      "subject": "Draw a sloping walking path, broad ferry at its dock, and tall bridge span as three large authored shapes. Use teal #61BCD4 for the water and gold #F2C35E beside labeled closures. Use clear solid colors and no small topographic textures.",
+      "crop": "Keep all three silhouettes and their aligned, separate HTML names visible at 390 px. Retain the bold waterline and units.",
       "fallback": "Keep the three contour lines, their readable place names and the live closure list. Simplify the drawing before reducing text size."
     },
     "motion": {

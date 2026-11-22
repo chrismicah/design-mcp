@@ -94,3 +94,11 @@ The first round 5 capture exceeded the client transport limit on two desktop ima
 ### River, round 6
 
 The resident still gets the answer first. Create the feel of an illustrated river field sheet with one continuous bank cutaway and a thick waterline running across the page. Make the elevation the anchor on the report edge and echo it on the waterline. Use large, distinctive silhouettes for the path, ferry and bridge. Simplify the terrain fill and keep the title short. Deep tide `#163759` carries the ink, pale sky `#EDF4F6` the paper, ultramarine `#254D9C` the active reading, clear blue `#9BC7DF` the water, and signal ochre `#EABB62` the closed markers. Use Archivo Narrow for the elevation and IBM Plex Sans for the plain-text outcome. Keep the same supplied facts.
+
+### Lighting, round 6
+
+One bounded Astra planning pass proposed the moment a stage crew tests the light on a half-open curtain. A producer switches the three cues and watches the same folds and turned hem catch light differently. Leave out the figure and keep the curtain as the focal point. Use stage charcoal `#191C20`, curtain slate `#626B74`, paper white `#F5F3EB`, lamp amber `#E8A348`, and backlight blue `#508BFF`. Barlow Condensed sets the identity and cues. Barlow sets the technique. Use a 960 × 420 scene at desktop width and a 358 × 300 scene at 390 px. Put the named choices and selected technique together directly under the light. Before accepting, switch all three cues by keyboard at both widths and confirm the lit hem, focus, selected cue and matching technique fit together.
+
+### River, round 7
+
+Round 6 crowded the mobile chart. Try a bolder field graphic with three oversized crossing silhouettes on a stepped bank. Put large HTML names on a separate label rail aligned to the steps. Keep the real level control and complete result directly above the mobile graphic. The only moving reading is the colored waterline. Use deep-water ink `#092538`, pale paper `#EBF5F6`, cobalt `#2053A6` for the active reading, teal `#61BCD4` for water, and gold `#F2C35E` beside named closures. Use Archivo Narrow for the level and IBM Plex Sans for terms and controls. Keep the illustration clear of any tiny labels or terrain texture.
