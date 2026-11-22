@@ -40,6 +40,8 @@ Across paired briefs, the median increase was 43,848 reported input tokens and 2
 
 A separate stdio probe supplied the exact briefs to `direct` with the surface omitted. All 36 calls returned a direction. **32/36 returned `object-hero`.** All six forms and all six settings briefs received landing-page guidance. Only two dashboards and one mobile brief matched their requested surface. The frozen v2 API had no form, settings or empty-state surface. This probe measures default retrieval, while the rendered comparison measures what the generator does with the tool available. [Per-brief direction returns](evidence/benchmark-v1/preflight.json)
 
+The same probe on the verified install at `2fcd312` reduced `object-hero` assignments from **32/36 to 24/36** and increased exact surface matches from **9/36 to 15/36**. All six forms received `grouped-fieldsets`. All six landing briefs still matched, while dashboard coverage stayed at 2/6 and mobile at 1/6. Settings and empty states remain unsupported as exact surfaces. All 36 replies returned without a clarification question. These are installed stdio results. [Per-brief paired routing evidence](evidence/benchmark-v1/current-direct-routing.json)
+
 ## Installation at the baseline revision
 
 Clean detached checkout on macOS 26.5.2, Apple Silicon. The smoke tests send real MCP requests from an isolated client to the installed executable. The pinned source suite passed 308 tests on Python 3.12.13.

@@ -95,6 +95,8 @@ The pinned Git commands passed all eight clean-install jobs on Intel and Apple S
 
 All 36 matched design briefs have blinded scores. The plain generator averaged 92.7 and frozen Design MCP v2 averaged 94.1, with 17 wins, 11 ties, and eight losses. The paired 95% interval of −0.46 to +3.13 points leaves the average advantage inconclusive. [Benchmark and receipts](EVALS.md)
 
+The current install routed **15 of 36** briefs to the matching surface with only a brief supplied, up from **9 of 36** in frozen v2. All six forms routed correctly. Settings and empty states remain uncovered as exact surfaces. [Installed routing comparison](evidence/benchmark-v1/current-direct-routing.json)
+
 The current radio and repair-shop directions averaged 97.9 versus 89.6 for the frozen v2 on those two briefs. The listening demo and booking summary also passed keyboard checks at 1440 and 390 CSS px. [Matched visual results](evidence/benchmark-v1/specific-landing-visual.json) · [Browser actions](evidence/benchmark-v1/specific-landing-actions.json)
 
 ## Verify locally
