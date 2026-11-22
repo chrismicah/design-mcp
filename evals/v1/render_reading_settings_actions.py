@@ -50,31 +50,46 @@ await tabTo(comfortable);
 await page.keyboard.press('ArrowRight');
 const changed = await settings();
 await page.screenshot({path:__CHANGED__, animations:'disabled'});
-await page.goto('about:blank');
-await page.goto(url,{waitUntil:'load'});
-await page.evaluate(() => document.fonts.ready);
-const reopened = await settings();
+const reopen = async () => {
+  await page.goto('about:blank');
+  await page.goto(url,{waitUntil:'load'});
+  await page.evaluate(() => document.fonts.ready);
+  return settings();
+};
+const reopened = await reopen();
 await page.screenshot({path:__REOPENED__, animations:'disabled'});
+if (reopened.standard) {
+  await tabTo(standard);
+  await page.keyboard.press('ArrowRight');
+}
+if (reopened.comfortable) {
+  await tabTo(comfortable);
+  await page.keyboard.press('ArrowRight');
+}
+const beforeReset = await settings();
 await tabTo(reset);
 await page.keyboard.press('Enter');
 await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
 const restored = await settings();
 await page.screenshot({path:__RESTORED__, animations:'disabled'});
+const reopenedAfterReset = await reopen();
+const matchesDefaults = state => state.standard && state.comfortable && state.controlsVisible &&
+  state.sample.size === initial.sample.size && state.sample.leading === initial.sample.leading;
 const checks = {
   startsAtDefaults:initial.standard && initial.comfortable && initial.controlsVisible,
   sizeUpdatesIndependently:resized.large && resized.comfortable && resized.sample.size > initial.sample.size,
   spacingUpdatesIndependently:changed.large && changed.compact &&
     changed.sample.size === resized.sample.size && changed.sample.leading < resized.sample.leading,
-  sampleTextPreserved:[initial,resized,changed,reopened,restored]
+  sampleTextPreserved:[initial,resized,changed,reopened,beforeReset,restored,reopenedAfterReset]
     .every(state => state.sample.text === 'Rest dough for 20 minutes.'),
-  defaultsRestored:restored.standard && restored.comfortable &&
-    restored.sample.size === initial.sample.size && restored.sample.leading === initial.sample.leading,
+  defaultsRestored:beforeReset.large && beforeReset.compact && matchesDefaults(restored),
   staysLocal:page.url() === url && restricted.length === 0
 };
 const persistsOnReopen = reopened.large && reopened.compact && reopened.controlsVisible &&
   reopened.sample.size === changed.sample.size && reopened.sample.leading === changed.sample.leading;
-console.log('READING_ACTIONS '+JSON.stringify({checks, persistsOnReopen, states:{
-  initial,resized,changed,reopened,restored
+const resetPersistsOnReopen = matchesDefaults(reopenedAfterReset);
+console.log('READING_ACTIONS '+JSON.stringify({checks, persistsOnReopen, resetPersistsOnReopen, states:{
+  initial,resized,changed,reopened,beforeReset,restored,reopenedAfterReset
 }, restricted, pageErrors:state.pageErrors, passed:Object.values(checks).every(Boolean) && !state.pageErrors.length}));
 """
 
