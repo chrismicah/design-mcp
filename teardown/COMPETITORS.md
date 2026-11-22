@@ -94,6 +94,7 @@ The full-brief calls measure direct search behavior. Visual trials give the gene
 | Offline Designer MCP | 1 / 36 | 91.7 on ceramics. Design MCP also scored 91.7. |
 | Screenshots Design Inspiration | 1 / 36 | 91.7 on the gallery label. Design MCP also scored 91.7 in the matched Astra run. |
 | Design Library MCP, keyword | 1 / 36 | 87.5 on ceramics. Design MCP scored 95.8 in the matched shell-disabled run. |
+| UI UX Pro Max | 1 / 36 | 100.0 on bike booking. Frozen Design MCP scored 91.7. |
 | Other credential-free competitor configurations above | 0 / 36 each | Pending |
 | Credentialed and hosted configurations above | 0 / 36 each | Access or isolated fixture required |
 
@@ -110,3 +111,5 @@ In the shell-disabled ceramics rematch, Design Library made seven MCP calls and 
 Screenshots completed five calls on the gallery label. Both arms used the same shell-disabled GPT-6.2 Astra configuration. The critic favored Screenshots' desktop spacing and Design MCP's artwork description. Screenshots used 140,732 input tokens, of which 122,624 were cached. Design MCP used 60,450 input tokens, of which 49,920 were cached. The ballot covers this one brief and its two initial browser states. [Matched captures and ballot](../evidence/benchmark-v1/screenshots-astra-gallery.json) · [Capture run](https://github.com/chrismicah/design-mcp/actions/runs/45002279105)
 
 The two exact gallery pages both revealed “Pigment on plaster” on Enter and hid it on a second Enter. Focus stayed on the toggle and the named note remained linked to its control at both widths. All four keyboard runs stayed local. [Gallery action evidence](../evidence/benchmark-v1/gallery-actions.json)
+
+The pinned UI UX Pro Max release returned relevant guidance through the benchmark adapter on bike booking. The blinded ballot scored it 100.0 versus 91.7 for frozen Design MCP under the same prompt, model, effort, browser and asset policy. The critic saw earlier price placement and a clear selection status. UI UX Pro Max used 64,427 input and 24,443 output tokens. Frozen v2 used 62,552 input and 21,876 output tokens. The later service-work-order direction still needs a direct match against this competitor. [Audited ballot and token receipts](../evidence/benchmark-v1/uiux-pro-max-bike-booking.json) · [Capture run](https://github.com/chrismicah/design-mcp/actions/runs/45003880052)
