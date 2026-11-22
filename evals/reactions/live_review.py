@@ -83,6 +83,14 @@ def critic_prompt(case, spec=None):
             "Check the actual pixels of the focused view for the visible and readable next deadline.\n\n"
         )
         journey_fields = ", deadline_readable (boolean based on the focused screenshot)"
+    if spec and case == "social-river":
+        journey = (
+            "Finish both level checks in each view before opening the next. Capture -after while the "
+            "level is 6 m, then use the keyboard to reach 2 m in the same view. Confirm the path-only "
+            "result on screen before leaving. If you encounter a slider, use standard range keyboard "
+            "shortcuts such as Home, End, PageUp or PageDown when they reduce the steps. "
+            "A screenshot or inspection without a 2 m keyboard action does not complete that view.\n\n"
+        )
     return f"""Review anonymous views {names} live. Use only the review tools. Open each at 1440 and 390 CSS pixels in a fresh view. Complete one view before opening the next. Choose the keyboard input yourself. Capture initial and resulting states named like A-1440-before and A-1440-after. Then exercise the recovery or edge state.
 
 Task: {task}
@@ -148,6 +156,8 @@ def run(args):
         }
         if args.spec and args.spec.get(OPTION):
             config["observe_journey"] = True
+        if args.spec and args.case == "social-river":
+            config["river_journey"] = True
         config_path = args.out / "driver-config.json"
         config_path.write_text(json.dumps(config, indent=2) + "\n", encoding="utf-8")
         (args.out / "browser-version.txt").write_text(browser["Browser"] + "\n", encoding="utf-8")

@@ -15,6 +15,7 @@ HEIGHTS = {1440: 900, 390: 844}
 WEIGHTS = {"coherence": "0.30", "originality": "0.30", "craft": "0.20", "usability": "0.20"}
 ACTIVATION = {"Enter", "Space"}
 RADIO_KEYS = {"ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"}
+SLIDER_KEYS = RADIO_KEYS | {"Home", "End", "PageUp", "PageDown"}
 
 
 def sha256(raw):
@@ -74,6 +75,35 @@ def keyboard_activation(actions, *, allow_radio=False):
                 {new_radio + " [checked]", old_radio} <= after_ax):
             return True
     return False
+
+
+def keyboard_slider_change(actions):
+    for previous, current in zip(actions, actions[1:]):
+        if current["action"] != "key" or current["value"] not in SLIDER_KEYS:
+            continue
+        before, after = previous["observation"], current["observation"]
+        old, new = before["focus"], after["focus"]
+        label = old["label"]
+        if not label or label != new["label"] or not all(
+            focus["tag"] == "input" and focus.get("visible") and focus.get("document_focused")
+            for focus in (old, new)
+        ):
+            continue
+        name = re.escape(json.dumps(label, ensure_ascii=False))
+        pattern = re.compile(rf'- slider {name}: "(-?\d+(?:\.\d+)?)"')
+        before_values = pattern_values(before, pattern)
+        after_values = pattern_values(after, pattern)
+        if len(before_values) == len(after_values) == 1 and before_values != after_values:
+            return True
+    return False
+
+
+def pattern_values(observation, pattern):
+    return [
+        Decimal(match[1])
+        for line in observation.get("ax", "").splitlines()
+        if (match := pattern.fullmatch(line.strip()))
+    ]
 
 
 def indexed_captures(rows):
@@ -153,7 +183,8 @@ def audit(run, cells, case, spec=None):
         observed = [row for row in phase if row.get("observation")]
         assert all(row["observation"]["url"] == endpoint for row in observed), label
         actions = [row for row in observed if row["op"] == "act"]
-        assert keyboard_activation(actions, allow_radio=not journey), label
+        slider_input = bool(spec and case == "social-river" and keyboard_slider_change(actions))
+        assert keyboard_activation(actions, allow_radio=not journey) or slider_input, label
         edge = edge_actions(rows, after)
         assert (journey or edge) and all(row["page_id"] == page and row["observation"]["url"] == endpoint for row in edge), label
         if journey:

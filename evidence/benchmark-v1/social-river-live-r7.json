@@ -1,0 +1,305 @@
+{
+  "source": {
+    "task": "social-river",
+    "round": 7,
+    "direction_catalog_sha256": "93ca5e844cf43cf4fc6a495b4f5c8c1e24c864d84a04cc40bc0a4ee8a089dada",
+    "critic_model": "gpt-6.1-terra",
+    "critic_effort": "low",
+    "playwriter": "0.12.0"
+  },
+  "generation": {
+    "v2": {
+      "model": "gpt-6.2-sol",
+      "effort": "low",
+      "elapsed_seconds": 83.74,
+      "usage": {
+        "input_tokens": 62068,
+        "cached_input_tokens": 50304,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3881,
+        "reasoning_output_tokens": 102
+      },
+      "html_sha256": "32f3b87d85e54c1ee3c451cb8a26cf739a8cf7810b543e7ac106ebf1d96e842f",
+      "trace_sha256": "042e25df64ddf1562275c02d083ac310871c9ac73359e894acee73c5cda014a6",
+      "expected_direction": "margin-front"
+    },
+    "social": {
+      "model": "gpt-6.2-sol",
+      "effort": "low",
+      "elapsed_seconds": 101.16,
+      "usage": {
+        "input_tokens": 62676,
+        "cached_input_tokens": 56704,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 4346,
+        "reasoning_output_tokens": 134
+      },
+      "html_sha256": "d32baf35e857556d57275a750a4e42282aee7fcabb1aa3de52000185ae6481e0",
+      "trace_sha256": "9da0f0d780b78d910e50b393f39762359ddbaecc40995b6b40f351e36eca9fe3",
+      "expected_direction": "level-cross-section"
+    }
+  },
+  "ballot": {
+    "calibration": {
+      "coherence": 7,
+      "originality": 4,
+      "craft": 6.5,
+      "usability": 6,
+      "reason": "Clear labels and legibility support the task, while the familiar layout limits originality and misplaced focus after invalid input impairs recovery."
+    },
+    "screens": {
+      "A-1440": {
+        "coherence": 8.5,
+        "originality": 8,
+        "craft": 8,
+        "usability": 8,
+        "primary_action": {
+          "input": "Tab to the 6 m footbridge row, then Enter.",
+          "expected": "Set 6 m and show the path and footbridge closed and the ferry stopped.",
+          "observed": "The value became 6 m; all three statuses updated. Captures: A-1440-before and A-1440-after."
+        },
+        "edge_observation": "Shift+Tab twice and Enter set 2 m. The path was closed; ferry and footbridge remained listed as level not reached.",
+        "fact_check": "The waterline aligns with the 6 m mark and the text reports 6 m. Thresholds and statuses are internally consistent; real-world closure thresholds were not independently verified.",
+        "strength": "The large cross-section and adjacent status rows make the relationship between elevation and closures easy to inspect.",
+        "weakness": "The rows look like status output, so their direct-jump button behavior is not obvious before keyboard focus.",
+        "repair": "Make the threshold rows visibly actionable while preserving their status labels.",
+        "arm": "v2",
+        "html_sha256": "32f3b87d85e54c1ee3c451cb8a26cf739a8cf7810b543e7ac106ebf1d96e842f",
+        "weighted": 8.15,
+        "before": {
+          "sha256": "89c7a47ce3052577605ca661bcf693b72f95bf7123c3afb382af870bec48be3f",
+          "file": "A-1440-before.png",
+          "tool_call_id": "item_2"
+        },
+        "after": {
+          "sha256": "95757308ff4a0db52e48166e4e7a563b61fe53b8d63c3ddc5dcd40763ee88b25",
+          "file": "A-1440-after.png",
+          "tool_call_id": "item_9"
+        },
+        "layout_width": 1440,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ]
+      },
+      "A-390": {
+        "coherence": 8.5,
+        "originality": 8,
+        "craft": 8,
+        "usability": 8,
+        "primary_action": {
+          "input": "Tab to the 6 m footbridge row, then Enter.",
+          "expected": "Set 6 m and show all three closure outcomes.",
+          "observed": "The value became 6 m and the three outcomes were readable in the first 390 \u00d7 844 viewport. Captures: A-390-before and A-390-after."
+        },
+        "edge_observation": "Shift+Tab twice and Enter set 2 m. Only the path was marked closed; the other two rows said level not reached.",
+        "fact_check": "The waterline meets the 6 m tick, matching the displayed value. Actual local closure thresholds were not independently verified.",
+        "strength": "The complete illustration, control, and three status rows fit in the first viewport.",
+        "weakness": "The cross-section labels are small, and the final row sits close to the viewport bottom.",
+        "repair": "Increase diagram label legibility and provide more breathing room without pushing the results below the fold.",
+        "arm": "v2",
+        "html_sha256": "32f3b87d85e54c1ee3c451cb8a26cf739a8cf7810b543e7ac106ebf1d96e842f",
+        "weighted": 8.15,
+        "before": {
+          "sha256": "0f5ece628d73e5d0a195d2e9b513a8301a0f454faa8fdc8403d9c596230c59e8",
+          "file": "A-390-before.png",
+          "tool_call_id": "item_15"
+        },
+        "after": {
+          "sha256": "753ae01e76cdefed06f274a24db8af99d3f0fbc5ffe4250b7fb97029e96926ed",
+          "file": "A-390-after.png",
+          "tool_call_id": "item_21"
+        },
+        "layout_width": 390,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ]
+      },
+      "B-1440": {
+        "coherence": 9,
+        "originality": 8.5,
+        "craft": 8.5,
+        "usability": 9,
+        "primary_action": {
+          "input": "Tab to the selected 4 m radio, then ArrowRight.",
+          "expected": "Select 6 m and list all three closures.",
+          "observed": "6 m became selected and the list showed the path, ferry and footbridge outcomes. Captures: B-1440-before and B-1440-after."
+        },
+        "edge_observation": "Two ArrowLeft presses selected 2 m and the list contained only Riverside path closes.",
+        "fact_check": "The waterline aligns with the 6 m threshold and the heading says 6 m. Actual local closure thresholds were not independently verified.",
+        "strength": "The distinct level choices, high-contrast results and detailed cross-section create a clear task flow.",
+        "weakness": "The ferry and pedestrian remain drawn at their fixed threshold positions beneath the waterline, which can distract from the status explanation.",
+        "repair": "Clarify that the drawing depicts fixed closure elevations, or adapt the figures to the selected state.",
+        "arm": "social",
+        "html_sha256": "d32baf35e857556d57275a750a4e42282aee7fcabb1aa3de52000185ae6481e0",
+        "weighted": 8.75,
+        "before": {
+          "sha256": "2f65f24ea2b34be7c8c5467c8cd2db34b1450b3cb5eaa4b6a94feef056369ef7",
+          "file": "B-1440-before.png",
+          "tool_call_id": "item_26"
+        },
+        "after": {
+          "sha256": "968d6985457b25e107df01b6513bce76801968e55a04d896c72c20b76d2afe79",
+          "file": "B-1440-after.png",
+          "tool_call_id": "item_29"
+        },
+        "layout_width": 1440,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "ArrowLeft"
+          },
+          {
+            "action": "key",
+            "value": "ArrowLeft"
+          }
+        ]
+      },
+      "B-390": {
+        "coherence": 9,
+        "originality": 8.5,
+        "craft": 8.5,
+        "usability": 9,
+        "primary_action": {
+          "input": "Tab to the selected 4 m radio, then ArrowRight.",
+          "expected": "Select 6 m and show the complete closure result.",
+          "observed": "6 m became selected; all three results and the cross-section were readable in the first 390 \u00d7 844 viewport. Captures: B-390-before and B-390-after."
+        },
+        "edge_observation": "Two ArrowLeft presses selected 2 m and the list contained only the path closure.",
+        "fact_check": "The blue waterline meets the 6 m tick and agrees with the result heading. Actual local closure thresholds were not independently verified.",
+        "strength": "The controls and result precede the diagram, making the answer immediately accessible without scrolling.",
+        "weakness": "The compressed diagram makes the small illustrations and the wrapped Riverside path label less clear.",
+        "repair": "Simplify the mobile illustration or enlarge its labels while retaining the visible result above it.",
+        "arm": "social",
+        "html_sha256": "d32baf35e857556d57275a750a4e42282aee7fcabb1aa3de52000185ae6481e0",
+        "weighted": 8.75,
+        "before": {
+          "sha256": "0e128c98d61c9f962f6ca0077f342b71b7f71e4b321559fcca370279013348df",
+          "file": "B-390-before.png",
+          "tool_call_id": "item_33"
+        },
+        "after": {
+          "sha256": "86e79e73ac17d82be1e7fc2b7c64a2556f962520af9437d89006225df6ec7c03",
+          "file": "B-390-after.png",
+          "tool_call_id": "item_36"
+        },
+        "layout_width": 390,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "ArrowLeft"
+          },
+          {
+            "action": "key",
+            "value": "ArrowLeft"
+          }
+        ]
+      }
+    },
+    "preference": {
+      "winner": "B",
+      "reason": "Both designs complete the tested keyboard task and fit the results in the tested mobile viewport. B makes the level choices and current result more explicit, places the answer before the diagram on mobile, and filters the 2 m list to the one applicable closure."
+    },
+    "case": "social-river",
+    "verified_screens": 4,
+    "required_screens": 4,
+    "browser": "Chrome/157.0.8103.79",
+    "evaluator_thread": "01a204ff-533e-7170-809e-2efafce387af",
+    "usage": {
+      "input_tokens": 693828,
+      "cached_input_tokens": 669696,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 2431,
+      "reasoning_output_tokens": 0
+    },
+    "trace_sha256": "3e4231f0ef7fb7999aa4b92d1cfd6f29fa15de917a523f34244567327db6fc1c",
+    "browser_audit_sha256": "b5adfe8dcfe349edd31c80126ebd6bd6adcca8ef8781e9eb3e025fd0a9e094b6"
+  },
+  "ballot_sha256": "40c8b16ed997abbf4929eec766688a51942f4e3c1a4448e560685416bdf7d573",
+  "decision": "The large threshold views scored 8.75 at both widths, ahead of stock and below round 5. Retain round 5 and close the stepped-bank series."
+}

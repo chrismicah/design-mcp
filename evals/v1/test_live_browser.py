@@ -211,6 +211,23 @@ async def test_journey_details_stay_in_the_local_audit(config):
 
 
 @pytest.mark.asyncio
+async def test_river_review_requires_edge_input_before_leaving(config):
+    browser = LiveBrowser({**config, "river_journey": True, "original_capture": True})
+    playwriter = FakePlaywriter()
+    async with Client(playwriter.server) as relay, Client(create_server(browser)) as judge:
+        await browser.connect(relay)
+        await judge.call_tool("open_view", {"page_id": "A", "width": 390})
+        await judge.call_tool("capture", {"label": "A-390-after"})
+        await judge.call_tool("act", {"action": "key", "value": "Tab"})
+        next_view = {"page_id": "B", "width": 390}
+        blocked = await judge.call_tool("open_view", next_view, raise_on_error=False)
+        assert blocked.is_error and "2 m" in blocked.content[0].text
+        await judge.call_tool("act", {"action": "key", "value": "End"})
+        assert not (await judge.call_tool("open_view", next_view)).is_error
+    assert playwriter.keys == ["Tab", "End"]
+
+
+@pytest.mark.asyncio
 async def test_invalid_inputs_have_no_browser_call(connected):
     judge, relay, evidence = connected
     await judge.call_tool("open_view", {"page_id": "A", "width": 390})

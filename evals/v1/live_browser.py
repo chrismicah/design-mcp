@@ -21,6 +21,8 @@ from render import VIEWPORTS, result_text
 
 KEYS = frozenset("Tab Shift+Tab Enter Space Backspace Escape ArrowUp ArrowDown "
                  "ArrowLeft ArrowRight ControlOrMeta+a".split())
+RANGE_KEYS = frozenset({"Home", "End", "PageUp", "PageDown"})
+RIVER_EDGE_KEYS = RANGE_KEYS | {"ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Space", "Enter"}
 IDENTIFIER = re.compile(r"[A-Za-z0-9][A-Za-z0-9_-]{0,31}")
 RECEIPT = re.compile(r"^\[return value\] LIVE_VIEW (.+)$", re.MULTILINE)
 # Leave room for base64 and metadata within the observed one-MiB client result.
@@ -181,6 +183,10 @@ class LiveBrowser:
         self.observe_journey = config.get("observe_journey", False)
         if type(self.observe_journey) is not bool:
             raise ValueError("observe_journey must be a boolean")
+        self.river_journey = config.get("river_journey", False)
+        if type(self.river_journey) is not bool:
+            raise ValueError("river_journey must be a boolean")
+        self.edge_pending = False
         # An explicit relay URL prevents Playwriter from starting a missing relay.
         self.transport = StdioTransport(
             command=str(Path(config["playwriter"]).absolute()), args=[], keep_alive=False,
@@ -256,6 +262,11 @@ state.journeyActivated = true;
                 output = ToolResult(content=[TextContent(type="text", text=json.dumps(metadata)), image])
                 path.with_suffix(".pending").replace(path)
             self.audit(record)
+            if self.river_journey:
+                if row["op"] == "capture" and row["label"] == f"{page_id}-{observation['width']}-after":
+                    self.edge_pending = True
+                elif row["op"] == "act" and row["action"] == "key" and row["value"] in RIVER_EDGE_KEYS:
+                    self.edge_pending = False
         except Exception:
             if path is not None:
                 path.with_suffix(".pending").unlink(missing_ok=True)
@@ -270,13 +281,16 @@ state.journeyActivated = true;
             raise ToolError("Choose a known fixture ID and width 1440 or 390")
         viewport = json.dumps({"width": width, "height": dict(VIEWPORTS)[width]})
         async with self.lock:
+            if self.active is not None and self.edge_pending:
+                raise ToolError("Use the keyboard to check the 2 m result in this view before opening another view")
+            self.edge_pending = False
             return await self.run({"op": "open_view", "width": width}, page_id,
                                   f"const viewport = {viewport};\n" + OPEN + GUARD +
                                   "state.journeyAnchor = null; state.journeyActivated = false;\n")
 
     async def act(self, action: Literal["key", "text", "reload"], value: str | None = None) -> dict:
-        """Insert text, reload, or press Tab, Shift+Tab, Enter, Space, Backspace, Escape, an Arrow key, or ControlOrMeta+a."""
-        if action == "key" and value in KEYS:
+        """Insert text, reload, or press a keyboard navigation or activation key."""
+        if action == "key" and (value in KEYS or (self.river_journey and value in RANGE_KEYS)):
             command = INPUT_GUARD + f"await page.keyboard.press({json.dumps(value)});"
         elif action == "text" and value and len(value) <= 256 and value.isprintable():
             command = INPUT_GUARD + f"await page.keyboard.insertText({json.dumps(value)});"

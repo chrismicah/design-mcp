@@ -55,6 +55,10 @@ python3 evals/reactions/audit_review.py --run "$ROUND" --cells "$CELLS" \
 
 Use the [Playwriter render and live browser setup](../v1/README.md) for additional responsive and reduced-motion checks. Use the same prompt permissions for both arms. To audit the recorded retrieval without generating a page, run `python3 evals/social-design/preflight.py`.
 
+Run `python3 evals/social-design/status.py` after saving an audited ballot. The report ranks each candidate by its weaker viewport and uses the mean to break a tie. It checks the archived control and critic session for each round, and reports the score floor and the standing stopping rule separately.
+
+Freeze the strongest build and its control for the second critic. Run the same live commands with a new `ROUND` directory and a separate calibrated vision session. Keep the first ballot and the round history out of the second session's context. Save both results. `status.py` reads an archived confirmation named `social-CASE-confirmation-rN.json` for the strongest round. To check a new audit before archiving, pass `--lighting-confirmation PATH` or `--river-confirmation PATH`. Confirmation requires distinct live evidence for the same two builds. Both ballots must reach 9.5 on each viewport, beat the control, improve originality and preserve usability. A lower score goes back to the builder with the critic's specific repair. After two non-improvements once five rounds have been scored, or after 15 scored rounds, close the series and record a distinct premise before continuing.
+
 [Source observations and access routes](../../research/SOCIAL-DESIGN.md)
 
 ### Lighting, round 2
@@ -102,3 +106,11 @@ One bounded Astra planning pass proposed the moment a stage crew tests the light
 ### River, round 7
 
 Round 6 crowded the mobile chart. Try a bolder field graphic with three oversized crossing silhouettes on a stepped bank. Put large HTML names on a separate label rail aligned to the steps. Keep the real level control and complete result directly above the mobile graphic. The only moving reading is the colored waterline. Use deep-water ink `#092538`, pale paper `#EBF5F6`, cobalt `#2053A6` for the active reading, teal `#61BCD4` for water, and gold `#F2C35E` beside named closures. Use Archivo Narrow for the level and IBM Plex Sans for terms and controls. Keep the illustration clear of any tiny labels or terrain texture.
+
+### Lighting, new direction
+
+A theatre producer should feel like they have a hand on the lighting console. Make one illuminated calibration object the centerpiece of an optical bench. Use a shallow, folded metal screen whose three broad faces respond differently to each cue. Keep the object and floor in view on mobile. Align a full-width row of three cue keys to the bench and use the whole width of the same row for the selected technique beneath it. Omit the performer, curtain, ornamental technical markings and biography. Use ink violet `#252140`, cool paper `#E1E5F1`, lens silver `#A8AEC8`, tungsten `#F6B96B` and cobalt `#2A54B7`. Use Bricolage Grotesque for the identity and cues and IBM Plex Sans for the technique. The broad metal fold should catch light in a physically plausible way that a producer can read immediately. Check that each cue changes the object and written technique together and remains identifiable after focus moves.
+
+### River, new direction
+
+A resident should get a clear, quick reading, with the physical landmarks making the thresholds memorable. Compose one wide floodwall scene with a large stenciled height gauge where the water meets it. Let the water visibly cover the lowest marks and change the way each crossing is drawn as it closes. Keep a single complete status sentence next to the controls and fit it before the scene on mobile. Leave out the separate label rail, map legend and inset detail panels. Use deep slate `#132E36`, limestone `#E9E5D8`, tidal green `#176167`, wet stone `#7FABB2` and brass `#E0AC44`. Set the elevation and title in Archivo Black and the controls and closure language in IBM Plex Sans. The gauge and landmarks should feel like part of the same physical waterfront. Test 6 m, 2 m and the transition between them with the same facts and unmistakable focus.

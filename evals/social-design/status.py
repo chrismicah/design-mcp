@@ -1,0 +1,150 @@
+"""Report the strongest verified trial and require a second live release ballot."""
+
+import argparse
+from decimal import Decimal
+import json
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parents[2]
+RECEIPTS = ROOT / "evidence" / "benchmark-v1"
+WIDTHS = (1440, 390)
+ARMS = ("v2", "social")
+THRESHOLD = Decimal("9.5")
+
+
+def scores(ballot):
+    pair = {}
+    for screen, observation in ballot["screens"].items():
+        width = int(screen.split("-")[1])
+        key = (observation["arm"], width)
+        if key in pair:
+            raise ValueError("Duplicate arm and width in browser ballot")
+        pair[key] = observation
+    expected = {(arm, width) for arm in ARMS for width in WIDTHS}
+    if (pair.keys() != expected or
+            ballot["verified_screens"] != ballot["required_screens"] or
+            ballot["verified_screens"] != len(expected)):
+        raise ValueError("The ballot needs four verified views")
+    return pair
+
+
+def verify_builds(pair, generation):
+    for (arm, _), observation in pair.items():
+        if observation["html_sha256"] != generation[arm]["html_sha256"]:
+            raise ValueError(f"Ballot does not review the recorded {arm} build")
+
+
+def viewport_scores(pair, arm):
+    return {width: pair[(arm, width)]["weighted"] for width in WIDTHS}
+
+
+def gates(pair):
+    candidate = viewport_scores(pair, "social")
+    control = viewport_scores(pair, "v2")
+    return {
+        "minimum_score_met": all(Decimal(str(score)) >= THRESHOLD
+                                 for score in candidate.values()),
+        "beats_control_at_both_widths": all(candidate[width] > control[width] for width in WIDTHS),
+        "originality_improves_at_both_widths": all(
+            pair[("social", width)]["originality"] > pair[("v2", width)]["originality"] for width in WIDTHS),
+        "usability_preserved_at_both_widths": all(
+            pair[("social", width)]["usability"] >= pair[("v2", width)]["usability"] for width in WIDTHS),
+    }
+
+
+def result(case, receipts=RECEIPTS, confirmation=None):
+    candidates = []
+    for path in receipts.glob(f"social-{case}-live-r*.json"):
+        receipt = json.loads(path.read_text(encoding="utf-8"))
+        candidates.append(receipt)
+    candidates.sort(key=lambda receipt: receipt["source"]["round"])
+    if not candidates:
+        raise ValueError(f"No audit receipts for {case}")
+    strongest = None
+    series = {}
+    series_name = None
+    series_best = None
+    misses = 0
+    critic_threads = set()
+    control_hash = candidates[0]["generation"]["v2"]["html_sha256"]
+    for expected_round, receipt in enumerate(candidates, start=1):
+        if (receipt["source"]["round"] != expected_round or
+                receipt["ballot"]["case"] != f"social-{case}" or
+                receipt["generation"]["v2"]["html_sha256"] != control_hash):
+            raise ValueError("Expected consecutive rounds with the same archived control")
+        ballot = receipt["ballot"]
+        thread = ballot["evaluator_thread"]
+        if not thread or thread in critic_threads:
+            raise ValueError("Each round requires a fresh critic session")
+        critic_threads.add(thread)
+        pair = scores(ballot)
+        verify_builds(pair, receipt["generation"])
+        values = [Decimal(str(score)) for score in viewport_scores(pair, "social").values()]
+        rank = (min(values), sum(values) / len(values))
+        if strongest is None or rank > strongest["rank"]:
+            strongest = {"round": expected_round, "rank": rank, "receipt": receipt, "pair": pair}
+        name = receipt["source"].get("series", "original")
+        if name != series_name:
+            if name in series:
+                raise ValueError("A closed series cannot be resumed under its original identity")
+            series[name] = 0
+            series_name = name
+            series_best = None
+        series[name] += 1
+        if series_best is None or rank > series_best:
+            series_best = rank
+            misses = 0
+        else:
+            misses += 1
+    best = strongest["pair"]
+    primary_gates = gates(best)
+    confirmation_report = None
+    if confirmation is None:
+        archived = receipts / f"social-{case}-confirmation-r{strongest['round']}.json"
+        if archived.is_file():
+            confirmation = json.loads(archived.read_text(encoding="utf-8"))
+    if confirmation is not None:
+        thread = confirmation["evaluator_thread"]
+        primary = strongest["receipt"]["ballot"]
+        if (not thread or thread in critic_threads or confirmation["case"] != primary["case"] or
+                confirmation["trace_sha256"] == primary["trace_sha256"] or
+                confirmation["browser_audit_sha256"] == primary["browser_audit_sha256"]):
+            raise ValueError("Confirmation requires a separate audited live session on this case")
+        second = scores(confirmation)
+        verify_builds(second, strongest["receipt"]["generation"])
+        confirmation_report = {
+            "scores": viewport_scores(second, "social"),
+            "paired_control": viewport_scores(second, "v2"),
+            **gates(second),
+        }
+    active_rounds = series[series_name]
+    return {
+        "scored_rounds": len(candidates),
+        "best_round": strongest["round"],
+        "best": viewport_scores(best, "social"),
+        "paired_control": viewport_scores(best, "v2"),
+        **primary_gates,
+        "confirmation": confirmation_report,
+        "confirmed_score_gate": (
+            all(primary_gates.values()) and confirmation_report is not None and
+            all(confirmation_report[key] for key in primary_gates)
+        ),
+        "current_series": series_name,
+        "rounds_in_current_series": active_rounds,
+        "consecutive_rounds_without_improvement": misses,
+        "series_stopping_rule_met": active_rounds >= 15 or (active_rounds >= 5 and misses >= 2),
+    }
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=__doc__)
+    for case in ("lighting", "river"):
+        parser.add_argument(f"--{case}-confirmation", type=Path, help="Independent audited.json for the strongest round")
+    args = parser.parse_args()
+    results = {}
+    for case in ("lighting", "river"):
+        path = getattr(args, f"{case}_confirmation")
+        confirmation = json.loads(path.read_text(encoding="utf-8")) if path else None
+        results[case] = result(case, confirmation=confirmation)
+    print(json.dumps(results, indent=2))

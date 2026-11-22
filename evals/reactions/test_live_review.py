@@ -4,11 +4,31 @@ import struct
 
 import pytest
 
-from audit_review import audit, HEIGHTS
+from audit_review import audit, HEIGHTS, keyboard_slider_change
 from benchmark_input import HASH_FIELDS, control_conditions
 from live_review import PACKAGE_COMMIT, benchmark_cells, critic_prompt, eligible_pair, generate, load_spec
 from cold_storage import OPTION
 from test_cold_storage import BOARD, CONTRACT, FOCUSED, state
+
+
+@pytest.mark.parametrize(("key", "value", "label", "expected"), [
+    ("ArrowRight", "4.1", "Water level", True),
+    ("End", "6", "Water level", True),
+    ("ArrowRight", "4.0", "Water level", False),
+    ("ArrowRight", "4.1", "Another control", False),
+    ("Tab", "4.1", "Water level", False),
+])
+def test_slider_keyboard_change(key, value, label, expected):
+    def input_row(key, value, label):
+        return {
+            "action": "key", "value": key,
+            "observation": {
+                "focus": {"tag": "input", "label": label, "visible": True, "document_focused": True},
+                "ax": f'- slider "Water level": "{value}"',
+            },
+        }
+
+    assert keyboard_slider_change([input_row("Tab", "4", "Water level"), input_row(key, value, label)]) == expected
 
 
 @pytest.fixture
