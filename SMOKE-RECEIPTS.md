@@ -2,7 +2,7 @@
 
 ## Reference Mac clean install, November 22
 
-Pipx 1.7.1 installed the exact combined candidate from a checked Git archive into a new workspace-local environment on Apple Silicon macOS 26.5.2 with Python 3.13.3. From an empty run directory, `doctor` passed and the installed server returned all three default tool replies and all 17 compatibility replies over stdio. The compatibility run created the verified 10,092,399-byte legacy cache. The installed package included the Chrome extension manifest. Codex read the documented stdio configuration with the exact installed command using a one-run override. The native browser run and model-driven client smoke remain separate checks. [Install receipt and raw evidence hashes](evidence/benchmark-v1/reference-mac-install.json)
+Pipx 1.7.1 installed the exact combined candidate from a checked Git archive into a new workspace-local environment on Apple Silicon macOS 26.5.2 with Python 3.13.3. From an empty run directory, `doctor` passed and the installed server returned all three default tool replies and all 17 compatibility replies over stdio. The compatibility run created the verified 10,092,399-byte legacy cache. The installed package included the Chrome extension manifest. A fresh Codex CLI session using the documented stdio configuration called `direct`, `react`, and `check` against that executable. It received the service-work-order direction for the bike shop and applied the “calmer” reaction. The native browser run remains open. [Install and model trace receipts](evidence/benchmark-v1/reference-mac-install.json)
 
 ## Combined review branch, November 22
 
