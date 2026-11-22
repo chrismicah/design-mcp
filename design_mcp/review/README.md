@@ -2,7 +2,7 @@
 
 Scan a web page, get the first thing to fix, and see the change on the page's own pixels. Everything runs on this computer. Nothing is uploaded.
 
-**Prototype status.** All 51 source checks passed. The installed CLI captured the USWDS address form at desktop and mobile widths through Playwriter. Both views retained the masked Street address field in the eight-region context. The Chrome extension setup and popup still need live verification. [Installed URL run](https://github.com/chrismicah/design-mcp/actions/runs/44993452256)
+The installed CLI captured the USWDS address form at desktop and mobile widths through Playwriter. Both views retained the masked Street address field in the eight-region context. The Linux Chrome smoke exercised keyboard activation, repair after a missing host, preview navigation, and field masking. [Installed URL run](https://github.com/chrismicah/design-mcp/actions/runs/44993452256) · [Chrome extension smoke](https://github.com/chrismicah/design-mcp/actions/runs/44994211431)
 
 ## Three ways in
 
@@ -78,9 +78,9 @@ Replay the saved-capture route once the tests pass:
 design-mcp review --evidence capture.json --out ./review-out
 ```
 
-## Browser verification still to do
+## Reference Mac verification
 
-These are the remaining browser acceptance steps for this slice.
+Repeat the installed browser acceptance steps on the reference Mac.
 
 1. Load the unpacked extension. Confirm the popup paints one primary button and that DevTools shows no network request before the button is pressed.
 2. On a public status board at 1440 and 390 wide: press **Review this page**. Confirm the finding names a real region, the popup crop shows that region outlined, and the preview's outline sits on it.
@@ -93,7 +93,7 @@ These are the remaining browser acceptance steps for this slice.
 
 - The popup and preview still need independent live review and a 9.5 per screen release score.
 - No model review, no redesign builder, and no after view for layout findings. The first finding comes from three local checks only.
-- The extension has not been loaded in Chrome. Two behaviors need confirming there: opening the saved preview through a `file://` address from the popup, and SVG filter rendering of the after view.
+- The reference Mac run still needs to confirm preview opening and verify the recolored text pixels in the After view.
 - Private subresource handling remains open for pasted URLs. The browser prototype checks host patterns on subrequests and pins the top-level lookup.
 - No keyboard activation is performed on a live page, so the interaction part of the capture format is validated but never produced.
 - The 8 reported regions are chosen by the collector: first heading, main button, up to three hardest-to-read lines, first status, then reading order. That choice has not been checked against human labels.

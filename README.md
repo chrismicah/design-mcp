@@ -67,6 +67,14 @@ The agent calls `direct` first. Pass the audience, task, real content, and any e
 
 Try “calmer” after the first draft. The result adjusts focal spacing, the size of the display type, accent use, and motion timing while preserving the product facts and main task.
 
+## Review an existing interface
+
+- **A public website.** Run `design-mcp review https://example.com --playwriter /path/to/playwriter`. The command uses a separate Chrome profile and saves a local preview with a measured finding. [Browser setup](design_mcp/review/README.md)
+- **The active Chrome tab.** Load the extension from the folder printed by `design-mcp review --extension-path`. Open the toolbar popup, choose **Review this page**, and follow its one-time host setup. [Extension setup](design_mcp/review/README.md#set-up-the-extension)
+- **Your SwiftUI or Electron app.** Use the app-specific exporter, then run `design-mcp review-app capture.json` to check the visible controls for clipping and occlusion. [Swift exporter](integrations/desktop/SwiftCapture.swift) · [Electron exporter](integrations/desktop/electron.mjs)
+
+Hosted checks covered a public URL on macOS, the Chrome extension on Linux, and owned SwiftUI and Electron fixtures on macOS 15 arm64. The combined install, reference-Mac latency, independent design review, and final GPT Computer Use smoke are open. [Smoke receipts](SMOKE-RECEIPTS.md)
+
 ## Compatibility
 
 `DESIGN_MCP_SURFACE=v2` exposes the three tools above. `both` (the default) also exposes the 14 historical pattern, token, library, and analysis tools. `legacy` exposes only those historical tools. In the legacy search, request `visual_recipes` or `design_system` explicitly in `fields` to include the corresponding guidance.
