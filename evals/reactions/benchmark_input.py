@@ -3,6 +3,7 @@
 import json
 import re
 
+from cold_storage import OPTION, validate_contract
 from pilot import generate
 
 
@@ -25,6 +26,11 @@ def load_spec(path):
     unhinted = spec.get("require_unhinted_direct", False)
     if type(unhinted) is not bool or (unhinted and directions.keys() != set(arms) - {"none"}):
         raise ValueError("An unhinted comparison requires a direction ID for each Design MCP arm")
+    journey = spec.get(OPTION, False)
+    if type(journey) is not bool or (journey and (spec["case"] != "cold-storage" or not unhinted)):
+        raise ValueError("The dispatch journey requires the unhinted cold-storage comparison")
+    if journey:
+        validate_contract(spec.get("journey_facts"))
     if "browser" in spec and not re.fullmatch(r"Chrome/\d+\.\d+\.\d+\.\d+", spec["browser"]):
         raise ValueError("Pin the expected browser as Chrome/major.minor.build.patch")
     return spec

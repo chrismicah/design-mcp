@@ -9,6 +9,8 @@ from pathlib import Path
 import re
 import struct
 
+from cold_storage import OPTION, audit_journey
+
 HEIGHTS = {1440: 900, 390: 844}
 WEIGHTS = {"coherence": "0.30", "originality": "0.30", "craft": "0.20", "usability": "0.20"}
 ACTIVATION = {"Enter", "Space"}
@@ -24,6 +26,7 @@ def read_jsonl(raw):
 
 def screenshot(run, page, width, suffix, captures, calls):
     label = f"{page}-{width}-{suffix}"
+    assert label in captures, f"Missing original capture {label}"
     index, row = captures[label]
     assert row["page_id"] == page and row["path"] == f"{label}.png", label
     assert row["observation"]["width"] == width, label
@@ -67,6 +70,8 @@ def audit(run, cells, case, spec=None):
     events, rows = read_jsonl(trace), read_jsonl(log)
     key = json.loads((run / "sealed-key.json").read_bytes())
     settings = json.loads((run / "driver-config.json").read_bytes())
+    journey = bool(spec and spec.get(OPTION))
+    assert settings.get("observe_journey", False) is journey
     expected_arms = set(spec["arms"]) if spec else {"plain", "design-mcp"}
     assert settings["original_capture"] is True and set(settings["pages"]) == set(key) == set("ABC"[:len(expected_arms)])
     assert {value["arm"] for value in key.values()} == expected_arms
@@ -98,7 +103,10 @@ def audit(run, cells, case, spec=None):
     allowed = {"open_view", "act", "capture"}
     assert all(item["server"] == "review" and item["tool"] in allowed for item in calls)
     calls = [item for item in calls if item["status"] == "completed"]
-    reply = [item["text"] for item in items if item["type"] == "agent_message"][-1]
+    last_message = max(index for index, item in enumerate(items) if item["type"] == "agent_message")
+    if journey:
+        assert all(item["type"] != "mcp_tool_call" for item in items[last_message + 1:]), "Record the journey before submitting a ballot"
+    reply = items[last_message]["text"]
     fenced = re.fullmatch(r"\s*```json\s*(.*?)\s*```\s*", reply, re.DOTALL)
     ballot = json.loads(fenced[1] if fenced else reply)
     screens = ballot["screens"]
@@ -114,7 +122,8 @@ def audit(run, cells, case, spec=None):
         before, first = screenshot(run, page, width, "before", captures, calls)
         after, last = screenshot(run, page, width, "after", captures, calls)
         assert before < after, label
-        opened = next(row for row in reversed(rows[:before]) if row["op"] == "open_view")
+        opened_index = next(index for index in range(before - 1, -1, -1) if rows[index]["op"] == "open_view")
+        opened = rows[opened_index]
         assert opened["page_id"] == page and opened["width"] == width, label
         phase = rows[before:after + 1]
         assert all(row["op"] != "open_view" and row["page_id"] == page for row in phase), label
@@ -123,7 +132,17 @@ def audit(run, cells, case, spec=None):
         actions = [row for row in observed if row["op"] == "act"]
         assert any(row["action"] == "key" and row["value"] in ACTIVATION for row in actions), label
         edge = edge_actions(rows, after)
-        assert edge and all(row["page_id"] == page and row["observation"]["url"] == endpoint for row in edge), label
+        assert (journey or edge) and all(row["page_id"] == page and row["observation"]["url"] == endpoint for row in edge), label
+        if journey:
+            assert not any(row["op"] == "act" for row in rows[opened_index + 1:before]), label
+            focused, focus_image = screenshot(run, page, width, "focused", captures, calls)
+            following = next((offset for offset, row in enumerate(rows[after + 1:], after + 1)
+                              if row["op"] == "open_view"), len(rows))
+            visit = rows[before:following]
+            assert all(row["page_id"] == page and row["observation"]["url"] == endpoint and
+                       row["observation"]["width"] == width for row in visit), label
+            verdict["journey"] = audit_journey(visit, 0, focused - before, after - before, spec["journey_facts"])
+            verdict["focused"] = focus_image
         for metric in WEIGHTS:
             assert type(verdict[metric]) in (int, float) and 0 <= verdict[metric] <= 10, label
         for field in ("input", "expected", "observed"):

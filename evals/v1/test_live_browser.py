@@ -69,6 +69,11 @@ class FakePlaywriter:
         if not screenshot:
             assert "ariaSnapshot" in code and "[AX truncated]" in code
             observation["ax"] = f'textbox: {self.value}'
+        if "const readJourney = ()" in code:
+            observation["journey"] = {"observed": True}
+            if key:
+                assert code.index("const prior = await readJourney()") < code.index("await page.keyboard.press")
+                observation["journey_before"] = {"observed": True}
         receipt = "[return value] LIVE_VIEW " + json.dumps(observation)
         return ToolResult(content=[TextContent(type="text", text=receipt), *blocks])
 
@@ -166,6 +171,24 @@ async def test_release_capture_returns_the_archived_png(config):
     assert png == (browser.evidence / metadata["path"]).read_bytes() == PNG
     assert metadata["sha256"] == hashlib.sha256(png).hexdigest()
     assert "resizeImageForAgent" not in playwriter.calls[-1][1]
+
+
+@pytest.mark.asyncio
+async def test_journey_details_stay_in_the_local_audit(config):
+    browser = LiveBrowser({**config, "observe_journey": True, "original_capture": True})
+    playwriter = FakePlaywriter()
+    async with Client(playwriter.server) as relay, Client(create_server(browser)) as judge:
+        await browser.connect(relay)
+        await judge.call_tool("open_view", {"page_id": "A", "width": 390})
+        tab = await judge.call_tool("act", {"action": "key", "value": "Tab"})
+        assert "const readJourney = null" in playwriter.calls[-1][1]
+        enter = await judge.call_tool("act", {"action": "key", "value": "Enter"})
+        capture = await judge.call_tool("capture", {"label": "A-390-focused"})
+    assert "journey" not in tab.data and "journey" not in enter.data
+    assert "journey" not in json.loads(capture.content[0].text)
+    rows = [json.loads(line)["observation"] for line in (browser.evidence / "audit.jsonl").read_text().splitlines()]
+    assert "journey" not in rows[0] and "journey" not in rows[1]
+    assert rows[2]["journey_before"] == rows[2]["journey"] == rows[3]["journey"] == {"observed": True}
 
 
 @pytest.mark.asyncio

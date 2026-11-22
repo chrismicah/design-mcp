@@ -93,8 +93,52 @@ if (includeAX) {
   const marker = '\n[AX truncated]';
   observation.ax = ax.length > 1800 ? ax.slice(0, 1800 - marker.length) + marker : ax;
 }
+if (readJourney !== null) observation.journey = await readJourney();
+if (prior !== null) observation.journey_before = prior;
 guard();
 return 'LIVE_VIEW ' + JSON.stringify(observation);
+"""
+
+JOURNEY = r"""
+const readJourney = () => page.evaluate(anchor => {
+  const active = document.activeElement;
+  const rect = active?.getBoundingClientRect();
+  const center = rect?.width && rect.height ? [rect.x + rect.width / 2, rect.y + rect.height / 2] : null;
+  const hits = (point, element) => !!point && !!element?.contains(document.elementFromPoint(...point));
+  const focus = document.hasFocus() && active !== document.body && active !== document.documentElement;
+  const shown = [];
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  const range = document.createRange();
+  while (walker.nextNode()) {
+    const node = walker.currentNode;
+    const value = node.textContent.trim();
+    if (!value || ['SCRIPT', 'STYLE', 'TEMPLATE'].includes(node.parentElement.tagName)) continue;
+    if (!node.parentElement.checkVisibility({opacityProperty:true, visibilityProperty:true, contentVisibilityAuto:true})) {
+      // A display:contents wrapper can still have visible text ranges.
+      const style = getComputedStyle(node.parentElement);
+      if (style.display !== 'contents' || style.visibility !== 'visible') continue;
+    }
+    range.selectNodeContents(node);
+    const visible = Array.from(range.getClientRects()).some(rect => {
+      const x = rect.x + rect.width / 2, y = rect.y + rect.height / 2;
+      return x >= 0 && x < innerWidth && y >= 0 && y < innerHeight && hits([x, y], node.parentElement);
+    });
+    if (visible) shown.push(value);
+  }
+  const rendered = document.body.innerText.replace(/\s+/g, ' ').trim();
+  const viewport = shown.join(' ').replace(/\s+/g, ' ');
+  return {
+    rendered_text: rendered.slice(0, 1500),
+    viewport_text: viewport.slice(0, 1500),
+    truncated: rendered.length > 1500 || viewport.length > 1500,
+    scroll: [scrollX, scrollY],
+    focus: focus ? {
+      center, hittable: hits(center, active), at_anchor: hits(anchor, active),
+      enabled: !active.matches(':disabled') && !active.closest('[aria-disabled="true"]'),
+      visible: active.matches(':focus-visible'),
+    } : null,
+  };
+}, state.journeyAnchor ?? null);
 """
 
 INPUT_GUARD = """
@@ -132,6 +176,9 @@ class LiveBrowser:
         self.original_capture = config.get("original_capture", False)
         if type(self.original_capture) is not bool:
             raise ValueError("original_capture must be a boolean")
+        self.observe_journey = config.get("observe_journey", False)
+        if type(self.observe_journey) is not bool:
+            raise ValueError("observe_journey must be a boolean")
         # An explicit relay URL prevents Playwriter from starting a missing relay.
         self.transport = StdioTransport(
             command=str(Path(config["playwriter"]).absolute()), args=[], keep_alive=False,
@@ -157,14 +204,22 @@ class LiveBrowser:
         with (self.evidence / "audit.jsonl").open("a", encoding="utf-8") as stream:
             stream.write(json.dumps(row, separators=(",", ":")) + "\n")
 
-    async def run(self, row, page_id, code, path=None):
+    async def run(self, row, page_id, code, path=None, command="", activation=False):
         url = self.pages[page_id]
         inputs = f"const url = {json.dumps(url)}, includeAX = {json.dumps(path is None)};\n"
         self.active = None
         try:
+            journey = "\nconst readJourney = null, prior = null;\n"
+            if self.observe_journey and (activation or path is not None):
+                pre_activation = """
+const prior = await readJourney();
+if (!state.journeyActivated) state.journeyAnchor = prior.focus?.center ?? null;
+state.journeyActivated = true;
+""" if activation else "const prior = null;\n"
+                journey = JOURNEY + pre_activation
             result = await self.client.call_tool("execute", {
                 "session": self.session, "timeout": 18000,
-                "code": inputs + code + OBSERVE,
+                "code": inputs + code + journey + command + "\n" + OBSERVE,
             })
             receipt = RECEIPT.search(result_text(result))
             if result.is_error or not receipt:
@@ -173,7 +228,7 @@ class LiveBrowser:
             if observation["url"] != url:
                 raise ValueError("Unexpected destination")
             record = {**row, "page_id": page_id, "observation": observation}
-            output = observation
+            output = {key: value for key, value in observation.items() if key not in {"journey", "journey_before"}}
             if path is not None:
                 images = [block for block in result.content if block.type == "image"]
                 png = path.with_suffix(".pending").read_bytes()
@@ -187,7 +242,7 @@ class LiveBrowser:
                 else:
                     raise ValueError("Missing preview image")
                 record.update(path=path.name, sha256=sha256(png))
-                metadata = {**observation, "path": path.name, "sha256": record["sha256"]}
+                metadata = {**output, "path": path.name, "sha256": record["sha256"]}
                 output = ToolResult(content=[TextContent(type="text", text=json.dumps(metadata)), image])
                 path.with_suffix(".pending").replace(path)
             self.audit(record)
@@ -206,7 +261,8 @@ class LiveBrowser:
         viewport = json.dumps({"width": width, "height": dict(VIEWPORTS)[width]})
         async with self.lock:
             return await self.run({"op": "open_view", "width": width}, page_id,
-                                  f"const viewport = {viewport};\n" + OPEN + GUARD)
+                                  f"const viewport = {viewport};\n" + OPEN + GUARD +
+                                  "state.journeyAnchor = null; state.journeyActivated = false;\n")
 
     async def act(self, action: Literal["key", "text", "reload"], value: str | None = None) -> dict:
         """Insert text, reload, or press Tab, Shift+Tab, Enter, Space, Backspace, Escape, an Arrow key, or ControlOrMeta+a."""
@@ -223,7 +279,8 @@ class LiveBrowser:
             if self.active is None:
                 raise ToolError("Open a view first")
             return await self.run({"op": "act", "action": action, "value": value}, self.active,
-                                  "const page = state.page;\n" + GUARD + command + "\n")
+                                  "const page = state.page;\n" + GUARD, command=command,
+                                  activation=action == "key" and value in {"Enter", "Space"})
 
     async def capture(self, label: str) -> ToolResult:
         """Save a PNG and return a screenshot with live metadata."""

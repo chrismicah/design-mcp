@@ -6,6 +6,8 @@ import pytest
 
 from audit_review import audit, HEIGHTS
 from live_review import PACKAGE_COMMIT, benchmark_cells, critic_prompt, eligible_pair, generate, load_spec
+from cold_storage import OPTION
+from test_cold_storage import BOARD, CONTRACT, FOCUSED, state
 
 
 @pytest.fixture
@@ -170,8 +172,12 @@ def test_preflight_rejects_noncomparable_cells(benchmark, mutant, message):
         benchmark_cells(root, spec)
 
 
-def test_three_arm_audit_requires_six_views(benchmark):
+@pytest.mark.parametrize("benchmark", [True], indirect=True)
+@pytest.mark.parametrize("journey", [False, True])
+def test_three_arm_audit_requires_six_views(benchmark, journey):
     root, spec = benchmark
+    if journey:
+        spec.update({OPTION: True, "journey_facts": CONTRACT})
     eligible = benchmark_cells(root, spec)
     key = {label: {field: receipt[field] for field in ("arm", "thread_id", "html_sha256")}
            for label, (receipt, _) in zip("ABC", eligible.values(), strict=True)}
@@ -180,7 +186,7 @@ def test_three_arm_audit_requires_six_views(benchmark):
     captures.mkdir(parents=True)
     pages = {label: f"http://127.0.0.1:{8000 + index}/index.html"
              for index, label in enumerate(key)}
-    settings = {"original_capture": True, "pages": pages}
+    settings = {"original_capture": True, "pages": pages, "observe_journey": journey}
     for name, value in (("sealed-key.json", key), ("benchmark-spec.json", spec), ("driver-config.json", settings)):
         (run / name).write_text(json.dumps(value))
     (run / "browser-version.txt").write_text("Chrome/158.0.8127.36\n")
@@ -192,21 +198,29 @@ def test_three_arm_audit_requires_six_views(benchmark):
             view = f"{page}-{width}"
             observation = {"url": url, "width": width, "layout_width": width}
             rows.append({"op": "open_view", "page_id": page, "width": width})
-            for suffix in ("before", "after"):
+            phases = (("before", BOARD, FOCUSED), ("focused", FOCUSED, BOARD), ("after", BOARD, FOCUSED)) if journey else (
+                ("before", BOARD, FOCUSED), ("after", FOCUSED, BOARD))
+            for suffix, old, new in phases:
                 label = f"{view}-{suffix}"
                 filename = f"{label}.png"
                 raw = b"\x89PNG\r\n\x1a\n" + b"\0" * 8 + struct.pack(">II", width, height) + label.encode()
                 (captures / filename).write_bytes(raw)
+                captured = {**observation, "journey": state(old)} if journey else observation
                 rows.append({"op": "capture", "page_id": page, "label": label, "path": filename,
-                             "observation": observation, "sha256": generate.sha256(raw)})
+                             "observation": captured, "sha256": generate.sha256(raw)})
                 encoded = base64.b64encode(raw).decode()
                 trace.append({"type": "item.completed", "item": {
                     "type": "mcp_tool_call", "server": "review", "tool": "capture", "status": "completed",
                     "id": label, "arguments": {"label": label},
                     "result": {"content": [{"type": "image", "mimeType": "image/png", "data": encoded}]},
                 }})
-                rows.append({"op": "act", "page_id": page, "action": "key", "value": "Enter",
-                             "observation": observation})
+                inputs = [(old, new)]
+                if journey and suffix == "after":
+                    inputs.append((new, old))
+                for start, end in inputs:
+                    result = {**observation, "journey_before": state(start), "journey": state(end)} if journey else observation
+                    rows.append({"op": "act", "page_id": page, "action": "key", "value": "Enter",
+                                 "observation": result})
             ballot["screens"][view] = {
                 "coherence": 8, "originality": 8, "craft": 8, "usability": 8,
                 "primary_action": {"input": "Enter", "expected": "Focus", "observed": "Focused"},
@@ -225,6 +239,13 @@ def test_three_arm_audit_requires_six_views(benchmark):
     result = audit(run, root, spec["case"], spec)
     assert result["verified_screens"] == result["required_screens"] == 6
     assert result["screens"]["C-390"]["arm"] == "candidate"
+    if journey:
+        assert all(screen["journey"]["passed"] for screen in result["screens"].values())
+        assert "-focused" in critic_prompt(None, spec)
+        without_focus = [row for row in rows if row.get("label") != "C-390-focused"]
+        (captures / "audit.jsonl").write_text("".join(json.dumps(row) + "\n" for row in without_focus))
+        with pytest.raises(AssertionError, match="Missing original capture C-390-focused"):
+            audit(run, root, spec["case"], spec)
     ballot["screens"].pop("C-390")
     write_trace()
     with pytest.raises(AssertionError, match="every arm and viewport"):

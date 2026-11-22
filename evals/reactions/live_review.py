@@ -11,6 +11,7 @@ import subprocess
 import sys
 
 from benchmark_input import benchmark_cells, load_spec
+from cold_storage import OPTION
 from pilot import PACKAGE_COMMIT, generate
 from render import child, dynamic_port, fixture_server, query_json, wait_ready
 
@@ -69,11 +70,21 @@ def critic_prompt(case, spec=None):
     screens = ", ".join(f"{label}-{width}" for label in labels for width in (1440, 390))
     task = spec["task"] if spec else TASKS[case]
     choices = ", ".join(labels[:-1]) + f" or {labels[-1]}"
+    journey = ""
+    if spec and spec.get(OPTION):
+        journey = (
+            "For each new view, capture -before before using the keyboard. Navigate with Tab or Shift+Tab and "
+            "make exactly one Enter or Space attempt to focus the load. Capture that state as -focused. "
+            "Navigate to the reversal by keyboard and attempt it once if available. Capture -after before any other input. "
+            "If focus returns, try activation again immediately from that position and reverse once more by keyboard. "
+            "Keep a failed attempt in the comparison and describe the blocking behavior. Keep the same visit for all "
+            "three captures and recovery. Finish the six journeys before submitting scores.\n\n"
+        )
     return f"""Review anonymous views {names} live. Use only the review tools. Open each at 1440 and 390 CSS pixels in a fresh view. Complete one view before opening the next. Choose the keyboard input yourself. Capture initial and resulting states named like A-1440-before and A-1440-after. Then exercise the recovery or edge state.
 
 Task: {task}
 
-Score coherence and originality at 30% each and craft and usability at 20% each on a 0–10 scale. Calibration examples in that order: a working filter with repeated room cards and equal emphasis gets 5, 3, 6, 7. A distinctive listening schedule with reliable task completion and clear focus gets 9.5, 9.5, 9.5, 10. First rate the withheld example: a legible repair intake with clear labels, familiar layout and misplaced focus after an invalid number. Use 9.5+ only when you find no material weakness. Ground your observations in the rendered layout, visible changes and actual behavior. Do not infer the revision history or generator identity.
+{journey}Score coherence and originality at 30% each and craft and usability at 20% each on a 0–10 scale. Calibration examples in that order: a working filter with repeated room cards and equal emphasis gets 5, 3, 6, 7. A distinctive listening schedule with reliable task completion and clear focus gets 9.5, 9.5, 9.5, 10. First rate the withheld example: a legible repair intake with clear labels, familiar layout and misplaced focus after an invalid number. Use 9.5+ only when you find no material weakness. Ground your observations in the rendered layout, visible changes and actual behavior. Do not infer the revision history or generator identity.
 
 Return one JSON object in a json code fence. Include calibration (four scores), screens (keys {screens}, each with coherence, originality, craft, usability, primary_action with input/expected/observed, edge_observation, fact_check, strength, weakness and repair) and preference (winner {choices} or tie with reason). Leave untested views unscored. Flag unsupported claims.
 """
@@ -132,6 +143,8 @@ def run(args):
             "playwriter": str(args.playwriter), "relay_port": relay_port, "cdp": browser["webSocketDebuggerUrl"],
             "pages": pages, "evidence_dir": str(args.out / "captures"), "original_capture": True,
         }
+        if args.spec and args.spec.get(OPTION):
+            config["observe_journey"] = True
         config_path = args.out / "driver-config.json"
         config_path.write_text(json.dumps(config, indent=2) + "\n", encoding="utf-8")
         (args.out / "browser-version.txt").write_text(browser["Browser"] + "\n", encoding="utf-8")
