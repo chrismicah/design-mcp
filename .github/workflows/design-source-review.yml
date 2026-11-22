@@ -1,0 +1,27 @@
+name: Design source review
+
+on:
+  schedule:
+    - cron: '23 15 * * 2'
+  workflow_dispatch:
+  push:
+    branches:
+      - design-mcp/source-review-ci
+    paths:
+      - '.github/workflows/design-source-review.yml'
+      - 'scripts/watch_design_sources.py'
+
+permissions:
+  contents: read
+
+jobs:
+  sources:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - name: Collect public leads for review
+        shell: bash
+        run: python3 scripts/watch_design_sources.py | tee -a "$GITHUB_STEP_SUMMARY"
