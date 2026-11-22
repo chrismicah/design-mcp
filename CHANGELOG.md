@@ -7,5 +7,6 @@
 - Tested four credential-free design tools over stdio. In the first matched browser comparison, hosted Inspo scored 87.5 on ceramics and Design MCP scored 91.7. [Competitor results](teardown/COMPETITORS.md#visual-scoreboard)
 - Measured compact computer-vision context against full-size screenshots and specified a fast local first review before frontier vision. [Vision research](research/VISION.md)
 - Made the planner, builder, and independent evaluator workflow standard. Added recurring public source discovery and connected the visual release verdict to the exact browser captures. [Development harness](DESIGN-HARNESS.md)
+- Added separate radio and service-booking directions. Both improved on the frozen v2 in their matched blind comparisons and passed keyboard task checks at desktop and mobile widths. [Visual and interaction results](EVALS.md#candidate-decisions)
 
 The form-routing branch remains a candidate. Visual acceptance is tracked in the benchmark. [Candidate decisions](EVALS.md#candidate-decisions)

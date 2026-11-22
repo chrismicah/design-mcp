@@ -55,7 +55,7 @@ Add this entry to Claude Desktop’s `claude_desktop_config.json` or Cursor’s 
 
 ## Give the agent a brief
 
-> Make this look good. Build a theatre turnaround board so a stage manager can find the room that's running late. Studio B is six minutes late and Hall A is ready.
+> I need a site for a local bike repair shop. Second Spin does 48-hour tune-ups for $85. We are at 41 Elm Street and take bookings Tuesday to Saturday. Make booking easy to find and let a visitor pick a day to see the booking summary.
 
 The agent calls `direct` first. Pass the audience, task, real content, and any existing brand constraints as ordinary language. A very short brief can produce one optional question with a default. Apply the direction to the project's data, load its licensed typefaces, and test the main action.
 
@@ -84,6 +84,8 @@ The new direction library and the historical pattern data have separate roles. H
 Fresh pipx and uv installs passed `doctor` and exercised all 17 tools in every macOS 15 job. The matrix covered Intel and Apple Silicon across Python 3.10, 3.11, 3.12, and 3.13. macOS 13 and fresh Tart VM verification are pending. [Install matrix](https://github.com/chrismicah/design-mcp/actions/runs/44987155008)
 
 Eight of 36 matched design briefs have blinded scores. The plain generator averaged 93.2 and Design MCP v2 averaged 95.8, with three wins and five ties. [Benchmark and receipts](EVALS.md)
+
+The current radio and repair-shop directions averaged 97.9 versus 89.6 for the frozen v2 on those two briefs. The listening demo and booking summary also passed keyboard checks at 1440 and 390 CSS px. [Matched visual results](evidence/benchmark-v1/specific-landing-visual.json) · [Browser actions](evidence/benchmark-v1/specific-landing-actions.json)
 
 ## Verify locally
 
