@@ -112,6 +112,57 @@ async def shadcn_maintenance(cwd, launch, tasks):
             "case": case["id"], "brief_sha256": sha256(case["brief"].encode()), "calls": rows}
 
 
+async def shadcn_task_queries(cwd, launch, tasks, plan):
+    from fastmcp import Client
+    from fastmcp.client.transports import StdioTransport
+
+    if set(plan) != {case["id"] for case in tasks}:
+        raise ValueError("Declare one query and relevant components for each frozen brief")
+    tool = "search_items_in_registries"
+    transport = StdioTransport(command=str(launch), args=["mcp"], cwd=str(cwd))
+    async with Client(transport, timeout=35) as client:
+        tools = await client.list_tools()
+        assert any(item.name == tool for item in tools)
+
+        async def search(query, expected):
+            started = monotonic()
+            arguments = {"query": query, "limit": 3, "registries": ["@shadcn"], "types": ["ui"]}
+            response = await client.call_tool(tool, arguments, raise_on_error=False)
+            result = {"content": [block.model_dump(mode="json", by_alias=True) for block in response.content],
+                      "isError": response.is_error}
+            text = "\n".join(block.text for block in response.content if block.type == "text")
+            names = shadcn_item_names({"tool": tool, "arguments": arguments, "result": result})
+            status = ("tool-error" if response.is_error else "matches" if names
+                      else "empty" if text.startswith("No items found") else "unrecognized-response")
+            return {
+                "status": status, "returned_names": sorted(names), "matched": sorted(names.intersection(expected)),
+                "milliseconds": round((monotonic() - started) * 1000),
+                "query_sha256": sha256(query.encode()), "response_sha256": sha256(text.encode()),
+                "response_bytes": len(text.encode()),
+            }
+
+        controls = {"known": await search("accordion", {"accordion"}),
+                    "nonsense": await search("qzx61-no-such-component", set())}
+        cases = []
+        for index, case in enumerate(tasks):
+            target = plan[case["id"]]
+            expected = set(target["components"])
+            queries = [("full_brief", case["brief"]), ("task_query", target["query"])]
+            if index % 2:
+                queries.reverse()
+            outcomes = {kind: await search(query, expected) for kind, query in queries}
+            cases.append({"case": case["id"], "surface": case["surface"], **outcomes})
+    return {
+        "scope": "Installed shadcn UI-registry retrieval. Each brief and its preregistered task query were searched in the same session.",
+        "tool": tool, "controls": controls, "cases": cases,
+        "counts": {kind: {
+            "relevant": sum(bool(case[kind]["matched"]) for case in cases),
+            **{status: sum(case[kind]["status"] == status for case in cases)
+               for status in ("matches", "empty", "tool-error", "unrecognized-response")},
+        } for kind in ("full_brief", "task_query")},
+    }
+
+
 def skill(cwd, launch, tasks):
     def get(case):
         started = monotonic()
@@ -140,10 +191,24 @@ def main():
     parser.add_argument("--launch", required=True, type=Path)
     parser.add_argument("--cwd", required=True, type=Path)
     parser.add_argument("--out", required=True, type=Path)
-    parser.add_argument("--maintenance", action="store_true", help="Probe named shadcn items for the maintenance form")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--maintenance", action="store_true", help="Probe named shadcn items for the maintenance form")
+    mode.add_argument("--task-queries", action="store_true", help="Compare full and short shadcn queries on the frozen briefs")
     args = parser.parse_args()
     manifest = (BASE_DIR / "tasks.json").read_bytes()
     tasks = json.loads(manifest)
+    if args.task_queries:
+        if args.candidate != "shadcn":
+            parser.error("--task-queries applies to shadcn")
+        plan = (BASE_DIR / "shadcn-task-queries.json").read_bytes()
+        result = asyncio.run(shadcn_task_queries(args.cwd, args.launch, tasks, json.loads(plan)))
+        result.update(competitor=args.candidate, pin=args.pin, tasks_sha256=sha256(manifest), plan_sha256=sha256(plan))
+        args.out.write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n")
+        print(args.candidate, result["counts"])
+        failed = any(group["tool-error"] or group["unrecognized-response"] for group in result["counts"].values())
+        if failed or not result["controls"]["known"]["matched"] or result["controls"]["nonsense"]["status"] != "empty":
+            raise SystemExit(2)
+        return
     if args.maintenance:
         if args.candidate != "shadcn":
             parser.error("--maintenance applies to shadcn")

@@ -8,6 +8,7 @@ on:
       - 'evals/v1/probe_registry_and_skill.py'
       - 'evals/v1/generate.py'
       - 'evals/v1/shadcn-maintenance.json'
+      - 'evals/v1/shadcn-task-queries.json'
 
 permissions:
   contents: read
@@ -53,10 +54,14 @@ jobs:
             python -B evals/v1/probe_registry_and_skill.py shadcn --maintenance \
               --pin shadcn@4.23.0 --cwd "$fixture" --launch "$fixture/node_modules/.bin/shadcn" \
               --out "$probe/receipt.json"
+          env -i PATH="$PATH" HOME="$probe_home" XDG_CONFIG_HOME="$probe_home" \
+            python -B evals/v1/probe_registry_and_skill.py shadcn --task-queries \
+              --pin shadcn@4.23.0 --cwd "$fixture" --launch "$fixture/node_modules/.bin/shadcn" \
+              --out "$probe/task-queries.json"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
           name: shadcn-maintenance-retrieval
-          path: ${{ runner.temp }}/shadcn-proof/receipt.json
+          path: ${{ runner.temp }}/shadcn-proof/*.json
           if-no-files-found: error
           retention-days: 7
