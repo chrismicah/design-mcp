@@ -10,7 +10,6 @@ import socket
 import struct
 import sys
 
-import pytest
 from fastmcp import Client
 
 from live_review import child, dynamic_port, fixture_server, query_json, wait_ready
@@ -30,12 +29,13 @@ body { font: 16px sans-serif; margin: 16px; }
 li { margin: 0 0 8px; }
 button { width: 170px; min-height: 44px; }
 button:focus-visible { outline: 3px solid #44a; }
-.cover { position: relative; }
-.cover::after { position: absolute; inset: 0; content: ''; background: white; }
+.deadline { position: relative; }
+.screen { display: none; }
+.cover .screen { display: block; position: absolute; inset: 0; background: white; }
 </style>
 <main>
 <button type="button">Inspect</button>
-<p id="due">Next departure in nine minutes</p>
+<div id="due" class="deadline"><p>Next departure in nine minutes</p><span class="screen" aria-hidden="true"></span></div>
 <ul>ROWS</ul>
 </main>
 <script>
