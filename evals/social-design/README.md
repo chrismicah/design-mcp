@@ -21,23 +21,38 @@ Give the critic the original tasks and anonymous builds only. Use the [live rubr
 ## Run the comparison
 
 Run from the repository in an environment where `python3` and `design-mcp` point to the same checked-out revision and installed dependencies. Use one generation per brief per arm before deciding whether to spend quota on another round. The same task file and verbatim prompt go to both arms.
+Use the same low-cost coding model and effort in both generation arms. Run the critique in a separate session with an efficient vision model. Reserve a frontier model for planning and arbitration.
 
 ```sh
 python3 evals/v1/generate.py --tasks evals/social-design/tasks.json \
   --server "$(command -v design-mcp)" --treatment-only --out "$CELLS" \
-  --model "$MODEL" --no-shell --quota-probe "$QUOTA_PROBE" \
+  --model "$MODEL" --effort low --no-shell --quota-probe "$QUOTA_PROBE" \
   --require-unhinted-direct --expect-direction social-lighting=ground-plane \
   --expect-direction social-river=margin-front \
   --expect-direction social-permit=grouped-fieldsets
 
 python3 evals/v1/generate.py --tasks evals/social-design/tasks.json \
   --server evals/social-design/serve.py --treatment-only --treatment-label social \
-  --out "$CELLS" --model "$MODEL" --no-shell --quota-probe "$QUOTA_PROBE" \
+  --out "$CELLS" --model "$MODEL" --effort low --no-shell --quota-probe "$QUOTA_PROBE" \
   --require-unhinted-direct --expect-direction social-lighting=cue-stage \
   --expect-direction social-river=level-cross-section \
   --expect-direction social-permit=grouped-fieldsets
 ```
 
-Use the [Playwriter render and live browser setup](../v1/README.md). Serve the anonymous builds locally, verify each task sequence above and archive the interaction and screenshots before the independent review. Use the same prompt permissions for both arms. To audit the recorded retrieval without generating a page, run `python3 evals/social-design/preflight.py`.
+Generate the critic tasks and run the existing live review. Repeat for `social-river` and `social-permit`, using a fresh output directory per case and round. Replay checks the generator, direction, and HTML before the reviewer runs. The audit verifies that the critic used Playwriter at both widths and that the before and after images match the reviewed build.
+
+```sh
+python3 evals/social-design/make_specs.py "$SPECS"
+python3 evals/reactions/live_review.py --cells "$CELLS" \
+  --benchmark-spec "$SPECS/social-lighting.json" --check-input
+python3 evals/reactions/live_review.py --cells "$CELLS" \
+  --benchmark-spec "$SPECS/social-lighting.json" --out "$ROUND" \
+  --chrome "$CHROME" --playwriter "$PLAYWRITER" \
+  --model "$CRITIC_MODEL" --effort low --quota-probe "$QUOTA_PROBE"
+python3 evals/reactions/audit_review.py --run "$ROUND" --cells "$CELLS" \
+  --benchmark-spec "$SPECS/social-lighting.json"
+```
+
+Use the [Playwriter render and live browser setup](../v1/README.md) for additional responsive and reduced-motion checks. Use the same prompt permissions for both arms. To audit the recorded retrieval without generating a page, run `python3 evals/social-design/preflight.py`.
 
 [Source observations and access routes](../../research/SOCIAL-DESIGN.md)
