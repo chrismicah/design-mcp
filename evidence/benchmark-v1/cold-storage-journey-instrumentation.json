@@ -1,0 +1,104 @@
+{
+  "purpose": "Synthetic Playwriter instrumentation proof",
+  "run_url": "https://github.com/chrismicah/design-mcp/actions/runs/45041347298",
+  "proof_commit": "64f7b315b3b328b17b9968b192e9db2cce28e79b",
+  "observer_file_sha256": {
+    "evals/v1/live_browser.py": "f5c6e7be1885654ad1f6298e23c3bfddf260102917a6bb5d00152b13f6fdcc81",
+    "evals/reactions/cold_storage.py": "be8bbcbc4ffc203fbe7ebcc6b9bb29a557be1e11347319dc8d2ed0e458fc0d82"
+  },
+  "playwriter": "0.12.0",
+  "browser": "Chrome/158.0.8127.36",
+  "audit_log_sha256": "8a4fe8b740bfb59662b1531e166da1e891e5f41e7d65d7573b957a8fe0ca1561",
+  "verified_pngs": 12,
+  "scenarios": [
+    {
+      "view": "A-1440",
+      "sha256": [
+        "5ed3931417535c78cb1d41794c922bda6e9cc239277cc281c97f9f6f0215760b",
+        "1e75fbe58abe857ee968bc840dacefd8588cd7c8d95d8d85c40580520fd5f654",
+        "e97ae4663eeeb1f99f3723ea6a03724a337f898bf1f31b06e5469da0f5ae777b"
+      ],
+      "outcomes": {
+        "passed": true,
+        "checks": {
+          "original_facts": true,
+          "entered_focus": true,
+          "deadline_visible": true,
+          "same_position_reversal": true,
+          "restored_facts": true,
+          "restored_focus": true,
+          "recovery": true
+        }
+      }
+    },
+    {
+      "view": "A-390",
+      "sha256": [
+        "6aa7f7e1c240f77a1aa9922ee7db19e3756b08d740568ea78813cd41b72ae0ad",
+        "aaba67554eab963dbb8cdb8c8efb4f7317828f7e80cf0ab5b70deab764f25996",
+        "f521e79e36e201e29444d8c7bcb31feb2f1283b2adcd7f503239d721273f41a4"
+      ],
+      "outcomes": {
+        "passed": true,
+        "checks": {
+          "original_facts": true,
+          "entered_focus": true,
+          "deadline_visible": true,
+          "same_position_reversal": true,
+          "restored_facts": true,
+          "restored_focus": true,
+          "recovery": true
+        }
+      }
+    },
+    {
+      "view": "B-1440",
+      "sha256": [
+        "5ed3931417535c78cb1d41794c922bda6e9cc239277cc281c97f9f6f0215760b",
+        "2247fd21f23ec5d57b2cd495ad612eb5534381bed8df7059a15a925004c3d76a",
+        "e97ae4663eeeb1f99f3723ea6a03724a337f898bf1f31b06e5469da0f5ae777b"
+      ],
+      "outcomes": {
+        "passed": false,
+        "checks": {
+          "original_facts": true,
+          "entered_focus": true,
+          "deadline_visible": false,
+          "same_position_reversal": true,
+          "restored_facts": true,
+          "restored_focus": true
+        }
+      }
+    },
+    {
+      "view": "B-390",
+      "sha256": [
+        "6aa7f7e1c240f77a1aa9922ee7db19e3756b08d740568ea78813cd41b72ae0ad",
+        "71af401d81e52b684f893d10c46d697913e1c8e76c1e1f4dad5d087f5714dabc",
+        "f521e79e36e201e29444d8c7bcb31feb2f1283b2adcd7f503239d721273f41a4"
+      ],
+      "outcomes": {
+        "passed": false,
+        "checks": {
+          "original_facts": true,
+          "entered_focus": true,
+          "deadline_visible": false,
+          "same_position_reversal": true,
+          "restored_facts": true,
+          "restored_focus": true
+        }
+      }
+    }
+  ],
+  "same_element_occlusion": {
+    "discovery_run": "https://github.com/chrismicah/design-mcp/actions/runs/45041138593",
+    "observation": "A pseudo-element painted over the deadline while the text still passed the hit test.",
+    "handling": "The ballot audit also requires the independent critic to confirm deadline readability in the original focused screenshot."
+  },
+  "local_suite": {
+    "tests": 509,
+    "subtests": 117
+  },
+  "held_out_generation": "pending",
+  "blind_visual_score": "pending"
+}
