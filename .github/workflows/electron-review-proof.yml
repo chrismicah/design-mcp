@@ -33,7 +33,8 @@ jobs:
         run: |
           cli="$RUNNER_TEMP/design-review/bin/design-mcp"
           electron="$RUNNER_TEMP/review-electron/node_modules/electron/dist/electron"
-          timeout 45s xvfb-run -a -s '-screen 0 1280x900x24' "$electron" \
+          # Use software rendering for the virtual X11 display.
+          timeout 45s xvfb-run -a -s '-screen 0 1280x900x24' "$electron" --disable-gpu \
             evals/vision/electron_smoke.mjs "$cli" "$RUNNER_TEMP/electron-proof"
       - name: Verify review waits for external keyboard input
         run: |
@@ -41,7 +42,7 @@ jobs:
           electron="$RUNNER_TEMP/review-electron/node_modules/electron/dist/electron"
           timeout 45s xvfb-run -a -s '-screen 0 1280x900x24' bash -euc '
             destination=$3
-            DESIGN_MCP_ELECTRON_MANUAL_INPUT=1 "$1" evals/vision/electron_smoke.mjs "$2" "$destination" &
+            DESIGN_MCP_ELECTRON_MANUAL_INPUT=1 "$1" --disable-gpu evals/vision/electron_smoke.mjs "$2" "$destination" &
             pid=$!
             trap "kill $pid 2>/dev/null || true; wait $pid 2>/dev/null || true" EXIT
             for ((i = 0; i < 150; i++)); do
