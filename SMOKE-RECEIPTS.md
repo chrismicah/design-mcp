@@ -14,7 +14,11 @@ A fresh package install on hosted Linux opened the real toolbar popup by keyboar
 
 ## Hosted Electron window smoke, November 22
 
-A fresh package install reviewed an owned Electron 43.4.0 fixture on Linux. The first capture identified a covered button and a clipped button. Tab followed by Enter revealed the covered button, and a second capture cleared that finding while retaining the clipping finding. The export excluded the seeded input value, refused an unsupported source, and kept the original file intact. The separate Swift exporter type-checked with warnings as errors for the macOS 13 arm64 target. Live native macOS captures and desktop visual review remain open. [Electron run and screenshots](https://github.com/chrismicah/design-mcp/actions/runs/44994843695) · [Receipts and hashes](evidence/benchmark-v1/desktop-app-proof.json)
+A fresh package install reviewed an owned Electron 43.4.0 fixture on Linux. The first capture identified a covered button and a clipped button. Tab followed by Enter revealed the covered button, and a second capture cleared that finding while retaining the clipping finding. The export excluded the seeded input value, refused an unsupported source, and kept the original file intact. The separate Swift exporter type-checked with warnings as errors for the macOS 13 arm64 target. Electron’s macOS path and desktop visual review remain open. [Electron run and screenshots](https://github.com/chrismicah/design-mcp/actions/runs/44994843695) · [Receipts and hashes](evidence/benchmark-v1/desktop-app-proof.json)
+
+## Hosted native SwiftUI smoke, November 22
+
+A macOS 15.8.2 arm64 runner built and opened an owned SwiftUI app. XCUITest clicked the native Reveal control and verified that another native control became visible and hittable. The installed Design MCP CLI read the paired Accessibility exports and counted five controls before and six after. Window dimensions matched, and both screenshots came from that window. The test refused a missing window and preserved the earlier export on a second write attempt. The secure field’s seeded value was absent from both geometry exports. This exercise covers one app and the geometry reviewer. Desktop visual critique, macOS 13 runtime, and the GPT Computer Use release smoke remain open. [Native run and captures](https://github.com/chrismicah/design-mcp/actions/runs/44995163235) · [Receipt and hashes](evidence/benchmark-v1/swift-review-proof.json)
 
 ## November 20 source-checkout smoke
 
