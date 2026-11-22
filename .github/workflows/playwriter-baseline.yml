@@ -3,7 +3,7 @@ name: Live public page vision preflight
 on:
   push:
     branches: [design-mcp/live-page-preflight]
-    paths: ['.github/workflows/playwriter-baseline.yml', 'evidence/benchmark-v1/live-source/**', 'evals/v1/render.py']
+    paths: ['.github/workflows/playwriter-baseline.yml', 'evidence/benchmark-v1/live-source/**', 'evals/v1/render.py', 'evals/v1/visible-regions.js']
 
 permissions:
   contents: read
@@ -41,7 +41,12 @@ jobs:
           for path in Path('evidence/benchmark-v1/live-source').rglob('index.html'):
               record = json.loads(path.with_name('render.json').read_text())
               assert record['browser'].endswith('158.0.8127.36'), record['browser']
-              assert all(item['status'] == 'rendered' for item in record['captures'].values()), record
+              for capture in record['captures'].values():
+                  assert capture['status'] == 'rendered', capture
+                  regions = capture['regions']
+                  assert 0 < len(regions) <= 8, regions
+                  assert any(item['scope'] == 'main' and item['label'] == 'Address form' for item in regions), regions
+                  assert any(item['scope'] == 'main' and item['label'] == 'Street address' for item in regions), regions
           PY
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
