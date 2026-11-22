@@ -6,21 +6,19 @@ The baseline pins Design MCP at `fd6035d8732d177b811f81a0f5863e99134a85ca`. The 
 
 | Configuration | Judged pairs | Score / 100 |
 | --- | ---: | ---: |
-| Same generator without MCP | 2 / 36 | 91.7 |
-| Same generator with Design MCP v2 | 2 / 36 | 95.8 |
+| Same generator without MCP | 7 / 36 | 92.9 |
+| Same generator with Design MCP v2 | 7 / 36 | 95.2 |
 
-The first two pairs yielded a **+4.2-point** average difference, with one win and one tie. Rehearsal rooms scored 91.7 → 100.0. Ceramics scored 91.7 → 91.7. This is an early baseline for the existing revision. [Paired ballots and captures](evidence/benchmark-v1/first-pairs.json)
+The seven verified pairs yielded a **+2.4-point** mean difference, with two wins, five ties, and a paired bootstrap interval of 0.0 to 4.8 points. Rehearsal rooms and the film festival each scored 91.7 → 100.0. Five of seven briefs were landing pages. This is a partial baseline for the frozen revision. The judges scored captured states under the original benchmark rubric. The separate release rubric requires live evaluation before scoring. [Paired ballots, hashes and token receipts](evidence/benchmark-v1/paired-progress.json) · [Release rubric](evals/vision/rubric.md)
 
 The first dashboard attempt called `direct` successfully and reached the client’s 240-second timeout before returning HTML. There was no completed-turn token receipt. The paired run uses a 900-second allowance for both arms and retains the first attempt separately. Playwriter MCP `0.12.0` rendered the isolated Chrome 157 control at both widths. The injected failure control detected narrow viewport overflow and the expected JavaScript error. [Tracked receipts](evidence/benchmark-v1/preflight.json)
 
-The shared Mac’s memory-pressure gate held subsequent local rendering. GitHub’s standard macOS runner captured both initial pairs with Playwriter 0.12.0 and Chrome for Testing 158.0.8127.36 at the two preset widths. Each capture had no horizontal overflow or page errors. The next pairs will use the same pinned hosted renderer. [Capture run](https://github.com/chrismicah/design-mcp/actions/runs/44984687051)
+GitHub’s standard macOS runner captured the first eight pairs across two runs with Playwriter 0.12.0 and Chrome for Testing 158.0.8127.36 at both preset widths. The seven judged pairs had no horizontal overflow or page errors in those captures. [First run](https://github.com/chrismicah/design-mcp/actions/runs/44984687051) · [Second run](https://github.com/chrismicah/design-mcp/actions/runs/44988686124)
 
-| Brief | Configuration | Input tokens | Cached input | Output tokens | Seconds |
-| --- | --- | ---: | ---: | ---: | ---: |
-| Rehearsal room board | Plain generator | 40,614 | 17,280 | 18,898 | 382.69 |
-| Rehearsal room board | Design MCP v2 | 63,611 | 40,704 | 16,255 | 332.83 |
-| Ceramics landing page | Plain generator | 40,367 | 19,840 | 22,702 | 459.69 |
-| Ceramics landing page | Design MCP v2 | 62,609 | 40,192 | 22,183 | 450.60 |
+| Median per judged brief | Input tokens | Cached input | Output tokens | Seconds |
+| --- | ---: | ---: | ---: | ---: |
+| Plain generator | 38,457 | 17,280 | 22,604 | 456 |
+| Design MCP v2 | 62,607 | 40,192 | 21,876 | 444 |
 
 ## Direction coverage
 

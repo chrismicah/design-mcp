@@ -1,0 +1,1257 @@
+{
+  "summary": {
+    "requested_pairs": 36,
+    "judged_pairs": 7,
+    "none": 92.85714285714285,
+    "v2": 95.23809523809524,
+    "difference": 2.3809523809523836,
+    "wins_ties_losses": [
+      2,
+      5,
+      0
+    ],
+    "paired_bootstrap_95_interval": [
+      0.0,
+      4.761904761904767
+    ],
+    "median_usage": {
+      "none": {
+        "input_tokens": 38457,
+        "cached_input_tokens": 17280,
+        "output_tokens": 22604,
+        "elapsed_seconds": 455.75
+      },
+      "v2": {
+        "input_tokens": 62607,
+        "cached_input_tokens": 40192,
+        "output_tokens": 21876,
+        "elapsed_seconds": 444.16
+      }
+    }
+  },
+  "cases": {
+    "landing-ceramics": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44984687051",
+      "cells": {
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 40367,
+              "cached_input_tokens": 19840,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 22702,
+              "reasoning_output_tokens": 14500
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "landing-ceramics",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "elapsed_seconds": 459.69,
+            "exit_code": 0,
+            "prompt_sha256": "1b7e4408d51fd57e448b6c6af2541f70db8a3a9291f546c5217d05b4bda1950f",
+            "trace_sha256": "6c7691e7ecb05219b692236d0e57a798169372a0f4699e3cb4cf6f52eab1a31b",
+            "html_sha256": "57b6129001eb4b48ae92af55043c33f2082d81d10a31d456c232c976d2736c88"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "557a24a9fffa4f6a3668da935ddf95b463c5b16c11640540400643779d1b910d",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "416f27c2a93f34c380ef6a71467b852446938b6e093d95a3c3da20c8c68fcb1b",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 62609,
+              "cached_input_tokens": 40192,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 22183,
+              "reasoning_output_tokens": 14265
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "landing-ceramics",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "elapsed_seconds": 450.6,
+            "exit_code": 0,
+            "prompt_sha256": "1b7e4408d51fd57e448b6c6af2541f70db8a3a9291f546c5217d05b4bda1950f",
+            "trace_sha256": "6a3e62aed54c0aa251ca1dc409fef57e8a796987e065ef46387ef70e9beec368",
+            "html_sha256": "8b38c73412739c571507bf92cd0e37d6e118b2950d0722a26830c4fe34d06afe"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "af8be76719393ab4ebc93a621b8de05a68c27e6906ed27371696d02267f8998b",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "19a255a5ab48ca9193ef2325688fa91ebac5c4d785e6431dc795460625a9cd73",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "landing-ceramics",
+        "surface": "landing",
+        "blind_key": {
+          "A": "none",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The drawing leads into the product name, $46 price and prominent \u201cAdd to bag\u201d button on desktop, and mobile preserves that reading order in a single column."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "A generous desktop gutter separates the drawing from the details, while the mobile image, copy and full-width button share a left edge, with shipping tucked just below the button."
+            },
+            "typography": {
+              "score": 3,
+              "evidence": "The upright and italic product name scales cleanly from two lines to one, though the tiny uppercase \u201cSmall-batch pottery\u201d label takes effort to read at 390 px."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Clay red connects the studio mark, italic \u201cBowl\u201d and purchase button, whose white lettering stands out against the dark fill at both widths."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "At both widths the browser tree names the visible controls \u201cBag, empty\u201d and \u201cAdd to bag\u201d and includes a status region and image text describing the speckled glaze and brown rim."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "The bowl drawing, $46 price, Milwaukee throwing and glazing details, \u201cShips in 5 days\u201d and \u201cAdd to bag\u201d match the brief, with post-add confirmation unverified in the supplied empty-bag views."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The drawing and large product name identify the bowl immediately, and pairing $46 with the plum \u201cAdd to bag\u201d button makes the purchase action easy to find at both widths."
+            },
+            "spacing": {
+              "score": 3,
+              "evidence": "The desktop divider and even spacing group shipping with the purchase row, while roughly 150 px of empty space separates them on mobile."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The two-line desktop title fits on one legible line on mobile, and the bold serif price and emphasized \u201c5 days\u201d make the buying details easy to scan at either width."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The ochre drawing and cream background give the page warmth, and the deep plum fill singles out the white purchase label at both widths."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "At both widths the visible zero count corresponds to \u201cBag, 0 items\u201d in the browser tree, which also exposes a level-one product heading, a named drawing, an \u201cAdd to bag\u201d button and a status region."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Kiln & Field\u2019s illustrated Oat Glaze Bowl has the requested $46 price, Milwaukee maker credit, five-day shipping and \u201cAdd to bag\u201d action, with confirmation unverified because both captures show zero items."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 25555,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4317,
+          "reasoning_output_tokens": 3612
+        },
+        "scores": {
+          "none": 91.66666666666666,
+          "v2": 91.66666666666666
+        }
+      }
+    },
+    "landing-repair": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44988686124",
+      "cells": {
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 62552,
+              "cached_input_tokens": 40192,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 21876,
+              "reasoning_output_tokens": 15403
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "landing-repair",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "b2c2a44f5ad2fa66d6b17b7fd987d52389ea0a3f4bba0f9fb149e08582fda49c",
+            "elapsed_seconds": 444.16,
+            "exit_code": 0,
+            "trace_sha256": "b39275349b0bf777d015ae5bef9e907bd85d825e30bde9f664f87bc66f35b27f",
+            "html_sha256": "44eb406ca04f5747b3eb1ee822a0b019e7b44d87af84546c526c4b8a4f5828de"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "53a281e3db402e889ccd87e399fdd8e9b105fc4df835ce0b06a93b96f829e194",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "9b313f6049e772eb34bf2ac323d318fdc138447a6313f57a5d0433cf0774d887",
+              "viewport": 390,
+              "width": 375,
+              "pageErrors": []
+            }
+          }
+        },
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 19851,
+              "cached_input_tokens": 0,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 20334,
+              "reasoning_output_tokens": 13799
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "landing-repair",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "b2c2a44f5ad2fa66d6b17b7fd987d52389ea0a3f4bba0f9fb149e08582fda49c",
+            "elapsed_seconds": 410.21,
+            "exit_code": 0,
+            "trace_sha256": "9b9317f71c750b33af0159348b05fa6c157d97549d723d97d7169ffe7bf29b39",
+            "html_sha256": "2b7d67e784c4224e95acd11f1be223cbc0c3de453f16f24b4873ad85f2f03cb9"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "95eaf3e9db5b5aea4d8652dde4ff4628d3419c04f21fd58b0cb6e86220b21fef",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "9a8e7e377b7eb15cc02ca8e8945e4264de6a483bde8fc3e33100ce78b4c9ab45",
+              "viewport": 390,
+              "width": 375,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "landing-repair",
+        "surface": "landing",
+        "blind_key": {
+          "A": "v2",
+          "B": "none"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, the header link identifies the booking action immediately, and the service headline, \u201cChoose a day\u201d controls and summary all appear within the first screen."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The weekday row and summary share both outer edges, and the mobile poster follows that alignment while all five choices retain distinct gaps."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The italic \u201ctune-ups\u201d line emphasizes the offer, and the upright booking heading and sans-serif weekday labels remain easy to scan on mobile."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Cream lettering stands out on the plum bicycle poster, and the same plum draws attention to the booking link and $85 price against pale backgrounds."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "Both browser trees give the weekday radios full names, though the plain outlined tiles rely on \u201cChoose a day\u201d to signal that the visitor should make a single choice."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "Second Spin\u2019s 48-hour tune-ups, $85 price and 41 Elm Street address are explicit, and the Tuesday-through-Saturday choices sit directly above the summary\u2019s Day field."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, the $85 price sits beside a prominent \u201cBook a tune-up\u201d link directly beneath the service headline, making the next step clear at first glance."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The weekday row sits beside the summary on desktop and above it on mobile, where moving the radio circles above their labels keeps all five choices comfortably spaced."
+            },
+            "typography": {
+              "score": 3,
+              "evidence": "The bold condensed headline and price stay legible at both widths, though the small uppercase address line takes more effort to read on mobile."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Lime highlights the booking link against the pale hero and the $85 total against the dark green summary, giving both clear emphasis."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Empty radio circles make the initial state visible at both widths, and both browser trees expose full weekday names, a labeled radio group and the summary\u2019s \u201cChoose a day\u201d prompt."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "The page identifies Second Spin\u2019s $85, 48-hour tune-up at 41 Elm Street and pairs Tuesday-through-Saturday choices with a summary listing service, day, location and price."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26277,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4515,
+          "reasoning_output_tokens": 3863
+        },
+        "scores": {
+          "v2": 95.83333333333334,
+          "none": 95.83333333333334
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "53a281e3db402e889ccd87e399fdd8e9b105fc4df835ce0b06a93b96f829e194",
+          "A-390.png": "9b313f6049e772eb34bf2ac323d318fdc138447a6313f57a5d0433cf0774d887",
+          "B-1440.png": "95eaf3e9db5b5aea4d8652dde4ff4628d3419c04f21fd58b0cb6e86220b21fef",
+          "B-390.png": "9a8e7e377b7eb15cc02ca8e8945e4264de6a483bde8fc3e33100ce78b4c9ab45"
+        },
+        "judge_prompt_sha256": "becf7ad17a368a0ee6ef374c8599ce172c998643b0359796f011e25e318efe9c"
+      }
+    },
+    "landing-radio": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44988686124",
+      "cells": {
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 62607,
+              "cached_input_tokens": 40192,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 21230,
+              "reasoning_output_tokens": 14935
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "landing-radio",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "c6c100662332c753e490af5d7d784386018138c1d82f6405b2e6d5bca2008ef0",
+            "elapsed_seconds": 430.74,
+            "exit_code": 0,
+            "trace_sha256": "dbbe2453ea2b8b972c7b99ef2e49eb1b4cdc3fdb305ef4f49c0128a293d2683f",
+            "html_sha256": "80f8ff62b8d86f279ee548625887211e38fa6e2d1fe9149b3ac996e833fb5de0"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "04c1db4ef07684d3a22bcacba04b425cb274abb4dbe1519709c59dd221aa0e35",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "f24e02c59ce7f3a1270658c42160a37057f0070ade49f900fff20a5c7a0b8b2e",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 19859,
+              "cached_input_tokens": 0,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 22604,
+              "reasoning_output_tokens": 17087
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "landing-radio",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "c6c100662332c753e490af5d7d784386018138c1d82f6405b2e6d5bca2008ef0",
+            "elapsed_seconds": 455.75,
+            "exit_code": 0,
+            "trace_sha256": "3b634f6db0057fc98a8fbc66712ff4cb99ae0bd93dcb47a98da64e2cbde0b64b",
+            "html_sha256": "7c8375cfeb1415f2395056be9b49bf686d68c98ad532d15c917112c3186d92db"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "4493ac495d2738056994faff5c682d5897a71c4523267afd1a442a199a204cd5",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "a5c82bebef47686c8efc9cfe315760bebb809444836cf6b90added5ecf965c5b",
+              "viewport": 390,
+              "width": 375,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "landing-radio",
+        "surface": "landing",
+        "blind_key": {
+          "A": "v2",
+          "B": "none"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "The desktop title and plum \u201cListen live\u201d button form a clear focal group, while the mobile layout places a full-width radio illustration ahead of both."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "A wide gutter separates artwork from show details on desktop, and the artwork, schedule rule and button share the same edges on mobile."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "\u201cField Notes\u201d shifts from two lines on desktop to one on mobile, preserving the italic emphasis on \u201cNotes\u201d and keeping the bold host name and airtime easy to find."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Plum connects the station mark, radio print and primary button at both widths, while a red dot paired with \u201cOn air\u201d identifies the broadcast status."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "At both widths, the browser tree identifies \u201cField Notes\u201d as the main heading and \u201cListen live\u201d as a button, and the visible \u201cOn air\u201d text explains the dot."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both layouts show Low Signal, Field Notes with Ana Reyes, weekdays 7\u20139 am and \u201cListen live\u201d, though neither labels the silent demo or includes an interaction receipt for the listener\u2019s live state."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The oversized show title leads into the host, airtime and coral \u201cListen live\u201d button on desktop, and that entire sequence precedes the artwork on mobile."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The schedule, button and demo note share a left edge at both widths, with a wide desktop gutter becoming a clear vertical gap before the mobile poster."
+            },
+            "typography": {
+              "score": 3,
+              "evidence": "The heavy condensed title and italic host line remain distinct at both widths, though the small station descriptor and demo note take more effort to read on mobile."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The coral button echoes the sun in the transmitter poster, and its dark play icon and label keep the action easy to recognize at both sizes."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Both browser trees expose \u201cListen live\u201d as a button and \u201cDemo player \u00b7 No audio\u201d as a status, while the visible \u201cOn air\u201d label gives the red dot a text equivalent."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both widths give the correct station, show, host and weekday airtime and identify \u201cListen live\u201d as a no-audio demo, though neither includes an interaction receipt showing the listener\u2019s live status after activation."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 24886,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 7358,
+          "reasoning_output_tokens": 6680
+        },
+        "scores": {
+          "v2": 91.66666666666666,
+          "none": 91.66666666666666
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "04c1db4ef07684d3a22bcacba04b425cb274abb4dbe1519709c59dd221aa0e35",
+          "A-390.png": "f24e02c59ce7f3a1270658c42160a37057f0070ade49f900fff20a5c7a0b8b2e",
+          "B-1440.png": "4493ac495d2738056994faff5c682d5897a71c4523267afd1a442a199a204cd5",
+          "B-390.png": "a5c82bebef47686c8efc9cfe315760bebb809444836cf6b90added5ecf965c5b"
+        },
+        "judge_prompt_sha256": "3a21f0c30a4085bf2680ba027ff80c22a5d6afd498b915ff98151a338c52ba2f"
+      }
+    },
+    "landing-festival": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44988686124",
+      "cells": {
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 19866,
+              "cached_input_tokens": 0,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 23793,
+              "reasoning_output_tokens": 16114
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "landing-festival",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "182878ad74d44c5cbede99ab72ad395943b095f237616fbc8734eaa6df029095",
+            "elapsed_seconds": 479.47,
+            "exit_code": 0,
+            "trace_sha256": "6b4b452bd61be79a44dc1b84e208f529af254369d2a2ec1d09f97b7da4cf0773",
+            "html_sha256": "aa61ac902ede0f529aba16d0d847341776dc8b30abd6af2347abcc4384cd2e38"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "7940ffc437304a19317e5e84cf68cdb2077fec3beec614f1cea605e96d772bfc",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "de6528acbd983bda620bf093be66570817137a404689ed17622d1dd4c35a5616",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 62753,
+              "cached_input_tokens": 51840,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 21338,
+              "reasoning_output_tokens": 14935
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "landing-festival",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "182878ad74d44c5cbede99ab72ad395943b095f237616fbc8734eaa6df029095",
+            "elapsed_seconds": 433.86,
+            "exit_code": 0,
+            "trace_sha256": "890fb77a57b62141d98a0e12f4acbd4e6ce686c1146a11720431e5d1cc3db427",
+            "html_sha256": "99bfbd03f5908dc2497772931c9f73b3595f5397f7771deffeb96a12fcfd370e"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "3e53b08321587d9f6a64a6fa53aef4f91894b614570af85569a8b5e35857826e",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "1df02ecbcc17e933b8dd5e555253e4fa58e5db91e5070ff4e5201834dfac885c",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "landing-festival",
+        "surface": "landing",
+        "blind_key": {
+          "A": "none",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "The paired posters draw the eye to the program at both widths, though the small radio circles make the selection action easy to overlook."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The showtimes stay aligned even when Birds at First Light wraps on mobile, and the ticket gives its three detail fields a separate row beneath the selected title."
+            },
+            "typography": {
+              "score": 3,
+              "evidence": "The upright and italic masthead stacks cleanly on mobile, but the small monospaced day and time labels take more effort to read."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The green river and orange sunrise distinguish the films, while the sage caption and filled green radio connect the selected film to the dark green ticket."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "At both widths, the filled circle matches the checked state in the browser tree, which names each radio by film, day and time and labels the selected screening\u2019s details."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "The June 13\u201314 program offers The Eel Road at 18:30 Friday and Birds at First Light at 16:00 Saturday, with the selected ticket showing Old Ferry Hall on Friday, June 13 at 18:30."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, \u201cChoose a screening\u201d introduces the illustrated film rows, and the visible \u201cSelected\u201d label links The Eel Road to its matching details ticket."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The ticket sits beside the program on desktop and directly below it on mobile, while dates, titles and selection controls share a consistent left edge within each film row."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The bold serif film titles retain clear two-line breaks at both widths, and the heavier sans-serif lettering keeps the compact mobile dates and times legible."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Cream lettering on plum emphasizes the selected screening, while dark lettering keeps the blush second row and cream details ticket easy to read."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "The radio circles and visible \u201cSelect\u201d and \u201cSelected\u201d labels distinguish the choices at both widths, and both browser trees expose the named radios, checked film and status region."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "The choices show The Eel Road on Friday, June 13 at 18:30 and Birds at First Light on Saturday, June 14 at 16:00, and the details ticket repeats the selected film\u2019s date and time alongside Old Ferry Hall."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26150,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5412,
+          "reasoning_output_tokens": 4780
+        },
+        "scores": {
+          "none": 91.66666666666666,
+          "v2": 100
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "7940ffc437304a19317e5e84cf68cdb2077fec3beec614f1cea605e96d772bfc",
+          "A-390.png": "de6528acbd983bda620bf093be66570817137a404689ed17622d1dd4c35a5616",
+          "B-1440.png": "3e53b08321587d9f6a64a6fa53aef4f91894b614570af85569a8b5e35857826e",
+          "B-390.png": "1df02ecbcc17e933b8dd5e555253e4fa58e5db91e5070ff4e5201834dfac885c"
+        },
+        "judge_prompt_sha256": "4a23373107959722982f37dc1203ab06c5ad95ed07a11d153c6b142546f7cba0"
+      }
+    },
+    "landing-archive": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44988686124",
+      "cells": {
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 40611,
+              "cached_input_tokens": 19840,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 22204,
+              "reasoning_output_tokens": 14199
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "landing-archive",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "f00fc0a0fa5815566647423804535fc8d44bf252d591fd6a6eefcb5687f6cd0d",
+            "elapsed_seconds": 450.94,
+            "exit_code": 0,
+            "trace_sha256": "70180ce3b5f280f23294e934869abf41266aabf04a0aa2b0ceb85aba8abb7517",
+            "html_sha256": "1c82b2614d10fac54d798b6fb1fad7fb99c3b04951c32019de41713b55cb1fc2"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "85c956847015a9088b2136de2976cea28cf7f2d756007a59df263b3d077f90ff",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "6cb103d86be569e9d35040f5f16ca9f7b049401c44564a068f960e2922c4c882",
+              "viewport": 390,
+              "width": 375,
+              "pageErrors": []
+            }
+          }
+        },
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 62324,
+              "cached_input_tokens": 59008,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 26190,
+              "reasoning_output_tokens": 18110
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "landing-archive",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "f00fc0a0fa5815566647423804535fc8d44bf252d591fd6a6eefcb5687f6cd0d",
+            "elapsed_seconds": 531.58,
+            "exit_code": 0,
+            "trace_sha256": "26a22c619f84cb11812e8ea847c97cc2813fa8743c99d6b14c9d04b1d9403bb0",
+            "html_sha256": "1561d6292032604b6d65ba2e62560126b48bb8783963eb89111b337eb315b2de"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "650b80132ab414131f48826980be97eedcbd6112604e18ae0ad181fb0a1cc945",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "4f2c30cc3311ae1acbceeb636199f0e35b56cb4f676dc88a9dbdc51916366149",
+              "viewport": 390,
+              "width": 375,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "landing-archive",
+        "surface": "landing",
+        "blind_key": {
+          "A": "none",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The archive title and reading instruction lead directly to two equally prominent desktop cards, and the mobile stack keeps June\u2019s name, details and excerpt action together."
+            },
+            "spacing": {
+              "score": 3,
+              "evidence": "Consistent gutters and dividers organize the desktop cards, but the mobile cassette squeezes the introduction enough to leave \u201carchive\u201d alone on a third line."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The italic title word, bold serif names and prominent years establish distinct reading levels, with June\u2019s name and date still legible side by side on mobile."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Rust ties the city mark to both excerpt labels and arrows, and the warm sign illustration and green bridge help distinguish the interviews."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "At both widths, the browser tree includes a skip link, a heading for each interview and a speaker-specific accessible name for each visible \u201cRead excerpt\u201d button."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "The selection screen identifies June Ortega as a sign painter interviewed in 1987 and Leon Wu as a bridge electrician interviewed in 1996, and the introduction labels the offered excerpts as samples."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "June\u2019s larger image and filled button draw the eye at both widths, giving Leon\u2019s narrow desktop column and compact mobile row much less prominence as a second interview choice."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "A vertical divider separates the desktop interviews, and the mobile layout places Leon\u2019s details beside his thumbnail so both excerpt actions fit in the captured viewport."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The serif title wraps cleanly from one desktop line to two mobile lines, and the smaller sans-serif trade and date remain easy to read beside Leon\u2019s thumbnail."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Dark text stands out against the cream background, and both June\u2019s filled button and Leon\u2019s underlined action repeat the rust color of the city mark."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Both browser trees expose an ordered heading structure and speaker-specific button names, and Leon\u2019s underline and arrow give his compact action a visible cue beyond color."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "In the captured selection view, \u201cRead sample excerpt\u201d appears directly beneath the matching details for June Ortega (sign painter, 1987) and Leon Wu (bridge electrician, 1996)."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26118,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 6745,
+          "reasoning_output_tokens": 6088
+        },
+        "scores": {
+          "none": 95.83333333333334,
+          "v2": 95.83333333333334
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "85c956847015a9088b2136de2976cea28cf7f2d756007a59df263b3d077f90ff",
+          "A-390.png": "6cb103d86be569e9d35040f5f16ca9f7b049401c44564a068f960e2922c4c882",
+          "B-1440.png": "650b80132ab414131f48826980be97eedcbd6112604e18ae0ad181fb0a1cc945",
+          "B-390.png": "4f2c30cc3311ae1acbceeb636199f0e35b56cb4f676dc88a9dbdc51916366149"
+        },
+        "judge_prompt_sha256": "602d55ffda158f9c0d63fcfc6cf46754f37077ba281a323267640876257fed2c"
+      }
+    },
+    "landing-energy": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44988686124",
+      "cells": {
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 61828,
+              "cached_input_tokens": 20352,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 26326,
+              "reasoning_output_tokens": 17792
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "landing-energy",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "3ea8629a1b9be19b4bc3497cc6b91c0ed0ec93d4c0775c2a3f917c22fd9f35f0",
+            "elapsed_seconds": 534.26,
+            "exit_code": 0,
+            "trace_sha256": "f40a9569a7ab4252a697f6e47cc65487b786f7ed8bbdad6f76d93c36e05d7884",
+            "html_sha256": "6e095521a8cdd90354e93d037a5f1f441b82d62d0e8673408e435449f33b8ec7"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "5c13eeda7215f7d92e041365243bbaecc0776904eb43d496417b34fceed61cdd",
+              "viewport": 1440,
+              "width": 1425,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "166097d32ec41edfab909cb249edd13a74fb635962b036a59c42ea3192529185",
+              "viewport": 390,
+              "width": 375,
+              "pageErrors": []
+            }
+          }
+        },
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 38457,
+              "cached_input_tokens": 18816,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 25607,
+              "reasoning_output_tokens": 17112
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "landing-energy",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "3ea8629a1b9be19b4bc3497cc6b91c0ed0ec93d4c0775c2a3f917c22fd9f35f0",
+            "elapsed_seconds": 517.27,
+            "exit_code": 0,
+            "trace_sha256": "cafc11ec55c37bb79090ff340bbdba9a90d90ee8c67a26711b0707a36990ca8f",
+            "html_sha256": "d4965da0e479b8135601a445b16b88160ae653a8c3bb0bd695060db1307eed26"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "2de0ae66d9c85109efd0294259a7861985141d509aef1b4570b52345c3fea23d",
+              "viewport": 1440,
+              "width": 1425,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "9f203a96fecbba6c50fc0698df39714485e5fc5ee0187919fa52174dcfc6393c",
+              "viewport": 390,
+              "width": 375,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "landing-energy",
+        "surface": "landing",
+        "blind_key": {
+          "A": "v2",
+          "B": "none"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "The title, $600 amount and eligibility button form a clear sequence on desktop, but the large house illustration comes before all three on mobile."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "Horizontal rules keep the amount and deadline together at both widths, and the full-width mobile button aligns with both edges of the illustration."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The bold serif title and dollar figure stand apart from the compact sans-serif labels, and November 30 remains easy to read on one line on mobile."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Plum connects the brand mark, $600 figure and eligibility button against cream, while a lighter hatched band identifies the insulation in the cutaway."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "Both browser trees identify a skip link, a named eligibility form and three radio groups labeled by question, while keyboard focus and result announcements remain unverified."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "The page states the $600 maximum for crawlspace insulation and the November 30 deadline, and the browser trees show county residence, primary home and licensed installer questions followed by \u201cSee my result\u201d."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The underlined $600 offer leads at both widths, with the eligibility button and deadline ahead of the illustration on mobile and the checker already visible on desktop."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The desktop checker aligns all three answer controls along one edge, and the mobile button, deadline and diagram stack with a consistent left margin and distinct gaps."
+            },
+            "typography": {
+              "score": 3,
+              "evidence": "The italic $600 and condensed serif headings make the offer easy to scan, though the mobile header breaks \u201cHome Insulation Rebate\u201d into three one-word lines."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The dark green eligibility button stands out against cream, and the yellow-green underline beneath $600 echoes the highlighted insulation layer at both widths."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "Both browser trees expose a skip link and separately named Yes and No radios for each question, though the desktop choices share one pale outline with little visual separation."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "The $600 cap, crawlspace work and November 30 deadline match the brief, and each of the three requirements has a corresponding question above \u201cSee my result\u201d, where the supplied evidence ends."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 27261,
+          "cached_input_tokens": 17792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4922,
+          "reasoning_output_tokens": 4271
+        },
+        "scores": {
+          "v2": 91.66666666666666,
+          "none": 91.66666666666666
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "5c13eeda7215f7d92e041365243bbaecc0776904eb43d496417b34fceed61cdd",
+          "A-390.png": "166097d32ec41edfab909cb249edd13a74fb635962b036a59c42ea3192529185",
+          "B-1440.png": "2de0ae66d9c85109efd0294259a7861985141d509aef1b4570b52345c3fea23d",
+          "B-390.png": "9f203a96fecbba6c50fc0698df39714485e5fc5ee0187919fa52174dcfc6393c"
+        },
+        "judge_prompt_sha256": "283f370939dccf67fe8d9995f9c7746a0fa0326d28bf19e67508ce40c3765998"
+      }
+    },
+    "dashboard-venue": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44984687051",
+      "cells": {
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 40614,
+              "cached_input_tokens": 17280,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 18898,
+              "reasoning_output_tokens": 14118
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "dashboard-venue",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "elapsed_seconds": 382.69,
+            "exit_code": 0,
+            "prompt_sha256": "135f73c8d9a457bdd1e33def38e2c7a9a49d35c06a25bd50e0ab1a8c0d63b2c7",
+            "trace_sha256": "cbce9ead6199670ee2ee9face22fe254efdfd83d41a458c46d7e9e472f258be1",
+            "html_sha256": "15935eb7057bf30845d7ffc326b4ef883fc6cc8c9b520a1adc5bfa1fb1d3b91d"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "bc426501437c612486e01d63d32d2bafee6d758faaff6b36efc5481a87f6eb1f",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "2cface591ca3780d2cdb542c9bb24da7109f92a1e666fd56976ec9d0ad2231b3",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 63611,
+              "cached_input_tokens": 40704,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 16255,
+              "reasoning_output_tokens": 12443
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "dashboard-venue",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "elapsed_seconds": 332.83,
+            "exit_code": 0,
+            "prompt_sha256": "135f73c8d9a457bdd1e33def38e2c7a9a49d35c06a25bd50e0ab1a8c0d63b2c7",
+            "trace_sha256": "52a1417e857b1210e858dd33f2dabaff9ce2742ecd44b4d3289dce1820d79916",
+            "html_sha256": "7568885947b22dbd6933e687cac41401ea3db538f7dfb5071ac35718ff92b7f6"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "acf14f72bf9bba6c7f9c20156b477ee24d93a0743d8e2f416655d373b0d36ba9",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "c23c0fde179c56ab144de6b4bddb313bc8ecf86ec14c16a8adb2fe6a524e2fb0",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "dashboard-venue",
+        "surface": "dashboard",
+        "blind_key": {
+          "A": "none",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "Studio B appears first at both widths, but its small \u201c6 min late\u201d badge draws less attention than the illustrated title."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The cards align room names on the left and status badges on the right, while the compact desktop filter expands to the card width on mobile."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The italic \u201crooms\u201d distinguishes the title from the upright serif room names, and the bold sans-serif filters and statuses stay legible on mobile."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Plum and gold establish the theatre setting, while the amber clock and delay badge distinguish Studio B from Hall A\u2019s green check and \u201cReady\u201d badge."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "Both browser trees identify the selected filter and pair each room heading with its status, though the filter button names omit the visible counts of 2 and 1."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "Both widths show Studio B as \u201c6 min late\u201d and Hall A as \u201cReady,\u201d with \u201cDelayed\u201d and \u201cAll rooms\u201d controls above the list."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, the prominent \u201c6 minutes late\u201d cell draws the eye directly to Studio B\u2019s row, with \u201cDelayed only\u201d immediately above the table."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The filter aligns with the table\u2019s left edge at both widths, and the mobile rows give the two-line delay label enough space to stay clearly grouped with Studio B."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The serif title shifts from one line on desktop to two on mobile, while bold sans-serif status text remains easy to distinguish from the large serif room names."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "White text on burgundy singles out the delay, a green check marks \u201cReady,\u201d and the dark fill identifies the selected \u201cAll rooms\u201d filter."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Both browser trees associate each status cell with a room row header, mark \u201cAll rooms\u201d as pressed and expose \u201c2 of 2 rooms\u201d as a status."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "Both views label the controls \u201cDelayed only\u201d and \u201cAll rooms\u201d and show the exact pairings of Studio B with \u201c6 minutes late\u201d and Hall A with \u201cReady.\u201d"
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 25557,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3438,
+          "reasoning_output_tokens": 2789
+        },
+        "scores": {
+          "none": 91.66666666666666,
+          "v2": 100
+        }
+      }
+    }
+  }
+}

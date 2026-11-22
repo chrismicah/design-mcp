@@ -77,9 +77,12 @@ Design Library's earlier short settings query returned a result. Its empty full-
 
 | Configuration | Matched briefs judged | Score / 100 |
 | --- | ---: | ---: |
-| Plain generator | 2 / 36 | 91.7 |
-| Design MCP v2 | 2 / 36 | 95.8 |
-| Credential-free competitor configurations above | 0 / 36 each | Pending |
+| Plain generator | 7 / 36 | 92.9 |
+| Design MCP v2 | 7 / 36 | 95.2 |
+| Inspo hosted | 0 / 36 | Ceramics browser captures complete. Blind review pending. |
+| Other credential-free competitor configurations above | 0 / 36 each | Pending |
 | Credentialed and hosted configurations above | 0 / 36 each | Access or isolated fixture required |
 
 The retrieval probe is a separate test of tool behavior. A visual score requires generation and blinded browser captures on the same 36 briefs. The earlier market inventory covers additional products and publisher examples, including PyModel Designer Skill, Refero, Better Design and Claude Design. [Eval status](../EVALS.md) · [Earlier market inventory](../research/RESEARCH-COMPETITORS.md)
+
+The public Inspo endpoint completed `recommend` on the frozen ceramics brief. It suggested Marquee Hero from an evidence set of 24 sites. The original run required `search_screens` and flagged the cell. The documented `recommend` endpoint also supplies relevant art direction. Replaying the original trace with both documented tools eligible verified the generation and its unchanged HTML hash. The source trace and original eligibility result remain preserved. The hosted renderer captured the same HTML at both widths. [Tool documentation](https://github.com/Nutlope/inspo/blob/main/apps/mcp/README.md) · [Capture run](https://github.com/chrismicah/design-mcp/actions/runs/44989604073)

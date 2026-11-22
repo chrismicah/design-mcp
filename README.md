@@ -83,7 +83,7 @@ The new direction library and the historical pattern data have separate roles. H
 
 Fresh pipx and uv installs passed `doctor` and exercised all 17 tools in every macOS 15 job. The matrix covered Intel and Apple Silicon across Python 3.10, 3.11, 3.12, and 3.13. macOS 13 and fresh Tart VM verification are pending. [Install matrix](https://github.com/chrismicah/design-mcp/actions/runs/44987155008)
 
-The first two of 36 matched design briefs averaged 91.7 without the MCP and 95.8 with it, with one win and one tie. [Benchmark and receipts](EVALS.md)
+Seven of 36 matched design briefs have blinded scores. The plain generator averaged 92.9 and Design MCP v2 averaged 95.2, with two wins and five ties. [Benchmark and receipts](EVALS.md)
 
 ## Verify locally
 
