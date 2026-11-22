@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exhibit shortlist · Museum trip</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;650;700&family=Instrument+Serif&display=swap">
+  <style>
+    :root {
+      --paper: #f8f9f7;
+      --ink: #172338;
+      --blue: #2446ac;
+      --mist: #e9eef9;
+      --amber: #f3da8e;
+      --glass: #cfe3da;
+      --rule: color-mix(in srgb, var(--ink) 18%, transparent);
+      --secondary-ink: color-mix(in srgb, var(--ink) 78%, var(--paper));
+      --display: "Instrument Serif", "Times New Roman", serif;
+      --text: "Instrument Sans", sans-serif;
+      --gutter: clamp(1.25rem, 6vw, 3rem);
+      --panel-padding: 1.75rem;
+      --heading-height: 4.375rem;
+      --row-height: 6.875rem;
+      --mark-size: 3.5rem;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 1rem / 1.5 var(--text);
+    }
+
+    .wrap {
+      width: min(70rem, calc(100% - 2 * var(--gutter)));
+      margin-inline: auto;
+    }
+
+    .trip-bar {
+      border-block-end: 1px solid var(--rule);
+    }
+
+    .trip-context {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      min-block-size: 4.125rem;
+      font-size: .9375rem;
+      font-weight: 650;
+    }
+
+    .museum-mark {
+      display: grid;
+      place-items: center;
+      inline-size: 1.625rem;
+      block-size: 1.625rem;
+      border: 1px solid currentColor;
+      border-radius: 2px;
+      color: var(--blue);
+    }
+
+    .museum-mark::before {
+      content: "";
+      inline-size: 13px;
+      block-size: 11px;
+      border-block: 1px solid currentColor;
+      background: repeating-linear-gradient(
+        to right, currentColor 0 1px, transparent 1px 4px
+      );
+    }
+
+    .planner {
+      padding-block: clamp(2rem, 5vw, 4.5rem) 4rem;
+    }
+
+    h1 {
+      margin: 0 0 clamp(1.75rem, 4vw, 3rem);
+      font: 400 clamp(3.25rem, 8vw, 5.75rem) / .98 var(--display);
+      letter-spacing: -.025em;
+    }
+
+    .planner-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.22fr) minmax(0, 1fr);
+      gap: clamp(1.75rem, 4vw, 3.5rem);
+    }
+
+    .saved {
+      background: var(--mist);
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .75rem;
+      min-block-size: var(--heading-height);
+      padding-block: .75rem;
+      border-block-start: 3px solid transparent;
+      border-block-end: 1px solid var(--rule);
+    }
+
+    .saved .section-heading {
+      padding-inline: var(--panel-padding);
+      border-block-start-color: var(--blue);
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.125rem;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .exhibit-count {
+      flex: none;
+      color: var(--secondary-ink);
+      font-size: .875rem;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .saved-body {
+      display: grid;
+      min-block-size: calc(2 * var(--row-height));
+    }
+
+    .empty-state {
+      display: grid;
+      align-content: center;
+      gap: .625rem;
+      padding: 1.5rem var(--panel-padding) 1.875rem;
+    }
+
+    .empty-title {
+      margin: 0;
+      font: 400 clamp(2.125rem, 4vw, 2.875rem) / 1.04 var(--display);
+      letter-spacing: -.015em;
+    }
+
+    .empty-description {
+      margin: 0;
+      color: var(--secondary-ink);
+      font-size: .975rem;
+    }
+
+    .exhibit-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .suggested .exhibit-list {
+      border-block-end: 1px solid var(--rule);
+    }
+
+    .exhibit-row {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: clamp(.75rem, 1.4vw, 1.125rem);
+      min-block-size: var(--row-height);
+      padding-block: .75rem;
+    }
+
+    .exhibit-row + .exhibit-row {
+      border-block-start: 1px solid var(--rule);
+    }
+
+    .saved .exhibit-row {
+      padding-inline: var(--panel-padding);
+    }
+
+    .exhibit-name {
+      font-size: clamp(1rem, 1.5vw, 1.25rem);
+      font-weight: 650;
+      line-height: 1.28;
+      overflow-wrap: anywhere;
+    }
+
+    .exhibit-mark {
+      position: relative;
+      inline-size: var(--mark-size);
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+
+    .exhibit-mark::before,
+    .exhibit-mark::after {
+      position: absolute;
+      content: "";
+    }
+
+    .light-mark {
+      background: var(--amber);
+    }
+
+    .light-mark::before {
+      inset: 11% 13%;
+      clip-path: polygon(3% 50%, 100% 0, 100% 100%);
+      background: repeating-linear-gradient(
+        150deg, var(--ink) 0 1px, transparent 1px 4px
+      );
+    }
+
+    .light-mark::after {
+      inset-block-start: calc(50% - 2px);
+      inset-inline-start: 11%;
+      inline-size: 4px;
+      block-size: 4px;
+      border-radius: 50%;
+      background: var(--ink);
+    }
+
+    .transit-mark {
+      background: var(--glass);
+    }
+
+    .transit-mark::before {
+      inset: 0;
+      background:
+        radial-gradient(circle closest-side, var(--ink) 92%, transparent)
+          76% 39% / 26% 26% no-repeat,
+        linear-gradient(var(--ink), var(--ink)) 50% 67% / 72% 1px no-repeat,
+        linear-gradient(var(--ink), var(--ink)) 78% 78% / 52% 1px no-repeat;
+    }
+
+    .transit-mark::after {
+      inset-block-start: 28%;
+      inset-inline-start: 23%;
+      inline-size: 25%;
+      aspect-ratio: 1;
+      border: 1px solid var(--ink);
+      transform: rotate(-13deg);
+    }
+
+    .row-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .4375rem;
+      min-block-size: 44px;
+      padding: .375rem .625rem;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      font: 650 .875rem / 1.2 var(--text);
+      cursor: pointer;
+    }
+
+    .row-button:focus-visible,
+    h2:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 4px;
+    }
+
+    .add-button {
+      inline-size: 5.25rem;
+      background: var(--blue);
+      color: var(--paper);
+    }
+
+    .add-button:hover:not([aria-disabled="true"]) {
+      background: color-mix(in srgb, var(--blue) 77%, var(--ink));
+    }
+
+    .action-mark {
+      flex: none;
+      inline-size: .75rem;
+      block-size: .75rem;
+      background:
+        linear-gradient(currentColor, currentColor) center / 100% 1.5px no-repeat,
+        linear-gradient(currentColor, currentColor) center / 1.5px 100% no-repeat;
+    }
+
+    .add-button[aria-disabled="true"] {
+      background: transparent;
+      color: var(--blue);
+      cursor: default;
+    }
+
+    .add-button[aria-disabled="true"] .action-mark {
+      inline-size: .625rem;
+      block-size: .375rem;
+      margin-block-start: -.15rem;
+      border-block-end: 1.5px solid currentColor;
+      border-inline-start: 1.5px solid currentColor;
+      background: none;
+      transform: rotate(-45deg);
+    }
+
+    .remove-button {
+      padding-inline-end: 0;
+      background: transparent;
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: .2em;
+    }
+
+    .remove-button:hover {
+      color: var(--blue);
+    }
+
+    .visually-hidden {
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      margin: -1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 50rem) {
+      :root {
+        --panel-padding: 1.125rem;
+        --heading-height: 3.5rem;
+        --row-height: 5rem;
+        --mark-size: 2.875rem;
+      }
+
+      .trip-context {
+        min-block-size: 3.625rem;
+      }
+
+      .planner-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.5rem;
+      }
+
+      .add-button {
+        inline-size: 4.75rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .saved .exhibit-row {
+        animation: exhibit-added 180ms ease-out both;
+      }
+
+      @keyframes exhibit-added {
+        from {
+          opacity: 0;
+          transform: translateY(4px);
+        }
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="trip-bar">
+    <div class="wrap trip-context">
+      <span class="museum-mark" aria-hidden="true"></span>
+      <span>Museum trip</span>
+    </div>
+  </header>
+
+  <main class="wrap planner">
+    <h1>Exhibit shortlist</h1>
+
+    <div class="planner-grid">
+      <section class="saved" aria-labelledby="saved-heading">
+        <div class="section-heading">
+          <h2 id="saved-heading" tabindex="-1">Saved exhibits</h2>
+          <span class="exhibit-count" id="exhibit-count">0 exhibits</span>
+        </div>
+        <div class="saved-body">
+          <div class="empty-state" id="empty-state">
+            <p class="empty-title">No exhibits saved yet</p>
+            <p class="empty-description">Add an exhibit from the suggestions.</p>
+          </div>
+          <ul class="exhibit-list" id="saved-list" role="list" hidden></ul>
+        </div>
+      </section>
+
+      <section class="suggested" aria-labelledby="suggested-heading">
+        <div class="section-heading">
+          <h2 id="suggested-heading">Suggested exhibits</h2>
+        </div>
+        <ul class="exhibit-list" role="list">
+          <li class="exhibit-row">
+            <span class="exhibit-mark light-mark" aria-hidden="true"></span>
+            <span class="exhibit-name">Light Studies</span>
+            <button class="row-button add-button" type="button"
+                    aria-label="Add Light Studies to the shortlist">
+              <span class="action-mark" aria-hidden="true"></span>
+              <span class="action-label">Add</span>
+            </button>
+          </li>
+          <li class="exhibit-row">
+            <span class="exhibit-mark transit-mark" aria-hidden="true"></span>
+            <span class="exhibit-name">Objects in Transit</span>
+            <button class="row-button add-button" type="button"
+                    aria-label="Add Objects in Transit to the shortlist">
+              <span class="action-mark" aria-hidden="true"></span>
+              <span class="action-label">Add</span>
+            </button>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="visually-hidden" id="shortlist-status" role="status"></div>
+  </main>
+
+  <script>
+    const savedList = document.getElementById("saved-list");
+    const savedHeading = document.getElementById("saved-heading");
+    const emptyState = document.getElementById("empty-state");
+    const exhibitCount = document.getElementById("exhibit-count");
+    const status = document.getElementById("shortlist-status");
+
+    function updateShortlist() {
+      const count = savedList.children.length;
+      exhibitCount.textContent = count === 1 ? "1 exhibit" : `${count} exhibits`;
+      emptyState.hidden = count > 0;
+      savedList.hidden = count === 0;
+    }
+
+    for (const suggestion of document.querySelectorAll(".suggested .exhibit-row")) {
+      const mark = suggestion.querySelector(".exhibit-mark");
+      const name = suggestion.querySelector(".exhibit-name");
+      const exhibit = name.textContent;
+      const addButton = suggestion.querySelector(".add-button");
+      const addLabel = addButton.querySelector(".action-label");
+      const addAccessibleLabel = addButton.getAttribute("aria-label");
+
+      addButton.addEventListener("click", () => {
+        if (addButton.getAttribute("aria-disabled") === "true") return;
+
+        const savedRow = document.createElement("li");
+        savedRow.className = "exhibit-row";
+
+        const removeButton = document.createElement("button");
+        removeButton.type = "button";
+        removeButton.className = "row-button remove-button";
+        removeButton.textContent = "Remove";
+        removeButton.setAttribute("aria-label", `Remove ${exhibit} from the shortlist`);
+
+        removeButton.addEventListener("click", () => {
+          const restoreFocus = document.activeElement === removeButton;
+
+          savedRow.remove();
+          addButton.removeAttribute("aria-disabled");
+          addButton.removeAttribute("tabindex");
+          addButton.setAttribute("aria-label", addAccessibleLabel);
+          addLabel.textContent = "Add";
+          updateShortlist();
+
+          if (restoreFocus) {
+            const nextControl = savedList.querySelector(".remove-button") ?? savedHeading;
+            nextControl.focus();
+          }
+
+          status.textContent = `${exhibit} removed from the shortlist.`;
+        });
+
+        savedRow.append(mark.cloneNode(true), name.cloneNode(true), removeButton);
+        savedList.append(savedRow);
+        addButton.setAttribute("aria-disabled", "true");
+        addButton.setAttribute("aria-label", `Saved ${exhibit}`);
+        addButton.tabIndex = -1;
+        addLabel.textContent = "Saved";
+        updateShortlist();
+        status.textContent = `${exhibit} added to the shortlist.`;
+      });
+    }
+  </script>
+</body>
+</html>

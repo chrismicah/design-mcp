@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ef">
+  <title>Find a tool | Tool library</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@700&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap">
+  <style>
+    :root {
+      --ink: #111111;
+      --paper: #f7f5ef;
+      --yellow: #ffcc00;
+      --pegboard: #ebe7db;
+      --muted: #5b584e;
+      --rule: #b6ae9d;
+      --display: "Archivo Narrow", "Liberation Sans Narrow", sans-serif;
+      --body: "Atkinson Hyperlegible", "Trebuchet MS", sans-serif;
+      --gutter: clamp(20px, 5vw, 72px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    [hidden] { display: none; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 400 1.125rem/1.5 var(--body);
+    }
+
+    h1, h2, p, figure { margin: 0; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+
+    .wrap {
+      width: min(1140px, calc(100% - var(--gutter) - var(--gutter)));
+      margin-inline: auto;
+    }
+
+    .columns {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.22fr);
+      align-items: center;
+      gap: clamp(32px, 5.4vw, 78px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding-block: 17px;
+      font: 700 1.625rem/1 var(--display);
+      letter-spacing: -.02em;
+    }
+
+    .brand-mark {
+      display: block;
+      flex: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 3px;
+      background: var(--yellow);
+    }
+
+    .search-band {
+      padding-block: 40px;
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    h1 {
+      font: 700 clamp(3rem, 4.9vw, 4.5rem)/.98 var(--display);
+      letter-spacing: -.025em;
+    }
+
+    .search-form {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 4px;
+      padding: 4px;
+      border-radius: 5px;
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    .search-field {
+      position: relative;
+      display: block;
+      min-width: 0;
+    }
+
+    .search-field svg {
+      position: absolute;
+      inset-inline-start: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .search-field input {
+      display: block;
+      width: 100%;
+      min-height: 52px;
+      padding: 0 12px 0 45px;
+      border: 0;
+      border-radius: 3px;
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .search-field input::placeholder {
+      color: var(--muted);
+      opacity: 1;
+    }
+
+    .submit {
+      min-height: 52px;
+      padding-inline: clamp(16px, 2.1vw, 30px);
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      background: var(--pegboard);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .submit:hover {
+      background: color-mix(in srgb, var(--pegboard) 91%, var(--ink));
+    }
+
+    .search-form :focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: -3px;
+    }
+
+    .results {
+      padding-block: clamp(48px, 5vw, 72px) 54px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .result-title {
+      font: 700 clamp(3.1rem, 5.65vw, 5.25rem)/.98 var(--display);
+      letter-spacing: -.025em;
+      overflow-wrap: anywhere;
+    }
+
+    .query-line { display: block; }
+
+    .result-note {
+      margin-top: 21px;
+      color: var(--muted);
+    }
+
+    .suggestion {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      max-width: 100%;
+      min-height: 54px;
+      margin-top: 16px;
+      padding: 11px 18px;
+      border: 1px solid var(--ink);
+      border-radius: 3px;
+      background: var(--yellow);
+      color: var(--ink);
+      text-align: start;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .suggestion svg, .availability svg { flex: none; }
+
+    .suggestion:hover {
+      background: color-mix(in srgb, var(--yellow) 92%, var(--ink));
+    }
+
+    .suggestion:focus-visible,
+    .result-title:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 4px;
+    }
+
+    .result-count {
+      margin-bottom: 12px;
+      color: var(--muted);
+      overflow-wrap: anywhere;
+    }
+
+    .found .result-title { text-wrap: balance; }
+
+    .availability {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 22px;
+      font-weight: 700;
+    }
+
+    .availability svg {
+      border-radius: 50%;
+      background: var(--yellow);
+    }
+
+    .tool-board {
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      background: var(--pegboard);
+    }
+
+    .tool-board svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    @media (max-width: 760px) {
+      .columns { grid-template-columns: minmax(0, 1fr); }
+      .brand { padding-block: 13px; }
+      .search-band { padding-block: 23px 24px; }
+      .search-band .columns { gap: 17px; }
+      .results { padding-block: 31px 32px; }
+      .result-title { font-size: clamp(2.75rem, 13.3vw, 3.6rem); }
+      .result-note { margin-top: 17px; }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .found:not([hidden]) { animation: reveal 220ms ease-out; }
+
+      @keyframes reveal {
+        from { opacity: 0; transform: translateY(5px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap brand">
+      <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true">
+        <path fill="currentColor" d="M23 8.1a7.2 7.2 0 0 0-8.7 8.5l-6.2 6.3a2.9 2.9 0 0 0 4.1 4.1l6.3-6.2a7.2 7.2 0 0 0 8.5-8.7l-4.1 4.1-3.4-.6-.6-3.4Z"/>
+      </svg>
+      Tool library
+    </div>
+  </header>
+
+  <main>
+    <section class="search-band" aria-labelledby="search-title">
+      <div class="wrap columns">
+        <h1 id="search-title">Find a tool</h1>
+        <form id="tool-search" class="search-form" role="search" aria-label="Tool catalog">
+          <label class="search-field">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true">
+              <circle cx="10.5" cy="10.5" r="6.5"/>
+              <path d="m15.3 15.3 4.7 4.7"/>
+            </svg>
+            <input id="tool-query" type="search" name="query" aria-label="Tool name"
+                   value="chain saw" placeholder="Tool name" autocomplete="off"
+                   spellcheck="false" enterkeyhint="search" required>
+          </label>
+          <button class="submit" type="submit">Search</button>
+        </form>
+      </div>
+    </section>
+
+    <div class="wrap columns results">
+      <div>
+        <div id="empty-result">
+          <h2 id="empty-title" class="result-title" tabindex="-1">
+            No matches for <span id="empty-query" class="query-line">“chain saw”</span>
+          </h2>
+
+          <div id="related-search">
+            <p class="result-note">Try a related search.</p>
+            <button id="suggestion" class="suggestion" type="button" data-query="pruning saw">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <circle cx="10.5" cy="10.5" r="6.5"/>
+                <path d="m15.3 15.3 4.7 4.7"/>
+              </svg>
+              Search for “pruning saw”
+            </button>
+          </div>
+
+          <p id="try-again" class="result-note" hidden>Try a different tool name.</p>
+        </div>
+
+        <div id="found-result" class="found" hidden>
+          <p id="result-count" class="result-count">1 result for <span id="found-query">“pruning saw”</span></p>
+          <h2 id="found-title" class="result-title" tabindex="-1" aria-describedby="result-count availability">Folding Pruning Saw</h2>
+          <p id="availability" class="availability">
+            <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m7 12 3.2 3.2L17 8.8"/>
+            </svg>
+            Available
+          </p>
+        </div>
+      </div>
+
+      <figure id="tool-board" class="tool-board" aria-hidden="true">
+        <svg viewBox="0 0 560 350" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="peg-holes" x="10" y="5" width="20" height="20" patternUnits="userSpaceOnUse">
+              <circle cx="10" cy="10" r="1.45" fill="var(--ink)" opacity=".21"/>
+            </pattern>
+            <linearGradient id="steel" x1="0" x2="0" y1="0" y2="1" gradientUnits="objectBoundingBox">
+              <stop offset="0" stop-color="var(--paper)"/>
+              <stop offset=".58" stop-color="var(--paper)"/>
+              <stop offset="1" stop-color="var(--rule)"/>
+            </linearGradient>
+            <filter id="tool-shadow" x="-20%" y="-30%" width="140%" height="170%">
+              <feDropShadow dx="0" dy="6" stdDeviation="4" flood-color="var(--ink)" flood-opacity=".23"/>
+            </filter>
+          </defs>
+
+          <rect width="560" height="350" fill="url(#peg-holes)"/>
+          <path d="M26 53V26h27m454 0h27v27m0 244v27h-27m-454 0H26v-27"
+                fill="none" stroke="var(--muted)" stroke-opacity=".65"/>
+
+          <g filter="url(#tool-shadow)">
+            <g transform="rotate(-27 280 175)" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M225 151c52-19 109-28 165-26 33 1 60 8 79 20q7 4 1 10
+                       l-15 13v-7l-13 8v-7l-13 7v-7l-13 8v-7l-13 7v-7l-13 7v-7
+                       l-13 8v-7l-13 7v-7l-13 8v-7l-13 8v-7l-13 8v-7l-13 8v-7
+                       l-13 9v-7l-13 9v-7l-13 9v-7l-13 9v-6l-15 9q-17 5-26-6Z"
+                    fill="url(#steel)" stroke="var(--ink)" stroke-width="2.5"/>
+              <path d="M250 151c49-15 97-21 141-19 27 1 48 5 66 13
+                       M258 164c53-13 111-17 171-14"
+                    fill="none" stroke="var(--muted)" stroke-width="1.2" opacity=".55"/>
+
+              <path d="M87 164c25-2 49 0 69-3 25-4 44-15 66-16 19-1 31 9 31 24
+                       0 16-11 26-29 26-28-1-47 0-68 7-21 7-44 11-65 10-14 0-22-6-21-17
+                       l2-17q1-12 15-14Z" fill="var(--ink)"/>
+              <path d="M89 170c25-2 49-1 69-4 25-4 45-15 66-15 14 0 23 7 23 18
+                       0 12-8 19-22 19-29-1-49 1-70 8-21 7-42 10-63 10-10 0-16-4-15-11
+                       l2-16q1-8 10-9Z" fill="var(--yellow)"/>
+
+              <path d="M114 178c25 0 44-4 66-9 7-2 12 0 13 5 1 4-2 8-8 10
+                       -24 7-48 12-71 12q-9 0-9-8t9-10Z" fill="var(--ink)"/>
+              <path d="m118 183 4 8m8-9 4 8m8-10 4 8m8-10 4 8m8-11 4 8m8-11 4 8"
+                    fill="none" stroke="var(--paper)" stroke-width="1.25" opacity=".42"/>
+
+              <ellipse cx="91" cy="188" rx="5" ry="7" fill="var(--ink)"/>
+              <circle cx="201" cy="172" r="2.3" fill="var(--ink)"/>
+              <circle cx="225" cy="169" r="13" fill="var(--ink)"/>
+              <circle cx="225" cy="169" r="8.6" fill="var(--paper)"/>
+              <path d="m220.5 173.5 9-9" stroke="var(--ink)" stroke-width="2"/>
+            </g>
+          </g>
+        </svg>
+      </figure>
+    </div>
+  </main>
+
+  <script>
+    const searchForm = document.getElementById("tool-search");
+    const searchInput = document.getElementById("tool-query");
+    const suggestion = document.getElementById("suggestion");
+    const relatedSearch = document.getElementById("related-search");
+    const tryAgain = document.getElementById("try-again");
+    const toolBoard = document.getElementById("tool-board");
+
+    const emptyResult = document.getElementById("empty-result");
+    const emptyTitle = document.getElementById("empty-title");
+    const emptyQuery = document.getElementById("empty-query");
+    const foundResult = document.getElementById("found-result");
+    const foundTitle = document.getElementById("found-title");
+    const foundQuery = document.getElementById("found-query");
+    const toolName = foundTitle.textContent.trim().toLowerCase();
+
+    searchForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const query = searchInput.value.trim().replace(/\s+/g, " ");
+      searchInput.value = query;
+
+      if (!query) {
+        searchInput.reportValidity();
+        return;
+      }
+
+      const searchTerm = query.toLowerCase();
+      const hasMatch = toolName.includes(searchTerm);
+      const showSuggestion = searchTerm === "chain saw";
+      const queryLabel = `“${query}”`;
+
+      emptyQuery.textContent = queryLabel;
+      foundQuery.textContent = queryLabel;
+      emptyResult.hidden = hasMatch;
+      foundResult.hidden = !hasMatch;
+      relatedSearch.hidden = !showSuggestion;
+      tryAgain.hidden = showSuggestion;
+      toolBoard.hidden = !(hasMatch || showSuggestion);
+
+      const resultTitle = hasMatch ? foundTitle : emptyTitle;
+      resultTitle.focus();
+    });
+
+    suggestion.addEventListener("click", () => {
+      searchInput.value = suggestion.dataset.query;
+      searchForm.requestSubmit();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F5F1E8">
+  <title>Bakery handoff log</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Instrument+Serif&amp;display=swap">
+
+  <!--
+    An incoming baker needs to leave a note quickly at the prep station.
+    Give the log the quiet feel of a paper pad. Keep the page to the log and its writing controls.
+    Flour #F5F1E8, paper #FFFDF7, ink #302338, butter #F2D581, crust #C2873E, rule #D9CEBE.
+    Instrument Serif sets the headings. DM Sans sets the controls and note text.
+    A split sheet pairs the first action with a scored loaf resting on a blank pad.
+    On a phone the action comes first. A fresh log opens empty, accepts a nonblank note,
+    and shows the saved text in the log when the page is reopened in the same browser.
+  -->
+  <style>
+    :root {
+      color-scheme: light;
+      --flour: #F5F1E8;
+      --paper: #FFFDF7;
+      --ink: #302338;
+      --butter: #F2D581;
+      --crust: #C2873E;
+      --rule: #D9CEBE;
+      --muted: color-mix(in srgb, var(--ink) 76%, var(--paper));
+      --display: "Instrument Serif", Georgia, serif;
+      --body: "DM Sans", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+
+    body {
+      margin: 0;
+      min-block-size: 100vh;
+      background: var(--flour);
+      color: var(--ink);
+      font: 400 1rem/1.5 var(--body);
+    }
+
+    .frame {
+      inline-size: min(69rem, calc(100% - 5rem));
+      margin-inline: auto;
+    }
+
+    .masthead {
+      border-block-end: 1px solid var(--rule);
+      background: var(--paper);
+    }
+
+    .brand {
+      display: flex;
+      min-block-size: 4.5rem;
+      align-items: center;
+      gap: .7rem;
+      font-size: 1.0625rem;
+      font-weight: 700;
+      letter-spacing: -.02em;
+    }
+
+    .brand-mark {
+      display: grid;
+      inline-size: 2.5rem;
+      block-size: 2.5rem;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--butter);
+    }
+
+    main.frame { padding-block: 3.85rem 4rem; }
+
+    .page-heading {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: .8rem 1rem;
+      margin-block-end: 1.65rem;
+    }
+
+    h1, h2 {
+      margin: 0;
+      font-family: var(--display);
+      font-weight: 400;
+    }
+
+    h1 {
+      font-size: clamp(3.2rem, 6vw, 5.25rem);
+      line-height: .98;
+      letter-spacing: -.035em;
+    }
+
+    h2 {
+      font-size: clamp(2.5rem, 4.3vw, 3.75rem);
+      line-height: 1.02;
+      letter-spacing: -.025em;
+    }
+
+    .sheet {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      background: var(--paper);
+      box-shadow: 0 3px 0 color-mix(in srgb, var(--rule) 48%, transparent);
+    }
+
+    .sheet-content {
+      display: grid;
+      min-block-size: 24rem;
+      align-content: center;
+      padding: 2.5rem clamp(2rem, 4.35vw, 4rem);
+    }
+
+    .empty-copy {
+      margin: .7rem 0 1.65rem;
+      color: var(--muted);
+      font-size: 1.0625rem;
+    }
+
+    .illustration {
+      display: grid;
+      place-items: center;
+      padding: 1.2rem .8rem;
+      border-inline-start: 1px solid color-mix(in srgb, var(--ink) 18%, var(--butter));
+      background: var(--butter);
+    }
+
+    .illustration svg {
+      display: block;
+      inline-size: 100%;
+      max-inline-size: 30rem;
+      block-size: auto;
+    }
+
+    .button {
+      display: inline-flex;
+      min-block-size: 3.25rem;
+      justify-content: center;
+      align-items: center;
+      gap: .55rem;
+      padding: .7rem 1.15rem;
+      border: 1px solid transparent;
+      border-radius: 7px;
+      font: 700 1rem/1.2 var(--body);
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .button svg { flex: none; }
+
+    .primary {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .secondary {
+      border-color: var(--muted);
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    .add-button {
+      min-block-size: 3rem;
+      padding-inline: .85rem;
+    }
+
+    @media (hover: hover) {
+      .primary:hover { background: color-mix(in srgb, var(--ink) 84%, var(--crust)); }
+      .secondary:hover { background: var(--flour); }
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--ink);
+      outline-offset: 4px;
+    }
+
+    .composer-title { font-size: clamp(2.5rem, 4vw, 3.25rem); }
+    .note-form { margin-block-start: 1.2rem; }
+
+    label {
+      display: block;
+      margin-block-end: .45rem;
+      font-weight: 700;
+    }
+
+    textarea {
+      display: block;
+      inline-size: 100%;
+      min-block-size: 9rem;
+      padding: .75rem .85rem;
+      resize: vertical;
+      border: 1px solid var(--muted);
+      border-radius: 6px;
+      background: var(--paper);
+      color: var(--ink);
+      font: inherit;
+    }
+
+    textarea::placeholder {
+      color: var(--muted);
+      opacity: 1;
+    }
+
+    textarea[aria-invalid="true"] {
+      border-color: var(--ink);
+      box-shadow: 0 0 0 1px var(--ink);
+    }
+
+    .field-error {
+      margin: .55rem 0 0;
+      font-size: .9rem;
+      font-weight: 700;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: .65rem;
+      margin-block-start: 1.15rem;
+    }
+
+    .notes {
+      display: grid;
+      gap: .85rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .sheet:not([hidden]) + .notes { margin-block-start: 1.25rem; }
+
+    .note {
+      padding: 1.25rem clamp(1.15rem, 3vw, 2rem);
+      border: 1px solid var(--rule);
+      border-inline-start: 5px solid var(--butter);
+      border-radius: 8px;
+      background: var(--paper);
+      scroll-margin-block: 1rem;
+    }
+
+    .note-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .35rem 1rem;
+      color: var(--muted);
+      font-size: .875rem;
+      font-weight: 600;
+    }
+
+    .note-text {
+      max-inline-size: 68ch;
+      margin: .45rem 0 0;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .sr-only {
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 760px) {
+      .frame { inline-size: calc(100% - 2.5rem); }
+      .brand { min-block-size: 3.75rem; }
+      .brand-mark { inline-size: 2.25rem; block-size: 2.25rem; }
+      main.frame { padding-block: 2.05rem 2.5rem; }
+      .page-heading { margin-block-end: 1.3rem; }
+      .sheet { grid-template-columns: minmax(0, 1fr); }
+      .sheet-content { min-block-size: 0; padding: 1.65rem 1.35rem; }
+      .empty-copy { margin-block-end: 1.25rem; font-size: 1rem; }
+
+      .illustration {
+        padding: .45rem .75rem;
+        border-inline-start: 0;
+        border-block-start: 1px solid color-mix(in srgb, var(--ink) 18%, var(--butter));
+      }
+
+      .illustration svg { max-inline-size: 20rem; }
+      .sheet.is-writing .illustration { display: none; }
+      #first-note { inline-size: 100%; }
+      .actions .button { flex: 1; padding-inline: .5rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="frame brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="25" height="25" viewBox="0 0 32 32" fill="none"
+             stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+             stroke-linejoin="round" focusable="false">
+          <path d="M4.5 18c0-5.2 5-9.5 11.5-9.5S27.5 12.8 27.5 18c0 3.8-4.8 5.5-11.5 5.5S4.5 21.8 4.5 18Z"/>
+          <path d="m10.3 17 2.3-4.1m2.8 4.3 2.3-4.1m2.8 4.3 2-3.5"/>
+        </svg>
+      </span>
+      Bakery
+    </div>
+  </header>
+
+  <main class="frame">
+    <div class="page-heading">
+      <h1>Handoff log</h1>
+      <button class="button primary add-button" id="add-note" type="button" hidden>
+        <svg width="17" height="17" viewBox="0 0 20 20" fill="none"
+             stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true">
+          <path d="M10 4v12M4 10h12"/>
+        </svg>
+        Add note
+      </button>
+    </div>
+
+    <div class="sheet" id="sheet">
+      <div class="sheet-content">
+        <section id="empty-state" aria-labelledby="empty-title">
+          <h2 id="empty-title">No notes yet</h2>
+          <p class="empty-copy">Leave a note for the next shift.</p>
+          <button class="button primary" id="first-note" type="button">
+            <svg width="19" height="19" viewBox="0 0 20 20" fill="none"
+                 stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true">
+              <path d="M10 4v12M4 10h12"/>
+            </svg>
+            Add first note
+          </button>
+        </section>
+
+        <section id="composer" aria-labelledby="composer-title" hidden>
+          <h2 class="composer-title" id="composer-title">Add a note</h2>
+          <form class="note-form" id="note-form" novalidate>
+            <label for="note-text">Note</label>
+            <textarea id="note-text" name="note" rows="4" required
+                      placeholder="What should the next shift know?"></textarea>
+            <p class="field-error" id="note-error" hidden>Write a note before saving.</p>
+            <div class="actions">
+              <button class="button secondary" id="cancel-note" type="button">Cancel</button>
+              <button class="button primary" type="submit">Save note</button>
+            </div>
+          </form>
+        </section>
+      </div>
+
+      <div class="illustration" aria-hidden="true">
+        <svg viewBox="0 0 480 336" fill="none" focusable="false">
+          <defs>
+            <pattern id="grain" width="7" height="7" patternUnits="userSpaceOnUse">
+              <circle cx="1.5" cy="1.5" r=".85" fill="var(--ink)" opacity=".25"/>
+              <circle cx="5" cy="4.7" r=".55" fill="var(--ink)" opacity=".15"/>
+            </pattern>
+          </defs>
+
+          <path d="M64 253c-8-36 14-76 48-104 42-36 104-58 165-55 67 3 123 22 145 67 22 45 4 91-34 114-43 27-116 24-184 23-66-1-129-9-140-45Z"
+                fill="var(--paper)" opacity=".23"/>
+          <ellipse cx="246" cy="285" rx="177" ry="25" fill="url(#grain)"/>
+
+          <g transform="rotate(-12 211 160)" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="137" y="56" width="174" height="228" rx="8" fill="var(--ink)" opacity=".17"/>
+            <rect x="130" y="50" width="174" height="228" rx="8"
+                  fill="var(--butter)" stroke="var(--ink)" stroke-width="2"/>
+            <rect x="123" y="43" width="174" height="228" rx="8"
+                  fill="var(--paper)" stroke="var(--ink)" stroke-width="2.4"/>
+            <path d="M124 78h172M137 109h145m-145 25h145m-145 25h145m-145 25h145m-145 25h145m-145 25h145"
+                  stroke="var(--ink)" stroke-width="1.25" opacity=".31"/>
+            <path d="M151 91v160" stroke="var(--crust)" stroke-width="1.5" opacity=".64"/>
+            <g fill="var(--butter)" stroke="var(--ink)" stroke-width="1.5">
+              <circle cx="152" cy="59" r="4"/>
+              <circle cx="187" cy="59" r="4"/>
+              <circle cx="222" cy="59" r="4"/>
+              <circle cx="257" cy="59" r="4"/>
+            </g>
+            <path d="M152 58V40a6 6 0 0 1 12 0v3m23 15V40a6 6 0 0 1 12 0v3m23 15V40a6 6 0 0 1 12 0v3m23 15V40a6 6 0 0 1 12 0v3"
+                  stroke="var(--ink)" stroke-width="2.5"/>
+          </g>
+
+          <g transform="rotate(30 351 147)" stroke="var(--ink)" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round">
+            <path d="M345 87a6 6 0 0 1 12 0v100l-6 15-6-15Z" fill="var(--paper)"/>
+            <path d="M345 99h12v88h-12Z" fill="var(--butter)"/>
+            <path d="M351 104v77" opacity=".55"/>
+            <path d="m349 196 2 6 2-6Z" fill="var(--ink)" stroke-width="1"/>
+          </g>
+
+          <g transform="rotate(8 334 233)" stroke="var(--ink)" stroke-width="2.35"
+             stroke-linecap="round" stroke-linejoin="round">
+            <path d="M240 249c-3-16 9-36 23-48 18-16 41-24 65-23 29 1 61 12 82 29 13 10 20 22 19 35-1 11-10 20-24 25-34 11-114 10-146 1-12-4-18-10-19-19Z"
+                  fill="var(--crust)"/>
+            <path d="M244 248c12 13 53 19 96 19 36 0 70-6 85-18"
+                  opacity=".55" stroke-width="1.5"/>
+            <path d="M274 225c1-13 10-26 22-32 4-2 6 1 3 4-7 8-11 17-14 25-3 8-12 11-11 3Z
+                     M313 228c1-16 10-31 22-36 4-2 7 1 4 4-8 9-12 19-15 30-2 7-11 10-11 2Z
+                     M353 232c0-13 7-25 16-31 4-3 7-1 5 3-6 8-9 17-11 26-1 7-10 8-10 2Z"
+                  fill="var(--butter)" stroke-width="1.75"/>
+            <path d="m259 237 2-3m13 12 3 1m17-10 2-2m9 16 3 .5m27-13 2-2m9 17 3-1m25-11 3-2m15 12 3-1m6-29 3 3m5 18 2-1"
+                  opacity=".55" stroke-width="1.5"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <ol class="notes" id="notes" aria-label="Saved notes" hidden></ol>
+    <p class="sr-only" id="save-status" role="status"></p>
+  </main>
+
+  <script>
+    const notePrefix = "bakery-handoff.note.";
+    const records = new Map();
+    const timeFormat = new Intl.DateTimeFormat(undefined, {
+      dateStyle: "medium",
+      timeStyle: "short"
+    });
+
+    const sheet = document.getElementById("sheet");
+    const emptyState = document.getElementById("empty-state");
+    const composer = document.getElementById("composer");
+    const firstNote = document.getElementById("first-note");
+    const addNote = document.getElementById("add-note");
+    const form = document.getElementById("note-form");
+    const field = document.getElementById("note-text");
+    const error = document.getElementById("note-error");
+    const list = document.getElementById("notes");
+    const status = document.getElementById("save-status");
+    let writing = false;
+
+    function loadNotes() {
+      try {
+        const storage = window.localStorage;
+
+        for (let index = 0; index < storage.length; index += 1) {
+          const key = storage.key(index);
+          if (!key?.startsWith(notePrefix)) continue;
+
+          try {
+            const note = JSON.parse(storage.getItem(key));
+            if (typeof note?.text === "string" && note.text.trim() &&
+                Number.isFinite(note.createdAt) &&
+                Number.isFinite(new Date(note.createdAt).getTime())) {
+              records.set(key, note);
+            }
+          } catch {
+            // Skip an unreadable record.
+          }
+        }
+      } catch {
+        // The editor also works when browser storage is unavailable.
+      }
+    }
+
+    function renderNotes() {
+      const entries = [...records].sort((a, b) => b[1].createdAt - a[1].createdAt);
+      const items = document.createDocumentFragment();
+
+      for (const [key, note] of entries) {
+        const item = document.createElement("li");
+        item.id = key;
+        item.className = "note";
+        item.tabIndex = -1;
+
+        const meta = document.createElement("div");
+        meta.className = "note-meta";
+
+        const date = new Date(note.createdAt);
+        const time = document.createElement("time");
+        time.dateTime = date.toISOString();
+        time.textContent = timeFormat.format(date);
+        meta.append(time);
+
+        if (note.sessionOnly) {
+          const availability = document.createElement("span");
+          availability.textContent = "This visit only";
+          meta.append(availability);
+        }
+
+        const text = document.createElement("p");
+        text.className = "note-text";
+        text.textContent = note.text;
+
+        item.append(meta, text);
+        items.append(item);
+      }
+
+      list.replaceChildren(items);
+    }
+
+    function showCurrentState() {
+      const hasNotes = records.size > 0;
+      sheet.hidden = hasNotes && !writing;
+      sheet.classList.toggle("is-writing", writing);
+      emptyState.hidden = hasNotes || writing;
+      composer.hidden = !writing;
+      addNote.hidden = !hasNotes || writing;
+      list.hidden = !hasNotes;
+    }
+
+    function clearError() {
+      error.hidden = true;
+      field.removeAttribute("aria-invalid");
+      field.removeAttribute("aria-describedby");
+    }
+
+    function openComposer() {
+      writing = true;
+      status.textContent = "";
+      showCurrentState();
+      field.focus();
+    }
+
+    function closeComposer() {
+      writing = false;
+      form.reset();
+      clearError();
+      showCurrentState();
+    }
+
+    firstNote.addEventListener("click", openComposer);
+    addNote.addEventListener("click", openComposer);
+
+    document.getElementById("cancel-note").addEventListener("click", () => {
+      closeComposer();
+      const opener = records.size ? addNote : firstNote;
+      opener.focus();
+    });
+
+    field.addEventListener("input", () => {
+      if (!error.hidden && field.value.trim()) clearError();
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const text = field.value.trim();
+
+      if (!text) {
+        error.hidden = false;
+        field.setAttribute("aria-invalid", "true");
+        field.setAttribute("aria-describedby", "note-error");
+        field.focus();
+        return;
+      }
+
+      const note = { text, createdAt: Date.now() };
+      const id = window.crypto.randomUUID?.() ?? Math.random().toString(36).slice(2);
+      const key = notePrefix + note.createdAt + "." + id;
+
+      try {
+        window.localStorage.setItem(key, JSON.stringify(note));
+      } catch {
+        note.sessionOnly = true;
+      }
+
+      records.set(key, note);
+      renderNotes();
+      closeComposer();
+      document.getElementById(key).focus();
+      status.textContent = note.sessionOnly ? "Note saved for this visit only." : "Note saved.";
+    });
+
+    loadNotes();
+    renderNotes();
+    showCurrentState();
+  </script>
+</body>
+</html>

@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#142d42">
+  <title>Handoff log</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@700&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap">
+  <style>
+    :root {
+      --ink: #142d42;
+      --paper: #f7f5ef;
+      --sheet: #fffdf8;
+      --enamel: #dfe9ef;
+      --gold: #ffcc45;
+      --slate: #485d6e;
+      --rule: color-mix(in srgb, var(--ink) 22%, var(--paper));
+      --inset: clamp(1.5rem, 4.1vw, 3.75rem);
+      color: var(--ink);
+      background: var(--paper);
+      font: 1.125rem / 1.45 "Atkinson Hyperlegible", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    body { margin: 0; }
+
+    .shell {
+      width: min(67rem, calc(100% - 2rem));
+      margin-inline: auto;
+    }
+
+    .masthead {
+      color: var(--sheet);
+      background: var(--ink);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      min-height: 4.125rem;
+      border-bottom: 1px solid rgb(255 253 248 / .23);
+      font-weight: 700;
+    }
+
+    .brand svg {
+      width: 1.85rem;
+      height: 1.5rem;
+      color: var(--gold);
+    }
+
+    h1, h2 {
+      margin: 0;
+      font-family: "Archivo Narrow", sans-serif;
+      font-weight: 700;
+      letter-spacing: -.025em;
+    }
+
+    h1 {
+      padding-block: 1.55rem 5.15rem;
+      font-size: clamp(3.45rem, 6.1vw, 5.5rem);
+      line-height: .98;
+    }
+
+    h2 {
+      font-size: clamp(2.25rem, 3.65vw, 3.25rem);
+      line-height: 1.05;
+    }
+
+    .workspace {
+      position: relative;
+      margin-top: -2.75rem;
+      padding-bottom: 2rem;
+    }
+
+    .panel {
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      border-radius: .3rem;
+      background: var(--sheet);
+      box-shadow: 0 3px 0 rgb(20 45 66 / .08), 0 12px 28px rgb(20 45 66 / .06);
+    }
+
+    .panel[data-view="empty"],
+    .panel[data-view="editor"] {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+    }
+
+    .empty, .editor, .log { padding: var(--inset); }
+
+    .empty, .editor {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .empty {
+      display: flex;
+      min-height: 22.25rem;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .empty p {
+      max-width: 34ch;
+      margin: .65rem 0 1.5rem;
+      color: var(--slate);
+    }
+
+    .illustration {
+      display: grid;
+      grid-column: 2;
+      grid-row: 1;
+      place-items: center;
+      min-width: 0;
+      border-left: 1px solid var(--rule);
+      background-color: var(--enamel);
+      background-image:
+        linear-gradient(rgb(20 45 66 / .07) 1px, transparent 1px),
+        linear-gradient(90deg, rgb(20 45 66 / .07) 1px, transparent 1px);
+      background-position: center;
+      background-size: 1.25rem 1.25rem;
+    }
+
+    .illustration svg {
+      display: block;
+      width: min(90%, 26rem);
+      height: auto;
+    }
+
+    .panel[data-view="log"] .illustration { display: none; }
+
+    button, textarea { font: inherit; }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .55rem;
+      min-height: 3.25rem;
+      padding: .65rem 1.1rem;
+      border: 1px solid var(--ink);
+      border-radius: .25rem;
+      color: var(--ink);
+      background: var(--sheet);
+      font-weight: 700;
+      line-height: 1.15;
+      cursor: pointer;
+    }
+
+    .button.primary {
+      background: var(--gold);
+      box-shadow: 0 2px 0 var(--ink);
+    }
+
+    .button svg {
+      width: 1.15rem;
+      height: 1.15rem;
+      flex: none;
+    }
+
+    @media (hover: hover) {
+      .button:hover { background: var(--enamel); }
+      .button.primary:hover {
+        background: color-mix(in srgb, var(--gold) 80%, var(--sheet));
+      }
+    }
+
+    .button.primary:active {
+      box-shadow: 0 1px 0 var(--ink);
+      transform: translateY(1px);
+    }
+
+    :is(button, textarea):focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 4px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .button.primary:active { transform: none; }
+    }
+
+    .editor h2 { margin-bottom: 1.15rem; }
+
+    .editor label {
+      display: block;
+      margin-bottom: .4rem;
+      font-weight: 700;
+    }
+
+    textarea {
+      display: block;
+      width: 100%;
+      min-height: 8.25rem;
+      padding: .75rem;
+      resize: vertical;
+      border: 1px solid var(--slate);
+      border-radius: .25rem;
+      color: var(--ink);
+      background: var(--sheet);
+    }
+
+    textarea[aria-invalid="true"] {
+      border-color: var(--ink);
+      box-shadow: 0 0 0 1px var(--ink);
+    }
+
+    .error {
+      margin: .45rem 0 0;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .form-actions, .log-heading {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: .85rem;
+    }
+
+    .form-actions { margin-top: 1.15rem; }
+    .log-heading { justify-content: space-between; }
+
+    .note-list {
+      margin: 1.5rem 0 0;
+      padding: 0;
+      border-top: 1px solid var(--rule);
+      list-style: none;
+    }
+
+    .note-list li {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .note-list p {
+      max-width: 65ch;
+      margin: 0;
+      overflow-wrap: anywhere;
+      white-space: pre-wrap;
+    }
+
+    .storage-note {
+      display: flex;
+      align-items: flex-start;
+      gap: .45rem;
+      margin: 1rem 0 0;
+      color: var(--slate);
+      font-size: .9rem;
+    }
+
+    .storage-note svg {
+      width: 1.05rem;
+      height: 1.05rem;
+      margin-top: .1rem;
+      flex: none;
+    }
+
+    @media (max-width: 44rem) {
+      .brand { min-height: 3.35rem; }
+      h1 { padding-block: 1rem 3.1rem; }
+      .workspace { margin-top: -1.55rem; }
+
+      .panel[data-view="empty"] { grid-template-columns: minmax(0, 1fr); }
+      .panel[data-view="editor"] { display: block; }
+
+      .illustration {
+        grid-column: 1;
+        height: clamp(9.5rem, 48vw, 12rem);
+        border-left: 0;
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .illustration svg {
+        width: 90%;
+        height: calc(100% - 1rem);
+      }
+
+      .empty {
+        grid-row: 2;
+        min-height: 0;
+      }
+
+      .panel[data-view="editor"] .illustration { display: none; }
+      .empty .button { width: 100%; }
+      .form-actions .primary { flex: 1; }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="shell">
+      <div class="brand">
+        <svg viewBox="0 0 34 26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 16C3 9 9 5 17 5s14 4 14 11c0 4-5 6-14 6S3 20 3 16Z"/>
+          <path d="M9 14l4-5m2 6 5-6m2 6 4-4"/>
+        </svg>
+        Bakery
+      </div>
+      <h1 id="page-title">Handoff log</h1>
+    </div>
+  </header>
+
+  <main class="shell workspace" aria-labelledby="page-title">
+    <div class="panel" id="panel" data-view="empty">
+      <section class="empty" id="empty" aria-labelledby="empty-title">
+        <h2 id="empty-title">No notes yet</h2>
+        <p>Share what’s ready or what needs attention with the next shift.</p>
+        <button type="button" class="button primary" data-add-note>
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true">
+            <path d="M10 4v12M4 10h12"/>
+          </svg>
+          Add a note
+        </button>
+      </section>
+
+      <section class="editor" id="editor" aria-labelledby="editor-title" hidden>
+        <h2 id="editor-title">New note</h2>
+        <form id="note-form" novalidate>
+          <label for="note">What should the next shift know?</label>
+          <textarea id="note" name="note" rows="4" required aria-describedby="note-error"></textarea>
+          <p id="note-error" class="error" role="alert" hidden></p>
+          <div class="form-actions">
+            <button type="submit" class="button primary">Save note</button>
+            <button type="button" class="button" id="cancel-note">Cancel</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="log" id="log" aria-labelledby="log-title" hidden>
+        <div class="log-heading">
+          <h2 id="log-title" tabindex="-1">Shift notes</h2>
+          <button type="button" class="button primary" data-add-note>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true">
+              <path d="M10 4v12M4 10h12"/>
+            </svg>
+            Add a note
+          </button>
+        </div>
+        <ul class="note-list" id="note-list" role="list"></ul>
+      </section>
+
+      <div class="illustration" aria-hidden="true">
+        <svg viewBox="23 16 356 239" fill="none" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+          <path d="M47 229h324m-301 9h65m97 0h105" stroke="var(--slate)" stroke-width="1" opacity=".35"/>
+          <ellipse cx="205" cy="222" rx="131" ry="10" fill="var(--ink)" opacity=".08"/>
+
+          <g transform="rotate(10 225 128)">
+            <path d="M164 53h116l20 20v144H164Z" fill="var(--ink)" opacity=".15"/>
+            <path d="M157 47h116l20 20v144H157Z" fill="var(--sheet)" stroke="var(--ink)" stroke-width="2.4"/>
+            <path d="M273 47v20h20" fill="var(--enamel)" stroke="var(--ink)" stroke-width="2"/>
+            <path d="M179 78h58" stroke="var(--ink)" stroke-width="3"/>
+            <g stroke="var(--slate)" stroke-width="1.45">
+              <path d="M178 96h8v8h-8zm0 22h8v8h-8zm0 22h8v8h-8z"/>
+              <path d="M195 100h77m-77 22h66m-66 22h73m-89 23h92m-92 15h59" opacity=".65"/>
+            </g>
+            <path d="M173 36h66l-4 5 3 5-4 7h-65l4-6-3-5Z" fill="var(--gold)" stroke="var(--ink)" stroke-width="1.65"/>
+          </g>
+
+          <g transform="translate(330 157) rotate(24)" stroke="var(--ink)" stroke-width="2">
+            <path d="M-6-51h12v94L0 58l-6-15Z" fill="var(--sheet)"/>
+            <path d="M-6-41h12v84H-6Z" fill="var(--gold)"/>
+            <path d="M0-41v84m-2 10h4"/>
+          </g>
+
+          <path d="M64 180c-3-31 34-59 82-64 44-5 86 9 99 35 13 25-7 46-34 59-24 12-57 17-88 13-35-4-57-21-59-43Z" fill="var(--gold)" stroke="var(--ink)" stroke-width="2.6"/>
+          <path d="M65 181c17 17 54 23 89 18 38-5 73-22 90-46 12 24-8 44-33 57-24 12-57 17-88 13-35-4-56-20-58-42Z" fill="var(--ink)" opacity=".1"/>
+          <path d="M70 185c18 14 51 20 84 15 36-5 68-20 87-42" stroke="var(--ink)" stroke-width="1.45" opacity=".55"/>
+
+          <g fill="var(--sheet)" stroke="var(--ink)" stroke-width="1.65">
+            <path d="M90 165c14-9 23-23 25-35 8 13-2 28-25 35Z"/>
+            <path d="M125 174c17-11 27-26 29-44 10 13 0 34-29 44Z"/>
+            <path d="M165 174c18-10 28-25 32-40 8 14-4 33-32 40Z"/>
+          </g>
+
+          <g stroke="var(--ink)" stroke-width="1.35" opacity=".62">
+            <path d="M89 198c9 6 19 10 29 12m16 3 10 1m39-7c13-4 26-9 35-16"/>
+            <path d="m53 212 5-2 3 4-5 2zm13 10 4-2m194 1 4-2 3 3-5 2z"/>
+            <circle cx="281" cy="219" r="1.2"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <p class="storage-note">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" aria-hidden="true">
+        <rect x="4.75" y="2.25" width="10.5" height="15.5" rx="2"/>
+        <path d="M9 15h2"/>
+      </svg>
+      <span id="save-status" role="status">Notes stay on this device.</span>
+    </p>
+  </main>
+
+  <script>
+    const prefix = "bakery-handoff:note:";
+    const notes = new Map();
+    const panel = document.getElementById("panel");
+    const views = {
+      empty: document.getElementById("empty"),
+      editor: document.getElementById("editor"),
+      log: document.getElementById("log")
+    };
+    const form = document.getElementById("note-form");
+    const field = document.getElementById("note");
+    const error = document.getElementById("note-error");
+    const list = document.getElementById("note-list");
+    const status = document.getElementById("save-status");
+    let storage;
+
+    try {
+      storage = window.localStorage;
+      for (const key of Object.keys(storage)) {
+        if (!key.startsWith(prefix)) continue;
+        const text = storage.getItem(key);
+        if (text?.trim()) notes.set(key, { text, persisted: true });
+      }
+    } catch {
+      storage = null;
+    }
+
+    function showView(active) {
+      panel.dataset.view = active;
+      for (const [name, section] of Object.entries(views)) {
+        section.hidden = name !== active;
+      }
+    }
+
+    function renderLog() {
+      const items = document.createDocumentFragment();
+
+      for (const key of [...notes.keys()].sort().reverse()) {
+        const item = document.createElement("li");
+        const text = document.createElement("p");
+        text.textContent = notes.get(key).text;
+        item.append(text);
+        items.append(item);
+      }
+
+      list.replaceChildren(items);
+      const active = notes.size ? "log" : "empty";
+      showView(active);
+      return active;
+    }
+
+    function clearError() {
+      field.removeAttribute("aria-invalid");
+      error.hidden = true;
+      error.textContent = "";
+    }
+
+    function updateStatus(saved = false) {
+      if ([...notes.values()].some((note) => !note.persisted)) {
+        status.textContent = "Temporary notes clear when you reload.";
+      } else if (!storage) {
+        status.textContent = "Notes are kept for this visit.";
+      } else {
+        status.textContent = saved ? "Note saved on this device." : "Notes stay on this device.";
+      }
+    }
+
+    for (const button of document.querySelectorAll("[data-add-note]")) {
+      button.addEventListener("click", () => {
+        form.reset();
+        clearError();
+        updateStatus();
+        showView("editor");
+        field.focus();
+      });
+    }
+
+    document.getElementById("cancel-note").addEventListener("click", () => {
+      const active = renderLog();
+      views[active].querySelector("[data-add-note]").focus();
+    });
+
+    field.addEventListener("input", () => {
+      if (field.hasAttribute("aria-invalid") && field.value.trim()) clearError();
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const text = field.value.trim();
+
+      if (!text) {
+        field.setAttribute("aria-invalid", "true");
+        error.hidden = false;
+        error.textContent = "Write a note before saving.";
+        field.focus();
+        return;
+      }
+
+      const suffix = crypto.getRandomValues(new Uint32Array(2)).join("-");
+      const key = `${prefix}${new Date().toISOString()}:${suffix}`;
+      let persisted = false;
+
+      if (storage) {
+        try {
+          storage.setItem(key, text);
+          persisted = true;
+        } catch {
+          // Keep the note available in memory for this visit.
+        }
+      }
+
+      notes.set(key, { text, persisted });
+      form.reset();
+      clearError();
+      renderLog();
+      document.getElementById("log-title").focus();
+      updateStatus(persisted);
+    });
+
+    window.addEventListener("storage", (event) => {
+      if (event.storageArea !== storage) return;
+      if (event.key !== null && !event.key.startsWith(prefix)) return;
+
+      if (event.key === null) {
+        for (const [key, note] of notes) {
+          if (note.persisted) notes.delete(key);
+        }
+      } else if (event.newValue?.trim()) {
+        notes.set(event.key, { text: event.newValue, persisted: true });
+      } else {
+        notes.delete(event.key);
+      }
+
+      if (panel.dataset.view !== "editor") renderLog();
+    });
+
+    renderLog();
+    updateStatus();
+  </script>
+</body>
+</html>
