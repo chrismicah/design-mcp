@@ -4,6 +4,8 @@ Apply this standard to web, mobile, and native designs. A distinctive design sta
 
 ## Art direction before code
 
+Use X and Reddit as the starting point for visual direction. Look for work with strong engagement in relevant communities and specific comments about the design. Open the work itself and identify the choices that earned attention, such as a surprising layout, a precise typographic treatment, or an interaction that makes the subject tangible. Recreate the effect with this brief's content, composition, and original assets. Use research and award galleries to check technical details and trace a reference back to its maker. [Social reference workflow](research/SOCIAL-DESIGN.md#reference-workflow)
+
 Write a short plan stating who uses the design, what matters most, what belongs outside the interface, and how it should feel. Name four to six hex colors and assign their roles. Choose one type family or two clearly distinct families and name their roles. Describe the layout, reading order, primary action, and one memorable detail drawn from the subject's world. Revise the plan if it would fit any similar product without changes.
 
 ## Composition, type, and interaction
