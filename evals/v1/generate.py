@@ -83,7 +83,14 @@ def read_trace(path):
     return events
 
 
-def parse_cell(events, expect_mcp, server_name="design-mcp", expected_tool="direct"):
+def direct_direction(item):
+    value = item
+    for key in ("result", "structured_content", "direction", "id"):
+        value = value.get(key) if isinstance(value, dict) else None
+    return value if isinstance(value, str) else None
+
+
+def parse_cell(events, expect_mcp, server_name="design-mcp", expected_tool="direct", expected_direction=None):
     result = {}
     completed_items = [event["item"] for event in events if event.get("type") == "item.completed"]
     turn = next((e for e in reversed(events) if e.get("type") == "turn.completed"), {})
@@ -98,11 +105,11 @@ def parse_cell(events, expect_mcp, server_name="design-mcp", expected_tool="dire
     failures.extend(i.get("error") for i in completed_items if i.get("status") == "failed")
     result["client_errors"] = [f for f in failures if f]
     eligible_tools = {expected_tool} if isinstance(expected_tool, str) else set(expected_tool)
-    result["treatment_call"] = any(
-        item.get("type") == "mcp_tool_call" and item.get("server") == server_name
+    eligible_calls = [
+        item for item in completed_items if item.get("type") == "mcp_tool_call" and item.get("server") == server_name
         and item.get("tool") in eligible_tools and item.get("status") == "completed" and not item.get("error")
-        for item in completed_items
-    )
+    ]
+    result["treatment_call"] = bool(eligible_calls)
     if server_name == "design-mcp" and expected_tool == "direct":
         result["direct_call"] = result["treatment_call"]
     result["status"] = "passed"
@@ -114,6 +121,11 @@ def parse_cell(events, expect_mcp, server_name="design-mcp", expected_tool="dire
         result["status"] = "control-tool-leak"
     elif expect_mcp and not result["treatment_call"]:
         result["status"] = "mcp-unused-or-failed"
+    if expected_direction is not None:
+        observed = [direct_direction(item) for item in eligible_calls]
+        result["observed_directions"] = observed
+        if result["status"] == "passed" and observed != [expected_direction]:
+            result["status"] = "unexpected-design-direction"
     match = re.fullmatch(r"\s*```html\s*\n(.*)\n```\s*", messages[-1], re.S | re.I) if messages else None
     html = match.group(1) + "\n" if match else None
     if not html or not re.search(r"<body(?:\s[^>]*)?>", html, re.I):
@@ -130,6 +142,9 @@ def run_cell(args, case, arm):
     config = args.mcp_config if arm != "none" else "mcp_servers={}"
     identity = dict(case=case["id"], arm=arm, model=args.model, effort=args.effort, client=args.client_version,
                     prompt_sha256=sha256(prompt.encode()))
+    expected_direction = args.expected_directions.get(case["id"]) if arm != "none" else None
+    if expected_direction is not None:
+        identity["expected_direction"] = expected_direction
     if args.no_shell:
         identity["shell_tool"] = False
     if arm not in {"none", "v2"}:
@@ -137,6 +152,7 @@ def run_cell(args, case, arm):
     if (cell / "receipt.json").exists():
         receipt = json.loads((cell / "receipt.json").read_text(encoding="utf-8"))
         if (receipt.get("shell_tool", True) != (not args.no_shell)
+                or receipt.get("expected_direction") != expected_direction
                 or any(receipt.get(key) != value for key, value in identity.items())):
             raise RuntimeError(f"The run configuration changed for {cell}. Use a new output directory.")
         return receipt
@@ -155,7 +171,7 @@ def run_cell(args, case, arm):
             exit_code = None
             timed_out = True
     result, html = parse_cell(read_trace(trace_path), expect_mcp=arm != "none", server_name=args.server_name,
-                              expected_tool=args.expected_tool)
+                              expected_tool=args.expected_tool, expected_direction=expected_direction)
     if timed_out:
         result["status"] = "timeout"
     elif exit_code:
@@ -199,6 +215,8 @@ def main():
     p.add_argument("--model", required=True)
     p.add_argument("--effort", default="max")
     p.add_argument("--case", action="append")
+    p.add_argument("--expect-direction", action="append", default=[], metavar="CASE=ID",
+                   help="Require one Design MCP direct reply with this direction for each selected case")
     p.add_argument("--timeout", type=int, default=900)
     p.add_argument("--jobs", type=int, choices=(1, 2), default=1, help="Concurrent cases in this batch")
     p.add_argument("--no-shell", action="store_true", help="Disable command execution for a fresh matched comparison")
@@ -256,16 +274,27 @@ def main():
     else:
         args.mcp_config = mcp_table(args.server, args.server_name, args.server_args, args.server_env,
                                     verified_read_only_tools)
-    args.client_version = subprocess.check_output([args.codex, "--version"], text=True, env=clean_env()).strip()
-    args.scratch = args.out / ".empty-client-workspace"
-    args.scratch.mkdir(parents=True, exist_ok=True)
-    args.scratch = args.scratch.resolve()
     tasks = json.loads((BASE_DIR / "tasks.json").read_text(encoding="utf-8"))
     if args.case:
         requested = set(args.case)
         tasks = [case for case in tasks if case["id"] in requested]
         if requested != {case["id"] for case in tasks}:
             p.error("Unknown case ID")
+    args.expected_directions = {}
+    if args.expect_direction:
+        if args.competitor_config:
+            p.error("--expect-direction is for the Design MCP treatment")
+        for entry in args.expect_direction:
+            case_id, _, direction = entry.partition("=")
+            if case_id in args.expected_directions or not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", direction):
+                p.error("Each expected direction must be a unique CASE=ID pair")
+            args.expected_directions[case_id] = direction
+        if args.expected_directions.keys() != {case["id"] for case in tasks}:
+            p.error("Provide an expected direction for each selected case")
+    args.client_version = subprocess.check_output([args.codex, "--version"], text=True, env=clean_env()).strip()
+    args.scratch = args.out / ".empty-client-workspace"
+    args.scratch.mkdir(parents=True, exist_ok=True)
+    args.scratch = args.scratch.resolve()
     failed = False
     with ThreadPoolExecutor(max_workers=args.jobs) as pool:
         # Dispatch only one wave at a time so a provider failure cannot burn the entire batch.

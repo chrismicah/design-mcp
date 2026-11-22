@@ -26,6 +26,8 @@ For a public credential-free hosted comparator, use `--server-url` in place of `
 
 To compare two Design MCP builds, use the candidate's executable with `--treatment-only --treatment-label candidate`. Copy the sealed `v2` cells into the same run and judge with `--control v2 --treatment candidate`. This keeps the MCP server and tool names consistent across the two builds.
 
+For a routing candidate, set `--expect-direction CASE=ID` once per selected case before generation. The generator still sees the original brief. The runner keeps the trace and HTML and marks a treatment ineligible for judging unless its single completed `direct` reply selected that ID.
+
 Install `playwriter@0.12.0` in an isolated npm prefix. Run the renderer using a Python environment containing FastMCP, with Chrome installed locally. The supplied scratch directory must be new so that Chrome starts with an empty profile.
 
 ```bash

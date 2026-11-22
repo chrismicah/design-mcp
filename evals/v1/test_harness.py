@@ -43,6 +43,33 @@ class BenchmarkTests(unittest.TestCase):
         self.assertEqual(result["usage"], turn["usage"])
         self.assertEqual(html, "<body>Test</body>\n")
 
+    def test_candidate_gate_requires_one_completed_reply_with_the_expected_direction(self):
+        def reply(direction):
+            return {"type": "item.completed", "item": {
+                "type": "mcp_tool_call", "server": "design-mcp", "tool": "direct", "status": "completed",
+                "result": {"structured_content": {"direction": {"id": direction}}}}}
+
+        message = {"type": "item.completed", "item": {
+            "type": "agent_message", "text": "```html\n<body>Test</body>\n```"}}
+        turn = {"type": "turn.completed", "usage": {"output_tokens": 10}}
+        expected = "search-recovery"
+        for directions, status in (
+            ([expected], "passed"),
+            (["object-hero"], "unexpected-design-direction"),
+            ([None], "unexpected-design-direction"),
+            (["object-hero", expected], "unexpected-design-direction"),
+            ([], "mcp-unused-or-failed"),
+        ):
+            with self.subTest(directions=directions):
+                events = [*(reply(direction) for direction in directions), message, turn]
+                result, html = parse_cell(events, True, expected_direction=expected)
+                self.assertEqual(result["status"], status)
+                self.assertEqual(result["observed_directions"], directions)
+                self.assertEqual(html, "<body>Test</body>\n")
+        historical, _ = parse_cell([reply("object-hero"), message, turn], True)
+        self.assertEqual(historical["status"], "passed")
+        self.assertNotIn("observed_directions", historical)
+
     def test_blind_pair_requires_two_intact_renderings(self):
         with TemporaryDirectory() as path:
             base = Path(path)
