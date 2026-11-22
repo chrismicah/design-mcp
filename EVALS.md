@@ -17,6 +17,8 @@ GitHub’s standard macOS runner captured the judged pairs with Playwriter 0.12.
 
 An interaction replay on the exact maintenance pages passed all four arm-by-viewport checks. Empty submission focused the invalid Building field. Keyboard entry and urgency selection produced a local confirmation with the supplied details. Editing restored focus and retained every value. At 390 px the frozen v2 hint measured 124 px of text in 93 px of available space. Its first field began 110 px lower than in the plain layout. The form candidate must fix the geometry and preserve the workflow. [Keyboard and geometry receipts](evidence/benchmark-v1/maintenance-actions.json) · [Hosted replay](https://github.com/chrismicah/design-mcp/actions/runs/44992860729)
 
+The exact pantry comparison pages both revealed and collapsed Details with Enter and kept focus on the control at 1440 and 390 CSS px. The day, time, and address stayed in the first viewport. The plain layout gave the address a text label in both views. The frozen v2 page used a pin icon and the address. Revealing the instructions loaded one permitted font resource on that page. [Keyboard replay and capture hashes](evidence/benchmark-v1/collection-baseline-actions.json)
+
 | Median per judged brief | Input tokens | Cached input | Output tokens | Seconds |
 | --- | ---: | ---: | ---: | ---: |
 | Plain generator | 20,545 | 11,136 | 20,452 | 412 |
