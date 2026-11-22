@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#EDF2F5">
+  <title>Your trip | Spur</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700&amp;family=Barlow+Condensed:wght@600;700;800&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --rail: #142E4E;
+      --ink: #14263A;
+      --mist: #EDF2F5;
+      --paper: #FFFFFF;
+      --signal: #FFD752;
+      --muted: #4B6178;
+      --line: rgb(20 46 78 / 19%);
+      --body-font: "Atkinson Hyperlegible Next", Verdana, sans-serif;
+      --display-font: "Barlow Condensed", "Arial Narrow", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--mist);
+      color: var(--ink);
+      font: 1rem/1.45 var(--body-font);
+    }
+
+    h1, h2, p { margin: 0; }
+
+    button {
+      font: inherit;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    button:focus-visible {
+      outline: 3px solid var(--rail);
+      outline-offset: 4px;
+    }
+
+    .wrap {
+      width: min(1088px, calc(100% - 48px));
+      margin-inline: auto;
+    }
+
+    .masthead {
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .masthead .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 74px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font: 800 2.25rem/1 var(--display-font);
+      letter-spacing: -.025em;
+    }
+
+    .brand-mark {
+      position: relative;
+      width: 38px;
+      height: 38px;
+      border-radius: 9px;
+      background: var(--rail);
+    }
+
+    .brand-mark::before,
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      left: 8px;
+      width: 23px;
+      transform: rotate(-37deg);
+    }
+
+    .brand-mark::before {
+      top: 15px;
+      height: 3px;
+      border-radius: 3px;
+      background: var(--paper);
+    }
+
+    .brand-mark::after {
+      top: 17px;
+      height: 8px;
+      border: solid var(--signal);
+      border-width: 0 0 3px 3px;
+      border-bottom-left-radius: 7px;
+    }
+
+    .service {
+      color: var(--muted);
+      font-size: .9375rem;
+      font-weight: 600;
+    }
+
+    main {
+      padding-block: 46px 40px;
+    }
+
+    h1 {
+      margin-bottom: 21px;
+      font: 700 clamp(2.75rem, 5vw, 4rem)/1 var(--display-font);
+      letter-spacing: -.025em;
+    }
+
+    .ride {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(282px, 31%);
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 9px 24px rgb(20 46 78 / 9%);
+    }
+
+    .departure {
+      position: relative;
+      isolation: isolate;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-content: space-between;
+      align-items: end;
+      gap: 26px 18px;
+      min-height: 344px;
+      padding: 34px clamp(28px, 3.3vw, 46px) 38px;
+      overflow: hidden;
+      background: var(--rail);
+      color: var(--paper);
+    }
+
+    .departure-heading {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--mist);
+      font-size: 1.0625rem;
+      font-weight: 600;
+    }
+
+    .departure-heading::before {
+      content: "";
+      width: 19px;
+      height: 2px;
+      background: var(--signal);
+    }
+
+    .rail-art {
+      position: absolute;
+      z-index: -1;
+      inset: 0 0 0 auto;
+      width: 58%;
+      overflow: hidden;
+      color: rgb(220 235 251 / 23%);
+      mask-image: linear-gradient(90deg, transparent, #000 28%);
+      pointer-events: none;
+    }
+
+    .track {
+      position: absolute;
+      top: -47%;
+      left: 48%;
+      width: 78px;
+      height: 194%;
+      transform: rotate(37deg);
+      border-inline: 2px solid currentColor;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0 22px,
+        currentColor 22px 24px
+      );
+    }
+
+    .track-branch,
+    .track-branch::after {
+      border: solid currentColor;
+      border-width: 0 0 2px 2px;
+      border-bottom-left-radius: 80%;
+    }
+
+    .track-branch {
+      position: absolute;
+      inset: 9% -23% 18% 28%;
+      transform: rotate(-36deg);
+    }
+
+    .track-branch::after {
+      content: "";
+      position: absolute;
+      inset: 0 0 14px 15px;
+    }
+
+    .departure-time {
+      display: block;
+      font: 700 clamp(5rem, 10vw, 8.75rem)/.83 var(--display-font);
+      font-variant-numeric: lining-nums tabular-nums;
+      letter-spacing: -.035em;
+      white-space: nowrap;
+    }
+
+    .destination {
+      margin-top: 10px;
+      font: 600 clamp(2.4rem, 4vw, 3.5rem)/1 var(--display-font);
+    }
+
+    .platform {
+      display: grid;
+      justify-items: center;
+      align-content: center;
+      gap: 4px;
+      min-width: 126px;
+      min-height: 128px;
+      margin-bottom: 3px;
+      padding: 11px 13px 14px;
+      border-radius: 7px;
+      background: var(--signal);
+      color: var(--ink);
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .platform strong {
+      font: 700 5.5rem/.82 var(--display-font);
+    }
+
+    .ticket-panel {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 26px;
+      padding: 32px;
+      border-left: 1px dashed var(--muted);
+      background: var(--paper);
+    }
+
+    .ticket-panel::before,
+    .ticket-panel::after {
+      content: "";
+      position: absolute;
+      left: -9px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--mist);
+      pointer-events: none;
+    }
+
+    .ticket-panel::before { top: -9px; }
+    .ticket-panel::after { bottom: -9px; }
+
+    .ticket-head {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 13px;
+    }
+
+    .ticket-emblem {
+      display: grid;
+      place-items: center;
+      flex: none;
+      width: 64px;
+      height: 54px;
+      border-radius: 10px;
+      background: var(--mist);
+      color: var(--rail);
+    }
+
+    .ticket-icon {
+      position: relative;
+      width: 32px;
+      height: 21px;
+      transform: rotate(-10deg);
+      border: 2px solid currentColor;
+      border-radius: 4px;
+      background:
+        linear-gradient(currentColor, currentColor) 5px 5px / 8px 2px no-repeat,
+        linear-gradient(currentColor, currentColor) 5px 10px / 6px 2px no-repeat;
+    }
+
+    .ticket-icon::after {
+      content: "";
+      position: absolute;
+      inset: 2px 7px 2px auto;
+      border-left: 2px dashed currentColor;
+    }
+
+    .ticket-head h2 {
+      font: 700 clamp(2rem, 3vw, 2.65rem)/1 var(--display-font);
+      letter-spacing: -.015em;
+    }
+
+    .action {
+      width: 100%;
+      min-height: 54px;
+      padding: 10px 16px;
+      border: 1px solid var(--rail);
+      border-radius: 8px;
+      background: var(--rail);
+      color: var(--paper);
+      font-size: 1.125rem;
+      font-weight: 700;
+    }
+
+    .options {
+      margin-top: 30px;
+    }
+
+    .options h2 {
+      margin-bottom: 11px;
+      font: 700 1.8rem/1.1 var(--display-font);
+    }
+
+    .option-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-block: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    .option {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      min-width: 0;
+      min-height: 79px;
+      padding: 10px 17px;
+      border: 0;
+      background: transparent;
+      text-align: left;
+    }
+
+    .option + .option {
+      border-left: 1px solid var(--line);
+    }
+
+    .option:focus-visible { outline-offset: -4px; }
+
+    .option-icon {
+      display: grid;
+      place-items: center;
+      flex: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      background: var(--mist);
+      color: var(--rail);
+    }
+
+    .clock,
+    .pass {
+      position: relative;
+      border: 2px solid currentColor;
+    }
+
+    .clock {
+      width: 19px;
+      height: 19px;
+      border-radius: 50%;
+    }
+
+    .clock::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 6px;
+      width: 5px;
+      height: 7px;
+      border: solid currentColor;
+      border-width: 0 0 2px 2px;
+      border-bottom-left-radius: 2px;
+    }
+
+    .pass {
+      width: 20px;
+      height: 15px;
+      border-radius: 3px;
+    }
+
+    .pass::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 3px;
+      width: 9px;
+      height: 6px;
+      border-block: 1px solid currentColor;
+    }
+
+    .option-text {
+      display: grid;
+      gap: 2px;
+    }
+
+    .option-title {
+      font: 700 1.65rem/1 var(--display-font);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .option-note {
+      color: var(--muted);
+      font-size: .875rem;
+      line-height: 1.2;
+    }
+
+    .option-action {
+      margin-left: auto;
+      padding: 6px 9px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--rail);
+      font-size: .875rem;
+      font-weight: 700;
+    }
+
+    .option[aria-pressed="true"] .option-action {
+      border-color: var(--rail);
+      background: var(--rail);
+      color: var(--paper);
+    }
+
+    dialog {
+      inset: 0;
+      width: min(460px, calc(100% - 32px));
+      max-height: calc(100dvh - 24px);
+      margin: auto;
+      padding: 0;
+      overflow: auto;
+      overscroll-behavior: contain;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--paper);
+      color: var(--ink);
+      box-shadow: 0 20px 64px rgb(20 46 78 / 26%);
+    }
+
+    dialog::backdrop {
+      background: rgb(20 38 58 / 62%);
+    }
+
+    html:has(dialog[open]) {
+      overflow: hidden;
+    }
+
+    .sheet {
+      display: grid;
+      gap: 20px;
+      padding: 25px;
+    }
+
+    .sheet h2 {
+      font: 700 2.4rem/1 var(--display-font);
+    }
+
+    .ticket-number {
+      display: grid;
+      gap: 5px;
+      padding: 16px 18px 20px;
+      border-left: 5px solid var(--signal);
+      border-radius: 5px;
+      background: var(--mist);
+    }
+
+    .ticket-number span {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .ticket-number strong {
+      font: 700 clamp(2.65rem, 12vw, 4.1rem)/1 var(--display-font);
+      font-variant-numeric: lining-nums tabular-nums;
+      letter-spacing: .015em;
+      user-select: all;
+    }
+
+    .comparison {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border-block: 1px solid var(--line);
+    }
+
+    .comparison li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px 16px;
+      padding: 12px 0;
+    }
+
+    .comparison li + li { border-top: 1px solid var(--line); }
+
+    .comparison time {
+      font: 700 2rem/1 var(--display-font);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .comparison span { color: var(--muted); }
+
+    @media (hover: hover) {
+      .action:hover { background: #244668; }
+      .option:hover { background: rgb(20 46 78 / 5%); }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      dialog[open] { animation: reveal 180ms ease-out; }
+
+      @keyframes reveal {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }
+
+    @media (max-width: 720px) {
+      .wrap { width: calc(100% - 36px); }
+      .masthead .wrap { min-height: 62px; }
+
+      main { padding-block: 24px 30px; }
+      h1 { margin-bottom: 17px; }
+      .ride { grid-template-columns: minmax(0, 1fr); }
+
+      .departure {
+        min-height: 242px;
+        gap: 18px 14px;
+        padding: 21px 22px 24px;
+      }
+
+      .departure-time {
+        font-size: clamp(3.25rem, 21.5vw, 6rem);
+      }
+
+      .destination {
+        margin-top: 8px;
+      }
+
+      .platform {
+        min-width: 87px;
+        min-height: 99px;
+        gap: 2px;
+        padding: 8px 10px 10px;
+        font-size: .9375rem;
+      }
+
+      .platform strong { font-size: 4.25rem; }
+
+      .rail-art { opacity: .78; }
+      .track { width: 56px; }
+
+      .ticket-panel {
+        gap: 12px;
+        padding: 17px 22px 20px;
+        border-top: 1px dashed var(--muted);
+        border-left: 0;
+      }
+
+      .ticket-panel::before,
+      .ticket-panel::after {
+        top: -9px;
+        bottom: auto;
+      }
+
+      .ticket-panel::after {
+        right: -9px;
+        left: auto;
+      }
+
+      .ticket-head {
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .ticket-emblem {
+        width: 40px;
+        height: 35px;
+        border-radius: 7px;
+      }
+
+      .ticket-icon { transform: scale(.74) rotate(-10deg); }
+      .ticket-head h2 { font-size: 1.875rem; }
+      .options { margin-top: 25px; }
+      .option-list { grid-template-columns: minmax(0, 1fr); }
+      .option { min-height: 68px; padding-inline: 12px; }
+
+      .option + .option {
+        border-top: 1px solid var(--line);
+        border-left: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      dialog {
+        width: calc(100% - 24px);
+        margin: auto auto max(12px, env(safe-area-inset-bottom));
+      }
+    }
+
+    @media (max-width: 350px) {
+      .wrap { width: calc(100% - 28px); }
+      .departure { padding-inline: 18px; }
+      .platform { min-width: 76px; }
+    }
+
+    @media (forced-colors: active) {
+      .platform, .action, .option-action { border: 1px solid ButtonText; }
+      .rail-art { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Spur</span>
+      </div>
+      <p class="service">Commuter rail</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h1>Your trip</h1>
+
+    <div class="ride">
+      <section class="departure" aria-labelledby="departure-heading">
+        <div class="rail-art" aria-hidden="true">
+          <span class="track"></span>
+          <span class="track-branch"></span>
+        </div>
+        <h2 class="departure-heading" id="departure-heading">Next departure</h2>
+        <div>
+          <time class="departure-time" datetime="08:42">08:42</time>
+          <p class="destination">Union</p>
+        </div>
+        <p class="platform"><span>Platform</span><strong>3</strong></p>
+      </section>
+
+      <section class="ticket-panel" aria-labelledby="ticket-heading">
+        <div class="ticket-head">
+          <span class="ticket-emblem" aria-hidden="true">
+            <span class="ticket-icon"></span>
+          </span>
+          <h2 id="ticket-heading">Your ticket</h2>
+        </div>
+        <button class="action" type="button" data-dialog="ticket-dialog"
+                aria-haspopup="dialog" aria-controls="ticket-dialog">
+          Show ticket
+        </button>
+      </section>
+    </div>
+
+    <section class="options" aria-labelledby="options-heading">
+      <h2 id="options-heading">More options</h2>
+      <div class="option-list">
+        <button class="option" type="button" data-dialog="departure-dialog"
+                aria-haspopup="dialog" aria-controls="departure-dialog">
+          <span class="option-icon" aria-hidden="true"><span class="clock"></span></span>
+          <span class="option-text">
+            <time class="option-title" datetime="08:58">08:58</time>
+            <span class="option-note">Later departure</span>
+          </span>
+          <span class="option-action">Compare</span>
+        </button>
+
+        <button class="option" id="weekly-pass" type="button"
+                aria-pressed="false" aria-labelledby="weekly-pass-label">
+          <span class="option-icon" aria-hidden="true"><span class="pass"></span></span>
+          <span class="option-title" id="weekly-pass-label">Weekly pass</span>
+          <span class="option-action" id="weekly-pass-state" aria-hidden="true">Select</span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="ticket-dialog" aria-labelledby="ticket-title"
+          aria-describedby="ticket-code" closedby="any">
+    <div class="sheet">
+      <h2 id="ticket-title">Spur ticket</h2>
+      <p class="ticket-number">
+        <span>Ticket number</span>
+        <strong id="ticket-code">TKT-0837</strong>
+      </p>
+      <form method="dialog">
+        <button class="action" type="submit" autofocus>Close ticket</button>
+      </form>
+    </div>
+  </dialog>
+
+  <dialog id="departure-dialog" aria-labelledby="comparison-title" closedby="any">
+    <div class="sheet">
+      <h2 id="comparison-title">Union departures</h2>
+      <ul class="comparison" role="list">
+        <li>
+          <time datetime="08:42">08:42</time>
+          <span>Platform 3</span>
+        </li>
+        <li>
+          <time datetime="08:58">08:58</time>
+          <span>16 minutes later</span>
+        </li>
+      </ul>
+      <form method="dialog">
+        <button class="action" type="submit" autofocus>Close comparison</button>
+      </form>
+    </div>
+  </dialog>
+
+  <script>
+    for (const trigger of document.querySelectorAll("[data-dialog]")) {
+      const dialog = document.getElementById(trigger.dataset.dialog);
+      trigger.addEventListener("click", () => dialog.showModal());
+    }
+
+    const weeklyPass = document.getElementById("weekly-pass");
+    const weeklyPassState = document.getElementById("weekly-pass-state");
+
+    weeklyPass.addEventListener("click", () => {
+      const selected = weeklyPass.getAttribute("aria-pressed") !== "true";
+      weeklyPass.setAttribute("aria-pressed", String(selected));
+      weeklyPassState.textContent = selected ? "Selected" : "Select";
+    });
+  </script>
+</body>
+</html>

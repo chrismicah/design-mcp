@@ -1,0 +1,37 @@
+{
+  "usage": {
+    "input_tokens": 84922,
+    "cached_input_tokens": 60032,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 21244,
+    "reasoning_output_tokens": 15858
+  },
+  "tool_calls": [
+    {
+      "type": "mcp_tool_call",
+      "server": "legacy",
+      "tool": "get_design_system",
+      "status": "completed"
+    },
+    {
+      "type": "mcp_tool_call",
+      "server": "legacy",
+      "tool": "search_design_patterns",
+      "status": "completed"
+    }
+  ],
+  "client_errors": [],
+  "treatment_call": true,
+  "status": "passed",
+  "case": "mobile",
+  "arm": "legacy",
+  "model": "gpt-6.2-sol",
+  "effort": "max",
+  "client": "codex-cli 0.170.0",
+  "prompt_sha256": "86a17d820206fae989b9c35abf870053a6c1a114f18eb4fcb7d33e2f5d20851d",
+  "mcp_config_sha256": "af109dd6b648064656ebd4ef5d56ff434e779df976f560014cacac78a51b3fb3",
+  "elapsed_seconds": 432.3,
+  "exit_code": 0,
+  "trace_sha256": "40b1112047c3ae9d2dadd5d9ccc74ed10f2d05ff2a55eade8f772b0823715e8d",
+  "html_sha256": "12153b924f63d08573433dde120eede00d36805eefaee870b937b2f5cb3ad44d"
+}
