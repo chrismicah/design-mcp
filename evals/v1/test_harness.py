@@ -86,6 +86,9 @@ class BenchmarkTests(unittest.TestCase):
             write(receipt_path, {**receipt, "model": "wrong-model"})
             with self.assertRaisesRegex(ValueError, "Generator or browser configuration differs"):
                 create_pair(args, task)
+            write(receipt_path, {**receipt, "shell_tool": False})
+            with self.assertRaisesRegex(ValueError, "Generator or browser configuration differs"):
+                create_pair(args, task)
             write(receipt_path, {**receipt, "prompt_sha256": "wrong-prompt"})
             with self.assertRaisesRegex(ValueError, "Generation receipt does not match"):
                 create_pair(args, task)

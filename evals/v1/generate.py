@@ -39,13 +39,16 @@ def check_quota(probe, output):
 
 
 def client_command(args, mcp_config):
-    return [
+    command = [
         args.codex, "-a", "never", "exec", "--ignore-user-config", "--ephemeral",
         "--skip-git-repo-check", "--sandbox", "read-only", "--json", "-m", args.model,
         "-c", 'model_provider="openai"', "-c", 'service_tier="default"',
         "-c", 'web_search="disabled"', "-c", 'features.fast_mode=false',
-        "-c", f'model_reasoning_effort="{args.effort}"', "-c", mcp_config, "-",
+        "-c", f'model_reasoning_effort="{args.effort}"', "-c", mcp_config,
     ]
+    if args.no_shell:
+        command += ["-c", "features.shell_tool=false"]
+    return [*command, "-"]
 
 
 def mcp_table(command, name, server_args, server_env, verified_read_only_tools=()):
@@ -127,11 +130,14 @@ def run_cell(args, case, arm):
     config = args.mcp_config if arm != "none" else "mcp_servers={}"
     identity = dict(case=case["id"], arm=arm, model=args.model, effort=args.effort, client=args.client_version,
                     prompt_sha256=sha256(prompt.encode()))
+    if args.no_shell:
+        identity["shell_tool"] = False
     if arm not in {"none", "v2"}:
         identity["mcp_config_sha256"] = sha256(config.encode())
     if (cell / "receipt.json").exists():
         receipt = json.loads((cell / "receipt.json").read_text(encoding="utf-8"))
-        if any(receipt.get(key) != value for key, value in identity.items()):
+        if (receipt.get("shell_tool", True) != (not args.no_shell)
+                or any(receipt.get(key) != value for key, value in identity.items())):
             raise RuntimeError(f"The run configuration changed for {cell}. Use a new output directory.")
         return receipt
     if any(cell.iterdir()):
@@ -195,6 +201,7 @@ def main():
     p.add_argument("--case", action="append")
     p.add_argument("--timeout", type=int, default=900)
     p.add_argument("--jobs", type=int, choices=(1, 2), default=1, help="Concurrent cases in this batch")
+    p.add_argument("--no-shell", action="store_true", help="Disable command execution for a fresh matched comparison")
     p.add_argument("--quota-probe", type=lambda path: Path(path).resolve(),
                    help="Python quota probe that supports --out and --check-dispatch")
     args = p.parse_args()

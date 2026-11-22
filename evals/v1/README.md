@@ -20,6 +20,8 @@ Use a separate output directory for each comparison. With `--treatment-only`, co
 
 If a pinned stdio competitor omits read-only annotations, inspect its implementation and record the specific read-only tools in `verified_read_only_tools`. The benchmark only exposes those tools and uses non-interactive approval for that list. This setting applies to one benchmark client. [Codex tool configuration](https://learn.chatgpt.com/docs/extend/mcp#other-configuration-options)
 
+Use `--no-shell` on both generation arms of a fresh comparison when the generator has called the command tool. This disables command execution in the client and records the setting. The judge rejects a pair with different shell settings. [Codex feature flags](https://learn.chatgpt.com/docs/config-file/config-basic#common-feature-flags)
+
 For a public credential-free hosted comparator, use `--server-url` in place of `--server`. Keep its name distinct from the stdio variant. Record the reported server build, tool, and observation date. Compare either to the plain generator or to the fixed Design MCP arm while preserving the exact browser and generator settings.
 
 To compare two Design MCP builds, use the candidate's executable with `--treatment-only --treatment-label candidate`. Copy the sealed `v2` cells into the same run and judge with `--control v2 --treatment candidate`. This keeps the MCP server and tool names consistent across the two builds.

@@ -84,6 +84,7 @@ Fresh local installs reproduced the full-brief match counts for Screenshots and 
 | Inspo hosted | 1 / 36 | 87.5 on ceramics. Design MCP scored 91.7 on the matched brief. |
 | Offline Designer MCP | 1 / 36 | 91.7 on ceramics. Design MCP also scored 91.7. |
 | Screenshots Design Inspiration | 0 / 36 | The ceramics generation made no MCP call and was excluded from scoring. |
+| Design Library MCP, keyword | 0 / 36 | The ceramics generation used the MCP and the command tool. The frozen protocol excluded it. |
 | Other credential-free competitor configurations above | 0 / 36 each | Pending |
 | Credentialed and hosted configurations above | 0 / 36 each | Access or isolated fixture required |
 
@@ -94,3 +95,5 @@ The public Inspo endpoint completed `recommend` on the frozen ceramics brief. It
 Offline Designer 0.4.0 was installed at its pinned source commit. The generator queried the local catalog and retrieved bundles and assets. The blind critic rated its mobile spacing higher, while Design MCP exposed more accessibility evidence in the captured state. Offline Designer used 173,124 input tokens, 147,584 reported as cached, and 25,065 output tokens. The matched Design MCP run used 62,609 input tokens, 40,192 reported as cached, and 22,183 output tokens. [Paired ballot and token receipts](../evidence/benchmark-v1/offline-designer-ceramics.json) · [Capture run](https://github.com/chrismicah/design-mcp/actions/runs/44991097155)
 
 Screenshots Design Inspiration 1.1.1 registered all seven reviewed tools in a separate Codex catalog check with the same configuration hash. The ceramics generator returned HTML without any tool calls or client errors. The attempt used 20,577 input tokens and 25,560 output tokens. It remains in the coverage record as an unscored attempt. [Generation and catalog receipts](../evidence/benchmark-v1/screenshots-first-attempt.json)
+
+Design Library completed eight MCP calls, including search, reference details and a style guide. The generator also made two command calls and the original bench rejected the cell. It used 131,194 input tokens and 22,274 output tokens. The next matched run can disable the command tool for both arms with the same brief and record that setting in both receipts. [Generation receipt](../evidence/benchmark-v1/design-library-first-attempt.json) · [Matched-run settings](../evals/v1/README.md)

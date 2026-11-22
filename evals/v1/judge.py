@@ -67,7 +67,7 @@ def create_pair(args, task):
             raise ValueError(f"Generation receipt does not match the task and arm in {cell}")
         rendering = load(render)
         identity = tuple(generation[key] for key in ("model", "effort", "client")) + (
-            rendering["browser"], rendering["renderer"],
+            rendering["browser"], rendering["renderer"], generation.get("shell_tool", True),
         )
         identities.append(identity)
         if sha256((cell / "index.html").read_bytes()) != generation["html_sha256"]:
