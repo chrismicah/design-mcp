@@ -9,6 +9,7 @@ import { exportDesignCapture } from "../../integrations/desktop/electron.mjs";
 
 const [cli, destination] = process.argv.slice(-2);
 const fixture = fileURLToPath(new URL("fixtures/electron-review.html", import.meta.url));
+const manualInput = process.env.DESIGN_MCP_ELECTRON_MANUAL_INPUT === "1";
 
 await mkdir(destination, { recursive: true });
 app.setPath("userData", join(destination, "isolated-user-data"));
@@ -73,19 +74,31 @@ app.whenReady().then(async () => {
       "({ focus: document.activeElement.id, status: document.querySelector('#status').textContent })"
     );
 
-    for (let step = 0; step < 6; step++) {
+    if (manualInput) {
+      proof.input = "external keyboard";
       proof.initial = await observe();
-      if (proof.initial.focus === "reveal") break;
-      press("Tab");
-      await delay(50);
+      assert.equal(proof.initial.status, "Control covered");
+    } else {
+      for (let step = 0; step < 6; step++) {
+        proof.initial = await observe();
+        if (proof.initial.focus === "reveal") break;
+        press("Tab");
+        await delay(50);
+      }
+      assert.deepEqual(proof.initial, { focus: "reveal", status: "Control covered" });
     }
-    assert.deepEqual(proof.initial, { focus: "reveal", status: "Control covered" });
     const before = await capture("before");
     assert.deepEqual(before.findings, [["control-not-hittable", "r2"], ["control-clipped", "r4"]]);
     proof.before = before.findings;
 
-    press("Return");
-    for (let step = 0; step < 30; step++) {
+    if (manualInput) {
+      await writeFile(join(destination, "ready"), String(process.pid) + "\n", { flag: "wx" });
+      console.log("Initial capture verified. Focus Reveal control and press Return.");
+    } else {
+      press("Return");
+    }
+    const deadline = performance.now() + (manualInput ? 120_000 : 1_500);
+    while (performance.now() < deadline) {
       proof.updated = await observe();
       if (proof.updated.status === "Control revealed") break;
       await delay(50);
@@ -98,11 +111,13 @@ app.whenReady().then(async () => {
     await assert.rejects(exportDesignCapture(window, before.evidencePath), { code: "EEXIST" });
     assert.equal(await readFile(before.evidencePath, "utf8"), before.evidence);
     proof.originalEvidencePreserved = true;
-    await window.loadURL("data:text/html,<title>Outside the local app</title>");
-    const refusedPath = join(destination, "unsupported.json");
-    await assert.rejects(exportDesignCapture(window, refusedPath), /Capture your app's local window/);
-    await assert.rejects(readFile(refusedPath), { code: "ENOENT" });
-    proof.unsupportedSourceRefused = true;
+    if (!manualInput) {
+      await window.loadURL("data:text/html,<title>Outside the local app</title>");
+      const refusedPath = join(destination, "unsupported.json");
+      await assert.rejects(exportDesignCapture(window, refusedPath), /Capture your app's local window/);
+      await assert.rejects(readFile(refusedPath), { code: "ENOENT" });
+      proof.unsupportedSourceRefused = true;
+    }
     proof.passed = true;
   } catch (error) {
     proof.error = error.stack;
@@ -110,7 +125,9 @@ app.whenReady().then(async () => {
     console.error(error);
   } finally {
     await writeFile(join(destination, "receipt.json"), JSON.stringify(proof, null, 2) + "\n");
-    window?.destroy();
-    app.exit(process.exitCode ?? 0);
+    if (!manualInput || !proof.passed) {
+      window?.destroy();
+      app.exit(process.exitCode ?? 0);
+    }
   }
 });
