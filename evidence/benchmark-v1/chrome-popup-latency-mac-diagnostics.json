@@ -1,0 +1,58 @@
+{
+  "source_commit": "2fcd31221671590152401d958b904141e438e453",
+  "runs": [
+    {
+      "run": "https://github.com/chrismicah/design-mcp/actions/runs/45013424807",
+      "harness_commit": "e67921adb26b2ce822c1455b1049865b604504df",
+      "receipt_sha256": "429c9673c4e8ba6020a0193ccebf22a2daee0aa2b539657adfe810c96a862c0d",
+      "drivers": {
+        "open": "macOS shortcut",
+        "scan": "CDP keyboard"
+      },
+      "expected_trials": 30,
+      "trials": [
+        {
+          "number": 1,
+          "openMs": 130.6157919999987,
+          "scanMs": 199.1528330000001
+        }
+      ],
+      "failure": "Timed out waiting for fresh toolbar popup",
+      "last_key": "Command+Shift+Y"
+    },
+    {
+      "run": "https://github.com/chrismicah/design-mcp/actions/runs/45013556227",
+      "harness_commit": "0f81edfa8bcf94f191c8636f68527d37c0cf48f5",
+      "receipt_sha256": "eab1c6fcd76d768e51477c166f2568e9542f211c365fb27fc329ddef78fa812d",
+      "drivers": {
+        "open": "macOS shortcut",
+        "scan": "CDP keyboard"
+      },
+      "expected_trials": 30,
+      "trials": [
+        {
+          "number": 1,
+          "openMs": 234.5614999999998,
+          "scanMs": 228.0086250000004
+        }
+      ],
+      "failure": "Timed out waiting for fresh toolbar popup",
+      "last_key": "Command+Shift+Y"
+    },
+    {
+      "run": "https://github.com/chrismicah/design-mcp/actions/runs/45013886232",
+      "harness_commit": "5e952452863a0c405de293702652b86c033c2e2a",
+      "receipt_sha256": "10f3b10bcc59c85207318d29d4c6ed5268d2ec6bd934a1ed2f5dab9e30cdb801",
+      "drivers": {
+        "open": "macOS shortcut",
+        "scan": "CDP keyboard",
+        "dismiss": "macOS Escape"
+      },
+      "expected_trials": 3,
+      "trials": [],
+      "failure": "Timed out waiting for fresh toolbar popup",
+      "last_key": "Command+Shift+Y"
+    }
+  ],
+  "scope": "Hosted macOS 15 warm Chrome fixture. No run completed its trial series."
+}

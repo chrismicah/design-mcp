@@ -22,6 +22,8 @@ In 30 further Linux trials, each keyboard toolbar activation opened a fresh popu
 
 Two 30-trial diagnostic runs reduced injected key dispatch from 45 ms to 7 ms at the median. Both runs measured 299 ms p95 from shortcut to observed control. The popup document started around 249 ms after the shortcut in both runs. Most of the observed wait occurs before the popup's code can run. The reference Mac pointer measurement is still open. [Timing breakdown and raw receipt hashes](evidence/benchmark-v1/chrome-popup-latency-linux.json)
 
+Two hosted macOS repeats each recorded one popup activation and scan before the next toolbar shortcut timed out. The run configured to dismiss the popup with Escape timed out before its first measured popup, so it never reached Escape. The raw receipts show two individual timings and leave macOS p95 unverified. [Run receipts and hashes](evidence/benchmark-v1/chrome-popup-latency-mac-diagnostics.json)
+
 ## Fresh-package benchmark smoke, November 21
 
 Codex CLI 0.170.0 called `direct` through a fresh pipx install of `fd6035d` and returned an independent rehearsal room board. Playwriter MCP in isolated Chrome clicked the filter at 1440 px and used Tab and Enter at 390 px. “Delayed only” left Studio B visible, hid Hall A and announced one of two rooms. “All rooms” restored both. [Interaction receipt](evidence/benchmark-v1/preflight.json) · [390 px filtered screenshot](.context/factory/benchmark-v1/computer-smoke/interaction-v2/delayed-390.png)
