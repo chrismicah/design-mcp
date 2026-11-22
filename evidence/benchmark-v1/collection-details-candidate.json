@@ -385,6 +385,46 @@
     "commit": "4a886f3b195cee2ed8b4c57d18bdc28a49aa0049",
     "before": "The captured request failed the source replay. The unedited original brief and earlier paraphrase were already covered.",
     "after": "All 54 direction tests passed, including the captured request, both surface selection paths, and a slot-selection counterexample.",
-    "visual_status": "pending"
+    "visual_status": "pending",
+    "followup": {
+      "outcome": "Blocked before rendering because the real tool reply returned the wrong direction.",
+      "arguments": {
+        "brief": "Create a single local HTML screen for a resident confirming a food pantry collection on a small phone. The only appointment facts are Friday, 11:15, 18 Pine Avenue. A button labeled Details reveals the instruction to bring a bag and check in at the side door. Address, weekday and time must be easy to spot at 390 px and feel composed at 1440 px. Aim for a calm, welcoming, practical civic-service design with original inline illustrations or CSS. Avoid visual clutter, filler copy, invented facts, and generic dashboard treatments. Google Fonts stylesheets are allowed; no other remote assets.",
+        "surface": "mobile"
+      },
+      "returned_direction_id": "platform-sign",
+      "receipt": {
+        "usage": {
+          "input_tokens": 65549,
+          "cached_input_tokens": 53120,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 12691,
+          "reasoning_output_tokens": 10186
+        },
+        "tool_calls": [
+          {
+            "type": "mcp_tool_call",
+            "server": "design-mcp",
+            "tool": "direct",
+            "status": "completed"
+          }
+        ],
+        "client_errors": [],
+        "treatment_call": true,
+        "direct_call": true,
+        "status": "passed",
+        "case": "mobile-pantry",
+        "arm": "collection-details",
+        "model": "gpt-6.2-sol",
+        "effort": "max",
+        "client": "codex-cli 0.170.0",
+        "prompt_sha256": "234e8dc129b7355fe2323967b2ac41bc5328b9ddaaccce83f3d96a1437bf7632",
+        "mcp_config_sha256": "adb004e0bf8c08b30af19ededec05e14b46253e720313d86c23f283a41915a11",
+        "elapsed_seconds": 267.68,
+        "exit_code": 0,
+        "trace_sha256": "f6166a1b75454a8ebb6d8db24854ca4d42564a94064631d69f05b022e217f05d",
+        "html_sha256": "97e00764fad80636aef0cff73319c0a32033dbcbb54bfcbf63059cd5d124559e"
+      }
+    }
   }
 }
