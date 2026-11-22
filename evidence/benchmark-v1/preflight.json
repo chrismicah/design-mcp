@@ -756,28 +756,28 @@
     }
   },
   "first_generation_receipts": {
-    "landing-ceramics/none": {
+    "dashboard-venue/none": {
       "usage": {
-        "input_tokens": 40367,
-        "cached_input_tokens": 19840,
+        "input_tokens": 40614,
+        "cached_input_tokens": 17280,
         "cache_write_input_tokens": 0,
-        "output_tokens": 22702,
-        "reasoning_output_tokens": 14500
+        "output_tokens": 18898,
+        "reasoning_output_tokens": 14118
       },
       "tool_calls": [],
       "client_errors": [],
       "direct_call": false,
       "status": "passed",
-      "case": "landing-ceramics",
+      "case": "dashboard-venue",
       "arm": "none",
       "model": "gpt-6.2-sol",
       "effort": "max",
       "client": "codex-cli 0.170.0",
-      "elapsed_seconds": 459.69,
+      "elapsed_seconds": 382.69,
       "exit_code": 0,
-      "prompt_sha256": "1b7e4408d51fd57e448b6c6af2541f70db8a3a9291f546c5217d05b4bda1950f",
-      "trace_sha256": "6c7691e7ecb05219b692236d0e57a798169372a0f4699e3cb4cf6f52eab1a31b",
-      "html_sha256": "57b6129001eb4b48ae92af55043c33f2082d81d10a31d456c232c976d2736c88"
+      "prompt_sha256": "135f73c8d9a457bdd1e33def38e2c7a9a49d35c06a25bd50e0ab1a8c0d63b2c7",
+      "trace_sha256": "cbce9ead6199670ee2ee9face22fe254efdfd83d41a458c46d7e9e472f258be1",
+      "html_sha256": "15935eb7057bf30845d7ffc326b4ef883fc6cc8c9b520a1adc5bfa1fb1d3b91d"
     },
     "dashboard-venue/v2": {
       "usage": {
@@ -808,6 +808,59 @@
       "prompt_sha256": "135f73c8d9a457bdd1e33def38e2c7a9a49d35c06a25bd50e0ab1a8c0d63b2c7",
       "trace_sha256": "52a1417e857b1210e858dd33f2dabaff9ce2742ecd44b4d3289dce1820d79916",
       "html_sha256": "7568885947b22dbd6933e687cac41401ea3db538f7dfb5071ac35718ff92b7f6"
+    },
+    "landing-ceramics/none": {
+      "usage": {
+        "input_tokens": 40367,
+        "cached_input_tokens": 19840,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 22702,
+        "reasoning_output_tokens": 14500
+      },
+      "tool_calls": [],
+      "client_errors": [],
+      "direct_call": false,
+      "status": "passed",
+      "case": "landing-ceramics",
+      "arm": "none",
+      "model": "gpt-6.2-sol",
+      "effort": "max",
+      "client": "codex-cli 0.170.0",
+      "elapsed_seconds": 459.69,
+      "exit_code": 0,
+      "prompt_sha256": "1b7e4408d51fd57e448b6c6af2541f70db8a3a9291f546c5217d05b4bda1950f",
+      "trace_sha256": "6c7691e7ecb05219b692236d0e57a798169372a0f4699e3cb4cf6f52eab1a31b",
+      "html_sha256": "57b6129001eb4b48ae92af55043c33f2082d81d10a31d456c232c976d2736c88"
+    },
+    "landing-ceramics/v2": {
+      "usage": {
+        "input_tokens": 62609,
+        "cached_input_tokens": 40192,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 22183,
+        "reasoning_output_tokens": 14265
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "design-mcp",
+          "tool": "direct",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "direct_call": true,
+      "status": "passed",
+      "case": "landing-ceramics",
+      "arm": "v2",
+      "model": "gpt-6.2-sol",
+      "effort": "max",
+      "client": "codex-cli 0.170.0",
+      "elapsed_seconds": 450.6,
+      "exit_code": 0,
+      "prompt_sha256": "1b7e4408d51fd57e448b6c6af2541f70db8a3a9291f546c5217d05b4bda1950f",
+      "trace_sha256": "6a3e62aed54c0aa251ca1dc409fef57e8a796987e065ef46387ef70e9beec368",
+      "html_sha256": "8b38c73412739c571507bf92cd0e37d6e118b2950d0722a26830c4fe34d06afe"
     }
   },
   "first_generation_playwriter_interaction": {
@@ -860,5 +913,299 @@
     "step": "Paste exact local URL into new, owned Chrome window",
     "error": "CU server -10005 reported clipboard conflict; address bar did not contain the fixture URL; browser connector host unavailable",
     "fixture_action_performed": false
+  },
+  "brief_only_direct_probe": {
+    "kind": "direct with brief only",
+    "result_count": 36,
+    "assignment_by_requested_surface": {
+      "landing": {
+        "landing": 6
+      },
+      "dashboard": {
+        "landing": 4,
+        "dashboard": 2
+      },
+      "form": {
+        "landing": 6
+      },
+      "mobile": {
+        "mobile": 1,
+        "landing": 5
+      },
+      "settings": {
+        "landing": 6
+      },
+      "empty-state": {
+        "landing": 5,
+        "editorial": 1
+      }
+    },
+    "direction_distribution": {
+      "object-hero": 32,
+      "stage-call-sheet": 1,
+      "exception-first": 1,
+      "platform-sign": 1,
+      "margin-front": 1
+    },
+    "cases": {
+      "landing-ceramics": {
+        "surface_requested": "landing",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "landing-repair": {
+        "surface_requested": "landing",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "landing-radio": {
+        "surface_requested": "landing",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "landing-festival": {
+        "surface_requested": "landing",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "landing-archive": {
+        "surface_requested": "landing",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "landing-energy": {
+        "surface_requested": "landing",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "dashboard-coldchain": {
+        "surface_requested": "dashboard",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "dashboard-venue": {
+        "surface_requested": "dashboard",
+        "surface_returned": "dashboard",
+        "direction_id": "stage-call-sheet",
+        "questions": 0,
+        "json_bytes": 3701
+      },
+      "dashboard-harvest": {
+        "surface_requested": "dashboard",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "dashboard-support": {
+        "surface_requested": "dashboard",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "dashboard-energy": {
+        "surface_requested": "dashboard",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "dashboard-library": {
+        "surface_requested": "dashboard",
+        "surface_returned": "dashboard",
+        "direction_id": "exception-first",
+        "questions": 0,
+        "json_bytes": 2966
+      },
+      "form-venue": {
+        "surface_requested": "form",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "form-maintenance": {
+        "surface_requested": "form",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "form-label": {
+        "surface_requested": "form",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "form-garden": {
+        "surface_requested": "form",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "form-exhibition": {
+        "surface_requested": "form",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "form-invoice": {
+        "surface_requested": "form",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "mobile-train": {
+        "surface_requested": "mobile",
+        "surface_returned": "mobile",
+        "direction_id": "platform-sign",
+        "questions": 0,
+        "json_bytes": 2792
+      },
+      "mobile-field": {
+        "surface_requested": "mobile",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "mobile-recital": {
+        "surface_requested": "mobile",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "mobile-court": {
+        "surface_requested": "mobile",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "mobile-pantry": {
+        "surface_requested": "mobile",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "mobile-gallery": {
+        "surface_requested": "mobile",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "settings-notifications": {
+        "surface_requested": "settings",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "settings-reading": {
+        "surface_requested": "settings",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "settings-team": {
+        "surface_requested": "settings",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "settings-focus": {
+        "surface_requested": "settings",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "settings-digest": {
+        "surface_requested": "settings",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "settings-language": {
+        "surface_requested": "settings",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "empty-saved": {
+        "surface_requested": "empty-state",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "empty-drafts": {
+        "surface_requested": "empty-state",
+        "surface_returned": "editorial",
+        "direction_id": "margin-front",
+        "questions": 0,
+        "json_bytes": 2768
+      },
+      "empty-search": {
+        "surface_requested": "empty-state",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "empty-handoff": {
+        "surface_requested": "empty-state",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "empty-exhibits": {
+        "surface_requested": "empty-state",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      },
+      "empty-shifts": {
+        "surface_requested": "empty-state",
+        "surface_returned": "landing",
+        "direction_id": "object-hero",
+        "questions": 0,
+        "json_bytes": 3212
+      }
+    }
+  },
+  "claude_code_registration": {
+    "scope": "user",
+    "status": "connected",
+    "tool_surface": "v2",
+    "environment": "isolated config directory"
   }
 }

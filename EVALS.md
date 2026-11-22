@@ -11,12 +11,18 @@ The baseline pins Design MCP at `fd6035d8732d177b811f81a0f5863e99134a85ca`. The 
 
 The first dashboard attempt called `direct` successfully and reached the client’s 240-second timeout before returning HTML. There was no completed-turn token receipt. The paired run uses a 900-second allowance for both arms and retains the first attempt separately. Playwriter MCP `0.12.0` rendered the isolated Chrome 157 control at both widths. The injected failure control detected narrow viewport overflow and the expected JavaScript error. [Tracked receipts](evidence/benchmark-v1/preflight.json)
 
-The first completed cells are from different briefs. Both configurations returned HTML and token usage. The matched scores above remain pending.
+The rehearsal-room and ceramics pairs returned HTML and token usage. The shared Mac’s memory-pressure gate held the next render. Generation continues on the existing subscription, and the scoring queue rechecks the gate.
 
 | Brief | Configuration | Input tokens | Cached input | Output tokens | Seconds |
 | --- | --- | ---: | ---: | ---: | ---: |
+| Rehearsal room board | Plain generator | 40,614 | 17,280 | 18,898 | 382.69 |
 | Rehearsal room board | Design MCP v2 | 63,611 | 40,704 | 16,255 | 332.83 |
 | Ceramics landing page | Plain generator | 40,367 | 19,840 | 22,702 | 459.69 |
+| Ceramics landing page | Design MCP v2 | 62,609 | 40,192 | 22,183 | 450.60 |
+
+## Direction coverage
+
+A separate stdio probe supplied the exact briefs to `direct` with the surface omitted. All 36 calls returned a direction. **32/36 returned `object-hero`.** All six forms and all six settings briefs received landing-page guidance. Only two dashboards and one mobile brief matched their requested surface. The production API has no form, settings or empty-state surface. This probe measures default retrieval, while the rendered comparison measures what the generator does with the tool available. [Per-brief direction returns](evidence/benchmark-v1/preflight.json)
 
 ## Installation at the baseline revision
 
