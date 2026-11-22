@@ -1,4 +1,4 @@
-"""Verify and export the frozen baseline's completed paired ballots without model calls."""
+"""Verify and export completed paired ballots without model calls."""
 
 import argparse
 import json
@@ -13,16 +13,18 @@ from judge import WIDTHS, create_pair, load, run_judge, score_arm, summarize, wr
 ARMS = ("none", "v2")
 
 
-def matching_run(archives, case, cells):
+def archive_matches(archive, case, cells, arms):
+    return archive.is_dir() and archive.name.isdecimal() and all(
+        (archive / case / arm / name).is_file()
+        and (archive / case / arm / name).read_bytes() == (cells / case / arm / name).read_bytes()
+        for arm in arms for name in ("receipt.json", "render.json")
+    )
+
+
+def matching_run(archives, case, cells, arms=ARMS):
     matches = []
     for archive in archives.iterdir():
-        if not archive.is_dir() or not archive.name.isdecimal():
-            continue
-        if all(
-            (archive / case / arm / name).is_file()
-            and (archive / case / arm / name).read_bytes() == (cells / case / arm / name).read_bytes()
-            for arm in ARMS for name in ("receipt.json", "render.json")
-        ):
+        if archive_matches(archive, case, cells, arms):
             matches.append(archive)
     if len(matches) != 1:
         raise ValueError(f"Expected one matching capture archive for {case}, found {len(matches)}")
@@ -45,18 +47,30 @@ def verify_case(args, task):
     if (not turn.get("usage") or turn["usage"] != ballot["usage"]
             or json.loads(message) != ballot["verdict"]):
         raise ValueError(f"Saved ballot differs from the judge trace for {case}")
-    archive = matching_run(args.archives, case, args.cells)
+    arms = (args.control, args.treatment)
+    if args.archives:
+        archive = matching_run(args.archives, case, args.cells, arms)
+        archives = dict.fromkeys(arms, archive)
+    else:
+        archives = {args.control: args.control_archive, args.treatment: args.treatment_archive}
+        for arm, archive in archives.items():
+            if not archive_matches(archive, case, args.cells, (arm,)):
+                raise ValueError(f"Selected capture archive disagrees for {case}/{arm}")
     cells = {}
     for label, arm in labels.items():
         cell = args.cells / case / arm
         generation, render = load(cell / "receipt.json"), load(cell / "render.json")
-        trace = args.generation / case / arm / "client.jsonl"
+        origin = (args.control_generation or args.generation) if arm == args.control else args.generation
+        trace = origin / case / arm / "client.jsonl"
         if not generation["usage"] or sha256(trace.read_bytes()) != generation["trace_sha256"]:
             raise ValueError(f"Missing or changed generation trace for {case}/{arm}")
+        archived_cell = archives[arm] / case / arm
+        if sha256((archived_cell / "index.html").read_bytes()) != generation["html_sha256"]:
+            raise ValueError(f"Archived HTML differs for {case}/{arm}")
         captures = {}
         for width in WIDTHS:
             capture = render["captures"][width]
-            archived = archive / case / arm / f"{width}.png"
+            archived = archived_cell / f"{width}.png"
             blind_image = blind / f"{label}-{width}.png"
             if (capture["viewport"] != int(width) or sha256(archived.read_bytes()) != capture["sha256"]
                     or sha256(blind_image.read_bytes()) != capture["sha256"]):
@@ -64,24 +78,35 @@ def verify_case(args, task):
             captures[width] = {key: capture[key] for key in ("sha256", "viewport", "width", "pageErrors")}
         cells[arm] = {"generation": generation, "browser": render["browser"], "renderer": render["renderer"],
                       "captures": captures}
-    return {"render_run": f"https://github.com/chrismicah/design-mcp/actions/runs/{archive.name}",
-            "cells": cells, "ballot": ballot}
+    urls = {arm: f"https://github.com/chrismicah/design-mcp/actions/runs/{archive.name}"
+            for arm, archive in archives.items()}
+    runs = {"render_run": urls[args.control]} if len(set(urls.values())) == 1 else {"render_runs": urls}
+    return {**runs, "cells": cells, "ballot": ballot}
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    for flag in ("cells", "generation", "ballots", "archives", "report"):
+    for flag in ("cells", "generation", "ballots", "report"):
         parser.add_argument(f"--{flag}", required=True, type=Path)
+    for flag in ("archives", "control-archive", "treatment-archive", "control-generation"):
+        parser.add_argument(f"--{flag}", type=Path)
+    parser.add_argument("--control", default=ARMS[0])
+    parser.add_argument("--treatment", default=ARMS[1])
     paths = parser.parse_args()
-    args = SimpleNamespace(cells=paths.cells, generation=paths.generation, out=paths.ballots, archives=paths.archives,
-                           seed="design-mcp-blind-v1", control="none", treatment="v2",
+    if paths.control == paths.treatment:
+        parser.error("Pass distinct names for the control and treatment")
+    if paths.archives and (paths.control_archive or paths.treatment_archive):
+        parser.error("Use either --archives or separate control and treatment archives")
+    if not paths.archives and not (paths.control_archive and paths.treatment_archive):
+        parser.error("Pass --archives or both --control-archive and --treatment-archive")
+    args = SimpleNamespace(**vars(paths), out=paths.ballots, seed="design-mcp-blind-v1",
                            compact=False, model="gpt-6.2-astra", effort="max")
     tasks = load(BASE_DIR / "tasks.json")
     cases = {task["id"]: verify_case(args, task) for task in tasks
              if (args.out / "ratings" / f"{task['id']}.json").is_file()}
     if not cases:
-        parser.error("No completed baseline ballots were found")
-    summary = summarize(tasks, [case["ballot"] for case in cases.values()])
+        parser.error("No completed paired ballots were found")
+    summary = summarize(tasks, [case["ballot"] for case in cases.values()], args.treatment, args.control)
     summary["median_usage"] = {
         arm: {
             **{field: statistics.median(case["cells"][arm]["generation"]["usage"][field] for case in cases.values())
@@ -89,7 +114,7 @@ def main():
             "elapsed_seconds": statistics.median(case["cells"][arm]["generation"]["elapsed_seconds"]
                                                  for case in cases.values()),
         }
-        for arm in ARMS
+        for arm in (args.control, args.treatment)
     }
     write(paths.report, {"summary": summary, "cases": cases})
 
