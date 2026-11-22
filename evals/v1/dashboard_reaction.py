@@ -2,6 +2,8 @@
 
 import json
 
+from fastmcp.exceptions import ToolError
+
 import render
 
 
@@ -18,8 +20,8 @@ async function goTo(button, fallbackKey) {
   throw new Error('The keyboard could not reach the expected control');
 }
 
-const visible = node => node.checkVisibility({visibilityProperty:true, opacityProperty:true});
 const measure = () => {
+  const visible = node => node.checkVisibility({visibilityProperty:true, opacityProperty:true});
   const id = document.querySelector('#exception-title, #priority-load');
   const delay = document.querySelector('.delay-value, .priority-meta strong');
   const nextIsVisible = [...document.querySelectorAll('th, p, span')].some(
@@ -84,6 +86,8 @@ async def capture_reaction(client, cell, width, height, url):
         metrics, _ = json.JSONDecoder().raw_decode(line)
         result.update(keyboard=metrics, after_sha256=render.sha256(after.read_bytes()))
         return result
+    except ToolError as error:
+        raise RuntimeError(str(error)) from error
     finally:
         await render.execute(client, "await state.page.close();")
 
