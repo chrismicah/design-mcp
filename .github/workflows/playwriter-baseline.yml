@@ -1,9 +1,9 @@
-name: Collection details keyboard replay
+name: Notification persistence controls
 
 on:
   push:
-    branches: [design-mcp/collection-actions]
-    paths: ['.github/workflows/playwriter-baseline.yml', 'evidence/benchmark-v1/collection-inputs/**', 'evals/v1/render.py', 'evals/v1/render_collection_actions.py']
+    branches: [design-mcp/settings-persistence]
+    paths: ['.github/workflows/playwriter-baseline.yml', 'evidence/benchmark-v1/settings-persistence-inputs/**', 'evals/v1/render.py', 'evals/v1/render_settings_persistence.py']
 
 permissions:
   contents: read
@@ -31,23 +31,30 @@ jobs:
         run: |
           chrome="$RUNNER_TEMP/browser/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
           "$chrome" --version
-          python evals/v1/render_collection_actions.py \
-            --cells evidence/benchmark-v1/collection-inputs --scratch "$RUNNER_TEMP/profile" \
+          python evals/v1/render_settings_persistence.py \
+            --cells evidence/benchmark-v1/settings-persistence-inputs --scratch "$RUNNER_TEMP/profile" \
             --playwriter "$RUNNER_TEMP/playwriter/node_modules/.bin/playwriter" --chrome "$chrome"
           python - <<'PY'
           from pathlib import Path
           import json
-          for path in Path('evidence/benchmark-v1/collection-inputs').rglob('index.html'):
+          for path in Path('evidence/benchmark-v1/settings-persistence-inputs').rglob('index.html'):
               record = json.loads(path.with_name('render.json').read_text())
               assert record['browser'].endswith('158.0.8127.36'), record['browser']
               generation = json.loads(path.with_name('receipt.json').read_text())
               assert generation['html_sha256'] == record['input_sha256'], path
               assert all(item['status'] == 'rendered' for item in record['captures'].values()), record
+              for capture in record['captures'].values():
+                  check = capture['interaction']
+                  assert check['savedVisible'], check
+                  if path.parent.name == 'false-save-control':
+                      assert check['persistenceFailed'] and not check['passed'], check
+                  else:
+                      assert check['passed'], check
           PY
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: collection-actions
-          path: evidence/benchmark-v1/collection-inputs/
+          name: settings-persistence
+          path: evidence/benchmark-v1/settings-persistence-inputs/
           if-no-files-found: error
           retention-days: 7

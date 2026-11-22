@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notifications | Member settings</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&amp;family=Instrument+Serif&amp;display=swap">
+  <!--
+    A coworking member needs to choose and save their notification preferences.
+    A shared noticeboard gives the page a welcoming feel. The pinned calendar
+    and event flyer sit beside the two controls and stack above them on mobile.
+    Instrument Serif gives the title character. Instrument Sans keeps the
+    controls clear. Cool paper, warm white, deep ink, evergreen, sea glass,
+    and pollen carry the palette.
+  -->
+  <style>
+    :root {
+      --paper: #f3f6f1;
+      --white: #fffef8;
+      --ink: #132c2b;
+      --evergreen: #215a50;
+      --sea-glass: #cee2db;
+      --pollen: #f4c969;
+      --line: color-mix(in srgb, var(--ink) 17%, var(--paper));
+      --muted: color-mix(in srgb, var(--ink) 76%, var(--paper));
+      --gutter: clamp(1.25rem, 5.5vw, 4.5rem);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 1rem / 1.5 "Instrument Sans", sans-serif;
+    }
+
+    .page-width {
+      inline-size: min(72rem, calc(100% - var(--gutter) - var(--gutter)));
+      margin-inline: auto;
+    }
+
+    .masthead {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      min-block-size: 5.25rem;
+      border-block-end: 1px solid var(--line);
+      font-weight: 600;
+    }
+
+    .member-mark {
+      display: grid;
+      place-items: center;
+      inline-size: 2.25rem;
+      block-size: 2.25rem;
+      border-radius: .5rem;
+      background: var(--evergreen);
+      color: var(--white);
+    }
+
+    .member-mark svg {
+      inline-size: 1.375rem;
+      block-size: 1.375rem;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, .89fr) minmax(0, 1fr);
+      align-items: center;
+      gap: clamp(2rem, 6vw, 5.25rem);
+      padding-block: clamp(3rem, 6vw, 5.375rem) 3.5rem;
+    }
+
+    h1 {
+      margin: 0;
+      font: 400 clamp(3.5rem, 6.1vw, 5.75rem) / .98 "Instrument Serif", Georgia, serif;
+      letter-spacing: -.025em;
+      overflow-wrap: anywhere;
+    }
+
+    .intro p {
+      max-inline-size: 33ch;
+      margin: .875rem 0 0;
+      color: var(--muted);
+      font-size: 1.125rem;
+    }
+
+    .noticeboard {
+      display: block;
+      inline-size: 100%;
+      block-size: auto;
+      margin-block-start: 1.875rem;
+      border-radius: .625rem;
+    }
+
+    .preferences {
+      --inset: clamp(1.25rem, 2.2vw, 2rem);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: .75rem;
+      background: var(--white);
+      box-shadow: 0 3px 0 color-mix(in srgb, var(--ink) 6%, transparent);
+    }
+
+    .preference {
+      display: grid;
+      grid-template-columns: 3rem minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 1rem;
+      min-block-size: 6.125rem;
+      padding: .875rem var(--inset);
+      cursor: pointer;
+    }
+
+    .preference + .preference {
+      border-block-start: 1px solid var(--line);
+    }
+
+    .preference-icon {
+      display: grid;
+      place-items: center;
+      aspect-ratio: 1;
+      border-radius: .5rem;
+      background: var(--sea-glass);
+    }
+
+    .preference-icon.event {
+      background: color-mix(in srgb, var(--pollen) 54%, var(--white));
+    }
+
+    .preference-icon svg {
+      inline-size: 1.5rem;
+      block-size: 1.5rem;
+    }
+
+    .preference-name {
+      font-size: 1.125rem;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    .switch {
+      position: relative;
+      inline-size: 62px;
+      block-size: 30px;
+    }
+
+    .switch input {
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      inline-size: 100%;
+      block-size: 100%;
+      margin: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .switch-track {
+      position: absolute;
+      inset: 0;
+      border: 1px solid color-mix(in srgb, var(--ink) 52%, var(--sea-glass));
+      border-radius: 100px;
+      background: color-mix(in srgb, var(--sea-glass) 60%, var(--white));
+      color: var(--ink);
+      font-size: .75rem;
+      font-weight: 700;
+      pointer-events: none;
+    }
+
+    .switch-track::before {
+      position: absolute;
+      inset: 3px auto auto 3px;
+      inline-size: 22px;
+      block-size: 22px;
+      border-radius: 50%;
+      background: var(--white);
+      box-shadow: 0 1px 3px color-mix(in srgb, var(--ink) 32%, transparent);
+      content: "";
+      transition: transform 170ms ease-out;
+    }
+
+    .switch-off,
+    .switch-on {
+      position: absolute;
+      inset-block: 0;
+      display: grid;
+      align-items: center;
+    }
+
+    .switch-off {
+      inset-inline-end: 8px;
+    }
+
+    .switch-on {
+      display: none;
+      inset-inline-start: 9px;
+    }
+
+    .switch input:checked + .switch-track {
+      border-color: var(--evergreen);
+      background: var(--evergreen);
+      color: var(--white);
+    }
+
+    .switch input:checked + .switch-track::before {
+      transform: translateX(32px);
+    }
+
+    .switch input:checked + .switch-track .switch-off {
+      display: none;
+    }
+
+    .switch input:checked + .switch-track .switch-on {
+      display: grid;
+    }
+
+    .switch input:focus-visible + .switch-track,
+    .save:focus-visible {
+      outline: 3px solid var(--evergreen);
+      outline-offset: 4px;
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .75rem;
+      min-block-size: 5rem;
+      padding: .875rem var(--inset);
+      border-block-start: 1px solid var(--line);
+      background: color-mix(in srgb, var(--paper) 70%, var(--white));
+    }
+
+    .feedback {
+      display: flex;
+      align-items: center;
+      gap: .375rem;
+      min-inline-size: 0;
+      margin: 0;
+      color: var(--muted);
+      font-size: .875rem;
+      line-height: 1.3;
+    }
+
+    .feedback svg {
+      display: none;
+      flex: none;
+      inline-size: 1.125rem;
+      block-size: 1.125rem;
+    }
+
+    .feedback[data-state="saved"] {
+      color: var(--evergreen);
+      font-weight: 700;
+    }
+
+    .feedback[data-state="saved"] svg {
+      display: block;
+    }
+
+    .feedback[data-state="error"] {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .save {
+      flex: none;
+      min-block-size: 2.875rem;
+      padding: .625rem 1.25rem;
+      border: 1px solid transparent;
+      border-radius: .5rem;
+      background: var(--evergreen);
+      color: var(--white);
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    @media (hover: hover) {
+      .save:hover {
+        background: var(--ink);
+      }
+    }
+
+    @media (max-width: 54rem) {
+      .page-width {
+        max-inline-size: 35rem;
+      }
+
+      .masthead {
+        min-block-size: 4rem;
+        font-size: .9375rem;
+      }
+
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.5rem;
+        padding-block: 2rem 2.5rem;
+      }
+
+      h1 {
+        font-size: clamp(2.8rem, 15vw, 4.85rem);
+      }
+
+      .intro p {
+        margin-block-start: .75rem;
+        font-size: 1rem;
+      }
+
+      .noticeboard {
+        margin-block-start: 1.375rem;
+      }
+
+      .preferences {
+        --inset: 1rem;
+      }
+
+      .preference {
+        grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+        gap: .75rem;
+        min-block-size: 4.75rem;
+      }
+
+      .preference-name {
+        font-size: 1rem;
+      }
+
+      .actions {
+        min-block-size: 4.5rem;
+        padding-block: .75rem;
+      }
+
+      .save {
+        padding-inline: 1rem;
+        font-size: .9375rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .switch-track::before {
+        transition: none;
+      }
+    }
+
+    @media (forced-colors: active) {
+      .switch-track,
+      .switch input:checked + .switch-track {
+        forced-color-adjust: none;
+        border-color: ButtonText;
+        background: ButtonFace;
+        color: ButtonText;
+      }
+
+      .switch-track::before {
+        background: ButtonText;
+      }
+
+      .switch input:checked + .switch-track::before {
+        background: Highlight;
+      }
+
+      .switch input:focus-visible + .switch-track,
+      .save:focus-visible {
+        outline-color: Highlight;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead page-width">
+    <span class="member-mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+        <rect x="4" y="8" width="16" height="8" rx="2"/>
+        <path d="M7.5 5h2m5 0h2m-9 14h2m5 0h2"/>
+      </svg>
+    </span>
+    <span>Member settings</span>
+  </header>
+
+  <main class="layout page-width">
+    <div class="intro">
+      <h1>Notifications</h1>
+      <p>Choose which updates you get from your coworking space.</p>
+
+      <svg class="noticeboard" viewBox="0 0 480 272" aria-hidden="true" focusable="false">
+        <defs>
+          <pattern id="pegboard" width="18" height="18" patternUnits="userSpaceOnUse">
+            <circle cx="9" cy="9" r="1.2" fill="var(--ink)" opacity=".17"/>
+          </pattern>
+        </defs>
+        <rect width="480" height="272" fill="var(--sea-glass)"/>
+        <rect width="480" height="272" fill="url(#pegboard)"/>
+        <rect x="11" y="11" width="458" height="250" rx="4" fill="none" stroke="var(--evergreen)" opacity=".24"/>
+
+        <g transform="rotate(-10 158 136)">
+          <rect x="60" y="57" width="210" height="174" rx="4" fill="var(--ink)" opacity=".14"/>
+          <rect x="53" y="48" width="210" height="174" rx="4" fill="var(--white)" stroke="var(--ink)" stroke-width="1.2"/>
+          <path d="M54 84h208" stroke="var(--ink)" opacity=".32"/>
+          <path d="M77 68h50" stroke="var(--evergreen)" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M219 68h19" stroke="var(--evergreen)" stroke-width="2" stroke-linecap="round" opacity=".54"/>
+
+          <rect x="74" y="99" width="168" height="105" rx="2" fill="none" stroke="var(--evergreen)" opacity=".43"/>
+          <path d="M116 99v105m42-105v105m42-105v105M74 134h168M74 169h168" fill="none" stroke="var(--evergreen)" opacity=".36"/>
+          <path d="M117 135h40v33h-40z" fill="var(--sea-glass)"/>
+          <g fill="var(--evergreen)" opacity=".48">
+            <circle cx="95" cy="116.5" r="2.4"/>
+            <circle cx="137" cy="116.5" r="2.4"/>
+            <circle cx="179" cy="116.5" r="2.4"/>
+            <circle cx="221" cy="116.5" r="2.4"/>
+            <circle cx="95" cy="151.5" r="2.4"/>
+            <circle cx="179" cy="151.5" r="2.4"/>
+            <circle cx="221" cy="151.5" r="2.4"/>
+            <circle cx="95" cy="186.5" r="2.4"/>
+            <circle cx="137" cy="186.5" r="2.4"/>
+          </g>
+          <circle cx="137" cy="151.5" r="10.5" fill="var(--evergreen)"/>
+          <path d="m132.5 152 3 3 6-7" fill="none" stroke="var(--white)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="160" cy="52" r="7" fill="var(--ink)" opacity=".16"/>
+          <circle cx="158" cy="48" r="7" fill="var(--evergreen)"/>
+          <circle cx="156" cy="46" r="1.8" fill="var(--sea-glass)"/>
+        </g>
+
+        <g transform="rotate(10 329 141)">
+          <rect x="260" y="57" width="156" height="179" rx="4" fill="var(--ink)" opacity=".18"/>
+          <rect x="252" y="49" width="156" height="179" rx="4" fill="var(--pollen)" stroke="var(--ink)" stroke-width="1.2"/>
+          <circle cx="330" cy="119" r="47" fill="none" stroke="var(--ink)" stroke-dasharray="1 5" stroke-linecap="round" opacity=".64"/>
+          <path d="M330 79c5 25 15 35 40 40-25 5-35 15-40 40-5-25-15-35-40-40 25-5 35-15 40-40z" fill="var(--evergreen)"/>
+          <circle cx="330" cy="119" r="6.5" fill="var(--pollen)"/>
+          <path d="M273 184h114m-114 10h68m-68 16h114" fill="none" stroke="var(--ink)" stroke-width="1.2" stroke-linecap="round" opacity=".56"/>
+          <circle cx="332" cy="53" r="7" fill="var(--ink)" opacity=".19"/>
+          <circle cx="330" cy="49" r="7" fill="var(--evergreen)"/>
+          <circle cx="328" cy="47" r="1.8" fill="var(--sea-glass)"/>
+        </g>
+      </svg>
+    </div>
+
+    <form class="preferences" id="preferences" aria-label="Notification preferences" autocomplete="off">
+      <label class="preference">
+        <span class="preference-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="6" width="16" height="15" rx="2"/>
+            <path d="M8 4v4m8-4v4M4 11h16m-11 5 2 2 4-4"/>
+          </svg>
+        </span>
+        <span class="preference-name" id="booking-label">Booking reminders</span>
+        <span class="switch">
+          <input type="checkbox" role="switch" name="bookingReminders" aria-labelledby="booking-label" checked>
+          <span class="switch-track" aria-hidden="true">
+            <span class="switch-off">Off</span>
+            <span class="switch-on">On</span>
+          </span>
+        </span>
+      </label>
+
+      <label class="preference">
+        <span class="preference-icon event" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linejoin="round">
+            <path d="M12 3c1 5.4 3.6 8 9 9-5.4 1-8 3.6-9 9-1-5.4-3.6-8-9-9 5.4-1 8-3.6 9-9z"/>
+          </svg>
+        </span>
+        <span class="preference-name" id="event-label">Event announcements</span>
+        <span class="switch">
+          <input type="checkbox" role="switch" name="eventAnnouncements" aria-labelledby="event-label">
+          <span class="switch-track" aria-hidden="true">
+            <span class="switch-off">Off</span>
+            <span class="switch-on">On</span>
+          </span>
+        </span>
+      </label>
+
+      <div class="actions">
+        <p class="feedback" id="feedback" role="status" aria-atomic="true">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="10" cy="10" r="7.5"/>
+            <path d="m6.5 10 2.3 2.3 4.7-4.8"/>
+          </svg>
+          <span id="feedback-text"></span>
+        </p>
+        <button class="save" type="submit">Save preferences</button>
+      </div>
+    </form>
+  </main>
+
+  <script>
+    const storageKey = "coworking.notification-preferences.v1";
+    const form = document.getElementById("preferences");
+    const bookingSwitch = form.elements.namedItem("bookingReminders");
+    const eventSwitch = form.elements.namedItem("eventAnnouncements");
+    const feedback = document.getElementById("feedback");
+    const feedbackText = document.getElementById("feedback-text");
+
+    function loadPreferences() {
+      try {
+        const stored = JSON.parse(localStorage.getItem(storageKey));
+        if (
+          stored &&
+          typeof stored.bookingReminders === "boolean" &&
+          typeof stored.eventAnnouncements === "boolean"
+        ) {
+          return stored;
+        }
+      } catch {
+        // The form defaults also cover unavailable or unreadable storage.
+      }
+
+      return {
+        bookingReminders: bookingSwitch.defaultChecked,
+        eventAnnouncements: eventSwitch.defaultChecked
+      };
+    }
+
+    function readPreferences() {
+      return {
+        bookingReminders: bookingSwitch.checked,
+        eventAnnouncements: eventSwitch.checked
+      };
+    }
+
+    function showFeedback(state, message) {
+      feedback.dataset.state = state;
+      feedbackText.textContent = message;
+    }
+
+    let savedPreferences = loadPreferences();
+    bookingSwitch.checked = savedPreferences.bookingReminders;
+    eventSwitch.checked = savedPreferences.eventAnnouncements;
+
+    form.addEventListener("change", () => {
+      const current = readPreferences();
+      const hasChanges =
+        current.bookingReminders !== savedPreferences.bookingReminders ||
+        current.eventAnnouncements !== savedPreferences.eventAnnouncements;
+
+      showFeedback(hasChanges ? "pending" : "", hasChanges ? "Unsaved changes" : "");
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const current = readPreferences();
+
+      try {
+        localStorage.setItem(storageKey, JSON.stringify(current));
+      } catch {
+        showFeedback("error", "Couldn’t save. Check browser storage and try again.");
+        return;
+      }
+
+      savedPreferences = current;
+      showFeedback("saved", "Preferences saved.");
+    });
+  </script>
+</body>
+</html>

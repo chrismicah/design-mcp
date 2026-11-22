@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notification settings</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&amp;family=IBM+Plex+Sans+Condensed:wght@600&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: dark;
+      --charcoal: #14181b;
+      --slate: #1d2428;
+      --mist: #eef0ec;
+      --ash: #b9c2c1;
+      --pewter: #657278;
+      --apricot: #ffaa72;
+      --rule: color-mix(in srgb, var(--pewter) 48%, var(--charcoal));
+      --body-font: "IBM Plex Sans", sans-serif;
+      --heading-font: "IBM Plex Sans Condensed", var(--body-font);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-block-size: 100svh;
+      background: var(--charcoal);
+      color: var(--mist);
+      font: 400 1rem / 1.5 var(--body-font);
+    }
+
+    main {
+      inline-size: min(62rem, calc(100% - 3.5rem));
+      margin-inline: auto;
+      padding-block: clamp(3.75rem, 12vh, 7.25rem) 4rem;
+    }
+
+    .intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) clamp(9rem, 22vw, 17.5rem);
+      column-gap: clamp(1rem, 3vw, 2.5rem);
+      margin-block-end: 2.375rem;
+    }
+
+    h1 {
+      align-self: end;
+      margin: 0;
+      font: 600 clamp(2.75rem, 5.1vw, 4.5rem) / 1 var(--heading-font);
+      letter-spacing: -.025em;
+    }
+
+    .intro p {
+      align-self: start;
+      grid-column: 1;
+      margin: 1rem 0 0;
+      max-inline-size: 49ch;
+      color: var(--ash);
+      font-size: 1.0625rem;
+      text-wrap: pretty;
+    }
+
+    .intro-art {
+      align-self: center;
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      display: block;
+      inline-size: 100%;
+      block-size: auto;
+    }
+
+    form {
+      border-block-start: 1px solid var(--pewter);
+    }
+
+    .preference {
+      display: grid;
+      grid-template-columns: 3rem minmax(0, 1fr) 4rem;
+      align-items: center;
+      gap: 1.125rem;
+      min-block-size: 6.5rem;
+      padding: 1.125rem 1.5rem;
+      border-block-end: 1px solid var(--rule);
+      cursor: pointer;
+    }
+
+    .preference-icon {
+      display: grid;
+      place-items: center;
+      inline-size: 2.75rem;
+      block-size: 2.75rem;
+      border: 1px solid var(--rule);
+      border-radius: .25rem;
+      background: var(--slate);
+      color: var(--ash);
+    }
+
+    .preference-icon svg {
+      inline-size: 1.375rem;
+      block-size: 1.375rem;
+    }
+
+    .preference-title,
+    .preference-description {
+      display: block;
+      overflow-wrap: anywhere;
+    }
+
+    .preference-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    .preference-description {
+      margin-block-start: .25rem;
+      color: var(--ash);
+      font-size: .9375rem;
+    }
+
+    .switch {
+      position: relative;
+      display: grid;
+      align-items: center;
+      min-block-size: 2.75rem;
+    }
+
+    .switch input {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      inline-size: 100%;
+      block-size: 100%;
+      margin: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .track {
+      position: relative;
+      block-size: 2rem;
+      border: 1px solid var(--pewter);
+      border-radius: 2rem;
+      background: var(--charcoal);
+      color: var(--ash);
+      font-size: .8125rem;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .track-word {
+      position: absolute;
+      inset-block-start: 50%;
+      transform: translateY(-50%);
+    }
+
+    .track-on {
+      display: none;
+      inset-inline-start: .625rem;
+    }
+
+    .track-off {
+      inset-inline-end: .5625rem;
+    }
+
+    .thumb {
+      position: absolute;
+      inset-block-start: .375rem;
+      inset-inline-start: .3125rem;
+      inline-size: 1.125rem;
+      block-size: 1.125rem;
+      border-radius: 50%;
+      background: var(--ash);
+      transition: transform 160ms ease-out;
+    }
+
+    .switch input:checked + .track {
+      border-color: var(--apricot);
+      background: var(--apricot);
+      color: var(--charcoal);
+    }
+
+    .switch input:checked + .track .track-on {
+      display: block;
+    }
+
+    .switch input:checked + .track .track-off {
+      display: none;
+    }
+
+    .switch input:checked + .track .thumb {
+      transform: translateX(2.125rem);
+      background: var(--charcoal);
+    }
+
+    .switch input:focus-visible + .track,
+    .save-button:focus-visible {
+      outline: 2px solid var(--mist);
+      outline-offset: 4px;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 1rem;
+      min-block-size: 5.25rem;
+      padding: 1rem 1.5rem;
+      border-block-end: 1px solid var(--rule);
+      background: var(--slate);
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      margin: 0;
+      color: var(--ash);
+      font-size: .9375rem;
+      line-height: 1.35;
+    }
+
+    .status-check {
+      display: none;
+      flex: none;
+      color: var(--apricot);
+    }
+
+    .status[data-state="saved"] {
+      color: var(--mist);
+    }
+
+    .status[data-state="saved"] .status-check {
+      display: block;
+    }
+
+    .status[data-state="error"] {
+      color: var(--apricot);
+    }
+
+    .save-button {
+      min-block-size: 3rem;
+      padding: .625rem 1.25rem;
+      border: 1px solid transparent;
+      border-radius: .25rem;
+      background: var(--apricot);
+      color: var(--charcoal);
+      font: 600 1rem / 1.25 var(--body-font);
+      cursor: pointer;
+    }
+
+    @media (hover: hover) {
+      .save-button:hover {
+        background: color-mix(in srgb, var(--apricot) 82%, var(--mist));
+      }
+    }
+
+    @media (max-width: 40rem) {
+      main {
+        inline-size: calc(100% - 2.5rem);
+        padding-block: 2.75rem 3rem;
+      }
+
+      .intro {
+        grid-template-columns: minmax(0, 1fr) clamp(5.25rem, 28vw, 8.5rem);
+        column-gap: .75rem;
+        margin-block-end: 1.75rem;
+      }
+
+      h1 {
+        align-self: center;
+        font-size: clamp(2.25rem, 11vw, 3.125rem);
+      }
+
+      .intro-art {
+        grid-row: 1;
+      }
+
+      .intro p {
+        grid-column: 1 / -1;
+        margin-block-start: .875rem;
+        max-inline-size: 34ch;
+        font-size: 1rem;
+      }
+
+      .preference {
+        grid-template-columns: 2.25rem minmax(0, 1fr) 4rem;
+        gap: .75rem;
+        min-block-size: 5.5rem;
+        padding: 1rem .5rem;
+      }
+
+      .preference-icon {
+        inline-size: 2.25rem;
+        block-size: 2.25rem;
+      }
+
+      .preference-icon svg {
+        inline-size: 1.25rem;
+        block-size: 1.25rem;
+      }
+
+      .preference-title {
+        font-size: 1.0625rem;
+      }
+
+      .preference-description {
+        font-size: .875rem;
+      }
+
+      .actions {
+        gap: .625rem;
+        min-block-size: 4.75rem;
+        padding: .875rem;
+      }
+
+      .save-button {
+        padding-inline: 1rem;
+      }
+    }
+
+    @media (max-width: 23rem) {
+      main {
+        inline-size: calc(100% - 2rem);
+      }
+
+      .intro {
+        grid-template-columns: minmax(0, 1fr) 4.75rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .thumb {
+        transition: none;
+      }
+    }
+
+    @media (forced-colors: active) {
+      .thumb,
+      .switch input:checked + .track .thumb {
+        forced-color-adjust: none;
+        background: CanvasText;
+      }
+
+      .save-button {
+        border-color: ButtonText;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="intro">
+      <h1 id="page-title">Notification settings</h1>
+      <p>Choose which updates you receive from your coworking space.</p>
+
+      <svg class="intro-art" viewBox="0 0 264 180" fill="none" aria-hidden="true" focusable="false">
+        <path d="M10 44h244M10 88h244M10 132h244M45 16v148M89 16v148M133 16v148M177 16v148M221 16v148"
+              stroke="var(--rule)" />
+        <g transform="translate(151 47) rotate(12)">
+          <rect width="78" height="103" rx="2" fill="var(--slate)" stroke="var(--pewter)" stroke-width="1.5" />
+          <path d="M1 19h76M33 76h28M40 85h21" stroke="var(--pewter)" stroke-width="1.5" />
+          <path d="M46 33c0 9 5 14 14 14-9 0-14 5-14 14 0-9-5-14-14-14 9 0 14-5 14-14Z"
+                fill="var(--ash)" />
+        </g>
+        <g transform="translate(34 38) rotate(-8 66 54)">
+          <rect width="132" height="108" rx="3" fill="var(--charcoal)" stroke="var(--ash)" stroke-width="1.5" />
+          <path d="M1 25h130M31-6V8M101-6V8" stroke="var(--ash)" stroke-width="2" stroke-linecap="round" />
+          <path d="M19 42h94v48H19zM50 42v48M82 42v48M19 66h94" stroke="var(--pewter)" stroke-width="1.3" />
+          <path d="M50 66h32v24H50z" fill="var(--apricot)" />
+          <path d="m59 78 5 5 9-10" stroke="var(--charcoal)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
+      </svg>
+    </header>
+
+    <form id="notification-settings" aria-labelledby="page-title" autocomplete="off">
+      <label class="preference">
+        <span class="preference-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+            <rect x="3.5" y="5.5" width="17" height="15" rx="2" />
+            <path d="M7.5 3.5v4m9-4v4M3.5 10h17M8.5 15l2 2 4-4" />
+          </svg>
+        </span>
+        <span>
+          <span class="preference-title" id="booking-title">Booking reminders</span>
+          <span class="preference-description" id="booking-description">Get reminders about your bookings.</span>
+        </span>
+        <span class="switch">
+          <input type="checkbox" role="switch" name="bookingReminders"
+                 aria-labelledby="booking-title" aria-describedby="booking-description" checked>
+          <span class="track" aria-hidden="true">
+            <span class="track-word track-on">On</span>
+            <span class="track-word track-off">Off</span>
+            <span class="thumb"></span>
+          </span>
+        </span>
+      </label>
+
+      <label class="preference">
+        <span class="preference-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+            <path d="M4 10v4h4l7 3.5v-11L8 10H4Zm4 4 1.5 5h2.25l-1.25-3.75M18 9l2-1.5M18.5 12H21M18 15l2 1.5" />
+          </svg>
+        </span>
+        <span>
+          <span class="preference-title" id="events-title">Event announcements</span>
+          <span class="preference-description" id="events-description">Hear about events at the space.</span>
+        </span>
+        <span class="switch">
+          <input type="checkbox" role="switch" name="eventAnnouncements"
+                 aria-labelledby="events-title" aria-describedby="events-description">
+          <span class="track" aria-hidden="true">
+            <span class="track-word track-on">On</span>
+            <span class="track-word track-off">Off</span>
+            <span class="thumb"></span>
+          </span>
+        </span>
+      </label>
+
+      <div class="actions">
+        <p class="status" id="save-status" role="status" aria-atomic="true">
+          <svg class="status-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+            <path d="m3 8 3.25 3.25L13 4.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span id="save-message"></span>
+        </p>
+        <button class="save-button" type="submit">Save settings</button>
+      </div>
+    </form>
+  </main>
+
+  <script>
+    const storageKey = "coworking.notification-settings.v1";
+    const defaults = { bookingReminders: true, eventAnnouncements: false };
+    const form = document.getElementById("notification-settings");
+    const booking = form.elements.namedItem("bookingReminders");
+    const events = form.elements.namedItem("eventAnnouncements");
+    const status = document.getElementById("save-status");
+    const message = document.getElementById("save-message");
+
+    const messages = {
+      idle: "",
+      pending: "Unsaved changes",
+      saved: "Settings saved.",
+      error: "Couldn’t save settings. Try again."
+    };
+
+    function loadPreferences() {
+      try {
+        const stored = JSON.parse(localStorage.getItem(storageKey));
+        if (
+          typeof stored?.bookingReminders === "boolean" &&
+          typeof stored?.eventAnnouncements === "boolean"
+        ) {
+          return stored;
+        }
+      } catch {
+        return defaults;
+      }
+
+      return defaults;
+    }
+
+    function readPreferences() {
+      return {
+        bookingReminders: booking.checked,
+        eventAnnouncements: events.checked
+      };
+    }
+
+    function showStatus(state) {
+      status.dataset.state = state;
+      message.textContent = messages[state];
+    }
+
+    let savedPreferences = loadPreferences();
+    booking.checked = savedPreferences.bookingReminders;
+    events.checked = savedPreferences.eventAnnouncements;
+
+    form.addEventListener("change", () => {
+      const preferences = readPreferences();
+      const hasChanges =
+        preferences.bookingReminders !== savedPreferences.bookingReminders ||
+        preferences.eventAnnouncements !== savedPreferences.eventAnnouncements;
+
+      showStatus(hasChanges ? "pending" : "idle");
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const preferences = readPreferences();
+
+      try {
+        localStorage.setItem(storageKey, JSON.stringify(preferences));
+      } catch {
+        showStatus("error");
+        return;
+      }
+
+      savedPreferences = preferences;
+      showStatus("saved");
+    });
+  </script>
+</body>
+</html>
