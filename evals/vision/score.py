@@ -16,6 +16,11 @@ WEIGHTS = {
 }
 MINIMUM = Decimal("9.5")
 HARD_GATES = ("primary_action", "responsive_geometry", "privacy", "speed")
+SHA256 = re.compile(r"[a-f0-9]{64}")
+
+
+def is_digest(value):
+    return isinstance(value, str) and SHA256.fullmatch(value) is not None
 
 
 def screen_score(screen):
@@ -42,8 +47,14 @@ def evaluate(ballot, browser, expected_screens):
     expected = set(expected_screens)
     if not expected or len(expected) != len(expected_screens) or len(ids) != len(expected) or set(ids) != expected:
         raise ValueError("The ballot must include each required screen exactly once")
-    if not re.fullmatch(r"[a-f0-9]{64}", browser.get("evidence_sha256", "")):
+    if not is_digest(browser.get("evidence_sha256")):
         raise ValueError("A browser evidence hash is required")
+    captures = browser.get("captures", {})
+    if set(captures) != expected or not all(is_digest(value) for value in captures.values()):
+        raise ValueError("The browser receipt must identify each required capture")
+    for screen in screens:
+        if screen.get("capture_sha256") != captures[screen["id"]]:
+            raise ValueError(f"The ballot reviewed a different capture for {screen['id']}")
 
     blockers = [name for name in HARD_GATES if browser["checks"].get(name) is not True]
     scores = {}
@@ -71,11 +82,21 @@ def main():
     parser.add_argument("--browser", type=Path, required=True)
     parser.add_argument("--browser-evidence", type=Path, required=True)
     parser.add_argument("--screen", action="append", required=True)
+    parser.add_argument("--capture", action="append", nargs=2, metavar=("SCREEN", "FILE"), required=True)
     args = parser.parse_args()
     browser = json.loads(args.browser.read_text())
     if hashlib.sha256(args.browser_evidence.read_bytes()).hexdigest() != browser.get("evidence_sha256"):
         parser.error("Browser evidence differs from the tested receipt")
-    result = evaluate(json.loads(args.ballot.read_text()), browser, args.screen)
+    paths = dict(args.capture)
+    if len(paths) != len(args.capture) or set(paths) != set(args.screen):
+        parser.error("Pass exactly one capture file for each required screen")
+    try:
+        result = evaluate(json.loads(args.ballot.read_text()), browser, args.screen)
+        for screen, path in paths.items():
+            if hashlib.sha256(Path(path).read_bytes()).hexdigest() != browser["captures"][screen]:
+                raise ValueError(f"Capture file differs from the tested receipt for {screen}")
+    except (KeyError, OSError, TypeError, ValueError) as error:
+        parser.error(str(error))
     print(json.dumps(result, indent=2))
     raise SystemExit(0 if result["accepted"] else 2)
 

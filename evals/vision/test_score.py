@@ -1,18 +1,36 @@
+import hashlib
+import json
+from pathlib import Path
+import subprocess
+import sys
+from tempfile import TemporaryDirectory
 import unittest
 
 from score import HARD_GATES, WEIGHTS, evaluate
 
 
-def screen(name, score=9.5):
-    return {"id": name, "ratings": {key: {"score": score, "evidence": "Visible reading order and action"}
-                                    for key in WEIGHTS}, "findings": []}
+def digest(data):
+    return hashlib.sha256(data).hexdigest()
+
+
+def screen(name, capture_sha256, score=9.5):
+    return {
+        "id": name,
+        "capture_sha256": capture_sha256,
+        "ratings": {key: {"score": score, "evidence": "Visible reading order and action"} for key in WEIGHTS},
+        "findings": [],
+    }
 
 
 class VisionGateTests(unittest.TestCase):
     def setUp(self):
-        self.browser = {"evidence_sha256": "a" * 64, "checks": {key: True for key in HARD_GATES}}
         self.screens = ["desktop", "mobile"]
-        self.ballot = {"screens": [screen(name) for name in self.screens]}
+        self.browser = {
+            "evidence_sha256": digest(b"browser evidence"),
+            "checks": {key: True for key in HARD_GATES},
+            "captures": {name: digest(name.encode()) for name in self.screens},
+        }
+        self.ballot = {"screens": [screen(name, self.browser["captures"][name]) for name in self.screens]}
 
     def test_accepts_exact_threshold_on_both_screens(self):
         result = evaluate(self.ballot, self.browser, self.screens)
@@ -46,6 +64,33 @@ class VisionGateTests(unittest.TestCase):
         self.ballot["screens"].pop()
         with self.assertRaisesRegex(ValueError, "required screen"):
             evaluate(self.ballot, self.browser, self.screens)
+
+    def test_rejects_a_stale_ballot_for_the_same_screen_id(self):
+        self.ballot["screens"][1]["capture_sha256"] = digest(b"older mobile")
+        with self.assertRaisesRegex(ValueError, "different capture for mobile"):
+            evaluate(self.ballot, self.browser, self.screens)
+
+    def test_cli_verifies_capture_bytes_before_accepting(self):
+        with TemporaryDirectory() as root:
+            folder = Path(root)
+            ballot = folder / "ballot.json"
+            ballot.write_text(json.dumps(self.ballot))
+            browser = folder / "browser.json"
+            browser.write_text(json.dumps(self.browser))
+            evidence = folder / "observations.txt"
+            evidence.write_bytes(b"browser evidence")
+            command = [sys.executable, str(Path(__file__).with_name("score.py")),
+                       "--ballot", str(ballot), "--browser", str(browser), "--browser-evidence", str(evidence)]
+            for name in self.screens:
+                path = folder / name
+                path.write_bytes(name.encode())
+                command.extend(["--screen", name, "--capture", name, str(path)])
+            verified = subprocess.run(command, capture_output=True, text=True)
+            self.assertEqual(verified.returncode, 0, verified.stderr)
+            (folder / "mobile").write_bytes(b"older mobile")
+            stale = subprocess.run(command, capture_output=True, text=True)
+            self.assertEqual(stale.returncode, 2)
+            self.assertIn("Capture file differs from the tested receipt for mobile", stale.stderr)
 
 
 if __name__ == "__main__":
