@@ -1,0 +1,397 @@
+{
+  "exit_code": 0,
+  "browser": "Chrome/157.0.8103.79",
+  "model": "gpt-6.2-astra",
+  "renderer": "0.12.0",
+  "evaluator_thread": "01a20294-024f-7e03-be7d-ef99d4e73d0f",
+  "usage": {
+    "input_tokens": 1932037,
+    "cached_input_tokens": 1784832,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 22122,
+    "reasoning_output_tokens": 14930
+  },
+  "prompt_sha256": "022db1e848f846288a41e27db5469ed58cbdbc89632209359927e99dd11336b5",
+  "trace_sha256": "e0ac50a6d41c5536f3dbd2dc7f152e341d4b30d84c6f9f7bad5a3ff82234ea21",
+  "verified_screens": 8,
+  "calibration": [
+    7,
+    5,
+    6,
+    5
+  ],
+  "screens": {
+    "1A-1440": {
+      "coherence": 9,
+      "originality": 9,
+      "craft": 9,
+      "usability": 8.5,
+      "weighted_score": 8.9,
+      "rating_evidence": {
+        "coherence": "The no-match heading and yellow suggested search share the left side of the panel, giving the eye a clear next step.",
+        "originality": "A dashed chain-saw outline on a pegboard becomes a solid folding saw when the search succeeds.",
+        "craft": "The hinge, teeth and pegboard fasteners make both tools recognizable. The product name has the strongest type in the result panel.",
+        "usability": "A visible keyboard outline moves from the suggestion to the match-count heading directly above the available tool."
+      },
+      "primary_action": {
+        "input": "Three Tabs, then Enter on “Search for pruning saw”.",
+        "expected": "Replace the chain-saw empty state with one available Folding Pruning Saw.",
+        "observed": "The field changed to “pruning saw”. Focus landed on “1 match for ‘pruning saw’”, followed by one Folding Pruning Saw marked “Available”."
+      },
+      "edge_observation": "Manual Search also found the saw. Deleting the query left the previous result visible until submission. Submitting the blank field produced “Enter a tool name” and restored the suggestion.",
+      "weakness": "Even after blank submission, the pegboard still depicts a missing chain saw. The illustration implies a query the user has erased.",
+      "repair": "Show the empty-query prompt as soon as the last character is deleted. Use the bare pegboard for that state.",
+      "strength": "The illustration explains the difference between an unavailable tool and an available alternative.",
+      "weighted": 8.9,
+      "case": "empty-search",
+      "arm": "parent",
+      "html_sha256": "e5ec03657c90a6d37a5245497188d3ede2c139416a230936f2df60cb749e6a0e",
+      "screenshots": {
+        "before": {
+          "sha256": "0349f8efc78365954b61b4e4c9e024eb1d249fec2552df10973f532e60b62b46",
+          "tool_calls": [
+            "item_2"
+          ],
+          "path": ".context/factory/benchmark-v1/live-empty-intent-ballot/browser-evidence/1A-1440-before.png"
+        },
+        "after": {
+          "sha256": "3ceda7d0762d22ec01fa5e822f21cd6318e256a3be846e3fb114dd193eb1eae8",
+          "tool_calls": [
+            "item_5"
+          ],
+          "path": ".context/factory/benchmark-v1/live-empty-intent-ballot/browser-evidence/1A-1440-after.png"
+        }
+      }
+    },
+    "1A-390": {
+      "coherence": 9,
+      "originality": 9,
+      "craft": 8.5,
+      "usability": 8.5,
+      "weighted_score": 8.8,
+      "rating_evidence": {
+        "coherence": "The search field and Search button share one row. The full-width yellow suggestion comes before the illustration.",
+        "originality": "The pegboard becomes the lower half of the card, preserving the missing-tool outline and its illustrated replacement.",
+        "craft": "The suggested query and product name each fit on one line. The small stock count sits on a separate line beneath the button.",
+        "usability": "The suggestion, focused match heading, product name and checked availability badge were visible without scrolling."
+      },
+      "primary_action": {
+        "input": "Three Tabs, then Enter on the yellow suggestion.",
+        "expected": "Show the available pruning saw and give the keyboard user a clear result.",
+        "observed": "The query changed to “pruning saw”. A visible outline surrounded the one-match heading above Folding Pruning Saw and its “Available” badge."
+      },
+      "edge_observation": "Editing back to “chain saw” and activating Search restored the original no-match state. Clearing a successful query required another submission to show “Enter a tool name”.",
+      "weakness": "With the field empty, the previous product name, stock badge and large saw drawing still look like the current answer.",
+      "repair": "Replace the result card with the empty-query prompt immediately on clear, keeping focus in the field.",
+      "strength": "The phone layout gives the recovery action the full content width while keeping the tool recognizable.",
+      "weighted": 8.8,
+      "case": "empty-search",
+      "arm": "parent",
+      "html_sha256": "e5ec03657c90a6d37a5245497188d3ede2c139416a230936f2df60cb749e6a0e",
+      "screenshots": {
+        "before": {
+          "sha256": "f607de9a442f588f407fb8c1039cbcab7099ea286454edd5d2ff18a6aeace6e4",
+          "tool_calls": [
+            "item_9"
+          ],
+          "path": ".context/factory/benchmark-v1/live-empty-intent-ballot/browser-evidence/1A-390-before.png"
+        },
+        "after": {
+          "sha256": "d3000c6d9522b6009eb7e690c889a08f555559e80a49104f659e80f9917dbce1",
+          "tool_calls": [
+            "item_10",
+            "item_11"
+          ],
+          "path": ".context/factory/benchmark-v1/live-empty-intent-ballot/browser-evidence/1A-390-after.png"
+        }
+      }
+    },
+    "1B-1440": {
+      "coherence": 8.5,
+      "originality": 8,
+      "craft": 8.5,
+      "usability": 9,
+      "weighted_score": 8.45,
+      "rating_evidence": {
+        "coherence": "The joined search field and button, divider and related-search ticket align in one narrow central column.",
+        "originality": "The pale-green ticket uses notches and a perforated stock-count stub to connect the suggestion with inventory.",
+        "craft": "The suggestion has a distinct focus outline. After activation, the input border and visible clear control identify the active field.",
+        "usability": "Focus returns to an editable query, and the accessibility status names the tool and its availability."
+      },
+      "primary_action": {
+        "input": "Three Tabs, then Enter on “Search for pruning saw”.",
+        "expected": "Run the suggested query and show the available tool.",
+        "observed": "One Folding Pruning Saw appeared with “Available”. The searchbox regained focus with “pruning saw” entered."
+      },
+      "edge_observation": "Escape and select-all followed by Backspace both immediately produced “Enter a search term”. The separate Search button returned the correct results for both tested queries.",
+      "weakness": "On success, the repeated query is much larger than the product name. The user has to read past the most prominent text to identify what is available.",
+      "repair": "Use the larger result type for Folding Pruning Saw and reduce the query to a match-count caption.",
+      "strength": "A keyboard user can read the result and immediately revise or clear the query.",
+      "weighted": 8.45,
+      "case": "empty-search",
+      "arm": "candidate",
+      "html_sha256": "9a92c472e93fe7d822768095d2bc8ff0ba938e767a1d019791b62f703fe2a9fb",
+      "screenshots": {
+        "before": {
+          "sha256": "1dd4bdb699f17dcc8a4c6ae2b1261a8a4c13cb885adf2a7b5c85da8c360a73e9",
+          "tool_calls": [
+            "item_14"
+          ],
+          "path": ".context/factory/benchmark-v1/live-empty-intent-ballot/browser-evidence/1B-1440-before.png"
+        },
+        "after": {
+          "sha256": "2f64a1704d193cde522219690f633ccaf0006a3e3a3e81798cbd8539732172a2",
+          "tool_calls": [
+            "item_17"
+          ],
+          "path": ".context/factory/benchmark-v1/live-empty-intent-ballot/browser-evidence/1B-1440-after.png"
+        }
+      }
+    },
+    "1B-390": {
+      "coherence": 8.5,
+      "originality": 8,
+      "craft": 8,
+      "usability": 9,
+      "weighted_score": 8.35,
+      "rating_evidence": {
+        "coherence": "The form, no-match message and suggestion fit together near the top of the viewport.",
+        "originality": "The notched ticket remains recognizable at phone width, and the successful result gains a small folding-saw illustration.",
+        "craft": "The product name fits on one line, but the stock stub breaks “1 tool available” across three lines.",
+        "usability": "The focused field exposes its clear control while the complete product row remains visible below."
+      },
+      "primary_action": {
+        "input": "Three Tabs, then Enter on the suggested search.",
+        "expected": "Show one available Folding Pruning Saw at the same viewport size.",
+        "observed": "The product and “Available” appeared together. Focus returned to the populated searchbox, and the accessibility status confirmed the match."
+      },
+      "edge_observation": "Activating the visible × immediately removed the result, showed “Enter a search term” and kept focus in the field. Keyboard deletion also worked. A manual “chain saw” search restored the suggestion.",
+      "weakness": "The narrow stock stub gives a single count nearly a third of the ticket and separates “tool” from “available”.",
+      "repair": "Use “1 available” on the mobile stub and give the suggested action the recovered width.",
+      "strength": "The clear control delivers immediate, visible recovery without a second submission.",
+      "weighted": 8.35,
+      "case": "empty-search",
+      "arm": "candidate",
+      "html_sha256": "9a92c472e93fe7d822768095d2bc8ff0ba938e767a1d019791b62f703fe2a9fb",
+      "screenshots": {
+        "before": {
+          "sha256": "65db7af98c9f024f64b52f3495c91f86b759b6a0761482920fe55221dcb4e122",
+          "tool_calls": [
+            "item_20"
+          ],
+          "path": ".context/factory/benchmark-v1/live-empty-intent-ballot/browser-evidence/1B-390-before.png"
+        },
+        "after": {
+          "sha256": "35573cd22db66e477ca8fe140f7e54eeecd19f1f4577e6b36c00056ba6e4fddd",
+          "tool_calls": [
+            "item_21"
+          ],
+          "path": ".context/factory/benchmark-v1/live-empty-intent-ballot/browser-evidence/1B-390-after.png"
+        }
+      }
+    },
+    "2A-1440": {
+      "coherence": 8.5,
+      "originality": 9,
+      "craft": 8.5,
+      "usability": 9,
+      "weighted_score": 8.75,
+      "rating_evidence": {
+        "coherence": "The ruled empty schedule ends before the explicit “Available shift” label and orange offer.",
+        "originality": "The taped carton, barcode and dotted print texture identify Packing at a glance.",
+        "craft": "The dark Reserve button has a conspicuous keyboard ring against the orange surface. The booked card keeps its alignment as it moves up.",
+        "usability": "One Tab reaches Reserve. The empty message disappears and a focused, checkmarked confirmation replaces the action."
+      },
+      "primary_action": {
+        "input": "Tab to “Reserve shift” on Packing, Wednesday 4–6 pm, then Enter.",
+        "expected": "One booking under Upcoming shifts with an identifiable confirmation and focus target.",
+        "observed": "Exactly one Packing entry appeared under Upcoming shifts with Wednesday 4–6 pm. The reservation button disappeared. Focus moved to the outlined “Shift booked” confirmation."
+      },
+      "edge_observation": "A second Enter left one booking. Reload retained the booked shift.",
+      "weakness": "The time is a small inline detail beneath “Packing”, while the parcel occupies roughly a third of the card. The scheduling decision gets less emphasis than the activity.",
+      "repair": "Increase the size and weight of the day and time together so they can be scanned alongside the shift name.",
+      "strength": "Moving the recognizable orange card into Upcoming shifts makes the change in ownership easy to follow.",
+      "weighted": 8.75,
+      "case": "empty-shifts",
+      "arm": "parent",
+      "html_sha256": "9d4e9a3af73d94e3871c9c243db0bd2c5861d7525a9dcd92d87a3b0241259175",
+      "screenshots": {
+        "before": {
+          "sha256": "abf75a636f691a3eb9869e6d51a31076a28c59347a00871511ef468ee11e3f80",
+          "tool_calls": [
+            "item_25"
+          ],
+          "path": ".context/factory/benchmark-v1/live-empty-intent-ballot/browser-evidence/2A-1440-before.png"
+        },
+        "after": {
+          "sha256": "11833982117c10d1576ffd69cfd0192aad3e4b7001d6684ac692cf3a66e584cb",
+          "tool_calls": [
+            "item_30"
+          ],
+          "path": ".context/factory/benchmark-v1/live-empty-intent-ballot/browser-evidence/2A-1440-after.png"
+        }
+      }
+    },
+    "2A-390": {
+      "coherence": 9,
+      "originality": 9,
+      "craft": 8.5,
+      "usability": 8.5,
+      "weighted_score": 8.8,
+      "rating_evidence": {
+        "coherence": "Packing, Wednesday and the time form a readable stack beside the carton, with the action spanning the row below.",
+        "originality": "The parcel becomes a compact illustration beside the shift details. Its packing tape and barcode survive the reduction.",
+        "craft": "The illustration clears the text and button. The mint success strip inherits the full width and outlined shape of the former control.",
+        "usability": "The entire offer fits in view. Booking moves focus to a visible confirmation directly beneath the same day and time."
+      },
+      "primary_action": {
+        "input": "Tab once, then Enter on “Reserve shift”.",
+        "expected": "Move the Wednesday 4–6 pm Packing offer into Upcoming shifts once.",
+        "observed": "One Packing card appeared below Upcoming shifts. The full-width Reserve button became a focused “Shift booked” paragraph with a checkmark."
+      },
+      "edge_observation": "Enter on the confirmation created no duplicate. Reload showed the single booked card.",
+      "weakness": "The full-width focused confirmation still looks like a button, inviting another press after the task is complete.",
+      "repair": "Focus the booked card and show a compact “Shift booked” badge beside the shift details.",
+      "strength": "The volunteer can identify the job, read the time and reach the action without scrolling past the artwork.",
+      "weighted": 8.8,
+      "case": "empty-shifts",
+      "arm": "parent",
+      "html_sha256": "9d4e9a3af73d94e3871c9c243db0bd2c5861d7525a9dcd92d87a3b0241259175",
+      "screenshots": {
+        "before": {
+          "sha256": "29d3345065e5c68f9e1e0481a9a48238915a1c082704f48480a88acce26a7abe",
+          "tool_calls": [
+            "item_26"
+          ],
+          "path": ".context/factory/benchmark-v1/live-empty-intent-ballot/browser-evidence/2A-390-before.png"
+        },
+        "after": {
+          "sha256": "8b45bde398183d19d1ede3011cc773921bd96d9733b5bc0f8a5495c45a16eef4",
+          "tool_calls": [
+            "item_31"
+          ],
+          "path": ".context/factory/benchmark-v1/live-empty-intent-ballot/browser-evidence/2A-390-after.png"
+        }
+      }
+    },
+    "2B-1440": {
+      "coherence": 8.5,
+      "originality": 7.5,
+      "craft": 9,
+      "usability": 9,
+      "weighted_score": 8.4,
+      "rating_evidence": {
+        "coherence": "The tinted date column, shift name and right-aligned Reserve action establish a clear reading order.",
+        "originality": "The divided schedule ticket gives the time a distinct place, though the green card and status pills are familiar.",
+        "craft": "The date divider, type alignment and whole-card focus outline keep the booked record easy to read.",
+        "usability": "The checked “Booked” badge appears inside the focused record, and the accessibility status reads “Shift reserved.”"
+      },
+      "primary_action": {
+        "input": "Tab once, then Enter on “Reserve shift” for Packing, Wednesday 4–6 pm.",
+        "expected": "One booked shift under Upcoming shifts with confirmation and visible focus.",
+        "observed": "One Packing article moved into the Upcoming shifts region. It showed Wednesday 4–6 pm and “Booked”. Focus surrounded the article, and the Reserve button disappeared."
+      },
+      "edge_observation": "A second Enter left one booking. The optional reload check restored “No shifts scheduled” and the available offer. Reserving again produced one booking.",
+      "weakness": "The desktop row places Reserve far from Packing. After booking, the focus outline encloses a broad empty area to the right of the confirmation.",
+      "repair": "Tighten the row width to bring the action closer to the shift it affects.",
+      "strength": "The prominent time block makes it easy to decide whether the shift fits, and the focused record keeps that context after booking.",
+      "weighted": 8.4,
+      "case": "empty-shifts",
+      "arm": "candidate",
+      "html_sha256": "a1e7f3b2923c7d9a9b18d9f79a5d9a0645414ee9c431fcd895af67d0f60e47ea",
+      "screenshots": {
+        "before": {
+          "sha256": "7a4fb8b7e1219bc399ef2a87f42f5aa8c607af00202688394ebf43deec3e7456",
+          "tool_calls": [
+            "item_27"
+          ],
+          "path": ".context/factory/benchmark-v1/live-empty-intent-ballot/browser-evidence/2B-1440-before.png"
+        },
+        "after": {
+          "sha256": "771ac7636857ccd0848ac8bcf47b5744433a58cac1b2947083445e0235903fb7",
+          "tool_calls": [
+            "item_32"
+          ],
+          "path": ".context/factory/benchmark-v1/live-empty-intent-ballot/browser-evidence/2B-1440-after.png"
+        }
+      }
+    },
+    "2B-390": {
+      "coherence": 9,
+      "originality": 8,
+      "craft": 9,
+      "usability": 9,
+      "weighted_score": 8.7,
+      "rating_evidence": {
+        "coherence": "Wednesday and 4–6 pm occupy the left cell, Packing and its status occupy the right, and Reserve gets a full-width row.",
+        "originality": "The two-column ticket preserves the relationship between time and task on a narrow screen.",
+        "craft": "The day, time, title and badge fit without awkward wrapping. The focus ring frames both cells after booking.",
+        "usability": "One keyboard action changes the available ticket into a compact booked record with its complete schedule visible."
+      },
+      "primary_action": {
+        "input": "Tab to the full-width “Reserve shift” button, then Enter.",
+        "expected": "Confirm exactly one Wednesday 4–6 pm Packing shift under Upcoming shifts.",
+        "observed": "The empty message and action row disappeared. One Packing article showed “Booked”, retained the day and time, and received visible keyboard focus."
+      },
+      "edge_observation": "A second Enter left one record. Reload returned the shift to Available. I reserved it again and verified one booked article.",
+      "weakness": "Initially, “No shifts scheduled” sits immediately above a dated shift. The small Available pill carries most of the distinction between the schedule and the offer.",
+      "repair": "Place a visible “Available shift” label above the ticket and remove it when the booking moves into Upcoming shifts.",
+      "strength": "The phone layout preserves the two details a volunteer needs to compare first: when the shift runs and what the work is.",
+      "weighted": 8.7,
+      "case": "empty-shifts",
+      "arm": "candidate",
+      "html_sha256": "a1e7f3b2923c7d9a9b18d9f79a5d9a0645414ee9c431fcd895af67d0f60e47ea",
+      "screenshots": {
+        "before": {
+          "sha256": "fbdf0a0740bd74aa58f576c38b8a887805c79c14c83b42b9121d45e45b1d05a2",
+          "tool_calls": [
+            "item_28"
+          ],
+          "path": ".context/factory/benchmark-v1/live-empty-intent-ballot/browser-evidence/2B-390-before.png"
+        },
+        "after": {
+          "sha256": "4c38a2a535706680298c134121a7f9a75ce28d80ea3ad2a49e09bdcaf465a8d4",
+          "tool_calls": [
+            "item_33"
+          ],
+          "path": ".context/factory/benchmark-v1/live-empty-intent-ballot/browser-evidence/2B-390-after.png"
+        }
+      }
+    }
+  },
+  "preference": {
+    "1": {
+      "winner": "A",
+      "reason": "A gives the actual tool visual priority and uses the pegboard to explain both the missing item and its available alternative at both widths. B handles clearing better and keeps the field ready for editing."
+    },
+    "2": {
+      "winner": "A",
+      "reason": "A leads narrowly. Its visible “Available shift” label and recognizable parcel card make the move from offer to booking easier to follow across both sizes. B presents the time more clearly and has the better post-booking focus target."
+    }
+  },
+  "captures": {
+    "directory": "/Users/chris.s/conductor/workspaces/design-mcp/bern/.context/factory/benchmark-v1/live-empty-intent-ballot/browser-evidence",
+    "filenames": [
+      "<screen>-before.png",
+      "<screen>-after.png"
+    ],
+    "raw_png_count": 16
+  },
+  "scope": "Two original empty-state briefs, freshly matched live. Diagnostic anchors and one critic round.",
+  "control_source": "81ad2b3c2b877451f3c17859ab5f54f4c9c67a44",
+  "candidate_source": "aaa7e787fe995053d9b642e7d191fdd3d7d9ad1b",
+  "raw_review_directory": ".context/factory/benchmark-v1/live-empty-intent-ballot",
+  "pairs": {
+    "empty-search": {
+      "parent": 8.85,
+      "candidate": 8.4,
+      "preference": "A"
+    },
+    "empty-shifts": {
+      "parent": 8.78,
+      "candidate": 8.55,
+      "preference": "A"
+    }
+  },
+  "reported_uncached_input_tokens": 147205
+}
