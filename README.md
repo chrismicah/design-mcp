@@ -67,15 +67,23 @@ The agent calls `direct` first. Pass the audience, task, real content, and any e
 
 Try “calmer” after the first draft. The result adjusts focal spacing, the size of the display type, accent use, and motion timing while preserving the product facts and main task.
 
+## Review an existing interface
+
+- **A public website.** Run `design-mcp review https://example.com --playwriter /path/to/playwriter`. The command uses a separate Chrome profile and saves a local preview with a measured finding. [Browser setup](design_mcp/review/README.md)
+- **The active Chrome tab.** Load the extension from the folder printed by `design-mcp review --extension-path`. Open the toolbar popup, choose **Review this page**, and follow its one-time host setup. [Extension setup](design_mcp/review/README.md#set-up-the-extension)
+- **Your SwiftUI or Electron app.** Use the app-specific exporter, then run `design-mcp review-app capture.json` to check the visible controls for clipping and occlusion. [Swift exporter](integrations/desktop/SwiftCapture.swift) · [Electron exporter](integrations/desktop/electron.mjs)
+
+Hosted checks covered a public URL on macOS, the Chrome extension on Linux, and owned SwiftUI and Electron fixtures on macOS 15 arm64. The combined install, reference-Mac latency, independent design review, and final GPT Computer Use smoke are open. [Smoke receipts](SMOKE-RECEIPTS.md)
+
 ## Compatibility
 
-`DESIGN_MCP_SURFACE=v2` exposes the three tools above. `both` (the default) also exposes the 14 historical pattern, token, library, and analysis tools. `legacy` exposes only those historical tools. In the legacy search, request `visual_recipes` or `design_system` explicitly in `fields` to include the corresponding guidance.
+The default serves `direct`, `react`, and `check` from the reviewed catalog. Set `DESIGN_MCP_SURFACE=both` to add the 14 historical pattern, token, library, and analysis tools, or `legacy` for the historical tools alone. In the legacy search, request `visual_recipes` or `design_system` explicitly in `fields` to include the corresponding guidance.
 
 The package requires Python 3.10 or later. Python 3.10 selects FastMCP 4.1.8. Python 3.11 and later select the 4.2 patch series starting at 4.2.4. [FastMCP 4.1.8](https://pypi.org/project/fastmcp/4.1.8/) · [FastMCP 4.2.4](https://pypi.org/project/fastmcp/4.2.4/)
 
 Reviewed directions work offline. A checkout or older installation with the bundled pattern corpus uses its local copy. In a slim installation, the first tool call that needs historical patterns fetches 10,092,399 bytes from a pinned Git commit and verifies SHA-256 `dd51bf8db34f9295253b846ee8719cfd9b76b775ff029f591e49d9e7d16806a5`. Later calls use the local cache. [Pinned pattern corpus](https://github.com/chrismicah/design-mcp/blob/82fe6e3749acccf80aecfd523e531be4302865e3/design_mcp/data/patterns.json)
 
-Plain `design-mcp doctor` works offline and prints the cache location. Run `design-mcp doctor --repair` to prepare that cache before going offline or to replace a corrupt copy. Repair uses a verified bundle when available and otherwise needs access to the pinned download.
+Plain `design-mcp doctor` works offline and checks the selected tool surface. In a legacy mode it also checks the corpus and local cache. Run `design-mcp doctor --repair` to prepare that cache before going offline or to replace a corrupt copy. Repair uses a verified bundle when available and otherwise needs access to the pinned download.
 
 The new direction library and the historical pattern data have separate roles. Historical metadata may be templated, incomplete, or missing its original screenshot. Treat source records as review inputs. The directions carry observable source evidence or clearly labelled hypotheses. The direction and results can be checked separately.
 

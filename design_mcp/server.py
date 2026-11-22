@@ -1,6 +1,7 @@
 from fastmcp import FastMCP
 from anyio import to_thread
 from mcp.types import ToolAnnotations
+from . import DEFAULT_SURFACE
 from .schema import DesignPattern, Platform, LayoutType
 from .database import DesignDatabase
 from .resources import ResourceError, read_json
@@ -17,7 +18,7 @@ from functools import cache, partial
 from pathlib import Path
 import os
 
-SURFACE = os.environ.get("DESIGN_MCP_SURFACE", "both").strip().lower()
+SURFACE = os.environ.get("DESIGN_MCP_SURFACE", DEFAULT_SURFACE).strip().lower()
 if SURFACE not in {"legacy", "both", "v2"}:
     raise ValueError("DESIGN_MCP_SURFACE must be legacy, both, or v2")
 

@@ -22,9 +22,12 @@ async def main():
     outcomes = {}
     with TemporaryDirectory(prefix="design-mcp-smoke-") as folder:
         Path(folder, "index.html").write_text(SAMPLE, encoding="utf-8")
-        mode = os.environ.get("DESIGN_MCP_SURFACE", "both")
-        transport = StdioTransport(command=command, args=arguments,
-                                   env={"DESIGN_MCP_SURFACE": mode, "FASTMCP_SHOW_SERVER_BANNER": "false"})
+        surface = os.environ.get("DESIGN_MCP_SURFACE")
+        mode = "v2" if surface is None else surface.strip().lower()
+        env = {"FASTMCP_SHOW_SERVER_BANNER": "false"}
+        if surface is not None:
+            env["DESIGN_MCP_SURFACE"] = mode
+        transport = StdioTransport(command=command, args=arguments, env=env)
         async with Client(transport, timeout=30) as client:
             tools = await client.list_tools()
             handlers = {

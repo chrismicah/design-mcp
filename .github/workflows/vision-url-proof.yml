@@ -1,0 +1,70 @@
+name: Installed public URL review proof
+
+on:
+  push:
+    branches: [design-mcp/vision-url-proof, design-mcp/review-integration]
+
+permissions:
+  contents: read
+
+jobs:
+  review:
+    runs-on: macos-15
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Install the candidate and the pinned browser tools
+        shell: bash
+        run: |
+          python -m venv "$RUNNER_TEMP/design-review"
+          "$RUNNER_TEMP/design-review/bin/python" -m pip install .
+          npm install --prefix "$RUNNER_TEMP/playwriter" --ignore-scripts --no-fund --no-audit 'playwriter@0.12.0'
+          curl -fsSL https://storage.googleapis.com/chrome-for-testing-public/158.0.8127.36/mac-arm64/chrome-mac-arm64.zip -o "$RUNNER_TEMP/chrome.zip"
+          unzip -q "$RUNNER_TEMP/chrome.zip" -d "$RUNNER_TEMP/browser"
+      - name: Capture the public address-form reference
+        shell: bash
+        run: |
+          proof="$RUNNER_TEMP/review-proof"
+          mkdir -p "$proof" "$RUNNER_TEMP/review-tmp"
+          chrome="$RUNNER_TEMP/browser/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
+          playwright="$RUNNER_TEMP/playwriter/node_modules/.bin/playwriter"
+          "$chrome" --version > "$proof/browser-version.txt"
+          "$playwright" --version > "$proof/playwriter-version.txt"
+          cd "$RUNNER_TEMP"
+          TMPDIR="$RUNNER_TEMP/review-tmp" "$RUNNER_TEMP/design-review/bin/design-mcp" review \
+            https://designsystem.digital.gov/templates/form-templates/address-form/ \
+            --playwriter "$playwright" --chrome "$chrome" --out "$proof/review" --json \
+            > "$proof/result.json" 2> "$proof/attempt.log"
+          python - "$proof" <<'PY'
+          from pathlib import Path
+          import json, sys
+          root = Path(sys.argv[1])
+          result = json.loads((root/'result.json').read_text())
+          assert result['ok'], result
+          assert result['frontier']['status'] == 'not-run'
+          assert result['masked']['field'] > 0, result
+          assert 0 < result['regions'] <= 16, result
+          for name in ('evidence.json','preview.html'):
+              file = root/'review'/result['capture_id']/name
+              assert file.is_file() and file.stat().st_size > 0
+          evidence = json.loads((root/'review'/result['capture_id']/'evidence.json').read_text())
+          assert {frame['viewport']['width'] for frame in evidence['frames']} == {390, 1440}
+          for frame in evidence['frames']:
+              regions = frame['regions']
+              assert 0 < len(regions) <= 8, regions
+              assert frame['masks']['applied'] and frame['masks']['counts']['field'] > 0
+              assert any(region['name'] == 'Street address' and region['masked'] for region in regions), regions
+          print(json.dumps({key:result[key] for key in ('url','critique','masked','regions','timings_ms')},indent=2))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: installed-url-review-receipt
+          path: ${{ runner.temp }}/review-proof/
+          if-no-files-found: warn
+          retention-days: 7

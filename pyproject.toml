@@ -49,11 +49,12 @@ design_mcp = [
     "data/*.json",
     "data/tokens/*.json",
     "prompts/*.md",
+    "review/extension/*",
 ]
 
 [tool.setuptools.exclude-package-data]
-design_mcp = ["data/patterns.json"]
-"design_mcp.data" = ["patterns.json"]
+design_mcp = ["data/patterns.json", "data/batch_list.json", "data/remaining_vision.json", "data/vision_results.json"]
+"design_mcp.data" = ["patterns.json", "batch_list.json", "remaining_vision.json", "vision_results.json"]
 
 [tool.pytest.ini_options]
 asyncio_mode = "strict"

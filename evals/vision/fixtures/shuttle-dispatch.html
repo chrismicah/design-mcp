@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Evening shuttle dispatch</title>
+<style>
+  :root {font: 16px Georgia, serif; color:#23211e; background:#f6f2eb}
+  main {width: 790px; margin: 36px auto; padding: 16px}
+  h1 {font-size: 42px; margin:0 0 6px}
+  .muted {color:#9d958d}
+  .controls {display:flex; gap: 12px; margin: 24px 0}
+  button {font:inherit; min-height: 42px; border:1px solid #928677; background:#f6f2eb; padding:0 16px}
+  button[aria-pressed="true"] {background:#2b2722; color:#fff}
+  table {width:100%; border-collapse:collapse; text-align:left}
+  th,td {padding:16px 0; border-bottom:1px solid #bfb4a5}
+  label {display:block; margin:30px 0 8px}
+  input {font:inherit}
+</style>
+<main>
+  <h1>Evening shuttle dispatch</h1>
+  <p class="muted">Boarding begins at 6:30 p.m.</p>
+  <div class="controls">
+    <button type="button" id="all" aria-pressed="true">All routes</button>
+    <button type="button" id="delayed" aria-pressed="false">Delayed routes</button>
+  </div>
+  <p role="status" id="status">3 routes shown</p>
+  <table><thead><tr><th>Route</th><th>Status</th></tr></thead><tbody>
+    <tr data-delayed><th>Market loop</th><td>8 minutes late</td></tr>
+    <tr><th>River branch</th><td>Boarding</td></tr>
+    <tr><th>Library stop</th><td>Boarding</td></tr>
+  </tbody></table>
+  <label for="ops-note">Dispatcher's private note</label>
+  <input id="ops-note" value="fixture-redaction-sentinel-8d31">
+</main>
+<script>
+  const all = document.getElementById('all');
+  const delayed = document.getElementById('delayed');
+  const status = document.getElementById('status');
+  const rows = document.querySelectorAll('tbody tr');
+  function filter(onlyDelayed) {
+    all.setAttribute('aria-pressed', String(!onlyDelayed));
+    delayed.setAttribute('aria-pressed', String(onlyDelayed));
+    for (const row of rows) row.hidden = onlyDelayed && !row.hasAttribute('data-delayed');
+    status.textContent = onlyDelayed ? '1 route shown' : '3 routes shown';
+  }
+  delayed.addEventListener('click', () => filter(true));
+  all.addEventListener('click', () => filter(false));
+</script>
+</html>
