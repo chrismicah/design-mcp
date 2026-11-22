@@ -6,6 +6,8 @@ Codex CLI 0.170.0 called `direct` through a fresh pipx install of `fd6035d` and 
 
 GPT Computer Use opened a separate Chrome window. Its clipboard operation conflicted before navigation, and the isolated browser connector was unavailable. The fresh-package smoke therefore has Playwriter interaction evidence. Visual acceptance and blinded comparison remain open. [Benchmark](EVALS.md)
 
+On November 22, GPT Computer Use could enumerate native apps and the browser access host still reported unavailable. Chrome was closed during that check. The native smoke was deferred. Separately, hosted Playwriter verified invalid submission, keyboard entry, local confirmation, and editing on the two exact maintenance benchmark pages at both widths. [Maintenance replay](evidence/benchmark-v1/maintenance-actions.json)
+
 ## November 20 source-checkout smoke
 
 The owner rejected the original visual output after the functional pass. The theatre follow-up has its own direction and browser receipt. [Theatre call sheet revision](evidence/rebuild/live-smoke/theatre-revision.md)

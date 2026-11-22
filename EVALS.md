@@ -15,6 +15,8 @@ The first dashboard attempt called `direct` successfully and reached the client�
 
 GitHub’s standard macOS runner captured the judged pairs with Playwriter 0.12.0 and Chrome for Testing 158.0.8127.36 at both preset widths. All 56 judged captures had no page errors or document-level horizontal overflow. The critic found that the maintenance field still clipped its hint within the control. [First run](https://github.com/chrismicah/design-mcp/actions/runs/44984687051) · [Second run](https://github.com/chrismicah/design-mcp/actions/runs/44988686124) · [Third run](https://github.com/chrismicah/design-mcp/actions/runs/44991749251)
 
+An interaction replay on the exact maintenance pages passed all four arm-by-viewport checks. Empty submission focused the invalid Building field. Keyboard entry and urgency selection produced a local confirmation with the supplied details. Editing restored focus and retained every value. At 390 px the frozen v2 hint measured 124 px of text in 93 px of available space. Its first field began 110 px lower than in the plain layout. The form candidate must fix the geometry and preserve the workflow. [Keyboard and geometry receipts](evidence/benchmark-v1/maintenance-actions.json) · [Hosted replay](https://github.com/chrismicah/design-mcp/actions/runs/44992860729)
+
 | Median per judged brief | Input tokens | Cached input | Output tokens | Seconds |
 | --- | ---: | ---: | ---: | ---: |
 | Plain generator | 20,084 | 5,568 | 21,269 | 431 |
