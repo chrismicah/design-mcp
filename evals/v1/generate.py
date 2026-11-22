@@ -71,6 +71,15 @@ def hosted_mcp_table(url, name):
             'default_tools_approval_mode="writes"}}')
 
 
+def loopback_mcp_table(url, name, verified_read_only_tools):
+    match = re.fullmatch(r"http://127\.0\.0\.1:([1-9][0-9]{0,4})/mcp", url)
+    if not match or int(match.group(1)) > 65535 or not verified_read_only_tools:
+        raise ValueError("The local comparator needs a loopback /mcp URL and reviewed tools")
+    return (f"mcp_servers={{{json.dumps(name)}={{url={json.dumps(url)},required=true,"
+            f"enabled_tools={json.dumps(verified_read_only_tools)},"
+            'default_tools_approval_mode="approve"}}')
+
+
 def read_trace(path):
     events = []
     for line in path.read_text(encoding="utf-8").splitlines():
@@ -130,8 +139,24 @@ def shadcn_item_names(item):
     return names
 
 
+def matched_response_text(calls, required_hashes):
+    matched = set()
+    for item in calls:
+        result = item.get("result")
+        if item["tool"] not in required_hashes or not isinstance(result, dict):
+            continue
+        content = result.get("content")
+        if result.get("is_error") or result.get("isError") or not isinstance(content, list):
+            continue
+        parts = [part["text"] for part in content if isinstance(part, dict)
+                 and part.get("type") == "text" and isinstance(part.get("text"), str)]
+        if parts and sha256("\n".join(parts).strip().encode()) == required_hashes[item["tool"]]:
+            matched.add(item["tool"])
+    return sorted(matched)
+
+
 def parse_cell(events, expect_mcp, server_name="design-mcp", expected_tool="direct", expected_direction=None,
-               required_shadcn_items=()):
+               required_shadcn_items=(), required_response_text_sha256=None):
     result = {}
     completed_items = [event["item"] for event in events if event.get("type") == "item.completed"]
     turn = next((e for e in reversed(events) if e.get("type") == "turn.completed"), {})
@@ -174,6 +199,11 @@ def parse_cell(events, expect_mcp, server_name="design-mcp", expected_tool="dire
         result["matched_shadcn_items"] = matched
         if result["status"] == "passed" and not matched:
             result["status"] = "shadcn-relevant-item-missing"
+    if expect_mcp and required_response_text_sha256:
+        matched = matched_response_text(eligible_calls, required_response_text_sha256)
+        result["matched_response_tools"] = matched
+        if result["status"] == "passed" and not matched:
+            result["status"] = "required-mcp-response-missing"
     match = re.fullmatch(r"\s*```html\s*\n(.*)\n```\s*", messages[-1], re.S | re.I) if messages else None
     html = match.group(1) + "\n" if match else None
     if not html or not re.search(r"<body(?:\s[^>]*)?>", html, re.I):
@@ -196,6 +226,9 @@ def run_cell(args, case, arm):
     required_shadcn_items = args.required_shadcn_items if arm != "none" else []
     if required_shadcn_items:
         identity["required_shadcn_items"] = required_shadcn_items
+    required_response_text_sha256 = args.required_response_text_sha256 if arm != "none" else {}
+    if required_response_text_sha256:
+        identity["required_response_text_sha256"] = required_response_text_sha256
     if args.no_shell:
         identity["shell_tool"] = False
     if arm not in {"none", "v2"}:
@@ -205,6 +238,7 @@ def run_cell(args, case, arm):
         if (receipt.get("shell_tool", True) != (not args.no_shell)
                 or receipt.get("expected_direction") != expected_direction
                 or receipt.get("required_shadcn_items", []) != required_shadcn_items
+                or receipt.get("required_response_text_sha256", {}) != required_response_text_sha256
                 or any(receipt.get(key) != value for key, value in identity.items())):
             raise RuntimeError(f"The run configuration changed for {cell}. Use a new output directory.")
         return receipt
@@ -224,7 +258,8 @@ def run_cell(args, case, arm):
             timed_out = True
     result, html = parse_cell(read_trace(trace_path), expect_mcp=arm != "none", server_name=args.server_name,
                               expected_tool=args.expected_tool, expected_direction=expected_direction,
-                              required_shadcn_items=required_shadcn_items)
+                              required_shadcn_items=required_shadcn_items,
+                              required_response_text_sha256=required_response_text_sha256)
     if timed_out:
         result["status"] = "timeout"
     elif exit_code:
@@ -261,6 +296,7 @@ def main():
     server = p.add_mutually_exclusive_group(required=True)
     server.add_argument("--server", type=lambda path: Path(path).resolve())
     server.add_argument("--server-url", help="Public credential-free HTTPS endpoint for a separate hosted comparator")
+    server.add_argument("--loopback-server-url", help="Fixture comparator at http://127.0.0.1:PORT/mcp")
     p.add_argument("--competitor-config", type=Path, help="JSON object with name, args, env, and expected_tool or expected_tools")
     p.add_argument("--treatment-only", action="store_true", help="Reuse sealed controls from the same benchmark")
     p.add_argument("--treatment-label", help="Output arm name for an isolated build of Design MCP")
@@ -282,6 +318,7 @@ def main():
     args.server_env = {"DESIGN_MCP_SURFACE": "v2", "FASTMCP_SHOW_SERVER_BANNER": "false"}
     args.expected_tool = "direct"
     args.required_shadcn_items = []
+    args.required_response_text_sha256 = {}
     verified_read_only_tools = []
     if args.competitor_config:
         competitor = json.loads(args.competitor_config.read_text(encoding="utf-8"))
@@ -308,7 +345,7 @@ def main():
         if not isinstance(verified_read_only_tools, list) or not all(
             isinstance(name, str) and re.fullmatch(r"[a-zA-Z0-9_.-]+", name) for name in verified_read_only_tools
         ):
-            p.error("verified_read_only_tools must list the reviewed stdio tool names")
+            p.error("verified_read_only_tools must list the reviewed tool names")
         expected = {args.expected_tool} if isinstance(args.expected_tool, str) else set(args.expected_tool)
         if verified_read_only_tools and not expected.issubset(verified_read_only_tools):
             p.error("Every expected tool must appear in verified_read_only_tools when supplied")
@@ -319,13 +356,29 @@ def main():
                                for item in items)):
                 p.error("required_shadcn_items requires the shadcn comparator and a nonempty list of item names")
             args.required_shadcn_items = sorted(set(items))
+        if "required_response_text_sha256" in competitor:
+            hashes = competitor["required_response_text_sha256"]
+            if args.case != [competitor.get("case")]:
+                p.error("Pass the single --case declared in the comparator response fixture")
+            if (not isinstance(hashes, dict) or not hashes or not hashes.keys() <= expected
+                    or not all(isinstance(digest, str) and re.fullmatch(r"[0-9a-f]{64}", digest)
+                               for digest in hashes.values())):
+                p.error("required_response_text_sha256 must map expected tools to SHA-256 digests")
+            args.required_response_text_sha256 = hashes
     if args.treatment_label:
         if args.competitor_config or args.treatment_label == "none" or not re.fullmatch(
             r"[a-z0-9][a-z0-9-]{0,47}", args.treatment_label
         ):
             p.error("Treatment labels must be lowercase slugs and cannot be combined with a competitor config")
         args.treatment = args.treatment_label
-    if args.server_url:
+    if args.loopback_server_url:
+        if not args.competitor_config or args.server_args or args.server_env or not args.required_response_text_sha256:
+            p.error("A loopback comparator requires a tool catalog and response hashes in --competitor-config")
+        try:
+            args.mcp_config = loopback_mcp_table(args.loopback_server_url, args.server_name, verified_read_only_tools)
+        except ValueError as error:
+            p.error(str(error))
+    elif args.server_url:
         if not args.competitor_config or args.server_args or args.server_env or verified_read_only_tools:
             p.error("A hosted comparator requires a separate name and tool in --competitor-config")
         try:

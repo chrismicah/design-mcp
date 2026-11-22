@@ -6,7 +6,7 @@ from types import SimpleNamespace
 import unittest
 
 from audit_scoreboard import matching_run
-from generate import PROMPT, hosted_mcp_table, mcp_table, parse_cell, sha256
+from generate import PROMPT, hosted_mcp_table, loopback_mcp_table, mcp_table, parse_cell, sha256
 from judge import WIDTHS, create_pair, load, run_judge, summarize, write
 from probe_competitors import decode_results, ranked_identifiers
 
@@ -198,6 +198,58 @@ class BenchmarkTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "public HTTPS"):
                 hosted_mcp_table(url, "hosted")
 
+    def test_loopback_comparator_restricts_the_http_endpoint_and_tools(self):
+        config = loopback_mcp_table("http://127.0.0.1:6006/mcp", "storybook", ["docs-list", "docs-show"])
+        self.assertEqual(config, 'mcp_servers={"storybook"={url="http://127.0.0.1:6006/mcp",'
+                                 'required=true,enabled_tools=["docs-list", "docs-show"],'
+                                 'default_tools_approval_mode="approve"}}')
+        for url, tools in (
+            ("http://127.0.0.1:6006/mcp", []),
+            ("http://localhost:6006/mcp", ["docs-show"]),
+            ("http://127.0.0.1:6006@remote.test/mcp", ["docs-show"]),
+            ("https://127.0.0.1:6006/mcp", ["docs-show"]),
+            ("http://127.0.0.1:65536/mcp", ["docs-show"]),
+            ("http://127.0.0.1:6006/mcp?token=test", ["docs-show"]),
+        ):
+            with self.subTest(url=url), self.assertRaisesRegex(ValueError, "loopback"):
+                loopback_mcp_table(url, "storybook", tools)
+
+    def test_storybook_gallery_requires_the_archived_component_or_story_response(self):
+        import json
+
+        folder = Path(__file__).resolve().parent
+        fixture = json.loads((folder.parents[1] / "evidence/benchmark-v1/storybook-mcp-probe.json").read_text())
+        calls = fixture["verified_attempt"]["calls"]
+        config = json.loads((folder / "storybook-gallery.json").read_text())
+        hashes = config["required_response_text_sha256"]
+        message = {"type": "item.completed", "item": {
+            "type": "agent_message", "text": "```html\n<body>Test</body>\n```"}}
+        turn = {"type": "turn.completed", "usage": {"output_tokens": 7}}
+
+        def call(label, text=None, **extra_result):
+            observed = calls[label]
+            return {"type": "item.completed", "item": {
+                "type": "mcp_tool_call", "server": "storybook", "tool": observed["tool"], "status": "completed",
+                "arguments": observed["arguments"],
+                "result": {"content": [{"type": "text", "text": observed["text"] if text is None else text}],
+                           "isError": observed["is_error"], **extra_result},
+            }}
+
+        for event, status, matched in (
+            (call("component"), "passed", ["docs-show"]),
+            (call("story"), "passed", ["docs-show-story"]),
+            (call("catalog"), "mcp-unused-or-failed", []),
+            (call("missing-story"), "required-mcp-response-missing", []),
+            (call("component", text="maintenance-disclosure"), "required-mcp-response-missing", []),
+            (call("component", isError=True), "required-mcp-response-missing", []),
+        ):
+            with self.subTest(event=event["item"]["tool"], status=status):
+                result, html = parse_cell([event, message, turn], True, "storybook", config["expected_tools"],
+                                          required_response_text_sha256=hashes)
+                self.assertEqual(result["status"], status)
+                self.assertEqual(result["matched_response_tools"], matched)
+                self.assertEqual(html, "<body>Test</body>\n")
+
     def test_shadcn_gate_requires_a_relevant_registry_result(self):
         search = "search_items_in_registries"
         view = "view_items_in_registries"
@@ -254,6 +306,7 @@ class BenchmarkTests(unittest.TestCase):
             root = Path(path)
             html = b"<body>Test</body>"
             for arm, status in (("v2", "passed"), ("shadcn", "shadcn-relevant-item-missing"),
+                                ("storybook", "required-mcp-response-missing"),
                                 ("router", "unexpected-design-direction"), ("missing", None),
                                 ("rendered", "passed")):
                 cell = root / "maintenance" / arm

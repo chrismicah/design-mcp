@@ -26,6 +26,17 @@ Use `--no-shell` on both generation arms of a fresh comparison when the generato
 
 For a public credential-free hosted comparator, use `--server-url` in place of `--server`. Keep its name distinct from the stdio variant. Record the reported server build, tool, and observation date. Compare either to the plain generator or to the fixed Design MCP arm while preserving the exact browser and generator settings.
 
+For the Storybook 10.6.0 gallery comparison, start the owned fixture from `storybook-fixture/` using the pinned packages and loopback startup in the CI recipe. Use the original gallery v2 control from run 45002279105 with its generation trace. Keep its Codex 0.170.0, GPT-6.2 Astra max, shell-disabled, Chrome 158.0.8127.36 and Playwriter 0.12.0 settings. [Fixture startup](../../.github/workflows/storybook-mcp-probe.yml) · [Verified control and trace replay](../../evidence/benchmark-v1/storybook-gallery-preflight.json)
+
+```sh
+python3 evals/v1/generate.py \
+  --out "$STORYBOOK_GALLERY_RUN" --loopback-server-url http://127.0.0.1:6006/mcp \
+  --competitor-config evals/v1/storybook-gallery.json --case mobile-gallery \
+  --treatment-only --no-shell --model gpt-6.2-astra --effort max --quota-probe "$QUOTA_PROBE"
+```
+
+The client exposes only the three reviewed docs tools. The treatment must retrieve the pinned disclosure component or story text. Listing the catalog or returning an error leaves the generation ineligible for rendering. The fixture contributes a disclosure interaction and the prompt supplies the gallery facts. Exercise the keyboard reveal, collapse and focus at both widths before blind scoring. This run compares one gallery brief.
+
 To compare two Design MCP builds, use the candidate's executable with `--treatment-only --treatment-label candidate`. Copy the sealed `v2` cells into the same run and judge with `--control v2 --treatment candidate`. This keeps the MCP server and tool names consistent across the two builds.
 
 For a routing candidate, set `--expect-direction CASE=ID` once per selected case before generation. The generator still sees the original brief. The runner keeps the trace and HTML and marks a treatment ineligible for judging unless its single completed `direct` reply selected that ID.

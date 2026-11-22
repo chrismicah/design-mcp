@@ -92,6 +92,8 @@ A clean macOS 15 arm64 job installed the pinned npm package and checked the rele
 
 Storybook 10.6.0 exposed seven tools over its local HTTP endpoint. The catalog included the owned maintenance disclosure and its story ID. The component response supplied prop documentation and example JSX. Looking up the indexed story ID returned JSX with the expected variant text. The two missing lookups returned specific protocol errors. In the first run, passing the export identifier `WithEscalation` as `storyName` returned an error that listed the display name and story ID. Catalog, component and story calls took 74, 20 and 16 ms in the successful run. These are single calls against the fixture. [Installed retrieval receipt](../evidence/benchmark-v1/storybook-mcp-probe.json) · [Hosted job](https://github.com/chrismicah/design-mcp/actions/runs/45022932774)
 
+The gallery task uses the fixture's disclosure behavior with the task's own content. A real Codex 0.170.0 catalog request against a replay of the seven recorded schemas exposed the three docs tools. The benchmark accepted the recorded story response and withheld rendering for an unknown story response. The original Astra v2 control, trace and browser captures matched their recorded hashes. Storybook generation and visual scoring remain open. [Gallery preflight](../evidence/benchmark-v1/storybook-gallery-preflight.json)
+
 ## Visual scoreboard
 
 | Configuration | Matched briefs judged | Score / 100 |

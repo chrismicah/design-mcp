@@ -1,0 +1,68 @@
+{
+  "client": "codex-cli 0.170.0",
+  "scope": "Codex catalog replay over loopback with seven recorded Storybook tool schemas. No generation or Storybook dev server in this replay.",
+  "advertised": [
+    "docs-list",
+    "docs-show",
+    "docs-show-story",
+    "get-storybook-story-instructions",
+    "stories-changed",
+    "stories-find-by-component",
+    "stories-preview"
+  ],
+  "registered": [
+    "docs-list",
+    "docs-show",
+    "docs-show-story"
+  ],
+  "rpc_methods": [
+    "initialize",
+    "notifications/initialized",
+    "tools/list"
+  ],
+  "configuration_sha256": "ba93325f93c2ca8003e379d31a19405c5aac798bb00ab7c95ac53ed0eb64d44b",
+  "recorded_storybook_receipt_sha256": "3c2ce1b6cd1c54d868ab377430433c58f97aa352fed86a0b1a0e53c142323bdb",
+  "case": "mobile-gallery",
+  "generation_trace_replay": {
+    "story": {
+      "status": "passed",
+      "matched_response_tools": [
+        "docs-show-story"
+      ],
+      "eligible_to_render": true
+    },
+    "missing-story": {
+      "status": "required-mcp-response-missing",
+      "matched_response_tools": [],
+      "eligible_to_render": false
+    }
+  },
+  "control": {
+    "arm": "v2",
+    "client": "codex-cli 0.170.0",
+    "model": "gpt-6.2-astra",
+    "effort": "max",
+    "shell_tool": false,
+    "browser": "Chrome/158.0.8127.36",
+    "renderer": "0.12.0",
+    "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/45002279105",
+    "artifacts_sha256": {
+      "1440.png": "df926f2694c1fc4f960c64e460f1b7fbe13e5e32df773e4e606f41f1ead876bd",
+      "390.png": "800459c0b62fd747e937cbfae1f7ec547c0556b9c4eebdafe2a87ef337a2814f",
+      "client.jsonl": "4a32057b70357f4166af92df92245d5501b53083f3c3f68fd6e515d0581faa21",
+      "index.html": "c2342b447c927b1441a4f373fd0fe24d3ebac8b19cf154c5a4cc5a694d78cb65",
+      "prompt.txt": "847453dfc2faee5d70dc9c58fb8c6c05f189d28418ab66c6a9b6c12a3b84279d",
+      "receipt.json": "6dbca5d8246bd80f8f65ecf563bb31db2b94a9f1e76be218760214de2e2cac34",
+      "render.json": "841aa769d5b68858147abf6cee7dfdba6683d09c153c32dab9c0a0dd88c5f57f"
+    }
+  },
+  "rejected_case_selections": [
+    "omitted",
+    "different brief",
+    "multiple briefs"
+  ],
+  "test_scope": {
+    "eval_tests_passed": 39,
+    "full_tests_passed": 479
+  }
+}
