@@ -83,6 +83,7 @@ Fresh local installs reproduced the full-brief match counts for Screenshots and 
 | Design MCP v2 | 14 / 36 | 94.6 |
 | Inspo hosted | 1 / 36 | 87.5 on ceramics. Design MCP scored 91.7 on the matched brief. |
 | Offline Designer MCP | 1 / 36 | 91.7 on ceramics. Design MCP also scored 91.7. |
+| Screenshots Design Inspiration | 0 / 36 | The ceramics generation made no MCP call and was excluded from scoring. |
 | Other credential-free competitor configurations above | 0 / 36 each | Pending |
 | Credentialed and hosted configurations above | 0 / 36 each | Access or isolated fixture required |
 
@@ -91,3 +92,5 @@ The retrieval probe is a separate test of tool behavior. A visual score requires
 The public Inspo endpoint completed `recommend` on the frozen ceramics brief. It suggested Marquee Hero from an evidence set of 24 sites. The original run required `search_screens` and flagged the cell. The documented `recommend` endpoint also supplies relevant art direction. Replaying the original trace with both documented tools eligible verified the generation and its unchanged HTML hash. The blind critic found stronger typography and accessibility evidence in Design MCP, and could not confirm the completed bag action in either capture. The comparison covers one brief and the hosted build. [Paired ballot, browser receipts, and token counts](../evidence/benchmark-v1/hosted-inspo-ceramics.json) · [Tool documentation](https://github.com/Nutlope/inspo/blob/main/apps/mcp/README.md) · [Capture run](https://github.com/chrismicah/design-mcp/actions/runs/44989604073)
 
 Offline Designer 0.4.0 was installed at its pinned source commit. The generator queried the local catalog and retrieved bundles and assets. The blind critic rated its mobile spacing higher, while Design MCP exposed more accessibility evidence in the captured state. Offline Designer used 173,124 input tokens, 147,584 reported as cached, and 25,065 output tokens. The matched Design MCP run used 62,609 input tokens, 40,192 reported as cached, and 22,183 output tokens. [Paired ballot and token receipts](../evidence/benchmark-v1/offline-designer-ceramics.json) · [Capture run](https://github.com/chrismicah/design-mcp/actions/runs/44991097155)
+
+Screenshots Design Inspiration 1.1.1 registered all seven reviewed tools in a separate Codex catalog check with the same configuration hash. The ceramics generator returned HTML without any tool calls or client errors. The attempt used 20,577 input tokens and 25,560 output tokens. It remains in the coverage record as an unscored attempt. [Generation and catalog receipts](../evidence/benchmark-v1/screenshots-first-attempt.json)
