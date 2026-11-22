@@ -121,6 +121,12 @@ try {
     const shot = await send("Page.captureScreenshot", { format: "png" }, session);
     await writeFile(join(output, name), Buffer.from(shot.data, "base64"));
   };
+  const browserKey = async (session, key, windowsVirtualKeyCode, nativeVirtualKeyCode, text) => {
+    const event = {key, code: key, windowsVirtualKeyCode, nativeVirtualKeyCode};
+    const down = text ? {type: "keyDown", text} : {type: "rawKeyDown"};
+    await send("Input.dispatchKeyEvent", {...event, ...down}, session);
+    await send("Input.dispatchKeyEvent", {...event, type: "keyUp"}, session);
+  };
 
   const fixturePage = await until("dispatch fixture", () => findTarget(target => target.url === fixtureUrl));
   const fixtureSession = await attach(fixturePage);
@@ -177,8 +183,13 @@ try {
   });
   assert.equal(proof.idle.requestCount, 0);
   await image(popup, "popup-idle.png");
-  if (mac) proof.phase = "missing native host";
-  key("Return");
+  if (mac) {
+    proof.phase = "missing native host";
+    proof.popupActionDriver = "cdp-key";
+    await browserKey(popup, "Enter", 13, 36, "\r");
+  } else {
+    key("Return");
+  }
   proof.missingHost = await until("missing host recovery", async () => {
     const result = await observePopup();
     return result?.state === "problem" && result.focus === "scan" && result.enabled ? result : null;
@@ -209,36 +220,19 @@ try {
       return true;
     })()`);
   }
-  key("Return");
   if (mac) {
-    const events = () => inspect(popup, "window.__reviewSmokeInput");
-    const clicked = entries => entries.some(event => event.type === "click" && event.target === "scan" && event.trusted);
-    const deadline = Date.now() + 900;
-    do {
-      proof.hostRetryInput = await events();
-      if (clicked(proof.hostRetryInput)) break;
-      await delay(50);
-    } while (Date.now() < deadline);
-    proof.hostRetryDriver = "process-key";
-    if (!clicked(proof.hostRetryInput)) {
-      assert.equal((await observePopup()).focus, "scan");
-      proof.hostRetryDriver = "cdp-key";
-      const enter = {key: "Enter", code: "Enter", windowsVirtualKeyCode: 13, nativeVirtualKeyCode: 36};
-      await send("Input.dispatchKeyEvent", {type: "keyDown", text: "\r", ...enter}, popup);
-      await send("Input.dispatchKeyEvent", {type: "keyUp", ...enter}, popup);
-      proof.hostRetryInput = await events();
-      assert(clicked(proof.hostRetryInput), "Neither driver delivered a trusted click to the focused Scan control");
-    }
+    assert.equal((await observePopup()).focus, "scan");
+    await browserKey(popup, "Enter", 13, 36, "\r");
+    proof.hostRetryInput = await inspect(popup, "window.__reviewSmokeInput");
+    assert(proof.hostRetryInput.some(event => event.type === "click" && event.target === "scan" && event.trusted),
+      "Chrome did not deliver a trusted click to the focused Scan control");
+  } else {
+    key("Return");
   }
-  let retryStarted = false;
   proof.result = await until("installed native review result", async () => {
     const result = await observePopup();
     if (mac) proof.retryPopup = result;
-    if (result?.state === "busy") retryStarted = true;
-    // The previous problem can remain visible while macOS delivers the new Return.
-    if (result?.state === "problem" && (!mac || retryStarted || result.status !== proof.missingHost.status)) {
-      throw new Error(result.status);
-    }
+    if (result?.state === "problem") throw new Error(result.status);
     return result?.state === "result" ? result : null;
   }, 15000);
   assert.equal(proof.result.focus, "open");
@@ -249,8 +243,13 @@ try {
   }
   await image(popup, "popup-result.png");
 
-  if (mac) proof.phase = "open saved preview and switch by keyboard";
-  key("Return");
+  if (mac) {
+    proof.phase = "open saved preview and switch by keyboard";
+    assert.equal((await observePopup()).focus, "open");
+    await browserKey(popup, "Enter", 13, 36, "\r");
+  } else {
+    key("Return");
+  }
   const previewTarget = await until("preview tab after the popup action", () => findTarget(item => item.url === proof.result.previewUrl));
   const preview = await attach(previewTarget);
   const observePreview = (session = preview) => inspect(session, `(() => {
@@ -274,16 +273,14 @@ try {
     assert.equal(initial.finding, proof.result.finding);
   }
   for (let step = 0; step < 8 && (await observePreview()).focus !== "view-before"; step++) {
-    key("Tab");
-    if (mac) await delay(120);
+    if (mac) await browserKey(preview, "Tab", 9, 48);
+    else key("Tab");
   }
   assert.equal((await observePreview()).focus, "view-before");
   await image(preview, "preview-before.png");
   if (mac) {
     proof.previewKeyDriver = "cdp-key";
-    const right = {key: "ArrowRight", code: "ArrowRight", windowsVirtualKeyCode: 39, nativeVirtualKeyCode: 124};
-    await send("Input.dispatchKeyEvent", {type: "rawKeyDown", ...right}, preview);
-    await send("Input.dispatchKeyEvent", {type: "keyUp", ...right}, preview);
+    await browserKey(preview, "ArrowRight", 39, 124);
   } else {
     key("Right");
   }
