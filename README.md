@@ -4,18 +4,20 @@ Turn a brief into one sourced art direction. The response gives the coding agent
 
 ## Install
 
-From a checkout with Python 3.12 or later:
+From a checkout with Python 3.12 or later, install with either `pipx install .` or `uv tool install .`. Verify the installed executable with `design-mcp version`.
+
+### Claude Code
 
 ```bash
-pipx install .
-design-mcp version
-claude mcp add design-mcp -s local -e DESIGN_MCP_SURFACE=v2 -- design-mcp serve
+claude mcp add design-mcp -s user -e DESIGN_MCP_SURFACE=v2 -- design-mcp serve
 claude mcp get design-mcp
 ```
 
 An alternative in an active virtual environment is `python -m pip install .`. Use the full path to `design-mcp` when it is outside the client's PATH. The MCP runs over stdio and the direction tools use bundled data. They require no API key.
 
-For Codex, add the server to your Codex configuration. The `writes` approval mode uses the read-only annotation on the three direction tools.
+### Codex
+
+Add the server to your Codex configuration. The `writes` approval mode uses the read-only annotation on the three direction tools.
 
 ```toml
 [mcp_servers.design-mcp]
@@ -27,7 +29,9 @@ default_tools_approval_mode = "writes"
 DESIGN_MCP_SURFACE = "v2"
 ```
 
-For Claude Desktop, Cursor, or another stdio client:
+### Claude Desktop and Cursor
+
+Add this entry to Claude Desktop’s `claude_desktop_config.json` or Cursor’s `.cursor/mcp.json`. Set `command` to the path printed by `command -v design-mcp` if the client launches outside your shell environment.
 
 ```json
 {
@@ -60,6 +64,10 @@ Try “calmer” after the first draft. The result adjusts focal spacing, the si
 `DESIGN_MCP_SURFACE=v2` exposes the three tools above. `both` (the default) also exposes the 14 historical pattern, token, library, and analysis tools. `legacy` exposes only those historical tools. In the legacy search, request `visual_recipes` or `design_system` explicitly in `fields` to include the corresponding guidance.
 
 The new direction library and the historical pattern data have separate roles. Historical metadata may be templated, incomplete, or missing its original screenshot. Treat source records as review inputs. The directions carry observable source evidence or clearly labelled hypotheses. The direction and results can be checked separately.
+
+## Verified results
+
+The pinned baseline passed 308 tests. Fresh pipx on Python 3.12.13 and uv on Python 3.13.3 each served 17/17 tools on Apple Silicon. Python 3.10 and 3.11 are excluded by the current package metadata. The 36-brief visual comparison and Intel coverage are in progress. [Benchmark and install receipts](EVALS.md)
 
 ## Verify locally
 

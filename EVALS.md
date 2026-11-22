@@ -9,11 +9,18 @@ The baseline pins Design MCP at `fd6035d8732d177b811f81a0f5863e99134a85ca`. The 
 | Same generator without MCP | 0 / 36 | Pending |
 | Same generator with Design MCP v2 | 0 / 36 | Pending |
 
-The first dashboard attempt called `direct` successfully and reached the client’s 240-second timeout before returning HTML. There was no completed-turn token receipt. The paired run uses a 900-second allowance for both arms and retains the first attempt separately. Playwriter MCP `0.12.0` rendered the isolated Chrome 157 control at both widths. [First attempt](.context/factory/benchmark-v1/cells/dashboard-venue/v2/receipt.json) · [Renderer control](.context/factory/benchmark-v1/render-control/health/none/render.json)
+The first dashboard attempt called `direct` successfully and reached the client’s 240-second timeout before returning HTML. There was no completed-turn token receipt. The paired run uses a 900-second allowance for both arms and retains the first attempt separately. Playwriter MCP `0.12.0` rendered the isolated Chrome 157 control at both widths. The injected failure control detected narrow viewport overflow and the expected JavaScript error. [Tracked receipts](evidence/benchmark-v1/preflight.json)
+
+The first completed cells are from different briefs. Both configurations returned HTML and token usage. The matched scores above remain pending.
+
+| Brief | Configuration | Input tokens | Cached input | Output tokens | Seconds |
+| --- | --- | ---: | ---: | ---: | ---: |
+| Rehearsal room board | Design MCP v2 | 63,611 | 40,704 | 16,255 | 332.83 |
+| Ceramics landing page | Plain generator | 40,367 | 19,840 | 22,702 | 459.69 |
 
 ## Installation at the baseline revision
 
-Clean detached checkout on macOS 26.5.2, Apple Silicon. The smoke tests send real MCP requests from an isolated client to the installed executable.
+Clean detached checkout on macOS 26.5.2, Apple Silicon. The smoke tests send real MCP requests from an isolated client to the installed executable. The pinned source suite passed 308 tests on Python 3.12.13.
 
 | Installation | Actual interpreter | Result |
 | --- | --- | --- |

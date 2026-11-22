@@ -26,3 +26,11 @@ Owner approved A–G and continuation through the full rebuild on 2026-11-20. Th
 | F | GPT-6.2 Sol fixed the held-out routing error, replaced the stale screenshot-count test, and added action evidence to the render harness. Source and stdio checks are green. | [Held-out findings](evidence/rebuild/held-out-findings.md), `0e3953b` |
 | Live-client smoke | GPT-6.2 Sol reproduced the Codex approval failure, fixed v2 tool annotations, generated a board via Codex CLI and drove it with GPT Computer Use. The successful generator turn used 67,567 input tokens (27,392 cached) and 2,443 output tokens. Fable 5.2 reviewed the fix and screenshot comparison, with usage unavailable. Functional pass for the one brief. Craft benchmark below target. | [Smoke receipts](SMOKE-RECEIPTS.md), `52540b5` |
 | Theatre visual correction | GPT-6.2 Sol authored a theatre-specific direction and a reference implementation after the owner rejected the original. Stdio and GPT Computer Use verified the route and interactions. Existing primary session only. | [Theatre revision](evidence/rebuild/live-smoke/theatre-revision.md) |
+
+## 36-brief benchmark
+
+| Work | Model and budget | Observed result |
+| --- | --- | --- |
+| Benchmark design review, literature and competitor discovery | Three Astra Software Factory sessions at max effort. The Factory logger does not report Codex tokens. The Fable route returned expired OAuth. | The design review informed the paired protocol. Published results and expected local gains are separate. [Protocol](EVALS.md) · [Literature](research/NOTES.md) · [Teardown](teardown/COMPETITORS.md) |
+| Initial generation | Sol at max effort with the existing subscription. The queue checks the 20% reserve before each wave. | The rehearsal v2 cell logged 63,611 input and 16,255 output tokens. The ceramics control logged 40,367 input and 22,702 output tokens. The first 240-second timeout had no usage receipt. [Preflight](evidence/benchmark-v1/preflight.json) |
+| Fresh-package browser smoke | GPT Computer Use reached a native Chrome setup blocker. Playwriter MCP supplied interaction evidence for the same artifact. | Desktop click and mobile keyboard filtered and restored the room list. Visual acceptance remains open. [Smoke](SMOKE-RECEIPTS.md) |

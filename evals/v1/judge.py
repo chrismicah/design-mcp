@@ -9,7 +9,7 @@ import shutil
 import statistics
 import subprocess
 
-from generate import BASE_DIR, clean_env, read_trace, sha256
+from generate import BASE_DIR, check_quota, clean_env, read_trace, sha256
 
 DIMENSIONS = ("hierarchy", "spacing", "typography", "color", "accessibility", "fidelity")
 WIDTHS = ("1440", "390")
@@ -161,8 +161,10 @@ def main():
     parser.add_argument("--codex", default="codex")
     parser.add_argument("--model", required=True)
     parser.add_argument("--effort", default="max")
-    parser.add_argument("--timeout", type=int, default=240)
+    parser.add_argument("--timeout", type=int, default=900)
     parser.add_argument("--case", action="append")
+    parser.add_argument("--quota-probe", type=lambda path: Path(path).resolve(),
+                        help="Python quota probe that supports --out and --check-dispatch")
     args = parser.parse_args()
     for name in ("ratings", "traces"):
         (args.out / name).mkdir(parents=True, exist_ok=True)
@@ -177,6 +179,8 @@ def main():
         if not pair:
             pending.append(task["id"])
             continue
+        if args.quota_probe and not (args.out / "ratings" / f"{task['id']}.json").exists():
+            check_quota(args.quota_probe, args.out)
         row = run_judge(args, task, pair, schema_path)
         rows.append(row)
         print(row["case"], row["scores"], flush=True)

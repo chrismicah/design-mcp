@@ -29,6 +29,14 @@ def clean_env():
     return {key: value for key, value in os.environ.items() if key not in HOSTED_API_ENV}
 
 
+def check_quota(probe, output):
+    receipt = output / f"quota-{time.time_ns()}.json"
+    result = subprocess.run([sys.executable, "-I", "-B", str(probe), "--out", str(receipt), "--check-dispatch"],
+                            env=clean_env(), timeout=45)
+    if result.returncode:
+        raise SystemExit(f"Subscription quota probe blocked dispatch. See {receipt}")
+
+
 def client_command(args, mcp_config):
     return [
         args.codex, "-a", "never", "exec", "--ignore-user-config", "--ephemeral",
@@ -183,11 +191,7 @@ def main():
         for start in range(0, len(tasks), args.jobs):
             batch = tasks[start:start + args.jobs]
             if args.quota_probe:
-                receipt = args.out / f"quota-{time.time_ns()}.json"
-                quota = subprocess.run([sys.executable, "-I", "-B", str(args.quota_probe),
-                                        "--out", str(receipt), "--check-dispatch"], env=clean_env(), timeout=45)
-                if quota.returncode:
-                    raise SystemExit(f"Subscription quota probe blocked dispatch. See {receipt}")
+                check_quota(args.quota_probe, args.out)
             failed |= any(list(pool.map(lambda case: run_case(args, case), batch)))
     if failed:
         raise SystemExit(2)

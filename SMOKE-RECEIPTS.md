@@ -1,5 +1,13 @@
 # Design MCP live smoke
 
+## Fresh-package benchmark smoke, November 21
+
+Codex CLI 0.170.0 called `direct` through a fresh pipx install of `fd6035d` and returned an independent rehearsal room board. Playwriter MCP in isolated Chrome clicked the filter at 1440 px and used Tab and Enter at 390 px. “Delayed only” left Studio B visible, hid Hall A and announced one of two rooms. “All rooms” restored both. [Interaction receipt](evidence/benchmark-v1/preflight.json) · [390 px filtered screenshot](.context/factory/benchmark-v1/computer-smoke/interaction-v2/delayed-390.png)
+
+GPT Computer Use opened a separate Chrome window. Its clipboard operation conflicted before navigation, and the isolated browser connector was unavailable. The fresh-package smoke therefore has Playwriter interaction evidence. Visual acceptance and blinded comparison remain open. [Benchmark](EVALS.md)
+
+## November 20 source-checkout smoke
+
 The owner rejected the original visual output after the functional pass. The theatre follow-up has its own direction and browser receipt. [Theatre call sheet revision](evidence/rebuild/live-smoke/theatre-revision.md)
 
 **Functional pass for one generated app.** On November 20, 2026, Codex CLI called the candidate MCP and generated an interactive theatre turnaround board from a short brief. GPT Computer Use drove it in Chrome at desktop width and at a measured 390 CSS pixels. This run covers the source checkout and one brief. The fresh-package install, six-brief comparison and post-cull smoke remain pending.

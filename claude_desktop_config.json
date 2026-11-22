@@ -1,11 +1,13 @@
 {
-    "mcpServers": {
-        "design-intelligence": {
-            "command": "python",
-            "args": ["C:\\Users\\15046\\Projects\\design-mcp\\server.py"],
-            "env": {
-                "PYTHONPATH": "C:\\Users\\15046\\Projects\\design-mcp"
-            }
-        }
+  "mcpServers": {
+    "design-mcp": {
+      "command": "design-mcp",
+      "args": [
+        "serve"
+      ],
+      "env": {
+        "DESIGN_MCP_SURFACE": "v2"
+      }
     }
+  }
 }
