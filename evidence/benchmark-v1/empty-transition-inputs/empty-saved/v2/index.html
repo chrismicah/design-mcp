@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Saved trails</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@700&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f7f5ef;
+      --cedar: #172f27;
+      --fern: #41634f;
+      --lichen: #b9c9a8;
+      --ochre: #f4c95d;
+      --shale: #51645a;
+      --rule: color-mix(in srgb, var(--fern) 32%, var(--paper));
+      --display: "Archivo Narrow", "Franklin Gothic Medium", sans-serif;
+      --body: "Atkinson Hyperlegible", "Trebuchet MS", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+
+    body {
+      min-block-size: 100vh;
+      margin: 0;
+      border-block-start: 5px solid var(--cedar);
+      background: var(--paper);
+      color: var(--cedar);
+      font: 1.0625rem / 1.45 var(--body);
+    }
+
+    main {
+      max-inline-size: 72.5rem;
+      margin-inline: auto;
+      padding: clamp(2rem, 7vw, 6.25rem) clamp(1.25rem, 4vw, 2.25rem) 4rem;
+    }
+
+    .masthead {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      column-gap: clamp(.75rem, 2vw, 1.25rem);
+      margin-block-end: clamp(1.125rem, 2vw, 1.625rem);
+      padding-block-end: clamp(1rem, 1.7vw, 1.5rem);
+      border-block-end: 1px solid var(--rule);
+    }
+
+    .masthead h1 {
+      margin: 0;
+      font: 700 clamp(3rem, 5.5vw, 5rem) / .98 var(--display);
+      letter-spacing: -.035em;
+    }
+
+    .masthead-mark {
+      display: grid;
+      inline-size: clamp(2.625rem, 4.5vw, 3.75rem);
+      aspect-ratio: 1;
+      place-items: center;
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      background: color-mix(in srgb, var(--lichen) 28%, var(--paper));
+    }
+
+    .icon {
+      flex: none;
+      inline-size: 1.25rem;
+      block-size: 1.25rem;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.65;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .masthead-mark .icon {
+      inline-size: 56%;
+      block-size: 56%;
+      stroke-width: 1.4;
+    }
+
+    .list-status {
+      align-self: end;
+      margin: 0 0 .25rem;
+      color: var(--shale);
+    }
+
+    .recommendation {
+      display: grid;
+      grid-template-columns: minmax(0, 1.48fr) minmax(0, 1fr);
+      overflow: hidden;
+      border-radius: 4px;
+      background: var(--cedar);
+      color: var(--paper);
+    }
+
+    .artwork-library {
+      position: absolute;
+      inline-size: 0;
+      block-size: 0;
+      overflow: hidden;
+    }
+
+    .artwork {
+      position: relative;
+      overflow: hidden;
+      background: var(--fern);
+    }
+
+    .artwork > svg {
+      position: absolute;
+      inset: 0;
+      display: block;
+      inline-size: 100%;
+      block-size: 100%;
+    }
+
+    .trail-plate {
+      min-block-size: clamp(20rem, 28vw, 25.5rem);
+    }
+
+    .trail-sign {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-inline-size: 0;
+      padding: clamp(1.5rem, 3.6vw, 3.25rem);
+      border-inline-start: 1px solid color-mix(in srgb, var(--lichen) 28%, var(--cedar));
+    }
+
+    .trail-context {
+      margin: 0 0 .625rem;
+      color: var(--lichen);
+      font-weight: 700;
+    }
+
+    .trail-name {
+      inline-size: fit-content;
+      max-inline-size: 100%;
+      margin: 0;
+      font: 700 clamp(2.65rem, 4.4vw, 4rem) / 1 var(--display);
+      letter-spacing: -.025em;
+      overflow-wrap: anywhere;
+    }
+
+    .trail-name:focus-visible {
+      outline: 2px solid currentColor;
+      outline-offset: 5px;
+      border-radius: 2px;
+    }
+
+    .trail-distance {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      margin: .75rem 0 0;
+      font-size: 1.125rem;
+    }
+
+    .trail-sign .trail-distance { color: var(--lichen); }
+    .trail-distance .icon { inline-size: 1.125rem; block-size: 1.125rem; }
+
+    .action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .625rem;
+      min-block-size: 3.25rem;
+      padding: .625rem 1.125rem;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      font: inherit;
+      font-weight: 700;
+      line-height: 1.2;
+      cursor: pointer;
+    }
+
+    .action:focus-visible {
+      outline: 2px solid var(--paper);
+      outline-offset: 2px;
+      box-shadow: 0 0 0 6px var(--cedar);
+    }
+
+    .save-action {
+      margin-block-start: clamp(1.375rem, 2.6vw, 2.25rem);
+      background: var(--ochre);
+      color: var(--cedar);
+    }
+
+    .save-action:hover {
+      background: color-mix(in srgb, var(--ochre) 78%, var(--paper));
+    }
+
+    .saved-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .saved-entry {
+      display: grid;
+      grid-template-columns: minmax(0, 11.5rem) minmax(0, 1fr) auto;
+      align-items: center;
+      gap: clamp(1rem, 2.5vw, 2rem);
+      padding: .875rem 1.375rem .875rem .875rem;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      background: color-mix(in srgb, var(--lichen) 16%, var(--paper));
+    }
+
+    .trail-thumb {
+      aspect-ratio: 18 / 11;
+      border-radius: 2px;
+    }
+
+    .saved-entry .trail-name { font-size: clamp(2rem, 3vw, 2.875rem); }
+    .saved-entry .trail-distance { margin-block-start: .375rem; color: var(--shale); }
+
+    .remove-action {
+      border-color: var(--fern);
+      background: transparent;
+      color: var(--cedar);
+    }
+
+    .remove-action:hover {
+      background: color-mix(in srgb, var(--lichen) 42%, var(--paper));
+    }
+
+    @media (max-width: 44rem) {
+      .masthead {
+        grid-template-columns: auto minmax(0, 1fr);
+        row-gap: .3rem;
+      }
+
+      .masthead-mark {
+        grid-row: 1 / span 2;
+        align-self: start;
+        margin-block-start: .15rem;
+      }
+
+      .list-status {
+        grid-column: 2;
+        margin: 0;
+      }
+
+      .recommendation { grid-template-columns: minmax(0, 1fr); }
+
+      .trail-plate {
+        min-block-size: 0;
+        aspect-ratio: 18 / 11;
+      }
+
+      .trail-sign {
+        padding: 1.375rem 1.5rem 1.5rem;
+        border-inline-start: 0;
+        border-block-start: 1px solid color-mix(in srgb, var(--lichen) 28%, var(--cedar));
+      }
+    }
+
+    @media (max-width: 32rem) {
+      .saved-entry {
+        grid-template-columns: minmax(0, 6rem) minmax(0, 1fr);
+        gap: .875rem;
+        padding: .875rem;
+      }
+
+      .remove-action { grid-column: 1 / -1; }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      #saved-view:not([hidden]) .saved-entry {
+        animation: settle 240ms ease-out;
+      }
+
+      @keyframes settle {
+        from { transform: translateY(7px); }
+        to { transform: translateY(0); }
+      }
+    }
+  </style>
+</head>
+<body>
+  <svg class="artwork-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="bookmark" viewBox="0 0 24 24">
+        <path d="M6.5 3.5h11a2 2 0 0 1 2 2v15L12 16l-7.5 4.5v-15a2 2 0 0 1 2-2Z"/>
+      </symbol>
+
+      <symbol id="distance-mark" viewBox="0 0 24 24">
+        <circle cx="5" cy="5.5" r="1.6"/>
+        <circle cx="19" cy="18.5" r="1.6"/>
+        <path d="M8 5.5h7.5a3.25 3.25 0 1 1 0 6.5h-7a3.25 3.25 0 1 0 0 6.5H16"/>
+      </symbol>
+
+      <symbol id="cedar" viewBox="0 0 80 170" preserveAspectRatio="none">
+        <path fill="currentColor" d="M40 0c-3 16-9 28-17 37l12-4c-6 15-14 24-24 31l20-4C24 74 14 85 5 90l22-5C21 100 10 109 0 116l24-5c-6 12-13 21-21 26 12 2 24 0 33-6v37h8v-35c9 5 21 8 34 4-12-6-19-14-24-24l26 4C67 109 60 100 54 87l22 7C64 85 56 74 50 62l18 5c-10-8-17-19-22-33l10 5C49 29 44 15 40 0Z"/>
+        <path d="M40 33v101m0-77-9 6m9 10 12 8m-12 6-14 9m14 8 16 10m-16-2-11 7"
+          fill="none" stroke="#d8dfc4" stroke-width="1.05" stroke-linecap="round" opacity=".18"/>
+      </symbol>
+
+      <pattern id="print-grain" width="9" height="7" patternUnits="userSpaceOnUse">
+        <circle cx="1.4" cy="1.6" r=".5" fill="#f7f5ef"/>
+        <path d="M6 5.8h1" stroke="#f7f5ef" stroke-width=".65" stroke-linecap="round"/>
+      </pattern>
+
+      <symbol id="cedar-bend-art" viewBox="0 0 720 440">
+        <rect width="720" height="440" fill="#2a4739"/>
+
+        <g fill="none" stroke="#b9c9a8" stroke-width="1.15" opacity=".27">
+          <path d="M-12 25C47 58 78 58 120 37S205 5 257 24s88 37 132 21"/>
+          <path d="M-14 46C39 77 88 78 133 55s77-32 126-13 86 34 133 21"/>
+          <path d="M-12 68C44 99 91 97 144 73s76-28 123-9 86 29 131 14"/>
+          <path d="M-18 94C40 123 97 120 155 94s77-23 123-6 85 26 126 9"/>
+          <path d="M-16 119C51 151 113 135 169 109s76-15 122 0 81 19 117 3"/>
+          <path d="M-8 144c65 28 128 7 182-16s76-8 122 7 79 10 109-5"/>
+          <path d="M568 25c43 22 94 26 158 1m-145 16c44 23 93 25 145 7m-140 12c47 21 90 24 140 8"/>
+        </g>
+
+        <circle cx="510" cy="116" r="53" fill="#aebf99"/>
+        <g fill="none" stroke="#2a4739" opacity=".18" stroke-width="1">
+          <path d="M461 97h98m-102 9h106m-106 9h106m-105 9h104m-101 9h98m-94 9h90m-82 9h74m-62 9h50"/>
+        </g>
+
+        <path d="M0 237c51-13 79-46 127-42 37 3 65 31 102 33 52 3 73-53 123-53 40 0 53 35 88 35 46 0 66-50 108-50 48 0 92 60 172 75v205H0Z"
+          fill="#5e7b5e"/>
+        <path d="M0 263c79-26 121-47 184-37 50 8 84 36 136 29 63-9 78-36 127-37 69-2 125 56 273 23v199H0Z"
+          fill="#486b53"/>
+        <g fill="none" stroke="#c1cda9" stroke-width="1.05" opacity=".31">
+          <path d="M197 224c46 15 76 4 107-14 31-18 48-19 78-8"/>
+          <path d="M261 238c32-2 56-25 85-27 20-2 31 5 47 12"/>
+          <path d="M460 201c37-11 54-30 86-30 27 0 41 14 61 26"/>
+          <path d="M484 204c35-12 44-24 65-24 20 0 30 9 46 17"/>
+          <path d="M614 216c31 20 61 27 106 33"/>
+        </g>
+
+        <g color="#355740">
+          <use href="#cedar" x="178" y="198" width="37" height="83"/>
+          <use href="#cedar" x="209" y="218" width="28" height="65"/>
+          <use href="#cedar" x="244" y="214" width="29" height="63"/>
+          <use href="#cedar" x="273" y="229" width="22" height="48"/>
+          <use href="#cedar" x="582" y="209" width="31" height="69"/>
+          <use href="#cedar" x="605" y="199" width="42" height="92"/>
+          <use href="#cedar" x="638" y="216" width="32" height="74"/>
+          <use href="#cedar" x="671" y="201" width="40" height="92"/>
+        </g>
+
+        <path d="M0 296c92-19 130-43 203-31 65 11 114 31 168 17 54-14 88-31 147-16 60 16 123 45 202 9v165H0Z"
+          fill="#365846"/>
+        <path d="M0 340c92-56 176-51 252-22 57 22 94 23 147 13 67-13 126-48 189-46 42 2 75 18 132 11v144H0Z"
+          fill="#2a4c3c"/>
+
+        <g fill="none" stroke="#a9bf9e" stroke-width="1.2" opacity=".26">
+          <path d="M-8 335c77-37 172-59 254-27 23 9 44 14 64 16"/>
+          <path d="M-9 351c96-45 178-52 245-26 18 7 31 13 46 15"/>
+          <path d="M-8 370c104-51 191-54 251-23"/>
+          <path d="M-5 391c82-42 155-49 219-29 24 8 44 22 65 33"/>
+          <path d="M18 411c72-31 134-39 193-22 37 11 65 34 110 51"/>
+          <path d="M405 342c67-5 132-38 199-33 49 4 65 17 124 11"/>
+          <path d="M393 357c72 3 143-36 208-33 45 2 83 18 129 10"/>
+          <path d="M432 377c48 0 109-32 170-35 42-1 80 20 128 14"/>
+          <path d="M478 398c33-1 82-27 131-30 46-3 74 18 120 14"/>
+        </g>
+
+        <path d="M490 440c-66-25-143-47-190-70-56-28-27-51 56-60 65-7 139-15 150-34 9-15-24-27-71-37 46 7 85 14 88 32 6 24-47 37-119 50-59 11-95 25-64 42 51 28 151 42 256 77Z"
+          fill="#f4c95d"/>
+        <path d="M555 437c-91-28-177-43-233-71-43-22-9-38 62-48 74-10 134-22 132-43"
+          fill="none" stroke="#f7e2aa" stroke-width="1.5" stroke-linecap="round" opacity=".8"/>
+
+        <g color="#213e31">
+          <use href="#cedar" x="135" y="214" width="74" height="166"/>
+          <use href="#cedar" x="191" y="245" width="47" height="106"/>
+          <use href="#cedar" x="8" y="202" width="79" height="182"/>
+          <use href="#cedar" x="548" y="209" width="73" height="165"/>
+          <use href="#cedar" x="655" y="218" width="76" height="178"/>
+        </g>
+
+        <g color="#172f27">
+          <use href="#cedar" x="32" y="115" width="144" height="303"/>
+          <use href="#cedar" x="-32" y="253" width="93" height="195"/>
+          <use href="#cedar" x="587" y="154" width="133" height="286"/>
+          <path d="M0 389c52-11 106-14 151-2 57 16 110 43 170 53H0Zm601 51c29-19 62-36 119-40v40Z" fill="currentColor"/>
+        </g>
+
+        <g fill="none" stroke="#b9c9a8" stroke-width="1.3" stroke-linecap="round" opacity=".42">
+          <path d="m160 403-5-8m5 8 1-11m-1 11 6-7m41 12-4-7m4 7 3-10m-3 10 8-5"/>
+          <path d="m250 373-6-7m6 7 1-10m-1 10 7-6m185-72-4-5m4 5 1-8"/>
+          <path d="m549 309-5-7m5 7 2-9m-2 9 7-4m33 105-6-9m6 9 1-13m-1 13 8-7"/>
+        </g>
+
+        <rect width="720" height="440" fill="url(#print-grain)" opacity=".24"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <main>
+    <header class="masthead">
+      <div class="masthead-mark" aria-hidden="true">
+        <svg class="icon" viewBox="0 0 24 24" focusable="false">
+          <use href="#bookmark"/>
+          <path d="m7.9 12.6 2.8-3.2 2.2 2.2 3.1-3.4"/>
+        </svg>
+      </div>
+      <h1>Saved trails</h1>
+      <p class="list-status" id="list-status" role="status" aria-atomic="true">No trails saved yet</p>
+    </header>
+
+    <section class="recommendation" id="nearby-view" aria-labelledby="nearby-label">
+      <div class="artwork trail-plate" aria-hidden="true">
+        <svg viewBox="0 0 720 440" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <use href="#cedar-bend-art" width="720" height="440"/>
+        </svg>
+      </div>
+
+      <div class="trail-sign">
+        <p class="trail-context" id="nearby-label">Nearby trail</p>
+        <h2 class="trail-name" id="nearby-name" tabindex="-1">Cedar Bend</h2>
+        <p class="trail-distance">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <use href="#distance-mark"/>
+          </svg>
+          <span>2.4 miles</span>
+        </p>
+
+        <button class="action save-action" id="save-trail" type="button">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <use href="#bookmark"/>
+          </svg>
+          Save trail
+        </button>
+      </div>
+    </section>
+
+    <section id="saved-view" aria-label="Saved trail list" hidden>
+      <ul class="saved-list" role="list">
+        <li class="saved-entry">
+          <div class="artwork trail-thumb" aria-hidden="true">
+            <svg viewBox="0 0 720 440" preserveAspectRatio="xMidYMid slice" focusable="false">
+              <use href="#cedar-bend-art" width="720" height="440"/>
+            </svg>
+          </div>
+
+          <div>
+            <h2 class="trail-name" id="saved-name" tabindex="-1">Cedar Bend</h2>
+            <p class="trail-distance">2.4 miles</p>
+          </div>
+
+          <button class="action remove-action" id="remove-trail" type="button">
+            Remove trail
+          </button>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <script>
+    const nearbyView = document.getElementById("nearby-view");
+    const savedView = document.getElementById("saved-view");
+    const listStatus = document.getElementById("list-status");
+    const nearbyName = document.getElementById("nearby-name");
+    const savedName = document.getElementById("saved-name");
+
+    // The saved list starts empty on each page load.
+    function updateSavedTrails(isSaved) {
+      nearbyView.hidden = isSaved;
+      savedView.hidden = !isSaved;
+      listStatus.textContent = isSaved ? "1 saved trail" : "No trails saved yet";
+
+      const visibleTrailName = isSaved ? savedName : nearbyName;
+      visibleTrailName.focus();
+    }
+
+    document.getElementById("save-trail").addEventListener("click", () => {
+      updateSavedTrails(true);
+    });
+
+    document.getElementById("remove-trail").addEventListener("click", () => {
+      updateSavedTrails(false);
+    });
+  </script>
+</body>
+</html>

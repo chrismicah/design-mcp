@@ -1,0 +1,478 @@
+<!doctype html>
+<!--
+  An independent publisher’s editor needs to name a draft and see it appear.
+  The screen should feel calm and ready for work. The title field and the clear
+  action define the scope. Newsreader gives the headings an editorial voice,
+  while DM Sans carries the labels and controls.
+  The palette uses mist #F6F8FC, paper #FFFFFF, ink #15223B,
+  slate #526079, cobalt #2448C5, and pale blue #DFE9FF.
+  The form sits beside a printer’s proof. Its title line fills when a draft is
+  created. One draft is saved in this browser when storage is available.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Drafts | Editorial desk</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400..700&amp;family=Newsreader:opsz,wght@6..72,400..600&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --mist: #F6F8FC;
+      --paper: #FFFFFF;
+      --ink: #15223B;
+      --slate: #526079;
+      --cobalt: #2448C5;
+      --pale-blue: #DFE9FF;
+      --rule: color-mix(in srgb, var(--slate) 23%, var(--paper));
+      --field-border: color-mix(in srgb, var(--slate) 76%, var(--paper));
+      --editorial: "Newsreader", Georgia, serif;
+      --interface: "DM Sans", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--mist);
+      color: var(--ink);
+      font: 1rem/1.5 var(--interface);
+    }
+
+    .shell {
+      width: min(calc(100% - 2.5rem), 70rem);
+      margin-inline: auto;
+    }
+
+    .masthead {
+      background: var(--paper);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .masthead .shell {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      min-height: 4.25rem;
+    }
+
+    .wordmark {
+      margin: .15em 0 0;
+      font: 500 1.5rem/1 var(--editorial);
+      letter-spacing: -.025em;
+    }
+
+    main {
+      padding-block: clamp(3rem, 5.5vw, 5rem) 3rem;
+    }
+
+    h1, h2 {
+      margin: 0;
+      font-family: var(--editorial);
+      font-weight: 500;
+    }
+
+    h1 {
+      margin-bottom: clamp(1.125rem, 2.25vw, 2rem);
+      font-size: clamp(3.5rem, 6.5vw, 5.75rem);
+      line-height: .96;
+      letter-spacing: -.05em;
+    }
+
+    .draft-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1.13fr) minmax(0, 1fr);
+      min-height: 24rem;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      border-radius: .75rem;
+      background: var(--paper);
+    }
+
+    .work-area {
+      display: grid;
+      align-content: center;
+      min-width: 0;
+      padding: clamp(2rem, 4.2vw, 3.75rem);
+    }
+
+    .state-title {
+      font-size: clamp(2.375rem, 3.7vw, 3.375rem);
+      line-height: 1.03;
+      letter-spacing: -.04em;
+      overflow-wrap: anywhere;
+    }
+
+    .intro {
+      margin: .65rem 0 0;
+      color: var(--slate);
+    }
+
+    .title-form {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      column-gap: .75rem;
+      margin-top: 1.75rem;
+    }
+
+    .title-form label {
+      grid-column: 1 / -1;
+      margin-bottom: .45rem;
+      font-size: .875rem;
+      font-weight: 700;
+    }
+
+    input, button {
+      min-height: 3.125rem;
+      border-radius: .375rem;
+      font: inherit;
+    }
+
+    input {
+      grid-column: 1;
+      grid-row: 2;
+      width: 100%;
+      min-width: 0;
+      padding: .65rem .8rem;
+      border: 1px solid var(--field-border);
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    input[aria-invalid="true"] {
+      border-color: var(--ink);
+      box-shadow: inset 0 0 0 1px var(--ink);
+    }
+
+    :is(input, button, h2[tabindex]):focus-visible {
+      outline: 3px solid var(--cobalt);
+      outline-offset: 3px;
+    }
+
+    button {
+      padding: .6rem 1.125rem;
+      border: 1px solid transparent;
+      font-size: .9375rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .create-button {
+      grid-column: 2;
+      grid-row: 2;
+      background: var(--cobalt);
+      color: var(--paper);
+    }
+
+    .create-button:hover {
+      background: color-mix(in srgb, var(--cobalt) 80%, var(--ink));
+    }
+
+    .clear-button {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      margin-top: 1.5rem;
+      border-color: var(--field-border);
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    .clear-button:hover {
+      background: var(--mist);
+      border-color: var(--ink);
+    }
+
+    .error {
+      margin: 0;
+      color: var(--ink);
+      font-size: .875rem;
+    }
+
+    .error:not(:empty) { margin-top: .5rem; }
+
+    #title-error {
+      grid-column: 1 / -1;
+      grid-row: 3;
+    }
+
+    .artwork {
+      display: grid;
+      place-items: center;
+      min-width: 0;
+      padding: 1.5rem;
+      border-left: 1px solid var(--rule);
+      background: var(--pale-blue);
+    }
+
+    .artwork svg {
+      display: block;
+      width: min(100%, 27rem);
+      height: auto;
+    }
+
+    .proof-title {
+      transform: scaleX(0);
+      transform-box: fill-box;
+      transform-origin: left center;
+      transition: transform 320ms cubic-bezier(.2, .7, .25, 1);
+    }
+
+    .proof-caret {
+      transition: transform 320ms cubic-bezier(.2, .7, .25, 1), opacity 150ms;
+    }
+
+    [data-state="draft"] .proof-title { transform: scaleX(1); }
+
+    [data-state="draft"] .proof-caret {
+      transform: translateX(106px);
+      opacity: 0;
+      transition-delay: 0ms, 190ms;
+    }
+
+    .storage-note {
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+      margin: .95rem 0 0;
+      color: var(--slate);
+      font-size: .875rem;
+    }
+
+    .storage-note svg { flex: none; }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 48rem) {
+      .masthead .shell { min-height: 3.5rem; }
+      main { padding-block: 2rem; }
+
+      .draft-panel { grid-template-columns: minmax(0, 1fr); }
+      .work-area { padding: 1.5rem; }
+
+      .title-form { grid-template-columns: minmax(0, 1fr); }
+
+      .create-button {
+        grid-column: 1;
+        grid-row: 4;
+        margin-top: .65rem;
+      }
+
+      .artwork {
+        padding: .45rem 1rem;
+        border-top: 1px solid var(--rule);
+        border-left: 0;
+      }
+
+      .artwork svg { width: min(100%, 15rem); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .proof-title, .proof-caret { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="shell">
+      <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <rect width="32" height="32" rx="5" fill="var(--cobalt)"/>
+        <path d="M9 8.5h9l5 5v10H9zM18 8.5v5h5M12.5 17h7m-7 3.5h5"
+              fill="none" stroke="var(--paper)" stroke-width="1.4"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <p class="wordmark">Editorial desk</p>
+    </div>
+  </header>
+
+  <main class="shell">
+    <h1>Drafts</h1>
+
+    <div class="draft-panel" id="draft-panel" data-state="empty">
+      <div class="work-area">
+        <div id="empty-state">
+          <h2 class="state-title">No drafts yet</h2>
+          <p class="intro">Give your article a working title.</p>
+
+          <form class="title-form" id="draft-form" novalidate>
+            <label for="draft-title">Draft title</label>
+            <input id="draft-title" type="text" dir="auto" required autocomplete="off"
+                   aria-describedby="title-error">
+            <p class="error" id="title-error" role="alert"></p>
+            <button class="create-button" type="submit">Create draft</button>
+          </form>
+        </div>
+
+        <div id="draft-state" hidden>
+          <h2 class="state-title" id="draft-name" dir="auto" tabindex="-1"></h2>
+          <button class="clear-button" id="clear-draft" type="button">
+            <svg width="17" height="17" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+              <path d="M3.5 5.5h13m-9-2h5m2.5 2-.65 10.1a1 1 0 0 1-1 .9H6.65a1 1 0 0 1-1-.9L5 5.5m3.5 3.25v4.5m3-4.5v4.5"
+                    fill="none" stroke="currentColor" stroke-width="1.4"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Clear draft
+          </button>
+          <p class="error" id="clear-error" role="alert"></p>
+        </div>
+      </div>
+
+      <div class="artwork" aria-hidden="true">
+        <svg viewBox="0 0 460 350" focusable="false">
+          <defs>
+            <pattern id="proof-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+              <path d="M0 24V0h24" fill="none" stroke="var(--cobalt)" stroke-opacity=".16"/>
+            </pattern>
+          </defs>
+
+          <rect x="52" y="33" width="356" height="284" fill="url(#proof-grid)"/>
+          <path d="M72 68V50h18m280 0h18v18M72 282v18h18m280 0h18v-18"
+                fill="none" stroke="var(--cobalt)" stroke-opacity=".58" stroke-width="1.3"/>
+
+          <g transform="rotate(9 243 177)">
+            <rect x="168" y="64" width="161" height="220" rx="2"
+                  fill="var(--pale-blue)" stroke="var(--cobalt)" stroke-opacity=".58"/>
+            <rect x="168" y="64" width="161" height="220" rx="2"
+                  fill="var(--cobalt)" fill-opacity=".09"/>
+            <path d="M309 84v178" stroke="var(--cobalt)" stroke-opacity=".23"/>
+          </g>
+
+          <g transform="rotate(-8 221 176)">
+            <path d="M128 67h133l41 41v181H128z" transform="translate(4 6)"
+                  fill="var(--cobalt)" opacity=".13"/>
+            <path d="M128 67h133l41 41v181H128z" fill="var(--paper)"
+                  stroke="var(--cobalt)" stroke-width="1.4" stroke-linejoin="round"/>
+            <path d="M261 67v41h41z" fill="var(--pale-blue)"
+                  stroke="var(--cobalt)" stroke-width="1.4" stroke-linejoin="round"/>
+            <path d="M146 91v174" stroke="var(--pale-blue)"/>
+            <path d="M162 150h112" stroke="var(--cobalt)" stroke-opacity=".46"
+                  stroke-width="1.3" stroke-dasharray="3 5"/>
+            <path d="M162 178h110m-110 17h110m-110 17h79"
+                  stroke="var(--slate)" stroke-opacity=".24" stroke-linecap="round"/>
+            <rect class="proof-title" x="162" y="147" width="106" height="5" rx="1.5"
+                  fill="var(--cobalt)"/>
+            <path class="proof-caret" d="M162 139v21" stroke="var(--cobalt)"
+                  stroke-width="2.3" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <p class="storage-note">
+      <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+        <rect x="2.5" y="3.75" width="15" height="12.5" rx="2"
+              fill="none" stroke="currentColor" stroke-width="1.35"/>
+        <path d="M2.5 7.5h15" stroke="currentColor" stroke-width="1.35"/>
+      </svg>
+      <span id="storage-message">Drafts are saved in this browser.</span>
+    </p>
+    <p class="visually-hidden" id="announcement" role="status"></p>
+  </main>
+
+  <script>
+    const storageKey = "editorial-desk.article-draft.v1";
+    const browserMessage = "Drafts are saved in this browser.";
+    const pageMessage = "Drafts stay on this page until you reload.";
+
+    const panel = document.getElementById("draft-panel");
+    const emptyState = document.getElementById("empty-state");
+    const draftState = document.getElementById("draft-state");
+    const form = document.getElementById("draft-form");
+    const titleInput = document.getElementById("draft-title");
+    const titleError = document.getElementById("title-error");
+    const draftName = document.getElementById("draft-name");
+    const clearButton = document.getElementById("clear-draft");
+    const clearError = document.getElementById("clear-error");
+    const storageMessage = document.getElementById("storage-message");
+    const announcement = document.getElementById("announcement");
+
+    let storage;
+    let storedTitle = "";
+    let draftIsStored = false;
+
+    try {
+      storage = window.localStorage;
+      storedTitle = (storage.getItem(storageKey) ?? "").trim();
+      draftIsStored = Boolean(storedTitle);
+    } catch {
+      storage = null;
+      storageMessage.textContent = pageMessage;
+    }
+
+    function renderDraft(title) {
+      const hasDraft = Boolean(title);
+      draftName.textContent = title;
+      emptyState.hidden = hasDraft;
+      draftState.hidden = !hasDraft;
+      panel.dataset.state = hasDraft ? "draft" : "empty";
+    }
+
+    function clearTitleError() {
+      titleError.textContent = "";
+      titleInput.removeAttribute("aria-invalid");
+    }
+
+    renderDraft(storedTitle);
+
+    titleInput.addEventListener("input", () => {
+      if (titleInput.hasAttribute("aria-invalid") && titleInput.value.trim()) {
+        clearTitleError();
+      }
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const title = titleInput.value.trim();
+
+      if (!title) {
+        titleInput.setAttribute("aria-invalid", "true");
+        titleError.textContent = "Enter a draft title.";
+        titleInput.focus();
+        return;
+      }
+
+      clearTitleError();
+
+      if (storage) {
+        try {
+          storage.setItem(storageKey, title);
+          draftIsStored = true;
+          storageMessage.textContent = browserMessage;
+        } catch {
+          storageMessage.textContent = pageMessage;
+        }
+      }
+
+      renderDraft(title);
+      draftName.focus();
+      announcement.textContent = "Draft created.";
+    });
+
+    clearButton.addEventListener("click", () => {
+      if (draftIsStored) {
+        try {
+          storage.removeItem(storageKey);
+          draftIsStored = false;
+        } catch {
+          clearError.textContent = "Couldn’t clear the draft. Try again.";
+          return;
+        }
+      }
+
+      clearError.textContent = "";
+      form.reset();
+      renderDraft("");
+      titleInput.focus();
+      announcement.textContent = "Draft cleared.";
+    });
+  </script>
+</body>
+</html>

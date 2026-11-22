@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Saved trails</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Fraunces:opsz,wght@9..144,500..600&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --mist: #edf1e8;
+      --paper: #fafbf5;
+      --pine: #1b3930;
+      --fern: #4c6256;
+      --sage: #b8cbb9;
+      --pollen: #e7c875;
+      --rule: color-mix(in srgb, var(--pine) 20%, var(--paper));
+      --display: "Fraunces", Georgia, serif;
+      --body: "DM Sans", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+
+    body {
+      margin: 0;
+      background: var(--mist);
+      color: var(--pine);
+      font: 1rem/1.5 var(--body);
+    }
+
+    .shell {
+      width: min(calc(100% - 5rem), 74rem);
+      margin-inline: auto;
+    }
+
+    .app-header {
+      border-block-end: 1px solid var(--rule);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      min-height: 4.5rem;
+      font: 600 1.45rem/1 var(--display);
+      letter-spacing: -0.035em;
+    }
+
+    .brand-mark {
+      flex: none;
+      width: 2.15rem;
+      height: 2.15rem;
+      color: var(--pollen);
+      background: var(--pine);
+      border-radius: 0.55rem;
+    }
+
+    main {
+      padding-block: 3.6rem 4rem;
+    }
+
+    .page-heading {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.5rem 0.9rem;
+      margin-block-end: 1.75rem;
+    }
+
+    h1 {
+      margin: 0;
+      font: 500 clamp(2.65rem, 6.4vw, 5rem)/1 var(--display);
+      letter-spacing: -0.055em;
+    }
+
+    .saved-count {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin: 0;
+      color: var(--fern);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .saved-count svg {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    .trail-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      min-height: 29rem;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      border-radius: 1rem;
+      background: var(--paper);
+    }
+
+    .panel-content {
+      display: grid;
+      align-content: center;
+      min-width: 0;
+      padding: clamp(1.5rem, 4vw, 3.5rem);
+    }
+
+    .empty-message {
+      margin-block-end: 1.4rem;
+      padding-block-end: 1.4rem;
+      border-block-end: 1px solid var(--rule);
+    }
+
+    .empty-mark {
+      display: grid;
+      place-items: center;
+      width: 2.65rem;
+      height: 2.65rem;
+      margin-block-end: 0.9rem;
+      border-radius: 50%;
+      background: color-mix(in srgb, var(--sage) 40%, var(--paper));
+    }
+
+    .empty-mark svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+
+    .empty-message h2 {
+      margin: 0;
+      font: 500 clamp(1.65rem, 2.5vw, 2.15rem)/1.14 var(--display);
+      letter-spacing: -0.035em;
+    }
+
+    .empty-message p {
+      max-width: 35ch;
+      margin: 0.45rem 0 0;
+      color: var(--fern);
+    }
+
+    .section-heading {
+      margin: 0 0 0.4rem;
+      color: var(--fern);
+      font: 700 0.875rem/1.5 var(--body);
+    }
+
+    .trail-name {
+      margin: 0;
+      font: 500 clamp(2.2rem, 3.2vw, 2.9rem)/1.05 var(--display);
+      letter-spacing: -0.045em;
+    }
+
+    .trail-distance {
+      margin: 0.45rem 0 0;
+      color: var(--fern);
+    }
+
+    .trail-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .trail-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-height: 2.875rem;
+      margin-block-start: 1.15rem;
+      padding: 0.6rem 1.05rem;
+      border: 1px solid var(--pine);
+      border-radius: 0.45rem;
+      background: var(--pine);
+      color: var(--paper);
+      font: 700 0.9375rem/1.25 var(--body);
+      cursor: pointer;
+    }
+
+    .trail-action svg {
+      flex: none;
+      width: 1.05rem;
+      height: 1.05rem;
+    }
+
+    .trail-action:focus-visible {
+      outline: 2px solid var(--pine);
+      outline-offset: 4px;
+    }
+
+    .trail-action .remove-icon,
+    [data-saved="true"] .trail-action .save-icon {
+      display: none;
+    }
+
+    [data-saved="true"] .trail-action {
+      border-color: var(--fern);
+      background: transparent;
+      color: var(--pine);
+    }
+
+    [data-saved="true"] .trail-action .remove-icon {
+      display: block;
+    }
+
+    @media (hover: hover) {
+      .trail-action:hover { background: var(--fern); }
+      [data-saved="true"] .trail-action:hover { background: var(--mist); }
+    }
+
+    .trail-art {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 22% 16%, rgb(184 203 185 / 15%), transparent 68%),
+        var(--pine);
+    }
+
+    .trail-art > svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .finish-marker {
+      fill: var(--pine);
+      transition: fill 200ms ease;
+    }
+
+    [data-saved="true"] .finish-marker {
+      fill: var(--pollen);
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 48rem) {
+      .shell { width: calc(100% - 2.5rem); }
+      .brand { min-height: 3.9rem; }
+      main { padding-block: 1.8rem 2.5rem; }
+      .page-heading { margin-block-end: 1.15rem; }
+      .trail-panel {
+        grid-template-columns: minmax(0, 1fr);
+        min-height: 0;
+      }
+      .trail-art { aspect-ratio: 1.78; }
+    }
+
+    @media (max-width: 28rem) {
+      .panel-content { padding: 1.35rem; }
+      .trail-action { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .finish-marker { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="app-header">
+    <div class="shell brand">
+      <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true">
+        <path d="M9 25c5.5 0 5.3-5.8 9.4-5.8 2.1 0 3.2 1.2 5.1.3 2-.9 2.5-4.5 3.5-7.5"
+              fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        <circle cx="9" cy="25" r="2" fill="var(--pine)" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="27" cy="11" r="2" fill="currentColor"/>
+      </svg>
+      <span>Trails</span>
+    </div>
+  </header>
+
+  <main class="shell">
+    <div class="page-heading">
+      <h1>Saved trails</h1>
+      <p class="saved-count">
+        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M5.5 3.5h9v13L10 13.4l-4.5 3.1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        </svg>
+        <span id="saved-count">0 saved</span>
+      </p>
+    </div>
+
+    <div class="trail-panel" id="trail-panel" data-saved="false">
+      <div class="panel-content">
+        <div id="empty-state">
+          <div class="empty-message">
+            <div class="empty-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M6.5 4h11v16L12 16.3 6.5 20z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h2>No trails saved yet</h2>
+            <p>Save a nearby route to start your list.</p>
+          </div>
+
+          <section aria-labelledby="nearby-heading">
+            <h2 class="section-heading" id="nearby-heading">Nearby route</h2>
+            <div id="nearby-slot">
+              <article id="cedar-bend" aria-labelledby="trail-name">
+                <h3 class="trail-name" id="trail-name">Cedar Bend</h3>
+                <p class="trail-distance">2.4 miles</p>
+                <button class="trail-action" id="trail-action" type="button">
+                  <svg class="save-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    <path d="M5.5 3.5h9v13L10 13.4l-4.5 3.1z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                  </svg>
+                  <svg class="remove-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    <path d="M4.5 10h11" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                  </svg>
+                  <span id="action-label">Save trail</span>
+                </button>
+              </article>
+            </div>
+          </section>
+        </div>
+
+        <section id="saved-state" aria-labelledby="saved-heading" hidden>
+          <h2 class="section-heading" id="saved-heading">Your list</h2>
+          <ul class="trail-list" role="list" aria-labelledby="saved-heading">
+            <li id="saved-slot"></li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="trail-art" aria-hidden="true">
+        <svg viewBox="0 0 640 484" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <defs>
+            <pattern id="map-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M40 0H0v40" fill="none" stroke="var(--sage)" stroke-opacity=".15"/>
+            </pattern>
+            <path id="ridge-west" vector-effect="non-scaling-stroke"
+              d="M-178 15C-175-44-131-79-91-107C-46-140 9-155 61-140C110-126 126-101 156-78C190-51 209-31 193 5C177 41 147 33 122 61C99 88 94 124 47 143C5 161-41 141-71 124C-104 105-122 113-151 84C-169 65-179 42-178 15Z"/>
+            <path id="ridge-east" vector-effect="non-scaling-stroke"
+              d="M-195-17C-196-52-152-72-116-104C-84-132-71-173-14-178C39-183 72-140 113-122C161-101 213-99 220-52C226-9 183 19 164 52C143 87 144 136 101 160C60 183 6 155-33 151C-77 146-134 161-166 127C-198 93-173 56-185 23C-190 9-196-3-195-17Z"/>
+            <path id="trail-line"
+              d="M166 351C213 353 239 327 249 293C258 264 273 247 298 253C324 259 343 286 373 282C400 278 409 255 395 235C377 209 339 210 345 180C351 150 399 164 428 150C451 139 461 119 476 108"/>
+          </defs>
+
+          <rect width="640" height="484" fill="url(#map-grid)"/>
+
+          <g fill="none" stroke="var(--sage)" stroke-opacity=".31" stroke-width="1">
+            <g transform="translate(113 110)">
+              <use href="#ridge-west" transform="scale(1.24)" fill="var(--sage)" fill-opacity=".06"/>
+              <use href="#ridge-west" transform="scale(1.10)"/>
+              <use href="#ridge-west" transform="rotate(-2) scale(.96)"/>
+              <use href="#ridge-west" transform="rotate(-3) scale(.82)"/>
+              <use href="#ridge-west" transform="translate(-2 1) rotate(-4) scale(.68)"/>
+              <use href="#ridge-west" transform="translate(-5 4) rotate(-6) scale(.54)"/>
+              <use href="#ridge-west" transform="translate(-8 7) rotate(-8) scale(.4)"/>
+              <use href="#ridge-west" transform="translate(-10 9) rotate(-10) scale(.27)"/>
+              <use href="#ridge-west" transform="translate(-12 10) rotate(-11) scale(.15)"/>
+            </g>
+
+            <g transform="translate(565 364)">
+              <use href="#ridge-east" transform="scale(1.19)" fill="var(--sage)" fill-opacity=".07"/>
+              <use href="#ridge-east" transform="scale(1.05)"/>
+              <use href="#ridge-east" transform="rotate(2) scale(.92)"/>
+              <use href="#ridge-east" transform="rotate(4) scale(.79)"/>
+              <use href="#ridge-east" transform="translate(3 0) rotate(6) scale(.66)"/>
+              <use href="#ridge-east" transform="translate(5 -2) rotate(8) scale(.53)"/>
+              <use href="#ridge-east" transform="translate(7 -3) rotate(10) scale(.4)"/>
+              <use href="#ridge-east" transform="translate(8 -4) rotate(12) scale(.27)"/>
+              <use href="#ridge-east" transform="translate(9 -5) rotate(14) scale(.14)"/>
+            </g>
+
+            <path d="M-20 383c52-7 91 12 120 35 28 23 57 36 101 37 23 0 44 9 65 29M-20 408c47-9 82 8 111 31 28 22 58 31 96 34 19 2 33 7 45 16M-20 433c38-10 69 2 96 21 25 17 52 25 78 30"
+                  stroke-opacity=".21"/>
+            <path d="M28 53V28h25m534 0h25v25m0 378v25h-25m-534 0H28v-25"
+                  stroke-opacity=".52"/>
+          </g>
+
+          <g fill="none" stroke-linecap="round">
+            <use href="#trail-line" stroke="var(--pine)" stroke-width="10"/>
+            <use href="#trail-line" stroke="var(--pollen)" stroke-width="3.6"/>
+          </g>
+
+          <circle cx="166" cy="351" r="5.5" fill="var(--pine)" stroke="var(--pollen)" stroke-width="2.6"/>
+          <circle cx="476" cy="108" r="21" fill="none" stroke="var(--pollen)" stroke-opacity=".32"/>
+          <circle class="finish-marker" cx="476" cy="108" r="10" stroke="var(--pollen)" stroke-width="2.6"/>
+          <circle cx="476" cy="108" r="2.8" fill="var(--sage)"/>
+        </svg>
+      </div>
+    </div>
+
+    <p class="visually-hidden" id="trail-status" role="status"></p>
+  </main>
+
+  <script>
+    const panel = document.getElementById("trail-panel");
+    const emptyState = document.getElementById("empty-state");
+    const savedState = document.getElementById("saved-state");
+    const nearbySlot = document.getElementById("nearby-slot");
+    const savedSlot = document.getElementById("saved-slot");
+    const trail = document.getElementById("cedar-bend");
+    const action = document.getElementById("trail-action");
+    const actionLabel = document.getElementById("action-label");
+    const count = document.getElementById("saved-count");
+    const status = document.getElementById("trail-status");
+
+    // Each page load starts with an empty list.
+    let saved = false;
+
+    action.addEventListener("click", () => {
+      saved = !saved;
+
+      const destination = saved ? savedSlot : nearbySlot;
+      destination.append(trail);
+      emptyState.hidden = saved;
+      savedState.hidden = !saved;
+
+      panel.dataset.saved = String(saved);
+      count.textContent = saved ? "1 saved" : "0 saved";
+      actionLabel.textContent = saved ? "Remove trail" : "Save trail";
+
+      action.focus();
+      status.textContent = saved
+        ? "Cedar Bend added to your saved trails."
+        : "Cedar Bend removed from your saved trails.";
+    });
+  </script>
+</body>
+</html>
