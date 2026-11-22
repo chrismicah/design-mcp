@@ -1,9 +1,9 @@
-name: Specific landing visual comparison
+name: Specific landing keyboard task checks
 
 on:
   push:
-    branches: [design-mcp/specific-landing-captures]
-    paths: ['.github/workflows/playwriter-baseline.yml', 'evidence/benchmark-v1/candidate-inputs/**', 'evals/v1/render.py']
+    branches: [design-mcp/specific-landing-actions]
+    paths: ['.github/workflows/playwriter-baseline.yml', 'evidence/benchmark-v1/candidate-inputs/**', 'evals/v1/render.py', 'evals/v1/render_landing_actions.py']
 
 permissions:
   contents: read
@@ -31,7 +31,7 @@ jobs:
         run: |
           chrome="$RUNNER_TEMP/browser/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
           "$chrome" --version
-          python evals/v1/render.py \
+          python evals/v1/render_landing_actions.py \
             --cells evidence/benchmark-v1/candidate-inputs --scratch "$RUNNER_TEMP/profile" \
             --playwriter "$RUNNER_TEMP/playwriter/node_modules/.bin/playwriter" --chrome "$chrome"
           python - <<'PY'
@@ -41,10 +41,14 @@ jobs:
               record = json.loads(path.with_name('render.json').read_text())
               assert record['browser'].endswith('158.0.8127.36'), record['browser']
               assert all(item['status'] == 'rendered' for item in record['captures'].values()), record
+              receipt = json.loads(path.with_name('receipt.json').read_text())
+              assert receipt['html_sha256'] == record['input_sha256'], path
+              assert all(item['interaction']['passed'] for item in record['captures'].values()), record
           PY
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
         with:
-          name: specific-landing-captures
+          name: specific-landing-actions
           path: evidence/benchmark-v1/candidate-inputs/
           if-no-files-found: error
           retention-days: 7
