@@ -1,5 +1,9 @@
 # Design MCP live smoke
 
+## Combined review branch, November 22
+
+Four fresh-install hosted checks passed on `design-mcp/review-integration` at `4ab9d8e`. The public address form produced two Playwriter captures with nine masked fields and zero local findings. The Linux Chrome popup recovered from a missing host and opened the preview with keyboard access to After. Its single scan reported 72 ms. On hosted macOS 15 arm64, Electron cleared the seeded occlusion and retained the clipping finding, and the SwiftUI fixture exposed a sixth control after Reveal. The source suite passed 410 tests and all 17 stdio tools responded. Reference-Mac latency, blind live scores, and final GPT Computer Use remain open. [Run links and verified artifact hashes](evidence/benchmark-v1/review-integration.json)
+
 ## Fresh-package benchmark smoke, November 21
 
 Codex CLI 0.170.0 called `direct` through a fresh pipx install of `fd6035d` and returned an independent rehearsal room board. Playwriter MCP in isolated Chrome clicked the filter at 1440 px and used Tab and Enter at 390 px. “Delayed only” left Studio B visible, hid Hall A and announced one of two rooms. “All rooms” restored both. [Interaction receipt](evidence/benchmark-v1/preflight.json) · [390 px filtered screenshot](.context/factory/benchmark-v1/computer-smoke/interaction-v2/delayed-390.png)
