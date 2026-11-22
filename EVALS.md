@@ -45,6 +45,8 @@ Clean detached checkout on macOS 26.5.2, Apple Silicon. The smoke tests send rea
 
 The hosted macOS 15 install matrix passed all four jobs. Both installers served 17/17 tools in each arm64 and Intel job on Python 3.12 and 3.13. macOS 13, Python 3.10–3.11, and a fresh Tart VM remain open. [Hosted jobs](https://github.com/chrismicah/design-mcp/actions/runs/44984617955) · [Tracked local preflight](evidence/benchmark-v1/preflight.json)
 
+The integrated development package subsequently passed eight clean-install jobs using the documented Git URL with both pipx and uv. Both installers recorded the expected Git commit in workspace-isolated environments. Each job exercised `doctor`, three default tools, all 17 compatibility tools and the bundled extension and desktop reviewer entry points. The matrix covers macOS 15 on both architectures and Python 3.10–3.13. Fresh Ventura remains open. [Exact commit and job receipts](evidence/benchmark-v1/direct-git-install.json)
+
 ## How the score is calculated
 
 The harness runs each brief in two fresh sessions with matching model, effort, prompt, tool restrictions and allowed assets. The treatment must complete a `direct` call. The control uses an empty MCP configuration. Each cell records the client version, exit status, prompt hash, tool calls, elapsed time and provider-reported token fields. The receipt keeps input, cached input and output counts as reported by the client. [Generator](evals/v1/generate.py)

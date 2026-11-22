@@ -4,13 +4,15 @@ Turn a brief into one sourced art direction. The response gives the coding agent
 
 ## Install
 
-From a checkout, choose one installer. Both support an explicit `--python` option if you want to select a particular interpreter.
+Install the verified development build with either command. Both support an explicit `--python` option to select an installed interpreter.
 
 ```bash
-pipx install .
+pipx install 'git+https://github.com/chrismicah/design-mcp.git@a29d405b40ed49383c1fc7b91ba0bc51cee5135f'
 # or
-uv tool install .
+uv tool install 'git+https://github.com/chrismicah/design-mcp.git@a29d405b40ed49383c1fc7b91ba0bc51cee5135f'
 ```
+
+For a local checkout, pass `.` to your installer. [Verified installs](evidence/benchmark-v1/direct-git-install.json)
 
 Run `design-mcp doctor` in the installed environment. It reports the interpreter and executable, validates bundled resources, and uses a local stdio client to discover the selected tools and call one. Each check reports pass, fail, or skip. A failed check gives a nonzero exit status.
 
@@ -89,7 +91,7 @@ The new direction library and the historical pattern data have separate roles. H
 
 ## Verified results
 
-Fresh pipx and uv installs of the combined form and review package passed `doctor`, called the three default tools and exercised all 17 tools in compatibility mode on macOS 15. All eight jobs passed across Intel and Apple Silicon with Python 3.10–3.13. macOS 13 and fresh Tart VM verification remain open. [Install matrix](https://github.com/chrismicah/design-mcp/actions/runs/45000311068)
+The pinned Git commands passed all eight clean-install jobs on Intel and Apple Silicon macOS 15 with Python 3.10–3.13. Each installer verified the package commit, passed `doctor` and exercised all 17 compatibility tools. macOS 13 and fresh Tart VM verification remain open. [Install matrix](https://github.com/chrismicah/design-mcp/actions/runs/45001580472)
 
 Thirty of 36 matched design briefs have blinded scores. The plain generator averaged 92.4 and frozen Design MCP v2 averaged 94.9, with 17 wins, nine ties, and four losses. [Benchmark and receipts](EVALS.md)
 

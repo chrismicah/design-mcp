@@ -1,5 +1,9 @@
 # Design MCP live smoke
 
+## Direct Git install on both architectures, November 22
+
+Both README commands installed `a29d405` directly from Git on clean macOS 15 runners. Each installer reported the pinned commit in package metadata and passed default and compatibility MCP smoke. All eight Intel and Apple Silicon jobs passed on Python 3.10–3.13. The fresh Ventura boot and native GPT Computer Use flow remain open. [Job and source receipts](evidence/benchmark-v1/direct-git-install.json)
+
 ## Reference Mac clean install, November 22
 
 Pipx 1.7.1 installed the exact combined candidate from a checked Git archive into a new workspace-local environment on Apple Silicon macOS 26.5.2 with Python 3.13.3. From an empty run directory, `doctor` passed and the installed server returned all three default tool replies and all 17 compatibility replies over stdio. The compatibility run created the verified 10,092,399-byte legacy cache. The installed package included the Chrome extension manifest. A fresh Codex CLI session using the documented stdio configuration called `direct`, `react`, and `check` against that executable. It received the service-work-order direction for the bike shop and applied the “calmer” reaction. The native browser run remains open. [Install and model trace receipts](evidence/benchmark-v1/reference-mac-install.json)
