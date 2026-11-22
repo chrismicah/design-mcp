@@ -32,54 +32,55 @@ async function capture(name) {
   return { evidencePath, evidence, findings: review.findings.map(({ code, region }) => [code, region]) };
 }
 
-try {
-  await app.whenReady();
-  window = new BrowserWindow({
-    width: 880, height: 640, useContentSize: true,
-    webPreferences: { contextIsolation: true, sandbox: true, nodeIntegration: false },
-  });
-  window.removeMenu();
-  await window.loadFile(fixture);
-  assert.equal(window.webContents.getURL(), pathToFileURL(fixture).href);
-  const windowId = execFileSync("xdotool", ["search", "--onlyvisible", "--name", "^Desk review fixture$"],
-    { encoding: "utf8" }).trim().split("\n").at(-1);
-  execFileSync("xdotool", ["windowfocus", "--sync", windowId]);
-  const observe = () => window.webContents.executeJavaScript(
-    "({ focus: document.activeElement.id, status: document.querySelector('#status').textContent })"
-  );
+app.whenReady().then(async () => {
+  try {
+    window = new BrowserWindow({
+      width: 880, height: 640, useContentSize: true,
+      webPreferences: { contextIsolation: true, sandbox: true, nodeIntegration: false },
+    });
+    window.removeMenu();
+    await window.loadFile(fixture);
+    assert.equal(window.webContents.getURL(), pathToFileURL(fixture).href);
+    const windowId = execFileSync("xdotool", ["search", "--onlyvisible", "--name", "^Desk review fixture$"],
+      { encoding: "utf8" }).trim().split("\n").at(-1);
+    execFileSync("xdotool", ["windowfocus", "--sync", windowId]);
+    const observe = () => window.webContents.executeJavaScript(
+      "({ focus: document.activeElement.id, status: document.querySelector('#status').textContent })"
+    );
 
-  proof.initial = await observe();
-  assert.deepEqual(proof.initial, { focus: "reveal", status: "Control covered" });
-  const before = await capture("before");
-  assert.deepEqual(before.findings, [["control-not-hittable", "r2"], ["control-clipped", "r4"]]);
-  proof.before = before.findings;
+    proof.initial = await observe();
+    assert.deepEqual(proof.initial, { focus: "reveal", status: "Control covered" });
+    const before = await capture("before");
+    assert.deepEqual(before.findings, [["control-not-hittable", "r2"], ["control-clipped", "r4"]]);
+    proof.before = before.findings;
 
-  execFileSync("xdotool", ["key", "--clearmodifiers", "Return"]);
-  for (let step = 0; step < 30; step++) {
-    proof.updated = await observe();
-    if (proof.updated.status === "Control revealed") break;
-    await delay(50);
+    execFileSync("xdotool", ["key", "--clearmodifiers", "Return"]);
+    for (let step = 0; step < 30; step++) {
+      proof.updated = await observe();
+      if (proof.updated.status === "Control revealed") break;
+      await delay(50);
+    }
+    assert.deepEqual(proof.updated, { focus: "reveal", status: "Control revealed" });
+    const after = await capture("after");
+    assert.deepEqual(after.findings, [["control-clipped", "r4"]]);
+    proof.after = after.findings;
+
+    await assert.rejects(exportDesignCapture(window, before.evidencePath), { code: "EEXIST" });
+    assert.equal(await readFile(before.evidencePath, "utf8"), before.evidence);
+    proof.originalEvidencePreserved = true;
+    await window.loadURL("data:text/html,<title>Outside the local app</title>");
+    const refusedPath = join(destination, "unsupported.json");
+    await assert.rejects(exportDesignCapture(window, refusedPath), /Capture your app's local window/);
+    await assert.rejects(readFile(refusedPath), { code: "ENOENT" });
+    proof.unsupportedSourceRefused = true;
+    proof.passed = true;
+  } catch (error) {
+    proof.error = error.stack;
+    process.exitCode = 1;
+    console.error(error);
+  } finally {
+    await writeFile(join(destination, "receipt.json"), JSON.stringify(proof, null, 2) + "\n");
+    window?.destroy();
+    app.exit(process.exitCode ?? 0);
   }
-  assert.deepEqual(proof.updated, { focus: "reveal", status: "Control revealed" });
-  const after = await capture("after");
-  assert.deepEqual(after.findings, [["control-clipped", "r4"]]);
-  proof.after = after.findings;
-
-  await assert.rejects(exportDesignCapture(window, before.evidencePath), { code: "EEXIST" });
-  assert.equal(await readFile(before.evidencePath, "utf8"), before.evidence);
-  proof.originalEvidencePreserved = true;
-  await window.loadURL("data:text/html,<title>Outside the local app</title>");
-  const refusedPath = join(destination, "unsupported.json");
-  await assert.rejects(exportDesignCapture(window, refusedPath), /Capture your app's local window/);
-  await assert.rejects(readFile(refusedPath), { code: "ENOENT" });
-  proof.unsupportedSourceRefused = true;
-  proof.passed = true;
-} catch (error) {
-  proof.error = error.stack;
-  process.exitCode = 1;
-  console.error(error);
-} finally {
-  await writeFile(join(destination, "receipt.json"), JSON.stringify(proof, null, 2) + "\n");
-  window?.destroy();
-  app.exit(process.exitCode ?? 0);
-}
+});

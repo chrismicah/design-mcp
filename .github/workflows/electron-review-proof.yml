@@ -33,7 +33,7 @@ jobs:
         run: |
           cli="$RUNNER_TEMP/design-review/bin/design-mcp"
           electron="$RUNNER_TEMP/review-electron/node_modules/electron/dist/electron"
-          xvfb-run -a -s '-screen 0 1280x900x24' "$electron" \
+          timeout 45s xvfb-run -a -s '-screen 0 1280x900x24' "$electron" \
             evals/vision/electron_smoke.mjs "$cli" "$RUNNER_TEMP/electron-proof"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
