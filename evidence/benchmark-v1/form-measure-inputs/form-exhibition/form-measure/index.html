@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'unsafe-inline'; form-action 'none'; base-uri 'none'">
+  <title>Museum group visit request</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600&family=Source+Sans+3:wght@400;600&display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #203136;
+      --paper: #f5f8f6;
+      --green: #175f55;
+      --stone: #c5d6cb;
+      --brass: #d9b57e;
+      --brick: #9a3428;
+      --muted: color-mix(in srgb, var(--ink) 80%, var(--paper));
+      --control-border: color-mix(in srgb, var(--ink) 54%, var(--stone));
+      --control-paper: color-mix(in srgb, white 60%, var(--paper));
+      --display: "Barlow Semi Condensed", "Arial Narrow", sans-serif;
+      --body: "Source Sans 3", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 400 1.0625rem/1.4 var(--body);
+    }
+
+    .page {
+      --field-offset: 12rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) clamp(16rem, 24vw, 21.5rem);
+      grid-template-rows: auto 1fr;
+      grid-template-areas: "intro gallery" "worksheet gallery";
+      gap: 28px clamp(32px, 4.6vw, 64px);
+      width: min(71rem, calc(100% - 80px));
+      margin-inline: auto;
+      padding-block: clamp(32px, 4.4vw, 64px);
+    }
+
+    .intro { grid-area: intro; }
+    .intro h1 {
+      margin: 0;
+      font: 600 clamp(3.25rem, 6vw, 5.5rem)/.95 var(--display);
+      letter-spacing: -.025em;
+    }
+
+    .intro h1 span { display: block; }
+    .intro p { margin: 13px 0 0; color: var(--muted); }
+
+    .gallery {
+      grid-area: gallery;
+      position: relative;
+      min-block-size: 39rem;
+      overflow: hidden;
+      border-radius: 2px;
+      background: var(--green);
+    }
+
+    .gallery svg {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .worksheet { grid-area: worksheet; min-inline-size: 0; }
+
+    fieldset {
+      min-inline-size: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    legend { padding: 0; }
+
+    .group {
+      position: relative;
+      border-block-start: 1px solid var(--stone);
+      padding: 17px 0 0 var(--field-offset);
+    }
+
+    .group + .group { margin-block-start: 24px; }
+
+    .group > legend {
+      position: absolute;
+      inset: 15px auto auto 0;
+      max-inline-size: calc(var(--field-offset) - 16px);
+      font: 600 1.5rem/1.15 var(--display);
+    }
+
+    .fields {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 12px;
+      max-inline-size: 32rem;
+    }
+
+    .field label,
+    .visit-type legend {
+      display: block;
+      margin-block-end: 4px;
+      font-weight: 600;
+    }
+
+    .hint {
+      margin: -2px 0 5px;
+      color: var(--muted);
+      font-size: .9375rem;
+    }
+
+    input:is([type="text"], [type="email"], [type="number"]) {
+      display: block;
+      inline-size: 100%;
+      min-block-size: 46px;
+      padding: 8px 12px;
+      border: 1px solid var(--control-border);
+      border-radius: 3px;
+      background: var(--control-paper);
+      color: var(--ink);
+      font: inherit;
+    }
+
+    input[type="number"] { inline-size: 7rem; }
+
+    .choices {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .choice {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      min-block-size: 48px;
+      padding: 9px 12px;
+      border: 1px solid var(--control-border);
+      border-radius: 3px;
+      background: var(--control-paper);
+      line-height: 1.2;
+      cursor: pointer;
+    }
+
+    .choice input {
+      flex: none;
+      inline-size: 18px;
+      block-size: 18px;
+      margin: 0;
+      accent-color: var(--green);
+    }
+
+    .choice:has(input:checked) {
+      border-color: var(--green);
+      background: color-mix(in srgb, var(--stone) 60%, var(--paper));
+    }
+
+    input[aria-invalid="true"],
+    .choice:has(input[aria-invalid="true"]) {
+      border-color: var(--brick);
+    }
+
+    .error {
+      margin: 4px 0 0;
+      color: var(--brick);
+      font-size: .9375rem;
+      font-weight: 600;
+    }
+
+    :is(input, button, [tabindex]):focus-visible,
+    .choice:has(input:focus-visible) {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    .choice:has(input:focus-visible) input { outline: none; }
+
+    .actions {
+      margin-block-start: 24px;
+      margin-inline-start: var(--field-offset);
+    }
+
+    .button {
+      min-block-size: 48px;
+      padding: 10px 23px;
+      border: 1px solid var(--green);
+      border-radius: 3px;
+      background: var(--green);
+      color: var(--paper);
+      font: 600 1.0625rem/1.25 var(--body);
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background: color-mix(in srgb, var(--green) 70%, var(--ink));
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--green);
+    }
+
+    .button.secondary:hover {
+      background: color-mix(in srgb, var(--stone) 48%, var(--paper));
+    }
+
+    .confirmation {
+      border-block-start: 1px solid var(--stone);
+      padding-block-start: 22px;
+    }
+
+    .confirmation-content {
+      max-inline-size: 32rem;
+      margin-inline-start: var(--field-offset);
+    }
+
+    .confirmation-heading {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .confirmation-heading svg { flex: none; }
+
+    .confirmation h2 {
+      margin: 0;
+      font: 600 clamp(1.875rem, 3vw, 2.5rem)/1.05 var(--display);
+      letter-spacing: -.015em;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin: 24px 0;
+      border-block: 1px solid var(--stone);
+    }
+
+    .summary div { padding: 12px 12px 14px 0; }
+    .summary div + div {
+      padding-inline-start: 16px;
+      border-inline-start: 1px solid var(--stone);
+    }
+
+    .summary dt { color: var(--muted); }
+    .summary dd {
+      margin: 2px 0 0;
+      font: 600 1.6875rem/1.12 var(--display);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .confirmation:not([hidden]) .confirmation-content {
+        animation: reveal 220ms ease-out both;
+      }
+
+      @keyframes reveal {
+        from { opacity: 0; transform: translateY(4px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }
+
+    @media (max-width: 56rem) {
+      .page {
+        --field-offset: 0px;
+        grid-template-columns: minmax(0, 1fr) clamp(4.5rem, 23.5vw, 7.75rem);
+        grid-template-areas: "intro gallery" "worksheet worksheet";
+        gap: 24px 16px;
+        width: min(36rem, calc(100% - 32px));
+        padding-block: 24px 32px;
+      }
+
+      .intro h1 { font-size: clamp(2rem, 11vw, 4rem); }
+      .intro p { margin-block-start: 9px; font-size: 1rem; }
+      .gallery { min-block-size: 0; }
+
+      .group { border: 0; padding: 0; }
+      .group + .group { margin-block-start: 19px; }
+
+      .group > legend {
+        position: static;
+        inline-size: 100%;
+        max-inline-size: none;
+        padding-block: 10px 8px;
+        border-block-start: 1px solid var(--stone);
+      }
+
+      .fields { max-inline-size: none; }
+      .actions { margin-block-start: 20px; }
+      .button { inline-size: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="intro">
+      <h1 id="page-title"><span>Museum group</span> <span>visit request</span></h1>
+      <p>Your details stay on this page.</p>
+    </header>
+
+    <div class="gallery" aria-hidden="true">
+      <svg viewBox="0 0 344 680" preserveAspectRatio="xMidYMid slice" focusable="false">
+        <defs>
+          <linearGradient id="wall" x2="80%" y2="100%">
+            <stop stop-color="var(--ink)"/>
+            <stop offset=".6" stop-color="var(--green)"/>
+            <stop offset="1" stop-color="var(--ink)"/>
+          </linearGradient>
+          <linearGradient id="stone-face" x2="100%" y2="80%">
+            <stop stop-color="var(--stone)"/>
+            <stop offset=".48" stop-color="var(--green)"/>
+            <stop offset="1" stop-color="var(--ink)"/>
+          </linearGradient>
+          <linearGradient id="vault" x2="70%" y2="100%">
+            <stop stop-color="var(--ink)"/>
+            <stop offset="1" stop-color="var(--green)"/>
+          </linearGradient>
+          <linearGradient id="sunlit-door" x2="60%" y2="100%">
+            <stop stop-color="var(--brass)"/>
+            <stop offset="1" stop-color="var(--paper)"/>
+          </linearGradient>
+          <linearGradient id="sunlit-floor" x2="30%" y2="100%">
+            <stop stop-color="var(--brass)" stop-opacity=".85"/>
+            <stop offset="1" stop-color="var(--brass)" stop-opacity=".08"/>
+          </linearGradient>
+          <pattern id="grain" width="6" height="6" patternUnits="userSpaceOnUse">
+            <path d="M0 5.5h6" stroke="var(--paper)" stroke-opacity=".07"/>
+          </pattern>
+        </defs>
+
+        <path fill="url(#wall)" d="M0 0h344v680H0z"/>
+        <g fill="none" stroke="var(--stone)" stroke-opacity=".25">
+          <path d="M0 111h344M0 118h344M0 123h344M0 145h344"/>
+          <path d="M0 198h344M0 249h344M0 307h344M0 390h344M0 472h344M0 551h344"/>
+          <path d="M17 145v406m310-406v406M9 551h326m-335 12h344"/>
+        </g>
+
+        <path fill="url(#stone-face)" d="M29 568V308a143 143 0 0 1 286 0v260z"/>
+        <path fill="url(#vault)" d="M47 559V311a125 125 0 0 1 250 0v248z"/>
+        <path fill="var(--green)" d="M64 551V316a108 108 0 0 1 216 0v235z"/>
+        <path fill="url(#vault)" d="M84 539V332a88 88 0 0 1 176 0v207z"/>
+        <path fill="var(--green)" d="M110 525V350a62 62 0 0 1 124 0v175z"/>
+        <path fill="url(#vault)" d="M130 514V368a42 42 0 0 1 84 0v146z"/>
+
+        <g fill="none" stroke="var(--stone)" stroke-opacity=".5">
+          <path d="M29 568V308a143 143 0 0 1 286 0v260"/>
+          <path d="M47 559V311a125 125 0 0 1 250 0v248"/>
+          <path d="M64 551V316a108 108 0 0 1 216 0v235"/>
+          <path d="M84 539V332a88 88 0 0 1 176 0v207"/>
+          <path d="M110 525V350a62 62 0 0 1 124 0v175"/>
+          <path d="M130 514V368a42 42 0 0 1 84 0v146"/>
+          <path d="M172 165v21m-55-10 8 19m102-19-8 19M71 207l14 15m188-15-14 15M40 253l17 8m247-8-17 8M29 308h18m250 0h18"/>
+        </g>
+
+        <path fill="var(--ink)" d="M145 505V378a27 27 0 0 1 54 0v127z"/>
+        <path fill="url(#sunlit-door)" d="M150 505V379a22 22 0 0 1 44 0v126z"/>
+        <path fill="var(--brass)" opacity=".35" d="M186 365a22 22 0 0 1 8 14v126h-8z"/>
+
+        <path fill="url(#vault)" d="M145 505h54l145 92v83H0v-83z"/>
+        <path fill="url(#sunlit-floor)" d="M150 505h44l118 175H132z"/>
+        <g fill="none" stroke="var(--stone)" stroke-opacity=".29">
+          <path d="M128 516h88m-106 12h124m-149 16h174m-208 21h242M11 590h322M0 621h344M0 658h344"/>
+          <path d="m61 680 95-175m16 0v175m111 0-95-175"/>
+        </g>
+
+        <path fill="url(#grain)" opacity=".46" d="M0 0h344v680H0z"/>
+        <rect x="12" y="12" width="320" height="656" fill="none" stroke="var(--stone)" stroke-opacity=".45"/>
+      </svg>
+    </div>
+
+    <form class="worksheet" id="visit-form" method="post" aria-labelledby="page-title" novalidate>
+      <fieldset class="group">
+        <legend>Contact details</legend>
+        <div class="fields">
+          <div class="field">
+            <label for="contact-name">Contact name</label>
+            <input id="contact-name" name="contactName" type="text" autocomplete="name" aria-describedby="name-error" required>
+            <p class="error" id="name-error" hidden></p>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" aria-describedby="email-error" required>
+            <p class="error" id="email-error" hidden></p>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="group">
+        <legend>Visit details</legend>
+        <div class="fields">
+          <div class="field">
+            <label for="group-size">Group size</label>
+            <p class="hint" id="size-hint">1–25 people</p>
+            <input id="group-size" name="groupSize" type="number" min="1" max="25" step="1" inputmode="numeric" aria-describedby="size-hint size-error" required>
+            <p class="error" id="size-error" hidden></p>
+          </div>
+          <fieldset class="visit-type">
+            <legend>Visit type</legend>
+            <div class="choices">
+              <label class="choice">
+                <input type="radio" name="visitType" value="Quiet visit" aria-describedby="type-error" required>
+                <span>Quiet visit</span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="visitType" value="Guided visit" aria-describedby="type-error" required>
+                <span>Guided visit</span>
+              </label>
+            </div>
+            <p class="error" id="type-error" hidden></p>
+          </fieldset>
+        </div>
+      </fieldset>
+
+      <div class="actions">
+        <button class="button" type="submit">Confirm details</button>
+      </div>
+    </form>
+
+    <section class="worksheet confirmation" id="confirmation" aria-labelledby="confirmation-title" hidden>
+      <div class="confirmation-content">
+        <div class="confirmation-heading">
+          <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true" focusable="false">
+            <circle cx="15" cy="15" r="14" fill="none" stroke="var(--green)"/>
+            <path d="m9 15 4 4 8-8" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h2 id="confirmation-title" tabindex="-1" aria-describedby="confirmed-details">Visit details confirmed</h2>
+        </div>
+        <dl class="summary" id="confirmed-details">
+          <div>
+            <dt>Group size</dt>
+            <dd id="confirmed-size"></dd>
+          </div>
+          <div>
+            <dt>Visit type</dt>
+            <dd id="confirmed-type"></dd>
+          </div>
+        </dl>
+        <button class="button secondary" id="edit-details" type="button">Edit details</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById("visit-form");
+    const contactName = document.getElementById("contact-name");
+    const email = document.getElementById("email");
+    const groupSize = document.getElementById("group-size");
+    const visitType = form.elements.namedItem("visitType");
+    const confirmation = document.getElementById("confirmation");
+    const confirmationTitle = document.getElementById("confirmation-title");
+
+    const fields = [
+      {
+        controls: [contactName],
+        error: document.getElementById("name-error"),
+        isValid: () => contactName.value.trim().length > 0,
+        message: "Enter a contact name."
+      },
+      {
+        controls: [email],
+        error: document.getElementById("email-error"),
+        isValid: () => email.validity.valid,
+        message: "Enter a valid email address."
+      },
+      {
+        controls: [groupSize],
+        error: document.getElementById("size-error"),
+        isValid: () => groupSize.validity.valid,
+        message: "Enter a whole number from 1 to 25."
+      },
+      {
+        controls: Array.from(visitType),
+        error: document.getElementById("type-error"),
+        isValid: () => visitType.value !== "",
+        message: "Choose a visit type."
+      }
+    ];
+
+    function validate(field) {
+      const valid = field.isValid();
+      field.error.textContent = valid ? "" : field.message;
+      field.error.hidden = valid;
+      for (const control of field.controls) {
+        if (valid) {
+          control.removeAttribute("aria-invalid");
+        } else {
+          control.setAttribute("aria-invalid", "true");
+        }
+      }
+      return valid;
+    }
+
+    form.addEventListener("input", (event) => {
+      if (event.target.getAttribute("aria-invalid") !== "true") return;
+      const field = fields.find(({ controls }) => controls.includes(event.target));
+      if (field) validate(field);
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      let firstInvalid;
+      for (const field of fields) {
+        if (!validate(field) && !firstInvalid) firstInvalid = field.controls[0];
+      }
+      if (firstInvalid) {
+        firstInvalid.focus();
+        return;
+      }
+
+      const count = groupSize.valueAsNumber;
+      const people = count === 1 ? "person" : "people";
+      document.getElementById("confirmed-size").textContent = `${count} ${people}`;
+      document.getElementById("confirmed-type").textContent = visitType.value;
+
+      form.hidden = true;
+      confirmation.hidden = false;
+      confirmationTitle.focus();
+    });
+
+    document.getElementById("edit-details").addEventListener("click", () => {
+      confirmation.hidden = true;
+      form.hidden = false;
+      contactName.focus();
+    });
+  </script>
+</body>
+</html>

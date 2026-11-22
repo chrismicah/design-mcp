@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Request a return label | Record store</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600&amp;family=Source+Sans+3:wght@400;600&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f5f8f6;
+      --ink: #203136;
+      --evergreen: #175f55;
+      --mist: #c6d5cc;
+      --amber: #e6b86d;
+      --error: #922d34;
+      --rule: color-mix(in srgb, var(--mist) 74%, var(--ink));
+      --field-border: color-mix(in srgb, var(--mist) 44%, var(--ink));
+      --muted: color-mix(in srgb, var(--ink) 77%, var(--paper));
+      --field-paper: color-mix(in srgb, var(--paper) 24%, white);
+      --selected: color-mix(in srgb, var(--mist) 38%, var(--paper));
+      --heading-font: "Barlow Semi Condensed", "Trebuchet MS", sans-serif;
+      --body-font: "Source Sans 3", "Trebuchet MS", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+
+    body {
+      min-block-size: 100vh;
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 400 1.0625rem / 1.42 var(--body-font);
+    }
+
+    .shell {
+      inline-size: min(74rem, calc(100% - 4rem));
+      margin-inline: auto;
+    }
+
+    .masthead {
+      display: flex;
+      align-items: center;
+      min-block-size: 4.375rem;
+      border-block-end: 1px solid var(--rule);
+    }
+
+    .store-name {
+      display: inline-flex;
+      align-items: center;
+      gap: .625rem;
+      font: 600 1.25rem / 1 var(--heading-font);
+    }
+
+    .store-mark {
+      inline-size: 1.375rem;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle closest-side,
+        var(--paper) 0 11%, var(--ink) 13% 36%,
+        var(--paper) 38% 45%, var(--ink) 47% 68%,
+        var(--paper) 70% 75%, var(--ink) 77%);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, .57fr) minmax(0, 1fr);
+      align-items: start;
+      gap: clamp(2rem, 5.75vw, 5.375rem);
+      padding-block: clamp(2.5rem, 5.25vw, 4.75rem) 4rem;
+    }
+
+    h1 {
+      margin: 0;
+      font: 600 clamp(3.15rem, 6.05vw, 5.5rem) / .94 var(--heading-font);
+      letter-spacing: -.032em;
+    }
+
+    h1 span { display: block; }
+
+    .required-note {
+      margin: 1.125rem 0 0;
+      color: var(--muted);
+    }
+
+    .record-art {
+      position: relative;
+      isolation: isolate;
+      inline-size: min(100%, 24rem);
+      aspect-ratio: 400 / 274;
+      margin-block-start: 2.5rem;
+    }
+
+    .vinyl {
+      position: absolute;
+      inset: 0 0 auto auto;
+      display: grid;
+      place-items: center;
+      inline-size: 66%;
+      aspect-ratio: 1;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      background:
+        conic-gradient(from 19deg,
+          transparent 0deg 25deg, rgb(245 248 246 / .19) 42deg,
+          transparent 57deg 201deg, rgb(245 248 246 / .17) 220deg,
+          transparent 238deg),
+        repeating-radial-gradient(circle,
+          transparent 0 2.25px, rgb(245 248 246 / .17) 2.65px 3.2px),
+        var(--ink);
+    }
+
+    .vinyl::before {
+      content: "";
+      position: absolute;
+      inset: 4%;
+      border: 1px solid rgb(245 248 246 / .23);
+      border-radius: 50%;
+    }
+
+    .vinyl-label {
+      inline-size: 31%;
+      aspect-ratio: 1;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle closest-side,
+          var(--paper) 0 6%, var(--ink) 8% 13%, transparent 15%),
+        radial-gradient(circle closest-side,
+          transparent 0 77%, rgb(32 49 54 / .44) 79% 81%, transparent 83%),
+        linear-gradient(151deg, transparent 0 64%, rgb(32 49 54 / .14) 64%),
+        var(--amber);
+    }
+
+    .sleeve {
+      position: absolute;
+      inset: auto auto 0 0;
+      overflow: hidden;
+      inline-size: 57%;
+      aspect-ratio: 1;
+      border: 1px solid var(--ink);
+      background:
+        linear-gradient(145deg, transparent 0 55%, rgb(32 49 54 / .28) 55%),
+        var(--evergreen);
+    }
+
+    .sleeve::before {
+      content: "";
+      position: absolute;
+      inset: auto auto -31% -33%;
+      inline-size: 126%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle closest-side,
+        var(--mist) 0 16%, transparent 16.5% 26%,
+        var(--mist) 26.5% 34%, transparent 34.5% 45%,
+        var(--mist) 45.5% 53%, transparent 53.5% 65%,
+        var(--mist) 65.5% 73%, transparent 73.5% 85%,
+        var(--mist) 85.5% 93%, transparent 93.5%);
+    }
+
+    .sleeve::after {
+      content: "";
+      position: absolute;
+      inset: 6%;
+      border: 1px solid rgb(245 248 246 / .38);
+    }
+
+    .return-panel {
+      --legend-width: 12rem;
+      --group-top: 1.25rem;
+      min-inline-size: 0;
+    }
+
+    .form-group {
+      position: relative;
+      padding: var(--group-top) 0 1.625rem;
+      padding-inline-start: var(--legend-width);
+      border-block-start: 1px solid var(--rule);
+    }
+
+    .form-group fieldset {
+      min-inline-size: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    .form-group legend {
+      position: absolute;
+      inset-block-start: var(--group-top);
+      inset-inline-start: 0;
+      max-inline-size: calc(var(--legend-width) - 1rem);
+      padding: 0;
+      font: 600 1.5rem / 1.1 var(--heading-font);
+      letter-spacing: -.012em;
+    }
+
+    .fields {
+      display: grid;
+      gap: .9375rem;
+      max-inline-size: 32rem;
+    }
+
+    .field label {
+      display: block;
+      margin-block-end: .3rem;
+      font-weight: 600;
+    }
+
+    .order-field { max-inline-size: 16rem; }
+
+    .field input {
+      display: block;
+      inline-size: 100%;
+      min-block-size: 3.125rem;
+      padding: .625rem .75rem;
+      border: 1px solid var(--field-border);
+      border-radius: 3px;
+      background: var(--field-paper);
+      color: var(--ink);
+      font: inherit;
+    }
+
+    :where(input, button, h2):focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    .field input[aria-invalid="true"] {
+      border-color: var(--error);
+      box-shadow: inset 2px 0 var(--error);
+    }
+
+    .reason-group { padding-block-end: 0; }
+
+    .reason-options {
+      max-inline-size: 32rem;
+      border-block: 1px solid var(--rule);
+    }
+
+    .reason-options:has(input[aria-invalid="true"]) {
+      outline: 1px solid var(--error);
+      outline-offset: 2px;
+    }
+
+    .reason-option {
+      display: flex;
+      align-items: center;
+      gap: .6875rem;
+      min-block-size: 3rem;
+      padding: .5625rem .75rem;
+      cursor: pointer;
+    }
+
+    .reason-option + .reason-option {
+      border-block-start: 1px solid var(--rule);
+    }
+
+    .reason-option:has(input:checked) { background: var(--selected); }
+
+    .reason-option input {
+      flex: none;
+      inline-size: 1.125rem;
+      block-size: 1.125rem;
+      margin: 0;
+      accent-color: var(--evergreen);
+      cursor: pointer;
+    }
+
+    .field-error {
+      margin: .5rem 0 0;
+      color: var(--error);
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .field-error:empty { margin: 0; }
+
+    .form-actions {
+      padding-block-start: 1.5rem;
+      padding-inline-start: var(--legend-width);
+    }
+
+    .button {
+      min-block-size: 3.125rem;
+      padding: .6rem 1.2rem;
+      border: 1px solid var(--evergreen);
+      border-radius: 3px;
+      color: var(--evergreen);
+      background: var(--paper);
+      font: 600 1.0625rem / 1.2 var(--body-font);
+      cursor: pointer;
+    }
+
+    .primary-button {
+      min-inline-size: 13rem;
+      background: var(--evergreen);
+      color: var(--paper);
+    }
+
+    @media (hover: hover) {
+      .primary-button:hover { background: color-mix(in srgb, var(--evergreen) 74%, var(--ink)); }
+      .edit-button:hover { background: var(--selected); }
+    }
+
+    .confirmation {
+      padding-block-start: 1.25rem;
+      border-block-start: 1px solid var(--rule);
+    }
+
+    .confirmation:not([hidden]) { animation: reveal .2s ease-out; }
+
+    @keyframes reveal {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .confirmation-heading {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+
+    .confirmation h2 {
+      margin: 0;
+      font: 600 clamp(1.875rem, 4vw, 2.625rem) / 1.05 var(--heading-font);
+      letter-spacing: -.02em;
+    }
+
+    .check-mark {
+      display: grid;
+      flex: none;
+      place-items: center;
+      inline-size: 1.875rem;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--evergreen);
+    }
+
+    .check-mark::after {
+      content: "";
+      inline-size: .76rem;
+      block-size: .42rem;
+      border: solid var(--paper);
+      border-width: 0 0 2px 2px;
+      transform: translateY(-1px) rotate(-45deg);
+    }
+
+    .summary {
+      margin: 1.625rem 0 1.5rem;
+      border-block-end: 1px solid var(--rule);
+    }
+
+    .summary-row {
+      display: grid;
+      grid-template-columns: 10.25rem minmax(0, 1fr);
+      gap: .75rem;
+      padding: .8rem 1rem;
+      border-block-start: 1px solid var(--rule);
+    }
+
+    .summary dt { font-weight: 600; }
+
+    .summary dd {
+      margin: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .summary-reason {
+      background: var(--selected);
+      box-shadow: inset 3px 0 var(--evergreen);
+    }
+
+    .summary-reason dd { font-weight: 600; }
+
+    @media (max-width: 66rem) {
+      .return-panel { --legend-width: 0px; }
+
+      .form-group legend {
+        position: static;
+        max-inline-size: 100%;
+        padding-block-end: .65rem;
+      }
+    }
+
+    @media (max-width: 48rem) {
+      .shell { inline-size: min(33rem, calc(100% - 2rem)); }
+      .masthead { min-block-size: 3.5rem; }
+
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.625rem;
+        padding-block: 1.875rem 2rem;
+      }
+
+      .intro {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 31%;
+        align-items: center;
+        gap: .625rem;
+      }
+
+      h1 { font-size: clamp(2rem, 11.7vw, 3.75rem); }
+
+      .required-note {
+        margin-block-start: .625rem;
+        font-size: 1rem;
+      }
+
+      .record-art { margin: 0; }
+
+      .vinyl {
+        background:
+          conic-gradient(from 19deg, transparent 0deg 25deg,
+            rgb(245 248 246 / .19) 42deg, transparent 57deg),
+          repeating-radial-gradient(circle,
+            transparent 0 1.45px, rgb(245 248 246 / .17) 1.7px 2px),
+          var(--ink);
+      }
+
+      .return-panel { --group-top: .875rem; }
+      .form-group:not(.reason-group) { padding-block-end: 1.25rem; }
+      .form-group legend { font-size: 1.375rem; }
+      .field input { min-block-size: 3rem; }
+      .form-actions { padding-block-start: 1.25rem; }
+      .primary-button { inline-size: 100%; }
+
+      .summary-row {
+        grid-template-columns: minmax(0, 1fr);
+        gap: .2rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .confirmation:not([hidden]) { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead shell">
+    <span class="store-name">
+      <span class="store-mark" aria-hidden="true"></span>
+      Record store
+    </span>
+  </header>
+
+  <main class="layout shell">
+    <div class="intro">
+      <div>
+        <h1><span>Request a</span> <span>return label</span></h1>
+        <p class="required-note">All fields are required.</p>
+      </div>
+      <div class="record-art" aria-hidden="true">
+        <div class="vinyl"><div class="vinyl-label"></div></div>
+        <div class="sleeve"></div>
+      </div>
+    </div>
+
+    <div class="return-panel">
+      <form id="return-form" novalidate>
+        <div class="form-group">
+          <fieldset>
+            <legend>Order details</legend>
+            <div class="fields">
+              <div class="field order-field">
+                <label for="order-number">Order number</label>
+                <input id="order-number" name="order-number" type="text"
+                  spellcheck="false" autocapitalize="off" required>
+                <p class="field-error" id="order-error" aria-live="polite"></p>
+              </div>
+              <div class="field">
+                <label for="email">Email address</label>
+                <input id="email" name="email" type="email" autocomplete="email"
+                  spellcheck="false" autocapitalize="off" required>
+                <p class="field-error" id="email-error" aria-live="polite"></p>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="form-group reason-group">
+          <fieldset>
+            <legend>Reason for return</legend>
+            <div class="reason-options">
+              <label class="reason-option">
+                <input type="radio" name="reason" value="damaged" required>
+                <span>Damaged</span>
+              </label>
+              <label class="reason-option">
+                <input type="radio" name="reason" value="wrong-item" required>
+                <span>Wrong item</span>
+              </label>
+              <label class="reason-option">
+                <input type="radio" name="reason" value="changed-mind" required>
+                <span>Changed mind</span>
+              </label>
+            </div>
+            <p class="field-error" id="reason-error" aria-live="polite"></p>
+          </fieldset>
+        </div>
+
+        <div class="form-actions">
+          <button class="button primary-button" id="review-button" type="submit" disabled>
+            Review return request
+          </button>
+        </div>
+      </form>
+
+      <section class="confirmation" id="confirmation" aria-labelledby="confirmation-title" hidden>
+        <div class="confirmation-heading">
+          <span class="check-mark" aria-hidden="true"></span>
+          <h2 id="confirmation-title" tabindex="-1">Return request ready</h2>
+        </div>
+        <dl class="summary">
+          <div class="summary-row">
+            <dt>Order number</dt>
+            <dd id="summary-order"></dd>
+          </div>
+          <div class="summary-row">
+            <dt>Email address</dt>
+            <dd id="summary-email"></dd>
+          </div>
+          <div class="summary-row summary-reason">
+            <dt>Reason for return</dt>
+            <dd id="summary-reason"></dd>
+          </div>
+        </dl>
+        <button class="button edit-button" id="edit-button" type="button">Edit request</button>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const form = document.getElementById("return-form");
+    const orderNumber = document.getElementById("order-number");
+    const email = document.getElementById("email");
+    const reasons = Array.from(form.querySelectorAll('input[name="reason"]'));
+    const confirmation = document.getElementById("confirmation");
+    const confirmationTitle = document.getElementById("confirmation-title");
+
+    function selectedReason() {
+      return reasons.find(reason => reason.checked);
+    }
+
+    const fields = [
+      {
+        controls: [orderNumber],
+        error: document.getElementById("order-error"),
+        message() {
+          // Accept any nonblank order number because the store format is unspecified.
+          return orderNumber.value.trim() ? "" : "Enter your order number.";
+        }
+      },
+      {
+        controls: [email],
+        error: document.getElementById("email-error"),
+        message() {
+          if (!email.value.trim()) return "Enter your email address.";
+          if (email.validity.typeMismatch) {
+            return "Enter an email address like name@example.com.";
+          }
+          return "";
+        }
+      },
+      {
+        controls: reasons,
+        error: document.getElementById("reason-error"),
+        message() {
+          return selectedReason() ? "" : "Choose a reason for your return.";
+        }
+      }
+    ];
+
+    function validateField(field) {
+      const message = field.message();
+
+      if (field.error.textContent !== message) {
+        field.error.textContent = message;
+      }
+
+      for (const control of field.controls) {
+        if (message) {
+          control.setAttribute("aria-invalid", "true");
+          control.setAttribute("aria-describedby", field.error.id);
+        } else {
+          control.removeAttribute("aria-invalid");
+          control.removeAttribute("aria-describedby");
+        }
+      }
+
+      return !message;
+    }
+
+    for (const field of fields) {
+      for (const control of field.controls) {
+        const eventName = control.type === "radio" ? "change" : "input";
+        control.addEventListener(eventName, () => {
+          if (field.error.textContent) validateField(field);
+        });
+      }
+    }
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+
+      let firstInvalid;
+      for (const field of fields) {
+        if (!validateField(field) && !firstInvalid) {
+          firstInvalid = field.controls[0];
+        }
+      }
+
+      if (firstInvalid) {
+        firstInvalid.focus();
+        return;
+      }
+
+      document.getElementById("summary-order").textContent = orderNumber.value.trim();
+      document.getElementById("summary-email").textContent = email.value.trim();
+      document.getElementById("summary-reason").textContent =
+        selectedReason().labels[0].textContent.trim();
+
+      form.hidden = true;
+      confirmation.hidden = false;
+      confirmationTitle.focus();
+    });
+
+    document.getElementById("edit-button").addEventListener("click", () => {
+      confirmation.hidden = true;
+      form.hidden = false;
+      orderNumber.focus();
+    });
+
+    document.getElementById("review-button").disabled = false;
+  </script>
+</body>
+</html>
