@@ -14,7 +14,11 @@ A fresh package install on hosted Linux opened the real toolbar popup by keyboar
 
 ## Hosted Electron window smoke, November 22
 
-A fresh package install reviewed an owned Electron 43.4.0 fixture on Linux. The first capture identified a covered button and a clipped button. Tab followed by Enter revealed the covered button, and a second capture cleared that finding while retaining the clipping finding. The export excluded the seeded input value, refused an unsupported source, and kept the original file intact. The separate Swift exporter type-checked with warnings as errors for the macOS 13 arm64 target. Electron’s macOS path and desktop visual review remain open. [Electron run and screenshots](https://github.com/chrismicah/design-mcp/actions/runs/44994843695) · [Receipts and hashes](evidence/benchmark-v1/desktop-app-proof.json)
+A fresh package install reviewed an owned Electron 43.4.0 fixture on Linux. The first capture identified a covered button and a clipped button. Tab followed by Enter revealed the covered button, and a second capture cleared that finding while retaining the clipping finding. The export excluded the seeded input value, refused an unsupported source, and kept the original file intact. The separate Swift exporter type-checked with warnings as errors for the macOS 13 arm64 target. Desktop visual review remains open. [Electron run and screenshots](https://github.com/chrismicah/design-mcp/actions/runs/44994843695) · [Receipts and hashes](evidence/benchmark-v1/desktop-app-proof.json)
+
+## Hosted Electron window on macOS, November 22
+
+The fresh package and Electron 43.4.0 repeated the window test on macOS 15.8.2 arm64. Tab and Return in the focused window made the covered control hittable and cleared that specific finding. The clipped control stayed flagged. The geometry exports omitted the seeded input value and the original export survived the overwrite attempt. This uses Electron’s input API in the owned app. [Mac run and screenshots](https://github.com/chrismicah/design-mcp/actions/runs/44995434475) · [Receipt and hashes](evidence/benchmark-v1/electron-mac-proof.json)
 
 ## Hosted native SwiftUI smoke, November 22
 
