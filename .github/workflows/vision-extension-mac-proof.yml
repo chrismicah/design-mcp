@@ -1,4 +1,4 @@
-name: macOS Chrome review extension keyboard proof
+name: macOS Chrome review extension pointer proof
 
 on:
   push:
@@ -15,7 +15,7 @@ jobs:
     env:
       CHROME_VERSION: '158.0.8127.36'
       DESIGN_MCP_CANDIDATE: '2fcd31221671590152401d958b904141e438e453'
-      FIRST_ACTIVATION_TRIALS: '30'
+      FIRST_ACTIVATION_TRIALS: '3'
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
         with:
@@ -61,6 +61,7 @@ jobs:
           } | tee "$proof/browser-version.txt"
           test "$version" = "$CHROME_VERSION"
           xcrun swiftc evals/vision/chrome_smoke_key.swift -o "$RUNNER_TEMP/chrome_smoke_key"
+          xcrun swiftc evals/vision/chrome_smoke_pointer.swift -o "$RUNNER_TEMP/chrome_smoke_pointer"
       - name: Exercise the real toolbar popup and reopen the saved preview
         shell: bash
         run: |
@@ -72,33 +73,25 @@ jobs:
           installed=$("$cli" review --extension-path)
             diff -qr pinned-source/design_mcp/review/extension "${installed%%$'\n'*}"
           cp -R "${installed%%$'\n'*}" "$extension"
-          python - "$extension/manifest.json" <<'PY'
-          from pathlib import Path
-          import json, sys
-
-          path = Path(sys.argv[1])
-          manifest = json.loads(path.read_text())
-          manifest.setdefault('commands', {})['_execute_action'] = {
-              'suggested_key': {'default': 'Ctrl+Shift+Y', 'mac': 'Command+Shift+Y'}
-          }
-          path.write_text(json.dumps(manifest))
-          PY
           export DESIGN_MCP_CHROME_KEY_HELPER="$RUNNER_TEMP/chrome_smoke_key"
+          export DESIGN_MCP_CHROME_POINTER_HELPER="$RUNNER_TEMP/chrome_smoke_pointer"
           for ((sample=1; sample<=FIRST_ACTIVATION_TRIALS; sample++)); do
             trial="$proof"
             [[ $sample == 1 ]] || trial="$proof/sample-$sample"
             if node --experimental-websocket evals/vision/extension_smoke.mjs "$chrome" "$cli" "$extension" "$trial"; then
               printf 'Trial %s completed\n' "$sample"
-              if [[ $sample == 1 ]]; then
-                python - "$proof" <<'PY'
+              if [[ ! -d "$proof/saved-preview" ]]; then
+                python - "$proof" "$trial" <<'PY'
           from pathlib import Path
           import json, shutil, sys
 
           root = Path(sys.argv[1])
-          report = json.loads((root / 'extension-review.json').read_text())
+          receipt = Path(sys.argv[2]) / 'extension-review.json'
+          report = json.loads(receipt.read_text())
           preview = Path(report['previewFolder'])
           saved = root / 'saved-preview'
           saved.mkdir()
+          shutil.copyfile(receipt, saved / receipt.name)
           for name in ('preview.html', 'evidence.json'):
               shutil.copyfile(preview / name, saved / name)
           PY
@@ -120,14 +113,16 @@ jobs:
               record = json.loads(receipt.read_text()) if receipt.exists() else {}
               timings = record.get('firstActivation', {})
               passed = (record.get('browserChecksPassed') is True and record.get('browser') == f'Chrome/{version}'
+                        and timings.get('drivers', {}).get('open') == 'macOS pointer'
                         and all(type(timings.get(key)) in (int, float) and isfinite(timings[key]) and timings[key] > 0
                                 for key in ('openMs', 'scanMs')))
               rows.append({'sample': sample, 'passed': passed, 'timings': timings,
                            'error': record.get('error') if record else 'missing receipt',
                            'profile': record.get('chromeProfile')})
           distinct_profiles = len({row['profile'] for row in rows if row['profile']}) == count
-          report = {'scope': 'First keyboard toolbar activation in separate Chrome processes and empty profiles. '
-                             'Scan follows the profile-scoped native-host install. Includes observation overhead.',
+          report = {'scope': 'First pointer activation of the pinned toolbar button in separate Chrome processes. '
+                             'Only the pin is seeded in each new profile. Timing starts at native mouse down. '
+                             'Scan follows the profile-scoped native-host install and includes observation overhead.',
                     'expected_trials': count, 'trials': rows, 'distinct_profiles': distinct_profiles}
           if count >= 30 and distinct_profiles and all(row['passed'] for row in rows):
               report['p95'] = {
@@ -139,6 +134,7 @@ jobs:
               raise SystemExit('One or more first-activation trials failed')
           PY
       - name: Verify and archive the visibly masked saved capture
+        if: ${{ !cancelled() }}
         shell: bash
         run: |
           proof="$RUNNER_TEMP/extension-mac-proof"
@@ -148,11 +144,13 @@ jobs:
           import base64, hashlib, io, json, re, sys
 
           root = Path(sys.argv[1])
-          proof_path = root / 'extension-review.json'
+          preview = root / 'saved-preview'
+          proof_path = preview / 'extension-review.json'
+          if not proof_path.exists():
+              raise SystemExit('No successful saved preview to verify')
           proof = json.loads(proof_path.read_text())
           assert proof['browserChecksPassed'], proof
           assert proof['browser'] == f'Chrome/{sys.argv[2]}', proof['browser']
-          preview = root / 'saved-preview'
           html = (preview / 'preview.html').read_text()
           evidence = (preview / 'evidence.json').read_text()
           assert 'fixture-redaction-sentinel-' not in html + evidence

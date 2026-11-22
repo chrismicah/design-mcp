@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
 import { execFileSync, spawn } from "node:child_process";
+import { createHash } from "node:crypto";
 import { once } from "node:events";
-import { mkdir, mkdtemp, readFile, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, readFile, realpath, writeFile } from "node:fs/promises";
 import { closeSync, openSync } from "node:fs";
 import { createServer } from "node:http";
 import { dirname, join } from "node:path";
@@ -11,6 +12,7 @@ import { setTimeout as delay } from "node:timers/promises";
 const [chrome, cli, extension, output, fixturePath] = process.argv.slice(2);
 const mac = process.platform === "darwin";
 const macKeyHelper = process.env.DESIGN_MCP_CHROME_KEY_HELPER;
+const pointerHelper = mac ? process.env.DESIGN_MCP_CHROME_POINTER_HELPER : undefined;
 const latencyRuns = Number(mac ? process.env.REVIEW_LATENCY_RUNS ?? 0 : 0);
 assert(Number.isInteger(latencyRuns) && latencyRuns >= 0 && latencyRuns <= 30);
 await mkdir(output, { recursive: true });
@@ -56,12 +58,27 @@ try {
   await once(host, "listening");
   const fixtureUrl = `http://127.0.0.1:${host.address().port}/dispatch`;
   const profile = mac ? await mkdtemp(join(output, "chrome-profile-")) : join(output, "chrome-profile");
+  const extensionPath = pointerHelper ? await realpath(extension) : extension;
+  let pinnedId;
+  let toolbarTitle;
+  if (pointerHelper) {
+    proof.phase = "pin the toolbar action in the test profile";
+    const manifest = JSON.parse(await readFile(join(extensionPath, "manifest.json"), "utf8"));
+    assert(!manifest.key, "Pointer fixture expects an unpacked extension with a path-derived ID");
+    toolbarTitle = manifest.action.default_title;
+    pinnedId = [...createHash("sha256").update(extensionPath).digest("hex").slice(0, 32)]
+      .map(hex => "abcdefghijklmnop"[Number.parseInt(hex, 16)]).join("");
+    await mkdir(join(profile, "Default"));
+    await writeFile(join(profile, "Default", "Preferences"),
+      JSON.stringify({extensions: {pinned_extensions: [pinnedId]}}), {flag: "wx"});
+    proof.pinnedId = pinnedId;
+  }
   const debugLog = openSync(join(output, "browser.log"), "w");
   try {
     browser = spawn(chrome, [
       `--user-data-dir=${profile}`, "--no-first-run", "--no-default-browser-check",
       "--disable-background-networking", "--disable-sync", "--disable-component-update",
-      `--disable-extensions-except=${extension}`, `--load-extension=${extension}`,
+      `--disable-extensions-except=${extensionPath}`, `--load-extension=${extensionPath}`,
       "--remote-debugging-port=0", "--remote-debugging-address=127.0.0.1",
       "--window-size=1440,940", fixtureUrl,
     ], { stdio: ["ignore", debugLog, debugLog] });
@@ -154,14 +171,24 @@ try {
   const isPopup = item => /^chrome-extension:\/\/[a-p]{32}\/popup\.html$/.test(item.url);
   let openedAt;
   let keyReturnedAt;
+  let pointerDown;
   if (mac) {
-    proof.phase = "toolbar shortcut";
+    proof.phase = pointerHelper ? "toolbar pointer" : "toolbar shortcut";
     assert.equal(await findTarget(isPopup), undefined, "Popup must start closed");
     await send("Page.bringToFront", {}, fixtureSession);
     await until("focused dispatch fixture", () => inspect(fixtureSession, "document.hasFocus()"), 5000, 15);
-    openedAt = performance.now();
-    key("Command+Shift+Y");
-    keyReturnedAt = performance.now();
+    if (pointerHelper) {
+      const before = process.hrtime.bigint();
+      proof.pointer = JSON.parse(execFileSync(pointerHelper, [String(browser.pid), toolbarTitle],
+        {encoding: "utf8", timeout: 8000}));
+      const after = process.hrtime.bigint();
+      pointerDown = BigInt(proof.pointer.pressedUptimeNs);
+      assert(before <= pointerDown && pointerDown <= after, "Host and Swift pointer timestamps disagree");
+    } else {
+      openedAt = performance.now();
+      key("Command+Shift+Y");
+      keyReturnedAt = performance.now();
+    }
   } else {
     const windowId = execFileSync("xdotool", ["search", "--onlyvisible", "--name", "Evening shuttle dispatch"],
       { encoding: "utf8" }).trim().split("\n")[0];
@@ -170,12 +197,18 @@ try {
   }
   const target = await until("toolbar popup", () => findTarget(isPopup), 10000, mac ? 15 : 120);
   const targetObservedAt = performance.now();
+  const pointerTargetObservedMs = pointerDown ? Number(process.hrtime.bigint() - pointerDown) / 1e6 : null;
   const extensionId = new URL(target.url).hostname;
   proof.extensionId = extensionId;
+  if (pinnedId) assert.equal(extensionId, pinnedId);
   const popup = await attach(target);
   if (mac) {
     await until("painted initial Scan control", () => painted(popup, "#scan", "idle"), 5000, 15);
-    proof.firstActivation = {
+    proof.firstActivation = pointerDown ? {
+      openMs: Number(process.hrtime.bigint() - pointerDown) / 1e6,
+      popupTargetObservedMs: pointerTargetObservedMs,
+      drivers: {open: "macOS pointer", scan: "CDP keyboard"},
+    } : {
       openMs: performance.now() - openedAt,
       keyDispatchMs: keyReturnedAt - openedAt,
       popupTargetObservedMs: targetObservedAt - openedAt,
