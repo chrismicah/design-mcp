@@ -1,8 +1,8 @@
-name: Specific landing visual comparison
+name: Mobile product hero visual comparison
 
 on:
   push:
-    branches: [design-mcp/specific-landing-captures]
+    branches: [design-mcp/product-hero-captures]
     paths: ['.github/workflows/playwriter-baseline.yml', 'evidence/benchmark-v1/candidate-inputs/**', 'evals/v1/render.py']
 
 permissions:
@@ -40,11 +40,13 @@ jobs:
           for path in Path('evidence/benchmark-v1/candidate-inputs').rglob('index.html'):
               record = json.loads(path.with_name('render.json').read_text())
               assert record['browser'].endswith('158.0.8127.36'), record['browser']
+              generation = json.loads(path.with_name('receipt.json').read_text())
+              assert generation['html_sha256'] == record['input_sha256'], path
               assert all(item['status'] == 'rendered' for item in record['captures'].values()), record
           PY
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: specific-landing-captures
+          name: product-hero-captures
           path: evidence/benchmark-v1/candidate-inputs/
           if-no-files-found: error
           retention-days: 7
