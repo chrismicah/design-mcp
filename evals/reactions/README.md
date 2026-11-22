@@ -11,3 +11,14 @@ This suite uses six existing project briefs and four short user prompts per brie
 5. Report clear first-pass rate, time to first pass, steps per case, percentage passing within two reactions, and paired blind preference. Include misses and timeouts in the denominator. This is a simulated-user experiment.
 
 For a revised version of this suite, record changed prompts, response rules, preserved facts, and the reason before launching a comparison. Keep the original prompts and results readable.
+
+## Start the two-pair pilot
+
+Use the verified `2fcd312` install kit and an authenticated subscription client. The runner opens two fresh sessions per case, checks the quota before each pair, and writes the prompt, JSONL trace, thread ID, and HTML digest under a new output directory. The saved thread ID lets the operator send the next exact reaction to that generator after review. Inspect any `review-reply` before responding. Record a genuine question and its recommended answer, or count an invalid draft as a miss. A timed-out cell stays in the record.
+
+```sh
+python3 evals/reactions/pilot.py --out "$PILOT_OUTPUT" --kit "$VERIFIED_INSTALL_KIT" \
+  --quota-probe "$SUBSCRIPTION_QUOTA_PROBE" --model "$GENERATOR_MODEL"
+```
+
+Give the reviewer anonymous fixtures after checking the HTML and trace digests against the receipts. Keep the thread IDs, arm mapping and generator replies out of the review. Use original browser captures for acceptance. [Browser review setup](../v1/README.md#compact-live-review) · [Pilot cases and gates](../../PLAN.md#13-simulated-non-designer-pilot)
