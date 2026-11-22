@@ -15,4 +15,4 @@
 - Updated the product direction to put price, shipping and the purchase action together on narrow screens. The ceramics comparison improved from 87.5 to 95.8 and its keyboard purchase passed at both widths. [Matched receipts](evidence/benchmark-v1/product-hero-visual.json)
 - Tightened the train ticket direction around one departure and made the later departure time visible on the closed row. The repair scored 95.8 against 87.5 for both fresh controls and passed live reveal and collapse. [Repair receipts](evidence/rebuild/comparison/README.md#fresh-repair-comparison-against-v2-and-live-interaction)
 
-The form-routing branch remains a candidate. Visual acceptance is tracked in the benchmark. [Candidate decisions](EVALS.md#candidate-decisions)
+- Added two form directions to the default library. The return-label rematch improved from 87.5 to 95.8, and the exhibition rematch tied at 91.7. All eight keyboard replays and all eight macOS 15 install jobs passed. [Candidate decisions](EVALS.md#candidate-decisions)
