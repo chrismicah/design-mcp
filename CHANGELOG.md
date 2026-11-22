@@ -4,7 +4,7 @@
 
 ## Unreleased
 
-- Record Chrome, Playwriter, navigation, capture, and preview timings for pasted-URL review. The hosted comparison retained the same desktop and mobile images. The concurrent startup trial missed its speed gate and was reverted. [Stage profile](evidence/benchmark-v1/public-url-stage-profile.json) · [Startup trial](evidence/benchmark-v1/public-url-overlap-trial.json)
+- Record Chrome, Playwriter, navigation, capture, and preview timings for pasted-URL review. The hosted comparisons retained the same desktop and mobile images. The concurrent startup and direct MCP client trials missed their speed gate and were reverted. [Stage profile](evidence/benchmark-v1/public-url-stage-profile.json) · [Startup trial](evidence/benchmark-v1/public-url-overlap-trial.json) · [Client trial](evidence/benchmark-v1/public-url-mcp-sdk-trial.json)
 
 - Check resolved destinations before opening the disposable review browser's TCP connections. Hosted Chrome blocked both private fixture targets and matched the previous public desktop and mobile captures. [Browser proof](evidence/benchmark-v1/browser-public-network-7bccfc1.json)
 
