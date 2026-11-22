@@ -1,0 +1,376 @@
+{
+  "candidate": "8fa803574c76fefb1b17eaf67680b0db3654e2f1",
+  "scope": "One pantry rematch against the exact original plain HTML. Separate from the frozen benchmark.",
+  "status": "not-promoted",
+  "summary": {
+    "requested_pairs": 36,
+    "judged_pairs": 1,
+    "none": 91.66666666666666,
+    "collection-details": 87.5,
+    "difference": -4.166666666666657,
+    "wins_ties_losses": [
+      0,
+      0,
+      1
+    ],
+    "median_usage": {
+      "none": {
+        "input_tokens": 20545,
+        "cached_input_tokens": 0,
+        "output_tokens": 17479,
+        "elapsed_seconds": 353.23
+      },
+      "collection-details": {
+        "input_tokens": 64721,
+        "cached_input_tokens": 41728,
+        "output_tokens": 10632,
+        "elapsed_seconds": 228.83
+      }
+    }
+  },
+  "case": {
+    "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/45000521609",
+    "cells": {
+      "none": {
+        "generation": {
+          "usage": {
+            "input_tokens": 20545,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 17479,
+            "reasoning_output_tokens": 14494
+          },
+          "tool_calls": [],
+          "client_errors": [],
+          "direct_call": false,
+          "status": "passed",
+          "case": "mobile-pantry",
+          "arm": "none",
+          "model": "gpt-6.2-sol",
+          "effort": "max",
+          "client": "codex-cli 0.170.0",
+          "prompt_sha256": "234e8dc129b7355fe2323967b2ac41bc5328b9ddaaccce83f3d96a1437bf7632",
+          "elapsed_seconds": 353.23,
+          "exit_code": 0,
+          "trace_sha256": "b5a22d2a89aa0407a925f2998fb9ac713e6163a1d685c6648f7bb0ce796c53d2",
+          "html_sha256": "4a05e7512606f8c4f9095da47ec46b5616c80ca51c4bcc0f34c785d2c13d1d05"
+        },
+        "browser": "Chrome/158.0.8127.36",
+        "renderer": "0.12.0",
+        "captures": {
+          "1440": {
+            "sha256": "f653d166879c5a3f7635b428535f14d6117fc9152786ae8641c8d5d487170e1e",
+            "viewport": 1440,
+            "width": 1440,
+            "pageErrors": []
+          },
+          "390": {
+            "sha256": "43a78dedfc08ed343593c9b8117da00b564bacb553784978434a63d397648805",
+            "viewport": 390,
+            "width": 390,
+            "pageErrors": []
+          }
+        }
+      },
+      "collection-details": {
+        "generation": {
+          "usage": {
+            "input_tokens": 64721,
+            "cached_input_tokens": 41728,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 10632,
+            "reasoning_output_tokens": 8427
+          },
+          "tool_calls": [
+            {
+              "type": "mcp_tool_call",
+              "server": "design-mcp",
+              "tool": "direct",
+              "status": "completed"
+            }
+          ],
+          "client_errors": [],
+          "treatment_call": true,
+          "direct_call": true,
+          "status": "passed",
+          "case": "mobile-pantry",
+          "arm": "collection-details",
+          "model": "gpt-6.2-sol",
+          "effort": "max",
+          "client": "codex-cli 0.170.0",
+          "prompt_sha256": "234e8dc129b7355fe2323967b2ac41bc5328b9ddaaccce83f3d96a1437bf7632",
+          "mcp_config_sha256": "4339157c11708ee764bd06257ca68653dce1ab9a839140a0ada2fc06c6321760",
+          "elapsed_seconds": 228.83,
+          "exit_code": 0,
+          "trace_sha256": "577afd9162945c01aa8f104955d2ba708e0a10616b48c387b1cd49b6c5adc10a",
+          "html_sha256": "a7b14c73cfc347fefaf33640c21c19fc5a6715e82c0f8f290b97ad030c19dfa6"
+        },
+        "browser": "Chrome/158.0.8127.36",
+        "renderer": "0.12.0",
+        "captures": {
+          "1440": {
+            "sha256": "3e31aa20d113fba0948069782af759218845deac82d3de672ed4aa99e9ea414a",
+            "viewport": 1440,
+            "width": 1440,
+            "pageErrors": []
+          },
+          "390": {
+            "sha256": "c71a2778e231fd35bb81427fe3f4bcb0a17a60f4354fb1a4ae985129f9c9eb59",
+            "viewport": 390,
+            "width": 390,
+            "pageErrors": []
+          }
+        }
+      }
+    },
+    "ballot": {
+      "case": "mobile-pantry",
+      "surface": "mobile",
+      "blind_key": {
+        "A": "none",
+        "B": "collection-details"
+      },
+      "verdict": {
+        "A": {
+          "hierarchy": {
+            "score": 4,
+            "evidence": "At both widths, Friday sits directly above the dominant 11:15, followed by the labeled address and then Details."
+          },
+          "spacing": {
+            "score": 4,
+            "evidence": "The desktop side panel becomes a compact phone header, while consistent insets and a horizontal rule keep the day and time grouped apart from the address."
+          },
+          "typography": {
+            "score": 4,
+            "evidence": "The two-line serif title contrasts with the bold, clearly separated time digits, and even the smaller Address label remains legible on the phone."
+          },
+          "color": {
+            "score": 4,
+            "evidence": "Deep teal connects the pantry header to the Details button, while the pale yellow circle frames the bag and leaves the schedule easy to scan."
+          },
+          "accessibility": {
+            "score": 3,
+            "evidence": "Both browser trees pair the facts with Collection time and Address labels and identify the full-width Details button, though neither reports a disclosure state corresponding to the visible plus."
+          },
+          "fidelity": {
+            "score": 3,
+            "evidence": "Both views show Friday at 11:15, 18 Pine Avenue and a Details button, but neither has an interaction receipt confirming the instruction to bring a bag and check in at the side door."
+          }
+        },
+        "B": {
+          "hierarchy": {
+            "score": 4,
+            "evidence": "At both widths, the oversized 11:15 draws the eye to Friday directly above it, and the yellow address strip gives the resident a clear next place to look."
+          },
+          "spacing": {
+            "score": 4,
+            "evidence": "The title, schedule and Details button share a left edge at both widths, with the address attached to the time panel and a distinct gap before the button."
+          },
+          "typography": {
+            "score": 3,
+            "evidence": "The condensed title fits on one line on the phone, but the first two digits of 11:15 sit so close that their feet nearly merge at both widths."
+          },
+          "color": {
+            "score": 4,
+            "evidence": "Light text on black emphasizes the collection time, and black text on yellow makes 18 Pine Avenue immediately identifiable as a separate piece of information."
+          },
+          "accessibility": {
+            "score": 3,
+            "evidence": "Both browser trees expose the street as readable text and Details as a named button, though neither reports whether the disclosure is expanded."
+          },
+          "fidelity": {
+            "score": 3,
+            "evidence": "Friday, 11:15 and 18 Pine Avenue match at both widths, while the supplied closed views leave the bag and side-door check-in instruction behind Details unverified."
+          }
+        }
+      },
+      "model": "gpt-6.2-astra",
+      "effort": "max",
+      "usage": {
+        "input_tokens": 25820,
+        "cached_input_tokens": 11776,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3637,
+        "reasoning_output_tokens": 2995
+      },
+      "scores": {
+        "none": 91.66666666666666,
+        "collection-details": 87.5
+      },
+      "image_variant": "full",
+      "image_sha256": {
+        "A-1440.png": "f653d166879c5a3f7635b428535f14d6117fc9152786ae8641c8d5d487170e1e",
+        "A-390.png": "43a78dedfc08ed343593c9b8117da00b564bacb553784978434a63d397648805",
+        "B-1440.png": "3e31aa20d113fba0948069782af759218845deac82d3de672ed4aa99e9ea414a",
+        "B-390.png": "c71a2778e231fd35bb81427fe3f4bcb0a17a60f4354fb1a4ae985129f9c9eb59"
+      },
+      "judge_prompt_sha256": "3a979e06d8d29a9935aa653e678d46ff60e592b167f8eb349aa5e8616c5a2c33"
+    }
+  },
+  "browser_actions": {
+    "none": {
+      "1440": {
+        "firstViewport": {
+          "time": true,
+          "day": true,
+          "address": true,
+          "details": true
+        },
+        "labelContext": true,
+        "startsCollapsed": true,
+        "reachedByKeyboard": true,
+        "opens": true,
+        "closes": true,
+        "samePage": true,
+        "actionRequests": [],
+        "local": true,
+        "pageErrors": [],
+        "passed": true,
+        "details_sha256": "a379a2bd4f977b566fbeb6ad1b12ff17cae966013d61966b543d3d50434b6ac6"
+      },
+      "390": {
+        "firstViewport": {
+          "time": true,
+          "day": true,
+          "address": true,
+          "details": true
+        },
+        "labelContext": true,
+        "startsCollapsed": true,
+        "reachedByKeyboard": true,
+        "opens": true,
+        "closes": true,
+        "samePage": true,
+        "actionRequests": [],
+        "local": true,
+        "pageErrors": [],
+        "passed": true,
+        "details_sha256": "08e2132cdbadb44a8872897b4b38ee3918db3cc123e0eff187880bd7f72c511f"
+      }
+    },
+    "v2": {
+      "1440": {
+        "firstViewport": {
+          "time": true,
+          "day": true,
+          "address": true,
+          "details": true
+        },
+        "labelContext": false,
+        "startsCollapsed": true,
+        "reachedByKeyboard": true,
+        "opens": true,
+        "closes": true,
+        "samePage": true,
+        "actionRequests": [
+          {
+            "url": "https://fonts.gstatic.com/s/atkinsonhyperlegible/v12/9Bt23C1KxNDXMspQ1lPyU89-1h6ONRlW45G04pIoWQeCbA.woff2",
+            "type": "font",
+            "method": "GET"
+          }
+        ],
+        "local": true,
+        "pageErrors": [],
+        "passed": true,
+        "details_sha256": "1f7f926881bf7e61c8a17b6d11fb89e54c69f42651069e4d90fb31c312412e1f"
+      },
+      "390": {
+        "firstViewport": {
+          "time": true,
+          "day": true,
+          "address": true,
+          "details": true
+        },
+        "labelContext": false,
+        "startsCollapsed": true,
+        "reachedByKeyboard": true,
+        "opens": true,
+        "closes": true,
+        "samePage": true,
+        "actionRequests": [
+          {
+            "url": "https://fonts.gstatic.com/s/atkinsonhyperlegible/v12/9Bt23C1KxNDXMspQ1lPyU89-1h6ONRlW45G04pIoWQeCbA.woff2",
+            "type": "font",
+            "method": "GET"
+          }
+        ],
+        "local": true,
+        "pageErrors": [],
+        "passed": true,
+        "details_sha256": "84fc69e60d0c23192f0cc2fd1d0445f47a8dcd9e9748c00e35605ac318fb38b9"
+      }
+    },
+    "collection-details": {
+      "1440": {
+        "firstViewport": {
+          "time": true,
+          "day": true,
+          "address": true,
+          "details": true
+        },
+        "labelContext": false,
+        "startsCollapsed": true,
+        "reachedByKeyboard": true,
+        "opens": true,
+        "closes": true,
+        "samePage": true,
+        "actionRequests": [
+          {
+            "url": "https://fonts.gstatic.com/s/atkinsonhyperlegible/v12/9Bt23C1KxNDXMspQ1lPyU89-1h6ONRlW45G04pIoWQeCbA.woff2",
+            "type": "font",
+            "method": "GET"
+          }
+        ],
+        "local": true,
+        "pageErrors": [],
+        "passed": true,
+        "details_sha256": "d67a2650406347216ee9be0bca70f0cda841c62596ef8fb32275500926e481ca"
+      },
+      "390": {
+        "firstViewport": {
+          "time": true,
+          "day": true,
+          "address": true,
+          "details": true
+        },
+        "labelContext": false,
+        "startsCollapsed": true,
+        "reachedByKeyboard": true,
+        "opens": true,
+        "closes": true,
+        "samePage": true,
+        "actionRequests": [
+          {
+            "url": "https://fonts.gstatic.com/s/atkinsonhyperlegible/v12/9Bt23C1KxNDXMspQ1lPyU89-1h6ONRlW45G04pIoWQeCbA.woff2",
+            "type": "font",
+            "method": "GET"
+          }
+        ],
+        "local": true,
+        "pageErrors": [],
+        "passed": true,
+        "details_sha256": "5c2003a025ea45c3db84f3d55b08c51c9e808fb15d1d5133082b42ab3648825b"
+      }
+    }
+  },
+  "route_replay": {
+    "frozen_briefs": 36,
+    "explicit_routes": 216,
+    "archived_routes": 28,
+    "changes": {
+      "mobile-pantry:inferred": {
+        "before": "object-hero",
+        "after": "collection-details"
+      },
+      "mobile-pantry:mobile": {
+        "before": "platform-sign",
+        "after": "collection-details"
+      },
+      "mobile-pantry:archived": {
+        "before": "platform-sign",
+        "after": "collection-details"
+      }
+    },
+    "largest_payload": 4306
+  }
+}
