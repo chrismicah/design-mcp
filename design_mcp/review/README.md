@@ -2,7 +2,7 @@
 
 Scan a web page, get the first thing to fix, and see the change on the page's own pixels. Everything runs on this computer. Nothing is uploaded.
 
-The installed CLI captured the USWDS address form at desktop and mobile widths through Playwriter. Both views retained the masked Street address field in the eight-region context. The Linux Chrome smoke exercised keyboard activation, repair after a missing host, preview navigation, and field masking. [Installed URL run](https://github.com/chrismicah/design-mcp/actions/runs/44993452256) · [Chrome extension smoke](https://github.com/chrismicah/design-mcp/actions/runs/44994211431)
+The installed CLI captured the USWDS address form at desktop and mobile widths through Playwriter. Both views retained the masked Street address field in the eight-region context. On the reference Mac, GPT Computer Use exercised Chrome's missing-host recovery, switched to After by keyboard, and reopened the same preview. [Installed URL run](../../evidence/benchmark-v1/isolated-url-session-e1cd4eb.json) · [Reference Mac walkthrough](../../evidence/benchmark-v1/reference-mac-chrome-f17bd6f.json)
 
 ## Three ways in
 
@@ -95,7 +95,7 @@ Repeat the installed browser acceptance steps on the reference Mac.
 
 - The popup and preview still need independent live review and a 9.5 per screen release score.
 - No model review, no redesign builder, and no after view for layout findings. The first finding comes from three local checks only.
-- The reference Mac run still needs to confirm preview opening and verify the recolored text pixels in the After view.
+- The reference Mac walkthrough observed the recolor in After. A pixel-level check of the recolor remains open.
 - Private subresource handling remains open for pasted URLs. The browser prototype checks host patterns on subrequests and pins the top-level lookup.
 - No keyboard activation is performed on a live page, so the interaction part of the capture format is validated but never produced.
 - The 8 reported regions are chosen by the collector: first heading, main button, up to three hardest-to-read lines, first status, then reading order. That choice has not been checked against human labels.

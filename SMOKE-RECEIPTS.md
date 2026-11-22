@@ -2,7 +2,7 @@
 
 ## Direct Git install on both architectures, November 22
 
-Both README commands installed `f17bd6f` directly from Git on clean macOS 15 runners. All eight Intel and Apple Silicon jobs passed on Python 3.10–3.13. The archived logs show 16 installs, 16 doctor checks, and 32 smoke runs across the default and compatibility surfaces. Each install verified the exact Git commit in its package metadata. Fresh Ventura remains open. [Job and source receipts](evidence/benchmark-v1/direct-git-install-f17bd6f.json) · [Earlier pin](evidence/benchmark-v1/direct-git-install-2fcd312.json)
+Both README commands installed `e1cd4eb` directly from Git on clean macOS 15 runners. All eight Intel and Apple Silicon jobs passed on Python 3.10–3.13. The archived logs show 16 installs, 16 doctor checks, and 32 smoke runs across the default and compatibility surfaces. Each install verified the exact Git commit in its package metadata. Fresh Ventura remains open. [Current job and source receipts](evidence/benchmark-v1/direct-git-install-e1cd4eb.json) · [Native walkthrough install pin](evidence/benchmark-v1/direct-git-install-f17bd6f.json)
 
 ## Reference Mac GPT Computer Use, November 22
 
@@ -37,6 +37,8 @@ Chrome for Testing 158 loaded the extension from an install of `2fcd312` on macO
 ## Combined review branch, November 22
 
 Four fresh-install hosted checks passed on `design-mcp/review-integration` at `2fcd312`. The public address form produced two Playwriter captures with nine masked fields and zero local findings. The Linux Chrome popup recovered from a missing host, masked the test field, and selected After by keyboard. Its single scan reported 96 ms. On hosted macOS 15 arm64, Electron cleared the seeded occlusion and retained the clipping finding. The SwiftUI fixture exposed a sixth control after Reveal. [Exact run links and artifact hashes](evidence/benchmark-v1/review-integration-2fcd312.json) · [Earlier combined receipt](evidence/benchmark-v1/review-integration.json)
+
+The installed `e1cd4eb` CLI found Playwriter 0.12.0 on PATH and used the session returned for its separate Chrome profile. The same public form produced matching PNG digests at 1440 × 900 and 390 × 844 with five and four masked fields. The original desktop PNG embedded in the saved preview matched its evidence hash. All 17,136 sampled interior pixels of Street address matched the mask color. The mobile capture contributed its geometry and image digest. [Hosted URL test](https://github.com/chrismicah/design-mcp/actions/runs/45032622125) · [Artifact audit](evidence/benchmark-v1/isolated-url-session-e1cd4eb.json)
 
 In 30 further Linux trials, each keyboard toolbar activation opened a fresh popup document and each scan launched a one-request native host. The browser and fixture tab stayed warm. The p95 time through two animation frames after the control became visible was **299 ms** from the toolbar shortcut and **118 ms** from Scan to the finding. The popup exceeded the 250 ms target on this runner. The scan cleared its 1 s target. The timing includes keyboard injection and browser observation. [Trial timings and run](evidence/benchmark-v1/chrome-popup-latency-linux.json)
 

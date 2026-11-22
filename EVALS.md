@@ -117,6 +117,8 @@ Both specific-landing v2 controls were scored again alongside the candidate. The
 
 ## Local review checks
 
+The `e1cd4eb` URL fix uses the Playwriter session ID on every browser command and stops before navigation if request filtering fails to start. The fresh hosted CLI found Playwriter on PATH. Both image digests matched the earlier capture of the same public form. The desktop preview's Street address mask passed a 17,136-pixel interior check. This was one hosted capture and used local review only. [Hosted and regression receipts](evidence/benchmark-v1/isolated-url-session-e1cd4eb.json)
+
 The custom Chrome native host originally wrote into the regular review history. On the repaired candidate, the regression seeded 20 reviews in each of two histories. The new capture landed under the test profile and aged out only that profile's oldest entry. All 20 regular entries survived. The installed Linux Chrome run made the same profile-path check and verified the masked field and focused keyboard After switch. The extension assets stayed byte-identical. [Regression and browser receipt](evidence/benchmark-v1/chrome-profile-review-isolation.json)
 
 Hosted Mac Chrome completed three pointer activations with `f17bd6f` in separate profiles. All three opened the profile-local preview and reopened it on Before. The first saved capture passed the field-mask replay after download. [Installed Mac browser receipts](evidence/benchmark-v1/chrome-profile-review-isolation.json)

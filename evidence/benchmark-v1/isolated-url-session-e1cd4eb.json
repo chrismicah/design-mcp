@@ -1,0 +1,78 @@
+{
+  "source_commit": "e1cd4eb82bc60269ce42223523f73a862c0086a5",
+  "run": "https://github.com/chrismicah/design-mcp/actions/runs/45032622125",
+  "job": "https://github.com/chrismicah/design-mcp/actions/runs/45032622125/job/137239318431",
+  "scope": "Fresh installed CLI with bare --playwriter on PATH. Public USWDS address form in a separate headless Chrome profile. The saved preview contains the desktop PNG; the mobile capture is represented by metadata and its PNG digest.",
+  "capture_command": "design-mcp review https://designsystem.digital.gov/templates/form-templates/address-form/ --playwriter --chrome <pinned executable> --out <runner proof folder> --json",
+  "matches_historical_capture_bytes": {
+    "source_commit": "2fcd31221671590152401d958b904141e438e453",
+    "run": "https://github.com/chrismicah/design-mcp/actions/runs/45013079554",
+    "desktop": true,
+    "mobile": true
+  },
+  "regression_checks": [
+    "All execute calls use the session returned by session_new.",
+    "A failed route setup stops capture before navigation.",
+    "An explicit executable remains accepted and --no-open makes no capture call."
+  ],
+  "local_suite": {
+    "passed": 483,
+    "subtests_passed": 110,
+    "log_sha256": "8beafed35a344a9f5a1064f19a76acd2a70407005f9ac6f6b831ff81f18e1e9d"
+  },
+  "capture_id": "c-6f83da92524d",
+  "url": "https://designsystem.digital.gov/templates/form-templates/address-form/",
+  "browser": "Google Chrome for Testing 158.0.8127.36",
+  "playwriter": "0.12.0",
+  "frontier": "not-run",
+  "regions": 16,
+  "timings_ms": {
+    "page_load": 1449,
+    "capture": 620,
+    "sanitize": 5.3,
+    "local_checks": 0.3,
+    "preview": 11.5,
+    "frontier": "not-run"
+  },
+  "frames": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "sha256": "743625d72cdc58ad2db223578b6ac082783667a4991901570505d7502846f08e",
+      "masked_fields": 5,
+      "street_address_masked": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "sha256": "9fdd7b37dae00f84f57eaa62618ed546eb2260711a3fc68b41a8862e26985a38",
+      "masked_fields": 4,
+      "street_address_masked": true
+    }
+  ],
+  "saved_preview_pixel_check": {
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "dpr": 1
+    },
+    "rgb": [
+      138,
+      143,
+      152
+    ],
+    "checked_pixel_count": 17136,
+    "screenshot_sha256": "743625d72cdc58ad2db223578b6ac082783667a4991901570505d7502846f08e"
+  },
+  "files": {
+    "result.json": "3f8fb666951b184638a965b53082ef383cb7def57b7359cce95367c130cd4839",
+    "evidence.json": "2367869ac30439d7bf2147efe3b5bb422280950495539e407fb2f4ef5d36d0c4",
+    "preview.html": "02447b747deed71df2fb28b237870a2266a19bc8d996f1c7b1d5db6bef83d2af"
+  }
+}

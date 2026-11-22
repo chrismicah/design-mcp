@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+- Public URL reviews use the isolated Playwriter session for every command and stop if request filtering fails to start. Pass `--playwriter` to use the installed command on PATH. [Hosted review and regression checks](evidence/benchmark-v1/isolated-url-session-e1cd4eb.json)
+
 - Keep previews and their 20-review retention limit inside an explicitly selected Chrome data directory. Reinstall an existing custom host to update its launcher. [Extension setup](design_mcp/review/README.md#set-up-the-extension)
 
 - Added size-aware contrast checks to local review. Chrome flagged a 2.0-to-1 large label and previewed a recolor that meets its 3-to-1 minimum. [Browser and regression receipts](evidence/benchmark-v1/large-text-contrast.json)

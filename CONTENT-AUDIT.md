@@ -1,6 +1,6 @@
 # CONTENT-AUDIT: Design MCP pattern corpus
 
-Lane: Claude Opus 5.5, session `419b2a67`, 2026-11-20. Baseline commit `82fe6e3`. **Read-only audit.** It makes no edits to production code or data. Cull and rewrite actions wait for plan approval.
+Lane: Claude Opus 5.5, session `419b2a67`, 2026-11-20. Baseline commit `82fe6e3`. **Read-only audit.** The approved rollout removed all audited rows from the default tool surface and kept the pinned snapshot available through explicit compatibility modes. [Rollout plan](PLAN.md#11-rollout-after-slice-g)
 Token use: exact usage was not observable in this session, so no figure is reported. After the owner's steering the follow-up was capped at about 7k more tokens, with no additional agents.
 
 ## 0. Verdict
@@ -110,7 +110,7 @@ Supplemental (271 records): rewrite 240, **keep-as-reference 29** (18 libraries 
 
 - Assets: 742 local blobs are absent. Only 2 of the 31 remote assets were fetched and viewed (SHA-256 `37d012d4…c351d` Dado, `18a23823…e003` Voku). Downloads stay in `.context/` (untracked) because the images are third-party.
 - No source site was re-crawled. "Rewrite-from-source" (470 rows) and "cull-unless-blob-recovered" (277) depend on recovering the blobs through the `5f2f990` LFS pointers or the public pages. That is untested: the pointers are verified, the blobs are not. Any row whose blob can't be recovered falls to cull.
-- Source and reference documents are audited by the owner and root session (`REFERENCE-MATERIAL.md`), not here.
+- The source audit records the search for “Tyre” and the decisions on other reference material. [Source material audit](evidence/content/REFERENCE-MATERIAL.md)
 - Taste is scored from entry text and metadata. Visual taste was judged on 2 assets only.
 - Supplemental reference candidates are scoped examples. The two supplemental references drawn in the independent sample were read in full. The remaining candidates still need review before any reuse. [Independent rev-2 sample](evidence/content/REV2-SAMPLE.md)
 
