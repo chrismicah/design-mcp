@@ -1,31 +1,31 @@
 {
   "summary": {
     "requested_pairs": 36,
-    "judged_pairs": 15,
-    "none": 91.94444444444444,
-    "v2": 94.44444444444444,
-    "difference": 2.5000000000000018,
+    "judged_pairs": 16,
+    "none": 91.92708333333333,
+    "v2": 94.53125,
+    "difference": 2.6041666666666696,
     "wins_ties_losses": [
-      7,
+      8,
       7,
       1
     ],
     "paired_bootstrap_95_interval": [
-      -0.27777777777777907,
-      5.277777777777781
+      -0.26041666666666075,
+      5.208333333333336
     ],
     "median_usage": {
       "none": {
-        "input_tokens": 20084,
-        "cached_input_tokens": 11136,
-        "output_tokens": 22204,
-        "elapsed_seconds": 450.94
+        "input_tokens": 29270.5,
+        "cached_input_tokens": 11136.0,
+        "output_tokens": 22404.0,
+        "elapsed_seconds": 453.345
       },
       "v2": {
-        "input_tokens": 63131,
-        "cached_input_tokens": 40960,
-        "output_tokens": 21338,
-        "elapsed_seconds": 433.86
+        "input_tokens": 63371.0,
+        "cached_input_tokens": 41216.0,
+        "output_tokens": 21607.0,
+        "elapsed_seconds": 439.01
       }
     }
   },
@@ -2667,6 +2667,183 @@
           "B-390.png": "340b40f3fe61e26bbd70f101a66208a90805401f19f6ff6691740d37f4a65d3b"
         },
         "judge_prompt_sha256": "457405b62c1d73d92874477bfa342b63d71e9a85ba6f8a4f8f10662d6e513a40"
+      }
+    },
+    "form-garden": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44995146562",
+      "cells": {
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 40149,
+              "cached_input_tokens": 30720,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 24423,
+              "reasoning_output_tokens": 18120
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "form-garden",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "1b94c52a52dd08e4aeb6ba98392a74c7859bffd667a177a996036fb31a36cc4a",
+            "elapsed_seconds": 493.06,
+            "exit_code": 0,
+            "trace_sha256": "56e10fa197dceb31588dda7d939b7445dca3388e3d0c05fc428b766f2972c263",
+            "html_sha256": "de13db8c85043e55586769056889c4b9ae60438d2257ef466a086597c783c75f"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "fc244d34fed002b2eda80b2ab90e1d1e56681bcc77ffcb4e9d427de41236c125",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "190d178fff8572361249465102d05a1b98da67f67af9d01dc676a5a8375b2af5",
+              "viewport": 390,
+              "width": 375,
+              "pageErrors": []
+            }
+          }
+        },
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 64386,
+              "cached_input_tokens": 41472,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 22882,
+              "reasoning_output_tokens": 16340
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "form-garden",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "1b94c52a52dd08e4aeb6ba98392a74c7859bffd667a177a996036fb31a36cc4a",
+            "elapsed_seconds": 464.26,
+            "exit_code": 0,
+            "trace_sha256": "70e1622105e63cb8974eaaa8c50d84036a9e49a7af9b7bef7d878386b5c0406f",
+            "html_sha256": "2458ce63f841b24ae525e826d0c0ede4ad9b910c394af5882e7e12d87dae904c"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "542c0b2af313f62f793e507628fabecfb996550bf6fa3ca4e65bd47429193462",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "82e4c474a133301d8be3b0fa9829e5bc03936cc616c50eb28c81fc0914dec728",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "form-garden",
+        "surface": "form",
+        "blind_key": {
+          "A": "none",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "The sign-up card is easy to spot beside the desktop headline, and the separate garden illustration on mobile pushes the first input just below the screen\u2019s midpoint."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "A wide desktop gutter separates the invitation from the form, and the mobile card keeps labels close to their fields while giving each shift its own box on one row."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The serif invitation holds its two-line shape at both widths, and bold sans-serif day names sit above smaller, legible times."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The deep green of the sprout tile repeats on the Sign up button, making the primary action stand out against the cream form at both widths."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Both views show empty radio circles and mark the tool note optional, and both browser trees expose each radio\u2019s full day and time under the Choose a shift group."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both views show First name, Wednesday 5 pm, Saturday 9 am, an optional tool note and Sign up, with no submitted view to verify that the confirmation repeats the chosen shift."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The invitation sits beside the form on desktop and becomes a compact mobile banner, keeping the form heading, shift choices and yellow Sign up button visible together at both widths."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The fields, two equal shift cells and button share outer edges at both widths, and cropping the planter into the mobile banner preserves room for the form."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The condensed headline stays on two lines at both widths, and pairing each day with a large hour numeral makes the shifts easy to compare on mobile."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The sunflower and Sign up button share a yellow accent that connects the illustration to the task, with dark green button text clearly legible against the yellow."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "At both widths, the browser tree names each radio by day and time within the Shift group, while visible radio circles and the explicit optional label make the initial form state clear."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "The form pairs the first-name field and optional tools note with the exact Wednesday 5 pm and Saturday 9 am choices at both widths, while the requested shift confirmation remains unverified in the supplied views."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26290,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5603,
+          "reasoning_output_tokens": 4941
+        },
+        "scores": {
+          "none": 91.66666666666666,
+          "v2": 95.83333333333334
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "fc244d34fed002b2eda80b2ab90e1d1e56681bcc77ffcb4e9d427de41236c125",
+          "A-390.png": "190d178fff8572361249465102d05a1b98da67f67af9d01dc676a5a8375b2af5",
+          "B-1440.png": "542c0b2af313f62f793e507628fabecfb996550bf6fa3ca4e65bd47429193462",
+          "B-390.png": "82e4c474a133301d8be3b0fa9829e5bc03936cc616c50eb28c81fc0914dec728"
+        },
+        "judge_prompt_sha256": "179e21bebea73c87de175cc8e845bfcdf489d1fb2916552fbf08de24d0e3ebb2"
       }
     }
   }
