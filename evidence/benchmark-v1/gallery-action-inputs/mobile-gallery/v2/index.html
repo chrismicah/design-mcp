@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f2ea">
+  <title>River Wall — Room 4</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&amp;family=Source+Sans+3:wght@400;500;600&amp;display=swap">
+  <style>
+    :root {
+      --paper: #f4f2ea;
+      --ink: #1d2a2e;
+      --chalk: #ddd9c8;
+      --slate: #587881;
+      --prussian: #25485e;
+      --oxide: #a3401f;
+      --rule: #b5b8ae;
+      --serif: "Newsreader", Georgia, serif;
+      --sans: "Source Sans 3", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: #c6d4d0; color: var(--ink); }
+
+    .sheet {
+      max-width: 1580px;
+      margin-inline: auto;
+      padding-inline: clamp(22px, 5vw, 80px);
+    }
+
+    .masthead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-block: 26px 23px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .guide, .room, .credit {
+      display: flex;
+      align-items: center;
+    }
+
+    .guide {
+      gap: 12px;
+      font-size: 24px;
+      line-height: 1;
+      font-weight: 600;
+      letter-spacing: -.045em;
+    }
+
+    .guide svg { width: 33px; height: 33px; }
+
+    .room {
+      gap: 10px;
+      font-size: 18px;
+      line-height: 1;
+      font-weight: 500;
+    }
+
+    .room svg { width: 23px; height: 23px; }
+
+    main { padding-block: 28px 44px; }
+    figure { margin: 0; }
+
+    .print {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      height: clamp(320px, min(32.4vw, 54svh), 492px);
+      background: var(--chalk);
+      box-shadow: 0 2px 0 #c4c3b8, 0 5px 9px -7px #26383399;
+    }
+
+    .print > svg { display: block; width: 100%; height: 100%; }
+
+    .print::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 0 0 0 1px #26383318;
+      pointer-events: none;
+    }
+
+    figcaption {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) clamp(215px, 23%, 310px);
+      align-items: start;
+      gap: 5%;
+      padding-top: clamp(30px, 3.1vw, 48px);
+    }
+
+    h1 {
+      margin: 0;
+      font: 400 clamp(79px, 8.45vw, 128px)/.96 var(--serif);
+      font-optical-sizing: auto;
+      letter-spacing: -.054em;
+    }
+
+    .credit {
+      gap: 16px;
+      margin: 12px 0 0 3px;
+      font-size: 25px;
+      line-height: 1.25;
+      letter-spacing: -.025em;
+    }
+
+    .credit-rule {
+      width: 30px;
+      height: 1px;
+      background: #87908a;
+    }
+
+    .credit time {
+      color: #4c5957;
+      font: italic 400 26px/1 var(--serif);
+      letter-spacing: -.03em;
+    }
+
+    .material {
+      margin-top: 5px;
+      border-top: 1.5px solid var(--ink);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .note-toggle {
+      display: flex;
+      width: 100%;
+      min-height: 67px;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 1px;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      color: var(--ink);
+      font: 500 19px/1.25 var(--sans);
+      letter-spacing: -.02em;
+      text-align: left;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+
+    .note-toggle:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 3px var(--paper);
+    }
+
+    .toggle-mark {
+      position: relative;
+      flex: 0 0 30px;
+      height: 30px;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+    }
+
+    .toggle-mark::before, .toggle-mark::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 12px;
+      height: 1.5px;
+      background: currentColor;
+      transform: translate(-50%, -50%);
+    }
+
+    .toggle-mark::after {
+      transform: translate(-50%, -50%) rotate(90deg);
+      transition: transform 180ms ease-out;
+    }
+
+    .note-toggle[aria-expanded="true"] .toggle-mark {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: var(--paper);
+    }
+
+    .note-toggle[aria-expanded="true"] .toggle-mark::after {
+      transform: translate(-50%, -50%) rotate(0);
+    }
+
+    #material-note {
+      margin: -1px 0 21px;
+      font: 400 23px/1.35 var(--serif);
+      animation: unfold 200ms ease-out;
+    }
+
+    [hidden] { display: none !important; }
+
+    @keyframes unfold {
+      from { opacity: 0; transform: translateY(-3px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (hover: hover) {
+      .note-toggle:hover { color: var(--oxide); }
+    }
+
+    @media (max-width: 760px) {
+      .masthead { padding-block: 20px 18px; }
+      .guide { gap: 9px; font-size: 21px; }
+      .guide svg { width: 28px; height: 28px; }
+      .room { gap: 7px; font-size: 16px; }
+      .room svg { width: 20px; height: 20px; }
+      main { padding-block: 19px 30px; }
+      .print { height: clamp(248px, min(100vw, 45svh), 422px); }
+      figcaption { grid-template-columns: 1fr; gap: 28px; padding-top: 30px; }
+      h1 { font-size: clamp(59px, 19vw, 96px); }
+      .credit { gap: 12px; margin: 9px 0 0 1px; font-size: 22px; }
+      .credit-rule { width: 24px; }
+      .credit time { font-size: 23px; }
+      .material { margin-top: 0; }
+      .note-toggle { min-height: 61px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .toggle-mark::after { transition: none; }
+      #material-note { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <header class="masthead">
+      <div class="guide">
+        <svg viewBox="0 0 34 34" aria-hidden="true">
+          <defs>
+            <clipPath id="mark-edge"><path d="M1 1h32v32H1z"/></clipPath>
+          </defs>
+          <g clip-path="url(#mark-edge)">
+            <path fill="currentColor" d="M1 1h32v32H1z"/>
+            <g fill="none" stroke="#f4f2ea" stroke-width="2">
+              <path d="M-4 13C6 20 10 3 20 7s10 5 18-2"/>
+              <path d="M-4 19C8 25 12 9 21 13s11 4 17-2"/>
+              <path d="M-4 25C8 31 14 15 23 19s11 2 15-2"/>
+            </g>
+          </g>
+        </svg>
+        <span>Gallery guide</span>
+      </div>
+      <div class="room">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12.5 20.5h-9v-17h17v17h-2.6" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M12.5 20.5v-5.2a5.2 5.2 0 0 1 5.2 5.2" stroke="currentColor" stroke-width=".9"/>
+          <circle cx="10.5" cy="10" r="2.4" fill="#a3401f"/>
+        </svg>
+        <span>Room 4</span>
+      </div>
+    </header>
+
+    <main>
+      <figure aria-labelledby="work-title">
+        <div class="print">
+          <svg viewBox="0 0 1440 480" preserveAspectRatio="xMidYMid slice"
+               role="img" aria-labelledby="illustration-title">
+            <title id="illustration-title">An abstract river illustration. A chalk-colored current winds between banks of blue pigment and weathered ochre.</title>
+            <defs>
+              <linearGradient id="limestone" x2="1" y2=".65" gradientUnits="objectBoundingBox">
+                <stop stop-color="#e1dbca"/>
+                <stop offset=".42" stop-color="#d4c8a9"/>
+                <stop offset=".73" stop-color="#e1dcca"/>
+                <stop offset="1" stop-color="#c6c9b7"/>
+              </linearGradient>
+              <linearGradient id="blue-ink">
+                <stop stop-color="#213f50"/>
+                <stop offset=".36" stop-color="#315c72"/>
+                <stop offset=".68" stop-color="#25485e"/>
+                <stop offset="1" stop-color="#406776"/>
+              </linearGradient>
+
+              <path id="river-bed" d="M-70 303
+                C58 358 178 343 294 261 C414 177 509 108 620 140
+                C728 170 764 233 847 211 C939 187 961 100 1086 77
+                C1210 54 1309 86 1510-19 L1510 110
+                C1366 151 1284 131 1160 169 C1048 203 1034 297 915 339
+                C777 388 687 286 590 259 C497 234 425 328 325 391
+                C203 469 43 467-70 419Z"/>
+              <clipPath id="ink-boundary"><use href="#river-bed"/></clipPath>
+              <path id="flow-line" d="M-80 362
+                C64 413 205 370 312 286 C432 193 518 148 615 188
+                C720 223 775 291 870 261 C988 224 992 151 1118 121
+                C1251 90 1340 111 1510 44"/>
+
+              <filter id="broken-edge" x="-5%" y="-8%" width="110%" height="116%"
+                      color-interpolation-filters="sRGB">
+                <feTurbulence type="fractalNoise" baseFrequency=".034 .072" numOctaves="3" seed="8" result="tooth"/>
+                <feDisplacementMap in="SourceGraphic" in2="tooth" scale="10" xChannelSelector="R" yChannelSelector="G"/>
+              </filter>
+              <filter id="dry-drag" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+                <feTurbulence type="fractalNoise" baseFrequency=".013 .28" numOctaves="3" seed="31"/>
+                <feColorMatrix type="matrix" values="
+                  0 0 0 0 .94
+                  0 0 0 0 .90
+                  0 0 0 0 .79
+                  0 7 0 0 -3.65"/>
+              </filter>
+              <filter id="plaster-tooth" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+                <feTurbulence type="fractalNoise" baseFrequency=".43 .58" numOctaves="2" seed="19" result="grain"/>
+                <feTurbulence type="fractalNoise" baseFrequency=".016 .036" numOctaves="3" seed="5" result="patches"/>
+                <feComposite in="grain" in2="patches" operator="arithmetic" k2=".74" k3=".26" result="relief"/>
+                <feColorMatrix in="relief" type="matrix" values="
+                  0 0 0 0 .96
+                  0 0 0 0 .93
+                  0 0 0 0 .84
+                  12 0 0 0 -6.08" result="powder"/>
+                <feColorMatrix in="grain" type="matrix" values="
+                  0 0 0 0 .16
+                  0 0 0 0 .19
+                  0 0 0 0 .17
+                  0 -7 0 0 2.95" result="pores"/>
+                <feMerge>
+                  <feMergeNode in="pores"/>
+                  <feMergeNode in="powder"/>
+                </feMerge>
+              </filter>
+            </defs>
+
+            <path fill="url(#limestone)" d="M0 0h1440v480H0z"/>
+            <g filter="url(#broken-edge)">
+              <path fill="#bcc0aa" d="M-40-30H821C731 7 692 40 608 39 485 37 449 25 356 51 209 92 129 159-40 132Z"/>
+              <path fill="#c1ac85" d="M-35 39C83 49 122 64 222 42 311 23 359-10 465-15L555-17C439 4 396 39 300 66 190 97 75 72-35 100Z"/>
+              <path fill="#8d9e95" d="M-35 151C71 176 178 159 291 100 416 35 503 57 587 53 644 51 686 38 728 19 665 67 614 87 545 88 446 88 397 105 313 155 180 231 71 235-35 208Z"/>
+              <path fill="#b5bca9" d="M853-30H1480V37C1320 108 1190 40 1061 59 978 71 931 97 866 105 955 44 951 12 853-30Z"/>
+              <path fill="#a66a47" d="M-45 225C72 244 179 218 271 164 335 127 386 108 437 102 365 128 328 162 273 198 171 265 56 286-45 268Z"/>
+              <path fill="#d8c9a9" d="M-32 216C65 226 167 207 256 165 190 210 94 243-32 239Z"/>
+
+              <path fill="#b8ae91" d="M264 509C424 452 461 351 573 339 677 329 731 400 830 405 997 414 1051 281 1190 231 1300 191 1389 201 1480 147V520Z"/>
+              <path fill="#94a59c" d="M681 513C786 458 883 472 963 421 1056 360 1095 286 1213 258 1333 229 1405 247 1490 190V513Z"/>
+              <path fill="#5c797b" d="M988 514C1078 450 1102 373 1198 333 1281 299 1395 305 1488 239V510Z"/>
+              <path fill="#c2b18c" d="M1132 511C1203 452 1193 413 1292 373 1364 344 1412 354 1481 313V510Z"/>
+              <path fill="#d9cfaf" d="M459 457C534 394 580 370 642 378 686 384 709 402 755 408 682 399 658 386 616 390 549 395 508 432 459 457Z"/>
+
+              <use href="#river-bed" fill="#8ba099" transform="translate(-10 -34)"/>
+              <use href="#river-bed" fill="#b1b6a1" transform="translate(3 23)"/>
+              <path fill="#a3401f" d="M468 147C551 106 616 104 690 139 757 171 801 205 846 191 871 184 887 175 907 163 871 201 834 220 782 203 706 179 650 132 582 134 540 134 502 143 468 147Z"/>
+              <use href="#river-bed" fill="url(#blue-ink)"/>
+
+              <g clip-path="url(#ink-boundary)">
+                <path fill="#587e89" d="M-80 248H1510V20C1347 99 1232 68 1112 100 983 134 976 215 864 242 764 267 715 185 613 162 508 138 418 205 301 284 187 363 72 388-80 348Z"/>
+                <path fill="#1b3948" d="M-80 397C93 457 218 389 333 320 438 256 502 194 577 208 633 217 663 242 700 264 638 241 608 220 563 222 493 225 451 283 343 351 219 430 80 478-80 429Z"/>
+                <path fill="#183745" d="M669 254C756 293 815 334 897 311 992 285 1025 200 1114 169 1179 146 1250 149 1312 138 1232 166 1178 159 1110 192 1039 228 1004 308 920 340 825 377 744 324 669 254Z"/>
+                <path fill="#d9dac5" d="M-70 371C83 414 198 364 307 286 426 200 510 149 611 173 713 198 774 269 865 243 966 214 990 132 1102 108 1214 84 1345 93 1503 28 1356 103 1217 97 1108 126 998 156 982 232 872 264 765 295 704 214 602 192 504 171 425 240 314 312 189 393 79 425-70 390Z"/>
+                <path fill="#8ba39e" d="M255 355C343 298 415 225 492 204 538 192 570 195 600 202 549 199 522 206 489 218 407 250 334 326 255 355Z"/>
+                <path fill="#bfc3af" d="M976 280C1028 244 1042 204 1102 178 1143 160 1191 157 1221 157 1151 169 1118 184 1081 213 1043 243 1019 266 976 280Z"/>
+                <g id="incisions"></g>
+              </g>
+
+              <g fill="none" stroke-linecap="round">
+                <path d="M-15 288C136 320 208 265 315 199S494 99 565 104" stroke="#657b76" stroke-width="2.3"/>
+                <path d="M43 299C164 305 226 252 330 189" stroke="#e4dcc2" stroke-width="3.2"/>
+                <path d="M692 135C750 161 792 190 831 185" stroke="#ecd6ae" stroke-width="2.6"/>
+                <path d="M817 368C923 387 998 317 1049 266S1141 193 1209 181" stroke="#7b8374" stroke-width="1.7"/>
+                <path d="M869 370C978 363 1022 288 1074 251" stroke="#e2d8b9" stroke-width="3"/>
+                <path d="M1075 432C1146 359 1170 337 1247 317" stroke="#dad6bd" stroke-width="2.3"/>
+              </g>
+            </g>
+
+            <g fill="none" stroke="#6a7061" stroke-width=".85" opacity=".55">
+              <path d="m279-4-5 18 6 11-12 12-3 15-14 8-4 17-19 11"/>
+              <path d="m268 37-12-2-9 7-11 1m29 9 7 10-3 12"/>
+              <path d="m776 487 8-24-5-13 13-18 2-19 12-7 6-16-2-13"/>
+              <path d="m792 432 12-3 11-14 13-4m-47 48-10-10-13-2"/>
+              <path d="m1344-5-9 16 3 12-12 8-6 19-10 9"/>
+            </g>
+            <path d="M0 0h1440v480H0z" filter="url(#dry-drag)" opacity=".36"/>
+            <path d="M0 0h1440v480H0z" filter="url(#plaster-tooth)" opacity=".64"/>
+          </svg>
+        </div>
+
+        <figcaption>
+          <div>
+            <h1 id="work-title">River Wall</h1>
+            <p class="credit">
+              <span>Maya Chen</span>
+              <span class="credit-rule" aria-hidden="true"></span>
+              <time datetime="1972">1972</time>
+            </p>
+          </div>
+
+          <div class="material">
+            <button class="note-toggle" id="note-toggle" type="button"
+                    aria-expanded="false" aria-controls="material-note">
+              <span id="note-action">Show material note</span>
+              <span class="toggle-mark" aria-hidden="true"></span>
+            </button>
+            <p id="material-note" hidden>Pigment on plaster.</p>
+          </div>
+        </figcaption>
+      </figure>
+    </main>
+  </div>
+
+  <script>
+    const noteButton = document.getElementById("note-toggle");
+    const noteAction = document.getElementById("note-action");
+    const materialNote = document.getElementById("material-note");
+
+    noteButton.addEventListener("click", () => {
+      const opening = materialNote.hidden;
+      materialNote.hidden = !opening;
+      noteButton.setAttribute("aria-expanded", String(opening));
+      noteAction.textContent = opening ? "Hide material note" : "Show material note";
+    });
+
+    // Fine, tapered marks follow the bends of the original pigment study.
+    function drawIncisions() {
+      const guide = document.getElementById("flow-line");
+      const group = document.getElementById("incisions");
+      const length = guide.getTotalLength();
+      const divisions = 300;
+      const points = Array.from({ length: divisions + 1 }, (_, index) =>
+        guide.getPointAtLength(length * index / divisions)
+      );
+      const normals = points.slice(0, -1).map((point, index) => {
+        const dx = points[index + 1].x - point.x;
+        const dy = points[index + 1].y - point.y;
+        const distance = Math.hypot(dx, dy) || 1;
+        return { x: -dy / distance, y: dx / distance };
+      });
+
+      let seed = 41972;
+      function random() {
+        seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
+        return seed / 4294967296;
+      }
+
+      const colors = ["#dadeca", "#98b0ab", "#173646", "#759197", "#c0b596"];
+      const marks = document.createDocumentFragment();
+
+      for (let index = 0; index < 225; index++) {
+        const start = Math.floor(random() * (divisions - 5));
+        const span = 3 + Math.floor(random() ** 2 * 47);
+        const end = Math.min(start + span, divisions - 1);
+        const offset = (random() - .5) * 175;
+        const breadth = .24 + random() ** 2 * 1.65;
+        const phase = random() * Math.PI * 2;
+        const sway = 1 + random() * 4;
+        const upper = [];
+        const lower = [];
+
+        for (let step = start; step <= end; step++) {
+          const progress = (step - start) / (end - start);
+          const drift = offset + sway * Math.sin(progress * 3.7 + phase);
+          const taper = breadth * Math.sin(Math.PI * progress);
+          const point = points[step];
+          const normal = normals[step];
+          const coordinate = distance =>
+            `${(point.x + normal.x * distance).toFixed(1)},${(point.y + normal.y * distance).toFixed(1)}`;
+          upper.push(coordinate(drift + taper));
+          lower.push(coordinate(drift - taper));
+        }
+
+        const mark = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        mark.setAttribute("d", `M${upper.join("L")}L${lower.reverse().join("L")}Z`);
+        mark.setAttribute("fill", colors[Math.floor(random() * colors.length)]);
+        mark.setAttribute("opacity", (.2 + random() * .48).toFixed(2));
+        marks.append(mark);
+      }
+      group.append(marks);
+    }
+
+    drawIncisions();
+  </script>
+</body>
+</html>

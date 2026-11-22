@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F5F4EE">
+  <title>River Wall — Room 4</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&amp;family=Instrument+Serif&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --plaster: #f5f4ee;
+      --ink: #222824;
+      --indigo: #203754;
+      --river: #426d91;
+      --sage: #91aaa3;
+      --chalk: #e6dfcc;
+      --rule: #b9beb5;
+      --sans: "Instrument Sans", "Helvetica Neue", sans-serif;
+      --serif: "Instrument Serif", Georgia, serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--plaster);
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .guide {
+      width: min(100%, 1660px);
+      min-height: 100vh;
+      min-height: 100svh;
+      margin-inline: auto;
+      padding-inline: clamp(22px, 5vw, 84px);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .masthead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-block: 29px 24px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .wordmark, .room {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .wordmark {
+      gap: 12px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: -.045em;
+    }
+
+    .wordmark svg { color: var(--indigo); }
+
+    .room {
+      gap: 9px;
+      color: var(--indigo);
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .work {
+      flex: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+      gap: clamp(36px, 6.6vw, 110px);
+      align-content: center;
+      align-items: start;
+      padding-block: clamp(40px, 6vh, 76px) clamp(48px, 9vh, 100px);
+    }
+
+    .print {
+      margin: 0;
+      background: var(--chalk);
+      box-shadow: 0 1px 2px #20375428, 0 9px 20px -13px #20375455;
+    }
+
+    .print > svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .label {
+      min-width: 0;
+      padding-top: clamp(62px, 8.9vw, 146px);
+    }
+
+    .year {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      color: var(--indigo);
+      font-size: 1.05rem;
+      font-weight: 500;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+
+    .year::before {
+      content: "";
+      width: 30px;
+      height: 3px;
+      background: var(--indigo);
+    }
+
+    h1 {
+      margin: .14em 0 .16em;
+      font: 400 clamp(4.6rem, 7.5vw, 7.75rem)/1.02 var(--serif);
+      letter-spacing: -.045em;
+    }
+
+    .artist {
+      margin: 0;
+      font-size: clamp(1.4rem, 1.9vw, 2rem);
+      line-height: 1.35;
+      letter-spacing: -.035em;
+    }
+
+    .disclosure {
+      max-width: 25rem;
+      margin-top: clamp(34px, 4.1vw, 64px);
+      border-top: 1px solid var(--rule);
+    }
+
+    .note-button {
+      width: 100%;
+      min-height: 66px;
+      padding: 14px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border: 0;
+      background: transparent;
+      color: var(--indigo);
+      font: 500 1rem/1.4 var(--sans);
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .note-button:focus-visible {
+      outline: 3px solid var(--river);
+      outline-offset: 5px;
+    }
+
+    .sign {
+      width: 33px;
+      height: 33px;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--indigo);
+      border-radius: 50%;
+    }
+
+    .sign line {
+      stroke: currentColor;
+      stroke-width: 1.5;
+    }
+
+    .sign .vertical {
+      transform-origin: 10px 10px;
+      transition: transform 160ms ease;
+    }
+
+    .note-button[aria-expanded="true"] .vertical {
+      transform: scaleY(0);
+    }
+
+    @media (hover: hover) {
+      .note-button:hover .sign {
+        background: var(--indigo);
+        color: var(--plaster);
+      }
+    }
+
+    .material {
+      margin: 2px 0 0;
+      padding: 4px 0 4px 15px;
+      border-left: 3px solid var(--sage);
+      font-size: 1.125rem;
+      line-height: 1.5;
+    }
+
+    .material:not([hidden]) {
+      animation: reveal 180ms ease-out;
+    }
+
+    @keyframes reveal {
+      from { opacity: 0; transform: translateY(-3px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 760px) {
+      .masthead { padding-block: 20px 18px; }
+      .wordmark { gap: 9px; font-size: 1.14rem; }
+      .wordmark svg { width: 28px; height: 28px; }
+      .room { gap: 7px; font-size: .94rem; }
+
+      .work {
+        flex: none;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 30px;
+        padding-block: 25px 44px;
+      }
+
+      .label { padding-top: 0; }
+      .year { gap: 10px; font-size: .95rem; }
+      .year::before { width: 24px; }
+      h1 { margin-block: .1em; font-size: clamp(4.5rem, 16vw, 6.6rem); }
+      .artist { font-size: 1.4rem; }
+      .disclosure { max-width: none; margin-top: 28px; }
+      .note-button { min-height: 61px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sign .vertical { transition: none; }
+      .material:not([hidden]) { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="guide">
+    <header class="masthead">
+      <div class="wordmark">
+        <svg width="33" height="33" viewBox="0 0 33 33" fill="currentColor" aria-hidden="true">
+          <path d="M1 7 10 3v23l-9 4zM12 3l9 4v23l-9-4zM23 7l9-4v23l-9 4z"/>
+        </svg>
+        <span>Gallery guide</span>
+      </div>
+      <div class="room">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M13 21H3V3h18v18h-3" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="12" cy="11.5" r="2.5" fill="currentColor"/>
+        </svg>
+        <span>Room 4</span>
+      </div>
+    </header>
+
+    <main class="work" aria-labelledby="work-title">
+      <!-- An original decorative river print. -->
+      <div class="print" aria-hidden="true">
+        <svg viewBox="0 0 800 640" xmlns="http://www.w3.org/2000/svg" focusable="false">
+          <defs>
+            <clipPath id="printed-area">
+              <path d="M16 17 238 16 475 17 784 15.5 783.5 214 785 447 784 623
+                       605 624 361 623 16 624 17 410 15.5 214Z"/>
+            </clipPath>
+            <filter id="cut-edge" x="0" y="0" width="800" height="640"
+                    filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+              <feTurbulence type="fractalNoise" baseFrequency=".063 .091"
+                            numOctaves="3" seed="8" result="edge"/>
+              <feDisplacementMap in="SourceGraphic" in2="edge" scale="5"
+                                 xChannelSelector="R" yChannelSelector="G"/>
+            </filter>
+            <filter id="worn-ink" x="0%" y="0%" width="100%" height="100%"
+                    color-interpolation-filters="sRGB">
+              <feTurbulence type="fractalNoise" baseFrequency=".027 .13"
+                            numOctaves="3" seed="19" result="patches"/>
+              <feTurbulence type="fractalNoise" baseFrequency=".51 .64"
+                            numOctaves="2" seed="4" result="grit"/>
+              <feComposite in="grit" in2="patches" operator="arithmetic"
+                           k1="0" k2=".66" k3=".34" k4="0"/>
+              <feColorMatrix type="matrix" values="
+                0 0 0 0 .90
+                0 0 0 0 .875
+                0 0 0 0 .80
+                11 0 0 0 -5.88"/>
+            </filter>
+            <filter id="surface" x="0%" y="0%" width="100%" height="100%"
+                    color-interpolation-filters="sRGB">
+              <feTurbulence type="fractalNoise" baseFrequency=".66" numOctaves="3" seed="23"/>
+              <feDiffuseLighting surfaceScale="1.4" diffuseConstant="1" lighting-color="#ffffff">
+                <feDistantLight azimuth="225" elevation="48"/>
+              </feDiffuseLighting>
+            </filter>
+          </defs>
+
+          <rect width="800" height="640" fill="var(--chalk)"/>
+          <g clip-path="url(#printed-area)">
+            <rect width="800" height="640" fill="var(--sage)"/>
+            <g filter="url(#cut-edge)">
+              <g id="banks">
+                <path fill="var(--river)" d="M380-80C350 30 65 40 90 165S445 246 286 350
+                  5 410 39 535 134 641 80 710H900V-80Z"/>
+                <path fill="var(--indigo)" d="M620-90C554-4 368 9 274 74S204 190 326 219
+                  514 259 481 321 322 382 219 419 57 533 131 599 221 699 159 750H900V-90Z"/>
+                <path fill="none" stroke="var(--chalk)" stroke-width="43" d="M620-90
+                  C554-4 368 9 274 74S204 190 326 219 514 259 481 321 322 382 219 419
+                  57 533 131 599 221 699 159 750"/>
+              </g>
+              <g id="carved-lines" fill="none" stroke-linecap="round"/>
+              <path fill="var(--chalk)" d="M-16 319C67 328 107 302 119 263
+                132 220 167 213 184 184 197 162 193 154 221 141
+                199 159 207 176 190 201 172 225 145 231 135 265
+                120 315 76 335-16 327Z"/>
+            </g>
+            <rect width="800" height="640" filter="url(#worn-ink)" opacity=".85"/>
+          </g>
+          <rect width="800" height="640" filter="url(#surface)"
+                opacity=".23" style="mix-blend-mode:multiply"/>
+        </svg>
+      </div>
+
+      <div class="label">
+        <div class="year"><time datetime="1972">1972</time></div>
+        <h1 id="work-title">River Wall</h1>
+        <p class="artist"><span class="sr-only">By </span>Maya Chen</p>
+
+        <div class="disclosure">
+          <button class="note-button" id="note-button" type="button"
+                  aria-expanded="false" aria-controls="material-note">
+            <span id="note-action">Show material note</span>
+            <span class="sign" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <line x1="4" y1="10" x2="16" y2="10"/>
+                <line class="vertical" x1="10" y1="4" x2="10" y2="16"/>
+              </svg>
+            </span>
+          </button>
+          <p class="material" id="material-note" hidden>Pigment on plaster.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const button = document.getElementById("note-button");
+    const note = document.getElementById("material-note");
+    const action = document.getElementById("note-action");
+
+    button.addEventListener("click", () => {
+      const expanded = note.hidden;
+      note.hidden = !expanded;
+      button.setAttribute("aria-expanded", String(expanded));
+      action.textContent = expanded ? "Hide material note" : "Show material note";
+    });
+
+    // Each bank follows the same cubic river course. The third coordinate
+    // lets the engraved lines fan apart at the bends.
+    const course = [
+      [620, -90, .84],
+      [554, -4, .96], [368, 9, 1.24], [274, 74, 1.2],
+      [170, 144, .75], [224, 191, 1.05], [326, 219, 1.15],
+      [437, 248, 1.08], [514, 259, .84], [481, 321, .86],
+      [453, 372, 1.02], [322, 382, 1.55], [219, 419, 1.24],
+      [80, 470, .82], [57, 533, .89], [131, 599, .98],
+      [190, 651, 1.22], [221, 699, 1.08], [159, 750, .9]
+    ];
+
+    function riverCurve(offset, variation = 0) {
+      const points = course.map(([x, y, spread], index) => {
+        const bend = Math.sin(offset / 146 + index * .54);
+        const drift = bend * Math.min(19, Math.abs(offset) * .105);
+        const cut = variation * Math.sin(index * 1.61 + offset * .31);
+        return `${(x + offset * spread + drift + cut).toFixed(1)},${y}`;
+      });
+      return `M${points[0]}C${points.slice(1).join(" ")}`;
+    }
+
+    function svgPath(data) {
+      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("d", data);
+      return path;
+    }
+
+    const fields = document.createDocumentFragment();
+    const layers = [
+      [-310, "river"], [-156, "indigo"], [-56, "sage"], [-48, "indigo"],
+      [-37, "chalk"], [32, "sage"], [44, "river"], [102, "indigo"],
+      [274, "river"], [482, "sage"]
+    ];
+
+    for (const [offset, pigment] of layers) {
+      const field = svgPath(`${riverCurve(offset)}L1700,760 1700,-100Z`);
+      field.setAttribute("fill", `var(--${pigment})`);
+      fields.append(field);
+    }
+    document.getElementById("banks").replaceChildren(fields);
+
+    let seed = 1972;
+    function random() {
+      seed = (seed * 16807) % 2147483647;
+      return seed / 2147483647;
+    }
+
+    const engraving = document.createDocumentFragment();
+    const cuts = [
+      [-595, -324, 12, "indigo", .52],
+      [-298, -186, 5.6, "chalk", .86],
+      [-147, -65, 7.1, "sage", .88],
+      [-31, -22, 3.4, "river", .45],
+      [12, 23, 5.7, "sage", .76],
+      [49, 86, 5.2, "chalk", .81],
+      [110, 238, 6.8, "sage", .9],
+      [285, 397, 5.6, "indigo", .8],
+      [428, 466, 10.7, "chalk", .83],
+      [499, 731, 10.3, "indigo", .54]
+    ];
+
+    for (const [start, end, spacing, pigment, opacity] of cuts) {
+      let offset = start;
+      while (offset < end) {
+        const line = svgPath(riverCurve(offset, 1.8));
+        line.setAttribute("stroke", `var(--${pigment})`);
+        line.setAttribute("stroke-width", (.9 + random() * 1.8).toFixed(2));
+        line.setAttribute("stroke-opacity", (opacity * (.7 + random() * .3)).toFixed(2));
+        line.setAttribute("pathLength", "100");
+        const longCut = 12 + random() * 34;
+        const shortCut = 3 + random() * 14;
+        const gap = .3 + random() * 2.7;
+        line.setAttribute("stroke-dasharray", `${longCut} ${gap} ${shortCut} .45`);
+        line.setAttribute("stroke-dashoffset", (random() * 60).toFixed(2));
+        engraving.append(line);
+        offset += spacing * (.7 + random() * .7);
+      }
+    }
+    document.getElementById("carved-lines").append(engraving);
+  </script>
+</body>
+</html>
