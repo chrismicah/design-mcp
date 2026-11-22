@@ -5,6 +5,7 @@ import struct
 import pytest
 
 from audit_review import audit, HEIGHTS, keyboard_slider_change
+import benchmark_input
 from benchmark_input import HASH_FIELDS, control_conditions
 from live_review import PACKAGE_COMMIT, benchmark_cells, critic_prompt, eligible_pair, generate, load_spec
 from cold_storage import OPTION
@@ -29,6 +30,26 @@ def test_slider_keyboard_change(key, value, label, expected):
         }
 
     assert keyboard_slider_change([input_row("Tab", "4", "Water level"), input_row(key, value, label)]) == expected
+
+
+def test_review_repair_pins_both_versions_against_the_same_source(tmp_path, monkeypatch):
+    case = "social-lighting"
+    original, revision = b"<p>original</p>", b"<p>revised</p>"
+    pinned = {"original_sha256": generate.sha256(original), "repair_sha256": generate.sha256(revision)}
+    parent = {"arm": "social", "thread_id": "author", "html_sha256": pinned["original_sha256"]}
+    monkeypatch.setattr(benchmark_input, "benchmark_cells", lambda *_: {"social": (parent, original)})
+    cell = tmp_path / case / "social"
+    cell.mkdir(parents=True)
+    repaired = cell / "repair.html"
+    repaired.write_bytes(revision)
+    spec = {"case": case, "draft_repair": pinned}
+
+    pair = benchmark_input.review_cells(tmp_path, spec)
+    assert pair["original"] == ({**parent, "arm": "original"}, original)
+    assert pair["repair"] == ({**parent, "arm": "repair", "html_sha256": pinned["repair_sha256"]}, revision)
+    repaired.write_bytes(original)
+    with pytest.raises(ValueError, match="pinned original or revision"):
+        benchmark_input.review_cells(tmp_path, spec)
 
 
 @pytest.fixture

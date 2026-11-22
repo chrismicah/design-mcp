@@ -1,0 +1,21 @@
+--- index.html
++++ repair.html
+@@ -204,0 +205,2 @@
++    #ferry-state { color: var(--ink); background: var(--ochre); padding: 1px 3px; }
++
+@@ -321,0 +324 @@
++            <g id="ferry-vessel">
+@@ -325 +328,2 @@
+-            <path class="fine" d="M600 198h58m-34 0v-9m68 33 22 5"/>
++            <path class="fine" d="M600 198h58m-34 0v-9"/>
++            </g>
+@@ -338 +342 @@
+-          <strong>4 m</strong><span>Ferry</span>
++          <strong>4 m</strong><span>Ferry <b id="ferry-state">Stopped</b></span>
+@@ -355,0 +360,2 @@
++    const ferryVessel = document.querySelector('#ferry-vessel');
++    const ferryState = document.querySelector('#ferry-state');
+@@ -364,0 +371,3 @@
++      const ferryOffsetX = level === 6 ? -295 : 0;
++      ferryVessel.setAttribute('transform', `translate(${ferryOffsetX} ${waterline - 227})`);
++      ferryState.hidden = level < 4;

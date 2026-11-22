@@ -1,0 +1,10 @@
+--- index.html
++++ repair.html
+@@ -45 +45,6 @@
+-  button[aria-pressed="true"] { color: var(--accent); font-weight: 600; }
++  button[aria-pressed="true"] { background: var(--accent); color: var(--paper); font-weight: 600; }
++  button[aria-pressed="true"]::before {
++    content: ""; position: absolute; width: 9px; height: 5px;
++    left: 10px; top: calc(50% - 4px); transform: rotate(-45deg);
++    border: solid currentColor; border-width: 0 0 2px 2px;
++  }

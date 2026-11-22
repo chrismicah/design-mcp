@@ -59,6 +59,8 @@ Run `python3 evals/social-design/status.py` after saving an audited ballot. The 
 
 Freeze the strongest build and its control for the second critic. Run the same live commands with a new `ROUND` directory and a separate calibrated vision session. Keep the first ballot and the round history out of the second session's context. Save both results. `status.py` reads an archived confirmation named `social-CASE-confirmation-rN.json` for the strongest round. To check a new audit before archiving, pass `--lighting-confirmation PATH` or `--river-confirmation PATH`. Confirmation requires distinct live evidence for the same two builds. Both ballots must reach 9.5 on each viewport, beat the control, improve originality and preserve usability. A lower score goes back to the builder with the critic's specific repair. After two non-improvements once five rounds have been scored, or after 15 scored rounds, close the series and record a distinct premise before continuing.
 
+For a targeted draft repair, copy the original matched cells and place the revised HTML in the copied `social/repair.html`. Keep the original generation files. Set `draft_repair` in a copy of the private spec with the two SHA-256 digests under `original_sha256` and `repair_sha256`. The live runner replays the original generation and serves the exact anonymous parent and repair at both widths. Store the result separately from the retrieval benchmark. A distinct evaluator session remains mandatory when both versions share one author.
+
 [Source observations and access routes](../../research/SOCIAL-DESIGN.md)
 
 ### Lighting, round 2

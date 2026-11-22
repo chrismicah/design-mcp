@@ -52,6 +52,15 @@ def load_spec(path):
                 or not all(isinstance(pin[key], str) and pin[key].strip() for key in GENERATOR_FIELDS[:-1])
                 or type(pin["shell_tool"]) is not bool):
             raise ValueError(f"Invalid immutable control pin for {arm}")
+    if "draft_repair" in spec:
+        repair = spec["draft_repair"]
+        if (spec["case"] not in {"social-lighting", "social-river"} or not unhinted or
+                len(arms) != 2 or "social" not in arms or not isinstance(repair, dict) or
+                set(repair) != {"original_sha256", "repair_sha256"} or
+                not all(isinstance(value, str) and re.fullmatch(r"[0-9a-f]{64}", value)
+                        for value in repair.values()) or
+                repair["original_sha256"] == repair["repair_sha256"]):
+            raise ValueError("Pin distinct original and repaired social draft hashes")
     return spec
 
 
@@ -111,3 +120,19 @@ def benchmark_cells(cells, spec, *, pinned_only=False):
         threads.add(sessions[0])
         verified[arm] = ({**receipt, "thread_id": sessions[0]}, html)
     return verified
+
+
+def review_cells(cells, spec):
+    verified = benchmark_cells(cells, spec)
+    repair = spec.get("draft_repair")
+    if repair is None:
+        return verified
+    parent, html = verified["social"]
+    revision = (cells / spec["case"] / "social" / "repair.html").read_bytes()
+    if (parent["html_sha256"] != repair["original_sha256"] or
+            generate.sha256(revision) != repair["repair_sha256"]):
+        raise ValueError("Draft repair differs from the pinned original or revision")
+    return {
+        "original": ({**parent, "arm": "original"}, html),
+        "repair": ({**parent, "arm": "repair", "html_sha256": repair["repair_sha256"]}, revision),
+    }

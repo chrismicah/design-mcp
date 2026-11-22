@@ -10,7 +10,7 @@ import socket
 import subprocess
 import sys
 
-from benchmark_input import benchmark_cells, load_spec
+from benchmark_input import benchmark_cells, load_spec, review_cells
 from cold_storage import OPTION
 from pilot import PACKAGE_COMMIT, generate
 from render import child, dynamic_port, fixture_server, query_json, wait_ready
@@ -103,7 +103,7 @@ Return one JSON object in a json code fence. Include calibration (four scores), 
 
 def run(args):
     if args.spec:
-        inputs = list(benchmark_cells(args.cells, args.spec).values())
+        inputs = list(review_cells(args.cells, args.spec).values())
         SystemRandom().shuffle(inputs)
         pair = dict(zip("ABC", inputs))
     else:
@@ -192,7 +192,7 @@ def main():
         print(json.dumps({"verified_controls": sorted(controls)}))
         return
     if args.check_input:
-        cells = benchmark_cells(args.cells, args.spec) if args.spec else eligible_pair(args.cells, args.case)
+        cells = review_cells(args.cells, args.spec) if args.spec else eligible_pair(args.cells, args.case)
         print(json.dumps({"verified_arms": sorted(receipt["arm"] for receipt, _ in cells.values())}))
         return
     if not all((args.out, args.playwriter, args.chrome, args.quota_probe, args.model)):

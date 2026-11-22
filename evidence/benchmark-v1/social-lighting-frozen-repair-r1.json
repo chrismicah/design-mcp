@@ -1,0 +1,310 @@
+{
+  "scope": "targeted draft repair",
+  "round": 1,
+  "frozen_parent_round": 4,
+  "critic_model": "gpt-6.1-terra",
+  "critic_effort": "low",
+  "draft_repair": {
+    "original_sha256": "a090d2a4753de1c99c5b59f187fbb6fc401b1177834a7ba6d82336facb552351",
+    "repair_sha256": "ec09aaa7991e60dab2e08647d56080046ecf79fd196ef041805abbeb341284ff"
+  },
+  "audited_sha256": "4ea3c2dba74afbc9610349499b69771d7520acfbf24dd8f240ec3fb3d5935a3d",
+  "decision": "Retain the visible selection repair on this draft. The paired score improved at both widths and remains below 9.5. Retrieval promotion is a separate measurement.",
+  "ballot": {
+    "calibration": {
+      "example": "Legible repair intake with clear labels, familiar layout, and misplaced focus after an invalid number",
+      "coherence": 7,
+      "originality": 4,
+      "craft": 6,
+      "usability": 5
+    },
+    "screens": {
+      "A-1440": {
+        "coherence": 8,
+        "originality": 7,
+        "craft": 7.5,
+        "usability": 7,
+        "primary_action": {
+          "input": "Tab three times, then Enter",
+          "expected": "Select Flood and show its blue backlight on the stage.",
+          "observed": "Flood received visible focus and became pressed. The heading and description changed to Flood and Blue backlight; blue light outlined the performer and a shadow extended toward the foreground."
+        },
+        "edge_observation": "Shift+Tab and Enter selected Static; Tab moved visible focus to Flood. Static remained the heading and pressed button, but its thin purple underline was visually similar to the underline on focused Flood.",
+        "fact_check": "The displayed Flood and Static descriptions match the illustrated blue backlight and white side beam. The image is a stylized illustration; its accuracy as a real lighting simulation is unverified.",
+        "strength": "The large stage and adjacent cue panel make the lighting change easy to compare.",
+        "weakness": "Selection and focus are too easily confused after focus moves.",
+        "repair": "Give the selected cue a persistent filled or checked state distinct from the focus outline.",
+        "captures": [
+          "A-1440-before.png",
+          "A-1440-after.png",
+          "A-1440-edge.png"
+        ],
+        "arm": "original",
+        "html_sha256": "a090d2a4753de1c99c5b59f187fbb6fc401b1177834a7ba6d82336facb552351",
+        "weighted": 7.4,
+        "before": {
+          "sha256": "47b710b0edf4d52fd62df0dd5d8b207a40666f92c9bfcfb7ebdbabf456635591",
+          "file": "A-1440-before.png",
+          "tool_call_id": "item_2"
+        },
+        "after": {
+          "sha256": "84149ecfbd2cef029c0c568bc5d205b59e3c85e5708ef54c365269ca880259e0",
+          "file": "A-1440-after.png",
+          "tool_call_id": "item_7"
+        },
+        "layout_width": 1425,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          }
+        ]
+      },
+      "A-390": {
+        "coherence": 8,
+        "originality": 7,
+        "craft": 7.5,
+        "usability": 7,
+        "primary_action": {
+          "input": "Tab three times, then Enter",
+          "expected": "Select Flood and show its blue backlight on the stage.",
+          "observed": "Flood became pressed, its name and Blue backlight appeared, and the stage changed from amber to blue with a forward shadow."
+        },
+        "edge_observation": "Shift+Tab and Enter selected Static; Tab moved focus to Flood. The white side beam and Static heading remained visible, but both Static and focused Flood had purple underline marks.",
+        "fact_check": "The displayed descriptions correspond to the illustrated changes. Real-world lighting fidelity is unverified.",
+        "strength": "The stacked stage, cue details, and controls fit together within the initial mobile viewport.",
+        "weakness": "The selected underline competes with the focus treatment, especially at the smaller size.",
+        "repair": "Use a persistent selected fill or checkmark alongside a separate focus outline.",
+        "captures": [
+          "A-390-before.png",
+          "A-390-after.png",
+          "A-390-edge.png"
+        ],
+        "arm": "original",
+        "html_sha256": "a090d2a4753de1c99c5b59f187fbb6fc401b1177834a7ba6d82336facb552351",
+        "weighted": 7.4,
+        "before": {
+          "sha256": "0a772bb95a7d3a4bad9028c7638f1b6917aa42180d25d3758368bbb019d33175",
+          "file": "A-390-before.png",
+          "tool_call_id": "item_14"
+        },
+        "after": {
+          "sha256": "9c7ab4789a10494efcfa772b7209ca4be06e439526186ffaf052d95f7c9728dc",
+          "file": "A-390-after.png",
+          "tool_call_id": "item_19"
+        },
+        "layout_width": 390,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          }
+        ]
+      },
+      "B-1440": {
+        "coherence": 8.5,
+        "originality": 7,
+        "craft": 8,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Tab three times, then Enter",
+          "expected": "Select Flood and show its blue backlight on the stage.",
+          "observed": "Flood became pressed with a filled, checked button; the name and Blue backlight appeared, and the stage changed to blue with a forward shadow."
+        },
+        "edge_observation": "Shift+Tab and Enter selected Static; Tab moved visible focus to Flood. Static retained its filled, checked state and heading while a separate outline marked focus on Flood. The stage showed a hard white side beam and shadow.",
+        "fact_check": "The labels match the visible illustrated cues. Real-world lighting fidelity is unverified.",
+        "strength": "The checked selection stays distinct from keyboard focus while the stage occupies most of the layout.",
+        "weakness": "The cue illustration is expressive but simplified, limiting how much a producer can judge the actual lighting effect.",
+        "repair": "Add a more representative stage preview or clearly frame the illustration as a conceptual cue.",
+        "captures": [
+          "B-1440-before.png",
+          "B-1440-after.png",
+          "B-1440-edge.png"
+        ],
+        "arm": "repair",
+        "html_sha256": "ec09aaa7991e60dab2e08647d56080046ecf79fd196ef041805abbeb341284ff",
+        "weighted": 7.95,
+        "before": {
+          "sha256": "0b187b60b401b0b9579a1418abd35d4051ca7374b039f8ca0ec3a545bc409af2",
+          "file": "B-1440-before.png",
+          "tool_call_id": "item_25"
+        },
+        "after": {
+          "sha256": "97234dffbdff594682b7d707784976c7294ed873e700fda6cea91e47cd6641a4",
+          "file": "B-1440-after.png",
+          "tool_call_id": "item_30"
+        },
+        "layout_width": 1425,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          }
+        ]
+      },
+      "B-390": {
+        "coherence": 8.5,
+        "originality": 7,
+        "craft": 8,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Tab three times, then Enter",
+          "expected": "Select Flood and show its blue backlight on the stage.",
+          "observed": "Flood became pressed and checked, the name and Blue backlight appeared, and the stage changed to blue with a forward shadow."
+        },
+        "edge_observation": "Shift+Tab and Enter selected Static; Tab moved focus to Flood. Static remained filled and checked while Flood had the focus outline; the white side beam and Static description remained visible.",
+        "fact_check": "The labels match the visible illustrated cues. Real-world lighting fidelity is unverified.",
+        "strength": "The whole task remains visible in the stacked mobile layout, with selection and focus clearly differentiated.",
+        "weakness": "The smaller stage makes details of the performer and light fall harder to inspect.",
+        "repair": "Offer a way to enlarge the stage preview while keeping the selected cue identifiable.",
+        "captures": [
+          "B-390-before.png",
+          "B-390-after.png",
+          "B-390-edge.png"
+        ],
+        "arm": "repair",
+        "html_sha256": "ec09aaa7991e60dab2e08647d56080046ecf79fd196ef041805abbeb341284ff",
+        "weighted": 7.95,
+        "before": {
+          "sha256": "9dc61e8eb53d52994052ff33abcd8cff42d300a43cf5f7bd96d207da96fd0962",
+          "file": "B-390-before.png",
+          "tool_call_id": "item_36"
+        },
+        "after": {
+          "sha256": "740a1baa16819fcb491b5fc9e1ad511e705b033641935acaf5498c7c66b30755",
+          "file": "B-390-after.png",
+          "tool_call_id": "item_41"
+        },
+        "layout_width": 390,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          }
+        ]
+      }
+    },
+    "preference": {
+      "winner": "B",
+      "reason": "Both views completed the keyboard task and showed the same clear lighting changes. B's persistent filled and checked selection remains readily distinguishable from keyboard focus after moving to another cue."
+    },
+    "case": "social-lighting",
+    "verified_screens": 4,
+    "required_screens": 4,
+    "browser": "Chrome/157.0.8103.79",
+    "evaluator_thread": "01a20512-b592-75c0-9a65-52de9d900769",
+    "usage": {
+      "input_tokens": 480170,
+      "cached_input_tokens": 454528,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 2578,
+      "reasoning_output_tokens": 0
+    },
+    "trace_sha256": "b97f304dfa6c2016b14cbf4fdd21e561226f1029b466e4689a02b11add750aa7",
+    "browser_audit_sha256": "576d9115623c0fb6c39343a2a9d3d8792810e8ac8127a26d1cbf44dc1eda1709"
+  }
+}

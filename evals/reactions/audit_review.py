@@ -125,22 +125,25 @@ def audit(run, cells, case, spec=None):
     settings = json.loads((run / "driver-config.json").read_bytes())
     journey = bool(spec and spec.get(OPTION))
     assert settings.get("observe_journey", False) is journey
-    expected_arms = set(spec["arms"]) if spec else {"plain", "design-mcp"}
+    if spec:
+        from benchmark_input import review_cells
+
+        verified = review_cells(cells, spec)
+        expected_arms = set(verified)
+    else:
+        expected_arms = {"plain", "design-mcp"}
     assert settings["original_capture"] is True and set(settings["pages"]) == set(key) == set("ABC"[:len(expected_arms)])
     assert {value["arm"] for value in key.values()} == expected_arms
     browser = (run / "browser-version.txt").read_text().strip()
     if spec:
-        from benchmark_input import benchmark_cells
-
         assert spec == json.loads((run / "benchmark-spec.json").read_bytes())
         assert spec.get("browser", browser) == browser
-        verified = benchmark_cells(cells, spec)
     builder_threads = set()
     for entry in key.values():
-        cell = cells / case / entry["arm"]
         if spec:
             receipt, html = verified[entry["arm"]]
         else:
+            cell = cells / case / entry["arm"]
             receipt = json.loads((cell / "receipt.json").read_bytes())
             html = (cell / "index.html").read_bytes()
         assert receipt["html_sha256"] == entry["html_sha256"] == sha256(html)
@@ -148,7 +151,8 @@ def audit(run, cells, case, spec=None):
         builder_threads.add(entry["thread_id"])
     threads = [event["thread_id"] for event in events if event["type"] == "thread.started"]
     completed = [event for event in events if event["type"] == "turn.completed"]
-    assert len(builder_threads) == len(expected_arms) and len(threads) == len(completed) == 1
+    expected_builders = 1 if spec and "draft_repair" in spec else len(expected_arms)
+    assert len(builder_threads) == expected_builders and len(threads) == len(completed) == 1
     assert threads[0] not in builder_threads and completed[0].get("usage")
     items = [event["item"] for event in events if event["type"] == "item.completed"]
     assert all(item["type"] in {"agent_message", "reasoning", "mcp_tool_call"} for item in items)
