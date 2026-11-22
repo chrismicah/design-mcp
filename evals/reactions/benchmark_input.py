@@ -22,6 +22,9 @@ def load_spec(path):
     if (not isinstance(directions, dict) or not directions.keys() <= set(arms) - {"none", "shadcn"}
             or not all(isinstance(value, str) and re.fullmatch(slug, value) for value in directions.values())):
         raise ValueError("Expected direction IDs must refer to Design MCP arms")
+    unhinted = spec.get("require_unhinted_direct", False)
+    if type(unhinted) is not bool or (unhinted and directions.keys() != set(arms) - {"none"}):
+        raise ValueError("An unhinted comparison requires a direction ID for each Design MCP arm")
     if "browser" in spec and not re.fullmatch(r"Chrome/\d+\.\d+\.\d+\.\d+", spec["browser"]):
         raise ValueError("Pin the expected browser as Chrome/major.minor.build.patch")
     return spec
@@ -29,7 +32,8 @@ def load_spec(path):
 
 def benchmark_cells(cells, spec):
     case = spec["case"]
-    prompt = generate.PROMPT.format(brief=spec["brief"]).encode()
+    unhinted = spec.get("require_unhinted_direct", False)
+    prompt = generate.generation_prompt(spec["brief"], unhinted).encode()
     verified = {}
     identity = None
     threads = set()
@@ -38,6 +42,8 @@ def benchmark_cells(cells, spec):
         receipt = json.loads((cell / "receipt.json").read_bytes())
         if (receipt["case"], receipt["arm"], receipt["status"]) != (case, arm, "passed"):
             raise ValueError(f"Ineligible generation receipt for {case}/{arm}")
+        if receipt.get("require_unhinted_direct", False) != unhinted:
+            raise ValueError(f"Unhinted direct policy differs for {case}/{arm}")
         conditions = tuple(receipt[field] for field in ("client", "model", "effort")) + (
             receipt.get("shell_tool", True),
         )
@@ -58,7 +64,8 @@ def benchmark_cells(cells, spec):
         direction = spec.get("directions", {}).get(arm)
         parsed, reply = generate.parse_cell(events, expect_mcp=arm != "none", server_name=server,
                                            expected_tool=tools, expected_direction=direction,
-                                           required_shadcn_items=items)
+                                           required_shadcn_items=items,
+                                           expected_direct_brief=spec["brief"] if unhinted and arm != "none" else None)
         if (parsed["status"] != "passed" or not parsed["usage"] or parsed["usage"] != receipt["usage"]
                 or reply is None or reply.encode() != html):
             raise ValueError(f"Generation trace failed replay for {case}/{arm}: {parsed['status']}")

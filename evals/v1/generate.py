@@ -22,6 +22,17 @@ Brief:
 """
 
 
+def generation_prompt(brief, require_unhinted_direct=False):
+    prompt = PROMPT.format(brief=brief)
+    if require_unhinted_direct:
+        prompt = prompt.replace(
+            "\n\nBrief:\n",
+            "\nIf the direct tool is available, call it once with the brief below verbatim as its sole argument.\n\nBrief:\n",
+            1,
+        )
+    return prompt
+
+
 def sha256(content):
     return hashlib.sha256(content).hexdigest()
 
@@ -93,8 +104,10 @@ def read_trace(path):
 
 
 def direct_direction(item):
-    value = item
-    for key in ("result", "structured_content", "direction", "id"):
+    value = item.get("result")
+    if not isinstance(value, dict) or value.get("is_error") or value.get("isError"):
+        return None
+    for key in ("structured_content", "direction", "id"):
         value = value.get(key) if isinstance(value, dict) else None
     return value if isinstance(value, str) else None
 
@@ -156,7 +169,7 @@ def matched_response_text(calls, required_hashes):
 
 
 def parse_cell(events, expect_mcp, server_name="design-mcp", expected_tool="direct", expected_direction=None,
-               required_shadcn_items=(), required_response_text_sha256=None):
+               required_shadcn_items=(), required_response_text_sha256=None, expected_direct_brief=None):
     result = {}
     completed_items = [event["item"] for event in events if event.get("type") == "item.completed"]
     turn = next((e for e in reversed(events) if e.get("type") == "turn.completed"), {})
@@ -193,6 +206,13 @@ def parse_cell(events, expect_mcp, server_name="design-mcp", expected_tool="dire
         result["observed_directions"] = observed
         if result["status"] == "passed" and observed != [expected_direction]:
             result["status"] = "unexpected-design-direction"
+    if expected_direct_brief is not None:
+        result["unhinted_direct"] = (
+            len(result["tool_calls"]) == len(eligible_calls) == 1
+            and eligible_calls[0].get("arguments") == {"brief": expected_direct_brief}
+        )
+        if result["status"] == "passed" and not result["unhinted_direct"]:
+            result["status"] = "hinted-or-changed-direct"
     if expect_mcp and required_shadcn_items:
         retrieved = set().union(*(shadcn_item_names(item) for item in eligible_calls))
         matched = sorted(retrieved.intersection(required_shadcn_items))
@@ -216,13 +236,16 @@ def parse_cell(events, expect_mcp, server_name="design-mcp", expected_tool="dire
 def run_cell(args, case, arm):
     cell = args.out / case["id"] / arm
     cell.mkdir(parents=True, exist_ok=True)
-    prompt = PROMPT.format(brief=case["brief"])
+    unhinted = args.require_unhinted_direct
+    prompt = generation_prompt(case["brief"], unhinted)
     config = args.mcp_config if arm != "none" else "mcp_servers={}"
     identity = dict(case=case["id"], arm=arm, model=args.model, effort=args.effort, client=args.client_version,
                     prompt_sha256=sha256(prompt.encode()))
     expected_direction = args.expected_directions.get(case["id"]) if arm != "none" else None
     if expected_direction is not None:
         identity["expected_direction"] = expected_direction
+    if unhinted:
+        identity["require_unhinted_direct"] = True
     required_shadcn_items = args.required_shadcn_items if arm != "none" else []
     if required_shadcn_items:
         identity["required_shadcn_items"] = required_shadcn_items
@@ -237,6 +260,7 @@ def run_cell(args, case, arm):
         receipt = json.loads((cell / "receipt.json").read_text(encoding="utf-8"))
         if (receipt.get("shell_tool", True) != (not args.no_shell)
                 or receipt.get("expected_direction") != expected_direction
+                or receipt.get("require_unhinted_direct", False) != unhinted
                 or receipt.get("required_shadcn_items", []) != required_shadcn_items
                 or receipt.get("required_response_text_sha256", {}) != required_response_text_sha256
                 or any(receipt.get(key) != value for key, value in identity.items())):
@@ -259,7 +283,8 @@ def run_cell(args, case, arm):
     result, html = parse_cell(read_trace(trace_path), expect_mcp=arm != "none", server_name=args.server_name,
                               expected_tool=args.expected_tool, expected_direction=expected_direction,
                               required_shadcn_items=required_shadcn_items,
-                              required_response_text_sha256=required_response_text_sha256)
+                              required_response_text_sha256=required_response_text_sha256,
+                              expected_direct_brief=case["brief"] if unhinted and arm != "none" else None)
     if timed_out:
         result["status"] = "timeout"
     elif exit_code:
@@ -306,6 +331,8 @@ def main():
     p.add_argument("--case", action="append")
     p.add_argument("--expect-direction", action="append", default=[], metavar="CASE=ID",
                    help="Require one Design MCP direct reply with this direction for each selected case")
+    p.add_argument("--require-unhinted-direct", action="store_true",
+                   help="Require one direct call with the original brief as its sole argument")
     p.add_argument("--timeout", type=int, default=900)
     p.add_argument("--jobs", type=int, choices=(1, 2), default=1, help="Concurrent cases in this batch")
     p.add_argument("--no-shell", action="store_true", help="Disable command execution for a fresh matched comparison")
@@ -395,6 +422,8 @@ def main():
         if requested != {case["id"] for case in tasks}:
             p.error("Unknown case ID")
     args.expected_directions = {}
+    if args.require_unhinted_direct and not args.expect_direction:
+        p.error("--require-unhinted-direct requires --expect-direction")
     if args.expect_direction:
         if args.competitor_config:
             p.error("--expect-direction is for the Design MCP treatment")

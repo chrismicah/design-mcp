@@ -71,6 +71,8 @@ The LLM judge sees the brief, browser observations and four screenshots for each
 
 ## Candidate decisions
 
+The cold-storage runner now verifies that both Design MCP arms use the exact brief as the sole argument to `direct`. A synthetic three-arm run passed with the original brief. Supplying a `dashboard` hint produced the expected direction but failed generation eligibility before any browser or judge ran. The original prompt and parser results matched all 72 archived generator traces across the 36 frozen pairs. The cold-storage visual comparison remains pending. [Generation and replay proof](evidence/benchmark-v1/unhinted-direct-gate.json)
+
 | Candidate | Observed change | Status |
 | --- | --- | --- |
 | Form directions, `d5a3278` | The six form briefs went from 0/6 to 6/6 correct surface routes. The unchanged 36-brief diagnostic returned `object-hero` on 26/36, down from 32/36. The blind average rose from 91.0 to 92.4, with four wins and two losses. | Separate branch. The return label and exhibition briefs each fell from 91.7 to 87.5. Fix phrase breaks in titles, fieldset legends and ranges before promoting shared form guidance. [Source results](evidence/benchmark-v1/form-candidate-source.json) · [All six blind ballots](evidence/benchmark-v1/form-six-blind.json) |

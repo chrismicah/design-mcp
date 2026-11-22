@@ -53,11 +53,14 @@ def test_pair_with_html_changed_after_generation_is_ineligible(pair):
 
 
 @pytest.fixture
-def benchmark(tmp_path):
+def benchmark(tmp_path, request):
     spec = {"case": "cold-storage", "brief": "A worklist.", "task": "Focus and restore all rows.",
             "arms": ["none", "router", "candidate"], "directions": {"router": "exception-first",
                                                                 "candidate": "exception-first"}}
-    prompt = generate.PROMPT.format(brief=spec["brief"])
+    unhinted = getattr(request, "param", False)
+    if unhinted:
+        spec["require_unhinted_direct"] = True
+    prompt = generate.generation_prompt(spec["brief"], unhinted)
     usage = {"output_tokens": 10}
     for arm in spec["arms"]:
         root = tmp_path / spec["case"] / arm
@@ -67,6 +70,7 @@ def benchmark(tmp_path):
         if arm != "none":
             events.append({"type": "item.completed", "item": {
                 "type": "mcp_tool_call", "server": "design-mcp", "tool": "direct", "status": "completed",
+                "arguments": {"brief": spec["brief"]},
                 "result": {"structured_content": {"direction": {"id": "exception-first"}}}}})
         events.extend([
             {"type": "item.completed", "item": {
@@ -79,10 +83,50 @@ def benchmark(tmp_path):
         (root / "receipt.json").write_text(json.dumps({
             "case": spec["case"], "arm": arm, "status": "passed", "usage": usage,
             "client": "test", "model": "test", "effort": "max",
+            "require_unhinted_direct": unhinted,
             "html_sha256": generate.sha256(html.encode()), "trace_sha256": generate.sha256(trace.encode()),
             "prompt_sha256": generate.sha256(prompt.encode()),
         }))
     return tmp_path, spec
+
+
+def set_direct_arguments(root, spec, arm, arguments):
+    cell = root / spec["case"] / arm
+    trace_path = cell / "client.jsonl"
+    events = [json.loads(line) for line in trace_path.read_text().splitlines()]
+    (direct,) = (event["item"] for event in events if event.get("item", {}).get("tool") == "direct")
+    direct["arguments"] = arguments
+    raw = "".join(json.dumps(event) + "\n" for event in events).encode()
+    trace_path.write_bytes(raw)
+    receipt_path = cell / "receipt.json"
+    receipt = json.loads(receipt_path.read_bytes())
+    receipt["trace_sha256"] = generate.sha256(raw)
+    receipt_path.write_text(json.dumps(receipt))
+
+
+@pytest.mark.parametrize("benchmark", [True], indirect=True)
+@pytest.mark.parametrize("arguments", [
+    {"brief": "A worklist.", "surface": "dashboard"},
+    {"brief": "A worklist.", "avoid": ["object-hero"]},
+    {"brief": "A worklist. Use the exception-first direction."},
+    {},
+])
+def test_unhinted_preflight_checks_arguments_even_with_the_right_reply(benchmark, arguments):
+    root, spec = benchmark
+    assert list(benchmark_cells(root, spec)) == spec["arms"]
+    set_direct_arguments(root, spec, "candidate", arguments)
+    with pytest.raises(ValueError, match="hinted-or-changed-direct"):
+        benchmark_cells(root, spec)
+
+
+@pytest.mark.parametrize("benchmark", [True], indirect=True)
+def test_unhinted_spec_cannot_omit_a_treatment_direction(benchmark):
+    root, spec = benchmark
+    spec["directions"].pop("candidate")
+    spec_path = root / "spec.json"
+    spec_path.write_text(json.dumps(spec))
+    with pytest.raises(ValueError, match="direction ID for each"):
+        load_spec(spec_path)
 
 
 def test_preflight_replays_all_three_arms_and_keeps_prompt_blind(benchmark):

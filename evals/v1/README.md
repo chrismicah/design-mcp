@@ -41,6 +41,8 @@ To compare two Design MCP builds, use the candidate's executable with `--treatme
 
 For a routing candidate, set `--expect-direction CASE=ID` once per selected case before generation. The generator still sees the original brief. The runner keeps the trace and HTML and marks a treatment ineligible for judging unless its single completed `direct` reply selected that ID.
 
+For the held-out cold-storage comparison, also pass `--require-unhinted-direct` in both generation runs. The generator receives the same instruction in every arm. The trace must show one `direct` call whose only argument is the verbatim `brief`. Both the original report and any ineligible draft are retained. Set `require_unhinted_direct` to `true` in the private live-review specification to replay this check before opening a browser.
+
 Install `playwriter@0.12.0` in an isolated npm prefix. Run the renderer using a Python environment containing FastMCP, with Chrome installed locally. The supplied scratch directory must be new so that Chrome starts with an empty profile.
 
 ```bash
