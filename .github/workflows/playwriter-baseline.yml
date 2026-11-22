@@ -1,9 +1,9 @@
-name: Matched pilot repair keyboard replay
+name: Collection details keyboard replay
 
 on:
   push:
-    branches: [design-mcp/pilot-repair-actions]
-    paths: ['.github/workflows/playwriter-baseline.yml', 'evidence/benchmark-v1/candidate-inputs/**', 'evals/v1/render.py', 'evals/v1/render_pilot_actions.py']
+    branches: [design-mcp/collection-actions]
+    paths: ['.github/workflows/playwriter-baseline.yml', 'evidence/benchmark-v1/collection-inputs/**', 'evals/v1/render.py', 'evals/v1/render_collection_actions.py']
 
 permissions:
   contents: read
@@ -31,13 +31,13 @@ jobs:
         run: |
           chrome="$RUNNER_TEMP/browser/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
           "$chrome" --version
-          python evals/v1/render_pilot_actions.py \
-            --cells evidence/benchmark-v1/candidate-inputs --scratch "$RUNNER_TEMP/profile" \
+          python evals/v1/render_collection_actions.py \
+            --cells evidence/benchmark-v1/collection-inputs --scratch "$RUNNER_TEMP/profile" \
             --playwriter "$RUNNER_TEMP/playwriter/node_modules/.bin/playwriter" --chrome "$chrome"
           python - <<'PY'
           from pathlib import Path
           import json
-          for path in Path('evidence/benchmark-v1/candidate-inputs').rglob('index.html'):
+          for path in Path('evidence/benchmark-v1/collection-inputs').rglob('index.html'):
               record = json.loads(path.with_name('render.json').read_text())
               assert record['browser'].endswith('158.0.8127.36'), record['browser']
               generation = json.loads(path.with_name('receipt.json').read_text())
@@ -47,7 +47,7 @@ jobs:
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: pilot-repair-actions
-          path: evidence/benchmark-v1/candidate-inputs/
+          name: collection-actions
+          path: evidence/benchmark-v1/collection-inputs/
           if-no-files-found: error
           retention-days: 7
