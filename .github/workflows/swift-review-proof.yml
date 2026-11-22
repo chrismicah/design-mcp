@@ -2,22 +2,33 @@ name: Native Swift review proof
 
 on:
   push:
-    branches: [design-mcp/swift-review-proof, design-mcp/review-integration]
+    branches:
+      - design-mcp/swift-review-proof
+      - design-mcp/review-integration
+      - design-mcp/swift-reference-fixture
 
 permissions:
   contents: read
 
 jobs:
   native:
+    if: github.event.repository.private == false
     runs-on: macos-15
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
         with:
           persist-credentials: false
+          fetch-depth: 2
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
         with:
           python-version: '3.12'
+      - name: Verify the exact reference candidate source
+        if: github.ref_name == 'design-mcp/swift-reference-fixture'
+        shell: bash
+        run: |
+          expected=f17bd6f79fff62d1ec3e051b29d930ccb32b3a46
+          git diff --exit-code "$expected" HEAD -- design_mcp integrations/desktop evals/vision/fixtures/swift evals/vision/verify_swift_capture.py pyproject.toml
       - name: Install Design MCP and generate the fixture project
         shell: bash
         run: |
@@ -41,6 +52,40 @@ jobs:
           xcrun xcresulttool export attachments --path "$RUNNER_TEMP/native-review.xcresult" --output-path "$RUNNER_TEMP/attachments"
           "$RUNNER_TEMP/design-review/bin/python" evals/vision/verify_swift_capture.py \
             "$RUNNER_TEMP/attachments" "$RUNNER_TEMP/design-review/bin/design-mcp" "$RUNNER_TEMP/swift-proof"
+      - name: Archive the same tested SwiftUI app for reference Mac QA
+        if: github.ref_name == 'design-mcp/swift-reference-fixture'
+        shell: bash
+        run: |
+          app="$RUNNER_TEMP/derived/Build/Products/Debug/ReviewFixture.app"
+          executable="$app/Contents/MacOS/ReviewFixture"
+          info="$app/Contents/Info.plist"
+          proof="$RUNNER_TEMP/swift-reference-app"
+          mkdir -p "$proof"
+          test -x "$executable"
+          test "$(lipo -archs "$executable")" = arm64
+          test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$info")" = org.designmcp.reviewfixture
+          codesign --verify --strict "$app"
+          otool -l "$executable" | grep -Eq 'minos[[:space:]]+13\.0$$'
+          ditto -c -k --keepParent "$app" "$proof/ReviewFixture.zip"
+          test "$(stat -f %z "$proof/ReviewFixture.zip")" -lt 4194304
+          (
+            cd "$proof"
+            shasum -a 256 ReviewFixture.zip > archive.sha256
+          )
+          shasum -a 256 "$executable" | awk '{print $1}' > "$proof/executable.sha256"
+          {
+            sw_vers
+            uname -m
+            printf 'Candidate f17bd6f79fff62d1ec3e051b29d930ccb32b3a46\n'
+            printf 'Harness %s\n' "$GITHUB_SHA"
+          } > "$proof/build.txt"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: github.ref_name == 'design-mcp/swift-reference-fixture'
+        with:
+          name: swift-reference-app
+          path: ${{ runner.temp }}/swift-reference-app/
+          if-no-files-found: error
+          retention-days: 7
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
