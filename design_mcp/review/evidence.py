@@ -162,7 +162,7 @@ def _region(raw):
         "box": box,
         "font": {
             "family": clean_text(font.get("family"), 60),
-            "size_px": round(size, 2) if size is not None else UNKNOWN,
+            "size_px": size if size is not None else UNKNOWN,
             "weight": int(weight) if weight is not None else UNKNOWN,
         },
         "ink": _rgba(raw.get("ink")),

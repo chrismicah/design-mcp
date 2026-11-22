@@ -355,10 +355,8 @@ class CheckTests(unittest.TestCase):
         self.assertTrue(2.4 <= first["evidence"]["ratio"] < 2.5, first["evidence"])
         self.assertGreaterEqual(first["evidence"]["proposed_ratio"], 4.5)
 
-    def test_large_text_unknown_fills_and_disabled_or_blanked_regions_are_not_flagged(self):
+    def test_unknown_fills_and_disabled_or_blanked_regions_are_not_flagged(self):
         exempt = (
-            {"font": {"family": "Newsreader", "size_px": 24, "weight": 400}},
-            {"font": {"family": "IBM Plex Sans", "size_px": 19, "weight": 700}},
             {"fill_flat": False},
             {"fill_flat": "unknown"},
             {"fill": [246, 245, 241, 0.6]},
@@ -372,10 +370,32 @@ class CheckTests(unittest.TestCase):
             bundle["frames"][0]["regions"] = [region("Pale note", 0.3, ink=list(PALE), **override)]
             with self.subTest(override=override):
                 self.assertEqual(checks.local_findings(evidence.normalize(bundle)), [])
-        bundle = board()
-        bundle["frames"][0]["regions"] = [region("Pale note", 0.3, ink=list(PALE),
-                                                 font={"family": "IBM Plex Sans", "size_px": 19, "weight": 400})]
-        self.assertEqual(kinds(checks.local_findings(evidence.normalize(bundle))), ["contrast"])
+
+    def test_large_text_checks_three_to_one_and_keeps_normal_text_at_four_point_five(self):
+        cases = (
+            (24, 400, 145, 3.0),
+            (18.667, 700, 145, 3.0),
+            (24, 400, 140, None),
+            (18.667, 700, 140, None),
+            (23.99, 400, 140, 4.5),
+            (18.66, 700, 140, 4.5),
+            (18.667, 699, 140, 4.5),
+        )
+        for size, weight, gray, expected in cases:
+            with self.subTest(size=size, weight=weight, gray=gray):
+                bundle = board()
+                font = {"family": "Newsreader", "size_px": size, "weight": weight}
+                bundle["frames"][0]["regions"] = [
+                    region("Collection details", 0.3, ink=[gray, gray, gray, 1], font=font)
+                ]
+                findings = checks.local_findings(evidence.normalize(bundle))
+                if expected is None:
+                    self.assertEqual(findings, [])
+                    continue
+                self.assertEqual(kinds(findings), ["contrast"])
+                finding = findings[0]
+                self.assertIn(f"{expected:g} to 1", finding["outcome"])
+                self.assertGreaterEqual(checks.contrast_ratio(finding["preview"]["to"], PAPER), expected)
 
     def test_translucent_text_is_judged_by_the_color_it_shows_as(self):
         bundle = board()

@@ -8,9 +8,9 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { setTimeout as delay } from "node:timers/promises";
 
-const [chrome, cli, extension, output] = process.argv.slice(2);
+const [chrome, cli, extension, output, fixturePath] = process.argv.slice(2);
 await mkdir(output, { recursive: true });
-const fixture = await readFile(new URL("fixtures/shuttle-dispatch.html", import.meta.url));
+const fixture = await readFile(fixturePath || new URL("fixtures/shuttle-dispatch.html", import.meta.url));
 const host = createServer((request, response) => {
   if (request.url !== "/dispatch") return response.writeHead(204).end();
   response.writeHead(200, { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store" });
