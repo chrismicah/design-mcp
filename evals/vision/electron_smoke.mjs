@@ -4,7 +4,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { setTimeout as delay } from "node:timers/promises";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, screen } from "electron";
 import { exportDesignCapture } from "../../integrations/desktop/electron.mjs";
 
 const [cli, destination] = process.argv.slice(-2);
@@ -53,9 +53,18 @@ async function capture(name) {
   assert.equal(review.controls_reviewed, 4);
   assert.equal(review.platform, "electron");
   assert.deepEqual(review.viewport, [880, 640]);
+  const [width, height] = review.viewport;
+  const scale = screen.getDisplayMatching(window.getBounds()).scaleFactor;
   const image = await window.webContents.capturePage();
   assert.equal(image.isEmpty(), false);
-  assert.deepEqual(image.getSize(), { width: 880, height: 640 });
+  // Electron can return either CSS pixels or the display's backing pixels.
+  const size = image.getSize();
+  assert.ok(
+    (size.width === width && size.height === height) ||
+      (size.width === Math.round(width * scale) && size.height === Math.round(height * scale)),
+    `Unexpected capture size ${size.width} × ${size.height} for ${width} × ${height} at ${scale}×`,
+  );
+  (proof.screenshot_sizes ??= {})[name] = { ...size, display_scale: scale };
   await writeFile(join(destination, name + ".png"), image.toPNG());
   return { evidencePath, evidence, findings: review.findings.map(({ code, region }) => [code, region]) };
 }
