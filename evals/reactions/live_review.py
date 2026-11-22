@@ -169,11 +169,18 @@ def main():
     study.add_argument("--case", choices=tuple(TASKS))
     study.add_argument("--benchmark-spec", type=absolute_path)
     parser.add_argument("--check-input", action="store_true")
+    parser.add_argument("--check-controls", action="store_true", help="Replay the pinned controls before generating other arms")
     parser.add_argument("--model")
     parser.add_argument("--codex", default="codex")
     parser.add_argument("--effort", default="max")
     args = parser.parse_args()
     args.spec = load_spec(args.benchmark_spec) if args.benchmark_spec else None
+    if args.check_controls:
+        if args.check_input or not args.spec:
+            parser.error("--check-controls requires --benchmark-spec and runs separately from --check-input")
+        controls = benchmark_cells(args.cells, args.spec, pinned_only=True)
+        print(json.dumps({"verified_controls": sorted(controls)}))
+        return
     if args.check_input:
         cells = benchmark_cells(args.cells, args.spec) if args.spec else eligible_pair(args.cells, args.case)
         print(json.dumps({"verified_arms": sorted(receipt["arm"] for receipt, _ in cells.values())}))

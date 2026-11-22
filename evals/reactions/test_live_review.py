@@ -5,6 +5,7 @@ import struct
 import pytest
 
 from audit_review import audit, HEIGHTS
+from benchmark_input import HASH_FIELDS, control_conditions
 from live_review import PACKAGE_COMMIT, benchmark_cells, critic_prompt, eligible_pair, generate, load_spec
 from cold_storage import OPTION
 from test_cold_storage import BOARD, CONTRACT, FOCUSED, state
@@ -140,6 +141,42 @@ def test_preflight_replays_all_three_arms_and_keeps_prompt_blind(benchmark):
     assert len({value[0]["thread_id"] for value in verified.values()}) == 3
     prompt = critic_prompt(None, spec)
     assert "C-390" in prompt and all(arm not in prompt for arm in spec["arms"])
+
+
+def test_comparator_control_can_replay_before_the_other_arm_exists(benchmark):
+    root, spec = benchmark
+    spec["arms"] = ["none", "router", "shadcn"]
+    spec["directions"].pop("candidate")
+    control = root / spec["case"] / "router"
+    receipt = json.loads((control / "receipt.json").read_bytes())
+    spec["pinned_controls"] = {"router": {**control_conditions(receipt), **{k: receipt[k] for k in HASH_FIELDS}}}
+    spec_path = root / "spec.json"
+    spec_path.write_text(json.dumps(spec))
+    assert set(benchmark_cells(root, load_spec(spec_path), pinned_only=True)) == {"router"}
+    with pytest.raises(FileNotFoundError):
+        benchmark_cells(root, load_spec(spec_path))
+
+
+@pytest.mark.parametrize("mutation", ["consistent_html_and_trace", "generator_metadata"])
+def test_archived_control_pin_rejects_a_self_consistent_substitution(benchmark, mutation):
+    root, spec = benchmark
+    control = root / spec["case"] / "router"
+    receipt_path = control / "receipt.json"
+    receipt = json.loads(receipt_path.read_bytes())
+    spec["pinned_controls"] = {"router": {**control_conditions(receipt), **{k: receipt[k] for k in HASH_FIELDS}}}
+    if mutation == "generator_metadata":
+        receipt["model"] = "different-model"
+    else:
+        for filename, field in (("index.html", "html_sha256"), ("client.jsonl", "trace_sha256")):
+            path = control / filename
+            contents = path.read_bytes().replace(b"<body>router</body>", b"<body>other board</body>")
+            path.write_bytes(contents)
+            receipt[field] = generate.sha256(contents)
+    receipt_path.write_text(json.dumps(receipt))
+    if mutation == "consistent_html_and_trace":
+        assert benchmark_cells(root, {**spec, "pinned_controls": {}})["router"]
+    with pytest.raises(ValueError, match="Archived control differs from its pin"):
+        benchmark_cells(root, spec, pinned_only=True)
 
 
 @pytest.mark.parametrize("mutant,message", [
