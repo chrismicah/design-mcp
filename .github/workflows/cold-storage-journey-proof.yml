@@ -1,0 +1,35 @@
+name: Cold-storage review instrumentation proof
+on:
+  push:
+    branches: [design-mcp/cold-storage-journey-proof]
+permissions:
+  contents: read
+jobs:
+  review:
+    runs-on: macos-15
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Run the synthetic keyboard control and occluded deadline
+        run: |
+          python -m pip install . pytest
+          npm install --prefix "$RUNNER_TEMP/playwriter" --ignore-scripts --no-fund --no-audit 'playwriter@0.12.0'
+          curl -fsSL https://storage.googleapis.com/chrome-for-testing-public/158.0.8127.36/mac-arm64/chrome-mac-arm64.zip -o "$RUNNER_TEMP/chrome.zip"
+          unzip -q "$RUNNER_TEMP/chrome.zip" -d "$RUNNER_TEMP/browser"
+          chrome="$RUNNER_TEMP/browser/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
+          python evals/reactions/probe_journey.py "$chrome" "$RUNNER_TEMP/playwriter/node_modules/.bin/playwriter" "$RUNNER_TEMP/journey-proof"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: synthetic-journey
+          path: |
+            ${{ runner.temp }}/journey-proof/result.json
+            ${{ runner.temp }}/journey-proof/captures/
+            ${{ runner.temp }}/journey-proof/*.log
+          if-no-files-found: warn
+          retention-days: 7
