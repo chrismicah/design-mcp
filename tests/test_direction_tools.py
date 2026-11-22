@@ -73,3 +73,18 @@ async def test_held_out_briefs_infer_surface_without_clarification():
         assert result["direction"]["surface"] == case["surface"], case["id"]
         assert not result["questions"]
         assert (await react(result["direction"]["id"], "too generic"))["changes"]["composition"]
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(("brief", "expected"), [
+    ("Landing page for a volunteer radio station. Show the presenter and let me listen live.", "broadcast-board"),
+    ("An independent repair shop takes bookings for bicycle wheel truing. Build a site with a quote and day selector.",
+     "service-work-order"),
+    ("Launch a pocket radio for $60. Show the single product with a button to add it to the bag.", "object-hero"),
+])
+async def test_landing_uses_the_primary_task_for_art_direction(brief, expected):
+    result = await direct(brief, surface="landing")
+    assert result["direction"]["id"] == expected
+    assert not result["questions"]
+    if expected != "object-hero":
+        assert (await direct(brief, surface="landing", avoid=[expected]))["direction"]["id"] == "object-hero"

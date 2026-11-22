@@ -400,5 +400,128 @@
       }
     ],
     "credit": "Butterick's Practical Typography (Matthew Butterick)"
+  },
+  {
+    "id": "broadcast-board",
+    "surface": "landing",
+    "title": "Broadcast board",
+    "summary": "Put the current program and the listener control in a single station masthead, with the schedule directly below.",
+    "tags": [
+      "radio station",
+      "listen live",
+      "community radio",
+      "livestream",
+      "on air",
+      "now playing",
+      "broadcast"
+    ],
+    "type": {
+      "display": "Barlow Condensed",
+      "body": "Atkinson Hyperlegible Next",
+      "ratio": 4.4,
+      "tracking": -0.023,
+      "weight": 700,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#151F29",
+      "paper": "#F6F3E8",
+      "accent": "#F7DE46"
+    },
+    "layout": {
+      "skeleton": "Build one wide dark station band with the station name as a wordmark, followed by one program row and a full-width schedule strip. Align the three bands to a shared grid.",
+      "focus": "The current show title and the adjacent listener control. Present today's supplied schedule only once.",
+      "desktop": "Use the full top width for the masthead. Set the show title on the left and put the presenter, current state and listener control in the same aligned row at the far edge. Use ruled lines to connect them.",
+      "mobile": "Station, show title and host, listener control with visible state, then the schedule. Keep the complete control above the end of the first viewport when content fits.",
+      "rhythm": "Keep the broadcast data tightly grouped. Use a single larger break before the schedule. Keep desktop and narrow DOM order the same."
+    },
+    "imagery": {
+      "subject": "An original status mark or small waveform attached to the listener control.",
+      "crop": "No hero crop. Keep any mark inside the control or masthead with space around the program title.",
+      "fallback": "Use type, ruled lines, a status word and a shape. Do not make up a broadcast frequency, schedule entry, or signal reading."
+    },
+    "motion": {
+      "trigger": "the listener starts or stops the demo",
+      "effect": "Change the control's pressed state and show a brief sweep of the status mark.",
+      "duration_ms": 250,
+      "reduced": "Update state and text instantly without animating the mark."
+    },
+    "action": {
+      "instruction": "Expose a keyboard operable control next to a short state confirmation. Preserve any demo-only restriction and avoid autoplay.",
+      "label": "Listen live"
+    },
+    "why": "The station's identity comes from its current program and its listening action. A full-width program row gives the title the scale of an on-air board without borrowing the composition of a product launch.",
+    "sources": [
+      {
+        "url": "https://www.kexp.org/",
+        "observation": "KEXP's main PlayerControlTray and player launcher both expose a Listen Live button. The wording identifies the next action directly.",
+        "strength": "evidence"
+      }
+    ],
+    "credit": "KEXP live player, observed control wording. Original layout and color direction."
+  },
+  {
+    "id": "service-work-order",
+    "surface": "landing",
+    "title": "Service work order",
+    "summary": "Make selection and the updating work order the page's visual focus. Integrate the price, current choice and turnaround in one receipt.",
+    "tags": [
+      "repair shop",
+      "tune-up",
+      "service booking",
+      "service estimate",
+      "appointment",
+      "booking summary",
+      "bookings"
+    ],
+    "type": {
+      "display": "Instrument Serif",
+      "body": "IBM Plex Sans",
+      "ratio": 3.3,
+      "tracking": -0.025,
+      "weight": 400,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#152B34",
+      "paper": "#F3F2E7",
+      "accent": "#E88C46"
+    },
+    "layout": {
+      "skeleton": "Open with a narrow edge-to-edge title band. Place a wide work order below it with the choice and its result in a single table-like composition, using a ruled margin for one labeled sketch or service fact.",
+      "focus": "The chosen booking summary alongside the short selection group. Keep the exact price and turnaround attached to that summary.",
+      "desktop": "Use one shared border across the chooser and summary in the center of the page. Give the summary the widest column. Put the smaller workshop reference below the work order edge.",
+      "mobile": "Service title and price, one selection group, then the summary with the selected day and supplied terms. Let choices wrap without horizontal scroll. Drop the decorative margin before shrinking controls.",
+      "rhythm": "Separate title and work order with a clear vertical break; group summary rows on a consistent 28 px rhythm."
+    },
+    "imagery": {
+      "subject": "A small repair detail, drawn from the actual service in the brief.",
+      "crop": "Crop to a functional detail and place it outside the choice and summary area.",
+      "fallback": "A bordered label in the margin can carry one useful service fact from the brief. Omit it when the work order already contains the same fact."
+    },
+    "motion": {
+      "trigger": "a booking choice changes",
+      "effect": "Briefly emphasize the changed summary row and update the accessible status.",
+      "duration_ms": 260,
+      "reduced": "Update the summary and accessible status immediately."
+    },
+    "action": {
+      "instruction": "Use one labeled, keyboard-accessible group for a single selection and echo the selected value in the visible work order. Only show a confirmed booking when that state is part of the brief.",
+      "label": "Choose [day or option]"
+    },
+    "why": "A work order has useful visual structure before it has branding. Putting the choice and its consequences in one composition keeps the service and task recognizable at a glance.",
+    "sources": [
+      {
+        "url": "https://design-system.service.gov.uk/components/radios/",
+        "observation": "GOV.UK specifies radios when users can select only one option from a list.",
+        "strength": "evidence"
+      },
+      {
+        "url": "https://design-system.service.gov.uk/patterns/check-answers/",
+        "observation": "The check-answers pattern uses a summary list with labels and values so users can verify what they entered.",
+        "strength": "evidence"
+      }
+    ],
+    "credit": "GOV.UK Design System radio and check-answers patterns. Original work-order layout and color direction."
   }
 ]
