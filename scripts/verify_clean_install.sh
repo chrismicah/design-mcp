@@ -1,8 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
-if [[ $# != 3 ]]; then
-  printf 'Usage: %s SOURCE_CHECKOUT PYTHON_EXECUTABLE NEW_SCRATCH_DIRECTORY\n' "$0" >&2
+if [[ $# != 3 && $# != 4 ]]; then
+  printf 'Usage: %s SOURCE_CHECKOUT PYTHON_EXECUTABLE NEW_SCRATCH_DIRECTORY [GIT_URL]\n' "$0" >&2
   exit 2
 fi
 
@@ -10,6 +10,11 @@ checkout=$(cd "$1" && pwd -P)
 python=$2
 mkdir "$3"
 scratch=$(cd "$3" && pwd -P)
+install_source=$checkout
+if [[ $# == 4 ]]; then
+  revision=$(git -C "$checkout" rev-parse HEAD)
+  install_source="git+$4@$revision"
+fi
 
 architecture=$(uname -m)
 python_minor=$("$python" -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')
@@ -31,8 +36,24 @@ export UV_NO_MODIFY_PATH=1
 "$python" -m venv "$scratch/installer"
 installer="$scratch/installer/bin"
 "$installer/python" -m pip install pipx uv "fastmcp==4.1.8; python_version < '3.11'" "fastmcp~=4.2.4; python_version >= '3.11'"
-"$installer/pipx" install --python "$python" "$checkout"
-"$installer/uv" tool install --no-python-downloads --python "$python" "$checkout"
+"$installer/pipx" install --python "$python" "$install_source"
+"$installer/uv" tool install --no-python-downloads --python "$python" "$install_source"
+
+if [[ $# == 4 ]]; then
+  for installed_python in "$PIPX_HOME/venvs/design-mcp/bin/python" "$UV_TOOL_DIR/design-mcp/bin/python"; do
+    "$installed_python" -I - "$revision" <<'PY'
+from importlib.metadata import distribution
+import json
+import sys
+
+provenance = json.loads(distribution("design-mcp").read_text("direct_url.json"))
+vcs = provenance["vcs_info"]
+if vcs["vcs"] != "git" or vcs["commit_id"] != sys.argv[1]:
+    raise SystemExit(f"The install did not resolve the requested Git commit: {vcs}")
+print(f"PASS pinned Git install — {vcs['commit_id']}")
+PY
+  done
+fi
 
 cd "$scratch"
 for executable in "$PIPX_BIN_DIR/design-mcp" "$UV_TOOL_BIN_DIR/design-mcp"; do
