@@ -32,6 +32,8 @@ Both frozen saved-trails pages moved Cedar Bend from the suggestion to the saved
 | Plain generator | 20,543 | 11,136 | 20,257 | 408 |
 | Design MCP v2 | 64,402 | 41,472 | 20,182 | 411 |
 
+Across paired briefs, the median increase was 43,848 reported input tokens and 2,453 uncached input tokens. The median paired change in generation time was 21.3 seconds faster. Each v2 run made one successful `direct` call. Its structured reply serialized to a median 2,875 UTF-8 bytes. The overall turn counters include the host context and cached input, so they do not isolate the cost of the reply. Keep the host, model and brief fixed when testing a shorter tool response or a smaller tool catalog. [Per-brief token and reply counts](evidence/benchmark-v1/frozen-token-overhead.json)
+
 ## Direction coverage
 
 A separate stdio probe supplied the exact briefs to `direct` with the surface omitted. All 36 calls returned a direction. **32/36 returned `object-hero`.** All six forms and all six settings briefs received landing-page guidance. Only two dashboards and one mobile brief matched their requested surface. The frozen v2 API had no form, settings or empty-state surface. This probe measures default retrieval, while the rendered comparison measures what the generator does with the tool available. [Per-brief direction returns](evidence/benchmark-v1/preflight.json)
