@@ -1,0 +1,336 @@
+{
+  "render_url": "https://github.com/chrismicah/design-mcp/actions/runs/44985648610",
+  "capture_ref": "7c319d2",
+  "counters": {
+    "full": {
+      "input_tokens": 51112,
+      "output_tokens": 7755
+    },
+    "compact": {
+      "input_tokens": 48695,
+      "output_tokens": 7256
+    }
+  },
+  "pairs": [
+    {
+      "case": "dashboard-venue",
+      "full": {
+        "case": "dashboard-venue",
+        "surface": "dashboard",
+        "blind_key": {
+          "A": "none",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "Studio B appears first at both widths, but its small \u201c6 min late\u201d badge draws less attention than the illustrated title."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The cards align room names on the left and status badges on the right, while the compact desktop filter expands to the card width on mobile."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The italic \u201crooms\u201d distinguishes the title from the upright serif room names, and the bold sans-serif filters and statuses stay legible on mobile."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Plum and gold establish the theatre setting, while the amber clock and delay badge distinguish Studio B from Hall A\u2019s green check and \u201cReady\u201d badge."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "Both browser trees identify the selected filter and pair each room heading with its status, though the filter button names omit the visible counts of 2 and 1."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "Both widths show Studio B as \u201c6 min late\u201d and Hall A as \u201cReady,\u201d with \u201cDelayed\u201d and \u201cAll rooms\u201d controls above the list."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, the prominent \u201c6 minutes late\u201d cell draws the eye directly to Studio B\u2019s row, with \u201cDelayed only\u201d immediately above the table."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The filter aligns with the table\u2019s left edge at both widths, and the mobile rows give the two-line delay label enough space to stay clearly grouped with Studio B."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The serif title shifts from one line on desktop to two on mobile, while bold sans-serif status text remains easy to distinguish from the large serif room names."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "White text on burgundy singles out the delay, a green check marks \u201cReady,\u201d and the dark fill identifies the selected \u201cAll rooms\u201d filter."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Both browser trees associate each status cell with a room row header, mark \u201cAll rooms\u201d as pressed and expose \u201c2 of 2 rooms\u201d as a status."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "Both views label the controls \u201cDelayed only\u201d and \u201cAll rooms\u201d and show the exact pairings of Studio B with \u201c6 minutes late\u201d and Hall A with \u201cReady.\u201d"
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 25557,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3438,
+          "reasoning_output_tokens": 2789
+        },
+        "scores": {
+          "none": 91.66666666666666,
+          "v2": 100
+        }
+      },
+      "compact": {
+        "case": "dashboard-venue",
+        "surface": "dashboard",
+        "blind_key": {
+          "A": "v2",
+          "B": "none"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "Studio B leads the table, and its solid burgundy status cell draws the eye straight to \u201c6 minutes late\u201d at both widths."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The filters and room count align with the table edges, and the mobile status column leaves enough room for the delay to wrap beside its clock icon."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The Newsreader title scales from 90px to 53px with a clean two-line mobile break, while bold sans-serif status text stays distinct from the serif room names."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "A near-black fill identifies the selected filter, white on burgundy highlights the delay, and a green check marks Hall A as ready."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "At both widths, the browser evidence shows 44px-high filter buttons, identifies the pressed view, exposes the room count and pairs each room header with its written status."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "Both layouts show Studio B as \u201c6 minutes late\u201d and Hall A as \u201cReady,\u201d with \u201cDelayed only\u201d and \u201cAll rooms\u201d clearly labeling the requested views."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "Studio B leads the list at both widths, though the large illustrated stage draws attention before the small \u201c6 min late\u201d badge."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The compact desktop filter expands to the width of the cards on mobile, and consistent insets line up the room icons on the left and status badges on the right."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The italic \u201crooms\u201d gives the title a theatrical accent, while 38px desktop and 32px mobile room names remain easy to distinguish from the bold sans-serif status badges."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Deep plum connects the stage banner to the selected filter, while rust and green link each room\u2019s icon to its matching written status."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "Both accessibility trees expose the pressed filter, room headings and written statuses, though the filter button names omit the visible counts and the status region is empty in these snapshots."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "Both layouts pair Studio B with \u201c6 min late\u201d and Hall A with \u201cReady,\u201d and place the \u201cDelayed\u201d and \u201cAll rooms\u201d controls directly above the list."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 24845,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3321,
+          "reasoning_output_tokens": 2670
+        },
+        "scores": {
+          "v2": 100,
+          "none": 91.66666666666666
+        },
+        "image_variant": "compact",
+        "image_sha256": {
+          "A-1440.png": "2b8271322144bbf51ec8bbd13d99f092bfd6a74c677ee25abc5833990acd65c0",
+          "A-390.png": "c23c0fde179c56ab144de6b4bddb313bc8ecf86ec14c16a8adb2fe6a524e2fb0",
+          "B-1440.png": "7bad9859e40a7ee3b111f68b3058de87503d5a9654470888d1ef9cd76913759a",
+          "B-390.png": "2cface591ca3780d2cdb542c9bb24da7109f92a1e666fd56976ec9d0ad2231b3"
+        }
+      }
+    },
+    {
+      "case": "landing-ceramics",
+      "full": {
+        "case": "landing-ceramics",
+        "surface": "landing",
+        "blind_key": {
+          "A": "none",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The drawing leads into the product name, $46 price and prominent \u201cAdd to bag\u201d button on desktop, and mobile preserves that reading order in a single column."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "A generous desktop gutter separates the drawing from the details, while the mobile image, copy and full-width button share a left edge, with shipping tucked just below the button."
+            },
+            "typography": {
+              "score": 3,
+              "evidence": "The upright and italic product name scales cleanly from two lines to one, though the tiny uppercase \u201cSmall-batch pottery\u201d label takes effort to read at 390 px."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Clay red connects the studio mark, italic \u201cBowl\u201d and purchase button, whose white lettering stands out against the dark fill at both widths."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "At both widths the browser tree names the visible controls \u201cBag, empty\u201d and \u201cAdd to bag\u201d and includes a status region and image text describing the speckled glaze and brown rim."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "The bowl drawing, $46 price, Milwaukee throwing and glazing details, \u201cShips in 5 days\u201d and \u201cAdd to bag\u201d match the brief, with post-add confirmation unverified in the supplied empty-bag views."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The drawing and large product name identify the bowl immediately, and pairing $46 with the plum \u201cAdd to bag\u201d button makes the purchase action easy to find at both widths."
+            },
+            "spacing": {
+              "score": 3,
+              "evidence": "The desktop divider and even spacing group shipping with the purchase row, while roughly 150 px of empty space separates them on mobile."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The two-line desktop title fits on one legible line on mobile, and the bold serif price and emphasized \u201c5 days\u201d make the buying details easy to scan at either width."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The ochre drawing and cream background give the page warmth, and the deep plum fill singles out the white purchase label at both widths."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "At both widths the visible zero count corresponds to \u201cBag, 0 items\u201d in the browser tree, which also exposes a level-one product heading, a named drawing, an \u201cAdd to bag\u201d button and a status region."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Kiln & Field\u2019s illustrated Oat Glaze Bowl has the requested $46 price, Milwaukee maker credit, five-day shipping and \u201cAdd to bag\u201d action, with confirmation unverified because both captures show zero items."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 25555,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4317,
+          "reasoning_output_tokens": 3612
+        },
+        "scores": {
+          "none": 91.66666666666666,
+          "v2": 91.66666666666666
+        }
+      },
+      "compact": {
+        "case": "landing-ceramics",
+        "surface": "landing",
+        "blind_key": {
+          "A": "none",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, the bowl drawing and prominent product name lead the eye to the $46 price and the wide \u201cAdd to bag\u201d button."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "A 92 px gutter separates the desktop drawing from the product details, and a shared 18 px inset aligns the mobile drawing, title and purchase button."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The Fraunces title moves from two lines at 94 px on desktop to one at 47 px on mobile, keeping the italic \u201cBowl\u201d distinct from the sans-serif details."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Clay red connects the studio mark, the word \u201cBowl\u201d and the purchase button, whose cream label reads clearly against the dark fill."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Both browser trees name the empty bag and add button, describe the bowl\u2019s glaze and rim, and include a status region, while the mobile add button is 53 px tall."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both views show the drawn $46 Oat Glaze Bowl, credit the maker with throwing and glazing it in Milwaukee, and say \u201cShips in 5 days,\u201d with the one-bowl addition and confirmation unverified at either width."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The drawing and title identify the product immediately, and pairing $46 with the plum \u201cAdd to bag\u201d button makes the purchase action easy to find in both the desktop details and the mobile bottom bar."
+            },
+            "spacing": {
+              "score": 3,
+              "evidence": "The desktop divider groups shipping with the purchase row, but roughly 150 px of empty space between shipping and the mobile purchase bar weakens that connection."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The 85 px desktop title scales to a legible 48 px single line on mobile, and the bold \u201c5 days\u201d makes the dispatch time easy to pick out at both widths."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Ochre and terracotta shading give the illustrated bowl depth, and the plum fill singles out \u201cAdd to bag\u201d against the warm cream page at both widths."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Both browser trees expose \u201cBag, 0 items,\u201d a named bowl drawing, an \u201cAdd to bag\u201d button and a status region, and the mobile purchase button measures 278 by 52 px."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "The textured bowl drawing, $46 price, five-day dispatch and Milwaukee throwing and glazing credit match the brief, with both views documenting only the empty bag state before confirmation."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 23850,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3935,
+          "reasoning_output_tokens": 3235
+        },
+        "scores": {
+          "none": 95.83333333333334,
+          "v2": 91.66666666666666
+        },
+        "image_variant": "compact",
+        "image_sha256": {
+          "A-1440.png": "e9ac8cbf93e81c3f3a9d769194da35e81d4ae45c74999000a817d3450cc87231",
+          "A-390.png": "416f27c2a93f34c380ef6a71467b852446938b6e093d95a3c3da20c8c68fcb1b",
+          "B-1440.png": "dace355bd13c14692042021ec843932feef514ba8482adf9f7b5a2d39c1c8f20",
+          "B-390.png": "19a255a5ab48ca9193ef2325688fa91ebac5c4d785e6431dc795460625a9cd73"
+        }
+      }
+    }
+  ]
+}
