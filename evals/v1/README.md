@@ -68,10 +68,10 @@ For a comparator that reuses the frozen `v2` controls, set `--control v2 --treat
 
 To measure retrieval before spending generation tokens, run `probe_competitors.py` against the installed competitor. It submits all 36 unedited briefs to the named search tool, requests the first three results, and records elapsed time, payload size, outcome, and ranked reference IDs. This probe measures search availability and coverage. The visual comparison still uses the generator and blinded judge.
 
-The parser and scoring tests run without subscriptions or Chrome.
+The parser, scoring, and browser-adapter tests use synthetic fixtures. Install the test dependencies from the source checkout first. [Local test setup](../../README.md#verify-locally)
 
 ```bash
-python3 -m unittest discover -s evals/v1 -v
+python -m pytest evals/v1
 ```
 
 ## Connect Playwriter

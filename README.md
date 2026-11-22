@@ -99,8 +99,11 @@ The current radio and repair-shop directions averaged 97.9 versus 89.6 for the f
 
 ## Verify locally
 
+From a source checkout with an active virtual environment, install the test dependencies and run the suites.
+
 ```bash
-python -m pytest tests
+python -m pip install -e . pytest pytest-asyncio
+python -m pytest tests evals
 python scripts/smoke_design_mcp.py design-mcp serve
 ```
 
