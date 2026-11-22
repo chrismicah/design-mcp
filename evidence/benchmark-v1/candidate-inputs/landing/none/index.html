@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F3EFE5">
+  <title>Alto Carmo | Cinder Supply</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&amp;family=Instrument+Sans:wght@400..700&amp;display=swap">
+  <style>
+    :root {
+      --paper: #F3EFE5;
+      --ink: #2E231F;
+      --plum: #492637;
+      --husk: #DFAB5F;
+      --muted: #6A4F49;
+      --rule: #CDBFB4;
+      --serif: "Fraunces", Georgia, serif;
+      --sans: "Instrument Sans", sans-serif;
+      --gutter: clamp(20px, 4vw, 64px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    body, h1, h2, h3, p, dl, dd, figure { margin: 0; }
+
+    body {
+      min-height: 100vh;
+      background: var(--paper);
+      color: var(--ink);
+      font: 400 1rem/1.45 var(--sans);
+    }
+
+    body:has(dialog[open]) { overflow: hidden; }
+    button { font: inherit; color: inherit; cursor: pointer; }
+
+    button:focus-visible {
+      outline: 2px solid var(--plum);
+      outline-offset: 4px;
+    }
+
+    .shell {
+      width: min(1328px, calc(100% - 2 * var(--gutter)));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .wordmark {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--plum);
+      font: 560 1.7rem/1 var(--serif);
+      letter-spacing: -.045em;
+    }
+
+    .wordmark svg { flex: none; width: 27px; height: 27px; }
+
+    .bag-toggle {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 10px 6px 13px;
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      background: transparent;
+      font-size: .9rem;
+      font-weight: 600;
+    }
+
+    .bag-count {
+      display: grid;
+      place-items: center;
+      min-width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--plum);
+      color: var(--paper);
+      font-size: .75rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .product {
+      display: grid;
+      grid-template:
+        "art ." 1fr
+        "art intro" auto
+        "art details" auto
+        "art ." 1fr
+        / minmax(0, 1.17fr) minmax(0, .83fr);
+      column-gap: clamp(40px, 6.1vw, 90px);
+      padding-block: clamp(26px, 3vw, 44px) 44px;
+    }
+
+    .product-art {
+      grid-area: art;
+      align-self: center;
+      overflow: hidden;
+      border-radius: 2px;
+      background: var(--plum);
+    }
+
+    .product-art > svg { display: block; width: 100%; height: auto; }
+    .label-name { font-family: var(--serif); }
+    .label-type { font-family: var(--sans); }
+
+    .introduction {
+      grid-area: intro;
+      padding-bottom: clamp(24px, 2.6vw, 37px);
+    }
+
+    .category {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: .9rem;
+      font-weight: 600;
+    }
+
+    .category::before {
+      width: 17px;
+      height: 2px;
+      flex: none;
+      background: var(--husk);
+      content: "";
+    }
+
+    h1 {
+      font: 510 clamp(3.4rem, 6.65vw, 6.15rem)/.98 var(--serif);
+      letter-spacing: -.065em;
+    }
+
+    .details { grid-area: details; }
+
+    .specifications {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .specifications dt {
+      color: var(--muted);
+      font-size: .875rem;
+      font-weight: 600;
+    }
+
+    .tasting {
+      grid-column: 1 / -1;
+      padding-bottom: 17px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .tasting dd {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 27px;
+      margin-top: 6px;
+      color: var(--plum);
+      font: 500 1.65rem/1.2 var(--serif);
+      letter-spacing: -.025em;
+    }
+
+    .note { display: inline-flex; align-items: center; gap: 8px; }
+    .note svg { width: 24px; height: 24px; flex: none; }
+
+    .measure { padding-block: 15px 16px; }
+
+    .measure + .measure {
+      padding-left: 22px;
+      border-left: 1px solid var(--rule);
+    }
+
+    .measure dd {
+      margin-top: 3px;
+      font-size: 1.08rem;
+      font-weight: 600;
+    }
+
+    .purchase {
+      display: flex;
+      align-items: center;
+      gap: clamp(20px, 3vw, 42px);
+      margin-top: 22px;
+    }
+
+    .price {
+      font: 550 2.3rem/.98 var(--serif);
+      letter-spacing: -.045em;
+      font-variant-numeric: lining-nums;
+    }
+
+    .unit { margin-top: 4px; color: var(--muted); font-size: .875rem; }
+
+    .primary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 56px;
+      padding: 12px 18px;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      background: var(--plum);
+      color: var(--paper);
+      font-weight: 650;
+      text-align: left;
+    }
+
+    .primary:hover { background: #60364A; }
+    .primary svg { flex: none; }
+    .purchase .primary { flex: 1; }
+
+    .drawer {
+      position: fixed;
+      inset: 0 0 0 auto;
+      width: min(100%, 448px);
+      max-width: none;
+      height: 100%;
+      max-height: none;
+      margin: 0;
+      padding: 0;
+      overflow: auto;
+      border: 0;
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    .drawer[open] { animation: bag-in 210ms ease-out; }
+    .drawer::backdrop { background: rgb(30 17 24 / .55); }
+    @keyframes bag-in { from { transform: translateX(100%); } }
+
+    .drawer-inner {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      padding: 28px;
+    }
+
+    .drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .drawer h2 {
+      font: 530 2.2rem/1 var(--serif);
+      letter-spacing: -.045em;
+    }
+
+    .close {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      background: transparent;
+    }
+
+    .bag-toggle:hover, .close:hover { background: #E9E0D5; }
+
+    .bag-line {
+      display: grid;
+      grid-template-columns: 72px 1fr auto;
+      align-items: start;
+      gap: 14px;
+      padding-block: 22px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .bag-thumb {
+      display: block;
+      width: 72px;
+      height: 86px;
+      padding: 4px;
+      border-radius: 2px;
+      background: var(--plum);
+    }
+
+    .bag-line h3 { font: 530 1.4rem/1.15 var(--serif); }
+    .bag-line p { margin-top: 4px; color: var(--muted); font-size: .875rem; }
+    .item-price { font-weight: 650; }
+
+    .remove {
+      min-height: 44px;
+      padding: 0;
+      border: 0;
+      background: none;
+      color: var(--plum);
+      font-size: .875rem;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .empty { margin-top: 21px; color: var(--muted); }
+    .drawer-footer { display: grid; gap: 19px; margin-top: auto; padding-top: 24px; }
+    .subtotal { display: flex; justify-content: space-between; gap: 14px; }
+    .drawer-footer .primary { width: 100%; justify-content: center; text-align: center; }
+
+    @media (max-width: 880px) {
+      .product {
+        max-width: 640px;
+        grid-template: "intro" "art" "details" / minmax(0, 1fr);
+        gap: clamp(17px, 3.5vw, 28px);
+        padding-block: 22px 34px;
+      }
+
+      .introduction { padding-bottom: 0; }
+      h1 { font-size: clamp(2.6rem, 14.4vw, 5rem); }
+    }
+
+    @media (max-width: 520px) {
+      .site-header { min-height: 65px; }
+      .wordmark { font-size: 1.5rem; }
+      .wordmark svg { width: 24px; height: 24px; }
+      .category { margin-bottom: 5px; }
+      .tasting { padding-bottom: 13px; }
+      .tasting dd { font-size: 1.5rem; }
+      .measure { padding-block: 12px 13px; }
+      .measure + .measure { padding-left: 16px; }
+      .purchase { margin-top: 17px; }
+      .price { font-size: 2rem; }
+
+      .drawer {
+        inset: auto 0 0;
+        height: auto;
+        max-height: calc(100% - 20px);
+        border-radius: 6px 6px 0 0;
+      }
+
+      .drawer[open] { animation-name: bag-up; }
+
+      .drawer-inner {
+        min-height: min(350px, 78dvh);
+        padding: 21px 20px max(21px, env(safe-area-inset-bottom));
+      }
+
+      @keyframes bag-up { from { transform: translateY(100%); } }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .drawer[open] { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header shell">
+    <div class="wordmark">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <path id="cinder-mark" fill="currentColor" fill-rule="evenodd"
+          d="M18.1 1.5C19 7.3 28 11.2 28 19c0 6.5-5.4 11.5-12 11.5S4 25.5 4 19c0-5.6 3.4-9.3 7.9-13.2-.1 4.3 1.2 6.2 2.3 7.3 2.7-3.8 4.3-7.3 3.9-11.6Zm-1.7 15.9c-.9 2-3.9 3.9-3.9 6.4a3.5 3.5 0 0 0 7 0c0-2.5-1.9-4.4-3.1-6.4Z"/>
+      </svg>
+      <span>Cinder Supply</span>
+    </div>
+    <button class="bag-toggle" id="open-bag" type="button" aria-haspopup="dialog"
+      aria-controls="shopping-bag" aria-label="Bag, 0 items">
+      Bag <span class="bag-count" id="bag-count" aria-hidden="true">0</span>
+    </button>
+  </header>
+
+  <main class="product shell" aria-labelledby="product-name">
+    <div class="introduction">
+      <p class="category">Small-batch coffee</p>
+      <h1 id="product-name">Alto Carmo</h1>
+    </div>
+
+    <figure class="product-art">
+      <svg viewBox="0 0 720 620" width="720" height="620" role="img"
+        aria-labelledby="art-title art-description">
+        <title id="art-title">Alto Carmo coffee pouch</title>
+        <desc id="art-description">A golden Cinder Supply pouch with an illustrated cacao pod and plum on its label.</desc>
+        <defs>
+          <radialGradient id="studio" cx="33%" cy="24%" r="83%">
+            <stop stop-color="#775061"/>
+            <stop offset=".59" stop-color="#492637"/>
+            <stop offset="1" stop-color="#301B27"/>
+          </radialGradient>
+          <radialGradient id="pool">
+            <stop stop-color="#A27367" stop-opacity=".36"/>
+            <stop offset="1" stop-color="#A27367" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="ring-light" x2="0%" y2="100%">
+            <stop stop-color="#F2D79F" stop-opacity=".33"/>
+            <stop offset=".89" stop-color="#F2D79F" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="foil" x1="0%" y1="44%" x2="100%" y2="57%">
+            <stop stop-color="#B27A3B"/>
+            <stop offset=".11" stop-color="#E4B570"/>
+            <stop offset=".40" stop-color="#F3CA82"/>
+            <stop offset=".73" stop-color="#DFAB5F"/>
+            <stop offset="1" stop-color="#AA6B31"/>
+          </linearGradient>
+          <linearGradient id="gusset" x2="100%" y2="20%">
+            <stop stop-color="#9D5C2F"/>
+            <stop offset=".6" stop-color="#C58C4A"/>
+            <stop offset="1" stop-color="#714025"/>
+          </linearGradient>
+          <linearGradient id="seal" x2="0%" y2="100%">
+            <stop stop-color="#A16A36"/>
+            <stop offset=".28" stop-color="#E8BB74"/>
+            <stop offset=".73" stop-color="#D8A35C"/>
+            <stop offset="1" stop-color="#BB8143"/>
+          </linearGradient>
+          <linearGradient id="label-paper" x2="100%" y2="100%">
+            <stop stop-color="#F7EACF"/>
+            <stop offset="1" stop-color="#EED5AC"/>
+          </linearGradient>
+          <filter id="grain" x="0%" y="0%" width="100%" height="100%">
+            <feTurbulence type="fractalNoise" baseFrequency=".74" numOctaves="3"
+              seed="11" stitchTiles="stitch"/>
+            <feColorMatrix type="saturate" values="0"/>
+          </filter>
+          <filter id="ground-shadow" x="-35%" y="-200%" width="170%" height="500%">
+            <feGaussianBlur stdDeviation="16"/>
+          </filter>
+          <path id="pouch-face" d="M233 99Q352 85 479 98L484 126Q482 151 494 182L509 484Q511 511 491 525Q371 541 237 525Q216 518 218 489L221 184Q232 151 230 124Z"/>
+          <clipPath id="face-clip"><use href="#pouch-face"/></clipPath>
+        </defs>
+
+        <rect width="720" height="620" fill="url(#studio)"/>
+        <ellipse cx="341" cy="522" rx="369" ry="132" fill="url(#pool)"/>
+        <g fill="none" stroke="url(#ring-light)">
+          <ellipse cx="360" cy="310" rx="254" ry="240"/>
+          <ellipse cx="360" cy="310" rx="269" ry="255" opacity=".48"/>
+        </g>
+        <rect width="720" height="620" filter="url(#grain)" opacity=".21"
+          style="mix-blend-mode: soft-light"/>
+        <ellipse cx="397" cy="537" rx="169" ry="19" fill="#1B1018" opacity=".82"
+          filter="url(#ground-shadow)"/>
+        <ellipse cx="340" cy="537" rx="101" ry="9" fill="#251520" opacity=".5"
+          filter="url(#ground-shadow)"/>
+
+        <g id="coffee-pouch" transform="translate(-11 0) rotate(-8 365 318)">
+          <path d="M475 98l34 13 13 49 13 317q4 24-24 40l-20 8-9-353Z"
+            fill="url(#gusset)"/>
+          <path d="M509 116l7 47 11 309q3 22-21 40l10-30-13-305Z"
+            fill="#F7CF8D" opacity=".2"/>
+          <path d="M518 177l13 294-8 21" fill="none" stroke="#633821" opacity=".45"/>
+          <use href="#pouch-face" fill="url(#foil)"/>
+          <g clip-path="url(#face-clip)">
+            <path d="M221 99q123-16 270 0l-2 29q-134-9-271 4Z" fill="url(#seal)"/>
+            <path d="M227 108q119-13 262-2M225 113q132-13 264-2M225 118q132-12 264-2"
+              fill="none" stroke="#F8D897" stroke-opacity=".61" stroke-width="1.25"/>
+            <path d="M226 131q124-12 262-2" fill="none" stroke="#8E5C33" stroke-opacity=".54"/>
+            <path d="M235 142q12 15 6 44l-12 198 4 79q-10-51-9-104l-6-171Z"
+              fill="#F8D89D" opacity=".42"/>
+            <path d="M483 132q-3 30 7 72l11 255q-10-38-11-71l-16-189q-4-44 9-67Z"
+              fill="#8F592D" opacity=".2"/>
+            <path d="M215 497q105 25 299 1l-7 32q-159 23-285 0Z"
+              fill="#A56833" opacity=".38"/>
+            <path d="M219 504q120 23 286 1m-282 7q116 23 278 1"
+              fill="none" stroke="#F4C982" stroke-opacity=".61"/>
+            <path d="M236 155q-4 19-7 40m260 267q6 18 4 32m-252-8q12 6 22 7"
+              fill="none" stroke="#976235" stroke-opacity=".49" stroke-linecap="round"/>
+            <rect x="212" y="85" width="306" height="461" filter="url(#grain)"
+              opacity=".24" style="mix-blend-mode: soft-light"/>
+          </g>
+
+          <rect x="247" y="168" width="235" height="308" rx="2" fill="#784926" opacity=".28"/>
+          <rect x="244" y="165" width="235" height="308" rx="2" fill="url(#label-paper)"/>
+          <rect x="244" y="165" width="235" height="308" rx="2" filter="url(#grain)"
+            opacity=".19" style="mix-blend-mode: multiply"/>
+          <g fill="#492637">
+            <use href="#cinder-mark" transform="translate(257 179) scale(.58)" color="#492637"/>
+            <text x="282" y="194" class="label-type" font-size="16" font-weight="700">Cinder Supply</text>
+            <path d="M260 207h202M260 439h202" fill="none" stroke="#492637" stroke-opacity=".46"/>
+            <text x="258" y="255" class="label-name" font-size="58" font-weight="540" letter-spacing="-3">Alto</text>
+            <text x="258" y="306" class="label-name" font-size="58" font-weight="540" letter-spacing="-3">Carmo</text>
+          </g>
+
+          <g transform="translate(270 324)" stroke-linecap="round" stroke-linejoin="round">
+            <g transform="rotate(-28 51 49)">
+              <path d="M50 9c16 8 32 24 32 42 0 20-16 34-33 47-17-12-33-27-33-46C16 33 32 16 50 9Z"
+                fill="#DCA45E" stroke="#492637" stroke-width="1.4"/>
+              <path d="M50 9c-2-5 0-9 5-13M50 10C30 29 28 62 49 97m1-87c18 20 21 56-1 87m1-85c-9 24-10 57-1 83m3-81c7 23 7 54-2 80"
+                fill="none" stroke="#754336" stroke-width="1.15"/>
+              <path d="M22 48c0 14 7 25 17 35m35-44c4 16-1 29-9 41M26 36l5-8m42 6-6-8"
+                fill="none" stroke="#F6D698" stroke-width="2"/>
+            </g>
+            <g transform="translate(85 5)">
+              <path d="M45 26c-11-9-28-6-36 7-12 18-3 42 14 52 19 12 44 6 54-12 12-22-3-56-26-50Z"
+                fill="#754356" stroke="#492637" stroke-width="1.5"/>
+              <path d="M22 34c-8 6-12 16-9 26m3 7c2 5 5 9 10 12m22-52c12 5 17 20 16 33-1 12-6 22-13 28"
+                fill="none" stroke="#D7A492" stroke-width="1.4"/>
+              <path d="M45 26c-4-6-4-15 1-21" fill="none" stroke="#492637" stroke-width="2"/>
+              <path d="M44 17C53 4 67 3 80 7c-9 11-22 15-36 10Z"
+                fill="#A25F68" stroke="#492637" stroke-width="1.25"/>
+              <path d="M47 16c9-3 18-5 27-7" fill="none" stroke="#492637" stroke-width="1"/>
+            </g>
+          </g>
+
+          <g fill="#492637" class="label-type" font-size="13" font-weight="650">
+            <text x="260" y="459">Cacao &amp; plum</text>
+            <text x="462" y="459" text-anchor="end">250 g</text>
+          </g>
+        </g>
+      </svg>
+    </figure>
+
+    <div class="details">
+      <dl class="specifications">
+        <div class="tasting">
+          <dt>Tasting notes</dt>
+          <dd>
+            <span class="note">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <g transform="rotate(29 12 12)" stroke="currentColor" stroke-width="1.25"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3c3 2 6 5 6 9s-3 7-6 9c-3-2-6-5-6-9s3-7 6-9Zm0 0V1.8"/>
+                  <path d="M12 4c-2.5 4-2.5 11 0 16m0-16c2.5 4 2.5 11 0 16"/>
+                </g>
+              </svg>
+              Cacao
+            </span>
+            <span class="note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 7.2c-3.8-2-8.3.5-8.3 5.3 0 4.7 3.7 8.4 8.3 8.4s8.3-3.7 8.3-8.4c0-4.8-4.5-7.3-8.3-5.3Z"/>
+                <path d="M12 7.2c-1-1.9-.9-3.5.1-5m0 3.5c1.4-2.4 3.8-3.1 6-2.5-1.4 2.1-3.7 3-6 2.5Zm1.2 3.8c2.5 2.2 2.4 6.7.7 8.8"/>
+              </svg>
+              Plum
+            </span>
+          </dd>
+        </div>
+        <div class="measure">
+          <dt>Roasted</dt>
+          <dd>November 19</dd>
+        </div>
+        <div class="measure">
+          <dt>Bag size</dt>
+          <dd>250 g</dd>
+        </div>
+      </dl>
+
+      <div class="purchase">
+        <div>
+          <p class="price">$19</p>
+          <p class="unit">One bag</p>
+        </div>
+        <button class="primary" id="add-to-bag" type="button" aria-haspopup="dialog"
+          aria-controls="shopping-bag">
+          <span id="purchase-label">Add to bag</span>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path id="purchase-mark" d="M10 4v12M4 10h12" stroke="currentColor"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <dialog class="drawer" id="shopping-bag" aria-labelledby="bag-title">
+    <div class="drawer-inner">
+      <form class="drawer-header" method="dialog">
+        <h2 id="bag-title">Your bag</h2>
+        <button class="close" type="submit" aria-label="Close bag" autofocus>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="m5 5 10 10M15 5 5 15" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round"/>
+          </svg>
+        </button>
+      </form>
+
+      <p class="empty" id="empty-bag" role="status">Your bag is empty.</p>
+
+      <article class="bag-line" id="bag-line" hidden>
+        <svg class="bag-thumb" viewBox="175 64 396 492" aria-hidden="true">
+          <use href="#coffee-pouch"/>
+        </svg>
+        <div>
+          <h3>Alto Carmo</h3>
+          <p>1 bag (250 g)</p>
+          <button class="remove" id="remove-bag" type="button">Remove</button>
+        </div>
+        <span class="item-price">$19</span>
+      </article>
+
+      <form class="drawer-footer" method="dialog">
+        <div class="subtotal" id="bag-subtotal" hidden>
+          <span>Subtotal</span>
+          <strong>$19</strong>
+        </div>
+        <button class="primary" id="back-to-product" type="submit">Back to Alto Carmo</button>
+      </form>
+    </div>
+  </dialog>
+
+  <script>
+    const storageKey = "cinder-supply:alto-carmo";
+    const drawer = document.getElementById("shopping-bag");
+    const bagButton = document.getElementById("open-bag");
+    const purchaseButton = document.getElementById("add-to-bag");
+    const purchaseLabel = document.getElementById("purchase-label");
+    const purchaseMark = document.getElementById("purchase-mark");
+    const bagCount = document.getElementById("bag-count");
+    const bagLine = document.getElementById("bag-line");
+    const emptyBag = document.getElementById("empty-bag");
+    const subtotal = document.getElementById("bag-subtotal");
+    const backButton = document.getElementById("back-to-product");
+
+    let containsBag = false;
+    let bagOpener;
+
+    try {
+      containsBag = localStorage.getItem(storageKey) === "1";
+    } catch {
+      // Use the current page state when browser storage is unavailable.
+    }
+
+    function renderBag() {
+      bagCount.textContent = containsBag ? "1" : "0";
+      bagButton.setAttribute("aria-label", containsBag ? "Bag, 1 item" : "Bag, 0 items");
+      purchaseLabel.textContent = containsBag ? "View bag" : "Add to bag";
+      purchaseMark.setAttribute("d", containsBag ? "m4 10 4 4 8-8" : "M10 4v12M4 10h12");
+      bagLine.hidden = !containsBag;
+      subtotal.hidden = !containsBag;
+      emptyBag.hidden = containsBag;
+    }
+
+    function updateBag(value) {
+      containsBag = value;
+      try {
+        localStorage.setItem(storageKey, value ? "1" : "0");
+      } catch {
+        // Keep the current page state.
+      }
+      renderBag();
+    }
+
+    function openBag(opener) {
+      bagOpener = opener;
+      drawer.showModal();
+    }
+
+    purchaseButton.addEventListener("click", () => {
+      if (!containsBag) updateBag(true);
+      openBag(purchaseButton);
+    });
+
+    bagButton.addEventListener("click", () => openBag(bagButton));
+
+    document.getElementById("remove-bag").addEventListener("click", () => {
+      updateBag(false);
+      backButton.focus();
+    });
+
+    drawer.addEventListener("click", (event) => {
+      if (event.target === drawer) drawer.close();
+    });
+
+    drawer.addEventListener("close", () => bagOpener?.focus());
+    renderBag();
+  </script>
+</body>
+</html>

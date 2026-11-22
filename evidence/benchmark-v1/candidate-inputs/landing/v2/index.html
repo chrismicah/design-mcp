@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f3ebe0">
+  <meta name="description" content="Alto Carmo from Cinder Supply. A 250 g bag of small-batch coffee with tasting notes of cacao and plum.">
+  <title>Alto Carmo | Cinder Supply</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..650&amp;family=Instrument+Sans:wght@400..700&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f3ebe0;
+      --ink: #2a1610;
+      --muted: #664e43;
+      --plum: #6b2148;
+      --bronze: #9a673b;
+      --gold: #d7aa69;
+      --rule: #cdbeb0;
+      --display: "Fraunces", Georgia, serif;
+      --interface: "Instrument Sans", sans-serif;
+      --gutter: clamp(22px, 5vw, 80px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--interface); }
+    html:has(.bag-panel[open]) { overflow: hidden; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { color: inherit; font: inherit; cursor: pointer; }
+    a { color: inherit; text-decoration: none; }
+
+    :focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 2px;
+      box-shadow: 0 0 0 2px var(--paper);
+    }
+
+    .shell {
+      width: min(1320px, calc(100% - var(--gutter) - var(--gutter)));
+      margin-inline: auto;
+    }
+
+    .site-header { border-bottom: 1px solid var(--rule); }
+    .header-inner {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .wordmark {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      font: 600 clamp(23px, 2.1vw, 29px)/1 var(--display);
+      letter-spacing: -.055em;
+      white-space: nowrap;
+    }
+
+    .wordmark svg { width: 27px; height: 29px; color: var(--plum); flex: none; }
+    .bag-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 0 10px 0 13px;
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      background: transparent;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .bag-toggle:hover, .icon-button:hover, .step:hover { background: #e9ded1; }
+    .bag-toggle svg { width: 17px; height: 17px; }
+    .bag-count {
+      display: grid;
+      place-items: center;
+      min-width: 22px;
+      min-height: 22px;
+      padding-inline: 4px;
+      border-radius: 999px;
+      background: #e9d9df;
+      color: var(--plum);
+      font-size: 12px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .launch {
+      display: grid;
+      grid-template-columns: minmax(0, 1.57fr) minmax(0, 1fr);
+      align-items: center;
+      gap: clamp(36px, 6vw, 92px);
+      padding-block: clamp(22px, 3.05vw, 56px) clamp(44px, 6vw, 88px);
+    }
+
+    .portrait {
+      position: relative;
+      margin: 0;
+      aspect-ratio: 780 / 710;
+      background: var(--bronze);
+      isolation: isolate;
+    }
+
+    .portrait::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgb(42 22 16 / 20%);
+      pointer-events: none;
+    }
+
+    .portrait > svg { display: block; width: 100%; height: 100%; }
+    .pack-display { font-family: var(--display); }
+    .pack-type { font-family: var(--interface); }
+
+    .product { max-width: 470px; }
+    .product-kind { margin: 0 0 15px; color: var(--muted); font-size: 16px; font-weight: 500; }
+    h1 {
+      margin: 0 0 32px -.035em;
+      font: 600 clamp(72px, 7.5vw, 113px)/.87 var(--display);
+      letter-spacing: -.066em;
+    }
+
+    h1 span { display: block; }
+    .facts { margin: 0 0 26px; border-top: 1px solid var(--rule); }
+    .facts > div {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      align-items: baseline;
+      gap: 16px;
+      padding-block: 13px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .facts dt { color: var(--muted); font-size: 15px; }
+    .facts dd { margin: 0; text-align: right; font-size: 17px; font-weight: 600; }
+    .purchase-button {
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      width: 100%;
+      min-height: 60px;
+      padding: 0;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      background: var(--plum);
+      color: #fff5e9;
+      font-size: 17px;
+      font-weight: 650;
+      text-align: left;
+    }
+
+    .purchase-button:hover { background: #551939; }
+    .purchase-button span { display: grid; place-items: center; padding: 10px 20px; }
+    .purchase-button .price {
+      min-width: 83px;
+      border-left: 1px solid rgb(255 245 233 / 32%);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .bag-panel {
+      position: fixed;
+      inset: 0 0 0 auto;
+      width: min(100%, 456px);
+      height: 100%;
+      height: 100dvh;
+      max-width: none;
+      max-height: none;
+      margin: 0;
+      padding: 0;
+      overflow: auto;
+      overscroll-behavior: contain;
+      border: 0;
+      background: var(--paper);
+      color: var(--ink);
+      box-shadow: -14px 0 58px rgb(27 11 13 / 19%);
+    }
+
+    .bag-panel::backdrop { background: rgb(29 15 17 / 54%); }
+    .bag-panel[open] { animation: drawer-in 240ms ease-out both; }
+    @keyframes drawer-in { from { transform: translateX(100%); } }
+    @keyframes sheet-in { from { transform: translateY(100%); } }
+
+    .bag-layout {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      padding: 30px;
+    }
+
+    .bag-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .bag-header h2 {
+      margin: 0;
+      font: 600 43px/.99 var(--display);
+      letter-spacing: -.055em;
+    }
+
+    .icon-button, .step {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+    }
+
+    .icon-button { border: 1px solid var(--rule); border-radius: 50%; }
+    .icon-button svg { width: 18px; height: 18px; }
+
+    .bag-item {
+      display: grid;
+      grid-template-columns: 76px minmax(0, 1fr);
+      align-items: start;
+      gap: 16px;
+      padding-block: 24px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .bag-thumb { display: block; width: 100%; height: 97px; background: var(--gold); }
+    .bag-item-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+    .bag-item-heading h3 {
+      margin: 0;
+      font: 600 25px/1.05 var(--display);
+      letter-spacing: -.04em;
+    }
+
+    .bag-item-price, .subtotal { font-weight: 650; font-variant-numeric: tabular-nums; }
+    .bag-size { margin: 5px 0 9px; color: var(--muted); font-size: 14px; }
+    .item-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; }
+    .quantity {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+    }
+
+    .quantity span { min-width: 23px; text-align: center; font-size: 14px; font-variant-numeric: tabular-nums; }
+    .step { font-size: 20px; line-height: 1; }
+    .remove {
+      min-height: 44px;
+      padding: 0 4px;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font-size: 14px;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .empty { margin: 24px 0; color: var(--muted); }
+    .bag-footer { margin-top: auto; padding-top: 26px; }
+    .subtotal { display: flex; justify-content: space-between; gap: 16px; margin: 0 0 16px; }
+    .back-to-coffee {
+      width: 100%;
+      min-height: 52px;
+      padding: 10px 16px;
+      border: 1px solid var(--plum);
+      border-radius: 3px;
+      background: transparent;
+      color: var(--plum);
+      font-weight: 650;
+    }
+
+    .back-to-coffee:hover { background: #e9d9df; }
+    [hidden] { display: none !important; }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 760px) {
+      .header-inner { min-height: 63px; }
+      .wordmark svg { width: 24px; height: 26px; }
+      .launch {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 25px;
+        max-width: 576px;
+        padding-block: 16px calc(104px + env(safe-area-inset-bottom));
+      }
+
+      .portrait { aspect-ratio: 1 / 1.035; }
+      .product { max-width: none; }
+      .product-kind { margin-bottom: 9px; font-size: 14px; }
+      h1 { margin-bottom: 22px; font-size: clamp(43px, 15.35vw, 80px); line-height: .97; }
+      h1 span { display: inline; }
+      .facts { margin-bottom: 0; }
+      .facts > div { padding-block: 11px; }
+      .facts dd { font-size: 16px; }
+
+      .purchase-dock {
+        position: fixed;
+        z-index: 2;
+        inset: auto 0 0;
+        padding: 10px var(--gutter) calc(10px + env(safe-area-inset-bottom));
+        border-top: 1px solid var(--rule);
+        background: var(--paper);
+      }
+
+      .purchase-button { max-width: 576px; min-height: 54px; margin-inline: auto; }
+      .purchase-button span { padding-inline: 16px; }
+      .purchase-button .price { min-width: 74px; }
+    }
+
+    @media (max-width: 540px) {
+      .bag-panel {
+        inset: auto 0 0;
+        width: 100%;
+        height: auto;
+        max-height: 89vh;
+        max-height: 89dvh;
+        border-radius: 11px 11px 0 0;
+      }
+
+      .bag-panel[open] { animation-name: sheet-in; }
+      .bag-layout { min-height: min(395px, 89dvh); padding: 22px 22px max(22px, env(safe-area-inset-bottom)); }
+      .bag-header h2 { font-size: 38px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .bag-panel[open] { animation: none; }
+    }
+  </style>
+</head>
+<body id="top">
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="wordmark" href="#top">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><use href="#ember-mark"/></svg>
+        <span>Cinder Supply</span>
+      </a>
+      <button class="bag-toggle" id="open-bag" type="button" aria-label="Bag, 0 items" aria-haspopup="dialog" aria-controls="bag-panel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 8h14l1.2 12H3.8L5 8Z M9 9V6a3 3 0 0 1 6 0v3"/>
+        </svg>
+        <span>Bag</span>
+        <span id="bag-count" class="bag-count" aria-hidden="true">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="shell launch">
+    <figure class="portrait">
+      <svg viewBox="0 0 780 710" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="portrait-title">
+        <title id="portrait-title">Alto Carmo coffee in a deep plum pouch, beside cacao beans and a sliced plum.</title>
+        <defs>
+          <symbol id="ember-mark" viewBox="0 0 32 32">
+            <path d="M16 2.5c3 6 9.7 9.6 9.7 16.2a9.7 9.7 0 0 1-19.4 0C6.3 12.1 13 8.5 16 2.5Z" fill="none" stroke="currentColor" stroke-width="1.65"/>
+            <path d="M16 12.2c1.8 3.2 5.1 5.5 5.1 9a5.1 5.1 0 0 1-10.2 0c0-3.5 3.3-5.8 5.1-9Z" fill="currentColor"/>
+          </symbol>
+
+          <radialGradient id="wall" cx="26%" cy="25%" r="88%">
+            <stop stop-color="#d7aa69"/>
+            <stop offset=".38" stop-color="#a57247"/>
+            <stop offset=".72" stop-color="#69402d"/>
+            <stop offset="1" stop-color="#3e241f"/>
+          </radialGradient>
+          <linearGradient id="sun" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+            <stop stop-color="#ffda9b" stop-opacity=".45"/>
+            <stop offset="1" stop-color="#ffda9b" stop-opacity="0"/>
+          </linearGradient>
+          <radialGradient id="ground" cx="32%" cy="44%" r="74%">
+            <stop stop-color="#bb8956"/>
+            <stop offset=".62" stop-color="#8b593c"/>
+            <stop offset="1" stop-color="#573026"/>
+          </radialGradient>
+          <linearGradient id="ground-fade" x1="0" y1="0" x2="0" y2="1">
+            <stop stop-color="white" stop-opacity="0"/>
+            <stop offset=".46" stop-color="white"/>
+          </linearGradient>
+          <mask id="ground-mask" maskUnits="userSpaceOnUse" x="0" y="417" width="780" height="293">
+            <rect x="0" y="417" width="780" height="293" fill="url(#ground-fade)"/>
+          </mask>
+
+          <linearGradient id="face" x1="0" y1=".16" x2="1" y2=".9">
+            <stop stop-color="#97627b"/>
+            <stop offset=".18" stop-color="#75475f"/>
+            <stop offset=".48" stop-color="#563047"/>
+            <stop offset=".73" stop-color="#4c2a3e"/>
+            <stop offset="1" stop-color="#30202d"/>
+          </linearGradient>
+          <linearGradient id="gusset" x1="0" y1=".18" x2="1" y2=".65">
+            <stop stop-color="#784b61"/>
+            <stop offset=".52" stop-color="#45273c"/>
+            <stop offset="1" stop-color="#271925"/>
+          </linearGradient>
+          <linearGradient id="fold" x1="0" y1="0" x2="1" y2="0">
+            <stop stop-color="#f2b8ac" stop-opacity=".68"/>
+            <stop offset=".48" stop-color="#ca8f9d" stop-opacity=".12"/>
+            <stop offset="1" stop-color="#ca8f9d" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="base-foil" x1="0" y1="0" x2="0" y2="1">
+            <stop stop-color="#241320" stop-opacity="0"/>
+            <stop offset="1" stop-color="#20121a" stop-opacity=".8"/>
+          </linearGradient>
+          <linearGradient id="stock" x1="0" y1="0" x2=".92" y2="1">
+            <stop stop-color="#fae6bb"/>
+            <stop offset=".56" stop-color="#edd2a3"/>
+            <stop offset="1" stop-color="#dcb888"/>
+          </linearGradient>
+
+          <radialGradient id="plum-skin" cx="31%" cy="24%" r="79%">
+            <stop stop-color="#a77991"/>
+            <stop offset=".34" stop-color="#76516c"/>
+            <stop offset=".67" stop-color="#532840"/>
+            <stop offset="1" stop-color="#301b29"/>
+          </radialGradient>
+          <radialGradient id="plum-cut" cx="43%" cy="52%" r="63%">
+            <stop stop-color="#9d4639"/>
+            <stop offset=".39" stop-color="#d68150"/>
+            <stop offset=".69" stop-color="#e6a46a"/>
+            <stop offset=".88" stop-color="#c3694c"/>
+            <stop offset="1" stop-color="#9c4149"/>
+          </radialGradient>
+          <linearGradient id="cacao-shell" x1="0" y1="0" x2=".5" y2="1">
+            <stop stop-color="#c49061"/>
+            <stop offset=".42" stop-color="#946040"/>
+            <stop offset="1" stop-color="#4b2a24"/>
+          </linearGradient>
+
+          <filter id="soft" x="-60%" y="-70%" width="220%" height="240%" color-interpolation-filters="sRGB">
+            <feGaussianBlur stdDeviation="19"/>
+          </filter>
+          <filter id="contact" x="-50%" y="-160%" width="200%" height="420%">
+            <feGaussianBlur stdDeviation="6"/>
+          </filter>
+          <filter id="stock-shadow" x="-12%" y="-12%" width="124%" height="124%">
+            <feGaussianBlur stdDeviation="2.2"/>
+          </filter>
+          <filter id="grain" x="0" y="0" width="100%" height="100%">
+            <feTurbulence type="fractalNoise" baseFrequency=".71" numOctaves="3" seed="24" stitchTiles="stitch"/>
+            <feColorMatrix type="saturate" values="0"/>
+          </filter>
+
+          <path id="front-face" d="M241 103Q249 98 265 98L501 77Q515 76 521 87L525 116Q528 133 524 160C522 189 530 218 535 254L552 538C555 563 549 580 531 592Q512 605 467 605L271 615Q232 615 209 602Q193 591 197 561L207 313Q210 241 222 186Q227 163 230 142L233 115Q234 108 241 103Z"/>
+          <clipPath id="face-clip"><use href="#front-face"/></clipPath>
+          <clipPath id="engraving-window"><rect x="19" y="169" width="188" height="58"/></clipPath>
+
+          <g id="coffee-pouch">
+            <path d="M495 81Q517 74 535 88L551 104Q561 114 558 131L555 157Q571 189 576 250L595 517Q601 553 587 573Q577 589 540 599L498 605L478 581L483 163Z" fill="url(#gusset)" stroke="#452739" stroke-width="1.2"/>
+            <path d="M522 86Q537 90 547 109L549 137L544 161Q561 215 562 276L578 526Q580 556 570 573L542 591Q554 572 551 539L534 256Q530 208 523 178L525 129Z" fill="#8f5873" opacity=".25"/>
+            <path d="M557 155Q550 182 557 232L563 405L575 543Q577 563 562 581Q577 574 586 554L590 533L573 270Q571 202 557 155Z" fill="#241723" opacity=".4"/>
+            <path d="M553 570Q572 566 589 551Q586 572 574 582Q557 594 530 599Z" fill="#281923"/>
+            <path d="M549 164Q557 188 558 225M571 471l7 70q2 16-10 31M527 93q17 5 24 19" fill="none" stroke="#b47f91" stroke-opacity=".44" stroke-width="1.3"/>
+
+            <use href="#front-face" fill="url(#face)"/>
+            <g clip-path="url(#face-clip)">
+              <path d="M233 138Q264 162 259 195C250 231 238 270 240 347L227 510Q225 581 254 620L198 621L190 180Z" fill="url(#fold)" opacity=".68"/>
+              <path d="M237 169Q248 197 232 251Q220 306 223 407L213 533Q207 575 225 598Q208 587 205 563L208 386Q211 261 226 203Z" fill="#31202d" opacity=".30"/>
+              <path d="M502 154Q503 199 516 243Q522 299 518 379L534 545Q536 574 514 604L558 598L566 221L525 146Z" fill="#2b1a29" opacity=".27"/>
+              <path d="M241 170Q277 177 300 171L489 153Q511 151 522 144" fill="none" stroke="#271322" stroke-opacity=".41" stroke-width="3"/>
+              <path d="M237 167Q279 173 301 168L487 150Q507 149 525 141" fill="none" stroke="#c593a3" stroke-opacity=".51" stroke-width="1.4"/>
+              <path d="M229 115L526 87L528 133Q494 127 463 132L230 154Z" fill="#b98392" opacity=".16"/>
+              <path d="M234 115Q257 112 286 110L519 88M232 121Q264 117 285 117L522 94M232 127Q257 124 285 124L523 101M231 133Q257 128 285 130L524 107M230 139Q255 136 284 136L525 113" fill="none" stroke="#efbac1" stroke-opacity=".36" stroke-width="1.15"/>
+              <path d="M231 145Q271 138 304 139L484 121Q507 119 526 121" fill="none" stroke="#291424" stroke-opacity=".61" stroke-width="2"/>
+              <path d="M191 520Q240 561 297 568L473 552Q511 548 553 512V622H191Z" fill="url(#base-foil)"/>
+              <path d="M198 556Q212 579 249 583L304 584Q379 580 478 571Q529 566 552 540" fill="none" stroke="#cb93a2" stroke-opacity=".29" stroke-width="1.5"/>
+              <path d="M202 577Q220 595 254 598Q354 599 461 588Q516 584 543 565" fill="none" stroke="#1f1020" stroke-opacity=".54" stroke-width="2.1"/>
+              <path d="M224 247Q216 300 215 344M208 492q-3 55 4 74M518 232q8 48 8 76M538 478q7 58 1 74" fill="none" stroke="#edb3ad" stroke-linecap="round" stroke-opacity=".30" stroke-width="1.6"/>
+
+              <g transform="matrix(.994 -.078 .065 1 251 220)">
+                <rect x="-1" y="3" width="229" height="278" rx="3" fill="#241522" opacity=".55" filter="url(#stock-shadow)"/>
+                <rect width="226" height="276" rx="1.5" fill="url(#stock)" stroke="#f4d8ad" stroke-width=".8"/>
+                <use href="#ember-mark" x="18" y="14" width="21" height="23" color="#652d46"/>
+                <text class="pack-type" x="46" y="31.5" fill="#37211e" font-size="17" font-weight="700" letter-spacing="-.55">Cinder Supply</text>
+                <path d="M19 48H207M19 236H207" stroke="#704a3c" stroke-width=".7" opacity=".72"/>
+                <g class="pack-display" fill="#39221f" font-size="51" font-weight="600" letter-spacing="-3.15">
+                  <text x="17" y="105">Alto</text>
+                  <text x="17" y="153">Carmo</text>
+                </g>
+                <g clip-path="url(#engraving-window)" fill="none" stroke="#80415a" stroke-width=".83">
+                  <path d="M12 204C43 203 53 175 79 177C108 179 104 216 135 212C156 210 175 174 213 169"/>
+                  <path d="M12 209C47 208 57 181 79 183C103 185 104 221 135 217C158 214 178 180 213 175"/>
+                  <path d="M12 214C48 213 60 187 79 189C99 191 103 225 135 222C159 220 181 186 213 181"/>
+                  <path d="M12 219C50 218 64 193 79 195C95 196 103 231 135 227C163 224 184 192 213 187"/>
+                  <path d="M12 224C53 223 66 199 79 201C92 203 103 236 135 233C165 230 187 198 213 193"/>
+                  <path d="M12 229C55 228 70 205 79 207C89 209 104 241 135 238C171 234 190 204 213 199"/>
+                  <path d="M12 234C58 233 72 211 79 213C86 215 105 247 135 243C174 239 193 210 213 205"/>
+                </g>
+                <g class="pack-type" fill="#492d2a" font-size="13" font-weight="600">
+                  <text x="19" y="257">Cacao &amp; plum</text>
+                  <text x="207" y="257" text-anchor="end">250 g</text>
+                </g>
+              </g>
+            </g>
+            <path d="M241 103Q235 107 233 119L230 145Q226 181 218 207Q210 252 208 306L197 559Q194 583 205 595" fill="none" stroke="#edbbac" stroke-opacity=".42" stroke-width="1.2"/>
+            <path d="M267 615q99-4 202-10q45-1 63-14" fill="none" stroke="#211421" stroke-opacity=".6" stroke-width="1.4"/>
+          </g>
+
+          <g id="cacao-bean">
+            <path d="M-27 1C-23-8-14-12-4-12C6-13 20-8 26-2C24 6 17 11 6 12C-8 13-21 10-27 1Z" fill="url(#cacao-shell)" stroke="#543025" stroke-width=".85"/>
+            <path d="M-24 0Q-10-10 1-7Q13-5 24-2M-21 5Q-9 6-2 3Q7 0 20 2" fill="none" stroke="#dfaa72" stroke-opacity=".5" stroke-width="1.2"/>
+            <path d="M-23 1C-12-4-9 0-2-1Q9-4 23-1" fill="none" stroke="#573024" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M-12-8l4 4m6-6 3 3m9 0 2 3m-21 10 4 3m9-5 5 3" fill="none" stroke="#633a2c" stroke-opacity=".6" stroke-width=".85"/>
+          </g>
+        </defs>
+
+        <rect width="780" height="710" fill="url(#wall)"/>
+        <path d="M-28-36H468L176 505H-28Z" fill="url(#sun)" opacity=".54" filter="url(#soft)"/>
+        <rect x="0" y="417" width="780" height="293" fill="url(#ground)" mask="url(#ground-mask)"/>
+        <path d="M398 525C431 442 517 463 594 490L780 553V648L463 606Z" fill="#352022" opacity=".29" filter="url(#soft)"/>
+        <ellipse cx="415" cy="602" rx="231" ry="40" fill="#301a21" opacity=".61" filter="url(#soft)"/>
+        <ellipse cx="388" cy="600" rx="167" ry="21" fill="#2a1720" opacity=".83" filter="url(#contact)" transform="rotate(-4 388 600)"/>
+        <ellipse cx="616" cy="633" rx="104" ry="20" fill="#3a2024" opacity=".55" filter="url(#contact)"/>
+
+        <g transform="translate(631 564) rotate(13)">
+          <path d="M-4-39C13-44 31-36 40-18C51 5 43 28 27 39C9 51-14 44-29 32C-46 18-47-6-35-25C-28-35-15-41-4-39Z" fill="url(#plum-skin)" stroke="#523047"/>
+          <path d="M-30-18Q-23-33-6-34M-31-10q-2 8 0 15" fill="none" stroke="#e1b2ba" stroke-opacity=".46" stroke-width="1.45" stroke-linecap="round"/>
+          <path d="M-2-35q12 8 17 21" fill="none" stroke="#4d2d42" stroke-opacity=".75" stroke-width="1.4"/>
+          <path d="M-7-34q5-5 13-1m-7 0q2-7 7-10" fill="none" stroke="#51312a" stroke-width="2" stroke-linecap="round"/>
+        </g>
+
+        <use href="#coffee-pouch"/>
+
+        <g transform="translate(630 617) rotate(-15)">
+          <path d="M-61-6C-60-27-44-44-19-48C8-54 35-43 51-26C68-10 64 12 51 28C35 48 12 52-10 49C-37 47-61 28-61-6Z" fill="#3c202b" transform="translate(2 7)"/>
+          <path d="M-61-6C-60-27-44-44-19-48C8-54 35-43 51-26C68-10 64 12 51 28C35 48 12 52-10 49C-37 47-61 28-61-6Z" fill="#774254" stroke="#442331" stroke-width="1.4"/>
+          <path d="M-56-6C-56-25-42-40-18-44C7-50 32-39 47-23C62-8 59 11 47 26C32 43 12 48-9 45C-34 42-56 25-56-6Z" fill="url(#plum-cut)" stroke="#db8c68" stroke-width="1"/>
+          <g fill="none" stroke="#f2c080" stroke-opacity=".56" stroke-width=".9">
+            <path d="M-12-27Q-7-14-12-8M-29-22Q-24-13-15-8M-42-9Q-27-9-19-4M-48 6Q-31 0-19 2M-33 18Q-25 9-15 9M-16 32Q-13 19-7 15M0 39Q-3 24 2 18M18 34Q14 24 10 16M35 22Q23 19 17 12M47 6Q29 11 20 5M43-12Q31-4 18-3M25-30Q23-18 14-10M6-36Q11-23 7-13"/>
+            <path d="M-44-25Q-28-42-8-42M29 34q15-8 20-20"/>
+          </g>
+          <path d="M-17 1Q-11-12 2-15Q15-16 19-6Q24 4 17 13Q5 23-9 17Q-20 13-17 1Z" fill="#a45a42" opacity=".68"/>
+          <path d="M-12 7Q-12-3-3-9Q7-16 13-7Q19 0 13 9Q5 18-5 15Q-10 14-12 7Z" fill="#6e3a2e" stroke="#c27d56" stroke-width="1.3"/>
+          <path d="M-8 5Q-6-3 3-8M-5 10Q2 6 8-3M1 13Q8 8 12 2" fill="none" stroke="#d19a68" stroke-width="1" stroke-linecap="round" opacity=".77"/>
+          <path d="M-54-13Q-51-27-36-36" fill="none" stroke="#f6c28b" stroke-opacity=".72" stroke-width="1.3" stroke-linecap="round"/>
+        </g>
+
+        <ellipse cx="162" cy="622" rx="56" ry="15" fill="#412621" opacity=".56" filter="url(#contact)"/>
+        <use href="#cacao-bean" transform="translate(126 599) rotate(-53) scale(.63)"/>
+        <use href="#cacao-bean" transform="translate(181 598) rotate(25) scale(.75)"/>
+        <use href="#cacao-bean" transform="translate(151 623) rotate(-19) scale(.94)"/>
+        <path d="m174 628 9-6 10 4-2 6-10 3Z" fill="#8a5139" stroke="#5b3429" stroke-width=".7"/>
+        <path d="m183 622 10 4-9 2-5-2Z" fill="#c08b59"/>
+        <path d="m112 628 7-5 6 3-5 5Z" fill="#ab744c"/>
+        <rect width="780" height="710" fill="white" filter="url(#grain)" opacity=".3" style="mix-blend-mode:soft-light"/>
+      </svg>
+    </figure>
+
+    <section class="product" aria-labelledby="coffee-name">
+      <p class="product-kind">Small-batch coffee</p>
+      <h1 id="coffee-name">Alto <span>Carmo</span></h1>
+      <dl class="facts">
+        <div><dt>Tasting notes</dt><dd>Cacao and plum</dd></div>
+        <div><dt>Roasted</dt><dd>November 19</dd></div>
+        <div><dt>Bag size</dt><dd>250 g</dd></div>
+      </dl>
+      <div class="purchase-dock">
+        <button class="purchase-button" id="add-to-bag" type="button" aria-label="Add to bag, Alto Carmo, 250 g, $19" aria-haspopup="dialog" aria-controls="bag-panel">
+          <span>Add to bag</span>
+          <span class="price">$19</span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="bag-panel" id="bag-panel" aria-labelledby="bag-title">
+    <div class="bag-layout">
+      <header class="bag-header">
+        <h2 id="bag-title">Your bag</h2>
+        <button class="icon-button" type="button" aria-label="Close bag" data-close autofocus>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+            <path d="m6 6 12 12M18 6 6 18"/>
+          </svg>
+        </button>
+      </header>
+      <p class="sr-only" id="bag-status" role="status"></p>
+      <p class="empty" id="empty-bag">Your bag is empty.</p>
+      <article class="bag-item" id="bag-item" aria-labelledby="bag-item-name" hidden>
+        <svg class="bag-thumb" viewBox="158 58 470 575" aria-hidden="true">
+          <use href="#coffee-pouch"/>
+        </svg>
+        <div>
+          <div class="bag-item-heading">
+            <h3 id="bag-item-name">Alto Carmo</h3>
+            <span class="bag-item-price" id="item-price">$19</span>
+          </div>
+          <p class="bag-size">250 g</p>
+          <div class="item-actions">
+            <div class="quantity" role="group" aria-label="Quantity">
+              <button class="step" id="decrease" type="button" aria-label="Remove one bag of Alto Carmo">−</button>
+              <span id="quantity-value">1</span>
+              <button class="step" id="increase" type="button" aria-label="Add one bag of Alto Carmo">+</button>
+            </div>
+            <button class="remove" id="remove-item" type="button" aria-label="Remove Alto Carmo from your bag">Remove</button>
+          </div>
+        </div>
+      </article>
+      <div class="bag-footer">
+        <p class="subtotal" id="subtotal" hidden><span>Subtotal</span><span id="subtotal-price">$19</span></p>
+        <button class="back-to-coffee" id="back-to-coffee" type="button" data-close>Back to Alto Carmo</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    const bag = document.getElementById("bag-panel");
+    const openButton = document.getElementById("open-bag");
+    const addButton = document.getElementById("add-to-bag");
+    const backButton = document.getElementById("back-to-coffee");
+    const bagCount = document.getElementById("bag-count");
+    const bagStatus = document.getElementById("bag-status");
+    const bagItem = document.getElementById("bag-item");
+    const emptyBag = document.getElementById("empty-bag");
+    const quantityValue = document.getElementById("quantity-value");
+    const itemPrice = document.getElementById("item-price");
+    const subtotal = document.getElementById("subtotal");
+    const subtotalPrice = document.getElementById("subtotal-price");
+    const storageKey = "cinder-supply.alto-carmo.quantity";
+    const unitPrice = 19;
+    const numberFormat = new Intl.NumberFormat("en", { maximumFractionDigits: 0 });
+
+    let quantity = 0;
+    let returnFocus = null;
+    let pressedBackdrop = false;
+
+    try {
+      const savedQuantity = Number(localStorage.getItem(storageKey));
+      if (Number.isSafeInteger(savedQuantity) && savedQuantity >= 0) {
+        quantity = savedQuantity;
+      }
+    } catch {
+      // The bag also works in memory when browser storage is unavailable.
+    }
+
+    function renderBag() {
+      const isEmpty = quantity === 0;
+      const total = "$" + numberFormat.format(unitPrice * quantity);
+
+      bagCount.textContent = quantity;
+      openButton.setAttribute("aria-label", `Bag, ${quantity} ${quantity === 1 ? "item" : "items"}`);
+      quantityValue.textContent = quantity;
+      itemPrice.textContent = total;
+      subtotalPrice.textContent = total;
+      bagItem.hidden = isEmpty;
+      subtotal.hidden = isEmpty;
+      emptyBag.hidden = !isEmpty;
+    }
+
+    function setQuantity(nextQuantity) {
+      quantity = nextQuantity;
+      try {
+        localStorage.setItem(storageKey, String(quantity));
+      } catch {
+        // Retain the current quantity in memory.
+      }
+      renderBag();
+    }
+
+    function showBag(trigger, announcement = "") {
+      returnFocus = trigger;
+      bagStatus.textContent = "";
+      bag.showModal();
+      if (announcement) {
+        requestAnimationFrame(() => {
+          if (bag.open) bagStatus.textContent = announcement;
+        });
+      }
+    }
+
+    function updateFromBag(nextQuantity) {
+      setQuantity(nextQuantity);
+      if (quantity === 0) {
+        bagStatus.textContent = "Your bag is empty.";
+        backButton.focus();
+      } else {
+        bagStatus.textContent = `${quantity} ${quantity === 1 ? "bag" : "bags"} of Alto Carmo in your bag.`;
+      }
+    }
+
+    openButton.addEventListener("click", () => showBag(openButton));
+    addButton.addEventListener("click", () => {
+      setQuantity(quantity + 1);
+      showBag(addButton, "One bag of Alto Carmo added.");
+    });
+
+    document.getElementById("decrease").addEventListener("click", () => updateFromBag(quantity - 1));
+    document.getElementById("increase").addEventListener("click", () => updateFromBag(quantity + 1));
+    document.getElementById("remove-item").addEventListener("click", () => updateFromBag(0));
+
+    bag.querySelectorAll("[data-close]").forEach(button => {
+      button.addEventListener("click", () => bag.close());
+    });
+
+    function isBackdrop(event) {
+      if (event.target !== bag) return false;
+      const { left, right, top, bottom } = bag.getBoundingClientRect();
+      return event.clientX < left || event.clientX > right || event.clientY < top || event.clientY > bottom;
+    }
+
+    bag.addEventListener("pointerdown", event => {
+      pressedBackdrop = isBackdrop(event);
+    });
+
+    bag.addEventListener("click", event => {
+      if (pressedBackdrop && isBackdrop(event)) bag.close();
+      pressedBackdrop = false;
+    });
+
+    bag.addEventListener("close", () => {
+      pressedBackdrop = false;
+      returnFocus?.focus({ preventScroll: true });
+    });
+
+    renderBag();
+  </script>
+</body>
+</html>

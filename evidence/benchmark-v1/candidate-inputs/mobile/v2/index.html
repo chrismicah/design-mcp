@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f7f5ef">
+  <title>Spur rail ticket</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@700&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #111111;
+      --paper: #f7f5ef;
+      --signal: #ffcc00;
+      --graphite: #59574f;
+      --rule: #d6d2c6;
+      --display: "Archivo Narrow", "Liberation Sans Narrow", sans-serif;
+      --body: "Atkinson Hyperlegible", Verdana, sans-serif;
+      --gutter: clamp(1rem, 5vw, 1.5rem);
+      --column: 27rem;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 400 1.0625rem/1.4 var(--body);
+    }
+
+    button {
+      font: inherit;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    button:focus-visible {
+      position: relative;
+      z-index: 1;
+      outline: 2px solid var(--ink);
+      outline-offset: 2px;
+      box-shadow: 0 0 0 2px var(--paper);
+    }
+
+    .screen {
+      width: min(var(--column), calc(100% - var(--gutter) - var(--gutter)));
+      margin-inline: auto;
+      padding-block-start: calc(env(safe-area-inset-top, 0px) + clamp(1.5rem, 4.5vw, 4rem));
+      padding-block-end: calc(env(safe-area-inset-bottom, 0px) + 2rem);
+    }
+
+    .masthead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      font: 700 2.125rem/1 var(--display);
+      letter-spacing: -0.025em;
+    }
+
+    .brand-mark {
+      flex: none;
+      display: block;
+      border-radius: 3px;
+      background: var(--ink);
+      color: var(--signal);
+    }
+
+    .service {
+      margin: 0;
+      color: var(--graphite);
+      font-size: 1rem;
+    }
+
+    .sign {
+      overflow: hidden;
+      border-radius: 4px;
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .sign-content {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: clamp(0.5rem, 3.6vw, 1rem);
+      padding: 1.75rem clamp(1rem, 5vw, 1.75rem) 1.375rem;
+    }
+
+    .departure-label {
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .departure-heading {
+      margin: 0.4rem 0 0;
+    }
+
+    .departure-time {
+      display: block;
+      font: 700 clamp(3.5rem, 19vw, 5.5rem)/0.98 var(--display);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.035em;
+    }
+
+    .destination {
+      display: block;
+      margin-top: 0.375rem;
+      font: 700 clamp(2rem, 8.25vw, 2.5rem)/1.05 var(--display);
+    }
+
+    .platform {
+      display: grid;
+      justify-items: center;
+      gap: 0.125rem;
+      min-width: clamp(4.75rem, 23vw, 6.125rem);
+      padding: 0.625rem 0.5rem 0.75rem;
+      border-radius: 2px;
+      background: var(--signal);
+      color: var(--ink);
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .platform-number {
+      font: 700 clamp(3.25rem, 16vw, 4.25rem)/0.92 var(--display);
+    }
+
+    .rail-lines {
+      display: block;
+      width: 100%;
+      height: 3rem;
+      opacity: 0.25;
+    }
+
+    .ticket-section {
+      margin-top: 1rem;
+    }
+
+    .action {
+      width: 100%;
+      min-height: 3.875rem;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--ink);
+      border-radius: 3px;
+      background: var(--signal);
+      color: var(--ink);
+      font-size: 1.1875rem;
+      font-weight: 700;
+    }
+
+    .ticket-toggle {
+      display: grid;
+      grid-template-columns: 1.5rem minmax(0, 1fr) 1.5rem;
+      align-items: center;
+      gap: 0.75rem;
+      text-align: left;
+    }
+
+    .action:active {
+      background: color-mix(in srgb, var(--signal) 90%, var(--ink));
+    }
+
+    .ticket-toggle[aria-expanded="true"] .expand-stroke {
+      visibility: hidden;
+    }
+
+    .ticket-panel {
+      margin-top: 0.75rem;
+      padding: 0.875rem 1.125rem 1rem;
+      border: 1px solid var(--ink);
+      border-inline-start: 0.375rem solid var(--signal);
+      border-radius: 3px;
+    }
+
+    .ticket-panel:not([hidden]) {
+      animation: reveal 280ms ease-out both;
+    }
+
+    @keyframes reveal {
+      from { opacity: 0; transform: translateY(0.5rem); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .ticket-label {
+      margin: 0;
+      color: var(--graphite);
+      font-weight: 700;
+    }
+
+    .ticket-number {
+      margin: 0.125rem 0 0;
+      font-size: clamp(2rem, 9vw, 2.75rem);
+      font-weight: 700;
+      line-height: 1.15;
+      overflow-wrap: anywhere;
+    }
+
+    .options {
+      margin-top: 1.75rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .option {
+      display: grid;
+      grid-template-columns: 1.5rem minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 0.75rem;
+      width: 100%;
+      min-height: 4.25rem;
+      padding: 0.625rem 1rem;
+      border: 0;
+      border-bottom: 1px solid var(--rule);
+      background: transparent;
+      text-align: left;
+    }
+
+    .option-label {
+      font-weight: 700;
+    }
+
+    .option-end {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+    }
+
+    .option-time {
+      font: 700 1.625rem/1 var(--display);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .pass-state {
+      padding: 0.25rem 0.5rem;
+      border: 1px solid transparent;
+      border-radius: 2px;
+      color: var(--graphite);
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
+    }
+
+    .option[aria-pressed="true"] .pass-state {
+      border-color: var(--ink);
+      background: var(--signal);
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .option:active {
+      background: rgb(17 17 17 / 6%);
+    }
+
+    .icon {
+      display: block;
+      flex: none;
+    }
+
+    .preview {
+      width: min(var(--column), calc(100% - 2rem));
+      max-height: calc(100% - 2rem);
+      padding: 0;
+      border: 1px solid var(--ink);
+      border-radius: 4px;
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    .preview::backdrop {
+      background: rgb(17 17 17 / 55%);
+    }
+
+    .preview-inner {
+      padding: 1.5rem;
+    }
+
+    .preview-heading {
+      margin: 0 0 0.375rem;
+      font-size: 1.125rem;
+    }
+
+    .preview form {
+      margin-top: 1.5rem;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 32rem) {
+      .preview {
+        position: fixed;
+        inset: auto 0 0;
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        border-width: 1px 0 0;
+        border-radius: 8px 8px 0 0;
+      }
+
+      .preview-inner {
+        padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+      }
+    }
+
+    @media (hover: hover) {
+      .option:hover {
+        background: rgb(17 17 17 / 4%);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ticket-panel:not([hidden]) {
+        animation: none;
+      }
+    }
+
+    @media (forced-colors: active) {
+      .sign, .platform {
+        border: 1px solid CanvasText;
+      }
+
+      .option[aria-pressed="true"] .pass-state {
+        border-color: ButtonText;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="screen">
+    <header class="masthead">
+      <div class="brand">
+        <svg class="brand-mark" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+          <path d="M8 25h20M8 19h7c3 0 5-1 7-3l6-6M15 25c4 0 7-1 10-4l3-3"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="square" />
+        </svg>
+        <span>Spur</span>
+      </div>
+      <p class="service">Commuter rail</p>
+    </header>
+
+    <section class="sign" aria-labelledby="departure-label">
+      <div class="sign-content">
+        <div>
+          <p class="departure-label" id="departure-label">Departure</p>
+          <h1 class="departure-heading">
+            <time class="departure-time" datetime="08:42">08:42</time>
+            <span class="destination">Union</span>
+          </h1>
+        </div>
+        <div class="platform">
+          <span>Platform</span>
+          <strong class="platform-number">3</strong>
+        </div>
+      </div>
+      <svg class="rail-lines" viewBox="0 0 432 48" preserveAspectRatio="none" fill="none" aria-hidden="true">
+        <path d="M0 29h432M0 36h432M163 29h76c33 0 54-21 87-21h106M163 36h76c33 0 54-21 87-21h106"
+              stroke="currentColor" stroke-width="1.5" vector-effect="non-scaling-stroke" />
+      </svg>
+    </section>
+
+    <section class="ticket-section" aria-label="Ticket">
+      <button class="action ticket-toggle" id="ticket-toggle" type="button"
+              aria-expanded="false" aria-controls="ticket-panel">
+        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M3 6h18v3.5a2.5 2.5 0 0 0 0 5V18H3v-3.5a2.5 2.5 0 0 0 0-5V6Z"
+                stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" />
+          <path d="M15 8.5v1m0 2v1m0 2v1"
+                stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+        </svg>
+        <span id="ticket-action">Show ticket</span>
+        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6 12h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+          <path class="expand-stroke" d="M12 6v12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+        </svg>
+      </button>
+      <div class="ticket-panel" id="ticket-panel" hidden>
+        <p class="ticket-label">Ticket ID</p>
+        <p class="ticket-number" id="ticket-number">TKT-0837</p>
+      </div>
+      <p class="visually-hidden" id="ticket-status" role="status"></p>
+    </section>
+
+    <section class="options" aria-label="Other options">
+      <button class="option" id="alternative-button" type="button"
+              aria-haspopup="dialog" aria-controls="alternative-preview">
+        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.7" />
+          <path d="M12 7.5v5l3 1.75" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <span class="option-label">Alternative departure</span>
+        <span class="option-end">
+          <time class="option-time" datetime="08:58">08:58</time>
+          <svg class="icon" width="14" height="18" viewBox="0 0 14 18" fill="none" aria-hidden="true">
+            <path d="m5 4 5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+      </button>
+
+      <button class="option" id="pass-button" type="button" aria-pressed="false">
+        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.7" />
+          <path d="M3 9.5h18M7 14h5m3 0h2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+        </svg>
+        <span class="option-label">Weekly pass</span>
+        <span class="pass-state" id="pass-state" aria-hidden="true">Select</span>
+      </button>
+    </section>
+  </main>
+
+  <dialog class="preview" id="alternative-preview" aria-labelledby="alternative-heading">
+    <div class="preview-inner">
+      <h2 class="preview-heading" id="alternative-heading">Alternative departure</h2>
+      <time class="departure-time" datetime="08:58">08:58</time>
+      <form method="dialog">
+        <button class="action" type="submit" autofocus>Back to 08:42</button>
+      </form>
+    </div>
+  </dialog>
+
+  <script>
+    const ticketToggle = document.getElementById("ticket-toggle");
+    const ticketAction = document.getElementById("ticket-action");
+    const ticketPanel = document.getElementById("ticket-panel");
+    const ticketNumber = document.getElementById("ticket-number");
+    const ticketStatus = document.getElementById("ticket-status");
+
+    ticketToggle.addEventListener("click", () => {
+      const showTicket = ticketPanel.hidden;
+      ticketPanel.hidden = !showTicket;
+      ticketToggle.setAttribute("aria-expanded", String(showTicket));
+      ticketAction.textContent = showTicket ? "Hide ticket" : "Show ticket";
+      ticketStatus.textContent = showTicket ? `Ticket ID ${ticketNumber.textContent}` : "";
+    });
+
+    const alternativeButton = document.getElementById("alternative-button");
+    const alternativePreview = document.getElementById("alternative-preview");
+
+    alternativeButton.addEventListener("click", () => {
+      alternativePreview.showModal();
+    });
+
+    alternativePreview.addEventListener("click", (event) => {
+      if (event.target === alternativePreview) {
+        alternativePreview.close();
+      }
+    });
+
+    const passButton = document.getElementById("pass-button");
+    const passState = document.getElementById("pass-state");
+
+    // Keep the weekly pass choice in this page session.
+    passButton.addEventListener("click", () => {
+      const selected = passButton.getAttribute("aria-pressed") === "false";
+      passButton.setAttribute("aria-pressed", String(selected));
+      passState.textContent = selected ? "Selected" : "Select";
+    });
+  </script>
+</body>
+</html>

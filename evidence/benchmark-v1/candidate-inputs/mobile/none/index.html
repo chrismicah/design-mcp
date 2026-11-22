@@ -1,0 +1,498 @@
+<!doctype html>
+<!--
+  Riders walking to the platform need to find their departure and show their ticket quickly.
+  Keep the screen calm and direct by limiting it to the departure, ticket and two options.
+  Frost #EFF4FB, Paper #FFFFFF, Midnight #16294B, Cobalt #244DB9, Signal #FFDA70
+  and Rail Blue #87A9ED echo a station sign. Barlow Semi Condensed sets the signage.
+  Instrument Sans sets the controls. The amber Platform 3 plate anchors the departure
+  above the ticket strip. The other options sit alongside on desktop and below on mobile.
+  Show ticket reveals TKT-0837. The departure and pass options toggle local preferences.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#EFF4FB">
+  <title>Spur rail ticket</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700;800&amp;family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --frost: #eff4fb;
+      --paper: #ffffff;
+      --midnight: #16294b;
+      --cobalt: #244db9;
+      --signal: #ffda70;
+      --rail-blue: #87a9ed;
+      --muted: color-mix(in srgb, var(--midnight) 74%, var(--paper));
+      --rule: color-mix(in srgb, var(--midnight) 16%, var(--paper));
+      --display: "Barlow Semi Condensed", sans-serif;
+      --interface: "Instrument Sans", sans-serif;
+      --ticket-inset: clamp(26px, 3vw, 42px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--frost);
+      color: var(--midnight);
+      font: 1rem / 1.45 var(--interface);
+    }
+
+    button { font: inherit; }
+    svg { display: block; }
+
+    .frame {
+      width: min(1088px, calc(100% - 64px));
+      margin-inline: auto;
+    }
+
+    .masthead { border-bottom: 1px solid var(--rule); }
+
+    .masthead-inner {
+      display: flex;
+      min-height: 78px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font: 800 2.5rem / 1 var(--display);
+      letter-spacing: -.035em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      padding: 5px;
+      border-radius: 9px;
+      background: var(--cobalt);
+      color: var(--paper);
+    }
+
+    .service {
+      color: var(--muted);
+      font-size: .9375rem;
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .board {
+      display: grid;
+      grid-template-columns: minmax(0, 1.88fr) minmax(278px, 1fr);
+      align-items: start;
+      gap: 40px;
+      padding-block: 48px 64px;
+    }
+
+    .section-title {
+      display: flex;
+      min-height: 48px;
+      margin: 0 0 16px;
+      align-items: end;
+      font-family: var(--display);
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    h1.section-title {
+      font-size: 2.875rem;
+      letter-spacing: -.018em;
+    }
+
+    h2.section-title {
+      padding-bottom: 2px;
+      font-size: 1.875rem;
+    }
+
+    .rail-ticket {
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 18px 34px -26px rgb(22 41 75 / 45%);
+    }
+
+    .departure-sign {
+      position: relative;
+      isolation: isolate;
+      min-height: 318px;
+      padding: 40px var(--ticket-inset) 132px;
+      background: var(--midnight);
+      color: var(--paper);
+    }
+
+    .sign-info {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: start;
+      gap: 16px;
+    }
+
+    .departure-time {
+      display: block;
+      white-space: nowrap;
+      font: 700 clamp(4.75rem, 8.2vw, 7.375rem) / .88 var(--display);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -.045em;
+    }
+
+    .destination {
+      margin: 13px 0 0;
+      font: 600 2.625rem / 1.02 var(--display);
+    }
+
+    .platform {
+      display: grid;
+      min-width: 142px;
+      min-height: 135px;
+      padding: 14px;
+      align-content: center;
+      justify-items: center;
+      border-radius: 10px;
+      background: var(--signal);
+      box-shadow: 0 4px 0 color-mix(in srgb, var(--signal) 68%, var(--midnight));
+      color: var(--midnight);
+    }
+
+    .platform-label {
+      font-size: 1.0625rem;
+      font-weight: 700;
+    }
+
+    .platform-number {
+      font: 800 4.75rem / .92 var(--display);
+    }
+
+    .rail-art {
+      position: absolute;
+      z-index: -1;
+      inset: auto 0 0;
+      width: 100%;
+      height: 122px;
+      color: var(--rail-blue);
+      pointer-events: none;
+    }
+
+    .rail-art path { vector-effect: non-scaling-stroke; }
+
+    .ticket-toggle {
+      position: relative;
+      display: flex;
+      min-height: 72px;
+      padding: 15px var(--ticket-inset);
+      align-items: center;
+      gap: 13px;
+      border-top: 1px dashed rgb(255 255 255 / 48%);
+      background: var(--cobalt);
+      color: var(--paper);
+      cursor: pointer;
+      list-style: none;
+      font-size: 1.1875rem;
+      font-weight: 700;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    .ticket-toggle::before,
+    .ticket-toggle::after {
+      position: absolute;
+      top: -9px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--frost);
+      pointer-events: none;
+      content: "";
+    }
+
+    .ticket-toggle::before { left: -9px; }
+    .ticket-toggle::after { right: -9px; }
+    .ticket-toggle:focus-visible { outline: 3px solid var(--signal); outline-offset: -6px; }
+    .ticket-icon { width: 25px; height: 25px; flex: none; }
+    .ticket-chevron { width: 20px; height: 20px; margin-inline-start: auto; }
+    .when-open, .ticket[open] .when-closed { display: none; }
+    .ticket[open] .when-open { display: inline; }
+    .ticket[open] .ticket-chevron { transform: rotate(180deg); }
+
+    .ticket-face {
+      padding: 22px var(--ticket-inset) 26px;
+      background: var(--paper);
+    }
+
+    .ticket-label {
+      margin: 0 0 4px;
+      color: var(--muted);
+      font-size: .9375rem;
+      font-weight: 600;
+    }
+
+    .ticket-number {
+      display: block;
+      font: 700 clamp(2.5rem, 5vw, 3.5rem) / 1 var(--display);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: .018em;
+    }
+
+    .option-list {
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      border-radius: 16px;
+      background: var(--paper);
+    }
+
+    .option {
+      display: grid;
+      width: 100%;
+      min-height: 90px;
+      padding: 15px 18px;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 14px;
+      border: 0;
+      background: var(--paper);
+      color: var(--midnight);
+      text-align: start;
+      cursor: pointer;
+    }
+
+    .option + .option { border-top: 1px solid var(--rule); }
+    .option:focus-visible { outline: 3px solid var(--cobalt); outline-offset: -5px; }
+    .option[aria-pressed="true"] { background: var(--frost); }
+
+    .option-icon {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      place-items: center;
+      border-radius: 9px;
+      background: var(--frost);
+      color: var(--cobalt);
+    }
+
+    .option-icon.pass {
+      background: color-mix(in srgb, var(--signal) 38%, var(--paper));
+      color: var(--midnight);
+    }
+
+    .option-icon svg { width: 23px; height: 23px; }
+
+    .option-name {
+      display: block;
+      font-size: 1.1875rem;
+      font-weight: 700;
+      line-height: 1.13;
+    }
+
+    .option-time {
+      font: 700 1.75rem / 1 var(--display);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .option-caption {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: .875rem;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    .selection {
+      display: grid;
+      width: 22px;
+      height: 22px;
+      place-items: center;
+      border: 1px solid color-mix(in srgb, var(--midnight) 57%, var(--paper));
+      border-radius: 5px;
+      color: var(--paper);
+    }
+
+    .selection svg { display: none; width: 14px; height: 14px; }
+    .option[aria-pressed="true"] .selection { border-color: var(--cobalt); background: var(--cobalt); }
+    .option[aria-pressed="true"] .selection svg { display: block; }
+
+    @media (hover: hover) {
+      .ticket-toggle:hover { background: color-mix(in srgb, var(--cobalt) 87%, var(--midnight)); }
+      .option:hover .selection { border-color: var(--cobalt); }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .ticket-chevron { transition: transform 160ms ease-out; }
+    }
+
+    @media (max-width: 780px) {
+      :root { --ticket-inset: 22px; }
+
+      .frame { width: calc(100% - 36px); }
+      .masthead-inner { min-height: 66px; }
+      .brand { font-size: 2.125rem; }
+      .brand-mark { width: 34px; height: 34px; }
+
+      .board {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 28px;
+        padding-block: 25px 36px;
+      }
+
+      .section-title { min-height: 0; margin-bottom: 13px; }
+      h1.section-title { font-size: 2.375rem; }
+      h2.section-title { padding-bottom: 0; font-size: 1.6875rem; }
+      .rail-ticket { border-radius: 16px; }
+
+      .departure-sign {
+        min-height: 226px;
+        padding-block: 27px 86px;
+      }
+
+      .sign-info { gap: 10px; }
+      .departure-time { font-size: clamp(3.5rem, 18.5vw, 5.375rem); }
+      .destination { margin-top: 10px; font-size: 2rem; }
+      .platform { min-width: 89px; min-height: 99px; padding: 8px; border-radius: 8px; }
+      .platform-label { font-size: .9375rem; }
+      .platform-number { font-size: 3.5rem; }
+      .rail-art { height: 82px; }
+      .ticket-toggle { min-height: 63px; }
+      .option { min-height: 77px; padding: 13px 15px; gap: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="frame masthead-inner">
+      <div class="brand">
+        <svg class="brand-mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+          <path d="M3 20h5c5.4 0 8.1-2.1 11.1-6.3L25 6M3 14h5c2.8 0 4.9-1.3 6.6-3.8L17.7 6M14 19.2c2.1 2.4 4.3 2.8 7.5 2.8H25"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>spur</span>
+      </div>
+      <span class="service">Commuter rail</span>
+    </div>
+  </header>
+
+  <main class="frame board">
+    <section aria-labelledby="departure-title">
+      <h1 class="section-title" id="departure-title">Next departure</h1>
+
+      <div class="rail-ticket">
+        <div class="departure-sign">
+          <svg class="rail-art" viewBox="0 0 680 120" preserveAspectRatio="none"
+               fill="none" aria-hidden="true">
+            <path d="M20 72v30m28-30v30m28-30v30m28-30v30m28-30v30m28-30v30m28-30v30m28-30v30m28-30v30
+                     M436 8v30m28-30v30m28-30v30m28-30v30m28-30v30m28-30v30m28-30v30m28-30v30m28-30v30"
+                  stroke="currentColor" stroke-width="1.2" opacity=".27"/>
+            <path d="M-12 78h240c46 0 72-6 102-28l25-18c24-17 52-18 83-18h254
+                     M-12 96h240c52 0 81-7 113-31l24-17c19-13 43-16 73-16h254"
+                  stroke="currentColor" stroke-width="1.75" opacity=".75"/>
+            <path d="M228 78c35 0 63 5 94 18l44 18c21 9 41 13 64 13h262
+                     M228 96c35 0 61 5 88 17l44 18c23 10 42 14 70 14h262"
+                  stroke="currentColor" stroke-width="1.75" opacity=".48"/>
+            <path d="M549 14h30" stroke="var(--signal)" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+
+          <div class="sign-info">
+            <div>
+              <time class="departure-time" datetime="08:42">08:42</time>
+              <h2 class="destination">Union</h2>
+            </div>
+            <div class="platform">
+              <span class="platform-label">Platform</span>
+              <strong class="platform-number">3</strong>
+            </div>
+          </div>
+        </div>
+
+        <details class="ticket">
+          <summary class="ticket-toggle">
+            <svg class="ticket-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M3 6h18v4a2 2 0 0 0 0 4v4H3v-4a2 2 0 0 0 0-4V6Z"
+                    stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+              <path d="M14.5 7v2m0 2v2m0 2v2"
+                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span>
+              <span class="when-closed">Show ticket</span>
+              <span class="when-open">Hide ticket</span>
+            </span>
+            <svg class="ticket-chevron" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="m5 8 5 5 5-5" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="ticket-face">
+            <p class="ticket-label">Ticket number</p>
+            <data class="ticket-number" value="TKT-0837">TKT-0837</data>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section aria-labelledby="options-title">
+      <h2 class="section-title" id="options-title">Other options</h2>
+      <div class="option-list">
+        <button class="option" type="button" aria-pressed="false"
+                aria-label="08:58 alternative departure preference"
+                data-preferred="Preferred departure">
+          <span class="option-icon">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.7"/>
+              <path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.7"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span>
+            <time class="option-name option-time" datetime="08:58">08:58</time>
+            <span class="option-caption">Alternative departure</span>
+          </span>
+          <span class="selection" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none">
+              <path d="m3 8 3 3 7-7" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </button>
+
+        <button class="option" type="button" aria-pressed="false"
+                aria-label="Weekly pass preference" data-preferred="Preferred fare">
+          <span class="option-icon pass">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="4" y="5.5" width="16" height="15" rx="2"
+                    stroke="currentColor" stroke-width="1.7"/>
+              <path d="M4 10h16M8 3.5v4m8-4v4m-8 6h2m4 0h2m-8 3h2m4 0h2"
+                    stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span>
+            <span class="option-name">Weekly pass</span>
+            <span class="option-caption">Fare option</span>
+          </span>
+          <span class="selection" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none">
+              <path d="m3 8 3 3 7-7" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll(".option").forEach((button) => {
+      const caption = button.querySelector(".option-caption");
+      const originalCaption = caption.textContent;
+
+      button.addEventListener("click", () => {
+        const isPreferred = button.getAttribute("aria-pressed") !== "true";
+        button.setAttribute("aria-pressed", String(isPreferred));
+        caption.textContent = isPreferred ? button.dataset.preferred : originalCaption;
+      });
+    });
+  </script>
+</body>
+</html>
