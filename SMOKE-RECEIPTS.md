@@ -12,7 +12,13 @@ On the seeded fixture, the scan found text at **2.6:1** for a **4.5:1** requirem
 
 ## Reference Mac SwiftUI, November 22
 
-The hosted macOS job built a SwiftUI fixture targeting macOS 13, tested it against `f17bd6f`, and archived the same executable. On macOS 26.5.2, GPT Computer Use activated Reveal and verified that the new control appeared in the same window, in both Accessibility and the screenshot. The installed CLI replayed the hashed XCUITest geometry from the hosted run and confirmed five controls before and six after. It also replayed the hosted Electron window exports and confirmed the cleared occlusion and retained clipping finding. The local Electron walkthrough remains open. [Exact fixture build and capture](https://github.com/chrismicah/design-mcp/actions/runs/45028701101) · [Local action and CLI replay evidence](evidence/benchmark-v1/reference-mac-desktop-f17bd6f.json)
+The hosted macOS job built a SwiftUI fixture targeting macOS 13, tested it against `f17bd6f`, and archived the same executable. On macOS 26.5.2, GPT Computer Use activated Reveal and verified that the new control appeared in the same window, in both Accessibility and the screenshot. The installed CLI replayed the hashed XCUITest geometry from the hosted run and confirmed five controls before and six after. It also replayed the hosted Electron window exports and confirmed the cleared occlusion and retained clipping finding. [Exact fixture build and capture](https://github.com/chrismicah/design-mcp/actions/runs/45028701101) · [Local action and CLI replay evidence](evidence/benchmark-v1/reference-mac-desktop-f17bd6f.json)
+
+## Reference Mac Electron, November 22
+
+The owned Electron 43.4.0 app passed strict recursive signature and bundle identity checks on macOS 26.5.2 arm64. The first run stopped before input because the fixture expected 880 × 640 screenshot pixels on a Retina display. The harness now accepts the fixed 880 × 640 CSS viewport and validates the image at the display’s backing scale. Both new PNGs came from the original 1760 × 1280 capture.
+
+GPT Computer Use pressed Tab to focus Reveal and Return to reveal the covered button. Accessibility, the screenshot, and the saved status agreed, and focus stayed on Reveal. The installed `f17bd6f` CLI read two fresh geometry exports, found four controls in each, and reported only the clipping finding after Reveal. The audit confirmed the covered region’s color changed from RGB `51, 51, 51` to `239, 239, 239`. The geometry exports omitted the seeded input value. [Local action, signature and capture receipt](evidence/benchmark-v1/reference-mac-electron-f17bd6f.json)
 
 ## Reference Mac clean install, November 22
 
@@ -76,7 +82,7 @@ The new external-input mode waited for a keyboard event from a separate driver o
 
 The reference Mac downloaded the official arm64 Electron archive and verified its pinned SHA-256. The extracted developer runtime had an ad hoc linker signature without a resource seal. Bundle verification and the standard system assessment returned the same resource error, so the reference Mac stopped before launch. [Reference Mac staging receipt](evidence/benchmark-v1/electron-external-input-0c279d9.json)
 
-The owned development fixture packages the existing fixture sources inside a separate app and signs its nested code and resources. The packaged app passed strict recursive verification and its exact identifier check on hosted macOS 15.8.2 arm64. The automated keyboard action cleared the occlusion and the installed reference CLI still reported clipping. The reference Mac and GPT Computer Use pass remains open. [Hosted signing and capture receipt](evidence/benchmark-v1/electron-packaged-5512f1d.json)
+The owned development fixture packages the existing fixture sources inside a separate app and signs its nested code and resources. The packaged app passed strict recursive verification and its exact identifier check on hosted macOS 15.8.2 arm64. The automated keyboard action cleared the occlusion and the installed reference CLI still reported clipping. [Hosted signing and capture receipt](evidence/benchmark-v1/electron-packaged-5512f1d.json)
 
 ## Hosted native SwiftUI smoke, November 22
 
