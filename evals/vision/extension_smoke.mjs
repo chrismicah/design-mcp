@@ -13,6 +13,8 @@ const [chrome, cli, extension, output, fixturePath] = process.argv.slice(2);
 const mac = process.platform === "darwin";
 const macKeyHelper = process.env.DESIGN_MCP_CHROME_KEY_HELPER;
 const pointerHelper = mac ? process.env.DESIGN_MCP_CHROME_POINTER_HELPER : undefined;
+const collectorMode = process.env.DESIGN_MCP_COLLECTOR_MODE;
+assert(!collectorMode || (pointerHelper && ["eager", "on-demand"].includes(collectorMode)));
 const latencyRuns = Number(mac ? process.env.REVIEW_LATENCY_RUNS ?? 0 : 0);
 assert(Number.isInteger(latencyRuns) && latencyRuns >= 0 && latencyRuns <= 30);
 await mkdir(output, { recursive: true });
@@ -22,7 +24,7 @@ const host = createServer((request, response) => {
   response.writeHead(200, { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store" });
   response.end(fixture);
 });
-const proof = {};
+const proof = collectorMode ? {collectorMode} : {};
 let browser;
 let browserError;
 let socket;
@@ -172,6 +174,7 @@ try {
   let openedAt;
   let keyReturnedAt;
   let pointerDown;
+  let pointerDownEpochMs;
   if (mac) {
     proof.phase = pointerHelper ? "toolbar pointer" : "toolbar shortcut";
     assert.equal(await findTarget(isPopup), undefined, "Popup must start closed");
@@ -186,6 +189,7 @@ try {
       const after = process.hrtime.bigint();
       pointerDown = BigInt(proof.pointer.pressedUptimeNs);
       assert(before <= pointerDown && pointerDown <= after, "Host and Swift pointer timestamps disagree");
+      pointerDownEpochMs = performance.timeOrigin + performance.now() - Number(after - pointerDown) / 1e6;
     } else {
       openedAt = performance.now();
       key("Command+Shift+Y");
@@ -218,6 +222,20 @@ try {
     };
     proof.firstActivation.documentPaintMs = await inspect(popup,
       "performance.getEntriesByName('first-contentful-paint')[0]?.startTime ?? null");
+    if (collectorMode) {
+      proof.popupNavigation = await inspect(popup, `(() => {
+        const n = performance.getEntriesByType('navigation')[0];
+        return {
+          epochMs: performance.timeOrigin,
+          interactiveMs: n?.domInteractive || null,
+          loadCompleteMs: n?.domComplete || null,
+          collectorPresent: typeof designMcpCollect === 'function',
+        };
+      })()`);
+      proof.popupNavigation.pressToDocumentMs = proof.popupNavigation.epochMs - pointerDownEpochMs;
+      assert.equal(proof.popupNavigation.collectorPresent, collectorMode === "eager",
+        "The trial did not start with the requested collector loading behavior");
+    }
   }
   const observePopup = () => inspect(popup, `(() => {
     if (location.href !== ${JSON.stringify(target.url)} || document.readyState !== 'complete') return null;
@@ -251,9 +269,11 @@ try {
   });
   assert.equal(proof.idle.requestCount, 0);
   await image(popup, "popup-idle.png");
+  let firstScanAt;
   if (mac) {
     proof.phase = "missing native host";
     proof.popupActionDriver = "cdp-key";
+    firstScanAt = performance.now();
     await browserKey(popup, "Enter", 13, 36, "\r");
   } else {
     key("Return");
@@ -263,6 +283,10 @@ try {
     return result?.state === "problem" && result.focus === "scan" && result.enabled ? result : null;
   });
   assert.equal(proof.missingHost.command, `design-mcp review --install-host ${extensionId}`);
+  if (collectorMode) {
+    proof.firstActivation.firstScanToMissingHostMs = performance.now() - firstScanAt;
+    assert(await inspect(popup, "typeof designMcpCollect === 'function'"));
+  }
   if (mac) {
     assert.match(proof.missingHost.status, /One step left: connect the local reviewer/);
     await image(popup, "popup-missing-host.png");

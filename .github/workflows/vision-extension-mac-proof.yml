@@ -1,4 +1,4 @@
-name: macOS Chrome review extension pointer proof
+name: macOS Chrome collector startup comparison
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
   popup:
     if: github.event.repository.private == false
     runs-on: macos-15
-    timeout-minutes: 12
+    timeout-minutes: 16
     env:
       CHROME_VERSION: '158.0.8127.36'
       DESIGN_MCP_CANDIDATE: '2fcd31221671590152401d958b904141e438e453'
@@ -50,7 +50,7 @@ jobs:
           app="$RUNNER_TEMP/browser/chrome-mac-arm64/Google Chrome for Testing.app"
           exec > >(tee "$proof/setup.log") 2>&1
           python -m venv "$RUNNER_TEMP/design-review"
-            "$RUNNER_TEMP/design-review/bin/python" -m pip install ./pinned-source 'pillow>=11,<13'
+          "$RUNNER_TEMP/design-review/bin/python" -m pip install ./pinned-source 'pillow>=11,<13'
           curl -fsSL "https://storage.googleapis.com/chrome-for-testing-public/$CHROME_VERSION/mac-arm64/chrome-mac-arm64.zip" -o "$RUNNER_TEMP/chrome.zip"
           unzip -q "$RUNNER_TEMP/chrome.zip" -d "$RUNNER_TEMP/browser"
           version=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$app/Contents/Info.plist")
@@ -62,89 +62,64 @@ jobs:
           test "$version" = "$CHROME_VERSION"
           xcrun swiftc evals/vision/chrome_smoke_key.swift -o "$RUNNER_TEMP/chrome_smoke_key"
           xcrun swiftc evals/vision/chrome_smoke_pointer.swift -o "$RUNNER_TEMP/chrome_smoke_pointer"
-      - name: Exercise the real toolbar popup and reopen the saved preview
+      - name: Compare alternating first activations on the same runner
         shell: bash
         run: |
           proof="$RUNNER_TEMP/extension-mac-proof"
           cli="$RUNNER_TEMP/design-review/bin/design-mcp"
-          extension="$RUNNER_TEMP/review-extension"
           chrome="$RUNNER_TEMP/browser/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
           exec > >(tee "$proof/attempt.log") 2>&1
           installed=$("$cli" review --extension-path)
-            diff -qr pinned-source/design_mcp/review/extension "${installed%%$'\n'*}"
-          cp -R "${installed%%$'\n'*}" "$extension"
+          diff -qr pinned-source/design_mcp/review/extension "${installed%%$'\n'*}"
+          cp -R "${installed%%$'\n'*}" "$RUNNER_TEMP/eager-extension"
+          git -C pinned-source apply "$GITHUB_WORKSPACE/evals/vision/collector-on-demand.patch"
+          cp -R pinned-source/design_mcp/review/extension "$RUNNER_TEMP/on-demand-extension"
+          shasum -a 256 "$RUNNER_TEMP/"{eager,on-demand}-extension/* > "$proof/extension-assets.sha256"
           export DESIGN_MCP_CHROME_KEY_HELPER="$RUNNER_TEMP/chrome_smoke_key"
           export DESIGN_MCP_CHROME_POINTER_HELPER="$RUNNER_TEMP/chrome_smoke_pointer"
+          mkdir -p "$proof/saved-preview"
           for ((sample=1; sample<=FIRST_ACTIVATION_TRIALS; sample++)); do
-            trial="$proof"
-            [[ $sample == 1 ]] || trial="$proof/sample-$sample"
-            if node --experimental-websocket evals/vision/extension_smoke.mjs "$chrome" "$cli" "$extension" "$trial"; then
-              printf 'Trial %s completed\n' "$sample"
-              if [[ ! -d "$proof/saved-preview" ]]; then
-                python - "$proof" "$trial" <<'PY'
+            order=(eager on-demand)
+            if (( sample % 2 == 0 )); then order=(on-demand eager); fi
+            for arm in "${order[@]}"; do
+              trial="$proof/sample-$sample-$arm"
+              if DESIGN_MCP_COLLECTOR_MODE="$arm" node --experimental-websocket \
+                evals/vision/extension_smoke.mjs "$chrome" "$cli" "$RUNNER_TEMP/$arm-extension" "$trial"; then
+                printf 'Pair %s %s completed\n' "$sample" "$arm"
+                if [[ ! -d "$proof/saved-preview/$arm" ]]; then
+                  python - "$proof/saved-preview/$arm" "$trial" <<'PY'
           from pathlib import Path
           import json, shutil, sys
 
-          root = Path(sys.argv[1])
+          saved = Path(sys.argv[1])
           receipt = Path(sys.argv[2]) / 'extension-review.json'
           report = json.loads(receipt.read_text())
+          assert report['browserChecksPassed']
           preview = Path(report['previewFolder'])
-          saved = root / 'saved-preview'
           saved.mkdir()
           shutil.copyfile(receipt, saved / receipt.name)
           for name in ('preview.html', 'evidence.json'):
               shutil.copyfile(preview / name, saved / name)
           PY
+                fi
+              else
+                printf 'Pair %s %s failed with exit code %s\n' "$sample" "$arm" "$?"
               fi
-            else
-              printf 'Trial %s failed with exit code %s\n' "$sample" "$?"
-            fi
+            done
           done
-          python - "$proof" "$FIRST_ACTIVATION_TRIALS" "$CHROME_VERSION" <<'PY'
-          from math import ceil, isfinite
-          from pathlib import Path
-          import json, sys
-
-          root, count, version = Path(sys.argv[1]), int(sys.argv[2]), sys.argv[3]
-          rows = []
-          for sample in range(1, count + 1):
-              trial = root if sample == 1 else root / f'sample-{sample}'
-              receipt = trial / 'extension-review.json'
-              record = json.loads(receipt.read_text()) if receipt.exists() else {}
-              timings = record.get('firstActivation', {})
-              passed = (record.get('browserChecksPassed') is True and record.get('browser') == f'Chrome/{version}'
-                        and timings.get('drivers', {}).get('open') == 'macOS pointer'
-                        and all(type(timings.get(key)) in (int, float) and isfinite(timings[key]) and timings[key] > 0
-                                for key in ('openMs', 'scanMs')))
-              rows.append({'sample': sample, 'passed': passed, 'timings': timings,
-                           'error': record.get('error') if record else 'missing receipt',
-                           'profile': record.get('chromeProfile')})
-          distinct_profiles = len({row['profile'] for row in rows if row['profile']}) == count
-          report = {'scope': 'First pointer activation of the pinned toolbar button in separate Chrome processes. '
-                             'Only the pin is seeded in each new profile. Timing starts at native mouse down. '
-                             'Scan follows the profile-scoped native-host install and includes observation overhead.',
-                    'expected_trials': count, 'trials': rows, 'distinct_profiles': distinct_profiles}
-          if count >= 30 and distinct_profiles and all(row['passed'] for row in rows):
-              report['p95'] = {
-                  metric: sorted(row['timings'][metric] for row in rows)[ceil(count * .95) - 1]
-                  for metric in ('openMs', 'scanMs')
-              }
-          (root / 'first-activation-series.json').write_text(json.dumps(report, indent=2) + '\n')
-          if not distinct_profiles or not all(row['passed'] for row in rows):
-              raise SystemExit('One or more first-activation trials failed')
-          PY
       - name: Verify and archive the visibly masked saved capture
         if: ${{ !cancelled() }}
         shell: bash
         run: |
           proof="$RUNNER_TEMP/extension-mac-proof"
-          "$RUNNER_TEMP/design-review/bin/python" - "$proof" "$CHROME_VERSION" <<'PY' 2>&1 | tee "$proof/mask-verification.log"
+          failed=0
+          for arm in eager on-demand; do
+            if ! "$RUNNER_TEMP/design-review/bin/python" - "$proof/saved-preview/$arm" "$CHROME_VERSION" <<'PY' 2>&1 | tee "$proof/mask-$arm.log"
           from pathlib import Path
           from PIL import Image
           import base64, hashlib, io, json, re, sys
 
-          root = Path(sys.argv[1])
-          preview = root / 'saved-preview'
+          preview = Path(sys.argv[1])
           proof_path = preview / 'extension-review.json'
           if not proof_path.exists():
               raise SystemExit('No successful saved preview to verify')
@@ -177,6 +152,14 @@ jobs:
           proof_path.write_text(json.dumps(proof, indent=2) + '\n')
           print('Verified the saved capture masks the seeded field with the expected pixels.')
           PY
+            then failed=1; fi
+          done
+          exit "$failed"
+      - name: Compare the verified timing receipts
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          python evals/vision/compare_collector_timing.py "$RUNNER_TEMP/extension-mac-proof" "$FIRST_ACTIVATION_TRIALS" "$CHROME_VERSION"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
@@ -185,7 +168,8 @@ jobs:
             ${{ runner.temp }}/extension-mac-proof/*.txt
             ${{ runner.temp }}/extension-mac-proof/*.log
             ${{ runner.temp }}/extension-mac-proof/*.json
-            ${{ runner.temp }}/extension-mac-proof/*.png
+            ${{ runner.temp }}/extension-mac-proof/*.sha256
+            ${{ runner.temp }}/extension-mac-proof/sample-1-*/*.png
             ${{ runner.temp }}/extension-mac-proof/sample-*/extension-review.json
             ${{ runner.temp }}/extension-mac-proof/saved-preview/
           if-no-files-found: warn

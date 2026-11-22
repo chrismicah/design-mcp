@@ -1,0 +1,46 @@
+--- a/design_mcp/review/extension/popup.html
++++ b/design_mcp/review/extension/popup.html
+@@ -4,7 +4,6 @@
+ <meta charset="utf-8">
+ <title>Design MCP page review</title>
+ <link rel="stylesheet" href="popup.css">
+-<script src="collector.js" defer></script>
+ <script src="popup.js" defer></script>
+ </head>
+ <body data-state="idle">
+--- a/design_mcp/review/extension/popup.js
++++ b/design_mcp/review/extension/popup.js
+@@ -125,15 +125,32 @@
+   }
+ }
+
++function loadCollector() {
++  if (typeof designMcpCollect === 'function') return Promise.resolve(designMcpCollect);
++  return new Promise((resolve, reject) => {
++    const script = document.createElement('script');
++    script.src = 'collector.js';
++    const finish = () => {
++      script.remove();
++      if (typeof designMcpCollect === 'function') resolve(designMcpCollect);
++      else reject(new Error('The local page collector could not start.'));
++    };
++    script.addEventListener('load', finish, {once: true});
++    script.addEventListener('error', finish, {once: true});
++    document.head.append(script);
++  });
++}
++
+ async function capture() {
+   const [tab] = await chrome.tabs.query({active: true, currentWindow: true});
+   if (!tab || !/^https?:\/\//i.test(tab.url || '')) {
+     throw problem('This page cannot be scanned. Browser pages, the extension store and local files are off limits. Open a normal web page and press the button again.');
+   }
++  const collect = await loadCollector();
+   let frame;
+   try {
+     const injected = await chrome.scripting.executeScript({
+-      target: {tabId: tab.id}, func: designMcpCollect, args: [{maxRegions: 8}],
++      target: {tabId: tab.id}, func: collect, args: [{maxRegions: 8}],
+     });
+     frame = injected && injected[0] && injected[0].result;
+   } catch (error) {
