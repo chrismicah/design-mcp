@@ -192,17 +192,30 @@ try {
     await send("Target.activateTarget", { targetId: fixturePage.targetId });
     for (let trial = 0; trial < latencyRuns; trial++) {
       await until("previous popup to close", async () => !(await findPopup()), 5000, 15);
+      const activatedEpoch = Date.now();
       const activated = performance.now();
       key("ctrl+shift+y");
+      const inputMs = performance.now() - activated;
       const fresh = await until("fresh toolbar popup", findPopup, 5000, 15);
+      const targetMs = performance.now() - activated;
       const session = await attach(fresh);
       await until("painted Scan control", () => painted(session, "#scan", "idle"), 5000, 15);
       const openMs = performance.now() - activated;
+      const paint = await inspect(session, `({
+        navigationEpoch: performance.timeOrigin,
+        firstContentfulPaint: performance.getEntriesByName('first-contentful-paint')[0]?.startTime ?? null
+      })`);
       const scanned = performance.now();
       key("Return");
       await until("painted local finding", () => painted(session, "#finding", "result"), 10000, 15);
+      const scanMs = performance.now() - scanned;
       assert.equal(await inspect(session, "!document.querySelector('#fix').hidden"), true);
-      latency.trials.push({ openMs: Math.round(openMs), scanMs: Math.round(performance.now() - scanned) });
+      latency.trials.push({
+        openMs: Math.round(openMs), scanMs: Math.round(scanMs),
+        inputMs: Math.round(inputMs), targetMs: Math.round(targetMs),
+        popupNavigationMs: Math.round(paint.navigationEpoch - activatedEpoch),
+        popupFirstContentfulPaintMs: paint.firstContentfulPaint,
+      });
       key("Escape");
     }
     latency.p95 = {
