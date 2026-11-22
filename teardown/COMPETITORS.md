@@ -75,6 +75,15 @@ Design Library's earlier short settings query returned a result. Its empty full-
 
 Fresh local installs reproduced the full-brief match counts for Screenshots and Design Library. Screenshots ranked workforce and finance references on the ceramics brief. Design Library returned no match for `pottery` and returned three cart examples for `ecommerce checkout`. The visual comparison lets the generator choose its own search terms. [Local install and search receipts](../evidence/benchmark-v1/competitor-local-replay.json)
 
+A separate hosted run installed shadcn 4.23.0 and UI UX Pro Max at `a38d04c`. It passed the same unedited briefs with a limit of three results. Shadcn's official registry returned the accordion and its demo for the short positive control. UI UX Pro Max selected a domain automatically and returned guidance for its own positive control. Both nonsense controls returned empty, and all 72 brief calls returned interpretable responses. [Hosted run](https://github.com/chrismicah/design-mcp/actions/runs/45000578668) · [Pins, controls, and per-brief results](../evidence/benchmark-v1/registry-and-skill-retrieval.json)
+
+| Configuration | Briefs with matches | Distinct first choices | Median call | Median matched payload |
+| --- | ---: | ---: | ---: | ---: |
+| shadcn, official component registry | 0 / 36 | 0 | 32.5 ms | — |
+| UI UX Pro Max, automatic domain | 23 / 36 | 18 | 92 ms | 5.9 kB |
+
+The full-brief calls measure direct search behavior. Visual trials give the generator room to write shorter component queries or select a design-system mode, and require a successful relevant tool call before judging the output.
+
 ## Visual scoreboard
 
 | Configuration | Matched briefs judged | Score / 100 |

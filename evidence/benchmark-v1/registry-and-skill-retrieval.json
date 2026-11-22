@@ -1,0 +1,1280 @@
+{
+  "run": "https://github.com/chrismicah/design-mcp/actions/runs/45000578668",
+  "runner_commit": "3532c39",
+  "scope": "Read-only retrieval with both exact runner installs. Every unedited frozen brief, maximum of three items. shadcn uses its official public component registry; UI UX Pro Max uses the pinned upstream Python tool with automatic domain choice.",
+  "competitors": [
+    {
+      "tool": "search_items_in_registries",
+      "tool_count": 7,
+      "input_schema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "registries": {
+            "description": "Array of registry names to search (e.g., ['@shadcn', '@acme']). Omit to search every registry configured in components.json.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "query": {
+            "type": "string",
+            "description": "Search query string for fuzzy matching against item names and descriptions"
+          },
+          "types": {
+            "description": "Filter by item type. One of: lib, block, component, ui, hook, page, file, theme, style, item, base, font.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "limit": {
+            "description": "Maximum number of items to return (defaults to 100; use 0 for no limit)",
+            "type": "number"
+          },
+          "offset": {
+            "description": "Number of items to skip for pagination",
+            "type": "number"
+          }
+        },
+        "required": [
+          "query"
+        ]
+      },
+      "controls": [
+        {
+          "case": "known-control",
+          "surface": null,
+          "brief_sha256": "ae05a3bf72601ef696e4fdcffca744e03ee7a48069839f3616acf8368d4f9cf7",
+          "response_bytes": 287,
+          "response_sha256": "0ff06bec29b86c0258abde057071091eb11cd334f05ef50751106c02cb400294",
+          "status": "matches",
+          "result_count": 2,
+          "ranked": [
+            {
+              "name": "accordion",
+              "type": "registry:ui"
+            },
+            {
+              "name": "accordion-demo",
+              "type": "registry:example"
+            }
+          ],
+          "milliseconds": 252,
+          "response_prefix": null
+        },
+        {
+          "case": "nonsense-control",
+          "surface": null,
+          "brief_sha256": "6fc218c2e3f68f0c1881a2d4aad4c56200a7bc837a3d690f707e38e6ca873393",
+          "response_bytes": 128,
+          "response_sha256": "228ce414c599f5e7de4ecfa157e93e0446860e12dbdeb60f713df281c8d61333",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 62,
+          "response_prefix": null
+        }
+      ],
+      "cases": [
+        {
+          "case": "landing-ceramics",
+          "surface": "landing",
+          "brief_sha256": "04af2c685a5db0d3696d9dd0849c8634adccce39f680f00b90985a889553d5f7",
+          "response_bytes": 431,
+          "response_sha256": "27d50cdf00d24b647d6b186291d342286eaae329ee494faaf65bb4515bb9a121",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 45,
+          "response_prefix": null
+        },
+        {
+          "case": "landing-repair",
+          "surface": "landing",
+          "brief_sha256": "b30494cba27c798a2c5d6c827c93d69b916828352f9ab0953d6d8bffe5c7f84f",
+          "response_bytes": 331,
+          "response_sha256": "6574ecad627ee89f49b96964c3dd238cc08e1ebb44e19a358afcddf1f1825a8c",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 32,
+          "response_prefix": null
+        },
+        {
+          "case": "landing-radio",
+          "surface": "landing",
+          "brief_sha256": "80358b45ca5abdad80b47fcbb1ea5e8986782b1aa38f7790fd74bf3b73df8f90",
+          "response_bytes": 403,
+          "response_sha256": "52431635db12586825b1eda568ac03108861d7d3d64b23f63a5aaa5457fee679",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 44,
+          "response_prefix": null
+        },
+        {
+          "case": "landing-festival",
+          "surface": "landing",
+          "brief_sha256": "b237dea179c3dcc2606a12cfc9483d5b1d317a922bbaf9952b4ac797cf836299",
+          "response_bytes": 381,
+          "response_sha256": "7fda1a7315e29ae8a183cd4def38879d3bab561bda4d64d63f44912d9bcca6c8",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 37,
+          "response_prefix": null
+        },
+        {
+          "case": "landing-archive",
+          "surface": "landing",
+          "brief_sha256": "3299a354f5bece7b679cbcb23a75987e16163ade8ecb186b48b0eca922b08e87",
+          "response_bytes": 426,
+          "response_sha256": "cf830cd273bbd87f322ab0439b3d575ad27fe765ba6c66ffe40757dc3cf2b8d6",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 30,
+          "response_prefix": null
+        },
+        {
+          "case": "landing-energy",
+          "surface": "landing",
+          "brief_sha256": "242df6d14ecfcdbb43ff35556bf95495d9419dacef1c1fe5439ae80d08b36e6c",
+          "response_bytes": 406,
+          "response_sha256": "239c7924c683de541d8a53f172e412aa3fc1a24283eb18a1aa92bf86cda39578",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 32,
+          "response_prefix": null
+        },
+        {
+          "case": "dashboard-coldchain",
+          "surface": "dashboard",
+          "brief_sha256": "1f20e7096877908996cf9a497f84bc7573d0b54af2d753840c05d5e218e4d692",
+          "response_bytes": 348,
+          "response_sha256": "f9f84f4533d106338db86e51bca78bcb21e4e88079f8f26e460dc7e7590aadfd",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 32,
+          "response_prefix": null
+        },
+        {
+          "case": "dashboard-venue",
+          "surface": "dashboard",
+          "brief_sha256": "b736ed0ddae66f54116fc8ebb48f8a65cae6eea21ec25e234f8e69412d91be18",
+          "response_bytes": 337,
+          "response_sha256": "77ceee6e1737edf495ecfca2a346afdc34c01bc6b7da23952d6697c386c681a0",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 30,
+          "response_prefix": null
+        },
+        {
+          "case": "dashboard-harvest",
+          "surface": "dashboard",
+          "brief_sha256": "cdd24b40dd0e1528e5707057ee5b03186b3091e7aa91046cc8a8180e5db3e443",
+          "response_bytes": 336,
+          "response_sha256": "5e7ddbdd4605afae43aff7abd41bb60a0359d233cf4d42c6dc6a7775e337aae7",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 39,
+          "response_prefix": null
+        },
+        {
+          "case": "dashboard-support",
+          "surface": "dashboard",
+          "brief_sha256": "41e3295aec009b45a2885ae4a92161f9fbd9ad1d900fd69906c45b1dd8a62cdd",
+          "response_bytes": 341,
+          "response_sha256": "2e26283a7d62dda0ae6015f0c75e62d2241a58c2b9441a8b8f56838079cb5a3f",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 30,
+          "response_prefix": null
+        },
+        {
+          "case": "dashboard-energy",
+          "surface": "dashboard",
+          "brief_sha256": "bb4b1fbd16ca7d7df5edb7e8f7444c7d4416a6e03afb91c37b0d67b4d1d1e186",
+          "response_bytes": 368,
+          "response_sha256": "e6586804be659c6f1b12e6a377ca3df848cac076c6dc350df25e15082c5eefeb",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 30,
+          "response_prefix": null
+        },
+        {
+          "case": "dashboard-library",
+          "surface": "dashboard",
+          "brief_sha256": "d66c3549416b069bc23d4e64f2cf2da94cbdcebeb5a4e0b4bbb1ec7bd7107074",
+          "response_bytes": 352,
+          "response_sha256": "8cce1d51f77e939cbb17ccbf06a2250cae2c63d666fde79fc4d0581dbb479649",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 30,
+          "response_prefix": null
+        },
+        {
+          "case": "form-venue",
+          "surface": "form",
+          "brief_sha256": "d04744638eeda17a179916239be1e100d4d3d382d72607da4822c416041e8d06",
+          "response_bytes": 339,
+          "response_sha256": "db2c5f960d7bd5cec63994b0837f604bff3478f64da7149ca76968e1c231b97e",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 80,
+          "response_prefix": null
+        },
+        {
+          "case": "form-maintenance",
+          "surface": "form",
+          "brief_sha256": "0c0ec8af56c1ef03e35bfa6df4b3d62856e2236398e4dbbf97fd161c15e24d17",
+          "response_bytes": 350,
+          "response_sha256": "2a9a5e03cc4f41ba7142b6b3aaf2a73dcebeaee0144e816f30eb5843f3e53017",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 41,
+          "response_prefix": null
+        },
+        {
+          "case": "form-label",
+          "surface": "form",
+          "brief_sha256": "26e786bb899231a32498131bd4384f90a5ad5c8b367c1527dc92ed7e6d28d727",
+          "response_bytes": 376,
+          "response_sha256": "c0b84d2469fc1c3e22420fe36fdc77e370068133b9cf3747e178198afc14607d",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 30,
+          "response_prefix": null
+        },
+        {
+          "case": "form-garden",
+          "surface": "form",
+          "brief_sha256": "a09ee83f2a179ea54f5cebfc2209b081c4a203278fe769090f32dd7d39b72028",
+          "response_bytes": 366,
+          "response_sha256": "7b859b383a3865efa3b2cbe700ad9227f8b27561a4d57dd231abaa75b2663da8",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 36,
+          "response_prefix": null
+        },
+        {
+          "case": "form-exhibition",
+          "surface": "form",
+          "brief_sha256": "1736f246666ab6af9cb563685cbbe4b53bfa38b7266ff8f3c27c15f78775470d",
+          "response_bytes": 354,
+          "response_sha256": "2cf7d252a80179f7b20fc2b57a0ee33c669109b741fde3342d4fb89e5ae83d5d",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 40,
+          "response_prefix": null
+        },
+        {
+          "case": "form-invoice",
+          "surface": "form",
+          "brief_sha256": "ea5f59357d912fd1d8a6e97f57a53b680e507d0a342077c3a2541724d97ccd6a",
+          "response_bytes": 347,
+          "response_sha256": "c79e7e34c3000225013d192e54b31251bc6ea5c8870ebcacddf5a143a1d1d615",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 28,
+          "response_prefix": null
+        },
+        {
+          "case": "mobile-train",
+          "surface": "mobile",
+          "brief_sha256": "6f01f118b04818b53753a1e456daf3e1c578fc299773b8af660aeb4747d6901c",
+          "response_bytes": 354,
+          "response_sha256": "13b552afaa3acd816eb9e368fc2be43913aa2d02ef74697089403549f517cd99",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 59,
+          "response_prefix": null
+        },
+        {
+          "case": "mobile-field",
+          "surface": "mobile",
+          "brief_sha256": "ea53632eb388e8e5d2a22e84e7c06002f956df4e100354b5da26f6bf5d5d6885",
+          "response_bytes": 312,
+          "response_sha256": "e58d554d03499fdfe5861ce8c5a946f9272a11a20a2755097ee64aaa7b83a9cb",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 28,
+          "response_prefix": null
+        },
+        {
+          "case": "mobile-recital",
+          "surface": "mobile",
+          "brief_sha256": "867b36708962fc1a7a20a11efe9845b0b346dc863712d708998a221266b8b85d",
+          "response_bytes": 324,
+          "response_sha256": "a8e968b1feb0755d271a04bf9af08043006e0f74a5a6b0ee5583c3481a77ebb6",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 38,
+          "response_prefix": null
+        },
+        {
+          "case": "mobile-court",
+          "surface": "mobile",
+          "brief_sha256": "35ddfff61e49de9bf84b90f13f36193dea45afdf36a60ca6b78572110efeeb33",
+          "response_bytes": 333,
+          "response_sha256": "1dd20b42f8d53d58bbeef7a249514aabfb067602d21208f48661b85cc7bfdfdc",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 33,
+          "response_prefix": null
+        },
+        {
+          "case": "mobile-pantry",
+          "surface": "mobile",
+          "brief_sha256": "5417d033db42c0f67609f2970c02e6fae3f0084e595651f644e36116f36df915",
+          "response_bytes": 342,
+          "response_sha256": "96ad65446993e338b425b8cac06e4962de1cf88a2c5d8722f4f7a9d0af6ed5ac",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 39,
+          "response_prefix": null
+        },
+        {
+          "case": "mobile-gallery",
+          "surface": "mobile",
+          "brief_sha256": "9b16931430cf096d3a9c2c20182746d43a584917028397d52154f9f4ac20a7c6",
+          "response_bytes": 349,
+          "response_sha256": "4768fc41f87a5da2c553874593b75da50a72da9ea0ba292f5fe8a487f541fdb6",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 40,
+          "response_prefix": null
+        },
+        {
+          "case": "settings-notifications",
+          "surface": "settings",
+          "brief_sha256": "347367bac20c35268ba23afbb43adf162cf41a7d6c780e45aab747d675862cde",
+          "response_bytes": 339,
+          "response_sha256": "6fccd6ed8b7edb9134e9ed3683c3bab66562571261a009856495662ab51eb8cb",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 31,
+          "response_prefix": null
+        },
+        {
+          "case": "settings-reading",
+          "surface": "settings",
+          "brief_sha256": "97af714c1f643f403c2cdc2c335fce7bc4ae868305c7f4ce2a97bc50c147c5ea",
+          "response_bytes": 338,
+          "response_sha256": "9b0ee632d287dc1749226695ca1d0a5ab4c11a8922b13f5e34967e2a3cbd878f",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 29,
+          "response_prefix": null
+        },
+        {
+          "case": "settings-team",
+          "surface": "settings",
+          "brief_sha256": "fe41fb5278ed2ce9af24d8fcc8f15b520ba01b94801b73261f6d89739368ac57",
+          "response_bytes": 343,
+          "response_sha256": "53a6ce7b324f61e6a91ed66faa4bb2be14bcfafcd74dcfb79d8cac23564633d0",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 32,
+          "response_prefix": null
+        },
+        {
+          "case": "settings-focus",
+          "surface": "settings",
+          "brief_sha256": "dac6e820e54f92e58fafe3f7996c775976b222d0b2b892acb3dc6cffac725cb8",
+          "response_bytes": 318,
+          "response_sha256": "990639a71665041f40155b5b667900c749e986a292deb2f7be899eb9139693cc",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 40,
+          "response_prefix": null
+        },
+        {
+          "case": "settings-digest",
+          "surface": "settings",
+          "brief_sha256": "badae2e2fad8484d9fe06af06eb98678d37ad316cf5aed9fa7a2ef98948e3c09",
+          "response_bytes": 340,
+          "response_sha256": "5afb5893e13de8f8247d466bfbff299a7bd01dcae8693f54197d6a36a88f075a",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 35,
+          "response_prefix": null
+        },
+        {
+          "case": "settings-language",
+          "surface": "settings",
+          "brief_sha256": "44b34fe330dc28356614d17e19f8d473789e0366679bb28efd5d6489a4ab35ae",
+          "response_bytes": 371,
+          "response_sha256": "092f00c4c68a6c142a6768615f34c9ef4f883e029ff72ae6df2fb7c8ac7f750a",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 45,
+          "response_prefix": null
+        },
+        {
+          "case": "empty-saved",
+          "surface": "empty-state",
+          "brief_sha256": "45473220c9b12f73e4db58e1df9fbe1b017be3af3bf965b35fbd460b8e8b3fe9",
+          "response_bytes": 334,
+          "response_sha256": "e1936187365984865c3c8aa0ae7c44bf230cfa8766e5bfcd35a4cdbac4850ce0",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 30,
+          "response_prefix": null
+        },
+        {
+          "case": "empty-drafts",
+          "surface": "empty-state",
+          "brief_sha256": "260caf60b8e0d4dccd0d107de36d0649e1e2729458f07554ec4cc54bbf10cf8a",
+          "response_bytes": 340,
+          "response_sha256": "2a2ecf24be7252fca5b3ed873d00c8aa09e9a4e338a6164a2c0c071eedc5f631",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 29,
+          "response_prefix": null
+        },
+        {
+          "case": "empty-search",
+          "surface": "empty-state",
+          "brief_sha256": "d06580257f6e7bb2c99e66738c00443944f0932e070a95cbcc4c3c27f3c7f8d1",
+          "response_bytes": 360,
+          "response_sha256": "7fbd2cf4398a512ea568836480fec75bef6d7467824bc5df4030d293f88da112",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 30,
+          "response_prefix": null
+        },
+        {
+          "case": "empty-handoff",
+          "surface": "empty-state",
+          "brief_sha256": "ae23e8b341c2dfc67dcf4261598c21c3ed0f72c141235cb2d0c8521f3d70dfed",
+          "response_bytes": 337,
+          "response_sha256": "ee04324f499f5e9419229e65924644f7decae9728420781fed4e40d2fc3d8965",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 36,
+          "response_prefix": null
+        },
+        {
+          "case": "empty-exhibits",
+          "surface": "empty-state",
+          "brief_sha256": "1a70e35de5a81469efce7e141ec1de82391973be2d87069b22c8f61cddb9a5e0",
+          "response_bytes": 345,
+          "response_sha256": "5bc17929e7d838381a20a9e0edcdecdce5930c7a40d7720f03178026685d2660",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 47,
+          "response_prefix": null
+        },
+        {
+          "case": "empty-shifts",
+          "surface": "empty-state",
+          "brief_sha256": "6d9e437089615b395a301e35b2952f62dd1fb11d03395217ccd15032e5ae9432",
+          "response_bytes": 344,
+          "response_sha256": "08540bbc94f287107fdf10b7004e6c90b01ac677dc8127eb8ef66771fc0d8df2",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 32,
+          "response_prefix": null
+        }
+      ],
+      "competitor": "shadcn",
+      "pin": "shadcn@4.23.0",
+      "tasks_sha256": "4f352a2a8449911c07188a8e5e311bd5454caf2616d1dfa9b25fa80f590f94d5",
+      "counts": {
+        "matches": 0,
+        "empty": 36,
+        "tool-error": 0,
+        "unrecognized-response": 0
+      },
+      "summary": {
+        "first_choices_identified": 0,
+        "median_milliseconds": 32.5,
+        "median_matched_response_bytes": null
+      },
+      "source_artifact_sha256": "1847e72ce86a80ce98b8da087e906931424bfb2dd2cecb69834717e5b9bf5abe"
+    },
+    {
+      "tool": "search.py",
+      "controls": [
+        {
+          "case": "known-control",
+          "surface": null,
+          "brief_sha256": "f62ac0497ff43b9fce963a33721c779e26c5865a87d15608d89090441a4ce106",
+          "response_bytes": 1996,
+          "response_sha256": "377eea875ed73576c08334b528c951d77bbd045dc90ca2f8d1fda18e44f142ed",
+          "status": "matches",
+          "result_count": 1,
+          "ranked": [
+            {
+              "Style Category": "Glassmorphism"
+            }
+          ],
+          "milliseconds": 71,
+          "domain": "style",
+          "detected_domain": true
+        },
+        {
+          "case": "nonsense-control",
+          "surface": null,
+          "brief_sha256": "6fc218c2e3f68f0c1881a2d4aad4c56200a7bc837a3d690f707e38e6ca873393",
+          "response_bytes": 169,
+          "response_sha256": "5ac37407705dbcaafc7d870547715b0e6ccc070deef0c2f3f6d24d84bacfefec",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 112,
+          "domain": "style",
+          "detected_domain": true
+        }
+      ],
+      "cases": [
+        {
+          "case": "landing-ceramics",
+          "surface": "landing",
+          "brief_sha256": "04af2c685a5db0d3696d9dd0849c8634adccce39f680f00b90985a889553d5f7",
+          "response_bytes": 661,
+          "response_sha256": "dda5c125b5942ba296049e4c0a221cdfc9bec5d8fddc89ddd8f5e6f750838ae4",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 217,
+          "domain": "landing",
+          "detected_domain": true
+        },
+        {
+          "case": "landing-repair",
+          "surface": "landing",
+          "brief_sha256": "b30494cba27c798a2c5d6c827c93d69b916828352f9ab0953d6d8bffe5c7f84f",
+          "response_bytes": 1952,
+          "response_sha256": "e2497edfc75c974e10bad69979843713cc4512114b488609f9e397bbd4c81ddc",
+          "status": "matches",
+          "result_count": 3,
+          "ranked": [
+            {
+              "Product Type": "Home Services (Plumber/Electrician)"
+            },
+            {
+              "Product Type": "Hyperlocal Services"
+            },
+            {
+              "Product Type": "Booking & Appointment App"
+            }
+          ],
+          "milliseconds": 101,
+          "domain": "product",
+          "detected_domain": true
+        },
+        {
+          "case": "landing-radio",
+          "surface": "landing",
+          "brief_sha256": "80358b45ca5abdad80b47fcbb1ea5e8986782b1aa38f7790fd74bf3b73df8f90",
+          "response_bytes": 638,
+          "response_sha256": "653f427f6b61b617a8e59f03d9b6559c7ac6cc9203ad69d8487d3ff0b89d1e0c",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 201,
+          "domain": "landing",
+          "detected_domain": true
+        },
+        {
+          "case": "landing-festival",
+          "surface": "landing",
+          "brief_sha256": "b237dea179c3dcc2606a12cfc9483d5b1d317a922bbaf9952b4ac797cf836299",
+          "response_bytes": 617,
+          "response_sha256": "71168041cada6554dfcc5d0754ae41ddaf66b4d71f400043ad8c28388ef60bba",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 218,
+          "domain": "landing",
+          "detected_domain": true
+        },
+        {
+          "case": "landing-archive",
+          "surface": "landing",
+          "brief_sha256": "3299a354f5bece7b679cbcb23a75987e16163ade8ecb186b48b0eca922b08e87",
+          "response_bytes": 662,
+          "response_sha256": "317404550f5bc96ad32c8e46938469ec3ed5ac2c26510a72a3d2a1c5096ebe43",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 225,
+          "domain": "landing",
+          "detected_domain": true
+        },
+        {
+          "case": "landing-energy",
+          "surface": "landing",
+          "brief_sha256": "242df6d14ecfcdbb43ff35556bf95495d9419dacef1c1fe5439ae80d08b36e6c",
+          "response_bytes": 5780,
+          "response_sha256": "f2787e2a2d8368fe691255501afcc7692e5ddc6396e083ca01a5b578760a8531",
+          "status": "matches",
+          "result_count": 3,
+          "ranked": [
+            {
+              "Style Category": "3D & Hyperrealism"
+            },
+            {
+              "Style Category": "Shopify Polaris"
+            },
+            {
+              "Style Category": "Nature Distilled"
+            }
+          ],
+          "milliseconds": 91,
+          "domain": "style",
+          "detected_domain": true
+        },
+        {
+          "case": "dashboard-coldchain",
+          "surface": "dashboard",
+          "brief_sha256": "1f20e7096877908996cf9a497f84bc7573d0b54af2d753840c05d5e218e4d692",
+          "response_bytes": 428,
+          "response_sha256": "925e9fd91c220a72e19348d403449f7d56b9fe0a24ae87fbe05e22ef45b55ad3",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 265,
+          "domain": "style",
+          "detected_domain": true
+        },
+        {
+          "case": "dashboard-venue",
+          "surface": "dashboard",
+          "brief_sha256": "b736ed0ddae66f54116fc8ebb48f8a65cae6eea21ec25e234f8e69412d91be18",
+          "response_bytes": 5828,
+          "response_sha256": "14d68969b00777940a848b340468530d5eed742cf2bb3afe41abdccad22eb25f",
+          "status": "matches",
+          "result_count": 3,
+          "ranked": [
+            {
+              "Style Category": "Skeuomorphism"
+            },
+            {
+              "Style Category": "Fluent 2"
+            },
+            {
+              "Style Category": "Parallax Storytelling"
+            }
+          ],
+          "milliseconds": 92,
+          "domain": "style",
+          "detected_domain": true
+        },
+        {
+          "case": "dashboard-harvest",
+          "surface": "dashboard",
+          "brief_sha256": "cdd24b40dd0e1528e5707057ee5b03186b3091e7aa91046cc8a8180e5db3e443",
+          "response_bytes": 5720,
+          "response_sha256": "fe07ac343d9421de9d65962a3325e1efee6db2735cc872dcd11aa79726a35e85",
+          "status": "matches",
+          "result_count": 3,
+          "ranked": [
+            {
+              "Style Category": "Liquid Glass"
+            },
+            {
+              "Style Category": "E-Ink / Paper"
+            },
+            {
+              "Style Category": "HUD / Sci-Fi FUI"
+            }
+          ],
+          "milliseconds": 93,
+          "domain": "style",
+          "detected_domain": true
+        },
+        {
+          "case": "dashboard-support",
+          "surface": "dashboard",
+          "brief_sha256": "41e3295aec009b45a2885ae4a92161f9fbd9ad1d900fd69906c45b1dd8a62cdd",
+          "response_bytes": 5947,
+          "response_sha256": "e6f85961a8b974370d8df2ea5208a39b5689c581c7f0b670192a4befee76f55e",
+          "status": "matches",
+          "result_count": 3,
+          "ranked": [
+            {
+              "Style Category": "Editorial Grid / Magazine"
+            },
+            {
+              "Style Category": "Spatial UI (VisionOS)"
+            },
+            {
+              "Style Category": "Data-Dense Dashboard"
+            }
+          ],
+          "milliseconds": 92,
+          "domain": "style",
+          "detected_domain": true
+        },
+        {
+          "case": "dashboard-energy",
+          "surface": "dashboard",
+          "brief_sha256": "bb4b1fbd16ca7d7df5edb7e8f7444c7d4416a6e03afb91c37b0d67b4d1d1e186",
+          "response_bytes": 5839,
+          "response_sha256": "d75572446520216486eded3216a088678614139241b78585e79b6717dc09d481",
+          "status": "matches",
+          "result_count": 3,
+          "ranked": [
+            {
+              "Style Category": "3D & Hyperrealism"
+            },
+            {
+              "Style Category": "Claymorphism"
+            },
+            {
+              "Style Category": "Pixel Art"
+            }
+          ],
+          "milliseconds": 92,
+          "domain": "style",
+          "detected_domain": true
+        },
+        {
+          "case": "dashboard-library",
+          "surface": "dashboard",
+          "brief_sha256": "d66c3549416b069bc23d4e64f2cf2da94cbdcebeb5a4e0b4bbb1ec7bd7107074",
+          "response_bytes": 474,
+          "response_sha256": "67e86391f124ff26908b1276e3eaa9d376b4112fd27cc988a8837d40f1867ce8",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 287,
+          "domain": "style",
+          "detected_domain": true
+        },
+        {
+          "case": "form-venue",
+          "surface": "form",
+          "brief_sha256": "d04744638eeda17a179916239be1e100d4d3d382d72607da4822c416041e8d06",
+          "response_bytes": 1813,
+          "response_sha256": "a0a964ed53d4ccdc8a2febb0ffd77441f400f7debbb8f77ed1111049a4678e5e",
+          "status": "matches",
+          "result_count": 3,
+          "ranked": [
+            {
+              "Category": "Feedback"
+            },
+            {
+              "Category": "Forms"
+            },
+            {
+              "Category": "Forms"
+            }
+          ],
+          "milliseconds": 82,
+          "domain": "web",
+          "detected_domain": true
+        },
+        {
+          "case": "form-maintenance",
+          "surface": "form",
+          "brief_sha256": "0c0ec8af56c1ef03e35bfa6df4b3d62856e2236398e4dbbf97fd161c15e24d17",
+          "response_bytes": 1729,
+          "response_sha256": "7065f6242886f6dc9766d568e95cfd1efc7a7dfaccf87b7069b1934d1bc2b0cd",
+          "status": "matches",
+          "result_count": 3,
+          "ranked": [
+            {
+              "Category": "Navigation"
+            },
+            {
+              "Category": "Forms"
+            },
+            {
+              "Category": "Forms"
+            }
+          ],
+          "milliseconds": 85,
+          "domain": "ux",
+          "detected_domain": true
+        },
+        {
+          "case": "form-label",
+          "surface": "form",
+          "brief_sha256": "26e786bb899231a32498131bd4384f90a5ad5c8b367c1527dc92ed7e6d28d727",
+          "response_bytes": 604,
+          "response_sha256": "03c6802411a8e4c14431ac612b603bdac9f3d3020e936a587cbf834afa07ba0e",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 200,
+          "domain": "landing",
+          "detected_domain": true
+        },
+        {
+          "case": "form-garden",
+          "surface": "form",
+          "brief_sha256": "a09ee83f2a179ea54f5cebfc2209b081c4a203278fe769090f32dd7d39b72028",
+          "response_bytes": 6160,
+          "response_sha256": "4e9764e2f070f689f29850c375c8b008aee944a79ae6417013c6b51e194574c8",
+          "status": "matches",
+          "result_count": 3,
+          "ranked": [
+            {
+              "Style Category": "Voice-First Multimodal"
+            },
+            {
+              "Style Category": "Claymorphism"
+            },
+            {
+              "Style Category": "Zero Interface"
+            }
+          ],
+          "milliseconds": 91,
+          "domain": "style",
+          "detected_domain": true
+        },
+        {
+          "case": "form-exhibition",
+          "surface": "form",
+          "brief_sha256": "1736f246666ab6af9cb563685cbbe4b53bfa38b7266ff8f3c27c15f78775470d",
+          "response_bytes": 1904,
+          "response_sha256": "141efd40f56c8b9ae70ed0b7d6453652ee907dfe2a599b238fea9e5d9195e03a",
+          "status": "matches",
+          "result_count": 3,
+          "ranked": [
+            {
+              "Category": "Typography"
+            },
+            {
+              "Category": "Accessibility"
+            },
+            {
+              "Category": "Feedback"
+            }
+          ],
+          "milliseconds": 82,
+          "domain": "web",
+          "detected_domain": true
+        },
+        {
+          "case": "form-invoice",
+          "surface": "form",
+          "brief_sha256": "ea5f59357d912fd1d8a6e97f57a53b680e507d0a342077c3a2541724d97ccd6a",
+          "response_bytes": 454,
+          "response_sha256": "41d76a6ea1af6d80c682e19d11ecb0e7cb87859dd7cc40727e1a4bb9c6be999c",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 300,
+          "domain": "style",
+          "detected_domain": true
+        },
+        {
+          "case": "mobile-train",
+          "surface": "mobile",
+          "brief_sha256": "6f01f118b04818b53753a1e456daf3e1c578fc299773b8af660aeb4747d6901c",
+          "response_bytes": 6630,
+          "response_sha256": "4d5b83b9ce654b13ef7c1cb8ba87021c47faf8e06f44f52b31b3c534d5508b17",
+          "status": "matches",
+          "result_count": 3,
+          "ranked": [
+            {
+              "Style Category": "Inclusive Design"
+            },
+            {
+              "Style Category": "Accessible & Ethical"
+            },
+            {
+              "Style Category": "Skeuomorphism"
+            }
+          ],
+          "milliseconds": 91,
+          "domain": "style",
+          "detected_domain": true
+        },
+        {
+          "case": "mobile-field",
+          "surface": "mobile",
+          "brief_sha256": "ea53632eb388e8e5d2a22e84e7c06002f956df4e100354b5da26f6bf5d5d6885",
+          "response_bytes": 437,
+          "response_sha256": "c7e8fe58b7cab966606b29ff0a6b725bc0e0e614dec136957b4970addbc7e729",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 282,
+          "domain": "style",
+          "detected_domain": true
+        },
+        {
+          "case": "mobile-recital",
+          "surface": "mobile",
+          "brief_sha256": "867b36708962fc1a7a20a11efe9845b0b346dc863712d708998a221266b8b85d",
+          "response_bytes": 5615,
+          "response_sha256": "936a46c30f61a97d3e145ce36459a6ef5b7c9ceb1c93967b342515d0b733ae7a",
+          "status": "matches",
+          "result_count": 3,
+          "ranked": [
+            {
+              "Style Category": "3D Product Preview"
+            },
+            {
+              "Style Category": "Glassmorphism"
+            },
+            {
+              "Style Category": "Pixel Art"
+            }
+          ],
+          "milliseconds": 91,
+          "domain": "style",
+          "detected_domain": true
+        },
+        {
+          "case": "mobile-court",
+          "surface": "mobile",
+          "brief_sha256": "35ddfff61e49de9bf84b90f13f36193dea45afdf36a60ca6b78572110efeeb33",
+          "response_bytes": 445,
+          "response_sha256": "3499c88292a79b21dbee6fc3b604c48196c44853ede92bb6f097c282722e330a",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 289,
+          "domain": "style",
+          "detected_domain": true
+        },
+        {
+          "case": "mobile-pantry",
+          "surface": "mobile",
+          "brief_sha256": "5417d033db42c0f67609f2970c02e6fae3f0084e595651f644e36116f36df915",
+          "response_bytes": 6031,
+          "response_sha256": "392c6f949718203905c012465a1d7a30b1accc80319df6f870f6327c5e4ad25f",
+          "status": "matches",
+          "result_count": 3,
+          "ranked": [
+            {
+              "Style Category": "Micro-interactions"
+            },
+            {
+              "Style Category": "3D Product Preview"
+            },
+            {
+              "Style Category": "Kinetic Typography"
+            }
+          ],
+          "milliseconds": 90,
+          "domain": "style",
+          "detected_domain": true
+        },
+        {
+          "case": "mobile-gallery",
+          "surface": "mobile",
+          "brief_sha256": "9b16931430cf096d3a9c2c20182746d43a584917028397d52154f9f4ac20a7c6",
+          "response_bytes": 6924,
+          "response_sha256": "399a0a79ded47d63b1f32968d1a6c92d6350bd030868e492b8b233b172ba02f2",
+          "status": "matches",
+          "result_count": 3,
+          "ranked": [
+            {
+              "Style Category": "3D Product Preview"
+            },
+            {
+              "Style Category": "Retro-Futurism"
+            },
+            {
+              "Style Category": "Material 3 Expressive (Mobile)"
+            }
+          ],
+          "milliseconds": 89,
+          "domain": "style",
+          "detected_domain": true
+        },
+        {
+          "case": "settings-notifications",
+          "surface": "settings",
+          "brief_sha256": "347367bac20c35268ba23afbb43adf162cf41a7d6c780e45aab747d675862cde",
+          "response_bytes": 1812,
+          "response_sha256": "5dba666402bbc335f974e914a66b1390abecfa8e6ec9656fb5585c00330c2ac2",
+          "status": "matches",
+          "result_count": 3,
+          "ranked": [
+            {
+              "Product Type": "Coworking Space"
+            },
+            {
+              "Product Type": "Membership/Community"
+            },
+            {
+              "Product Type": "Micro SaaS"
+            }
+          ],
+          "milliseconds": 96,
+          "domain": "product",
+          "detected_domain": true
+        },
+        {
+          "case": "settings-reading",
+          "surface": "settings",
+          "brief_sha256": "97af714c1f643f403c2cdc2c335fce7bc4ae868305c7f4ce2a97bc50c147c5ea",
+          "response_bytes": 6182,
+          "response_sha256": "574c1b4ccb4f0fb8ed6e4f2514c6114cba1d6dba605360dca4e36a866fa12e32",
+          "status": "matches",
+          "result_count": 3,
+          "ranked": [
+            {
+              "Style Category": "Accessible & Ethical"
+            },
+            {
+              "Style Category": "Kinetic Typography"
+            },
+            {
+              "Style Category": "E-Ink / Paper"
+            }
+          ],
+          "milliseconds": 90,
+          "domain": "style",
+          "detected_domain": true
+        },
+        {
+          "case": "settings-team",
+          "surface": "settings",
+          "brief_sha256": "fe41fb5278ed2ce9af24d8fcc8f15b520ba01b94801b73261f6d89739368ac57",
+          "response_bytes": 453,
+          "response_sha256": "d12d3761e52d2e7411a64a14b3bec350bedeb758a43d1aac4231156c81f48ea5",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 269,
+          "domain": "style",
+          "detected_domain": true
+        },
+        {
+          "case": "settings-focus",
+          "surface": "settings",
+          "brief_sha256": "dac6e820e54f92e58fafe3f7996c775976b222d0b2b892acb3dc6cffac725cb8",
+          "response_bytes": 1822,
+          "response_sha256": "3b00640fda51b65ca11e4302c705398550e27a7938adb41eb735e293440e9ee8",
+          "status": "matches",
+          "result_count": 3,
+          "ranked": [
+            {
+              "Category": "Forms"
+            },
+            {
+              "Category": "Performance"
+            },
+            {
+              "Category": "Touch"
+            }
+          ],
+          "milliseconds": 83,
+          "domain": "web",
+          "detected_domain": true
+        },
+        {
+          "case": "settings-digest",
+          "surface": "settings",
+          "brief_sha256": "badae2e2fad8484d9fe06af06eb98678d37ad316cf5aed9fa7a2ef98948e3c09",
+          "response_bytes": 434,
+          "response_sha256": "8c430cab023a8ecf8dd7063c95a8e1471f48439ed6efd7788caa619530b22f3e",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 246,
+          "domain": "style",
+          "detected_domain": true
+        },
+        {
+          "case": "settings-language",
+          "surface": "settings",
+          "brief_sha256": "44b34fe330dc28356614d17e19f8d473789e0366679bb28efd5d6489a4ab35ae",
+          "response_bytes": 6342,
+          "response_sha256": "a20b34f4fc76fdec6118dcb4e34f49c66882be2a48e5d1b4f062b87f46f3f2d1",
+          "status": "matches",
+          "result_count": 3,
+          "ranked": [
+            {
+              "Style Category": "3D & Hyperrealism"
+            },
+            {
+              "Style Category": "Accessible & Ethical"
+            },
+            {
+              "Style Category": "Liquid Glass"
+            }
+          ],
+          "milliseconds": 90,
+          "domain": "style",
+          "detected_domain": true
+        },
+        {
+          "case": "empty-saved",
+          "surface": "empty-state",
+          "brief_sha256": "45473220c9b12f73e4db58e1df9fbe1b017be3af3bf965b35fbd460b8e8b3fe9",
+          "response_bytes": 6545,
+          "response_sha256": "a108cc77119927bc89c01d888f9f39d9561aa628ba63c178603cc72406dce9ad",
+          "status": "matches",
+          "result_count": 3,
+          "ranked": [
+            {
+              "Style Category": "Accessible & Ethical"
+            },
+            {
+              "Style Category": "Voice-First Multimodal"
+            },
+            {
+              "Style Category": "Inclusive Design"
+            }
+          ],
+          "milliseconds": 92,
+          "domain": "style",
+          "detected_domain": true
+        },
+        {
+          "case": "empty-drafts",
+          "surface": "empty-state",
+          "brief_sha256": "260caf60b8e0d4dccd0d107de36d0649e1e2729458f07554ec4cc54bbf10cf8a",
+          "response_bytes": 6690,
+          "response_sha256": "d6f5fc126b4307623f0fa8c85acbf85f9b0632e94f4b79338b19ed11b758f0e0",
+          "status": "matches",
+          "result_count": 3,
+          "ranked": [
+            {
+              "Style Category": "Zero Interface"
+            },
+            {
+              "Style Category": "Brutalism"
+            },
+            {
+              "Style Category": "Bauhaus (包豪斯)"
+            }
+          ],
+          "milliseconds": 88,
+          "domain": "style",
+          "detected_domain": true
+        },
+        {
+          "case": "empty-search",
+          "surface": "empty-state",
+          "brief_sha256": "d06580257f6e7bb2c99e66738c00443944f0932e070a95cbcc4c3c27f3c7f8d1",
+          "response_bytes": 5868,
+          "response_sha256": "ccd6437c780abce70fb8bb46a18ef1cd353c530c083ed1637bbb9a3062ada85f",
+          "status": "matches",
+          "result_count": 3,
+          "ranked": [
+            {
+              "Style Category": "Interactive Cursor Design"
+            },
+            {
+              "Style Category": "Adobe Spectrum"
+            },
+            {
+              "Style Category": "Zero Interface"
+            }
+          ],
+          "milliseconds": 90,
+          "domain": "style",
+          "detected_domain": true
+        },
+        {
+          "case": "empty-handoff",
+          "surface": "empty-state",
+          "brief_sha256": "ae23e8b341c2dfc67dcf4261598c21c3ed0f72c141235cb2d0c8521f3d70dfed",
+          "response_bytes": 6361,
+          "response_sha256": "6ed210b129b718d8db41c84a16c7da4ba4a191bdd314c0de25865c6995918a3a",
+          "status": "matches",
+          "result_count": 3,
+          "ranked": [
+            {
+              "Style Category": "Voice-First Multimodal"
+            },
+            {
+              "Style Category": "Zero Interface"
+            },
+            {
+              "Style Category": "Accessible & Ethical"
+            }
+          ],
+          "milliseconds": 91,
+          "domain": "style",
+          "detected_domain": true
+        },
+        {
+          "case": "empty-exhibits",
+          "surface": "empty-state",
+          "brief_sha256": "1a70e35de5a81469efce7e141ec1de82391973be2d87069b22c8f61cddb9a5e0",
+          "response_bytes": 6051,
+          "response_sha256": "b7c18572f96c4a6d4e291aa6e8772d95789928cdbe13de764c2bbd0025d21a60",
+          "status": "matches",
+          "result_count": 3,
+          "ranked": [
+            {
+              "Style Category": "Neumorphism"
+            },
+            {
+              "Style Category": "Dark Mode (OLED)"
+            },
+            {
+              "Style Category": "Parallax Storytelling"
+            }
+          ],
+          "milliseconds": 91,
+          "domain": "style",
+          "detected_domain": true
+        },
+        {
+          "case": "empty-shifts",
+          "surface": "empty-state",
+          "brief_sha256": "6d9e437089615b395a301e35b2952f62dd1fb11d03395217ccd15032e5ae9432",
+          "response_bytes": 572,
+          "response_sha256": "f5333d445d798e9432580113f1fa167e80944966b28a57cc609ff4e9d0c357bd",
+          "status": "empty",
+          "result_count": 0,
+          "ranked": [],
+          "milliseconds": 182,
+          "domain": "landing",
+          "detected_domain": true
+        }
+      ],
+      "competitor": "ui-ux-pro-max",
+      "pin": "a38d04c3d5c298c851dbe5e6ee1965ee3de42cb5",
+      "tasks_sha256": "4f352a2a8449911c07188a8e5e311bd5454caf2616d1dfa9b25fa80f590f94d5",
+      "counts": {
+        "matches": 23,
+        "empty": 13,
+        "tool-error": 0,
+        "unrecognized-response": 0
+      },
+      "summary": {
+        "first_choices_identified": 18,
+        "median_milliseconds": 92.0,
+        "median_matched_response_bytes": 5868
+      },
+      "source_artifact_sha256": "7a41b9eef47688bf6f4999c7ea8a59339451c2f1938f984aec9867ab17eaca6c"
+    }
+  ]
+}
