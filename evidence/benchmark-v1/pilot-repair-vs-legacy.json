@@ -1,0 +1,422 @@
+{
+  "summary": {
+    "requested_pairs": 2,
+    "judged_pairs": 2,
+    "legacy": 91.66666666666667,
+    "pilot-repair": 95.83333333333334,
+    "difference": 4.166666666666671,
+    "wins_ties_losses": [
+      1,
+      1,
+      0
+    ],
+    "paired_bootstrap_95_interval": [
+      0.0,
+      8.333333333333343
+    ],
+    "median_usage": {
+      "legacy": {
+        "input_tokens": 86323.5,
+        "cached_input_tokens": 55232.0,
+        "output_tokens": 25064.5,
+        "elapsed_seconds": 509.04499999999996
+      },
+      "pilot-repair": {
+        "input_tokens": 64904.5,
+        "cached_input_tokens": 47424.0,
+        "output_tokens": 21919.5,
+        "elapsed_seconds": 444.405
+      }
+    }
+  },
+  "cases": {
+    "landing": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44997403976",
+      "cells": {
+        "pilot-repair": {
+          "generation": {
+            "usage": {
+              "input_tokens": 64869,
+              "cached_input_tokens": 52864,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 24141,
+              "reasoning_output_tokens": 14415
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "treatment_call": true,
+            "direct_call": true,
+            "status": "passed",
+            "case": "landing",
+            "arm": "pilot-repair",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "b8a1ece0a536bb399f2cf17469c7f335c06db0447047b2a6daab81ed6aa65b18",
+            "mcp_config_sha256": "e155a5790ddad82a8dbd9a420d87d5605f1d50bd93009f1680c7eb41fb8c9711",
+            "elapsed_seconds": 488.98,
+            "exit_code": 0,
+            "trace_sha256": "57deb75a6e579ec153c5b045fb472d78b173a819018ef461642be2282b910934",
+            "html_sha256": "e89aa74a478023404c8bdd0af15fa5d015fc356a8aa53a206e27749758287db9"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "13cd840eac637b27769c7cd46d1a32f305d722232d5198fea23a62cec8258a61",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "a089f5cdea41b103d32248799028a580f7f181a076e9e6464d79667a1e449e6d",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "legacy": {
+          "generation": {
+            "usage": {
+              "input_tokens": 87725,
+              "cached_input_tokens": 50432,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 28885,
+              "reasoning_output_tokens": 20154
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "legacy",
+                "tool": "get_design_system",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "treatment_call": true,
+            "status": "passed",
+            "case": "landing",
+            "arm": "legacy",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "b8a1ece0a536bb399f2cf17469c7f335c06db0447047b2a6daab81ed6aa65b18",
+            "mcp_config_sha256": "af109dd6b648064656ebd4ef5d56ff434e779df976f560014cacac78a51b3fb3",
+            "elapsed_seconds": 585.79,
+            "exit_code": 0,
+            "trace_sha256": "d10bafefc241cd64a18877a3874e0242f6a92134e1125864cfea79f38756806d",
+            "html_sha256": "c4edd69ab1f175bdf08986b16c0b43e66f595d7fc99b455563b2c542cac4e24b"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "9c2fb8f9dab9496fcaef046500c500a83ebbffc8913130468690e2379fde9553",
+              "viewport": 1440,
+              "width": 1425,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "6182cfcd0c76c327fff9762b503b5a91d80f954f9010c89331c32e12279a2ac7",
+              "viewport": 390,
+              "width": 375,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "landing",
+        "surface": "landing",
+        "blind_key": {
+          "A": "pilot-repair",
+          "B": "legacy"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, the pouch and Alto Carmo heading identify the coffee first, and the prominent Add to bag button shows the $19 price at the point of choice."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "A wide desktop gutter separates the pouch from the purchase details, and on mobile the image, ruled specifications and full-width button share the same side margins."
+            },
+            "typography": {
+              "score": 3,
+              "evidence": "The bold serif title and sans-serif facts are legible at both widths, though the tight spacing between \u201cAlto\u201d and \u201cCarmo\u201d weakens the word break on mobile."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The copper pouch stands out against its plum backdrop, and plum repeats against cream to highlight the tasting notes, bag count and purchase button."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "At both widths the browser tree exposes the visible count as \u201cBag, 0 bags\u201d and includes a status region and a button named for adding one 250 g bag of Alto Carmo for $19."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "Both layouts identify Cinder Supply\u2019s Alto Carmo, show its cacao and plum notes, 250 g bag size and November 19 roast date, and place $19 directly on the Add to bag button."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths the pouch and headline establish the product, then the \u201cOne bag\u201d row puts quantity, weight and price immediately above Add to bag."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The desktop gutter separates artwork from ordering, and both layouts group tasting notes and roast date between horizontal rules before giving quantity and price their own row."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The serif title shifts from two lines on desktop to one legible line on mobile, and the serif $19 is easy to distinguish from the sans-serif quantity and weight beside it."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Deep plum connects the pouch label, wordmark and purchase button, while a pale rose background sets the bag count apart within its header control."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "Both browser trees expose a skip link, descriptive pouch text and a named Add to bag button, with the separate \u201cBag, 0 items\u201d control providing the only documented bag-status cue."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "Both layouts give Cinder Supply\u2019s Alto Carmo the requested cacao and plum notes and November 19 roast date, then explicitly offer one 250 g bag for $19 above the Add to bag button."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26402,
+          "cached_input_tokens": 17792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 6061,
+          "reasoning_output_tokens": 5371
+        },
+        "scores": {
+          "pilot-repair": 95.83333333333334,
+          "legacy": 95.83333333333334
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "13cd840eac637b27769c7cd46d1a32f305d722232d5198fea23a62cec8258a61",
+          "A-390.png": "a089f5cdea41b103d32248799028a580f7f181a076e9e6464d79667a1e449e6d",
+          "B-1440.png": "9c2fb8f9dab9496fcaef046500c500a83ebbffc8913130468690e2379fde9553",
+          "B-390.png": "6182cfcd0c76c327fff9762b503b5a91d80f954f9010c89331c32e12279a2ac7"
+        },
+        "judge_prompt_sha256": "e0514b6f8a797ceaa3262ba53ca65e265ea132ce8ddbd6d0905ea7309d48b39a"
+      }
+    },
+    "mobile": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44997403976",
+      "cells": {
+        "pilot-repair": {
+          "generation": {
+            "usage": {
+              "input_tokens": 64940,
+              "cached_input_tokens": 41984,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 19698,
+              "reasoning_output_tokens": 15206
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "treatment_call": true,
+            "direct_call": true,
+            "status": "passed",
+            "case": "mobile",
+            "arm": "pilot-repair",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "86a17d820206fae989b9c35abf870053a6c1a114f18eb4fcb7d33e2f5d20851d",
+            "mcp_config_sha256": "e155a5790ddad82a8dbd9a420d87d5605f1d50bd93009f1680c7eb41fb8c9711",
+            "elapsed_seconds": 399.83,
+            "exit_code": 0,
+            "trace_sha256": "201ef0eda6d90f2fc6921e158806323e071bb1439f55a870eed27ffcfd055244",
+            "html_sha256": "5e822b90ee21bf2fd5edc5ffbbf605c7b026e2cd5fbd8f8b85b2e43e220ebe2b"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "ab7807f6257624c10dca6014339f78a360ecfda3bc53666afbdc8e7e38708edc",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "3fbd65cbde8cc070139475eb4c70136caf80df43c5131e70035cacde52ce5dd1",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "legacy": {
+          "generation": {
+            "usage": {
+              "input_tokens": 84922,
+              "cached_input_tokens": 60032,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 21244,
+              "reasoning_output_tokens": 15858
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "legacy",
+                "tool": "get_design_system",
+                "status": "completed"
+              },
+              {
+                "type": "mcp_tool_call",
+                "server": "legacy",
+                "tool": "search_design_patterns",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "treatment_call": true,
+            "status": "passed",
+            "case": "mobile",
+            "arm": "legacy",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "86a17d820206fae989b9c35abf870053a6c1a114f18eb4fcb7d33e2f5d20851d",
+            "mcp_config_sha256": "af109dd6b648064656ebd4ef5d56ff434e779df976f560014cacac78a51b3fb3",
+            "elapsed_seconds": 432.3,
+            "exit_code": 0,
+            "trace_sha256": "40b1112047c3ae9d2dadd5d9ccc74ed10f2d05ff2a55eade8f772b0823715e8d",
+            "html_sha256": "12153b924f63d08573433dde120eede00d36805eefaee870b937b2f5cb3ad44d"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "97aaa8aa8ab8064e47777bc58738b1fab1c6c070768ffc83a5a1a1eaffaba299",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "19e15a3a24093875e591a9cb146334bad058ae2d464fde70cbf1ac8513423dc4",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "mobile",
+        "surface": "mobile",
+        "blind_key": {
+          "A": "pilot-repair",
+          "B": "legacy"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, 08:42 draws the eye first, Union and Platform 3 complete the departure details, and the full-width \u201cShow ticket\u201d button sits immediately below."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The centered desktop column and even mobile gutters preserve a short gap from departure to ticket, followed by a wider break before the two evenly spaced option rows."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "Condensed numerals keep 08:42 large on the phone, the smaller 08:58 reads as secondary, and bold action labels remain easy to scan at both widths."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Black type on yellow makes Platform 3 and \u201cShow ticket\u201d easy to locate, while white type on the black departure panel gives 08:42 clear prominence."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Both browser trees corroborate the visible \u201cShow ticket\u201d and \u201cLater departure 08:58\u201d labels, identify \u201cWeekly pass\u201d as a checkbox, and expose a status node in the ticket region."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both widths show the 08:42 Union departure from Platform 3, the 08:58 alternative, the weekly pass and \u201cShow ticket,\u201d with TKT-0837 unverified in the closed ticket view."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "The time and yellow platform badge stand out at both widths, and the prominent \u201cYour trip\u201d and \u201cYour ticket\u201d headings give the rider two additional labels to scan before \u201cShow ticket\u201d on mobile."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The ticket stub moves from beside the departure on desktop to directly below it on mobile, preserving aligned edges and a distinct gap before the alternatives."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "Condensed numerals give 08:42 and platform 3 room to stay large at phone width, and the smaller \u201cLater departure\u201d caption directly beneath 08:58 distinguishes the alternative in both layouts."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The yellow platform badge stands out against navy at both widths, and the solid navy ticket button is easy to distinguish from the outlined \u201cCompare\u201d and \u201cSelect\u201d actions."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "Both browser trees expose descriptive section headings and the \u201cShow ticket\u201d button, though the \u201cWeekly pass\u201d button\u2019s accessible name omits its visible action word \u201cSelect.\u201d"
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "The 08:42 Union departure from Platform 3, 08:58 alternative, weekly pass and ticket button are explicit at both widths, with no revealed ticket state to confirm TKT-0837."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26242,
+          "cached_input_tokens": 17792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5461,
+          "reasoning_output_tokens": 4743
+        },
+        "scores": {
+          "pilot-repair": 95.83333333333334,
+          "legacy": 87.5
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "ab7807f6257624c10dca6014339f78a360ecfda3bc53666afbdc8e7e38708edc",
+          "A-390.png": "3fbd65cbde8cc070139475eb4c70136caf80df43c5131e70035cacde52ce5dd1",
+          "B-1440.png": "97aaa8aa8ab8064e47777bc58738b1fab1c6c070768ffc83a5a1a1eaffaba299",
+          "B-390.png": "19e15a3a24093875e591a9cb146334bad058ae2d464fde70cbf1ac8513423dc4"
+        },
+        "judge_prompt_sha256": "873f7576b8aa02abf11e6bb98916637d7503d33c481c2c82253071ae08239d45"
+      }
+    }
+  },
+  "scope": "Two fresh matched comparisons against the exact historical revision and scoped legacy tools.",
+  "historical_ref": "82fe6e3749acccf80aecfd523e531be4302865e3",
+  "historical_tools": [
+    "search_design_patterns",
+    "get_design_blueprint",
+    "get_design_system"
+  ],
+  "qualifier": "Initial states judged blind. Keyboard actions and contrast are verified separately."
+}
