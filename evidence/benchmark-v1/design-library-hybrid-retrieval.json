@@ -1,0 +1,2351 @@
+{
+  "index": {
+    "source_commit": "96310517ffcc484f4f820434c1cf51c16f763cec",
+    "entries_tree": "a8c57f30c9278fdf985c31622227b0448f49a9c2",
+    "indexed": 11995,
+    "embedded": 11995,
+    "vector_index_sha256": "420d6c9026583fbc7cb2810f46b111f25838445fd40d3a42616745d2569a309e"
+  },
+  "encoder": {
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "weights_sha256": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db"
+  },
+  "retrieval": {
+    "catalog_ms": 1812.1,
+    "tools": [
+      "add_design",
+      "get_design",
+      "get_style_guide",
+      "list_categories",
+      "list_styles",
+      "list_tags",
+      "search_designs"
+    ],
+    "search_schema": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "default": "",
+          "title": "Query",
+          "type": "string"
+        },
+        "type": {
+          "anyOf": [
+            {
+              "enum": [
+                "style",
+                "component",
+                "screen",
+                "interaction",
+                "layout",
+                "palette",
+                "token"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Type"
+        },
+        "tags": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tags"
+        },
+        "framework": {
+          "anyOf": [
+            {
+              "enum": [
+                "html",
+                "tailwind",
+                "react",
+                "react-native",
+                "none"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Framework"
+        },
+        "platform": {
+          "anyOf": [
+            {
+              "enum": [
+                "web",
+                "mobile",
+                "desktop",
+                "any"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Platform"
+        },
+        "category": {
+          "anyOf": [
+            {
+              "enum": [
+                "landing-page",
+                "hero",
+                "navigation",
+                "footer",
+                "cta",
+                "features",
+                "pricing",
+                "testimonials",
+                "faq",
+                "blog",
+                "about",
+                "contact",
+                "logo-cloud",
+                "stats",
+                "newsletter",
+                "error-page",
+                "coming-soon",
+                "portfolio",
+                "gallery",
+                "dashboard",
+                "auth",
+                "onboarding",
+                "settings",
+                "profile",
+                "checkout",
+                "ecommerce",
+                "chat",
+                "inbox",
+                "calendar",
+                "data-table",
+                "charts",
+                "empty-state",
+                "notifications",
+                "search",
+                "file-upload",
+                "productivity",
+                "media",
+                "maps-travel",
+                "ai-interface",
+                "button",
+                "card",
+                "form",
+                "toggle",
+                "select",
+                "modal",
+                "tooltip",
+                "tabs",
+                "accordion",
+                "alert",
+                "badge",
+                "avatar",
+                "loader",
+                "pagination",
+                "carousel",
+                "timeline",
+                "layout",
+                "menu",
+                "typography-ui",
+                "animation",
+                "hover-effect",
+                "text-effect",
+                "scroll-animation",
+                "background",
+                "3d",
+                "guidelines",
+                "design-style",
+                "branding",
+                "illustration",
+                "fonts",
+                "color",
+                "icons",
+                "tokens",
+                "other"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Category"
+        },
+        "limit": {
+          "default": 10,
+          "title": "Limit",
+          "type": "integer"
+        },
+        "mode": {
+          "default": "hybrid",
+          "enum": [
+            "hybrid",
+            "keyword"
+          ],
+          "title": "Mode",
+          "type": "string"
+        }
+      },
+      "title": "search_designsArguments"
+    },
+    "first_hybrid": {
+      "milliseconds": 16400.1,
+      "response_bytes": 3555,
+      "response_sha256": "7f4a99b56d0b8566210609656bd94c3ede6d80cf7bd254e6942c63ea6a005b57",
+      "ranked": [
+        {
+          "id": "collectui-shiri-shh-a4e9571b",
+          "title": "Mobile App, Progress Bar by @shiri_shh: can we get this for X article @elonmusk pls",
+          "type": "screen",
+          "platform": "mobile",
+          "categories": [
+            "loader",
+            "scroll-animation"
+          ],
+          "has_code": false
+        },
+        {
+          "id": "daisyui-radial-progress-with-background-color-and-border",
+          "title": "Radial progress: With background color and border (daisyUI)",
+          "type": "component",
+          "platform": "web",
+          "categories": [
+            "loader"
+          ],
+          "has_code": true
+        },
+        {
+          "id": "daisyui-progress-progress",
+          "title": "Progress: Progress (daisyUI)",
+          "type": "component",
+          "platform": "web",
+          "categories": [
+            "loader"
+          ],
+          "has_code": true
+        }
+      ]
+    },
+    "cases": [
+      {
+        "case": "landing-ceramics",
+        "surface": "landing",
+        "brief_sha256": "04af2c685a5db0d3696d9dd0849c8634adccce39f680f00b90985a889553d5f7",
+        "mode_order": [
+          "keyword",
+          "hybrid"
+        ],
+        "keyword": {
+          "milliseconds": 87.0,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        },
+        "hybrid": {
+          "milliseconds": 261.2,
+          "response_bytes": 3595,
+          "response_sha256": "fbf9285856d5ebe8485bf5adb5fc6d9d72c10eb49fd10749db2d54ddaa2140e4",
+          "ranked": [
+            {
+              "id": "slp-glaze-4c4196",
+              "title": "Glaze landing page",
+              "type": "screen",
+              "platform": "web",
+              "categories": [
+                "landing-page"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "penpot-penpothub-libraries-templates-ajeen-icon-eae5ba",
+              "title": "Penpot Libraries & Templates | Ajeen Icons (Penpot kit)",
+              "type": "style",
+              "platform": "any",
+              "categories": [
+                "icons",
+                "tokens"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "penpot-penpothub-libraries-templates-food-deliv-be242d",
+              "title": "Penpot Libraries & Templates | Food delivery app UI kit (Penpot kit)",
+              "type": "style",
+              "platform": "mobile",
+              "categories": [
+                "tokens"
+              ],
+              "has_code": false
+            }
+          ]
+        }
+      },
+      {
+        "case": "landing-repair",
+        "surface": "landing",
+        "brief_sha256": "b30494cba27c798a2c5d6c827c93d69b916828352f9ab0953d6d8bffe5c7f84f",
+        "mode_order": [
+          "hybrid",
+          "keyword"
+        ],
+        "hybrid": {
+          "milliseconds": 259.8,
+          "response_bytes": 3664,
+          "response_sha256": "08e57476a21d527975e8fb4176826bd56bcccd22ef84f3d5966136baf7cfac43",
+          "ranked": [
+            {
+              "id": "collectui-octolane-bdd83c8d",
+              "title": "Shader, Landing Page by @octolane: We ship 7 days a week. The @octolane brand page is still the best thin",
+              "type": "layout",
+              "platform": "web",
+              "categories": [
+                "3d",
+                "landing-page"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-willthomson-5140c5a2",
+              "title": "Landing Page by @willthomson__: I built a tool that brought in 80+ leads and let me raise my prices 12",
+              "type": "layout",
+              "platform": "web",
+              "categories": [
+                "landing-page"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-ogbeniseyi-cfdd4355",
+              "title": "Invoice by @ogbeniseyi: Cool kids @diabrowser. Now where am I going to find $100 for a monthly",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "checkout"
+              ],
+              "has_code": false
+            }
+          ]
+        },
+        "keyword": {
+          "milliseconds": 96.5,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        }
+      },
+      {
+        "case": "landing-radio",
+        "surface": "landing",
+        "brief_sha256": "80358b45ca5abdad80b47fcbb1ea5e8986782b1aa38f7790fd74bf3b73df8f90",
+        "mode_order": [
+          "keyword",
+          "hybrid"
+        ],
+        "keyword": {
+          "milliseconds": 59.4,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        },
+        "hybrid": {
+          "milliseconds": 128.6,
+          "response_bytes": 3215,
+          "response_sha256": "5d9b3e344795da2ee78e645709f4489cc7332e47644b82f3bfe1822aeb7521d6",
+          "ranked": [
+            {
+              "id": "uiverse-andrew-demchenk0-hot-bird-10-4a977c",
+              "title": "Radio by andrew-demchenk0 (hot-bird-10)",
+              "type": "component",
+              "platform": "web",
+              "categories": [
+                "toggle"
+              ],
+              "has_code": true
+            },
+            {
+              "id": "uiverse-kyle1dev-smart-fox-51-2c5870",
+              "title": "Radio by kyle1dev (smart-fox-51)",
+              "type": "component",
+              "platform": "web",
+              "categories": [
+                "toggle"
+              ],
+              "has_code": true
+            },
+            {
+              "id": "uiverse-andrew-demchenk0-dry-elephant-32-a4c2df",
+              "title": "Radio by andrew-demchenk0 (dry-elephant-32)",
+              "type": "component",
+              "platform": "web",
+              "categories": [
+                "toggle"
+              ],
+              "has_code": true
+            }
+          ]
+        }
+      },
+      {
+        "case": "landing-festival",
+        "surface": "landing",
+        "brief_sha256": "b237dea179c3dcc2606a12cfc9483d5b1d317a922bbaf9952b4ac797cf836299",
+        "mode_order": [
+          "hybrid",
+          "keyword"
+        ],
+        "hybrid": {
+          "milliseconds": 111.7,
+          "response_bytes": 3328,
+          "response_sha256": "d319e5e43d73d09020e723db727c70d67371d04338544822191b04018026d53b",
+          "ranked": [
+            {
+              "id": "collectui-karaan-dev-2abebb31",
+              "title": "Landing Section by @karaan_dev: Cooked this one in 2 hours in React and Motion",
+              "type": "screen",
+              "platform": "web",
+              "categories": [
+                "landing-page"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "slp-dipsea-fad18d",
+              "title": "Dipsea landing page",
+              "type": "screen",
+              "platform": "web",
+              "categories": [
+                "landing-page"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "slp-wetransfer-about-us-eee76e",
+              "title": "WeTransfer about us landing page",
+              "type": "screen",
+              "platform": "web",
+              "categories": [
+                "landing-page"
+              ],
+              "has_code": false
+            }
+          ]
+        },
+        "keyword": {
+          "milliseconds": 32.5,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        }
+      },
+      {
+        "case": "landing-archive",
+        "surface": "landing",
+        "brief_sha256": "3299a354f5bece7b679cbcb23a75987e16163ade8ecb186b48b0eca922b08e87",
+        "mode_order": [
+          "keyword",
+          "hybrid"
+        ],
+        "keyword": {
+          "milliseconds": 44.8,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        },
+        "hybrid": {
+          "milliseconds": 114.1,
+          "response_bytes": 3702,
+          "response_sha256": "8139f05663bb78ddbcd8e4216115d83e6ba00cf5c24b55416b3e7980ae6dda07",
+          "ranked": [
+            {
+              "id": "collectui-raul-dronca-ffdf5ade",
+              "title": "Scroll Animation, Landing Page by @raul_dronca: Built a page featuring people working at the intersection of design an",
+              "type": "layout",
+              "platform": "web",
+              "categories": [
+                "scroll-animation",
+                "landing-page"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-unknown-65c7c772",
+              "title": "Landing Page by @unknown: An interactive web archive of New Yorker covers from 1925 to 2026, ren",
+              "type": "layout",
+              "platform": "web",
+              "categories": [
+                "landing-page"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-vanjek-d7b32136",
+              "title": "Pagination by @vanjek: lil details for https://bondin.co testimonials pagination \u2728",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "pagination"
+              ],
+              "has_code": false
+            }
+          ]
+        }
+      },
+      {
+        "case": "landing-energy",
+        "surface": "landing",
+        "brief_sha256": "242df6d14ecfcdbb43ff35556bf95495d9419dacef1c1fe5439ae80d08b36e6c",
+        "mode_order": [
+          "hybrid",
+          "keyword"
+        ],
+        "hybrid": {
+          "milliseconds": 108.2,
+          "response_bytes": 2329,
+          "response_sha256": "70386d678beca799dc1954888901b39a4263abe7d1e4ceb6f2ada879ec61fa56",
+          "ranked": [
+            {
+              "id": "slp-critter-pricing-dac957",
+              "title": "Critter pricing landing page",
+              "type": "screen",
+              "platform": "web",
+              "categories": [
+                "landing-page"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-uiux-harshit-a742ac11",
+              "title": "Landing Page by @uiux_harshit: This is why I charge $1000 for a landing page design",
+              "type": "layout",
+              "platform": "web",
+              "categories": [
+                "landing-page"
+              ],
+              "has_code": false
+            }
+          ]
+        },
+        "keyword": {
+          "milliseconds": 41.0,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        }
+      },
+      {
+        "case": "dashboard-coldchain",
+        "surface": "dashboard",
+        "brief_sha256": "1f20e7096877908996cf9a497f84bc7573d0b54af2d753840c05d5e218e4d692",
+        "mode_order": [
+          "keyword",
+          "hybrid"
+        ],
+        "keyword": {
+          "milliseconds": 132.6,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        },
+        "hybrid": {
+          "milliseconds": 291.7,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        }
+      },
+      {
+        "case": "dashboard-venue",
+        "surface": "dashboard",
+        "brief_sha256": "b736ed0ddae66f54116fc8ebb48f8a65cae6eea21ec25e234f8e69412d91be18",
+        "mode_order": [
+          "hybrid",
+          "keyword"
+        ],
+        "hybrid": {
+          "milliseconds": 182.8,
+          "response_bytes": 3560,
+          "response_sha256": "2fd6b4496987ee52faaddde13fc1fd8e271ebc74b7d6d05a8e8535727aeb82e4",
+          "ranked": [
+            {
+              "id": "collectui-remocn-9a00b284",
+              "title": "Motion by @_remocn: Introducing Remocn Studio. Waitlist for early access. This is what I'v",
+              "type": "interaction",
+              "platform": "any",
+              "categories": [
+                "animation"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-unknown-688148a7",
+              "title": "Motion by @unknown: GTA 6 might get more delayed but we won\u2019t! Introducing Scribe v2 Realt",
+              "type": "interaction",
+              "platform": "any",
+              "categories": [
+                "animation"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-mrblackstudio-eb5a2976",
+              "title": "AI Flow by @mrblackstudio: Been quietly building a browser based live audiovisual studio app for ",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "ai-interface"
+              ],
+              "has_code": false
+            }
+          ]
+        },
+        "keyword": {
+          "milliseconds": 63.9,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        }
+      },
+      {
+        "case": "dashboard-harvest",
+        "surface": "dashboard",
+        "brief_sha256": "cdd24b40dd0e1528e5707057ee5b03186b3091e7aa91046cc8a8180e5db3e443",
+        "mode_order": [
+          "keyword",
+          "hybrid"
+        ],
+        "keyword": {
+          "milliseconds": 92.2,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        },
+        "hybrid": {
+          "milliseconds": 167.8,
+          "response_bytes": 3236,
+          "response_sha256": "07d515ba7ab9535a11021fa1390e019460af19e2f35534eca0c0be5a8033669b",
+          "ranked": [
+            {
+              "id": "slp-greenhouse-376c80",
+              "title": "Greenhouse landing page",
+              "type": "screen",
+              "platform": "web",
+              "categories": [
+                "landing-page"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "dp-components-botanical-alert-106909",
+              "title": "Alert in Botanical style",
+              "type": "component",
+              "platform": "web",
+              "categories": [
+                "alert",
+                "design-style"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "lucide-weather",
+              "title": "Lucide icons: Weather (52)",
+              "type": "component",
+              "platform": "any",
+              "categories": [
+                "icons"
+              ],
+              "has_code": true
+            }
+          ]
+        }
+      },
+      {
+        "case": "dashboard-support",
+        "surface": "dashboard",
+        "brief_sha256": "41e3295aec009b45a2885ae4a92161f9fbd9ad1d900fd69906c45b1dd8a62cdd",
+        "mode_order": [
+          "hybrid",
+          "keyword"
+        ],
+        "hybrid": {
+          "milliseconds": 144.5,
+          "response_bytes": 3248,
+          "response_sha256": "1fd48afc4cf4a28759a4d95829a2c90b1a31f7b61ab64b65b0123ba40fd0aab5",
+          "ranked": [
+            {
+              "id": "penpot-penpothub-libraries-templates-eisenhower-9becab",
+              "title": "Penpot Libraries & Templates | Eisenhower matrix (Penpot kit)",
+              "type": "style",
+              "platform": "any",
+              "categories": [
+                "tokens"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "daisyui-steps-horizontal",
+              "title": "Steps: Horizontal (daisyUI)",
+              "type": "component",
+              "platform": "web",
+              "categories": [
+                "timeline"
+              ],
+              "has_code": true
+            },
+            {
+              "id": "daisyui-steps-vertical",
+              "title": "Steps: Vertical (daisyUI)",
+              "type": "component",
+              "platform": "web",
+              "categories": [
+                "timeline"
+              ],
+              "has_code": true
+            }
+          ]
+        },
+        "keyword": {
+          "milliseconds": 83.9,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        }
+      },
+      {
+        "case": "dashboard-energy",
+        "surface": "dashboard",
+        "brief_sha256": "bb4b1fbd16ca7d7df5edb7e8f7444c7d4416a6e03afb91c37b0d67b4d1d1e186",
+        "mode_order": [
+          "keyword",
+          "hybrid"
+        ],
+        "keyword": {
+          "milliseconds": 55.4,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        },
+        "hybrid": {
+          "milliseconds": 146.4,
+          "response_bytes": 3337,
+          "response_sha256": "713da767ea2ef4df3ea23a206c00c5a8a4dfee19008a00e52adf10ad90e3c3bf",
+          "ranked": [
+            {
+              "id": "lucide-home",
+              "title": "Lucide icons: Home (79)",
+              "type": "component",
+              "platform": "any",
+              "categories": [
+                "icons"
+              ],
+              "has_code": true
+            },
+            {
+              "id": "collectui-faydesignsstuff-1dd3b9f3",
+              "title": "Invoice, Dark Mode by @faydesignsstuff: Brightness shouldn't be the only variable, temperature matters just as",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "checkout"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-ayushsoni-io-c090e718",
+              "title": "Branding by @ayushsoni_io: visualizing power",
+              "type": "style",
+              "platform": "any",
+              "categories": [
+                "branding"
+              ],
+              "has_code": false
+            }
+          ]
+        }
+      },
+      {
+        "case": "dashboard-library",
+        "surface": "dashboard",
+        "brief_sha256": "d66c3549416b069bc23d4e64f2cf2da94cbdcebeb5a4e0b4bbb1ec7bd7107074",
+        "mode_order": [
+          "hybrid",
+          "keyword"
+        ],
+        "hybrid": {
+          "milliseconds": 147.3,
+          "response_bytes": 3485,
+          "response_sha256": "cdc6cb67b23f7847a1ef9eb88ea5b65af75bd1fa9ebfc69d9485950cb46219a2",
+          "ranked": [
+            {
+              "id": "collectui-greysaurabh-981b4896",
+              "title": "Dashboard by @GreySaurabh: Hold on, More dashboards loading...",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "dashboard"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-jeetnirnejak-4df04cb9",
+              "title": "Date Picker, Calendar by @jeetnirnejak: Date Range Picker: a booking calendar. tap two days, or take a shortcu",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "calendar"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-moguzbulbul-00947ffb",
+              "title": "Subscribe by @moguzbulbul: join the waitlist",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "newsletter"
+              ],
+              "has_code": false
+            }
+          ]
+        },
+        "keyword": {
+          "milliseconds": 76.5,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        }
+      },
+      {
+        "case": "form-venue",
+        "surface": "form",
+        "brief_sha256": "d04744638eeda17a179916239be1e100d4d3d382d72607da4822c416041e8d06",
+        "mode_order": [
+          "keyword",
+          "hybrid"
+        ],
+        "keyword": {
+          "milliseconds": 107.3,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        },
+        "hybrid": {
+          "milliseconds": 190.0,
+          "response_bytes": 3559,
+          "response_sha256": "b072372f5224d92f331df204dc5254421080c01f3e4e550a4c791e11605396fb",
+          "ranked": [
+            {
+              "id": "dp-components-claymorphism-drawer-ae837b",
+              "title": "Drawer in Claymorphism style",
+              "type": "component",
+              "platform": "web",
+              "categories": [
+                "modal",
+                "design-style"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "penpot-penpothub-libraries-templates-calendar-i-577286",
+              "title": "Penpot Libraries & Templates | Calendar Interactive UI Kit (Penpot kit)",
+              "type": "style",
+              "platform": "any",
+              "categories": [
+                "calendar",
+                "tokens"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "slp-acuityscheduling-c7edcb",
+              "title": "Acuity:scheduling landing page",
+              "type": "screen",
+              "platform": "web",
+              "categories": [
+                "landing-page"
+              ],
+              "has_code": false
+            }
+          ]
+        }
+      },
+      {
+        "case": "form-maintenance",
+        "surface": "form",
+        "brief_sha256": "0c0ec8af56c1ef03e35bfa6df4b3d62856e2236398e4dbbf97fd161c15e24d17",
+        "mode_order": [
+          "hybrid",
+          "keyword"
+        ],
+        "hybrid": {
+          "milliseconds": 112.2,
+          "response_bytes": 3533,
+          "response_sha256": "6611d2f9dffcfabd7ce199bd56561d41986a3b36cec17bdc45b7e6d634d79674",
+          "ranked": [
+            {
+              "id": "collectui-designerdaniyel-10b5a28c",
+              "title": "Bento, Features by @designerdaniyel: Bento in light mode",
+              "type": "layout",
+              "platform": "any",
+              "categories": [
+                "features"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "dp-components-modern-dark-contact-fdcdcc",
+              "title": "Contact in Modern Dark style",
+              "type": "component",
+              "platform": "web",
+              "categories": [
+                "contact"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-piyushsphere-7d66fb5e",
+              "title": "Chat Layout, AI Agents by @piyushsphere: Light mode dashboards",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "ai-interface",
+                "chat"
+              ],
+              "has_code": false
+            }
+          ]
+        },
+        "keyword": {
+          "milliseconds": 39.2,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        }
+      },
+      {
+        "case": "form-label",
+        "surface": "form",
+        "brief_sha256": "26e786bb899231a32498131bd4384f90a5ad5c8b367c1527dc92ed7e6d28d727",
+        "mode_order": [
+          "keyword",
+          "hybrid"
+        ],
+        "keyword": {
+          "milliseconds": 34.3,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        },
+        "hybrid": {
+          "milliseconds": 112.3,
+          "response_bytes": 3777,
+          "response_sha256": "4cf25a6606076e38fbc658e369cff08860fcb4707b40bd930d5a6140df2b5f09",
+          "ranked": [
+            {
+              "id": "hyperui-marketing-contact-forms-5",
+              "title": "Contact Forms: Side-by-side form with description",
+              "type": "layout",
+              "platform": "web",
+              "categories": [
+                "form",
+                "contact",
+                "newsletter"
+              ],
+              "has_code": true
+            },
+            {
+              "id": "collectui-samgrosss-4259d52b",
+              "title": "Landing Page by @samgrosss: Super happy to finally introduce Audyr and officially open the waitlis",
+              "type": "layout",
+              "platform": "web",
+              "categories": [
+                "landing-page"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "hyperui-marketing-contact-forms-5-dark",
+              "title": "Contact Forms: Side-by-side form with description (dark)",
+              "type": "layout",
+              "platform": "web",
+              "categories": [
+                "form",
+                "contact",
+                "newsletter"
+              ],
+              "has_code": true
+            }
+          ]
+        }
+      },
+      {
+        "case": "form-garden",
+        "surface": "form",
+        "brief_sha256": "a09ee83f2a179ea54f5cebfc2209b081c4a203278fe769090f32dd7d39b72028",
+        "mode_order": [
+          "hybrid",
+          "keyword"
+        ],
+        "hybrid": {
+          "milliseconds": 128.1,
+          "response_bytes": 3841,
+          "response_sha256": "455b6d631884d2ea0ff1a5253b9bf418cb3af311f858fe1faa7454a01b3b3d8a",
+          "ranked": [
+            {
+              "id": "collectui-jeetnirnejak-4df04cb9",
+              "title": "Date Picker, Calendar by @jeetnirnejak: Date Range Picker: a booking calendar. tap two days, or take a shortcu",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "calendar"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-unknown-b45e2dd6",
+              "title": "Dark Mode, Web Animation by @unknown: How we generate follow up questions for Midday in 2 easy steps using A",
+              "type": "screen",
+              "platform": "web",
+              "categories": [
+                "animation",
+                "chat",
+                "design-style"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-unknown-f886489f",
+              "title": "Motion by @unknown: 1 week left to apply for Cohort 2 of v0 Ambassadors! Build with v0, sh",
+              "type": "interaction",
+              "platform": "any",
+              "categories": [
+                "animation"
+              ],
+              "has_code": false
+            }
+          ]
+        },
+        "keyword": {
+          "milliseconds": 51.5,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        }
+      },
+      {
+        "case": "form-exhibition",
+        "surface": "form",
+        "brief_sha256": "1736f246666ab6af9cb563685cbbe4b53bfa38b7266ff8f3c27c15f78775470d",
+        "mode_order": [
+          "keyword",
+          "hybrid"
+        ],
+        "keyword": {
+          "milliseconds": 71.8,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        },
+        "hybrid": {
+          "milliseconds": 153.3,
+          "response_bytes": 3390,
+          "response_sha256": "d1f3868cf7f55084312a06ce3d7647756d320bd8af9f910ea828072b5c407afd",
+          "ranked": [
+            {
+              "id": "collectui-uinerd-d9092968",
+              "title": "UI Interaction by @uiNerd: are you joining the meeting? me:",
+              "type": "interaction",
+              "platform": "any",
+              "categories": [
+                "animation"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-lynelskroll-6b6971e9",
+              "title": "Modal, Invite by @LynelSkroll: Did you cook?",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "modal",
+                "newsletter"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-nitishkmrk-3b2f7e20",
+              "title": "Button by @nitishkmrk: invite code interaction \u23af\u27e1\u00b0",
+              "type": "interaction",
+              "platform": "any",
+              "categories": [
+                "button"
+              ],
+              "has_code": false
+            }
+          ]
+        }
+      },
+      {
+        "case": "form-invoice",
+        "surface": "form",
+        "brief_sha256": "ea5f59357d912fd1d8a6e97f57a53b680e507d0a342077c3a2541724d97ccd6a",
+        "mode_order": [
+          "hybrid",
+          "keyword"
+        ],
+        "hybrid": {
+          "milliseconds": 122.1,
+          "response_bytes": 3907,
+          "response_sha256": "f7350400954b30b27ca979333191a9b342f4a706a4be0af6b2d3526f82563bb7",
+          "ranked": [
+            {
+              "id": "collectui-designedforfun-d268add2",
+              "title": "Book Cover, UI Interaction by @designedforfun: Working on a bookshelf for my website",
+              "type": "interaction",
+              "platform": "any",
+              "categories": [
+                "branding",
+                "animation"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-0xurvish-8895ee2d",
+              "title": "Book Cover, UI Interaction by @0xUrvish: this 3D book interaction is so satisfying you can actually open the bo",
+              "type": "interaction",
+              "platform": "any",
+              "categories": [
+                "branding",
+                "animation"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-peterdpong-6c029c63",
+              "title": "Book Cover, Mac App by @peterdpong: been exploring representing collections of photos as little books (als",
+              "type": "interaction",
+              "platform": "desktop",
+              "categories": [
+                "branding",
+                "hover-effect"
+              ],
+              "has_code": false
+            }
+          ]
+        },
+        "keyword": {
+          "milliseconds": 54.0,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        }
+      },
+      {
+        "case": "mobile-train",
+        "surface": "mobile",
+        "brief_sha256": "6f01f118b04818b53753a1e456daf3e1c578fc299773b8af660aeb4747d6901c",
+        "mode_order": [
+          "keyword",
+          "hybrid"
+        ],
+        "keyword": {
+          "milliseconds": 86.4,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        },
+        "hybrid": {
+          "milliseconds": 152.4,
+          "response_bytes": 3582,
+          "response_sha256": "d581265e1fbec221d49f8fd0e9e4eb74f87f63950e951f833fd6a0515ac0f3a4",
+          "ranked": [
+            {
+              "id": "uiverse-yaya12085-empty-badger-73-b8f367",
+              "title": "Radio by Yaya12085 (empty-badger-73)",
+              "type": "component",
+              "platform": "web",
+              "categories": [
+                "toggle"
+              ],
+              "has_code": true
+            },
+            {
+              "id": "uiverse-andrew-demchenk0-smart-wasp-46-d206c1",
+              "title": "Button by andrew-demchenk0 (smart-wasp-46)",
+              "type": "component",
+              "platform": "web",
+              "categories": [
+                "button"
+              ],
+              "has_code": true
+            },
+            {
+              "id": "collectui-unknown-984ac468",
+              "title": "Card by @unknown: Continuing work on the motorhome booking website. Here\u2019s the mobile vi",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "card"
+              ],
+              "has_code": false
+            }
+          ]
+        }
+      },
+      {
+        "case": "mobile-field",
+        "surface": "mobile",
+        "brief_sha256": "ea53632eb388e8e5d2a22e84e7c06002f956df4e100354b5da26f6bf5d5d6885",
+        "mode_order": [
+          "hybrid",
+          "keyword"
+        ],
+        "hybrid": {
+          "milliseconds": 109.9,
+          "response_bytes": 3420,
+          "response_sha256": "39652f7ad47b352fb2d495ba15c251209061a7333aee7bcff0b8c9016a86d3f6",
+          "ranked": [
+            {
+              "id": "slp-tiempo-401e32",
+              "title": "Tiempo landing page",
+              "type": "screen",
+              "platform": "web",
+              "categories": [
+                "landing-page"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "slp-loops-0a7252",
+              "title": "Loops landing page",
+              "type": "screen",
+              "platform": "web",
+              "categories": [
+                "landing-page"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-unknown-f5ce496f",
+              "title": "UI Interaction, Map by @unknown: An iPhone fitness route replay shows a walking workout traced over a 3",
+              "type": "interaction",
+              "platform": "mobile",
+              "categories": [
+                "maps-travel",
+                "animation"
+              ],
+              "has_code": false
+            }
+          ]
+        },
+        "keyword": {
+          "milliseconds": 38.4,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        }
+      },
+      {
+        "case": "mobile-recital",
+        "surface": "mobile",
+        "brief_sha256": "867b36708962fc1a7a20a11efe9845b0b346dc863712d708998a221266b8b85d",
+        "mode_order": [
+          "keyword",
+          "hybrid"
+        ],
+        "keyword": {
+          "milliseconds": 77.3,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        },
+        "hybrid": {
+          "milliseconds": 234.6,
+          "response_bytes": 3751,
+          "response_sha256": "88a9c506c9098b425c902a76b71f1cb886bc1c47d4fb302e47973277d08cb287",
+          "ranked": [
+            {
+              "id": "collectui-darel023-9943b710",
+              "title": "Motion by @darel023: Testing Opus 5.5 on max effort. You're a world-class motion designer, ",
+              "type": "interaction",
+              "platform": "any",
+              "categories": [
+                "animation"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-dmitrylepisov-53b95c7c",
+              "title": "Motion by @DmitryLepisov: Hypnotic loops to start the week. Stare responsibly. \u200d",
+              "type": "interaction",
+              "platform": "any",
+              "categories": [
+                "animation"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-dwhitedesign-cfc58231",
+              "title": "UI Interaction, Text Effect by @dwhitedesign: It's out. The sounds your UI has been waiting for. 10 cues \u00b7 synthesis",
+              "type": "interaction",
+              "platform": "any",
+              "categories": [
+                "animation",
+                "text-effect",
+                "typography-ui"
+              ],
+              "has_code": false
+            }
+          ]
+        }
+      },
+      {
+        "case": "mobile-court",
+        "surface": "mobile",
+        "brief_sha256": "35ddfff61e49de9bf84b90f13f36193dea45afdf36a60ca6b78572110efeeb33",
+        "mode_order": [
+          "hybrid",
+          "keyword"
+        ],
+        "hybrid": {
+          "milliseconds": 149.4,
+          "response_bytes": 1289,
+          "response_sha256": "e225c953b9ca79c68f47a5cb813575b74352e2459a179b1972e9867e65fa076e",
+          "ranked": [
+            {
+              "id": "collectui-jeetnirnejak-4df04cb9",
+              "title": "Date Picker, Calendar by @jeetnirnejak: Date Range Picker: a booking calendar. tap two days, or take a shortcu",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "calendar"
+              ],
+              "has_code": false
+            }
+          ]
+        },
+        "keyword": {
+          "milliseconds": 58.6,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        }
+      },
+      {
+        "case": "mobile-pantry",
+        "surface": "mobile",
+        "brief_sha256": "5417d033db42c0f67609f2970c02e6fae3f0084e595651f644e36116f36df915",
+        "mode_order": [
+          "keyword",
+          "hybrid"
+        ],
+        "keyword": {
+          "milliseconds": 50.1,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        },
+        "hybrid": {
+          "milliseconds": 124.7,
+          "response_bytes": 3534,
+          "response_sha256": "12e4edcebcbdc3c6a9d796650331609bd5c198e8b1e20a1547089f43c4ffb631",
+          "ranked": [
+            {
+              "id": "collectui-sekachov-1df68045",
+              "title": "Mobile App by @sekachov: my girlfriend asked me if there's an apple health app, but for food. i",
+              "type": "screen",
+              "platform": "mobile",
+              "categories": [
+                "other"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-goncalotex-641af0cb",
+              "title": "UI Interaction by @goncalotex: Timezone viewer with interactive analog clocks @omma_ai You can drag t",
+              "type": "interaction",
+              "platform": "any",
+              "categories": [
+                "animation"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-calicoapp-693e0ea5",
+              "title": "Calendar by @CalicoApp: Your week, your rules. https://calicocat.app",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "calendar"
+              ],
+              "has_code": false
+            }
+          ]
+        }
+      },
+      {
+        "case": "mobile-gallery",
+        "surface": "mobile",
+        "brief_sha256": "9b16931430cf096d3a9c2c20182746d43a584917028397d52154f9f4ac20a7c6",
+        "mode_order": [
+          "hybrid",
+          "keyword"
+        ],
+        "hybrid": {
+          "milliseconds": 120.7,
+          "response_bytes": 3647,
+          "response_sha256": "09296428992bde9a52b660a113f17ba9282f6eff92739472d022b9e938e0a12a",
+          "ranked": [
+            {
+              "id": "collectui-dilanoktay80-38e26fe6",
+              "title": "Card by @DilanOktay80: Designing a quiet roadside motel website Added the rooms section desig",
+              "type": "screen",
+              "platform": "web",
+              "categories": [
+                "card"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-emishonowayi-afb9f0b8",
+              "title": "Image Slider, UI Interaction by @Emishonowayi: Built and published the fictional design agency archive from day 12 us",
+              "type": "interaction",
+              "platform": "web",
+              "categories": [
+                "carousel"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-kubadesign-81eca83b",
+              "title": "AI, Image Slider by @kubadesign: prompt gallery concept",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "ai-interface",
+                "carousel"
+              ],
+              "has_code": false
+            }
+          ]
+        },
+        "keyword": {
+          "milliseconds": 47.0,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        }
+      },
+      {
+        "case": "settings-notifications",
+        "surface": "settings",
+        "brief_sha256": "347367bac20c35268ba23afbb43adf162cf41a7d6c780e45aab747d675862cde",
+        "mode_order": [
+          "keyword",
+          "hybrid"
+        ],
+        "keyword": {
+          "milliseconds": 18.4,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        },
+        "hybrid": {
+          "milliseconds": 93.6,
+          "response_bytes": 3660,
+          "response_sha256": "6c105423d46bdb7952c4a124c90caf337ec9119829ba786900d5307f9a90eff8",
+          "ranked": [
+            {
+              "id": "collectui-raunofreiberg-148cc261",
+              "title": "Notification by @raunofreiberg: happy friday! i did some interaction work https://rauno.me/notes/5",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "notifications"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-mnowakdesign-ff0b9123",
+              "title": "Notification by @mnowakdesign: Exploring some ideas for informing users about an update. The icon hig",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "notifications"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-aydahnizzy-656af8c1",
+              "title": "Notification by @aydahnizzy: we've added a way to notify you when we push a new update on the exten",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "notifications"
+              ],
+              "has_code": false
+            }
+          ]
+        }
+      },
+      {
+        "case": "settings-reading",
+        "surface": "settings",
+        "brief_sha256": "97af714c1f643f403c2cdc2c335fce7bc4ae868305c7f4ce2a97bc50c147c5ea",
+        "mode_order": [
+          "hybrid",
+          "keyword"
+        ],
+        "hybrid": {
+          "milliseconds": 110.0,
+          "response_bytes": 3675,
+          "response_sha256": "f943876a1397c19e78541e991dedad934016050f4a06559fb6be886841def746",
+          "ranked": [
+            {
+              "id": "penpot-penpothub-libraries-templates-food-deliv-be242d",
+              "title": "Penpot Libraries & Templates | Food delivery app UI kit (Penpot kit)",
+              "type": "style",
+              "platform": "mobile",
+              "categories": [
+                "tokens"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-ibelick-decece27",
+              "title": "UI Interaction by @Ibelick: introducing mesurer a tiny tool to measure spacing and align your UI o",
+              "type": "interaction",
+              "platform": "any",
+              "categories": [
+                "animation"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-sekachov-1df68045",
+              "title": "Mobile App by @sekachov: my girlfriend asked me if there's an apple health app, but for food. i",
+              "type": "screen",
+              "platform": "mobile",
+              "categories": [
+                "other"
+              ],
+              "has_code": false
+            }
+          ]
+        },
+        "keyword": {
+          "milliseconds": 35.0,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        }
+      },
+      {
+        "case": "settings-team",
+        "surface": "settings",
+        "brief_sha256": "fe41fb5278ed2ce9af24d8fcc8f15b520ba01b94801b73261f6d89739368ac57",
+        "mode_order": [
+          "keyword",
+          "hybrid"
+        ],
+        "keyword": {
+          "milliseconds": 35.4,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        },
+        "hybrid": {
+          "milliseconds": 134.5,
+          "response_bytes": 3802,
+          "response_sha256": "b53f206d4378f67b856bb3243519321a0009fefebcca35488a0fc241f9bdd7d0",
+          "ranked": [
+            {
+              "id": "collectui-johnphamous-7baa1341",
+              "title": "Animation by @JohnPhamous: the \u25b2 design team is hiring - high agency, ownership, feedback volume ",
+              "type": "interaction",
+              "platform": "any",
+              "categories": [
+                "animation"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-get-bb-app-1055bb01",
+              "title": "AI, AI Agents by @get_bb_app: Cursor-Style Sidebar Plugin for BB IDE",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "ai-interface"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-creativestefan-39f23c07",
+              "title": "Dashboard, Admin Panel by @creativestefan: UI screen of how AI can work alongside enterprise teams during fraud r",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "dashboard"
+              ],
+              "has_code": false
+            }
+          ]
+        }
+      },
+      {
+        "case": "settings-focus",
+        "surface": "settings",
+        "brief_sha256": "dac6e820e54f92e58fafe3f7996c775976b222d0b2b892acb3dc6cffac725cb8",
+        "mode_order": [
+          "hybrid",
+          "keyword"
+        ],
+        "hybrid": {
+          "milliseconds": 222.5,
+          "response_bytes": 3593,
+          "response_sha256": "12035f38ec0e2bc4484cb8a64148d4fd44c9373193858b26a3802bd609f95cc0",
+          "ranked": [
+            {
+              "id": "collectui-jeetnirnejak-4df04cb9",
+              "title": "Date Picker, Calendar by @jeetnirnejak: Date Range Picker: a booking calendar. tap two days, or take a shortcu",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "calendar"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-goncalotex-641af0cb",
+              "title": "UI Interaction by @goncalotex: Timezone viewer with interactive analog clocks @omma_ai You can drag t",
+              "type": "interaction",
+              "platform": "any",
+              "categories": [
+                "animation"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "daisyui-radial-progress-custom-color",
+              "title": "Radial progress: Custom color (daisyUI)",
+              "type": "component",
+              "platform": "web",
+              "categories": [
+                "loader"
+              ],
+              "has_code": true
+            }
+          ]
+        },
+        "keyword": {
+          "milliseconds": 73.4,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        }
+      },
+      {
+        "case": "settings-digest",
+        "surface": "settings",
+        "brief_sha256": "badae2e2fad8484d9fe06af06eb98678d37ad316cf5aed9fa7a2ef98948e3c09",
+        "mode_order": [
+          "keyword",
+          "hybrid"
+        ],
+        "keyword": {
+          "milliseconds": 34.7,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        },
+        "hybrid": {
+          "milliseconds": 154.9,
+          "response_bytes": 3618,
+          "response_sha256": "7aca8e18cb0bba97fa9c03bcfeeebab8eef38a687fd5e2eba1bda985fa667e91",
+          "ranked": [
+            {
+              "id": "collectui-calicoapp-693e0ea5",
+              "title": "Calendar by @CalicoApp: Your week, your rules. https://calicocat.app",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "calendar"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-jeetnirnejak-4df04cb9",
+              "title": "Date Picker, Calendar by @jeetnirnejak: Date Range Picker: a booking calendar. tap two days, or take a shortcu",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "calendar"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-seltugba-98496b36",
+              "title": "Calendar, Dashboard by @seltugba_: A closer look at the calendar, week view",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "calendar",
+                "dashboard"
+              ],
+              "has_code": false
+            }
+          ]
+        }
+      },
+      {
+        "case": "settings-language",
+        "surface": "settings",
+        "brief_sha256": "44b34fe330dc28356614d17e19f8d473789e0366679bb28efd5d6489a4ab35ae",
+        "mode_order": [
+          "hybrid",
+          "keyword"
+        ],
+        "hybrid": {
+          "milliseconds": 167.2,
+          "response_bytes": 3734,
+          "response_sha256": "7a44440f582888c0bd029181f6b78e26e30292af1505dcd03b723db66444cb35",
+          "ranked": [
+            {
+              "id": "collectui-faydesignsstuff-1dd3b9f3",
+              "title": "Invoice, Dark Mode by @faydesignsstuff: Brightness shouldn't be the only variable, temperature matters just as",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "checkout"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-unknown-b295fecd",
+              "title": "UI Interaction by @unknown: A clean date range slider interface shows month presets and changing d",
+              "type": "interaction",
+              "platform": "any",
+              "categories": [
+                "animation"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-jeetnirnejak-4df04cb9",
+              "title": "Date Picker, Calendar by @jeetnirnejak: Date Range Picker: a booking calendar. tap two days, or take a shortcu",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "calendar"
+              ],
+              "has_code": false
+            }
+          ]
+        },
+        "keyword": {
+          "milliseconds": 87.2,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        }
+      },
+      {
+        "case": "empty-saved",
+        "surface": "empty-state",
+        "brief_sha256": "45473220c9b12f73e4db58e1df9fbe1b017be3af3bf965b35fbd460b8e8b3fe9",
+        "mode_order": [
+          "keyword",
+          "hybrid"
+        ],
+        "keyword": {
+          "milliseconds": 87.0,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        },
+        "hybrid": {
+          "milliseconds": 145.0,
+          "response_bytes": 3662,
+          "response_sha256": "ebf492911059cefefab5e21e6634bc7d3ad7567072324d4f3d579dc061a0f8a8",
+          "ranked": [
+            {
+              "id": "collectui-unknown-f5ce496f",
+              "title": "UI Interaction, Map by @unknown: An iPhone fitness route replay shows a walking workout traced over a 3",
+              "type": "interaction",
+              "platform": "mobile",
+              "categories": [
+                "maps-travel",
+                "animation"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-blanqspaceui-1d40319b",
+              "title": "Empty States, AI by @blanqspaceui: Empty state and navigation by @kvnkld",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "empty-state",
+                "ai-interface"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-moguzbulbul-df809150",
+              "title": "Empty States by @moguzbulbul: empty states",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "empty-state"
+              ],
+              "has_code": false
+            }
+          ]
+        }
+      },
+      {
+        "case": "empty-drafts",
+        "surface": "empty-state",
+        "brief_sha256": "260caf60b8e0d4dccd0d107de36d0649e1e2729458f07554ec4cc54bbf10cf8a",
+        "mode_order": [
+          "hybrid",
+          "keyword"
+        ],
+        "hybrid": {
+          "milliseconds": 107.0,
+          "response_bytes": 3436,
+          "response_sha256": "34f15de3ebc462d948be61d12f7d13d74801600216c88c693b786904965a63fd",
+          "ranked": [
+            {
+              "id": "collectui-unknown-26717f1e",
+              "title": "UI Interaction by @unknown: A writing app concept where discarding a draft triggers a satisfying 3",
+              "type": "interaction",
+              "platform": "any",
+              "categories": [
+                "animation"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-oliverhamrin-be6cb52e",
+              "title": "Poster by @oliverhamrin: Unused/draft stuff",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "branding"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-unknown-96e0ebc6",
+              "title": "Blog by @unknown: A vibrant editorial cover study that pairs custom typography with a gl",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "blog"
+              ],
+              "has_code": false
+            }
+          ]
+        },
+        "keyword": {
+          "milliseconds": 21.9,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        }
+      },
+      {
+        "case": "empty-search",
+        "surface": "empty-state",
+        "brief_sha256": "d06580257f6e7bb2c99e66738c00443944f0932e070a95cbcc4c3c27f3c7f8d1",
+        "mode_order": [
+          "keyword",
+          "hybrid"
+        ],
+        "keyword": {
+          "milliseconds": 30.3,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        },
+        "hybrid": {
+          "milliseconds": 99.9,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        }
+      },
+      {
+        "case": "empty-handoff",
+        "surface": "empty-state",
+        "brief_sha256": "ae23e8b341c2dfc67dcf4261598c21c3ed0f72c141235cb2d0c8521f3d70dfed",
+        "mode_order": [
+          "hybrid",
+          "keyword"
+        ],
+        "hybrid": {
+          "milliseconds": 117.3,
+          "response_bytes": 3892,
+          "response_sha256": "09c238ad706ec322ac9b3ae822871a849f55694ef24ecbb5d406eadfd38a5869",
+          "ranked": [
+            {
+              "id": "collectui-jeetnirnejak-9d0cffdb",
+              "title": "Modal, Progress by @jeetnirnejak: Agent Handoff: watch a task move through four agents while the handoff",
+              "type": "screen",
+              "platform": "web",
+              "categories": [
+                "loader",
+                "modal"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-studiobakers-edce6e63",
+              "title": "Onboarding, Mac App by @studiobakers: Bakers is cooking again. Oven's at the right temp. Patience. @branchco",
+              "type": "screen",
+              "platform": "desktop",
+              "categories": [
+                "onboarding"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "penpot-penpothub-libraries-templates-food-deliv-be242d",
+              "title": "Penpot Libraries & Templates | Food delivery app UI kit (Penpot kit)",
+              "type": "style",
+              "platform": "mobile",
+              "categories": [
+                "tokens"
+              ],
+              "has_code": false
+            }
+          ]
+        },
+        "keyword": {
+          "milliseconds": 50.5,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        }
+      },
+      {
+        "case": "empty-exhibits",
+        "surface": "empty-state",
+        "brief_sha256": "1a70e35de5a81469efce7e141ec1de82391973be2d87069b22c8f61cddb9a5e0",
+        "mode_order": [
+          "keyword",
+          "hybrid"
+        ],
+        "keyword": {
+          "milliseconds": 34.6,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        },
+        "hybrid": {
+          "milliseconds": 97.8,
+          "response_bytes": 3723,
+          "response_sha256": "4cec9195b611a8f3dda3a23aa0d88f12763fe5e4f740ce37fa9b7dd1361a313b",
+          "ranked": [
+            {
+              "id": "collectui-zedsxyz-88241e94",
+              "title": "Empty States, Illustration by @zedsxyz: Empty states don't have to be boring.",
+              "type": "interaction",
+              "platform": "any",
+              "categories": [
+                "empty-state",
+                "illustration"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-vamsibatchuk-ef739071",
+              "title": "Map by @vamsibatchuk: i keep making map apps and it's so much fun. one another ai studio exp",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "maps-travel"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-blanqspaceui-1d40319b",
+              "title": "Empty States, AI by @blanqspaceui: Empty state and navigation by @kvnkld",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "empty-state",
+                "ai-interface"
+              ],
+              "has_code": false
+            }
+          ]
+        }
+      },
+      {
+        "case": "empty-shifts",
+        "surface": "empty-state",
+        "brief_sha256": "6d9e437089615b395a301e35b2952f62dd1fb11d03395217ccd15032e5ae9432",
+        "mode_order": [
+          "hybrid",
+          "keyword"
+        ],
+        "hybrid": {
+          "milliseconds": 104.5,
+          "response_bytes": 3593,
+          "response_sha256": "e1eeae415e0a9373ed2e6bcf70d5070aacfcb4d6ece4d95677d4b05a8a2407d2",
+          "ranked": [
+            {
+              "id": "collectui-jeetnirnejak-4df04cb9",
+              "title": "Date Picker, Calendar by @jeetnirnejak: Date Range Picker: a booking calendar. tap two days, or take a shortcu",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "calendar"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-unknown-88e315d1",
+              "title": "Calendar by @unknown: my goal is to fill them all this month normally I take Monday off",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "calendar"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-unknown-f886489f",
+              "title": "Motion by @unknown: 1 week left to apply for Cohort 2 of v0 Ambassadors! Build with v0, sh",
+              "type": "interaction",
+              "platform": "any",
+              "categories": [
+                "animation"
+              ],
+              "has_code": false
+            }
+          ]
+        },
+        "keyword": {
+          "milliseconds": 41.9,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        }
+      },
+      {
+        "case": "control-checkout",
+        "surface": "control",
+        "brief_sha256": "ab5b86aa537de1b5905cc59f61f3311f7161a56404254ea3d8d0fab224138c83",
+        "mode_order": [
+          "keyword",
+          "hybrid"
+        ],
+        "keyword": {
+          "milliseconds": 3.2,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        },
+        "hybrid": {
+          "milliseconds": 62.0,
+          "response_bytes": 3555,
+          "response_sha256": "7f4a99b56d0b8566210609656bd94c3ede6d80cf7bd254e6942c63ea6a005b57",
+          "ranked": [
+            {
+              "id": "collectui-shiri-shh-a4e9571b",
+              "title": "Mobile App, Progress Bar by @shiri_shh: can we get this for X article @elonmusk pls",
+              "type": "screen",
+              "platform": "mobile",
+              "categories": [
+                "loader",
+                "scroll-animation"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "daisyui-radial-progress-with-background-color-and-border",
+              "title": "Radial progress: With background color and border (daisyUI)",
+              "type": "component",
+              "platform": "web",
+              "categories": [
+                "loader"
+              ],
+              "has_code": true
+            },
+            {
+              "id": "daisyui-progress-progress",
+              "title": "Progress: Progress (daisyUI)",
+              "type": "component",
+              "platform": "web",
+              "categories": [
+                "loader"
+              ],
+              "has_code": true
+            }
+          ]
+        }
+      },
+      {
+        "case": "control-settings",
+        "surface": "control",
+        "brief_sha256": "e02b9c00c19c55eda1d7058911ad4ce33a06f7a56d33f4ddd8187d92c731c216",
+        "mode_order": [
+          "hybrid",
+          "keyword"
+        ],
+        "hybrid": {
+          "milliseconds": 59.0,
+          "response_bytes": 3512,
+          "response_sha256": "3c5995382150504f05717121762e24409894531470a38c4d587a72c46a33a2b8",
+          "ranked": [
+            {
+              "id": "shadcn-blocks-dashboard-01",
+              "title": "Dashboard 01 (shadcn/ui block)",
+              "type": "layout",
+              "platform": "web",
+              "categories": [
+                "dashboard",
+                "typography-ui"
+              ],
+              "has_code": true
+            },
+            {
+              "id": "collectui-aaronmahlke-098f4527",
+              "title": "Form, Error State by @aaronmahlke: login details",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "form"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-louisdainguyen-41b24c02",
+              "title": "Menu, Dropdown by @louisdainguyen: Day 169: Switch Account Menu. \u2193",
+              "type": "screen",
+              "platform": "any",
+              "categories": [
+                "menu",
+                "select"
+              ],
+              "has_code": false
+            }
+          ]
+        },
+        "keyword": {
+          "milliseconds": 4.5,
+          "response_bytes": 1153,
+          "response_sha256": "186db1a7ae4f7a6ee376b83b9dd4b432bc38bca6953f82a11818e6ce0c4364e9",
+          "ranked": [
+            {
+              "id": "shadcn-blocks-dashboard-01",
+              "title": "Dashboard 01 (shadcn/ui block)",
+              "type": "layout",
+              "platform": "web",
+              "categories": [
+                "dashboard",
+                "typography-ui"
+              ],
+              "has_code": true
+            }
+          ]
+        }
+      },
+      {
+        "case": "control-pricing",
+        "surface": "control",
+        "brief_sha256": "f95cf6aa0d12afd228cbe5d806f9bc0f8f7ab55a92ad2464e7bb940938608d56",
+        "mode_order": [
+          "keyword",
+          "hybrid"
+        ],
+        "keyword": {
+          "milliseconds": 2.7,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        },
+        "hybrid": {
+          "milliseconds": 58.9,
+          "response_bytes": 3486,
+          "response_sha256": "faf5f9ec1c8e8228ca31ac739cf932a92b4b880d0fbe24ca83eebd0fd841ccd9",
+          "ranked": [
+            {
+              "id": "collectui-mike-andreuzza-68eeabd9",
+              "title": "Pricing by @Mike_Andreuzza: I heard you on pricing. Kobbe web analytics is now cheaper at every ti",
+              "type": "layout",
+              "platform": "web",
+              "categories": [
+                "pricing"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "slp-lemon-squeezy-pricing-3dc6c1",
+              "title": "Lemon Squeezy pricing landing page",
+              "type": "screen",
+              "platform": "web",
+              "categories": [
+                "landing-page"
+              ],
+              "has_code": false
+            },
+            {
+              "id": "collectui-hey-yogini-64eb217f",
+              "title": "Pricing by @hey_yogini: A user cancelled their subscription last week. Turned out we have a ga",
+              "type": "layout",
+              "platform": "any",
+              "categories": [
+                "pricing"
+              ],
+              "has_code": false
+            }
+          ]
+        }
+      },
+      {
+        "case": "control-nonsense",
+        "surface": "control",
+        "brief_sha256": "439008833bc2bff19573a8328212d1253fda958daa399e8e00237164abbeda2d",
+        "mode_order": [
+          "hybrid",
+          "keyword"
+        ],
+        "hybrid": {
+          "milliseconds": 70.6,
+          "response_bytes": 3602,
+          "response_sha256": "0938bc0850d5823446e347d07e15d50aab8aac476c5a05655c0eba628d9bbd43",
+          "ranked": [
+            {
+              "id": "uiverse-zstarpanda0210-rare-chicken-24-9cfb9c",
+              "title": "Button by ZstarPanda0210 (rare-chicken-24)",
+              "type": "component",
+              "platform": "web",
+              "categories": [
+                "button"
+              ],
+              "has_code": true
+            },
+            {
+              "id": "uiverse-zstarpanda0210-wise-monkey-27-202735",
+              "title": "Card by ZstarPanda0210 (wise-monkey-27)",
+              "type": "component",
+              "platform": "web",
+              "categories": [
+                "card"
+              ],
+              "has_code": true
+            },
+            {
+              "id": "uiverse-z4drus-tough-sloth-76-ddae91",
+              "title": "Button by Z4drus (tough-sloth-76)",
+              "type": "component",
+              "platform": "web",
+              "categories": [
+                "button",
+                "design-style"
+              ],
+              "has_code": true
+            }
+          ]
+        },
+        "keyword": {
+          "milliseconds": 3.0,
+          "response_bytes": 45,
+          "response_sha256": "652f7b1bb85c2292969ed02a6d5300a8085dcb0a9b35d76277cd6ec47b2cc0e6",
+          "ranked": []
+        }
+      }
+    ],
+    "tasks_sha256": "4f352a2a8449911c07188a8e5e311bd5454caf2616d1dfa9b25fa80f590f94d5"
+  },
+  "run": "https://github.com/chrismicah/design-mcp/actions/runs/45039246569",
+  "workflow_commit": "c7c468ca279d767ff58bba1cb66dcef5fd2d48cf",
+  "summary": {
+    "keyword": {
+      "matches": 0,
+      "distinct_first_choices": 0,
+      "top_platforms": {},
+      "top_types": {},
+      "median_ms": 52.75,
+      "median_matched_response_bytes": null
+    },
+    "hybrid": {
+      "matches": 34,
+      "distinct_first_choices": 31,
+      "top_platforms": {
+        "web": 13,
+        "any": 18,
+        "mobile": 3
+      },
+      "top_types": {
+        "screen": 16,
+        "layout": 4,
+        "component": 4,
+        "interaction": 8,
+        "style": 2
+      },
+      "median_ms": 131.55,
+      "median_matched_response_bytes": 3593.0
+    }
+  },
+  "verified_ranked_ids": 96,
+  "archived_sha256": {
+    "dependencies.txt": "27f2b2049757d572f2308a55c9c91960226c8bbe2e3f6c9808b939230e58375f",
+    "encoder.json": "6d4254c7839ec83f19324df46dfd01f72e582ee0b79859f7989d2850b26b8ae6",
+    "index.json": "e17b2d8409fc17d1c67f7caf036ee4b8af8eecd6d37976c621c237818c48b0af",
+    "lock.sha256": "54276edd56a4188715f40127df54b67b420c39252b62e634d2d55a88d9efea70",
+    "platform.txt": "babc1bddfaa8b71a6b41f457cede8cf815ed10db1b4465fd8b451ba686427663",
+    "rebuild.log": "798054785de8ff82e753549ade8a0a5b4a2d96f02768a36683e15625a14a891a",
+    "retrieval.json": "86502b6bca8ceefea3a5ea1ceae29b2f43bfa358f23f70ca85df391a6c5adfb7",
+    "sqlite.txt": "4573bfc11bc9030175f8a0bd3fd85f51e358a42f6cf252e8417b9aabdcdd5ecd"
+  },
+  "platform": [
+    "ProductName:\t\tmacOS",
+    "ProductVersion:\t\t15.8.2",
+    "BuildVersion:\t\t24H232",
+    "arm64"
+  ],
+  "sqlite_probe": [
+    "3.12.13 (main, Aug  7 2026, 02:15:23) [Clang 22.1.3 ]",
+    "SQLite 3.53.1 sqlite-vec v0.1.9"
+  ],
+  "dependency_versions": [
+    "mcp==2.3.0",
+    "sentence-transformers==6.2.0",
+    "sqlite-vec==0.1.9",
+    "torch==2.14.1"
+  ],
+  "preflight_failures": [
+    {
+      "run": "https://github.com/chrismicah/design-mcp/actions/runs/45038978901",
+      "cause": "Unresolved checkout action SHA"
+    },
+    {
+      "run": "https://github.com/chrismicah/design-mcp/actions/runs/45039023559",
+      "cause": "Hosted Python 3.12.10 lacked SQLite extension loading after keyword indexing succeeded"
+    }
+  ],
+  "scope": "One hosted Apple Silicon Mac. Keyword and hybrid use the same installed server, corpus, three-result limit and unedited briefs, with alternating order. The first hybrid control call is timed separately from the 36 paired brief calls. No generated UIs or visual judging."
+}
