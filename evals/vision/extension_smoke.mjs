@@ -36,7 +36,9 @@ async function until(description, check, milliseconds = 10000) {
   while (Date.now() < deadline) {
     const value = await check();
     if (value) return value;
-    if (browser.exitCode !== null) throw new Error(`Chrome exited: ${browser.exitCode}`);
+    if (browser.exitCode !== null || browser.signalCode !== null) {
+      throw new Error(`Chrome exited: ${browser.exitCode ?? browser.signalCode}`);
+    }
     await delay(120);
   }
   throw new Error(`Timed out waiting for ${description}`);

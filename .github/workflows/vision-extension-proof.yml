@@ -27,6 +27,7 @@ jobs:
           "$RUNNER_TEMP/design-review/bin/python" -m pip install . 'pillow>=11,<13'
           curl -fsSL https://storage.googleapis.com/chrome-for-testing-public/158.0.8127.36/linux64/chrome-linux64.zip -o "$RUNNER_TEMP/chrome.zip"
           unzip -q "$RUNNER_TEMP/chrome.zip" -d "$RUNNER_TEMP/browser"
+          sudo install -o root -g root -m 4755 "$RUNNER_TEMP/browser/chrome-linux64/chrome_sandbox" /usr/local/sbin/chrome-devel-sandbox
       - name: Open the real toolbar action and submit a masked capture
         shell: bash
         run: |
@@ -44,7 +45,8 @@ jobs:
           path.write_text(json.dumps(manifest))
           PY
           node --version
-          xvfb-run -a -s '-screen 0 1600x1040x24' node --experimental-websocket \
+          CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox \
+            xvfb-run -a -s '-screen 0 1600x1040x24' node --experimental-websocket \
             evals/vision/extension_smoke.mjs "$chrome" "$cli" "$extension" "$proof"
           "$RUNNER_TEMP/design-review/bin/python" - "$proof" <<'PY'
           from pathlib import Path
