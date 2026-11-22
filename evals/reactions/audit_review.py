@@ -14,6 +14,7 @@ from cold_storage import OPTION, audit_journey
 HEIGHTS = {1440: 900, 390: 844}
 WEIGHTS = {"coherence": "0.30", "originality": "0.30", "craft": "0.20", "usability": "0.20"}
 ACTIVATION = {"Enter", "Space"}
+RADIO_KEYS = {"ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"}
 
 
 def sha256(raw):
@@ -51,6 +52,28 @@ def edge_actions(rows, after):
         if row["op"] == "act" and row.get("observation"):
             actions.append(row)
     return actions
+
+
+def keyboard_activation(actions, *, allow_radio=False):
+    if any(row["action"] == "key" and row["value"] in ACTIVATION for row in actions):
+        return True
+    if not allow_radio:
+        return False
+    for previous, current in zip(actions, actions[1:]):
+        if current["action"] != "key" or current["value"] not in RADIO_KEYS:
+            continue
+        before, after = previous["observation"], current["observation"]
+        old, new = before["focus"], after["focus"]
+        if not old["label"] or not new["label"] or old["label"] == new["label"]:
+            continue
+        old_radio = f'- radio "{old["label"]}"'
+        new_radio = f'- radio "{new["label"]}"'
+        before_ax = {line.strip() for line in before.get("ax", "").splitlines()}
+        after_ax = {line.strip() for line in after.get("ax", "").splitlines()}
+        if ({old_radio + " [checked]", new_radio} <= before_ax and
+                {new_radio + " [checked]", old_radio} <= after_ax):
+            return True
+    return False
 
 
 def indexed_captures(rows):
@@ -130,7 +153,7 @@ def audit(run, cells, case, spec=None):
         observed = [row for row in phase if row.get("observation")]
         assert all(row["observation"]["url"] == endpoint for row in observed), label
         actions = [row for row in observed if row["op"] == "act"]
-        assert any(row["action"] == "key" and row["value"] in ACTIVATION for row in actions), label
+        assert keyboard_activation(actions, allow_radio=not journey), label
         edge = edge_actions(rows, after)
         assert (journey or edge) and all(row["page_id"] == page and row["observation"]["url"] == endpoint for row in edge), label
         if journey:

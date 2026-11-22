@@ -1,5 +1,7 @@
 # Design MCP rebuild plan
 
+**Active priority.** Run the X and Reddit design comparison and revise from independent live critique. Earlier release tasks remain in the backlog. [Current objective](#17-active-objective--design-people-respond-to)
+
 **Approved by the owner on 2026-11-20.** Run A–G on stacked branches. If the direction engine improves on the baseline, continue through corpus exclusions, rewrites from verified sources, expansion, adversarial QA, and the full real-client smoke run. If the comparison falls short, document why, fix the failure, and rerun the affected cases. The standing branch, credential and spending rules apply.
 Baseline `82fe6e3`. This proposal incorporates the runtime and corpus audits, seven research files, and the independent pre-approval review. [Runtime audit](AUDIT.md) · [Corpus audit](CONTENT-AUDIT.md) · [Research](research/) · [Review](evidence/REVIEW.md)
 

@@ -3,7 +3,7 @@ import struct
 
 import pytest
 
-from audit_review import screenshot, sha256
+from audit_review import keyboard_activation, screenshot, sha256
 
 
 def test_capture_must_be_the_same_png_sent_to_the_critic(tmp_path):
@@ -33,3 +33,15 @@ def test_capture_must_be_the_same_png_sent_to_the_critic(tmp_path):
     image["data"] = base64.b64encode(prefix + b"other pixels").decode()
     with pytest.raises(AssertionError, match=label):
         screenshot(tmp_path, "A", 390, "before", indexed, [call])
+
+
+def test_arrow_key_counts_only_when_it_changes_the_checked_radio():
+    def action(key, name, ax):
+        return {"action": "key", "value": key, "observation": {"focus": {"label": name}, "ax": ax}}
+
+    before = action("Tab", "4 m", '- radio "4 m" [checked]\n- radio "6 m"')
+    after = action("ArrowRight", "6 m", '- radio "4 m"\n- radio "6 m" [checked]')
+    assert keyboard_activation([before, after], allow_radio=True)
+    assert not keyboard_activation([before, after])
+    unrelated = action("ArrowRight", "6 m", '- radio "4 m" [checked]\n- radio "6 m"')
+    assert not keyboard_activation([before, unrelated], allow_radio=True)

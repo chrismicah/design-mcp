@@ -11,29 +11,29 @@
       "stage lighting"
     ],
     "type": {
-      "display": "Bricolage Grotesque",
+      "display": "Fraunces",
       "body": "IBM Plex Sans",
       "ratio": 3.3,
       "tracking": -0.025,
-      "weight": 800,
+      "weight": 700,
       "license": "OFL-1.1"
     },
     "palette": {
-      "ink": "#211C23",
-      "paper": "#E7DDE9",
-      "accent": "#703E62"
+      "ink": "#241C2F",
+      "paper": "#F1E7EB",
+      "accent": "#753966"
     },
     "layout": {
-      "skeleton": "Put a compact title above one wide proscenium view. Keep the three named controls and the current technique together on the same cue rail under the stage.",
-      "focus": "Show a performer at the same scale and position across three cues. Use light from the wings, the lit surfaces, and the shadow to make each direction unmistakable.",
-      "desktop": "Let the stage occupy the main width. Keep the technical words and cue buttons within the same visual field as the shadow.",
-      "mobile": "Crop the wings before cropping the performer or shadow. Keep the cue rail and its text within reach directly beneath the stage.",
-      "rhythm": "Use the dark proscenium and lit floor for contrast. Use a short stacked title and leave one clear margin around the stage."
+      "skeleton": "Lead with a short identity and one cinematic proscenium. Set a named cue inspector beside the stage on wide screens and directly below it on mobile.",
+      "focus": "An original performer mid-gesture and its long shadow make the direction of each light visible. Show light spilling across the backcloth and slanting across the floor.",
+      "desktop": "Give the scene most of the width. Fit the technique and controls together in a narrow continuous inspector beside it, aligned to the edge of the stage.",
+      "mobile": "Recompose the scene to show the gesture, shadow and enough stage width. Keep the visible instruction, three choices and current technique together close below.",
+      "rhythm": "Set the title in a short stripe with space below it. Give the wide stage breathing room and align the cue inspector to the top of the scene."
     },
     "imagery": {
-      "subject": "Draw a human-scale performer standing on a visible stage floor. Amber wash illuminates broadly, white side light produces a lateral shadow, and blue backlight contours the figure and throws the shadow toward the viewer.",
-      "crop": "Keep the performer large enough to see what changes. Show the beam direction and shadow at both widths.",
-      "fallback": "Show three distinct stage stills in the same frame. Expose a concise text description of each light effect next to the selected cue."
+      "subject": "Draw an expressive human performer reaching into the light. Shape the arm, bent leg and flowing fabric as one recognizable silhouette. Keep that pose fixed and let shadows and lit fabric distinguish the three cues.",
+      "crop": "Keep the gesture and the shape of the shadow visible at 390 px. Recompose the illustration for the narrower view rather than cropping at the feet or wings.",
+      "fallback": "Use three original stills composed with the same stage framing and pose. Describe each light effect in accessible text."
     },
     "motion": {
       "trigger": "Selecting a named cue",
@@ -42,7 +42,7 @@
       "reduced": "Switch the light, current cue text, and underline immediately."
     },
     "action": {
-      "instruction": "Use native buttons, expose the selected cue, and keep visible focus. Announce the current technique and update the stage illustration’s accessible description with it.",
+      "instruction": "Label the group Choose a cue. Keep native buttons, visible keyboard focus and the selected state. Update the stage description and printed technique together.",
       "label": "Use the actual cue name"
     },
     "why": "The first interaction demonstrates the actual craft and lets a producer compare techniques without finding a separate demo.",
@@ -65,27 +65,60 @@
     "surface": "editorial",
     "title": "The river changes the town",
     "summary": "Build the story along one measurable cross-section. A selectable elevation changes the illustrated bank and the list of affected places.",
-    "tags": ["water level", "elevations", "river gauge", "riverside", "rising river"],
-    "type": {"display": "Barlow Condensed", "body": "Source Sans 3", "ratio": 3.6, "tracking": -0.024, "weight": 800, "license": "OFL-1.1"},
-    "palette": {"ink": "#152C39", "paper": "#EAF0EF", "accent": "#216373"},
+    "tags": [
+      "water level",
+      "elevations",
+      "river gauge",
+      "riverside",
+      "rising river"
+    ],
+    "type": {
+      "display": "Archivo Narrow",
+      "body": "IBM Plex Sans",
+      "ratio": 3.6,
+      "tracking": -0.024,
+      "weight": 700,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#172B44",
+      "paper": "#EFF4F7",
+      "accent": "#204D8C"
+    },
     "layout": {
-      "skeleton": "Set a short headline above one illustrated river section. Set the height rail beside the bank and pair it with the effect list at the selected level.",
-      "focus": "One water line crosses real marked elevations and shows exactly which named places become unavailable.",
-      "desktop": "Run the section wide with level markers along the left edge and the current effects legible to its right.",
-      "mobile": "Show a compact section, named level controls and the current list of closures. Keep the controls and result adjacent and readable.",
-      "rhythm": "Let the heights set the spacing of the rail. Group the effect list by the active reading, preserving every supplied fact."
+      "skeleton": "Build one flood chart with exactly three contour lines, ordered by elevation. Align a readable place label and original marker to each threshold. Put the level controls and current closure list beside the chart.",
+      "focus": "A single saturated waterline crosses the labeled path, ferry and footbridge contours. Keep the place names next to their marks so the reader can see why each closure appears.",
+      "desktop": "Use one chart block with strong place labels inside its outline and a narrow reading column next to the scale for level controls and current closures.",
+      "mobile": "Use the same three labeled contours. Keep each place name at least 16 px in HTML aligned to its marker, so the labels do not shrink with the illustration.",
+      "rhythm": "Use the equal two-meter steps to set spacing. Give the active elevation one principal reading and keep closure information adjacent to it."
     },
     "imagery": {
-      "subject": "Draw an original riverbank section with labels for the path, ferry and bridge supplied by the brief. Use slate #70848A for the bank and gold #E4B659 to mark closures alongside text.",
-      "crop": "Keep every elevation marker and crossing visible. Simplify the illustration before removing labels.",
-      "fallback": "Use three stacked levels with the selected elevation and cumulative effects next to each. Keep selection operable by keyboard."
+      "subject": "Make simple original path, ferry and footbridge marks inside the section. Use soft blue #A4CBE7 for unreached contour space and ochre #EFBE61 to mark closed places with text.",
+      "crop": "Mount place names in HTML inside the chart at their marked elevations. Keep all three names, threshold units and the current waterline in view on mobile.",
+      "fallback": "Keep the three contour lines, their readable place names and the live closure list. Simplify the drawing before reducing text size."
     },
-    "motion": {"trigger": "Selecting a level", "effect": "Move only the water line to the new elevation and update the effects immediately.", "duration_ms": 250, "reduced": "Jump to the selected elevation without any movement."},
-    "action": {"instruction": "Use named native controls for the exact elevations, expose the selected level and list all closures at or below it in readable text.", "label": "Use each supplied level and its units"},
+    "motion": {
+      "trigger": "Selecting a level",
+      "effect": "Snap the waterline and closure labels to the selected level together. Give only the new level marker one brief emphasis.",
+      "duration_ms": 250,
+      "reduced": "Use the immediate new level and matching list without the marker animation."
+    },
+    "action": {
+      "instruction": "Use named native controls for the exact elevations, expose the selected level and list all closures at or below it in readable text.",
+      "label": "Use each supplied level and its units"
+    },
     "why": "The water line makes the relationship between height and closures visible. The text and controls still let a visitor answer the question quickly.",
     "sources": [
-      {"url": "https://neal.fun/space-elevator/", "observation": "The ascent orders the exhibits by real altitude. The Kármán line is one of the named markers.", "strength": "evidence"},
-      {"url": "https://neal.fun/deep-sea/", "observation": "Depth provides the organizing scale of an explorable ocean story.", "strength": "evidence"}
+      {
+        "url": "https://neal.fun/space-elevator/",
+        "observation": "The ascent orders the exhibits by real altitude. The Kármán line is one of the named markers.",
+        "strength": "evidence"
+      },
+      {
+        "url": "https://neal.fun/deep-sea/",
+        "observation": "Depth provides the organizing scale of an explorable ocean story.",
+        "strength": "evidence"
+      }
     ],
     "credit": "Original river cross-section inspired by Neal Agarwal's single-axis stories."
   }
