@@ -10,6 +10,8 @@ An offline uv install from the checksummed `7bccfc1` Git archive passed `doctor`
 
 The same installed CLI captured the public form through Playwriter at 1440 and 390 CSS px using a separate Chrome profile. It reported nine masks across both views. The saved preview displayed the desktop capture, whose Street address mask passed a 9,408-pixel interior check. [CLI capture and mask receipt](evidence/benchmark-v1/reference-mac-pasted-url-7bccfc1.json)
 
+The `7bccfc1` install also replayed the original SwiftUI and Electron geometry exports. The SwiftUI fixture returned five controls before Reveal and six after. The Electron replay cleared the covered-control finding and retained the clipping finding. The replay verified the input hashes before and after execution. The live desktop interactions are recorded under `f17bd6f` below. [Installed replay](evidence/benchmark-v1/reference-mac-pasted-url-7bccfc1.json)
+
 ## Reference Mac GPT Computer Use, November 22
 
 A fresh uv install of the verified `f17bd6f` Git archive passed `doctor` and the three default stdio calls on Apple Silicon macOS 26.5.2. GPT Computer Use controlled installed Chrome 157 through its native accessibility tree while the browser bridge was unavailable. It loaded the five verified extension files in a disposable profile, opened the real toolbar, confirmed that a missing native host returned focus to Scan, then installed the host inside that profile. [Install, layout and interaction receipts](evidence/benchmark-v1/reference-mac-chrome-f17bd6f.json)
