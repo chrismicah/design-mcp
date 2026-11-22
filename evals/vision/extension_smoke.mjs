@@ -146,16 +146,29 @@ try {
   proof.extensionId = extensionId;
   const popup = await attach(target);
   const observePopup = () => inspect(popup, `(() => {
-    if (!document.body?.dataset.state) return null;
+    if (location.href !== ${JSON.stringify(target.url)} || document.readyState !== 'complete') return null;
+    const scan = document.querySelector('#scan');
+    const status = document.querySelector('#status');
+    const command = document.querySelector('#command-text');
+    const result = document.querySelector('#result');
+    const finding = document.querySelector('#finding');
+    const open = document.querySelector('#open');
+    const missing = Object.entries({
+      'body[data-state]': document.body?.dataset.state, '#scan': scan, '#status': status,
+      '#command-text': command, '#result': result, '#finding': finding, '#open': open,
+    }).filter(([, node]) => !node).map(([selector]) => selector);
+    if (missing.length) {
+      throw new Error('The loaded toolbar popup is missing: ' + missing.join(', '));
+    }
     return {
       state: document.body.dataset.state,
       focus: document.activeElement?.id,
-      enabled: !document.querySelector('#scan').disabled,
-      status: document.querySelector('#status').textContent,
-      command: document.querySelector('#command-text').textContent,
-      finding: document.querySelector('#result').hidden ? null : document.querySelector('#finding').textContent,
+      enabled: !scan.disabled,
+      status: status.textContent,
+      command: command.textContent,
+      finding: result.hidden ? null : finding.textContent,
       requestCount: performance.getEntriesByType('resource').filter(entry => /^https?:/.test(entry.name)).length,
-      previewUrl: document.querySelector('#open').dataset.url || null
+      previewUrl: open.dataset.url || null
     };
   })()`);
   proof.idle = await until("enabled, keyboard-focused Scan action", async () => {
@@ -237,7 +250,9 @@ try {
   key("Right");
   proof.preview = await until("keyboard-selected After", async () => {
     const state = await observePreview();
-    return state?.after && state.visible ? state : null;
+    proof.lastPreviewState = state;
+    if (!state?.after || !state.visible) return null;
+    return !mac || (state.focus === "view-after" && state.afterImageVisible) ? state : null;
   });
   assert.equal(proof.preview.after, true);
   assert.equal(proof.preview.visible, true);
