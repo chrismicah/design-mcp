@@ -99,15 +99,28 @@ def main(argv=None, stdin=None, stdout=None, root=None):
     return 0 if reply.get("ok") else 1
 
 
-def manifest_dir(home, platform):
-    if platform == "darwin":
-        return home / "Library" / "Application Support" / "Google" / "Chrome" / "NativeMessagingHosts"
-    if platform.startswith("linux"):
-        return home / ".config" / "google-chrome" / "NativeMessagingHosts"
-    raise InstallError("Connecting the extension is set up for Chrome on macOS and Linux in this build.")
+def manifest_dir(home, platform, chrome_user_data_dir=None):
+    if platform != "darwin" and not platform.startswith("linux"):
+        raise InstallError("Connecting the extension is set up for Chrome on macOS and Linux in this build.")
+    if chrome_user_data_dir is not None:
+        data_dir = Path(chrome_user_data_dir).expanduser()
+        if not data_dir.is_absolute() or not data_dir.is_dir():
+            raise InstallError("Provide the absolute path to an existing Chrome user data directory.")
+    elif platform == "darwin":
+        data_dir = home / "Library" / "Application Support" / "Google" / "Chrome"
+    else:
+        data_dir = home / ".config" / "google-chrome"
+    return data_dir / "NativeMessagingHosts"
 
 
-def plan_install(extension_id, home=None, python=None, platform=None):
+def _installation_files(home, platform, chrome_user_data_dir):
+    directory = manifest_dir(home, platform, chrome_user_data_dir)
+    launcher = (directory / "design-mcp-review-host" if chrome_user_data_dir is not None
+                else state_dir(home, platform) / "review-host")
+    return directory / f"{HOST_NAME}.json", launcher
+
+
+def plan_install(extension_id, home=None, python=None, platform=None, chrome_user_data_dir=None):
     """The two files `install` writes: a launcher and Chrome's host manifest, both pinned to one extension."""
     if not isinstance(extension_id, str) or not _EXTENSION_ID.match(extension_id):
         raise InstallError(
@@ -116,7 +129,7 @@ def plan_install(extension_id, home=None, python=None, platform=None):
     home = Path(home) if home is not None else Path.home()
     platform = platform or sys.platform
     origin = f"chrome-extension://{extension_id}/"
-    launcher_path = state_dir(home, platform) / "review-host"
+    manifest_path, launcher_path = _installation_files(home, platform, chrome_user_data_dir)
     launcher = (
         "#!/bin/sh\n"
         "# Written by `design-mcp review --install-host`. Starts the local reviewer for one extension only.\n"
@@ -134,13 +147,13 @@ def plan_install(extension_id, home=None, python=None, platform=None):
         "origin": origin,
         "launcher_path": launcher_path,
         "launcher": launcher,
-        "manifest_path": manifest_dir(home, platform) / f"{HOST_NAME}.json",
+        "manifest_path": manifest_path,
         "manifest": manifest,
     }
 
 
-def install(extension_id, home=None, python=None, platform=None):
-    plan = plan_install(extension_id, home, python, platform)
+def install(extension_id, home=None, python=None, platform=None, chrome_user_data_dir=None):
+    plan = plan_install(extension_id, home, python, platform, chrome_user_data_dir)
     plan["launcher_path"].parent.mkdir(parents=True, exist_ok=True, mode=0o700)
     plan["launcher_path"].write_text(plan["launcher"], encoding="utf-8")
     plan["launcher_path"].chmod(0o700)
@@ -149,12 +162,12 @@ def install(extension_id, home=None, python=None, platform=None):
     return plan
 
 
-def uninstall(home=None, platform=None):
+def uninstall(home=None, platform=None, chrome_user_data_dir=None):
     """Remove only the two files `install` writes. Returns the paths that were removed."""
     home = Path(home) if home is not None else Path.home()
     platform = platform or sys.platform
     removed = []
-    for path in (manifest_dir(home, platform) / f"{HOST_NAME}.json", state_dir(home, platform) / "review-host"):
+    for path in _installation_files(home, platform, chrome_user_data_dir):
         if path.is_file():
             path.unlink()
             removed.append(path)

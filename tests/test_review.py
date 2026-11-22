@@ -744,6 +744,25 @@ class HostTests(unittest.TestCase):
             self.assertEqual([path for path in Path(home).rglob("*") if path.is_file()], [])
             self.assertEqual(host.uninstall(home=home, platform="darwin"), [])
 
+    def test_custom_chrome_profiles_keep_their_native_hosts_separate(self):
+        with tempfile.TemporaryDirectory() as folder:
+            home = Path(folder)
+            first, second = home / "chrome-one", home / "chrome-two"
+            first.mkdir()
+            second.mkdir()
+            first_plan = host.install(EXTENSION_ID, home=home, platform="linux", chrome_user_data_dir=first)
+            second_id = "p" * 32
+            second_plan = host.install(second_id, home=home, platform="linux", chrome_user_data_dir=second)
+            self.assertEqual(first_plan["manifest_path"].parent, first / "NativeMessagingHosts")
+            self.assertEqual(json.loads(first_plan["manifest_path"].read_text())["allowed_origins"], [ORIGIN])
+            self.assertIn(second_id, second_plan["launcher_path"].read_text())
+            self.assertNotEqual(first_plan["launcher_path"], second_plan["launcher_path"])
+            self.assertEqual(len(host.uninstall(home=home, platform="linux", chrome_user_data_dir=first)), 2)
+            self.assertTrue(second_plan["manifest_path"].is_file())
+            self.assertTrue(second_plan["launcher_path"].is_file())
+            with self.assertRaises(host.InstallError):
+                host.plan_install(EXTENSION_ID, home=home, platform="linux", chrome_user_data_dir="relative")
+
     def test_install_refuses_anything_that_is_not_exactly_one_extension_id(self):
         for bad in ("", "*", "abc", EXTENSION_ID + "/", EXTENSION_ID + "\n", EXTENSION_ID.upper(),
                     "abcdefghijklmnoq" * 2, None):

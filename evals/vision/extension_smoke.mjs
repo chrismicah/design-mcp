@@ -125,10 +125,10 @@ try {
   key("Return");
   proof.missingHost = await until("missing host recovery", async () => {
     const result = await observePopup();
-    return result.state === "problem" ? result : null;
+    return result.state === "problem" && result.focus === "scan" && result.enabled ? result : null;
   });
   assert.equal(proof.missingHost.command, `design-mcp review --install-host ${extensionId}`);
-  execFileSync(cli, ["review", "--install-host", extensionId], { encoding: "utf8" });
+  execFileSync(cli, ["review", "--install-host", extensionId, "--chrome-user-data-dir", profile], { encoding: "utf8" });
   key("Return");
   proof.result = await until("installed native review result", async () => {
     const result = await observePopup();

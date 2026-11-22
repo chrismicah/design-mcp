@@ -35,6 +35,8 @@ def _parser():
     parser.add_argument("--install-host", metavar="EXTENSION_ID",
                         help="let the extension with this ID start the local reviewer")
     parser.add_argument("--uninstall-host", action="store_true", help="remove what --install-host wrote")
+    parser.add_argument("--chrome-user-data-dir", metavar="DIR",
+                        help="Chrome's user data directory for host installation or removal")
     parser.add_argument("--dry-run", action="store_true", help="with --install-host, show the files without writing")
     return parser
 
@@ -51,11 +53,13 @@ def _host_setup(args):
     from . import host
 
     try:
+        options = {"chrome_user_data_dir": args.chrome_user_data_dir}
         if args.uninstall_host:
-            removed = host.uninstall()
+            removed = host.uninstall(**options)
             print("\n".join(f"Removed {path}" for path in removed) or "Nothing to remove.")
             return 0
-        plan = host.plan_install(args.install_host) if args.dry_run else host.install(args.install_host)
+        configure = host.plan_install if args.dry_run else host.install
+        plan = configure(args.install_host, **options)
     except (host.InstallError, OSError) as error:
         print(str(error), file=sys.stderr)
         return 1
@@ -118,6 +122,8 @@ def _review_url(args, opener):
 def main(argv=None, opener=webbrowser.open):
     parser = _parser()
     args = parser.parse_args(argv)
+    if args.chrome_user_data_dir is not None and not (args.install_host or args.uninstall_host):
+        parser.error("--chrome-user-data-dir requires --install-host or --uninstall-host")
     if args.extension_path:
         print(EXTENSION_DIR)
         print("In Chrome: open chrome://extensions, turn on Developer mode, choose “Load unpacked” "

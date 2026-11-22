@@ -223,6 +223,7 @@ async function scan() {
     }
   } finally {
     el('scan').disabled = false;
+    if (document.body.dataset.state === 'problem') el('scan').focus();
   }
 }
 

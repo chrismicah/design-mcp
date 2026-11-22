@@ -28,6 +28,8 @@ design-mcp review --install-host <extension id>
 
 That writes two files: Chrome's host manifest for `com.design_mcp.review`, and a launcher that starts the reviewer for that one extension. `--dry-run` prints both paths without writing. `--uninstall-host` removes them.
 
+If Chrome was launched with a custom `--user-data-dir`, add `--chrome-user-data-dir` with that directory's absolute path when installing or removing the host. Each directory keeps its own launcher and allowed extension ID.
+
 ## What the first result contains
 
 The finding names the region, the problem, one change and a check you can run. For the hand-written test capture the problem line is expected to read:
