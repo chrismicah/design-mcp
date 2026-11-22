@@ -1,0 +1,440 @@
+{
+  "calibration": {
+    "coherence": 7,
+    "originality": 4,
+    "craft": 7,
+    "usability": 6
+  },
+  "screens": {
+    "A-1440": {
+      "coherence": 9,
+      "originality": 8.5,
+      "craft": 8.5,
+      "usability": 9,
+      "weighted_score": 8.75,
+      "primary_action": {
+        "input": "Tab twice to Solo, ArrowDown to Team, Tab to Continue, Enter.",
+        "expected": "Team becomes the sole checked plan and Continue opens its details.",
+        "observed": "Team gained a tinted row, an outline and a filled radio. The footer changed from Choose a plan to Team at $28 per month. Continue opened the Team selected dialog with focus on its heading."
+      },
+      "edge_observation": "Tab reached Back to plans. Enter closed the dialog and put visible focus on Continue. Team stayed checked, and Shift+Tab reached its radio.",
+      "fact_check": {
+        "Solo": "$12 per month, 10 hours.",
+        "Team": "$28 per month, 40 hours, Shared vocabulary. The dialog repeated all three.",
+        "Studio": "$60, 120 hours, Approvals. Both the row and the Studio dialog left the billing interval unspecified."
+      },
+      "strength": "The three bars share a starting edge and a 12-segment scale. One, four and twelve filled segments make the allowance differences visible at a glance.",
+      "weakness": "Studio’s bare $60 leaves a pricing question that persists even after opening its details.",
+      "repair": "Show Studio’s verified billing terms beside $60 in the row and dialog.",
+      "captures": [
+        "A-1440-before.png",
+        "A-1440-selected.png",
+        "A-1440-after.png",
+        "A-1440-return.png",
+        "A-1440-studio.png"
+      ],
+      "arm": "plain",
+      "html_sha256": "e3cbd01c822e6f48d27cd85a2116841c0c46278a2d97c230fc78e9fc0e517a21",
+      "weighted": 8.75,
+      "before": {
+        "sha256": "f868aa315c82e5b68407dcc0fe47b187baab141eb4bf619e2f07eebbd01941f5",
+        "file": "A-1440-before.png",
+        "tool_call_id": "item_2"
+      },
+      "after": {
+        "sha256": "85b2d4be581d5e4f16b80018dba5012eecb593a310d30ca6068d162eae2b6d59",
+        "file": "A-1440-after.png",
+        "tool_call_id": "item_9"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowDown"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowDown"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Escape"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowUp"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        }
+      ]
+    },
+    "A-390": {
+      "coherence": 8.5,
+      "originality": 8,
+      "craft": 8,
+      "usability": 8,
+      "weighted_score": 8.15,
+      "primary_action": {
+        "input": "Tab twice to Solo, ArrowDown to Team, Tab to Continue, Enter.",
+        "expected": "The selected row and bottom action identify Team before its details open.",
+        "observed": "Team’s radio filled, its row gained a focus outline, and the bottom bar showed Team at $28 per month beside the enabled Continue button. Enter opened Team selected with focus on the heading."
+      },
+      "edge_observation": "Tab then Enter activated Back to plans. Focus landed visibly on Continue, Team remained checked, and all three allowance bars were visible at the returned scroll position.",
+      "fact_check": {
+        "Solo": "$12 per month, 10 hours.",
+        "Team": "$28 per month, 40 hours, Shared vocabulary in the row and dialog.",
+        "Studio": "$60, 120 hours, Approvals in the returned view. The price carried no interval."
+      },
+      "strength": "The equal-width meters survive the stacked layout. The bottom bar keeps the selected name and price visible while the user moves through the rows.",
+      "weakness": "At the initial scroll position, only the top of Studio’s row appeared above the action bar. Its price and 120-hour allowance took scrolling to compare.",
+      "repair": "Shorten the title panel and reduce vertical space within each plan row so Studio’s allowance appears sooner.",
+      "captures": [
+        "A-390-before.png",
+        "A-390-selected.png",
+        "A-390-after.png",
+        "A-390-return.png"
+      ],
+      "arm": "plain",
+      "html_sha256": "e3cbd01c822e6f48d27cd85a2116841c0c46278a2d97c230fc78e9fc0e517a21",
+      "weighted": 8.15,
+      "before": {
+        "sha256": "170b991b3277651b82e56d828064819e9c0badf8658751330c48892f148a67c1",
+        "file": "A-390-before.png",
+        "tool_call_id": "item_23"
+      },
+      "after": {
+        "sha256": "4cd3ce18dcf77dfeebf2fc6866331d56d3a413389ca11b62893330c4750de157",
+        "file": "A-390-after.png",
+        "tool_call_id": "item_30"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowDown"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ]
+    },
+    "B-1440": {
+      "coherence": 9,
+      "originality": 9,
+      "craft": 9,
+      "usability": 9,
+      "weighted_score": 9,
+      "primary_action": {
+        "input": "Tab twice to the preselected Team radio, ArrowRight to Studio, ArrowLeft back to Team, Tab to Continue with Team, Enter.",
+        "expected": "The marker and button follow both changes, then Continue opens Team’s terms.",
+        "observed": "The filled marker moved to Studio and the button changed to Continue with Studio at $60. Moving back restored the 40-hour marker and Continue with Team at $28 / month. Enter opened the Team plan dialog with Back to plans focused."
+      },
+      "edge_observation": "Enter on Back to plans restored visible focus to Continue with Team at $28 / month. Team remained checked. Escape from the separately opened Studio dialog also returned focus to its invoking button.",
+      "fact_check": {
+        "Solo": "$12 / month, 10 hours.",
+        "Team": "$28 / month, 40 hours, Shared vocabulary. The dialog displayed each value in a labeled row.",
+        "Studio": "$60, 120 hours, Approvals. The plan, button and Studio dialog all showed $60 without an interval."
+      },
+      "strength": "The radios sit at 10, 40 and 120 on one waveform beginning at zero. The distance between stops conveys the difference in allowances, and the button names the active plan and price.",
+      "weakness": "All three large plan names keep equal emphasis when the selection changes. The smaller dot and hour label carry the selection cue within the chart.",
+      "repair": "Give the checked plan name the same accent as its hour label.",
+      "captures": [
+        "B-1440-before.png",
+        "B-1440-selected.png",
+        "B-1440-after.png",
+        "B-1440-return.png",
+        "B-1440-studio-details.png"
+      ],
+      "arm": "design-mcp",
+      "html_sha256": "db96c77cbc463f7703c2050293ddc3c1a5f53c65735edb0de1ea14e468570963",
+      "weighted": 9.0,
+      "before": {
+        "sha256": "c6dd0a847a231876d8c7c59baecd60be6c427c2cc858b989001138c2aa5d36b9",
+        "file": "B-1440-before.png",
+        "tool_call_id": "item_36"
+      },
+      "after": {
+        "sha256": "9615efa1b2cf203b18386f2baf8566060008088e5ca48ff4f0f1cc077d9efaf5",
+        "file": "B-1440-after.png",
+        "tool_call_id": "item_45"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Escape"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        }
+      ]
+    },
+    "B-390": {
+      "coherence": 9,
+      "originality": 9,
+      "craft": 8.5,
+      "usability": 9,
+      "weighted_score": 8.9,
+      "primary_action": {
+        "input": "Tab twice to the preselected Team radio, ArrowUp to Solo, ArrowDown to Team, Tab to Continue with Team, Enter.",
+        "expected": "The checked radio, hour marker and button follow the keyboard choice, then Team’s details open.",
+        "observed": "Solo’s 10-hour label and $12 / month button became active. ArrowDown restored Team’s filled radio, accented 40-hour label and $28 / month button. Enter opened Team plan with visible focus on Back to plans."
+      },
+      "edge_observation": "Enter returned to the choices. A focus ring surrounded Continue with Team at $28 / month, and Team’s radio stayed filled.",
+      "fact_check": {
+        "Solo": "$12 / month, 10 hours.",
+        "Team": "$28 / month, 40 hours, Shared vocabulary in the row and dialog.",
+        "Studio": "$60, 120 hours, Approvals. The row supplied no billing interval."
+      },
+      "strength": "All three prices, hour allowances, included features and the action fit in the initial viewport. The selected dot, accented hours and named button agreed after each arrow key.",
+      "weakness": "The evenly spaced radios connect to proportionally spaced waveform marks through faint diagonal lines. The printed hours are easier to compare than those connections.",
+      "repair": "Increase the contrast of the connectors and mark where each meets the waveform.",
+      "captures": [
+        "B-390-before.png",
+        "B-390-selected.png",
+        "B-390-after.png",
+        "B-390-return.png"
+      ],
+      "arm": "design-mcp",
+      "html_sha256": "db96c77cbc463f7703c2050293ddc3c1a5f53c65735edb0de1ea14e468570963",
+      "weighted": 8.9,
+      "before": {
+        "sha256": "34bd6e720bb42884349b2f6b2ca20a14120608c62988e792f1d6a6ce3f18d846",
+        "file": "B-390-before.png",
+        "tool_call_id": "item_58"
+      },
+      "after": {
+        "sha256": "a757c0b2a32d188c2205280461e8f2818f5bd1e9a16b3d999ecfe53c734adde4",
+        "file": "B-390-after.png",
+        "tool_call_id": "item_67"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowUp"
+        },
+        {
+          "action": "key",
+          "value": "ArrowDown"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ]
+    }
+  },
+  "billing_evidence": {
+    "brief": "The brief specifies a monthly price for Team only.",
+    "rendered": "Both views explicitly label Solo and Team as monthly. Both show Studio at $60 with its billing interval unspecified.",
+    "unsupported_claim": "Reporting Studio as $60 per month would add a term that neither the brief nor the reviewed UI supplies."
+  },
+  "preference": {
+    "winner": "B",
+    "reason": "B makes the allowance differences visible on one proportional scale at 1440 and fits every plan’s terms above the action at 390. Its button repeats the selected name and price through keyboard changes and on return. A’s segmented bars are easier to count, but its initial mobile view conceals Studio’s allowance."
+  },
+  "case": "pricing-misleading",
+  "verified_screens": 4,
+  "required_screens": 4,
+  "browser": "Chrome/157.0.8103.79",
+  "evaluator_thread": "01a20312-93d5-7ef2-940d-40a8373829b3",
+  "usage": {
+    "input_tokens": 1893631,
+    "cached_input_tokens": 1831680,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 11048,
+    "reasoning_output_tokens": 6991
+  },
+  "trace_sha256": "3368400a1050773b906578b0b84c9b4d2047d1600d3e796b587194ebde681ebb",
+  "browser_audit_sha256": "1f5b283d548cd8fdf97513cb08e0a3bdba78317cfdff310e0694c6fd1f8816dc",
+  "model": "gpt-6.2-astra",
+  "effort": "max",
+  "playwriter": "0.12.0",
+  "reaction_number": 2,
+  "source_commit": "2fcd31221671590152401d958b904141e438e453",
+  "uncached_input_tokens": 61951,
+  "critic_prompt_sha256": "2220097cc190813defcfb281fd519191a53acbdd5d4379527d60c0fdd9f221f5",
+  "pilot_outcomes": {
+    "plain": {
+      "user_reactions": 2,
+      "clarification_turns": 0,
+      "reached_9_5": false,
+      "generation_seconds_total": 1018.23,
+      "visual_scores_by_round": [
+        [
+          7.55,
+          6.95
+        ],
+        [
+          8.0,
+          7.65
+        ],
+        [
+          8.75,
+          8.15
+        ]
+      ]
+    },
+    "design-mcp": {
+      "user_reactions": 2,
+      "clarification_turns": 0,
+      "reached_9_5": false,
+      "generation_seconds_total": 1255.08,
+      "visual_scores_by_round": [
+        [
+          8.35,
+          8.65
+        ],
+        [
+          8.75,
+          8.65
+        ],
+        [
+          9.0,
+          8.9
+        ]
+      ]
+    }
+  }
+}
