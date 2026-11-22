@@ -18,6 +18,8 @@ To compare a credential-free stdio competitor, pass its installed executable to 
 
 Use a separate output directory for each comparison. With `--treatment-only`, copy the original control cells and their receipts into that directory and retain the same prompt, client, model, and effort. Run the judge with `--treatment inspo` to match this example. Choose files and local launch wrappers with read-only tool access and a clean environment. Keep credential or approval failures in the results.
 
+If a pinned stdio competitor omits read-only annotations, inspect its implementation and record the specific read-only tools in `verified_read_only_tools`. The benchmark only exposes those tools and uses non-interactive approval for that list. This setting applies to one benchmark client. [Codex tool configuration](https://learn.chatgpt.com/docs/extend/mcp#other-configuration-options)
+
 For a public credential-free hosted comparator, use `--server-url` in place of `--server`. Keep its name distinct from the stdio variant. Record the reported server build, tool, and observation date. Compare either to the plain generator or to the fixed Design MCP arm while preserving the exact browser and generator settings.
 
 To compare two Design MCP builds, use the candidate's executable with `--treatment-only --treatment-label candidate`. Copy the sealed `v2` cells into the same run and judge with `--control v2 --treatment candidate`. This keeps the MCP server and tool names consistent across the two builds.

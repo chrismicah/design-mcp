@@ -150,6 +150,10 @@ class BenchmarkTests(unittest.TestCase):
         config = mcp_table("/test fixtures/start", "inspo", ["--stdio"], {"MODE": "local"})
         self.assertIn('command="/test fixtures/start"', config)
         self.assertIn('env={"MODE"="local"}', config)
+        self.assertIn('default_tools_approval_mode="writes"', config)
+        self.assertNotIn('enabled_tools=', config)
+        reviewed = mcp_table("/test fixtures/start", "screenshots", [], {}, ["search_inspiration"])
+        self.assertIn('enabled_tools=["search_inspiration"],default_tools_approval_mode="approve"', reviewed)
 
     def test_hosted_comparator_accepts_public_https_without_credentials(self):
         config = hosted_mcp_table("https://example.com/mcp?images=none", "hosted")

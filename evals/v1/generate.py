@@ -48,10 +48,14 @@ def client_command(args, mcp_config):
     ]
 
 
-def mcp_table(command, name, server_args, server_env):
+def mcp_table(command, name, server_args, server_env, verified_read_only_tools=()):
     environment = ",".join(f"{json.dumps(key)}={json.dumps(value)}" for key, value in server_env.items())
+    scoped_tools = ""
+    if verified_read_only_tools:
+        scoped_tools = f"enabled_tools={json.dumps(verified_read_only_tools)},"
+    approval = "approve" if verified_read_only_tools else "writes"
     return (f"mcp_servers={{{json.dumps(name)}={{command={json.dumps(str(command))},"
-            f"args={json.dumps(server_args)},required=true,default_tools_approval_mode=\"writes\","
+            f"args={json.dumps(server_args)},required=true,{scoped_tools}default_tools_approval_mode=\"{approval}\","
             f"env={{{environment}}}}}}}")
 
 
@@ -199,6 +203,7 @@ def main():
     args.server_args = ["serve"]
     args.server_env = {"DESIGN_MCP_SURFACE": "v2", "FASTMCP_SHOW_SERVER_BANNER": "false"}
     args.expected_tool = "direct"
+    verified_read_only_tools = []
     if args.competitor_config:
         competitor = json.loads(args.competitor_config.read_text(encoding="utf-8"))
         name = competitor["name"]
@@ -220,6 +225,14 @@ def main():
             args.expected_tool = tuple(tools)
         else:
             p.error("Provide either expected_tool or a nonempty expected_tools array of tool names")
+        verified_read_only_tools = competitor.get("verified_read_only_tools", [])
+        if not isinstance(verified_read_only_tools, list) or not all(
+            isinstance(name, str) and re.fullmatch(r"[a-zA-Z0-9_.-]+", name) for name in verified_read_only_tools
+        ):
+            p.error("verified_read_only_tools must list the reviewed stdio tool names")
+        expected = {args.expected_tool} if isinstance(args.expected_tool, str) else set(args.expected_tool)
+        if verified_read_only_tools and not expected.issubset(verified_read_only_tools):
+            p.error("Every expected tool must appear in verified_read_only_tools when supplied")
     if args.treatment_label:
         if args.competitor_config or args.treatment_label == "none" or not re.fullmatch(
             r"[a-z0-9][a-z0-9-]{0,47}", args.treatment_label
@@ -227,14 +240,15 @@ def main():
             p.error("Treatment labels must be lowercase slugs and cannot be combined with a competitor config")
         args.treatment = args.treatment_label
     if args.server_url:
-        if not args.competitor_config or args.server_args or args.server_env:
+        if not args.competitor_config or args.server_args or args.server_env or verified_read_only_tools:
             p.error("A hosted comparator requires a separate name and tool in --competitor-config")
         try:
             args.mcp_config = hosted_mcp_table(args.server_url, args.server_name)
         except ValueError as error:
             p.error(str(error))
     else:
-        args.mcp_config = mcp_table(args.server, args.server_name, args.server_args, args.server_env)
+        args.mcp_config = mcp_table(args.server, args.server_name, args.server_args, args.server_env,
+                                    verified_read_only_tools)
     args.client_version = subprocess.check_output([args.codex, "--version"], text=True, env=clean_env()).strip()
     args.scratch = args.out / ".empty-client-workspace"
     args.scratch.mkdir(parents=True, exist_ok=True)
