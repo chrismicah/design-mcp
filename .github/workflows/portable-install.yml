@@ -40,25 +40,6 @@ jobs:
           EXPECTED_PYTHON: ${{ matrix.python }}
           EXPECTED_ARCH: ${{ matrix.host.arch }}
           PYTHON_EXECUTABLE: ${{ steps.python.outputs.python-path }}
-          PIPX_HOME: ${{ runner.temp }}/pipx-home
-          PIPX_BIN_DIR: ${{ runner.temp }}/pipx-bin
-          PIPX_MAN_DIR: ${{ runner.temp }}/pipx-man
-          UV_TOOL_DIR: ${{ runner.temp }}/uv-tools
-          UV_TOOL_BIN_DIR: ${{ runner.temp }}/uv-bin
-          UV_NO_MODIFY_PATH: 1
         run: |
-          test "$(uname -m)" = "$EXPECTED_ARCH"
           echo "Architecture: $(uname -m), $(sw_vers -productVersion), $("$PYTHON_EXECUTABLE" -V)" >> "$GITHUB_STEP_SUMMARY"
-          "$PYTHON_EXECUTABLE" -m venv "$RUNNER_TEMP/install-client"
-          client="$RUNNER_TEMP/install-client/bin"
-          "$client/python" -m pip install pipx uv "fastmcp==4.1.8; python_version < '3.11'" "fastmcp~=4.2.4; python_version >= '3.11'"
-          "$client/pipx" install --python "$PYTHON_EXECUTABLE" "$GITHUB_WORKSPACE"
-          "$client/uv" tool install --no-python-downloads --python "$PYTHON_EXECUTABLE" "$GITHUB_WORKSPACE"
-          cd "$RUNNER_TEMP"
-          for executable in "$PIPX_BIN_DIR/design-mcp" "$UV_TOOL_BIN_DIR/design-mcp"; do
-            "$executable" version
-            report=$(DESIGN_MCP_SURFACE=v2 "$executable" doctor)
-            printf '%s\n' "$report"
-            grep -F "PASS interpreter — $EXPECTED_PYTHON." <<< "$report"
-            DESIGN_MCP_SURFACE=both "$client/python" "$GITHUB_WORKSPACE/scripts/smoke_design_mcp.py" "$executable" serve
-          done
+          bash scripts/verify_clean_install.sh "$GITHUB_WORKSPACE" "$PYTHON_EXECUTABLE" "$RUNNER_TEMP/design-install"
