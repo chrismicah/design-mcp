@@ -279,7 +279,14 @@ try {
   }
   assert.equal((await observePreview()).focus, "view-before");
   await image(preview, "preview-before.png");
-  key("Right");
+  if (mac) {
+    proof.previewKeyDriver = "cdp-key";
+    const right = {key: "ArrowRight", code: "ArrowRight", windowsVirtualKeyCode: 39, nativeVirtualKeyCode: 124};
+    await send("Input.dispatchKeyEvent", {type: "rawKeyDown", ...right}, preview);
+    await send("Input.dispatchKeyEvent", {type: "keyUp", ...right}, preview);
+  } else {
+    key("Right");
+  }
   proof.preview = await until("keyboard-selected After", async () => {
     const state = await observePreview();
     proof.lastPreviewState = state;
