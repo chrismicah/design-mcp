@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#151F29">
+  <title>Low Signal — Community radio</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700&amp;family=Barlow+Condensed:wght@700&amp;display=swap">
+  <style>
+    :root {
+      --ink: #151f29;
+      --paper: #f6f3e8;
+      --signal: #f7de46;
+      --mist: #a9b4b6;
+      --slate: #4c5a64;
+      --display: "Barlow Condensed", "Helvetica Neue", sans-serif;
+      --body: "Atkinson Hyperlegible Next", sans-serif;
+      --gutter: clamp(1.375rem, 6vw, 6rem);
+      --column-gap: clamp(2rem, 5.3vw, 5rem);
+      --player-width: clamp(16rem, 27vw, 23rem);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 1rem/1.45 var(--body);
+    }
+
+    .frame {
+      width: min(80rem, calc(100% - var(--gutter) - var(--gutter)));
+      margin-inline: auto;
+    }
+
+    .station-header,
+    .broadcast {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .masthead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: clamp(5.5rem, 9vw, 8.25rem);
+      padding-block: 1.125rem;
+      border-bottom: 1px solid var(--slate);
+    }
+
+    .wordmark {
+      display: flex;
+      align-items: center;
+      gap: clamp(.625rem, 1.1vw, 1rem);
+      font: 700 clamp(2.125rem, 3.9vw, 3.5rem)/.92 var(--display);
+      letter-spacing: -.025em;
+    }
+
+    .station-mark {
+      flex: none;
+      width: clamp(2.125rem, 3.2vw, 2.875rem);
+      height: auto;
+    }
+
+    .station-type {
+      margin: 0;
+      color: var(--mist);
+      font-size: clamp(.875rem, 1.25vw, 1.0625rem);
+      line-height: 1.2;
+      text-align: right;
+    }
+
+    .broadcast-layout,
+    .schedule-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) var(--player-width);
+      align-items: center;
+      gap: var(--column-gap);
+    }
+
+    .broadcast-layout {
+      min-height: clamp(27rem, 55svh, 35rem);
+      padding-block: clamp(3.5rem, 6.5vw, 6.75rem);
+    }
+
+    .program {
+      container-type: inline-size;
+    }
+
+    .on-air {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin: 0 0 clamp(1rem, 1.7vw, 1.5rem);
+      font-weight: 700;
+    }
+
+    .on-air::before {
+      content: "";
+      width: .5rem;
+      height: .5rem;
+      margin-left: .1875rem;
+      border-radius: 50%;
+      background: var(--signal);
+      box-shadow: 0 0 0 .1875rem rgb(247 222 70 / 16%);
+    }
+
+    h1 {
+      margin: 0;
+      font: 700 clamp(4rem, 26.5cqi, 12.625rem)/.88 var(--display);
+      letter-spacing: -.029em;
+      text-wrap: balance;
+    }
+
+    .host {
+      margin: clamp(1rem, 2.15vw, 1.875rem) 0 0;
+      color: var(--mist);
+      font-size: clamp(1.25rem, 2.15vw, 1.875rem);
+      line-height: 1.25;
+    }
+
+    .host strong {
+      color: var(--paper);
+    }
+
+    .scope {
+      border: 1px solid var(--slate);
+      border-bottom: 0;
+      background: rgb(0 0 0 / 13%);
+      color: var(--slate);
+    }
+
+    .scope svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .idle-trace {
+      stroke: var(--mist);
+      opacity: .76;
+    }
+
+    .live-trace {
+      stroke: var(--signal);
+    }
+
+    .trace-window {
+      transform: scaleX(0);
+      transform-origin: 0 0;
+      transition: transform 250ms ease-out;
+    }
+
+    .is-listening .trace-window {
+      transform: scaleX(1);
+    }
+
+    .listen-button {
+      display: grid;
+      grid-template-columns: 3.875rem minmax(0, 1fr);
+      align-items: center;
+      width: 100%;
+      min-height: 4rem;
+      padding: 0;
+      border: 1px solid var(--signal);
+      border-radius: 0;
+      background: var(--signal);
+      color: var(--ink);
+      font: 700 1.3125rem/1.15 var(--body);
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .transport-icon {
+      display: grid;
+      align-self: stretch;
+      place-items: center;
+      border-right: 1px solid rgb(21 31 41 / 30%);
+    }
+
+    .button-label {
+      padding: .75rem 1.125rem;
+    }
+
+    .stop-icon,
+    .is-listening .play-icon {
+      display: none;
+    }
+
+    .is-listening .stop-icon {
+      display: block;
+    }
+
+    .is-listening .listen-button {
+      background: var(--paper);
+    }
+
+    @media (hover: hover) {
+      .listen-button:hover {
+        background: color-mix(in srgb, var(--signal) 72%, var(--paper));
+      }
+
+      .is-listening .listen-button:hover {
+        background: color-mix(in srgb, var(--paper) 72%, var(--signal));
+      }
+    }
+
+    .listen-button:focus-visible {
+      outline: 2px solid var(--paper);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 7px var(--ink);
+    }
+
+    .listener-state {
+      display: flex;
+      align-items: center;
+      gap: .5625rem;
+      margin: .875rem 0 0;
+      color: var(--mist);
+      font-size: .9375rem;
+    }
+
+    .listener-state::before {
+      content: "";
+      flex: none;
+      width: .5rem;
+      height: .5rem;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+    }
+
+    .is-listening .listener-state {
+      color: var(--paper);
+    }
+
+    .is-listening .listener-state::before {
+      border-color: var(--signal);
+      background: var(--signal);
+    }
+
+    .schedule-layout {
+      min-height: clamp(9rem, 13.4vw, 12.5rem);
+      padding-block: 1.625rem;
+      border-bottom: 1px solid color-mix(in srgb, var(--slate) 32%, var(--paper));
+    }
+
+    .schedule h2 {
+      margin: 0;
+      font: 700 clamp(1.625rem, 2.4vw, 2.125rem)/1 var(--display);
+    }
+
+    .schedule-hours {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: .5rem 1.25rem;
+      margin: 0;
+    }
+
+    .schedule-hours dt {
+      font-size: 1.125rem;
+    }
+
+    .schedule-hours dd {
+      margin: 0;
+      font: 700 clamp(3rem, 5.2vw, 4.5rem)/.9 var(--display);
+      letter-spacing: -.025em;
+    }
+
+    .schedule-hours dd span {
+      font: 700 .33em/1 var(--body);
+      letter-spacing: 0;
+    }
+
+    @media (max-width: 50rem) {
+      .broadcast-layout,
+      .schedule-layout {
+        grid-template-columns: minmax(0, 1fr);
+        min-height: 0;
+      }
+
+      .broadcast-layout {
+        gap: 2.375rem;
+        padding-block: 2.75rem 3rem;
+      }
+
+      h1 {
+        font-size: clamp(3.25rem, 26.5cqi, 9.5rem);
+      }
+
+      .player {
+        width: min(100%, 28rem);
+      }
+
+      .schedule-layout {
+        gap: 1rem;
+        padding-block: 1.5rem;
+      }
+
+      .schedule-hours {
+        padding-top: .875rem;
+        border-top: 1px solid color-mix(in srgb, var(--slate) 32%, var(--paper));
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .trace-window {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="station-header">
+    <div class="frame masthead">
+      <div class="wordmark">
+        <svg class="station-mark" viewBox="0 0 46 46" aria-hidden="true" focusable="false">
+          <rect x="1" y="1" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M8 25h8l4-11 6 18 4-7h8" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+        </svg>
+        <span>Low Signal</span>
+      </div>
+      <p class="station-type">Nonprofit<br>community radio</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="broadcast" aria-labelledby="show-title">
+      <div class="frame broadcast-layout">
+        <div class="program">
+          <p class="on-air">On air</p>
+          <h1 id="show-title">Field Notes</h1>
+          <p class="host">with <strong>Ana Reyes</strong></p>
+        </div>
+
+        <div class="player" id="player">
+          <div class="scope" aria-hidden="true">
+            <svg viewBox="0 0 360 102" fill="none" focusable="false">
+              <defs>
+                <pattern id="scope-grid" width="18" height="17" patternUnits="userSpaceOnUse">
+                  <path d="M0 17V0H18" stroke="currentColor" stroke-opacity=".48"/>
+                </pattern>
+                <path id="field-trace" vector-effect="non-scaling-stroke"
+                  d="M0 52H17L23 50 27 54 32 52H44L49 49 53 55 58 44 62 61 68 47 73 55
+                     79 51 84 52H97L103 48 108 56 114 50 120 53 126 52 132 45 137 61 142 40
+                     147 69 151 20 156 84 162 13 167 74 173 33 178 64 184 42 190 58 197 51
+                     204 54 210 47 215 56 220 50 226 52 233 43 239 64 245 36 250 69 256 26
+                     261 66 267 43 273 57 279 49 285 53 291 52H303L308 49 313 54 318 51 323 52H360"/>
+                <clipPath id="trace-clip">
+                  <rect class="trace-window" width="360" height="102"/>
+                </clipPath>
+              </defs>
+              <rect width="360" height="102" fill="url(#scope-grid)"/>
+              <path d="M0 52H360M90 0V102M180 0V102M270 0V102" stroke="currentColor" stroke-opacity=".8"/>
+              <path d="M1 11V1h10m338 0h10v10m0 80v10h-10m-338 0H1V91"
+                stroke="var(--mist)" stroke-opacity=".55"/>
+              <use href="#field-trace" class="idle-trace" stroke-width="1.65" stroke-linejoin="round"/>
+              <g clip-path="url(#trace-clip)">
+                <use href="#field-trace" class="live-trace" stroke-width="2" stroke-linejoin="round"/>
+              </g>
+            </svg>
+          </div>
+
+          <button class="listen-button" id="listen-button" type="button">
+            <span class="transport-icon" aria-hidden="true">
+              <svg width="23" height="23" viewBox="0 0 24 24" focusable="false">
+                <path class="play-icon" d="M7 4.5 20 12 7 19.5Z" fill="currentColor"/>
+                <rect class="stop-icon" x="6" y="6" width="12" height="12" fill="currentColor"/>
+              </svg>
+            </span>
+            <span class="button-label" id="listen-label">Listen live</span>
+          </button>
+          <p class="listener-state" id="listener-state" role="status" aria-atomic="true">Silent demo</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="schedule" aria-labelledby="schedule-title">
+      <div class="frame schedule-layout">
+        <h2 id="schedule-title">Schedule</h2>
+        <dl class="schedule-hours">
+          <dt>Weekdays</dt>
+          <dd>7–9 <span>am</span></dd>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const player = document.getElementById("player");
+    const listenButton = document.getElementById("listen-button");
+    const listenLabel = document.getElementById("listen-label");
+    const listenerState = document.getElementById("listener-state");
+
+    listenButton.addEventListener("click", () => {
+      const listening = player.classList.toggle("is-listening");
+      listenLabel.textContent = listening ? "Stop listening" : "Listen live";
+      listenerState.textContent = listening ? "You’re live in this demo" : "Silent demo";
+    });
+  </script>
+</body>
+</html>
