@@ -1,28 +1,28 @@
 {
   "summary": {
     "requested_pairs": 36,
-    "judged_pairs": 26,
-    "none": 91.98717948717949,
-    "v2": 94.55128205128206,
-    "difference": 2.564102564102569,
+    "judged_pairs": 30,
+    "none": 92.36111111111111,
+    "v2": 94.86111111111111,
+    "difference": 2.500000000000005,
     "wins_ties_losses": [
-      15,
-      8,
-      3
+      17,
+      9,
+      4
     ],
     "paired_bootstrap_95_interval": [
-      0.48076923076923295,
-      4.647435897435902
+      0.5555555555555561,
+      4.3055555555555625
     ],
     "median_usage": {
       "none": {
         "input_tokens": 20544.5,
         "cached_input_tokens": 11136.0,
-        "output_tokens": 20452.0,
-        "elapsed_seconds": 412.41499999999996
+        "output_tokens": 20257.0,
+        "elapsed_seconds": 408.49
       },
       "v2": {
-        "input_tokens": 64377.0,
+        "input_tokens": 64389.5,
         "cached_input_tokens": 41472.0,
         "output_tokens": 20811.0,
         "elapsed_seconds": 423.275
@@ -4614,6 +4614,714 @@
           "B-390.png": "1f3751ed34663d742311f3c6c2345c9e46b61ffd611b206c5c4a7c164cdb7485"
         },
         "judge_prompt_sha256": "696dfdf046edf62b8dada7ef086f16ed8cfe2a2ece6a6526ad8ab605772bd2e6"
+      }
+    },
+    "settings-team": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/45001223462",
+      "cells": {
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 42233,
+              "cached_input_tokens": 20352,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 20713,
+              "reasoning_output_tokens": 16021
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "settings-team",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "e70b156ad1cd7c004117f5aca0de3b596e5a39b702539423830dbba50c6b1ee0",
+            "elapsed_seconds": 420.55,
+            "exit_code": 0,
+            "trace_sha256": "591c504a4f1c854154ef78fe3198f7e0582db10455dc15f6c5cffbb8388db8f9",
+            "html_sha256": "4ff1aba5caa1f6274a67d69bcee5bfa1e69d9728c4982a25914fcca409a4a58b"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "35809208ffb700a63427a88e4d1099829dd3b35b91d16fd79241f88055adbea8",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "d09ee672c70d3da98c49370b3ad4796bb15fe51f0d7b94846c595e3a3067adfc",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 64471,
+              "cached_input_tokens": 61824,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 16648,
+              "reasoning_output_tokens": 12565
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "settings-team",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "e70b156ad1cd7c004117f5aca0de3b596e5a39b702539423830dbba50c6b1ee0",
+            "elapsed_seconds": 339.26,
+            "exit_code": 0,
+            "trace_sha256": "778e86f0276fc348105337367390e74c67e7a8c8390ac6af40659de2123b0aa8",
+            "html_sha256": "6b0df262b7cfde6746a9050aa1ea6f72873cfa2c8257ddc824d17ca3a8866fd4"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "4be209436b35da1cafbd55ee57ef41fdbf00c5caae059ca8b4fecd2ec2ed8f5b",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "d9dfe54367215065bf6308f461b4a36886b7a19957743d9219fa922e36315a15",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "settings-team",
+        "surface": "settings",
+        "blind_key": {
+          "A": "none",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "The title makes the page purpose clear, though Ari\u2019s form shares emphasis with the roster on desktop and follows the entire roster on mobile."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "Names and role badges align in consistent columns, and the desktop panels stack on mobile with enough room for both role choices to stay side by side."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The serif title wraps cleanly beside the books on mobile, and the smaller sans-serif names and controls remain easy to distinguish from the section headings."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Forest green ties the Northline Books wordmark to the banner, and a green border, pale fill and dark radio dot distinguish the selected Viewer option."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "At both widths, the browser tree exposes row and column headers, Ari\u2019s named radio group, the checked Viewer option, the disabled save button and a status region."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "Northline Books lists Sam Lee as Editor and Ari Bell as Viewer, with Viewer and Editor choices and a Save changes button for Ari in the supplied initial state."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, Ari\u2019s highlighted current role leads directly to the role choices and save action, with Sam\u2019s role in a secondary row below."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "Ari\u2019s summary and controls sit side by side on desktop and stack within one panel on mobile, where a divider separates the choices from the save action."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The large condensed title and prominent Viewer value establish a clear reading order, and the save instruction remains legible on one line at 390 pixels."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Apricot draws attention to Ari\u2019s current role and repeats in the selected radio and its border, while the charcoal surfaces keep Sam\u2019s row secondary."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "At both widths, the browser tree names each teammate region and Ari\u2019s role group, identifies Viewer as checked and Save role as disabled, and includes a status region."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "The initial Northline Books view shows Sam Lee as Editor and Ari Bell as Viewer, labels Ari\u2019s current role explicitly, and pairs both requested choices with the Save role button."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26434,
+          "cached_input_tokens": 17792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4630,
+          "reasoning_output_tokens": 3988
+        },
+        "scores": {
+          "none": 95.83333333333334,
+          "v2": 100
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "35809208ffb700a63427a88e4d1099829dd3b35b91d16fd79241f88055adbea8",
+          "A-390.png": "d09ee672c70d3da98c49370b3ad4796bb15fe51f0d7b94846c595e3a3067adfc",
+          "B-1440.png": "4be209436b35da1cafbd55ee57ef41fdbf00c5caae059ca8b4fecd2ec2ed8f5b",
+          "B-390.png": "d9dfe54367215065bf6308f461b4a36886b7a19957743d9219fa922e36315a15"
+        },
+        "judge_prompt_sha256": "8954f706fe607fc0e3938221acc4e58a21f6452c72cb45a2367baf2b0ea20776"
+      }
+    },
+    "settings-focus": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/45001223462",
+      "cells": {
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 19606,
+              "cached_input_tokens": 11136,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 19399,
+              "reasoning_output_tokens": 15352
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "settings-focus",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "caaf3df2db54b1704d8ad611a530893b6e12fb257efd9a03e2383dc919310627",
+            "elapsed_seconds": 391.83,
+            "exit_code": 0,
+            "trace_sha256": "f6ff9a9db805b8eb4c0f3924468aa18e4745230d4e4733ac82407d73d0fdc6fa",
+            "html_sha256": "8d5f922f6c1ef83144911b0c5e8fdadbba67f732f3343497c8d625d93f299471"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "0a281b824d5c8abf6e49a20678426af30b33b36a9434cfb8ee922753e5cbf9a5",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "04dee235a7ec1ac50c5cb2e658c7bbccf60c98266b7d1738116ffa5df5cbcbad",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 63977,
+              "cached_input_tokens": 58240,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 21805,
+              "reasoning_output_tokens": 16592
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "settings-focus",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "caaf3df2db54b1704d8ad611a530893b6e12fb257efd9a03e2383dc919310627",
+            "elapsed_seconds": 442.06,
+            "exit_code": 0,
+            "trace_sha256": "cbc1163e5dbe6a80ff4786b42155a7544f50ae0cf84386c41e9a64c136e7d753",
+            "html_sha256": "1707055bd4a6cbdb2fced5951b0436d58a1f7a9937fc11f9b5bc64dbba448e85"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "d091b7cb298054db95e92d8fe3c0f9a29d4895f7eb46b5acac3fb478ae2dabf1",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "c8ebffc6aef7b90527982d9bf837c2e2bc770298731b1851eb9a837edd95e31d",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "settings-focus",
+        "surface": "settings",
+        "blind_key": {
+          "A": "none",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "The active preset is easy to find at both widths, though the large 30-minute dial draws the eye ahead of the schedule choices on desktop."
+            },
+            "spacing": {
+              "score": 3,
+              "evidence": "The two presets share aligned columns at both widths, but the large desktop gap above Apply schedule weakens the connection that the tighter mobile layout makes clear."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The serif title and dial numeral give the page a clear visual focus, while bold preset values remain easy to distinguish from their smaller units and labels at 390 pixels."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The blue radio, border and Active badge identify the current preset, while the gold break segment matches its legend mark against the indigo preview."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "At both widths, the browser tree includes \u201cActive\u201d in the checked radio\u2019s name, exposes Apply schedule as disabled and gives text values for both dial segments."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "Both captures show 25/5 as active, 50/10 as the alternative, an Apply schedule button and a matching 30-minute preview in the supplied initial state."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The Active schedule summary answers which interval is in effect at first glance, followed by the choices and Apply button, with the preview alongside on desktop and below on mobile."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The preset values align under the Focus and Break headers at both widths, and the mobile layout keeps the full-width Apply button close to the rows with a larger gap before the preview."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "Large bold durations pair with smaller baseline-aligned units, keeping the active 25 and 5 easy to scan even in the compact mobile summary."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Orange highlights the active row and focus interval, while the blue-gray hatch identifies the break consistently in the timeline and its legend."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "At both widths, the browser tree identifies the Active schedule region, names both radios by their focus and break durations, exposes the checked state and provides text equivalents for the timeline."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "The captured initial state marks 25/5 active, offers 50/10 and Apply schedule, and shows the focus and break segments filling exactly 30 minutes of the 60-minute scale."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 25645,
+          "cached_input_tokens": 11776,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4352,
+          "reasoning_output_tokens": 3692
+        },
+        "scores": {
+          "none": 91.66666666666666,
+          "v2": 100
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "0a281b824d5c8abf6e49a20678426af30b33b36a9434cfb8ee922753e5cbf9a5",
+          "A-390.png": "04dee235a7ec1ac50c5cb2e658c7bbccf60c98266b7d1738116ffa5df5cbcbad",
+          "B-1440.png": "d091b7cb298054db95e92d8fe3c0f9a29d4895f7eb46b5acac3fb478ae2dabf1",
+          "B-390.png": "c8ebffc6aef7b90527982d9bf837c2e2bc770298731b1851eb9a837edd95e31d"
+        },
+        "judge_prompt_sha256": "8b7deae575bc853faa048b1156d61dfacb484f6c32cc173f64af279fbb6a64d7"
+      }
+    },
+    "settings-digest": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/45001223462",
+      "cells": {
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 64507,
+              "cached_input_tokens": 40704,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 22819,
+              "reasoning_output_tokens": 17707
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "settings-digest",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "538ca8c64a051952fe7608a29ce3a6b94422640a3b7fafc08a84730505506be0",
+            "elapsed_seconds": 463.53,
+            "exit_code": 0,
+            "trace_sha256": "aa3e47a01fe854e14232320267fc21822d300c16561a137332096a0dac0cc6a0",
+            "html_sha256": "7781486cd08de4d5a86372321de1ec86ba55d46e013eaaa69904b4588225bd36"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "002a1b5746b55381272866f83e928a5ac64d166fbd637aa329c9bb648beb0ffa",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "5e2cefe89985e78ee0028ecd87b0d61c0b3296494ef094585605e2b698340132",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 20537,
+              "cached_input_tokens": 0,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 18880,
+              "reasoning_output_tokens": 14817
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "settings-digest",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "538ca8c64a051952fe7608a29ce3a6b94422640a3b7fafc08a84730505506be0",
+            "elapsed_seconds": 381.23,
+            "exit_code": 0,
+            "trace_sha256": "bc60cdffa86a724019a6aabe1577b649ae4c8505371fc349c9a7b3e5f4d00dc3",
+            "html_sha256": "ac33d4c0b13ac8979d512c9b6646e4aae0b15cd3a2a77fc8ef66b33149962a9d"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "ec47b90dd51c3da8e98a3f0b0ca12037f596530e34cf3cd62217697b5b2144a4",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "33c8cc4cc149a4d379d7efe80244c684950017a43a2d6061c6fd4e0f2217558b",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "settings-digest",
+        "surface": "settings",
+        "blind_key": {
+          "A": "v2",
+          "B": "none"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "At both widths the title identifies the task immediately, but the large \u201cWeekly on Monday\u201d banner draws attention before the controls for changing it."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The two control groups align in one column opposite their desktop labels and sit directly beneath their mobile labels, with dividers separating the rows."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The bold, condensed title and schedule value establish a clear scale that holds on mobile, where the summary wraps cleanly and all seven weekday labels remain legible."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Peach outlines and tinted fills identify Weekly and Mon, while the solid peach save button stands out against charcoal at both widths."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Both browser trees give the visible weekday abbreviations full names, identify Weekly and Monday as checked in named radio groups, and expose the save button and a status role."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "Both initial views show Daily, Weekly and Off, Monday selected for Weekly, \u201cSave preferences\u201d and the matching \u201cWeekly on Monday\u201d summary, with day visibility after switching and the post-save update unverified."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The form leads from Frequency through Delivery day to Save preferences, with the saved schedule beside the form on desktop and immediately below it on mobile."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "Shared left edges align the frequency choices, day selector and save button, and the vertical desktop divider becomes a horizontal boundary above the mobile summary."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The serif title and saved value are distinct from the sans-serif form labels, and the mobile summary breaks cleanly after \u201cWeekly on\u201d while the controls stay legible."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "A teal outline and pale fill identify Weekly, solid teal marks the save action, and the mint background groups the saved schedule at both widths."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "The visible labels match both browser trees, which expose a named form, a checked Weekly radio, a Delivery day combobox with Monday selected, a named save button and a status role."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "At both widths the three frequency options, Monday selector, \u201cSave preferences\u201d button and matching \u201cWeekly on Monday\u201d summary establish the requested initial state, with switching and saving unverified."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26503,
+          "cached_input_tokens": 17792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3733,
+          "reasoning_output_tokens": 3078
+        },
+        "scores": {
+          "v2": 95.83333333333334,
+          "none": 100
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "002a1b5746b55381272866f83e928a5ac64d166fbd637aa329c9bb648beb0ffa",
+          "A-390.png": "5e2cefe89985e78ee0028ecd87b0d61c0b3296494ef094585605e2b698340132",
+          "B-1440.png": "ec47b90dd51c3da8e98a3f0b0ca12037f596530e34cf3cd62217697b5b2144a4",
+          "B-390.png": "33c8cc4cc149a4d379d7efe80244c684950017a43a2d6061c6fd4e0f2217558b"
+        },
+        "judge_prompt_sha256": "455fdfffbf869875da6134cb35e5b435b96dae8838bb036820c1bc19c4a234f7"
+      }
+    },
+    "settings-language": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/45001223462",
+      "cells": {
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 64611,
+              "cached_input_tokens": 61824,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 19406,
+              "reasoning_output_tokens": 14199
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "settings-language",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "0505cc83a9d2758a4730fe99ee16a62e21213d2d00f896de2eb13a2624f5c66e",
+            "elapsed_seconds": 396.18,
+            "exit_code": 0,
+            "trace_sha256": "fb70b2e7cc30e7960d985d3b7a25be1d9ca6da6c28a7149c339d813f6e164ac5",
+            "html_sha256": "a7d34a10d420883079ca9a912bd9a5cf1b1a7bba0a85ab78ce33dcd17420cc9b"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "7043ba9a91d3dba58699572ea55792522d40f14ff35759de5d959cbdb26bc636",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "ec5c0c87da57e78a54bf03c3a63171c2d032e879d3f587f824e9342da49c3a41",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 20557,
+              "cached_input_tokens": 11136,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 19905,
+              "reasoning_output_tokens": 15633
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "settings-language",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "0505cc83a9d2758a4730fe99ee16a62e21213d2d00f896de2eb13a2624f5c66e",
+            "elapsed_seconds": 402.17,
+            "exit_code": 0,
+            "trace_sha256": "50374414dd3a772eacfd9d7bed5a353623fbff23fbbd6b9951f0517e73757e69",
+            "html_sha256": "a031c1ad6c8d5cb136c217fee0e759167c68fbd9c977fd7f5c61c81e670498cb"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "166facd5a30ab207ac374b5d26467f721d0d55ad897532256bd7d0ef68c54ec2",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "4ff2934873b8fc770cb81d1964b1b688407cc1060cda2138959307fee3956ccb",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "settings-language",
+        "surface": "settings",
+        "blind_key": {
+          "A": "v2",
+          "B": "none"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "The title establishes the task at both widths, though the dark preview draws attention before the controls and puts the first mobile choice more than halfway down the screen."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The date and temperature groups align side by side on desktop and stack on mobile, with tighter spacing within each pair of choices and a divider before reset."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "Bold, condensed type distinguishes headings and preview values from lighter labels, and the full date remains easy to read on one line at 390 px."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Peach fills identify the selected cards at both widths, and the orange accent connects the header signpost to the map marker in the preview."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Visible radio dots match the checked states in both browser trees, which also identify the labeled groups, live preview, reset button and status region."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both widths show the November 21, 2026 and 68\u00b0F defaults and a visible reset, while the alternate cards identify the date order and Celsius unit without displaying their resulting values."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The date and temperature controls appear immediately below the introduction at both widths, with the preview beside them on desktop and directly below the form on mobile."
+            },
+            "spacing": {
+              "score": 3,
+              "evidence": "The divided desktop panel stacks cleanly on mobile, though the wrapped month-first example puts its option label on a different baseline from the day-first label."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The serif title and preview values stand apart from the bold sans-serif control labels, and the mobile preview keeps the full date legible above the larger temperature."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Forest green and gold connect the compass branding to the preview, while pale green fills and dark radio dots distinguish the selected choices at both widths."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "At both widths the filled radio circles show selection, and the browser trees expose checked states, exact examples in the date option names, a named reset button and a status region."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both exact date examples appear on the cards, Celsius and reset are clearly labeled, and the supplied views show the 68\u00b0F default while leaving the 20\u00b0C result unverified."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 25816,
+          "cached_input_tokens": 17152,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5718,
+          "reasoning_output_tokens": 5069
+        },
+        "scores": {
+          "v2": 91.66666666666666,
+          "none": 91.66666666666666
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "7043ba9a91d3dba58699572ea55792522d40f14ff35759de5d959cbdb26bc636",
+          "A-390.png": "ec5c0c87da57e78a54bf03c3a63171c2d032e879d3f587f824e9342da49c3a41",
+          "B-1440.png": "166facd5a30ab207ac374b5d26467f721d0d55ad897532256bd7d0ef68c54ec2",
+          "B-390.png": "4ff2934873b8fc770cb81d1964b1b688407cc1060cda2138959307fee3956ccb"
+        },
+        "judge_prompt_sha256": "9d3ea1f35c98850d56c2716416f7fbcf968585650da257d1030c90a712f10881"
       }
     }
   }
