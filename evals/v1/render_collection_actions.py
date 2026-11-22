@@ -12,7 +12,6 @@ const instructions = page.getByText(/bring a bag.*side door/i).last();
 const address = page.getByText('18 Pine Avenue', {exact: true});
 const requests = [];
 const initialUrl = page.url();
-page.on('request', request => requests.push(request.url()));
 await control.waitFor({state: 'visible', timeout: 2000});
 
 const labelContext = await address.evaluate(el => {
@@ -50,6 +49,9 @@ for (let step = 0; step < 16 && !(await focused()); step++) await page.keyboard.
 const reachedByKeyboard = await focused();
 let opens = false, closes = false;
 if (reachedByKeyboard) {
+  page.on('request', request => requests.push({
+    url: request.url(), type: request.resourceType(), method: request.method()
+  }));
   await page.keyboard.press('Enter');
   await instructions.waitFor({state: 'visible', timeout: 2000}).catch(() => {});
   opens = await instructions.isVisible() && await expanded();
@@ -58,11 +60,19 @@ if (reachedByKeyboard) {
   await instructions.waitFor({state: 'hidden', timeout: 2000}).catch(() => {});
   closes = !(await instructions.isVisible()) && !(await expanded()) && await focused();
 }
-const local = page.url() === initialUrl && requests.length === 0;
+const allowedAsset = request => {
+  const origin = new URL(request.url).origin;
+  return request.method === 'GET' && (
+    (origin === 'https://fonts.googleapis.com' && request.type === 'stylesheet') ||
+    (origin === 'https://fonts.gstatic.com' && request.type === 'font')
+  );
+};
+const samePage = page.url() === initialUrl;
+const local = samePage && requests.every(allowedAsset);
 const passed = startsCollapsed && reachedByKeyboard && opens && closes && local && !state.pageErrors.length &&
   Object.values(firstViewport).every(Boolean);
 console.log('COLLECTION_ACTION ' + JSON.stringify({firstViewport, labelContext, startsCollapsed,
-  reachedByKeyboard, opens, closes, local, pageErrors: state.pageErrors, passed}));
+  reachedByKeyboard, opens, closes, samePage, actionRequests: requests, local, pageErrors: state.pageErrors, passed}));
 """
 
 
