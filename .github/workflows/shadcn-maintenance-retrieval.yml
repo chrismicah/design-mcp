@@ -1,0 +1,62 @@
+name: Installed shadcn maintenance retrieval
+
+on:
+  push:
+    branches: [design-mcp/f-held-out-fixes]
+    paths:
+      - '.github/workflows/shadcn-maintenance-retrieval.yml'
+      - 'evals/v1/probe_registry_and_skill.py'
+      - 'evals/v1/generate.py'
+      - 'evals/v1/shadcn-maintenance.json'
+
+permissions:
+  contents: read
+
+jobs:
+  maintenance:
+    runs-on: macos-15
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30eaf803
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Install the pinned public npm package and probe the registry
+        shell: bash
+        run: |
+          fixture="$RUNNER_TEMP/shadcn-fixture"
+          probe="$RUNNER_TEMP/shadcn-proof"
+          probe_home="$RUNNER_TEMP/shadcn-home"
+          mkdir -p "$fixture" "$probe" "$probe_home"
+          python -m pip install 'fastmcp==4.2.4'
+          npm install --prefix "$fixture" --registry https://registry.npmjs.org --ignore-scripts --no-fund --no-audit shadcn@4.23.0
+          node - "$fixture/package-lock.json" <<'JS'
+          const item = require(process.argv[2]).packages["node_modules/shadcn"];
+          if (item.version !== "4.23.0" ||
+              item.integrity !== "sha512-lKgq7QPFgkV/6EOrMCwvEn7ZAw/YnM/grhxzJmK4cZdw3E4F3Ut2EmWvrn2E+vzJp1y/76mxU185OSkXo9Ff+Q==") {
+            throw new Error("Unexpected shadcn package pin");
+          }
+          JS
+          cat > "$fixture/components.json" <<'JSON'
+          {
+            "$schema": "https://ui.shadcn.com/schema.json",
+            "style": "new-york",
+            "rsc": false,
+            "tsx": true,
+            "tailwind": {"config": "", "css": "app/globals.css", "baseColor": "neutral", "cssVariables": true, "prefix": ""},
+            "aliases": {"components": "@/components", "utils": "@/lib/utils"}
+          }
+          JSON
+          env -i PATH="$PATH" HOME="$probe_home" XDG_CONFIG_HOME="$probe_home" \
+            python -B evals/v1/probe_registry_and_skill.py shadcn --maintenance \
+              --pin shadcn@4.23.0 --cwd "$fixture" --launch "$fixture/node_modules/.bin/shadcn" \
+              --out "$probe/receipt.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: shadcn-maintenance-retrieval
+          path: ${{ runner.temp }}/shadcn-proof/receipt.json
+          if-no-files-found: error
+          retention-days: 7

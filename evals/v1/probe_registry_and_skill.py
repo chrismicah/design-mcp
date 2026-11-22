@@ -9,7 +9,7 @@ import subprocess
 import sys
 from time import monotonic
 
-from generate import BASE_DIR, sha256
+from generate import BASE_DIR, shadcn_item_names, sha256
 
 
 SHADCN_ITEM = re.compile(r"^- ([\w@][\w./@-]*) (?:\(([^)]+)\))?", re.M)
@@ -56,6 +56,62 @@ async def shadcn(cwd, launch, tasks):
                 "controls": [positive, negative], "cases": [await get(task) for task in tasks]}
 
 
+async def shadcn_maintenance(cwd, launch, tasks):
+    from fastmcp import Client
+    from fastmcp.client.transports import StdioTransport
+
+    case = next(task for task in tasks if task["id"] == "form-maintenance")
+    config = json.loads((BASE_DIR / "shadcn-maintenance.json").read_bytes())
+    components = ["field", "input", "textarea", "radio-group"]
+    search = "search_items_in_registries"
+    view = "view_items_in_registries"
+    examples = "get_item_examples_from_registries"
+    registry = {"registries": ["@shadcn"]}
+    calls = [
+        ("frozen-brief", search, {**registry, "query": case["brief"], "limit": 3}, set()),
+        ("named-search", search, {**registry, "query": "field", "types": ["ui"], "limit": 3}, {"field"}),
+        ("named-details", view, {"items": [f"@shadcn/{name}" for name in components]}, set(components)),
+        ("named-example", examples, {**registry, "query": "field-demo"}, {"field-demo"}),
+        ("nonsense", search, {**registry, "query": "qzx61-no-such-component", "limit": 3}, set()),
+    ]
+    transport = StdioTransport(command=str(launch), args=["mcp"], cwd=str(cwd))
+    rows = {}
+    async with Client(transport, timeout=35) as client:
+        installed_tools = {item.name for item in await client.list_tools()}
+        assert set(config["verified_read_only_tools"]) <= installed_tools
+        for label, tool, arguments, expected in calls:
+            started = monotonic()
+            reply = await client.call_tool(tool, arguments, raise_on_error=False)
+            result = {"content": [block.model_dump(mode="json", by_alias=True) for block in reply.content],
+                      "isError": reply.is_error}
+            names = shadcn_item_names({"tool": tool, "arguments": arguments, "result": result})
+            matched = sorted(names.intersection(config["required_shadcn_items"]))
+            raw = json.dumps(result, ensure_ascii=False, sort_keys=True).encode()
+            text = "\n".join(block.text for block in reply.content if block.type == "text")
+            status = (
+                "tool-error" if reply.is_error else "matches" if names
+                else "empty" if text.startswith("No items found") else "unrecognized"
+            )
+            valid = expected <= names and status in {"empty", "matches"}
+            if label == "nonsense":
+                valid = status == "empty"
+            rows[label] = {
+                "tool": tool,
+                "arguments_sha256": sha256(json.dumps(arguments, ensure_ascii=False, sort_keys=True).encode()),
+                "payload_sha256": sha256(raw),
+                "response_bytes": len(raw),
+                "status": status,
+                "returned_names": sorted(names),
+                "matching_preregistered_items": matched,
+                "passed": valid,
+                "milliseconds": round((monotonic() - started) * 1000),
+            }
+            if not valid:
+                rows[label]["response_prefix"] = text[:1200]
+    return {"scope": "Installed shadcn stdio retrieval and relevance gate. No model or render.",
+            "case": case["id"], "brief_sha256": sha256(case["brief"].encode()), "calls": rows}
+
+
 def skill(cwd, launch, tasks):
     def get(case):
         started = monotonic()
@@ -84,9 +140,20 @@ def main():
     parser.add_argument("--launch", required=True, type=Path)
     parser.add_argument("--cwd", required=True, type=Path)
     parser.add_argument("--out", required=True, type=Path)
+    parser.add_argument("--maintenance", action="store_true", help="Probe named shadcn items for the maintenance form")
     args = parser.parse_args()
     manifest = (BASE_DIR / "tasks.json").read_bytes()
     tasks = json.loads(manifest)
+    if args.maintenance:
+        if args.candidate != "shadcn":
+            parser.error("--maintenance applies to shadcn")
+        result = asyncio.run(shadcn_maintenance(args.cwd, args.launch, tasks))
+        result.update(competitor=args.candidate, pin=args.pin, tasks_sha256=sha256(manifest))
+        args.out.write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n")
+        print(args.candidate, {name: row["status"] for name, row in result["calls"].items()})
+        if not all(row["passed"] for row in result["calls"].values()):
+            raise SystemExit(2)
+        return
     result = (asyncio.run(shadcn(args.cwd, args.launch, tasks)) if args.candidate == "shadcn"
               else skill(args.cwd, args.launch, tasks))
     result.update(competitor=args.candidate, pin=args.pin, tasks_sha256=sha256(manifest))
