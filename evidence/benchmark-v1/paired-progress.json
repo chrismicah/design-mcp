@@ -1,31 +1,31 @@
 {
   "summary": {
     "requested_pairs": 36,
-    "judged_pairs": 7,
-    "none": 92.85714285714285,
-    "v2": 95.23809523809524,
-    "difference": 2.3809523809523836,
+    "judged_pairs": 8,
+    "none": 93.22916666666666,
+    "v2": 95.83333333333333,
+    "difference": 2.604166666666668,
     "wins_ties_losses": [
-      2,
+      3,
       5,
       0
     ],
     "paired_bootstrap_95_interval": [
-      0.0,
-      4.761904761904767
+      0.5208333333333321,
+      5.208333333333336
     ],
     "median_usage": {
       "none": {
-        "input_tokens": 38457,
-        "cached_input_tokens": 17280,
-        "output_tokens": 22604,
-        "elapsed_seconds": 455.75
+        "input_tokens": 29270.0,
+        "cached_input_tokens": 8640.0,
+        "output_tokens": 22404.0,
+        "elapsed_seconds": 453.345
       },
       "v2": {
-        "input_tokens": 62607,
-        "cached_input_tokens": 40192,
-        "output_tokens": 21876,
-        "elapsed_seconds": 444.16
+        "input_tokens": 62608.0,
+        "cached_input_tokens": 40448.0,
+        "output_tokens": 21607.0,
+        "elapsed_seconds": 439.01
       }
     }
   },
@@ -1082,6 +1082,183 @@
           "B-390.png": "9f203a96fecbba6c50fc0698df39714485e5fc5ee0187919fa52174dcfc6393c"
         },
         "judge_prompt_sha256": "283f370939dccf67fe8d9995f9c7746a0fa0326d28bf19e67508ce40c3765998"
+      }
+    },
+    "dashboard-coldchain": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44988686124",
+      "cells": {
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 20083,
+              "cached_input_tokens": 0,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 17732,
+              "reasoning_output_tokens": 12632
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "dashboard-coldchain",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "29fd53de4a275743ff11c8da1dad35e878fada5af0e10b23c7f323aec7144f6d",
+            "elapsed_seconds": 358.71,
+            "exit_code": 0,
+            "trace_sha256": "c24387acd70b37d68801519d8f0b9e4af427c61dd55d618ed2d032b65e9874ef",
+            "html_sha256": "22f9c343b21eb3b6b2b18c80c79633124980b213ef4e1915a096373f98902aa5"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "c98ec1382e9f6d828425779bff12a111313b215605f611ad5919a46f39d4104a",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "5601df6191ecf5635e3524947a441775c4fa45c21dbb3dcabcbfd483d3df08b3",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 63131,
+              "cached_input_tokens": 40704,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 18398,
+              "reasoning_output_tokens": 13006
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "dashboard-coldchain",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "29fd53de4a275743ff11c8da1dad35e878fada5af0e10b23c7f323aec7144f6d",
+            "elapsed_seconds": 376.46,
+            "exit_code": 0,
+            "trace_sha256": "89698ff751bee98853e2d505d16614b52fc32bdda6b8ef4ef04edc07bf0b1449",
+            "html_sha256": "ddc9cd888d7f50ca5e7f740b4a992847306bec4ff3e27a1e7f01d8263b761ed3"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "ef96998948fb9f325239246c3e1302a81d4835e0df7ad1493ad8f5981f2d545c",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "6ea09ce3c2d826621972746099c3f5fe9b8aba8367b869c1bdcbc36fef50dbf9",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "dashboard-coldchain",
+        "surface": "dashboard",
+        "blind_key": {
+          "A": "none",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, the dark alert draws the eye to Truck 14 and its 9\u00b0C reading, and the highlighted first row makes the same truck easy to find in the list."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "At 390 px, the alert panels stack and the table drops its miniature gauges, leaving truck names, temperatures and status badges aligned in three uncrowded columns."
+            },
+            "typography": {
+              "score": 3,
+              "evidence": "The bold truck name and temperature are easy to scan, though the table\u2019s small \u00b0C units and the gauge\u2019s \u201c5\u00b0C limit\u201d caption take more effort to read on mobile."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Coral connects the 9\u00b0C reading, the over-limit gauge segment and the excursion row, while green marks both \u201cWithin limit\u201d badges."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Each status symbol has a visible text label, and both browser trees expose truck row headers and a named \u201cFilter trucks\u201d group with \u201cAll trucks\u201d pressed."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "The board shows Truck 14 at 9\u00b0C against a 5\u00b0C limit, Truck 8 at 3\u00b0C and Truck 11 at 4\u00b0C, with \u201cAll trucks\u201d (3) selected beside \u201cExcursions\u201d (1)."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, Truck 14 leads the alert and the oversized 9\u00b0C reading sits beside the 5\u00b0C limit, making the breach clear before the reader reaches the table."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The limit and current readings stay centered over their markers as the gauge moves below the truck summary on mobile, and the filters remain directly above the table."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "Even at 390 px, the 9\u00b0C reading is dominant, the 5\u00b0C limit is large enough to compare at a glance, and bold row temperatures stand out beneath compact column headings."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Orange links the warning triangle, the gauge segment from 5\u00b0C to 9\u00b0C and Truck 14\u2019s status badge, while a pale fill identifies the selected filter."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Written statuses accompany the warning and check icons, and both browser trees pair \u201cLimit\u201d and \u201cCurrent\u201d with their values and identify \u201cAll trucks\u201d as pressed."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "The alert gives Truck 14\u2019s 9\u00b0C reading and 5\u00b0C limit, the table gives Truck 8 at 3\u00b0C and Truck 11 at 4\u00b0C, and both counted filters are visible with \u201cAll trucks\u201d selected."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26661,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4583,
+          "reasoning_output_tokens": 3866
+        },
+        "scores": {
+          "none": 95.83333333333334,
+          "v2": 100
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "c98ec1382e9f6d828425779bff12a111313b215605f611ad5919a46f39d4104a",
+          "A-390.png": "5601df6191ecf5635e3524947a441775c4fa45c21dbb3dcabcbfd483d3df08b3",
+          "B-1440.png": "ef96998948fb9f325239246c3e1302a81d4835e0df7ad1493ad8f5981f2d545c",
+          "B-390.png": "6ea09ce3c2d826621972746099c3f5fe9b8aba8367b869c1bdcbc36fef50dbf9"
+        },
+        "judge_prompt_sha256": "64169aa7382bdde1ca0ef8b961eb461a2b57afd9217e763320ddffdec8c60a54"
       }
     },
     "dashboard-venue": {

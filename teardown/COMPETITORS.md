@@ -77,8 +77,8 @@ Design Library's earlier short settings query returned a result. Its empty full-
 
 | Configuration | Matched briefs judged | Score / 100 |
 | --- | ---: | ---: |
-| Plain generator | 7 / 36 | 92.9 |
-| Design MCP v2 | 7 / 36 | 95.2 |
+| Plain generator | 8 / 36 | 93.2 |
+| Design MCP v2 | 8 / 36 | 95.8 |
 | Inspo hosted | 0 / 36 | Ceramics browser captures complete. Blind review pending. |
 | Other credential-free competitor configurations above | 0 / 36 each | Pending |
 | Credentialed and hosted configurations above | 0 / 36 each | Access or isolated fixture required |
