@@ -71,11 +71,15 @@ def create_pair(args, task):
                 raise ValueError(f"Screenshot artifact changed at {capture}")
         blind.mkdir(parents=True, exist_ok=True)
         for width in WIDTHS:
-            shutil.copyfile(cell / f"{width}.png", blind / f"{label}-{width}.png")
+            image = "720.png" if args.compact and width == "1440" else f"{width}.png"
+            shutil.copyfile(cell / image, blind / f"{label}-{width}.png")
         metrics[label] = [
             {key: captures[width][key] for key in ("viewport", "width", "language", "pageErrors", "accessibility")}
             for width in WIDTHS
         ]
+        if args.compact:
+            for record, width in zip(metrics[label], WIDTHS):
+                record["regions"] = captures[width]["regions"]
     return blind, dict(zip(("A", "B"), arms)), metrics
 
 
@@ -83,9 +87,11 @@ def run_judge(args, task, pair, schema_path):
     blind, key, metrics = pair
     out = args.out / "ratings" / f"{task['id']}.json"
     partial = args.out / "traces" / f"{task['id']}.jsonl"
+    image_variant = "compact" if args.compact else "full"
     if out.exists():
         prior = load(out)
-        if prior["blind_key"] != key or prior["model"] != args.model or prior["effort"] != args.effort:
+        if (prior["blind_key"] != key or prior["model"] != args.model or prior["effort"] != args.effort
+                or prior.get("image_variant", "full") != image_variant):
             raise ValueError(f"Judging configuration changed for {task['id']}")
         return prior
     if partial.exists():
@@ -97,6 +103,9 @@ def run_judge(args, task, pair, schema_path):
         + (BASE_DIR / "rubric.md").read_text(encoding="utf-8") + "\n\nTask:\n" + task["brief"]
         + "\n\nBrowser evidence in 1440, 390 order:\n" + json.dumps(metrics)
     )
+    if args.compact:
+        prompt += ("\n\nDesktop images are downsized to 720 pixels. The browser evidence preserves actual CSS "
+                   "viewport widths and includes visible region boxes and computed style. Mobile images are original.")
     command = [args.codex, "-a", "never", "exec", "--ignore-user-config", "--ephemeral",
                "--skip-git-repo-check", "--sandbox", "read-only", "--json",
                "-m", args.model, "-c", 'model_provider="openai"', "-c", 'service_tier="default"',
@@ -121,6 +130,9 @@ def run_judge(args, task, pair, schema_path):
     scores = {arm: score_arm(verdict[label]) for label, arm in key.items()}
     receipt = {"case": task["id"], "surface": task["surface"], "blind_key": key, "verdict": verdict,
                "model": args.model, "effort": args.effort, "usage": turn.get("usage"), "scores": scores}
+    if args.compact:
+        receipt["image_variant"] = image_variant
+        receipt["image_sha256"] = {path.name: sha256(path.read_bytes()) for path in sorted(blind.glob("*.png"))}
     write(out, receipt)
     return receipt
 
@@ -167,6 +179,7 @@ def main():
     parser.add_argument("--timeout", type=int, default=900)
     parser.add_argument("--case", action="append")
     parser.add_argument("--treatment", default="v2", help="Directory name for the treatment arm")
+    parser.add_argument("--compact", action="store_true", help="Use compact desktop pixels plus browser regions")
     parser.add_argument("--quota-probe", type=lambda path: Path(path).resolve(),
                         help="Python quota probe that supports --out and --check-dispatch")
     args = parser.parse_args()

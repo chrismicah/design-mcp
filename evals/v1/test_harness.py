@@ -28,7 +28,7 @@ class BenchmarkTests(unittest.TestCase):
     def test_blind_pair_requires_two_intact_renderings(self):
         with TemporaryDirectory() as path:
             base = Path(path)
-            args = SimpleNamespace(cells=base / "generated", out=base / "blind", seed="test", treatment="v2")
+            args = SimpleNamespace(cells=base / "generated", out=base / "blind", seed="test", treatment="v2", compact=False)
             task = {"id": "station"}
             for arm in ("none", "v2"):
                 cell = args.cells / task["id"] / arm
@@ -43,12 +43,18 @@ class BenchmarkTests(unittest.TestCase):
                     captures[width] = {
                         "status": "rendered", "sha256": sha256(image), "viewport": int(width),
                         "width": int(width), "language": "en", "pageErrors": [], "accessibility": "",
+                        "regions": [{"role": "h1", "box": [8, 8, 90, 24]}],
                     }
+                (cell / "720.png").write_bytes(f"compact:{arm}".encode())
                 write(cell / "render.json", {"input_sha256": sha256(html), "captures": captures})
 
             blind, labels, _ = create_pair(args, task)
             self.assertEqual(set(labels.values()), {"none", "v2"})
             self.assertEqual((blind / "A-390.png").read_bytes(), f"fixture:{labels['A']}:390".encode())
+            args.compact = True
+            _, _, metrics = create_pair(args, task)
+            self.assertEqual((blind / "A-1440.png").read_bytes(), f"compact:{labels['A']}".encode())
+            self.assertEqual(metrics["A"][0]["regions"][0]["role"], "h1")
             (cell / "390.png").write_bytes(b"wrong image")
             with self.assertRaisesRegex(ValueError, "Screenshot artifact changed"):
                 create_pair(args, task)
