@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#14181B">
+  <title>Upcoming shifts | Food bank volunteering</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Sans+Condensed:wght@600&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: dark;
+      --charcoal: #14181B;
+      --slate: #20272B;
+      --paper: #EEF0EC;
+      --fog: #AEB9B5;
+      --apricot: #FFAA72;
+      --sage: #9CCAB1;
+      --rule: color-mix(in srgb, var(--fog) 25%, var(--slate));
+      --display: "IBM Plex Sans Condensed", sans-serif;
+      --body: "IBM Plex Sans", sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    body {
+      margin: 0;
+      color: var(--paper);
+      background: var(--charcoal);
+      font: 400 1rem/1.5 var(--body);
+    }
+
+    .shell {
+      width: min(1120px, calc(100% - 88px));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      border-block-end: 1px solid var(--rule);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 68px;
+      font-weight: 500;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      flex: none;
+      border-radius: 3px;
+      color: var(--charcoal);
+      background: var(--apricot);
+    }
+
+    main {
+      padding-block: 42px 56px;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      font-family: var(--display);
+      font-weight: 600;
+    }
+
+    h1 {
+      margin-block-end: 24px;
+      font-size: clamp(3rem, 5.7vw, 5rem);
+      line-height: 1;
+      letter-spacing: -.035em;
+    }
+
+    .schedule {
+      display: grid;
+      grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr);
+      border: 1px solid var(--rule);
+      background: var(--slate);
+    }
+
+    .schedule-copy {
+      display: flex;
+      align-items: center;
+      min-height: 280px;
+      padding: clamp(24px, 3.4vw, 46px);
+    }
+
+    .empty-state {
+      display: grid;
+      justify-items: start;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .calendar-mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      color: var(--fog);
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+    }
+
+    .empty-state p {
+      margin: 0;
+      font: 600 clamp(1.65rem, 3vw, 2.25rem)/1.1 var(--display);
+      letter-spacing: -.015em;
+    }
+
+    .booking {
+      padding-inline-start: 18px;
+      border-inline-start: 3px solid var(--sage);
+    }
+
+    .booking-status {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin: 0 0 5px;
+      color: var(--sage);
+      font-weight: 600;
+    }
+
+    .booking h2 {
+      font-size: clamp(2.25rem, 4vw, 2.75rem);
+      line-height: 1.05;
+      letter-spacing: -.02em;
+    }
+
+    .booking-time {
+      margin: 6px 0 0;
+      color: var(--fog);
+      font-size: 1.0625rem;
+    }
+
+    .art-panel {
+      display: grid;
+      place-items: center;
+      padding: 10px 18px;
+      border-inline-start: 1px solid var(--rule);
+      background: color-mix(in srgb, var(--slate) 62%, var(--charcoal));
+    }
+
+    .packing-art {
+      display: block;
+      width: 100%;
+      max-width: 520px;
+      height: auto;
+      --board: color-mix(in srgb, var(--apricot) 60%, var(--slate));
+      --board-light: color-mix(in srgb, var(--apricot) 83%, var(--slate));
+      --board-dark: color-mix(in srgb, var(--apricot) 35%, var(--slate));
+      --fold: color-mix(in srgb, var(--apricot) 77%, var(--slate));
+      --leaf: color-mix(in srgb, var(--sage) 69%, var(--slate));
+    }
+
+    .label-check {
+      opacity: 0;
+    }
+
+    .schedule:has(.booking:not([hidden])) .label-lines {
+      opacity: 0;
+    }
+
+    .schedule:has(.booking:not([hidden])) .label-check {
+      opacity: 1;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .label-lines, .label-check {
+        transition: opacity 220ms ease-out;
+      }
+    }
+
+    .availability {
+      margin-block-start: 34px;
+    }
+
+    .availability > h2 {
+      margin-block-end: 12px;
+      font-size: 2rem;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+    }
+
+    .offer {
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 20px;
+      padding: 19px 22px;
+      border: 1px solid var(--rule);
+      border-inline-start: 3px solid var(--apricot);
+      background: var(--slate);
+    }
+
+    .offer-mark {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 3px;
+      color: var(--apricot);
+      background: color-mix(in srgb, var(--apricot) 12%, var(--slate));
+    }
+
+    .offer-details {
+      display: grid;
+      grid-template-columns: minmax(0, .85fr) minmax(0, 1fr);
+      align-items: center;
+    }
+
+    .offer h3 {
+      font-size: 1.875rem;
+      line-height: 1.1;
+    }
+
+    .offer-time {
+      margin: 0;
+      padding-inline-start: 22px;
+      border-inline-start: 1px solid var(--rule);
+      color: var(--fog);
+      font-size: 1.0625rem;
+    }
+
+    .reserve {
+      min-height: 48px;
+      padding: 10px 21px;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      color: var(--charcoal);
+      background: var(--apricot);
+      font: 600 1rem/1.3 var(--body);
+      cursor: pointer;
+    }
+
+    .reserve:hover {
+      background: color-mix(in srgb, var(--apricot) 76%, var(--paper));
+    }
+
+    .reserve:active {
+      background: var(--paper);
+    }
+
+    .reserve:focus-visible, .booking:focus-visible {
+      outline: 2px solid var(--paper);
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 760px) {
+      .shell {
+        width: calc(100% - 40px);
+      }
+
+      .brand {
+        min-height: 58px;
+        font-size: .9375rem;
+      }
+
+      main {
+        padding-block: 25px 42px;
+      }
+
+      h1 {
+        margin-block-end: 18px;
+        font-size: clamp(2.5rem, 11.7vw, 3.5rem);
+      }
+
+      .schedule {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .schedule-copy {
+        min-height: 104px;
+        padding: 20px;
+      }
+
+      .empty-state {
+        grid-template-columns: 40px minmax(0, 1fr);
+        gap: 12px;
+      }
+
+      .calendar-mark {
+        width: 40px;
+        height: 40px;
+      }
+
+      .art-panel {
+        padding: 0 12px;
+        border-inline-start: 0;
+        border-block-start: 1px solid var(--rule);
+      }
+
+      .packing-art {
+        height: 186px;
+      }
+
+      .availability {
+        margin-block-start: 26px;
+      }
+
+      .availability > h2 {
+        font-size: 1.75rem;
+      }
+
+      .offer {
+        grid-template-columns: 44px minmax(0, 1fr);
+        gap: 14px;
+        padding: 14px 16px 16px;
+      }
+
+      .offer-mark {
+        width: 44px;
+        height: 44px;
+      }
+
+      .offer-details {
+        display: block;
+      }
+
+      .offer h3 {
+        font-size: 1.625rem;
+      }
+
+      .offer-time {
+        margin-block-start: 2px;
+        padding: 0;
+        border: 0;
+        font-size: .9375rem;
+      }
+
+      .reserve {
+        grid-column: 1 / -1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m3.5 7.5 8.5-4 8.5 4v9l-8.5 4-8.5-4zM3.5 7.5l8.5 4 8.5-4M12 11.5v9M7.8 5.5l8.5 4v3.2"/>
+        </svg>
+      </span>
+      <span>Food bank volunteering</span>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section aria-labelledby="upcoming-heading">
+      <h1 id="upcoming-heading">Upcoming shifts</h1>
+      <div class="schedule">
+        <div class="schedule-copy">
+          <div class="empty-state" id="empty-state">
+            <span class="calendar-mark" aria-hidden="true">
+              <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="5.5" width="16" height="15" rx="2"/>
+                <path d="M8 3.5v4m8-4v4M4 10h16m-10.5 5.5h5"/>
+              </svg>
+            </span>
+            <p>No shifts booked yet</p>
+          </div>
+
+          <article class="booking" id="booking" tabindex="-1"
+                   aria-labelledby="booked-title booking-status" aria-describedby="booked-time" hidden>
+            <p class="booking-status" id="booking-status">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor"
+                   stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="10" cy="10" r="8"/>
+                <path d="m6.5 10 2.3 2.3 4.6-4.6"/>
+              </svg>
+              Booked
+            </p>
+            <h2 id="booked-title">Packing</h2>
+            <p class="booking-time" id="booked-time">Wednesday, 4–6 pm</p>
+          </article>
+        </div>
+
+        <div class="art-panel" aria-hidden="true">
+          <svg class="packing-art" width="520" height="300" viewBox="0 0 520 300" fill="none" focusable="false">
+            <defs>
+              <pattern id="packing-dots" width="12" height="12" patternUnits="userSpaceOnUse">
+                <circle cx="1" cy="1" r=".7" fill="var(--fog)" opacity=".25"/>
+              </pattern>
+              <pattern id="cardboard-grain" width="6" height="6" patternUnits="userSpaceOnUse">
+                <path d="m-1 1 2-2m-1 7 6-6m-1 7 2-2" stroke="var(--charcoal)" stroke-opacity=".25"/>
+              </pattern>
+            </defs>
+
+            <path d="M29 24h462v252H29z" fill="url(#packing-dots)"/>
+            <path d="M47 24H29v18m444-18h18v18M29 258v18h18m444-18v18h-18"
+                  stroke="var(--fog)" stroke-opacity=".38"/>
+            <path d="M48 225h424m-424 26h424" stroke="var(--fog)" stroke-opacity=".16" stroke-dasharray="4 6"/>
+            <path d="m97 222 166-61 184 62-166 61z" fill="var(--charcoal)" opacity=".78"/>
+
+            <g stroke="var(--fold)" stroke-width="1.25" stroke-linejoin="round">
+              <path d="m120 152 127-49-34-29-125 48z" fill="var(--board-dark)"/>
+              <path d="m247 103 152 48 35-33-153-48z" fill="var(--board-dark)"/>
+              <path d="m120 152 127-49 152 48-120 53z" fill="var(--charcoal)"/>
+              <path d="m100 125 108-41m81-6 134 42" stroke-opacity=".55"/>
+            </g>
+
+            <g stroke="var(--charcoal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M310 159c-1-23 4-43 14-58 9 13 12 27 10 42 8-22 23-38 43-46-4 22-16 42-33 55 15-8 30-10 44-5-10 15-27 25-49 29z"
+                    fill="var(--leaf)"/>
+              <path d="m324 119 8 43m26-40-26 40m37-7-29 11" stroke-opacity=".6"/>
+              <path d="M229 149c-2-29 7-59 22-80 11-15 25-24 38-22 14 2 23 13 25 29 4 29-5 67-21 97l-31 15z"
+                    fill="var(--apricot)"/>
+              <path d="M254 83c10-2 22 3 28 12m-35 5c11-2 23 4 29 13m-34 5c10-1 20 4 25 12"
+                    stroke-opacity=".62"/>
+              <path d="M173 111v52c0 9 16 16 36 16s36-7 36-16v-52z" fill="var(--sage)"/>
+              <path d="M173 135c0 9 16 16 36 16s36-7 36-16v11c0 9-16 16-36 16s-36-7-36-16z"
+                    fill="var(--leaf)" stroke="none"/>
+              <ellipse cx="209" cy="111" rx="36" ry="13" fill="var(--sage)"/>
+              <ellipse cx="209" cy="111" rx="28" ry="8" stroke-opacity=".48"/>
+              <path d="M208 109c2-3 8-4 10-1s-3 5-6 5c-4 0-5-2-4-4z" stroke-opacity=".8"/>
+            </g>
+
+            <g stroke="var(--fold)" stroke-width="1.25" stroke-linejoin="round">
+              <path d="m120 152 159 52v63l-159-55z" fill="var(--board)"/>
+              <path d="m279 204 120-53v60l-120 56z" fill="var(--board-dark)"/>
+              <path d="m279 204 120-53v60l-120 56z" fill="url(#cardboard-grain)" stroke="none"/>
+              <path d="m120 152 159 52-26 21-158-52z" fill="var(--board-light)"/>
+              <path d="m279 204 120-53 25 21-118 54z" fill="var(--board)"/>
+              <path d="m105 172 145 48m62 1 103-48" stroke="var(--charcoal)" stroke-opacity=".24"/>
+            </g>
+
+            <g transform="translate(165 202) skewY(19)">
+              <rect width="68" height="23" rx="1.5" fill="var(--paper)"/>
+              <g class="label-lines" stroke="var(--charcoal)" stroke-width="1.3">
+                <path d="M8 7h18M8 12h13"/>
+                <path d="M36 6v11m3-11v11m4-11v11m3-11v11m5-11v11m3-11v11m4-11v11m3-11v11"/>
+              </g>
+              <g class="label-check">
+                <rect width="68" height="23" rx="1.5" fill="var(--sage)"/>
+                <path d="m28 11 4 4 8-8" stroke="var(--charcoal)" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="availability" id="availability" aria-labelledby="available-heading">
+      <h2 id="available-heading">Available shift</h2>
+      <article class="offer" aria-labelledby="offer-title">
+        <span class="offer-mark" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor"
+               stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m6 10 8-3.5 8 3.5-8 3.5zM6 10l-3 4 8 3.5 3-4m8-3.5 3 4-8 3.5-3-4"/>
+            <path d="M6 15.3V20l8 3.5 8-3.5v-4.7m-8-1.8v10"/>
+          </svg>
+        </span>
+        <div class="offer-details">
+          <h3 id="offer-title">Packing</h3>
+          <p class="offer-time" id="offer-time">Wednesday, 4–6 pm</p>
+        </div>
+        <button class="reserve" id="reserve" type="button" aria-describedby="offer-title offer-time">
+          Reserve shift
+        </button>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const reserveButton = document.getElementById("reserve");
+    const emptyState = document.getElementById("empty-state");
+    const booking = document.getElementById("booking");
+    const availability = document.getElementById("availability");
+
+    reserveButton.addEventListener("click", () => {
+      emptyState.hidden = true;
+      booking.hidden = false;
+      availability.hidden = true;
+      booking.focus();
+    }, { once: true });
+  </script>
+</body>
+</html>

@@ -1,0 +1,517 @@
+<!doctype html>
+<!--
+  A food-bank volunteer checks their schedule and reserves a shift.
+  Calm and welcoming, with every element serving the schedule or reservation.
+  Paper #F7F8F3, white #FFFFFF, spruce #18372E, pine #245E4B,
+  sage #E3EFE2, and marigold #F6CC69.
+  Fraunces for headings. DM Sans for details and controls.
+  An illustrated schedule sits beside a perforated shift ticket.
+  A torn strip of tape carries the packing-box illustration.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Upcoming shifts | Food bank</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400..700&amp;family=Fraunces:opsz,wght@9..144,600..700&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f7f8f3;
+      --white: #ffffff;
+      --spruce: #18372e;
+      --pine: #245e4b;
+      --sage: #e3efe2;
+      --marigold: #f6cc69;
+      --muted: color-mix(in srgb, var(--spruce) 80%, var(--paper));
+      --rule: color-mix(in srgb, var(--spruce) 24%, var(--paper));
+      --heading-font: "Fraunces", Georgia, serif;
+      --body-font: "DM Sans", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--spruce);
+      font-family: var(--body-font);
+      line-height: 1.5;
+    }
+
+    .frame {
+      width: min(calc(100% - 88px), 1160px);
+      margin-inline: auto;
+    }
+
+    .site-header { border-bottom: 1px solid var(--rule); }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 74px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 1.0625rem;
+      font-weight: 700;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border-radius: 9px;
+      background: var(--pine);
+      color: var(--white);
+    }
+
+    .header-context {
+      color: var(--muted);
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-align: right;
+    }
+
+    main { padding-block: 58px 64px; }
+
+    h1, .empty-title, .shift-name {
+      margin: 0;
+      font-family: var(--heading-font);
+      font-weight: 650;
+      line-height: 1.04;
+      letter-spacing: -0.045em;
+    }
+
+    h1 {
+      margin-block-end: 32px;
+      font-size: clamp(3rem, 6.1vw, 5.5rem);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 2.12fr) minmax(300px, 1fr);
+      gap: 24px;
+    }
+
+    .layout.has-booking { grid-template-columns: minmax(0, 1fr); }
+
+    .schedule {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      align-items: center;
+      gap: 14px;
+      min-height: 370px;
+      padding: 24px 24px 24px 39px;
+      border-radius: 22px;
+      background: var(--sage);
+    }
+
+    .has-booking .schedule {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+    }
+
+    .empty-icon {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      margin-block-end: 16px;
+      place-items: center;
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      background: var(--paper);
+      color: var(--pine);
+    }
+
+    .icon {
+      width: 20px;
+      height: 20px;
+      flex: none;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .empty-title { font-size: clamp(1.95rem, 2.75vw, 2.48rem); }
+
+    .empty-copy {
+      margin: 8px 0 0;
+      color: var(--muted);
+    }
+
+    .scene {
+      display: block;
+      width: min(100%, 395px);
+      height: auto;
+      justify-self: center;
+    }
+
+    .ticket {
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      border: 1px solid var(--rule);
+      border-radius: 7px;
+      background: var(--white);
+    }
+
+    .ticket-label {
+      margin: 0;
+      padding: 14px 25px;
+      border-radius: 6px 6px 0 0;
+      background: var(--marigold);
+      font-size: 0.9375rem;
+      font-weight: 700;
+    }
+
+    .ticket .shift-details {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      justify-content: center;
+      padding: 24px 25px;
+    }
+
+    .shift-name {
+      width: fit-content;
+      font-size: clamp(2.65rem, 3.65vw, 3.5rem);
+    }
+
+    .shift-when {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+      margin-block-start: 16px;
+    }
+
+    .ticket .shift-when { flex-direction: column; }
+
+    .shift-when p {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .shift-when .icon { color: var(--pine); }
+
+    .ticket-action {
+      position: relative;
+      padding: 19px 25px 23px;
+      border-top: 1px dashed var(--rule);
+    }
+
+    .ticket-action::before, .ticket-action::after {
+      position: absolute;
+      top: -10px;
+      width: 9px;
+      height: 18px;
+      border: 1px solid var(--rule);
+      background: var(--paper);
+      pointer-events: none;
+      content: "";
+    }
+
+    .ticket-action::before {
+      left: -1px;
+      border-left: 0;
+      border-radius: 0 9px 9px 0;
+    }
+
+    .ticket-action::after {
+      right: -1px;
+      border-right: 0;
+      border-radius: 9px 0 0 9px;
+    }
+
+    button {
+      width: 100%;
+      min-height: 50px;
+      padding: 11px 16px;
+      border: 0;
+      border-radius: 5px;
+      background: var(--pine);
+      color: var(--white);
+      cursor: pointer;
+      font: 700 1rem/1.4 var(--body-font);
+    }
+
+    button:hover { background: var(--spruce); }
+
+    button:focus-visible, .shift-name:focus-visible {
+      outline: 3px solid var(--spruce);
+      outline-offset: 4px;
+    }
+
+    .booking-status {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 11px;
+      color: var(--pine);
+      font-weight: 700;
+    }
+
+    .check-mark {
+      display: grid;
+      width: 26px;
+      height: 26px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--pine);
+      color: var(--white);
+    }
+
+    .check-mark .icon { width: 17px; height: 17px; }
+
+    .booking .shift-name {
+      font-size: clamp(2.65rem, 4.6vw, 4.25rem);
+      scroll-margin-block: 24px;
+    }
+
+    .booking.just-booked { animation: confirm 260ms ease-out both; }
+
+    @keyframes confirm {
+      from { opacity: 0.55; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 880px) {
+      .frame { width: min(calc(100% - 48px), 700px); }
+      .layout { grid-template-columns: minmax(0, 1fr); }
+      .ticket .shift-when { flex-direction: row; }
+    }
+
+    @media (max-width: 600px) {
+      .frame { width: calc(100% - 36px); }
+      .header-inner { min-height: 62px; }
+      main { padding-block: 28px 36px; }
+
+      h1 {
+        margin-block-end: 20px;
+        font-size: clamp(2.35rem, 11vw, 3.5rem);
+      }
+
+      .layout { gap: 16px; }
+
+      .schedule, .has-booking .schedule {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 6px;
+        min-height: 0;
+        padding: 21px 20px 7px;
+        border-radius: 17px;
+      }
+
+      .empty-state {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        align-items: start;
+        gap: 11px;
+      }
+
+      .empty-icon {
+        width: 37px;
+        height: 37px;
+        margin: 1px 0 0;
+        border-radius: 8px;
+      }
+
+      .empty-title { font-size: 1.875rem; }
+      .empty-copy { margin-block-start: 5px; }
+      .scene { width: min(100%, 230px); }
+      .ticket-label { padding: 11px 19px; }
+      .ticket .shift-details { padding: 15px 19px 18px; }
+      .shift-when { margin-block-start: 10px; }
+      .ticket-action { padding: 14px 19px 16px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .booking.just-booked { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="calendar" viewBox="0 0 24 24">
+      <rect x="4" y="5.5" width="16" height="15" rx="2"></rect>
+      <path d="M8 3.5v4m8-4v4M4 10h16"></path>
+    </symbol>
+    <symbol id="clock" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="8"></circle>
+      <path d="M12 7.5V12l3 2"></path>
+    </symbol>
+  </svg>
+
+  <header class="site-header">
+    <div class="frame header-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="25" height="25" viewBox="0 0 25 25" fill="none">
+            <path d="m4.5 10.5 8 4 8-4v7l-8 4-8-4zM12.5 14.5v7M4.5 10.5l4.3-2.1m11.7 2.1-3.8-1.9"
+                  stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M12 10c0-3.5 2.1-5.5 5.7-5.9-.4 3.5-2.2 5.9-5.7 5.9Z" fill="var(--marigold)"></path>
+          </svg>
+        </span>
+        <span>Food bank</span>
+      </div>
+      <span class="header-context">Volunteer schedule</span>
+    </div>
+  </header>
+
+  <main class="frame">
+    <h1>Upcoming shifts</h1>
+
+    <div class="layout" id="shift-layout">
+      <section class="schedule" aria-label="Your upcoming shifts">
+        <div class="empty-state" id="empty-state">
+          <span class="empty-icon" aria-hidden="true">
+            <svg class="icon"><use href="#calendar"></use></svg>
+          </span>
+          <div>
+            <h2 class="empty-title">No shifts booked</h2>
+            <p class="empty-copy">Reserve a shift to add it here.</p>
+          </div>
+        </div>
+
+        <div class="booking" id="booking" hidden>
+          <p class="booking-status" id="booking-status">
+            <span class="check-mark" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24">
+                <path d="m6 12 4 4 8-8"></path>
+              </svg>
+            </span>
+            Shift booked
+          </p>
+        </div>
+
+        <svg class="scene" width="332" height="276" viewBox="38 20 332 276" aria-hidden="true">
+          <defs>
+            <pattern id="print-dots" width="5" height="5" patternUnits="userSpaceOnUse">
+              <circle cx="1.5" cy="1.5" r="0.75" fill="var(--spruce)" opacity="0.21"></circle>
+            </pattern>
+          </defs>
+
+          <circle cx="216" cy="140" r="110" fill="var(--marigold)"></circle>
+          <ellipse cx="207" cy="269" rx="143" ry="15" fill="var(--spruce)" opacity="0.12"></ellipse>
+
+          <g stroke="var(--spruce)" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m151 127 173 21 8-32-165-20z" fill="var(--sage)"></path>
+            <path d="m77 171 74-44-20-17-75 44z" fill="var(--white)"></path>
+            <path d="m77 171 74-44 173 21-70 46z" fill="var(--pine)"></path>
+
+            <path d="M183 155c-12-30-28-57-49-76m49 76c4-23 14-45 30-62" fill="none"></path>
+            <path d="M162 117c-25-1-39-16-42-38 20 1 38 12 42 38Z" fill="var(--pine)"></path>
+            <path d="M163 112c-7-22-1-40 15-52 10 22 2 43-15 52Z" fill="var(--sage)"></path>
+            <path d="M189 120c-1-25 12-43 34-52-1 23-13 42-34 52Z" fill="var(--pine)"></path>
+            <path d="m153 108-22-20m35 17 8-31m22 36 17-28" fill="none" stroke-width="1.4" stroke="var(--white)" opacity="0.68"></path>
+
+            <path d="m177 91 48-13 25 19 8 90-73-11z" fill="var(--paper)"></path>
+            <path d="m177 91 51 4 22 2-25-19z" fill="var(--sage)"></path>
+            <path d="m228 95 9 79" fill="none" stroke-width="1.5"></path>
+            <path d="m184 121 44 4 2 23-44-5z" fill="var(--marigold)" stroke="none"></path>
+            <path d="m191 132 25 2m-24 4 15 2" fill="none" stroke-width="1.4"></path>
+
+            <g transform="translate(114 110) rotate(-10)">
+              <path d="M0 8c0-4.4 11.4-8 25.5-8S51 3.6 51 8v60c0 4.4-11.4 8-25.5 8S0 72.4 0 68Z" fill="var(--paper)"></path>
+              <path d="M1 24c12 6 37 6 49 0v33c-12 6-37 6-49 0Z" fill="var(--sage)" stroke="none"></path>
+              <ellipse cx="25.5" cy="8" rx="25.5" ry="8" fill="var(--sage)"></ellipse>
+              <ellipse cx="26" cy="8" rx="7" ry="2.8" fill="none" stroke-width="1.3"></ellipse>
+              <path d="M23 53c0-10 7-15 16-15-1 9-6 15-16 15Zm-2 0c-7 0-11-4-12-10 7 0 11 4 12 10Z" fill="var(--pine)" stroke="none"></path>
+              <path d="M6 64q19 7 39 0" fill="none" stroke-width="1.3"></path>
+            </g>
+
+            <g transform="translate(243 87) rotate(11)">
+              <path d="M8 16h40v13l6 10v52a8 8 0 0 1-8 8H10a8 8 0 0 1-8-8V39l6-10Z" fill="var(--sage)"></path>
+              <path d="M3 48q25 5 50 0v29q-25 5-50 0Z" fill="var(--white)" stroke="none"></path>
+              <path d="M28 68c-6-6-8-11-5-13 2-1 4 0 5 3 1-3 3-4 5-3 3 2 1 7-5 13Z" fill="var(--pine)" stroke="none"></path>
+              <rect x="5" y="5" width="46" height="16" rx="3" fill="var(--pine)"></rect>
+              <path d="M13 10v6m7-6v6m8-6v6m8-6v6m7-6v6" stroke="var(--sage)" stroke-width="1.25"></path>
+            </g>
+
+            <path d="m77 171 177 23-2 77-164-24z" fill="var(--marigold)"></path>
+            <path d="m254 194 70-46-6 77-66 46z" fill="var(--pine)"></path>
+            <path d="m254 194 70-46-6 77-66 46z" fill="url(#print-dots)" stroke="none"></path>
+            <path d="m77 171 177 23-22 24-175-25z" fill="var(--white)"></path>
+            <path d="m254 194 70-46 23 15-68 46z" fill="var(--sage)"></path>
+            <path d="m145 206 22 3-4 35-5-4-6 2-5-4-5 2z" fill="var(--paper)" stroke-width="1.5"></path>
+            <path d="m276 227 23-16" stroke="var(--sage)" stroke-width="4"></path>
+            <path d="m102 228 19 3m-19 4 12 2" fill="none" stroke-width="1.5"></path>
+            <path d="M203 247c-2-10 7-17 19-16-2 11-9 17-19 16Zm-3 4 14-13" fill="none" stroke-width="1.6"></path>
+          </g>
+        </svg>
+      </section>
+
+      <section class="ticket" id="available-shift" aria-labelledby="available-label">
+        <p class="ticket-label" id="available-label">Available shift</p>
+        <div class="shift-details" id="shift-details">
+          <h2 class="shift-name" id="shift-name" tabindex="-1">Packing</h2>
+          <div class="shift-when" id="shift-when">
+            <p>
+              <svg class="icon" aria-hidden="true"><use href="#calendar"></use></svg>
+              <span>Wednesday</span>
+            </p>
+            <p>
+              <svg class="icon" aria-hidden="true"><use href="#clock"></use></svg>
+              <span><time datetime="16:00">4</time>–<time datetime="18:00">6 pm</time></span>
+            </p>
+          </div>
+        </div>
+        <div class="ticket-action">
+          <button type="button" id="reserve-shift">Reserve shift</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const bookingKey = "food-bank.packing.wednesday.1600-1800";
+    const layout = document.getElementById("shift-layout");
+    const emptyState = document.getElementById("empty-state");
+    const booking = document.getElementById("booking");
+    const availableShift = document.getElementById("available-shift");
+    const shiftDetails = document.getElementById("shift-details");
+    const shiftName = document.getElementById("shift-name");
+    const reserveButton = document.getElementById("reserve-shift");
+
+    function showBooking() {
+      booking.append(shiftDetails);
+      shiftName.setAttribute("aria-describedby", "booking-status shift-when");
+      emptyState.hidden = true;
+      availableShift.hidden = true;
+      booking.hidden = false;
+      layout.classList.add("has-booking");
+    }
+
+    try {
+      if (localStorage.getItem(bookingKey) === "booked") {
+        showBooking();
+      }
+    } catch {
+      // A preview with storage disabled starts with an open shift.
+    }
+
+    reserveButton.addEventListener("click", () => {
+      showBooking();
+      booking.classList.add("just-booked");
+      shiftName.focus();
+
+      try {
+        localStorage.setItem(bookingKey, "booked");
+      } catch {
+        // The reservation still appears in the current view.
+      }
+    });
+  </script>
+</body>
+</html>

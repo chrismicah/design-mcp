@@ -1,8 +1,8 @@
-name: Empty state transitions
+name: Empty search and shift recovery
 
 on:
   push:
-    branches: [design-mcp/empty-transitions]
+    branches: [design-mcp/empty-recovery-actions]
 
 permissions:
   contents: read
@@ -30,13 +30,13 @@ jobs:
         run: |
           chrome="$RUNNER_TEMP/browser/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
           "$chrome" --version
-          python evals/v1/render_empty_transitions.py \
-            --cells evidence/benchmark-v1/empty-transition-inputs --scratch "$RUNNER_TEMP/profile" \
+          python evals/v1/render_empty_recovery.py \
+            --cells evidence/benchmark-v1/empty-recovery-inputs --scratch "$RUNNER_TEMP/profile" \
             --playwriter "$RUNNER_TEMP/playwriter/node_modules/.bin/playwriter" --chrome "$chrome"
           python - <<'PY'
           from pathlib import Path
           import json
-          paths = list(Path('evidence/benchmark-v1/empty-transition-inputs').rglob('index.html'))
+          paths = list(Path('evidence/benchmark-v1/empty-recovery-inputs').rglob('index.html'))
           assert len(paths) == 4
           for path in paths:
               record = json.loads(path.with_name('render.json').read_text())
@@ -51,7 +51,7 @@ jobs:
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: empty-transitions
-          path: evidence/benchmark-v1/empty-transition-inputs/
+          name: empty-recovery-actions
+          path: evidence/benchmark-v1/empty-recovery-inputs/
           if-no-files-found: error
           retention-days: 7

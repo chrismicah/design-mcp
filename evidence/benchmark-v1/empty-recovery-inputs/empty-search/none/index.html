@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Find a tool | Tool library</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&amp;family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f5f5ed;
+      --chalk: #fefef9;
+      --fir: #173b34;
+      --slate: #4c655a;
+      --sage: #dfe9d8;
+      --gold: #f5d464;
+      --rule: color-mix(in srgb, var(--fir) 20%, transparent);
+      --display: "DM Serif Text", Georgia, serif;
+      --body: "Instrument Sans", sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--fir);
+      font: 1rem / 1.5 var(--body);
+    }
+
+    button, input {
+      color: inherit;
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    button:focus-visible, [tabindex="-1"]:focus-visible {
+      outline: 3px solid var(--fir);
+      outline-offset: 4px;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 64px));
+      margin-inline: auto;
+    }
+
+    .masthead {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .wordmark {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding-block: 18px;
+      font-size: 1.125rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+
+    .wordmark svg {
+      flex: none;
+    }
+
+    main {
+      padding-block: 51px 64px;
+    }
+
+    h1, h2, p {
+      margin: 0;
+    }
+
+    h1, h2 {
+      font-family: var(--display);
+      font-weight: 400;
+      letter-spacing: -0.035em;
+      line-height: 1.05;
+    }
+
+    h1 {
+      font-size: clamp(2.75rem, 5vw, 3.875rem);
+    }
+
+    .search-form {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 9px;
+      max-width: 712px;
+      margin-top: 22px;
+    }
+
+    .search-field {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-inline: 16px 12px;
+      border: 1px solid color-mix(in srgb, var(--fir) 57%, var(--chalk));
+      border-radius: 8px;
+      background: var(--chalk);
+    }
+
+    .search-field:focus-within {
+      outline: 2px solid var(--fir);
+      outline-offset: 3px;
+    }
+
+    .search-field svg {
+      flex: none;
+      color: var(--slate);
+    }
+
+    .search-field input {
+      width: 100%;
+      min-width: 0;
+      min-height: 54px;
+      padding: 0;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      font-size: 1.0625rem;
+    }
+
+    .search-field input::placeholder {
+      color: var(--slate);
+    }
+
+    .submit {
+      min-width: 112px;
+      padding: 10px 20px;
+      border: 1px solid var(--fir);
+      border-radius: 8px;
+      background: var(--fir);
+      color: var(--chalk);
+      font-weight: 700;
+    }
+
+    .result-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+      min-height: 366px;
+      margin-top: 38px;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      border-radius: 13px;
+      background: var(--chalk);
+    }
+
+    .result-copy {
+      align-self: center;
+      min-width: 0;
+      padding: clamp(24px, 4.25vw, 55px);
+    }
+
+    .result-title {
+      font-size: clamp(2.25rem, 4vw, 3.35rem);
+      overflow-wrap: anywhere;
+    }
+
+    #missed-query {
+      display: block;
+    }
+
+    #tool-name {
+      text-wrap: balance;
+    }
+
+    .related {
+      margin-top: 26px;
+    }
+
+    .related-label, .result-count {
+      color: var(--slate);
+      font-size: 0.9375rem;
+      font-weight: 600;
+    }
+
+    .suggestion {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      width: min(100%, 316px);
+      min-height: 72px;
+      margin-top: 8px;
+      padding: 11px 16px;
+      border: 1px solid color-mix(in srgb, var(--fir) 24%, var(--gold));
+      border-radius: 8px;
+      background: var(--gold);
+      text-align: left;
+    }
+
+    .suggestion-name, .suggestion-count {
+      display: block;
+    }
+
+    .suggestion-name {
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .suggestion-count {
+      margin-top: 3px;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .suggestion svg {
+      flex: none;
+    }
+
+    .retry {
+      margin-top: 18px;
+      color: var(--slate);
+    }
+
+    .result-count {
+      margin-bottom: 11px;
+      overflow-wrap: anywhere;
+    }
+
+    .availability {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 17px;
+      font-weight: 600;
+    }
+
+    .art {
+      display: grid;
+      place-items: center;
+      min-width: 0;
+      padding: 14px;
+      border-inline-start: 1px solid var(--rule);
+      background: var(--sage);
+    }
+
+    .art > svg {
+      display: block;
+      width: min(100%, 520px);
+      height: auto;
+    }
+
+    .board-face {
+      fill: color-mix(in srgb, var(--sage) 66%, var(--chalk));
+      stroke: var(--fir);
+      stroke-opacity: 0.4;
+      stroke-width: 1.2;
+    }
+
+    .tool-drawing {
+      display: none;
+    }
+
+    .result-panel[data-state="match"] .tool-drawing {
+      display: inline;
+    }
+
+    .result-panel:not([data-state="empty"]) .vacant-drawing {
+      display: none;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    @media (hover: hover) {
+      .submit:hover {
+        background: color-mix(in srgb, var(--fir) 84%, var(--slate));
+      }
+
+      .suggestion:hover {
+        background: color-mix(in srgb, var(--gold) 92%, var(--fir));
+      }
+    }
+
+    @media (max-width: 740px) {
+      .wrap {
+        width: calc(100% - 40px);
+      }
+
+      .wordmark {
+        padding-block: 13px;
+      }
+
+      main {
+        padding-block: 29px 40px;
+      }
+
+      .search-form {
+        margin-top: 17px;
+      }
+
+      .search-field {
+        padding-inline: 12px 9px;
+      }
+
+      .search-field input {
+        min-height: 50px;
+      }
+
+      .submit {
+        min-width: 85px;
+        padding-inline: 12px;
+      }
+
+      .result-panel {
+        grid-template-columns: minmax(0, 1fr);
+        min-height: 0;
+        margin-top: 25px;
+      }
+
+      .result-copy {
+        padding: 25px 23px 27px;
+      }
+
+      .related {
+        margin-top: 22px;
+      }
+
+      .art {
+        padding: 4px 8px 7px;
+        border-inline-start: 0;
+        border-top: 1px solid var(--rule);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap wordmark">
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true" focusable="false">
+        <rect width="34" height="34" rx="7" fill="var(--fir)"/>
+        <path d="M8 24.5h18M9.5 20.5v-9h4v9m4 0v-11h3.5l3.5 11"
+              fill="none" stroke="var(--chalk)" stroke-width="1.6"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Tool library</span>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h1>Find a tool</h1>
+
+    <form id="tool-search" class="search-form" role="search" aria-label="Tool library">
+      <div class="search-field">
+        <label for="query" class="visually-hidden">Search by tool name</label>
+        <svg width="21" height="21" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle cx="10.75" cy="10.75" r="6.25" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <path d="m15.4 15.4 4.1 4.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <input id="query" name="q" type="search" value="chain saw"
+               placeholder="Search by tool name" autocomplete="off"
+               spellcheck="false" enterkeyhint="search">
+      </div>
+      <button class="submit" type="submit">Search</button>
+    </form>
+
+    <p id="search-status" class="visually-hidden" role="status" aria-atomic="true"></p>
+
+    <section id="results" class="result-panel" data-state="empty" aria-label="Search results">
+      <div class="result-copy">
+        <div id="empty-view">
+          <h2 class="result-title">No tools match <bdi id="missed-query">“chain saw”</bdi></h2>
+
+          <div id="related-search" class="related">
+            <p class="related-label">Related search</p>
+            <button id="search-related" class="suggestion" type="button"
+                    aria-labelledby="suggestion-name" aria-describedby="suggestion-count">
+              <span>
+                <span id="suggestion-name" class="suggestion-name">Search for pruning saw</span>
+                <span id="suggestion-count" class="suggestion-count">1 available tool</span>
+              </span>
+              <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M4.5 12h14m-5.5-5.5 5.5 5.5-5.5 5.5" fill="none"
+                      stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+
+          <p id="retry" class="retry" hidden>Try a different tool name.</p>
+        </div>
+
+        <div id="match-view" hidden>
+          <p class="result-count">1 result for <bdi id="matched-query">“pruning saw”</bdi></p>
+          <h2 id="tool-name" class="result-title" tabindex="-1">Folding Pruning Saw</h2>
+          <p class="availability">
+            <svg width="19" height="19" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+              <circle cx="10" cy="10" r="9" fill="var(--fir)"/>
+              <path d="m6 10 2.6 2.6 5.4-5.4" fill="none" stroke="var(--chalk)"
+                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Available
+          </p>
+        </div>
+
+        <div id="ready-view" hidden>
+          <h2 class="result-title">Enter a tool name</h2>
+        </div>
+      </div>
+
+      <div class="art" aria-hidden="true">
+        <svg viewBox="0 0 520 340" focusable="false">
+          <defs>
+            <pattern id="peg-holes" width="17" height="17" patternUnits="userSpaceOnUse">
+              <circle cx="8.5" cy="8.5" r="1.45" fill="var(--fir)" opacity=".3"/>
+            </pattern>
+          </defs>
+
+          <rect x="54" y="43" width="424" height="264" rx="11" fill="var(--fir)" opacity=".12"/>
+          <rect x="48" y="36" width="424" height="264" rx="11" class="board-face"/>
+          <rect x="53" y="41" width="414" height="254" rx="7"
+                fill="none" stroke="var(--chalk)" stroke-opacity=".8"/>
+          <rect x="65" y="53" width="390" height="230" fill="url(#peg-holes)"/>
+
+          <g fill="var(--sage)" stroke="var(--slate)" stroke-width="1.15">
+            <circle cx="63" cy="51" r="3.4"/>
+            <circle cx="457" cy="51" r="3.4"/>
+            <circle cx="63" cy="285" r="3.4"/>
+            <circle cx="457" cy="285" r="3.4"/>
+            <path d="m62 52 2-2m392 2 2-2M62 286l2-2m392 2 2-2"/>
+          </g>
+
+          <g class="vacant-drawing">
+            <g fill="none" stroke="var(--slate)" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m148 157-9-16q-4-7-11-4l-22 10q-8 4-6 14l8 29q2 9 13 9h30l5 10q4 8 14 8h61q13 0 18-12l4-10h141c15 0 26-10 26-23s-11-23-26-23H250l-7-13q-4-8-14-10l-9-2-4-11q-4-11-16-11h-24q-12 0-16 11l-5 13q-8 6-8 19z"
+                    stroke-width="2" stroke-dasharray="6 6"/>
+              <path d="m145 183-19-1-7-21 8-4zM174 125l3-9h22l4 9zM268 161h124c8 0 14 5 14 11s-6 11-14 11H268"
+                    stroke-width="1.4" stroke-dasharray="4 5" opacity=".7"/>
+            </g>
+
+            <g transform="translate(187 144)">
+              <circle cx="2" cy="2" r="6.5" fill="var(--fir)" opacity=".15"/>
+              <circle r="5.3" fill="var(--chalk)" stroke="var(--slate)" stroke-width="1.4"/>
+              <path d="M0 0v11q0 4 4 4h6q4 0 4-4V9" fill="none"
+                    stroke="var(--fir)" stroke-width="2.6" stroke-linecap="round"/>
+            </g>
+            <g transform="translate(340 178)">
+              <circle cx="2" cy="2" r="6.5" fill="var(--fir)" opacity=".15"/>
+              <circle r="5.3" fill="var(--chalk)" stroke="var(--slate)" stroke-width="1.4"/>
+              <path d="M0 0v11q0 4 4 4h6q4 0 4-4V9" fill="none"
+                    stroke="var(--fir)" stroke-width="2.6" stroke-linecap="round"/>
+            </g>
+          </g>
+
+          <g class="tool-drawing" transform="rotate(-16 260 170)" stroke-linejoin="round">
+            <path d="M219 153c60-14 147-34 190-30q15 1 16 11 1 10-14 17l-7 7-3-3-7 6-3-3-7 6-3-3-7 6-3-3-7 6-3-3-7 5-3-3-7 5-3-3-7 5-3-3-7 5-3-3-7 5-3-3-7 4-3-3-7 4-3-3-7 4-3-3-7 4-3-3-7 4-3-3-7 4-3-3-7 4q-12 1-18-10z"
+                  fill="var(--chalk)" stroke="var(--fir)" stroke-width="1.8"/>
+            <path d="M249 155c55-13 117-26 153-24" fill="none"
+                  stroke="var(--slate)" stroke-width="1.3" stroke-linecap="round" opacity=".55"/>
+            <path d="M107 170c18-1 45 0 70-9l44-15c11-4 22 2 26 13l2 8c3 10-3 20-15 22l-37 3c-22 4-45 15-67 18-12 2-21 3-30-2-9-5-10-14-8-23 2-8 7-13 15-15z"
+                  fill="var(--fir)"/>
+            <path d="M106 179c25 1 49-1 74-10l28-10m-79 29 3 10m10-13 3 10m10-14 3 10m10-14 3 10m10-14 3 10"
+                  fill="none" stroke="var(--sage)" stroke-width="1.5"
+                  stroke-linecap="round" opacity=".52"/>
+            <circle cx="230" cy="168" r="7.2" fill="var(--gold)"/>
+            <path d="M227.5 168h5" stroke="var(--fir)" stroke-width="1.4" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById("tool-search");
+    const queryInput = document.getElementById("query");
+    const results = document.getElementById("results");
+    const searchStatus = document.getElementById("search-status");
+    const emptyView = document.getElementById("empty-view");
+    const matchView = document.getElementById("match-view");
+    const readyView = document.getElementById("ready-view");
+    const missedQuery = document.getElementById("missed-query");
+    const matchedQuery = document.getElementById("matched-query");
+    const relatedSearch = document.getElementById("related-search");
+    const relatedButton = document.getElementById("search-related");
+    const retry = document.getElementById("retry");
+    const toolHeading = document.getElementById("tool-name");
+    const toolName = toolHeading.textContent.toLowerCase();
+
+    function search(rawQuery) {
+      const query = rawQuery.trim().replace(/\s+/g, " ");
+      const term = query.toLowerCase();
+      const hasQuery = term.length > 0;
+      const hasMatch = hasQuery && toolName.includes(term);
+      const hasRelatedSearch = term === "chain saw";
+      const quotedQuery = `“${query}”`;
+
+      queryInput.value = query;
+      emptyView.hidden = !hasQuery || hasMatch;
+      matchView.hidden = !hasMatch;
+      readyView.hidden = hasQuery;
+      relatedSearch.hidden = !hasRelatedSearch;
+      retry.hidden = hasRelatedSearch;
+
+      if (hasMatch) {
+        matchedQuery.textContent = quotedQuery;
+        results.dataset.state = "match";
+        searchStatus.textContent = `1 available tool for ${quotedQuery}.`;
+      } else if (hasQuery) {
+        missedQuery.textContent = quotedQuery;
+        results.dataset.state = "empty";
+        searchStatus.textContent = `No tools match ${quotedQuery}.`;
+      } else {
+        results.dataset.state = "ready";
+        searchStatus.textContent = "Enter a tool name to search.";
+      }
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      search(queryInput.value);
+    });
+
+    relatedButton.addEventListener("click", () => {
+      search("pruning saw");
+      toolHeading.focus();
+    });
+  </script>
+</body>
+</html>
