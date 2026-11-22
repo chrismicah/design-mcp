@@ -1,0 +1,30 @@
+{
+  "candidate_commit": "f17bd6f79fff62d1ec3e051b29d930ccb32b3a46",
+  "scope": "Profile-scoped Chrome native host, review preview and history retention",
+  "local_regression": {
+    "test": "tests.test_review.HostTests.test_custom_chrome_host_saves_and_prunes_inside_its_own_profile",
+    "parent_result": "The generated launcher returned a preview under the synthetic regular home.",
+    "candidate_result": "The preview landed under the selected Chrome profile. Only that profile's oldest review aged out. All 20 reviews in the synthetic regular home remained.",
+    "focused_tests_passed": 67,
+    "failing_log_sha256": "25198a3c38dde372f6c9f6e4fe634a15c81034c7d6b70171d53db7fab28901c8",
+    "passing_log_sha256": "aa9930f3b83c91f0e40b5c409cbe390cc10d55c8eddc5893208e8ceee5c0d3d9"
+  },
+  "hosted_chrome": {
+    "run": "https://github.com/chrismicah/design-mcp/actions/runs/45026500852",
+    "platform": "Ubuntu",
+    "browser": "Chrome for Testing 158.0.8127.36",
+    "artifact": "extension-review-receipt",
+    "profile_history_verified": true,
+    "masked_field_in_saved_preview": true,
+    "seeded_value_absent": true,
+    "keyboard_after_selected_and_focused": true,
+    "single_scan_ms": 96,
+    "sha256": {
+      "extension-review.json": "684af2adbe59c7c2b3b4ef2e8f5c92b231ce13b3dabb7ff87f2e898e614dd0a0",
+      "popup-idle.png": "642b75e48181084fb4504e66d025fb80c8e0c04b8340aa7e705a6c67198de44a",
+      "popup-result.png": "10ea17488f1e1330d9af240ed1bc44a949c5a0fc5139b1423efbfa405635fe88",
+      "preview-after.png": "c2539959c7dc9fdc9f6a8b710079ec509912d01734c01921757a1e6d16c3266b",
+      "preview-before.png": "9de65f1631a00fd07ac0c153aae4f69bbcbe77fb8cba7ebae180410abeda8577"
+    }
+  }
+}

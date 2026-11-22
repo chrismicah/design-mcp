@@ -48,6 +48,8 @@ At the subsequent read-only check, GPT Computer Use could still enumerate apps, 
 
 ## Hosted Chrome extension smoke, November 22
 
+A fresh Linux Chrome install of `f17bd6f` went through the missing-host recovery and saved the preview under the disposable Chrome profile. Keyboard input selected and focused After. The saved capture's mask pixels matched the expected color, and the seeded field value was absent. A focused regression separately checked the review-history retention boundary. [Run and screenshots](https://github.com/chrismicah/design-mcp/actions/runs/45026500852) · [Receipt and hashes](evidence/benchmark-v1/chrome-profile-review-isolation.json)
+
 A fresh package install on hosted Linux opened the real toolbar popup by keyboard on a synthetic shuttle dispatch board. Scan started focused. With the host missing, the popup gave the install command and returned focus to Scan. After installing the host into the isolated Chrome user data directory, Enter scanned eight regions, opened a saved preview, and the Right Arrow switched to After. The archived capture masked the seeded field and the private value was absent from the saved HTML and JSON. The popup reported 87 ms on this run. The hosted macOS runs described above add fresh-profile evidence. Reference-Mac pointer timing, GPT Computer Use smoke and blind visual scoring remain open. [Run and screenshots](https://github.com/chrismicah/design-mcp/actions/runs/44994211431) · [Receipt and hashes](evidence/benchmark-v1/vision-extension-proof.json)
 
 ## Hosted Electron window smoke, November 22
