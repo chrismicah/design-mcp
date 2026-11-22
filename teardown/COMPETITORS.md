@@ -84,6 +84,8 @@ A separate hosted run installed shadcn 4.23.0 and UI UX Pro Max at `a38d04c`. It
 
 The full-brief calls measure direct search behavior. Visual trials give the generator room to write shorter component queries or select a design-system mode, and require a successful relevant tool call before judging the output.
 
+For the frozen maintenance form, shadcn's full-brief query returned zero items. A direct registry lookup by component name retrieved Field, Input, Textarea and Radio Group from the public New York v4 registry in **11,010 bytes**. The payloads include label and error primitives, input and textarea implementations, and a radio group. The maintenance brief also requires local confirmation and focus behavior. Evaluate those in the matched visual trial. The receipt pins the retrieved payloads by hash. [Full-brief result](../evidence/benchmark-v1/registry-and-skill-retrieval.json) · [Component source receipt](../evidence/benchmark-v1/shadcn-maintenance-registry.json)
+
 ## Visual scoreboard
 
 | Configuration | Matched briefs judged | Score / 100 |
