@@ -5,11 +5,28 @@ from tempfile import TemporaryDirectory
 from types import SimpleNamespace
 import unittest
 
-from generate import mcp_table, parse_cell, sha256
-from judge import WIDTHS, create_pair, summarize, write
+from generate import PROMPT, mcp_table, parse_cell, sha256
+from judge import WIDTHS, create_pair, load, summarize, write
+from probe_competitors import decode_results, ranked_identifiers
 
 
 class BenchmarkTests(unittest.TestCase):
+    def test_competitor_probes_distinguish_ranked_rows_from_empty_results(self):
+        def text_reply(*blocks):
+            return SimpleNamespace(structured_content=None,
+                                   content=[SimpleNamespace(type="text", text=text) for text in blocks])
+
+        reply = SimpleNamespace(structured_content={"results": [{"id": "layout", "asset": "ignored"}]}, content=[])
+        self.assertEqual(ranked_identifiers(decode_results(reply, "results")), [{"id": "layout"}])
+        self.assertEqual(decode_results(text_reply('{"products": [{"name": "Station"}]}'), "products"),
+                         [{"name": "Station"}])
+        self.assertEqual(decode_results(text_reply('{"id": "a"}', '{"id": "b"}'), "results"),
+                         [{"id": "a"}, {"id": "b"}])
+        self.assertEqual(decode_results(text_reply("No results. Try other keywords."), "products"), [])
+        self.assertEqual(decode_results(text_reply(), "results"), [])
+        with self.assertRaisesRegex(ValueError, "unrecognized"):
+            decode_results(text_reply("Unexpected backend response"), "results")
+
     def test_mcp_use_is_required_only_in_the_treatment(self):
         message = {"type": "item.completed", "item": {
             "type": "agent_message", "text": "```html\n<body>Test</body>\n```"}}
@@ -30,13 +47,17 @@ class BenchmarkTests(unittest.TestCase):
             base = Path(path)
             args = SimpleNamespace(cells=base / "generated", out=base / "blind", seed="test",
                                    control="none", treatment="v2", compact=False)
-            task = {"id": "station"}
+            task = {"id": "station", "brief": "Board the train."}
             for arm in ("none", "v2"):
                 cell = args.cells / task["id"] / arm
                 cell.mkdir(parents=True)
                 html = b"<body>Test</body>"
                 (cell / "index.html").write_bytes(html)
-                write(cell / "receipt.json", {"status": "passed", "html_sha256": sha256(html)})
+                write(cell / "receipt.json", {
+                    "status": "passed", "case": task["id"], "arm": arm, "model": "fixture-model", "effort": "max",
+                    "client": "fixture-client", "prompt_sha256": sha256(PROMPT.format(brief=task["brief"]).encode()),
+                    "html_sha256": sha256(html),
+                })
                 captures = {}
                 for width in WIDTHS:
                     image = f"fixture:{arm}:{width}".encode()
@@ -47,12 +68,27 @@ class BenchmarkTests(unittest.TestCase):
                         "regions": [{"role": "h1", "box": [8, 8, 90, 24]}],
                     }
                 (cell / "720.png").write_bytes(f"compact:{arm}".encode())
-                write(cell / "render.json", {"input_sha256": sha256(html), "captures": captures})
+                write(cell / "render.json", {"input_sha256": sha256(html), "captures": captures,
+                                             "browser": "fixture-browser", "renderer": "fixture-renderer"})
 
             blind, labels, _ = create_pair(args, task)
             self.assertEqual(set(labels.values()), {"none", "v2"})
             self.assertEqual((blind / "A-390.png").read_bytes(), f"fixture:{labels['A']}:390".encode())
+            (blind / "A-390.png").write_bytes(b"stale staged image")
+            with self.assertRaisesRegex(ValueError, "Previously staged blind image differs"):
+                create_pair(args, task)
+            receipt_path = cell / "receipt.json"
+            receipt = load(receipt_path)
+            write(receipt_path, {**receipt, "model": "wrong-model"})
+            with self.assertRaisesRegex(ValueError, "Generator or browser configuration differs"):
+                create_pair(args, task)
+            write(receipt_path, {**receipt, "prompt_sha256": "wrong-prompt"})
+            with self.assertRaisesRegex(ValueError, "Generation receipt does not match"):
+                create_pair(args, task)
+            write(receipt_path, receipt)
             args.compact = True
+            args.out = base / "blind-compact"
+            blind = args.out / task["id"]
             _, _, metrics = create_pair(args, task)
             self.assertEqual((blind / "A-1440.png").read_bytes(), f"compact:{labels['A']}".encode())
             self.assertEqual(metrics["A"][0]["regions"][0]["role"], "h1")

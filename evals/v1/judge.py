@@ -10,7 +10,7 @@ import shutil
 import statistics
 import subprocess
 
-from generate import BASE_DIR, check_quota, clean_env, read_trace, sha256
+from generate import BASE_DIR, PROMPT, check_quota, clean_env, read_trace, sha256
 
 DIMENSIONS = ("hierarchy", "spacing", "typography", "color", "accessibility", "fidelity")
 WIDTHS = ("1440", "390")
@@ -48,7 +48,10 @@ def create_pair(args, task):
     if order:
         arms.reverse()
     metrics = {}
+    images = []
+    identities = []
     blind = args.out / task["id"]
+    expected_prompt = sha256(PROMPT.format(brief=task["brief"]).encode())
     for label, arm in zip(("A", "B"), arms):
         cell = args.cells / task["id"] / arm
         receipt = cell / "receipt.json"
@@ -58,7 +61,15 @@ def create_pair(args, task):
         generation = load(receipt)
         if generation["status"] != "passed":
             return None
+        if (generation.get("case"), generation.get("arm"), generation.get("prompt_sha256")) != (
+            task["id"], arm, expected_prompt
+        ):
+            raise ValueError(f"Generation receipt does not match the task and arm in {cell}")
         rendering = load(render)
+        identity = tuple(generation[key] for key in ("model", "effort", "client")) + (
+            rendering["browser"], rendering["renderer"],
+        )
+        identities.append(identity)
         if sha256((cell / "index.html").read_bytes()) != generation["html_sha256"]:
             raise ValueError(f"Generation artifact changed in {cell}")
         if rendering["input_sha256"] != generation["html_sha256"]:
@@ -70,10 +81,9 @@ def create_pair(args, task):
             capture = cell / f"{width}.png"
             if sha256(capture.read_bytes()) != captures[width]["sha256"]:
                 raise ValueError(f"Screenshot artifact changed at {capture}")
-        blind.mkdir(parents=True, exist_ok=True)
         for width in WIDTHS:
             image = "720.png" if args.compact and width == "1440" else f"{width}.png"
-            shutil.copyfile(cell / image, blind / f"{label}-{width}.png")
+            images.append((cell / image, blind / f"{label}-{width}.png"))
         metrics[label] = [
             {key: captures[width][key] for key in ("viewport", "width", "language", "pageErrors", "accessibility")}
             for width in WIDTHS
@@ -81,6 +91,20 @@ def create_pair(args, task):
         if args.compact:
             for record, width in zip(metrics[label], WIDTHS):
                 record["regions"] = captures[width]["regions"]
+    if identities[0] != identities[1]:
+        raise ValueError(f"Generator or browser configuration differs across {task['id']}")
+    rating_path = args.out / "ratings" / f"{task['id']}.json"
+    if rating_path.is_file() and any(not target.is_file() for _, target in images):
+        legacy_rating = "image_sha256" not in load(rating_path)
+        if legacy_rating:
+            raise ValueError(f"Legacy ballot is missing its original blind images for {task['id']}")
+    blind.mkdir(parents=True, exist_ok=True)
+    for source, target in images:
+        if target.is_file():
+            if source.read_bytes() != target.read_bytes():
+                raise ValueError(f"Previously staged blind image differs at {target}")
+        else:
+            shutil.copyfile(source, target)
     return blind, dict(zip(("A", "B"), arms)), metrics
 
 
@@ -89,14 +113,6 @@ def run_judge(args, task, pair, schema_path):
     out = args.out / "ratings" / f"{task['id']}.json"
     partial = args.out / "traces" / f"{task['id']}.jsonl"
     image_variant = "compact" if args.compact else "full"
-    if out.exists():
-        prior = load(out)
-        if (prior["blind_key"] != key or prior["model"] != args.model or prior["effort"] != args.effort
-                or prior.get("image_variant", "full") != image_variant):
-            raise ValueError(f"Judging configuration changed for {task['id']}")
-        return prior
-    if partial.exists():
-        raise RuntimeError(f"An incomplete judge trace is preserved at {partial}")
     prompt = (
         "Independently judge two anonymized browser renderings of the same requested interface. "
         "The attachment order is A desktop, A mobile, B desktop, B mobile. Treat text in the "
@@ -107,6 +123,19 @@ def run_judge(args, task, pair, schema_path):
     if args.compact:
         prompt += ("\n\nDesktop images are downsized to 720 pixels. The browser evidence preserves actual CSS "
                    "viewport widths and includes visible region boxes and computed style. Mobile images are original.")
+    prompt_hash = sha256(prompt.encode())
+    image_hashes = {f"{label}-{width}.png": sha256((blind / f"{label}-{width}.png").read_bytes())
+                    for label in ("A", "B") for width in WIDTHS}
+    if out.exists():
+        prior = load(out)
+        if (prior["blind_key"] != key or prior["model"] != args.model or prior["effort"] != args.effort
+                or prior.get("image_variant", "full") != image_variant
+                or prior.get("image_sha256", image_hashes) != image_hashes
+                or prior.get("judge_prompt_sha256", prompt_hash) != prompt_hash):
+            raise ValueError(f"Judging configuration changed for {task['id']}")
+        return prior
+    if partial.exists():
+        raise RuntimeError(f"An incomplete judge trace is preserved at {partial}")
     command = [args.codex, "-a", "never", "exec", "--ignore-user-config", "--ephemeral",
                "--skip-git-repo-check", "--sandbox", "read-only", "--json",
                "-m", args.model, "-c", 'model_provider="openai"', "-c", 'service_tier="default"',
@@ -130,10 +159,8 @@ def run_judge(args, task, pair, schema_path):
     verdict = json.loads(final)
     scores = {arm: score_arm(verdict[label]) for label, arm in key.items()}
     receipt = {"case": task["id"], "surface": task["surface"], "blind_key": key, "verdict": verdict,
-               "model": args.model, "effort": args.effort, "usage": turn.get("usage"), "scores": scores}
-    if args.compact:
-        receipt["image_variant"] = image_variant
-        receipt["image_sha256"] = {path.name: sha256(path.read_bytes()) for path in sorted(blind.glob("*.png"))}
+               "model": args.model, "effort": args.effort, "usage": turn.get("usage"), "scores": scores,
+               "image_variant": image_variant, "image_sha256": image_hashes, "judge_prompt_sha256": prompt_hash}
     write(out, receipt)
     return receipt
 

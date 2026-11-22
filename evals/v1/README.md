@@ -34,6 +34,10 @@ python3 evals/v1/judge.py \
 
 The renderer starts its own Chrome and Playwriter processes and shuts them down when it finishes. The judge verifies screenshot and HTML hashes. `judge/summary.json` records coverage, paired scores and each cell’s token receipt. Retain the generation and judging traces for any published score. [Scoring rubric](rubric.md)
 
+Both arms must match the frozen brief, generator, client, effort, and browser pins. The judge keeps the first staged blind images for each ballot and records hashes for all four attached images. Use a fresh judging directory when an input changes.
+
+To measure retrieval before spending generation tokens, run `probe_competitors.py` against the installed competitor. It submits all 36 unedited briefs to the named search tool, requests the first three results, and records elapsed time, payload size, outcome, and ranked reference IDs. This probe measures search availability and coverage. The visual comparison still uses the generator and blinded judge.
+
 The parser and scoring tests run without subscriptions or Chrome.
 
 ```bash
