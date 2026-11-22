@@ -70,6 +70,10 @@ Apply the same prompts, asset policy and scoring to each candidate. Preserve fai
 
 Both specific-landing v2 controls were scored again alongside the candidate. Their rescored values differ from the earlier v2-versus-plain ballots. Use the scores within each pair for candidate decisions. Both comparisons used the original benchmark rubric for captured states.
 
+## Local review checks
+
+The local reviewer now detects large text below WCAG's 3 to 1 minimum and keeps the 4.5 to 1 check for smaller text. Three boundary cases failed before the change and passed after it. Installed Chrome reproduced the large-text finding, showed a 3 to 1 recolor, and let a keyboard user switch the preview to After. The original small-text flow and field masking passed in the same CI run. [Regression and browser receipts](evidence/benchmark-v1/large-text-contrast.json) · [WCAG contrast requirements](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)
+
 ## Compact vision experiment
 
 Across two briefs, the compact packets used 48,695 input tokens versus 51,112 with full screenshots, a 4.7% reduction. The theatre comparison kept both scores. The ceramics comparison moved from a tie to a 4.2-point lead for the plain generator. The compact run changed image size and supplied region measurements, so this comparison cannot isolate either change. Keep the full-size packets for the benchmark and measure region detection, decision agreement, and token savings on unseen examples before using compact packets by default. [Blind ballots and usage](evidence/benchmark-v1/compact-vision.json)

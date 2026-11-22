@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+- Added size-aware contrast checks to local review. Chrome flagged a 2.0-to-1 large label and previewed a recolor that meets its 3-to-1 minimum. [Browser and regression receipts](evidence/benchmark-v1/large-text-contrast.json)
+
 - Added the 36-brief matched benchmark with clean-session token accounting, Playwriter captures, blind judging, and competitor adapters. The 26 verified pairs averaged 92.0 without the MCP and 94.6 with frozen v2. [Benchmark](EVALS.md)
 - Added `design-mcp doctor`, offline directions, and lazy loading of the checksum-verified legacy corpus. Fresh pipx and uv installs exercised all 17 tools with Python 3.10–3.13 on both Intel and Apple Silicon macOS 15. The client examples use the installed command. [Install results](EVALS.md#candidate-decisions)
 - Tested four credential-free design tools over stdio. In the first matched browser comparison, hosted Inspo scored 87.5 on ceramics and Design MCP scored 91.7. [Competitor results](teardown/COMPETITORS.md#visual-scoreboard)
