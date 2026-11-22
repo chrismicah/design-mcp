@@ -344,9 +344,13 @@ try {
         return new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve(ready()))));
       })()`);
       assert((await send("Target.closeTarget", {targetId: newTarget.targetId})).success);
-      await send("Target.activateTarget", {targetId: fixturePage.targetId});
       for (let trial = 0; trial < latencyRuns; trial++) {
         await until("previous popup closed", async () => !(await findPopup()), 5000, 15);
+        await send("Page.bringToFront", {}, fixtureSession);
+        await until("fixture active before timing", () => inspect(fixtureSession, `(() => {
+          if (location.href !== ${JSON.stringify(fixtureUrl)} || !document.hasFocus()) return false;
+          return new Promise(resolve => requestAnimationFrame(() => resolve(document.hasFocus())));
+        })()`), 5000, 15);
         const openedAt = performance.now();
         key("Command+Shift+Y");
         const opened = await until("fresh toolbar popup", findPopup, 5000, 15);
