@@ -41,6 +41,8 @@ jobs:
           EXPECTED_ARCH: ${{ matrix.host.arch }}
           PYTHON_EXECUTABLE: ${{ steps.python.outputs.python-path }}
         run: |
+          bash scripts/verify_install_matrix.sh --check-host 15 "$EXPECTED_ARCH"
+          test "$("$PYTHON_EXECUTABLE" -I -c 'import platform; print(platform.machine())')" = "$EXPECTED_ARCH"
           echo "Architecture: $(uname -m), $(sw_vers -productVersion), $("$PYTHON_EXECUTABLE" -V)" >> "$GITHUB_STEP_SUMMARY"
           bash scripts/verify_clean_install.sh "$GITHUB_WORKSPACE" "$PYTHON_EXECUTABLE" \
             "$RUNNER_TEMP/design-install" "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY.git"
