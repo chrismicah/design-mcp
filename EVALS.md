@@ -6,19 +6,19 @@ The baseline pins Design MCP at `fd6035d8732d177b811f81a0f5863e99134a85ca`. The 
 
 | Configuration | Judged pairs | Score / 100 |
 | --- | ---: | ---: |
-| Same generator without MCP | 9 / 36 | 93.1 |
-| Same generator with Design MCP v2 | 9 / 36 | 95.4 |
+| Same generator without MCP | 12 / 36 | 92.0 |
+| Same generator with Design MCP v2 | 12 / 36 | 95.8 |
 
-The nine verified pairs yielded a **+2.3-point** mean difference, with three wins, six ties, and a paired bootstrap interval of 0.0 to 4.6 points. Rehearsal rooms and the film festival each scored 91.7 → 100.0. Cold-chain monitoring scored 95.8 → 100.0. Six briefs were landing pages and three were dashboards. This is a partial baseline for the frozen revision. The judges scored captured states under the original benchmark rubric. The separate release rubric requires live evaluation before scoring. [Paired ballots, hashes and token receipts](evidence/benchmark-v1/paired-progress.json) · [Release rubric](evals/vision/rubric.md)
+The twelve verified pairs yielded a **+3.8-point** mean difference, with six wins, six ties, and a paired bootstrap interval of 1.4 to 6.3 points. Rehearsal rooms and the film festival each scored 91.7 → 100.0. Cold-chain monitoring scored 95.8 → 100.0. The judged set covers all six landing pages and all six dashboards. This is a partial baseline for the frozen revision. The judges scored captured states under the original benchmark rubric. The separate release rubric requires live evaluation before scoring. [Paired ballots, hashes and token receipts](evidence/benchmark-v1/paired-progress.json) · [Release rubric](evals/vision/rubric.md)
 
 The first dashboard attempt called `direct` successfully and reached the client’s 240-second timeout before returning HTML. There was no completed-turn token receipt. The paired run uses a 900-second allowance for both arms and retains the first attempt separately. Playwriter MCP `0.12.0` rendered the isolated Chrome 157 control at both widths. The injected failure control detected narrow viewport overflow and the expected JavaScript error. [Tracked receipts](evidence/benchmark-v1/preflight.json)
 
-GitHub’s standard macOS runner captured the judged pairs with Playwriter 0.12.0 and Chrome for Testing 158.0.8127.36 at both preset widths. All 36 judged captures had no horizontal overflow or page errors. A third wave captured six more pairs and the harvest dashboard has a verified ballot. [First run](https://github.com/chrismicah/design-mcp/actions/runs/44984687051) · [Second run](https://github.com/chrismicah/design-mcp/actions/runs/44988686124) · [Third run](https://github.com/chrismicah/design-mcp/actions/runs/44991749251)
+GitHub’s standard macOS runner captured the judged pairs with Playwriter 0.12.0 and Chrome for Testing 158.0.8127.36 at both preset widths. All 48 judged captures had no horizontal overflow or page errors. The third wave also captured two form briefs. [First run](https://github.com/chrismicah/design-mcp/actions/runs/44984687051) · [Second run](https://github.com/chrismicah/design-mcp/actions/runs/44988686124) · [Third run](https://github.com/chrismicah/design-mcp/actions/runs/44991749251)
 
 | Median per judged brief | Input tokens | Cached input | Output tokens | Seconds |
 | --- | ---: | ---: | ---: | ---: |
-| Plain generator | 38,457 | 0 | 22,204 | 451 |
-| Design MCP v2 | 62,609 | 40,704 | 21,338 | 434 |
+| Plain generator | 20,084 | 0 | 19,616 | 404 |
+| Design MCP v2 | 62,895 | 40,832 | 20,811 | 423 |
 
 ## Direction coverage
 
@@ -51,7 +51,7 @@ The LLM judge sees the brief, browser observations and four screenshots for each
 | --- | --- | --- |
 | Form directions, `d5a3278` | The six form briefs went from 0/6 to 6/6 correct surface routes. The unchanged 36-brief diagnostic returned `object-hero` on 26/36, down from 32/36. Source tests passed 341/341. | Separate branch. Route calibration occurred after the first source probe. Independent visual results remain pending. [Source results](evidence/benchmark-v1/form-candidate-source.json) |
 | Broadcast and service booking, `384d61d` | Two matched blind comparisons averaged 89.6 for the frozen v2 and 97.9 for the candidate. Radio scored 87.5 → 95.8. Bike booking scored 91.7 → 100.0. Four other landing briefs kept their original direction in the six-call replay. | Integrated at `9756a34`. All eight browser keyboard checks passed across both arms and widths. All six integrated direction replies matched the candidate, the 17-tool stdio smoke passed, and the source suite passed 338 tests. [Paired visual scores](evidence/benchmark-v1/specific-landing-visual.json) · [Browser actions](evidence/benchmark-v1/specific-landing-actions.json) · [Integrated stdio and tests](evidence/benchmark-v1/specific-landing-integration.json) |
-| Mobile product hero, `9de7829` | The earlier coffee pilot's full direction scored 7 against 9 for the plain, legacy and ablated arms. The candidate replaces the 62vh image target with a shallow crop, puts the add control in flow, and groups it with the supplied buying facts. | Separate branch. The revised direction stays within the response cap and all 335 source tests passed. Matched visual verification is pending. [Coffee pilot ballot](evidence/rebuild/comparison/pilot-landing-ballot.json) |
+| Mobile product hero, `9de7829` | On the matched ceramics brief, the candidate scored 95.8 against 87.5 for frozen v2. The critique identified tighter mobile grouping of the artwork, price, shipping time and purchase action. | Integrated at `5cc8074`. Both builds added one bowl, opened the bag and restored keyboard focus at both widths. The integrated source passed 338 tests and 17 stdio calls. The fresh coffee and train comparison is separate. [Visual and interaction receipts](evidence/benchmark-v1/product-hero-visual.json) |
 | Portable package and doctor, `7caf890` | Package resources and a checksum-pinned legacy cache support Python 3.10–3.13. The 36 directions, 21 reactions and one source check had identical normalized replies on Python 3.12. | Integrated on the rebuild branch. All eight macOS 15 jobs passed with pipx, uv, `doctor`, and all 17 tools on Intel and arm64. macOS 13 and fresh Tart remain open. [Output parity](evidence/benchmark-v1/portable-parity.json) · [Final hosted jobs](https://github.com/chrismicah/design-mcp/actions/runs/44987155008) |
 
 The final portability candidate also returned the same structured results as the frozen baseline for all 17 stdio smoke calls at each of two fixed Python hash seeds. The comparison and library tools vary their ordering with the seed in both versions. The matched test verifies the package change independently of that existing behavior. [Stdio parity receipt](evidence/benchmark-v1/portable-stdio-parity.json)

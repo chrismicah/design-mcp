@@ -1,0 +1,704 @@
+{
+  "direction_commit": "9de78292baeb02e53b9d8838364567f365c0861c",
+  "case": "landing-ceramics",
+  "ballot": {
+    "case": "landing-ceramics",
+    "surface": "landing",
+    "blind_key": {
+      "A": "v2",
+      "B": "product-hero"
+    },
+    "verdict": {
+      "A": {
+        "hierarchy": {
+          "score": 4,
+          "evidence": "The bowl drawing and product name draw the eye first, and the plum \u201cAdd to bag\u201d button sits beside $46 on both desktop and mobile."
+        },
+        "spacing": {
+          "score": 3,
+          "evidence": "Shipping, price and purchase sit close together on desktop, but roughly 150 pixels of empty space separate the mobile shipping line from the purchase bar."
+        },
+        "typography": {
+          "score": 3,
+          "evidence": "The serif product name fits comfortably on one mobile line and the bold \u201c5 days\u201d is easy to scan, though the small uppercase studio label takes more effort to read."
+        },
+        "color": {
+          "score": 4,
+          "evidence": "Ochre stippling and brown contours give the bowl a tactile surface, while the plum button stands out against the cream page at both widths."
+        },
+        "accessibility": {
+          "score": 4,
+          "evidence": "At both widths, the browser trees name the visible controls \u201cBag, 0 items\u201d and \u201cAdd to bag\u201d and identify the bowl drawing, product heading and status region."
+        },
+        "fidelity": {
+          "score": 3,
+          "evidence": "The drawing, Milwaukee maker credit, $46 price, five-day shipping and add action match the brief, but both captures show only the empty bag, leaving confirmation unverified."
+        }
+      },
+      "B": {
+        "hierarchy": {
+          "score": 4,
+          "evidence": "The drawing and title identify the bowl immediately, and the shopper can read the price and shipping time together directly above \u201cAdd to bag\u201d at either width."
+        },
+        "spacing": {
+          "score": 4,
+          "evidence": "The desktop price row and button share both edges, and the shallower mobile drawing leaves room for the maker\u2019s line, purchase details and action to sit together."
+        },
+        "typography": {
+          "score": 4,
+          "evidence": "The serif title shifts from two desktop lines to one mobile line, while the sentence-case studio label and sans-serif shipping text remain easy to read at 390 pixels."
+        },
+        "color": {
+          "score": 4,
+          "evidence": "Plum connects the kiln mark, bag count and purchase button, with the button\u2019s solid fill giving it the strongest emphasis against the warm paper tones."
+        },
+        "accessibility": {
+          "score": 4,
+          "evidence": "Both browser trees describe the bowl\u2019s pale, speckled glaze, include the item count in the bag button\u2019s name and expose a clearly labeled purchase button and status region."
+        },
+        "fidelity": {
+          "score": 3,
+          "evidence": "The illustration, Milwaukee throwing and glazing statement, $46 price, five-day shipping and add action are visible at both widths, but neither capture shows confirmation after adding one bowl."
+        }
+      }
+    },
+    "model": "gpt-6.2-astra",
+    "effort": "max",
+    "usage": {
+      "input_tokens": 26184,
+      "cached_input_tokens": 17792,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 5115,
+      "reasoning_output_tokens": 4451
+    },
+    "scores": {
+      "v2": 87.5,
+      "product-hero": 95.83333333333334
+    },
+    "image_variant": "full",
+    "image_sha256": {
+      "A-1440.png": "af8be76719393ab4ebc93a621b8de05a68c27e6906ed27371696d02267f8998b",
+      "A-390.png": "19a255a5ab48ca9193ef2325688fa91ebac5c4d785e6431dc795460625a9cd73",
+      "B-1440.png": "21650d93265b2a0394b280d01c576413675b7aa1b8e0d30550d7083a9288c20c",
+      "B-390.png": "9b835c6c4225846ff921688f95f947d3ec2e5a0d2de5f582aac08362a759354a"
+    },
+    "judge_prompt_sha256": "409f2ff2e2702b6a3a11d1b4a3b1ce77c1acbd29ad98dc631a36eb21afb54f15"
+  },
+  "judge_trace_sha256": "3b6c536ccdea49cb289a55abd366a26fec717b69138ada3fbea9dc5aa56eab25",
+  "cells": {
+    "v2": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44984687051",
+      "generation": {
+        "usage": {
+          "input_tokens": 62609,
+          "cached_input_tokens": 40192,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 22183,
+          "reasoning_output_tokens": 14265
+        },
+        "tool_calls": [
+          {
+            "type": "mcp_tool_call",
+            "server": "design-mcp",
+            "tool": "direct",
+            "status": "completed"
+          }
+        ],
+        "client_errors": [],
+        "direct_call": true,
+        "status": "passed",
+        "case": "landing-ceramics",
+        "arm": "v2",
+        "model": "gpt-6.2-sol",
+        "effort": "max",
+        "client": "codex-cli 0.170.0",
+        "elapsed_seconds": 450.6,
+        "exit_code": 0,
+        "prompt_sha256": "1b7e4408d51fd57e448b6c6af2541f70db8a3a9291f546c5217d05b4bda1950f",
+        "trace_sha256": "6a3e62aed54c0aa251ca1dc409fef57e8a796987e065ef46387ef70e9beec368",
+        "html_sha256": "8b38c73412739c571507bf92cd0e37d6e118b2950d0722a26830c4fe34d06afe"
+      },
+      "render": {
+        "renderer": "0.12.0",
+        "browser": "Chrome/158.0.8127.36",
+        "input_sha256": "8b38c73412739c571507bf92cd0e37d6e118b2950d0722a26830c4fe34d06afe",
+        "captures": {
+          "1440": {
+            "viewport": 1440,
+            "width": 1440,
+            "height": 900,
+            "title": "Oat Glaze Bowl | Kiln & Field",
+            "h1": "Oat Glaze Bowl",
+            "loadedFonts": [
+              "Fraunces",
+              "Instrument Sans"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- banner:\n  - text: Kiln & Field\n  - button \"Bag, 0 items\": Bag\n- main:\n  - figure:\n    - img \"Drawing of the Oat Glaze Bowl\"\n  - region \"Oat Glaze Bowl\":\n    - paragraph: Small-batch pottery\n    - heading \"Oat Glaze Bowl\" [level=1]:\n      - text: Oat Glaze\n      - emphasis: Bowl\n    - paragraph: Thrown and glazed by the maker in Milwaukee.\n    - paragraph:\n      - text: Ships in\n      - strong: 5 days\n    - paragraph: $46\n    - button \"Add to bag\"\n    - status",
+            "status": "rendered",
+            "sha256": "af8be76719393ab4ebc93a621b8de05a68c27e6906ed27371696d02267f8998b"
+          },
+          "390": {
+            "viewport": 390,
+            "width": 390,
+            "height": 844,
+            "title": "Oat Glaze Bowl | Kiln & Field",
+            "h1": "Oat Glaze Bowl",
+            "loadedFonts": [
+              "Fraunces",
+              "Instrument Sans"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- banner:\n  - text: Kiln & Field\n  - button \"Bag, 0 items\": Bag\n- main:\n  - figure:\n    - img \"Drawing of the Oat Glaze Bowl\"\n  - region \"Oat Glaze Bowl\":\n    - paragraph: Small-batch pottery\n    - heading \"Oat Glaze Bowl\" [level=1]:\n      - text: Oat Glaze\n      - emphasis: Bowl\n    - paragraph: Thrown and glazed by the maker in Milwaukee.\n    - paragraph:\n      - text: Ships in\n      - strong: 5 days\n    - paragraph: $46\n    - button \"Add to bag\"\n    - status",
+            "status": "rendered",
+            "sha256": "19a255a5ab48ca9193ef2325688fa91ebac5c4d785e6431dc795460625a9cd73"
+          }
+        }
+      }
+    },
+    "product-hero": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44991706247",
+      "generation": {
+        "usage": {
+          "input_tokens": 64859,
+          "cached_input_tokens": 41472,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 26537,
+          "reasoning_output_tokens": 19233
+        },
+        "tool_calls": [
+          {
+            "type": "mcp_tool_call",
+            "server": "design-mcp",
+            "tool": "direct",
+            "status": "completed"
+          }
+        ],
+        "client_errors": [],
+        "treatment_call": true,
+        "direct_call": true,
+        "status": "passed",
+        "case": "landing-ceramics",
+        "arm": "product-hero",
+        "model": "gpt-6.2-sol",
+        "effort": "max",
+        "client": "codex-cli 0.170.0",
+        "prompt_sha256": "1b7e4408d51fd57e448b6c6af2541f70db8a3a9291f546c5217d05b4bda1950f",
+        "mcp_config_sha256": "2faebee7f549444e190fd6acb0e41cf56ddb25e3d3dde1c367e6a96859e556e0",
+        "elapsed_seconds": 536.57,
+        "exit_code": 0,
+        "trace_sha256": "0073aa2e3863d652e2d001b0705e12bb70f2aa42f9a4aa1e276a2e06caf5b61b",
+        "html_sha256": "d75373d32ae8b600a08fab6e0fbca131d75aa71909addd8859104da5671f0101"
+      },
+      "render": {
+        "renderer": "0.12.0",
+        "browser": "Chrome/158.0.8127.36",
+        "input_sha256": "d75373d32ae8b600a08fab6e0fbca131d75aa71909addd8859104da5671f0101",
+        "captures": {
+          "1440": {
+            "viewport": 1440,
+            "width": 1440,
+            "height": 900,
+            "title": "Oat Glaze Bowl \u00b7 Kiln & Field",
+            "h1": "Oat Glaze Bowl",
+            "loadedFonts": [
+              "Fraunces",
+              "Instrument Sans"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- banner:\n  - text: Kiln & Field\n  - button \"Bag, 0 items\": Bag\n- main:\n  - figure:\n    - img \"Oat Glaze Bowl illustration A rounded bowl with a pale, speckled glaze, drawn on warm ochre paper.\"\n  - paragraph: Small-batch pottery\n  - heading \"Oat Glaze Bowl\" [level=1]\n  - paragraph: We throw and glaze this bowl in Milwaukee.\n  - paragraph: $46\n  - paragraph: Ships in 5 days\n  - button \"Add to bag\"\n  - status",
+            "status": "rendered",
+            "sha256": "21650d93265b2a0394b280d01c576413675b7aa1b8e0d30550d7083a9288c20c"
+          },
+          "390": {
+            "viewport": 390,
+            "width": 390,
+            "height": 844,
+            "title": "Oat Glaze Bowl \u00b7 Kiln & Field",
+            "h1": "Oat Glaze Bowl",
+            "loadedFonts": [
+              "Fraunces",
+              "Instrument Sans"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- banner:\n  - text: Kiln & Field\n  - button \"Bag, 0 items\": Bag\n- main:\n  - figure:\n    - img \"Oat Glaze Bowl illustration A rounded bowl with a pale, speckled glaze, drawn on warm ochre paper.\"\n  - paragraph: Small-batch pottery\n  - heading \"Oat Glaze Bowl\" [level=1]\n  - paragraph: We throw and glaze this bowl in Milwaukee.\n  - paragraph: $46\n  - paragraph: Ships in 5 days\n  - button \"Add to bag\"\n  - status",
+            "status": "rendered",
+            "sha256": "9b835c6c4225846ff921688f95f947d3ec2e5a0d2de5f582aac08362a759354a"
+          }
+        }
+      }
+    }
+  },
+  "keyboard": {
+    "workflow_sha": "3df0b0869319ccce30018a691d54bd0085312418",
+    "run": "https://github.com/chrismicah/design-mcp/actions/runs/44992144795",
+    "cells": {
+      "v2": {
+        "1440": {
+          "before_capture_sha256": "2649e99e905dc35965be724c36832820640cb2d451739cba105205635090e527",
+          "reached": true,
+          "activated": true,
+          "before": "",
+          "after": "Added to bag",
+          "count": true,
+          "opened": true,
+          "contents": "Your bag\nOat Glaze Bowl\n$46\n\nQuantity 1\n\nRemove",
+          "closed": true,
+          "restored": true,
+          "passed": true,
+          "pageErrors": [],
+          "after_sha256": "2707b544794bef096523d082da3341377b73fd30bb4181af9d74f2ec80c09cf7"
+        },
+        "390": {
+          "before_capture_sha256": "19a255a5ab48ca9193ef2325688fa91ebac5c4d785e6431dc795460625a9cd73",
+          "reached": true,
+          "activated": true,
+          "before": "",
+          "after": "Added to bag",
+          "count": true,
+          "opened": true,
+          "contents": "Your bag\nOat Glaze Bowl\n$46\n\nQuantity 1\n\nRemove",
+          "closed": true,
+          "restored": true,
+          "passed": true,
+          "pageErrors": [],
+          "after_sha256": "57f4fefcb22453c510475a9ebb553b48276ae600d8ad8eef80ff69d6399d81a0"
+        }
+      },
+      "product-hero": {
+        "1440": {
+          "before_capture_sha256": "21650d93265b2a0394b280d01c576413675b7aa1b8e0d30550d7083a9288c20c",
+          "reached": true,
+          "activated": true,
+          "before": "",
+          "after": "Oat Glaze Bowl added to your bag.",
+          "count": true,
+          "opened": true,
+          "contents": "Your bag\n\nOat Glaze Bowl\n\nQuantity 1\n\n$46\n\nRemove",
+          "closed": true,
+          "restored": true,
+          "passed": true,
+          "pageErrors": [],
+          "after_sha256": "15bf61eaad807fd65bc3e898ee4f957758ffe92299bf9aa95b7201e8e43881e6"
+        },
+        "390": {
+          "before_capture_sha256": "fa0825f61f35bb3c9bf5f55633aceb0371386e5a10a3849e8e87d8cd044f3ad1",
+          "reached": true,
+          "activated": true,
+          "before": "",
+          "after": "Oat Glaze Bowl added to your bag.",
+          "count": true,
+          "opened": true,
+          "contents": "Your bag\n\nOat Glaze Bowl\n\nQuantity 1\n\n$46\n\nRemove",
+          "closed": true,
+          "restored": true,
+          "passed": true,
+          "pageErrors": [],
+          "after_sha256": "6b259b0e03d21c9bf483a7ec9e33fd73ff9a42441e905135fd964a8be6c455e2"
+        }
+      }
+    }
+  },
+  "integration": {
+    "source_sha": "5cc807402bc2a92485db983a72876ec1d0a24e25",
+    "passed_source_tests": 338,
+    "stdio": {
+      "fastmcp": "4.2.4",
+      "mode": "both",
+      "tools": {
+        "direct": {
+          "keys": [
+            "direction",
+            "font_stylesheet",
+            "interaction",
+            "assumptions",
+            "questions",
+            "handoff"
+          ],
+          "milliseconds": 43
+        },
+        "react": {
+          "keys": [
+            "direction_id",
+            "changes",
+            "why",
+            "keep"
+          ],
+          "milliseconds": 2
+        },
+        "check": {
+          "keys": [
+            "finding_count",
+            "findings",
+            "scope",
+            "render_checks",
+            "truncated"
+          ],
+          "milliseconds": 2
+        },
+        "search_design_patterns": {
+          "keys": [
+            "result"
+          ],
+          "milliseconds": 62
+        },
+        "get_design_blueprint": {
+          "keys": [
+            "id",
+            "name",
+            "page_type",
+            "layout_type",
+            "layout_notes",
+            "ux_patterns",
+            "ui_elements",
+            "primary_colors",
+            "color_mode",
+            "visual_style",
+            "behavioral_description",
+            "accessibility_notes",
+            "semantic_tokens",
+            "component_hints",
+            "decision_tree",
+            "visual_recipes",
+            "design_system",
+            "source_url"
+          ],
+          "milliseconds": 3
+        },
+        "get_semantic_tokens": {
+          "keys": [
+            "tokens",
+            "primary_shades",
+            "accent_shades",
+            "color_mode",
+            "wcag_aa_verified"
+          ],
+          "milliseconds": 2
+        },
+        "get_design_taxonomy": {
+          "keys": [
+            "page_types",
+            "ux_patterns",
+            "ui_elements",
+            "industries",
+            "visual_styles"
+          ],
+          "milliseconds": 2
+        },
+        "get_behavioral_pattern": {
+          "keys": [
+            "description",
+            "best_practice",
+            "required_elements",
+            "anti_patterns",
+            "reference"
+          ],
+          "milliseconds": 2
+        },
+        "compare_design_approaches": {
+          "keys": [
+            "page_type",
+            "examples",
+            "summary"
+          ],
+          "milliseconds": 4
+        },
+        "analyze_and_devibecode": {
+          "keys": [
+            "anti_patterns_found",
+            "recommended_layout",
+            "semantic_tokens_to_apply",
+            "suggested_component_structure",
+            "severity_summary",
+            "refactoring_suggestions",
+            "code_fixes",
+            "visual_recipes",
+            "recommended_libraries",
+            "detected_component_type"
+          ],
+          "milliseconds": 38
+        },
+        "get_design_system": {
+          "keys": [
+            "font_system",
+            "spacing_system",
+            "global_anti_patterns",
+            "elevation",
+            "elevation_rules",
+            "color_tokens",
+            "delta_colors",
+            "component_classes",
+            "composition_rules"
+          ],
+          "milliseconds": 3
+        },
+        "get_library_recommendations": {
+          "keys": [
+            "recommendations",
+            "premium_stack",
+            "matching_design_patterns",
+            "total_libraries"
+          ],
+          "milliseconds": 9
+        },
+        "get_library_details": {
+          "keys": [
+            "library",
+            "pairs_with"
+          ],
+          "milliseconds": 3
+        },
+        "scan_project": {
+          "keys": [
+            "project_health_score",
+            "files_scanned",
+            "files_with_issues",
+            "total_issues",
+            "severity_summary",
+            "top_issues",
+            "priority_fixes",
+            "recommended_libraries",
+            "file_reports",
+            "component_types_found",
+            "visual_issues"
+          ],
+          "milliseconds": 4
+        },
+        "generate_refactored_code": {
+          "keys": [
+            "detected_component_type",
+            "total_issues",
+            "severity_summary",
+            "target_library",
+            "imports_needed",
+            "transformations",
+            "component_suggestion",
+            "design_reference",
+            "semantic_tokens",
+            "code_fixes",
+            "visual_recipes"
+          ],
+          "milliseconds": 11
+        },
+        "get_visual_recipe": {
+          "keys": [
+            "color_restraint",
+            "depth_system",
+            "typography_is_design",
+            "component_design",
+            "whitespace_as_design",
+            "motion_restraint",
+            "layout_hierarchy"
+          ],
+          "milliseconds": 2
+        },
+        "get_visual_suggestions": {
+          "keys": [
+            "visual_analysis",
+            "structural_analysis",
+            "color_palette",
+            "typography",
+            "spacing",
+            "implementation",
+            "quick_wins"
+          ],
+          "milliseconds": 3
+        }
+      }
+    },
+    "directions": {
+      "matched_candidate_record": true,
+      "routes_match_previous_commit": true,
+      "cases": [
+        {
+          "case": "landing-ceramics",
+          "id": "object-hero",
+          "response_characters": 3592
+        },
+        {
+          "case": "landing-repair",
+          "id": "service-work-order",
+          "response_characters": 3885
+        },
+        {
+          "case": "landing-radio",
+          "id": "broadcast-board",
+          "response_characters": 3603
+        },
+        {
+          "case": "landing-festival",
+          "id": "object-hero",
+          "response_characters": 3592
+        },
+        {
+          "case": "landing-archive",
+          "id": "object-hero",
+          "response_characters": 3592
+        },
+        {
+          "case": "landing-energy",
+          "id": "object-hero",
+          "response_characters": 3592
+        },
+        {
+          "case": "dashboard-coldchain",
+          "id": "object-hero",
+          "response_characters": 3592
+        },
+        {
+          "case": "dashboard-venue",
+          "id": "stage-call-sheet",
+          "response_characters": 3701
+        },
+        {
+          "case": "dashboard-harvest",
+          "id": "object-hero",
+          "response_characters": 3592
+        },
+        {
+          "case": "dashboard-support",
+          "id": "object-hero",
+          "response_characters": 3592
+        },
+        {
+          "case": "dashboard-energy",
+          "id": "object-hero",
+          "response_characters": 3592
+        },
+        {
+          "case": "dashboard-library",
+          "id": "exception-first",
+          "response_characters": 2966
+        },
+        {
+          "case": "form-venue",
+          "id": "object-hero",
+          "response_characters": 3592
+        },
+        {
+          "case": "form-maintenance",
+          "id": "object-hero",
+          "response_characters": 3592
+        },
+        {
+          "case": "form-label",
+          "id": "object-hero",
+          "response_characters": 3592
+        },
+        {
+          "case": "form-garden",
+          "id": "object-hero",
+          "response_characters": 3592
+        },
+        {
+          "case": "form-exhibition",
+          "id": "object-hero",
+          "response_characters": 3592
+        },
+        {
+          "case": "form-invoice",
+          "id": "object-hero",
+          "response_characters": 3592
+        },
+        {
+          "case": "mobile-train",
+          "id": "platform-sign",
+          "response_characters": 2792
+        },
+        {
+          "case": "mobile-field",
+          "id": "object-hero",
+          "response_characters": 3592
+        },
+        {
+          "case": "mobile-recital",
+          "id": "object-hero",
+          "response_characters": 3592
+        },
+        {
+          "case": "mobile-court",
+          "id": "object-hero",
+          "response_characters": 3592
+        },
+        {
+          "case": "mobile-pantry",
+          "id": "object-hero",
+          "response_characters": 3592
+        },
+        {
+          "case": "mobile-gallery",
+          "id": "object-hero",
+          "response_characters": 3592
+        },
+        {
+          "case": "settings-notifications",
+          "id": "object-hero",
+          "response_characters": 3592
+        },
+        {
+          "case": "settings-reading",
+          "id": "object-hero",
+          "response_characters": 3592
+        },
+        {
+          "case": "settings-team",
+          "id": "object-hero",
+          "response_characters": 3592
+        },
+        {
+          "case": "settings-focus",
+          "id": "object-hero",
+          "response_characters": 3592
+        },
+        {
+          "case": "settings-digest",
+          "id": "object-hero",
+          "response_characters": 3592
+        },
+        {
+          "case": "settings-language",
+          "id": "object-hero",
+          "response_characters": 3592
+        },
+        {
+          "case": "empty-saved",
+          "id": "object-hero",
+          "response_characters": 3592
+        },
+        {
+          "case": "empty-drafts",
+          "id": "margin-front",
+          "response_characters": 2766
+        },
+        {
+          "case": "empty-search",
+          "id": "object-hero",
+          "response_characters": 3592
+        },
+        {
+          "case": "empty-handoff",
+          "id": "object-hero",
+          "response_characters": 3592
+        },
+        {
+          "case": "empty-exhibits",
+          "id": "object-hero",
+          "response_characters": 3592
+        },
+        {
+          "case": "empty-shifts",
+          "id": "object-hero",
+          "response_characters": 3592
+        }
+      ]
+    }
+  }
+}

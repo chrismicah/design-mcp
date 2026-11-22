@@ -1,31 +1,31 @@
 {
   "summary": {
     "requested_pairs": 36,
-    "judged_pairs": 9,
-    "none": 93.05555555555556,
-    "v2": 95.37037037037037,
-    "difference": 2.3148148148148158,
+    "judged_pairs": 12,
+    "none": 92.01388888888889,
+    "v2": 95.83333333333333,
+    "difference": 3.8194444444444478,
     "wins_ties_losses": [
-      3,
+      6,
       6,
       0
     ],
     "paired_bootstrap_95_interval": [
-      0.0,
-      4.629629629629635
+      1.3888888888888928,
+      6.250000000000007
     ],
     "median_usage": {
       "none": {
-        "input_tokens": 38457,
-        "cached_input_tokens": 0,
-        "output_tokens": 22204,
-        "elapsed_seconds": 450.94
+        "input_tokens": 20083.5,
+        "cached_input_tokens": 0.0,
+        "output_tokens": 19616.0,
+        "elapsed_seconds": 403.595
       },
       "v2": {
-        "input_tokens": 62609,
-        "cached_input_tokens": 40704,
-        "output_tokens": 21338,
-        "elapsed_seconds": 433.86
+        "input_tokens": 62895.0,
+        "cached_input_tokens": 40832.0,
+        "output_tokens": 20811.0,
+        "elapsed_seconds": 423.275
       }
     }
   },
@@ -1605,6 +1605,537 @@
           "B-390.png": "02fc617f3999000edbbfbb3c3b1398c108c828c3f81b89294ffc57f7888b7234"
         },
         "judge_prompt_sha256": "8be2401a2648f8eb60042591245ecff67d74718978966954da16d87420b46ccd"
+      }
+    },
+    "dashboard-support": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44991749251",
+      "cells": {
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 63037,
+              "cached_input_tokens": 40960,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 12446,
+              "reasoning_output_tokens": 9567
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "dashboard-support",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "6ff25948f86a3fe9638c0d37232dcb95d03479971530363424c9b39c3a8fdf9d",
+            "elapsed_seconds": 255.55,
+            "exit_code": 0,
+            "trace_sha256": "8a06ea1813bc37bacdf24cc7ae804f54b373ddb5566b44090115df2484855c8a",
+            "html_sha256": "30ac705604a89a04862a596cd46a639e7e2b2a933c2e5ab4bf75eeed07ebc46b"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "a2975bd7ebec2581acf43ae60b390af674dc490096515bb987b6de3216151861",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "030d2897c1baca2acae28a16821d8cc087e0c521a9b9e419f9ac3d06d08dc892",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 20079,
+              "cached_input_tokens": 0,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 13482,
+              "reasoning_output_tokens": 9960
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "dashboard-support",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "6ff25948f86a3fe9638c0d37232dcb95d03479971530363424c9b39c3a8fdf9d",
+            "elapsed_seconds": 273.14,
+            "exit_code": 0,
+            "trace_sha256": "bc9cee85948e299a7e868f3d414d28d10666a7e77a48fd5e62d9773b30dc1b3c",
+            "html_sha256": "f13deefcd99fb0586a1f38034befa81376b9d1c312ee589bd6b6661ef394851f"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "a4f21b385bb6ede964530b7db205e1b61586efd76637c4a95db71490a91aa8f3",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "e09d8188b0b2c0fbbcabb978b1b6b7e26c78f2b421360694783cef2cd4c18eb7",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "dashboard-support",
+        "surface": "dashboard",
+        "blind_key": {
+          "A": "v2",
+          "B": "none"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, the callout identifies East as the queue with the most cases past SLA, and the first table row confirms its count of 3."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The callout and table share side margins at both widths, and the sort label moves below \u201cPast SLA\u201d on mobile so all three columns retain room."
+            },
+            "typography": {
+              "score": 3,
+              "evidence": "The large heading and prominent 3 are easy to scan at both widths, though the small, condensed \u201cHigh to low\u201d label takes more effort to read on mobile."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Peach connects the leading count, sort control, and tally marks, while brown shading identifies the active column from header to last row."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "The visible arrow has a \u201cHigh to low\u201d label, and both browser trees expose a captioned table, queue row headers, and a button naming the current and next sort directions."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "Both views show East (14 open, 3 past SLA), West (11, 2), and Central (6, 0) in the labeled descending order, with reversal unverified by interaction."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "The \u201c2 of 3 queues\u201d line establishes the scope of the overdue work, but the large 31 and 5 draw attention before the queue ranking and its sort control at both widths."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The totals stay paired even at 390 pixels, and a clear gap separates them from the table, where each count aligns under its header."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "Large numerals distinguish totals from their labels, and the mobile table keeps queue names and counts legible with the sort direction on its own line."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Peach highlights the overdue total and the nonzero counts of 3 and 2, while lavender shading and a dark purple arrow identify the sorted column."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "Both browser trees expose queue row headers and a sort button, though its name \u201cSort by Past SLA High to low\u201d leaves it unclear whether that direction is current or offered."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "Both views show the exact queue counts, correct totals of 31 open and 5 past SLA, and a highlighted \u201cHigh to low\u201d sort control, with only the initial order evidenced."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26729,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4136,
+          "reasoning_output_tokens": 3459
+        },
+        "scores": {
+          "v2": 95.83333333333334,
+          "none": 91.66666666666666
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "a2975bd7ebec2581acf43ae60b390af674dc490096515bb987b6de3216151861",
+          "A-390.png": "030d2897c1baca2acae28a16821d8cc087e0c521a9b9e419f9ac3d06d08dc892",
+          "B-1440.png": "a4f21b385bb6ede964530b7db205e1b61586efd76637c4a95db71490a91aa8f3",
+          "B-390.png": "e09d8188b0b2c0fbbcabb978b1b6b7e26c78f2b421360694783cef2cd4c18eb7"
+        },
+        "judge_prompt_sha256": "ec610f3e8255e525b07ce69297ca73d5f57e56baf4a7fea1f0d55ea17f090a52"
+      }
+    },
+    "dashboard-energy": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44991749251",
+      "cells": {
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 20084,
+              "cached_input_tokens": 11136,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 17483,
+              "reasoning_output_tokens": 13038
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "dashboard-energy",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "62613a962e12a44adc77eabf8015a26be927ec191a54713e36c5dccd0bd4ba79",
+            "elapsed_seconds": 352.92,
+            "exit_code": 0,
+            "trace_sha256": "91972dcb5377bb5086daf43f92eccbd58e08c17bbe0bfc3b97e09620362a6924",
+            "html_sha256": "f3b060a58ad01bde2af1365d20beb2db9378762cca0ab50567072ced7433ec53"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "3ae90a9bbd6ecfe2b9b17c6da87ebc7a46a3a51467af31f0ad22d298c87b30f4",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "9e4386127ecc5d36559acb85988ce97c5ee18231a1e7a75824ba92e598f16643",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 64608,
+              "cached_input_tokens": 41472,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 20392,
+              "reasoning_output_tokens": 15679
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "dashboard-energy",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "62613a962e12a44adc77eabf8015a26be927ec191a54713e36c5dccd0bd4ba79",
+            "elapsed_seconds": 415.81,
+            "exit_code": 0,
+            "trace_sha256": "80dda2eb87740108f625a9850f44510b7e75146a7cc351fca8caee49be9d3a8b",
+            "html_sha256": "bf86ab29c7105c2e7df12cd8e8ac8eec7a555ac859d2e241a09a223519714c04"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "807048c6265a7924214cb8423227a6c51df1dcd6e2f5307714d7d2e04533f9af",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "78fab0f830ff78973119770e391558e8bed8260213613309376455db786c10ca",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "dashboard-energy",
+        "surface": "dashboard",
+        "blind_key": {
+          "A": "none",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "The oversized 207 kWh total draws attention before the equipment comparison, sitting beside the chart on desktop and above it on mobile."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The desktop chart aligns names, bars and readings in three columns, and the mobile layout keeps each name and reading directly above its bar."
+            },
+            "typography": {
+              "score": 3,
+              "evidence": "Bold equipment names and readings are easy to scan at both widths, though the small kWh suffixes and axis numerals take more effort to read on mobile."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Dark green marks Yesterday as active, lime highlights the total, and the three green bars stand out against the pale chart at both widths."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "At both widths, the browser tree confirms the visible selection with a checked Yesterday radio in the Day group and lists each equipment name, value and unit under Use by equipment."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both widths show Yesterday selected with Boiler 120 kWh, Lighting 66 kWh and Lift 21 kWh, plus a Today option whose activation and resulting readings are unverified."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The orange 120 kWh Boiler reading draws the eye to the longest bar at both widths, with Lighting and Lift directly below on the same scale."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The desktop rows share a bar origin and a right-aligned value column, and the mobile dividers keep each label and reading grouped with its bar."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "Large, bold readings pair with smaller baseline-aligned kWh units, keeping the amounts easy to scan and their units legible down to 390 pixels."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Orange identifies the active day and highlights the highest reading, while the gray Lighting and Lift bars remain distinct from their dark tracks at both widths."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Both browser trees identify Yesterday as checked in the Day group and expose a figure named for that day with each visible equipment reading listed in kWh."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both charts show proportional bars for Boiler 120 kWh, Lighting 66 kWh and Lift 21 kWh with Yesterday active, and neither capture verifies the result of choosing Today."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26250,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3761,
+          "reasoning_output_tokens": 3117
+        },
+        "scores": {
+          "none": 87.5,
+          "v2": 95.83333333333334
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "3ae90a9bbd6ecfe2b9b17c6da87ebc7a46a3a51467af31f0ad22d298c87b30f4",
+          "A-390.png": "9e4386127ecc5d36559acb85988ce97c5ee18231a1e7a75824ba92e598f16643",
+          "B-1440.png": "807048c6265a7924214cb8423227a6c51df1dcd6e2f5307714d7d2e04533f9af",
+          "B-390.png": "78fab0f830ff78973119770e391558e8bed8260213613309376455db786c10ca"
+        },
+        "judge_prompt_sha256": "b48b24c64458cb8849bd8b5d8c58d9885d51329bb65303c3c1fd9a74071831f4"
+      }
+    },
+    "dashboard-library": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44991749251",
+      "cells": {
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 20076,
+              "cached_input_tokens": 0,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 15903,
+              "reasoning_output_tokens": 10670
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "dashboard-library",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "0602fcb7788c3368a7afe5e2b2a81b0558d6120a8c968a7310d1ae3942dae6fb",
+            "elapsed_seconds": 322.48,
+            "exit_code": 0,
+            "trace_sha256": "bdb7c6a22d96ae8aeb7389bc0e74fc92b3978f9e60c2752df351d96549f494d0",
+            "html_sha256": "1223f29ce4a126ce0138a81f815ce91cd45a11875092662894dddc3e00c7f037"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "100cc77452a89024eee57abcae7e701a8c85456b68759268981545f6d384f632",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "fe85e72753b0f5ae4804b8771a37f77316173edeeb934ec4a179e065d112fb7b",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 63802,
+              "cached_input_tokens": 52608,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 16988,
+              "reasoning_output_tokens": 12875
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "dashboard-library",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "0602fcb7788c3368a7afe5e2b2a81b0558d6120a8c968a7310d1ae3942dae6fb",
+            "elapsed_seconds": 346.72,
+            "exit_code": 0,
+            "trace_sha256": "3d9f0775e346f03cdcf6a37159621b220bf3fd9ac4dc0e0806b0b09fdfbe57d3",
+            "html_sha256": "b592e1770932e20c4e18208585d7543d0bf2bd90addb6f2f2d28fa8723e1136e"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "0b40abe6a6e8d667df29bffefeaa0b39ec104243915de9c3ca8ac37ccb76db83",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "c4d7c881961672b90d034174527d070e21a418c0c9f1222b45a248ec0ab5e18d",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "dashboard-library",
+        "surface": "dashboard",
+        "blind_key": {
+          "A": "none",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "The title and branch table are easy to locate at both widths, but the illustrated banner draws the eye before the operational figures, with the 6 expiring holds second to the 36 waiting."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The filters sit beside the branch heading on desktop and move below the branch count on mobile, leaving all three table columns clearly separated."
+            },
+            "typography": {
+              "score": 3,
+              "evidence": "The serif headings and bold sans-serif counts are easy to distinguish, though the small mobile column labels take more effort to read."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Dark green marks the selected filter, and the gold expiration total connects visually to the warm badges for 4 and 2 while River\u2019s 0 stays neutral."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "Both browser trees expose the pressed filter, branch-count status and table headers, while the count of two affected branches appears only in the visible filter badge."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "The table shows Downtown at 18 waiting and 4 expiring, North at 11 and 2, and River at 7 and 0, with labeled filters showing three branches overall and two with expirations."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, the orange panel gives first emphasis to 6 holds expiring across 2 branches, followed by the waiting total and the branch breakdown."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The side-by-side desktop totals stack at 390 px, where the filters get their own line above the table and each value stays aligned beneath its column heading."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The headline wraps cleanly after \u201cToday\u2019s\u201d on mobile, and the larger, heavier table numerals remain easy to scan beneath smaller column labels at both widths."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The orange summary and peach highlights link today\u2019s expirations to Downtown\u2019s 4 and North\u2019s 2, while the charcoal filter fill clearly marks the selected view."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "At both widths, the readable visual labels are backed by browser evidence for \u201cAcross 2 branches,\u201d both filter names, the pressed selection, the result-count status and table row and column headers."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "The initial view shows Downtown at 18 waiting and 4 expiring, North at 11 and 2, and River at 7 and 0, alongside both filter choices, the 3-of-3 status and the two-branch expiration count."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26782,
+          "cached_input_tokens": 17792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3574,
+          "reasoning_output_tokens": 2882
+        },
+        "scores": {
+          "none": 87.5,
+          "v2": 100
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "100cc77452a89024eee57abcae7e701a8c85456b68759268981545f6d384f632",
+          "A-390.png": "fe85e72753b0f5ae4804b8771a37f77316173edeeb934ec4a179e065d112fb7b",
+          "B-1440.png": "0b40abe6a6e8d667df29bffefeaa0b39ec104243915de9c3ca8ac37ccb76db83",
+          "B-390.png": "c4d7c881961672b90d034174527d070e21a418c0c9f1222b45a248ec0ab5e18d"
+        },
+        "judge_prompt_sha256": "f1cbd9314a664bb7f6dde6bbbcac48ccd5981b7320ed48e631997c2f4243fd1d"
       }
     }
   }
