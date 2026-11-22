@@ -31,7 +31,7 @@ jobs:
           cells="$RUNNER_TEMP/pilot"
           chrome="$RUNNER_TEMP/browser/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
           python evals/v1/render_pilot.py --stage "$cells"
-          python evals/v1/render_pilot.py --cells "$cells" --scratch "$RUNNER_TEMP/profile" +            --playwriter "$RUNNER_TEMP/playwriter/node_modules/.bin/playwriter" --chrome "$chrome"
+          python evals/v1/render_pilot.py --cells "$cells" --scratch "$RUNNER_TEMP/profile" --playwriter "$RUNNER_TEMP/playwriter/node_modules/.bin/playwriter" --chrome "$chrome"
           python evals/v1/render_pilot.py --verify "$cells"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
