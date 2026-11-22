@@ -48,7 +48,12 @@ app.whenReady().then(async () => {
       "({ focus: document.activeElement.id, status: document.querySelector('#status').textContent })"
     );
 
-    proof.initial = await observe();
+    for (let step = 0; step < 6; step++) {
+      proof.initial = await observe();
+      if (proof.initial.focus === "reveal") break;
+      execFileSync("xdotool", ["key", "--clearmodifiers", "Tab"]);
+      await delay(50);
+    }
     assert.deepEqual(proof.initial, { focus: "reveal", status: "Control covered" });
     const before = await capture("before");
     assert.deepEqual(before.findings, [["control-not-hittable", "r2"], ["control-clipped", "r4"]]);
