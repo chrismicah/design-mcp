@@ -1,0 +1,89 @@
+{
+  "case": "dashboard-clear",
+  "reaction": "too generic",
+  "reaction_number": 2,
+  "arms": {
+    "plain": {
+      "usage": {
+        "input_tokens": 122861,
+        "cached_input_tokens": 55296,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 49023,
+        "reasoning_output_tokens": 33027
+      },
+      "tool_calls": [],
+      "client_errors": [],
+      "treatment_call": false,
+      "status": "passed",
+      "html_sha256": "5424fc3eb3059bc4310a61a49354cde68110990179e060a3990de0e46b80a63c",
+      "case": "dashboard-clear",
+      "arm": "plain",
+      "thread_id": "01a202de-bd0a-72b3-bd0b-ddc92393a625",
+      "client": "codex-cli 0.170.0",
+      "model": "gpt-6.2-sol",
+      "effort": "max",
+      "source_commit": null,
+      "reaction_number": 2,
+      "previous_html_sha256": "1667353f0ce4d483bd8b501cd6accf31738f787e990740c6f7517071b0a12977",
+      "elapsed_seconds": 315.15,
+      "exit_code": 0,
+      "prompt_sha256": "56c3333572c36677986583d581d34842cb36fb3de218be425109c47dc222325c",
+      "trace_sha256": "ca9d37be7e6af8747bd8b066ae8581d5c77ee64a082a894a25a4b87a238e9d17"
+    },
+    "design-mcp": {
+      "usage": {
+        "input_tokens": 251387,
+        "cached_input_tokens": 215680,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 43313,
+        "reasoning_output_tokens": 27014
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "design-mcp",
+          "tool": "react",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "treatment_call": true,
+      "status": "passed",
+      "html_sha256": "2bcc76b4fb2043b915d6393a1268a85bf848819baa8ab7961a5116d6016d30b6",
+      "case": "dashboard-clear",
+      "arm": "design-mcp",
+      "thread_id": "01a202de-bd0a-7810-a884-9e1a0ac1dd24",
+      "client": "codex-cli 0.170.0",
+      "model": "gpt-6.2-sol",
+      "effort": "max",
+      "source_commit": "2fcd31221671590152401d958b904141e438e453",
+      "reaction_number": 2,
+      "previous_html_sha256": "f29ea52adb767fd59148679489c842e2a89de569cfbda75219b9960316ac6712",
+      "elapsed_seconds": 291.25,
+      "exit_code": 0,
+      "prompt_sha256": "56c3333572c36677986583d581d34842cb36fb3de218be425109c47dc222325c",
+      "trace_sha256": "4c965e83f0e23ec6594714c74c272fd990c43e6acef7bf6daa02abd89dcd66d1"
+    }
+  },
+  "react": {
+    "arguments": {
+      "direction_id": "exception-first",
+      "reaction": "too generic"
+    },
+    "reply": {
+      "direction_id": "exception-first",
+      "changes": {
+        "composition": "Replace one broad, reusable section with this subject-specific focus: the deviation value at 40px tabular figures, with an 'n / total' position label",
+        "imagery": "none; location codes act as the visuals",
+        "mobile_order": "strip, then rail, then table as stacked rows"
+      },
+      "why": "Make the composition express the project's real content.",
+      "keep": [
+        "primary task",
+        "project content",
+        "brand constraints",
+        "accessibility"
+      ]
+    }
+  }
+}
