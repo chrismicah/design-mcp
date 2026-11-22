@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Compare Relay Notes transcription plans, included hours, and prices.">
+  <title>Pricing | Relay Notes</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;family=Bricolage+Grotesque:opsz,wght@12..96,700..800&amp;display=swap">
+  <style>
+    :root {
+      --paper: #fbfaf7;
+      --ink: #15171c;
+      --pine: #1f6f5c;
+      --sage: #e8efe7;
+      --rule: #c9d4cb;
+      --gold: #e6b967;
+      --display: "Bricolage Grotesque", "Trebuchet MS", sans-serif;
+      --body: "Atkinson Hyperlegible", Verdana, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 17px/1.45 var(--body);
+    }
+
+    button { font: inherit; }
+    button, a, label { -webkit-tap-highlight-color: transparent; }
+
+    :where(a, button):focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    .shell {
+      width: min(1216px, calc(100% - 80px));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      display: flex;
+      min-height: 75px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .wordmark {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font: 800 23px/1 var(--display);
+      letter-spacing: -.045em;
+      white-space: nowrap;
+    }
+
+    .wordmark svg { flex: none; }
+
+    .header-link {
+      color: var(--pine);
+      font-size: 15px;
+      font-weight: 700;
+      text-underline-offset: 4px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.17fr) minmax(0, .83fr);
+      grid-template-areas:
+        "intro meter"
+        "plans plans"
+        "actions actions";
+      column-gap: clamp(28px, 5.2vw, 76px);
+      align-items: end;
+      padding-block: 62px 64px;
+    }
+
+    .intro { grid-area: intro; }
+
+    h1 {
+      margin: 0;
+      font: 800 clamp(48px, 6.15vw, 88px)/.96 var(--display);
+      letter-spacing: -.06em;
+    }
+
+    h1 span { display: block; }
+
+    .intro p {
+      max-width: 46ch;
+      margin: 20px 0 0;
+      font-size: 19px;
+    }
+
+    .svg-definitions {
+      position: absolute;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+    }
+
+    .meter {
+      --position: 33.3333%;
+      grid-area: meter;
+      min-width: 0;
+      margin: 0;
+      padding: 22px 26px 18px;
+      border-radius: 5px;
+      background: var(--pine);
+      color: var(--paper);
+    }
+
+    .meter figcaption {
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .caption-short, .wave--vertical { display: none; }
+
+    .meter-plot {
+      position: relative;
+      height: 94px;
+      margin-top: 13px;
+    }
+
+    .wave {
+      position: absolute;
+      top: 0;
+      left: 0;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+    }
+
+    .wave--horizontal { width: 100%; height: 64px; }
+    .wave-base { stroke: var(--paper); opacity: .32; }
+    .wave-played { stroke: var(--gold); }
+
+    .fill-horizontal {
+      width: var(--position);
+      transition: width 280ms ease-out;
+    }
+
+    .fill-vertical {
+      height: var(--position);
+      transition: height 280ms ease-out;
+    }
+
+    .meter-axis {
+      position: absolute;
+      inset: 70px 0 0;
+      border-top: 1px solid rgb(251 250 247 / .5);
+    }
+
+    .tick {
+      position: absolute;
+      top: 0;
+      left: var(--at);
+      padding-top: 5px;
+      font-size: 13px;
+      font-variant-numeric: tabular-nums;
+      transform: translateX(-50%);
+    }
+
+    .tick::before {
+      position: absolute;
+      top: -4px;
+      left: 50%;
+      width: 1px;
+      height: 4px;
+      background: currentColor;
+      content: "";
+    }
+
+    .tick:first-child { transform: none; }
+    .tick:first-child::before { left: 0; }
+    .tick:last-child { transform: translateX(-100%); }
+    .tick:last-child::before { right: 0; left: auto; }
+    .tick.is-current { font-weight: 700; }
+
+    .playhead {
+      position: absolute;
+      inset: 0 auto 24px var(--position);
+      width: 1px;
+      background: var(--gold);
+      transform: translateX(-50%);
+      transition: left 280ms ease-out;
+    }
+
+    .playhead::after {
+      position: absolute;
+      bottom: -3px;
+      left: 50%;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      content: "";
+      transform: translateX(-50%);
+    }
+
+    .plans {
+      grid-area: plans;
+      min-width: 0;
+      margin-top: 42px;
+      scroll-margin-top: 16px;
+    }
+
+    .plans:focus-visible {
+      outline: 2px solid var(--pine);
+      outline-offset: 4px;
+    }
+
+    fieldset {
+      min-inline-size: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    .plan-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border-block: 1px solid var(--rule);
+    }
+
+    .plan { position: relative; min-width: 0; }
+    .plan + .plan { border-inline-start: 1px solid var(--rule); }
+
+    .plan-radio {
+      position: absolute;
+      z-index: 1;
+      top: 30px;
+      right: clamp(17px, 2.25vw, 31px);
+      width: 22px;
+      height: 22px;
+      margin: 0;
+      accent-color: var(--pine);
+      cursor: pointer;
+    }
+
+    .plan-label {
+      position: relative;
+      display: grid;
+      height: 100%;
+      grid-template-areas: "name" "price" "details";
+      grid-template-rows: auto auto 1fr;
+      padding: 26px clamp(17px, 2.25vw, 31px) 24px;
+      cursor: pointer;
+    }
+
+    .plan-label:hover { background: rgb(232 239 231 / .5); }
+
+    .plan-radio:checked + .plan-label {
+      background: var(--sage);
+      box-shadow: inset 0 3px var(--pine);
+    }
+
+    .plan-radio:focus-visible { outline: none; }
+
+    .plan-radio:focus-visible + .plan-label {
+      outline: 2px solid var(--pine);
+      outline-offset: -6px;
+    }
+
+    .plan-name {
+      grid-area: name;
+      padding-inline-end: 24px;
+      font: 800 clamp(45px, 5.7vw, 82px)/.95 var(--display);
+      letter-spacing: -.062em;
+    }
+
+    .plan-price {
+      grid-area: price;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-top: 15px;
+      font: 700 35px/1.05 var(--display);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -.04em;
+    }
+
+    .period {
+      font: 400 16px/1.2 var(--body);
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+
+    .plan-details {
+      grid-area: details;
+      display: grid;
+      align-content: start;
+      gap: 2px;
+      margin-top: 17px;
+      padding-top: 11px;
+      border-top: 1px solid var(--rule);
+      font-size: 16px;
+    }
+
+    .plan-hours { font-weight: 700; }
+    .plan-feature { line-height: 1.3; }
+
+    .actions {
+      grid-area: actions;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 23px;
+    }
+
+    .plan-status {
+      margin: 0;
+      color: var(--pine);
+      font-weight: 700;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 10px 17px;
+      border: 1px solid transparent;
+      border-radius: 5px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .button-primary {
+      background: var(--pine);
+      color: var(--paper);
+    }
+
+    .button-primary:hover { filter: brightness(.9); }
+
+    .button-primary:focus-visible {
+      outline-offset: 2px;
+      box-shadow: 0 0 0 2px var(--paper);
+    }
+
+    .button-secondary {
+      border-color: var(--rule);
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    .button-secondary:hover { background: var(--sage); }
+
+    .continue {
+      min-height: 56px;
+      margin-inline-start: auto;
+      text-align: start;
+    }
+
+    .continue-price {
+      padding-inline-start: 12px;
+      border-inline-start: 1px solid rgb(251 250 247 / .45);
+      font-size: 15px;
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    .continue svg { flex: none; }
+
+    dialog {
+      width: min(440px, calc(100% - 40px));
+      max-height: calc(100% - 40px);
+      padding: 0;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    dialog::backdrop { background: rgb(21 23 28 / .55); }
+
+    .review { padding: clamp(20px, 6vw, 32px); }
+
+    .review h2 {
+      margin: 0;
+      font: 800 42px/1 var(--display);
+      letter-spacing: -.05em;
+    }
+
+    .review-summary { margin: 23px 0; }
+
+    .review-summary > div:not([hidden]) {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding-block: 10px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .review-summary dd {
+      margin: 0;
+      font-weight: 700;
+      text-align: end;
+    }
+
+    .review-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    @media (max-width: 700px) {
+      .shell { width: calc(100% - 40px); }
+      .site-header { min-height: 63px; }
+      .wordmark { font-size: 21px; }
+      .wordmark svg { width: 30px; height: 30px; }
+
+      .layout {
+        grid-template-columns: 59px minmax(0, 1fr);
+        grid-template-areas:
+          "intro intro"
+          "meter plans"
+          "actions actions";
+        column-gap: 12px;
+        padding-block: 34px 38px;
+      }
+
+      h1 { font-size: clamp(37px, 12.5vw, 56px); }
+
+      .intro p {
+        margin-top: 14px;
+        font-size: 17px;
+      }
+
+      .meter, .plans { margin-top: 25px; }
+
+      .meter {
+        display: flex;
+        align-self: stretch;
+        flex-direction: column;
+        padding: 10px 7px 13px;
+      }
+
+      .meter figcaption { text-align: center; }
+      .caption-full, .wave--horizontal { display: none; }
+      .caption-short { display: inline; }
+
+      .meter-plot {
+        flex: 1;
+        height: auto;
+        margin-block: 16px 6px;
+      }
+
+      .wave--vertical {
+        display: block;
+        width: 17px;
+        height: 100%;
+      }
+
+      .meter-axis {
+        inset: 0 auto 0 20px;
+        border-top: 0;
+        border-inline-start: 1px solid rgb(251 250 247 / .5);
+      }
+
+      .tick,
+      .tick:first-child,
+      .tick:last-child {
+        top: var(--at);
+        left: 0;
+        padding: 0 0 0 5px;
+        font-size: 12px;
+        transform: translateY(-50%);
+      }
+
+      .tick::before,
+      .tick:first-child::before,
+      .tick:last-child::before {
+        top: 50%;
+        right: auto;
+        left: -3px;
+        width: 3px;
+        height: 1px;
+      }
+
+      .playhead {
+        inset: var(--position) auto auto 0;
+        width: 20px;
+        height: 1px;
+        transform: translateY(-50%);
+        transition-property: top;
+      }
+
+      .playhead::after {
+        right: -3px;
+        bottom: -2.5px;
+        left: auto;
+        transform: none;
+      }
+
+      .plan-list {
+        grid-template-columns: minmax(0, 1fr);
+        grid-auto-rows: 1fr;
+      }
+
+      .plan + .plan {
+        border-inline-start: 0;
+        border-top: 1px solid var(--rule);
+      }
+
+      .plan-radio {
+        top: 19px;
+        right: 15px;
+      }
+
+      .plan-label {
+        min-height: 120px;
+        grid-template-columns: minmax(max-content, .9fr) minmax(0, 1.1fr);
+        grid-template-areas: "name name" "price details";
+        grid-template-rows: auto 1fr;
+        column-gap: 11px;
+        padding: 15px 14px;
+      }
+
+      .plan-radio:checked + .plan-label {
+        box-shadow: inset 3px 0 var(--pine);
+      }
+
+      .plan-name { font-size: clamp(39px, 12.6vw, 56px); }
+
+      .plan-price {
+        gap: 4px;
+        margin-top: 12px;
+        font-size: 29px;
+      }
+
+      .period { font-size: 14px; }
+
+      .plan-details {
+        margin-top: 12px;
+        padding-top: 0;
+        border-top: 0;
+        line-height: 1.3;
+      }
+
+      .plan-feature { font-size: 14px; }
+
+      .actions {
+        display: grid;
+        gap: 0;
+        margin-top: 19px;
+      }
+
+      .plan-status:not(:empty) { margin-bottom: 10px; }
+
+      .continue {
+        width: 100%;
+        justify-content: space-between;
+        gap: 9px;
+        padding-inline: 15px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .playhead, .fill-horizontal, .fill-vertical { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <svg class="svg-definitions" aria-hidden="true" width="0" height="0">
+    <defs>
+      <path id="interview-wave" vector-effect="non-scaling-stroke" d="
+        M2 30v4 M10 28v8 M18 25v14 M26 17v30 M34 9v46 M42 4v56
+        M50 14v36 M58 19v26 M66 11v42 M74 23v18 M82 27v10 M90 29v6
+        M98 26v12 M106 20v24 M114 13v38 M122 6v52 M130 16v32 M138 22v20
+        M146 13v38 M154 23v18 M162 27v10 M170 30v4 M178 29v6 M186 26v12
+        M194 22v20 M202 16v32 M210 8v48 M218 12v40 M226 19v26 M234 10v44
+        M242 20v24 M250 24v16 M258 28v8 M266 30v4 M274 28v8 M282 25v14
+        M290 18v28 M298 10v44 M306 4v56 M314 12v40 M322 20v24 M330 16v32
+        M338 23v18 M346 28v8 M354 30v4 M362 27v10 M370 21v22 M378 13v38
+        M386 17v30 M394 7v50 M402 15v34 M410 23v18 M418 26v12 M426 29v6
+        M434 26v12 M442 19v26 M450 14v36 M458 20v24 M466 26v12 M474 29v6">
+      </path>
+    </defs>
+  </svg>
+
+  <header class="site-header shell">
+    <div class="wordmark">
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+        <rect width="34" height="34" rx="8" fill="#1f6f5c"/>
+        <path d="M6.5 17h3.7l2.2-5.2 3.1 10.4 3.3-14 3.1 13.5 2-4.7h3.6"
+          fill="none" stroke="#fbfaf7" stroke-width="1.7"
+          stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Relay Notes</span>
+    </div>
+    <a class="header-link" href="#plans">Compare plans</a>
+  </header>
+
+  <main class="layout shell">
+    <section class="intro" aria-labelledby="page-title">
+      <h1 id="page-title">Pricing for <span>your interviews</span></h1>
+      <p>Choose how many hours of transcription you need.</p>
+    </section>
+
+    <figure class="meter" id="hours-meter" aria-hidden="true">
+      <figcaption>
+        <span class="caption-full">Included transcription hours</span>
+        <span class="caption-short">Hours</span>
+      </figcaption>
+      <div class="meter-plot">
+        <svg class="wave wave--horizontal" viewBox="0 0 480 64" preserveAspectRatio="none">
+          <defs>
+            <clipPath id="played-horizontal">
+              <rect class="fill-horizontal" width="160" height="64"/>
+            </clipPath>
+          </defs>
+          <use class="wave-base" href="#interview-wave"/>
+          <use class="wave-played" href="#interview-wave" clip-path="url(#played-horizontal)"/>
+        </svg>
+        <svg class="wave wave--vertical" viewBox="0 0 64 480" preserveAspectRatio="none">
+          <defs>
+            <clipPath id="played-vertical">
+              <rect class="fill-vertical" width="64" height="160"/>
+            </clipPath>
+          </defs>
+          <use class="wave-base" href="#interview-wave" transform="translate(64 0) rotate(90)"/>
+          <g clip-path="url(#played-vertical)">
+            <use class="wave-played" href="#interview-wave" transform="translate(64 0) rotate(90)"/>
+          </g>
+        </svg>
+        <div class="meter-axis">
+          <span class="tick" data-hours="0" style="--at: 0%">0</span>
+          <span class="tick" data-hours="10" style="--at: 8.3333%">10</span>
+          <span class="tick is-current" data-hours="40" style="--at: 33.3333%">40</span>
+          <span class="tick" data-hours="120" style="--at: 100%">120</span>
+        </div>
+        <span class="playhead"></span>
+      </div>
+    </figure>
+
+    <form class="plans" id="plans" tabindex="-1" aria-label="Pricing plans">
+      <fieldset>
+        <legend class="visually-hidden">Choose a plan</legend>
+        <div class="plan-list">
+          <div class="plan">
+            <input class="plan-radio" type="radio" name="plan" id="solo" value="Solo"
+              data-hours="10" aria-labelledby="solo-name" aria-describedby="solo-price solo-details">
+            <label class="plan-label" for="solo">
+              <span class="plan-name" id="solo-name">Solo</span>
+              <span class="plan-price" id="solo-price"><span>$12</span> <span class="period">/ month</span></span>
+              <span class="plan-details" id="solo-details">
+                <span class="plan-hours">10 hours</span>
+              </span>
+            </label>
+          </div>
+
+          <div class="plan">
+            <input class="plan-radio" type="radio" name="plan" id="team" value="Team"
+              data-hours="40" aria-labelledby="team-name" aria-describedby="team-price team-details" checked>
+            <label class="plan-label" for="team">
+              <span class="plan-name" id="team-name">Team</span>
+              <span class="plan-price" id="team-price"><span>$28</span> <span class="period">/ month</span></span>
+              <span class="plan-details" id="team-details">
+                <span class="plan-hours">40 hours</span>
+                <span class="plan-feature">Shared vocabulary</span>
+              </span>
+            </label>
+          </div>
+
+          <div class="plan">
+            <input class="plan-radio" type="radio" name="plan" id="studio" value="Studio"
+              data-hours="120" aria-labelledby="studio-name" aria-describedby="studio-price studio-details">
+            <label class="plan-label" for="studio">
+              <span class="plan-name" id="studio-name">Studio</span>
+              <span class="plan-price" id="studio-price"><span>$60</span></span>
+              <span class="plan-details" id="studio-details">
+                <span class="plan-hours">120 hours</span>
+                <span class="plan-feature">Approvals</span>
+              </span>
+            </label>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+
+    <div class="actions">
+      <p class="plan-status" id="plan-status" role="status"></p>
+      <button class="button button-primary continue" id="continue-button" type="submit" form="plans">
+        <span id="continue-label">Continue with Team</span>
+        <span class="continue-price" id="continue-price">$28 / month</span>
+        <svg width="17" height="14" viewBox="0 0 17 14" aria-hidden="true">
+          <path d="M1.5 7h13m-5-5 5 5-5 5"
+            fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </main>
+
+  <dialog id="plan-review" aria-labelledby="review-title">
+    <form class="review" method="dialog">
+      <h2 id="review-title">Review your plan</h2>
+      <dl class="review-summary">
+        <div>
+          <dt>Price</dt>
+          <dd id="review-price"></dd>
+        </div>
+        <div>
+          <dt>Transcription</dt>
+          <dd id="review-hours"></dd>
+        </div>
+        <div id="review-feature-row" hidden>
+          <dt>Included feature</dt>
+          <dd id="review-feature"></dd>
+        </div>
+      </dl>
+      <div class="review-actions">
+        <button class="button button-secondary" type="submit" value="back" autofocus>Back to plans</button>
+        <button class="button button-primary" type="submit" value="confirm">Confirm choice</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script>
+    const plans = document.getElementById("plans");
+    const meter = document.getElementById("hours-meter");
+    const ticks = [...meter.querySelectorAll(".tick")];
+    const maximumHours = Number(ticks.at(-1).dataset.hours);
+    const continueButton = document.getElementById("continue-button");
+    const continueLabel = document.getElementById("continue-label");
+    const continuePrice = document.getElementById("continue-price");
+    const status = document.getElementById("plan-status");
+    const review = document.getElementById("plan-review");
+    const reviewTitle = document.getElementById("review-title");
+    const reviewPrice = document.getElementById("review-price");
+    const reviewHours = document.getElementById("review-hours");
+    const reviewFeatureRow = document.getElementById("review-feature-row");
+    const reviewFeature = document.getElementById("review-feature");
+    let reviewedName = "";
+
+    function selectedPlan() {
+      const choice = plans.querySelector('input[name="plan"]:checked');
+      const label = choice.labels[0];
+
+      return {
+        name: choice.value,
+        hours: Number(choice.dataset.hours),
+        price: label.querySelector(".plan-price").textContent.trim().replace(/\s+/g, " "),
+        feature: label.querySelector(".plan-feature")?.textContent.trim() ?? ""
+      };
+    }
+
+    function updateSelection() {
+      const plan = selectedPlan();
+      meter.style.setProperty("--position", `${plan.hours / maximumHours * 100}%`);
+
+      for (const tick of ticks) {
+        tick.classList.toggle("is-current", Number(tick.dataset.hours) === plan.hours);
+      }
+
+      continueLabel.textContent = `Continue with ${plan.name}`;
+      continuePrice.textContent = plan.price;
+    }
+
+    plans.addEventListener("change", () => {
+      status.textContent = "";
+      updateSelection();
+    });
+
+    plans.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const plan = selectedPlan();
+
+      reviewedName = plan.name;
+      reviewTitle.textContent = `${plan.name} plan`;
+      reviewPrice.textContent = plan.price;
+      reviewHours.textContent = `${plan.hours} hours`;
+      reviewFeature.textContent = plan.feature;
+      reviewFeatureRow.hidden = !plan.feature;
+      review.returnValue = "";
+      review.showModal();
+    });
+
+    review.addEventListener("close", () => {
+      if (review.returnValue === "confirm") {
+        status.textContent = `${reviewedName} plan choice confirmed.`;
+      }
+      continueButton.focus({ preventScroll: true });
+    });
+
+    updateSelection();
+    window.addEventListener("pageshow", updateSelection);
+  </script>
+  <!-- Team starts selected. Studio displays the supplied $60. Confirmation stays on this page.
+       Verification for this response was a source review. -->
+</body>
+</html>

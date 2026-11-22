@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<!--
+  Researchers need to compare transcription hours, features, and prices, then
+  choose a plan. The page should feel clear and assured. Its scope is pricing
+  and plan selection.
+
+  Palette: Mist #F1F4F3, Paper #FFFFFF, Ink #142A32, Slate #4A6067,
+  Recording Blue #244CC5, and Rule #CBD7D6.
+
+  Newsreader gives the headline and plan names an editorial scale.
+  Instrument Sans keeps prices, details, and actions easy to scan.
+  One comparison sheet stacks on phones. A waveform resolving into lines
+  of text anchors the introduction. Continue confirms the choice for this visit.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Compare Solo, Team, and Studio interview transcription plans from Relay Notes.">
+  <title>Pricing | Relay Notes</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&amp;family=Newsreader:opsz,wght@6..72,500&amp;display=swap">
+  <style>
+    :root {
+      --mist: #f1f4f3;
+      --paper: #ffffff;
+      --ink: #142a32;
+      --slate: #4a6067;
+      --blue: #244cc5;
+      --rule: #cbd7d6;
+      --display: "Newsreader", Georgia, serif;
+      --body: "Instrument Sans", sans-serif;
+      --gutter: clamp(1.25rem, 4vw, 3.5rem);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    body {
+      margin: 0;
+      background: var(--mist);
+      color: var(--ink);
+      font: 1rem / 1.5 var(--body);
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    .plans:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 4px;
+    }
+
+    .frame {
+      inline-size: calc(100% - var(--gutter) - var(--gutter));
+      max-inline-size: 75rem;
+      margin-inline: auto;
+    }
+
+    .masthead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-block-size: 4.75rem;
+      border-block-end: 1px solid var(--rule);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: .625rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -.045em;
+    }
+
+    .brand-mark {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      inline-size: 2rem;
+      block-size: 2rem;
+      border-radius: 5px;
+      background: var(--blue);
+    }
+
+    .brand-mark span {
+      inline-size: 2px;
+      block-size: var(--height);
+      border-radius: 2px;
+      background: var(--paper);
+    }
+
+    .plans-link {
+      display: inline-flex;
+      align-items: center;
+      min-block-size: 2.75rem;
+      color: var(--ink);
+      font-size: .9375rem;
+      font-weight: 600;
+      text-decoration-color: var(--slate);
+      text-underline-offset: .28em;
+    }
+
+    .plans-link:hover {
+      color: var(--blue);
+    }
+
+    main {
+      padding-block-end: clamp(2.75rem, 6vw, 5rem);
+    }
+
+    .intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      align-items: center;
+      gap: clamp(2rem, 5.4vw, 5rem);
+      padding-block: clamp(3rem, 5vw, 4.5rem) clamp(2.75rem, 4.25vw, 3.875rem);
+    }
+
+    h1, .plan-name, .dialog-title {
+      margin: 0;
+      font-family: var(--display);
+      font-weight: 500;
+      letter-spacing: -.04em;
+    }
+
+    h1 {
+      font-size: clamp(2.9rem, 5.6vw, 5.35rem);
+      line-height: .96;
+    }
+
+    h1 span {
+      display: block;
+    }
+
+    .intro-copy p {
+      max-inline-size: 42ch;
+      margin: 1.15rem 0 0;
+      color: var(--slate);
+      font-size: 1.0625rem;
+    }
+
+    .signal-figure {
+      --grid-line: color-mix(in srgb, var(--blue) 12%, transparent);
+      --signal-line: color-mix(in srgb, var(--blue) 43%, transparent);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) clamp(1.375rem, 3vw, 2.75rem) minmax(0, .76fr);
+      align-items: center;
+      min-block-size: 13rem;
+      padding: 1.5rem;
+      border: 1px solid var(--rule);
+      background-color: color-mix(in srgb, var(--blue) 6%, var(--paper));
+      background-image:
+        linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+      background-position: center;
+      background-size: 24px 24px;
+    }
+
+    .waveform {
+      position: relative;
+      isolation: isolate;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2px;
+      block-size: 6.25rem;
+      padding-inline: .375rem;
+    }
+
+    .waveform::before {
+      position: absolute;
+      z-index: -1;
+      inset: 50% 0 auto;
+      block-size: 1px;
+      background: var(--signal-line);
+      content: "";
+    }
+
+    .waveform span {
+      flex: 1 1 0;
+      max-inline-size: 5px;
+      block-size: var(--height);
+      border-radius: 4px;
+      background: var(--blue);
+    }
+
+    .signal-connector {
+      position: relative;
+      block-size: 1px;
+      background: var(--signal-line);
+    }
+
+    .signal-connector::after {
+      position: absolute;
+      inset-block-start: 50%;
+      inset-inline-start: 50%;
+      inline-size: 7px;
+      block-size: 7px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: var(--blue);
+      content: "";
+    }
+
+    .transcript {
+      display: grid;
+      gap: .625rem;
+      padding: 1rem;
+      border: 1px solid color-mix(in srgb, var(--blue) 34%, var(--paper));
+      background: var(--paper);
+      box-shadow: 5px 5px 0 color-mix(in srgb, var(--blue) 13%, transparent);
+    }
+
+    .transcript span {
+      inline-size: var(--width);
+      block-size: 4px;
+      border-radius: 2px;
+      background: color-mix(in srgb, var(--blue) 28%, var(--paper));
+    }
+
+    .transcript span:first-child {
+      margin-block-end: .2rem;
+      background: var(--blue);
+    }
+
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      scroll-margin-block-start: 1rem;
+      border: 1px solid var(--rule);
+      border-block-start: 2px solid var(--ink);
+      background: var(--paper);
+    }
+
+    .plan {
+      --plan-padding: clamp(1.5rem, 2.65vw, 2.375rem);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 2.125rem var(--plan-padding) var(--plan-padding);
+    }
+
+    .plan + .plan {
+      border-inline-start: 1px solid var(--rule);
+    }
+
+    .plan:has(.plan-status:not([hidden])) {
+      box-shadow: inset 0 3px var(--blue);
+    }
+
+    .plan-name {
+      font-size: clamp(3.6rem, 6vw, 5.5rem);
+      line-height: .96;
+    }
+
+    .plan-status {
+      position: absolute;
+      inset-block-start: .65rem;
+      inset-inline-end: var(--plan-padding);
+      color: var(--blue);
+      font-size: .8125rem;
+      font-weight: 700;
+    }
+
+    .plan-price {
+      display: flex;
+      align-items: baseline;
+      gap: .375rem;
+      margin: .65rem 0 0;
+      color: var(--slate);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .plan-price strong {
+      color: var(--ink);
+      font-size: 1.625rem;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -.025em;
+    }
+
+    .plan-facts {
+      display: grid;
+      gap: .5rem;
+      margin: 1.5rem 0 1.875rem;
+      padding: 1.125rem 0 0;
+      border-block-start: 1px solid var(--rule);
+      color: var(--slate);
+      list-style: none;
+    }
+
+    .plan-facts li {
+      display: grid;
+      grid-template-columns: .375rem minmax(0, 1fr);
+      gap: .625rem;
+    }
+
+    .plan-facts li::before {
+      inline-size: .3125rem;
+      block-size: .3125rem;
+      margin-block-start: .59rem;
+      border-radius: 50%;
+      background: var(--blue);
+      content: "";
+    }
+
+    .plan-facts strong {
+      color: var(--ink);
+      font-weight: 650;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-block-size: 3.125rem;
+      padding: .65rem 1rem;
+      border: 1px solid var(--blue);
+      border-radius: 4px;
+      background: var(--blue);
+      color: var(--paper);
+      font: 650 1rem / 1.3 var(--body);
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      border-color: var(--ink);
+      background: var(--ink);
+    }
+
+    .choose-plan {
+      margin-block-start: auto;
+    }
+
+    .button-secondary {
+      background: var(--paper);
+      color: var(--blue);
+    }
+
+    .button-secondary:hover {
+      border-color: var(--blue);
+      background: color-mix(in srgb, var(--blue) 7%, var(--paper));
+    }
+
+    .plan-dialog {
+      inline-size: min(29rem, calc(100% - 2rem));
+      max-block-size: calc(100% - 2rem);
+      margin: auto;
+      padding: clamp(1.5rem, 5vw, 2.25rem);
+      border: 1px solid var(--rule);
+      border-block-start: 3px solid var(--blue);
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    .plan-dialog::backdrop {
+      background: color-mix(in srgb, var(--ink) 55%, transparent);
+    }
+
+    body:has(.plan-dialog[open]) {
+      overflow: hidden;
+    }
+
+    .dialog-title {
+      font-size: clamp(2.5rem, 6vw, 3.25rem);
+      line-height: 1;
+    }
+
+    .dialog-title:focus {
+      outline: none;
+    }
+
+    .dialog-summary {
+      margin-block-start: 1rem;
+    }
+
+    .dialog-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .625rem;
+    }
+
+    .dialog-actions .button {
+      flex: 1 1 auto;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .plan-dialog[open] {
+        animation: open-review 160ms ease-out;
+      }
+
+      @keyframes open-review {
+        from {
+          opacity: 0;
+          transform: translateY(5px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+
+    @media (max-width: 47.5rem) {
+      .masthead {
+        min-block-size: 4rem;
+      }
+
+      .intro {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.375rem;
+        padding-block: 2.375rem 1.625rem;
+      }
+
+      h1 {
+        font-size: clamp(2.55rem, 11.4vw, 4.4rem);
+      }
+
+      .intro-copy p {
+        margin-block-start: .825rem;
+        font-size: 1rem;
+      }
+
+      .signal-figure {
+        min-block-size: 7.25rem;
+        padding: .8rem 1rem;
+      }
+
+      .waveform {
+        block-size: 4rem;
+      }
+
+      .transcript {
+        gap: .45rem;
+        padding: .7rem;
+      }
+
+      .transcript span {
+        block-size: 3px;
+      }
+
+      .plans {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .plan {
+        --plan-padding: 1.4rem;
+        padding-block: 1.75rem 1.4rem;
+      }
+
+      .plan + .plan {
+        border-block-start: 1px solid var(--rule);
+        border-inline-start: 0;
+      }
+
+      .plan-name {
+        font-size: clamp(3.625rem, 15vw, 5rem);
+      }
+
+      .plan-facts {
+        margin-block: 1.125rem 1.375rem;
+        padding-block-start: .875rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead frame">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <span style="--height: 6px"></span>
+        <span style="--height: 11px"></span>
+        <span style="--height: 17px"></span>
+        <span style="--height: 12px"></span>
+        <span style="--height: 7px"></span>
+      </span>
+      Relay Notes
+    </div>
+    <a class="plans-link" href="#plans">Compare plans</a>
+  </header>
+
+  <main class="frame">
+    <section class="intro" aria-labelledby="pricing-title">
+      <div class="intro-copy">
+        <h1 id="pricing-title">Pricing for <span>interview research</span></h1>
+        <p>Compare transcription hours and choose the features your research needs.</p>
+      </div>
+
+      <div class="signal-figure" aria-hidden="true">
+        <div class="waveform">
+          <span style="--height: 8%"></span>
+          <span style="--height: 16%"></span>
+          <span style="--height: 27%"></span>
+          <span style="--height: 53%"></span>
+          <span style="--height: 85%"></span>
+          <span style="--height: 64%"></span>
+          <span style="--height: 38%"></span>
+          <span style="--height: 19%"></span>
+          <span style="--height: 31%"></span>
+          <span style="--height: 56%"></span>
+          <span style="--height: 94%"></span>
+          <span style="--height: 75%"></span>
+          <span style="--height: 46%"></span>
+          <span style="--height: 22%"></span>
+          <span style="--height: 40%"></span>
+          <span style="--height: 64%"></span>
+          <span style="--height: 33%"></span>
+          <span style="--height: 19%"></span>
+          <span style="--height: 10%"></span>
+        </div>
+        <div class="signal-connector"></div>
+        <div class="transcript">
+          <span style="--width: 41%"></span>
+          <span style="--width: 100%"></span>
+          <span style="--width: 85%"></span>
+          <span style="--width: 96%"></span>
+          <span style="--width: 63%"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="plans" id="plans" aria-label="Pricing plans" tabindex="-1">
+      <article class="plan" aria-labelledby="solo-title">
+        <h2 class="plan-name" id="solo-title">Solo</h2>
+        <span class="plan-status" hidden>Selected</span>
+        <p class="plan-price"><strong>$12</strong> <span>per month</span></p>
+        <ul class="plan-facts" role="list">
+          <li><span><strong>10 hours</strong> of transcription</span></li>
+        </ul>
+        <button class="button choose-plan" type="button" aria-haspopup="dialog">Choose Solo</button>
+      </article>
+
+      <article class="plan" aria-labelledby="team-title">
+        <h2 class="plan-name" id="team-title">Team</h2>
+        <span class="plan-status" hidden>Selected</span>
+        <p class="plan-price"><strong>$28</strong> <span>per month</span></p>
+        <ul class="plan-facts" role="list">
+          <li><span><strong>40 hours</strong> of transcription</span></li>
+          <li><span>Shared vocabulary</span></li>
+        </ul>
+        <button class="button choose-plan" type="button" aria-haspopup="dialog">Choose Team</button>
+      </article>
+
+      <article class="plan" aria-labelledby="studio-title">
+        <h2 class="plan-name" id="studio-title">Studio</h2>
+        <span class="plan-status" hidden>Selected</span>
+        <p class="plan-price"><strong>$60</strong></p>
+        <ul class="plan-facts" role="list">
+          <li><span><strong>120 hours</strong> of transcription</span></li>
+          <li><span>Approvals</span></li>
+        </ul>
+        <button class="button choose-plan" type="button" aria-haspopup="dialog">Choose Studio</button>
+      </article>
+    </section>
+  </main>
+
+  <dialog class="plan-dialog" id="plan-dialog" aria-labelledby="dialog-title">
+    <h2 class="dialog-title" id="dialog-title" tabindex="-1">Review plan</h2>
+    <div class="dialog-summary" id="dialog-summary"></div>
+    <div class="dialog-actions" id="review-actions">
+      <button class="button button-secondary" id="back-to-plans" type="button">Back to plans</button>
+      <button class="button" id="continue-plan" type="button">Continue</button>
+    </div>
+    <div class="dialog-actions" id="confirmation-actions" hidden>
+      <button class="button" id="done" type="button">Done</button>
+    </div>
+  </dialog>
+
+  <script>
+    const dialog = document.getElementById("plan-dialog");
+    const dialogTitle = document.getElementById("dialog-title");
+    const summary = document.getElementById("dialog-summary");
+    const reviewActions = document.getElementById("review-actions");
+    const confirmationActions = document.getElementById("confirmation-actions");
+
+    let reviewedPlan;
+    let selectedPlan;
+    let opener;
+
+    for (const button of document.querySelectorAll(".choose-plan")) {
+      button.addEventListener("click", () => {
+        opener = button;
+        reviewedPlan = button.closest(".plan");
+        const name = reviewedPlan.querySelector(".plan-name").textContent;
+
+        dialogTitle.textContent = `Review ${name}`;
+        summary.replaceChildren(
+          reviewedPlan.querySelector(".plan-price").cloneNode(true),
+          reviewedPlan.querySelector(".plan-facts").cloneNode(true)
+        );
+        reviewActions.hidden = false;
+        confirmationActions.hidden = true;
+        dialog.showModal();
+        dialogTitle.focus();
+      });
+    }
+
+    document.getElementById("continue-plan").addEventListener("click", () => {
+      if (selectedPlan) {
+        selectedPlan.querySelector(".plan-status").hidden = true;
+      }
+
+      selectedPlan = reviewedPlan;
+      selectedPlan.querySelector(".plan-status").hidden = false;
+      const name = selectedPlan.querySelector(".plan-name").textContent;
+
+      dialogTitle.textContent = `${name} selected`;
+      reviewActions.hidden = true;
+      confirmationActions.hidden = false;
+      dialogTitle.focus();
+    });
+
+    document.getElementById("back-to-plans").addEventListener("click", () => {
+      dialog.close();
+    });
+
+    document.getElementById("done").addEventListener("click", () => {
+      dialog.close();
+    });
+
+    dialog.addEventListener("close", () => {
+      opener?.focus({ preventScroll: true });
+    });
+  </script>
+</body>
+</html>
