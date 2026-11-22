@@ -26,3 +26,9 @@ Calibrate the routing on unseen pages before relying on it. Measure regional def
 ## Concept updates
 
 Record each new concept's source, rights, applicable task, visual principle, and counterexample. Compare it with existing entries for the same task and review a generated result on held-out briefs before promoting it. Import the next catalog version separately from the installed runtime. Track direction concentration so a new library cannot quietly reproduce the 32/36 default-route collapse. [Default routing probe](../EVALS.md#direction-coverage) · [Adoption experiments](ADOPTION.md)
+
+## When to spend another evaluation call
+
+Anthropic's long-running app experiments separated planner, generator, and evaluator. The design evaluator emphasized coherence and originality, tested the live page, and cited concrete failures. Some middle iterations were stronger than the final one. Its full game-maker harness took six hours and reported $200 in token costs, versus 20 minutes and $9 for the solo run. Its later experiment removed per-sprint evaluation for a more capable builder and used targeted QA passes. These are observations from that harness. [Anthropic engineering report](https://www.anthropic.com/engineering/harness-design-long-running-apps)
+
+For Design MCP, agree on the real browser interaction and visual criteria before each meaningful revision. Let deterministic tests handle mechanical changes. Use a fresh blind critic for a candidate or material visual change, weight coherence and originality highest, and keep the best verified iteration. Carry region, weakness, proposed repair, and expected measurable change into the next build. Use a fresh context with those artifacts when a long session starts losing constraints. [Release rubric and gate](../evals/vision/rubric.md)
