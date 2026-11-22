@@ -20,6 +20,7 @@ from fastmcp.client.transports import StdioTransport
 from generate import sha256
 
 VIEWPORTS = ((1440, 900), (390, 844))
+REGIONS_JS = Path(__file__).with_name("visible-regions.js").read_text(encoding="utf-8")
 CSP = (
     "default-src 'none'; script-src 'unsafe-inline'; "
     "style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com data:; "
@@ -134,8 +135,9 @@ async def capture(client, cell, width, height, url):
           }});
           await state.page.screenshot({{path:{json.dumps(str(path))}, animations:'disabled'}});
           const accessibility = await state.page.locator('body').ariaSnapshot();
+          const regions = await state.page.evaluate({REGIONS_JS});
           console.log('EVAL_RESULT ' + JSON.stringify({{...metrics, pageErrors:state.pageErrors,
-            accessibility:accessibility.slice(0,3500)}}));
+            accessibility:accessibility.slice(0,1400), regions}}));
         """)
         line = next((s for s in response.splitlines() if "EVAL_RESULT " in s), None)
         if line is None or not path.exists():

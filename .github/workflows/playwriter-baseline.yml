@@ -1,8 +1,8 @@
-name: Playwriter benchmark captures
+name: Compact frontier vision calibration
 
 on:
   push:
-    branches: [design-mcp/playwriter-baseline]
+    branches: [design-mcp/vision-calibration]
     paths: ['.github/workflows/playwriter-baseline.yml', 'evidence/benchmark-v1/render-inputs/**', 'evals/v1/render.py']
 
 permissions:
@@ -22,7 +22,7 @@ jobs:
       - name: Install the isolated renderer
         shell: bash
         run: |
-          python -m pip install 'fastmcp==4.2.4'
+          python -m pip install 'fastmcp==4.2.4' 'pillow>=11,<13'
           npm install --prefix "$RUNNER_TEMP/playwriter" --ignore-scripts --no-fund --no-audit 'playwriter@0.12.0'
           curl -fsSL https://storage.googleapis.com/chrome-for-testing-public/158.0.8127.36/mac-arm64/chrome-mac-arm64.zip -o "$RUNNER_TEMP/chrome.zip"
           unzip -q "$RUNNER_TEMP/chrome.zip" -d "$RUNNER_TEMP/browser"
@@ -42,9 +42,19 @@ jobs:
               assert record['browser'].endswith('158.0.8127.36'), record['browser']
               assert all(item['status'] == 'rendered' for item in record['captures'].values()), record
           PY
+      - name: Resize desk views for comparison
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          for path in Path('evidence/benchmark-v1/render-inputs').rglob('1440.png'):
+              with Image.open(path) as image:
+                  image.resize((720, 450), Image.Resampling.LANCZOS).save(path.with_name('720.png'), optimize=True)
+          PY
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: paired-playwriter-captures
+          name: compact-vision-captures
           path: evidence/benchmark-v1/render-inputs/
           if-no-files-found: error
           retention-days: 7
