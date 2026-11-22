@@ -1,15 +1,16 @@
-name: Playwriter benchmark captures
+name: Reaction pilot Playwriter captures
 
 on:
   push:
-    branches: [design-mcp/playwriter-baseline]
-    paths: ['.github/workflows/playwriter-baseline.yml', 'evidence/benchmark-v1/render-inputs/**', 'evals/v1/render.py']
+    branches: [design-mcp/reaction-pilot-capture]
+    paths: ['.github/workflows/playwriter-baseline.yml', 'evidence/benchmark-v1/reaction-pilot-inputs/**', 'evals/v1/render.py']
 
 permissions:
   contents: read
 
 jobs:
   captures:
+    if: github.event.repository.private == false
     runs-on: macos-15
     timeout-minutes: 14
     steps:
@@ -32,12 +33,12 @@ jobs:
           chrome="$RUNNER_TEMP/browser/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
           "$chrome" --version
           python evals/v1/render.py \
-            --cells evidence/benchmark-v1/render-inputs --scratch "$RUNNER_TEMP/profile" \
+            --cells evidence/benchmark-v1/reaction-pilot-inputs --scratch "$RUNNER_TEMP/profile" \
             --playwriter "$RUNNER_TEMP/playwriter/node_modules/.bin/playwriter" --chrome "$chrome"
           python - <<'PY'
           from pathlib import Path
           import json
-          for path in Path('evidence/benchmark-v1/render-inputs').rglob('index.html'):
+          for path in Path('evidence/benchmark-v1/reaction-pilot-inputs').rglob('index.html'):
               record = json.loads(path.with_name('render.json').read_text())
               assert record['browser'].endswith('158.0.8127.36'), record['browser']
               assert all(item['status'] == 'rendered' for item in record['captures'].values()), record
@@ -45,6 +46,6 @@ jobs:
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: paired-playwriter-captures
-          path: evidence/benchmark-v1/render-inputs/
+          path: evidence/benchmark-v1/reaction-pilot-inputs/
           if-no-files-found: error
           retention-days: 7
