@@ -1,31 +1,31 @@
 {
   "summary": {
     "requested_pairs": 36,
-    "judged_pairs": 8,
-    "none": 93.22916666666666,
-    "v2": 95.83333333333333,
-    "difference": 2.604166666666668,
+    "judged_pairs": 9,
+    "none": 93.05555555555556,
+    "v2": 95.37037037037037,
+    "difference": 2.3148148148148158,
     "wins_ties_losses": [
       3,
-      5,
+      6,
       0
     ],
     "paired_bootstrap_95_interval": [
-      0.5208333333333321,
-      5.208333333333336
+      0.0,
+      4.629629629629635
     ],
     "median_usage": {
       "none": {
-        "input_tokens": 29270.0,
-        "cached_input_tokens": 8640.0,
-        "output_tokens": 22404.0,
-        "elapsed_seconds": 453.345
+        "input_tokens": 38457,
+        "cached_input_tokens": 0,
+        "output_tokens": 22204,
+        "elapsed_seconds": 450.94
       },
       "v2": {
-        "input_tokens": 62608.0,
-        "cached_input_tokens": 40448.0,
-        "output_tokens": 21607.0,
-        "elapsed_seconds": 439.01
+        "input_tokens": 62609,
+        "cached_input_tokens": 40704,
+        "output_tokens": 21338,
+        "elapsed_seconds": 433.86
       }
     }
   },
@@ -1428,6 +1428,183 @@
           "none": 91.66666666666666,
           "v2": 100
         }
+      }
+    },
+    "dashboard-harvest": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44991749251",
+      "cells": {
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 63862,
+              "cached_input_tokens": 40960,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 19972,
+              "reasoning_output_tokens": 14767
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "dashboard-harvest",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "da2eb0b445879f404d6d7b04410221259cde63cf83c7416f6d67fc4fe118b219",
+            "elapsed_seconds": 406.44,
+            "exit_code": 0,
+            "trace_sha256": "ddd0e8a54f059947272811930a0fd802c16320f33da88158074f8e44fc5c0757",
+            "html_sha256": "b72b7d53eecc37f0da4c26392bb3be48da7b3dcd7be0b6254ab9ac36b6929a03"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "e856071bd84dddf9a103d79ee95720ba9f3b69fe3556c80967214e8ce2afd9ea",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "5f9fe629bd349d873d364008b9f727b97dd72134e9a1e1b94a6288e6dfc4175e",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 51706,
+              "cached_input_tokens": 0,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 8132,
+              "reasoning_output_tokens": 3494
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "dashboard-harvest",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "da2eb0b445879f404d6d7b04410221259cde63cf83c7416f6d67fc4fe118b219",
+            "elapsed_seconds": 396.98,
+            "exit_code": 0,
+            "trace_sha256": "928d13d73490ddda5a51c19be32f645751470c4b2dd79f06bcb2801c86e31549",
+            "html_sha256": "b25b1db34c74a158079653cba4a7da6ad35cd816bc894e007a2c899d8222bfb0"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "237a9c887e428be8c92e887a01f0959625bc9985338b817242850ec65e3ca50e",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "02fc617f3999000edbbfbb3c3b1398c108c828c3f81b89294ffc57f7888b7234",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "dashboard-harvest",
+        "surface": "dashboard",
+        "blind_key": {
+          "A": "v2",
+          "B": "none"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, \u201cNeeds venting,\u201d the 82% reading and the acknowledge button form one focal block above the three-bay comparison."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The desktop alert gives the warning and reading separate columns, while the mobile layout places them side by side above a full-width button and keeps all three table threshold marks aligned."
+            },
+            "typography": {
+              "score": 3,
+              "evidence": "Bold condensed headings and large percentages make the alert easy to scan, though the small, narrow status text is harder to read in the mobile table."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Orange connects the alert button and 82% reading to the Bay 1 table row, while muted sage identifies the two readings below 75%."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Each row spells out its status beside the bar, and both browser trees expose row and column headers, a named Bay 1 alert region and an \u201cAcknowledge alert\u201d button."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both widths show Bay 1 at 82% needing venting, Bay 2 at 65%, Bay 3 at 67%, the 75% threshold and the acknowledge button, but confirmation and retention of 82% after activation are unverified."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "The illustrated title draws the first glance at both widths, although the oversized 82% and the only action button clearly identify Bay 1 as the priority once the eye reaches the readings."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "Bay 1 spans the height of the two quieter desktop cards, and the mobile stack preserves that grouping with consistent gutters and a full-width action directly beneath the alert reading."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The two-line serif title gives the board a distinct identity, while bold sans-serif percentages, bay names and short status labels remain easy to distinguish at 390 pixels."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Rust ties Bay 1\u2019s warning, 82% reading, bar and button together, while green links the other bars to their \u201cWithin threshold\u201d labels."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "The warning icon and written statuses distinguish the bays without relying on hue, and both browser trees group each humidity reading under its bay heading and identify the \u201cAcknowledge alert\u201d button."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "The cards show the requested 82%, 65% and 67% readings, the 75% threshold and Bay 1\u2019s venting alert and action at both widths, but the evidence ends before it shows acknowledgment feedback or the retained reading."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26608,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2899,
+          "reasoning_output_tokens": 2189
+        },
+        "scores": {
+          "v2": 91.66666666666666,
+          "none": 91.66666666666666
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "e856071bd84dddf9a103d79ee95720ba9f3b69fe3556c80967214e8ce2afd9ea",
+          "A-390.png": "5f9fe629bd349d873d364008b9f727b97dd72134e9a1e1b94a6288e6dfc4175e",
+          "B-1440.png": "237a9c887e428be8c92e887a01f0959625bc9985338b817242850ec65e3ca50e",
+          "B-390.png": "02fc617f3999000edbbfbb3c3b1398c108c828c3f81b89294ffc57f7888b7234"
+        },
+        "judge_prompt_sha256": "8be2401a2648f8eb60042591245ecff67d74718978966954da16d87420b46ccd"
       }
     }
   }

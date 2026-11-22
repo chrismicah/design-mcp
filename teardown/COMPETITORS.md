@@ -77,8 +77,8 @@ Design Library's earlier short settings query returned a result. Its empty full-
 
 | Configuration | Matched briefs judged | Score / 100 |
 | --- | ---: | ---: |
-| Plain generator | 8 / 36 | 93.2 |
-| Design MCP v2 | 8 / 36 | 95.8 |
+| Plain generator | 9 / 36 | 93.1 |
+| Design MCP v2 | 9 / 36 | 95.4 |
 | Inspo hosted | 1 / 36 | 87.5 on ceramics. Design MCP scored 91.7 on the matched brief. |
 | Offline Designer MCP | 1 / 36 | 91.7 on ceramics. Design MCP also scored 91.7. |
 | Other credential-free competitor configurations above | 0 / 36 each | Pending |

@@ -6,19 +6,19 @@ The baseline pins Design MCP at `fd6035d8732d177b811f81a0f5863e99134a85ca`. The 
 
 | Configuration | Judged pairs | Score / 100 |
 | --- | ---: | ---: |
-| Same generator without MCP | 8 / 36 | 93.2 |
-| Same generator with Design MCP v2 | 8 / 36 | 95.8 |
+| Same generator without MCP | 9 / 36 | 93.1 |
+| Same generator with Design MCP v2 | 9 / 36 | 95.4 |
 
-The eight verified pairs yielded a **+2.6-point** mean difference, with three wins, five ties, and a paired bootstrap interval of 0.5 to 5.2 points. Rehearsal rooms and the film festival each scored 91.7 → 100.0. Cold-chain monitoring scored 95.8 → 100.0. Six briefs were landing pages and two were dashboards. This is a partial baseline for the frozen revision. The judges scored captured states under the original benchmark rubric. The separate release rubric requires live evaluation before scoring. [Paired ballots, hashes and token receipts](evidence/benchmark-v1/paired-progress.json) · [Release rubric](evals/vision/rubric.md)
+The nine verified pairs yielded a **+2.3-point** mean difference, with three wins, six ties, and a paired bootstrap interval of 0.0 to 4.6 points. Rehearsal rooms and the film festival each scored 91.7 → 100.0. Cold-chain monitoring scored 95.8 → 100.0. Six briefs were landing pages and three were dashboards. This is a partial baseline for the frozen revision. The judges scored captured states under the original benchmark rubric. The separate release rubric requires live evaluation before scoring. [Paired ballots, hashes and token receipts](evidence/benchmark-v1/paired-progress.json) · [Release rubric](evals/vision/rubric.md)
 
 The first dashboard attempt called `direct` successfully and reached the client’s 240-second timeout before returning HTML. There was no completed-turn token receipt. The paired run uses a 900-second allowance for both arms and retains the first attempt separately. Playwriter MCP `0.12.0` rendered the isolated Chrome 157 control at both widths. The injected failure control detected narrow viewport overflow and the expected JavaScript error. [Tracked receipts](evidence/benchmark-v1/preflight.json)
 
-GitHub’s standard macOS runner captured the first eight pairs across two runs with Playwriter 0.12.0 and Chrome for Testing 158.0.8127.36 at both preset widths. All 32 captures had no horizontal overflow or page errors. [First run](https://github.com/chrismicah/design-mcp/actions/runs/44984687051) · [Second run](https://github.com/chrismicah/design-mcp/actions/runs/44988686124)
+GitHub’s standard macOS runner captured the judged pairs with Playwriter 0.12.0 and Chrome for Testing 158.0.8127.36 at both preset widths. All 36 judged captures had no horizontal overflow or page errors. A third wave captured six more pairs and the harvest dashboard has a verified ballot. [First run](https://github.com/chrismicah/design-mcp/actions/runs/44984687051) · [Second run](https://github.com/chrismicah/design-mcp/actions/runs/44988686124) · [Third run](https://github.com/chrismicah/design-mcp/actions/runs/44991749251)
 
 | Median per judged brief | Input tokens | Cached input | Output tokens | Seconds |
 | --- | ---: | ---: | ---: | ---: |
-| Plain generator | 29,270 | 8,640 | 22,404 | 453 |
-| Design MCP v2 | 62,608 | 40,448 | 21,607 | 439 |
+| Plain generator | 38,457 | 0 | 22,204 | 451 |
+| Design MCP v2 | 62,609 | 40,704 | 21,338 | 434 |
 
 ## Direction coverage
 
