@@ -12,11 +12,13 @@ TASKS = {
         "You are a theatre producer considering Blackout Lab. Use the keyboard to select Flood, "
         "verify its name and blue backlight description, and look at how light falls on the stage. "
         "Then switch to Static and check the name, hard white side light, visible change, and focus. "
+        "Move focus once and check whether you can still identify the selected cue. "
         "Capture -before on entry, -after with Flood selected, and use Static for the edge action."
     ),
     "social-river": (
         "You are a resident checking local crossings. Use the keyboard to jump directly to 6 m. "
         "Verify the path, ferry and footbridge closures and compare the visible water height with the text. "
+        "Check whether the complete result is readable within the first mobile viewport. "
         "Then set 2 m and check that the list correctly shows only the path closure. Capture -before on "
         "entry, -after at 6 m, and use 2 m for the edge action."
     ),

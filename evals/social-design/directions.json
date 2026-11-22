@@ -26,23 +26,23 @@
     "layout": {
       "skeleton": "Lead with a short identity and one cinematic proscenium. Set a named cue inspector beside the stage on wide screens and directly below it on mobile.",
       "focus": "An original performer mid-gesture and its long shadow make the direction of each light visible. Show light spilling across the backcloth and slanting across the floor.",
-      "desktop": "Give the scene most of the width. Fit the technique and controls together in a narrow continuous inspector beside it, aligned to the edge of the stage.",
-      "mobile": "Recompose the scene to show the gesture, shadow and enough stage width. Keep the visible instruction, three choices and current technique together close below.",
-      "rhythm": "Set the title in a short stripe with space below it. Give the wide stage breathing room and align the cue inspector to the top of the scene."
+      "desktop": "Start the stage within 144 CSS px of the top at 1440 × 900. Compose the full stage, the three cue controls and current technique within the initial viewport.",
+      "mobile": "Give the figure at least 45% of the stage height at 390 px and keep the tip of the shadow inside the frame. Keep the visible Choose a cue label, three controls and technique close below.",
+      "rhythm": "Make the header a compact masthead, with a 48–64 px identity on desktop and a single title line or two short lines on mobile. Give the remaining height to the stage."
     },
     "imagery": {
       "subject": "Draw an expressive human performer reaching into the light. Shape the arm, bent leg and flowing fabric as one recognizable silhouette. Keep that pose fixed and let shadows and lit fabric distinguish the three cues.",
-      "crop": "Keep the gesture and the shape of the shadow visible at 390 px. Recompose the illustration for the narrower view rather than cropping at the feet or wings.",
+      "crop": "Compose a genuine 390 px view with a larger performer and legible, sharply drawn floor shadow. Preserve the beam and shadow tips on mobile.",
       "fallback": "Use three original stills composed with the same stage framing and pose. Describe each light effect in accessible text."
     },
     "motion": {
       "trigger": "Selecting a named cue",
-      "effect": "Switch the lighting and technique text together immediately. Animate only the underline of the selected cue.",
+      "effect": "Switch the scene, technique text and filled selection immediately. Fade in only the selected cue marker.",
       "duration_ms": 220,
       "reduced": "Switch the light, current cue text, and underline immediately."
     },
     "action": {
-      "instruction": "Label the group Choose a cue. Keep native buttons, visible keyboard focus and the selected state. Update the stage description and printed technique together.",
+      "instruction": "Label the group Choose a cue. Use native buttons with aria-pressed. Give the selected cue a persistent plum fill, light text and a lamp marker even when unfocused. Give focus its own two-tone outline. Update the image description and printed technique together.",
       "label": "Use the actual cue name"
     },
     "why": "The first interaction demonstrates the actual craft and lets a producer compare techniques without finding a separate demo.",
@@ -87,14 +87,14 @@
     },
     "layout": {
       "skeleton": "Build one flood chart with exactly three contour lines, ordered by elevation. Align a readable place label and original marker to each threshold. Put the level controls and current closure list beside the chart.",
-      "focus": "A single saturated waterline crosses the labeled path, ferry and footbridge contours. Keep the place names next to their marks so the reader can see why each closure appears.",
-      "desktop": "Use one chart block with strong place labels inside its outline and a narrow reading column next to the scale for level controls and current closures.",
-      "mobile": "Use the same three labeled contours. Keep each place name at least 16 px in HTML aligned to its marker, so the labels do not shrink with the illustration.",
-      "rhythm": "Use the equal two-meter steps to set spacing. Give the active elevation one principal reading and keep closure information adjacent to it."
+      "focus": "Show a real river section with a low path on the bank, a ferry beside its middle landing, and a footbridge spanning the water at the upper mark. A single waterline changes which labeled places close.",
+      "desktop": "Give the selected elevation and all current closures room in the reading column. Keep the contour chart and result within the initial 1440 × 900 view.",
+      "mobile": "Place the explicit level selector and complete current closure list before the chart so the entire task result is visible inside the initial 390 × 844 view. Follow with a 240–300 px cross-section and three 16 px place labels.",
+      "rhythm": "Give the answer and the three level controls the first reading position on mobile. Use the equal elevation steps to space the contours below."
     },
     "imagery": {
-      "subject": "Make simple original path, ferry and footbridge marks inside the section. Use soft blue #A4CBE7 for unreached contour space and ochre #EFBE61 to mark closed places with text.",
-      "crop": "Mount place names in HTML inside the chart at their marked elevations. Keep all three names, threshold units and the current waterline in view on mobile.",
+      "subject": "Draw the path as a cut in the low bank, the boat beside its mid-level landing, and the bridge crossing the channel. Point each clear place label at its drawing. Use blue #A4CBE7 for unreached space and ochre #EFBE61 for closed places alongside text.",
+      "crop": "Keep all three structures and thresholds distinct at 390 px. Use legible 16 px place labels. Keep the complete current closure result and controls above the compact chart on mobile.",
       "fallback": "Keep the three contour lines, their readable place names and the live closure list. Simplify the drawing before reducing text size."
     },
     "motion": {

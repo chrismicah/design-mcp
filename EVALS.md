@@ -81,6 +81,12 @@ The second lighting candidate improved to **8.45 desktop and 8.25 mobile**. The 
 
 The second river candidate scored **8.25 at both widths**, ahead of the archived stock design and below the first candidate's desktop score. Moving the labels away from the drawing weakened the connection between each crossing and its threshold. Round 3 directly labels three distinct elevation lines and uses text sized to stay readable on a phone. [River round 2](evidence/benchmark-v1/social-river-live-r2.json)
 
+Round 3 gave the lighting portfolio its first weighted win. The expressive performer and labeled cue controls scored **8.65 desktop and 8.50 mobile**, above **8.10 and 7.75** for the same archived stock HTML. The river's directly labeled contours also won that comparison at **8.45 desktop and 8.00 mobile**, with the mobile closure list pushed below the initial view. Both directions continued below the 9.5 release gate. [Lighting round 3](evidence/benchmark-v1/social-lighting-live-r3.json) · [River round 3](evidence/benchmark-v1/social-river-live-r3.json)
+
+Lighting round 4 improved the mobile score to **8.65**, matching desktop. The blind critic preferred the candidate to the stock portfolio at **8.10 on both widths** and completed the task with visible focus. Its main repair was making the selected cue more legible when focus moved away. [Lighting round 4](evidence/benchmark-v1/social-lighting-live-r4.json)
+
+River round 4 scored **8.30 at both widths**, above its paired stock scores of **7.55**. Bringing the complete closure list ahead of the chart on mobile fixed the issue from round 3. The critic still wanted a more recognizable drawing of the crossings. [River round 4](evidence/benchmark-v1/social-river-live-r4.json)
+
 The cold-storage runner now verifies that both Design MCP arms use the exact brief as the sole argument to `direct`. A synthetic three-arm run passed with the original brief. Supplying a `dashboard` hint produced the expected direction but failed generation eligibility before any browser or judge ran. The original prompt and parser results matched all 72 archived generator traces across the 36 frozen pairs. The cold-storage visual comparison remains pending. [Generation and replay proof](evidence/benchmark-v1/unhinted-direct-gate.json)
 
 | Candidate | Observed change | Status |

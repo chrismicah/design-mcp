@@ -72,3 +72,19 @@ Round 2 made the light change legible and earned the critic's preference for the
 ### River, round 3
 
 The mobile cleanup in round 2 left the crossings hard to tell apart. Change the scene to an annotated flood chart a resident could read on a noticeboard. Three labeled contour lines run across a single section. Draw a small path, ferry and footbridge icon at their actual labeled thresholds. Keep the text labels as readable HTML along the contours at both widths. The waterline crosses the markers and changes the closure list in the same frame. Leave out scale figures that repeat the labeled thresholds and decorative topography. Use blue-black `#172B44` for text, pale gray-blue `#EFF4F7` for paper, saturated navy `#204D8C` for water and the chosen level, soft blue `#A4CBE7` for unreached contour space, and ochre `#EFBE61` for marked closures. Use Archivo Narrow for elevation labels and IBM Plex Sans for the list and controls.
+
+### Lighting, round 4
+
+Keep round 3's dress-rehearsal composition. Fit the full stage and cue inspector inside the first 900 CSS px at desktop width by making the header a short horizontal line. Leave the most room for the performer and the visible shadow. At 390 px, bring the actor's gesture and shadow tip closer together in the framed view, and give the shadow strong contrast. Use all five round 3 colors and the Fraunces and IBM Plex Sans pairing.
+
+### River, round 4
+
+Keep the readable contours from round 3 and bring the answer above the chart on phones. The resident sees the current level, the level choices, and the full closure list before needing to scroll. A compact 240–300 px section below shows why those places close. Keep the same five colors and type pairing. Use blue space around the current reading and keep the ochre markers attached to the crossed contours.
+
+### Lighting, round 5
+
+Keep the room, compact masthead, and expressive performer from round 4. Give the selected cue a persistent plum fill and a small circular lamp marker so the producer can see the selection after tabbing away. Use the existing light paper for its label and a separate focus outline on every control. Let the stage remain the most prominent part of the page.
+
+### River, round 5
+
+Keep the result and level choices above the compact mobile chart. Give the resident a more recognizable view of the bank. Use three small original illustrations with unmistakable physical relationships: a footpath cut into the low bank, a ferry beside its landing at the middle mark, and a footbridge spanning the water at the upper mark. Connect each readable label to the place with a short line. Use the same five round 3 colors, with dark silhouettes over the pale channel. Keep Archivo Narrow for level readings and IBM Plex Sans for the place labels and controls.
