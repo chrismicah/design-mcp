@@ -178,8 +178,10 @@ try {
     await send("Page.bringToFront", {}, fixtureSession);
     await until("focused dispatch fixture", () => inspect(fixtureSession, "document.hasFocus()"), 5000, 15);
     if (pointerHelper) {
+      const fixtureTitle = await inspect(fixtureSession, "document.title");
+      assert(fixtureTitle, "Expected a named fixture window");
       const before = process.hrtime.bigint();
-      proof.pointer = JSON.parse(execFileSync(pointerHelper, [String(browser.pid), toolbarTitle],
+      proof.pointer = JSON.parse(execFileSync(pointerHelper, [String(browser.pid), toolbarTitle, fixtureTitle],
         {encoding: "utf8", timeout: 8000}));
       const after = process.hrtime.bigint();
       pointerDown = BigInt(proof.pointer.pressedUptimeNs);

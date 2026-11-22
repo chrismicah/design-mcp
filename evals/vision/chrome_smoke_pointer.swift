@@ -66,8 +66,8 @@ func findToolbarAction(in window: AXUIElement, title: String) -> AXUIElement {
 
 let args = Array(CommandLine.arguments.dropFirst())
 guard ProcessInfo.processInfo.environment["GITHUB_ACTIONS"] == "true",
-      args.count == 2, let pid = pid_t(args[0]), pid > 1, !args[1].isEmpty else {
-    fail("Run only on the hosted fixture: chrome_smoke_pointer CHROME_PID TOOLBAR_TITLE")
+      args.count == 3, let pid = pid_t(args[0]), pid > 1, !args[1].isEmpty, !args[2].isEmpty else {
+    fail("Run only on the hosted fixture: chrome_smoke_pointer CHROME_PID TOOLBAR_TITLE FIXTURE_TITLE")
 }
 guard CGPreflightPostEventAccess(), AXIsProcessTrusted() else {
     fail("The hosted runner cannot inspect Chrome accessibility or post pointer events.")
@@ -85,17 +85,23 @@ if NSWorkspace.shared.frontmostApplication?.processIdentifier != pid {
 }
 let app = AXUIElementCreateApplication(pid)
 AXUIElementSetMessagingTimeout(app, 0.4)
-let windows = attribute(app, kAXWindowsAttribute) as? [AXUIElement] ?? []
-guard windows.count == 1 else {
-    fail("Expected one window for the owned Chrome process, found \(windows.count).")
+guard let focused = attribute(app, kAXFocusedWindowAttribute), CFGetTypeID(focused) == AXUIElementGetTypeID() else {
+    fail("The owned Chrome process has no focused window.")
 }
-let button = findToolbarAction(in: windows[0], title: args[1])
+let window = focused as! AXUIElement
+let windowTitle = attribute(window, kAXTitleAttribute) as? String
+guard windowTitle == args[2] || windowTitle == args[2] + " - Google Chrome for Testing" else {
+    fail("Focused Chrome window title \((windowTitle ?? "").debugDescription) does not match the fixture.")
+}
+let button = findToolbarAction(in: window, title: args[1])
 guard let point = elementCenter(button) else {
     fail("The unique toolbar action named \(args[1]) had no clickable bounds.")
 }
+let windowCount = (attribute(app, kAXWindowsAttribute) as? [AXUIElement])?.count ?? 0
 var hit: AXUIElement?
 guard AXUIElementCopyElementAtPosition(app, Float(point.x), Float(point.y), &hit) == .success,
       let hit, CFEqual(hit, button),
+      let currentWindow = attribute(app, kAXFocusedWindowAttribute), CFEqual(currentWindow, window),
       NSWorkspace.shared.frontmostApplication?.processIdentifier == pid, !chrome.isTerminated else {
     fail("The toolbar button did not own its center point in the foreground window.")
 }
@@ -107,4 +113,4 @@ for event in [down, up] { event.setIntegerValueField(.mouseEventClickState, valu
 let pressedAt = DispatchTime.now().uptimeNanoseconds
 down.post(tap: .cghidEventTap)
 up.post(tap: .cghidEventTap)
-print("{\"pressedUptimeNs\":\"\(pressedAt)\",\"x\":\(point.x),\"y\":\(point.y)}")
+print("{\"pressedUptimeNs\":\"\(pressedAt)\",\"x\":\(point.x),\"y\":\(point.y),\"windowCount\":\(windowCount)}")
