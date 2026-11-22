@@ -1,0 +1,170 @@
+{
+  "scope": "Manual repairs to exact old-schema comparison fixtures",
+  "cases": {
+    "empty-search": {
+      "repair": {
+        "case": "empty-search",
+        "baseline_html_sha256": "e5ec03657c90a6d37a5245497188d3ede2c139416a230936f2df60cb749e6a0e",
+        "html_sha256": "00c4e8cc563b1641d35860a913ce68bad0862929bafb0e3b0cb69ff456135a7c",
+        "method": "observed live critique repair"
+      },
+      "browser": {
+        "renderer": "0.12.0",
+        "browser": "Chrome/157.0.8103.79",
+        "input_sha256": "00c4e8cc563b1641d35860a913ce68bad0862929bafb0e3b0cb69ff456135a7c",
+        "captures": {
+          "1440": {
+            "viewport": 1440,
+            "width": 1440,
+            "height": 900,
+            "title": "Find a tool | Tool Library",
+            "h1": "Find a tool",
+            "loadedFonts": [
+              "Archivo Narrow",
+              "Atkinson Hyperlegible"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- banner: Tool Library\n- main:\n  - heading \"Find a tool\" [level=1]\n  - search \"Tool library\":\n    - text: Tool name\n    - searchbox \"Tool name\": chain saw\n    - button \"Search\"\n  - status\n  - region \"No tools match “chain saw”\":\n    - heading \"No tools match “chain saw”\" [level=2]\n    - button \"Search for pruning saw\"\n    - text: 1 tool available",
+            "status": "rendered",
+            "sha256": "0349f8efc78365954b61b4e4c9e024eb1d249fec2552df10973f532e60b62b46",
+            "interaction": {
+              "checks": {
+                "baseline": true,
+                "gotTool": true,
+                "cleared": true,
+                "retry": true
+              },
+              "staysLocal": true,
+              "restricted": [],
+              "pageErrors": [],
+              "passed": true,
+              "after_sha256": "f9ba608f491b8a22c78d069957e58ff6e0b1fd8ca1d04ae1b549431d97b3dd5b",
+              "edge_sha256": "a6628a3d6f4f05c4106ac8a670342ebc1f072ccd9531ee88061b7d239c022e3a"
+            },
+            "local_capture_path_prefix": ".context/factory/benchmark-v1/compact-live-review/repair-cells/empty-search/repair/1440"
+          },
+          "390": {
+            "viewport": 390,
+            "width": 390,
+            "height": 844,
+            "title": "Find a tool | Tool Library",
+            "h1": "Find a tool",
+            "loadedFonts": [
+              "Archivo Narrow",
+              "Atkinson Hyperlegible"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- banner: Tool Library\n- main:\n  - heading \"Find a tool\" [level=1]\n  - search \"Tool library\":\n    - text: Tool name\n    - searchbox \"Tool name\": chain saw\n    - button \"Search\"\n  - status\n  - region \"No tools match “chain saw”\":\n    - heading \"No tools match “chain saw”\" [level=2]\n    - button \"Search for pruning saw\"\n    - text: 1 tool available",
+            "status": "rendered",
+            "sha256": "f607de9a442f588f407fb8c1039cbcab7099ea286454edd5d2ff18a6aeace6e4",
+            "interaction": {
+              "checks": {
+                "baseline": true,
+                "gotTool": true,
+                "cleared": true,
+                "retry": true
+              },
+              "staysLocal": true,
+              "restricted": [],
+              "pageErrors": [],
+              "passed": true,
+              "after_sha256": "40a94b50537d126b7449d5ce916a589fcc0322852886f2913ccf6ab1c80991fd",
+              "edge_sha256": "1f41ea5bbb1d12b10005727c9d5fc8fcdaec045314e28cc56c0256ebf2715313"
+            },
+            "local_capture_path_prefix": ".context/factory/benchmark-v1/compact-live-review/repair-cells/empty-search/repair/390"
+          }
+        }
+      }
+    },
+    "empty-shifts": {
+      "repair": {
+        "case": "empty-shifts",
+        "baseline_html_sha256": "9d4e9a3af73d94e3871c9c243db0bd2c5861d7525a9dcd92d87a3b0241259175",
+        "html_sha256": "21cdf533be573e09b84de19877850f1fb3cf8e950e3cb45899db9c4507f62788",
+        "method": "observed live critique repair"
+      },
+      "browser": {
+        "renderer": "0.12.0",
+        "browser": "Chrome/157.0.8103.79",
+        "input_sha256": "21cdf533be573e09b84de19877850f1fb3cf8e950e3cb45899db9c4507f62788",
+        "captures": {
+          "1440": {
+            "viewport": 1440,
+            "width": 1440,
+            "height": 900,
+            "title": "Upcoming shifts | Food bank volunteering",
+            "h1": "Upcoming shifts",
+            "loadedFonts": [
+              "IBM Plex Sans",
+              "IBM Plex Sans Condensed"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- banner: Food bank volunteering\n- main:\n  - heading \"Upcoming shifts\" [level=1]\n  - paragraph: No upcoming shifts\n  - region \"Packing\":\n    - paragraph: Available shift\n    - heading \"Packing\" [level=2]\n    - paragraph: Wednesday 4–6 pm\n    - button \"Reserve shift\"",
+            "status": "rendered",
+            "sha256": "ad65a613133e6a60cf68fa827af7625767ca4e283de3889b8ae1f9f9732276e0",
+            "interaction": {
+              "checks": {
+                "baseline": true,
+                "timeLarger": true,
+                "booked": true,
+                "compactStatus": true,
+                "reopened": true
+              },
+              "staysLocal": true,
+              "restricted": [],
+              "pageErrors": [],
+              "passed": true,
+              "after_sha256": "d0ea5bffe1d204b4e89eef43bd8b880046a6d661c0d4b74f27739c10b92da71a",
+              "edge_sha256": "b843cbe3ba77b7d85d7512f38b2c9a87447087eea6f6e76f95c592a5bf7ae490"
+            },
+            "local_capture_path_prefix": ".context/factory/benchmark-v1/compact-live-review/repair-cells/empty-shifts/repair/1440"
+          },
+          "390": {
+            "viewport": 390,
+            "width": 390,
+            "height": 844,
+            "title": "Upcoming shifts | Food bank volunteering",
+            "h1": "Upcoming shifts",
+            "loadedFonts": [
+              "IBM Plex Sans",
+              "IBM Plex Sans Condensed"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- banner: Food bank volunteering\n- main:\n  - heading \"Upcoming shifts\" [level=1]\n  - region \"Packing\":\n    - heading \"Packing\" [level=2]\n    - paragraph: Wednesday 4–6 pm\n    - paragraph: Shift booked",
+            "status": "rendered",
+            "sha256": "5e0386689a9fdf3adbf5753c1d921ca1753cec5b8a2689a5e021adcbfda78471",
+            "interaction": {
+              "checks": {
+                "baseline": true,
+                "timeLarger": true,
+                "booked": true,
+                "compactStatus": true,
+                "reopened": true
+              },
+              "staysLocal": true,
+              "restricted": [],
+              "pageErrors": [],
+              "passed": true,
+              "after_sha256": "d76aa9f8e97012faf102ef162ac8a603e6dce9a5b9a5a4774cf228b4eb070598",
+              "edge_sha256": "5e0386689a9fdf3adbf5753c1d921ca1753cec5b8a2689a5e021adcbfda78471"
+            },
+            "local_capture_path_prefix": ".context/factory/benchmark-v1/compact-live-review/repair-cells/empty-shifts/repair/390"
+          }
+        }
+      }
+    }
+  },
+  "art_direction": ".context/factory/benchmark-v1/compact-live-review/repair-art-direction.md",
+  "patch_script_sha256": "d6d4d3aeb35efca0f3d1c32a85bd5f70f9ddce632d4336dc9ea0cb9164b1b49f",
+  "check_script_sha256": "bd01cee529ea522ecc9b56f11481fa076484b695eff4c0be61874a0be8941c8f",
+  "verified_keyboard_replays": 4,
+  "verified_screenshot_hashes": 12
+}
