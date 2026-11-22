@@ -1,8 +1,8 @@
-name: macOS Chrome review extension pointer proof
+name: macOS Chrome profile-local review proof
 
 on:
   push:
-    branches: [design-mcp/chrome-mac-proof]
+    branches: [design-mcp/mac-profile-review-isolation]
 
 permissions:
   contents: read
@@ -14,8 +14,8 @@ jobs:
     timeout-minutes: 12
     env:
       CHROME_VERSION: '158.0.8127.36'
-      DESIGN_MCP_CANDIDATE: '2fcd31221671590152401d958b904141e438e453'
-      FIRST_ACTIVATION_TRIALS: '30'
+      DESIGN_MCP_CANDIDATE: 'f17bd6f79fff62d1ec3e051b29d930ccb32b3a46'
+      FIRST_ACTIVATION_TRIALS: '3'
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
         with:
@@ -113,6 +113,7 @@ jobs:
               record = json.loads(receipt.read_text()) if receipt.exists() else {}
               timings = record.get('firstActivation', {})
               passed = (record.get('browserChecksPassed') is True and record.get('browser') == f'Chrome/{version}'
+                        and record.get('profileHistoryVerified') is True
                         and timings.get('drivers', {}).get('open') == 'macOS pointer'
                         and all(type(timings.get(key)) in (int, float) and isfinite(timings[key]) and timings[key] > 0
                                 for key in ('openMs', 'scanMs')))
@@ -149,7 +150,7 @@ jobs:
           if not proof_path.exists():
               raise SystemExit('No successful saved preview to verify')
           proof = json.loads(proof_path.read_text())
-          assert proof['browserChecksPassed'], proof
+          assert proof['browserChecksPassed'] and proof['profileHistoryVerified'], proof
           assert proof['browser'] == f'Chrome/{sys.argv[2]}', proof['browser']
           html = (preview / 'preview.html').read_text()
           evidence = (preview / 'evidence.json').read_text()

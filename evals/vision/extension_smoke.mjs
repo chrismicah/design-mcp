@@ -375,6 +375,9 @@ try {
   assert.equal(proof.preview.visible, true);
   await image(preview, "preview-after.png");
   proof.previewFolder = dirname(fileURLToPath(proof.result.previewUrl));
+  const scopedHistory = await realpath(join(profile, "Design MCP", "reviews"));
+  assert.equal(dirname(await realpath(proof.previewFolder)), scopedHistory);
+  proof.profileHistoryVerified = true;
   if (mac) {
     assert.equal(proof.preview.focus, "view-after");
     assert.equal(proof.preview.afterImageVisible, true);
