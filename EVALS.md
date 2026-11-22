@@ -123,6 +123,14 @@ On hosted macOS 15, 30 first activations on the real Chrome toolbar button compl
 
 A second hosted run alternated 30 eager-collector opens and 30 on-demand-collector opens on the same runner. p95 open was **349 ms eager** and **392 ms on demand**. The paired median improvement was −25 ms with a 95% bootstrap interval from −45 to +19 ms. Median time from the popup document's start to load completion was 101 ms eager and 100 ms on demand. Both variants completed all trials, passed the saved mask check, and met the 1 second p95 scan target. Keep the eager collector. Both versions missed 250 ms for the popup. [Paired startup timings](evidence/benchmark-v1/chrome-collector-startup.json) · [Hosted run](https://github.com/chrismicah/design-mcp/actions/runs/45024717080)
 
+The archived per-trial timings give the following medians and nearest-rank p95s. The first segment includes target polling and input delivery. Compute the second segment on each trial by subtracting the target-observation time from the enabled-control time. Each row contains 30 completed trials. The two timing runs used separate hosted Mac environments. [Pointer archive](evidence/benchmark-v1/chrome-pointer-activation-mac.json) · [Alternating-run archive](evidence/benchmark-v1/chrome-collector-startup.json)
+
+| Hosted cohort | Press to popup target, median / p95 | Popup target to enabled Scan, median / p95 | Press to enabled Scan, median / p95 |
+| --- | ---: | ---: | ---: |
+| Installed extension | 139.1 / 371.1 ms | 137.1 / 237.4 ms | 271.8 / 515.6 ms |
+| Alternating trial, eager | 90.3 / 158.9 ms | 113.4 / 291.0 ms | 210.3 / 349.3 ms |
+| Alternating trial, on demand | 85.6 / 206.5 ms | 124.1 / 228.0 ms | 210.4 / 392.2 ms |
+
 ## Compact vision experiment
 
 Across two briefs, the compact packets used 48,695 input tokens versus 51,112 with full screenshots, a 4.7% reduction. The theatre comparison kept both scores. The ceramics comparison moved from a tie to a 4.2-point lead for the plain generator. The compact run changed image size and supplied region measurements, so this comparison cannot isolate either change. Keep the full-size packets for the benchmark and measure region detection, decision agreement, and token savings on unseen examples before using compact packets by default. [Blind ballots and usage](evidence/benchmark-v1/compact-vision.json)
