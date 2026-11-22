@@ -129,14 +129,11 @@ def _free_port():
 
 async def _drive(url, playwriter, env, scratch, web_socket):
     started = time.perf_counter()
-    from mcp import ClientSession, StdioServerParameters, stdio_client
+    from fastmcp import Client
+    from fastmcp.client.transports import StdioTransport
 
-    params = StdioServerParameters(command=str(playwriter), env=env, cwd=scratch)
-    async with stdio_client(params) as (reader, writer), ClientSession(
-        reader, writer, read_timeout_seconds=60,
-    ) as client:
-        await client.initialize()
-
+    transport = StdioTransport(command=str(playwriter), args=[], env=env, cwd=str(scratch))
+    async with Client(transport, timeout=60) as client:
         def result_text(result):
             return "\n".join(block.text for block in result.content if block.type == "text")
 

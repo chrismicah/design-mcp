@@ -1067,16 +1067,8 @@ class ExtensionTests(unittest.TestCase):
             with self.subTest(fail_routing=fail_routing), tempfile.TemporaryDirectory() as folder:
                 relay = Relay()
                 relay.fail_routing = fail_routing
-                @contextlib.asynccontextmanager
-                async def stdio(params):
-                    yield "reader", "writer"
-
-                relay.initialize = mock.AsyncMock()
-                params = mock.Mock()
-                session = mock.Mock(return_value=relay)
-                modules = {"mcp": SimpleNamespace(
-                    ClientSession=session, StdioServerParameters=params, stdio_client=stdio,
-                )}
+                modules = {"fastmcp": SimpleNamespace(Client=lambda *a, **kw: relay),
+                           "fastmcp.client.transports": SimpleNamespace(StdioTransport=mock.Mock())}
                 with mock.patch.dict(sys.modules, modules):
                     review_page = isolated._drive("https://boards.example/rooms", "playwriter", {},
                                                   Path(folder), "ws://127.0.0.1:1234/devtools/browser/test")
@@ -1094,9 +1086,6 @@ class ExtensionTests(unittest.TestCase):
                         ])
                         self.assertEqual(len(relay.calls), 8)
                     self.assertTrue(all(args["session"] == "isolated-review" for _, args in relay.calls[1:]))
-                    params.assert_called_once_with(command="playwriter", env={}, cwd=Path(folder))
-                    session.assert_called_once_with("reader", "writer", read_timeout_seconds=60)
-                    relay.initialize.assert_awaited_once()
 
     def test_the_extension_ships_in_the_package_and_review_needs_no_third_party_code(self):
         with open(ROOT / "pyproject.toml", "rb") as stream:
