@@ -1,4 +1,4 @@
-"""Exercise the radio and bike-booking controls on both frozen builds."""
+"""Verify the matched ceramics pages through the shopper's keyboard flow."""
 
 import json
 
@@ -7,48 +7,42 @@ from render import execute, main, sha256
 
 async def interact(client, cell, width):
     path = cell / f"{width}-after.png"
-    receipt = await execute(client, f"""
+    response = await execute(client, f"""
       const page = state.page;
-      const radio = {json.dumps(cell.parent.name == "landing-radio")};
-      const target = radio ? page.getByRole('button', {{ name: /^Listen live/ }})
-                           : page.getByRole('radio', {{ name: 'Tuesday', exact: true }});
-      const summary = page.locator(radio ? '#listener-state, #listener-status' : '#summary-day, #selected-day');
-      const before = await summary.textContent({{ timeout: 2000 }});
+      const add = page.getByRole('button', {{ name: 'Add to bag', exact: true }});
+      const view = page.getByRole('button', {{ name: 'View bag', exact: true }});
+      const confirmation = page.getByRole('status');
+      const dialog = page.getByRole('dialog', {{ name: 'Your bag' }});
+      const before = (await confirmation.textContent({{ timeout: 2000 }})).trim();
       let reached = false;
       for (let tab = 0; tab < 20; tab++) {{
         await page.keyboard.press('Tab');
-        if (await target.count() === 1 && await target.evaluate(el => document.activeElement === el)) {{
+        if (await add.evaluate(el => el === document.activeElement)) {{
           reached = true;
           break;
         }}
       }}
-      let selected = false;
-      if (reached && radio) {{
-        await page.keyboard.press('Enter');
-        selected = await page.getByRole('button', {{ name: 'Stop listening' }}).isVisible();
-      }} else if (reached) {{
-        for (let day = 0; day < 3; day++) await page.keyboard.press('ArrowRight');
-        selected = await page.getByRole('radio', {{ name: 'Friday', exact: true }}).isChecked();
-      }}
-      const after = await summary.textContent({{ timeout: 2000 }});
+      if (!reached) throw new Error('Add to bag is outside the keyboard order');
+      await page.keyboard.press('Enter');
+      const after = (await confirmation.textContent({{ timeout: 2000 }})).trim();
+      const count = await page.getByRole('button', {{ name: 'Bag, 1 item', exact: true }}).isVisible();
+      const activated = await view.evaluate(el => el === document.activeElement);
+      await page.keyboard.press('Enter');
+      const opened = await dialog.isVisible();
+      const contents = opened ? await dialog.innerText() : '';
       await page.screenshot({{ path: {json.dumps(str(path))}, animations: 'disabled' }});
-      let reversible = false;
-      if (selected && radio) {{
-        await page.keyboard.press('Enter');
-        reversible = await page.getByRole('button', {{ name: /^Listen live/ }}).isVisible();
-      }} else if (selected) {{
-        await page.keyboard.press('ArrowLeft');
-        reversible = await page.getByRole('radio', {{ name: 'Thursday', exact: true }}).isChecked() &&
-          (await summary.textContent({{ timeout: 2000 }})).trim() === 'Thursday';
-      }}
-      const changed = before !== after && (radio ? /live/i.test(after) : after.trim() === 'Friday');
-      console.log('LANDING_RESULT ' + JSON.stringify({{ reached, selected, before, after, reversible,
-        passed: reached && selected && changed && reversible && state.pageErrors.length === 0,
-        final: await summary.textContent({{ timeout: 2000 }}), pageErrors: state.pageErrors }}));
+      await page.keyboard.press('Escape');
+      const restored = await view.evaluate(el => el === document.activeElement);
+      const closed = !(await dialog.isVisible());
+      const passed = reached && activated && before !== after && /added.*bag/i.test(after) &&
+        count && opened && contents.includes('Oat Glaze Bowl') && contents.includes('$46') &&
+        closed && restored && state.pageErrors.length === 0;
+      console.log('LANDING_RESULT ' + JSON.stringify({{ reached, activated, before, after, count,
+        opened, contents, closed, restored, passed, pageErrors: state.pageErrors }}));
     """)
-    line = next((line for line in receipt.splitlines() if "LANDING_RESULT " in line), None)
+    line = next((line for line in response.splitlines() if "LANDING_RESULT " in line), None)
     if not line or not path.is_file():
-        raise RuntimeError(f"Missing observed action for {cell.name} at {width}: {receipt[-600:]}")
+        raise RuntimeError(f"Missing observed action for {cell.name} at {width}: {response[-600:]}")
     result, _ = json.JSONDecoder().raw_decode(line.split("LANDING_RESULT ", 1)[1])
     result["after_sha256"] = sha256(path.read_bytes())
     return result

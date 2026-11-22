@@ -1,8 +1,8 @@
-name: Specific landing keyboard task checks
+name: Ceramics purchase keyboard checks
 
 on:
   push:
-    branches: [design-mcp/specific-landing-actions]
+    branches: [design-mcp/product-hero-actions]
     paths: ['.github/workflows/playwriter-baseline.yml', 'evidence/benchmark-v1/candidate-inputs/**', 'evals/v1/render.py', 'evals/v1/render_landing_actions.py']
 
 permissions:
@@ -48,7 +48,7 @@ jobs:
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: specific-landing-actions
+          name: ceramics-purchase-actions
           path: evidence/benchmark-v1/candidate-inputs/
           if-no-files-found: error
           retention-days: 7
