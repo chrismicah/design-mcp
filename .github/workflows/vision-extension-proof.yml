@@ -1,0 +1,89 @@
+name: Chrome review extension keyboard proof
+
+on:
+  push:
+    branches: [design-mcp/vision-extension-proof]
+
+permissions:
+  contents: read
+
+jobs:
+  popup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Install the package and isolated browser
+        shell: bash
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends xvfb xauth xdotool
+          python -m venv "$RUNNER_TEMP/design-review"
+          "$RUNNER_TEMP/design-review/bin/python" -m pip install . 'pillow>=11,<13'
+          curl -fsSL https://storage.googleapis.com/chrome-for-testing-public/158.0.8127.36/linux64/chrome-linux64.zip -o "$RUNNER_TEMP/chrome.zip"
+          unzip -q "$RUNNER_TEMP/chrome.zip" -d "$RUNNER_TEMP/browser"
+          sudo install -o root -g root -m 4755 "$RUNNER_TEMP/browser/chrome-linux64/chrome_sandbox" /usr/local/sbin/chrome-devel-sandbox
+      - name: Open the real toolbar action and submit a masked capture
+        shell: bash
+        run: |
+          cli="$RUNNER_TEMP/design-review/bin/design-mcp"
+          extension="$RUNNER_TEMP/review-extension"
+          chrome="$RUNNER_TEMP/browser/chrome-linux64/chrome"
+          proof="$RUNNER_TEMP/extension-proof"
+          cp -R "$("$cli" review --extension-path | head -1)" "$extension"
+          python - "$extension/manifest.json" <<'PY'
+          from pathlib import Path
+          import json, sys
+          path = Path(sys.argv[1])
+          manifest = json.loads(path.read_text())
+          manifest['commands'] = {'_execute_action': {'suggested_key': {'default': 'Ctrl+Shift+Y'}}}
+          path.write_text(json.dumps(manifest))
+          PY
+          node --version
+          CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox \
+            xvfb-run -a -s '-screen 0 1600x1040x24' node --experimental-websocket \
+            evals/vision/extension_smoke.mjs "$chrome" "$cli" "$extension" "$proof"
+          "$RUNNER_TEMP/design-review/bin/python" - "$proof" <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          import base64, hashlib, io, json, re, sys
+          root = Path(sys.argv[1])
+          proof_path = root/'extension-review.json'
+          proof = json.loads(proof_path.read_text())
+          assert proof['passed'], proof
+          preview = Path(proof['previewFolder'])
+          evidence = preview/'evidence.json'
+          html = (preview/'preview.html').read_text()
+          metadata = json.loads(evidence.read_text())
+          assert 'fixture-redaction-sentinel-' not in html + evidence.read_text()
+          assert metadata['frames'][0]['masks']['counts']['field'] == 1
+          content = base64.b64decode(re.search(r'data:image/png;base64,([A-Za-z0-9+/=]+)',html)[1])
+          assert hashlib.sha256(content).hexdigest() == metadata['frames'][0]['screenshot']['sha256']
+          with Image.open(io.BytesIO(content)) as image:
+              field = proof['field']
+              scale_x = image.width / field['viewport'][0]
+              scale_y = image.height / field['viewport'][1]
+              x, y = field['x'] * scale_x, field['y'] * scale_y
+              w, h = field['width'] * scale_x, field['height'] * scale_y
+              checked = image.convert('RGB').crop((round(x)+2, round(y)+2, round(x+w)-2, round(y+h)-2))
+              assert set(checked.getdata()) == {(138, 143, 152)}
+          proof['verifiedMaskInterior'] = True
+          proof['privateValueAbsentFromArtifacts'] = True
+          proof_path.write_text(json.dumps(proof, indent=2)+'\n')
+          print('Verified native messaging, private field masking, and the preview switch.')
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: extension-review-receipt
+          path: |
+            ${{ runner.temp }}/extension-proof/extension-review.json
+            ${{ runner.temp }}/extension-proof/browser.log
+            ${{ runner.temp }}/extension-proof/*.png
+          if-no-files-found: warn
+          retention-days: 7

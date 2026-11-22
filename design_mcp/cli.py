@@ -3,6 +3,7 @@
 Usage:
     design-mcp serve     Start the MCP server (stdio transport)
     design-mcp version   Show version
+    design-mcp review    Review a page locally
     design-mcp doctor    Check the installation and local stdio connection
 """
 import sys
@@ -17,6 +18,7 @@ def main():
         print("Usage:")
         print("  design-mcp serve      Start the MCP server (stdio transport)")
         print("  design-mcp version    Show version")
+        print("  design-mcp review     Review a page locally (run review --help)")
         print("  design-mcp doctor [--repair]    Check the interpreter, resources, and local stdio client")
         print()
         print("Add to Claude Code:")
@@ -34,6 +36,10 @@ def main():
         from design_mcp.server import mcp
         mcp.run()
         return
+
+    if command == "review":
+        from design_mcp.review.cli import main as review_main
+        sys.exit(review_main(args[1:]))
 
     if command == "doctor":
         import argparse
