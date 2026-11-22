@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+- Check resolved destinations before opening the disposable review browser's TCP connections. Hosted Chrome blocked both private fixture targets and matched the previous public desktop and mobile captures. [Browser proof](evidence/benchmark-v1/browser-public-network-7bccfc1.json)
+
 - Added an opt-in check for unhinted direction comparisons. The cold-storage runner keeps the exact brief and rejects hinted calls before browser review. All 72 frozen generator traces replayed with identical parser results. [Benchmark proof](evidence/benchmark-v1/unhinted-direct-gate.json)
 
 - Public URL reviews use the isolated Playwriter session for every command and stop if request filtering fails to start. Pass `--playwriter` to use the installed command on PATH. [Hosted review and regression checks](evidence/benchmark-v1/isolated-url-session-e1cd4eb.json)

@@ -1,0 +1,113 @@
+{
+  "source_commit": "7bccfc14d4ce5652f81ee85f14bd56ee452a4aae",
+  "run": "https://github.com/chrismicah/design-mcp/actions/runs/45035151563",
+  "job": "https://github.com/chrismicah/design-mcp/actions/runs/45035151563/job/137247137991",
+  "scope": "Hosted installed browser smoke on macOS 15 arm64. Owned loopback fixture and public USWDS address form.",
+  "connection_guard": {
+    "proxied_private_targets": [
+      "IPv4 loopback",
+      "test DNS name resolving to loopback"
+    ],
+    "fixture_connections": 0,
+    "sha256": "751e29db8a42fd4101f725ceadd3814736c4bfde143cd81b8d07cd2496cf6076"
+  },
+  "historical_control": {
+    "source_commit": "e1cd4eb82bc60269ce42223523f73a862c0086a5",
+    "run": "https://github.com/chrismicah/design-mcp/actions/runs/45032622125",
+    "identical_frame_digests": true
+  },
+  "tart_input": {
+    "archive_commit": "7bccfc14d4ce5652f81ee85f14bd56ee452a4aae",
+    "sha256": {
+      "candidate.tar": "3e2647018779ad16a2ffdb56eece5b955760142334db1fd74b1310ac3ba510e8",
+      "uv": "0e17c316d23b33b4e840669f516f5cb7f5c1faa816ebd3824052ab50082ecefb",
+      "inside_guest.sh": "de12b1e6b4e92514f164857a2291cb1ffdab71a02870ab7e26b74b2e2a4b1ffd",
+      "input-check.log": "0dfc1bcb5ef2858387e18fcb17b4fae4b7aef557a80138abb6c9867e32203c88"
+    },
+    "booted": false,
+    "pyproject_sha256": "ae2efd75b11abbef9b15ab67196f84bbd4a638642a7b515a1f6656dbcdbba4f3",
+    "dependency_probe_commit": "e1cd4eb82bc60269ce42223523f73a862c0086a5"
+  },
+  "local_suite": {
+    "passed": 491,
+    "subtests_passed": 117,
+    "log_sha256": "d1c0b6b2d13f3647fafbe9a98ce1e1d67c30300bff3012bb7b967dde33d886a1"
+  },
+  "capture_id": "c-6f83da92524d",
+  "url": "https://designsystem.digital.gov/templates/form-templates/address-form/",
+  "browser": "Google Chrome for Testing 158.0.8127.36",
+  "playwriter": "0.12.0",
+  "frontier": "not-run",
+  "regions": 16,
+  "timings_ms": {
+    "page_load": 1987,
+    "capture": 586,
+    "sanitize": 20.9,
+    "local_checks": 0.1,
+    "preview": 1.7,
+    "frontier": "not-run"
+  },
+  "frames": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "sha256": "743625d72cdc58ad2db223578b6ac082783667a4991901570505d7502846f08e",
+      "masked_fields": 5,
+      "street_address_masked": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "sha256": "9fdd7b37dae00f84f57eaa62618ed546eb2260711a3fc68b41a8862e26985a38",
+      "masked_fields": 4,
+      "street_address_masked": true
+    }
+  ],
+  "saved_preview_pixel_check": {
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "dpr": 1
+    },
+    "rgb": [
+      138,
+      143,
+      152
+    ],
+    "checked_pixel_count": 17136,
+    "screenshot_sha256": "743625d72cdc58ad2db223578b6ac082783667a4991901570505d7502846f08e"
+  },
+  "files": {
+    "result.json": "1eea501816e326dda53def85626bf1e859dab5e7a5fe234ac1c6770795133320",
+    "evidence.json": "e7106f5bc675c78771fe3a617e0f53013a08d4194bc8e4091b4fcf11aaac3478",
+    "preview.html": "abb3812ef0b074acc95d3e29b2c49cd3e40f435d5063abf0d0134dfe2f5023fe"
+  },
+  "macos_arm64_python_network_checks": [
+    {
+      "python": "Python 3.10.20",
+      "passed": 2,
+      "sha256": "edeb298b156e6c27f155d6ee120cb19a762e8cd601d908c0fc03940019a889f4"
+    },
+    {
+      "python": "Python 3.11.15",
+      "passed": 2,
+      "sha256": "078f18e1bac98a24c397810866c355c051495dd5c77343b99b22671d709e06b6"
+    },
+    {
+      "python": "Python 3.12.13",
+      "passed": 2,
+      "sha256": "e1ab3db1f094d565934d93b92a60a62c71be22047c601d4b575890e14df0c439"
+    },
+    {
+      "python": "Python 3.13.3",
+      "passed": 2,
+      "sha256": "886d1338cde7ffba47baa0a875d463cf803db9e5d7c3ea6ccd2ac196bacfacfc"
+    }
+  ]
+}

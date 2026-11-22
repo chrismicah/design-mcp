@@ -14,6 +14,8 @@ The installed CLI captured the USWDS address form at desktop and mobile widths t
 
 Install Playwriter 0.12.0 on PATH or supply its executable after `--playwriter`. URL capture uses the new isolated Playwriter session for every browser command. Add `--no-open` to preview the command's intent without starting Chrome. [Pinned Playwriter MCP guide](https://github.com/remorses/playwriter/blob/playwriter%400.12.0/MCP.md)
 
+Pasted-URL capture checks the resolved address before opening each browser TCP connection. The first hostname stays pinned to its checked address, and assets on other hosts go through the same address check. Hosted Chrome refused an owned loopback fixture both by IP and by a test name that resolved to that IP. Use the toolbar for pages you already have open on a private network. [Browser proof](../../evidence/benchmark-v1/browser-public-network-7bccfc1.json)
+
 Each route produces the same capture format and goes through the same steps: scrub, three local checks, one finding, one preview file.
 
 ## Set up the extension
@@ -96,7 +98,6 @@ Repeat the installed browser acceptance steps on the reference Mac.
 - The popup and preview still need independent live review and a 9.5 per screen release score.
 - No model review, no redesign builder, and no after view for layout findings. The first finding comes from three local checks only.
 - The reference Mac walkthrough observed the recolor in After. A pixel-level check of the recolor remains open.
-- Private subresource handling remains open for pasted URLs. The browser prototype checks host patterns on subrequests and pins the top-level lookup.
 - No keyboard activation is performed on a live page, so the interaction part of the capture format is validated but never produced.
 - The 8 reported regions are chosen by the collector: first heading, main button, up to three hardest-to-read lines, first status, then reading order. That choice has not been checked against human labels.
 - Host setup covers Chrome on macOS and Linux. The unpacked extension has no icon and no fixed ID, so the ID must be passed once.

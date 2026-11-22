@@ -7,12 +7,12 @@ Turn a brief into one sourced art direction. The response gives the coding agent
 Install the verified development build with either command. Both support an explicit `--python` option to select an installed interpreter.
 
 ```bash
-pipx install 'git+https://github.com/chrismicah/design-mcp.git@e1cd4eb82bc60269ce42223523f73a862c0086a5'
+pipx install 'git+https://github.com/chrismicah/design-mcp.git@7bccfc14d4ce5652f81ee85f14bd56ee452a4aae'
 # or
-uv tool install 'git+https://github.com/chrismicah/design-mcp.git@e1cd4eb82bc60269ce42223523f73a862c0086a5'
+uv tool install 'git+https://github.com/chrismicah/design-mcp.git@7bccfc14d4ce5652f81ee85f14bd56ee452a4aae'
 ```
 
-For a local checkout, pass `.` to your installer. [Verified installs](evidence/benchmark-v1/direct-git-install-e1cd4eb.json)
+For a local checkout, pass `.` to your installer. [Verified installs](evidence/benchmark-v1/direct-git-install-7bccfc1.json)
 
 Run `design-mcp doctor` in the installed environment. It reports the interpreter and executable, validates bundled resources, and uses a local stdio client to discover the selected tools and call one. Each check reports pass, fail, or skip. A failed check gives a nonzero exit status.
 
@@ -75,7 +75,7 @@ Try “calmer” after the first draft. The result adjusts focal spacing, the si
 - **The active Chrome tab.** Load the extension from the folder printed by `design-mcp review --extension-path`. Open the toolbar popup, choose **Review this page**, and follow its one-time host setup. [Extension setup](design_mcp/review/README.md#set-up-the-extension)
 - **Your SwiftUI or Electron app.** Use the app-specific exporter, then run `design-mcp review-app capture.json` to check the visible controls for clipping and occlusion. [Swift exporter](integrations/desktop/SwiftCapture.swift) · [Electron exporter](integrations/desktop/electron.mjs)
 
-GPT Computer Use verified the `f17bd6f` Chrome extension on the reference Mac. It loaded the extension in a disposable profile, recovered from a missing native host, found the seeded contrast issue, switched to After by keyboard, and reopened the same preview with the field masked. Across 30 separate popup opens in the running browser, p95 was **136 ms to Scan** and **100 ms from Scan to the first finding**. These measurements use the visible controls exposed through Accessibility. The current `e1cd4eb` install passed the hosted public URL check at desktop and mobile widths. [Reference Mac walkthrough](evidence/benchmark-v1/reference-mac-chrome-f17bd6f.json) · [Timing receipt](evidence/benchmark-v1/chrome-reference-latency-f17bd6f.json) · [Public URL receipt](evidence/benchmark-v1/isolated-url-session-e1cd4eb.json)
+GPT Computer Use verified the `f17bd6f` Chrome extension on the reference Mac. It loaded the extension in a disposable profile, recovered from a missing native host, found the seeded contrast issue, switched to After by keyboard, and reopened the same preview with the field masked. Across 30 separate popup opens in the running browser, p95 was **136 ms to Scan** and **100 ms from Scan to the first finding**. These measurements use the visible controls exposed through Accessibility. The `7bccfc1` install passed the hosted public URL check at desktop and mobile widths and refused both owned private fixture targets. [Reference Mac walkthrough](evidence/benchmark-v1/reference-mac-chrome-f17bd6f.json) · [Timing receipt](evidence/benchmark-v1/chrome-reference-latency-f17bd6f.json) · [Public URL receipt](evidence/benchmark-v1/browser-public-network-7bccfc1.json)
 
 GPT Computer Use also exercised the SwiftUI and Electron fixtures on the reference Mac. SwiftUI exposed a new control after Reveal, and the installed CLI counted five then six controls in the hosted geometry captures. In Electron, Tab and Return revealed the covered button. The installed CLI reviewed the fresh local captures and reported that occlusion cleared while clipping persisted. [SwiftUI evidence](evidence/benchmark-v1/reference-mac-desktop-f17bd6f.json) · [Electron evidence](evidence/benchmark-v1/reference-mac-electron-f17bd6f.json)
 
@@ -93,7 +93,7 @@ The new direction library and the historical pattern data have separate roles. H
 
 ## Verified results
 
-The pinned Git commands passed all eight clean-install jobs on Intel and Apple Silicon macOS 15 with Python 3.10–3.13. Each installer verified the package commit, passed `doctor` and exercised all 17 compatibility tools. The same pin passed dependency checks for all eight macOS 13 targets. Ventura runtime and fresh Tart verification remain open. [Install matrix](https://github.com/chrismicah/design-mcp/actions/runs/45032622043) · [Ventura preflight](evidence/benchmark-v1/ventura-wheel-preflight.json)
+The pinned Git commands passed all eight clean-install jobs on Intel and Apple Silicon macOS 15 with Python 3.10–3.13. Each installer verified the package commit, passed `doctor` and exercised all 17 compatibility tools. The dependency manifest is byte-identical to the one verified for all eight macOS 13 targets. Ventura runtime and fresh Tart verification remain open. [Install matrix](https://github.com/chrismicah/design-mcp/actions/runs/45035151603) · [Ventura preflight](evidence/benchmark-v1/ventura-wheel-preflight.json)
 
 All 36 matched design briefs have blinded scores. The plain generator averaged 92.7 and frozen Design MCP v2 averaged 94.1, with 17 wins, 11 ties, and eight losses. The paired 95% interval of −0.46 to +3.13 points leaves the average advantage inconclusive. [Benchmark and receipts](EVALS.md)
 
