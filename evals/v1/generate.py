@@ -171,6 +171,7 @@ def main():
     p.add_argument("--server", required=True, type=lambda path: Path(path).resolve())
     p.add_argument("--competitor-config", type=Path, help="JSON object with name, args, env and expected_tool")
     p.add_argument("--treatment-only", action="store_true", help="Reuse sealed controls from the same benchmark")
+    p.add_argument("--treatment-label", help="Output arm name for an isolated build of Design MCP")
     p.add_argument("--codex", default="codex")
     p.add_argument("--model", required=True)
     p.add_argument("--effort", default="max")
@@ -201,6 +202,12 @@ def main():
             p.error("Competitor env must be an object with string values")
         if not isinstance(args.expected_tool, str) or not args.expected_tool:
             p.error("Competitor expected_tool must name a tool")
+    if args.treatment_label:
+        if args.competitor_config or args.treatment_label == "none" or not re.fullmatch(
+            r"[a-z0-9][a-z0-9-]{0,47}", args.treatment_label
+        ):
+            p.error("Treatment labels must be lowercase slugs and cannot be combined with a competitor config")
+        args.treatment = args.treatment_label
     args.client_version = subprocess.check_output([args.codex, "--version"], text=True, env=clean_env()).strip()
     args.scratch = args.out / ".empty-client-workspace"
     args.scratch.mkdir(parents=True, exist_ok=True)

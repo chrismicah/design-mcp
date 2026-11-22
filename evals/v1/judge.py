@@ -5,6 +5,7 @@ import hashlib
 import json
 from pathlib import Path
 import random
+import re
 import shutil
 import statistics
 import subprocess
@@ -42,7 +43,7 @@ def score_arm(record):
 
 
 def create_pair(args, task):
-    arms = ["none", args.treatment]
+    arms = [args.control, args.treatment]
     order = hashlib.sha256(f"{args.seed}:{task['id']}".encode()).digest()[0] % 2
     if order:
         arms.reverse()
@@ -137,13 +138,13 @@ def run_judge(args, task, pair, schema_path):
     return receipt
 
 
-def summarize(tasks, rows, treatment="v2"):
+def summarize(tasks, rows, treatment="v2", control="none"):
     result = {"requested_pairs": len(tasks), "judged_pairs": len(rows)}
     if not rows:
         return result
-    for arm in ("none", treatment):
+    for arm in (control, treatment):
         result[arm] = statistics.mean(row["scores"][arm] for row in rows)
-    differences = [row["scores"][treatment] - row["scores"]["none"] for row in rows]
+    differences = [row["scores"][treatment] - row["scores"][control] for row in rows]
     result["difference"] = statistics.mean(differences)
     result["wins_ties_losses"] = [sum(d > 0 for d in differences), sum(d == 0 for d in differences),
                                  sum(d < 0 for d in differences)]
@@ -154,11 +155,11 @@ def summarize(tasks, rows, treatment="v2"):
     return result
 
 
-def generation_accounting(cells, tasks, treatment):
+def generation_accounting(cells, tasks, treatment, control):
     accounting = {}
     for task in tasks:
         arms = {}
-        for arm in ("none", treatment):
+        for arm in (control, treatment):
             path = cells / task["id"] / arm / "receipt.json"
             receipt = load(path) if path.is_file() else {}
             arms[arm] = {"status": receipt.get("status", "pending"),
@@ -179,10 +180,14 @@ def main():
     parser.add_argument("--timeout", type=int, default=900)
     parser.add_argument("--case", action="append")
     parser.add_argument("--treatment", default="v2", help="Directory name for the treatment arm")
+    parser.add_argument("--control", default="none", help="Directory name for the control arm")
     parser.add_argument("--compact", action="store_true", help="Use compact desktop pixels plus browser regions")
     parser.add_argument("--quota-probe", type=lambda path: Path(path).resolve(),
                         help="Python quota probe that supports --out and --check-dispatch")
     args = parser.parse_args()
+    if args.control == args.treatment or not all(re.fullmatch(r"[a-z0-9][a-z0-9-]{0,47}", name)
+                                                 for name in (args.control, args.treatment)):
+        parser.error("Control and treatment must be distinct lowercase slugs")
     for name in ("ratings", "traces"):
         (args.out / name).mkdir(parents=True, exist_ok=True)
     schema_path = args.out / "judge-schema.json"
@@ -201,9 +206,9 @@ def main():
         row = run_judge(args, task, pair, schema_path)
         rows.append(row)
         print(row["case"], row["scores"], flush=True)
-    summary = summarize(tasks, rows, args.treatment)
+    summary = summarize(tasks, rows, args.treatment, args.control)
     summary["unjudged"] = pending
-    summary["generation"] = generation_accounting(args.cells, tasks, args.treatment)
+    summary["generation"] = generation_accounting(args.cells, tasks, args.treatment, args.control)
     write(args.out / "summary.json", summary)
     print(json.dumps(summary), flush=True)
 

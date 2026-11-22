@@ -28,7 +28,8 @@ class BenchmarkTests(unittest.TestCase):
     def test_blind_pair_requires_two_intact_renderings(self):
         with TemporaryDirectory() as path:
             base = Path(path)
-            args = SimpleNamespace(cells=base / "generated", out=base / "blind", seed="test", treatment="v2", compact=False)
+            args = SimpleNamespace(cells=base / "generated", out=base / "blind", seed="test",
+                                   control="none", treatment="v2", compact=False)
             task = {"id": "station"}
             for arm in ("none", "v2"):
                 cell = args.cells / task["id"] / arm
@@ -66,6 +67,8 @@ class BenchmarkTests(unittest.TestCase):
         self.assertEqual(result["requested_pairs"], 3)
         self.assertEqual(result["difference"], 12.5)
         self.assertEqual(result["wins_ties_losses"], [1, 1, 0])
+        candidate = summarize([{}], [{"scores": {"v2": 70, "candidate": 80}}], "candidate", "v2")
+        self.assertEqual(candidate["difference"], 10)
 
     def test_competitor_requires_its_own_successful_search(self):
         call = {"type": "item.completed", "item": {"type": "mcp_tool_call", "server": "inspo",
