@@ -42,16 +42,20 @@ const stored = await readStored();
 await page.reload({waitUntil: 'domcontentloaded'});
 await booking.waitFor({state:'visible'});
 const reopened = {booking:await booking.isChecked(), events:await events.isChecked()};
+const reopenedStored = await readStored();
 await page.screenshot({path: __REOPENED__, animations:'disabled'});
 const displayedStored = !reopened.booking && reopened.events;
 const recordMatches = stored?.bookingReminders === false && stored?.eventAnnouncements === true;
-const persistenceFailed = dirty && savedVisible && !displayedStored && stored === null;
+const reopenedRecordMatches = reopenedStored?.bookingReminders === false &&
+  reopenedStored?.eventAnnouncements === true;
+const persistenceFailed = dirty && savedVisible && !displayedStored && stored === null && reopenedStored === null;
 const staysLocal = page.url() === url && sent.length === 0;
-const passed = defaultsPassed && dirty && savedVisible && displayedStored && recordMatches &&
+const passed = defaultsPassed && dirty && savedVisible && displayedStored && recordMatches && reopenedRecordMatches &&
   staysLocal && !state.pageErrors.length;
 await page.evaluate(name => localStorage.removeItem(name), key);
 console.log('SETTINGS_PERSISTENCE '+JSON.stringify({
-  defaultsPassed, dirty, savedVisible, stored, reopened, displayedStored, recordMatches, persistenceFailed,
+  defaultsPassed, dirty, savedVisible, stored, reopened, reopenedStored, displayedStored, recordMatches,
+  reopenedRecordMatches, persistenceFailed,
   staysLocal, sent, pageErrors: state.pageErrors, passed
 }));
 """
@@ -75,4 +79,4 @@ async def interact(client, cell, width):
 
 
 if __name__ == "__main__":
-    main(interact)
+    main(interact, clear_storage_on_navigation=False)

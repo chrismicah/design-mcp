@@ -105,7 +105,7 @@ async def execute(client, code):
     return result_text(await client.call_tool("execute", {"code": code, "timeout": 15000}))
 
 
-async def capture(client, cell, width, height, url, interact=None):
+async def capture(client, cell, width, height, url, interact=None, *, clear_storage_on_navigation=True):
     path = cell / f"{width}.png"
     await execute(client, """
       state.page = await context.newPage();
@@ -113,10 +113,13 @@ async def capture(client, cell, width, height, url, interact=None):
       state.page.on('pageerror', error => state.pageErrors.push(String(error).slice(0, 240)));
     """)
     try:
+        if clear_storage_on_navigation:
+            await execute(client, """
+              await state.page.addInitScript(() => {localStorage.clear(); sessionStorage.clear();});
+            """)
         await execute(client, f"""
           await state.page.setViewportSize({{width:{width}, height:{height}}});
           await state.page.emulateMedia({{reducedMotion:'reduce'}});
-          await state.page.addInitScript(() => {{localStorage.clear(); sessionStorage.clear();}});
           await state.page.goto({json.dumps(url)}, {{waitUntil:'load', timeout:12000}});
         """)
         response = await execute(client, f"""
@@ -150,7 +153,7 @@ async def capture(client, cell, width, height, url, interact=None):
         await execute(client, "await state.page.close();")
 
 
-async def render_all(args, chrome, server, env, web_socket, interact=None):
+async def render_all(args, chrome, server, env, web_socket, interact=None, *, clear_storage_on_navigation=True):
     transport = StdioTransport(command=str(args.playwriter), args=[], env=env, cwd=str(args.scratch))
     async with Client(transport, timeout=40) as client:
         tools = {tool.name for tool in await client.list_tools()}
@@ -182,7 +185,10 @@ async def render_all(args, chrome, server, env, web_socket, interact=None):
             captures = {}
             for width, height in VIEWPORTS:
                 try:
-                    captures[width] = await capture(client, cell, width, height, url, interact)
+                    captures[width] = await capture(
+                        client, cell, width, height, url, interact,
+                        clear_storage_on_navigation=clear_storage_on_navigation,
+                    )
                 except (RuntimeError, ValueError, TimeoutError) as error:
                     captures[width] = {"status": "render-error", "message": str(error)}
             record = {"renderer": args.renderer, "browser": chrome, "input_sha256": sha256(server.fixture),
@@ -192,7 +198,7 @@ async def render_all(args, chrome, server, env, web_socket, interact=None):
                   {width: value["status"] for width, value in captures.items()}, flush=True)
 
 
-def main(interact=None):
+def main(interact=None, *, clear_storage_on_navigation=True):
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--cells", type=lambda path: Path(path).resolve(), required=True)
     p.add_argument("--playwriter", type=lambda path: Path(path).absolute(), required=True)
@@ -223,7 +229,10 @@ def main(interact=None):
                     return True
 
             wait_ready(relay, relay_ready)
-            asyncio.run(render_all(args, version["Browser"], server, env, version["webSocketDebuggerUrl"], interact))
+            asyncio.run(render_all(
+                args, version["Browser"], server, env, version["webSocketDebuggerUrl"], interact,
+                clear_storage_on_navigation=clear_storage_on_navigation,
+            ))
 
 
 if __name__ == "__main__":
