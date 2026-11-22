@@ -7,7 +7,7 @@ import statistics
 from types import SimpleNamespace
 
 from generate import BASE_DIR, read_trace, sha256
-from judge import WIDTHS, create_pair, load, run_judge, score_arm, summarize, write
+from judge import DEFAULT_BLIND_SEED, WIDTHS, create_pair, load, run_judge, score_arm, summarize, write
 
 
 ARMS = ("none", "v2")
@@ -92,6 +92,7 @@ def main():
         parser.add_argument(f"--{flag}", type=Path)
     parser.add_argument("--control", default=ARMS[0])
     parser.add_argument("--treatment", default=ARMS[1])
+    parser.add_argument("--seed", default=DEFAULT_BLIND_SEED, help="The blinding seed used by judge.py")
     paths = parser.parse_args()
     if paths.control == paths.treatment:
         parser.error("Pass distinct names for the control and treatment")
@@ -99,7 +100,7 @@ def main():
         parser.error("Use either --archives or separate control and treatment archives")
     if not paths.archives and not (paths.control_archive and paths.treatment_archive):
         parser.error("Pass --archives or both --control-archive and --treatment-archive")
-    args = SimpleNamespace(**vars(paths), out=paths.ballots, seed="design-mcp-blind-v1",
+    args = SimpleNamespace(**vars(paths), out=paths.ballots,
                            compact=False, model="gpt-6.2-astra", effort="max")
     tasks = load(BASE_DIR / "tasks.json")
     cases = {task["id"]: verify_case(args, task) for task in tasks

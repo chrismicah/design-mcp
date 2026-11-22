@@ -1,0 +1,220 @@
+{
+  "summary": {
+    "requested_pairs": 36,
+    "judged_pairs": 1,
+    "specific-landing": 95.83333333333334,
+    "uiux-pro-max": 95.83333333333334,
+    "difference": 0.0,
+    "wins_ties_losses": [
+      0,
+      1,
+      0
+    ],
+    "median_usage": {
+      "specific-landing": {
+        "input_tokens": 64098,
+        "cached_input_tokens": 20864,
+        "output_tokens": 21585,
+        "elapsed_seconds": 438.82
+      },
+      "uiux-pro-max": {
+        "input_tokens": 64427,
+        "cached_input_tokens": 31488,
+        "output_tokens": 24443,
+        "elapsed_seconds": 496.58
+      }
+    }
+  },
+  "cases": {
+    "landing-repair": {
+      "render_runs": {
+        "specific-landing": "https://github.com/chrismicah/design-mcp/actions/runs/44990359791",
+        "uiux-pro-max": "https://github.com/chrismicah/design-mcp/actions/runs/45003880052"
+      },
+      "cells": {
+        "specific-landing": {
+          "generation": {
+            "usage": {
+              "input_tokens": 64098,
+              "cached_input_tokens": 20864,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 21585,
+              "reasoning_output_tokens": 16182
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "treatment_call": true,
+            "direct_call": true,
+            "status": "passed",
+            "case": "landing-repair",
+            "arm": "specific-landing",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "b2c2a44f5ad2fa66d6b17b7fd987d52389ea0a3f4bba0f9fb149e08582fda49c",
+            "mcp_config_sha256": "3061215aaf5f1a6d674375ad4da1ea0824adff98f369c4405e4c09baac33c0fb",
+            "elapsed_seconds": 438.82,
+            "exit_code": 0,
+            "trace_sha256": "2a1a6f1a0c7569404a673b315fccb82a5b68590d6508304c188474f3855f01fe",
+            "html_sha256": "f22a4bfb4d90724c8c6ccfc365930ada465369fabf41dfc0a8cfdfcaaccec049"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "1cad0a9c5698c8cd45fa0693430fcca2a428010f81503e91537de99d7fd4ea9a",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "c9a9cc7a1df36d8ee81e3799069346069e633e29ddc18da96896d3b2ca524af5",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "uiux-pro-max": {
+          "generation": {
+            "usage": {
+              "input_tokens": 64427,
+              "cached_input_tokens": 31488,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 24443,
+              "reasoning_output_tokens": 19335
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "uiux-pro-max",
+                "tool": "design_guidance",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "treatment_call": true,
+            "status": "passed",
+            "case": "landing-repair",
+            "arm": "uiux-pro-max",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "b2c2a44f5ad2fa66d6b17b7fd987d52389ea0a3f4bba0f9fb149e08582fda49c",
+            "mcp_config_sha256": "f85a155dbece9372aa49070e7e3892fea4ad01de4ea165f0bba5624de5365929",
+            "elapsed_seconds": 496.58,
+            "exit_code": 0,
+            "trace_sha256": "82079c2acc8099bc35e606eebb206dd883c8781054cafc3ebc71299ae759c58d",
+            "html_sha256": "e6873dcf9b15811aa5ce07712cd1c685fe62a4d8cf369ee535e9f92543f25154"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "b016b5d0428d4207feac48140e60a04cac39f66f60e1c2b17476a9e9811f764e",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "3c185caafb42fc0bc97cd37545a661fd169bb4f97aa91e0475993df93de9c3b9",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "landing-repair",
+        "surface": "landing",
+        "blind_key": {
+          "A": "specific-landing",
+          "B": "uiux-pro-max"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "The orange booking link is easy to spot at both widths, though the equally prominent \u201cChoose a day\u201d and \u201cBooking summary\u201d headings divide attention before a day is selected."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The divider between picker and summary changes from vertical on desktop to horizontal on mobile, keeping the sections distinct while all five weekdays fit in one evenly spaced row."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The upright \u201c48-hour\u201d and italic \u201ctune-ups\u201d read as one offer at both widths, while bold sans-serif weekday labels remain easy to scan on mobile."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Orange connects the booking link and $85 tag to the illustrated crank, while the pale green summary stands apart from the cream day picker."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Each visible weekday abbreviation has a full weekday name in both browser trees, which also identify the \u201cChoose a day\u201d radio group and expose the initial \u201cSelect a day\u201d summary value."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "Second Spin displays 48-hour tune-ups for $85 and the address 41 Elm Street, with Tuesday through Saturday choices beside the summary on desktop and directly above it on mobile."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The header booking link is prominent at both widths, and the large \u201cPick a day\u201d heading directs attention to the five choices before the smaller summary heading."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The offer and booking panels share top and bottom edges on desktop, then stack with a clear gap on mobile while preserving an evenly spaced row of five day controls."
+            },
+            "typography": {
+              "score": 3,
+              "evidence": "The heavy condensed headings are distinct from the smaller summary text at both widths, though the tight spacing in the mobile \u201ctune-ups\u201d leaves little separation between letters."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Dark green ties the shop mark to the booking link, yellow groups the address with the price, and pale mint distinguishes the summary from the day controls."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "The five outlined controls have full weekday names in the \u201cBooking day\u201d radio group at both widths, and both browser trees expose \u201cChoose a day\u201d as the status in the summary\u2019s Day field."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "Second Spin\u2019s offer shows 48-hour tune-ups, $85, 41 Elm Street and Tuesday through Saturday availability, and the five weekday choices sit directly above a summary of day, service, location and price."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26709,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 6270,
+          "reasoning_output_tokens": 5585
+        },
+        "scores": {
+          "specific-landing": 95.83333333333334,
+          "uiux-pro-max": 95.83333333333334
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "1cad0a9c5698c8cd45fa0693430fcca2a428010f81503e91537de99d7fd4ea9a",
+          "A-390.png": "c9a9cc7a1df36d8ee81e3799069346069e633e29ddc18da96896d3b2ca524af5",
+          "B-1440.png": "b016b5d0428d4207feac48140e60a04cac39f66f60e1c2b17476a9e9811f764e",
+          "B-390.png": "3c185caafb42fc0bc97cd37545a661fd169bb4f97aa91e0475993df93de9c3b9"
+        },
+        "judge_prompt_sha256": "26779865dc1ae9ad69518af865c1b2e3df9403994758991b5bcbd1ad336938a0"
+      }
+    }
+  }
+}

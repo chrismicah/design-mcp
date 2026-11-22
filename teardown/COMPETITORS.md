@@ -94,7 +94,7 @@ The full-brief calls measure direct search behavior. Visual trials give the gene
 | Offline Designer MCP | 1 / 36 | 91.7 on ceramics. Design MCP also scored 91.7. |
 | Screenshots Design Inspiration | 1 / 36 | 91.7 on the gallery label. Design MCP also scored 91.7 in the matched Astra run. |
 | Design Library MCP, keyword | 1 / 36 | 87.5 on ceramics. Design MCP scored 95.8 in the matched shell-disabled run. |
-| UI UX Pro Max | 1 / 36 | 100.0 on bike booking. Frozen Design MCP scored 91.7. |
+| UI UX Pro Max | 1 / 36 | Beat frozen v2 on bike booking, 100.0 to 91.7. Tied the newer service-work-order direction at 95.8 in a direct rematch. |
 | Other credential-free competitor configurations above | 0 / 36 each | Pending |
 | Credentialed and hosted configurations above | 0 / 36 each | Access or isolated fixture required |
 
@@ -112,4 +112,6 @@ Screenshots completed five calls on the gallery label. Both arms used the same s
 
 The two exact gallery pages both revealed “Pigment on plaster” on Enter and hid it on a second Enter. Focus stayed on the toggle and the named note remained linked to its control at both widths. All four keyboard runs stayed local. [Gallery action evidence](../evidence/benchmark-v1/gallery-actions.json)
 
-The pinned UI UX Pro Max release returned relevant guidance through the benchmark adapter on bike booking. The blinded ballot scored it 100.0 versus 91.7 for frozen Design MCP under the same prompt, model, effort, browser and asset policy. The critic saw earlier price placement and a clear selection status. UI UX Pro Max used 64,427 input and 24,443 output tokens. Frozen v2 used 62,552 input and 21,876 output tokens. The later service-work-order direction still needs a direct match against this competitor. [Audited ballot and token receipts](../evidence/benchmark-v1/uiux-pro-max-bike-booking.json) · [Capture run](https://github.com/chrismicah/design-mcp/actions/runs/45003880052)
+The pinned UI UX Pro Max release returned relevant guidance through the benchmark adapter on bike booking. The blinded ballot scored it 100.0 versus 91.7 for frozen Design MCP under the same prompt, model, effort, browser and asset policy. The critic saw earlier price placement and a clear selection status. UI UX Pro Max used 64,427 input and 24,443 output tokens. Frozen v2 used 62,552 input and 21,876 output tokens. [Audited ballot and token receipts](../evidence/benchmark-v1/uiux-pro-max-bike-booking.json) · [Capture run](https://github.com/chrismicah/design-mcp/actions/runs/45003880052)
+
+The direct rematch reused both eligible original outputs and the same browser and asset policy. Both scored 95.8. The critic found competing booking headings in the service-work-order layout and tight mobile letter spacing in UI UX Pro Max. Each score belongs to its matched ballot. [Direct rematch and receipts](../evidence/benchmark-v1/service-vs-uiux-bike-booking.json)

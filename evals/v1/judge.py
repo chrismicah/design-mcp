@@ -16,6 +16,9 @@ DIMENSIONS = ("hierarchy", "spacing", "typography", "color", "accessibility", "f
 WIDTHS = ("1440", "390")
 
 
+DEFAULT_BLIND_SEED = "design-mcp-blind-v1"
+
+
 def schema():
     object_of = lambda props: {"type": "object", "properties": props, "required": list(props),
                                "additionalProperties": False}
@@ -202,7 +205,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--cells", required=True, type=lambda p: Path(p).resolve())
     parser.add_argument("--out", required=True, type=lambda p: Path(p).resolve())
-    parser.add_argument("--seed", default="design-mcp-blind-v1")
+    parser.add_argument("--seed", default=DEFAULT_BLIND_SEED)
     parser.add_argument("--codex", default="codex")
     parser.add_argument("--model", required=True)
     parser.add_argument("--effort", default="max")
