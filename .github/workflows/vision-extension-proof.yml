@@ -2,7 +2,7 @@ name: Chrome review extension keyboard proof
 
 on:
   push:
-    branches: [design-mcp/vision-extension-proof, design-mcp/review-integration]
+    branches: [design-mcp/vision-extension-proof, design-mcp/review-integration, design-mcp/review-latency]
 
 permissions:
   contents: read
@@ -45,7 +45,7 @@ jobs:
           path.write_text(json.dumps(manifest))
           PY
           node --version
-          CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox \
+          REVIEW_LATENCY_RUNS=30 CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox \
             xvfb-run -a -s '-screen 0 1600x1040x24' node --experimental-websocket \
             evals/vision/extension_smoke.mjs "$chrome" "$cli" "$extension" "$proof"
           "$RUNNER_TEMP/design-review/bin/python" - "$proof" <<'PY'
@@ -56,6 +56,12 @@ jobs:
           proof_path = root/'extension-review.json'
           proof = json.loads(proof_path.read_text())
           assert proof['passed'], proof
+          latency = proof['latency']
+          assert len(latency['trials']) == latency['expectedTrials'] == 30
+          for key in ('openMs', 'scanMs'):
+              values = sorted(trial[key] for trial in latency['trials'])
+              assert values[0] > 0 and latency['p95'][key] == values[28]
+          print('Chrome keyboard p95 in milliseconds:', latency['p95'])
           preview = Path(proof['previewFolder'])
           evidence = preview/'evidence.json'
           html = (preview/'preview.html').read_text()

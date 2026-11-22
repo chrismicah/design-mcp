@@ -9,6 +9,8 @@ import { fileURLToPath } from "node:url";
 import { setTimeout as delay } from "node:timers/promises";
 
 const [chrome, cli, extension, output] = process.argv.slice(2);
+const latencyRuns = Number(process.env.REVIEW_LATENCY_RUNS ?? 0);
+assert.ok(Number.isInteger(latencyRuns) && latencyRuns >= 0 && latencyRuns <= 30);
 await mkdir(output, { recursive: true });
 const fixture = await readFile(new URL("fixtures/shuttle-dispatch.html", import.meta.url));
 const host = createServer((request, response) => {
@@ -31,7 +33,7 @@ const browser = spawn(chrome, [
 const proof = {};
 let socket;
 const key = (...keys) => execFileSync("xdotool", ["key", "--clearmodifiers", ...keys]);
-async function until(description, check, milliseconds = 10000) {
+async function until(description, check, milliseconds = 10000, interval = 120) {
   const deadline = Date.now() + milliseconds;
   while (Date.now() < deadline) {
     const value = await check();
@@ -39,7 +41,7 @@ async function until(description, check, milliseconds = 10000) {
     if (browser.exitCode !== null || browser.signalCode !== null) {
       throw new Error(`Chrome exited: ${browser.exitCode ?? browser.signalCode}`);
     }
-    await delay(120);
+    await delay(interval);
   }
   throw new Error(`Timed out waiting for ${description}`);
 }
@@ -82,7 +84,9 @@ try {
     targetId: target.targetId, flatten: true,
   })).sessionId;
   const inspect = async (session, expression) => {
-    const output = await send("Runtime.evaluate", { expression, returnByValue: true }, session);
+    const output = await send("Runtime.evaluate", {
+      expression, returnByValue: true, awaitPromise: true,
+    }, session);
     if (output.exceptionDetails) {
       throw new Error(output.exceptionDetails.exception?.description || output.exceptionDetails.text);
     }
@@ -104,8 +108,9 @@ try {
   const windowId = execFileSync("xdotool", ["search", "--onlyvisible", "--name", "Evening shuttle dispatch"],
     { encoding: "utf8" }).trim().split("\n")[0];
   execFileSync("xdotool", ["windowfocus", "--sync", windowId]);
+  const findPopup = () => findTarget(item => /^chrome-extension:\/\/[a-p]{32}\/popup\.html$/.test(item.url));
   key("ctrl+shift+y");
-  const target = await until("toolbar popup", () => findTarget(item => /^chrome-extension:\/\/[a-p]{32}\/popup\.html$/.test(item.url)));
+  const target = await until("toolbar popup", findPopup);
   const extensionId = new URL(target.url).hostname;
   proof.extensionId = extensionId;
   const popup = await attach(target);
@@ -168,6 +173,43 @@ try {
   assert.equal(proof.preview.visible, true);
   await image(preview, "preview-after.png");
   proof.previewFolder = dirname(fileURLToPath(proof.result.previewUrl));
+
+  if (latencyRuns) {
+    const latency = proof.latency = {
+      scope: "Fresh popup documents and one-request native host processes in a warm Chrome session",
+      expectedTrials: latencyRuns, trials: [],
+    };
+    const painted = (session, selector, state) => inspect(session, `(() => {
+      const node = document.querySelector(${JSON.stringify(selector)});
+      const ready = () => document.body?.dataset.state === ${JSON.stringify(state)} &&
+        node?.checkVisibility() && !node.disabled && Boolean(node.textContent?.trim());
+      if (document.body?.dataset.state === 'problem') throw new Error(document.querySelector('#status').textContent);
+      if (!ready()) return false;
+      return new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve(ready()))));
+    })()`);
+    const p95 = values => values.toSorted((a, b) => a - b)[Math.ceil(values.length * .95) - 1];
+    await send("Target.closeTarget", { targetId: previewTarget.targetId });
+    await send("Target.activateTarget", { targetId: fixturePage.targetId });
+    for (let trial = 0; trial < latencyRuns; trial++) {
+      await until("previous popup to close", async () => !(await findPopup()), 5000, 15);
+      const activated = performance.now();
+      key("ctrl+shift+y");
+      const fresh = await until("fresh toolbar popup", findPopup, 5000, 15);
+      const session = await attach(fresh);
+      await until("painted Scan control", () => painted(session, "#scan", "idle"), 5000, 15);
+      const openMs = performance.now() - activated;
+      const scanned = performance.now();
+      key("Return");
+      await until("painted local finding", () => painted(session, "#finding", "result"), 10000, 15);
+      assert.equal(await inspect(session, "!document.querySelector('#fix').hidden"), true);
+      latency.trials.push({ openMs: Math.round(openMs), scanMs: Math.round(performance.now() - scanned) });
+      key("Escape");
+    }
+    latency.p95 = {
+      openMs: p95(latency.trials.map(trial => trial.openMs)),
+      scanMs: p95(latency.trials.map(trial => trial.scanMs)),
+    };
+  }
   proof.passed = true;
 } finally {
   await writeFile(join(output, "extension-review.json"), JSON.stringify(proof, null, 2) + "\n");
