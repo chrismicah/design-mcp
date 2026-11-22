@@ -27,6 +27,8 @@ Both display settings pages updated the date and temperature independently by ke
 
 Both frozen saved-trails pages moved Cedar Bend from the suggestion to the saved list and back again by keyboard, with focus restored to the save action or nearby trail. Both article-draft pages rejected an empty title, saved the first named draft through a reload, and returned to empty after clearing and reopening. All eight runs stayed local. [Interaction and capture hashes](evidence/benchmark-v1/empty-transitions-actions.json)
 
+The frozen tool-search pages both recovered by keyboard, showed the single available Folding Pruning Saw, moved focus to the result, and returned to the empty query. Only the plain page showed the known available count beside the suggestion before activation. Both shift pages booked the stated shift in place and moved focus to the confirmation. Both Reserve buttons started within the viewport. Frozen v2 lost the booking on fresh navigation, which the original brief did not require. The plain page retained it. [Eight keyboard replays and capture hashes](evidence/benchmark-v1/empty-recovery-actions.json)
+
 | Median per judged brief | Input tokens | Cached input | Output tokens | Seconds |
 | --- | ---: | ---: | ---: | ---: |
 | Plain generator | 20,543 | 11,136 | 20,257 | 408 |
