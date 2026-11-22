@@ -29,23 +29,27 @@ _COFFEE = r"""
 const buy = page.locator('#add-to-bag');
 const roastDate = page.getByText('November 19', {exact: true});
 const bag = page.getByRole('dialog', {name: 'Your bag'});
+const openBag = page.locator('#open-bag');
 const count = page.locator('#bag-count');
 const start = {button: await pixels(buy), roastDate: await pixels(roastDate)};
 const factsVisible = await roastDate.isVisible();
 const reached = await tabTo(buy);
-let correctBag = false, restored = false;
+let correctBag = false, restored = false, openedOnAdd = false;
 if (reached) {
   await page.keyboard.press('Enter');
+  const added = (await count.textContent()).trim() === '1';
+  openedOnAdd = await bag.isVisible();
+  if (!openedOnAdd && added && await tabTo(openBag)) await page.keyboard.press('Enter');
   await bag.waitFor({state: 'visible', timeout: 2000}).catch(() => {});
   const copy = await bag.isVisible() ? await bag.innerText() : '';
-  correctBag = copy.includes('Alto Carmo') && copy.includes('$19') && (await count.textContent()).trim() === '1';
+  correctBag = added && copy.includes('Alto Carmo') && copy.includes('$19');
   await page.screenshot({path: __PATH__, animations: 'disabled'});
   await page.keyboard.press('Escape');
   await bag.waitFor({state: 'hidden', timeout: 2000}).catch(() => {});
-  restored = !(await bag.isVisible()) && await isFocused(buy);
+  restored = !(await bag.isVisible()) && await isFocused(openedOnAdd ? buy : openBag);
 }
 const passed = factsVisible && reached && correctBag && restored;
-const outcome = {start, factsVisible, reached, correctBag, restored, passed};
+const outcome = {start, factsVisible, reached, correctBag, restored, openedOnAdd, passed};
 """
 
 _TRAIN = r"""
