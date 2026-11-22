@@ -1,31 +1,31 @@
 {
   "summary": {
     "requested_pairs": 36,
-    "judged_pairs": 14,
-    "none": 92.26190476190476,
-    "v2": 94.64285714285714,
-    "difference": 2.3809523809523836,
+    "judged_pairs": 15,
+    "none": 91.94444444444444,
+    "v2": 94.44444444444444,
+    "difference": 2.5000000000000018,
     "wins_ties_losses": [
-      6,
+      7,
       7,
       1
     ],
     "paired_bootstrap_95_interval": [
-      -0.8928571428571429,
-      5.357142857142861
+      -0.27777777777777907,
+      5.277777777777781
     ],
     "median_usage": {
       "none": {
-        "input_tokens": 20083.5,
-        "cached_input_tokens": 5568.0,
-        "output_tokens": 21269.0,
-        "elapsed_seconds": 430.575
+        "input_tokens": 20084,
+        "cached_input_tokens": 11136,
+        "output_tokens": 22204,
+        "elapsed_seconds": 450.94
       },
       "v2": {
-        "input_tokens": 63084.0,
-        "cached_input_tokens": 40960.0,
-        "output_tokens": 21284.0,
-        "elapsed_seconds": 432.3
+        "input_tokens": 63131,
+        "cached_input_tokens": 40960,
+        "output_tokens": 21338,
+        "elapsed_seconds": 433.86
       }
     }
   },
@@ -2490,6 +2490,183 @@
           "B-390.png": "6e481d58ed21ca4d01fb7a91b78c03ddce9bedb5a47c639ae6cdf685bef61275"
         },
         "judge_prompt_sha256": "b93341107129276ed7c549e8a384e28ae8290e5f702d4a55da35c20b261dc563"
+      }
+    },
+    "form-label": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44995146562",
+      "cells": {
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 40193,
+              "cached_input_tokens": 19584,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 23448,
+              "reasoning_output_tokens": 17748
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "form-label",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "ceb21eda22c3b3d27af601949c14f909587a5de93687c1133c0fa147edd25f0b",
+            "elapsed_seconds": 473.87,
+            "exit_code": 0,
+            "trace_sha256": "c94e9d68cbdc7974f7dbc689795229fc413e8b0441b158a7965cc5c8d0f31c15",
+            "html_sha256": "d37b5770d2b2e31836c69241c5fa39c97a353259ae993c1e4b241b73256d1f6b"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "990c5ac4b5b46278a9427d618b3b2aa01f6d4cf93944ef2e66e275d6a6786198",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "abc4470f8f242b2f3e040cb097961b9f578f02d81042db6e38d3dde9a162cdc2",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 65498,
+              "cached_input_tokens": 41728,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 22510,
+              "reasoning_output_tokens": 16875
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "form-label",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "ceb21eda22c3b3d27af601949c14f909587a5de93687c1133c0fa147edd25f0b",
+            "elapsed_seconds": 456.64,
+            "exit_code": 0,
+            "trace_sha256": "d172649d6c86f46972ae6de2417967e7332e3c4ac301d1b147366fc440fa50a7",
+            "html_sha256": "95c19d6df6dac3a66c3515ffeb8192cc3564dfcc26966b254d2a687ca189d86e"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "8e6d27a7b6706a4ac0daa42d03c8a7428f74346253be58b47afed1a930b53e9c",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "340b40f3fe61e26bbd70f101a66208a90805401f19f6ff6691740d37f4a65d3b",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "form-label",
+        "surface": "form",
+        "blind_key": {
+          "A": "none",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "The large, dark record illustration competes with the task heading on desktop, while the compact mobile thumbnail lets the heading lead directly into the form."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The wide desktop gutter separates the artwork from the form, and consistent mobile margins, close label-to-field spacing and a single bordered reason group make the fields easy to scan."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The serif heading holds a readable two-line shape at both widths, and bold field labels are easy to distinguish from the regular-weight radio choices."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Forest green connects the store mark, record artwork and request button, while the pale fields and darker outlines keep each input easy to locate."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "At both widths, the visible labels match the browser names for the textboxes, reason group, radios and button, with keyboard focus and status feedback unverified."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both views show order number, email, all three specified reasons and the request action, with messages for missing or invalid entries, retained values and confirmation of the selected reason unverified."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The prominent heading states the task on first glance, and the form ends in one distinct request button whether it sits beside the illustrated panel or below it."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The desktop form has balanced space above and below it, and the mobile heading, fields and button share a left edge while thin rules group the three reasons."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The large serif title stays legible on two lines at both widths, and the smaller sans-serif instruction, bold field labels and regular-weight choices have distinct roles."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Plum and pink give the record artwork a distinct store identity, and the burgundy request button stands out against the pale form at both widths."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "Both browser trees expose the named \u2018Return label request\u2019 form, its labeled fields and its grouped radio choices in visible reading order, with focus and feedback states unverified."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "The form asks for order number and email address, lists Damaged, Wrong item and Changed mind, and offers the request action, with validation messages, entry retention and the chosen reason in confirmation unverified."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26159,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4608,
+          "reasoning_output_tokens": 3949
+        },
+        "scores": {
+          "none": 87.5,
+          "v2": 91.66666666666666
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "990c5ac4b5b46278a9427d618b3b2aa01f6d4cf93944ef2e66e275d6a6786198",
+          "A-390.png": "abc4470f8f242b2f3e040cb097961b9f578f02d81042db6e38d3dde9a162cdc2",
+          "B-1440.png": "8e6d27a7b6706a4ac0daa42d03c8a7428f74346253be58b47afed1a930b53e9c",
+          "B-390.png": "340b40f3fe61e26bbd70f101a66208a90805401f19f6ff6691740d37f4a65d3b"
+        },
+        "judge_prompt_sha256": "457405b62c1d73d92874477bfa342b63d71e9a85ba6f8a4f8f10662d6e513a40"
       }
     }
   }
