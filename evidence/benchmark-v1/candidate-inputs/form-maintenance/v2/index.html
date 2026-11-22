@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="form-action 'none'">
+  <title>Report a broken light | Building maintenance</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&amp;family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f3ebe0;
+      --surface: #fffaf4;
+      --ink: #2a1610;
+      --plum: #35212d;
+      --mulberry: #6b2148;
+      --amber: #ffd493;
+      --muted: color-mix(in srgb, var(--ink) 74%, var(--surface));
+      --border: color-mix(in srgb, var(--ink) 51%, var(--surface));
+      --rule: color-mix(in srgb, var(--ink) 19%, var(--paper));
+      --tint: color-mix(in srgb, var(--mulberry) 7%, var(--surface));
+      --display: "Fraunces", Georgia, serif;
+      --body: "Instrument Sans", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 400 1rem/1.5 var(--body);
+    }
+
+    button, input, textarea { color: inherit; font: inherit; }
+
+    .page {
+      inline-size: min(77.5rem, calc(100% - 5rem));
+      margin-inline: auto;
+      padding-block: 2.5rem 3.5rem;
+    }
+
+    .masthead {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-block-end: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.015em;
+    }
+
+    .masthead::after {
+      content: "";
+      flex: 1;
+      margin-inline-start: 0.5rem;
+      border-block-start: 1px solid var(--rule);
+    }
+
+    .masthead-mark {
+      display: grid;
+      flex: none;
+      place-items: center;
+      inline-size: 2.125rem;
+      block-size: 2.125rem;
+      border-radius: 0.375rem;
+      background: var(--mulberry);
+      color: var(--amber);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.16fr) minmax(0, 1fr);
+      min-block-size: 40.5rem;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      border-radius: 0.625rem;
+      background: var(--surface);
+    }
+
+    .scene {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 87% 78%, color-mix(in srgb, var(--mulberry) 69%, var(--plum)), transparent 65%),
+        var(--plum);
+      color: var(--paper);
+    }
+
+    .scene-copy {
+      position: relative;
+      z-index: 1;
+      padding: 3.25rem clamp(2rem, 4.4vw, 4.125rem) 0;
+    }
+
+    h1, h2 {
+      margin: 0;
+      font-family: var(--display);
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: clamp(3.5rem, 5.7vw, 5.375rem);
+      line-height: 0.98;
+      letter-spacing: -0.052em;
+    }
+
+    h1 span { display: block; }
+
+    .scene-copy p {
+      max-inline-size: 34ch;
+      margin: 1.25rem 0 0;
+      color: color-mix(in srgb, var(--paper) 88%, var(--plum));
+    }
+
+    .scene-art {
+      position: absolute;
+      inset: auto 0 0;
+      display: block;
+      inline-size: 100%;
+      block-size: auto;
+      pointer-events: none;
+    }
+
+    .panel {
+      min-inline-size: 0;
+      padding: 3.25rem clamp(1.75rem, 3.55vw, 3.375rem);
+    }
+
+    h2 {
+      font-size: clamp(2rem, 2.95vw, 2.625rem);
+      line-height: 1.08;
+      letter-spacing: -0.038em;
+    }
+
+    .panel-heading {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.4rem 1rem;
+      margin-block-end: 1.75rem;
+    }
+
+    .required-note, .local-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.8125rem;
+    }
+
+    .fields { display: grid; gap: 1.25rem; }
+
+    .pair, .choices {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+
+    .field > label, legend {
+      display: block;
+      margin-block-end: 0.4375rem;
+      padding: 0;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .field :is(input, textarea) {
+      display: block;
+      inline-size: 100%;
+      min-block-size: 3rem;
+      padding: 0.625rem 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 0.3125rem;
+      background: var(--surface);
+    }
+
+    .field :is(input, textarea)::placeholder {
+      color: var(--muted);
+      opacity: 1;
+    }
+
+    .field textarea {
+      min-block-size: 6.75rem;
+      resize: vertical;
+    }
+
+    fieldset {
+      min-inline-size: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    .choice {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.625rem;
+      min-block-size: 4.25rem;
+      padding: 0.8125rem 0.6875rem;
+      border: 1px solid var(--border);
+      border-radius: 0.3125rem;
+      cursor: pointer;
+    }
+
+    .choice:hover { background: var(--tint); }
+
+    .choice input {
+      flex: none;
+      inline-size: 1.0625rem;
+      block-size: 1.0625rem;
+      margin: 0.0625rem 0 0;
+      accent-color: var(--mulberry);
+    }
+
+    .choice strong, .choice small { display: block; }
+
+    .choice strong {
+      font-size: 0.9375rem;
+      line-height: 1.25;
+    }
+
+    .choice small {
+      margin-block-start: 0.1875rem;
+      color: var(--muted);
+      font-size: 0.8125rem;
+      line-height: 1.25;
+    }
+
+    .choice:has(input:checked) {
+      border-color: var(--mulberry);
+      background: var(--tint);
+      box-shadow: inset 0 0 0 1px var(--mulberry);
+    }
+
+    .field [aria-invalid="true"], .choice:has([aria-invalid="true"]) {
+      border-color: var(--mulberry);
+    }
+
+    .field-error {
+      margin: 0.375rem 0 0;
+      color: var(--mulberry);
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    :is(input, textarea, button, h2):focus-visible,
+    .choice:has(input:focus-visible) {
+      outline: 2px solid var(--mulberry);
+      outline-offset: 3px;
+    }
+
+    .choice input:focus-visible { outline: none; }
+
+    :is(input, textarea, button, h2) { scroll-margin-block: 1.25rem; }
+
+    .form-action { margin-block-start: 1.5rem; }
+
+    .button {
+      display: block;
+      inline-size: 100%;
+      min-block-size: 3.1875rem;
+      padding: 0.6875rem 1rem;
+      border: 1px solid var(--mulberry);
+      border-radius: 0.3125rem;
+      background: var(--mulberry);
+      color: var(--paper);
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background: color-mix(in srgb, var(--mulberry) 78%, var(--ink));
+    }
+
+    .local-note {
+      margin-block-start: 0.75rem;
+      text-align: center;
+    }
+
+    .confirmation-mark {
+      display: grid;
+      place-items: center;
+      inline-size: 2.875rem;
+      block-size: 2.875rem;
+      margin-block-end: 1.125rem;
+      border: 1px solid var(--mulberry);
+      border-radius: 50%;
+      background: var(--tint);
+      color: var(--mulberry);
+    }
+
+    .summary { margin: 1.75rem 0; }
+
+    .summary > div {
+      display: grid;
+      grid-template-columns: minmax(5.75rem, 27%) minmax(0, 1fr);
+      gap: 0.625rem;
+      padding-block: 0.75rem;
+      border-block-start: 1px solid var(--rule);
+    }
+
+    .summary > div:last-child { border-block-end: 1px solid var(--rule); }
+    .summary dt { font-weight: 700; }
+
+    .summary dd {
+      margin: 0;
+      overflow-wrap: anywhere;
+      white-space: pre-wrap;
+    }
+
+    .button-secondary {
+      background: transparent;
+      color: var(--mulberry);
+    }
+
+    .button-secondary:hover { background: var(--tint); }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .confirmation:not([hidden]) .confirmation-mark {
+        animation: prepared 220ms ease-out both;
+      }
+
+      @keyframes prepared {
+        from { opacity: 0.5; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
+      }
+    }
+
+    @media (max-width: 55rem) {
+      .page {
+        inline-size: min(41rem, calc(100% - 2rem));
+        padding-block: 1.25rem 2rem;
+      }
+
+      .masthead { margin-block-end: 0.9375rem; }
+      .layout { grid-template-columns: minmax(0, 1fr); min-block-size: 0; }
+      .scene { min-block-size: clamp(18rem, 55vw, 23rem); }
+      .scene-copy { padding: 1.75rem 1.625rem 0; }
+
+      h1 { font-size: clamp(2.6rem, 10.9vw, 4.4rem); }
+
+      .scene-copy p {
+        margin-block-start: 0.8125rem;
+        font-size: 0.9375rem;
+      }
+
+      .scene-art {
+        inset: auto -1.125rem -1.5rem auto;
+        inline-size: min(96%, 32.75rem);
+      }
+
+      .panel { padding: 1.5rem clamp(1.25rem, 5.64vw, 2.5rem) 1.625rem; }
+      .panel-heading { margin-block-end: 1.125rem; }
+    }
+
+    @media (max-width: 30rem) {
+      .masthead { font-size: 0.9375rem; }
+      .masthead-mark { inline-size: 2rem; block-size: 2rem; }
+      .scene-copy { padding: 1.5rem 1.375rem 0; }
+      .scene-copy p { max-inline-size: 30ch; }
+      .scene-art { inline-size: min(96%, 24rem); }
+      .fields { gap: 1rem; }
+      .field textarea { min-block-size: 5.625rem; }
+    }
+
+    @media (max-width: 22.5rem) {
+      .pair { grid-template-columns: minmax(0, 1fr); }
+      .choice { gap: 0.4375rem; padding-inline: 0.5625rem; }
+    }
+
+    @media (forced-colors: active) {
+      :is(input, textarea, button, h2):focus-visible,
+      .choice:has(input:focus-visible) { outline-color: Highlight; }
+      .choice:has(input:checked) { border-color: Highlight; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="masthead">
+      <span class="masthead-mark" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <rect x="4.5" y="7" width="15" height="8" rx="4"/>
+          <path d="M8.5 7.5v7m3.5-7v7m3.5-7v7M8 19l-1 2m5-2v2m4-2 1 2"/>
+        </svg>
+      </span>
+      <span>Building maintenance</span>
+    </header>
+
+    <main class="layout">
+      <header class="scene">
+        <div class="scene-copy">
+          <h1>Report a <span>broken light</span></h1>
+          <p>For lighting in shared areas of your building.</p>
+        </div>
+
+        <svg class="scene-art" viewBox="0 0 660 420" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="wall-wash" x1="0" y1="1" x2="1" y2="0">
+              <stop stop-color="#2a1610" stop-opacity=".45"/>
+              <stop offset="1" stop-color="#ffd493" stop-opacity=".08"/>
+            </linearGradient>
+            <radialGradient id="wall-glow">
+              <stop stop-color="#ffd493" stop-opacity=".21"/>
+              <stop offset=".62" stop-color="#b76578" stop-opacity=".09"/>
+              <stop offset="1" stop-color="#b76578" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="sconce-shadow" x1="0" y1="0" x2="1" y2="1">
+              <stop stop-color="#24111e" stop-opacity=".88"/>
+              <stop offset="1" stop-color="#24111e" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="sconce-side" x1="0" y1="0" x2="1" y2="1">
+              <stop stop-color="#92586b"/>
+              <stop offset=".48" stop-color="#653547"/>
+              <stop offset="1" stop-color="#24111e"/>
+            </linearGradient>
+            <linearGradient id="sconce-rim" x1="0" y1="0" x2="0" y2="1">
+              <stop stop-color="#bc856e"/>
+              <stop offset=".48" stop-color="#764756"/>
+              <stop offset="1" stop-color="#35212d"/>
+            </linearGradient>
+            <linearGradient id="sconce-glass" x1="0" y1="0" x2=".14" y2="1">
+              <stop stop-color="#fff1d0"/>
+              <stop offset=".34" stop-color="#ffd493"/>
+              <stop offset=".7" stop-color="#c0826a"/>
+              <stop offset="1" stop-color="#85505a"/>
+            </linearGradient>
+            <pattern id="glass-flutes" width="12" height="100" patternUnits="userSpaceOnUse">
+              <path d="M2 0v100" stroke="#fff1d0" stroke-width="2" opacity=".48"/>
+              <path d="M7 0v100" stroke="#6b2148" stroke-width="3" opacity=".27"/>
+            </pattern>
+          </defs>
+
+          <path fill="url(#wall-wash)" d="M251 139 660 16v393l-409-66Z"/>
+          <path fill="#2a1610" opacity=".29" d="m0 401 251-58 409 66v11H0Z"/>
+          <ellipse cx="467" cy="202" rx="214" ry="172" fill="url(#wall-glow)"/>
+
+          <g fill="none" stroke="#f3ebe0" stroke-width="1.2" stroke-linejoin="round" opacity=".28">
+            <path d="m0 401 251-58 409 66M251 343V139L660 16"/>
+            <path d="m0 357 169-59V171l82-32m-82 159 82 45" opacity=".68"/>
+            <path d="M345 111v247M586 38v359M74 420l177-77m219 35 29 42" opacity=".55"/>
+          </g>
+
+          <g fill="none" stroke="#ffd493" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m0 322 170-70m-131 54v51m59-75v55m52-77v58" opacity=".4"/>
+            <path d="M0 378h45v-16h48v-17h45v-17h34" opacity=".28"/>
+          </g>
+
+          <g transform="translate(451 193) rotate(-14)">
+            <path fill="url(#sconce-shadow)" d="m-119 12 231-28 90 129-109 72-180-109Z"/>
+            <rect x="-120" y="-69" width="253" height="127" rx="63.5" fill="url(#sconce-side)" stroke="#d6a48d" stroke-opacity=".53" stroke-width="1.5"/>
+            <rect x="-133" y="-58" width="252" height="128" rx="64" fill="url(#sconce-rim)" stroke="#2a1610" stroke-width="2"/>
+            <path d="M-118-31c11-14 29-22 49-22H56c18 0 32 5 45 15" fill="none" stroke="#ffd493" stroke-opacity=".64" stroke-width="1.5" stroke-linecap="round"/>
+            <rect x="-114" y="-43" width="214" height="95" rx="47.5" fill="url(#sconce-glass)" stroke="#ffd493" stroke-opacity=".78" stroke-width="1.5"/>
+            <rect x="-114" y="-43" width="214" height="95" rx="47.5" fill="url(#glass-flutes)"/>
+            <path d="M-103-14c8-15 24-23 41-23H48c17 0 30 6 39 18" fill="none" stroke="#fff1d0" stroke-opacity=".72" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M-130 6h246v9h-246z" fill="#694452"/>
+            <path d="M-127 6h240" stroke="#ffd493" stroke-opacity=".56" stroke-linecap="round"/>
+            <circle cx="-124" cy="10.5" r="3.5" fill="#35212d" stroke="#c68b77"/>
+            <circle cx="110" cy="10.5" r="3.5" fill="#35212d" stroke="#c68b77"/>
+            <path d="m-126 12 4-3m230 3 4-3" stroke="#ffd493" stroke-opacity=".72" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </header>
+
+      <div class="panel">
+        <section id="entry" aria-labelledby="details-title">
+          <div class="panel-heading">
+            <h2 id="details-title">Light details</h2>
+            <p class="required-note">All fields required</p>
+          </div>
+
+          <form id="request-form" autocomplete="off" novalidate>
+            <div class="fields">
+              <div class="pair">
+                <div class="field">
+                  <label for="building">Building</label>
+                  <input id="building" name="building" type="text" placeholder="Name or number" aria-describedby="building-error" required>
+                  <p class="field-error" id="building-error" hidden></p>
+                </div>
+
+                <div class="field">
+                  <label for="location">Location</label>
+                  <input id="location" name="location" type="text" placeholder="Area or floor" aria-describedby="location-error" required>
+                  <p class="field-error" id="location-error" hidden></p>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" rows="3" placeholder="What’s wrong with the light?" aria-describedby="description-error" required></textarea>
+                <p class="field-error" id="description-error" hidden></p>
+              </div>
+
+              <fieldset>
+                <legend>Urgency</legend>
+                <div class="choices">
+                  <label class="choice">
+                    <input type="radio" name="urgency" value="Routine" aria-labelledby="routine-label" aria-describedby="routine-hint urgency-error" required>
+                    <span>
+                      <strong id="routine-label">Routine</strong>
+                      <small id="routine-hint">General repair</small>
+                    </span>
+                  </label>
+
+                  <label class="choice">
+                    <input type="radio" name="urgency" value="Safety issue" aria-labelledby="safety-label" aria-describedby="safety-hint urgency-error" required>
+                    <span>
+                      <strong id="safety-label">Safety issue</strong>
+                      <small id="safety-hint">Potential hazard</small>
+                    </span>
+                  </label>
+                </div>
+                <p class="field-error" id="urgency-error" hidden></p>
+              </fieldset>
+            </div>
+
+            <div class="form-action">
+              <button class="button" type="submit">Prepare request</button>
+              <p class="local-note">Your details stay in this browser tab.</p>
+            </div>
+          </form>
+        </section>
+
+        <section class="confirmation" id="confirmation" aria-labelledby="confirmation-title" hidden>
+          <span class="confirmation-mark" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m5 12 4.5 4.5L19 7"/>
+            </svg>
+          </span>
+          <h2 id="confirmation-title" tabindex="-1">Request prepared locally</h2>
+
+          <dl class="summary">
+            <div><dt>Building</dt><dd id="prepared-building"></dd></div>
+            <div><dt>Location</dt><dd id="prepared-location"></dd></div>
+            <div><dt>Description</dt><dd id="prepared-description"></dd></div>
+            <div><dt>Urgency</dt><dd id="prepared-urgency"></dd></div>
+          </dl>
+
+          <button class="button button-secondary" id="edit-details" type="button">Edit details</button>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const form = document.getElementById("request-form");
+    const entry = document.getElementById("entry");
+    const confirmation = document.getElementById("confirmation");
+    const confirmationTitle = document.getElementById("confirmation-title");
+
+    const requiredMessages = {
+      building: "Enter your building.",
+      location: "Enter the light’s location.",
+      description: "Describe what’s wrong with the light.",
+      urgency: "Choose an urgency."
+    };
+
+    function setError(name, message) {
+      const error = document.getElementById(`${name}-error`);
+      error.textContent = message;
+      error.hidden = !message;
+
+      for (const control of form.querySelectorAll(`[name="${name}"]`)) {
+        if (message) {
+          control.setAttribute("aria-invalid", "true");
+        } else {
+          control.removeAttribute("aria-invalid");
+        }
+      }
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const details = new FormData(form);
+      let firstInvalid = null;
+
+      for (const [name, requiredMessage] of Object.entries(requiredMessages)) {
+        const value = (details.get(name) ?? "").trim();
+        details.set(name, value);
+        setError(name, value ? "" : requiredMessage);
+
+        if (!value && !firstInvalid) {
+          firstInvalid = form.querySelector(`[name="${name}"]`);
+        }
+      }
+
+      if (firstInvalid) {
+        firstInvalid.focus();
+        return;
+      }
+
+      for (const [name, value] of details) {
+        document.getElementById(`prepared-${name}`).textContent = value;
+      }
+
+      confirmation.hidden = false;
+      entry.hidden = true;
+      confirmationTitle.focus();
+    });
+
+    form.addEventListener("input", ({ target }) => {
+      if (target.getAttribute("aria-invalid") === "true" && target.value.trim()) {
+        setError(target.name, "");
+      }
+    });
+
+    document.getElementById("edit-details").addEventListener("click", () => {
+      entry.hidden = false;
+      confirmation.hidden = true;
+      form.elements.namedItem("building").focus();
+    });
+  </script>
+</body>
+</html>

@@ -1,9 +1,9 @@
-name: Ceramics purchase keyboard checks
+name: Maintenance form keyboard checks
 
 on:
   push:
-    branches: [design-mcp/product-hero-actions]
-    paths: ['.github/workflows/playwriter-baseline.yml', 'evidence/benchmark-v1/candidate-inputs/**', 'evals/v1/render.py', 'evals/v1/render_landing_actions.py']
+    branches: [design-mcp/maintenance-actions]
+    paths: ['.github/workflows/playwriter-baseline.yml', 'evidence/benchmark-v1/candidate-inputs/**', 'evals/v1/render.py', 'evals/v1/render_maintenance_actions.py']
 
 permissions:
   contents: read
@@ -31,7 +31,7 @@ jobs:
         run: |
           chrome="$RUNNER_TEMP/browser/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
           "$chrome" --version
-          python evals/v1/render_landing_actions.py \
+          python evals/v1/render_maintenance_actions.py \
             --cells evidence/benchmark-v1/candidate-inputs --scratch "$RUNNER_TEMP/profile" \
             --playwriter "$RUNNER_TEMP/playwriter/node_modules/.bin/playwriter" --chrome "$chrome"
           python - <<'PY'
@@ -48,7 +48,7 @@ jobs:
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: ceramics-purchase-actions
+          name: maintenance-actions
           path: evidence/benchmark-v1/candidate-inputs/
           if-no-files-found: error
           retention-days: 7
