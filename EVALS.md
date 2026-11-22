@@ -52,6 +52,6 @@ The LLM judge sees the brief, browser observations and four screenshots for each
 | Candidate | Observed change | Status |
 | --- | --- | --- |
 | Form directions, `d5a3278` | The six form briefs went from 0/6 to 6/6 correct surface routes. The unchanged 36-brief diagnostic returned `object-hero` on 26/36, down from 32/36. Source tests passed 341/341. | Separate branch. Route calibration occurred after the first source probe. Independent visual results remain pending. [Source results](evidence/benchmark-v1/form-candidate-source.json) |
-| Portable package and doctor | A draft adds package-resource loading, a checksum-pinned legacy cache and Python 3.10–3.13 dependency resolution. A Mac CI branch verifies exact versions and both installers. | Candidate verification in progress. [Branch](https://github.com/chrismicah/design-mcp/tree/design-mcp/portable-package-ci) |
+| Portable package and doctor | A draft adds package-resource loading, a checksum-pinned legacy cache and Python 3.10–3.13 dependency resolution. The 36 direct results, 21 reactions and one source check were byte-identical after normalization to sorted JSON on Python 3.12. | Candidate install verification in progress. [Output parity](evidence/benchmark-v1/portable-parity.json) · [Hosted jobs](https://github.com/chrismicah/design-mcp/actions/runs/44986507623) |
 
 Apply the same prompts, asset policy and scoring to each candidate. Preserve failed runs and report coverage alongside quality and tokens.
