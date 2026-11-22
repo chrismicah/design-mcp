@@ -18,6 +18,8 @@ On November 22, uv 0.13.9 resolved `e1cd4eb`'s runtime dependencies, build backe
 
 Under the shared lease, clone the pinned image into a workspace-scoped `TART_HOME`, mount the checksummed bundle read-only and boot headless. Use `tart exec` to run the staged guest script. The `7bccfc1` bundle now includes the same matrix verifier that runs on a native Intel Ventura Mac. The host and guest check the verifier and uv digests. The matrix checks the OS major version, native host architecture, and each interpreter's architecture. It fetches the exact public commit, exercises both installers with every Python minor, and saves separate logs for each version. [Matrix verifier](../../scripts/verify_install_matrix.sh)
 
+The verifier passed all eight hosted macOS 15 cells with the staged script bytes. The run recorded 16 pinned installs and 32 stdio smoke runs. Each runner refused the Ventura preflight on its actual OS. The earlier serial Intel run completed Python 3.10 and 3.11 before the 16-minute limit. The succeeding CI run used independent interpreter cells. [Qualification receipt](native-install-matrix-qualification.json)
+
 On the Intel Ventura test machine, use its native uv. The pinned arm64 and x86_64 uv archives have separate SHA-256 digests, `5aeca67f2283f75235de40d0bd9c0a5bbc5fce23b6d48b3bf9fa1b2db08382ca` and `617a3211261b0fc739562f0071aa34e9739797c510208ede8e2977c30903d041`, respectively. Run the preflight before installing anything. [uv 0.13.9 assets](https://github.com/astral-sh/uv/releases/tag/0.13.9)
 
 ```sh
