@@ -46,3 +46,14 @@ python3 evals/reactions/follow_up.py --case dashboard-clear --arm design-mcp \
   --out "$NEXT_ROUND/dashboard-clear/design-mcp" --kit "$VERIFIED_INSTALL_KIT" \
   --scratch "$PILOT_OUTPUT/empty-client-workspace" --quota-probe "$SUBSCRIPTION_QUOTA_PROBE"
 ```
+
+## Review a held-out benchmark
+
+For the cold-storage and shadcn maintenance studies, use a separate benchmark specification with `case`, the exact generation `brief`, the independent critic's `task`, and two or three `arms` matching the cell directories. A `directions` map pins the expected first MCP replies, and `browser` can pin the Chrome version of an archived control. Keep the specification with the evaluator and give the generator only the generation brief.
+
+```sh
+python3 evals/reactions/live_review.py --cells "$BENCHMARK_CELLS" \
+  --benchmark-spec "$BENCHMARK_SPEC" --check-input
+```
+
+The preflight replays the traces and verifies distinct generator sessions, prompt and HTML hashes, and matching generator and shell settings. The shadcn arm must contain the registry evidence declared in its benchmark configuration. Use the same options with the live runner above, passing `--benchmark-spec` in place of `--case` and dropping `--check-input`. The audit takes the same specification and requires an original-image live ballot for both widths of every arm. [Benchmark plan](../../PLAN.md#14-next-quality-comparison)

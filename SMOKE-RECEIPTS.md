@@ -34,6 +34,8 @@ On November 22, GPT Computer Use could enumerate native apps and the browser acc
 
 A later desktop preflight ran after the previous QA owner released the Mac. The workspace stager recorded both displays and flagged Notes and TextEdit windows. The browser access host reported unavailable with Chrome closed, including on the 09:10 UTC recheck. Both checks preserved those windows and sent no input. Native extension activation and reopening the preview remain unverified.
 
+At the 12:06 UTC handoff check, the ML QA owner had released its slot. The workspace inventory showed Swipe Clean frontmost, a TextEdit dialog, and two displays. GPT Computer Use enumerated apps and again reported that the browser access host was unavailable. The staging check saved both displays locally and sent no input.
+
 ## Hosted Chrome extension smoke, November 22
 
 A fresh package install on hosted Linux opened the real toolbar popup by keyboard on a synthetic shuttle dispatch board. Scan started focused. With the host missing, the popup gave the install command and returned focus to Scan. After installing the host into the isolated Chrome user data directory, Enter scanned eight regions, opened a saved preview, and the Right Arrow switched to After. The archived capture masked the seeded field and the private value was absent from the saved HTML and JSON. The popup reported 87 ms on this run. macOS extension smoke, p95 timing and blind visual scoring remain open. [Run and screenshots](https://github.com/chrismicah/design-mcp/actions/runs/44994211431) · [Receipt and hashes](evidence/benchmark-v1/vision-extension-proof.json)

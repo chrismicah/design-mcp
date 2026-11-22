@@ -10,6 +10,7 @@ import socket
 import subprocess
 import sys
 
+from benchmark_input import benchmark_cells, load_spec
 from pilot import PACKAGE_COMMIT, generate
 from render import child, dynamic_port, fixture_server, query_json, wait_ready
 
@@ -62,19 +63,29 @@ def eligible_pair(cells, case):
     return dict(zip(("A", "B"), pair, strict=True))
 
 
-def critic_prompt(case):
-    return f"""Review anonymous views A and B live. Use only the review tools. Open each at 1440 and 390 CSS pixels in a fresh view. Complete one view before opening the next. Choose the keyboard input yourself. Capture initial and resulting states named like A-1440-before and A-1440-after. Then exercise the recovery or edge state.
+def critic_prompt(case, spec=None):
+    labels = tuple("ABC"[:len(spec["arms"])]) if spec else ("A", "B")
+    names = " and ".join(labels) if len(labels) == 2 else "A, B, and C"
+    screens = ", ".join(f"{label}-{width}" for label in labels for width in (1440, 390))
+    task = spec["task"] if spec else TASKS[case]
+    choices = ", ".join(labels[:-1]) + f" or {labels[-1]}"
+    return f"""Review anonymous views {names} live. Use only the review tools. Open each at 1440 and 390 CSS pixels in a fresh view. Complete one view before opening the next. Choose the keyboard input yourself. Capture initial and resulting states named like A-1440-before and A-1440-after. Then exercise the recovery or edge state.
 
-Task: {TASKS[case]}
+Task: {task}
 
 Score coherence and originality at 30% each and craft and usability at 20% each on a 0–10 scale. Calibration examples in that order: a working filter with repeated room cards and equal emphasis gets 5, 3, 6, 7. A distinctive listening schedule with reliable task completion and clear focus gets 9.5, 9.5, 9.5, 10. First rate the withheld example: a legible repair intake with clear labels, familiar layout and misplaced focus after an invalid number. Use 9.5+ only when you find no material weakness. Ground your observations in the rendered layout, visible changes and actual behavior. Do not infer the revision history or generator identity.
 
-Return one JSON object in a json code fence. Include calibration (four scores), screens (keys A-1440, A-390, B-1440, B-390, each with coherence, originality, craft, usability, primary_action with input/expected/observed, edge_observation, fact_check, strength, weakness and repair) and preference (winner A, B or tie with reason). Leave untested views unscored. Flag unsupported claims.
+Return one JSON object in a json code fence. Include calibration (four scores), screens (keys {screens}, each with coherence, originality, craft, usability, primary_action with input/expected/observed, edge_observation, fact_check, strength, weakness and repair) and preference (winner {choices} or tie with reason). Leave untested views unscored. Flag unsupported claims.
 """
 
 
 def run(args):
-    pair = eligible_pair(args.cells, args.case)
+    if args.spec:
+        inputs = list(benchmark_cells(args.cells, args.spec).values())
+        SystemRandom().shuffle(inputs)
+        pair = dict(zip("ABC", inputs))
+    else:
+        pair = eligible_pair(args.cells, args.case)
     version = subprocess.check_output([str(args.playwriter), "--version"], text=True).strip()
     if version != "0.12.0":
         raise ValueError(f"Expected Playwriter 0.12.0, got {version}")
@@ -83,7 +94,9 @@ def run(args):
     key = {label: {field: receipt[field] for field in ("arm", "html_sha256", "thread_id")}
            for label, (receipt, _) in pair.items()}
     (args.out / "sealed-key.json").write_text(json.dumps(key, indent=2) + "\n", encoding="utf-8")
-    prompt = critic_prompt(args.case)
+    if args.spec:
+        (args.out / "benchmark-spec.json").write_text(json.dumps(args.spec, indent=2) + "\n", encoding="utf-8")
+    prompt = critic_prompt(args.case, args.spec)
     (args.out / "critic-prompt.md").write_text(prompt, encoding="utf-8")
 
     relay_port = dynamic_port()
@@ -100,6 +113,8 @@ def run(args):
         chrome = stack.enter_context(child(chrome_args, args.out / "chrome.log"))
         cdp_port = wait_ready(chrome, lambda: int((profile / "DevToolsActivePort").read_text().splitlines()[0]))
         browser = wait_ready(chrome, lambda: query_json(f"http://127.0.0.1:{cdp_port}/json/version"))
+        if args.spec and args.spec.get("browser", browser["Browser"]) != browser["Browser"]:
+            raise ValueError(f"Benchmark browser differs from its pin: {browser['Browser']}")
         relay_args = [str(args.playwriter), "serve", "--host", "127.0.0.1"]
         relay = stack.enter_context(child(relay_args, args.out / "relay.log", env=relay_env))
 
@@ -130,13 +145,25 @@ def run(args):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    for option in ("cells", "out", "playwriter", "chrome", "quota-probe"):
-        parser.add_argument(f"--{option}", required=True, type=lambda value: Path(value).expanduser().absolute())
-    parser.add_argument("--case", required=True, choices=tuple(TASKS))
-    parser.add_argument("--model", required=True)
+    absolute_path = lambda value: Path(value).expanduser().absolute()
+    parser.add_argument("--cells", required=True, type=absolute_path)
+    for option in ("out", "playwriter", "chrome", "quota-probe"):
+        parser.add_argument(f"--{option}", type=absolute_path)
+    study = parser.add_mutually_exclusive_group(required=True)
+    study.add_argument("--case", choices=tuple(TASKS))
+    study.add_argument("--benchmark-spec", type=absolute_path)
+    parser.add_argument("--check-input", action="store_true")
+    parser.add_argument("--model")
     parser.add_argument("--codex", default="codex")
     parser.add_argument("--effort", default="max")
     args = parser.parse_args()
+    args.spec = load_spec(args.benchmark_spec) if args.benchmark_spec else None
+    if args.check_input:
+        cells = benchmark_cells(args.cells, args.spec) if args.spec else eligible_pair(args.cells, args.case)
+        print(json.dumps({"verified_arms": sorted(receipt["arm"] for receipt, _ in cells.values())}))
+        return
+    if not all((args.out, args.playwriter, args.chrome, args.quota_probe, args.model)):
+        parser.error("Live review requires --out, --playwriter, --chrome, --quota-probe and --model")
     args.no_shell = True
     raise SystemExit(run(args))
 

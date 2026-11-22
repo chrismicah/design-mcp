@@ -61,24 +61,36 @@ def indexed_captures(rows):
     return captured
 
 
-def audit(run, cells, case):
+def audit(run, cells, case, spec=None):
     trace = (run / "critic.jsonl").read_bytes()
     log = (run / "captures/audit.jsonl").read_bytes()
     events, rows = read_jsonl(trace), read_jsonl(log)
     key = json.loads((run / "sealed-key.json").read_bytes())
     settings = json.loads((run / "driver-config.json").read_bytes())
-    assert settings["original_capture"] is True and set(settings["pages"]) == set(key) == {"A", "B"}
-    assert {value["arm"] for value in key.values()} == {"plain", "design-mcp"}
+    expected_arms = set(spec["arms"]) if spec else {"plain", "design-mcp"}
+    assert settings["original_capture"] is True and set(settings["pages"]) == set(key) == set("ABC"[:len(expected_arms)])
+    assert {value["arm"] for value in key.values()} == expected_arms
+    browser = (run / "browser-version.txt").read_text().strip()
+    if spec:
+        from benchmark_input import benchmark_cells
+
+        assert spec == json.loads((run / "benchmark-spec.json").read_bytes())
+        assert spec.get("browser", browser) == browser
+        verified = benchmark_cells(cells, spec)
     builder_threads = set()
     for entry in key.values():
         cell = cells / case / entry["arm"]
-        receipt = json.loads((cell / "receipt.json").read_bytes())
-        assert receipt["html_sha256"] == entry["html_sha256"] == sha256((cell / "index.html").read_bytes())
+        if spec:
+            receipt, html = verified[entry["arm"]]
+        else:
+            receipt = json.loads((cell / "receipt.json").read_bytes())
+            html = (cell / "index.html").read_bytes()
+        assert receipt["html_sha256"] == entry["html_sha256"] == sha256(html)
         assert receipt["thread_id"] == entry["thread_id"]
         builder_threads.add(entry["thread_id"])
     threads = [event["thread_id"] for event in events if event["type"] == "thread.started"]
     completed = [event for event in events if event["type"] == "turn.completed"]
-    assert len(builder_threads) == 2 and len(threads) == len(completed) == 1
+    assert len(builder_threads) == len(expected_arms) and len(threads) == len(completed) == 1
     assert threads[0] not in builder_threads and completed[0].get("usage")
     items = [event["item"] for event in events if event["type"] == "item.completed"]
     assert all(item["type"] in {"agent_message", "reasoning", "mcp_tool_call"} for item in items)
@@ -90,7 +102,10 @@ def audit(run, cells, case):
     fenced = re.fullmatch(r"\s*```json\s*(.*?)\s*```\s*", reply, re.DOTALL)
     ballot = json.loads(fenced[1] if fenced else reply)
     screens = ballot["screens"]
-    assert set(screens) <= {f"{page}-{width}" for page in key for width in HEIGHTS}
+    required = {f"{page}-{width}" for page in key for width in HEIGHTS}
+    assert set(screens) <= required
+    if spec:
+        assert set(screens) == required, "A complete benchmark ballot requires every arm and viewport"
     captures = indexed_captures(rows)
     for label, verdict in screens.items():
         page, width_text = label.split("-")
@@ -123,8 +138,8 @@ def audit(run, cells, case):
             edge_inputs=[{"action": row["action"], "value": row["value"]} for row in edge],
         )
     return {
-        **ballot, "case": case, "verified_screens": len(screens), "required_screens": 4,
-        "browser": (run / "browser-version.txt").read_text().strip(),
+        **ballot, "case": case, "verified_screens": len(screens), "required_screens": len(required),
+        "browser": browser,
         "evaluator_thread": threads[0], "usage": completed[0]["usage"],
         "trace_sha256": sha256(trace), "browser_audit_sha256": sha256(log),
     }
@@ -134,6 +149,14 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--run", type=Path, required=True)
     parser.add_argument("--cells", type=Path, required=True)
-    parser.add_argument("--case", required=True)
+    study = parser.add_mutually_exclusive_group(required=True)
+    study.add_argument("--case")
+    study.add_argument("--benchmark-spec", type=Path)
     args = parser.parse_args()
-    print(json.dumps(audit(args.run, args.cells, args.case), indent=2))
+    spec = None
+    if args.benchmark_spec:
+        from benchmark_input import load_spec
+
+        spec = load_spec(args.benchmark_spec)
+        args.case = spec["case"]
+    print(json.dumps(audit(args.run, args.cells, args.case, spec), indent=2))
