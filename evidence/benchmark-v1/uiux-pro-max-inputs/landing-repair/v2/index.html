@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Second Spin offers 48-hour bike tune-ups for $85 at 41 Elm Street, with bookings Tuesday to Saturday.">
+  <title>Second Spin — Bike Repair</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,600&amp;family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f3ebe0;
+      --ticket: #fcf6ed;
+      --ink: #2a1610;
+      --muted: #69524b;
+      --plum: #6b2148;
+      --peach: #f5cea8;
+      --rule: #d0bcb0;
+      --display: "Fraunces", Georgia, serif;
+      --sans: "Instrument Sans", system-ui, sans-serif;
+      --gutter: clamp(1.125rem, 5.55vw, 5rem);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.5;
+    }
+
+    .wrap {
+      width: min(80rem, calc(100% - var(--gutter) - var(--gutter)));
+      margin-inline: auto;
+    }
+
+    .masthead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .875rem;
+      min-height: 5.25rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .wordmark {
+      display: inline-flex;
+      align-items: center;
+      gap: .65rem;
+      font: 600 1.75rem/.95 var(--display);
+      letter-spacing: -.05em;
+      white-space: nowrap;
+    }
+
+    .wordmark svg { flex: none; }
+
+    .book-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .65rem;
+      min-height: 44px;
+      color: var(--plum);
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .book-arrow {
+      display: grid;
+      place-items: center;
+      width: 2.125rem;
+      height: 2.125rem;
+      border-radius: 50%;
+      background: var(--plum);
+      color: var(--ticket);
+      transition: transform 180ms ease-out;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      align-items: start;
+      gap: clamp(2.5rem, 6vw, 5.5rem);
+      padding-block: 3.25rem 4rem;
+    }
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      border: 1px solid #531a39;
+      border-radius: 4px;
+      background:
+        radial-gradient(ellipse at 68% 36%, #843c60, transparent 69%),
+        linear-gradient(145deg, #6b2148, #4e1936 88%);
+      color: #fff1db;
+    }
+
+    .hero::before,
+    .hero::after {
+      position: absolute;
+      z-index: -1;
+      content: "";
+      pointer-events: none;
+    }
+
+    .hero::before {
+      top: -33%;
+      right: -28%;
+      width: 84%;
+      aspect-ratio: 1;
+      border: 1px solid #f7bd962e;
+      border-radius: 50%;
+      background:
+        repeating-radial-gradient(circle, transparent 0 12px, #f3ba9420 13px 14px),
+        radial-gradient(circle, #b0737952, #a24f672b 68%, transparent 69%);
+    }
+
+    .hero::after {
+      inset: 0;
+      background: radial-gradient(circle, #ffdbb971 .55px, transparent .85px) 0 0 / 5px 5px;
+      mask-image: radial-gradient(ellipse at 90% 10%, #0008, transparent 65%);
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      padding: clamp(2.15rem, 3.5vw, 3.15rem) clamp(1.75rem, 3.65vw, 3.3rem) 0;
+    }
+
+    .trade {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      margin: 0 0 1.35rem;
+      color: var(--peach);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .trade::before {
+      width: 1.4rem;
+      height: 1px;
+      background: currentColor;
+      content: "";
+    }
+
+    h1, h2, .service, .price {
+      font-family: var(--display);
+      font-weight: 600;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(4.1rem, 6.7vw, 6.4rem);
+      line-height: .91;
+      letter-spacing: -.062em;
+    }
+
+    h1 em { display: block; }
+
+    .bicycle {
+      display: block;
+      width: 106%;
+      max-width: none;
+      height: auto;
+      margin: -1.35rem -3% .55rem;
+    }
+
+    .booking { padding-top: clamp(1.5rem, 3.3vw, 3.25rem); }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(2.6rem, 4.1vw, 3.7rem);
+      line-height: 1.02;
+      letter-spacing: -.055em;
+    }
+
+    #booking { scroll-margin-top: 5.5rem; }
+
+    .instruction {
+      margin: .7rem 0 1.6rem;
+      color: var(--muted);
+      font-size: 1.0625rem;
+    }
+
+    .day-picker {
+      min-width: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    .days {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: clamp(.375rem, .7vw, .625rem);
+    }
+
+    .day { cursor: pointer; }
+
+    .day-option {
+      display: grid;
+      place-items: center;
+      min-height: 3.75rem;
+      padding: .45rem .2rem;
+      border: 1px solid #ac8d85;
+      border-radius: 4px;
+      background: #faf2e8;
+      font-weight: 700;
+      transition: background-color 180ms ease-out, border-color 180ms ease-out, color 180ms ease-out;
+    }
+
+    .day input:checked + .day-option {
+      border-color: var(--plum);
+      background: var(--plum);
+      color: var(--ticket);
+      box-shadow: inset 0 -3px #2a161033;
+    }
+
+    .book-link:focus-visible,
+    h2:focus-visible,
+    .day input:focus-visible + .day-option {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 3px var(--paper);
+    }
+
+    .summary {
+      overflow: hidden;
+      margin-top: 2.25rem;
+      border: 1px solid var(--rule);
+      border-radius: 5px;
+      background: var(--ticket);
+    }
+
+    .summary-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.5rem 1.65rem;
+    }
+
+    .summary h3 {
+      margin: 0 0 .35rem;
+      color: var(--plum);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .service {
+      margin: 0;
+      font-size: clamp(1.35rem, 2vw, 1.65rem);
+      line-height: 1.15;
+      letter-spacing: -.035em;
+    }
+
+    .price {
+      margin: 0;
+      color: var(--plum);
+      font-size: clamp(2.55rem, 4vw, 3.5rem);
+      line-height: 1;
+      letter-spacing: -.065em;
+    }
+
+    .details {
+      position: relative;
+      margin: 0;
+      padding: .95rem 1.65rem 1.15rem;
+      border-top: 1px dashed #b69a8d;
+    }
+
+    .details::before,
+    .details::after {
+      position: absolute;
+      top: 0;
+      width: 15px;
+      height: 15px;
+      transform: translateY(-50%);
+      border: 1px solid var(--rule);
+      border-radius: 50%;
+      background: var(--paper);
+      content: "";
+    }
+
+    .details::before { left: -9px; }
+    .details::after { right: -9px; }
+
+    .details > div {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: .75rem;
+      padding-block: .32rem;
+    }
+
+    .details dt { color: var(--muted); }
+
+    .details dd {
+      margin: 0;
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .summary-day { color: var(--muted); font-weight: 400; }
+    .summary-day.is-selected { color: var(--plum); font-weight: 700; }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    @media (hover: hover) {
+      .book-link:hover .book-arrow { transform: translateY(3px); }
+
+      .day:hover input:not(:checked) + .day-option {
+        border-color: var(--plum);
+        background: #eedde2;
+      }
+    }
+
+    @media (max-width: 52rem) {
+      .site-header {
+        position: sticky;
+        z-index: 2;
+        top: 0;
+        background: var(--paper);
+      }
+
+      .masthead { min-height: 4.125rem; }
+      .wordmark { gap: .45rem; font-size: 1.43rem; }
+      .wordmark svg { width: 33px; height: 33px; }
+      .book-link { gap: .4rem; font-size: .875rem; }
+      .book-arrow { width: 1.75rem; height: 1.75rem; }
+
+      .layout {
+        max-width: 40rem;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2.15rem;
+        padding-block: 1.35rem 2.6rem;
+      }
+
+      .hero-copy { padding: 1.65rem 1.5rem 0; }
+      .trade { margin-bottom: .9rem; font-size: .6875rem; }
+      h1 { font-size: clamp(2.9rem, 15vw, 5.85rem); }
+      .bicycle { margin-top: -.9rem; margin-bottom: .35rem; }
+
+      .booking { padding-top: 0; }
+      h2 { font-size: clamp(2.35rem, 10vw, 3.4rem); }
+      .instruction { margin: .6rem 0 1.15rem; font-size: 1rem; }
+      .day-option { min-height: 3.3rem; }
+      .summary { margin-top: 1.5rem; }
+      .summary-head { padding: 1.2rem; }
+      .details { padding: .75rem 1.2rem .9rem; }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      html { scroll-behavior: smooth; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .book-arrow, .day-option { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="masthead wrap">
+      <div class="wordmark">
+        <svg width="39" height="39" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+          <circle cx="20" cy="20" r="19" fill="#6b2148"/>
+          <g fill="none" stroke="#f3ebe0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 19a10.2 10.2 0 0 1 17.3-6.4l2 2M29.3 10.8v3.8h-3.8"/>
+            <path d="M30 21a10.2 10.2 0 0 1-17.3 6.4l-2-2M10.7 29.2v-3.8h3.8"/>
+            <path d="m15.6 20 4.4-4.4 4.4 4.4-4.4 4.4z"/>
+          </g>
+        </svg>
+        <span>Second Spin</span>
+      </div>
+      <a class="book-link" href="#booking">
+        Book a tune-up
+        <span class="book-arrow" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" focusable="false">
+            <path d="M8 2.5v10m-4-4 4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </a>
+    </div>
+  </header>
+
+  <main class="layout wrap">
+    <section class="hero" aria-labelledby="service-title">
+      <div class="hero-copy">
+        <p class="trade">Bike repair</p>
+        <h1 id="service-title">48-hour <em>tune-ups.</em></h1>
+      </div>
+
+      <svg class="bicycle" viewBox="0 28 744 366" fill="none" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="frame-metal" x1="190" y1="95" x2="470" y2="309" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#fce5ba"/>
+            <stop offset=".45" stop-color="#f2bc8b"/>
+            <stop offset="1" stop-color="#cb846a"/>
+          </linearGradient>
+          <linearGradient id="rim-metal" x2="100%" y2="100%">
+            <stop stop-color="#fae0b8"/>
+            <stop offset=".53" stop-color="#c98376"/>
+            <stop offset="1" stop-color="#e8b793"/>
+          </linearGradient>
+          <radialGradient id="ground-shadow">
+            <stop stop-color="#210e1c" stop-opacity=".65"/>
+            <stop offset="1" stop-color="#210e1c" stop-opacity="0"/>
+          </radialGradient>
+          <pattern id="print-dots" width="5" height="5" patternUnits="userSpaceOnUse">
+            <circle cx="1.25" cy="1.25" r=".65" fill="#f1bc91"/>
+          </pattern>
+
+          <path id="spokes" d="M-7-3 0-101M6-4 26-97M7 2 50-87M1-7 71-71M-3-7 87-50M4 6 97-26"/>
+          <g id="wheel">
+            <circle r="112" fill="#40152f" fill-opacity=".18" stroke="#26131f" stroke-width="11"/>
+            <circle r="114" stroke="#d79983" stroke-opacity=".45"/>
+            <circle r="111.5" stroke="#c28275" stroke-opacity=".36" stroke-dasharray="2 3"/>
+            <circle r="107" stroke="url(#rim-metal)" stroke-width="3"/>
+            <circle r="102" stroke="#f0bb98" stroke-opacity=".78" stroke-width="1.15"/>
+            <g stroke="#edbd9d" stroke-opacity=".5" stroke-width=".85">
+              <use href="#spokes"/>
+              <use href="#spokes" transform="rotate(90)"/>
+              <use href="#spokes" transform="rotate(180)"/>
+              <use href="#spokes" transform="rotate(270)"/>
+            </g>
+            <path d="M-100-41a108 108 0 0 1 105-67M75 77a108 108 0 0 0 26-39" stroke="#ffe2b9" stroke-width="1.5" stroke-linecap="round" opacity=".66"/>
+            <circle r="9" fill="#54233e" stroke="#ddb08d" stroke-width="1.25"/>
+            <circle r="3.6" fill="#edc29e"/>
+          </g>
+        </defs>
+
+        <path d="M39 348c102-23 544-30 657 3v32H39z" fill="url(#print-dots)" opacity=".25"/>
+        <ellipse cx="373" cy="369" rx="349" ry="20" fill="url(#ground-shadow)"/>
+        <path d="M34 373h678M51 369v8m642-8v8" stroke="#eabb96" stroke-opacity=".4"/>
+        <use href="#wheel" transform="translate(156 256)"/>
+        <use href="#wheel" transform="translate(588 256)"/>
+
+        <g stroke-linecap="round" stroke-linejoin="round">
+          <path d="M580 82c12-29-29-27-47-14-15 10-23 28-17 49m75-28c16 30-10 61-35 61-11 0-18-2-26-5" stroke="#efbca0" stroke-opacity=".65" stroke-width="1.35"/>
+          <path d="m156 256 116-132 241-9 17 45-212 108-46-144m-116 132 162 12m195-153 23 60c14 26 30 62 52 81" stroke="#341326" stroke-width="17" transform="translate(0 2)"/>
+
+          <path d="m156 256 116-132m-116 132 162 12" stroke="#c88872" stroke-width="7"/>
+          <path d="m161 253 108-126m-101 129 140 10" stroke="#f4c29a" stroke-width="1.45"/>
+          <path d="m272 124 241-9m17 45L318 268l-46-144m241-9 17 45" stroke="url(#frame-metal)" stroke-width="12"/>
+          <path d="m281 121 223-8m16 49L321 263m-45-131 40 125" stroke="#fff0ca" stroke-opacity=".87" stroke-width="1.55"/>
+
+          <path d="M529 154c20 41 37 83 59 102" stroke="#e0a27e" stroke-width="10"/>
+          <path d="M527 154c21 43 35 79 58 101" stroke="#f8d2a6" stroke-width="2"/>
+          <path d="M586 250a6 6 0 1 1-2 11" stroke="#f7cea5" stroke-width="1.4"/>
+
+          <path d="m271 124-10-28m253 20-14-40 46-4" stroke="#35172a" stroke-width="10"/>
+          <path d="m271 124-10-28m253 20-14-40 46-4" stroke="#e9b697" stroke-width="5.5"/>
+          <path d="M249 96c9 9 24 11 42 4" stroke="#edbc99" stroke-width="1.8"/>
+          <path d="M235 86c10-6 20-4 37 0 13 3 24 1 34-3 6-2 9 2 6 6-6 9-19 10-35 8l-29-1c-9 0-14-4-13-10z" fill="#341827" stroke="#d9957e" stroke-width="1.6"/>
+          <path d="M238 86c12-3 19 0 32 2 16 3 24 1 36-3" stroke="#fad2aa" stroke-opacity=".75"/>
+
+          <path d="M542 72h26c18 0 32 10 32 25 0 16-13 28-31 28h-11" stroke="#2b1424" stroke-width="12"/>
+          <path d="M542 72h26c18 0 32 10 32 25 0 16-13 28-31 28h-11" stroke="#e6ac89" stroke-width="6"/>
+          <path d="M562 72h6c18 0 32 10 32 25 0 16-13 28-31 28h-11" stroke="#f4c5a1" stroke-width="6" stroke-dasharray="2 3"/>
+          <path d="m584 77 5-5 10 5 4 12-8-1z" fill="#35172a" stroke="#e3a488" stroke-width="1.4"/>
+          <path d="M600 88c7 7 9 18 5 29" stroke="#edb795" stroke-width="2"/>
+
+          <path d="M154 242l161-9a34 34 0 1 1 1 68l-162-31a14 14 0 0 1 0-28z" stroke="#361727" stroke-width="5"/>
+          <path d="M154 242l161-9a34 34 0 1 1 1 68l-162-31a14 14 0 0 1 0-28z" stroke="#dda086" stroke-width="1.5" stroke-dasharray="1.5 2.4"/>
+          <circle cx="156" cy="256" r="11" fill="#54253e" stroke="#d5967d" stroke-dasharray="2 2"/>
+          <circle cx="156" cy="256" r="4" fill="#f3c6a0"/>
+
+          <circle cx="318" cy="267" r="30.5" fill="#592641" stroke="#f2bd95" stroke-width="2.7" stroke-dasharray="2 2.5"/>
+          <circle cx="318" cy="267" r="25.5" stroke="#cb9079" stroke-width="1.3"/>
+          <path d="m301 250 33 34m-33 0 34-34" stroke="#e7ad86" stroke-width="4"/>
+          <circle cx="318" cy="267" r="7" fill="#f4c6a0" stroke="#652f46" stroke-width="2"/>
+          <path d="m318 267 19 40m-12 0h27" stroke="#331628" stroke-width="10"/>
+          <path d="m318 267 19 40m-12 0h27" stroke="#e2a887" stroke-width="4.5"/>
+          <path d="M326 306h24" stroke="#f7cea8" stroke-width="1.1"/>
+        </g>
+      </svg>
+    </section>
+
+    <section class="booking" aria-labelledby="booking">
+      <h2 id="booking" tabindex="-1">Choose a day</h2>
+      <p class="instruction">Pick a day to preview your booking.</p>
+
+      <fieldset class="day-picker" id="day-picker">
+        <legend class="sr-only">Booking day</legend>
+        <div class="days">
+          <label class="day">
+            <input class="sr-only" type="radio" name="day" value="Tuesday" aria-label="Tuesday">
+            <span class="day-option" aria-hidden="true">Tue</span>
+          </label>
+          <label class="day">
+            <input class="sr-only" type="radio" name="day" value="Wednesday" aria-label="Wednesday">
+            <span class="day-option" aria-hidden="true">Wed</span>
+          </label>
+          <label class="day">
+            <input class="sr-only" type="radio" name="day" value="Thursday" aria-label="Thursday">
+            <span class="day-option" aria-hidden="true">Thu</span>
+          </label>
+          <label class="day">
+            <input class="sr-only" type="radio" name="day" value="Friday" aria-label="Friday">
+            <span class="day-option" aria-hidden="true">Fri</span>
+          </label>
+          <label class="day">
+            <input class="sr-only" type="radio" name="day" value="Saturday" aria-label="Saturday">
+            <span class="day-option" aria-hidden="true">Sat</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <section class="summary" aria-labelledby="summary-title">
+        <div class="summary-head">
+          <div>
+            <h3 id="summary-title">Booking summary</h3>
+            <p class="service">Bike tune-up</p>
+          </div>
+          <p class="price">$85</p>
+        </div>
+        <dl class="details">
+          <div>
+            <dt>Day</dt>
+            <dd><span class="summary-day" id="summary-day" aria-live="polite" aria-atomic="true">Select a day</span></dd>
+          </div>
+          <div>
+            <dt>Turnaround</dt>
+            <dd>48 hours</dd>
+          </div>
+          <div>
+            <dt>Shop</dt>
+            <dd>41 Elm Street</dd>
+          </div>
+        </dl>
+      </section>
+    </section>
+  </main>
+
+  <script>
+    const dayPicker = document.getElementById("day-picker");
+    const summaryDay = document.getElementById("summary-day");
+
+    function updateBooking() {
+      const selection = dayPicker.querySelector("input:checked");
+      const label = selection?.value ?? "Select a day";
+
+      if (summaryDay.textContent !== label) {
+        summaryDay.textContent = label;
+      }
+      summaryDay.classList.toggle("is-selected", Boolean(selection));
+    }
+
+    dayPicker.addEventListener("change", updateBooking);
+    window.addEventListener("pageshow", updateBooking);
+    updateBooking();
+  </script>
+</body>
+</html>
