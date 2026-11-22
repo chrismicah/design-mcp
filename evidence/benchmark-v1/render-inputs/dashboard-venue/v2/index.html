@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5efe2">
+  <title>Rehearsal rooms</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,500&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f5efe2;
+      --ink: #27201d;
+      --muted: #685d51;
+      --rule: #cbbdad;
+      --accent: #842e3d;
+      --sans: "Instrument Sans", Arial, sans-serif;
+      --serif: "Newsreader", Georgia, serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: clamp(32px, 7vh, 76px) clamp(16px, 4vw, 56px);
+      background: radial-gradient(ellipse at 50% 0, #f1e9dc, #e4d9ca 78%);
+      color: var(--ink);
+      font: 400 1rem/1.5 var(--sans);
+    }
+
+    .sheet {
+      max-width: 1128px;
+      margin-inline: auto;
+      padding: 48px clamp(32px, 4.6vw, 66px) 58px;
+      border: 1px solid #d5c8b7;
+      background: linear-gradient(145deg, #fbf6ed, var(--paper) 72%);
+      box-shadow: 0 2px 5px #3824190a, 0 24px 60px #38241914;
+    }
+
+    .masthead {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      padding-top: 32px;
+      border-top: 2px solid var(--ink);
+    }
+
+    .masthead::before {
+      position: absolute;
+      inset: 4px 0 auto;
+      border-top: 1px solid var(--rule);
+      content: "";
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .section-label::before {
+      width: 18px;
+      height: 1px;
+      background: currentColor;
+      content: "";
+    }
+
+    h1 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(3.5rem, 6.25vw, 5.625rem);
+      font-weight: 500;
+      line-height: .94;
+      letter-spacing: -.046em;
+    }
+
+    .proscenium {
+      display: block;
+      flex: none;
+      width: clamp(118px, 13vw, 188px);
+      height: auto;
+      color: #897563;
+    }
+
+    .rooms {
+      margin-top: 54px;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px 16px;
+      margin-bottom: 16px;
+    }
+
+    .filters {
+      display: inline-flex;
+      gap: 3px;
+      padding: 3px;
+      border: 1px solid var(--rule);
+      background: #ece3d68c;
+    }
+
+    .filters button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 0 16px;
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      font: 600 .875rem/1 var(--sans);
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color 150ms ease-out, color 150ms ease-out;
+    }
+
+    .filters button[aria-pressed="true"] {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .filters button:focus-visible {
+      position: relative;
+      z-index: 1;
+      outline: 2px solid var(--ink);
+      outline-offset: 2px;
+      box-shadow: 0 0 0 2px var(--paper);
+    }
+
+    @media (hover: hover) {
+      .filters button[aria-pressed="false"]:hover {
+        background: #e4d8c8;
+      }
+    }
+
+    .filter-icon {
+      flex: none;
+      width: 16px;
+      height: 16px;
+    }
+
+    .room-count {
+      margin: 0;
+      color: var(--muted);
+      font-size: .875rem;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    table {
+      width: 100%;
+      table-layout: fixed;
+      border-collapse: separate;
+      border-spacing: 0;
+      text-align: left;
+    }
+
+    .status-column {
+      width: 26%;
+    }
+
+    thead th {
+      padding: 13px 0;
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--rule);
+      color: var(--muted);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    tbody th,
+    tbody td {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    tbody th {
+      padding: 33px 14px 27px 0;
+      font-family: var(--serif);
+      font-size: clamp(2.25rem, 4vw, 3.625rem);
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: -.035em;
+    }
+
+    .status-heading,
+    .status-cell {
+      padding-inline: 24px;
+      border-left: 1px solid var(--rule);
+    }
+
+    .status-cell {
+      background: #eae2d451;
+    }
+
+    .status-cell--delayed {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: var(--paper);
+    }
+
+    .status-content {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 1.0625rem;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    .status-cell--delayed .status-content {
+      font-size: 1.1875rem;
+    }
+
+    .status-icon {
+      flex: none;
+      width: 21px;
+      height: 21px;
+    }
+
+    .status-cell--ready .status-icon {
+      color: #48614d;
+    }
+
+    tr[hidden] {
+      display: none;
+    }
+
+    @media (max-width: 680px) {
+      body {
+        padding: 16px 12px 30px;
+      }
+
+      .sheet {
+        padding: 26px 20px 38px;
+      }
+
+      .masthead {
+        display: block;
+        padding-top: 25px;
+      }
+
+      .section-label {
+        margin-bottom: 16px;
+        font-size: .6875rem;
+      }
+
+      h1 {
+        font-size: clamp(2.75rem, 13.5vw, 4rem);
+      }
+
+      h1 span {
+        display: block;
+      }
+
+      .proscenium {
+        position: absolute;
+        right: 0;
+        bottom: 2px;
+        width: clamp(68px, 23vw, 130px);
+      }
+
+      .rooms {
+        margin-top: 34px;
+      }
+
+      .toolbar {
+        gap: 9px;
+        margin-bottom: 14px;
+      }
+
+      .filters button {
+        gap: 6px;
+        padding-inline: 10px;
+        font-size: .8125rem;
+      }
+
+      .filter-icon {
+        width: 14px;
+        height: 14px;
+      }
+
+      .room-count {
+        font-size: .75rem;
+      }
+
+      .status-column {
+        width: 43%;
+      }
+
+      thead th {
+        font-size: .6875rem;
+      }
+
+      tbody th {
+        padding-block: 27px 23px;
+        font-size: clamp(2rem, 9.1vw, 2.75rem);
+      }
+
+      .status-heading,
+      .status-cell {
+        padding-inline: 12px;
+      }
+
+      .status-content,
+      .status-cell--delayed .status-content {
+        gap: 7px;
+        font-size: .9375rem;
+      }
+
+      .status-icon {
+        width: 17px;
+        height: 17px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .filters button {
+        transition: none;
+      }
+    }
+
+    @media (forced-colors: active) {
+      .filters button[aria-pressed="true"] {
+        border: 1px solid ButtonText;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <header class="masthead">
+      <div>
+        <p class="section-label">Stage management</p>
+        <h1 id="rooms-heading">Rehearsal <span>rooms</span></h1>
+      </div>
+      <svg class="proscenium" viewBox="0 0 172 104" fill="none" aria-hidden="true" focusable="false">
+        <g stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 81V48a70 34 0 0 1 140 0v33"/>
+          <path d="M23 81V48a63 27 0 0 1 126 0v33"/>
+          <path d="M30 81V48a56 20 0 0 1 112 0v33"/>
+          <path d="M30 51c20-4 40-12 56-23-6 16-20 30-44 43l-3 10M142 51c-20-4-40-12-56-23 6 16 20 30 44 43l3 10"/>
+          <path d="M30 59c15-4 31-11 43-20M30 68c10-3 21-8 29-13M142 59c-15-4-31-11-43-20M142 68c-10-3-21-8-29-13"/>
+          <path d="M10 81h152M6 87h160M37 93h98"/>
+        </g>
+        <path d="m86 62 4 5-4 5-4-5Z" fill="currentColor"/>
+      </svg>
+    </header>
+
+    <section class="rooms" aria-labelledby="rooms-heading">
+      <div class="toolbar">
+        <div class="filters" role="group" aria-label="Filter rooms">
+          <button type="button" data-filter="all" aria-pressed="true" aria-controls="room-rows">
+            <svg class="filter-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" aria-hidden="true" focusable="false">
+              <path d="M2.5 4h11M2.5 8h11M2.5 12h11"/>
+            </svg>
+            All rooms
+          </button>
+          <button type="button" data-filter="delayed" aria-pressed="false" aria-controls="room-rows">
+            <svg class="filter-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M2.5 3.5h11L9.6 8v3.8l-3.2 1.3V8Z"/>
+            </svg>
+            Delayed only
+          </button>
+        </div>
+        <p class="room-count" id="room-count" role="status" aria-atomic="true">2 of 2 rooms</p>
+      </div>
+
+      <table aria-label="Rehearsal room status">
+        <colgroup>
+          <col>
+          <col class="status-column">
+        </colgroup>
+        <thead>
+          <tr>
+            <th scope="col">Room</th>
+            <th scope="col" class="status-heading">Status</th>
+          </tr>
+        </thead>
+        <tbody id="room-rows">
+          <tr data-status="delayed">
+            <th scope="row">Studio B</th>
+            <td class="status-cell status-cell--delayed">
+              <div class="status-content">
+                <svg class="status-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <circle cx="10" cy="10" r="7.5"/>
+                  <path d="M10 5.8V10l2.8 1.8"/>
+                </svg>
+                <span>6 minutes late</span>
+              </div>
+            </td>
+          </tr>
+          <tr data-status="ready">
+            <th scope="row">Hall A</th>
+            <td class="status-cell status-cell--ready">
+              <div class="status-content">
+                <svg class="status-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <circle cx="10" cy="10" r="7.5"/>
+                  <path d="m6.7 10.1 2.2 2.2 4.4-4.5"/>
+                </svg>
+                <span>Ready</span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script>
+    const filterButtons = document.querySelectorAll(".filters button");
+    const roomList = document.getElementById("room-rows");
+    const roomRows = Array.from(roomList.rows);
+    const roomCount = document.getElementById("room-count");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let listAnimation;
+
+    for (const button of filterButtons) {
+      button.addEventListener("click", () => {
+        if (button.getAttribute("aria-pressed") === "true") return;
+
+        const delayedOnly = button.dataset.filter === "delayed";
+        let visibleCount = 0;
+
+        for (const row of roomRows) {
+          const visible = !delayedOnly || row.dataset.status === "delayed";
+          row.hidden = !visible;
+          if (visible) visibleCount += 1;
+        }
+
+        for (const filterButton of filterButtons) {
+          filterButton.setAttribute("aria-pressed", String(filterButton === button));
+        }
+
+        roomCount.textContent = `${visibleCount} of ${roomRows.length} rooms`;
+
+        listAnimation?.cancel();
+        if (!reducedMotion.matches) {
+          listAnimation = roomList.animate(
+            [{ opacity: 0.78 }, { opacity: 1 }],
+            { duration: 220, easing: "ease-out" }
+          );
+        }
+      });
+    }
+  </script>
+</body>
+</html>

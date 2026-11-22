@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f4ec">
+  <title>Oat Glaze Bowl | Kiln &amp; Field</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f8f4ec;
+      --ink: #30251e;
+      --muted: #68574a;
+      --line: #dfd4c4;
+      --clay: #874632;
+      --clay-dark: #693522;
+      --serif: "Fraunces", Georgia, serif;
+      --sans: "DM Sans", system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 400 1rem/1.5 var(--sans);
+    }
+
+    h1, h2, p, figure { margin: 0; }
+
+    button {
+      border: 0;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    button:focus-visible {
+      outline: 2px solid var(--clay);
+      outline-offset: 4px;
+    }
+
+    .wrap {
+      width: min(1224px, calc(100% - 96px));
+      margin-inline: auto;
+    }
+
+    .site-header { border-bottom: 1px solid var(--line); }
+
+    .masthead {
+      min-height: 79px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .wordmark {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font: 600 28px/1 var(--serif);
+      letter-spacing: -.048em;
+    }
+
+    .wordmark svg { flex: none; }
+
+    .bag-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      min-height: 44px;
+      padding: 0 0 0 8px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .bag-trigger:hover { color: var(--clay); }
+
+    .bag-count {
+      display: grid;
+      place-items: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #ede3d4;
+      color: #623e2f;
+      font-size: 12px;
+    }
+
+    main { padding-block: 48px 56px; }
+
+    .product {
+      display: grid;
+      grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+      align-items: center;
+      gap: clamp(36px, 6.4vw, 92px);
+    }
+
+    .product-art {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 5 / 4;
+      background: #eadac0;
+      border-radius: 2px;
+    }
+
+    .product-art::after {
+      position: absolute;
+      inset: 14px;
+      border: 1px solid #77563a36;
+      content: "";
+      pointer-events: none;
+    }
+
+    .product-art > svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .details { max-width: 410px; }
+
+    .category {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--clay);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .category::before {
+      width: 20px;
+      height: 1px;
+      background: currentColor;
+      content: "";
+    }
+
+    h1 {
+      margin-block: 16px 23px;
+      font: 500 clamp(54px, 6.5vw, 94px)/.94 var(--serif);
+      letter-spacing: -.062em;
+    }
+
+    h1 em {
+      display: block;
+      color: var(--clay);
+      font-weight: inherit;
+    }
+
+    .price {
+      font-size: 25px;
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -.035em;
+    }
+
+    .maker {
+      margin-top: 11px;
+      color: var(--muted);
+    }
+
+    .purchase { margin-top: 29px; }
+
+    .add-button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      width: 100%;
+      min-height: 56px;
+      padding: 12px 19px;
+      border-radius: 3px;
+      background: var(--clay);
+      color: #fff9ed;
+      font-weight: 700;
+      text-align: left;
+    }
+
+    .add-button:hover { background: var(--clay-dark); }
+
+    .purchase-notes {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px 12px;
+      margin-top: 15px;
+      font-size: 13px;
+    }
+
+    .shipping, .confirmation {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .shipping { color: var(--muted); }
+
+    .confirmation {
+      color: #40543f;
+      font-weight: 700;
+    }
+
+    .confirmation:not(:empty)::before {
+      width: 9px;
+      height: 5px;
+      border-bottom: 1.5px solid currentColor;
+      border-left: 1.5px solid currentColor;
+      transform: translateY(-2px) rotate(-45deg);
+      content: "";
+    }
+
+    .bag-panel {
+      position: fixed;
+      inset: 0 0 0 auto;
+      width: min(424px, calc(100% - 20px));
+      max-width: none;
+      height: 100%;
+      height: 100dvh;
+      max-height: none;
+      margin: 0;
+      padding: 24px;
+      overflow-y: auto;
+      border: 0;
+      background: var(--paper);
+      color: var(--ink);
+      box-shadow: -12px 0 48px #30251e24;
+    }
+
+    .bag-panel::backdrop { background: #30251e66; }
+
+    .bag-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .bag-heading h2 {
+      font: 500 36px/1 var(--serif);
+      letter-spacing: -.05em;
+    }
+
+    .close-bag {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+    }
+
+    .close-bag:hover { background: #eee4d5; }
+
+    .empty-bag {
+      margin-top: 22px;
+      color: var(--muted);
+    }
+
+    .bag-item {
+      display: grid;
+      grid-template-columns: 76px 1fr auto;
+      align-items: start;
+      gap: 13px;
+      padding-block: 22px;
+    }
+
+    .bag-item > svg {
+      width: 76px;
+      height: 68px;
+      border-radius: 2px;
+      background: #eadac0;
+    }
+
+    .item-name { font-weight: 700; }
+    .item-quantity { color: var(--muted); font-size: 13px; }
+
+    .remove-item {
+      min-height: 40px;
+      padding: 0 4px;
+      margin-left: -4px;
+      color: var(--clay);
+      font-size: 13px;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .bag-subtotal {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding-top: 17px;
+      border-top: 1px solid var(--line);
+      font-weight: 700;
+    }
+
+    @media (max-width: 820px) {
+      .wrap { width: calc(100% - 36px); }
+
+      .masthead { min-height: 62px; }
+
+      .wordmark {
+        gap: 8px;
+        font-size: 24px;
+      }
+
+      .wordmark svg { width: 28px; height: 28px; }
+
+      .bag-trigger { gap: 7px; }
+      .bag-trigger svg { width: 17px; height: 17px; }
+
+      main { padding-block: 18px 34px; }
+
+      .product {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 25px;
+      }
+
+      .product-art {
+        aspect-ratio: 1.075;
+        max-height: 480px;
+      }
+
+      .product-art::after { inset: 9px; }
+
+      .details { max-width: none; }
+
+      .category { font-size: 10px; }
+
+      h1 {
+        margin-block: 10px 14px;
+        font-size: clamp(37px, 12.05vw, 64px);
+        line-height: 1;
+        letter-spacing: -.055em;
+      }
+
+      h1 em { display: inline; }
+
+      .price { font-size: 23px; }
+
+      .maker {
+        margin-top: 8px;
+        font-size: 15px;
+      }
+
+      .purchase { margin-top: 22px; }
+      .add-button { min-height: 53px; padding-inline: 15px; }
+      .purchase-notes { margin-top: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap masthead">
+      <div class="wordmark">
+        <svg width="34" height="34" viewBox="0 0 36 36" aria-hidden="true">
+          <path d="M6 2.8 29 2c3-.1 4.5 1.2 4.6 4.2l.5 22.2c0 3-1.2 4.5-4.1 4.7l-23 .7c-3 0-4.5-1.4-4.6-4.5L2 7.3c0-2.9 1.2-4.3 4-4.5Z" fill="#874632"/>
+          <g fill="none" stroke="#fbefdb" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8.9 17.3c.9 4.9 4.2 8.7 9.2 8.7 5.1 0 8.4-3.9 9-8.7m-18.2 0c2.7 1.4 6 1.8 9.2 1.8s6.3-.5 9-1.8m-12 11.2h5.7"/>
+            <path d="M17.8 16.9c.2-3.4 1.8-6.3 4.7-8.5m-4.1 6.3c-2.4-.3-4.1-1.6-4.8-3.6 2.3.1 4 .9 4.8 3.6Z"/>
+          </g>
+        </svg>
+        <span>Kiln &amp; Field</span>
+      </div>
+
+      <button class="bag-trigger" id="open-bag" type="button" aria-haspopup="dialog" aria-controls="shopping-bag" aria-label="Bag, empty">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 8h14l1 13H4L5 8Z"/>
+          <path d="M9 10V6a3 3 0 0 1 6 0v4"/>
+        </svg>
+        <span>Bag</span>
+        <span class="bag-count" id="bag-count" aria-hidden="true">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="product" aria-labelledby="product-title">
+      <figure class="product-art">
+        <svg viewBox="0 0 720 576" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="art-title">
+          <title id="art-title">Illustration of the Oat Glaze Bowl, with a pale speckled glaze and a warm brown rim</title>
+          <defs>
+            <radialGradient id="drawing-paper" cx="35%" cy="28%" r="87%">
+              <stop stop-color="#f4e9d5"/>
+              <stop offset=".68" stop-color="#ebdcc2"/>
+              <stop offset="1" stop-color="#dfc9aa"/>
+            </radialGradient>
+            <radialGradient id="cast-shadow">
+              <stop stop-color="#5a3823" stop-opacity=".33"/>
+              <stop offset=".55" stop-color="#795032" stop-opacity=".18"/>
+              <stop offset="1" stop-color="#9a704a" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="soft-shadow" x="-25%" y="-100%" width="150%" height="300%">
+              <feGaussianBlur stdDeviation="5"/>
+            </filter>
+            <filter id="paper-grain" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+              <feTurbulence type="fractalNoise" baseFrequency=".73" numOctaves="3" seed="12" stitchTiles="stitch"/>
+              <feColorMatrix type="matrix" values="0 0 0 0 .25
+                                                    0 0 0 0 .15
+                                                    0 0 0 0 .08
+                                                    .9 0 0 0 -.30"/>
+            </filter>
+            <linearGradient id="foot-glaze" x1="0%" y1="0%" x2="100%" y2="70%">
+              <stop stop-color="#caa780"/>
+              <stop offset=".52" stop-color="#ab805d"/>
+              <stop offset="1" stop-color="#81563b"/>
+            </linearGradient>
+            <linearGradient id="outer-glaze" x1="7%" y1="13%" x2="93%" y2="92%">
+              <stop stop-color="#efe0c4"/>
+              <stop offset=".34" stop-color="#e2cba5"/>
+              <stop offset=".68" stop-color="#c9a47b"/>
+              <stop offset="1" stop-color="#a97b54"/>
+            </linearGradient>
+            <linearGradient id="outer-shade" x1="12%" y1="12%" x2="63%" y2="99%">
+              <stop offset=".34" stop-color="#845431" stop-opacity="0"/>
+              <stop offset="1" stop-color="#845431" stop-opacity=".36"/>
+            </linearGradient>
+            <radialGradient id="outer-light" cx="27%" cy="21%" r="65%">
+              <stop stop-color="#fff0d4" stop-opacity=".77"/>
+              <stop offset="1" stop-color="#fff0d4" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="rim-glaze" x1="31%" y1="0%" x2="72%" y2="94%">
+              <stop stop-color="#f5e7cc"/>
+              <stop offset=".59" stop-color="#d7bc94"/>
+              <stop offset=".87" stop-color="#aa7953"/>
+              <stop offset="1" stop-color="#d9bb93"/>
+            </linearGradient>
+            <linearGradient id="inner-glaze" x1="69%" y1="0%" x2="36%" y2="100%">
+              <stop stop-color="#9d7658"/>
+              <stop offset=".24" stop-color="#bc9971"/>
+              <stop offset=".62" stop-color="#e8d0a8"/>
+              <stop offset=".85" stop-color="#e9d2ae"/>
+              <stop offset="1" stop-color="#c7a078"/>
+            </linearGradient>
+            <radialGradient id="inner-light" cx="48%" cy="76%" r="56%">
+              <stop stop-color="#f7e6c4" stop-opacity=".86"/>
+              <stop offset="1" stop-color="#f7e6c4" stop-opacity="0"/>
+            </radialGradient>
+            <pattern id="glaze-flecks" width="109" height="83" patternUnits="userSpaceOnUse" patternTransform="rotate(-11)">
+              <g fill="#795135">
+                <circle cx="7" cy="8" r=".8"/><circle cx="28" cy="14" r=".6"/>
+                <circle cx="45" cy="4" r="1"/><circle cx="61" cy="10" r=".48"/>
+                <circle cx="77" cy="18" r="1.05"/><circle cx="92" cy="5" r=".63"/>
+                <circle cx="16" cy="29" r="1.14"/><circle cx="33" cy="31" r=".5"/>
+                <circle cx="52" cy="24" r=".64"/><circle cx="62" cy="36" r=".77"/>
+                <circle cx="96" cy="29" r=".8"/><circle cx="103" cy="43" r=".51"/>
+                <circle cx="4" cy="42" r=".6"/><circle cx="27" cy="54" r=".84"/>
+                <circle cx="46" cy="46" r=".55"/><circle cx="83" cy="48" r=".51"/>
+                <circle cx="13" cy="74" r=".7"/><circle cx="38" cy="72" r=".79"/>
+                <circle cx="55" cy="63" r="1.12"/><circle cx="73" cy="74" r=".62"/>
+                <circle cx="86" cy="63" r=".95"/><circle cx="100" cy="76" r=".55"/>
+                <path d="m18 17 1.5.6-1.1.7-.8-.5Zm53 33 1.3.8-1.2.8-.8-.5ZM3 61l1.3.2-.4 1.2-1.1-.2Z"/>
+              </g>
+              <g fill="#fff2d8" opacity=".9">
+                <circle cx="22" cy="43" r="1"/><circle cx="39" cy="19" r=".84"/>
+                <circle cx="68" cy="22" r="1.07"/><circle cx="89" cy="39" r=".7"/>
+                <circle cx="34" cy="63" r=".82"/><circle cx="76" cy="6" r=".88"/>
+                <circle cx="65" cy="57" r=".63"/><circle cx="97" cy="54" r=".91"/>
+              </g>
+            </pattern>
+            <path id="bowl-side" d="M105 224C112 269 223 304 358 305c136 1 248-34 256-83-1 24-8 47-20 72-28 59-74 98-133 119-32 11-66 16-102 16-37 1-74-5-104-17-62-22-112-69-134-132-8-23-13-42-16-56Z"/>
+            <path id="bowl-rim" d="M105 224c-1-45 113-82 252-83 135-1 255 34 257 81 2 47-111 86-255 85-137 0-250-34-254-83Z"/>
+            <path id="bowl-well" d="M116 223c-1-40 109-72 242-72 133-1 243 32 245 71 3 38-106 74-244 74-133 1-242-32-243-73Z"/>
+            <clipPath id="side-clip"><use href="#bowl-side"/></clipPath>
+            <clipPath id="well-clip"><use href="#bowl-well"/></clipPath>
+          </defs>
+
+          <g id="bowl-scene">
+            <rect width="720" height="576" fill="url(#drawing-paper)"/>
+            <rect width="720" height="576" filter="url(#paper-grain)" opacity=".43"/>
+
+            <g transform="translate(-19 -15) scale(1.052)">
+              <ellipse cx="396" cy="428" rx="248" ry="43" fill="url(#cast-shadow)" transform="rotate(-2 396 428)"/>
+              <ellipse cx="367" cy="431" rx="119" ry="11" fill="#694127" opacity=".31" filter="url(#soft-shadow)"/>
+              <g fill="none" stroke="#805b3e" stroke-linecap="round" opacity=".21">
+                <path d="M178 443c27 4 57 5 82 3m181-3c37-1 69-6 99-12m-72 15c19-1 38-4 54-7m26-4 21-5"/>
+                <path d="M231 453c12 1 35 2 50 1m228-3 27-3m-379-11 16 2" opacity=".63"/>
+              </g>
+
+              <path d="M276 407c30 11 133 13 168 0l-5 21c-8 9-42 15-80 15-39 0-73-6-80-15Z" fill="url(#foot-glaze)" stroke="#745038" stroke-width="1.35"/>
+              <path d="M281 427c15 9 45 13 78 13 35 0 64-5 78-13" fill="none" stroke="#efd3a7" stroke-opacity=".54"/>
+              <path d="M294 434c18 5 40 7 65 7m16 0c19-1 34-3 47-6" fill="none" stroke="#61422d" stroke-opacity=".54"/>
+
+              <use href="#bowl-side" fill="url(#outer-glaze)"/>
+              <g clip-path="url(#side-clip)">
+                <use href="#bowl-side" fill="url(#outer-shade)"/>
+                <use href="#bowl-side" fill="url(#outer-light)"/>
+                <path d="M110 267c58 54 151 76 247 77 105 1 201-28 251-77l-15 32c-44 49-134 77-236 78-90 0-179-26-228-73Z" fill="#f5e1bd" opacity=".13"/>
+                <rect x="103" y="221" width="514" height="211" fill="url(#glaze-flecks)" opacity=".50"/>
+                <rect x="103" y="221" width="514" height="211" filter="url(#paper-grain)" opacity=".42"/>
+                <g fill="none" stroke-linecap="round">
+                  <g stroke="#906341" opacity=".44">
+                    <path d="M117 263c44 39 138 65 241 66 97 0 195-24 242-63"/>
+                    <path d="M129 293c52 36 130 55 222 56m32 0c76-1 156-22 201-55"/>
+                    <path d="M144 325c47 31 123 52 211 52 73 0 150-18 199-44"/>
+                    <path d="M174 360c52 30 115 43 181 44m21 0c57-2 109-14 156-39"/>
+                    <path d="M220 394c18 9 45 16 70 20m132 4c29-5 51-12 72-22"/>
+                  </g>
+                  <g stroke="#fae9c9" opacity=".62">
+                    <path d="M121 268c53 38 136 60 227 63m18 0c31 0 59-2 87-6"/>
+                    <path d="M146 329c36 25 92 43 152 48m39 3c69 2 131-8 184-28"/>
+                    <path d="M188 372c24 13 53 22 86 28m35 6c36 4 65 4 94 1"/>
+                  </g>
+                  <g stroke="#765035" opacity=".36" stroke-width=".8">
+                    <path d="M174 306l9 5m-19-8 6 4m401-7-8 6m-5 1-7 5m-350 60 8 4m14 4 14 6m296-28-10 5m-12 4-8 4"/>
+                    <path d="M244 397l8 3m-2-5 10 4m203 4 10-4m-3 1 12-5m-14 12 9-3"/>
+                  </g>
+                </g>
+              </g>
+              <use href="#bowl-side" fill="none" stroke="#765036" stroke-width="1.45" stroke-opacity=".85"/>
+
+              <use href="#bowl-rim" fill="url(#rim-glaze)" stroke="#785239" stroke-width="1.55"/>
+              <use href="#bowl-well" fill="url(#inner-glaze)"/>
+              <g clip-path="url(#well-clip)">
+                <use href="#bowl-well" fill="url(#inner-light)"/>
+                <path d="M118 220c13-41 121-67 239-68 124-1 226 28 245 61-45-33-139-49-244-47-99 1-182 17-240 54Z" fill="#785239" opacity=".15"/>
+                <path d="M140 242c30 20 105 43 208 45 103 2 189-19 233-44-25 26-116 54-225 54-115 0-192-23-216-55Z" fill="#b1825a" opacity=".18"/>
+                <rect x="114" y="149" width="492" height="150" fill="url(#glaze-flecks)" opacity=".40"/>
+                <rect x="114" y="149" width="492" height="150" filter="url(#paper-grain)" opacity=".45"/>
+                <g fill="none" stroke-linecap="round">
+                  <g stroke="#886248" opacity=".44">
+                    <path d="M137 209c28-26 111-48 199-51m24 0c92 0 172 16 212 40"/>
+                    <path d="M134 225c2 27 96 55 216 57m20 0c105-2 198-24 217-51"/>
+                    <path d="M178 239c-4-25 83-49 177-50 91-1 164 16 183 39"/>
+                    <path d="M195 244c24 22 87 35 156 35 77 1 147-14 175-36"/>
+                    <path d="M244 242c7-16 55-28 114-29 58-1 113 12 117 28 3 16-51 28-113 29-54 1-108-9-118-23"/>
+                    <path d="M277 248c17 12 56 17 91 16 33 0 67-6 83-15" opacity=".75"/>
+                  </g>
+                  <g stroke="#fff0d4" opacity=".70">
+                    <path d="M143 230c19 29 111 51 206 54m27 0c65-2 118-11 157-24"/>
+                    <path d="M207 233c15-19 68-34 126-37m55 0c45 2 88 12 110 24"/>
+                    <path d="M261 246c14 12 52 19 93 20 36 1 76-5 97-15"/>
+                  </g>
+                </g>
+              </g>
+              <use href="#bowl-well" fill="none" stroke="#7d573a" stroke-width="1.3" opacity=".83"/>
+              <g fill="none" stroke-linecap="round">
+                <path d="M111 217c6-39 117-73 245-73 98 0 194 22 232 51" stroke="#fff2d6" stroke-width="2" opacity=".83"/>
+                <path d="M114 239c23 36 127 65 242 65 97 1 188-19 229-50" stroke="#70472e" stroke-width="1.2" opacity=".61"/>
+                <path d="M137 253c43 27 118 45 200 47m32 0c76-1 143-15 186-34" stroke="#fff0d1" stroke-width="1.8" opacity=".72"/>
+                <path d="M116 214c8-18 30-30 50-37m415 21c13 7 22 17 24 25" stroke="#957051" opacity=".59"/>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </figure>
+
+      <div class="details">
+        <p class="category">Small-batch pottery</p>
+        <h1 id="product-title">Oat Glaze <em>Bowl</em></h1>
+        <p class="price">$46</p>
+        <p class="maker">Thrown and glazed by the maker in Milwaukee.</p>
+
+        <div class="purchase">
+          <button class="add-button" id="add-bowl" type="button">
+            <span id="purchase-label">Add to bag</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 12h15m-6-6 6 6-6 6"/>
+            </svg>
+          </button>
+          <div class="purchase-notes">
+            <p class="shipping">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m12 3 8.5 4.5v9L12 21l-8.5-4.5v-9L12 3Zm0 9 8.5-4.5M12 12 3.5 7.5M12 12v9m4.3-10.9L7.8 5.3"/>
+              </svg>
+              Ships in 5 days
+            </p>
+            <p class="confirmation" id="confirmation" role="status" aria-atomic="true"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="bag-panel" id="shopping-bag" aria-labelledby="bag-title">
+    <div class="bag-heading">
+      <h2 id="bag-title">Your bag</h2>
+      <form method="dialog">
+        <button class="close-bag" id="close-bag" type="submit" aria-label="Close bag" autofocus>
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" aria-hidden="true">
+            <path d="m6 6 12 12M18 6 6 18"/>
+          </svg>
+        </button>
+      </form>
+    </div>
+
+    <p class="empty-bag" id="empty-bag">Your bag is empty.</p>
+    <div id="bag-order" hidden>
+      <div class="bag-item">
+        <svg viewBox="70 32 580 516" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <use href="#bowl-scene"/>
+        </svg>
+        <div>
+          <p class="item-name">Oat Glaze Bowl</p>
+          <p class="item-quantity">Quantity 1</p>
+          <button class="remove-item" id="remove-bowl" type="button" aria-label="Remove Oat Glaze Bowl">Remove</button>
+        </div>
+        <p>$46</p>
+      </div>
+      <p class="bag-subtotal"><span>Subtotal</span><span>$46</span></p>
+    </div>
+  </dialog>
+
+  <script>
+    const addButton = document.getElementById("add-bowl");
+    const purchaseLabel = document.getElementById("purchase-label");
+    const confirmation = document.getElementById("confirmation");
+    const bagButton = document.getElementById("open-bag");
+    const bagCount = document.getElementById("bag-count");
+    const bag = document.getElementById("shopping-bag");
+    const emptyBag = document.getElementById("empty-bag");
+    const bagOrder = document.getElementById("bag-order");
+    const closeButton = document.getElementById("close-bag");
+    const removeButton = document.getElementById("remove-bowl");
+
+    let bowlInBag = false;
+
+    function setBowlInBag(isInBag) {
+      bowlInBag = isInBag;
+      bagCount.textContent = isInBag ? "1" : "0";
+      bagButton.setAttribute("aria-label", isInBag ? "Bag, 1 item" : "Bag, empty");
+      purchaseLabel.textContent = isInBag ? "View bag" : "Add to bag";
+      emptyBag.hidden = isInBag;
+      bagOrder.hidden = !isInBag;
+      confirmation.textContent = isInBag ? "Added to bag" : "";
+    }
+
+    addButton.addEventListener("click", () => {
+      if (bowlInBag) {
+        bag.showModal();
+        return;
+      }
+
+      setBowlInBag(true);
+    });
+
+    bagButton.addEventListener("click", () => bag.showModal());
+
+    removeButton.addEventListener("click", () => {
+      setBowlInBag(false);
+      closeButton.focus();
+    });
+
+    bag.addEventListener("click", (event) => {
+      if (event.target === bag && event.clientX < bag.getBoundingClientRect().left) {
+        bag.close();
+      }
+    });
+  </script>
+</body>
+</html>
