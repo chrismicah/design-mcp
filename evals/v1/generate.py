@@ -90,9 +90,10 @@ def parse_cell(events, expect_mcp, server_name="design-mcp", expected_tool="dire
     failures = [e.get("message") or e.get("error") for e in events if e.get("type") == "error"]
     failures.extend(i.get("error") for i in completed_items if i.get("status") == "failed")
     result["client_errors"] = [f for f in failures if f]
+    eligible_tools = {expected_tool} if isinstance(expected_tool, str) else set(expected_tool)
     result["treatment_call"] = any(
         item.get("type") == "mcp_tool_call" and item.get("server") == server_name
-        and item.get("tool") == expected_tool and item.get("status") == "completed" and not item.get("error")
+        and item.get("tool") in eligible_tools and item.get("status") == "completed" and not item.get("error")
         for item in completed_items
     )
     if server_name == "design-mcp" and expected_tool == "direct":
@@ -181,7 +182,7 @@ def main():
     server = p.add_mutually_exclusive_group(required=True)
     server.add_argument("--server", type=lambda path: Path(path).resolve())
     server.add_argument("--server-url", help="Public credential-free HTTPS endpoint for a separate hosted comparator")
-    p.add_argument("--competitor-config", type=Path, help="JSON object with name, args, env and expected_tool")
+    p.add_argument("--competitor-config", type=Path, help="JSON object with name, args, env, and expected_tool or expected_tools")
     p.add_argument("--treatment-only", action="store_true", help="Reuse sealed controls from the same benchmark")
     p.add_argument("--treatment-label", help="Output arm name for an isolated build of Design MCP")
     p.add_argument("--codex", default="codex")
@@ -207,13 +208,18 @@ def main():
         args.server_name = name
         args.server_args = competitor.get("args", [])
         args.server_env = competitor.get("env", {})
-        args.expected_tool = competitor["expected_tool"]
+        tool = competitor.get("expected_tool")
+        tools = competitor.get("expected_tools")
         if not isinstance(args.server_args, list) or not all(isinstance(value, str) for value in args.server_args):
             p.error("Competitor args must be an array of strings")
         if not isinstance(args.server_env, dict) or not all(isinstance(value, str) for value in args.server_env.values()):
             p.error("Competitor env must be an object with string values")
-        if not isinstance(args.expected_tool, str) or not args.expected_tool:
-            p.error("Competitor expected_tool must name a tool")
+        if isinstance(tool, str) and tool and tools is None:
+            args.expected_tool = tool
+        elif tool is None and isinstance(tools, list) and tools and all(isinstance(name, str) and name for name in tools):
+            args.expected_tool = tuple(tools)
+        else:
+            p.error("Provide either expected_tool or a nonempty expected_tools array of tool names")
     if args.treatment_label:
         if args.competitor_config or args.treatment_label == "none" or not re.fullmatch(
             r"[a-z0-9][a-z0-9-]{0,47}", args.treatment_label

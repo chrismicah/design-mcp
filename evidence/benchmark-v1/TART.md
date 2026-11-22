@@ -1,6 +1,6 @@
 # Fresh Mac verification
 
-The hosted matrix covers both Mac CPU architectures on macOS 15. Use the same clean-install script for each interpreter inside a fresh Tart guest. Record the image digest, guest `sw_vers`, `uname -m`, exact checkout SHA, both installer results, and the 17-tool smoke output. Tart runs on Apple Silicon. The Intel evidence comes from the hosted Intel runner. [Hosted matrix](portable-final-ci.json) · [Tart documentation](https://tart.run/quick-start/)
+The hosted matrix covers both Mac CPU architectures on macOS 15. The shared clean-install script passed all eight hosted jobs. Use that script for each interpreter inside a fresh Tart guest. Record the image digest, guest `sw_vers`, `uname -m`, exact checkout SHA, both installer results, and the 17-tool smoke output. Tart runs on Apple Silicon. The Intel evidence comes from the hosted Intel runner. [Shared-script verification](https://github.com/chrismicah/design-mcp/actions/runs/44988412952) · [Tart documentation](https://tart.run/quick-start/)
 
 The public Ventura base image resolved to `ghcr.io/cirruslabs/macos-ventura-base@sha256:9fb387bb987cdda942fbc27118296ed8e16a3359a672c95c6d5ac960165ef1c5` on November 21. The registry reported 22.6 GB compressed and a 50 GB logical disk. The image and guest version have yet to be booted or verified here. [Public image](https://github.com/orgs/cirruslabs/packages/container/package/macos-ventura-base)
 

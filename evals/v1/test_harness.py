@@ -115,6 +115,11 @@ class BenchmarkTests(unittest.TestCase):
         result, _ = parse_cell([call, message, turn], True, "inspo", "search_screens")
         self.assertTrue(result["treatment_call"])
         self.assertEqual(result["status"], "passed")
+        recommendation = {"type": "item.completed", "item": {**call["item"], "tool": "recommend"}}
+        result, _ = parse_cell([recommendation, message, turn], True, "inspo", ("recommend", "search_screens"))
+        self.assertEqual(result["status"], "passed")
+        result, _ = parse_cell([recommendation, message, turn], True, "inspo", "search_screens")
+        self.assertEqual(result["status"], "mcp-unused-or-failed")
         result, _ = parse_cell([call, message, turn], True)
         self.assertEqual(result["status"], "mcp-unused-or-failed")
         config = mcp_table("/test fixtures/start", "inspo", ["--stdio"], {"MODE": "local"})
