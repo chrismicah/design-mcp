@@ -141,7 +141,11 @@ def audit(run, cells, case, spec=None):
             visit = rows[before:following]
             assert all(row["page_id"] == page and row["observation"]["url"] == endpoint and
                        row["observation"]["width"] == width for row in visit), label
-            verdict["journey"] = audit_journey(visit, 0, focused - before, after - before, spec["journey_facts"])
+            checked = audit_journey(visit, 0, focused - before, after - before, spec["journey_facts"])
+            assert type(verdict.get("deadline_readable")) is bool, f"Missing focused screenshot verdict for {label}"
+            checked["checks"]["deadline_readable_in_screenshot"] = verdict["deadline_readable"]
+            checked["passed"] = all(checked["checks"].values())
+            verdict["journey"] = checked
             verdict["focused"] = focus_image
         for metric in WEIGHTS:
             assert type(verdict[metric]) in (int, float) and 0 <= verdict[metric] <= 10, label

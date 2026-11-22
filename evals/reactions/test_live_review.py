@@ -226,6 +226,8 @@ def test_three_arm_audit_requires_six_views(benchmark, journey):
                 "primary_action": {"input": "Enter", "expected": "Focus", "observed": "Focused"},
                 "edge_observation": "Restored", "strength": "Readable", "weakness": "Crowded", "repair": "Group",
             }
+            if journey:
+                ballot["screens"][view]["deadline_readable"] = True
     (captures / "audit.jsonl").write_text("".join(json.dumps(row) + "\n" for row in rows))
 
     def write_trace():
@@ -242,6 +244,15 @@ def test_three_arm_audit_requires_six_views(benchmark, journey):
     if journey:
         assert all(screen["journey"]["passed"] for screen in result["screens"].values())
         assert "-focused" in critic_prompt(None, spec)
+        ballot["screens"]["C-390"]["deadline_readable"] = False
+        write_trace()
+        result = audit(run, root, spec["case"], spec)
+        assert result["screens"]["C-390"]["journey"]["checks"]["deadline_visible"]
+        assert not result["screens"]["C-390"]["journey"]["passed"]
+        del ballot["screens"]["C-390"]["deadline_readable"]
+        write_trace()
+        with pytest.raises(AssertionError, match="Missing focused screenshot verdict"):
+            audit(run, root, spec["case"], spec)
         without_focus = [row for row in rows if row.get("label") != "C-390-focused"]
         (captures / "audit.jsonl").write_text("".join(json.dumps(row) + "\n" for row in without_focus))
         with pytest.raises(AssertionError, match="Missing original capture C-390-focused"):
