@@ -2,7 +2,7 @@
 
 ## Direct Git install on both architectures, November 22
 
-Both README commands installed `a29d405` directly from Git on clean macOS 15 runners. Each installer reported the pinned commit in package metadata and passed default and compatibility MCP smoke. All eight Intel and Apple Silicon jobs passed on Python 3.10–3.13. The fresh Ventura boot and native GPT Computer Use flow remain open. [Job and source receipts](evidence/benchmark-v1/direct-git-install.json)
+Both README commands installed `2fcd312` directly from Git on clean macOS 15 runners. All eight Intel and Apple Silicon jobs passed on Python 3.10–3.13. The archived logs show 16 installs, 16 doctor checks, and 32 smoke runs across the default and compatibility surfaces. Each install verified the exact Git commit in its package metadata. Fresh Ventura and the native GPT Computer Use walkthrough remain open. [Job and source receipts](evidence/benchmark-v1/direct-git-install-2fcd312.json) · [Earlier pin](evidence/benchmark-v1/direct-git-install.json)
 
 ## Reference Mac clean install, November 22
 
