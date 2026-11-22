@@ -23,6 +23,15 @@ python3 evals/reactions/pilot.py --out "$PILOT_OUTPUT" --kit "$VERIFIED_INSTALL_
 
 Give the reviewer anonymous fixtures after checking the HTML and trace digests against the receipts. Keep the thread IDs, arm mapping and generator replies out of the review. Use original browser captures for acceptance. [Browser review setup](../v1/README.md#compact-live-review) · [Pilot cases and gates](../../PLAN.md#13-simulated-non-designer-pilot)
 
+The live runner checks that both drafts used the same prompt, client, model, effort and reaction round. It serves them in isolated browser origins with randomized labels, then starts one independent critic with access only to the browser review tools. Keep the output directory private until the ballot is saved.
+
+```sh
+python3 evals/reactions/live_review.py --cells "$PILOT_OUTPUT" \
+  --case dashboard-clear --out "$LIVE_REVIEW" --model "$CRITIC_MODEL" \
+  --chrome "$CHROME_EXECUTABLE" --playwriter "$PLAYWRITER_EXECUTABLE" \
+  --quota-probe "$SUBSCRIPTION_QUOTA_PROBE"
+```
+
 After the critic submits a ballot, audit the anonymous run against the generation receipts. The audit checks independence, activation and recovery inputs, and that each PNG sent to the critic matches the archived file. Keep missing scores visible in the denominator. Check the observed task outcomes against the browser audit before recording a pass.
 
 ```sh
