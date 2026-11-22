@@ -19,7 +19,7 @@ Under the shared lease, clone the pinned image into a workspace-scoped `TART_HOM
 ```sh
 run=$(mktemp -d)
 repo=https://github.com/chrismicah/design-mcp.git
-rev=2fcd31221671590152401d958b904141e438e453
+rev=f17bd6f79fff62d1ec3e051b29d930ccb32b3a46
 export GIT_TERMINAL_PROMPT=0
 git init -q "$run/source"
 git -C "$run/source" fetch --no-tags --depth=1 "$repo" "$rev"

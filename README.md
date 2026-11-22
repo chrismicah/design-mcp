@@ -7,12 +7,12 @@ Turn a brief into one sourced art direction. The response gives the coding agent
 Install the verified development build with either command. Both support an explicit `--python` option to select an installed interpreter.
 
 ```bash
-pipx install 'git+https://github.com/chrismicah/design-mcp.git@2fcd31221671590152401d958b904141e438e453'
+pipx install 'git+https://github.com/chrismicah/design-mcp.git@f17bd6f79fff62d1ec3e051b29d930ccb32b3a46'
 # or
-uv tool install 'git+https://github.com/chrismicah/design-mcp.git@2fcd31221671590152401d958b904141e438e453'
+uv tool install 'git+https://github.com/chrismicah/design-mcp.git@f17bd6f79fff62d1ec3e051b29d930ccb32b3a46'
 ```
 
-For a local checkout, pass `.` to your installer. [Verified installs](evidence/benchmark-v1/direct-git-install-2fcd312.json)
+For a local checkout, pass `.` to your installer. [Verified installs](evidence/benchmark-v1/direct-git-install-f17bd6f.json)
 
 Run `design-mcp doctor` in the installed environment. It reports the interpreter and executable, validates bundled resources, and uses a local stdio client to discover the selected tools and call one. Each check reports pass, fail, or skip. A failed check gives a nonzero exit status.
 
@@ -75,7 +75,7 @@ Try “calmer” after the first draft. The result adjusts focal spacing, the si
 - **The active Chrome tab.** Load the extension from the folder printed by `design-mcp review --extension-path`. Open the toolbar popup, choose **Review this page**, and follow its one-time host setup. [Extension setup](design_mcp/review/README.md#set-up-the-extension)
 - **Your SwiftUI or Electron app.** Use the app-specific exporter, then run `design-mcp review-app capture.json` to check the visible controls for clipping and occlusion. [Swift exporter](integrations/desktop/SwiftCapture.swift) · [Electron exporter](integrations/desktop/electron.mjs)
 
-Hosted checks covered a public URL on macOS, the Chrome extension on Linux and macOS 15 arm64, and owned SwiftUI and Electron fixtures on macOS 15 arm64. The macOS Chrome test opened the toolbar, recovered the local host, selected After by keyboard, and reopened the saved preview with the seeded field masked. Reference-Mac latency, independent design review, and final GPT Computer Use smoke remain open. [Smoke receipts](SMOKE-RECEIPTS.md)
+Hosted checks covered a public URL on macOS, the Chrome extension on Linux and macOS 15 arm64, and owned SwiftUI and Electron fixtures on macOS 15 arm64. The installed candidate passed three hosted Mac Chrome runs from toolbar click through keyboard Before and After and reopening the preview from its own profile. The first archived preview passed field masking. Reference-Mac latency, independent design review, and final GPT Computer Use smoke remain open. [Chrome evidence](evidence/benchmark-v1/chrome-profile-review-isolation.json) · [Smoke receipts](SMOKE-RECEIPTS.md)
 
 ## Compatibility
 
@@ -91,7 +91,7 @@ The new direction library and the historical pattern data have separate roles. H
 
 ## Verified results
 
-The pinned Git commands passed all eight clean-install jobs on Intel and Apple Silicon macOS 15 with Python 3.10–3.13. Each installer verified the package commit, passed `doctor` and exercised all 17 compatibility tools. The macOS 13 dependency preflight passed all eight wheel checks. Ventura runtime and fresh Tart verification remain open. [Install matrix](https://github.com/chrismicah/design-mcp/actions/runs/45010831792) · [Ventura preflight](evidence/benchmark-v1/ventura-wheel-preflight.json)
+The pinned Git commands passed all eight clean-install jobs on Intel and Apple Silicon macOS 15 with Python 3.10–3.13. Each installer verified the package commit, passed `doctor` and exercised all 17 compatibility tools. The macOS 13 dependency preflight passed all eight wheel checks. Ventura runtime and fresh Tart verification remain open. [Install matrix](https://github.com/chrismicah/design-mcp/actions/runs/45026602037) · [Ventura preflight](evidence/benchmark-v1/ventura-wheel-preflight.json)
 
 All 36 matched design briefs have blinded scores. The plain generator averaged 92.7 and frozen Design MCP v2 averaged 94.1, with 17 wins, 11 ties, and eight losses. The paired 95% interval of −0.46 to +3.13 points leaves the average advantage inconclusive. [Benchmark and receipts](EVALS.md)
 

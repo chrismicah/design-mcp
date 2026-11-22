@@ -2,7 +2,7 @@
 
 ## Direct Git install on both architectures, November 22
 
-Both README commands installed `2fcd312` directly from Git on clean macOS 15 runners. All eight Intel and Apple Silicon jobs passed on Python 3.10–3.13. The archived logs show 16 installs, 16 doctor checks, and 32 smoke runs across the default and compatibility surfaces. Each install verified the exact Git commit in its package metadata. Fresh Ventura and the native GPT Computer Use walkthrough remain open. [Job and source receipts](evidence/benchmark-v1/direct-git-install-2fcd312.json) · [Earlier pin](evidence/benchmark-v1/direct-git-install.json)
+Both README commands installed `f17bd6f` directly from Git on clean macOS 15 runners. All eight Intel and Apple Silicon jobs passed on Python 3.10–3.13. The archived logs show 16 installs, 16 doctor checks, and 32 smoke runs across the default and compatibility surfaces. Each install verified the exact Git commit in its package metadata. Fresh Ventura and the native GPT Computer Use walkthrough remain open. [Job and source receipts](evidence/benchmark-v1/direct-git-install-f17bd6f.json) · [Earlier pin](evidence/benchmark-v1/direct-git-install-2fcd312.json)
 
 ## Reference Mac clean install, November 22
 
@@ -11,6 +11,8 @@ Pipx 1.7.1 installed the exact combined candidate from a checked Git archive int
 A separate offline uv install from the verified `2fcd312` archive passed `doctor` and all three default stdio tools on the reference Mac. The five installed extension files matched the archive. This gives the native walkthrough an exact package and local fixture. The browser access host was still unavailable during the staged check. [Exact local install receipt](evidence/benchmark-v1/reference-mac-install-2fcd312.json)
 
 ## Installed Chrome extension on hosted macOS, November 22
+
+Chrome for Testing 158 opened the real toolbar by pointer on macOS 15.8.2 arm64 using the installed `f17bd6f` package. All three fresh profiles saved into their own histories, selected After by keyboard, and reopened the same preview on Before. The first archived preview passed the pixel mask and seeded-value checks again after download. The three trials establish the interaction and storage behavior. Reference-Mac latency and the GPT Computer Use walkthrough remain open. [Run and screenshots](https://github.com/chrismicah/design-mcp/actions/runs/45027525374) · [Exact profile and capture receipts](evidence/benchmark-v1/chrome-profile-review-isolation.json)
 
 Chrome for Testing 158 loaded the extension from an install of `2fcd312` on macOS 15.8.2 arm64. The OS shortcut opened the toolbar popup in a fresh profile. Browser-targeted keyboard input activated Scan, exercised missing-host recovery, and opened the saved preview. The single scan took **141 ms** and flagged the seeded text at 2.6:1 against a 4.5:1 minimum. The keyboard selected After and moved focus to it. A new tab reopened the same file on Before. The downloaded evidence contained one masked field whose visible interior matched the mask color, and no seeded field value. The popup closed when opening the preview, so the test verified the new tab independently of the key acknowledgement. Reference-Mac latency and the GPT Computer Use walkthrough remain open. [Run and screenshots](https://github.com/chrismicah/design-mcp/actions/runs/45012207196) · [Audited artifact hashes](evidence/benchmark-v1/chrome-extension-mac-2fcd312.json)
 
