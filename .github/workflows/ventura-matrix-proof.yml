@@ -1,0 +1,55 @@
+name: Native install proof runner qualification
+on:
+  push:
+    branches: [design-mcp/ventura-matrix-proof]
+permissions:
+  contents: read
+jobs:
+  proof:
+    name: macOS 15 / ${{ matrix.arch }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: macos-15
+            arch: arm64
+          - runner: macos-15-intel
+            arch: x86_64
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 16
+    env:
+      ARCH: ${{ matrix.arch }}
+      PIN: 7bccfc14d4ce5652f81ee85f14bd56ee452a4aae
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Qualify one runner on its actual OS and reject an incorrect Ventura claim
+        shell: bash
+        run: |
+          mkdir "$RUNNER_TEMP/qualification"
+          bash scripts/verify_install_matrix.sh --check-host 15 "$ARCH" | tee "$RUNNER_TEMP/qualification/native.txt"
+          if bash scripts/verify_install_matrix.sh 13 "$ARCH" "$PIN" /unavailable/uv "$RUNNER_TEMP/untouched" > "$RUNNER_TEMP/qualification/ventura-refusal.txt" 2>&1; then
+            exit 1
+          else
+            test "$?" = 2
+          fi
+          grep -F "Expected macOS 13 on $ARCH. Observed macOS 15." "$RUNNER_TEMP/qualification/ventura-refusal.txt"
+          test ! -e "$RUNNER_TEMP/untouched"
+      - name: Run both installers across the four supported Python versions
+        shell: bash
+        run: |
+          python -m pip install 'uv==0.13.9'
+          bash scripts/verify_install_matrix.sh 15 "$ARCH" "$PIN" "$(command -v uv)" "$RUNNER_TEMP/install-matrix"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: install-matrix-${{ matrix.arch }}
+          path: |
+            ${{ runner.temp }}/qualification/*.txt
+            ${{ runner.temp }}/install-matrix/*.txt
+            ${{ runner.temp }}/install-matrix/*.log
+          retention-days: 7
