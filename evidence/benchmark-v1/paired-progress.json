@@ -1,31 +1,31 @@
 {
   "summary": {
     "requested_pairs": 36,
-    "judged_pairs": 20,
-    "none": 91.875,
-    "v2": 94.58333333333333,
-    "difference": 2.7083333333333384,
+    "judged_pairs": 26,
+    "none": 91.98717948717949,
+    "v2": 94.55128205128206,
+    "difference": 2.564102564102569,
     "wins_ties_losses": [
-      11,
+      15,
       8,
-      1
+      3
     ],
     "paired_bootstrap_95_interval": [
-      0.41666666666666996,
-      4.791666666666671
+      0.48076923076923295,
+      4.647435897435902
     ],
     "median_usage": {
       "none": {
-        "input_tokens": 20543.5,
+        "input_tokens": 20544.5,
         "cached_input_tokens": 11136.0,
-        "output_tokens": 22404.0,
-        "elapsed_seconds": 453.345
+        "output_tokens": 20452.0,
+        "elapsed_seconds": 412.41499999999996
       },
       "v2": {
-        "input_tokens": 63832.0,
+        "input_tokens": 64377.0,
         "cached_input_tokens": 41472.0,
-        "output_tokens": 21607.0,
-        "elapsed_seconds": 439.01
+        "output_tokens": 20811.0,
+        "elapsed_seconds": 423.275
       }
     }
   },
@@ -3552,6 +3552,1068 @@
           "B-390.png": "b823027e948e53f8be21e028763cabace758ee079d493bae40b7398229f4719d"
         },
         "judge_prompt_sha256": "7168d45297b953086933cff0b70c38ae1e97008211d599125f19007d12c69ad8"
+      }
+    },
+    "mobile-recital": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44998013520",
+      "cells": {
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 20544,
+              "cached_input_tokens": 0,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 15960,
+              "reasoning_output_tokens": 11573
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "mobile-recital",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "10d9dd492c4c3c941e22c21ae4043abcac6274ecad32f4b717781d06b898c73a",
+            "elapsed_seconds": 322.93,
+            "exit_code": 0,
+            "trace_sha256": "4760254355735a479a6f102c556e8f01357244736bea190e3bf03d16120189ff",
+            "html_sha256": "2083ba5848868f97ccb0a065f47feb046290437ce047e202ece933bbadde5a33"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "1a3621e08215a754f7793168539ed66b0bec03cf3037accf2e4b43f65c0b50ec",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "c98d56e23e6394097f32c455a5a7301bf1a0cb7e85897cbb7b7fffefb6ba29d9",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 65187,
+              "cached_input_tokens": 59008,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 18088,
+              "reasoning_output_tokens": 14102
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "mobile-recital",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "10d9dd492c4c3c941e22c21ae4043abcac6274ecad32f4b717781d06b898c73a",
+            "elapsed_seconds": 371.06,
+            "exit_code": 0,
+            "trace_sha256": "e088e880ccde41686ba5ae21ec8c08c5c82e899da70390beb57d6826c9fd1a85",
+            "html_sha256": "78b26df5762c3eb7bbdbad915fadbab52744a475d638f7613118b1c20159a755"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "18095e95b6a8c37e953024aee6daae18c42f23cb0fb4878607294a7d2921a543",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "3b77caf149ecd6721c0b7d1743692cc2910b241ddd336bea6e3f661eb6f968aa",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "mobile-recital",
+        "surface": "mobile",
+        "blind_key": {
+          "A": "none",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "Room 2 stands out at both widths, though the dark violin illustration occupies nearly half the desktop card and draws attention away from the smaller check-in time."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "A divider separates the room from the time row, and the mobile layout keeps both facts together above the illustration."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "Large serif type distinguishes the group and room names, while bold sans-serif numerals keep 16:40 easy to read on the phone."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "A solid navy fill identifies Check-in as selected at both widths, and dark text on the pale blue panel keeps the room and time legible."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Both tabs have readable names, and both accessibility trees identify Check-in as selected, name its panel and expose Room 2 as a heading."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both widths show Strings group checking in at Room 2 at 16:40 and offer a Performance tab, leaving the switch and the requested Main Stage details at 17:10 unverified."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The selected Check-in tab joins the dark panel, where the oversized 16:40 and yellow Room 2 block make the time and destination immediately visible at both widths."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The equal-width tabs span the panel, and the side-by-side desktop details stack on mobile with the time aligned to the left edge of the location block."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The condensed numerals give 16:40 the largest type at both widths, and the phone layout keeps Room 2 prominent and both tab names on one line."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Yellow marks the selected tab and highlights the location, while the pale time digits stand out against black."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Filled and hollow circles distinguish the labeled tabs, and both accessibility trees mark Check-in as selected and pair Time and Location with their values."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Room 2 and 16:40 match the Strings group check-in at both widths, with only the Performance tab label available as evidence for the requested switch to Main Stage at 17:10."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 25982,
+          "cached_input_tokens": 17792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4233,
+          "reasoning_output_tokens": 3595
+        },
+        "scores": {
+          "none": 91.66666666666666,
+          "v2": 95.83333333333334
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "1a3621e08215a754f7793168539ed66b0bec03cf3037accf2e4b43f65c0b50ec",
+          "A-390.png": "c98d56e23e6394097f32c455a5a7301bf1a0cb7e85897cbb7b7fffefb6ba29d9",
+          "B-1440.png": "18095e95b6a8c37e953024aee6daae18c42f23cb0fb4878607294a7d2921a543",
+          "B-390.png": "3b77caf149ecd6721c0b7d1743692cc2910b241ddd336bea6e3f661eb6f968aa"
+        },
+        "judge_prompt_sha256": "7b2f4197dd1715802c49d1fa8c5cabb4d8b4bc3c9c31026f5e1ee178e235abe1"
+      }
+    },
+    "mobile-court": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44998013520",
+      "cells": {
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 20545,
+              "cached_input_tokens": 11136,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 16212,
+              "reasoning_output_tokens": 13796
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "mobile-court",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "8c7caaf12e612fa0b8437574f894c07b98d3445339cae605b82bd898133bb53b",
+            "elapsed_seconds": 327.39,
+            "exit_code": 0,
+            "trace_sha256": "7c15758d451c83f3f18c41971623b2f961843a96b4841c1b83f28e038ebe0263",
+            "html_sha256": "3b46678a2dbb8f3a938b07778c49ef37422e0b05aae79db545d266320a9e61f6"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "14d072c62d0362bc79b04e6196357dd7ff4b1df2b0cb48cb7c0f747e9f39c9a4",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "7bb4c286d9862aebc99dfd047778f0f4841a1e89c6bf5f71731384138bb95ef1",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 64655,
+              "cached_input_tokens": 52608,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 13045,
+              "reasoning_output_tokens": 10229
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "mobile-court",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "8c7caaf12e612fa0b8437574f894c07b98d3445339cae605b82bd898133bb53b",
+            "elapsed_seconds": 267.41,
+            "exit_code": 0,
+            "trace_sha256": "8b7841e305c444a480eccb2dac3f54c1c31d7ed7849f8d54f3eb4e2a1d07526b",
+            "html_sha256": "443ae2010602318a1841b349e92242f38ee7a0a0b49811d03d4d4c358110c5ef"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "5be1b4c7da00384ec557d3e19571fde25766b487eb428d61061f40020ec79c84",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "b359ee41b4ce8e0780597fba7febcc375755f942f6372c19312e6874e71025f8",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "mobile-court",
+        "surface": "mobile",
+        "blind_key": {
+          "A": "none",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "The oversized \u201cCourt status\u201d heading draws the eye first at both widths, while the answer to which court is open sits in the smaller status text."
+            },
+            "spacing": {
+              "score": 3,
+              "evidence": "Thin rules separate the rows, but the wide desktop gap makes each status harder to pair with its court than on mobile, where it sits directly beneath the name."
+            },
+            "typography": {
+              "score": 3,
+              "evidence": "Bold court names and a heavier 21:30 are easy to scan on mobile, though the tight letter spacing makes parts of the main heading appear to touch."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Dark teal marks the selected filter, while green and burgundy distinguish the open and closed statuses on the pale background."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "A check and a minus accompany explicit status text, and both browser trees identify the \u201cFilter courts\u201d group and expose \u201cAll courts\u201d as pressed."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "Both widths show Court 3 open until 21:30, Court 5 closed for resurfacing, and the \u201cOpen courts\u201d and \u201cAll courts\u201d choices beneath a single faint court diagram."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths the highlighted panel pairs Court 3 with \u201cOpen until\u201d and a prominent 21:30, while Court 5\u2019s closure is easy to find directly below."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "Both court names share a left edge, and at mobile width the filter moves below the title while the diagram stays clear of the closing time."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "Large serif numerals make 21:30 stand out at both widths, and the smaller sans-serif labels keep the filter choices and closure reason legible on mobile."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Cream text on plum singles out the available court, while the dark fill on \u201cAll courts\u201d makes the selected view clear."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "The filled and hollow dots each have an explicit text label, and both browser trees expose named court articles and the pressed state of \u201cAll courts.\u201d"
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "Both widths give Court 3\u2019s 21:30 closing time and Court 5\u2019s resurfacing closure, with \u201cOpen courts\u201d and \u201cAll courts\u201d visible and the illustration confined to one thin court outline."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26151,
+          "cached_input_tokens": 17792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4044,
+          "reasoning_output_tokens": 3386
+        },
+        "scores": {
+          "none": 87.5,
+          "v2": 100
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "14d072c62d0362bc79b04e6196357dd7ff4b1df2b0cb48cb7c0f747e9f39c9a4",
+          "A-390.png": "7bb4c286d9862aebc99dfd047778f0f4841a1e89c6bf5f71731384138bb95ef1",
+          "B-1440.png": "5be1b4c7da00384ec557d3e19571fde25766b487eb428d61061f40020ec79c84",
+          "B-390.png": "b359ee41b4ce8e0780597fba7febcc375755f942f6372c19312e6874e71025f8"
+        },
+        "judge_prompt_sha256": "9068924dfbd1b263cce434e3ca0a693c973d82245d77ee97f5e909eb1df19274"
+      }
+    },
+    "mobile-pantry": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44998013520",
+      "cells": {
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 20545,
+              "cached_input_tokens": 0,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 17479,
+              "reasoning_output_tokens": 14494
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "mobile-pantry",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "234e8dc129b7355fe2323967b2ac41bc5328b9ddaaccce83f3d96a1437bf7632",
+            "elapsed_seconds": 353.23,
+            "exit_code": 0,
+            "trace_sha256": "b5a22d2a89aa0407a925f2998fb9ac713e6163a1d685c6648f7bb0ce796c53d2",
+            "html_sha256": "4a05e7512606f8c4f9095da47ec46b5616c80ca51c4bcc0f34c785d2c13d1d05"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "f653d166879c5a3f7635b428535f14d6117fc9152786ae8641c8d5d487170e1e",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "43a78dedfc08ed343593c9b8117da00b564bacb553784978434a63d397648805",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 65317,
+              "cached_input_tokens": 40704,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 13600,
+              "reasoning_output_tokens": 11174
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "mobile-pantry",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "234e8dc129b7355fe2323967b2ac41bc5328b9ddaaccce83f3d96a1437bf7632",
+            "elapsed_seconds": 279.69,
+            "exit_code": 0,
+            "trace_sha256": "88ce7a4589d384e34c4b639c8543f8710493124e750c8d2a5a2b298f86f03ea8",
+            "html_sha256": "c5cd7e2069d67e3ed6a08b724116dfeb69dd8110192e4395ba0ad8ca5b7b5d64"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "b8189c0dccd919f5de78b5e67d0a50ed89a0ca8b9d9dcce62ad6fe2e195c6d00",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "b038a980d1c9954a4334fd7528d52872bd414579d74ab3d56fc89fe82b51fe0e",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "mobile-pantry",
+        "surface": "mobile",
+        "blind_key": {
+          "A": "none",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, the pantry heading establishes the purpose, Friday sits directly above the dominant 11:15, and the labeled address follows."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The desktop side panel becomes a compact phone header, leaving the time, address row and Details button aligned on a common left edge with clear separation."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The serif title wraps cleanly on two lines, and the oversized numerals, bold street name and smaller Address label remain distinct at 390 px."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Deep teal connects the pantry header and Details button, yellow highlights the bag, and dark text keeps the pickup facts legible on the light panel."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Both browser trees pair Collection time and Address with their values and name the wide Details button, whose visible plus cues disclosure."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Friday, 11:15, 18 Pine Avenue and Details match the brief at both widths, with only the closed state shown and the bag and side-door instructions unverified."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, the large 11:15 draws the eye to Friday\u2019s collection time, with the street address directly below the divider and Details in a distinct bar."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The heading, black panel and yellow bar share a left edge at both widths, and the address retains its own row even on the phone."
+            },
+            "typography": {
+              "score": 3,
+              "evidence": "The condensed title and bold address read clearly on the phone, though the tightly spaced 1s in 11:15 nearly merge at their bases."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Yellow repeats on the grocery bag, location pin and Details bar, while the white time and address stand out against black."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "Both browser trees identify the time and name the large Details button, while the address appears as a plain paragraph and the pin supplies its visual label."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both layouts show Friday at 11:15, 18 Pine Avenue and the Details button, with no expanded view confirming the instruction to bring a bag and check in at the side door."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 25851,
+          "cached_input_tokens": 17792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 6755,
+          "reasoning_output_tokens": 6120
+        },
+        "scores": {
+          "none": 95.83333333333334,
+          "v2": 87.5
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "f653d166879c5a3f7635b428535f14d6117fc9152786ae8641c8d5d487170e1e",
+          "A-390.png": "43a78dedfc08ed343593c9b8117da00b564bacb553784978434a63d397648805",
+          "B-1440.png": "b8189c0dccd919f5de78b5e67d0a50ed89a0ca8b9d9dcce62ad6fe2e195c6d00",
+          "B-390.png": "b038a980d1c9954a4334fd7528d52872bd414579d74ab3d56fc89fe82b51fe0e"
+        },
+        "judge_prompt_sha256": "af923ccf63e5b6883541c011f7857a0a7e2e0025579d05fa2207f54461e264f5"
+      }
+    },
+    "mobile-gallery": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44998013520",
+      "cells": {
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 20546,
+              "cached_input_tokens": 20352,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 17451,
+              "reasoning_output_tokens": 13384
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "mobile-gallery",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "847453dfc2faee5d70dc9c58fb8c6c05f189d28418ab66c6a9b6c12a3b84279d",
+            "elapsed_seconds": 360.7,
+            "exit_code": 0,
+            "trace_sha256": "79e584ecf6f11a06a4b427ccff07cb3f03bca11dc50c4948b417ce5b4b6e873e",
+            "html_sha256": "38708ec743f60969bea521290ed54fc3ad546bc6eec996fa79b11971cf5266e6"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "0c7ef1193fb225b8fac004cd44ee8e35d9321951b3ff3beee094b675b7e64cc8",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "1fb7a928782f26278fa1ae7d7d3c73ca94a8fcbc216a57909af446d89c73c581",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 64784,
+              "cached_input_tokens": 62336,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 15461,
+              "reasoning_output_tokens": 12304
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "mobile-gallery",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "847453dfc2faee5d70dc9c58fb8c6c05f189d28418ab66c6a9b6c12a3b84279d",
+            "elapsed_seconds": 315.84,
+            "exit_code": 0,
+            "trace_sha256": "ab29c255ee07fa7b74506bfaf83dd44f2019bb9ddcec23ac32cde479db2696bd",
+            "html_sha256": "85bab08547633949ed4f8220a72237f7d604a1450d30f02d51b014a68b231bee"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "92cfa6890cee8b95b2d306eb644d640dbe2c210b3063437f388e50f38de1e68b",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "4ae7742045c5b3553bb601061d6cf93ca08998bd02c4617e930ced4583d4079d",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "mobile-gallery",
+        "surface": "mobile",
+        "blind_key": {
+          "A": "none",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "The large, dark river illustration competes with the title on desktop, while the mobile layout puts the title, credit and note button in a clear sequence before the artwork."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The title, credit and button share a left edge on desktop, and the 24-pixel mobile margins extend that alignment to the artwork while leaving a clear gap after the button."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The large serif title fits on one line at 390 pixels, and the heavier sans serif artist name remains distinct from the lighter year at both widths."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Deep navy connects the river illustration to the title and button, whose light lettering makes the action easy to find against the pale gray-green page."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "Both browser trees place Room 4 in a banner and expose the title heading and visibly labeled \u201cShow material note\u201d button, though neither reports an explicit disclosure state."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both widths show Room 4, River Wall, Maya Chen, 1972 and \u201cShow material note,\u201d while the closed views leave \u201cPigment on plaster\u201d and the hide action unverified."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The bold River Wall title leads at both widths, with the artist and year directly beneath it, a distinct note button next in order and the muted illustration visually secondary."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The horizontal rules leave balanced space around the desktop exhibit, and the mobile stack keeps the artist and year together with a larger break before the artwork."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The serif title retains its thick and thin strokes on a single mobile line, and the bold sans serif artist credit is easy to distinguish from the lighter date."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The deep green river band repeats in the room marker and button, giving the label a visual connection to the work and making the light button text stand out on both screens."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "The readable \u201cShow material note\u201d label matches the button name in both browser trees, which also identify the level-one heading but report no explicit expanded or collapsed state."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both views identify River Wall as Maya Chen\u2019s 1972 work in Room 4 and show the material-note button, while the expanded note text and hide action remain unverified."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 25129,
+          "cached_input_tokens": 11776,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5623,
+          "reasoning_output_tokens": 4950
+        },
+        "scores": {
+          "none": 87.5,
+          "v2": 91.66666666666666
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "0c7ef1193fb225b8fac004cd44ee8e35d9321951b3ff3beee094b675b7e64cc8",
+          "A-390.png": "1fb7a928782f26278fa1ae7d7d3c73ca94a8fcbc216a57909af446d89c73c581",
+          "B-1440.png": "92cfa6890cee8b95b2d306eb644d640dbe2c210b3063437f388e50f38de1e68b",
+          "B-390.png": "4ae7742045c5b3553bb601061d6cf93ca08998bd02c4617e930ced4583d4079d"
+        },
+        "judge_prompt_sha256": "bb8442b10cb4e95faea0150c44eed800fe67d1c56458869318434395218b3298"
+      }
+    },
+    "settings-notifications": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44998013520",
+      "cells": {
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 65111,
+              "cached_input_tokens": 37632,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 18500,
+              "reasoning_output_tokens": 14158
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "settings-notifications",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "f748f9ece833acc78ce9e2a5cff1a420a5a888f3ff23fadb4268a7b1ebaa05e5",
+            "elapsed_seconds": 383.23,
+            "exit_code": 0,
+            "trace_sha256": "b939789cd58d32addf3030c63f5fb7da15c38adeecb35b2ace672524f7d6cb76",
+            "html_sha256": "1f87744c9e930c2c254d6d068b8fd656465ddd4bbd96331294e4c7e903c6ad28"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "89346b9e4e3a08ed589f81535b7187e1bdd7ebf5d78a52523dc9b3fa6b28f131",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "f6da7aac698b31e810b5b93ad4a91c34b71916d978867a8810d04779da824ab0",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 20533,
+              "cached_input_tokens": 11136,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 20570,
+              "reasoning_output_tokens": 15695
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "settings-notifications",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "f748f9ece833acc78ce9e2a5cff1a420a5a888f3ff23fadb4268a7b1ebaa05e5",
+            "elapsed_seconds": 414.62,
+            "exit_code": 0,
+            "trace_sha256": "7f51f7370238c787193971cbc17e243802b8e376bf76f7785f74a42635a48e19",
+            "html_sha256": "488c7a132f0a5353512a1c426ab037e3c5e99132954ef4c9c703b1e0a0b783eb"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "074151f0cf72d3d179d4227be5450701897860f412651b1a607f997f8265464c",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "73d4b68c2e71b6245d37dd98e40b6b9e256c1eeaadec56c2d82edcbe0ea4a93c",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "settings-notifications",
+        "surface": "settings",
+        "blind_key": {
+          "A": "v2",
+          "B": "none"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, the calendar stays beside the title, leaving a direct reading order from \u201cNotification settings\u201d through the two switches to \u201cSave settings\u201d."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The desktop rows align icons, labels and switches in three columns, and the mobile booking description wraps beneath its label while both switches retain the same right edge."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The heading scales from one line on desktop to two on mobile, and the bold setting names remain easy to distinguish from their smaller descriptions."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Peach draws attention to the active booking switch and save button against charcoal, while the gray outline and light thumb keep the off switch visible."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "On/Off text and thumb position communicate state at both widths, and both browser trees identify the switches by name and state, the save button and a status region."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both views show booking reminders on, event announcements off and \u201cSave settings\u201d, while edits, confirmation accuracy and persistence after reload remain unverified."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "The desktop settings card is easy to locate beside the \u201cNotifications\u201d heading, but on mobile the large calendar illustration pushes both switches below the screen\u2019s midpoint."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The desktop columns stack within even mobile margins, and consistent row padding, aligned switches and a separate save footer make the form easy to scan at both widths."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The tall serif \u201cNotifications\u201d fits on one line at both widths, and the bold sans-serif setting names remain legible beside the mobile switches."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Deep teal marks the active switch and save button, the off switch has a pale outlined track, and the mint and gold row icons echo the calendar and event flyer."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Both views pair On/Off labels with distinct thumb positions, and both browser trees expose a named form, named switches with matching states, a status region and the \u201cSave preferences\u201d button."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both layouts show the requested booking-on and events-off defaults with \u201cSave preferences\u201d, but no interaction receipt establishes that edits produce an accurate confirmation or survive reload."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 25961,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4376,
+          "reasoning_output_tokens": 3729
+        },
+        "scores": {
+          "v2": 95.83333333333334,
+          "none": 91.66666666666666
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "89346b9e4e3a08ed589f81535b7187e1bdd7ebf5d78a52523dc9b3fa6b28f131",
+          "A-390.png": "f6da7aac698b31e810b5b93ad4a91c34b71916d978867a8810d04779da824ab0",
+          "B-1440.png": "074151f0cf72d3d179d4227be5450701897860f412651b1a607f997f8265464c",
+          "B-390.png": "73d4b68c2e71b6245d37dd98e40b6b9e256c1eeaadec56c2d82edcbe0ea4a93c"
+        },
+        "judge_prompt_sha256": "2599f6731f677b65fc050c990bcfb71d01b86df33a90a81c70fc79bc3473a0cd"
+      }
+    },
+    "settings-reading": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44998013520",
+      "cells": {
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 65393,
+              "cached_input_tokens": 41984,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 22091,
+              "reasoning_output_tokens": 16840
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "settings-reading",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "1e024aeb8559e4f84639c3db5cc2453d3ac85e5a464a61ef37df14dc54a4c9be",
+            "elapsed_seconds": 455.93,
+            "exit_code": 0,
+            "trace_sha256": "3e925e7291801b74b9ad833c512aec99c9ce73922a02d72d7112d3348edd6d20",
+            "html_sha256": "369cb7ffba6f7f9a55cd0b1fb7067a8a8482d3091b07a700606ea24e98f81269"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "1be3ab78684dbd8513f00fa6f19a4cfe87dd5b62a3924770ab943ee765ce9e66",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "3240100f6ae1cf9af4e3d3bd3cc92930484bc1d163811dec7afc462686a90265",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 20536,
+              "cached_input_tokens": 0,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 23202,
+              "reasoning_output_tokens": 18856
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "settings-reading",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "1e024aeb8559e4f84639c3db5cc2453d3ac85e5a464a61ef37df14dc54a4c9be",
+            "elapsed_seconds": 472.02,
+            "exit_code": 0,
+            "trace_sha256": "66d6eec076a1e3c8c69acb4d9a3e126f2059540ba82d15c5343d4ee9184a610b",
+            "html_sha256": "f8ed62f41630774cfec30c06f976d245555c0e86078e8e185cec254a8ab2f210"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "f611752fed377132585dc1e4a3347250bc84a5a215e83f27e63d11e17f4f3687",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "1f3751ed34663d742311f3c6c2345c9e46b61ffd611b206c5c4a7c164cdb7485",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "settings-reading",
+        "surface": "settings",
+        "blind_key": {
+          "A": "v2",
+          "B": "none"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "The title makes the purpose clear, though the preview dominates the desktop layout and places the first setting halfway down the mobile screen."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "A gutter and vertical rule separate the desktop columns, while the mobile preview and both control groups share consistent 20-pixel side margins."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The large serif title scales to one line on mobile, and bold sans-serif labels clearly distinguish the controls from the two-line recipe sample."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Dark green identifies selected options, pale sage groups the recipe preview, and rust makes the reset action easy to find at both widths."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Visible checkmarks match the checked radios in both browser trees, which also expose named groups, a labeled reset button and a status region."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "Both layouts offer all four requested choices, show Standard and Comfortable selected, and display \u201cReset to defaults\u201d with the exact sample \u201cRest dough for 20 minutes.\u201d"
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The heading leads directly to the two settings and reset, with the labeled preview alongside them on desktop and immediately below them on mobile."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "Equal-width segments align across both control rows, and the generous desktop gutter becomes a clear vertical gap between reset and preview on mobile."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The narrow serif links the title and recipe sample, with the title shifting from two desktop lines to one mobile line and the bold sans-serif options staying legible beside their icons."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Pale lime consistently marks selected options, and the dark green frame separates the cream recipe sheet from the light page background at both widths."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Filled and hollow radio circles make selection visible, and both browser trees confirm matching checked states, named groups, a labeled reset button and a status region."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "Both layouts show Standard and Comfortable selected, offer Large and Compact, and place \u201cReset to defaults\u201d beneath the choices while the preview reads \u201cRest dough for 20 minutes.\u201d"
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26243,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3903,
+          "reasoning_output_tokens": 3281
+        },
+        "scores": {
+          "v2": 95.83333333333334,
+          "none": 100
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "1be3ab78684dbd8513f00fa6f19a4cfe87dd5b62a3924770ab943ee765ce9e66",
+          "A-390.png": "3240100f6ae1cf9af4e3d3bd3cc92930484bc1d163811dec7afc462686a90265",
+          "B-1440.png": "f611752fed377132585dc1e4a3347250bc84a5a215e83f27e63d11e17f4f3687",
+          "B-390.png": "1f3751ed34663d742311f3c6c2345c9e46b61ffd611b206c5c4a7c164cdb7485"
+        },
+        "judge_prompt_sha256": "696dfdf046edf62b8dada7ef086f16ed8cfe2a2ece6a6526ad8ab605772bd2e6"
       }
     }
   }

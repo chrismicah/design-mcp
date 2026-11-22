@@ -1,5 +1,9 @@
 # Design MCP live smoke
 
+## Reference Mac clean install, November 22
+
+Pipx 1.7.1 installed the exact combined candidate from a checked Git archive into a new workspace-local environment on Apple Silicon macOS 26.5.2 with Python 3.13.3. From an empty run directory, `doctor` passed and the installed server returned all three default tool replies and all 17 compatibility replies over stdio. The compatibility run created the verified 10,092,399-byte legacy cache. The installed package included the Chrome extension manifest. Codex read the documented stdio configuration with the exact installed command using a one-run override. The native browser run and model-driven client smoke remain separate checks. [Install receipt and raw evidence hashes](evidence/benchmark-v1/reference-mac-install.json)
+
 ## Combined review branch, November 22
 
 Four fresh-install hosted checks passed on `design-mcp/review-integration` at `4ab9d8e`. The public address form produced two Playwriter captures with nine masked fields and zero local findings. The Linux Chrome popup recovered from a missing host and opened the preview with keyboard access to After. Its single scan reported 72 ms. On hosted macOS 15 arm64, Electron cleared the seeded occlusion and retained the clipping finding, and the SwiftUI fixture exposed a sixth control after Reveal. The source suite passed 410 tests and all 17 stdio tools responded. Reference-Mac latency, blind live scores, and final GPT Computer Use remain open. [Run links and verified artifact hashes](evidence/benchmark-v1/review-integration.json)

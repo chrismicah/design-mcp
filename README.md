@@ -91,7 +91,7 @@ The new direction library and the historical pattern data have separate roles. H
 
 Fresh pipx and uv installs passed `doctor`, called the three default tools and exercised all 17 tools in compatibility mode on macOS 15. All eight jobs passed across Intel and Apple Silicon with Python 3.10–3.13. macOS 13 and fresh Tart VM verification remain open. [Install matrix](https://github.com/chrismicah/design-mcp/actions/runs/44997756667)
 
-Twenty of 36 matched design briefs have blinded scores. The plain generator averaged 91.9 and frozen Design MCP v2 averaged 94.6, with eleven wins, eight ties, and one loss. [Benchmark and receipts](EVALS.md)
+Twenty-six of 36 matched design briefs have blinded scores. The plain generator averaged 92.0 and frozen Design MCP v2 averaged 94.6, with 15 wins, eight ties, and three losses. [Benchmark and receipts](EVALS.md)
 
 The current radio and repair-shop directions averaged 97.9 versus 89.6 for the frozen v2 on those two briefs. The listening demo and booking summary also passed keyboard checks at 1440 and 390 CSS px. [Matched visual results](evidence/benchmark-v1/specific-landing-visual.json) · [Browser actions](evidence/benchmark-v1/specific-landing-actions.json)
 

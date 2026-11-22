@@ -6,6 +6,8 @@ The public Ventura base image resolved to `ghcr.io/cirruslabs/macos-ventura-base
 
 The Tart 2.42.0 pull stopped at 56% when available space reached 20.46 GiB. Memory pressure was normal. The workspace-local partial uses about 24 GiB. Preserve it and resume from the same state and image digest after the Data volume has sufficient space for the remaining image, guest writes, and the 20 GiB reserve. Tart reuses the partial disk and checks completed chunks against the image digests. The pull stopped before guest boot, so the install and MCP smoke checks remain open. [Tart disk pull implementation](https://github.com/cirruslabs/tart/blob/2.42.0/Sources/tart/OCI/Layerizer/DiskV2.swift)
 
+The staged guest bundle now contains the integrated candidate `b188c300f4c894f7eb6a696d2b5473f5fd74de3c`, the same source verified by the combined install CI. The host preflight checked the archive and uv checksums and the commit embedded by Git. The candidate archive SHA-256 is `fe44b3a65f2e4240d48f5231a6cf637d6fc46f83a85ed1c31cdfe127f45ec85d`. The workspace-local boot script takes the full candidate SHA as its argument and accepts `--check-input` to verify the staged bundle before invoking Tart. Disk headroom on the reference Mac was 20.92 GiB during preflight, below the 30 GiB threshold for guest expansion. [Candidate install CI](https://github.com/chrismicah/design-mcp/actions/runs/44997756667)
+
 Under the shared lease, clone the pinned image into a workspace-scoped `TART_HOME`. Mount a directory containing a `git archive` of the exact candidate read-only. Boot headless and check readiness with `tart exec`. Inside the guest, unpack the archive into a writable temporary directory.
 
 ```sh
