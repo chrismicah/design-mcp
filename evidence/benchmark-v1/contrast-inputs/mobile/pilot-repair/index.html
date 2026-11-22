@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ef">
+  <title>Spur rail ticket</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@700&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f7f5ef;
+      --ink: #111111;
+      --signal: #ffcc00;
+      --white: #fffdf7;
+      --stone: #5c584f;
+      --rule: #d6d0c3;
+      --display: "Archivo Narrow", "Trebuchet MS", sans-serif;
+      --body: "Atkinson Hyperlegible", "Trebuchet MS", sans-serif;
+      --radius: 6px;
+    }
+
+    * { box-sizing: border-box; }
+
+    [hidden] { display: none !important; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 400 1.0625rem / 1.4 var(--body);
+    }
+
+    button { font: inherit; }
+
+    .lane {
+      width: min(calc(100% - 2.5rem), 32rem);
+      margin-inline: auto;
+    }
+
+    .masthead {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: .5rem 1rem;
+      padding-block: clamp(1.5rem, 4vw, 3rem) 1rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: .625rem;
+      font: 700 2.25rem / 1 var(--display);
+      letter-spacing: -.035em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      padding: 5px;
+      border-radius: 4px;
+      background: var(--ink);
+      color: var(--signal);
+    }
+
+    .service {
+      color: var(--stone);
+      font-size: .9375rem;
+    }
+
+    main {
+      padding-block: clamp(1.375rem, 3vw, 2rem) 2.5rem;
+    }
+
+    .board {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      padding: clamp(1.25rem, 5.65vw, 1.75rem);
+      border-radius: var(--radius);
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    .track-art {
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      right: 0;
+      width: 48%;
+      height: auto;
+      color: var(--white);
+      opacity: .24;
+      pointer-events: none;
+    }
+
+    .board-title {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .board-data {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: end;
+      gap: .75rem;
+      min-height: clamp(9rem, 37vw, 11.25rem);
+      margin-top: .875rem;
+    }
+
+    .board-data:has(.platform[hidden]) {
+      align-items: center;
+    }
+
+    .departure-time {
+      display: block;
+      font: 700 clamp(3rem, 21vw, 7.5rem) / .9 var(--display);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -.035em;
+      white-space: nowrap;
+    }
+
+    .destination {
+      margin: .55rem 0 0;
+      font: 700 clamp(2rem, 7.5vw, 2.75rem) / 1 var(--display);
+      letter-spacing: -.02em;
+    }
+
+    .platform {
+      display: grid;
+      justify-items: center;
+      gap: .2rem;
+      min-width: clamp(5.125rem, 19vw, 6.125rem);
+      padding: .55rem .625rem .45rem;
+      border-radius: 3px;
+      background: var(--signal);
+      color: var(--ink);
+      font-size: .9375rem;
+      font-weight: 700;
+    }
+
+    .platform strong {
+      font: 700 clamp(3.375rem, 14vw, 4.75rem) / .88 var(--display);
+    }
+
+    .ticket {
+      margin-top: .75rem;
+    }
+
+    .ticket-toggle {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 24px minmax(0, 1fr) 20px;
+      align-items: center;
+      gap: .75rem;
+      width: 100%;
+      min-height: 3.75rem;
+      padding: .75rem 1rem;
+      border: 0;
+      border-radius: var(--radius);
+      background: var(--signal);
+      color: var(--ink);
+      text-align: left;
+      font-size: 1.25rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .ticket-toggle[aria-expanded="true"] {
+      border-end-start-radius: 0;
+      border-end-end-radius: 0;
+    }
+
+    .ticket-toggle[aria-expanded="true"] .ticket-chevron {
+      transform: rotate(180deg);
+    }
+
+    .ticket-stub {
+      position: relative;
+      padding: 1rem 1.125rem 1.25rem;
+      border: 1px solid var(--rule);
+      border-top: 1px dashed var(--stone);
+      border-radius: 0 0 var(--radius) var(--radius);
+      background: var(--white);
+      animation: reveal-ticket 240ms ease-out both;
+    }
+
+    .ticket-stub::before,
+    .ticket-stub::after {
+      position: absolute;
+      top: -6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--paper);
+      content: "";
+    }
+
+    .ticket-stub::before { left: -7px; }
+
+    .ticket-stub::after { right: -7px; }
+
+    .ticket-caption {
+      display: block;
+      margin-bottom: .3rem;
+      color: var(--stone);
+      font-size: .9375rem;
+    }
+
+    .ticket-number {
+      display: block;
+      font: 700 clamp(2.375rem, 9vw, 3.25rem) / 1 var(--display);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: .015em;
+    }
+
+    @keyframes reveal-ticket {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .options {
+      margin-top: 1.625rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .option {
+      display: grid;
+      grid-template-columns: 24px minmax(0, 1fr) auto 20px;
+      align-items: center;
+      gap: .75rem;
+      width: 100%;
+      min-height: 4rem;
+      padding: .625rem .875rem;
+      border: 0;
+      border-bottom: 1px solid var(--rule);
+      background: transparent;
+      color: var(--ink);
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .option-label { font-weight: 700; }
+
+    .option-icon, .option-chevron { color: var(--stone); }
+
+    .option-time {
+      font: 700 1.875rem / 1 var(--display);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -.02em;
+      white-space: nowrap;
+    }
+
+    .pass-control {
+      grid-column: 4;
+      display: grid;
+      width: 20px;
+      height: 20px;
+    }
+
+    .pass-control > * { grid-area: 1 / 1; }
+
+    .pass-input {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      opacity: 0;
+      cursor: inherit;
+    }
+
+    .pass-indicator {
+      display: grid;
+      place-items: center;
+      border: 1.5px solid var(--stone);
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    .pass-indicator svg { visibility: hidden; }
+
+    .pass-input:checked + .pass-indicator {
+      border-color: var(--ink);
+      background: var(--signal);
+    }
+
+    .pass-input:checked + .pass-indicator svg { visibility: visible; }
+
+    button:focus-visible,
+    .option:has(.pass-input:focus-visible) {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 2px var(--paper);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    @media (hover: hover) {
+      .option:hover { background: rgb(17 17 17 / .045); }
+      .ticket-toggle:hover { background: color-mix(in srgb, var(--signal), var(--ink) 4%); }
+    }
+
+    @media (max-width: 22.5rem) {
+      .lane { width: calc(100% - 1.5rem); }
+      .board { padding-inline: 1rem; }
+      .board-data, .option { gap: .5rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ticket-stub { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="lane">
+    <header class="masthead">
+      <div class="brand">
+        <svg class="brand-mark" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M4 20h20M4 14h7c3 0 5-1 7-3l6-6M12 20c4 0 6-1 8-3l4-4"/>
+        </svg>
+        <span>Spur</span>
+      </div>
+      <span class="service">Commuter rail</span>
+    </header>
+
+    <main>
+      <section class="board" id="departure" aria-labelledby="departure-title" aria-live="polite" aria-atomic="true">
+        <svg class="track-art" viewBox="0 0 244 158" fill="none" stroke="currentColor" stroke-width="1.35" aria-hidden="true">
+          <path d="M18 24h70c34 0 55 10 77 32l83 83M18 35h68c31 0 49 9 70 30l74 74"/>
+          <path d="M90 24h67c20 0 34 4 49 13l42 25M90 35h65c18 0 32 4 45 12l48 29"/>
+        </svg>
+
+        <h1 class="board-title" id="departure-title">Departure</h1>
+        <div class="board-data">
+          <div>
+            <time class="departure-time" id="departure-time" datetime="08:42">08:42</time>
+            <p class="destination" id="destination">Union</p>
+          </div>
+          <div class="platform" id="platform">
+            <span>Platform</span>
+            <strong>3</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="ticket" aria-label="Ticket">
+        <button class="ticket-toggle" id="ticket-toggle" type="button" aria-expanded="false" aria-controls="ticket-stub">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 6h18v4a2 2 0 0 0 0 4v4H3v-4a2 2 0 0 0 0-4V6Z"/>
+            <path d="M15 9v1m0 4v1"/>
+          </svg>
+          <span id="ticket-action">Show ticket</span>
+          <svg class="ticket-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m5 8 5 5 5-5"/>
+          </svg>
+        </button>
+
+        <div class="ticket-stub" id="ticket-stub" hidden>
+          <span class="ticket-caption">Ticket number</span>
+          <strong class="ticket-number" id="ticket-number">TKT-0837</strong>
+        </div>
+        <div class="sr-only" id="ticket-status" role="status"></div>
+      </section>
+
+      <section class="options" aria-label="Other options">
+        <button class="option" id="departure-option" type="button" aria-controls="departure">
+          <svg class="option-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="8"/>
+            <path d="M12 7.5V12l3 1.75"/>
+          </svg>
+          <span class="option-label" id="option-label">Later departure</span>
+          <time class="option-time" id="option-time" datetime="08:58">08:58</time>
+          <svg class="option-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m8 5 5 5-5 5"/>
+          </svg>
+        </button>
+
+        <label class="option">
+          <svg class="option-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="4" y="6" width="16" height="14" rx="2"/>
+            <path d="M8 4v4m8-4v4M4 11h16M8 15h4"/>
+          </svg>
+          <span class="option-label">Weekly pass</span>
+          <span class="pass-control">
+            <input class="pass-input" type="checkbox" autocomplete="off">
+            <span class="pass-indicator" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m3 7 2.5 2.5L11 4"/>
+              </svg>
+            </span>
+          </span>
+        </label>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const ticketToggle = document.getElementById("ticket-toggle");
+    const ticketAction = document.getElementById("ticket-action");
+    const ticketStub = document.getElementById("ticket-stub");
+    const ticketNumber = document.getElementById("ticket-number");
+    const ticketStatus = document.getElementById("ticket-status");
+
+    ticketToggle.addEventListener("click", () => {
+      const reveal = ticketStub.hidden;
+      ticketStub.hidden = !reveal;
+      ticketToggle.setAttribute("aria-expanded", String(reveal));
+      ticketAction.textContent = reveal ? "Hide ticket" : "Show ticket";
+      ticketStatus.textContent = reveal ? `Ticket number ${ticketNumber.textContent}` : "";
+
+      if (reveal) {
+        ticketStub.scrollIntoView({ block: "nearest" });
+      }
+    });
+
+    const departureOption = document.getElementById("departure-option");
+    const departureTitle = document.getElementById("departure-title");
+    const departureTime = document.getElementById("departure-time");
+    const destination = document.getElementById("destination");
+    const platform = document.getElementById("platform");
+    const optionLabel = document.getElementById("option-label");
+    const optionTime = document.getElementById("option-time");
+
+    departureOption.addEventListener("click", () => {
+      const showLater = !destination.hidden;
+      const currentTime = departureTime.dateTime;
+      const nextTime = optionTime.dateTime;
+
+      departureTitle.textContent = showLater ? "Alternative departure" : "Departure";
+      departureTime.dateTime = nextTime;
+      departureTime.textContent = nextTime;
+      destination.hidden = showLater;
+      platform.hidden = showLater;
+
+      optionLabel.textContent = showLater ? "Earlier departure" : "Later departure";
+      optionTime.dateTime = currentTime;
+      optionTime.textContent = currentTime;
+    });
+  </script>
+</body>
+</html>

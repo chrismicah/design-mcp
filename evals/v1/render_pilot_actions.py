@@ -1,6 +1,7 @@
 """Replay the exact coffee and train pilot pages through the same keyboard tasks."""
 
 import json
+import os
 
 from render import execute, main, sha256
 
@@ -23,6 +24,17 @@ const initial = await page.evaluate(() => ({width: innerWidth, height: innerHeig
 const originalUrl = page.url();
 const requests = [];
 page.on('request', request => requests.push(request.url()));
+const axeContrast = () => page.evaluate(async () => {
+  const result = await window.axe.run({runOnly: ['color-contrast']});
+  const details = rows => rows.flatMap(row => row.nodes.map(node => ({
+    target: node.target, text: node.failureSummary,
+    related: [...node.any, ...node.all, ...node.none].flatMap(check =>
+      check.data ? [check.data] : [])
+  })));
+  return {violations: details(result.violations), incomplete: details(result.incomplete),
+    passedNodes: result.passes.reduce((total, row) => total + row.nodes.length, 0)};
+});
+const contrast = {};
 """
 
 _COFFEE = r"""
@@ -44,6 +56,7 @@ if (reached) {
   const copy = await bag.isVisible() ? await bag.innerText() : '';
   correctBag = added && copy.includes('Alto Carmo') && copy.includes('$19');
   await page.screenshot({path: __PATH__, animations: 'disabled'});
+  contrast.after = await axeContrast();
   await page.keyboard.press('Escape');
   await bag.waitFor({state: 'hidden', timeout: 2000}).catch(() => {});
   restored = !(await bag.isVisible()) && await isFocused(openedOnAdd ? buy : openBag);
@@ -73,6 +86,7 @@ if (reached) {
   await page.keyboard.press('Enter');
   revealed = await ticket.isVisible();
   await page.screenshot({path: __PATH__, animations: 'disabled'});
+  contrast.after = await axeContrast();
   await page.keyboard.press('Enter');
   restored = !(await ticket.isVisible()) && await isFocused(control);
 }
@@ -84,10 +98,13 @@ const outcome = {start, nextDepartureVisible, startsHidden, reached, revealed, r
 async def interact(client, cell, width):
     path = cell / f"{width}-action.png"
     task = {"landing": _COFFEE, "mobile": _TRAIN}[cell.parent.name]
-    result = await execute(client, _COMMON + task.replace("__PATH__", json.dumps(str(path))) + """
+    axe_path = json.dumps(os.environ["PILOT_AXE_SCRIPT"])
+    setup = f"await page.addScriptTag({{path:{axe_path}}});\n"
+    result = await execute(client, _COMMON + setup + "contrast.initial = await axeContrast();\n"
+                           + task.replace("__PATH__", json.dumps(str(path))) + """
 const local = page.url() === originalUrl && requests.length === 0;
 console.log('PILOT_ACTION ' + JSON.stringify({...outcome, viewport: initial, local,
-  pageErrors: state.pageErrors, passed: outcome.passed && local && state.pageErrors.length === 0}));
+  contrast, pageErrors: state.pageErrors, passed: outcome.passed && local && state.pageErrors.length === 0}));
 """)
     line = next((line for line in result.splitlines() if "PILOT_ACTION " in line), None)
     if line is None:
