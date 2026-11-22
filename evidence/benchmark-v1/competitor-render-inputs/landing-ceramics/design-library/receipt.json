@@ -1,0 +1,68 @@
+{
+  "usage": {
+    "input_tokens": 117266,
+    "cached_input_tokens": 90880,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 23700,
+    "reasoning_output_tokens": 15130
+  },
+  "tool_calls": [
+    {
+      "type": "mcp_tool_call",
+      "server": "design-library",
+      "tool": "list_styles",
+      "status": "completed"
+    },
+    {
+      "type": "mcp_tool_call",
+      "server": "design-library",
+      "tool": "search_designs",
+      "status": "completed"
+    },
+    {
+      "type": "mcp_tool_call",
+      "server": "design-library",
+      "tool": "get_style_guide",
+      "status": "completed"
+    },
+    {
+      "type": "mcp_tool_call",
+      "server": "design-library",
+      "tool": "search_designs",
+      "status": "completed"
+    },
+    {
+      "type": "mcp_tool_call",
+      "server": "design-library",
+      "tool": "search_designs",
+      "status": "completed"
+    },
+    {
+      "type": "mcp_tool_call",
+      "server": "design-library",
+      "tool": "get_design",
+      "status": "completed"
+    },
+    {
+      "type": "mcp_tool_call",
+      "server": "design-library",
+      "tool": "get_design",
+      "status": "completed"
+    }
+  ],
+  "client_errors": [],
+  "treatment_call": true,
+  "status": "passed",
+  "case": "landing-ceramics",
+  "arm": "design-library",
+  "model": "gpt-6.2-sol",
+  "effort": "max",
+  "client": "codex-cli 0.170.0",
+  "prompt_sha256": "1b7e4408d51fd57e448b6c6af2541f70db8a3a9291f546c5217d05b4bda1950f",
+  "shell_tool": false,
+  "mcp_config_sha256": "7313367ed14db2b1dc58fcc35efe89025cb7c573c4d3bf2a51ed76020529af51",
+  "elapsed_seconds": 483.81,
+  "exit_code": 0,
+  "trace_sha256": "5069623a3b92a8b435aa8d79b129ef582605d181ec10356845f96f2ab09be167",
+  "html_sha256": "32a66d87345ec346b5a72ffb297e2db313f507f73b49100ba4468265934cde24"
+}

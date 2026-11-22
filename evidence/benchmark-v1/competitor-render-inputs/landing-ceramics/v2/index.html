@@ -1,0 +1,820 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3ebe0">
+  <title>Oat Glaze Bowl | Kiln &amp; Field</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&amp;family=Instrument+Sans:wght@400..700&amp;display=swap">
+  <style>
+    :root {
+      --paper: #f3ebe0;
+      --stock: #e5d5c1;
+      --oat: #c7a783;
+      --ink: #2a1610;
+      --quiet: #685247;
+      --accent: #6b2148;
+      --rule: rgb(42 22 16 / 20%);
+      --display: "Fraunces", Georgia, serif;
+      --body: "Instrument Sans", "Trebuchet MS", sans-serif;
+      --gutter: clamp(1.25rem, 5.55vw, 5rem);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--body);
+      line-height: 1.5;
+    }
+
+    button {
+      font: inherit;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    button:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    .frame {
+      width: min(80rem, calc(100% - var(--gutter) - var(--gutter)));
+      margin-inline: auto;
+    }
+
+    .masthead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 5.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .wordmark {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--display);
+      font-size: 1.8rem;
+      font-weight: 580;
+      letter-spacing: -0.048em;
+      line-height: 1;
+    }
+
+    .kiln-mark {
+      flex: none;
+      color: var(--accent);
+    }
+
+    .bag-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-height: 2.75rem;
+      padding: 0.3rem 0.45rem 0.3rem 0.8rem;
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      background: transparent;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    .bag-toggle:hover {
+      border-color: var(--ink);
+    }
+
+    .bag-count {
+      display: grid;
+      place-items: center;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      background: var(--stock);
+      font-size: 0.8rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .bag-count[data-filled] {
+      background: var(--accent);
+      color: var(--paper);
+      animation: settle 240ms ease-out;
+    }
+
+    @keyframes settle {
+      from { transform: translateY(-4px); }
+      to { transform: translateY(0); }
+    }
+
+    .product {
+      display: grid;
+      grid-template-columns: minmax(0, 1.47fr) minmax(0, 1fr);
+      align-items: center;
+      gap: clamp(2rem, 6.1vw, 6rem);
+      padding-block: clamp(2rem, 3.6vw, 3.25rem) clamp(2.5rem, 5.5vw, 5rem);
+    }
+
+    .plate {
+      margin: 0;
+      border: 1px solid rgb(42 22 16 / 14%);
+      background: var(--stock);
+    }
+
+    .plate > svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .product-details {
+      width: min(100%, 29rem);
+    }
+
+    .studio-note {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin: 0 0 0.95rem;
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .studio-note::before {
+      width: 1.5rem;
+      height: 1px;
+      background: currentColor;
+      content: "";
+    }
+
+    h1 {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(3.625rem, 6.15vw, 5.625rem);
+      font-weight: 600;
+      letter-spacing: -0.054em;
+      line-height: 0.97;
+    }
+
+    h1 span {
+      display: block;
+    }
+
+    .provenance {
+      max-width: 32ch;
+      margin: 1.3rem 0 0;
+      color: var(--quiet);
+      font-size: 1.125rem;
+      line-height: 1.55;
+    }
+
+    .purchase {
+      margin-top: 1.85rem;
+      padding-top: 1.05rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .purchase-facts {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.6rem 1.25rem;
+    }
+
+    .price {
+      font-family: var(--display);
+      font-size: 2.55rem;
+      font-weight: 510;
+      letter-spacing: -0.055em;
+      line-height: 1;
+    }
+
+    .shipping {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.48rem;
+      margin: 0;
+      color: var(--quiet);
+      font-size: 0.95rem;
+      font-weight: 550;
+    }
+
+    .shipping svg {
+      flex: none;
+    }
+
+    .primary-button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      width: 100%;
+      min-height: 3.65rem;
+      padding: 0.75rem 1.2rem;
+      border: 1px solid transparent;
+      border-radius: 0.25rem;
+      background: var(--accent);
+      color: var(--paper);
+      font-weight: 650;
+      text-align: left;
+    }
+
+    .primary-button:hover {
+      background: color-mix(in srgb, var(--accent) 82%, var(--ink));
+    }
+
+    .primary-button:focus-visible {
+      box-shadow: 0 0 0 3px var(--paper);
+    }
+
+    #purchase-button {
+      margin-top: 1.2rem;
+    }
+
+    .purchase-status {
+      min-height: 1.45rem;
+      margin: 0.65rem 0 0;
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .bag-panel {
+      position: fixed;
+      inset: 0 0 0 auto;
+      width: min(100%, 28rem);
+      max-width: none;
+      height: 100%;
+      height: 100dvh;
+      max-height: none;
+      margin: 0;
+      padding: clamp(1.25rem, 5vw, 2rem);
+      border: 0;
+      background: var(--paper);
+      color: var(--ink);
+      overflow: auto;
+    }
+
+    .bag-panel[open] {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+
+    .bag-panel::backdrop {
+      background: rgb(42 22 16 / 42%);
+    }
+
+    .bag-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .bag-heading h2 {
+      margin: 0;
+      font-family: var(--display);
+      font-size: 2.35rem;
+      font-weight: 560;
+      letter-spacing: -0.05em;
+      line-height: 1;
+    }
+
+    .close-bag {
+      display: grid;
+      place-items: center;
+      width: 2.75rem;
+      height: 2.75rem;
+      padding: 0;
+      border: 1px solid var(--rule);
+      border-radius: 50%;
+      background: transparent;
+    }
+
+    .close-bag:hover {
+      border-color: var(--ink);
+    }
+
+    .bag-empty {
+      margin: 0;
+      color: var(--quiet);
+    }
+
+    .bag-item {
+      display: grid;
+      grid-template-columns: 5rem minmax(0, 1fr) auto;
+      align-items: start;
+      gap: 0.9rem;
+    }
+
+    .bag-thumb {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1;
+      border: 1px solid var(--rule);
+      background: var(--stock);
+    }
+
+    .bag-item h3 {
+      margin: 0;
+      font-family: var(--display);
+      font-size: 1.25rem;
+      font-weight: 590;
+      line-height: 1.2;
+    }
+
+    .bag-quantity {
+      margin: 0.28rem 0 0;
+      color: var(--quiet);
+      font-size: 0.875rem;
+    }
+
+    .bag-item-price {
+      font-weight: 650;
+    }
+
+    .remove-bowl {
+      min-height: 2.75rem;
+      margin-top: 0.15rem;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--accent);
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 0.22em;
+    }
+
+    .bag-footer {
+      margin-top: auto;
+    }
+
+    .bag-footer .primary-button {
+      justify-content: center;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 50rem) {
+      :root {
+        --gutter: clamp(1.125rem, 5.12vw, 2rem);
+      }
+
+      .frame {
+        max-width: 37rem;
+      }
+
+      .masthead {
+        min-height: 4.125rem;
+      }
+
+      .wordmark {
+        gap: 0.45rem;
+        font-size: 1.53rem;
+      }
+
+      .kiln-mark {
+        width: 1.7rem;
+        height: auto;
+      }
+
+      .product {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.55rem;
+        padding-block: 1.125rem 2rem;
+      }
+
+      .product-details {
+        width: 100%;
+      }
+
+      .studio-note {
+        margin-bottom: 0.62rem;
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 12.25vw, 4.125rem);
+        line-height: 1.02;
+      }
+
+      h1 span {
+        display: inline;
+      }
+
+      .provenance {
+        max-width: 38ch;
+        margin-top: 0.72rem;
+        font-size: 1.06rem;
+      }
+
+      .purchase {
+        margin-top: 1.25rem;
+        padding-top: 0.85rem;
+      }
+
+      .price {
+        font-size: 2.3rem;
+      }
+
+      #purchase-button {
+        min-height: 3.5rem;
+        margin-top: 0.9rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .bag-count[data-filled] {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead frame">
+    <div class="wordmark">
+      <svg class="kiln-mark" width="33" height="35" viewBox="0 0 36 38" fill="none" aria-hidden="true">
+        <path d="M5.5 29.5V17.3C5.5 10.2 10.7 5 18 5s12.5 5.2 12.5 12.3v12.2M3.5 29.5h29"
+          stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M10.8 20.3c1 4.1 3.5 6.1 7.2 6.1s6.2-2 7.2-6.1H10.8Z"
+          stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M18 10.3v5.2m-2.6-2.6h5.2" stroke="currentColor" stroke-width="1.35" stroke-linecap="round"/>
+      </svg>
+      Kiln &amp; Field
+    </div>
+
+    <button class="bag-toggle" id="bag-toggle" type="button"
+      aria-label="Bag, 0 items" aria-haspopup="dialog" aria-controls="bag-panel">
+      <svg width="17" height="17" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M4.3 6.8h11.4l1 10H3.3l1-10Z M7.5 7V5a2.5 2.5 0 0 1 5 0v2"
+          stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Bag</span>
+      <span class="bag-count" id="bag-count" aria-hidden="true">0</span>
+    </button>
+  </header>
+
+  <main class="product frame" aria-labelledby="product-title">
+    <figure class="plate">
+      <svg width="760" height="670" viewBox="0 0 760 670" role="img"
+        aria-labelledby="drawing-title" aria-describedby="drawing-description">
+        <title id="drawing-title">Illustration of the Oat Glaze Bowl</title>
+        <desc id="drawing-description">An ink-and-wash drawing of a pale oat-colored bowl, with an oval opening, fine glaze flecks, and curved throwing marks.</desc>
+        <defs>
+          <radialGradient id="plate-paper" cx="42%" cy="34%" r="78%">
+            <stop stop-color="#f3e8d7"/>
+            <stop offset=".54" stop-color="#e9dbc6"/>
+            <stop offset="1" stop-color="#dcc7ad"/>
+          </radialGradient>
+
+          <radialGradient id="ground-wash">
+            <stop stop-color="#503224" stop-opacity=".34"/>
+            <stop offset=".55" stop-color="#765037" stop-opacity=".17"/>
+            <stop offset="1" stop-color="#765037" stop-opacity="0"/>
+          </radialGradient>
+
+          <linearGradient id="foot-wash" x1="10%" y1="30%" x2="90%" y2="75%">
+            <stop stop-color="#b18a64"/>
+            <stop offset=".52" stop-color="#c5a47e"/>
+            <stop offset="1" stop-color="#8a6048"/>
+          </linearGradient>
+
+          <linearGradient id="wall-wash" x1="11%" y1="10%" x2="87%" y2="100%">
+            <stop stop-color="#fff4df"/>
+            <stop offset=".35" stop-color="#e8cdaa"/>
+            <stop offset=".73" stop-color="#c7a783"/>
+            <stop offset="1" stop-color="#a97b5b"/>
+          </linearGradient>
+
+          <linearGradient id="rim-wash" x1="10%" y1="0%" x2="85%" y2="90%">
+            <stop stop-color="#fff3dc"/>
+            <stop offset=".56" stop-color="#ebd1ad"/>
+            <stop offset="1" stop-color="#b88f6e"/>
+          </linearGradient>
+
+          <radialGradient id="well-wash" cx="36%" cy="32%" r="82%">
+            <stop stop-color="#f4e1c4"/>
+            <stop offset=".47" stop-color="#dec09a"/>
+            <stop offset=".8" stop-color="#bd9674"/>
+            <stop offset="1" stop-color="#9c7357"/>
+          </radialGradient>
+
+          <radialGradient id="well-center" cx="40%" cy="27%" r="74%">
+            <stop stop-color="#f4dfbc" stop-opacity=".93"/>
+            <stop offset="1" stop-color="#e0bf95" stop-opacity="0"/>
+          </radialGradient>
+
+          <pattern id="glaze-flecks" width="57" height="49" patternUnits="userSpaceOnUse"
+            patternTransform="rotate(-11)">
+            <g fill="#674530">
+              <circle cx="4" cy="12" r=".72" opacity=".45"/>
+              <circle cx="8" cy="41" r="1.2" opacity=".28"/>
+              <circle cx="14" cy="28" r=".55" opacity=".66"/>
+              <circle cx="22" cy="5" r=".97" opacity=".36"/>
+              <ellipse cx="25" cy="22" rx="1.1" ry=".55" opacity=".41"/>
+              <circle cx="28" cy="46" r=".52" opacity=".55"/>
+              <circle cx="36" cy="13" r="1.35" opacity=".31"/>
+              <circle cx="39" cy="34" r=".8" opacity=".52"/>
+              <circle cx="49" cy="7" r=".56" opacity=".57"/>
+              <ellipse cx="52" cy="38" rx="1.05" ry=".7" opacity=".36"/>
+            </g>
+            <g fill="#fff4dc" opacity=".54">
+              <circle cx="7" cy="24" r=".82"/>
+              <circle cx="19" cy="37" r="1"/>
+              <circle cx="33" cy="6" r=".75"/>
+              <circle cx="48" cy="23" r="1.12"/>
+            </g>
+          </pattern>
+
+          <filter id="paper-grain" x="0%" y="0%" width="100%" height="100%"
+            color-interpolation-filters="sRGB">
+            <feTurbulence type="fractalNoise" baseFrequency=".74" numOctaves="3"
+              seed="27" stitchTiles="stitch"/>
+            <feColorMatrix type="saturate" values="0"/>
+          </filter>
+
+          <path id="bowl-wall" d="M112 297
+            C121 355 151 413 199 452 C245 489 314 514 386 511
+            C458 508 515 486 558 449 C608 406 639 333 644 260
+            C633 315 525 367 390 379 C251 390 133 354 112 297Z"/>
+
+          <path id="bowl-well" d="M130 294
+            C123 247 222 202 361 193 C496 184 615 216 625 263
+            C635 316 531 360 390 370 C252 379 139 343 130 294Z"/>
+
+          <clipPath id="wall-clip">
+            <use href="#bowl-wall"/>
+          </clipPath>
+          <clipPath id="well-clip">
+            <use href="#bowl-well"/>
+          </clipPath>
+        </defs>
+
+        <rect width="760" height="670" fill="url(#plate-paper)"/>
+
+        <g id="bowl-print" transform="translate(-39 -32) scale(1.11)">
+          <ellipse cx="415" cy="521" rx="234" ry="47" transform="rotate(-5 415 521)"
+            fill="url(#ground-wash)"/>
+          <ellipse cx="392" cy="523" rx="132" ry="24" fill="url(#ground-wash)"/>
+          <g fill="none" stroke="#74523a" stroke-linecap="round">
+            <path d="M291 528c30 9 66 12 106 11 46-2 87-10 119-23" opacity=".29"/>
+            <path d="M308 535c35 8 77 9 113 5m21-3c20-3 49-9 65-15" opacity=".21"/>
+            <path d="M481 530l20-6m-15 9 33-11m-22 13 37-13m-17 10 28-10m-11 8 21-9"
+              stroke-width=".9" opacity=".26"/>
+          </g>
+
+          <path d="M272 472l10 31c4 17 49 30 107 28 52-1 92-15 95-31l7-37Z"
+            fill="url(#foot-wash)" stroke="#694831" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M286 503c17 13 56 22 101 20 38-1 69-9 91-22"
+            fill="none" stroke="#f8e4c2" stroke-width="2" opacity=".54"/>
+          <path d="M303 518c19 7 53 11 82 10 32-1 56-6 77-13"
+            fill="none" stroke="#694831" stroke-width="1.25" opacity=".58"/>
+
+          <use href="#bowl-wall" fill="url(#wall-wash)"/>
+          <g clip-path="url(#wall-clip)">
+            <path d="M107 302C148 379 286 414 411 404c114-9 189-49 241-109
+              -30 59-111 112-215 128-133 21-282-12-330-96Z"
+              fill="#fff0d5" opacity=".43"/>
+            <path d="M163 408c69 48 172 65 272 53 81-10 143-39 185-80
+              -28 61-100 124-222 137-107 11-194-27-235-110Z"
+              fill="#9f6e51" opacity=".16"/>
+            <rect x="105" y="259" width="546" height="260" fill="url(#glaze-flecks)" opacity=".83"/>
+
+            <g fill="none" stroke-linecap="round">
+              <g stroke="#795537" opacity=".47">
+                <path d="M121 326c27 34 69 58 137 72m19 4c66 12 140 11 207-1 58-11 109-32 145-68"
+                  stroke-width="1.1"/>
+                <path d="M133 356c39 45 111 75 200 82 112 10 219-19 279-75" stroke-width="1.4"/>
+                <path d="M148 382c28 30 79 55 137 67m17 3c93 15 214-5 286-58" stroke-width="1"/>
+                <path d="M174 416c29 25 76 44 125 54 87 16 185 1 249-35" stroke-width="1.25"/>
+                <path d="M194 440c41 31 100 49 161 52m24 0c54-2 102-15 140-36" stroke-width="1.1"/>
+                <path d="M228 466c49 29 120 43 184 36 28-3 50-8 70-16" stroke-width=".9"/>
+              </g>
+              <g stroke="#fff1d8" opacity=".69">
+                <path d="M135 346c29 32 71 53 134 66 47 10 90 12 128 10" stroke-width="2.1"/>
+                <path d="M154 380c43 38 111 65 186 71 53 4 110-1 157-14" stroke-width="1.65"/>
+                <path d="M180 416c47 36 112 57 185 59m13 0c26 0 56-4 78-9" stroke-width="1.7"/>
+                <path d="M221 457c33 19 71 31 113 36" stroke-width="1.4"/>
+              </g>
+              <g stroke="#684630" stroke-width="1" opacity=".36">
+                <path d="M586 386l19-22m-26 32 23-26m-31 36 19-23m-24 32 27-30
+                  m-37 39 27-28m-32 32 21-23m-29 32 21-23m-31 31 19-20m-30 29 25-26"/>
+                <path d="M507 459l26-24m-36 30 21-19m-29 25 17-16m-30 22 19-17
+                  m-30 21 16-14m-28 19 13-12m-26 15 15-12m-27 15 13-10"/>
+                <path d="M181 431l14 12m-9-14 16 15m-12-8 10 11m8 2 11 10m-7-12 18 14"/>
+              </g>
+            </g>
+          </g>
+          <use href="#bowl-wall" fill="none" stroke="#674731" stroke-width="1.75" stroke-linejoin="round"/>
+
+          <path d="M112 297
+            C104 241 208 187 359 177 C505 167 631 203 644 260
+            C655 320 542 373 390 383 C242 394 122 352 112 297Z"
+            fill="url(#rim-wash)" stroke="#62432f" stroke-width="1.9"/>
+
+          <use href="#bowl-well" fill="url(#well-wash)"/>
+          <g clip-path="url(#well-clip)">
+            <path d="M130 295c9-56 118-101 252-104 107-2 207 25 242 71
+              -44-34-134-49-231-46-119 4-221 39-263 79Z"
+              fill="#8a5e44" opacity=".15"/>
+
+            <path d="M244 344c14-28 73-49 148-51 67-2 129 15 148 41
+              17 24-34 45-115 51-83 6-200-6-181-41Z"
+              fill="url(#well-center)"/>
+
+            <rect x="123" y="188" width="512" height="194" fill="url(#glaze-flecks)" opacity=".76"/>
+
+            <g fill="none" stroke-linecap="round">
+              <g stroke="#906748" opacity=".43">
+                <path d="M142 294c15-44 111-79 220-86 117-7 216 16 250 53" stroke-width="1.5"/>
+                <path d="M153 308c21-43 110-73 213-79 99-6 178 11 220 43" stroke-width="1.15"/>
+                <path d="M173 315c28-30 96-58 175-66m19-2c83-6 160 8 198 33" stroke-width="1.35"/>
+                <path d="M194 326c28-28 88-49 163-56 77-7 146 5 182 28" stroke-width="1"/>
+                <path d="M222 337c29-26 77-41 140-47 68-6 128 4 164 28" stroke-width="1.25"/>
+                <path d="M267 345c20-15 60-26 107-29 49-4 96 2 119 17" stroke-width="1.3"/>
+                <path d="M309 355c18-9 46-15 81-17 39-2 72 1 89 10" stroke-width="1.05"/>
+              </g>
+              <g stroke="#fff0d4" opacity=".63">
+                <path d="M151 290c35-37 119-63 210-68 52-3 99 0 142 8" stroke-width="1.8"/>
+                <path d="M179 307c36-31 106-51 180-56 44-3 86-1 122 5" stroke-width="1.6"/>
+                <path d="M204 327c32-26 88-43 148-48 61-5 113 0 155 15" stroke-width="1.55"/>
+                <path d="M263 345c29-18 68-26 113-29 32-2 65 0 93 7" stroke-width="1.45"/>
+              </g>
+              <g stroke="#684630" stroke-width="1" opacity=".28">
+                <path d="M563 236l13 13m-6-13 14 15m-7-12 15 16m-9-14 18 19
+                  m-10-15 16 18m-9-14 15 18m-9-13 13 17m-8-11 11 16"/>
+                <path d="M538 339l20-12m-13 11 19-12m-14 12 26-18m-18 16 24-17
+                  m-16 15 27-20m-18 16 23-18m-15 13 23-18"/>
+              </g>
+            </g>
+
+            <g fill="#755037" opacity=".55">
+              <circle cx="206" cy="277" r="1.4"/>
+              <circle cx="234" cy="290" r="1.05"/>
+              <circle cx="282" cy="237" r="1.3"/>
+              <circle cx="327" cy="285" r="1.1"/>
+              <circle cx="356" cy="330" r="1.55"/>
+              <circle cx="398" cy="280" r=".95"/>
+              <circle cx="447" cy="312" r="1.5"/>
+              <circle cx="494" cy="263" r="1.25"/>
+              <circle cx="519" cy="321" r="1.5"/>
+              <circle cx="570" cy="289" r="1.2"/>
+            </g>
+          </g>
+          <use href="#bowl-well" fill="none" stroke="#855e42" stroke-opacity=".77" stroke-width="1.4"/>
+
+          <g fill="none" stroke-linecap="round">
+            <path d="M119 295c-4-46 87-89 204-105 92-12 202 0 261 31"
+              stroke="#fff6e2" stroke-width="3.4" opacity=".84"/>
+            <path d="M123 317c39 50 151 74 267 66 96-7 187-33 231-72"
+              stroke="#795236" stroke-width="1.05" opacity=".69"/>
+            <path d="M132 322c45 38 145 60 251 55 85-4 163-25 211-56"
+              stroke="#fff1d6" stroke-width="3.3" opacity=".82"/>
+            <path d="M613 235c11 7 22 21 22 33" stroke="#fff2d8" stroke-width="2.2" opacity=".66"/>
+          </g>
+        </g>
+
+        <rect width="760" height="670" filter="url(#paper-grain)" opacity=".19"
+          style="mix-blend-mode: multiply" pointer-events="none"/>
+        <rect x="19.5" y="19.5" width="721" height="631" fill="none"
+          stroke="#755841" stroke-opacity=".34"/>
+      </svg>
+    </figure>
+
+    <section class="product-details" aria-labelledby="product-title">
+      <p class="studio-note">Small-batch pottery</p>
+      <h1 id="product-title">Oat Glaze <span>Bowl</span></h1>
+      <p class="provenance">Thrown and glazed by the maker in Milwaukee.</p>
+
+      <div class="purchase">
+        <div class="purchase-facts">
+          <data class="price" value="46">$46</data>
+          <p class="shipping">
+            <svg width="19" height="19" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="m10 2.5 6.8 3.6v7.8L10 17.5l-6.8-3.6V6.1L10 2.5Z
+                M3.4 6.3 10 9.8l6.6-3.5M10 9.8v7.5M6.6 4.4l6.8 3.6"
+                stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Ships in 5 days
+          </p>
+        </div>
+
+        <button class="primary-button" id="purchase-button" type="button">
+          <span id="purchase-label">Add to bag</span>
+          <svg width="21" height="21" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path id="purchase-icon" d="M10 4v12M4 10h12" stroke="currentColor"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <p class="purchase-status" id="purchase-status" role="status" aria-atomic="true"></p>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="bag-panel" id="bag-panel" aria-labelledby="bag-title" closedby="any">
+    <div class="bag-heading">
+      <h2 id="bag-title">Your bag</h2>
+      <form method="dialog">
+        <button class="close-bag" type="submit" aria-label="Close bag" autofocus>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="m4.5 4.5 9 9m0-9-9 9" stroke="currentColor"
+              stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </form>
+    </div>
+
+    <p class="bag-empty" id="bag-empty">Your bag is empty.</p>
+    <div class="bag-item" id="bag-item" hidden>
+      <svg class="bag-thumb" width="80" height="80" viewBox="65 65 630 630" aria-hidden="true">
+        <use href="#bowl-print"/>
+      </svg>
+      <div>
+        <h3>Oat Glaze Bowl</h3>
+        <p class="bag-quantity">Quantity 1</p>
+        <button class="remove-bowl" id="remove-bowl" type="button"
+          aria-label="Remove Oat Glaze Bowl">Remove</button>
+      </div>
+      <data class="bag-item-price" value="46">$46</data>
+    </div>
+    <p class="visually-hidden" id="bag-status" role="status"></p>
+
+    <form class="bag-footer" method="dialog">
+      <button class="primary-button" id="back-to-bowl" type="submit">Back to bowl</button>
+    </form>
+  </dialog>
+
+  <script>
+    const bagToggle = document.getElementById("bag-toggle");
+    const bagCount = document.getElementById("bag-count");
+    const bagPanel = document.getElementById("bag-panel");
+    const bagEmpty = document.getElementById("bag-empty");
+    const bagItem = document.getElementById("bag-item");
+    const bagStatus = document.getElementById("bag-status");
+    const purchaseButton = document.getElementById("purchase-button");
+    const purchaseLabel = document.getElementById("purchase-label");
+    const purchaseIcon = document.getElementById("purchase-icon");
+    const purchaseStatus = document.getElementById("purchase-status");
+    const removeBowl = document.getElementById("remove-bowl");
+    const backToBowl = document.getElementById("back-to-bowl");
+
+    // The bag holds one bowl for the current page visit.
+    let bowlIsInBag = false;
+
+    function setBowlInBag(isInBag) {
+      bowlIsInBag = isInBag;
+      bagCount.textContent = isInBag ? "1" : "0";
+      bagCount.toggleAttribute("data-filled", isInBag);
+      bagToggle.setAttribute("aria-label", isInBag ? "Bag, 1 item" : "Bag, 0 items");
+
+      bagEmpty.hidden = isInBag;
+      bagItem.hidden = !isInBag;
+
+      purchaseLabel.textContent = isInBag ? "View bag" : "Add to bag";
+      purchaseIcon.setAttribute("d", isInBag ? "m4.5 10 3.6 3.6 7.4-7.4" : "M10 4v12M4 10h12");
+      purchaseStatus.textContent = isInBag ? "Oat Glaze Bowl added to your bag." : "";
+    }
+
+    bagToggle.addEventListener("click", () => bagPanel.showModal());
+
+    purchaseButton.addEventListener("click", () => {
+      if (bowlIsInBag) {
+        bagPanel.showModal();
+        return;
+      }
+      setBowlInBag(true);
+    });
+
+    removeBowl.addEventListener("click", () => {
+      setBowlInBag(false);
+      backToBowl.focus();
+      bagStatus.textContent = "Oat Glaze Bowl removed. Your bag is empty.";
+    });
+
+    bagPanel.addEventListener("close", () => {
+      bagStatus.textContent = "";
+    });
+  </script>
+</body>
+</html>

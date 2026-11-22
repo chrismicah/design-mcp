@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Oat Glaze Bowl | Kiln &amp; Field</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --linen: #f6f2e8;
+      --straw: #e5d2ab;
+      --oat: #f4e5bc;
+      --umber: #886b46;
+      --ink: #292d21;
+      --olive: #414931;
+      --muted: #5d5c4d;
+      --rule: rgba(41, 45, 33, .23);
+      --display: "Instrument Serif", Georgia, serif;
+      --body: "DM Sans", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+
+    body {
+      margin: 0;
+      background: var(--linen);
+      color: var(--ink);
+      font: 400 16px/1.5 var(--body);
+    }
+
+    body:has(.bag-panel[open]) { overflow: hidden; }
+
+    button { color: inherit; font: inherit; cursor: pointer; }
+
+    button:focus-visible {
+      outline: 2px solid var(--olive);
+      outline-offset: 4px;
+    }
+
+    .frame {
+      width: min(1280px, calc(100% - clamp(48px, 10.6vw, 152px)));
+      margin-inline: auto;
+    }
+
+    .masthead {
+      min-height: 83px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .wordmark {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font: 400 34px/1 var(--display);
+      letter-spacing: -.025em;
+    }
+
+    .wordmark svg { flex: none; }
+
+    .bag-button {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 0 10px 0 12px;
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      background: transparent;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .bag-button:hover,
+    .close-button:hover,
+    .return-button:hover { background: rgba(65, 73, 49, .07); }
+
+    .bag-count {
+      display: grid;
+      place-items: center;
+      min-width: 22px;
+      height: 22px;
+      padding-inline: 4px;
+      border-radius: 50%;
+      background: var(--olive);
+      color: var(--linen);
+      font-size: 12px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .product {
+      display: grid;
+      grid-template-columns: minmax(0, 1.54fr) minmax(0, 1fr);
+      align-items: center;
+      gap: clamp(38px, 6.1vw, 94px);
+      padding-block: clamp(32px, 4.05vw, 64px) 52px;
+    }
+
+    .plate {
+      position: relative;
+      margin: 0;
+      background: var(--straw);
+    }
+
+    .plate > svg { display: block; width: 100%; height: auto; }
+
+    .plate figcaption {
+      position: absolute;
+      inset: auto auto 6% 5.8%;
+      color: #59462e;
+      font: italic clamp(16px, 1.47vw, 22px)/1 var(--display);
+    }
+
+    .details { max-width: 426px; }
+
+    h1 {
+      margin: 0;
+      font: 400 clamp(68px, 7.35vw, 106px)/.88 var(--display);
+      letter-spacing: -.028em;
+    }
+
+    h1 span { display: block; }
+
+    .price {
+      margin: 24px 0 0;
+      font-size: 25px;
+      font-weight: 500;
+      line-height: 1.2;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .description {
+      max-width: 33ch;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    .purchase { margin-top: 30px; }
+
+    .add-button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      width: 100%;
+      min-height: 58px;
+      padding-inline: 18px;
+      border: 1px solid var(--olive);
+      border-radius: 2px;
+      background: var(--olive);
+      color: var(--linen);
+      font-weight: 600;
+    }
+
+    .add-button:hover { background: #343d27; }
+
+    .shipping {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .bag-panel {
+      position: fixed;
+      inset: 0 0 0 auto;
+      width: min(100%, 454px);
+      max-width: none;
+      height: 100%;
+      max-height: 100%;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-left: 1px solid var(--rule);
+      background: var(--linen);
+      color: var(--ink);
+      --bag-entry: translateX(100%);
+    }
+
+    .bag-panel::backdrop { background: rgba(41, 45, 33, .42); }
+
+    .bag-inner { min-height: 100%; padding: 30px 32px; }
+
+    .bag-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .bag-heading h2 {
+      margin: 0;
+      font: 400 53px/.95 var(--display);
+      letter-spacing: -.02em;
+    }
+
+    .close-button {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 1px solid var(--rule);
+      border-radius: 50%;
+      background: transparent;
+    }
+
+    .bag-message {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .bag-message[data-confirmed] {
+      padding: 11px 12px;
+      background: #e8ebdf;
+      color: var(--olive);
+      font-weight: 600;
+    }
+
+    .bag-message svg { flex: none; }
+
+    .bag-item {
+      display: grid;
+      grid-template-columns: 88px minmax(0, 1fr) auto;
+      align-items: start;
+      gap: 14px;
+      margin: 22px 0 16px;
+      padding-bottom: 19px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .bag-thumb {
+      display: block;
+      width: 88px;
+      height: 79px;
+      background: var(--straw);
+    }
+
+    .bag-item h3, .bag-item p { margin: 0; }
+    .bag-item h3 { font: 400 26px/1.05 var(--display); }
+    .bag-item .quantity { margin-top: 4px; color: var(--muted); font-size: 14px; }
+
+    .remove-button {
+      min-height: 35px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font-size: 13px;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .remove-button:hover { color: var(--ink); }
+
+    .subtotal {
+      display: flex;
+      justify-content: space-between;
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .return-button {
+      width: 100%;
+      min-height: 48px;
+      margin-top: 23px;
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      background: transparent;
+      font-weight: 600;
+    }
+
+    @media (max-width: 850px) {
+      .frame { width: min(620px, calc(100% - 36px)); }
+      .masthead { min-height: 67px; }
+      .wordmark { gap: 7px; font-size: 30px; }
+      .wordmark svg { width: 28px; }
+      .product { grid-template-columns: minmax(0, 1fr); gap: 25px; padding-block: 18px 38px; }
+      .details { max-width: 520px; }
+      h1 { font-size: clamp(48px, 13.7vw, 78px); line-height: .94; }
+      h1 span { display: inline; }
+      .price { margin-top: 12px; font-size: 22px; }
+      .description { margin-top: 12px; font-size: 16px; }
+      .purchase { margin-top: 22px; }
+      .add-button { min-height: 54px; }
+      .shipping { margin-top: 13px; }
+    }
+
+    @media (max-width: 600px) {
+      .bag-panel {
+        inset: auto 0 0;
+        width: 100%;
+        height: auto;
+        max-height: 92vh;
+        max-height: 92dvh;
+        border-left: 0;
+        border-top: 1px solid var(--rule);
+        --bag-entry: translateY(100%);
+      }
+
+      .bag-inner { padding: 22px 18px max(22px, env(safe-area-inset-bottom)); }
+      .bag-heading h2 { font-size: 46px; }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .bag-panel[open] { animation: open-bag 230ms cubic-bezier(.2, .7, .2, 1) both; }
+
+      @keyframes open-bag {
+        from { transform: var(--bag-entry); }
+        to { transform: none; }
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead frame">
+    <div class="wordmark">
+      <svg width="34" height="30" viewBox="0 0 36 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4.5 9c1.4 8.3 6.1 13.4 13.5 13.4S30.1 17.3 31.5 9M13.4 22l-.7 3.4h10.6l-.7-3.4M7.4 28h21.2"/>
+        <path d="M4.5 9c0-2.3 6-4.1 13.5-4.1S31.5 6.7 31.5 9s-6 4.2-13.5 4.2S4.5 11.3 4.5 9Z"/>
+        <path d="M10.5 9.2c1.6.8 4.5 1.2 7.5 1.2s5.9-.4 7.5-1.2"/>
+      </svg>
+      <span>Kiln &amp; Field</span>
+    </div>
+
+    <button type="button" class="bag-button" id="bag-button" aria-label="Bag, 0 items" aria-haspopup="dialog" aria-controls="bag-panel">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5.5 8.5h13l1 12h-15l1-12Z M9 9V6a3 3 0 0 1 6 0v3"/>
+      </svg>
+      <span>Bag</span>
+      <span class="bag-count" id="bag-count" aria-hidden="true">0</span>
+    </button>
+  </header>
+
+  <main class="product frame">
+    <figure class="plate">
+      <svg viewBox="0 0 700 580" width="700" height="580" role="img" aria-labelledby="drawing-title">
+        <title id="drawing-title">Drawing of the Oat Glaze Bowl with a rounded foot, a speckled rim, and throwing rings inside.</title>
+        <defs>
+          <linearGradient id="paper" x2="100%" y2="100%">
+            <stop stop-color="#f0e3c2"/>
+            <stop offset=".55" stop-color="#e5d2ab"/>
+            <stop offset="1" stop-color="#d9c096"/>
+          </linearGradient>
+
+          <radialGradient id="shadow">
+            <stop stop-color="#624929" stop-opacity=".49"/>
+            <stop offset=".56" stop-color="#886b46" stop-opacity=".22"/>
+            <stop offset="1" stop-color="#886b46" stop-opacity="0"/>
+          </radialGradient>
+
+          <linearGradient id="foot-color" x1="5%" y1="25%" x2="92%" y2="80%">
+            <stop stop-color="#b19163"/>
+            <stop offset=".5" stop-color="#c5a474"/>
+            <stop offset="1" stop-color="#8f6a45"/>
+          </linearGradient>
+
+          <linearGradient id="body-color" x1="14%" y1="17%" x2="83%" y2="98%">
+            <stop stop-color="#f1dfb3"/>
+            <stop offset=".38" stop-color="#e3c695"/>
+            <stop offset=".72" stop-color="#c6a373"/>
+            <stop offset="1" stop-color="#9e794e"/>
+          </linearGradient>
+
+          <linearGradient id="rim-color" x1="13%" y1="0%" x2="82%" y2="100%">
+            <stop stop-color="#f8edca"/>
+            <stop offset=".58" stop-color="#f4e5bc"/>
+            <stop offset="1" stop-color="#d3b17c"/>
+          </linearGradient>
+
+          <linearGradient id="well-color" x1="57%" y1="0%" x2="38%" y2="100%">
+            <stop stop-color="#9d7951"/>
+            <stop offset=".35" stop-color="#c8a97a"/>
+            <stop offset=".72" stop-color="#ecdaae"/>
+            <stop offset="1" stop-color="#e0c396"/>
+          </linearGradient>
+
+          <radialGradient id="well-light" cx="36%" cy="72%" r="58%">
+            <stop stop-color="#f9eac3" stop-opacity=".76"/>
+            <stop offset="1" stop-color="#f9eac3" stop-opacity="0"/>
+          </radialGradient>
+
+          <filter id="print-grain" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+            <feTurbulence type="fractalNoise" baseFrequency=".67" numOctaves="3" seed="8" stitchTiles="stitch"/>
+            <feColorMatrix type="matrix" values="
+              0 0 0 0 .30
+              0 0 0 0 .23
+              0 0 0 0 .15
+              2.65 0 0 0 -1.18"/>
+          </filter>
+
+          <pattern id="flecks" width="107" height="89" patternUnits="userSpaceOnUse">
+            <g fill="#715130">
+              <circle cx="6" cy="12" r=".8"/><circle cx="19" cy="6" r=".45"/>
+              <circle cx="34" cy="13" r="1.15"/><circle cx="52" cy="5" r=".65"/>
+              <circle cx="68" cy="14" r=".7"/><circle cx="87" cy="10" r="1.4" opacity=".65"/>
+              <circle cx="94" cy="23" r=".55"/><circle cx="77" cy="27" r=".75"/>
+              <circle cx="57" cy="26" r="1.2" opacity=".67"/><circle cx="42" cy="32" r=".5"/>
+              <circle cx="25" cy="24" r=".75"/><circle cx="11" cy="34" r="1.1"/>
+              <circle cx="4" cy="54" r=".65"/><circle cx="19" cy="48" r=".55"/>
+              <circle cx="34" cy="53" r="1.25" opacity=".7"/><circle cx="51" cy="46" r=".7"/>
+              <circle cx="70" cy="52" r="1.45" opacity=".6"/><circle cx="85" cy="44" r=".6"/>
+              <circle cx="99" cy="55" r="1"/><circle cx="91" cy="67" r=".7"/>
+              <circle cx="76" cy="76" r=".6"/><circle cx="58" cy="69" r=".8"/>
+              <circle cx="48" cy="81" r="1.1" opacity=".75"/><circle cx="31" cy="72" r=".5"/>
+              <circle cx="17" cy="79" r="1.3" opacity=".68"/><circle cx="102" cy="83" r=".55"/>
+              <path d="m45 16 2 1-.7 1.6-1.7-.9Z M81 61l1.8-.5.3 1.2-1.6.7Z M8 70l1.2-.8.7 1.2-1.3.5Z" opacity=".52"/>
+            </g>
+            <g fill="#fff0c7" opacity=".65">
+              <circle cx="13" cy="21" r="1.4"/><circle cx="39" cy="41" r="1.1"/>
+              <circle cx="65" cy="34" r="1.5"/><circle cx="85" cy="32" r=".9"/>
+              <circle cx="23" cy="59" r="1.4"/><circle cx="65" cy="83" r=".85"/>
+              <circle cx="97" cy="41" r="1.2"/><circle cx="52" cy="59" r="1"/>
+            </g>
+          </pattern>
+
+          <pattern id="hatching" width="8" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(-24)">
+            <path d="M0 1h6M4 5h3" fill="none" stroke="#715131" stroke-width=".65" stroke-linecap="round"/>
+          </pattern>
+
+          <path id="bowl-foot" d="M281 415c.7 11-3 23 6 30 22 17 118 20 147 3 9-5 10-18 13-33Z"/>
+          <path id="bowl-face" d="M107 234c4 53 31 103 72 139 36 31 79 51 126 60 33 6 74 6 106 1 54-8 103-32 141-65 40-35 65-83 72-135-92 43-177 58-267 60-92 1-179-16-250-60Z"/>
+          <path id="bowl-lip" d="M107 235c.1-25 29-50 77-67 49-18 111-27 174-26 106-1 189 17 236 45 24 14 35 33 29 51-10 36-73 66-145 80-79 16-165 16-238 3-67-12-125-40-133-76-.7-4-1-7 0-10Z"/>
+          <path id="bowl-well" d="M122 235c4-22 31-42 73-57 46-17 107-25 163-24 95-1 181 16 225 42 21 12 32 26 27 40-10 27-62 53-135 68-81 16-159 18-230 5-67-12-113-37-122-62-2-5-2-9-1-12Z"/>
+          <clipPath id="face-clip"><use href="#bowl-face"/></clipPath>
+          <clipPath id="well-clip"><use href="#bowl-well"/></clipPath>
+        </defs>
+
+        <rect width="700" height="580" fill="url(#paper)"/>
+        <rect x="18" y="18" width="664" height="544" fill="none" stroke="#886b46" stroke-opacity=".42"/>
+
+        <g fill="none" stroke="#886b46">
+          <circle cx="350" cy="282" r="207" stroke-opacity=".24"/>
+          <circle cx="350" cy="282" r="192" stroke-opacity=".15"/>
+          <path d="M139 281a211 211 0 0 1 41-125m348 237a210 210 0 0 1-87 76" stroke-opacity=".18"/>
+        </g>
+
+        <g id="bowl-study" stroke-linecap="round" stroke-linejoin="round">
+          <ellipse cx="377" cy="449" rx="253" ry="40" fill="url(#shadow)" transform="rotate(-3 377 449)"/>
+          <ellipse cx="369" cy="456" rx="138" ry="19" fill="url(#shadow)"/>
+          <path d="M177 451c77 10 191 20 291 6 29-4 61-9 96-20-77 31-160 41-251 37-56-2-101-7-136-23Z" fill="url(#hatching)" opacity=".29"/>
+
+          <use href="#bowl-foot" fill="url(#foot-color)" stroke="#755434" stroke-width="2"/>
+          <use href="#bowl-foot" fill="url(#flecks)" opacity=".75"/>
+          <path d="M288 444c32 16 115 16 145 1" fill="none" stroke="#785535" stroke-width="1.4" opacity=".65"/>
+
+          <use href="#bowl-face" fill="url(#body-color)" stroke="#755434" stroke-width="2.3"/>
+          <g clip-path="url(#face-clip)">
+            <path d="M139 324c70 50 156 70 229 69 87-1 157-27 222-75-38 61-96 102-177 117-112 21-213-8-274-111Z" fill="#8c683f" opacity=".19"/>
+            <path d="M155 353c72 45 144 57 216 57 73 0 139-26 201-66l-23 49-117 53-131 9-89-29Z" fill="url(#hatching)" opacity=".32"/>
+            <g fill="none">
+              <path d="M116 276c55 49 156 78 251 77 104-2 197-37 251-81" stroke="#fcdfab" stroke-width="2.5" opacity=".62"/>
+              <path d="M122 288c67 52 155 77 249 76 96-2 189-34 239-83m-470 35c59 45 142 71 229 70 88-1 167-30 225-75m-436 33c53 39 125 60 205 61 79 0 154-22 205-60m-364 34c54 31 126 44 183 40 49-4 99-17 145-40" stroke="#896441" stroke-width="1.15" opacity=".52"/>
+              <path d="M156 328c48 34 146 60 223 56 90-4 161-26 206-61m-403 39c43 30 126 48 176 47" stroke="#f5dcad" stroke-width="1.4" opacity=".55"/>
+            </g>
+            <use href="#bowl-face" fill="url(#flecks)" opacity=".83"/>
+          </g>
+
+          <use href="#bowl-lip" fill="url(#rim-color)" stroke="#755434" stroke-width="2.3"/>
+          <use href="#bowl-lip" fill="url(#flecks)" opacity=".8"/>
+          <use href="#bowl-well" fill="url(#well-color)" stroke="#94734d" stroke-width="1.5"/>
+
+          <g clip-path="url(#well-clip)">
+            <use href="#bowl-well" fill="url(#well-light)"/>
+            <path d="M120 204c45-30 126-52 233-51 106 0 189 19 240 53-46-20-110-27-163-25-62 2-113 13-165 27-48 13-94 25-145 13Z" fill="#795834" opacity=".17"/>
+            <path d="M149 219c42-25 115-42 201-45 82-3 171 11 220 35m-431 30c34 23 108 43 173 46 102 5 198-10 262-41m-413 16c46 24 112 38 189 39 82 2 161-17 206-40" fill="none" stroke="#947047" stroke-width="1.2" opacity=".62"/>
+            <path d="M202 257c27-22 92-38 160-37 70 .4 132 15 154 35m-285 9c15-17 72-31 132-31 62 0 114 14 127 32 11 15-47 31-119 33-67 1-122-13-132-25m28-7c12-12 55-21 98-21 46 0 84 10 90 21 7 13-37 24-87 24-47 0-82-9-89-18" fill="none" stroke="#a17d50" stroke-width="1.15" opacity=".65"/>
+            <path d="M291 271c10-9 38-15 72-15 35 0 64 7 64 15 0 7-27 15-61 15-31 0-55-6-55-12 0-5 19-10 45-10 19 0 34 3 36 7" fill="none" stroke="#9e7648" stroke-width="1.3" opacity=".53"/>
+            <path d="M146 237c53 29 126 41 198 44m-80-15c23-12 62-17 91-17m21 44c50-2 94-10 119-22" fill="none" stroke="#faebc1" stroke-width="2" opacity=".63"/>
+            <use href="#bowl-well" fill="url(#flecks)" opacity=".69"/>
+          </g>
+
+          <path d="M132 204c56-42 148-57 233-57 78 0 151 14 196 33m-439 82c46 41 136 64 228 66 100 2 201-24 249-62" fill="none" stroke="#fff0ca" stroke-width="2.5" opacity=".87"/>
+          <path d="M113 250c17 34 78 60 135 69m233-3c54-11 104-33 127-60" fill="none" stroke="#89623b" stroke-width="1.15" opacity=".64"/>
+        </g>
+
+        <rect width="700" height="580" filter="url(#print-grain)" opacity=".48"/>
+      </svg>
+      <figcaption>Bowl illustration</figcaption>
+    </figure>
+
+    <section class="details" aria-labelledby="product-title">
+      <h1 id="product-title"><span>Oat Glaze</span> Bowl</h1>
+      <p class="price">$46</p>
+      <p class="description">Small-batch pottery, thrown and glazed by the maker in Milwaukee.</p>
+
+      <div class="purchase">
+        <button type="button" class="add-button" id="add-button" aria-haspopup="dialog" aria-controls="bag-panel">
+          <span id="add-label">Add to bag</span>
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path id="add-mark" d="M5 12h14M12 5v14"/>
+          </svg>
+        </button>
+
+        <p class="shipping">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m4 7 8-4 8 4v10l-8 4-8-4V7Zm0 0 8 4 8-4m-8 4v10M8 5l8 4"/>
+          </svg>
+          Ships in 5 days
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="bag-panel" id="bag-panel" aria-labelledby="bag-title" aria-describedby="bag-context">
+    <div class="bag-inner">
+      <header class="bag-heading">
+        <h2 id="bag-title">Your bag</h2>
+        <form method="dialog">
+          <button class="close-button" type="submit" aria-label="Close bag" autofocus>
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+              <path d="m6 6 12 12M18 6 6 18"/>
+            </svg>
+          </button>
+        </form>
+      </header>
+
+      <p class="bag-message" id="bag-context" role="status">
+        <svg id="bag-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden>
+          <path d="m5 12 4 4 10-10"/>
+        </svg>
+        <span id="bag-message-text">Your bag is empty.</span>
+      </p>
+
+      <div id="bag-filled" hidden>
+        <div class="bag-item">
+          <svg class="bag-thumb" viewBox="67 111 596 397" aria-hidden="true">
+            <use href="#bowl-study"/>
+          </svg>
+          <div>
+            <h3>Oat Glaze Bowl</h3>
+            <p class="quantity">Quantity 1</p>
+            <button class="remove-button" id="remove-button" type="button" aria-label="Remove Oat Glaze Bowl">Remove</button>
+          </div>
+          <p>$46</p>
+        </div>
+        <p class="subtotal"><span>Subtotal</span><span>$46</span></p>
+      </div>
+
+      <form method="dialog">
+        <button class="return-button" id="return-button" type="submit">Back to the bowl</button>
+      </form>
+    </div>
+  </dialog>
+
+  <script>
+    const bagButton = document.getElementById("bag-button");
+    const bagCount = document.getElementById("bag-count");
+    const bagPanel = document.getElementById("bag-panel");
+    const bagContext = document.getElementById("bag-context");
+    const bagMessage = document.getElementById("bag-message-text");
+    const bagCheck = document.getElementById("bag-check");
+    const bagFilled = document.getElementById("bag-filled");
+    const addButton = document.getElementById("add-button");
+    const addLabel = document.getElementById("add-label");
+    const addMark = document.getElementById("add-mark");
+    const removeButton = document.getElementById("remove-button");
+    const returnButton = document.getElementById("return-button");
+
+    // Bag state belongs to this document and resets on reload.
+    let hasBowl = false;
+    let bagOpener = bagButton;
+
+    function renderBag(added = false) {
+      bagCount.textContent = hasBowl ? "1" : "0";
+      bagButton.setAttribute("aria-label", hasBowl ? "Bag, 1 item" : "Bag, 0 items");
+      bagFilled.hidden = !hasBowl;
+      addLabel.textContent = hasBowl ? "View bag" : "Add to bag";
+      addMark.setAttribute("d", hasBowl ? "m5 12 4 4 10-10" : "M5 12h14M12 5v14");
+      bagContext.toggleAttribute("data-confirmed", added);
+      bagCheck.toggleAttribute("hidden", !added);
+      bagMessage.textContent = hasBowl ? "1 item" : "Your bag is empty.";
+
+      if (added) {
+        bagMessage.textContent = "Oat Glaze Bowl added to your bag.";
+      }
+    }
+
+    function openBag(opener, added = false) {
+      bagOpener = opener;
+      renderBag(added);
+      bagPanel.showModal();
+    }
+
+    addButton.addEventListener("click", () => {
+      const added = !hasBowl;
+      hasBowl = true;
+      openBag(addButton, added);
+    });
+
+    bagButton.addEventListener("click", () => openBag(bagButton));
+
+    removeButton.addEventListener("click", () => {
+      hasBowl = false;
+      renderBag();
+      returnButton.focus();
+    });
+
+    bagPanel.addEventListener("click", (event) => {
+      if (event.target === bagPanel) {
+        bagPanel.close();
+      }
+    });
+
+    bagPanel.addEventListener("close", () => bagOpener.focus());
+  </script>
+</body>
+</html>
