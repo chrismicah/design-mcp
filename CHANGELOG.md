@@ -1,5 +1,7 @@
 # Changelog
 
+- Made the reviewed catalog the default on the rebuild branch and retained the historical tools under explicit compatibility modes. Added local website, Chrome extension, SwiftUI and Electron review. The combined package passed eight clean-install jobs on macOS 15. [Rollout receipts](CONTENT-AUDIT.md) · [Review receipts](SMOKE-RECEIPTS.md)
+
 ## Unreleased
 
 - Added the 36-brief matched benchmark with clean-session token accounting, Playwriter captures, blind judging, and competitor adapters. The twenty verified pairs averaged 91.9 without the MCP and 94.6 with frozen v2. [Benchmark](EVALS.md)

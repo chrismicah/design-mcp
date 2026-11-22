@@ -69,11 +69,11 @@ Try “calmer” after the first draft. The result adjusts focal spacing, the si
 
 ## Review an existing interface
 
-- **A public website.** Run `design-mcp review https://example.com --playwriter /path/to/playwriter`. The command uses a separate Chrome profile and saves a local preview with a measured finding. [Browser setup](design_mcp/review/README.md)
+- **A public website.** Run `design-mcp review https://example.com --playwriter /path/to/playwriter`. The command uses a separate Chrome profile, saves a local preview, and reports any measured finding. [Browser setup](design_mcp/review/README.md)
 - **The active Chrome tab.** Load the extension from the folder printed by `design-mcp review --extension-path`. Open the toolbar popup, choose **Review this page**, and follow its one-time host setup. [Extension setup](design_mcp/review/README.md#set-up-the-extension)
 - **Your SwiftUI or Electron app.** Use the app-specific exporter, then run `design-mcp review-app capture.json` to check the visible controls for clipping and occlusion. [Swift exporter](integrations/desktop/SwiftCapture.swift) · [Electron exporter](integrations/desktop/electron.mjs)
 
-Hosted checks covered a public URL on macOS, the Chrome extension on Linux, and owned SwiftUI and Electron fixtures on macOS 15 arm64. The combined install, reference-Mac latency, independent design review, and final GPT Computer Use smoke are open. [Smoke receipts](SMOKE-RECEIPTS.md)
+Hosted checks covered a public URL on macOS, the Chrome extension on Linux, and owned SwiftUI and Electron fixtures on macOS 15 arm64. Reference-Mac latency, independent design review, and final GPT Computer Use smoke remain open. [Smoke receipts](SMOKE-RECEIPTS.md)
 
 ## Compatibility
 
@@ -89,7 +89,7 @@ The new direction library and the historical pattern data have separate roles. H
 
 ## Verified results
 
-Fresh pipx and uv installs passed `doctor` and exercised all 17 tools in every macOS 15 job. The matrix covered Intel and Apple Silicon across Python 3.10, 3.11, 3.12, and 3.13. macOS 13 and fresh Tart VM verification are pending. [Install matrix](https://github.com/chrismicah/design-mcp/actions/runs/44987155008)
+Fresh pipx and uv installs passed `doctor`, called the three default tools and exercised all 17 tools in compatibility mode on macOS 15. All eight jobs passed across Intel and Apple Silicon with Python 3.10–3.13. macOS 13 and fresh Tart VM verification remain open. [Install matrix](https://github.com/chrismicah/design-mcp/actions/runs/44997756667)
 
 Twenty of 36 matched design briefs have blinded scores. The plain generator averaged 91.9 and frozen Design MCP v2 averaged 94.6, with eleven wins, eight ties, and one loss. [Benchmark and receipts](EVALS.md)
 
