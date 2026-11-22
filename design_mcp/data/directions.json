@@ -523,5 +523,112 @@
       }
     ],
     "credit": "GOV.UK Design System radio and check-answers patterns. Original work-order layout and color direction."
+  },
+  {
+    "id": "grouped-fieldsets",
+    "surface": "form",
+    "title": "Grouped details",
+    "summary": "A compact worksheet for entering related facts together. A reader can find a field again by its group and its persistent label.",
+    "tags": ["related fields", "multiple fields", "contact details", "intake", "address", "name and email"],
+    "type": {
+      "display": "Barlow Semi Condensed",
+      "body": "Source Sans 3",
+      "ratio": 2.5,
+      "tracking": -0.02,
+      "weight": 600,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#203136",
+      "paper": "#F5F8F6",
+      "accent": "#175F55"
+    },
+    "layout": {
+      "skeleton": "Set a short task title over a ruled worksheet. Include only the fields the task needs. Wrap related inputs in a fieldset with one visible legend. When there is just one group, its legend can supply the title.",
+      "focus": "The first field of the active group, aligned with its legend across the rule.",
+      "desktop": "Within 54rem, give the legend a 12rem left column and stack its labeled controls in a right column up to 32rem wide. Start each group on a new rule. Align the single primary button with the inputs.",
+      "mobile": "At 390px use 16px side gutters. Each legend now sits above its fields. Read label, format hint if needed, input, then inline error. Finish the group before the next legend. The action follows the last field in normal flow.",
+      "rhythm": "Use 16px input text in controls at least 44px high. Keep 4px from label to input, 12px between fields and 32px between fieldsets. Leave 24px before the primary button."
+    },
+    "imagery": {
+      "subject": "The inputs carry the composition. Size each for its expected answer.",
+      "crop": "For a short value, allow its expected character count plus padding. Longer text can use the available measure.",
+      "fallback": "Plain native inputs and a 1px rule at each group boundary."
+    },
+    "motion": {
+      "trigger": "The user submits the entered details.",
+      "effect": "Announce pending while sending. Keep values on failure and offer retry. On success, focus a confirmation heading describing the actual result and fade in the receipt text.",
+      "duration_ms": 220,
+      "reduced": "Show the same result immediately with the same focus and announcement."
+    },
+    "action": {
+      "instruction": "Name the button for its effect, such as ‘Save address’ or ‘Request repair’ when that operation is available. In a local preview, ‘Review answers’ opens the entered values with an Edit action. Show a receipt only after a successful submission.",
+      "label": "[Task verb] [object]"
+    },
+    "why": "Grouping by meaning lets someone check a related set of answers in one pass. Varying field widths gives a clue to the length of each answer.",
+    "sources": [
+      {
+        "url": "https://designsystem.digital.gov/templates/form-templates/#accessibility-guidance",
+        "observation": "USWDS places related controls in a fieldset with a named legend, keeps the controls in document order and aligns validation messages with their inputs.",
+        "strength": "evidence"
+      },
+      {
+        "url": "https://designsystem.digital.gov/templates/form-templates/address-form/",
+        "observation": "The Address form example puts street, city, state and ZIP under one mailing-address legend. Each input has a visible label, and the ZIP input uses a shorter width.",
+        "strength": "evidence"
+      }
+    ],
+    "credit": "U.S. Web Design System, Form templates and Address form. The side legends, typography and colors are original."
+  },
+  {
+    "id": "question-column",
+    "surface": "form",
+    "title": "One question",
+    "summary": "Give one answer the width of a reading column. A large question leads directly into the response, with open paper on either side.",
+    "tags": ["question", "decision", "choose", "choice", "vote", "poll", "rsvp", "eligibility", "single field", "one field", "email only", "waitlist"],
+    "type": {
+      "display": "Spectral",
+      "body": "DM Sans",
+      "ratio": 3.25,
+      "tracking": -0.025,
+      "weight": 500,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#30242A",
+      "paper": "#FBF6EF",
+      "accent": "#75354D"
+    },
+    "layout": {
+      "skeleton": "Make the question itself the heading and the field's label or the radio group's legend. Follow with one answer area. Include a Back link only when there is a previous step to revisit.",
+      "focus": "The question and its answer share one left edge. The question is the largest text on the surface.",
+      "desktop": "Start a 32rem column two grid tracks into a 12-column page. Set the question at 52px. Stack the supplied choices as labeled radio rows, or use one input when the answer is free text. Place the button against the same edge.",
+      "mobile": "At 390px use 20px side gutters and a 36px question. Order any real Back link, question, necessary hint, answer, inline correction, then the button. Let long labels wrap inside a tap target at least 44px high.",
+      "rhythm": "Leave 32px between the question block and the answer area. Separate choice rows by 8px and leave 24px before the primary button."
+    },
+    "imagery": {
+      "subject": "The live answer is the visual element. A selected radio has a solid center as well as an accent outline.",
+      "crop": "Let each answer label use the column width next to its control.",
+      "fallback": "Use the browser's radio mark or a labeled text box."
+    },
+    "motion": {
+      "trigger": "The reader activates the button after answering.",
+      "effect": "On a valid answer, focus the next question if there is one. On completion, focus a confirmation showing the accepted answer and fade in that text. Preserve the answer when the reader returns to edit it.",
+      "duration_ms": 200,
+      "reduced": "Move focus and show the answer immediately."
+    },
+    "action": {
+      "instruction": "Selecting a radio only changes the answer. Use native arrow-key navigation. Confirm the answer on activation and allow editing. Use ‘Continue’ only if a real next step opens.",
+      "label": "Confirm answer"
+    },
+    "why": "The eye and the keyboard reach the same decision in sequence. Making the heading do the work of the label lets the reader hear the question once.",
+    "sources": [
+      {
+        "url": "https://design-system.service.gov.uk/patterns/question-pages/#start-by-asking-one-question-per-page",
+        "observation": "GOV.UK shows the question serving as the main heading inside a legend for a group, or as the label for a single input. The answer controls and one forward action follow it.",
+        "strength": "evidence"
+      }
+    ],
+    "credit": "GOV.UK Design System, Question pages. The offset column, serif scale and plum palette are original."
   }
 ]

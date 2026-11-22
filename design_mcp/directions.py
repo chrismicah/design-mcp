@@ -21,6 +21,44 @@ _TERMS = {
     "landing": ("landing", "launch", "product page", "bag", "shop", "roaster", "retail"),
 }
 
+_FORM_SEPARATORS = str.maketrans("-\u2010\u2011", "   ")
+_FORM_NAME = r"(?:forms?|questionnaires?|surveys?|polls?|rsvp|intake|registration|sign ?(?:in|up)|waitlist)"
+# These phrases name formats, tools or records that have already been collected.
+_NON_ENTRY = re.compile(
+    r"\b(?:long|short|free) forms?\b|\bform factors?\b|\bin the form of\b"
+    r"|\bform a (?:circle|line|team|group)\b|\bform (?:and|follows) function\b"
+    r"|\b(?:completed|submitted|incoming|pending) forms\b"
+    r"|\b(?:pull|merge|api|http) requests?\b"
+    rf"|\b(?:{_FORM_NAME}|requests?|applications?)(?= (?:builders?|submissions?|results?|queues?|logs?|"
+    r"trackers?|counts?|rates?|metrics|analytics|volume|status|dashboards?)\b)"
+)
+_FORM_TASK = re.compile(
+    # Component names and tasks with a known answer structure.
+    rf"\b{_FORM_NAME}\b"
+    r"|\b(?:one|single) (?:question|decision|field)\b"
+    r"|\b(?:register|enroll|vote)\s+(?:for|in|to|on)\b"
+    r"|\b(?:job|grant|permit|membership)\s+application\b"
+    r"|\b(?:access|leave|repair|service)\s+request\b"
+    # Distinguish applying for something from applying a filter, and making a
+    # request from viewing a record. A verb can take a brief-specific object.
+    r"|\bapply(?:ing)?(?=\s+(?:for|online|on|from)\b|\s+to\b(?!\s+(?:all|each|every)\b)|[.!?]|$)"
+    r"|(?:^|\b(?:to|can|could)\s+)request\b"
+    r"|\brequest(?:ing)?\s+(?:a|an|their|your|access|help|leave|time off|support)\b"
+    r"|\b(?:submit|send|file|complete|fill out)\s+(?:[\w-]+\s+){0,3}(?:request|application|feedback)\b"
+    r"|\b(?:collect|enter|provide)\s+(?:(?:their|your|my|a|an)\s+)?"
+    r"(?:names?|email|address(?:es)?|contact details|feedback)\b"
+)
+_PARENT_TASKS = (
+    "landing", "landing page", "product page", "launch", "dashboard", "work queue", "operations board", "dispatch board",
+    "portfolio", "case study", "work index", "pricing", "compare plans", "editorial", "magazine",
+    "article", "mobile ticket", "boarding pass",
+)
+_CLAUSE_BREAK = re.compile(
+    r"\b(?:with|includes?|including|about|of|for|to|where|featuring|showing|that|alongside|plus)\b|[.,;:!?]"
+)
+_FIELD_COLLECTION = re.compile(r"\b(?:collect|ask for|enter|provide|record)\b")
+_ENTRY_OUTCOME = re.compile(r"\b(?:confirmation|submission|invalid|validat\w*|submitted)\b")
+
 
 def _length(value) -> int:
     return len(json.dumps(value, ensure_ascii=False))
@@ -36,6 +74,31 @@ def _match(token: str, brief: str) -> bool:
     return re.search(rf"(?<!\w){re.escape(token.casefold())}(?!\w)", brief) is not None
 
 
+def _is_form_task(text: str) -> bool:
+    text = _NON_ENTRY.sub(" ", text.translate(_FORM_SEPARATORS))
+    entry = _FORM_TASK.search(text)
+    if entry is None and _ENTRY_OUTCOME.search(text):
+        entry = _FIELD_COLLECTION.search(text)
+    if entry is None:
+        return False
+    # The parent can precede the entry ("portfolio with a contact form") or
+    # finish its noun phrase ("signup landing page"). "Mobile" alone is a size.
+    preceding_clauses = _CLAUSE_BREAK.split(text[:entry.end()])[:-1]
+    parent = " ".join(preceding_clauses)
+    tail = _CLAUSE_BREAK.split(text[entry.end():], maxsplit=1)[0].rstrip()
+    return not any(_match(term, parent) or tail.endswith(" " + term) for term in _PARENT_TASKS)
+
+
+def _infer_surface(text: str) -> str | None:
+    if _is_form_task(text):
+        return "form"
+    scores = {name: sum(_match(term, text) for term in terms) for name, terms in _TERMS.items()}
+    explicit = [name for name in _TERMS if _match(name, text)]
+    if len(explicit) == 1:
+        return explicit[0]
+    return max(scores, key=scores.get) if any(scores.values()) else None
+
+
 async def direct(brief: str, surface: Surface | None = None, avoid: list[str] | None = None) -> dict:
     """Choose one sourced art direction for a brief. Call first for new interface work.
 
@@ -45,19 +108,15 @@ async def direct(brief: str, surface: Surface | None = None, avoid: list[str] | 
     text = brief.strip().casefold()
     if not text or len(text) > 12000:
         return {"error": "Enter a brief of 1 to 12,000 characters."}
-    genre_scores = {name: sum(_match(term, text) for term in terms) for name, terms in _TERMS.items()}
-    explicit = [name for name in _TERMS if _match(name, text)]
-    if len(explicit) == 1:
-        inferred = explicit[0]
-    else:
-        inferred = max(genre_scores, key=genre_scores.get) if max(genre_scores.values()) else "landing"
-    kind = surface or inferred
+    matched = surface or _infer_surface(text)
+    kind = matched or "landing"
     candidates = [row for row in library().values() if row.surface == kind and row.id not in (avoid or [])]
     if not candidates:
         return {"error": f"No reviewed direction remains for {kind}.", "surface": kind}
-    choice = max(candidates, key=lambda row: sum(_match(term, text) for term in row.tags))
+    tag_text = text.translate(_FORM_SEPARATORS) if kind == "form" else text
+    choice = max(candidates, key=lambda row: sum(_match(term, tag_text) for term in row.tags))
     questions = []
-    if surface is None and not any(genre_scores.values()) and len(text.split()) <= 8:
+    if matched is None and len(text.split()) <= 8:
         questions = [{"question": "What will people use this screen for?",
                       "options": ["Explore an offering", "Work with information", "Read a story"],
                       "default": "Explore an offering"}]
@@ -80,6 +139,13 @@ async def direct(brief: str, surface: Surface | None = None, avoid: list[str] | 
                    "Omit support regions that would only repeat facts. Keep visual and document order aligned. "
                    "Load the named fonts. Test the action, reading order and legibility at 390 px.",
     }
+    if kind == "form":
+        output["interaction"].update(
+            focus="Bind each persistent label to its input. Give each focused control a 2px paper ring with a 2px ink outer ring.",
+            accent_role="Reserve accent fill for the primary button and checked controls.",
+            keyboard="Use native controls in reading order. On invalid submission, preserve entries and focus the first "
+                     "invalid input. Mark each invalid field aria-invalid and link its correction text with aria-describedby.",
+        )
     return _bounded("direct", output)
 
 
@@ -94,12 +160,18 @@ async def react(direction_id: str, reaction: str, comparison_id: str | None = No
     if row is None:
         return {"error": "Unknown direction ID. Call direct for a reviewed direction."}
     normalized = " ".join(reaction.casefold().split()).strip(".!")
+    keep = ["primary task", "project content", "brand constraints", "accessibility"]
     if normalized in {"calmer", "quieter", "more calm", "less loud"}:
-        delta = {"type_ratio": max(2.5, round(row.type.ratio - .45, 2)),
-                 "accent_usage": "Restrict the accent to the main control and focal marker.",
-                 "spacing": "Increase negative space around the focal block by 20%.",
-                 "motion_ms": min(400, row.motion.duration_ms + 60)}
-        why = "Strengthen the breathing room without losing the primary action."
+        if row.surface == "form":
+            delta = {"spacing": "Increase the gap before the primary button from 24px to 32px."}
+            why = "A little more space separates answering from acting."
+            keep.extend([row.layout.focus, "primary action and its current label"])
+        else:
+            delta = {"type_ratio": max(2.5, round(row.type.ratio - .45, 2)),
+                     "accent_usage": "Restrict the accent to the main control and focal marker.",
+                     "spacing": "Increase negative space around the focal block by 20%.",
+                     "motion_ms": min(400, row.motion.duration_ms + 60)}
+            why = "Strengthen the breathing room without losing the primary action."
     elif normalized in {"bolder", "more bold", "make it pop"}:
         delta = {"type_ratio": min(5, round(row.type.ratio + .45, 2)),
                  "composition": "Increase the focal block's horizontal span by one desktop grid column.",
@@ -122,8 +194,7 @@ async def react(direction_id: str, reaction: str, comparison_id: str | None = No
         why = "Apply the chosen variant's hierarchy to the current project."
     else:
         return {"error": "Try calmer, bolder, too generic, or more like A."}
-    return _bounded("react", {"direction_id": row.id, "changes": delta, "why": why,
-                              "keep": ["primary task", "project content", "brand constraints", "accessibility"]})
+    return _bounded("react", {"direction_id": row.id, "changes": delta, "why": why, "keep": keep})
 
 
 async def check(source_code: str) -> dict:

@@ -9,7 +9,7 @@ from .models.visual_analyzer import contrast_ratio
 from .resources import read_json
 
 
-Surface = Literal["landing", "dashboard", "mobile", "portfolio", "pricing", "editorial"]
+Surface = Literal["landing", "dashboard", "mobile", "portfolio", "pricing", "editorial", "form"]
 Text = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=420)]
 Slug = Annotated[str, StringConstraints(pattern=r"^[a-z0-9]+(?:-[a-z0-9]+)*$", max_length=64)]
 Hex = Annotated[str, StringConstraints(pattern=r"^#[0-9a-fA-F]{6}$")]
