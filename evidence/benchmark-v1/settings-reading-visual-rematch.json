@@ -1,0 +1,209 @@
+{
+  "summary": {
+    "requested_pairs": 36,
+    "judged_pairs": 1,
+    "none": 95.83333333333334,
+    "settings-persistence": 95.83333333333334,
+    "difference": 0.0,
+    "wins_ties_losses": [
+      0,
+      1,
+      0
+    ],
+    "median_usage": {
+      "none": {
+        "input_tokens": 20536,
+        "cached_input_tokens": 0,
+        "output_tokens": 23202,
+        "elapsed_seconds": 472.02
+      },
+      "settings-persistence": {
+        "input_tokens": 64096,
+        "cached_input_tokens": 41472,
+        "output_tokens": 15166,
+        "elapsed_seconds": 309.82
+      }
+    }
+  },
+  "cases": {
+    "settings-reading": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/45004741879",
+      "cells": {
+        "settings-persistence": {
+          "generation": {
+            "usage": {
+              "input_tokens": 64096,
+              "cached_input_tokens": 41472,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 15166,
+              "reasoning_output_tokens": 11710
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "treatment_call": true,
+            "direct_call": true,
+            "status": "passed",
+            "case": "settings-reading",
+            "arm": "settings-persistence",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "1e024aeb8559e4f84639c3db5cc2453d3ac85e5a464a61ef37df14dc54a4c9be",
+            "mcp_config_sha256": "2e3a8b7d41bc118fe7cf46f6f969bdb1ae7e848be9ecf9af1c75550b30736a80",
+            "elapsed_seconds": 309.82,
+            "exit_code": 0,
+            "trace_sha256": "a66d485101c4454e8e8f180c12e8c8450d4d47079988997d6a5febaa557adf99",
+            "html_sha256": "21d72c75b8526c3b69e9ade88eb2e53cc61f9e56f8bddf4620e802d29c14b2cc"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "219a5317eac5df4b2661087adfed100bbe090a24ac0a36c613e8f4e421ebc99e",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "824f5872ce9d0573d07f3986527ef4f7e683ce6084d5fce53e4c17663c2c8bc9",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 20536,
+              "cached_input_tokens": 0,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 23202,
+              "reasoning_output_tokens": 18856
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "settings-reading",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "1e024aeb8559e4f84639c3db5cc2453d3ac85e5a464a61ef37df14dc54a4c9be",
+            "elapsed_seconds": 472.02,
+            "exit_code": 0,
+            "trace_sha256": "66d6eec076a1e3c8c69acb4d9a3e126f2059540ba82d15c5343d4ee9184a610b",
+            "html_sha256": "f8ed62f41630774cfec30c06f976d245555c0e86078e8e185cec254a8ab2f210"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "f611752fed377132585dc1e4a3347250bc84a5a215e83f27e63d11e17f4f3687",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "1f3751ed34663d742311f3c6c2345c9e46b61ffd611b206c5c4a7c164cdb7485",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "settings-reading",
+        "surface": "settings",
+        "blind_key": {
+          "A": "settings-persistence",
+          "B": "none"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The title leads directly to Text size and Line spacing, with reset beneath the choices and a labeled recipe preview beside the form on desktop and below it on mobile."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "Each label sits close to its pair of equal-width choices, and the preview moves from a separate desktop column to the same side margins as the mobile form."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The serif title fits on one line even at 390 pixels, and bold sans-serif labels distinguish the settings from the generously spaced two-line recipe sample."
+            },
+            "color": {
+              "score": 3,
+              "evidence": "Dark green text reads clearly on both pale surfaces, and the slight difference between option fills leaves the darker border and radio dot to carry most of the selection cue."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Filled dots and heavier labels identify the selections at both widths, and both browser trees expose named radio groups, checked values, a reset button and a named Recipe preview region."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "Both default views show Standard and Comfortable selected, Large and Compact available, a \u201cReset to defaults\u201d button and the exact sample \u201cRest dough for 20 minutes.\u201d"
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "The mobile layout puts both settings directly under the title, but on desktop the larger, dark-framed preview draws the eye ahead of the controls."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "Shared borders group each pair of choices, and the wide desktop gutter becomes a clear vertical gap between reset and preview on mobile."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The narrow serif title breaks between words on desktop and fits on one line on mobile, while the heavier sans-serif option labels stay distinct from the recipe text."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The lime fill makes Standard and Comfortable immediately distinguishable from the off-white alternatives, and the forest-green frame clearly sets the preview apart at both widths."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Filled and hollow radio circles distinguish selection independently of color, and both browser trees identify the group names, checked options, reset button and Preview region."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "Both widths show the four requested options with Standard and Comfortable selected, an underlined \u201cReset to defaults\u201d action and a preview reading \u201cRest dough for 20 minutes.\u201d"
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26186,
+          "cached_input_tokens": 17792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4324,
+          "reasoning_output_tokens": 3676
+        },
+        "scores": {
+          "settings-persistence": 95.83333333333334,
+          "none": 95.83333333333334
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "219a5317eac5df4b2661087adfed100bbe090a24ac0a36c613e8f4e421ebc99e",
+          "A-390.png": "824f5872ce9d0573d07f3986527ef4f7e683ce6084d5fce53e4c17663c2c8bc9",
+          "B-1440.png": "f611752fed377132585dc1e4a3347250bc84a5a215e83f27e63d11e17f4f3687",
+          "B-390.png": "1f3751ed34663d742311f3c6c2345c9e46b61ffd611b206c5c4a7c164cdb7485"
+        },
+        "judge_prompt_sha256": "3ce10119f3a0719fd390c536b4b18409a8186f6aaf562385673d21ca476b85bc"
+      }
+    }
+  }
+}
