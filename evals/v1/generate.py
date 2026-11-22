@@ -62,14 +62,15 @@ def client_command(args, mcp_config):
     return [*command, "-"]
 
 
-def mcp_table(command, name, server_args, server_env, verified_read_only_tools=()):
+def mcp_table(command, name, server_args, server_env, verified_read_only_tools=(), startup_timeout=None):
     environment = ",".join(f"{json.dumps(key)}={json.dumps(value)}" for key, value in server_env.items())
     scoped_tools = ""
     if verified_read_only_tools:
         scoped_tools = f"enabled_tools={json.dumps(verified_read_only_tools)},"
     approval = "approve" if verified_read_only_tools else "writes"
+    startup = f"startup_timeout_sec={startup_timeout}," if startup_timeout else ""
     return (f"mcp_servers={{{json.dumps(name)}={{command={json.dumps(str(command))},"
-            f"args={json.dumps(server_args)},required=true,{scoped_tools}default_tools_approval_mode=\"{approval}\","
+            f"args={json.dumps(server_args)},required=true,{startup}{scoped_tools}default_tools_approval_mode=\"{approval}\","
             f"env={{{environment}}}}}}}")
 
 
@@ -168,8 +169,34 @@ def matched_response_text(calls, required_hashes):
     return sorted(matched)
 
 
+def library_retrieval(calls, mode):
+    ranked = set()
+    read = set()
+    for call in calls:
+        result = call.get("result")
+        if not isinstance(result, dict) or result.get("is_error") or result.get("isError"):
+            continue
+        data = result.get("structured_content")
+        if not isinstance(data, dict):
+            continue
+        if call["tool"] == "search_designs":
+            if data.get("retrieval_mode") != mode:
+                return [], "design-library-mode-mismatch"
+            rows = data.get("results")
+            if isinstance(rows, list) and 0 < len(rows) <= 3:
+                ranked.update(row["id"] for row in rows if isinstance(row, dict) and isinstance(row.get("id"), str))
+        elif call["tool"] == "get_design":
+            entry_id = data.get("id")
+            arguments = call.get("arguments")
+            if (isinstance(entry_id, str) and entry_id in ranked and not data.get("error")
+                    and isinstance(arguments, dict) and arguments.get("id") == entry_id):
+                read.add(entry_id)
+    return sorted(read), "passed" if read else "design-library-result-unread"
+
+
 def parse_cell(events, expect_mcp, server_name="design-mcp", expected_tool="direct", expected_direction=None,
-               required_shadcn_items=(), required_response_text_sha256=None, expected_direct_brief=None):
+               required_shadcn_items=(), required_response_text_sha256=None, expected_direct_brief=None,
+               design_library_mode=None):
     result = {}
     completed_items = [event["item"] for event in events if event.get("type") == "item.completed"]
     turn = next((e for e in reversed(events) if e.get("type") == "turn.completed"), {})
@@ -224,6 +251,11 @@ def parse_cell(events, expect_mcp, server_name="design-mcp", expected_tool="dire
         result["matched_response_tools"] = matched
         if result["status"] == "passed" and not matched:
             result["status"] = "required-mcp-response-missing"
+    if design_library_mode is not None:
+        read, status = library_retrieval(eligible_calls, design_library_mode)
+        result["read_design_library_ids"] = read
+        if result["status"] == "passed":
+            result["status"] = status
     match = re.fullmatch(r"\s*```html\s*\n(.*)\n```\s*", messages[-1], re.S | re.I) if messages else None
     html = match.group(1) + "\n" if match else None
     if not html or not re.search(r"<body(?:\s[^>]*)?>", html, re.I):
@@ -252,6 +284,9 @@ def run_cell(args, case, arm):
     required_response_text_sha256 = args.required_response_text_sha256 if arm != "none" else {}
     if required_response_text_sha256:
         identity["required_response_text_sha256"] = required_response_text_sha256
+    mode = getattr(args, "design_library_mode", None) if arm != "none" else None
+    if mode:
+        identity["design_library_mode"] = mode
     if args.no_shell:
         identity["shell_tool"] = False
     if arm not in {"none", "v2"}:
@@ -284,7 +319,8 @@ def run_cell(args, case, arm):
                               expected_tool=args.expected_tool, expected_direction=expected_direction,
                               required_shadcn_items=required_shadcn_items,
                               required_response_text_sha256=required_response_text_sha256,
-                              expected_direct_brief=case["brief"] if unhinted and arm != "none" else None)
+                              expected_direct_brief=case["brief"] if unhinted and arm != "none" else None,
+                              design_library_mode=mode)
     if timed_out:
         result["status"] = "timeout"
     elif exit_code:
@@ -323,6 +359,8 @@ def main():
     server.add_argument("--server-url", help="Public credential-free HTTPS endpoint for a separate hosted comparator")
     server.add_argument("--loopback-server-url", help="Fixture comparator at http://127.0.0.1:PORT/mcp")
     p.add_argument("--competitor-config", type=Path, help="JSON object with name, args, env, and expected_tool or expected_tools")
+    p.add_argument("--design-library-mode", choices=("keyword", "hybrid"),
+                   help="Fix the mode for the reviewed Design Library stdio adapter")
     p.add_argument("--treatment-only", action="store_true", help="Reuse sealed controls from the same benchmark")
     p.add_argument("--treatment-label", help="Output arm name for an isolated build of Design MCP")
     p.add_argument("--codex", default="codex")
@@ -392,6 +430,12 @@ def main():
                                for digest in hashes.values())):
                 p.error("required_response_text_sha256 must map expected tools to SHA-256 digests")
             args.required_response_text_sha256 = hashes
+    if args.design_library_mode:
+        if (not args.server or args.server_name != "design-library" or args.server_args or args.treatment_label
+                or set(args.expected_tool) != {"search_designs", "get_design"}):
+            p.error("Use the mode with the Design Library visual adapter, its config and no treatment label")
+        args.server_args = [args.design_library_mode]
+        args.treatment = f"design-library-{args.design_library_mode}"
     if args.treatment_label:
         if args.competitor_config or args.treatment_label == "none" or not re.fullmatch(
             r"[a-z0-9][a-z0-9-]{0,47}", args.treatment_label
@@ -414,7 +458,7 @@ def main():
             p.error(str(error))
     else:
         args.mcp_config = mcp_table(args.server, args.server_name, args.server_args, args.server_env,
-                                    verified_read_only_tools)
+                                    verified_read_only_tools, startup_timeout=60 if args.design_library_mode else None)
     tasks = json.loads((BASE_DIR / "tasks.json").read_text(encoding="utf-8"))
     if args.case:
         requested = set(args.case)

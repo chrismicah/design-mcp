@@ -179,6 +179,42 @@ def test_archived_control_pin_rejects_a_self_consistent_substitution(benchmark, 
         benchmark_cells(root, spec, pinned_only=True)
 
 
+def test_library_mode_is_replayed_when_admitting_a_visual_arm(benchmark):
+    root, spec = benchmark
+    spec["arms"] = ["router", "design-library-keyword", "design-library-hybrid"]
+    spec["directions"].pop("candidate")
+    for mode in ("keyword", "hybrid"):
+        arm = f"design-library-{mode}"
+        cell = root / spec["case"] / arm
+        cell.mkdir()
+        html = f"<body>{mode} fixture</body>\n"
+        prompt = generate.generation_prompt(spec["brief"])
+        usage = {"input_tokens": 100}
+        events = [{"type": "thread.started", "thread_id": arm}]
+        for tool, arguments, result in (
+            ("search_designs", {"query": "worklist"}, {"retrieval_mode": mode, "results": [{"id": "worklist"}]}),
+            ("get_design", {"id": "worklist"}, {"id": "worklist"}),
+        ):
+            events.append({"type": "item.completed", "item": {"type": "mcp_tool_call", "server": "design-library",
+                           "tool": tool, "arguments": arguments, "status": "completed",
+                           "result": {"structured_content": result}}})
+        events.extend([{"type": "item.completed", "item": {"type": "agent_message", "text": f"```html\n{html}```"}},
+                       {"type": "turn.completed", "usage": usage}])
+        trace = "".join(json.dumps(event) + "\n" for event in events)
+        for name, content in (("prompt.txt", prompt), ("client.jsonl", trace), ("index.html", html)):
+            (cell / name).write_text(content)
+        receipt = {"case": spec["case"], "arm": arm, "design_library_mode": mode, "status": "passed", "usage": usage,
+                   "client": "test", "model": "test", "effort": "max",
+                   "prompt_sha256": generate.sha256(prompt.encode()), "html_sha256": generate.sha256(html.encode()),
+                   "trace_sha256": generate.sha256(trace.encode())}
+        (cell / "receipt.json").write_text(json.dumps(receipt))
+    assert list(benchmark_cells(root, spec)) == spec["arms"]
+    receipt["design_library_mode"] = "keyword"
+    (cell / "receipt.json").write_text(json.dumps(receipt))
+    with pytest.raises(ValueError, match="receipt mode differs"):
+        benchmark_cells(root, spec)
+
+
 @pytest.mark.parametrize("mutant,message", [
     ("html", "hash mismatch"),
     ("prompt", "hash mismatch"),

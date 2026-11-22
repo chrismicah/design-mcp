@@ -8,6 +8,7 @@ from pilot import generate
 
 HASH_FIELDS = ("prompt_sha256", "html_sha256", "trace_sha256")
 GENERATOR_FIELDS = ("client", "model", "effort", "shell_tool")
+LIBRARY_MODES = {"design-library-keyword": "keyword", "design-library-hybrid": "hybrid"}
 
 
 def control_conditions(receipt):
@@ -28,11 +29,12 @@ def load_spec(path):
     if not all(isinstance(spec[field], str) and spec[field].strip() for field in ("brief", "task")):
         raise ValueError("The benchmark needs a generation brief and a critic task")
     directions = spec.get("directions", {})
-    if (not isinstance(directions, dict) or not directions.keys() <= set(arms) - {"none", "shadcn"}
+    design_arms = set(arms) - {"none", "shadcn", *LIBRARY_MODES}
+    if (not isinstance(directions, dict) or not directions.keys() <= design_arms
             or not all(isinstance(value, str) and re.fullmatch(slug, value) for value in directions.values())):
         raise ValueError("Expected direction IDs must refer to Design MCP arms")
     unhinted = spec.get("require_unhinted_direct", False)
-    if type(unhinted) is not bool or (unhinted and directions.keys() != set(arms) - {"none"}):
+    if type(unhinted) is not bool or (unhinted and (directions.keys() != design_arms or design_arms != set(arms) - {"none"})):
         raise ValueError("An unhinted comparison requires a direction ID for each Design MCP arm")
     journey = spec.get(OPTION, False)
     if type(journey) is not bool or (journey and (spec["case"] != "cold-storage" or not unhinted)):
@@ -85,14 +87,21 @@ def benchmark_cells(cells, spec, *, pinned_only=False):
             raise ValueError(f"Generation hash mismatch for {case}/{arm}")
         events = generate.read_trace(trace)
         server, tools, items = "design-mcp", "direct", ()
+        mode = LIBRARY_MODES.get(arm)
         if arm == "shadcn":
             config = json.loads((generate.BASE_DIR / "shadcn-maintenance.json").read_bytes())
             server, tools, items = config["name"], config["expected_tools"], config["required_shadcn_items"]
+        elif mode:
+            config = json.loads((generate.BASE_DIR / "design-library-visual.json").read_bytes())
+            server, tools = config["name"], config["expected_tools"]
+            if receipt.get("design_library_mode") != mode:
+                raise ValueError(f"Design Library receipt mode differs for {case}/{arm}")
         direction = spec.get("directions", {}).get(arm)
         parsed, reply = generate.parse_cell(events, expect_mcp=arm != "none", server_name=server,
                                            expected_tool=tools, expected_direction=direction,
                                            required_shadcn_items=items,
-                                           expected_direct_brief=spec["brief"] if unhinted and arm != "none" else None)
+                                           expected_direct_brief=spec["brief"] if unhinted and arm != "none" else None,
+                                           design_library_mode=mode)
         if (parsed["status"] != "passed" or not parsed["usage"] or parsed["usage"] != receipt["usage"]
                 or reply is None or reply.encode() != html):
             raise ValueError(f"Generation trace failed replay for {case}/{arm}: {parsed['status']}")
