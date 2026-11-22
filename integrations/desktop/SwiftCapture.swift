@@ -7,14 +7,14 @@ enum DesignCaptureFailure: Error {
 }
 
 struct DesignCapture {
-    private struct Region: Codable {
+    private struct Region: Encodable {
         let id: String
         let role: String
         let bounds: [Double]
         let hittable: Bool
     }
 
-    private struct Snapshot: Codable {
+    private struct Snapshot: Encodable {
         let version = 1
         let platform = "swift"
         let viewport: [Double]
