@@ -1,0 +1,46 @@
+name: Installed Electron review on macOS
+
+on:
+  push:
+    branches: [design-mcp/electron-mac-proof]
+
+permissions:
+  contents: read
+
+jobs:
+  electron:
+    runs-on: macos-15
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Install Design MCP and the pinned Electron runtime
+        shell: bash
+        run: |
+          python -m venv "$RUNNER_TEMP/design-review"
+          "$RUNNER_TEMP/design-review/bin/python" -m pip install .
+          npm install --prefix "$RUNNER_TEMP/review-electron" --no-audit --no-fund electron@43.4.0
+          "$RUNNER_TEMP/review-electron/node_modules/.bin/install-electron"
+      - name: Capture and exercise the owned app window
+        shell: bash
+        run: |
+          sw_vers
+          uname -m
+          cli="$RUNNER_TEMP/design-review/bin/design-mcp"
+          electron="$RUNNER_TEMP/review-electron/node_modules/electron/dist/Electron.app/Contents/MacOS/Electron"
+          "$electron" evals/vision/electron_smoke.mjs "$cli" "$RUNNER_TEMP/electron-proof"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: electron-mac-receipt
+          path: |
+            ${{ runner.temp }}/electron-proof/receipt.json
+            ${{ runner.temp }}/electron-proof/before.json
+            ${{ runner.temp }}/electron-proof/after.json
+            ${{ runner.temp }}/electron-proof/*.png
+          if-no-files-found: warn
+          retention-days: 7

@@ -15,6 +15,33 @@ app.setPath("userData", join(destination, "isolated-user-data"));
 const proof = { electron: process.versions.electron, platform: process.platform };
 let window;
 
+async function focusWindow() {
+  if (process.platform === "darwin") {
+    app.focus({ steal: true });
+    window.focus();
+    window.webContents.focus();
+    for (let pending = 0; pending < 30 && !window.isFocused(); pending++) await delay(50);
+    assert.equal(window.isFocused(), true);
+    proof.input = "focused Electron webContents";
+  } else {
+    const windowId = execFileSync("xdotool", ["search", "--onlyvisible", "--name", "^Desk review fixture$"],
+      { encoding: "utf8" }).trim().split("\n").at(-1);
+    execFileSync("xdotool", ["windowfocus", "--sync", windowId]);
+    proof.input = "X11 keyboard";
+  }
+}
+
+function press(keyCode) {
+  if (process.platform === "darwin") {
+    assert.equal(window.isFocused(), true);
+    window.webContents.sendInputEvent({ type: "keyDown", keyCode });
+    if (keyCode === "Return") window.webContents.sendInputEvent({ type: "char", keyCode });
+    window.webContents.sendInputEvent({ type: "keyUp", keyCode });
+  } else {
+    execFileSync("xdotool", ["key", "--clearmodifiers", keyCode]);
+  }
+}
+
 async function capture(name) {
   const evidencePath = join(destination, name + ".json");
   const controls = await exportDesignCapture(window, evidencePath);
@@ -41,9 +68,7 @@ app.whenReady().then(async () => {
     window.removeMenu();
     await window.loadFile(fixture);
     assert.equal(window.webContents.getURL(), pathToFileURL(fixture).href);
-    const windowId = execFileSync("xdotool", ["search", "--onlyvisible", "--name", "^Desk review fixture$"],
-      { encoding: "utf8" }).trim().split("\n").at(-1);
-    execFileSync("xdotool", ["windowfocus", "--sync", windowId]);
+    await focusWindow();
     const observe = () => window.webContents.executeJavaScript(
       "({ focus: document.activeElement.id, status: document.querySelector('#status').textContent })"
     );
@@ -51,7 +76,7 @@ app.whenReady().then(async () => {
     for (let step = 0; step < 6; step++) {
       proof.initial = await observe();
       if (proof.initial.focus === "reveal") break;
-      execFileSync("xdotool", ["key", "--clearmodifiers", "Tab"]);
+      press("Tab");
       await delay(50);
     }
     assert.deepEqual(proof.initial, { focus: "reveal", status: "Control covered" });
@@ -59,7 +84,7 @@ app.whenReady().then(async () => {
     assert.deepEqual(before.findings, [["control-not-hittable", "r2"], ["control-clipped", "r4"]]);
     proof.before = before.findings;
 
-    execFileSync("xdotool", ["key", "--clearmodifiers", "Return"]);
+    press("Return");
     for (let step = 0; step < 30; step++) {
       proof.updated = await observe();
       if (proof.updated.status === "Control revealed") break;
