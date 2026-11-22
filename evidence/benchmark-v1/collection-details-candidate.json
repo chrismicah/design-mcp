@@ -1,7 +1,7 @@
 {
   "candidate": "8fa803574c76fefb1b17eaf67680b0db3654e2f1",
-  "scope": "One pantry rematch against the exact original plain HTML. Separate from the frozen benchmark.",
-  "status": "not-promoted",
+  "scope": "Pantry rematch against the original plain HTML. The exact candidate returned the fallback platform-sign on the generator paraphrase. The collection-details direction received no visual ballot.",
+  "status": "routing-miss",
   "summary": {
     "requested_pairs": 36,
     "judged_pairs": 1,
@@ -372,5 +372,19 @@
       }
     },
     "largest_payload": 4306
+  },
+  "actual_tool_call": {
+    "arguments": {
+      "surface": "mobile",
+      "brief": "Create one self-contained responsive appointment screen for a resident checking their food pantry collection. A quick glance at Chrome widths 390 and 1440 should surface Friday, 11:15 and 18 Pine Avenue. A single Details button expands inline with the instruction to bring a bag and check in at the side door. These are the only factual details, so avoid invented dates, am/pm, brands, links and extraneous interface copy. Use original compact inline illustration or CSS if useful and optional Google Fonts. The tone should be clear, practical, and dignified. Choose a distinctive art direction for this sparse interface."
+    },
+    "expected_direction_id": "collection-details",
+    "returned_direction_id": "platform-sign"
+  },
+  "routing_fix": {
+    "commit": "4a886f3b195cee2ed8b4c57d18bdc28a49aa0049",
+    "before": "The captured request failed the source replay. The unedited original brief and earlier paraphrase were already covered.",
+    "after": "All 54 direction tests passed, including the captured request, both surface selection paths, and a slot-selection counterexample.",
+    "visual_status": "pending"
   }
 }
