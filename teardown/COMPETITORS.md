@@ -90,6 +90,8 @@ The maintenance comparator now requires a successful response containing a prere
 
 A clean macOS 15 arm64 job installed the pinned npm package and checked the relevance gate against real stdio replies. The unchanged maintenance brief again returned zero items. A targeted search returned Field in 63 ms. The details tool returned all four named components in 132 ms, and the examples tool returned `field-demo` with code in 153 ms. The nonsense control returned zero. The three targeted timings are single observations. [Installed stdio receipt](../evidence/benchmark-v1/shadcn-maintenance-installed.json)
 
+Storybook 10.6.0 exposed seven tools over its local HTTP endpoint. The catalog included the owned maintenance disclosure and its story ID. The component response supplied prop documentation and example JSX. Looking up the indexed story ID returned JSX with the expected variant text. The two missing lookups returned specific protocol errors. In the first run, passing the export identifier `WithEscalation` as `storyName` returned an error that listed the display name and story ID. Catalog, component and story calls took 74, 20 and 16 ms in the successful run. These are single calls against the fixture. [Installed retrieval receipt](../evidence/benchmark-v1/storybook-mcp-probe.json) · [Hosted job](https://github.com/chrismicah/design-mcp/actions/runs/45022932774)
+
 ## Visual scoreboard
 
 | Configuration | Matched briefs judged | Score / 100 |

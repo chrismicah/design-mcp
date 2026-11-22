@@ -1,0 +1,199 @@
+{
+  "fixture": "evals/v1/storybook-fixture",
+  "case_scope": "One owned React maintenance disclosure fixture. Component and story retrieval only.",
+  "version": "10.6.0",
+  "upstream_commit": "a77777356be2aeaff89d7a2b25254db7b2318392",
+  "interpreter": "Node.js 22.21.1",
+  "transport": "HTTP at 127.0.0.1/mcp, FastMCP 4.2.4",
+  "pinned_packages": {
+    "storybook": {
+      "version": "10.6.0",
+      "integrity": "sha512-H48X6AURAFTpfN2zEux6vNesee5Oq8Gxj1IanYmblPZ218sfKSeyyerF1NC7GD7BrruoC8L4/cU0zII4y+d6zw=="
+    },
+    "@storybook/addon-mcp": {
+      "version": "10.6.0",
+      "integrity": "sha512-aQza4iMVgB3OXPMJvcnA193xMdt0sG/0+otGCQu8il6LIuFDP60jD5BXWlQiaVog+swqHrjJCFzuUPE+azz7Kg=="
+    },
+    "@storybook/react-vite": {
+      "version": "10.6.0",
+      "integrity": "sha512-nc1dqnmjGOcDJvPCkAn4Hmu1gi7dNHHoibNmlBp0d1adosejELZxuNjHBkPl/KxZjbzP3jljQHnHB/guxd8e2g=="
+    }
+  },
+  "failed_attempt": {
+    "run": "https://github.com/chrismicah/design-mcp/actions/runs/45022819979",
+    "workflow_commit": "73bbab5a8a9b46aa752576ab074bdbc0d0718cee",
+    "receipt_sha256": "fe92fde1df1eb95a9d0d67a648e1649facd20561f068c8dca9556e073d1c923d",
+    "story_call": {
+      "tool": "docs-show-story",
+      "arguments": {
+        "componentId": "maintenance-disclosure",
+        "storyName": "WithEscalation"
+      },
+      "passed": false,
+      "is_error": true,
+      "matched": [],
+      "milliseconds": 15,
+      "payload_bytes": 218,
+      "payload_sha256": "c250568710eec679aa3b9e28301a812f73b1dea6ad5020fb46948043ac4995ea",
+      "text": "Story \"WithEscalation\" not found for component \"maintenance-disclosure\". Available stories: With Escalation (maintenance-disclosure--with-escalation)"
+    }
+  },
+  "verified_attempt": {
+    "run": "https://github.com/chrismicah/design-mcp/actions/runs/45022932774",
+    "job": 137209596450,
+    "workflow_commit": "51c9d218ac6d0b735dbf8ffd56b6b34858ec8f1a",
+    "artifacts_sha256": {
+      "index.json": "4cce91a7479cf9a828f46fe937a9a8b89b9ec469db0950e93b7ed467f00fb7ef",
+      "package-lock.json": "11d1a956efd57b2d6a9c663c5f28f10aa3017702460a8ab2f7506f8daa10bfc2",
+      "server.log": "10403550d995a27dadb917602fade8beff7ec8f26d68c09761b6bbd92ffd532a",
+      "storybook.json": "d8f9fdcf38d93fd324c738421133eb81b5e1d8d2d71ac32e35cdb69562dd64f3"
+    },
+    "index_story": {
+      "type": "story",
+      "subtype": "story",
+      "id": "maintenance-disclosure--with-escalation",
+      "name": "With Escalation",
+      "title": "Maintenance/Disclosure",
+      "importPath": "./MaintenanceDisclosure.stories.tsx",
+      "componentPath": "./MaintenanceDisclosure.tsx",
+      "tags": [
+        "dev",
+        "test",
+        "manifest",
+        "autodocs"
+      ],
+      "exportName": "WithEscalation"
+    },
+    "tools": [
+      "docs-list",
+      "docs-show",
+      "docs-show-story",
+      "get-storybook-story-instructions",
+      "stories-changed",
+      "stories-find-by-component",
+      "stories-preview"
+    ],
+    "docs_input_schemas": {
+      "docs-list": {
+        "type": "object",
+        "properties": {
+          "withStoryIds": {
+            "type": "boolean",
+            "description": "When true, includes story sub-bullets under each component with story name and story ID. Use this to discover IDs for downstream story-focused workflows without filesystem lookup.",
+            "default": false
+          }
+        },
+        "required": [],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "docs-show": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The component or docs entry ID (e.g., \"button\")"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "docs-show-story": {
+        "type": "object",
+        "properties": {
+          "storyId": {
+            "type": "string",
+            "description": "The story ID, as listed by the docs list tool with withStoryIds: true and shown next to each story in the component documentation (e.g., \"button--primary\"). Prefer this over componentId + storyName whenever you have a story ID."
+          },
+          "componentId": {
+            "type": "string",
+            "description": "The component ID (e.g., \"button\"). Use together with storyName, and only when you have no story ID."
+          },
+          "storyName": {
+            "type": "string",
+            "description": "The human-readable story name (e.g., \"Primary\"). Use together with componentId."
+          }
+        },
+        "required": [],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    "calls": {
+      "catalog": {
+        "tool": "docs-list",
+        "arguments": {
+          "withStoryIds": true
+        },
+        "passed": true,
+        "is_error": false,
+        "matched": [
+          "maintenance-disclosure",
+          "maintenance-disclosure--with-escalation"
+        ],
+        "milliseconds": 74,
+        "payload_bytes": 238,
+        "payload_sha256": "32b7301201f6d07b738ec0f4c342532cd471e7aa31ac9892f21de151d5a6f3ee",
+        "text": "# Components\n\n- MaintenanceDisclosure (maintenance-disclosure): Reveals maintenance escalation instructions.\n  - With Escalation (maintenance-disclosure--with-escalation)"
+      },
+      "component": {
+        "tool": "docs-show",
+        "arguments": {
+          "id": "maintenance-disclosure"
+        },
+        "passed": true,
+        "is_error": false,
+        "matched": [
+          "Reveals maintenance escalation instructions.",
+          "Question shown in the disclosure control."
+        ],
+        "milliseconds": 20,
+        "payload_bytes": 788,
+        "payload_sha256": "4c407ed413d7bdcca41ec394a26d84f50648504ca916a05feb54988f0588e097",
+        "text": "# MaintenanceDisclosure\n\nID: maintenance-disclosure\n\nReveals maintenance escalation instructions.\n\n## Stories\n\n### With Escalation\n\nStory ID: maintenance-disclosure--with-escalation\n\nExample for a building issue that needs immediate attention.\n\n```\nimport { MaintenanceDisclosure } from 'design-mcp-storybook-fixture';\n\nconst WithEscalation = () => <MaintenanceDisclosure label=\"When should I call maintenance?\">Call dispatch if there is standing water.</MaintenanceDisclosure>;\n```\n\n## Props\n\n```\nexport type Props = {\n  /**\n    Question shown in the disclosure control.\n  */\n  label: string;\n  /**\n    Optional details shown after the disclosure opens.\n  */\n  children: ReactNode;\n}\n```"
+      },
+      "story": {
+        "tool": "docs-show-story",
+        "arguments": {
+          "storyId": "maintenance-disclosure--with-escalation"
+        },
+        "passed": true,
+        "is_error": false,
+        "matched": [
+          "Call dispatch if there is standing water."
+        ],
+        "milliseconds": 16,
+        "payload_bytes": 417,
+        "payload_sha256": "23a998d2a4e55dfc0dc44ae872ce6e0229a10677515e80efa6b13710bdf3a5a8",
+        "text": "# MaintenanceDisclosure - With Escalation\n\nExample for a building issue that needs immediate attention.\n\n```\nimport { MaintenanceDisclosure } from 'design-mcp-storybook-fixture';\n\nconst WithEscalation = () => <MaintenanceDisclosure label=\"When should I call maintenance?\">Call dispatch if there is standing water.</MaintenanceDisclosure>;\n```"
+      },
+      "missing-component": {
+        "tool": "docs-show",
+        "arguments": {
+          "id": "design-mcp-missing-component"
+        },
+        "passed": true,
+        "is_error": true,
+        "matched": [],
+        "milliseconds": 15,
+        "payload_bytes": 211,
+        "payload_sha256": "36247e89b1624759cf0b13ab66d2f6597e5ef5fd933a7ae2e6980c052f86403b",
+        "text": "Component or Docs Entry not found: \"design-mcp-missing-component\". Use the docs-list tool to see available components and documentation entries."
+      },
+      "missing-story": {
+        "tool": "docs-show-story",
+        "arguments": {
+          "componentId": "maintenance-disclosure",
+          "storyName": "DesignMcpMissingStory"
+        },
+        "passed": true,
+        "is_error": true,
+        "matched": [],
+        "milliseconds": 16,
+        "payload_bytes": 225,
+        "payload_sha256": "1251ff502f7f1178691bd8e05356802153d2836433ee1961bb8c32c5a9a09085",
+        "text": "Story \"DesignMcpMissingStory\" not found for component \"maintenance-disclosure\". Available stories: With Escalation (maintenance-disclosure--with-escalation)"
+      }
+    }
+  }
+}
