@@ -2,7 +2,7 @@
 set -euo pipefail
 
 usage() {
-  printf 'Usage: %s [--check-host] MACOS_MAJOR ARCH [COMMIT UV_EXECUTABLE NEW_EVIDENCE_DIRECTORY]\n' "$0" >&2
+  printf 'Usage: %s [--check-host] MACOS_MAJOR ARCH [COMMIT UV_EXECUTABLE NEW_EVIDENCE_DIRECTORY [PYTHON_MINOR]]\n' "$0" >&2
   exit 2
 }
 
@@ -12,7 +12,7 @@ if [[ ${1:-} == --check-host ]]; then
   shift
   [[ $# == 2 ]] || usage
 else
-  [[ $# == 5 ]] || usage
+  [[ $# == 5 || $# == 6 ]] || usage
 fi
 
 major=$1
@@ -43,6 +43,11 @@ fi
 
 revision=$3
 [[ $revision =~ ^[0-9a-f]{40}$ ]] || usage
+versions=(3.10 3.11 3.12 3.13)
+if [[ $# == 6 ]]; then
+  [[ $6 =~ ^3\.(10|11|12|13)$ ]] || usage
+  versions=("$6")
+fi
 uv="$(cd "$(dirname "$4")" && pwd -P)/$(basename "$4")"
 [[ -x $uv ]] || usage
 mkdir "$5"
@@ -63,7 +68,7 @@ git -C "$output/source" fetch --no-tags --depth=1 "$repo" "$revision"
 git -C "$output/source" checkout --detach FETCH_HEAD
 [[ $(git -C "$output/source" rev-parse HEAD) == "$revision" ]]
 
-for version in 3.10 3.11 3.12 3.13; do
+for version in "${versions[@]}"; do
   {
     "$uv" --no-config python install "$version"
     interpreter=$("$uv" --no-config python find --managed-python "$version")
@@ -76,5 +81,5 @@ for version in 3.10 3.11 3.12 3.13; do
       "$output/source" "$interpreter" "$output/install-$version" "$repo"
   } 2>&1 | tee "$output/python-$version.log"
 done
-printf 'PASS both installers and stdio smoke on macOS %s %s, Python 3.10–3.13, source %s\n' \
-  "$os_version" "$arch" "$revision" | tee "$output/verified.txt"
+printf 'PASS both installers and stdio smoke on macOS %s %s, Python %s, source %s\n' \
+  "$os_version" "$arch" "${versions[*]}" "$revision" | tee "$output/verified.txt"
