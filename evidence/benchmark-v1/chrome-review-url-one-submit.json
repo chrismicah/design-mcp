@@ -1,0 +1,53 @@
+{
+  "scope": "Keyboard interaction with the installed extension in a disposable headless Chrome profile on Apple Silicon. The normal Chrome profile was not used. No independent design score was run.",
+  "candidate": "9ecf94c02cf8fe1043fa6624620b32ad6851d4ee",
+  "host": {
+    "macos": "26.5.2",
+    "architecture": "arm64",
+    "python": "3.13.3",
+    "browser": "Chrome for Testing 158.0.8127.36"
+  },
+  "public_url": "https://designsystem.digital.gov/templates/form-templates/address-form/",
+  "measurements": {
+    "enter_to_result_ms": 2681,
+    "local_extension_ms": 2542,
+    "public_page_viewport": {
+      "width": 1440,
+      "height": 900,
+      "dpr": 1
+    }
+  },
+  "assertions": {
+    "private_address_rejected": true,
+    "missing_host_recovery": "One step left: connect the local reviewer. Run this in a terminal, then press the button again.",
+    "token_query_refused": true,
+    "first_submit_starts_review": true,
+    "pasted_site_never_opened_in_user_facing_browser": true,
+    "inline_capture_visible": true,
+    "reloaded_same_preview": true,
+    "result_layout_no_horizontal_overflow_at_390": true,
+    "masked_field_count": 5,
+    "visible_result": "No issues flagged in this view. Checked sideways scroll, covered buttons and text contrast on flat backgrounds."
+  },
+  "screenshots": [
+    {
+      "file": "result-desktop.png",
+      "sha256": "c3bbe3e8dc94af105cc500551488c9a9ae06eb4cfe35f99c0bb73b0835abeae0"
+    },
+    {
+      "file": "result-mobile.png",
+      "sha256": "6d11827004d6f561d25266d0cdfe3df0e03a8febe8bbb65e6015c2a1c66aba56"
+    },
+    {
+      "file": "saved-preview.png",
+      "sha256": "0263b92e78a8f59f69d93dfb51a9044f038fc100e935e44607fbf30b5fe1f140"
+    }
+  ],
+  "preview_html_sha256": "30fcf742396aa25e75e5ac8cdc88aaf3d776afacc75a9fc6940a064b7183517b",
+  "embedded_masked_png_sha256": "e32ba3f38ee7089100ca7fee4524e6a9f12403ac0e75c7de757a47ed2b4544c6",
+  "focused_suite": {
+    "tests": 61,
+    "subtests": 86
+  },
+  "native_gpt_computer_use": "pending for this revision; host desktop occupied"
+}

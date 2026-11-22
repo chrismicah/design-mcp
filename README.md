@@ -71,6 +71,7 @@ Try “calmer” after the first draft. The result adjusts focal spacing, the si
 
 ## Review an existing interface
 
+- **Paste a URL in Chrome.** The pasted-URL update adds **Review URL**. The review opens with a masked capture and the first measured issue, or a summary of the checks that ran. Install the linked revision to use this flow, then reload the unpacked extension and reconnect its local host. [Update `9ecf94c`](https://github.com/chrismicah/design-mcp/tree/9ecf94c02cf8fe1043fa6624620b32ad6851d4ee) · [Extension setup](design_mcp/review/README.md#set-up-the-extension) · [Installed Chrome test](evidence/benchmark-v1/chrome-review-url-one-submit.json)
 - **A public website.** With Playwriter 0.12.0 installed, run `design-mcp review https://example.com --playwriter`. The command uses a separate Chrome profile, saves a local preview, and reports any measured finding. [Browser setup](design_mcp/review/README.md)
 - **The active Chrome tab.** Load the extension from the folder printed by `design-mcp review --extension-path`. Open the toolbar popup, choose **Review this page**, and follow its one-time host setup. [Extension setup](design_mcp/review/README.md#set-up-the-extension)
 - **Your SwiftUI or Electron app.** Use the app-specific exporter, then run `design-mcp review-app capture.json` to check the visible controls for clipping and occlusion. [Swift exporter](integrations/desktop/SwiftCapture.swift) · [Electron exporter](integrations/desktop/electron.mjs)
@@ -79,7 +80,7 @@ GPT Computer Use verified the `f17bd6f` Chrome extension on the reference Mac. I
 
 On a hosted Mac, ten fresh Chrome profiles took a median **7.68 seconds** each to review the same public URL at both widths and save the local preview. All ten produced the expected masked images. [Public URL timing](evidence/benchmark-v1/public-url-paired-timing.json)
 
-GPT Computer Use tested the pasted-address flow on the current `7bccfc1` install. It opened the public address form from the Chrome extension, scanned it, and reloaded the locally saved preview. The scan reported four masked fields in 184 ms. The same install separately captured the page with Playwriter at desktop and mobile widths. [Reference Mac proof](evidence/benchmark-v1/reference-mac-pasted-url-7bccfc1.json)
+GPT Computer Use tested the earlier two-step pasted-address flow on `7bccfc1`. It opened the public address form, pressed the toolbar Scan action, and reloaded the locally saved preview. The scan reported four masked fields in 184 ms after the page was already open. The same install separately captured the page with Playwriter at desktop and mobile widths. [Reference Mac proof](evidence/benchmark-v1/reference-mac-pasted-url-7bccfc1.json)
 
 GPT Computer Use also exercised the SwiftUI and Electron fixtures on the reference Mac. SwiftUI exposed a new control after Reveal, and the installed CLI counted five then six controls in the hosted geometry captures. In Electron, Tab and Return revealed the covered button. The installed CLI reviewed the fresh local captures and reported that occlusion cleared while clipping persisted. [SwiftUI evidence](evidence/benchmark-v1/reference-mac-desktop-f17bd6f.json) · [Electron evidence](evidence/benchmark-v1/reference-mac-electron-f17bd6f.json)
 
