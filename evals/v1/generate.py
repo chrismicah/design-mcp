@@ -366,6 +366,8 @@ def main():
     p.add_argument("--codex", default="codex")
     p.add_argument("--model", required=True)
     p.add_argument("--effort", default="max")
+    p.add_argument("--tasks", type=Path, default=BASE_DIR / "tasks.json",
+                   help="Use a separate brief set without replacing the frozen tasks")
     p.add_argument("--case", action="append")
     p.add_argument("--expect-direction", action="append", default=[], metavar="CASE=ID",
                    help="Require one Design MCP direct reply with this direction for each selected case")
@@ -459,7 +461,14 @@ def main():
     else:
         args.mcp_config = mcp_table(args.server, args.server_name, args.server_args, args.server_env,
                                     verified_read_only_tools, startup_timeout=60 if args.design_library_mode else None)
-    tasks = json.loads((BASE_DIR / "tasks.json").read_text(encoding="utf-8"))
+    tasks = json.loads(args.tasks.read_text(encoding="utf-8"))
+    if (not isinstance(tasks, list) or not tasks or
+            any(not isinstance(case, dict) or
+                not isinstance(case.get("id"), str) or
+                not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", case["id"]) or
+                not isinstance(case.get("brief"), str) or not case["brief"].strip()
+                for case in tasks) or len({case["id"] for case in tasks}) != len(tasks)):
+        p.error("Tasks must be a nonempty list of unique brief IDs and brief text")
     if args.case:
         requested = set(args.case)
         tasks = [case for case in tasks if case["id"] in requested]

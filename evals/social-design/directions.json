@@ -1,0 +1,60 @@
+[
+  {
+    "id": "cue-stage",
+    "surface": "portfolio",
+    "title": "The cue changes the stage",
+    "summary": "Let the producer operate the lighting designer's portfolio through the selected cue. The stage itself is the work sample.",
+    "tags": ["lighting cues", "lighting designer", "theatre lighting", "stage lighting"],
+    "type": {"display": "Bricolage Grotesque", "body": "IBM Plex Sans", "ratio": 3.3, "tracking": -0.025, "weight": 800, "license": "OFL-1.1"},
+    "palette": {"ink": "#241826", "paper": "#F1E6F0", "accent": "#69385C"},
+    "layout": {
+      "skeleton": "Place the identity above a single wide illustrated stage, followed by a horizontal cue list and the selected technique. Keep the controls adjacent to the stage.",
+      "focus": "The physical boundary of a wash, side light or backlight cuts across one original stage set, changing the shape of the scene with each selection.",
+      "desktop": "Give the illustration most of the canvas. Align cue names and technique notes below it with the lit set edge.",
+      "mobile": "Put the title, stage, three visible named cue buttons and selected technique in reading order. Keep the stage compact and keep the buttons beside the result.",
+      "rhythm": "Use the width of the stage and generous side margins to set the scale. Let cue names and the technique carry the rest."
+    },
+    "imagery": {
+      "subject": "One original stage silhouette reacts to the supplied amber, white and blue light cues. Use amber #E8AD54 and ice blue #91C2E8 for the corresponding light.",
+      "crop": "Keep the stage, beam boundary and one reference object visible at both widths.",
+      "fallback": "Use a static stage drawing with a different beam shape for each cue. Always show the selected technique in text."
+    },
+    "motion": {"trigger": "Selecting a named cue", "effect": "Crossfade the two illumination states while the set and controls stay fixed.", "duration_ms": 220, "reduced": "Replace the state immediately and keep focus on the cue."},
+    "action": {"instruction": "Use named native buttons with a visible selected state, update the stage and announce the current technique.", "label": "Use the actual cue name"},
+    "why": "The first interaction demonstrates the actual craft and lets a producer compare techniques without finding a separate demo.",
+    "sources": [
+      {"url": "https://bruno-simon.com/", "observation": "Driving the car demonstrates the creative developer's work while the visitor explores the portfolio. The site lists a map, respawn and multiple input methods.", "strength": "evidence"},
+      {"url": "https://toyfight.co/", "observation": "The studio offers standard Work and Connect navigation alongside an optional themed command interface.", "strength": "evidence"}
+    ],
+    "credit": "Original stage composition inspired by Bruno Simon and ToyFight. Use only original artwork."
+  },
+  {
+    "id": "level-cross-section",
+    "surface": "editorial",
+    "title": "The river changes the town",
+    "summary": "Build the story along one measurable cross-section. A selectable elevation changes the illustrated bank and the list of affected places.",
+    "tags": ["water level", "elevations", "river gauge", "riverside", "rising river"],
+    "type": {"display": "Barlow Condensed", "body": "Source Sans 3", "ratio": 3.6, "tracking": -0.024, "weight": 800, "license": "OFL-1.1"},
+    "palette": {"ink": "#152C39", "paper": "#EAF0EF", "accent": "#216373"},
+    "layout": {
+      "skeleton": "Set a short headline above one illustrated river section. Set the height rail beside the bank and pair it with the effect list at the selected level.",
+      "focus": "One water line crosses real marked elevations and shows exactly which named places become unavailable.",
+      "desktop": "Run the section wide with level markers along the left edge and the current effects legible to its right.",
+      "mobile": "Show a compact section, named level controls and the current list of closures. Keep the controls and result adjacent and readable.",
+      "rhythm": "Let the heights set the spacing of the rail. Group the effect list by the active reading, preserving every supplied fact."
+    },
+    "imagery": {
+      "subject": "Draw an original riverbank section with labels for the path, ferry and bridge supplied by the brief. Use slate #70848A for the bank and gold #E4B659 to mark closures alongside text.",
+      "crop": "Keep every elevation marker and crossing visible. Simplify the illustration before removing labels.",
+      "fallback": "Use three stacked levels with the selected elevation and cumulative effects next to each. Keep selection operable by keyboard."
+    },
+    "motion": {"trigger": "Selecting a level", "effect": "Move only the water line to the new elevation and update the effects immediately.", "duration_ms": 250, "reduced": "Jump to the selected elevation without any movement."},
+    "action": {"instruction": "Use named native controls for the exact elevations, expose the selected level and list all closures at or below it in readable text.", "label": "Use each supplied level and its units"},
+    "why": "The water line makes the relationship between height and closures visible. The text and controls still let a visitor answer the question quickly.",
+    "sources": [
+      {"url": "https://neal.fun/space-elevator/", "observation": "The ascent orders the exhibits by real altitude. The Kármán line is one of the named markers.", "strength": "evidence"},
+      {"url": "https://neal.fun/deep-sea/", "observation": "Depth provides the organizing scale of an explorable ocean story.", "strength": "evidence"}
+    ],
+    "credit": "Original river cross-section inspired by Neal Agarwal's single-axis stories."
+  }
+]

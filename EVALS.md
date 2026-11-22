@@ -71,6 +71,8 @@ The LLM judge sees the brief, browser observations and four screenshots for each
 
 ## Candidate decisions
 
+The X and Reddit study adds two experimental directions outside the default catalog and compares them against the installed MCP on new briefs. The stdio preflight selected the stage-lighting cue and river cross-section on their target briefs. The permit form response and all 36 frozen brief responses matched in full. Codex reported 99% of its weekly allowance in use, so the dispatch stopped before generation. No visual score changed. [Social reference study](research/SOCIAL-DESIGN.md) · [Matched tasks](evals/social-design/README.md) · [Preflight](evidence/benchmark-v1/social-design-preflight.json)
+
 The cold-storage runner now verifies that both Design MCP arms use the exact brief as the sole argument to `direct`. A synthetic three-arm run passed with the original brief. Supplying a `dashboard` hint produced the expected direction but failed generation eligibility before any browser or judge ran. The original prompt and parser results matched all 72 archived generator traces across the 36 frozen pairs. The cold-storage visual comparison remains pending. [Generation and replay proof](evidence/benchmark-v1/unhinted-direct-gate.json)
 
 | Candidate | Observed change | Status |
