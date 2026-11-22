@@ -36,6 +36,14 @@ if SURFACE != "legacy":
     mcp.tool(check, annotations=local_read)
 
 
+def enable_browser_review():
+    from .review.tool import review_page
+
+    mcp.tool(review_page, annotations=ToolAnnotations(
+        readOnlyHint=True, destructiveHint=False, idempotentHint=False, openWorldHint=True,
+    ))
+
+
 def legacy_tool(function):
     if SURFACE != "v2":
         mcp.tool(function)

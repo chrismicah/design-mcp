@@ -1,6 +1,6 @@
 # Page review
 
-Scan a web page, get the first thing to fix, and see the change on the page's own pixels. Everything runs on this computer. Nothing is uploaded.
+The Chrome extension and review CLI scan a page locally and show the first measured issue. The optional MCP tool sends the captured image and layout facts to your connected client for visual critique.
 
 The installed CLI captured the USWDS address form at desktop and mobile widths through Playwriter. Both views retained the masked Street address field in the eight-region context. On the reference Mac, GPT Computer Use exercised Chrome's missing-host recovery, switched to After by keyboard, and reopened the same preview. [Installed URL run](../../evidence/benchmark-v1/isolated-url-session-e1cd4eb.json) · [Reference Mac walkthrough](../../evidence/benchmark-v1/reference-mac-chrome-f17bd6f.json)
 
@@ -16,7 +16,19 @@ The extension's **Review URL** uses the local reviewer and the standard Chrome i
 
 Pasted-URL capture checks the resolved address before opening each browser TCP connection. The first hostname stays pinned to its checked address, and assets on other hosts go through the same address check. Hosted Chrome refused an owned loopback fixture both by IP and by a test name that resolved to that IP. Use the toolbar for pages you already have open on a private network. [Browser proof](../../evidence/benchmark-v1/browser-public-network-7bccfc1.json)
 
-Each route produces the same capture format and goes through the same steps: scrub, three local checks, one finding, one preview file.
+Each local route produces a scrubbed capture, runs three checks and saves a preview with the first finding.
+
+## Visual critique and a live task
+
+Install from the current development checkout, which includes `review_page`. In your MCP client config, change the Design MCP server's arguments to `["serve", "--review"]` and reconnect the server. Select a model and client that can see image attachments returned by MCP. Configure Playwriter in the same client for browser input. [Client setup](../../README.md#install) · [Connect Playwriter](../../evals/v1/README.md#connect-playwriter)
+
+Give your agent a URL and one visitor task. For example:
+
+> Review https://designsystem.digital.gov/templates/form-templates/address-form/ at mobile width. Use the Design MCP screenshot to identify the strongest and weakest parts of the form hierarchy. In Playwriter, try reaching Street address with the keyboard. Report where focus goes and whether it is visible. Show the relevant screenshot for each finding.
+
+`review_page` uses disposable Chrome to return one image and the measurements for the opening screen. Playwriter lets the agent navigate, press keys and capture each state in a connected browser. For a local site, have the agent open the connected test tab through Playwriter and capture the page there. The agent uses the screenshot for visual observations and the browser action and resulting state for usability claims.
+
+The Chrome popup itself runs local checks. Use the agent chat for visual critique and a live task walkthrough. If your agent uses a hosted model, its provider receives the image and layout facts returned by the MCP. The MCP masks captured form fields, editable regions and embedded frames.
 
 ## Set up the extension
 
@@ -50,7 +62,7 @@ Local checks, most blocking first:
 2. Sideways scroll of more than 1 CSS pixel
 3. Text on a flat fill below 4.5 to 1, or below 3 to 1 when it is at least 24 CSS px or 14 pt and bold. [WCAG contrast minimum](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)
 
-Only the contrast finding has an after view. For the other two the preview says so and shows the outlined capture. A visual review by a model is not part of this build. The result says "not run" and never substitutes an invented answer.
+Only the contrast finding has an after view. The other two show the outlined capture. The preview reports whether a model review ran.
 
 ## What is kept and what is removed
 

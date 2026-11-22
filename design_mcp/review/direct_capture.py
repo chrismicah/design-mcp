@@ -51,7 +51,7 @@ class ChromeSession:
         return reply["result"]["value"]
 
 
-async def capture_page(url, web_socket):
+async def capture_page(url, web_socket, viewport=VIEWPORTS[0]):
     from websockets.asyncio.client import connect
 
     # Only the loopback Chrome subprocess we just started can supply a socket here.
@@ -62,7 +62,7 @@ async def capture_page(url, web_socket):
     async with connect(web_socket, proxy=None, open_timeout=4, close_timeout=1, max_size=20 * 1024 * 1024) as socket:
         browser = ChromeSession(socket)
         page = await browser.new_page()
-        width, height = VIEWPORTS[0]
+        width, height = viewport
         await browser.call("Emulation.setDeviceMetricsOverride", page, width=width, height=height,
                            deviceScaleFactor=1, mobile=False)
         await browser.call("Emulation.setEmulatedMedia", page, features=[{"name": "prefers-reduced-motion", "value": "reduce"}])

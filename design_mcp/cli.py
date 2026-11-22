@@ -17,7 +17,7 @@ def main():
         print("Design Intelligence MCP Server")
         print()
         print("Usage:")
-        print("  design-mcp serve      Start the MCP server (stdio transport)")
+        print("  design-mcp serve [--review]    Start the MCP server with optional browser review")
         print("  design-mcp version    Show version")
         print("  design-mcp review     Review a page locally (run review --help)")
         print("  design-mcp review-app CAPTURE    Check a local Swift or Electron capture")
@@ -36,6 +36,16 @@ def main():
 
     if command == "serve":
         from design_mcp.server import mcp
+
+        if args[1:] == ["--review"]:
+            from design_mcp.server import enable_browser_review
+
+            enable_browser_review()
+        elif args[1:]:
+            if args[1:] in (["--help"], ["-h"]):
+                print("Usage: design-mcp serve [--review]")
+                return
+            sys.exit("Usage: design-mcp serve [--review]")
         mcp.run()
         return
 

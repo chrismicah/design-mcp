@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+- Added `design-mcp serve --review` for image-capable MCP clients. `review_page` returns a masked screenshot and layout facts at desktop or mobile width. The default catalog stays at three tools. [Review workflow](design_mcp/review/README.md#visual-critique-and-a-live-task) · [Protocol proof](evidence/benchmark-v1/mcp-page-review.json)
+
 - **Review URL** in Chrome now starts a local scan and opens a result tab with a masked capture and measured findings. It uses a disposable Chrome profile and works without Playwriter. The popup distinguishes a completed check with no findings from a failed scan.
 
 - Record Chrome, Playwriter, navigation, capture, and preview timings for pasted-URL review. The hosted comparisons retained the same desktop and mobile images. The concurrent startup and direct MCP client trials missed their speed gate and were reverted. [Stage profile](evidence/benchmark-v1/public-url-stage-profile.json) · [Startup trial](evidence/benchmark-v1/public-url-overlap-trial.json) · [Client trial](evidence/benchmark-v1/public-url-mcp-sdk-trial.json)

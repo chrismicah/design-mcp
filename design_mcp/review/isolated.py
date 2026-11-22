@@ -205,7 +205,7 @@ def _browser_arguments(chrome, profile, proxy_port):
     ]
 
 
-async def _capture_browser(url, host, address, chrome, playwriter, scratch, resolve):
+async def _capture_browser(url, host, address, chrome, playwriter, scratch, resolve, *, viewport=VIEWPORTS[0]):
     started = time.perf_counter()
     profile, home = scratch / "profile", scratch / "home"
     home.mkdir()
@@ -235,7 +235,7 @@ async def _capture_browser(url, host, address, chrome, playwriter, scratch, reso
             if playwriter is None:
                 from .direct_capture import capture_page
 
-                bundle = await asyncio.wait_for(capture_page(url, web_socket), 30)
+                bundle = await asyncio.wait_for(capture_page(url, web_socket, viewport), 30)
                 relay_ready_at = chrome_ready
             else:
                 relay_port = _free_port()
@@ -259,10 +259,10 @@ async def _capture_browser(url, host, address, chrome, playwriter, scratch, reso
     return bundle
 
 
-def _capture(url, playwriter, chrome, resolve, *, direct=False):
+def _capture(url, playwriter, chrome, resolve, *, direct_viewport=None):
     started = time.perf_counter()
     clean, host, address = public_target(url, resolve)
-    if not direct:
+    if direct_viewport is None:
         playwriter = playwriter or shutil.which("playwriter")
         if not playwriter:
             raise CaptureError("Playwriter was not found on PATH. Install it or pass --playwriter with its path.")
@@ -272,18 +272,19 @@ def _capture(url, playwriter, chrome, resolve, *, direct=False):
     chrome = Path(chrome or (DEFAULT_CHROME if sys.platform == "darwin" else
                              shutil.which("google-chrome") or shutil.which("chromium") or DEFAULT_CHROME))
     if not chrome.is_file():
-        if direct:
+        if direct_viewport is not None:
             raise CaptureError("Chrome couldn't be found in its standard location. Open the page in Chrome and use Review this page.")
         raise CaptureError(f"No Chrome at {chrome}. Pass --chrome with its location.")
     scratch = Path(tempfile.mkdtemp(prefix="design-mcp-review-"))
     prepared = time.perf_counter()
     try:
-        bundle = asyncio.run(_capture_browser(clean, host, address, chrome, playwriter, scratch, resolve))
+        bundle = asyncio.run(_capture_browser(clean, host, address, chrome, playwriter, scratch, resolve,
+                                              viewport=direct_viewport or VIEWPORTS[0]))
         browser_done = time.perf_counter()
     except (CaptureError, EvidenceError):
         raise
     except Exception as error:  # an external browser and tool: report one plain sentence, keep the cause
-        if direct:
+        if direct_viewport is not None:
             raise CaptureError("Chrome couldn't finish reviewing this page. Try again or review it from its open tab.") from error
         raise CaptureError(f"The page could not be captured in the separate browser: {error}") from error
     finally:
@@ -300,6 +301,6 @@ def capture(url, playwriter=None, chrome=None, resolve=socket.getaddrinfo):
     return _capture(url, playwriter, chrome, resolve)
 
 
-def capture_pasted_url(url):
-    """Capture the desktop viewport in disposable Chrome for the extension."""
-    return _capture(url, None, None, socket.getaddrinfo, direct=True)
+def capture_pasted_url(url, *, viewport=VIEWPORTS[0]):
+    """Capture one viewport in disposable Chrome without requiring Playwriter."""
+    return _capture(url, None, None, socket.getaddrinfo, direct_viewport=viewport)
