@@ -248,8 +248,9 @@ function designMcpCollect(options) {
   }
 
   // The main button: the first enabled button, preferring one inside the main content or a form.
+  const inContent = record => record.el.closest('main, [role="main"], form') !== null;
   const buttons = found.filter(record => record.control && !record.region.disabled);
-  const inMain = buttons.find(record => record.el.closest('main, [role="main"], form'));
+  const inMain = buttons.find(inContent);
   const primary = inMain || buttons[0] || null;
   let cover = null;
   if (primary) {
@@ -294,9 +295,11 @@ function designMcpCollect(options) {
   };
   take(found.find(record => record.level === 1) || found.find(record => record.isHeading));
   take(primary);
+  take(found.find(record => inContent(record) && record.region.masked && record.region.name));
   found.map(record => ({record, ratio: contrast(record)})).filter(item => item.ratio < 4.5)
     .sort((a, b) => a.ratio - b.ratio).slice(0, 3).forEach(item => take(item.record));
-  take(found.find(record => record.status));
+  take(found.find(record => record.status && inContent(record)) || found.find(record => record.status));
+  found.filter(record => inContent(record) && (record.isHeading || record.control || record.region.masked)).forEach(take);
   found.filter(record => record.isHeading || record.control || record.status).forEach(take);
   found.forEach(take);
   chosen.sort((a, b) => a.region.reading_order - b.region.reading_order);
