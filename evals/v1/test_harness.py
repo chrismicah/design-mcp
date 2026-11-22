@@ -5,8 +5,9 @@ from tempfile import TemporaryDirectory
 from types import SimpleNamespace
 import unittest
 
+from audit_scoreboard import matching_run
 from generate import PROMPT, hosted_mcp_table, mcp_table, parse_cell, sha256
-from judge import WIDTHS, create_pair, load, summarize, write
+from judge import WIDTHS, create_pair, load, run_judge, summarize, write
 from probe_competitors import decode_results, ranked_identifiers
 
 
@@ -74,6 +75,9 @@ class BenchmarkTests(unittest.TestCase):
             blind, labels, _ = create_pair(args, task)
             self.assertEqual(set(labels.values()), {"none", "v2"})
             self.assertEqual((blind / "A-390.png").read_bytes(), f"fixture:{labels['A']}:390".encode())
+            args.model, args.effort = "fixture-judge", "max"
+            with self.assertRaisesRegex(ValueError, "No saved ballot"):
+                run_judge(args, task, create_pair(args, task), None)
             (blind / "A-390.png").write_bytes(b"stale staged image")
             with self.assertRaisesRegex(ValueError, "Previously staged blind image differs"):
                 create_pair(args, task)
@@ -105,6 +109,27 @@ class BenchmarkTests(unittest.TestCase):
         self.assertEqual(result["wins_ties_losses"], [1, 1, 0])
         candidate = summarize([{}], [{"scores": {"v2": 70, "candidate": 80}}], "candidate", "v2")
         self.assertEqual(candidate["difference"], 10)
+
+    def test_scoreboard_requires_one_matching_hosted_archive(self):
+        with TemporaryDirectory() as path:
+            base = Path(path)
+            archives = base / "archives"
+            cells = base / "cells"
+            correct = archives / "42"
+            wrong = archives / "43"
+            for root in (correct, wrong, cells):
+                for arm in ("none", "v2"):
+                    case = root / "station" / arm
+                    case.mkdir(parents=True)
+                    write(case / "receipt.json", {"arm": arm, "html_sha256": arm})
+                    write(case / "render.json", {"input_sha256": "other" if root == wrong else arm})
+            self.assertEqual(matching_run(archives, "station", cells), correct)
+            with self.assertRaisesRegex(ValueError, "found 0"):
+                matching_run(archives, "missing", cells)
+            for arm in ("none", "v2"):
+                write(wrong / "station" / arm / "render.json", {"input_sha256": arm})
+            with self.assertRaisesRegex(ValueError, "found 2"):
+                matching_run(archives, "station", cells)
 
     def test_competitor_requires_its_own_successful_search(self):
         call = {"type": "item.completed", "item": {"type": "mcp_tool_call", "server": "inspo",

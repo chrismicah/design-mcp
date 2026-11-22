@@ -134,6 +134,8 @@ def run_judge(args, task, pair, schema_path):
                 or prior.get("judge_prompt_sha256", prompt_hash) != prompt_hash):
             raise ValueError(f"Judging configuration changed for {task['id']}")
         return prior
+    if schema_path is None:
+        raise ValueError(f"No saved ballot to verify for {task['id']}")
     if partial.exists():
         raise RuntimeError(f"An incomplete judge trace is preserved at {partial}")
     command = [args.codex, "-a", "never", "exec", "--ignore-user-config", "--ephemeral",
