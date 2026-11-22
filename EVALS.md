@@ -6,19 +6,19 @@ The baseline pins Design MCP at `fd6035d8732d177b811f81a0f5863e99134a85ca`. The 
 
 | Configuration | Judged pairs | Score / 100 |
 | --- | ---: | ---: |
-| Same generator without MCP | 12 / 36 | 92.0 |
-| Same generator with Design MCP v2 | 12 / 36 | 95.8 |
+| Same generator without MCP | 14 / 36 | 92.3 |
+| Same generator with Design MCP v2 | 14 / 36 | 94.6 |
 
-The twelve verified pairs yielded a **+3.8-point** mean difference, with six wins, six ties, and a paired bootstrap interval of 1.4 to 6.3 points. Rehearsal rooms and the film festival each scored 91.7 → 100.0. Cold-chain monitoring scored 95.8 → 100.0. The judged set covers all six landing pages and all six dashboards. This is a partial baseline for the frozen revision. The judges scored captured states under the original benchmark rubric. The separate release rubric requires live evaluation before scoring. [Paired ballots, hashes and token receipts](evidence/benchmark-v1/paired-progress.json) · [Release rubric](evals/vision/rubric.md)
+The fourteen verified pairs yielded a **+2.4-point** mean difference, with six wins, seven ties, one loss, and a paired bootstrap interval of −0.9 to 5.4 points. The judged set covers all six landing pages, all six dashboards, and two forms. The workshop reservation tied at 91.7. The maintenance form scored 95.8 without the MCP and 83.3 with it. The critic cited an illustration that pushed the form down on mobile and a clipped hint in the two-column row. The separate form-routing candidate targets this failure. The judges scored captured states under the original benchmark rubric. The release rubric requires live evaluation. [Paired ballots, hashes and token receipts](evidence/benchmark-v1/paired-progress.json) · [Release rubric](evals/vision/rubric.md)
 
 The first dashboard attempt called `direct` successfully and reached the client’s 240-second timeout before returning HTML. There was no completed-turn token receipt. The paired run uses a 900-second allowance for both arms and retains the first attempt separately. Playwriter MCP `0.12.0` rendered the isolated Chrome 157 control at both widths. The injected failure control detected narrow viewport overflow and the expected JavaScript error. [Tracked receipts](evidence/benchmark-v1/preflight.json)
 
-GitHub’s standard macOS runner captured the judged pairs with Playwriter 0.12.0 and Chrome for Testing 158.0.8127.36 at both preset widths. All 48 judged captures had no horizontal overflow or page errors. The third wave also captured two form briefs. [First run](https://github.com/chrismicah/design-mcp/actions/runs/44984687051) · [Second run](https://github.com/chrismicah/design-mcp/actions/runs/44988686124) · [Third run](https://github.com/chrismicah/design-mcp/actions/runs/44991749251)
+GitHub’s standard macOS runner captured the judged pairs with Playwriter 0.12.0 and Chrome for Testing 158.0.8127.36 at both preset widths. All 56 judged captures had no page errors or document-level horizontal overflow. The critic found that the maintenance field still clipped its hint within the control. [First run](https://github.com/chrismicah/design-mcp/actions/runs/44984687051) · [Second run](https://github.com/chrismicah/design-mcp/actions/runs/44988686124) · [Third run](https://github.com/chrismicah/design-mcp/actions/runs/44991749251)
 
 | Median per judged brief | Input tokens | Cached input | Output tokens | Seconds |
 | --- | ---: | ---: | ---: | ---: |
-| Plain generator | 20,084 | 0 | 19,616 | 404 |
-| Design MCP v2 | 62,895 | 40,832 | 20,811 | 423 |
+| Plain generator | 20,084 | 5,568 | 21,269 | 431 |
+| Design MCP v2 | 63,084 | 40,960 | 21,284 | 432 |
 
 ## Direction coverage
 
