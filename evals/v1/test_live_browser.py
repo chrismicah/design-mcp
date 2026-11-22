@@ -61,9 +61,8 @@ class FakePlaywriter:
         screenshot = re.search(r"await page\.screenshot\(\{path:(.+?), type:'png'", code)
         blocks = []
         if screenshot:
-            assert "resizeImageForAgent({input:png, maxDimension:1000" in code
             Path(json.loads(screenshot[1])).write_bytes(PNG)
-            if not self.bad_preview:
+            if "resizeImageForAgent({input:png, maxDimension:1000" in code and not self.bad_preview:
                 blocks.append(PREVIEW)
         observation = {"url": self.destination, **self.viewport, "layout_width": 412,
                        "focus": {"tag": "input" if self.keys else "body", "visible": bool(self.keys)}}
@@ -143,6 +142,7 @@ def test_disallowed_fixture_urls(config, url):
 def test_constructor_pins_relay_and_rejects_unsafe_config(config):
     for change in (
         {"cdp": "ws://example.org/remote"}, {"relay_port": True}, {"pages": {"../A": URL}},
+        {"original_capture": "true"},
         {"evidence_dir": config["evidence_dir"].parent.parent / "outside"},
     ):
         with pytest.raises(ValueError):
@@ -150,6 +150,22 @@ def test_constructor_pins_relay_and_rejects_unsafe_config(config):
     browser = LiveBrowser(config)
     assert browser.transport.command == "/local/playwriter"
     assert browser.transport.env == {"PLAYWRITER_PORT": "49200", "PLAYWRITER_HOST": "http://127.0.0.1:49200"}
+
+
+@pytest.mark.asyncio
+async def test_release_capture_returns_the_archived_png(config):
+    browser = LiveBrowser({**config, "original_capture": True})
+    playwriter = FakePlaywriter()
+    async with Client(playwriter.server) as relay, Client(create_server(browser)) as judge:
+        await browser.connect(relay)
+        await judge.call_tool("open_view", {"page_id": "A", "width": 1440})
+        response = await judge.call_tool("capture", {"label": "release"})
+    metadata = json.loads(response.content[0].text)
+    png = base64.b64decode(response.content[1].data)
+    assert response.content[1].mime_type == "image/png"
+    assert png == (browser.evidence / metadata["path"]).read_bytes() == PNG
+    assert metadata["sha256"] == hashlib.sha256(png).hexdigest()
+    assert "resizeImageForAgent" not in playwriter.calls[-1][1]
 
 
 @pytest.mark.asyncio

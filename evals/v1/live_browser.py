@@ -2,6 +2,7 @@
 
 import argparse
 import asyncio
+import base64
 from ipaddress import ip_address
 import json
 from pathlib import Path
@@ -13,7 +14,7 @@ from fastmcp import Client, FastMCP
 from fastmcp.client.transports import StdioTransport
 from fastmcp.exceptions import ToolError
 from fastmcp.tools import ToolResult
-from mcp.types import TextContent
+from mcp.types import ImageContent, TextContent
 
 from generate import sha256
 from render import VIEWPORTS, result_text
@@ -128,6 +129,9 @@ class LiveBrowser:
         port = config["relay_port"]
         if type(port) is not int or not 1 <= port <= 65535:
             raise ValueError("Invalid relay port")
+        self.original_capture = config.get("original_capture", False)
+        if type(self.original_capture) is not bool:
+            raise ValueError("original_capture must be a boolean")
         # An explicit relay URL prevents Playwriter from starting a missing relay.
         self.transport = StdioTransport(
             command=str(Path(config["playwriter"]).absolute()), args=[], keep_alive=False,
@@ -173,11 +177,18 @@ class LiveBrowser:
             if path is not None:
                 images = [block for block in result.content if block.type == "image"]
                 png = path.with_suffix(".pending").read_bytes()
-                if len(images) != 1 or not png.startswith(b"\x89PNG\r\n\x1a\n"):
+                if not png.startswith(b"\x89PNG\r\n\x1a\n"):
                     raise ValueError("Missing screenshot evidence")
+                if self.original_capture:
+                    image = ImageContent(type="image", data=base64.b64encode(png).decode("ascii"),
+                                         mimeType="image/png")
+                elif len(images) == 1:
+                    image = images[0]
+                else:
+                    raise ValueError("Missing preview image")
                 record.update(path=path.name, sha256=sha256(png))
                 metadata = {**observation, "path": path.name, "sha256": record["sha256"]}
-                output = ToolResult(content=[TextContent(type="text", text=json.dumps(metadata)), images[0]])
+                output = ToolResult(content=[TextContent(type="text", text=json.dumps(metadata)), image])
                 path.with_suffix(".pending").replace(path)
             self.audit(record)
         except Exception:
@@ -215,7 +226,7 @@ class LiveBrowser:
                                   "const page = state.page;\n" + GUARD + command + "\n")
 
     async def capture(self, label: str) -> ToolResult:
-        """Save a PNG and return a compact preview with live metadata."""
+        """Save a PNG and return a screenshot with live metadata."""
         if not IDENTIFIER.fullmatch(label):
             raise ToolError("Use a short alphanumeric capture label, with optional hyphens or underscores")
         path = self.evidence / f"{label}.png"
@@ -226,8 +237,9 @@ class LiveBrowser:
                 raise ToolError("Open a view first")
             code = f"""
 const png = await page.screenshot({{path:{json.dumps(str(path.with_suffix(".pending")))}, type:'png', timeout:5000}});
-await resizeImageForAgent({{input:png, maxDimension:1000, format:'jpeg', quality:75}});
 """
+            if not self.original_capture:
+                code += "await resizeImageForAgent({input:png, maxDimension:1000, format:'jpeg', quality:75});\n"
             return await self.run({"op": "capture", "label": label}, self.active,
                                   "const page = state.page;\n" + GUARD + code, path)
 
