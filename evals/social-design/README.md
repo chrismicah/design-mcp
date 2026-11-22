@@ -88,3 +88,9 @@ Keep the room, compact masthead, and expressive performer from round 4. Give the
 ### River, round 5
 
 Keep the result and level choices above the compact mobile chart. Give the resident a more recognizable view of the bank. Use three small original illustrations with unmistakable physical relationships: a footpath cut into the low bank, a ferry beside its landing at the middle mark, and a footbridge spanning the water at the upper mark. Connect each readable label to the place with a short line. Use the same five round 3 colors, with dark silhouettes over the pale channel. Keep Archivo Narrow for level readings and IBM Plex Sans for the place labels and controls.
+
+The first round 5 capture exceeded the client transport limit on two desktop images. The full PNGs were saved locally, but the client trace contained truncated images. That ballot is ineligible. Rerun the same direction with flat washes, folds and shaped shadows so the full-size pixels fit the transport budget. Keep the color and type roles from round 5.
+
+### River, round 6
+
+The resident still gets the answer first. Create the feel of an illustrated river field sheet with one continuous bank cutaway and a thick waterline running across the page. Make the elevation the anchor on the report edge and echo it on the waterline. Use large, distinctive silhouettes for the path, ferry and bridge. Simplify the terrain fill and keep the title short. Deep tide `#163759` carries the ink, pale sky `#EDF4F6` the paper, ultramarine `#254D9C` the active reading, clear blue `#9BC7DF` the water, and signal ochre `#EABB62` the closed markers. Use Archivo Narrow for the elevation and IBM Plex Sans for the plain-text outcome. Keep the same supplied facts.

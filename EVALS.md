@@ -87,6 +87,8 @@ Lighting round 4 improved the mobile score to **8.65**, matching desktop. The bl
 
 River round 4 scored **8.30 at both widths**, above its paired stock scores of **7.55**. Bringing the complete closure list ahead of the chart on mobile fixed the issue from round 3. The critic still wanted a more recognizable drawing of the crossings. [River round 4](evidence/benchmark-v1/social-river-live-r4.json)
 
+River round 5 shows the path, ferry landing, and bridge in the same bank cutaway. It scored **8.85 at both widths**, above the stock **8.25 desktop and 8.00 mobile**. It passed the keyboard journey and the mobile view kept the full closure result visible. The next draft makes the illustrated crossings bigger. The first lighting round 5 attempt exceeded the client's capture size on two desktop images. Its ballot is excluded. [River round 5](evidence/benchmark-v1/social-river-live-r5.json) · [Lighting capture failure](evidence/benchmark-v1/social-lighting-r5-capture-limit.json)
+
 The cold-storage runner now verifies that both Design MCP arms use the exact brief as the sole argument to `direct`. A synthetic three-arm run passed with the original brief. Supplying a `dashboard` hint produced the expected direction but failed generation eligibility before any browser or judge ran. The original prompt and parser results matched all 72 archived generator traces across the 36 frozen pairs. The cold-storage visual comparison remains pending. [Generation and replay proof](evidence/benchmark-v1/unhinted-direct-gate.json)
 
 | Candidate | Observed change | Status |
