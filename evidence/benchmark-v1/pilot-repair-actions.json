@@ -1,0 +1,874 @@
+{
+  "run": "https://github.com/chrismicah/design-mcp/actions/runs/44995952011",
+  "workflow_sha": "7a6739de6665bc8afe8d73cc3f8820c770cc96d9",
+  "previous_replay": {
+    "run": "https://github.com/chrismicah/design-mcp/actions/runs/44995735534",
+    "observation": "The repaired coffee page incremented the count and announced the addition inline. The first replay expected a drawer before it tried the separate Bag control."
+  },
+  "integration": {
+    "candidate": "a18e08d",
+    "commit": "a7d1019",
+    "direction_catalog_sha256": "fe395b5c1bfa1d22542d2d2b0e6de79cdff7a35ed606acfb5b12ef1c15639c65",
+    "corresponding_candidate_catalog": "fe395b5c1bfa1d22542d2d2b0e6de79cdff7a35ed606acfb5b12ef1c15639c65",
+    "suite_passed": 358,
+    "stdio": {
+      "fastmcp": "4.2.4",
+      "mode": "both",
+      "tools": {
+        "direct": {
+          "keys": [
+            "direction",
+            "font_stylesheet",
+            "interaction",
+            "assumptions",
+            "questions",
+            "handoff"
+          ],
+          "milliseconds": 33
+        },
+        "react": {
+          "keys": [
+            "direction_id",
+            "changes",
+            "why",
+            "keep"
+          ],
+          "milliseconds": 3
+        },
+        "check": {
+          "keys": [
+            "finding_count",
+            "findings",
+            "scope",
+            "render_checks",
+            "truncated"
+          ],
+          "milliseconds": 3
+        },
+        "search_design_patterns": {
+          "keys": [
+            "result"
+          ],
+          "milliseconds": 67
+        },
+        "get_design_blueprint": {
+          "keys": [
+            "id",
+            "name",
+            "page_type",
+            "layout_type",
+            "layout_notes",
+            "ux_patterns",
+            "ui_elements",
+            "primary_colors",
+            "color_mode",
+            "visual_style",
+            "behavioral_description",
+            "accessibility_notes",
+            "semantic_tokens",
+            "component_hints",
+            "decision_tree",
+            "visual_recipes",
+            "design_system",
+            "source_url"
+          ],
+          "milliseconds": 3
+        },
+        "get_semantic_tokens": {
+          "keys": [
+            "tokens",
+            "primary_shades",
+            "accent_shades",
+            "color_mode",
+            "wcag_aa_verified"
+          ],
+          "milliseconds": 2
+        },
+        "get_design_taxonomy": {
+          "keys": [
+            "page_types",
+            "ux_patterns",
+            "ui_elements",
+            "industries",
+            "visual_styles"
+          ],
+          "milliseconds": 2
+        },
+        "get_behavioral_pattern": {
+          "keys": [
+            "description",
+            "best_practice",
+            "required_elements",
+            "anti_patterns",
+            "reference"
+          ],
+          "milliseconds": 2
+        },
+        "compare_design_approaches": {
+          "keys": [
+            "page_type",
+            "examples",
+            "summary"
+          ],
+          "milliseconds": 5
+        },
+        "analyze_and_devibecode": {
+          "keys": [
+            "anti_patterns_found",
+            "recommended_layout",
+            "semantic_tokens_to_apply",
+            "suggested_component_structure",
+            "severity_summary",
+            "refactoring_suggestions",
+            "code_fixes",
+            "visual_recipes",
+            "recommended_libraries",
+            "detected_component_type"
+          ],
+          "milliseconds": 46
+        },
+        "get_design_system": {
+          "keys": [
+            "font_system",
+            "spacing_system",
+            "global_anti_patterns",
+            "elevation",
+            "elevation_rules",
+            "color_tokens",
+            "delta_colors",
+            "component_classes",
+            "composition_rules"
+          ],
+          "milliseconds": 3
+        },
+        "get_library_recommendations": {
+          "keys": [
+            "recommendations",
+            "premium_stack",
+            "matching_design_patterns",
+            "total_libraries"
+          ],
+          "milliseconds": 10
+        },
+        "get_library_details": {
+          "keys": [
+            "library",
+            "pairs_with"
+          ],
+          "milliseconds": 3
+        },
+        "scan_project": {
+          "keys": [
+            "project_health_score",
+            "files_scanned",
+            "files_with_issues",
+            "total_issues",
+            "severity_summary",
+            "top_issues",
+            "priority_fixes",
+            "recommended_libraries",
+            "file_reports",
+            "component_types_found",
+            "visual_issues"
+          ],
+          "milliseconds": 5
+        },
+        "generate_refactored_code": {
+          "keys": [
+            "detected_component_type",
+            "total_issues",
+            "severity_summary",
+            "target_library",
+            "imports_needed",
+            "transformations",
+            "component_suggestion",
+            "design_reference",
+            "semantic_tokens",
+            "code_fixes",
+            "visual_recipes"
+          ],
+          "milliseconds": 11
+        },
+        "get_visual_recipe": {
+          "keys": [
+            "color_restraint",
+            "depth_system",
+            "typography_is_design",
+            "component_design",
+            "whitespace_as_design",
+            "motion_restraint",
+            "layout_hierarchy"
+          ],
+          "milliseconds": 3
+        },
+        "get_visual_suggestions": {
+          "keys": [
+            "visual_analysis",
+            "structural_analysis",
+            "color_palette",
+            "typography",
+            "spacing",
+            "implementation",
+            "quick_wins"
+          ],
+          "milliseconds": 3
+        }
+      }
+    },
+    "routing": {
+      "candidate": "a18e08d",
+      "control": "1a0afe5",
+      "total": 36,
+      "replies": [
+        {
+          "case": "landing-ceramics",
+          "direction": "object-hero",
+          "same_reply": true,
+          "characters": 3592
+        },
+        {
+          "case": "landing-repair",
+          "direction": "service-work-order",
+          "same_reply": true,
+          "characters": 3885
+        },
+        {
+          "case": "landing-radio",
+          "direction": "broadcast-board",
+          "same_reply": true,
+          "characters": 3603
+        },
+        {
+          "case": "landing-festival",
+          "direction": "object-hero",
+          "same_reply": true,
+          "characters": 3592
+        },
+        {
+          "case": "landing-archive",
+          "direction": "object-hero",
+          "same_reply": true,
+          "characters": 3592
+        },
+        {
+          "case": "landing-energy",
+          "direction": "object-hero",
+          "same_reply": true,
+          "characters": 3592
+        },
+        {
+          "case": "dashboard-coldchain",
+          "direction": "object-hero",
+          "same_reply": true,
+          "characters": 3592
+        },
+        {
+          "case": "dashboard-venue",
+          "direction": "stage-call-sheet",
+          "same_reply": true,
+          "characters": 3701
+        },
+        {
+          "case": "dashboard-harvest",
+          "direction": "object-hero",
+          "same_reply": true,
+          "characters": 3592
+        },
+        {
+          "case": "dashboard-support",
+          "direction": "object-hero",
+          "same_reply": true,
+          "characters": 3592
+        },
+        {
+          "case": "dashboard-energy",
+          "direction": "object-hero",
+          "same_reply": true,
+          "characters": 3592
+        },
+        {
+          "case": "dashboard-library",
+          "direction": "exception-first",
+          "same_reply": true,
+          "characters": 2966
+        },
+        {
+          "case": "form-venue",
+          "direction": "object-hero",
+          "same_reply": true,
+          "characters": 3592
+        },
+        {
+          "case": "form-maintenance",
+          "direction": "object-hero",
+          "same_reply": true,
+          "characters": 3592
+        },
+        {
+          "case": "form-label",
+          "direction": "object-hero",
+          "same_reply": true,
+          "characters": 3592
+        },
+        {
+          "case": "form-garden",
+          "direction": "object-hero",
+          "same_reply": true,
+          "characters": 3592
+        },
+        {
+          "case": "form-exhibition",
+          "direction": "object-hero",
+          "same_reply": true,
+          "characters": 3592
+        },
+        {
+          "case": "form-invoice",
+          "direction": "object-hero",
+          "same_reply": true,
+          "characters": 3592
+        },
+        {
+          "case": "mobile-train",
+          "direction": "platform-sign",
+          "same_reply": false,
+          "characters": 3036
+        },
+        {
+          "case": "mobile-field",
+          "direction": "object-hero",
+          "same_reply": true,
+          "characters": 3592
+        },
+        {
+          "case": "mobile-recital",
+          "direction": "object-hero",
+          "same_reply": true,
+          "characters": 3592
+        },
+        {
+          "case": "mobile-court",
+          "direction": "object-hero",
+          "same_reply": true,
+          "characters": 3592
+        },
+        {
+          "case": "mobile-pantry",
+          "direction": "object-hero",
+          "same_reply": true,
+          "characters": 3592
+        },
+        {
+          "case": "mobile-gallery",
+          "direction": "object-hero",
+          "same_reply": true,
+          "characters": 3592
+        },
+        {
+          "case": "settings-notifications",
+          "direction": "object-hero",
+          "same_reply": true,
+          "characters": 3592
+        },
+        {
+          "case": "settings-reading",
+          "direction": "object-hero",
+          "same_reply": true,
+          "characters": 3592
+        },
+        {
+          "case": "settings-team",
+          "direction": "object-hero",
+          "same_reply": true,
+          "characters": 3592
+        },
+        {
+          "case": "settings-focus",
+          "direction": "object-hero",
+          "same_reply": true,
+          "characters": 3592
+        },
+        {
+          "case": "settings-digest",
+          "direction": "object-hero",
+          "same_reply": true,
+          "characters": 3592
+        },
+        {
+          "case": "settings-language",
+          "direction": "object-hero",
+          "same_reply": true,
+          "characters": 3592
+        },
+        {
+          "case": "empty-saved",
+          "direction": "object-hero",
+          "same_reply": true,
+          "characters": 3592
+        },
+        {
+          "case": "empty-drafts",
+          "direction": "margin-front",
+          "same_reply": true,
+          "characters": 2766
+        },
+        {
+          "case": "empty-search",
+          "direction": "object-hero",
+          "same_reply": true,
+          "characters": 3592
+        },
+        {
+          "case": "empty-handoff",
+          "direction": "object-hero",
+          "same_reply": true,
+          "characters": 3592
+        },
+        {
+          "case": "empty-exhibits",
+          "direction": "object-hero",
+          "same_reply": true,
+          "characters": 3592
+        },
+        {
+          "case": "empty-shifts",
+          "direction": "object-hero",
+          "same_reply": true,
+          "characters": 3592
+        }
+      ]
+    }
+  },
+  "cells": {
+    "landing": {
+      "none": {
+        "input_sha256": "a9f092255b362374ab328bfe74f3039bd6e768f0e1faee7e856168dbe275ef0d",
+        "views": {
+          "1440": {
+            "initial_sha256": "48431814b4954c0776af3bdb2383b8fd0270648ec5b42be278dd7b896fe38a2a",
+            "start": {
+              "button": {
+                "left": 966.875,
+                "top": 573.765625,
+                "right": 1382.390625,
+                "bottom": 629.765625
+              },
+              "roastDate": {
+                "left": 869.046875,
+                "top": 507.546875,
+                "right": 1137.9375,
+                "bottom": 532.59375
+              }
+            },
+            "factsVisible": true,
+            "reached": true,
+            "correctBag": true,
+            "restored": true,
+            "openedOnAdd": true,
+            "passed": true,
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "local": true,
+            "pageErrors": [],
+            "action_sha256": "d5e27103564b77086b9aeb408cf1a7df1c7e97b3cb1e8de41d6bc05ac85c2e04"
+          },
+          "390": {
+            "initial_sha256": "553b0dd21fc657189c0595b1c56773e3ed82c328babe2bbadd50a01c7a5f8d35",
+            "start": {
+              "button": {
+                "left": 94.546875,
+                "top": 663.71875,
+                "right": 370,
+                "bottom": 719.71875
+              },
+              "roastDate": {
+                "left": 20,
+                "top": 607.671875,
+                "right": 203.328125,
+                "bottom": 632.71875
+              }
+            },
+            "factsVisible": true,
+            "reached": true,
+            "correctBag": true,
+            "restored": true,
+            "openedOnAdd": true,
+            "passed": true,
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "local": true,
+            "pageErrors": [],
+            "action_sha256": "98548ec783c79dbdbda8e029af6eb3efc3a84f1bb3ea081e9be21412466559b7"
+          }
+        }
+      },
+      "v2": {
+        "input_sha256": "49024d2672612a3f3dacb8fff5b1b12a0ed00a44815db6ebbc5b3b655abacc03",
+        "views": {
+          "1440": {
+            "initial_sha256": "5c7e91591c6247cac3d281f0f44d0885bd919dcc6e30810ee961b1b7aee81e37",
+            "start": {
+              "button": {
+                "left": 897.328125,
+                "top": 636.65625,
+                "right": 1367.328125,
+                "bottom": 696.65625
+              },
+              "roastDate": {
+                "left": 969.578125,
+                "top": 529.65625,
+                "right": 1367.328125,
+                "bottom": 549.65625
+              }
+            },
+            "factsVisible": true,
+            "reached": true,
+            "correctBag": true,
+            "restored": true,
+            "openedOnAdd": true,
+            "passed": true,
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "local": true,
+            "pageErrors": [],
+            "action_sha256": "11728f34ce3517d5dda8865d0167b9af0f4c2379983f32da65302a5f86502f2a"
+          },
+          "390": {
+            "initial_sha256": "1a031709cba1a4f5be175bc02156b8f0dc658aa699cc5da9b5724de74a3f91ea",
+            "start": {
+              "button": {
+                "left": 22,
+                "top": 780,
+                "right": 368,
+                "bottom": 834
+              },
+              "roastDate": {
+                "left": 94.25,
+                "top": 625.171875,
+                "right": 368,
+                "bottom": 645.171875
+              }
+            },
+            "factsVisible": true,
+            "reached": true,
+            "correctBag": true,
+            "restored": true,
+            "openedOnAdd": true,
+            "passed": true,
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "local": true,
+            "pageErrors": [],
+            "action_sha256": "261eee8dba4af719b855800d7aff8f39089b018afd5359c6550aad98aaf88d17"
+          }
+        }
+      },
+      "pilot-repair": {
+        "input_sha256": "e89aa74a478023404c8bdd0af15fa5d015fc356a8aa53a206e27749758287db9",
+        "views": {
+          "1440": {
+            "initial_sha256": "13cd840eac637b27769c7cd46d1a32f305d722232d5198fea23a62cec8258a61",
+            "start": {
+              "button": {
+                "left": 887.34375,
+                "top": 537.265625,
+                "right": 1367.34375,
+                "bottom": 599.265625
+              },
+              "roastDate": {
+                "left": 1148.34375,
+                "top": 472.265625,
+                "right": 1367.34375,
+                "bottom": 499.265625
+              }
+            },
+            "factsVisible": true,
+            "reached": true,
+            "correctBag": true,
+            "restored": true,
+            "openedOnAdd": false,
+            "passed": true,
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "local": true,
+            "pageErrors": [],
+            "action_sha256": "f8b4afd941d22d9560dc0023b38ec4ba66e2b15ae76b19ad680a801453cac274"
+          },
+          "390": {
+            "initial_sha256": "a089f5cdea41b103d32248799028a580f7f181a076e9e6464d79667a1e449e6d",
+            "start": {
+              "button": {
+                "left": 20,
+                "top": 614.34375,
+                "right": 370,
+                "bottom": 670.34375
+              },
+              "roastDate": {
+                "left": 216,
+                "top": 558.34375,
+                "right": 370,
+                "bottom": 585.34375
+              }
+            },
+            "factsVisible": true,
+            "reached": true,
+            "correctBag": true,
+            "restored": true,
+            "openedOnAdd": false,
+            "passed": true,
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "local": true,
+            "pageErrors": [],
+            "action_sha256": "dedb6e5f86d7f845622f26cc5598b40048494ded51a1e2d315972b6de4055858"
+          }
+        }
+      }
+    },
+    "mobile": {
+      "none": {
+        "input_sha256": "6c72e71b516b4c11e8a1c1be1c734e8116751233ce738b79012e308bd7000d9d",
+        "views": {
+          "1440": {
+            "initial_sha256": "6493af4066147f8b44f78d83d81f95dca0332e54f0ac4e7b2c1b33e6071a6ed5",
+            "start": {
+              "later": {
+                "left": 977.109375,
+                "top": 211.90625,
+                "right": 1208.984375,
+                "bottom": 239.90625
+              },
+              "departure": {
+                "left": 218,
+                "top": 231,
+                "right": 660.109375,
+                "bottom": 334.828125
+              },
+              "toggle": {
+                "left": 176,
+                "top": 522.65625,
+                "right": 860.109375,
+                "bottom": 594.65625
+              }
+            },
+            "nextDepartureVisible": true,
+            "startsHidden": true,
+            "reached": true,
+            "revealed": true,
+            "restored": true,
+            "passed": true,
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "local": true,
+            "pageErrors": [],
+            "action_sha256": "fb5a6b17d1f8965454d758c80edea831ec4929fc0abe7f7d127f18e8f93f386d"
+          },
+          "390": {
+            "initial_sha256": "a9ca6b11b4acebfd2254b647996067ba8a795f5a87fca0e1d8b24011f20ddd25",
+            "start": {
+              "later": {
+                "left": 91,
+                "top": 514.40625,
+                "right": 321,
+                "bottom": 542.40625
+              },
+              "departure": {
+                "left": 40,
+                "top": 170,
+                "right": 251,
+                "bottom": 233.484375
+              },
+              "toggle": {
+                "left": 18,
+                "top": 369,
+                "right": 372,
+                "bottom": 432
+              }
+            },
+            "nextDepartureVisible": true,
+            "startsHidden": true,
+            "reached": true,
+            "revealed": true,
+            "restored": true,
+            "passed": true,
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "local": true,
+            "pageErrors": [],
+            "action_sha256": "18cbe1c62586402f8fd764bfe824c20d0e6b1f4c26f1ca80e2e8334ce37ee004"
+          }
+        }
+      },
+      "v2": {
+        "input_sha256": "ee5c2ff75f00bdd44316402b72938feb500a49f8ca31f0ee83830b98b9f8709b",
+        "views": {
+          "1440": {
+            "initial_sha256": "237f40444d676546c19a50791a4c080e8157fe867ee8b0c45bed4d0a76c2115b",
+            "start": {
+              "later": {
+                "left": 845.46875,
+                "top": 513.921875,
+                "right": 900,
+                "bottom": 539.921875
+              },
+              "departure": {
+                "left": 532,
+                "top": 182.1875,
+                "right": 794,
+                "bottom": 268.421875
+              },
+              "toggle": {
+                "left": 504,
+                "top": 402.421875,
+                "right": 936,
+                "bottom": 464.421875
+              }
+            },
+            "nextDepartureVisible": true,
+            "startsHidden": true,
+            "reached": true,
+            "revealed": true,
+            "restored": true,
+            "passed": true,
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "local": true,
+            "pageErrors": [],
+            "action_sha256": "7a501b9814ae5fc702762751eadb55e7da79bbf995fc416517309f6b5f438f87"
+          },
+          "390": {
+            "initial_sha256": "ceaa5a7b36e7a6a2d9f1709efc1f2812cbf554c5659779135efced91c86bc1eb",
+            "start": {
+              "later": {
+                "left": 279.96875,
+                "top": 452.0625,
+                "right": 334.5,
+                "bottom": 478.0625
+              },
+              "departure": {
+                "left": 39,
+                "top": 142.1875,
+                "right": 247.28125,
+                "bottom": 214.796875
+              },
+              "toggle": {
+                "left": 19.5,
+                "top": 340.5625,
+                "right": 370.5,
+                "bottom": 402.5625
+              }
+            },
+            "nextDepartureVisible": true,
+            "startsHidden": true,
+            "reached": true,
+            "revealed": true,
+            "restored": true,
+            "passed": true,
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "local": true,
+            "pageErrors": [],
+            "action_sha256": "5de193e1d7cec48a0f10a51797218e0a5c95bc8bfcb0aed8e0ba48d6320ea9ef"
+          }
+        }
+      },
+      "pilot-repair": {
+        "input_sha256": "5e822b90ee21bf2fd5edc5ffbbf605c7b026e2cd5fbd8f8b85b2e43e220ebe2b",
+        "views": {
+          "1440": {
+            "initial_sha256": "ab7807f6257624c10dca6014339f78a360ecfda3bc53666afbdc8e7e38708edc",
+            "start": {
+              "later": {
+                "left": 870.078125,
+                "top": 522.890625,
+                "right": 930,
+                "bottom": 552.890625
+              },
+              "departure": {
+                "left": 492,
+                "top": 218.59375,
+                "right": 838,
+                "bottom": 326.59375
+              },
+              "toggle": {
+                "left": 464,
+                "top": 419.390625,
+                "right": 976,
+                "bottom": 479.390625
+              }
+            },
+            "nextDepartureVisible": true,
+            "startsHidden": true,
+            "reached": true,
+            "revealed": true,
+            "restored": true,
+            "passed": true,
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "local": true,
+            "pageErrors": [],
+            "action_sha256": "d41117558d1bc89118093b3973372a822f7c751965ba30ff93982a21275be04c"
+          },
+          "390": {
+            "initial_sha256": "3fbd65cbde8cc070139475eb4c70136caf80df43c5131e70035cacde52ce5dd1",
+            "start": {
+              "later": {
+                "left": 264.078125,
+                "top": 441.25,
+                "right": 324,
+                "bottom": 471.25
+              },
+              "departure": {
+                "left": 42.03125,
+                "top": 189.21875,
+                "right": 253.96875,
+                "bottom": 262.921875
+              },
+              "toggle": {
+                "left": 20,
+                "top": 337.75,
+                "right": 370,
+                "bottom": 397.75
+              }
+            },
+            "nextDepartureVisible": true,
+            "startsHidden": true,
+            "reached": true,
+            "revealed": true,
+            "restored": true,
+            "passed": true,
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "local": true,
+            "pageErrors": [],
+            "action_sha256": "120c1326aa52da61de021a83769bd1c8e136ce2f72e03d5fd4da936281a717cb"
+          }
+        }
+      }
+    }
+  }
+}

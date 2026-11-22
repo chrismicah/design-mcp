@@ -1,0 +1,408 @@
+{
+  "summary": {
+    "requested_pairs": 2,
+    "judged_pairs": 2,
+    "v2": 89.58333333333333,
+    "pilot-repair": 97.91666666666667,
+    "difference": 8.333333333333343,
+    "wins_ties_losses": [
+      2,
+      0,
+      0
+    ],
+    "paired_bootstrap_95_interval": [
+      8.333333333333343,
+      8.333333333333343
+    ],
+    "median_usage": {
+      "v2": {
+        "input_tokens": 65131.0,
+        "cached_input_tokens": 45248.0,
+        "output_tokens": 21520.5,
+        "elapsed_seconds": 437.255
+      },
+      "pilot-repair": {
+        "input_tokens": 64904.5,
+        "cached_input_tokens": 47424.0,
+        "output_tokens": 21919.5,
+        "elapsed_seconds": 444.405
+      }
+    }
+  },
+  "cases": {
+    "landing": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44995046174",
+      "cells": {
+        "pilot-repair": {
+          "generation": {
+            "usage": {
+              "input_tokens": 64869,
+              "cached_input_tokens": 52864,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 24141,
+              "reasoning_output_tokens": 14415
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "treatment_call": true,
+            "direct_call": true,
+            "status": "passed",
+            "case": "landing",
+            "arm": "pilot-repair",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "b8a1ece0a536bb399f2cf17469c7f335c06db0447047b2a6daab81ed6aa65b18",
+            "mcp_config_sha256": "e155a5790ddad82a8dbd9a420d87d5605f1d50bd93009f1680c7eb41fb8c9711",
+            "elapsed_seconds": 488.98,
+            "exit_code": 0,
+            "trace_sha256": "57deb75a6e579ec153c5b045fb472d78b173a819018ef461642be2282b910934",
+            "html_sha256": "e89aa74a478023404c8bdd0af15fa5d015fc356a8aa53a206e27749758287db9"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "13cd840eac637b27769c7cd46d1a32f305d722232d5198fea23a62cec8258a61",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "a089f5cdea41b103d32248799028a580f7f181a076e9e6464d79667a1e449e6d",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 64779,
+              "cached_input_tokens": 41728,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 24879,
+              "reasoning_output_tokens": 13966
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "treatment_call": true,
+            "direct_call": true,
+            "status": "passed",
+            "case": "landing",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "b8a1ece0a536bb399f2cf17469c7f335c06db0447047b2a6daab81ed6aa65b18",
+            "elapsed_seconds": 503.94,
+            "exit_code": 0,
+            "trace_sha256": "f4887619f727b043b9ab1f3a4914bdc69d77e34cc0a87bb5a9c802d02919ad1c",
+            "html_sha256": "49024d2672612a3f3dacb8fff5b1b12a0ed00a44815db6ebbc5b3b655abacc03"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "5c7e91591c6247cac3d281f0f44d0885bd919dcc6e30810ee961b1b7aee81e37",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "1a031709cba1a4f5be175bc02156b8f0dc658aa699cc5da9b5724de74a3f91ea",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "landing",
+        "surface": "landing",
+        "blind_key": {
+          "A": "pilot-repair",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, the pouch and Alto Carmo heading identify the coffee first, followed by a prominent tasting note and a single $19 \u201cAdd to bag\u201d button."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "A wide desktop gutter separates the pouch from the buying details, and the shorter mobile image keeps the paired size and roast details together with the purchase button in one view."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The serif Alto Carmo heading fits on one line at both widths, and bold sans-serif values make \u201c250 g\u201d and \u201cNovember 19\u201d easy to distinguish from their smaller labels."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Plum connects the illustration backdrop, flame mark and tasting note to the bag count and purchase button, where pale lettering stands out against the dark fill."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Both browser trees expose descriptive pouch text, the visible bag count, a status region and a purchase button that names one 250 g bag of Alto Carmo at $19."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "Both views present Cinder Supply\u2019s small-batch Alto Carmo with cacao and plum notes, a November 19 roast date, a 250 g size and a $19 \u201cAdd to bag\u201d action."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The pouch and Alto Carmo heading lead into three labeled buying details at both widths, and the prominent purchase button puts \u201cAdd to bag\u201d and $19 together."
+            },
+            "spacing": {
+              "score": 3,
+              "evidence": "The ruled rows align labels and values neatly at both widths, though roughly 70 pixels of empty space between the last mobile row and the purchase bar weakens their grouping."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The serif heading echoes the pouch\u2019s two-line name on desktop and fits on one line on mobile, where bold right-aligned values keep the specifications easy to scan."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The deep plum of the pouch and fruit recurs in the bag count and purchase button, whose light lettering makes the action and price easy to read."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "Both browser trees expose descriptive pouch text and a button naming Alto Carmo, 250 g and $19, with \u201cBag, 0 items\u201d as the only recorded bag-status cue."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "Cinder Supply\u2019s small-batch Alto Carmo has the requested cacao and plum notes, November 19 roast date and 250 g size, with $19 shown on the \u201cAdd to bag\u201d button at both widths."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26372,
+          "cached_input_tokens": 17792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 6104,
+          "reasoning_output_tokens": 5403
+        },
+        "scores": {
+          "pilot-repair": 100,
+          "v2": 91.66666666666666
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "13cd840eac637b27769c7cd46d1a32f305d722232d5198fea23a62cec8258a61",
+          "A-390.png": "a089f5cdea41b103d32248799028a580f7f181a076e9e6464d79667a1e449e6d",
+          "B-1440.png": "5c7e91591c6247cac3d281f0f44d0885bd919dcc6e30810ee961b1b7aee81e37",
+          "B-390.png": "1a031709cba1a4f5be175bc02156b8f0dc658aa699cc5da9b5724de74a3f91ea"
+        },
+        "judge_prompt_sha256": "fc257137bf71ed1781f198867bd58e7d103b53c55700dfbeeb71736bdde1a25d"
+      }
+    },
+    "mobile": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44995046174",
+      "cells": {
+        "pilot-repair": {
+          "generation": {
+            "usage": {
+              "input_tokens": 64940,
+              "cached_input_tokens": 41984,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 19698,
+              "reasoning_output_tokens": 15206
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "treatment_call": true,
+            "direct_call": true,
+            "status": "passed",
+            "case": "mobile",
+            "arm": "pilot-repair",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "86a17d820206fae989b9c35abf870053a6c1a114f18eb4fcb7d33e2f5d20851d",
+            "mcp_config_sha256": "e155a5790ddad82a8dbd9a420d87d5605f1d50bd93009f1680c7eb41fb8c9711",
+            "elapsed_seconds": 399.83,
+            "exit_code": 0,
+            "trace_sha256": "201ef0eda6d90f2fc6921e158806323e071bb1439f55a870eed27ffcfd055244",
+            "html_sha256": "5e822b90ee21bf2fd5edc5ffbbf605c7b026e2cd5fbd8f8b85b2e43e220ebe2b"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "ab7807f6257624c10dca6014339f78a360ecfda3bc53666afbdc8e7e38708edc",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "3fbd65cbde8cc070139475eb4c70136caf80df43c5131e70035cacde52ce5dd1",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 65483,
+              "cached_input_tokens": 48768,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 18162,
+              "reasoning_output_tokens": 13724
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "treatment_call": true,
+            "direct_call": true,
+            "status": "passed",
+            "case": "mobile",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "86a17d820206fae989b9c35abf870053a6c1a114f18eb4fcb7d33e2f5d20851d",
+            "elapsed_seconds": 370.57,
+            "exit_code": 0,
+            "trace_sha256": "60cca37330b94b67d6e504e98b68a606d7b75bf6f1df1d32c49405a0d2598093",
+            "html_sha256": "ee5c2ff75f00bdd44316402b72938feb500a49f8ca31f0ee83830b98b9f8709b"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "237f40444d676546c19a50791a4c080e8157fe867ee8b0c45bed4d0a76c2115b",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "ceaa5a7b36e7a6a2d9f1709efc1f2812cbf554c5659779135efced91c86bc1eb",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "mobile",
+        "surface": "mobile",
+        "blind_key": {
+          "A": "pilot-repair",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, the oversized 08:42 draws the eye first, Union and Platform 3 complete the departure details, and the full-width Show ticket button gives the rider a clear next action."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The card, button and option rows share outer edges at both widths, and the smaller gap above Show ticket than below it groups the action with the departure."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The condensed numerals distinguish the large 08:42 from the smaller 08:58, and the wider bold labels remain legible on a single line at 390 px."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The Spur mark\u2019s yellow repeats on Platform 3 and Show ticket, making both easy to find against the black departure card and pale page."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "The empty Weekly pass checkbox gives a visible selection cue, and both browser trees expose its name and role, the two named buttons and a ticket status region."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both widths show the 08:42 Union departure from Platform 3, the 08:58 alternative and Weekly pass, while the initial Show ticket view leaves the requested identifier TKT-0837 unverified."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, 08:42 and Union read together opposite Platform 3, followed by the yellow Show ticket bar and two quieter option rows."
+            },
+            "spacing": {
+              "score": 3,
+              "evidence": "The card, button and rows align at both widths, with roughly the bottom third of the mobile card reserved for track lines that increase the distance from Union to Show ticket."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "Large condensed numerals make the time and platform easy to pick out, and even the longer Alternative departure label fits comfortably beside 08:58 on mobile."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Black text on yellow emphasizes Platform 3 and Show ticket at both widths, and the muted gray track lines stay subordinate to the white departure text."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "Both browser trees expose a descriptive \u201c08:42 Union\u201d heading and a ticket status region, but the accessible name \u201cWeekly pass\u201d omits the underlined \u201cSelect\u201d prompt visible on that control."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both layouts show 08:42 Union, Platform 3, the 08:58 alternative and a weekly pass choice, with only the initial Show ticket state supplied as evidence for the TKT-0837 reveal."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26166,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 6240,
+          "reasoning_output_tokens": 5546
+        },
+        "scores": {
+          "pilot-repair": 95.83333333333334,
+          "v2": 87.5
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "ab7807f6257624c10dca6014339f78a360ecfda3bc53666afbdc8e7e38708edc",
+          "A-390.png": "3fbd65cbde8cc070139475eb4c70136caf80df43c5131e70035cacde52ce5dd1",
+          "B-1440.png": "237f40444d676546c19a50791a4c080e8157fe867ee8b0c45bed4d0a76c2115b",
+          "B-390.png": "ceaa5a7b36e7a6a2d9f1709efc1f2812cbf554c5659779135efced91c86bc1eb"
+        },
+        "judge_prompt_sha256": "2fd8fdea718a11ddc38841a326cd4a72f741c3b76774044e6f92eefe83378238"
+      }
+    }
+  }
+}
