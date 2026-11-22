@@ -1,0 +1,69 @@
+name: Storybook MCP component and story retrieval
+
+on:
+  push:
+    branches: [design-mcp/f-held-out-fixes]
+    paths:
+      - '.github/workflows/storybook-mcp-probe.yml'
+      - 'evals/v1/probe_storybook.py'
+      - 'evals/v1/storybook-fixture/**'
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      STORYBOOK_DISABLE_TELEMETRY: '1'
+      CI: 'true'
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22.21.1'
+      - name: Install pinned Storybook and probe its loopback MCP server
+        shell: bash
+        run: |
+          fixture="$RUNNER_TEMP/fixture"
+          proof="$RUNNER_TEMP/storybook-proof"
+          cp -R evals/v1/storybook-fixture "$fixture"
+          mkdir -p "$proof"
+          python -m pip install 'fastmcp==4.2.4'
+          npm install --prefix "$fixture" --registry https://registry.npmjs.org --ignore-scripts --no-fund --no-audit
+          cp "$fixture/package-lock.json" "$proof/"
+          node - "$fixture/package-lock.json" <<'JS'
+          const { packages } = require(process.argv[2]);
+          const pinned = {
+            'storybook': 'sha512-H48X6AURAFTpfN2zEux6vNesee5Oq8Gxj1IanYmblPZ218sfKSeyyerF1NC7GD7BrruoC8L4/cU0zII4y+d6zw==',
+            '@storybook/addon-mcp': 'sha512-aQza4iMVgB3OXPMJvcnA193xMdt0sG/0+otGCQu8il6LIuFDP60jD5BXWlQiaVog+swqHrjJCFzuUPE+azz7Kg==',
+            '@storybook/react-vite': 'sha512-nc1dqnmjGOcDJvPCkAn4Hmu1gi7dNHHoibNmlBp0d1adosejELZxuNjHBkPl/KxZjbzP3jljQHnHB/guxd8e2g==',
+          };
+          for (const [name, integrity] of Object.entries(pinned)) {
+            const item = packages[`node_modules/${name}`];
+            if (item.version !== '10.6.0' || item.integrity !== integrity) {
+              throw new Error(`Unexpected package pin for ${name}`);
+            }
+          }
+          JS
+          probe="$PWD/evals/v1/probe_storybook.py"
+          cd "$fixture"
+          ./node_modules/.bin/storybook dev --host 127.0.0.1 --port 6006 --ci --no-open >"$proof/server.log" 2>&1 &
+          server=$!
+          trap 'kill "$server" 2>/dev/null || true' EXIT
+          curl --fail --silent --show-error --retry 20 --retry-connrefused --retry-delay 1 --max-time 5 \
+            --output "$proof/index.json" http://127.0.0.1:6006/index.json
+          python "$probe" http://127.0.0.1:6006/mcp "$proof/storybook.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: storybook-mcp-receipt
+          path: ${{ runner.temp }}/storybook-proof/
+          if-no-files-found: error
+          retention-days: 7
