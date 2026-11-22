@@ -4,14 +4,17 @@ from datetime import date, timedelta
 from html import escape
 import json
 import re
+from time import sleep
 from urllib.error import HTTPError
-from urllib.parse import urlencode, urlsplit
+from urllib.parse import quote, urlencode, urlsplit
 from urllib.request import Request, urlopen
 
 
 RELEASES = ("USWDS/uswds", "remorses/playwriter")
 RESEARCH = ("screenshot to code UI generation", "visual critique user interface design")
 MAX_BYTES = 256_000
+CROSSREF_TYPES = {"journal-article", "proceedings-article", "posted-content"}
+CROSSREF_INTERVAL_SECONDS = 1.25
 
 
 def fetch_json(url):
@@ -48,24 +51,67 @@ def read_papers(query, since, fetch):
             if re.fullmatch(r"https://openalex\.org/W[0-9]+", item["id"])]
 
 
-def collect(today, fetch=fetch_json):
-    since = today - timedelta(days=90)
-    sources = []
-
-    def inspect(name, read, *arguments):
+def read_crossref(query, since, fetch):
+    params = urlencode({"query.bibliographic": query, "filter": f"from-pub-date:{since}",
+                        "rows": 8, "select": "DOI,title,published,type"})
+    result = fetch(f"https://api.crossref.org/works?{params}")
+    leads = []
+    seen = set()
+    for item in result["message"]["items"]:
+        if not isinstance(item, dict) or item.get("type") not in CROSSREF_TYPES:
+            continue
+        identifier = item.get("DOI")
+        if not isinstance(identifier, str):
+            continue
+        doi = identifier.lower()
+        if doi in seen or not re.fullmatch(r"10\.\d{4,9}/[-._;()/:a-z0-9]+", doi):
+            continue
         try:
-            leads = read(*arguments, fetch)
-        except HTTPError as error:
-            sources.append({"source": name, "error": f"HTTP {error.code}"})
-        except (OSError, AttributeError, KeyError, TypeError, ValueError) as error:
-            sources.append({"source": name, "error": type(error).__name__})
-        else:
-            sources.append({"source": name, "leads": leads})
+            parts = item["published"]["date-parts"][0]
+            titles = item["title"]
+            if len(parts) not in (2, 3) or not isinstance(titles, list):
+                continue
+            has_day = len(parts) == 3
+            earliest = date(parts[0], parts[1], parts[2] if has_day else 1)
+            title = titles[0].strip()
+        except (AttributeError, IndexError, KeyError, TypeError, ValueError):
+            continue
+        if earliest < since or not title:
+            continue
+        record = lead(title, earliest.isoformat(), f"https://doi.org/{quote(doi, safe='/')}")
+        if not has_day:
+            record["date"] = record["date"][:7]
+        leads.append(record)
+        seen.add(doi)
+    return leads
 
-    for repo in RELEASES:
-        inspect(repo, read_release, repo)
+
+def source_result(name, read, *arguments):
+    try:
+        return {"source": name, "leads": read(*arguments)}
+    except HTTPError as error:
+        return {"source": name, "error": f"HTTP {error.code}"}
+    except (OSError, AttributeError, KeyError, TypeError, ValueError) as error:
+        return {"source": name, "error": type(error).__name__}
+
+
+def collect(today, fetch=fetch_json, pause=sleep):
+    since = today - timedelta(days=90)
+    sources = [source_result(repo, read_release, repo, fetch) for repo in RELEASES]
+    primary_error = None
+    crossref_used = False
     for query in RESEARCH:
-        inspect(query, read_papers, query, since)
+        if primary_error is None:
+            outcome = source_result(query, read_papers, query, since, fetch)
+            primary_error = outcome.get("error")
+            if primary_error is None:
+                sources.append({**outcome, "provider": "OpenAlex"})
+                continue
+        if crossref_used:
+            pause(CROSSREF_INTERVAL_SECONDS)
+        outcome = source_result(query, read_crossref, query, since, fetch)
+        sources.append({**outcome, "provider": "Crossref", "openalex_error": primary_error})
+        crossref_used = True
     return sources
 
 
@@ -74,8 +120,10 @@ def print_report(sources):
     print("Review these public leads before proposing a design or harness change.\n")
     for source in sources:
         print(f"## {source['source']}\n")
+        if "openalex_error" in source:
+            print(f"Using Crossref because OpenAlex was unavailable ({source['openalex_error']}).\n")
         if "error" in source:
-            print(f"Source unavailable ({source['error']}).\n")
+            print(f"{source.get('provider', 'Source')} unavailable ({source['error']}).\n")
             continue
         if not source["leads"]:
             print("No results in the current search.\n")

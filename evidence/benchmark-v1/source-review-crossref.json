@@ -1,0 +1,107 @@
+{
+  "observed_at": "2026-11-22",
+  "scope": "Paper-discovery sources, a real fallback, and a forced preferred-provider failure with live fallback requests",
+  "tests_passed": 3,
+  "reports": {
+    "crossref-fallback-live.md": {
+      "openalex_outage_injected": false,
+      "sources": {
+        "USWDS/uswds": {
+          "lead_count": 1,
+          "links": [
+            "https://github.com/uswds/uswds/releases/tag/v3.14.0"
+          ]
+        },
+        "remorses/playwriter": {
+          "lead_count": 1,
+          "links": [
+            "https://github.com/remorses/playwriter/releases/tag/playwriter%400.12.0"
+          ]
+        },
+        "screenshot to code UI generation": {
+          "lead_count": 5,
+          "links": [
+            "https://openalex.org/W7225436441",
+            "https://openalex.org/W7220458235",
+            "https://openalex.org/W7204226153",
+            "https://openalex.org/W7197006026",
+            "https://openalex.org/W7225159593"
+          ]
+        },
+        "visual critique user interface design": {
+          "lead_count": 7,
+          "links": [
+            "https://doi.org/10.25124/demandia.v11i2.10769",
+            "https://doi.org/10.1142/s0219467828500544",
+            "https://doi.org/10.55645/kharismatech.v21i2.616",
+            "https://doi.org/10.23969/infomatek.v28i2.59199",
+            "https://doi.org/10.1145/3830397.3841901",
+            "https://doi.org/10.25124/demandia.v11i2.10475",
+            "https://doi.org/10.21070/ups.12416"
+          ],
+          "fallback": "Crossref"
+        }
+      },
+      "report_sha256": "36cf934de7a613ef763049255611aaf155f2c9e9ecb7207c19a464b55f7756ac"
+    },
+    "forced-openalex-error-real-crossref.md": {
+      "openalex_outage_injected": true,
+      "sources": {
+        "USWDS/uswds": {
+          "lead_count": 1,
+          "links": [
+            "https://github.com/uswds/uswds/releases/tag/v3.14.0"
+          ]
+        },
+        "remorses/playwriter": {
+          "lead_count": 1,
+          "links": [
+            "https://github.com/remorses/playwriter/releases/tag/playwriter%400.12.0"
+          ]
+        },
+        "screenshot to code UI generation": {
+          "lead_count": 6,
+          "links": [
+            "https://doi.org/10.1016/j.infsof.2026.108214",
+            "https://doi.org/10.1145/3844177.3844556",
+            "https://doi.org/10.30606/rjti.v5i3.5033",
+            "https://doi.org/10.1145/3844177.3844555",
+            "https://doi.org/10.20944/preprints202610.1999.v2",
+            "https://doi.org/10.20944/preprints202610.1999.v1"
+          ],
+          "fallback": "Crossref"
+        },
+        "visual critique user interface design": {
+          "lead_count": 7,
+          "links": [
+            "https://doi.org/10.25124/demandia.v11i2.10769",
+            "https://doi.org/10.1142/s0219467828500544",
+            "https://doi.org/10.55645/kharismatech.v21i2.616",
+            "https://doi.org/10.23969/infomatek.v28i2.59199",
+            "https://doi.org/10.1145/3830397.3841901",
+            "https://doi.org/10.25124/demandia.v11i2.10475",
+            "https://doi.org/10.21070/ups.12416"
+          ],
+          "fallback": "Crossref"
+        }
+      },
+      "report_sha256": "172b7a8b0701968d7a45d01b2ba75fa5bfd59b272ce50c4b802419067e6ab48c"
+    }
+  },
+  "research_inputs": {
+    "W7197006026": {
+      "title": "Pattern over Pixels: Measuring Pattern Completion Bias in Multimodal Code Generation",
+      "index_id": "https://openalex.org/W7197006026",
+      "primary_location": "https://doi.org/10.1145/3832783.3834443",
+      "abstract_sha256": "04828067cb4a1d82822794aaa68a00fa067da76d4e3c162197a0fe5c1ebf85d9",
+      "review_scope": "indexed abstract"
+    },
+    "W7225436441": {
+      "title": "Render Structure Uncertainty for HTML Repair in MLLM-based UI-to-Code Generation",
+      "index_id": "https://openalex.org/W7225436441",
+      "primary_location": "https://dash.harvard.edu/handle/1/42763438",
+      "abstract_sha256": "707372e30f0b05ba7d9a35695d3302095f19e93727bfeccd03f9eea7e4e2c7f6",
+      "review_scope": "indexed abstract"
+    }
+  }
+}
