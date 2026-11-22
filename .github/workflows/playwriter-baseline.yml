@@ -1,8 +1,8 @@
-name: Hosted competitor visual captures
+name: Form candidate paired captures
 
 on:
   push:
-    branches: [design-mcp/competitor-visuals]
+    branches: [design-mcp/form-candidate-benchmark]
     paths: ['.github/workflows/playwriter-baseline.yml', 'evidence/benchmark-v1/competitor-render-inputs/**', 'evals/v1/render.py']
 
 permissions:
@@ -44,7 +44,7 @@ jobs:
           PY
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: hosted-competitor-captures
+          name: form-candidate-captures
           path: evidence/benchmark-v1/competitor-render-inputs/
           if-no-files-found: error
           retention-days: 7

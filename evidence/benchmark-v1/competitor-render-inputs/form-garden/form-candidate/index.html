@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Volunteer at the community garden</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400..700&amp;family=Spectral:wght@500;600&amp;display=swap">
+  <style>
+    :root {
+      --paper: #FBF6EF;
+      --ink: #30242A;
+      --plum: #75354D;
+      --leaf: #355140;
+      --new-growth: #9AA970;
+      --sage: #E8EADB;
+      --muted: color-mix(in srgb, var(--ink) 74%, var(--paper));
+      --rule: color-mix(in srgb, var(--ink) 24%, var(--paper));
+      --control-border: color-mix(in srgb, var(--leaf) 67%, var(--paper));
+      --field: color-mix(in srgb, var(--paper) 58%, white);
+      --serif: "Spectral", Georgia, serif;
+      --sans: "DM Sans", sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    body {
+      min-inline-size: 0;
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 400 1rem/1.5 var(--sans);
+    }
+
+    button, input, textarea {
+      font: inherit;
+    }
+
+    .shell {
+      inline-size: min(67rem, calc(100% - 5rem));
+      margin-inline: auto;
+    }
+
+    .site-bar {
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      min-block-size: 4.625rem;
+      border-block-end: 1px solid var(--rule);
+      font-size: 1.125rem;
+      font-weight: 650;
+      letter-spacing: -.025em;
+    }
+
+    .garden-mark {
+      display: grid;
+      place-items: center;
+      inline-size: 2.25rem;
+      block-size: 2.25rem;
+      flex: none;
+      border-radius: 50%;
+      background: var(--sage);
+      color: var(--leaf);
+    }
+
+    .garden-mark svg {
+      inline-size: 1.375rem;
+      block-size: 1.375rem;
+    }
+
+    .page-grid {
+      display: grid;
+      grid-template-areas: "form artwork";
+      grid-template-columns: minmax(0, 31.5rem) minmax(0, 27rem);
+      align-items: start;
+      justify-content: space-between;
+      column-gap: clamp(2.5rem, 6vw, 6.5rem);
+      padding-block: clamp(2.75rem, 4.25vw, 4.5rem) 3.5rem;
+    }
+
+    .signup, .confirmation {
+      grid-area: form;
+      min-inline-size: 0;
+    }
+
+    .question, .confirmation h1 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(2.625rem, 4.2vw, 3.75rem);
+      font-weight: 500;
+      line-height: 1.02;
+      letter-spacing: -.038em;
+    }
+
+    .shift-group {
+      min-inline-size: 0;
+      padding: 0;
+      margin: 0;
+      border: 0;
+    }
+
+    .shift-group legend {
+      position: relative;
+      inline-size: 100%;
+      padding: 0;
+      margin-block-end: 1.75rem;
+    }
+
+    .heading-sprig {
+      display: none;
+    }
+
+    .shift-choices {
+      display: grid;
+      gap: .5rem;
+    }
+
+    .shift-option {
+      display: grid;
+      grid-template-columns: 1.25rem minmax(0, 1fr) auto;
+      align-items: center;
+      gap: .8rem;
+      min-block-size: 3.625rem;
+      padding: .625rem .95rem;
+      border: 1px solid var(--rule);
+      border-radius: 5px;
+      background: var(--field);
+      cursor: pointer;
+    }
+
+    .shift-option:hover {
+      border-color: var(--control-border);
+    }
+
+    .shift-option:has(input:checked) {
+      border-color: var(--plum);
+      background: color-mix(in srgb, var(--plum) 7%, var(--paper));
+    }
+
+    .shift-option input {
+      appearance: none;
+      inline-size: 1.25rem;
+      block-size: 1.25rem;
+      margin: 0;
+      border: 1.5px solid var(--control-border);
+      border-radius: 50%;
+      background-color: var(--field);
+      cursor: pointer;
+    }
+
+    .shift-option input:checked {
+      border-color: var(--plum);
+      background: radial-gradient(circle, var(--plum) 0 4.5px, var(--field) 5px);
+    }
+
+    .shift-option:has(input:focus-visible),
+    :where(.field-control, button, .confirmation h1):focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 2px;
+      box-shadow: 0 0 0 2px var(--paper);
+    }
+
+    .shift-option input:focus-visible {
+      outline: none;
+    }
+
+    .shift-day {
+      font-weight: 650;
+    }
+
+    .shift-time {
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .shift-option:has(input:checked) .shift-time {
+      color: var(--plum);
+    }
+
+    .field {
+      margin-block-start: 1.25rem;
+    }
+
+    .field label {
+      display: block;
+      margin-block-end: .4rem;
+      font-weight: 650;
+    }
+
+    .optional {
+      margin-inline-start: .4rem;
+      color: var(--muted);
+      font-size: .875rem;
+      font-weight: 400;
+    }
+
+    .field-control {
+      display: block;
+      inline-size: 100%;
+      min-block-size: 3rem;
+      padding: .625rem .8rem;
+      border: 1px solid var(--control-border);
+      border-radius: 5px;
+      background: var(--field);
+      color: var(--ink);
+    }
+
+    textarea.field-control {
+      min-block-size: 4.75rem;
+      resize: vertical;
+    }
+
+    .field-control[aria-invalid="true"],
+    .shift-option:has([aria-invalid="true"]) {
+      border-color: var(--plum);
+    }
+
+    .field-error {
+      margin: .45rem 0 0;
+      color: var(--plum);
+      font-size: .9375rem;
+      font-weight: 650;
+    }
+
+    .primary {
+      min-block-size: 3.25rem;
+      margin-block-start: 1.5rem;
+      padding: .65rem 1.35rem;
+      border: 1px solid transparent;
+      border-radius: 5px;
+      background: var(--plum);
+      color: var(--paper);
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .primary:hover {
+      background: color-mix(in srgb, var(--plum) 76%, var(--ink));
+    }
+
+    .garden-print {
+      grid-area: artwork;
+      overflow: hidden;
+      margin-block-start: .25rem;
+      border-radius: 5px;
+    }
+
+    .garden-print svg {
+      display: block;
+      inline-size: 100%;
+      block-size: auto;
+    }
+
+    .confirmation-mark {
+      display: grid;
+      place-items: center;
+      inline-size: 2.75rem;
+      block-size: 2.75rem;
+      margin-block-end: 1.25rem;
+      border-radius: 50%;
+      background: var(--sage);
+      color: var(--leaf);
+    }
+
+    .confirmation h1 {
+      inline-size: fit-content;
+      overflow-wrap: anywhere;
+    }
+
+    .shift-confirmation {
+      margin-block-start: 1.75rem;
+      padding: 1rem 1.2rem;
+      border-inline-start: 3px solid var(--leaf);
+      border-radius: 0 5px 5px 0;
+      background: var(--sage);
+    }
+
+    .shift-confirmation p {
+      margin: 0;
+    }
+
+    .shift-confirmation p:first-child {
+      color: var(--leaf);
+      font-weight: 650;
+    }
+
+    #confirmed-shift {
+      margin-block-start: .15rem;
+      font: 600 1.75rem/1.2 var(--serif);
+      letter-spacing: -.02em;
+    }
+
+    .edit {
+      min-block-size: 2.75rem;
+      margin-block-start: 1rem;
+      padding: 0 .25rem;
+      border: 0;
+      border-radius: 3px;
+      background: transparent;
+      color: var(--plum);
+      font-weight: 650;
+      text-decoration: underline;
+      text-underline-offset: .2em;
+      cursor: pointer;
+    }
+
+    @media (max-width: 50rem) {
+      .shell {
+        inline-size: min(33rem, calc(100% - 2.5rem));
+      }
+
+      .site-bar {
+        min-block-size: 3.875rem;
+      }
+
+      .garden-mark {
+        inline-size: 2rem;
+        block-size: 2rem;
+      }
+
+      .page-grid {
+        display: block;
+        padding-block: 2rem 2.5rem;
+      }
+
+      .question, .confirmation h1 {
+        font-size: clamp(2.375rem, 10.7vw, 3rem);
+      }
+
+      .shift-group legend {
+        margin-block-end: 1.5rem;
+      }
+
+      .primary {
+        inline-size: 100%;
+      }
+
+      .garden-print {
+        display: none;
+      }
+    }
+
+    @media (min-width: 23.125rem) and (max-width: 50rem) {
+      .shift-group legend {
+        padding-inline-end: 4.5rem;
+      }
+
+      .heading-sprig {
+        position: absolute;
+        inset-block-start: .2rem;
+        inset-inline-end: .125rem;
+        display: block;
+        inline-size: 4.125rem;
+        block-size: auto;
+        pointer-events: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .confirmation:not([hidden]) {
+        animation: reveal .2s ease-out both;
+      }
+
+      @keyframes reveal {
+        from { opacity: .25; }
+        to { opacity: 1; }
+      }
+    }
+
+    @media (forced-colors: active) {
+      .shift-option input,
+      .shift-option input:checked {
+        appearance: auto;
+        background: revert;
+        border: revert;
+      }
+
+      .primary {
+        border-color: ButtonText;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="shell site-bar">
+      <span class="garden-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" focusable="false">
+          <path d="M12 20v-7c0-4 2.8-7.6 7.5-8-.4 4.7-3 7.4-7.5 7.4M12 15c-4.4 0-7.2-2.2-7.5-6.2 4.1.1 6.7 2 7.5 5.3M8.5 20h7"
+                stroke="currentColor" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span>Community garden</span>
+    </div>
+  </header>
+
+  <main class="shell page-grid">
+    <form id="signup" class="signup" novalidate>
+      <fieldset class="shift-group">
+        <legend>
+          <h1 class="question">When can you<br>lend a hand?</h1>
+          <svg class="heading-sprig" viewBox="0 0 72 87" aria-hidden="true" focusable="false">
+            <path d="M19 81c15-6 21-17 20-31-1-14 5-24 17-35"
+                  fill="none" stroke="var(--leaf)" stroke-width="1.65" stroke-linecap="round"/>
+            <path d="M39 57C23 58 13 48 10 35c7 3 15 0 22 6 5 4 7 10 7 16Z"
+                  fill="var(--leaf)"/>
+            <path d="M43 39c2-11 10-15 22-15-3 10-11 17-22 15ZM50 22C43 14 47 7 60 3c1 8-2 15-10 19Z"
+                  fill="var(--new-growth)"/>
+            <path d="M42 42C31 38 25 29 28 19c9 4 15 12 14 23Z" fill="var(--leaf)"/>
+            <path d="M39 59c4-7 10-10 15-10 2 11-4 21-16 23 4-5 5-9 4-13Z"
+                  fill="var(--plum)"/>
+            <path d="M14 39c8 9 16 14 23 17m-7-33c2 7 5 13 11 18"
+                  fill="none" stroke="var(--sage)" stroke-width=".8" stroke-linecap="round"/>
+          </svg>
+        </legend>
+
+        <div class="shift-choices">
+          <label class="shift-option">
+            <input type="radio" name="shift" value="Wednesday at 5 pm" required>
+            <span class="shift-day">Wednesday</span>
+            <time class="shift-time" datetime="17:00">5 pm</time>
+          </label>
+          <label class="shift-option">
+            <input type="radio" name="shift" value="Saturday at 9 am" required>
+            <span class="shift-day">Saturday</span>
+            <time class="shift-time" datetime="09:00">9 am</time>
+          </label>
+        </div>
+        <p class="field-error" id="shift-error" role="alert" hidden>Choose a shift.</p>
+      </fieldset>
+
+      <div class="field">
+        <label for="first-name">First name</label>
+        <input class="field-control" id="first-name" name="first-name" type="text" autocomplete="given-name" required>
+        <p class="field-error" id="name-error" role="alert" hidden>Enter your first name.</p>
+      </div>
+
+      <div class="field">
+        <label for="tools">Note about tools <span class="optional">(optional)</span></label>
+        <textarea class="field-control" id="tools" name="tools" rows="2"></textarea>
+      </div>
+
+      <button class="primary" type="submit">Sign up to volunteer</button>
+    </form>
+
+    <section id="confirmation" class="confirmation" aria-labelledby="confirmation-title" hidden>
+      <div class="confirmation-mark" aria-hidden="true">
+        <svg width="23" height="23" viewBox="0 0 24 24" fill="none" focusable="false">
+          <path d="m5.5 12.5 4.2 4.2 8.8-9.4" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h1 id="confirmation-title" tabindex="-1" aria-describedby="shift-confirmation">Thanks, <bdi id="confirmed-name"></bdi>!</h1>
+      <div class="shift-confirmation" id="shift-confirmation">
+        <p>Your volunteer shift</p>
+        <p id="confirmed-shift"></p>
+      </div>
+      <button id="edit-signup" class="edit" type="button">Edit signup</button>
+    </section>
+
+    <div class="garden-print" aria-hidden="true">
+      <svg viewBox="0 0 432 558" xmlns="http://www.w3.org/2000/svg" focusable="false">
+        <defs>
+          <pattern id="ink-grain" width="19" height="23" patternUnits="userSpaceOnUse">
+            <path d="M2 4h.6m11 3h.4M7 15h.75m9 6h.5M2 21h.4"
+                  fill="none" stroke="var(--leaf)" stroke-width=".7" stroke-linecap="round" opacity=".29"/>
+          </pattern>
+        </defs>
+
+        <path d="M0 0h432v558H0z" fill="var(--sage)"/>
+        <path d="M53 481V216a163 163 0 0 1 326 0v265Z" fill="var(--new-growth)" opacity=".26"/>
+        <path d="M0 0h432v558H0z" fill="url(#ink-grain)"/>
+        <rect x="15.5" y="15.5" width="401" height="527" fill="none"
+              stroke="var(--leaf)" stroke-opacity=".36"/>
+        <path d="M64 459V216a152 152 0 0 1 304 0v243"
+              fill="none" stroke="var(--leaf)" stroke-opacity=".26"/>
+        <path d="M131 90v365m170-363v359" stroke="var(--leaf)" stroke-opacity=".12"/>
+
+        <path d="M55 485c35-14 71-19 101-16 28 2 57-9 89-6 43 4 76-4 132 22l-29 18c-91 20-188 22-275-4Z"
+              fill="var(--new-growth)" opacity=".38"/>
+        <g fill="none" stroke="var(--leaf)" stroke-linecap="round">
+          <path d="M56 485c41-18 75-18 101-15 28 3 56-10 88-7 40 4 80-2 131 22"
+                stroke-width="1.35" opacity=".74"/>
+          <path d="M69 493c42-11 81-9 121-11 39-2 94-14 169 13M93 505c44-7 80 0 139-11 30-6 79-4 102 2M129 515c38-3 83-7 116-14 16-3 42-4 61-3M175 523c31-4 66-11 96-12"
+                opacity=".49"/>
+          <path d="m84 475 7-2m20 9 9-2m21 15 7-1m14-19 8-1m19 33 6-1m74-32 11 1m16 31 9-1m19-28 9 2m2 13 9 1"
+                opacity=".6"/>
+          <path d="M112 471c-1-8-5-14-12-17m12 17c2-6 6-10 12-12m195 10c3-7 9-10 15-10"
+                opacity=".62"/>
+        </g>
+
+        <path d="M228 474c2-128 7-248 17-373l7-12 4 13c-10 119-16 244-17 370Z"
+              fill="var(--paper)" stroke="var(--leaf)" stroke-opacity=".65" stroke-width="1.2"/>
+        <path d="M233 467c3-127 10-256 17-367m-14 333 3-62m3-87 3-58"
+              fill="none" stroke="var(--leaf)" stroke-opacity=".35" stroke-linecap="round"/>
+
+        <g fill="none" stroke="var(--leaf)" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M225 475c-19-30-21-80 2-121 16-29 44-51 38-88-5-32-42-55-44-89-1-28 17-54 34-68 12-10 21-22 17-31-3-7-13-6-15 2"
+                stroke-width="3.6"/>
+          <path d="M216 403c-15-8-31-22-49-35m53 68c10-20 25-29 45-33m-31-60c19-11 33-22 58-32m-28-28c-26 5-48 2-68-8m61-33c18-10 30-25 50-41m-76 10c-22 1-36-4-50-13m40-24c-12-9-18-21-24-36m43-5c9 4 19 4 31 0"
+                stroke-width="2.1"/>
+          <path d="M261 270c13-11 28-12 31-2 3 9-9 12-12 6m-59-95c-8-2-15-2-16 5-1 6 7 7 9 2m-1 229c-13-9-23-10-27-3-4 7 5 13 10 7"
+                stroke-width="1.4"/>
+          <path d="M250 238c18-13 41-17 49 3m-51 79c-18-18-40-24-50-7"
+                stroke-width="1.8"/>
+        </g>
+
+        <path d="M298 239c12 4 17 15 15 28-3 19-18 32-38 36 12-10 15-26 16-39 0-12 2-19 7-25Z"
+              fill="var(--plum)"/>
+        <path d="M198 312c-15 4-21 15-17 28 5 17 20 31 39 35-11-11-16-23-17-36 0-9-1-20-5-27Z"
+              fill="var(--plum)"/>
+        <path d="M301 246c8 17-1 37-17 49m-89 24c-8 14 0 35 15 48"
+              fill="none" stroke="var(--paper)" stroke-opacity=".65" stroke-linecap="round"/>
+
+        <path d="M171 371c-34 5-76-16-87-57 20 13 44-6 67 8 18 11 23 28 20 49Z"
+              fill="var(--leaf)"/>
+        <path d="M205 279c-6-25-24-44-49-41-21 3-31 16-55 12 17 32 63 56 104 29Z"
+              fill="var(--new-growth)"/>
+        <path d="M186 203c-34 19-70-5-84-42 20 9 38-10 60-5 19 4 29 24 24 47Z"
+              fill="var(--leaf)"/>
+        <path d="M198 143c-24 4-45-12-48-39 13 10 26 4 38 12 9 6 12 17 10 27Z"
+              fill="var(--new-growth)"/>
+        <path d="M263 136c-2-20 15-37 35-37 18 0 30 11 47 6-18 25-51 45-82 31Z"
+              fill="var(--new-growth)"/>
+        <path d="M293 209c-12-24 8-48 33-50 17-2 31 4 45-3-9 32-43 65-78 53Z"
+              fill="var(--leaf)"/>
+        <path d="M282 315c-7-21 10-36 28-39 17-3 31 4 47-3-11 29-40 52-75 42Z"
+              fill="var(--new-growth)"/>
+        <path d="M256 405c1-20 19-33 37-28 14 4 20 8 34 3-9 24-40 40-71 25Z"
+              fill="var(--leaf)"/>
+
+        <g fill="none" stroke="var(--sage)" stroke-linecap="round" stroke-width="1.05" opacity=".8">
+          <path d="M91 322c21 23 49 36 78 48m-58-31 17-8m-7 15 4 9m11-1 14-9m-2 14 6 7"/>
+          <path d="M109 167c19 18 43 29 76 35m-57-21 14-10m-8 15 6 9m12-3 16-12m-6 16 8 8"/>
+          <path d="M296 207c21-20 45-28 66-43m-54 32 1-14m6 9 17 1m-5-7 5-16m7 10 14-1"/>
+          <path d="M258 404c18-8 41-9 60-18m-42 12 5-12m7 10 9 5m2-8 6-7"/>
+        </g>
+        <g fill="none" stroke="var(--leaf)" stroke-linecap="round" stroke-width="1.03" opacity=".72">
+          <path d="M109 256c25 11 56 17 95 23m-65-13 13-13m-3 15 10 11m7-8 12-12m-1 15 8 10"/>
+          <path d="M156 111c12 15 26 20 41 31m-25-17 9-4m1 11 1 7"/>
+          <path d="M266 135c20-11 43-16 72-24m-56 17 9-16m3 11 10 5m5-9 9-6"/>
+          <path d="M284 314c21-14 46-24 66-36m-49 26 1-15m9 10 13 2m-1-8 8-13"/>
+        </g>
+
+        <path d="m86 237 4 2m10-17 2 3m243 14 4-2m-12 8 3-1M178 84l4 2m-14 4 2 1m150 332 4-2m-216-24 4 2"
+              fill="none" stroke="var(--leaf)" stroke-opacity=".55" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </main>
+
+  <script>
+    const signup = document.getElementById("signup");
+    const firstName = document.getElementById("first-name");
+    const shifts = Array.from(signup.querySelectorAll('input[name="shift"]'));
+    const shiftError = document.getElementById("shift-error");
+    const nameError = document.getElementById("name-error");
+    const confirmation = document.getElementById("confirmation");
+    const confirmationTitle = document.getElementById("confirmation-title");
+    const confirmedName = document.getElementById("confirmed-name");
+    const confirmedShift = document.getElementById("confirmed-shift");
+
+    function setError(controls, message, invalid) {
+      message.hidden = !invalid;
+      for (const control of controls) {
+        if (invalid) {
+          control.setAttribute("aria-invalid", "true");
+          control.setAttribute("aria-describedby", message.id);
+        } else {
+          control.removeAttribute("aria-invalid");
+          control.removeAttribute("aria-describedby");
+        }
+      }
+    }
+
+    signup.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const shift = shifts.find((option) => option.checked);
+      const name = firstName.value.trim();
+
+      setError(shifts, shiftError, !shift);
+      setError([firstName], nameError, !name);
+
+      if (!shift || !name) {
+        const firstInvalid = shift ? firstName : shifts[0];
+        firstInvalid.focus();
+        return;
+      }
+
+      confirmedName.textContent = name;
+      confirmedShift.textContent = shift.value;
+      signup.hidden = true;
+      confirmation.hidden = false;
+      confirmationTitle.focus();
+    });
+
+    for (const shift of shifts) {
+      shift.addEventListener("change", () => setError(shifts, shiftError, false));
+    }
+
+    firstName.addEventListener("input", () => {
+      if (!nameError.hidden && firstName.value.trim()) {
+        setError([firstName], nameError, false);
+      }
+    });
+
+    document.getElementById("edit-signup").addEventListener("click", () => {
+      confirmation.hidden = true;
+      signup.hidden = false;
+      shifts.find((option) => option.checked)?.focus();
+    });
+  </script>
+</body>
+</html>

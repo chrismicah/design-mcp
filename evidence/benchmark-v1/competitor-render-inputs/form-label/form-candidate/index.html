@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Request a return label</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600&amp;family=Source+Sans+3:wght@400;600;700&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #203136;
+      --paper: #f5f8f6;
+      --spruce: #175f55;
+      --sage: #d5e3d5;
+      --amber: #f3b461;
+      --error: #a12b30;
+      --rule: color-mix(in srgb, var(--ink) 24%, var(--paper));
+      --input-border: color-mix(in srgb, var(--ink) 60%, var(--paper));
+      --display: "Barlow Semi Condensed", "Franklin Gothic Medium", "Trebuchet MS", sans-serif;
+      --body: "Source Sans 3", "Trebuchet MS", sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      display: grid;
+      place-items: center;
+      min-height: 100svh;
+      margin: 0;
+      padding: 36px 4vw;
+      background: color-mix(in srgb, var(--paper) 63%, var(--sage));
+      color: var(--ink);
+      font: 400 1rem/1.35 var(--body);
+    }
+
+    .return-sheet {
+      display: grid;
+      grid-template-columns: minmax(0, .94fr) minmax(0, 1.06fr);
+      width: min(100%, 1180px);
+      border: 1px solid var(--rule);
+      background: var(--paper);
+    }
+
+    .sleeve {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 600px;
+      padding: 48px clamp(32px, 3.75vw, 54px) 16px;
+      border-inline-end: 1px solid var(--rule);
+      background: var(--sage);
+    }
+
+    h1, h2, legend {
+      font-family: var(--display);
+      font-weight: 600;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(3.45rem, 6vw, 5.65rem);
+      line-height: .9;
+      letter-spacing: -.028em;
+    }
+
+    h1 span {
+      display: block;
+    }
+
+    .artwork {
+      display: block;
+      align-self: center;
+      width: calc(100% + 48px);
+      height: auto;
+      margin-top: 16px;
+    }
+
+    .worksheet {
+      --legend-width: 7.25rem;
+      --field-inset: calc(var(--legend-width) + 1.25rem);
+      align-self: center;
+      min-width: 0;
+      padding: clamp(30px, 3.5vw, 54px);
+    }
+
+    fieldset {
+      min-inline-size: 0;
+      margin: 0;
+      padding: 18px 0 0;
+      border: 0;
+      border-block-start: 1px solid var(--rule);
+    }
+
+    fieldset + fieldset {
+      margin-top: 26px;
+    }
+
+    legend {
+      float: left;
+      width: var(--legend-width);
+      padding: 0;
+      font-size: 1.55rem;
+      line-height: 1.04;
+    }
+
+    .group-body,
+    .form-action {
+      margin-inline-start: var(--field-inset);
+    }
+
+    .field + .field {
+      margin-top: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    .text-input,
+    button {
+      font: inherit;
+    }
+
+    .text-input {
+      display: block;
+      width: 100%;
+      min-height: 48px;
+      padding: 10px 12px;
+      border: 1px solid var(--input-border);
+      border-radius: 2px;
+      background: color-mix(in srgb, var(--paper) 50%, white);
+      color: var(--ink);
+    }
+
+    #order-number {
+      max-width: 14rem;
+    }
+
+    .text-input[aria-invalid="true"] {
+      border-color: var(--error);
+    }
+
+    :where(input, button, h2):focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    .choice {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-height: 46px;
+      padding: 8px 10px;
+      border-block-end: 1px solid var(--rule);
+      cursor: pointer;
+    }
+
+    .choice:first-child {
+      border-block-start: 1px solid var(--rule);
+    }
+
+    .choice:has(input:checked) {
+      background: color-mix(in srgb, var(--sage) 63%, var(--paper));
+    }
+
+    .choice input {
+      flex: none;
+      width: 19px;
+      height: 19px;
+      margin: 0;
+      accent-color: var(--spruce);
+      cursor: pointer;
+    }
+
+    .field-error {
+      margin: 6px 0 0;
+      color: var(--error);
+      font-size: .95rem;
+      font-weight: 600;
+    }
+
+    .form-action {
+      margin-block-start: 24px;
+    }
+
+    button {
+      min-height: 50px;
+      padding: 10px 18px;
+      border: 1px solid var(--spruce);
+      border-radius: 2px;
+      font-size: 1.08rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .primary-button {
+      width: 100%;
+      background: var(--spruce);
+      color: var(--paper);
+    }
+
+    .edit-button {
+      background: transparent;
+      color: var(--spruce);
+    }
+
+    @media (hover: hover) {
+      .choice:hover {
+        box-shadow: inset 3px 0 var(--spruce);
+      }
+
+      .primary-button:hover {
+        background: color-mix(in srgb, var(--spruce) 74%, var(--ink));
+      }
+
+      .edit-button:hover {
+        background: var(--sage);
+      }
+    }
+
+    .confirmation h2 {
+      margin: 0 0 23px;
+      font-size: clamp(2.15rem, 3.2vw, 2.8rem);
+      line-height: 1;
+      letter-spacing: -.02em;
+    }
+
+    .summary {
+      margin: 0 0 23px;
+      border-block-start: 1px solid var(--rule);
+    }
+
+    .summary div {
+      padding: 11px 14px;
+      border-block-end: 1px solid var(--rule);
+    }
+
+    .summary dt {
+      font-weight: 600;
+    }
+
+    .summary dd {
+      margin: 2px 0 0;
+      overflow-wrap: anywhere;
+    }
+
+    .summary .confirmed-reason {
+      border-inline-start: 3px solid var(--spruce);
+      background: color-mix(in srgb, var(--sage) 63%, var(--paper));
+    }
+
+    .confirmed-reason dd {
+      color: var(--spruce);
+      font: 600 1.85rem/1.1 var(--display);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .confirmation:not([hidden]) {
+        animation: reveal 180ms ease-out both;
+      }
+
+      @keyframes reveal {
+        from { opacity: 0; transform: translateY(5px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }
+
+    @media (max-width: 860px) {
+      body {
+        align-items: start;
+        padding: 16px;
+      }
+
+      .return-sheet {
+        grid-template-columns: minmax(0, 1fr);
+        max-width: 560px;
+      }
+
+      .sleeve {
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+        min-height: 0;
+        padding: 19px 20px;
+        border-inline-end: 0;
+        border-block-end: 1px solid var(--rule);
+      }
+
+      h1 {
+        font-size: clamp(2.3rem, 11vw, 3.8rem);
+      }
+
+      .artwork {
+        flex: 0 1 auto;
+        width: clamp(7rem, 38vw, 12rem);
+        min-width: 0;
+        margin: 0 -7px 0 0;
+      }
+
+      .worksheet {
+        --field-inset: 0px;
+        padding: 22px 20px 24px;
+      }
+
+      fieldset {
+        padding-block-start: 13px;
+      }
+
+      fieldset + fieldset {
+        margin-top: 22px;
+      }
+
+      legend {
+        width: 100%;
+        font-size: 1.45rem;
+      }
+
+      .group-body {
+        clear: left;
+        padding-top: 11px;
+      }
+
+      .form-action {
+        margin-block-start: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="return-sheet" aria-labelledby="page-title">
+    <header class="sleeve">
+      <h1 id="page-title"><span>Request a</span> <span>return label</span></h1>
+
+      <svg class="artwork" viewBox="0 0 520 380" width="520" height="380"
+           aria-hidden="true" focusable="false">
+        <defs>
+          <radialGradient id="vinyl-shade" cx="33%" cy="24%" r="80%">
+            <stop stop-color="var(--spruce)"/>
+            <stop offset=".62" stop-color="var(--ink)"/>
+          </radialGradient>
+          <linearGradient id="sleeve-shade" x2="100%" y2="100%">
+            <stop stop-color="var(--spruce)"/>
+            <stop offset="1" stop-color="var(--ink)"/>
+          </linearGradient>
+          <clipPath id="sleeve-edge">
+            <rect width="252" height="252" rx="2"/>
+          </clipPath>
+          <filter id="sleeve-shadow" x="-25%" y="-25%" width="155%" height="165%"
+                  color-interpolation-filters="sRGB">
+            <feDropShadow dx="4" dy="12" stdDeviation="10" flood-color="var(--ink)" flood-opacity=".24"/>
+          </filter>
+        </defs>
+
+        <g filter="url(#sleeve-shadow)">
+          <g transform="translate(346 186)">
+            <circle r="142" fill="url(#vinyl-shade)" stroke="var(--ink)" stroke-width="2"/>
+            <path d="M19-137A139 139 0 0 1 124-63L44-23A49 49 0 0 0 7-48Z
+                     M-15 138A139 139 0 0 1-105 91L-36 32A48 48 0 0 0-5 48Z"
+                  fill="var(--sage)" opacity=".10"/>
+            <g fill="none" stroke="var(--sage)" opacity=".25">
+              <circle r="136"/>
+              <circle r="130"/>
+              <circle r="123"/>
+              <circle r="119"/>
+              <circle r="112"/>
+              <circle r="105"/>
+              <circle r="101"/>
+              <circle r="94"/>
+              <circle r="87"/>
+              <circle r="83"/>
+              <circle r="76"/>
+              <circle r="69"/>
+              <circle r="62"/>
+              <circle r="57"/>
+            </g>
+            <path d="M92 88a127 127 0 0 1-55 34M108 72a130 130 0 0 1-24 27"
+                  fill="none" stroke="var(--paper)" stroke-linecap="round" opacity=".4"/>
+            <circle r="48" fill="var(--amber)"/>
+            <circle r="40" fill="none" stroke="var(--ink)" opacity=".36"/>
+            <path d="M-17-15h34m-25 32h16m-11 5h6" stroke="var(--ink)" opacity=".65"/>
+            <circle r="5" fill="var(--ink)"/>
+          </g>
+        </g>
+
+        <g filter="url(#sleeve-shadow)">
+          <g transform="translate(59 72) rotate(-11 126 126)">
+            <rect x="2" y="3" width="253" height="252" rx="2" fill="var(--ink)"/>
+            <g clip-path="url(#sleeve-edge)">
+              <rect width="252" height="252" fill="url(#sleeve-shade)"/>
+              <path d="M0 198 198 0h54v23L23 252H0Z" fill="var(--sage)" opacity=".12"/>
+              <g fill="none" stroke="var(--sage)" opacity=".32">
+                <circle cx="23" cy="63" r="27"/>
+                <circle cx="23" cy="63" r="47"/>
+                <circle cx="23" cy="63" r="67"/>
+                <circle cx="23" cy="63" r="87"/>
+                <circle cx="23" cy="63" r="107"/>
+                <circle cx="23" cy="63" r="127"/>
+                <circle cx="23" cy="63" r="147"/>
+                <circle cx="23" cy="63" r="167"/>
+              </g>
+            </g>
+            <path d="M8 8h236v236H8Z" fill="none" stroke="var(--sage)" opacity=".3"/>
+
+            <g transform="translate(47 135) rotate(4 81 44)">
+              <path d="M2 4h162v77l-11 11H2Z" fill="var(--ink)" opacity=".3"/>
+              <path d="M0 0h162v77l-11 11H0Z" fill="var(--paper)"/>
+              <path d="M151 88V77h11Z" fill="var(--sage)"/>
+              <path d="M126 0v88" stroke="var(--spruce)" stroke-dasharray="2 3" opacity=".43"/>
+              <rect x="135" y="11" width="17" height="21" fill="none" stroke="var(--spruce)" opacity=".58"/>
+              <circle cx="23" cy="21" r="11" fill="none" stroke="var(--spruce)"/>
+              <path d="M28 18h-9v7m0-7 4-4m-4 4 4 4" fill="none"
+                    stroke="var(--spruce)" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M42 17h57m-57 8h39M13 76h42" stroke="var(--spruce)" opacity=".58"/>
+              <g fill="var(--ink)">
+                <path d="M13 40h2v28h-2zm7 0h4v28h-4zm9 0h2v28h-2zm7 0h5v28h-5z
+                         m9 0h2v28h-2zm6 0h3v28h-3zm8 0h2v28h-2zm6 0h5v28h-5z
+                         m9 0h2v28h-2zm6 0h2v28h-2zm7 0h4v28h-4zm9 0h2v28h-2z
+                         m6 0h4v28h-4zm9 0h2v28h-2z"/>
+              </g>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </header>
+
+    <div class="worksheet">
+      <form id="return-form" novalidate>
+        <fieldset>
+          <legend>Order details</legend>
+          <div class="group-body">
+            <div class="field">
+              <label for="order-number">Order number</label>
+              <input class="text-input" id="order-number" name="orderNumber"
+                     type="text" autocomplete="off" spellcheck="false" required>
+              <p class="field-error" id="order-error" hidden></p>
+            </div>
+
+            <div class="field">
+              <label for="email">Email address</label>
+              <input class="text-input" id="email" name="email" type="email"
+                     autocomplete="email" autocapitalize="none" spellcheck="false" required>
+              <p class="field-error" id="email-error" hidden></p>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Reason for return</legend>
+          <div class="group-body">
+            <div class="choices">
+              <label class="choice">
+                <input type="radio" name="reason" value="Damaged" required>
+                <span>Damaged</span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="reason" value="Wrong item" required>
+                <span>Wrong item</span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="reason" value="Changed mind" required>
+                <span>Changed mind</span>
+              </label>
+            </div>
+            <p class="field-error" id="reason-error" hidden></p>
+          </div>
+        </fieldset>
+
+        <div class="form-action">
+          <button class="primary-button" type="submit">Request return label</button>
+        </div>
+      </form>
+
+      <section class="confirmation" id="confirmation" aria-labelledby="confirmation-title" hidden>
+        <h2 id="confirmation-title" tabindex="-1">Request details confirmed</h2>
+        <dl class="summary">
+          <div class="confirmed-reason">
+            <dt>Reason for return</dt>
+            <dd id="confirmed-reason"></dd>
+          </div>
+          <div>
+            <dt>Order number</dt>
+            <dd id="confirmed-order"></dd>
+          </div>
+          <div>
+            <dt>Email address</dt>
+            <dd id="confirmed-email"></dd>
+          </div>
+        </dl>
+        <button class="edit-button" id="edit-request" type="button">Edit request</button>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const form = document.getElementById("return-form");
+    const orderInput = form.elements.namedItem("orderNumber");
+    const emailInput = form.elements.namedItem("email");
+    const reason = form.elements.namedItem("reason");
+    const confirmation = document.getElementById("confirmation");
+    const confirmationTitle = document.getElementById("confirmation-title");
+
+    const fields = [
+      {
+        controls: [orderInput],
+        error: document.getElementById("order-error"),
+        message() {
+          const order = orderInput.value.trim();
+          if (!order) return "Enter your order number.";
+          if (!/[\p{L}\p{N}]/u.test(order)) {
+            return "Enter an order number with at least one letter or digit.";
+          }
+          return "";
+        }
+      },
+      {
+        controls: [emailInput],
+        error: document.getElementById("email-error"),
+        message() {
+          const email = emailInput.value.trim();
+          if (!email) return "Enter your email address.";
+
+          const at = email.lastIndexOf("@");
+          const localPart = email.slice(0, at);
+          const domain = email.slice(at + 1);
+          if (emailInput.validity.typeMismatch || !domain.includes(".") ||
+              /(^\.|\.\.|\.$)/.test(localPart)) {
+            return "Enter an email address like name@example.com.";
+          }
+          return "";
+        }
+      },
+      {
+        controls: [...reason],
+        error: document.getElementById("reason-error"),
+        message() {
+          return reason.value ? "" : "Choose a reason for the return.";
+        }
+      }
+    ];
+
+    function validate(field) {
+      const message = field.message();
+      field.error.textContent = message;
+      field.error.hidden = !message;
+
+      for (const control of field.controls) {
+        if (message) {
+          control.setAttribute("aria-invalid", "true");
+          control.setAttribute("aria-describedby", field.error.id);
+        } else {
+          control.removeAttribute("aria-invalid");
+          control.removeAttribute("aria-describedby");
+        }
+      }
+
+      return !message;
+    }
+
+    for (const field of fields) {
+      for (const control of field.controls) {
+        const event = control.type === "radio" ? "change" : "input";
+        control.addEventListener(event, () => {
+          if (!field.error.hidden) validate(field);
+        });
+      }
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      let firstInvalid = null;
+      for (const field of fields) {
+        if (!validate(field) && !firstInvalid) {
+          firstInvalid = field.controls[0];
+        }
+      }
+
+      if (firstInvalid) {
+        firstInvalid.focus();
+        return;
+      }
+
+      document.getElementById("confirmed-reason").textContent = reason.value;
+      document.getElementById("confirmed-order").textContent = orderInput.value.trim();
+      document.getElementById("confirmed-email").textContent = emailInput.value.trim();
+
+      form.hidden = true;
+      confirmation.hidden = false;
+      confirmationTitle.focus();
+    });
+
+    document.getElementById("edit-request").addEventListener("click", () => {
+      confirmation.hidden = true;
+      form.hidden = false;
+      orderInput.focus();
+    });
+  </script>
+</body>
+</html>

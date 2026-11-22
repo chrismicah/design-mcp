@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ceramics workshop reservation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600&amp;family=Source+Sans+3:wght@400;600;700&amp;display=swap">
+
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #F5F8F6;
+      --ink: #203136;
+      --teal: #175F55;
+      --celadon: #BFD4CA;
+      --rule: #CBD6D1;
+      --error: #A12E36;
+      --muted: color-mix(in srgb, var(--ink) 80%, var(--paper));
+      --control-line: color-mix(in srgb, var(--ink) 58%, var(--paper));
+      --control-paper: color-mix(in srgb, var(--paper) 35%, white);
+      --chosen-paper: color-mix(in srgb, var(--celadon) 42%, var(--paper));
+      --display: "Barlow Semi Condensed", "Arial Narrow", sans-serif;
+      --body: "Source Sans 3", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    [hidden] { display: none; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 1rem/1.45 var(--body);
+    }
+
+    h1, h2, p, dl, dd { margin: 0; }
+
+    button, input, select {
+      color: inherit;
+      font: inherit;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    :is(input, select, button, h2) { scroll-margin-block: 1rem; }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    .workshop {
+      --group-inset: clamp(6.15rem, 9.5vw, 8.5rem);
+      --group-padding: 1.15rem;
+      display: grid;
+      grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+      gap: clamp(2.5rem, 5.4vw, 5rem);
+      width: min(74rem, calc(100% - 6rem));
+      margin: clamp(2.5rem, 7vh, 4.5rem) auto 0;
+      padding: 1.75rem 0 2.75rem;
+      border-top: 2px solid var(--ink);
+    }
+
+    .intro h1 {
+      margin: 0 0 1.8rem;
+      font: 600 clamp(3.5rem, 5.85vw, 5.375rem)/.9 var(--display);
+      letter-spacing: -.035em;
+    }
+
+    .intro h1 span { display: block; }
+
+    .art {
+      overflow: hidden;
+      aspect-ratio: 420 / 344;
+      border: 1px solid var(--rule);
+      background: var(--celadon);
+    }
+
+    .art svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .reservation h2 {
+      margin: 0 0 1.4rem;
+      font: 600 clamp(2.5rem, 3.65vw, 3.375rem)/1 var(--display);
+      letter-spacing: -.025em;
+    }
+
+    .band {
+      position: relative;
+      min-inline-size: 0;
+      margin: 0;
+      padding: var(--group-padding) 0 var(--group-padding) var(--group-inset);
+      border: 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .band > legend {
+      position: absolute;
+      inset-block-start: var(--group-padding);
+      inset-inline-start: 0;
+      padding: 0;
+      font: 600 1.375rem/1.15 var(--display);
+    }
+
+    .fields {
+      display: grid;
+      gap: .85rem;
+      min-width: 0;
+    }
+
+    .time-field {
+      min-inline-size: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    .field-label {
+      display: block;
+      margin: 0 0 .35rem;
+      padding: 0;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    .sessions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .625rem;
+    }
+
+    .session-option {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      min-height: 3.875rem;
+      padding: .5rem .8rem;
+      border: 1px solid var(--control-line);
+      border-radius: 3px;
+      background: var(--control-paper);
+      cursor: pointer;
+    }
+
+    .session-option input {
+      flex: 0 0 auto;
+      width: 1.125rem;
+      height: 1.125rem;
+      margin: 0;
+      accent-color: var(--teal);
+    }
+
+    .session-option strong,
+    .session-option .time {
+      display: block;
+      line-height: 1.2;
+    }
+
+    .session-option strong { font-weight: 700; }
+
+    .session-option .time {
+      margin-top: .14rem;
+      color: var(--muted);
+    }
+
+    .session-option:has(input:checked) {
+      border-color: var(--teal);
+      background: var(--chosen-paper);
+      box-shadow: inset 0 0 0 1px var(--teal);
+    }
+
+    .session-option:has(input:focus-visible) {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    .session-option input:focus-visible { outline: none; }
+
+    .text-input, .seat-select {
+      display: block;
+      width: 100%;
+      min-height: 2.875rem;
+      padding: .5rem .75rem;
+      border: 1px solid var(--control-line);
+      border-radius: 3px;
+      background: var(--control-paper);
+    }
+
+    .seat-select {
+      max-width: 8rem;
+      cursor: pointer;
+    }
+
+    .text-input[aria-invalid="true"],
+    .seat-select[aria-invalid="true"],
+    .session-option:has(input[aria-invalid="true"]) {
+      border-color: var(--error);
+    }
+
+    .field-error {
+      margin-top: .35rem;
+      color: var(--error);
+      font-size: .9375rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .form-action {
+      padding: 1.125rem 0 0 var(--group-inset);
+      border-top: 1px solid var(--rule);
+    }
+
+    .button {
+      min-height: 3rem;
+      padding: .6rem 1.125rem;
+      border: 1px solid var(--teal);
+      border-radius: 3px;
+      background: var(--teal);
+      color: var(--paper);
+      font-size: 1.0625rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      border-color: var(--ink);
+      background: var(--ink);
+    }
+
+    .form-action .button { width: 100%; }
+
+    .confirmation:not([hidden]) {
+      animation: receipt-in 220ms ease-out both;
+    }
+
+    @keyframes receipt-in {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .confirmation-title {
+      display: flex;
+      align-items: baseline;
+      gap: .65rem;
+    }
+
+    .confirmation-title svg {
+      flex: 0 0 1.7rem;
+      align-self: center;
+      color: var(--teal);
+    }
+
+    .receipt { border-top: 1px solid var(--rule); }
+
+    .receipt-row {
+      display: grid;
+      grid-template-columns: var(--group-inset) minmax(0, 1fr);
+      align-items: baseline;
+      padding: .9rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .receipt dt { font-weight: 600; }
+
+    .receipt dd {
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .receipt-row:first-child dd {
+      color: var(--teal);
+      font: 600 1.5rem/1.15 var(--display);
+    }
+
+    .button-secondary {
+      margin: 1.125rem 0 0 var(--group-inset);
+      background: transparent;
+      color: var(--teal);
+    }
+
+    .button-secondary:hover {
+      background: var(--chosen-paper);
+      color: var(--ink);
+    }
+
+    @media (max-width: 50rem) {
+      .workshop {
+        --group-inset: 0rem;
+        --group-padding: .75rem;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.35rem;
+        width: min(38rem, calc(100% - 2rem));
+        margin-top: 1.25rem;
+        padding-top: .875rem;
+      }
+
+      .intro {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) clamp(5.5rem, 29vw, 9rem);
+        align-items: center;
+        gap: .85rem;
+      }
+
+      .intro h1 {
+        margin: 0;
+        font-size: clamp(2rem, 10.8vw, 4.1rem);
+        line-height: .93;
+      }
+
+      .art { aspect-ratio: 1; }
+
+      .reservation h2 {
+        margin-bottom: .9rem;
+        font-size: 2.125rem;
+      }
+
+      .band { padding: 2.5rem 0 .875rem; }
+      .band > legend { font-size: 1.2rem; }
+      .fields { gap: .7rem; }
+      .session-option { min-height: 3.5rem; }
+      .form-action { padding-top: .875rem; }
+
+      .receipt-row {
+        grid-template-columns: minmax(6.25rem, .75fr) minmax(0, 1.6fr);
+        gap: .75rem;
+      }
+    }
+
+    @media (max-width: 26rem) {
+      .session-option {
+        gap: .5rem;
+        padding-inline: .625rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .confirmation:not([hidden]) { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="workshop">
+    <header class="intro">
+      <h1><span>Ceramics</span> <span>workshop</span></h1>
+
+      <div class="art" aria-hidden="true">
+        <svg viewBox="0 0 420 344" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <defs>
+            <linearGradient id="art-paper" x1="5%" y1="0%" x2="96%" y2="100%">
+              <stop stop-color="var(--paper)"/>
+              <stop offset=".74" stop-color="var(--celadon)"/>
+              <stop offset="1" stop-color="var(--teal)" stop-opacity=".31"/>
+            </linearGradient>
+            <radialGradient id="bowl-shadow">
+              <stop stop-color="var(--ink)" stop-opacity=".43"/>
+              <stop offset="1" stop-color="var(--ink)" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="outside-glaze" x1="0%" y1="31%" x2="100%" y2="69%">
+              <stop stop-color="var(--teal)"/>
+              <stop offset=".24" stop-color="var(--celadon)"/>
+              <stop offset=".46" stop-color="var(--paper)"/>
+              <stop offset=".69" stop-color="var(--celadon)"/>
+              <stop offset="1" stop-color="var(--teal)"/>
+            </linearGradient>
+            <linearGradient id="foot-shade" x1="0%" y1="30%" x2="0%" y2="100%">
+              <stop stop-color="var(--teal)" stop-opacity="0"/>
+              <stop offset="1" stop-color="var(--teal)" stop-opacity=".57"/>
+            </linearGradient>
+            <linearGradient id="inside-glaze" x1="21%" y1="100%" x2="81%" y2="0%">
+              <stop stop-color="var(--paper)"/>
+              <stop offset=".37" stop-color="var(--celadon)"/>
+              <stop offset="1" stop-color="var(--teal)"/>
+            </linearGradient>
+            <pattern id="glaze-fleck" width="37" height="29" patternUnits="userSpaceOnUse" patternTransform="rotate(13)">
+              <path d="M3 4h.1m10 3h.1m18-4h.1M6 18h.1m14-2h.1m9 9h.1M14 26h.1m21-13h.1"
+                stroke="var(--teal)" stroke-width="1.15" stroke-linecap="round" opacity=".4"/>
+              <path d="M9 11h.1m16-1h.1m-4 13h.1m11-4h.1M2 27h.1"
+                stroke="var(--paper)" stroke-width="1.3" stroke-linecap="round" opacity=".8"/>
+            </pattern>
+            <path id="bowl-profile" d="M73 131C77 175 111 222 156 243C186 257 234 257 264 243C309 222 343 175 347 131Z"/>
+            <clipPath id="bowl-shape"><use href="#bowl-profile"/></clipPath>
+            <clipPath id="bowl-opening"><ellipse cx="210" cy="129" rx="131" ry="48"/></clipPath>
+          </defs>
+
+          <rect width="420" height="344" fill="url(#art-paper)"/>
+          <rect width="420" height="344" fill="url(#glaze-fleck)" opacity=".38"/>
+          <g fill="none" stroke="var(--teal)" stroke-width=".85" opacity=".29">
+            <rect x="18.5" y="18.5" width="383" height="307"/>
+            <circle cx="210" cy="171" r="137"/>
+            <circle cx="210" cy="171" r="151"/>
+            <path d="M210 20v15m0 272v15M59 171h15m272 0h15"/>
+          </g>
+
+          <ellipse cx="230" cy="268" rx="142" ry="28" fill="url(#bowl-shadow)"/>
+          <path d="M164 240H256l-5 15q-4 13-41 13t-41-13z"
+            fill="url(#outside-glaze)" stroke="var(--teal)" stroke-width="1.2"/>
+          <path d="M171 257q39 12 78 0" fill="none" stroke="var(--teal)" opacity=".66"/>
+
+          <use href="#bowl-profile" fill="url(#outside-glaze)"/>
+          <g clip-path="url(#bowl-shape)">
+            <rect x="72" y="131" width="276" height="128" fill="url(#foot-shade)"/>
+            <path d="M73 162C118 190 151 184 184 200S258 218 290 204S327 188 348 173
+                     L348 183C319 203 307 211 282 219S216 220 184 210S115 203 73 176Z"
+              fill="var(--paper)" opacity=".29"/>
+            <g fill="none" stroke="var(--teal)" stroke-width=".95" opacity=".48">
+              <path d="M65 152Q210 224 355 152M63 165Q210 239 357 165M65 179Q210 249 355 179
+                       M70 193Q210 263 350 193M82 208Q210 273 338 208M96 223Q210 281 324 223
+                       M113 237Q210 286 307 237"/>
+            </g>
+            <rect x="72" y="131" width="276" height="128" fill="url(#glaze-fleck)" opacity=".62"/>
+          </g>
+          <use href="#bowl-profile" fill="none" stroke="var(--teal)" stroke-width="1.2"/>
+
+          <ellipse cx="210" cy="129" rx="137" ry="54"
+            fill="var(--paper)" stroke="var(--teal)" stroke-width="1.2"/>
+          <ellipse cx="210" cy="129" rx="131" ry="48" fill="url(#inside-glaze)"/>
+          <g clip-path="url(#bowl-opening)">
+            <g fill="none" stroke="var(--teal)" opacity=".42">
+              <ellipse cx="210" cy="140" rx="120" ry="41"/>
+              <ellipse cx="210" cy="144" rx="104" ry="35"/>
+              <ellipse cx="210" cy="147" rx="85" ry="29"/>
+              <ellipse cx="210" cy="151" rx="65" ry="23"/>
+              <ellipse cx="210" cy="154" rx="42" ry="15"/>
+              <path d="M223 158c0 4-19 7-28 3-11-5 5-12 21-10 19 2 23 11 8 15"/>
+            </g>
+            <rect x="77" y="79" width="266" height="100" fill="url(#glaze-fleck)" opacity=".62"/>
+          </g>
+          <ellipse cx="210" cy="129" rx="131" ry="48"
+            fill="none" stroke="var(--teal)" opacity=".59"/>
+          <path d="M80 139c16 24 71 41 130 41 49 0 98-11 120-29"
+            fill="none" stroke="var(--paper)" stroke-width="2.8" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </header>
+
+    <div class="reservation">
+      <section id="booking-panel" aria-labelledby="booking-title">
+        <h2 id="booking-title" tabindex="-1">Reserve your seats</h2>
+
+        <form id="reservation-form" novalidate>
+          <fieldset class="band">
+            <legend>Session</legend>
+            <div class="fields">
+              <fieldset class="time-field">
+                <legend class="field-label">Choose a time</legend>
+
+                <div class="sessions">
+                  <label class="session-option">
+                    <input type="radio" name="session" value="Saturday at 10 am"
+                      required aria-describedby="session-error">
+                    <span>
+                      <strong>Saturday</strong>
+                      <span class="time">10 am</span>
+                    </span>
+                  </label>
+
+                  <label class="session-option">
+                    <input type="radio" name="session" value="Sunday at 2 pm"
+                      required aria-describedby="session-error">
+                    <span>
+                      <strong>Sunday</strong>
+                      <span class="time">2 pm</span>
+                    </span>
+                  </label>
+                </div>
+
+                <p class="field-error" id="session-error" hidden></p>
+              </fieldset>
+
+              <div>
+                <label class="field-label" for="seats">Seats</label>
+                <select class="seat-select" id="seats" name="seats" required
+                  aria-describedby="seats-error">
+                  <option value="1" selected>1 seat</option>
+                  <option value="2">2 seats</option>
+                  <option value="3">3 seats</option>
+                  <option value="4">4 seats</option>
+                </select>
+                <p class="field-error" id="seats-error" hidden></p>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="band">
+            <legend>Your details</legend>
+            <div class="fields">
+              <div>
+                <label class="field-label" for="guest-name">Name</label>
+                <input class="text-input" id="guest-name" name="name" type="text"
+                  autocomplete="name" required aria-describedby="name-error">
+                <p class="field-error" id="name-error" hidden></p>
+              </div>
+
+              <div>
+                <label class="field-label" for="guest-email">Email</label>
+                <input class="text-input" id="guest-email" name="email" type="email"
+                  autocomplete="email" autocapitalize="none" spellcheck="false"
+                  required aria-describedby="email-error">
+                <p class="field-error" id="email-error" hidden></p>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="form-action">
+            <button class="button" type="submit">Reserve seats</button>
+          </div>
+          <p id="validation-status" class="sr-only" role="status"></p>
+        </form>
+      </section>
+
+      <section class="confirmation" id="confirmation-panel"
+        aria-labelledby="confirmation-title" hidden>
+        <h2 class="confirmation-title" id="confirmation-title" tabindex="-1">
+          <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6"
+            aria-hidden="true" focusable="false">
+            <circle cx="14" cy="14" r="12"/>
+            <path d="m8.7 14.2 3.4 3.5 7.2-7.4"
+              stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Reservation confirmed</span>
+        </h2>
+
+        <dl class="receipt">
+          <div class="receipt-row">
+            <dt>Workshop time</dt>
+            <dd id="confirmed-session"></dd>
+          </div>
+          <div class="receipt-row">
+            <dt>Seats</dt>
+            <dd id="confirmed-seats"></dd>
+          </div>
+          <div class="receipt-row">
+            <dt>Name</dt>
+            <dd id="confirmed-name"></dd>
+          </div>
+          <div class="receipt-row">
+            <dt>Email</dt>
+            <dd id="confirmed-email"></dd>
+          </div>
+        </dl>
+
+        <button class="button button-secondary" id="edit-reservation" type="button">
+          Edit reservation
+        </button>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const form = document.getElementById("reservation-form");
+    const booking = document.getElementById("booking-panel");
+    const confirmation = document.getElementById("confirmation-panel");
+    const status = document.getElementById("validation-status");
+    const session = form.elements.namedItem("session");
+    const seats = form.elements.namedItem("seats");
+    const guestName = form.elements.namedItem("name");
+    const email = form.elements.namedItem("email");
+
+    // The seat count starts at one. Entries and confirmation live on this page.
+    const fields = [
+      {
+        controls: Array.from(session),
+        error: document.getElementById("session-error"),
+        validate() {
+          return session.value ? "" : "Choose a workshop time.";
+        }
+      },
+      {
+        controls: [seats],
+        error: document.getElementById("seats-error"),
+        validate() {
+          return seats.value ? "" : "Choose between 1 and 4 seats.";
+        }
+      },
+      {
+        controls: [guestName],
+        error: document.getElementById("name-error"),
+        validate() {
+          return guestName.value.trim() ? "" : "Enter your name.";
+        }
+      },
+      {
+        controls: [email],
+        error: document.getElementById("email-error"),
+        validate() {
+          if (!email.value.trim()) return "Enter your email address.";
+          if (email.validity.typeMismatch) {
+            return "Use an email address in the format name@example.com.";
+          }
+          return "";
+        }
+      }
+    ];
+
+    function showError(field, message) {
+      field.error.textContent = message;
+      field.error.hidden = !message;
+
+      for (const control of field.controls) {
+        if (message) {
+          control.setAttribute("aria-invalid", "true");
+        } else {
+          control.removeAttribute("aria-invalid");
+        }
+      }
+    }
+
+    form.addEventListener("input", (event) => {
+      const field = fields.find(({ controls }) => controls.includes(event.target));
+
+      if (field && !field.error.hidden) {
+        const message = field.validate();
+        if (message !== field.error.textContent) showError(field, message);
+      }
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      status.textContent = "";
+      let firstInvalid = null;
+
+      for (const field of fields) {
+        const message = field.validate();
+        showError(field, message);
+        if (message && !firstInvalid) firstInvalid = field;
+      }
+
+      if (firstInvalid) {
+        const control = firstInvalid.controls[0];
+        if (document.activeElement === control) {
+          status.textContent = firstInvalid.error.textContent;
+        } else {
+          control.focus();
+        }
+        return;
+      }
+
+      document.getElementById("confirmed-session").textContent = session.value;
+      document.getElementById("confirmed-seats").textContent = seats.selectedOptions[0].text;
+      document.getElementById("confirmed-name").textContent = guestName.value.trim();
+      document.getElementById("confirmed-email").textContent = email.value.trim();
+
+      booking.hidden = true;
+      confirmation.hidden = false;
+      document.getElementById("confirmation-title").focus();
+    });
+
+    document.getElementById("edit-reservation").addEventListener("click", () => {
+      confirmation.hidden = true;
+      booking.hidden = false;
+      document.getElementById("booking-title").focus();
+    });
+  </script>
+</body>
+</html>

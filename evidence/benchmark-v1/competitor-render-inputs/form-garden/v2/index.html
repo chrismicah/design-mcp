@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Community garden volunteer signup</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@700&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap">
+  <style>
+    :root {
+      --pine: #173c32;
+      --paper: #fffcf2;
+      --sage: #e7eddf;
+      --leaf: #70935f;
+      --light-leaf: #b7cd85;
+      --marigold: #f3cd5c;
+      --rule: color-mix(in srgb, var(--pine) 55%, var(--sage));
+      --muted: color-mix(in srgb, var(--pine) 80%, var(--paper));
+      --display: "Archivo Narrow", "Arial Narrow", sans-serif;
+      --text: "Atkinson Hyperlegible", "Trebuchet MS", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: clamp(1.25rem, 6vh, 4rem) clamp(1rem, 3.5vw, 3rem);
+      background: var(--sage) radial-gradient(#173c321a .65px, transparent .8px);
+      background-size: 8px 8px;
+      color: var(--pine);
+      font: 1.0625rem/1.4 var(--text);
+    }
+
+    .signup {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.03fr);
+      width: min(100%, 69.5rem);
+      min-height: 38.5rem;
+      border: 1px solid var(--pine);
+      background: var(--paper);
+      box-shadow: 6px 6px 0 #173c3226;
+    }
+
+    .poster {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      padding: clamp(2rem, 4vw, 3.5rem);
+      color: var(--paper);
+      background: var(--pine) radial-gradient(#fffcf216 .55px, transparent .75px);
+      background-size: 7px 7px;
+    }
+
+    .poster-copy { position: relative; z-index: 1; }
+
+    .garden-label {
+      display: flex;
+      align-items: center;
+      gap: .625rem;
+      margin: 0 0 1.625rem;
+      font-weight: 700;
+    }
+
+    .garden-label svg {
+      width: 1.75rem;
+      height: 1.75rem;
+      color: var(--marigold);
+    }
+
+    h1, h2, .shift-time, .receipt-shift dd {
+      font-family: var(--display);
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(3.25rem, 6vw, 5.25rem);
+      line-height: .94;
+      letter-spacing: -.024em;
+    }
+
+    .garden-art {
+      position: absolute;
+      inset: auto 0 0;
+      display: block;
+      width: 100%;
+      height: auto;
+      pointer-events: none;
+    }
+
+    .form-panel {
+      display: grid;
+      align-content: center;
+      min-width: 0;
+      padding: clamp(1.875rem, 4vw, 3.5rem) clamp(1.75rem, 4.5vw, 4rem);
+    }
+
+    .form-panel h2 {
+      margin: 0;
+      font-size: clamp(2rem, 3.15vw, 2.75rem);
+      line-height: 1.04;
+      letter-spacing: -.018em;
+    }
+
+    form {
+      display: grid;
+      gap: 1.3125rem;
+    }
+
+    .field label, legend {
+      display: block;
+      margin: 0 0 .4375rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .optional {
+      margin-inline-start: .15em;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .control {
+      display: block;
+      width: 100%;
+      min-height: 3rem;
+      padding: .625rem .75rem;
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      background: var(--paper);
+      color: var(--pine);
+      font: inherit;
+    }
+
+    textarea.control {
+      min-height: 4.5rem;
+      resize: vertical;
+    }
+
+    fieldset {
+      min-inline-size: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    legend { padding: 0; }
+
+    .shift-options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+    }
+
+    .shift-option {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      min-height: 5.25rem;
+      padding: .625rem clamp(.625rem, 1.1vw, 1rem);
+      cursor: pointer;
+    }
+
+    .shift-option + .shift-option { border-inline-start: 1px solid var(--rule); }
+
+    .shift-option input {
+      flex: none;
+      width: 1.125rem;
+      height: 1.125rem;
+      margin: 0;
+      accent-color: var(--pine);
+      cursor: pointer;
+    }
+
+    .shift-day {
+      display: block;
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .shift-time {
+      display: block;
+      font-size: 2.25rem;
+      line-height: 1;
+    }
+
+    .period {
+      font-family: var(--text);
+      font-size: .53em;
+    }
+
+    .shift-option:has(input:checked) {
+      background: color-mix(in srgb, var(--light-leaf) 42%, var(--paper));
+      box-shadow: inset 0 -3px var(--pine);
+    }
+
+    .shift-option:has(input:focus-visible) {
+      outline: 2px solid var(--pine);
+      outline-offset: -4px;
+    }
+
+    .shift-option input:focus-visible { outline: none; }
+
+    .submit {
+      width: 100%;
+      min-height: 3.25rem;
+      padding: .625rem 1rem;
+      border: 1px solid var(--pine);
+      border-radius: 2px;
+      background: var(--marigold);
+      color: var(--pine);
+      font: 700 1.125rem/1.2 var(--text);
+      cursor: pointer;
+    }
+
+    .control:focus-visible, .submit:focus-visible {
+      outline: 2px solid var(--pine);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 3px var(--paper);
+    }
+
+    @media (hover: hover) {
+      .shift-option:hover:not(:has(input:checked)) { background: var(--sage); }
+      .submit:hover { background: color-mix(in srgb, var(--marigold) 83%, var(--paper)); }
+    }
+
+    .submit:active { background: color-mix(in srgb, var(--marigold) 89%, var(--pine)); }
+
+    .confirmation {
+      display: grid;
+      justify-items: start;
+      gap: .75rem;
+      overflow-wrap: anywhere;
+      animation: confirm-in 240ms ease-out both;
+    }
+
+    .confirmation-icon {
+      width: 3rem;
+      height: 3rem;
+      margin-bottom: .375rem;
+    }
+
+    .confirmation p { margin: 0; }
+
+    .receipt {
+      display: grid;
+      gap: 1rem;
+      width: 100%;
+      margin: .625rem 0 0;
+    }
+
+    .receipt dt { font-weight: 700; }
+    .receipt dd { margin: .1875rem 0 0; }
+
+    .receipt-shift {
+      padding: .875rem 1rem 1rem;
+      border: 1px solid var(--pine);
+      background: var(--marigold);
+    }
+
+    .receipt-shift dd {
+      font-size: clamp(1.875rem, 3.4vw, 2.5rem);
+      line-height: 1.05;
+    }
+
+    #confirmed-tools { white-space: pre-wrap; }
+
+    @keyframes confirm-in {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .confirmation { animation: none; }
+    }
+
+    @media (max-width: 48rem) {
+      body {
+        align-items: start;
+        padding: .875rem .875rem 1.125rem;
+      }
+
+      .signup {
+        grid-template-columns: minmax(0, 1fr);
+        width: min(100%, 34rem);
+        min-height: 0;
+        box-shadow: 3px 3px 0 #173c3226;
+      }
+
+      .poster {
+        min-height: 11.25rem;
+        padding: 1.25rem 1.25rem 1.5rem;
+      }
+
+      .garden-label {
+        margin-bottom: .875rem;
+        font-size: 1rem;
+      }
+
+      .garden-label svg { width: 1.45rem; height: 1.45rem; }
+
+      h1 { font-size: clamp(2.25rem, 11.25vw, 3.65rem); }
+
+      .garden-art {
+        inset: auto -4.625rem -2.625rem auto;
+        width: 14rem;
+        mask-image: linear-gradient(to right, transparent 12%, black 34%);
+      }
+
+      .form-panel { padding: 1.375rem 1.25rem 1.5rem; }
+      form { gap: 1.125rem; }
+      .shift-option { min-height: 4.625rem; gap: .625rem; }
+      .shift-time { font-size: 2rem; }
+      textarea.control { min-height: 4.125rem; }
+    }
+
+    @media (max-width: 22rem) {
+      .garden-art { right: -5.5rem; width: 12.5rem; }
+      .form-panel { padding-inline: 1rem; }
+      .shift-option { gap: .5rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="signup" aria-labelledby="page-title">
+    <header class="poster">
+      <div class="poster-copy">
+        <p class="garden-label">
+          <svg viewBox="0 0 28 28" fill="none" aria-hidden="true" focusable="false">
+            <path d="M6 24h16M14 24v-8m0 2C8 18 5 14 5 9c5 0 9 3 9 8m0-2c0-6 4-10 10-11 0 6-4 10-10 11Z"
+                  stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Community garden
+        </p>
+        <h1 id="page-title">Lend a hand<br>in the garden.</h1>
+      </div>
+
+      <svg class="garden-art" viewBox="0 0 560 338" aria-hidden="true" focusable="false">
+        <defs>
+          <path id="sunflower-petal" d="M-8-15C-16-26-10-43-2-50C7-46 14-28 8-16Z"/>
+          <path id="sunflower-short-petal" d="M-7-14C-15-23-12-36-3-45C5-43 12-28 7-15Z"/>
+        </defs>
+
+        <g fill="none" stroke="var(--leaf)" stroke-width="1.5" stroke-linecap="round" opacity=".75">
+          <path d="M4 289h31m-11 12h22m-30 13h32m-10 11h13m-25-64h32m-47 9h35m479-20h14m-21 13h33m-27 13h22m-30 13h39m-46 13h25m-19 13h42"/>
+          <path d="m36 284 4-8 3 5 5-10m481 20 3-8 4 5 5-10M22 317l-3-7m508 16 5-9m-14 8-3-6"/>
+        </g>
+
+        <path d="m438 209 78 44-14 53-66-41Z" fill="var(--leaf)"/>
+        <path d="m102 221 336-12 78 44-471 24Z" fill="var(--light-leaf)"/>
+        <path d="m107 229 328-12 59 32-428 20Z" fill="var(--pine)"/>
+        <path d="m45 277 471-24-14 54-442 22Z" fill="var(--light-leaf)"/>
+        <path d="m45 277 471-24-3 12L49 289Z" fill="var(--paper)" opacity=".22"/>
+
+        <g fill="none" stroke="var(--pine)" stroke-width="1.4" stroke-linecap="round" opacity=".54">
+          <path d="M54 295c62-6 104-5 162-9s117-4 161-8 88-4 128-9M58 308c57-4 86-3 138-8s119-5 168-9 93-4 138-8M63 319c89-4 136-8 207-11s154-8 230-12"/>
+          <path d="M103 302c16-2 26-5 39-4 9 0 13 2 8 4-6 3-20 3-26 2m289-18c12-3 25-3 32-1 7 2-10 6-22 5"/>
+          <path d="m445 219 49 28m-53-21 34 21"/>
+        </g>
+
+        <g fill="var(--pine)" opacity=".7">
+          <circle cx="64" cy="289" r="2.2"/><circle cx="70" cy="316" r="2.2"/>
+          <circle cx="502" cy="262" r="2.2"/><circle cx="495" cy="298" r="2.2"/>
+        </g>
+
+        <g fill="none" stroke="var(--light-leaf)" stroke-width="1.3" stroke-linecap="round" opacity=".58">
+          <path d="m103 253 15-1m6-5 9-1m53 8 16-1m12 4h8m20-19 12-1m-24 14 9-1m19-3 17-1m53-15 12-1m-13 14 20-2m16-5h13m31-3 18-1m9 5h9m-13-12 13-1m-30-5h9"/>
+        </g>
+
+        <g stroke="var(--pine)" stroke-width="1.8" stroke-linejoin="round">
+          <path d="M166 247c-25-4-47-18-62-36-20-5-31-16-31-31-10-8-13-21-8-33 17 6 30 12 42 27 15-1 31 11 35 24 13 11 23 27 24 49Z" fill="var(--leaf)"/>
+          <path d="M163 247c-18-21-26-49-24-70-10-11-12-24-5-35-6-14-1-29 12-41 5 18 18 25 23 39 10 7 14 19 11 31 7 22 0 55-17 76Z" fill="var(--light-leaf)"/>
+          <path d="M168 247c1-26 8-44 24-60 2-13 11-23 26-26 6-11 17-17 31-17-3 16-8 31-24 41-4 15-19 20-32 25-10 12-17 25-25 37Z" fill="var(--leaf)"/>
+        </g>
+
+        <g fill="none" stroke="var(--pine)" stroke-width="1.5" stroke-linecap="round">
+          <path d="M164 244c-1-46-9-82-17-122m16 96-16-24m13 5 14-20m-18-3-16-19m11 1 10-13"/>
+          <path d="M159 240c-19-24-46-50-80-77m40 37-22-5m11-7-6-18m38 52-19-4"/>
+          <path d="M174 234c14-32 37-51 64-78m-37 39 17-8m-11 1 8-18"/>
+        </g>
+
+        <g fill="none" stroke="var(--light-leaf)" stroke-linecap="round">
+          <path d="M301 247c7-52 22-101 10-152" stroke-width="4"/>
+          <path d="M310 192c-11-18-29-29-47-36m52 13c11-17 26-28 47-39" stroke-width="2.5"/>
+        </g>
+        <path d="M311 192c-31 4-61-15-69-49 35-1 60 15 69 49Z" fill="var(--leaf)"/>
+        <path d="M315 170c3-30 31-50 62-49-11 27-32 45-62 49Z" fill="var(--light-leaf)"/>
+        <path d="M307 188c-15-14-30-25-51-35m61 14c13-15 27-25 45-36m-30 25 20-5m-63 22-17-2"
+              fill="none" stroke="var(--pine)" stroke-width="1.5" stroke-linecap="round"/>
+
+        <g transform="translate(311 82)">
+          <g fill="var(--marigold)" stroke="var(--pine)" stroke-width="1.2" stroke-linejoin="round">
+            <use href="#sunflower-petal" transform="rotate(3)"/>
+            <use href="#sunflower-short-petal" transform="rotate(32)"/>
+            <use href="#sunflower-petal" transform="rotate(63)"/>
+            <use href="#sunflower-petal" transform="rotate(94)"/>
+            <use href="#sunflower-short-petal" transform="rotate(123)"/>
+            <use href="#sunflower-petal" transform="rotate(152)"/>
+            <use href="#sunflower-short-petal" transform="rotate(183)"/>
+            <use href="#sunflower-petal" transform="rotate(212)"/>
+            <use href="#sunflower-petal" transform="rotate(244)"/>
+            <use href="#sunflower-short-petal" transform="rotate(273)"/>
+            <use href="#sunflower-petal" transform="rotate(302)"/>
+            <use href="#sunflower-short-petal" transform="rotate(333)"/>
+          </g>
+          <circle r="22" fill="var(--pine)"/>
+          <circle r="17.5" fill="none" stroke="var(--marigold)" stroke-width="1.3" stroke-dasharray="1 3"/>
+          <g fill="var(--marigold)">
+            <circle cx="-8" cy="-8" r="1.5"/><circle cx="2" cy="-11" r="1.2"/>
+            <circle cx="9" cy="-7" r="1.4"/><circle cx="-12" cy="1" r="1.3"/>
+            <circle cx="-3" cy="-2" r="1.6"/><circle cx="5" cy="0" r="1.4"/>
+            <circle cx="12" cy="3" r="1.2"/><circle cx="-7" cy="7" r="1.3"/>
+            <circle cx="1" cy="10" r="1.6"/><circle cx="6" cy="6" r="1.2"/>
+          </g>
+        </g>
+
+        <g fill="none" stroke="var(--light-leaf)" stroke-width="2.4" stroke-linecap="round">
+          <path d="M397 242c10-49 27-75 55-107m-47 82c19-16 42-30 64-34m-59 25c-5-17-13-30-31-42"/>
+          <path d="M446 144c-1-16 11-23 18-18 5 4 0 11-5 8"/>
+        </g>
+        <g fill="var(--light-leaf)">
+          <path d="M433 159c8-17 24-20 41-16-11 14-26 18-41 16Z"/>
+          <path d="M413 194c-16-9-27-22-25-41 18 7 26 21 25 41Z"/>
+          <path d="M427 198c12-15 27-18 42-11-10 11-26 14-42 11Z"/>
+        </g>
+        <g fill="var(--leaf)">
+          <path d="M425 174c-12-11-17-28-9-43 14 10 16 26 9 43Z"/>
+          <path d="M404 220c-15 2-29-6-35-20 18-2 30 5 35 20Z"/>
+          <path d="M405 223c12-13 28-17 44-10-10 12-29 16-44 10Z"/>
+        </g>
+        <path d="M467 183c5-10 12-14 22-13-4 9-12 13-22 13Z" fill="var(--marigold)"/>
+        <path d="M222 248c4-13 13-20 25-20-3 12-12 19-25 20Zm0 0c-11-1-21-8-23-17 12 0 20 5 23 17Z" fill="var(--light-leaf)"/>
+      </svg>
+    </header>
+
+    <div class="form-panel">
+      <form id="signup-form" aria-labelledby="form-title">
+        <h2 id="form-title">Volunteer signup</h2>
+
+        <div class="field">
+          <label for="first-name">First name</label>
+          <input class="control" id="first-name" name="firstName" type="text" autocomplete="given-name" required>
+        </div>
+
+        <fieldset>
+          <legend>Shift</legend>
+          <div class="shift-options">
+            <label class="shift-option">
+              <input type="radio" name="shift" value="Wednesday at 5 pm" required>
+              <span>
+                <span class="shift-day">Wednesday</span>
+                <span class="shift-time">5 <span class="period">pm</span></span>
+              </span>
+            </label>
+            <label class="shift-option">
+              <input type="radio" name="shift" value="Saturday at 9 am" required>
+              <span>
+                <span class="shift-day">Saturday</span>
+                <span class="shift-time">9 <span class="period">am</span></span>
+              </span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="tools">Note about tools <span class="optional">(optional)</span></label>
+          <textarea class="control" id="tools" name="tools" rows="2"></textarea>
+        </div>
+
+        <button class="submit" type="submit">Sign up</button>
+      </form>
+
+      <section class="confirmation" id="confirmation" aria-labelledby="confirmation-title" hidden>
+        <svg class="confirmation-icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+          <rect x=".75" y=".75" width="46.5" height="46.5" rx="2" fill="var(--marigold)" stroke="var(--pine)" stroke-width="1.5"/>
+          <path d="m13 24 7 7 15-16" fill="none" stroke="var(--pine)" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h2 id="confirmation-title" tabindex="-1" aria-describedby="confirmed-shift">You’re signed up</h2>
+        <p>Thanks, <span id="confirmed-name"></span>!</p>
+        <dl class="receipt">
+          <div class="receipt-shift">
+            <dt>Your shift</dt>
+            <dd id="confirmed-shift"></dd>
+          </div>
+          <div id="receipt-tools" hidden>
+            <dt>Note about tools</dt>
+            <dd id="confirmed-tools"></dd>
+          </div>
+        </dl>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const form = document.getElementById('signup-form');
+    const firstName = document.getElementById('first-name');
+    const confirmation = document.getElementById('confirmation');
+    const confirmationTitle = document.getElementById('confirmation-title');
+    const toolsReceipt = document.getElementById('receipt-tools');
+
+    firstName.addEventListener('input', () => firstName.setCustomValidity(''));
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const details = new FormData(form);
+      const name = details.get('firstName').trim();
+
+      if (!name) {
+        firstName.setCustomValidity('Enter your first name.');
+        firstName.reportValidity();
+        return;
+      }
+
+      const tools = details.get('tools').trim();
+      document.getElementById('confirmed-name').textContent = name;
+      document.getElementById('confirmed-shift').textContent = details.get('shift');
+      document.getElementById('confirmed-tools').textContent = tools;
+      toolsReceipt.hidden = !tools;
+
+      form.hidden = true;
+      confirmation.hidden = false;
+      confirmationTitle.focus();
+    });
+  </script>
+</body>
+</html>
