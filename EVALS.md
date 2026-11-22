@@ -36,6 +36,8 @@ The frozen tool-search pages both recovered by keyboard, showed the single avail
 
 Across paired briefs, the median increase was 43,848 reported input tokens and 2,453 uncached input tokens. The median paired change in generation time was 21.3 seconds faster. Each v2 run made one successful `direct` call. Its structured reply serialized to a median 2,875 UTF-8 bytes. The overall turn counters include the host context and cached input, so they do not isolate the cost of the reply. Keep the host, model and brief fixed when testing a shorter tool response or a smaller tool catalog. [Per-brief token and reply counts](evidence/benchmark-v1/frozen-token-overhead.json)
 
+The installed package at `2fcd312` returned a **2,106-byte** compact catalog in default mode and **15,375 bytes** in compatibility mode, an **86.3% reduction** in catalog bytes. The three default tool definitions matched exactly across both modes. Median process start to catalog reply was 465 ms for default and 474 ms for compatibility over five fresh starts each on the reference Mac. These are local protocol measurements. [Catalog and timing receipt](evidence/benchmark-v1/installed-stdio-catalog.json)
+
 ## Direction coverage
 
 A separate stdio probe supplied the exact briefs to `direct` with the surface omitted. All 36 calls returned a direction. **32/36 returned `object-hero`.** All six forms and all six settings briefs received landing-page guidance. Only two dashboards and one mobile brief matched their requested surface. The frozen v2 API had no form, settings or empty-state surface. This probe measures default retrieval, while the rendered comparison measures what the generator does with the tool available. [Per-brief direction returns](evidence/benchmark-v1/preflight.json)
