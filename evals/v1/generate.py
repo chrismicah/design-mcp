@@ -90,7 +90,48 @@ def direct_direction(item):
     return value if isinstance(value, str) else None
 
 
-def parse_cell(events, expect_mcp, server_name="design-mcp", expected_tool="direct", expected_direction=None):
+def shadcn_item_names(item):
+    """Read names from the pinned shadcn MCP result, excluding queries and empty replies."""
+    result = item.get("result")
+    if not isinstance(result, dict) or result.get("is_error") or result.get("isError"):
+        return set()
+    content = result.get("content")
+    if not isinstance(content, list):
+        return set()
+    arguments = item.get("arguments")
+    if not isinstance(arguments, dict):
+        arguments = {}
+    names = set()
+    for block in content:
+        if not isinstance(block, dict) or block.get("type") != "text" or not isinstance(block.get("text"), str):
+            continue
+        body = block["text"].strip()
+        if item["tool"] == "search_items_in_registries" and re.match(r"Found [1-9][0-9]* items", body):
+            _, found, entries = body.partition("\n\nShowing items ")
+            if found:
+                names.update(re.findall(r"^- ([a-z0-9-]+) \(registry:ui\).* \[@shadcn\]\s*$", entries, re.M))
+        elif item["tool"] == "view_items_in_registries" and body.startswith("Item Details:\n"):
+            requested = arguments.get("items")
+            if not isinstance(requested, list):
+                continue
+            for section in body.split("\n\n---\n\n"):
+                heading = re.search(r"^## ([a-z0-9-]+)$", section, re.M)
+                if (heading and f"@shadcn/{heading.group(1)}" in requested
+                        and re.search(r"^\*\*Type:\*\* registry:ui$", section, re.M)):
+                    names.add(heading.group(1))
+        elif item["tool"] == "get_item_examples_from_registries" and body.startswith("# Usage Examples\n"):
+            if arguments.get("registries") not in (None, [], ["@shadcn"]):
+                continue
+            for section in body.split("\n\n---\n\n"):
+                heading = re.search(r"^## Example: ([a-z0-9-]+)$", section, re.M)
+                code_blocks = re.findall(r"^\x60\x60\x60tsx\n(.*?)^\x60\x60\x60$", section, re.M | re.S)
+                if heading and any(code.strip() for code in code_blocks):
+                    names.add(heading.group(1))
+    return names
+
+
+def parse_cell(events, expect_mcp, server_name="design-mcp", expected_tool="direct", expected_direction=None,
+               required_shadcn_items=()):
     result = {}
     completed_items = [event["item"] for event in events if event.get("type") == "item.completed"]
     turn = next((e for e in reversed(events) if e.get("type") == "turn.completed"), {})
@@ -127,6 +168,12 @@ def parse_cell(events, expect_mcp, server_name="design-mcp", expected_tool="dire
         result["observed_directions"] = observed
         if result["status"] == "passed" and observed != [expected_direction]:
             result["status"] = "unexpected-design-direction"
+    if expect_mcp and required_shadcn_items:
+        retrieved = set().union(*(shadcn_item_names(item) for item in eligible_calls))
+        matched = sorted(retrieved.intersection(required_shadcn_items))
+        result["matched_shadcn_items"] = matched
+        if result["status"] == "passed" and not matched:
+            result["status"] = "shadcn-relevant-item-missing"
     match = re.fullmatch(r"\s*```html\s*\n(.*)\n```\s*", messages[-1], re.S | re.I) if messages else None
     html = match.group(1) + "\n" if match else None
     if not html or not re.search(r"<body(?:\s[^>]*)?>", html, re.I):
@@ -146,6 +193,9 @@ def run_cell(args, case, arm):
     expected_direction = args.expected_directions.get(case["id"]) if arm != "none" else None
     if expected_direction is not None:
         identity["expected_direction"] = expected_direction
+    required_shadcn_items = args.required_shadcn_items if arm != "none" else []
+    if required_shadcn_items:
+        identity["required_shadcn_items"] = required_shadcn_items
     if args.no_shell:
         identity["shell_tool"] = False
     if arm not in {"none", "v2"}:
@@ -154,6 +204,7 @@ def run_cell(args, case, arm):
         receipt = json.loads((cell / "receipt.json").read_text(encoding="utf-8"))
         if (receipt.get("shell_tool", True) != (not args.no_shell)
                 or receipt.get("expected_direction") != expected_direction
+                or receipt.get("required_shadcn_items", []) != required_shadcn_items
                 or any(receipt.get(key) != value for key, value in identity.items())):
             raise RuntimeError(f"The run configuration changed for {cell}. Use a new output directory.")
         return receipt
@@ -172,7 +223,8 @@ def run_cell(args, case, arm):
             exit_code = None
             timed_out = True
     result, html = parse_cell(read_trace(trace_path), expect_mcp=arm != "none", server_name=args.server_name,
-                              expected_tool=args.expected_tool, expected_direction=expected_direction)
+                              expected_tool=args.expected_tool, expected_direction=expected_direction,
+                              required_shadcn_items=required_shadcn_items)
     if timed_out:
         result["status"] = "timeout"
     elif exit_code:
@@ -229,6 +281,7 @@ def main():
     args.server_args = ["serve"]
     args.server_env = {"DESIGN_MCP_SURFACE": "v2", "FASTMCP_SHOW_SERVER_BANNER": "false"}
     args.expected_tool = "direct"
+    args.required_shadcn_items = []
     verified_read_only_tools = []
     if args.competitor_config:
         competitor = json.loads(args.competitor_config.read_text(encoding="utf-8"))
@@ -259,6 +312,13 @@ def main():
         expected = {args.expected_tool} if isinstance(args.expected_tool, str) else set(args.expected_tool)
         if verified_read_only_tools and not expected.issubset(verified_read_only_tools):
             p.error("Every expected tool must appear in verified_read_only_tools when supplied")
+        if "required_shadcn_items" in competitor:
+            items = competitor["required_shadcn_items"]
+            if (name != "shadcn" or not isinstance(items, list) or not items
+                    or not all(isinstance(item, str) and re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", item)
+                               for item in items)):
+                p.error("required_shadcn_items requires the shadcn comparator and a nonempty list of item names")
+            args.required_shadcn_items = sorted(set(items))
     if args.treatment_label:
         if args.competitor_config or args.treatment_label == "none" or not re.fullmatch(
             r"[a-z0-9][a-z0-9-]{0,47}", args.treatment_label

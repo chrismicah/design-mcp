@@ -148,6 +148,23 @@ async def capture(client, cell, width, height, url):
         await execute(client, "await state.page.close();")
 
 
+def eligible_templates(cells, cases=None):
+    """Keep failed drafts on disk without spending browser time on them."""
+    for template in sorted(cells.glob("*/*/index.html")):
+        if cases and template.parent.parent.name not in cases:
+            continue
+        receipt = template.with_name("receipt.json")
+        if not receipt.is_file() or template.with_name("render.json").exists():
+            continue
+        generation = json.loads(receipt.read_text(encoding="utf-8"))
+        if generation["status"] != "passed":
+            continue
+        html = template.read_bytes()
+        if generation["html_sha256"] != sha256(html):
+            raise ValueError(f"Generation artifact changed at {template}")
+        yield template, html
+
+
 async def render_all(args, chrome, server, env, web_socket):
     transport = StdioTransport(command=str(args.playwriter), args=[], env=env, cwd=str(args.scratch))
     async with Client(transport, timeout=40) as client:
@@ -169,14 +186,12 @@ async def render_all(args, chrome, server, env, web_socket):
             return route.abort();
           }});
         """)
-        for template in sorted(args.cells.glob("*/*/index.html")):
-            if args.case and template.parent.parent.name not in args.case:
-                continue
+        for template, html in args.templates:
             cell = template.parent
             receipt = cell / "render.json"
             if receipt.exists():
                 continue
-            server.fixture = template.read_bytes()
+            server.fixture = html
             captures = {}
             for width, height in VIEWPORTS:
                 try:
@@ -198,6 +213,10 @@ def main():
     p.add_argument("--scratch", type=lambda path: Path(path).resolve(), required=True)
     p.add_argument("--case", action="append")
     args = p.parse_args()
+    args.templates = list(eligible_templates(args.cells, args.case))
+    if not args.templates:
+        print("No eligible drafts need rendering.")
+        return
     args.scratch.mkdir(parents=True, exist_ok=False)
     profile = args.scratch / "profile"
     isolated_home = args.scratch / "home"

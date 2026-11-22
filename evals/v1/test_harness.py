@@ -198,6 +198,79 @@ class BenchmarkTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "public HTTPS"):
                 hosted_mcp_table(url, "hosted")
 
+    def test_shadcn_gate_requires_a_relevant_registry_result(self):
+        search = "search_items_in_registries"
+        view = "view_items_in_registries"
+        examples = "get_item_examples_from_registries"
+        found = 'Found 1 items matching "field" in registries @shadcn:\n\nShowing items 1-1 of 1:\n\n'
+        field = found + "- field (registry:ui) [@shadcn]"
+        unavailable = 'No items found matching "field" in registries @shadcn'
+        message = {"type": "item.completed", "item": {
+            "type": "agent_message", "text": "```html\n<body>Test</body>\n```"}}
+        turn = {"type": "turn.completed", "usage": {"output_tokens": 7}}
+
+        def call(tool, body, status="completed", server="shadcn", arguments=None, **extra_result):
+            return {"type": "item.completed", "item": {
+                "type": "mcp_tool_call", "server": server, "tool": tool, "status": status, "arguments": arguments,
+                "result": {"content": [{"type": "text", "text": body}], **extra_result}}}
+
+        for label, calls, expected, items in (
+            ("named search", [call(search, field)], "passed", ["field"]),
+            ("named view", [call(view, "Item Details:\n\n## input\n**Type:** registry:ui",
+                                 arguments={"items": ["@shadcn/input"]})],
+             "passed", ["input"]),
+            ("example with code", [call(examples, "# Usage Examples\n\nFound 1 example:\n\n"
+                                        "## Example: field-demo\n### Code (field.tsx):\n```tsx\nimport React\n```")],
+             "passed", ["field-demo"]),
+            ("empty then relevant", [call(search, unavailable), call(search, field)], "passed", ["field"]),
+            ("empty", [call(search, unavailable)], "shadcn-relevant-item-missing", []),
+            ("query only", [call(search, found + "- accordion (registry:ui) [@shadcn]")],
+             "shadcn-relevant-item-missing", []),
+            ("other registry", [call(search, found + "- field (registry:ui) [@other]")],
+             "shadcn-relevant-item-missing", []),
+            ("other registry view", [call(view, "Item Details:\n\n## input\n**Type:** registry:ui",
+                                          arguments={"items": ["@other/input"]})],
+             "shadcn-relevant-item-missing", []),
+            ("no example code", [call(examples, "# Usage Examples\n\n## Example: field-demo")],
+             "shadcn-relevant-item-missing", []),
+            ("blank example code", [call(examples, "# Usage Examples\n\n## Example: field-demo\n```tsx\n\n```")],
+             "shadcn-relevant-item-missing", []),
+            ("malformed result", [call(search, field, content=None)], "shadcn-relevant-item-missing", []),
+            ("tool result error", [call(search, field, isError=True)], "shadcn-relevant-item-missing", []),
+            ("failed", [call(search, field, status="failed")], "mcp-unused-or-failed", []),
+            ("wrong server", [call(search, field, server="other")], "mcp-unused-or-failed", []),
+        ):
+            with self.subTest(label=label):
+                result, html = parse_cell([*calls, message, turn], True, "shadcn", (search, view, examples),
+                                          required_shadcn_items=("field", "input", "field-demo"))
+                self.assertEqual(result["status"], expected)
+                self.assertEqual(result["matched_shadcn_items"], items)
+                self.assertEqual(html, "<body>Test</body>\n")
+
+    def test_render_preflight_skips_failed_and_unverified_drafts(self):
+        from render import eligible_templates
+
+        with TemporaryDirectory() as path:
+            root = Path(path)
+            html = b"<body>Test</body>"
+            for arm, status in (("v2", "passed"), ("shadcn", "shadcn-relevant-item-missing"),
+                                ("router", "unexpected-design-direction"), ("missing", None),
+                                ("rendered", "passed")):
+                cell = root / "maintenance" / arm
+                cell.mkdir(parents=True)
+                (cell / "index.html").write_bytes(html)
+                if status:
+                    write(cell / "receipt.json", {"status": status, "html_sha256": sha256(html)})
+                if arm == "rendered":
+                    write(cell / "render.json", {})
+
+            eligible = root / "maintenance/v2/index.html"
+            self.assertEqual(list(eligible_templates(root, ["maintenance"])), [(eligible, html)])
+            self.assertEqual(list(eligible_templates(root, ["unknown"])), [])
+            eligible.write_bytes(b"<body>Changed</body>")
+            with self.assertRaisesRegex(ValueError, "Generation artifact changed"):
+                list(eligible_templates(root))
+
 
 if __name__ == "__main__":
     unittest.main()
