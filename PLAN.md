@@ -94,4 +94,4 @@ Before launch, run all six briefs across the clear, vague, misleading and minima
 
 ## 10. Standing development workflow
 
-Use the planner, builder, and independent evaluator roles for subsequent slices. Freeze each slice's acceptance contract and hold out realistic adversarial inputs. Use Playwriter for browser checks and GPT Computer Use for the final user flow. Treat the blind visual floor and functional checks as separate requirements. Revisit the harness and direction catalog as new public research, design examples, and tooling become available. [Design MCP harness](DESIGN-HARNESS.md)
+Use the planner, builder, and independent evaluator roles for subsequent slices. Freeze each slice's acceptance contract and hold out realistic adversarial inputs. Apply the owner's standing design principles to all new designs. Use Playwriter for live browser critique and GPT Computer Use for the final user flow. Apply the blind visual floor and functional checks independently. Revisit the harness and direction catalog as new public research, design examples, and tooling become available. [Design standard](DESIGN-STANDARD.md) · [Design MCP harness](DESIGN-HARNESS.md)
