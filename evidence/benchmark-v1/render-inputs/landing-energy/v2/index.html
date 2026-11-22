@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="County residents can get up to $600 for crawlspace insulation. Check the three rebate requirements and apply by November 30.">
+  <title>Crawlspace Insulation Rebate</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&amp;family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f3ebe0;
+      --light: #fbf6ee;
+      --band: #eadecf;
+      --ink: #2a1610;
+      --muted: #624d43;
+      --accent: #6b2148;
+      --accent-dark: #4e1633;
+      --rule: #cbb9aa;
+      --display: "Fraunces", Georgia, serif;
+      --body: "Instrument Sans", Arial, sans-serif;
+      --gutter: clamp(20px, 5vw, 80px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 400 1rem/1.5 var(--body);
+    }
+
+    h1, h2, h3, p, figure, dl, dd { margin: 0; }
+    a { color: inherit; }
+    button { font: inherit; }
+
+    :focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 4px;
+    }
+
+    .wrap {
+      width: min(1224px, calc(100% - var(--gutter) - var(--gutter)));
+      margin-inline: auto;
+    }
+
+    .skip-link {
+      position: fixed;
+      z-index: 2;
+      inset: 12px auto auto 12px;
+      padding: 10px 14px;
+      background: var(--light);
+      transform: translateY(-160%);
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    .masthead {
+      border-top: 4px solid var(--accent);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .masthead-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .wordmark {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      line-height: 1.15;
+    }
+
+    .wordmark svg { flex: none; }
+
+    .nav-link {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      gap: 7px;
+      color: var(--accent);
+      font-size: .9375rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .nav-link:hover {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.14fr) minmax(0, 1fr);
+      align-items: center;
+      gap: clamp(26px, 4.25vw, 62px);
+      padding-block: 52px 56px;
+    }
+
+    .house-plate {
+      overflow: hidden;
+      border-radius: 8px;
+      background: #54243e;
+    }
+
+    .house-plate svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    h1, h2 {
+      font-family: var(--display);
+      font-weight: 600;
+      letter-spacing: -.045em;
+      line-height: 1.02;
+    }
+
+    h1 { font-size: clamp(2.35rem, 4.72vw, 4.25rem); }
+    h1 span { display: block; }
+
+    .hero-copy > p {
+      margin-top: 15px;
+      color: var(--muted);
+      font-size: 1.125rem;
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      margin-block: 25px 24px;
+      padding-block: 13px;
+      border-block: 1px solid var(--rule);
+    }
+
+    .facts > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+    }
+
+    .facts > div + div {
+      border-inline-start: 1px solid var(--rule);
+      padding-inline-start: clamp(14px, 2vw, 28px);
+    }
+
+    .facts dt {
+      color: var(--muted);
+      font-size: .71rem;
+      font-weight: 700;
+      letter-spacing: .105em;
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+
+    .facts dd { margin-top: 4px; }
+
+    .rebate-value {
+      display: flex;
+      align-items: baseline;
+      gap: 7px;
+      flex-wrap: wrap;
+      color: var(--accent);
+      font-size: .9375rem;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .rebate-value strong {
+      font: 600 clamp(2.3rem, 4vw, 3.5rem)/1 var(--display);
+      letter-spacing: -.055em;
+    }
+
+    .deadline time {
+      font: 600 clamp(1.25rem, 2.4vw, 2rem)/1.12 var(--display);
+      letter-spacing: -.035em;
+    }
+
+    .action {
+      display: inline-flex;
+      min-height: 52px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 27px;
+      padding: 10px 19px 10px 21px;
+      border: 1px solid transparent;
+      border-radius: 100px;
+      background: var(--accent);
+      color: var(--light);
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 150ms ease-out;
+    }
+
+    .action svg { flex: none; }
+    .action:hover { background: var(--accent-dark); }
+
+    .action:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 3px var(--paper);
+    }
+
+    #requirements, #eligibility { scroll-margin-top: 26px; }
+
+    .requirements {
+      padding-block: 34px 39px;
+      border-block: 1px solid var(--rule);
+      background: var(--band);
+    }
+
+    .requirements h2 { font-size: clamp(2rem, 2.9vw, 2.625rem); }
+
+    .requirements-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin: 23px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .requirements-list li {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding-inline-end: 13px;
+      font-size: clamp(1.03rem, 1.45vw, 1.25rem);
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    .requirements-list li + li {
+      padding-inline-start: clamp(15px, 2.2vw, 31px);
+      border-inline-start: 1px solid var(--rule);
+    }
+
+    .requirement-icon {
+      display: grid;
+      width: 47px;
+      height: 47px;
+      flex: none;
+      place-items: center;
+      border: 1px solid var(--rule);
+      border-radius: 50%;
+      background: var(--light);
+      color: var(--accent);
+    }
+
+    .check {
+      display: grid;
+      grid-template-columns: minmax(0, .8fr) minmax(0, 1.35fr);
+      align-items: start;
+      gap: clamp(28px, 6vw, 86px);
+      padding-block: clamp(50px, 5.5vw, 80px);
+    }
+
+    .check h2 {
+      max-width: 10ch;
+      font-size: clamp(2.5rem, 4.4vw, 4rem);
+    }
+
+    .check-intro p {
+      max-width: 31ch;
+      margin-top: 15px;
+      color: var(--muted);
+      font-size: 1.0625rem;
+    }
+
+    .check-form {
+      min-width: 0;
+      padding: 7px 25px 25px;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      background: var(--light);
+    }
+
+    .question {
+      min-inline-size: 0;
+      margin: 0;
+      padding: 16px 0;
+      border: 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .question-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .question-row p {
+      font-size: 1.0625rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .answers {
+      display: flex;
+      flex: none;
+      gap: 7px;
+    }
+
+    .choice {
+      position: relative;
+      display: block;
+    }
+
+    .choice input {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .choice span {
+      display: flex;
+      min-width: 77px;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding-inline: 11px;
+      border: 1px solid #a48c80;
+      border-radius: 5px;
+      color: var(--ink);
+      font-size: .9375rem;
+      font-weight: 600;
+      pointer-events: none;
+    }
+
+    .choice span::before {
+      width: 14px;
+      height: 14px;
+      padding: 2px;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      background-clip: content-box;
+      content: "";
+    }
+
+    .choice:hover span { border-color: var(--accent); }
+
+    .choice input:checked + span {
+      border-color: var(--accent);
+      background-color: var(--accent);
+      color: var(--light);
+    }
+
+    .choice input:checked + span::before { background-color: currentColor; }
+
+    .choice input:focus-visible + span {
+      outline: 2px solid var(--ink);
+      outline-offset: 2px;
+    }
+
+    .form-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 17px;
+      margin-top: 21px;
+    }
+
+    .clear {
+      min-height: 44px;
+      padding: 3px 5px;
+      border: 0;
+      background: transparent;
+      color: var(--accent);
+      font-size: .9375rem;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 19px;
+      padding: 14px 17px;
+      border-inline-start: 3px solid var(--accent);
+      border-radius: 3px;
+      background: #f1e2e6;
+      color: #542039;
+    }
+
+    .result[data-outcome="eligible"] {
+      border-color: #4e6640;
+      background: #e8eddf;
+      color: #283e25;
+    }
+
+    .result h3 { font-size: 1.0625rem; }
+    .result ul { margin: 8px 0 0; padding-inline-start: 20px; }
+
+    @media (max-width: 760px) {
+      .masthead-inner { min-height: 61px; }
+      .wordmark { gap: 8px; font-size: .9375rem; }
+      .wordmark svg { width: 32px; height: 32px; }
+      .nav-link { font-size: .875rem; }
+
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 25px;
+        padding-block: 21px 36px;
+      }
+
+      h1 { font-size: clamp(2.35rem, 10.8vw, 4rem); }
+      .hero-copy > p { margin-top: 10px; font-size: 1rem; }
+      .facts { margin-block: 19px; padding-block: 11px; }
+      .rebate-value strong { font-size: clamp(2.3rem, 11.8vw, 3.25rem); }
+      .deadline time { font-size: clamp(1.25rem, 6vw, 1.85rem); }
+      .hero-copy .action { width: 100%; }
+
+      .requirements { padding-block: 28px 21px; }
+
+      .requirements-list {
+        grid-template-columns: minmax(0, 1fr);
+        margin-top: 13px;
+      }
+
+      .requirements-list li { padding: 11px 0; }
+
+      .requirements-list li + li {
+        padding-inline-start: 0;
+        border-inline-start: 0;
+        border-top: 1px solid var(--rule);
+      }
+
+      .requirement-icon { width: 41px; height: 41px; }
+
+      .check {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 21px;
+        padding-block: 38px 46px;
+      }
+
+      .check h2 { max-width: none; font-size: clamp(2.2rem, 9vw, 3.6rem); }
+      .check-intro p { max-width: 36ch; margin-top: 10px; font-size: 1rem; }
+      .check-form { padding: 3px 15px 18px; }
+      .question-row { flex-direction: column; align-items: stretch; gap: 10px; }
+      .answers { display: grid; grid-template-columns: 1fr 1fr; }
+      .choice span { min-width: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .action { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="masthead">
+    <div class="wrap masthead-inner">
+      <div class="wordmark">
+        <svg width="37" height="37" viewBox="0 0 37 37" aria-hidden="true">
+          <rect width="37" height="37" rx="5" fill="#6b2148"/>
+          <path d="M8 17.5 18.5 9 29 17.5M11 16v8h15v-8M11 28h15M14 24l3-4m3 4 3-4" fill="none" stroke="#f3ebe0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Home Insulation Rebate</span>
+      </div>
+      <nav aria-label="Page navigation">
+        <a class="nav-link" href="#requirements">
+          Requirements
+          <svg width="15" height="15" viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 4v11m-4-4 4 4 4-4"/>
+          </svg>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="wrap hero" aria-labelledby="rebate-title">
+      <figure class="house-plate">
+        <svg viewBox="0 0 640 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="house-title house-desc">
+          <title id="house-title">House with a crawlspace cutaway</title>
+          <desc id="house-desc">A hatched band highlights the crawlspace insulation beneath the floor of the home.</desc>
+          <defs>
+            <radialGradient id="plate-tone" cx="49%" cy="40%" r="75%">
+              <stop offset="0" stop-color="#783e5d"/>
+              <stop offset="1" stop-color="#4b203a"/>
+            </radialGradient>
+            <linearGradient id="front-wall" x2="0%" y2="100%">
+              <stop offset="0" stop-color="#fae5ca"/>
+              <stop offset="1" stop-color="#e7bda2"/>
+            </linearGradient>
+            <linearGradient id="roof-tone" x1="12%" y1="9%" x2="87%" y2="84%">
+              <stop offset="0" stop-color="#e7b69a"/>
+              <stop offset="1" stop-color="#b67c77"/>
+            </linearGradient>
+            <linearGradient id="crawl-tone" x2="0%" y2="100%">
+              <stop offset="0" stop-color="#38202a"/>
+              <stop offset="1" stop-color="#65404a"/>
+            </linearGradient>
+            <pattern id="draft-grid" width="28" height="28" patternUnits="userSpaceOnUse">
+              <path d="M28 0H0V28" fill="none" stroke="#f4d7c5" stroke-opacity=".18" stroke-width="1"/>
+            </pattern>
+            <pattern id="block-joints" width="42" height="24" patternUnits="userSpaceOnUse">
+              <path d="M0 .5h42M0 12.5h42M14 .5v12m21 0V24" fill="none" stroke="#593342" stroke-opacity=".48"/>
+            </pattern>
+            <pattern id="insulation-hatch" width="16" height="18" patternUnits="userSpaceOnUse">
+              <rect width="16" height="18" fill="#f3b295"/>
+              <path d="M-5 18 8 0M3 18 16 0M11 18 24 0" stroke="#a7565e" stroke-width="1.2"/>
+            </pattern>
+            <g id="window-unit">
+              <rect width="47" height="49" rx="1.5" fill="#f2ceb0" stroke="#593442" stroke-width="1.5"/>
+              <rect x="5" y="5" width="37" height="39" fill="#704658"/>
+              <path d="M5 31 25 5h12L8 44H5Z" fill="#d7a299" opacity=".65"/>
+              <path d="M23.5 5v39M5 24.5h37" fill="none" stroke="#f1c8aa" stroke-width="1.6"/>
+              <path d="M-2 49h51v4H-2Z" fill="#d7a58c" stroke="#593442" stroke-width="1.2"/>
+            </g>
+          </defs>
+
+          <rect width="640" height="450" fill="url(#plate-tone)"/>
+          <rect x="18" y="18" width="604" height="414" fill="url(#draft-grid)" stroke="#ebc2b1" stroke-opacity=".28"/>
+          <path d="M34 53V34h19m534 0h19v19M34 397v19h19m534 0h19v-19" fill="none" stroke="#e9c1b0" stroke-opacity=".57"/>
+          <path d="M83 185v189m-6-189h12m-12 189h12m469-233v178m-6-178h12m-12 178h12" fill="none" stroke="#e9c1b0" stroke-opacity=".35"/>
+          <path d="M92 379h284l170-67H262Z" fill="#422036" stroke="#c08a92" stroke-opacity=".58"/>
+          <path d="M92 379h284l170-67v8l-170 68H92Z" fill="#39182d" stroke="#ac7484" stroke-opacity=".66"/>
+
+          <g transform="matrix(1 -.397 0 1 368 300)">
+            <rect width="137" height="73" fill="#a67570" stroke="#422030" stroke-width="1.6"/>
+            <rect width="137" height="73" fill="url(#block-joints)"/>
+            <path d="M0 67h137" stroke="#d9a994" stroke-opacity=".7"/>
+          </g>
+
+          <path d="M129 300h239v73H129Z" fill="url(#crawl-tone)" stroke="#422030" stroke-width="1.6"/>
+          <path d="m133 358 49-17h137l45 21v10H133Z" fill="#815653"/>
+          <path d="M159 363h182m-154-11h137" stroke="#bd8c7a" stroke-opacity=".42"/>
+          <path d="M244 327h22l10-4v32l-10 5h-22Z" fill="#af8375" stroke="#492934" stroke-width="1.3"/>
+          <path d="m266 327 10-4v32l-10 5Z" fill="#825754"/>
+          <path d="M244 342h22l10-4m-32 14h22l10-4" fill="none" stroke="#6b4348"/>
+
+          <path d="M129 303h35v62h180v-62h24v70H129Z" fill="#ba8a78" stroke="#492532" stroke-width="1.5"/>
+          <path d="M129 303h35v62h180v-62h24v70H129Z" fill="url(#block-joints)"/>
+          <rect x="164" y="309" width="180" height="20" rx="2" fill="url(#insulation-hatch)" stroke="#ffdaaf" stroke-width="1.4"/>
+          <path d="M208 309v20m45-20v20m45-20v20" stroke="#6b3846" stroke-width="2"/>
+          <path d="M128 292h240l137-54v11l-137 55H128Z" fill="#b98876" stroke="#542f3c" stroke-width="1.5"/>
+          <path d="M128 294h240v14H128Z" fill="#dfad90" stroke="#542f3c" stroke-width="1.5"/>
+          <path d="M129 301h238" stroke="#805149" stroke-opacity=".65"/>
+
+          <g transform="matrix(1 -.397 0 1 365 185)">
+            <rect width="136" height="108" fill="#d5a289" stroke="#55303a" stroke-width="1.6"/>
+            <path d="M0 17h136M0 31h136M0 45h136M0 59h136M0 73h136M0 87h136M0 101h136" fill="none" stroke="#98675f" stroke-opacity=".63"/>
+            <use href="#window-unit" x="46" y="30"/>
+            <path d="M132 0v108" stroke="#f1c4a4" stroke-opacity=".8"/>
+          </g>
+
+          <path d="M133 293V186l116-89 116 89v107Z" fill="url(#front-wall)" stroke="#55303a" stroke-width="1.7"/>
+          <path d="M135 196h228m-228 14h228m-228 14h228m-228 14h228m-228 14h228m-228 14h228m-228 14h228M160 174h178m-156-15h134m-114-15h94m-75-15h56" fill="none" stroke="#a97768" stroke-opacity=".51"/>
+          <path d="M137 187v104m224-104v104" stroke="#f9e3c6" stroke-width="3"/>
+
+          <circle cx="249" cy="152" r="15" fill="#f0c9ab" stroke="#65404a" stroke-width="1.5"/>
+          <circle cx="249" cy="152" r="10.5" fill="#795261"/>
+          <path d="M249 142v20m-10-10h20" stroke="#f0c9ab" stroke-width="1.4"/>
+
+          <use href="#window-unit" x="153" y="213"/>
+          <use href="#window-unit" x="298" y="213"/>
+          <rect x="222" y="207" width="54" height="86" rx="1.5" fill="#f0c9ac" stroke="#65404a" stroke-width="1.6"/>
+          <rect x="227" y="212" width="44" height="81" fill="#8c5b62"/>
+          <path d="M233 220h32v31h-32Zm0 39h32v24h-32Z" fill="none" stroke="#d5a092" stroke-width="1.2"/>
+          <path d="M238 225h22v21h-22Z" fill="#684252"/>
+          <path d="m238 239 12-14h7l-17 21h-2Z" fill="#be8985" opacity=".72"/>
+          <circle cx="263" cy="256" r="2" fill="#f3c791"/>
+          <path d="M217 293h64v5h-64Z" fill="#c7987c" stroke="#65404a" stroke-width="1.2"/>
+
+          <path d="M249 82 385 28l135 103-136 54Z" fill="url(#roof-tone)" stroke="#55303a" stroke-width="1.7"/>
+          <path d="m276 71 135 103M303 61l135 103M330 50l135 103M357 39l135 103" stroke="#875461" stroke-width="1.3"/>
+          <path d="m279 70 135 103M306 60l135 103M333 49l135 103M360 38l135 103" stroke="#f2c4a8" stroke-opacity=".7"/>
+          <path d="m249 82 136-54m-1 157 136-54" stroke="#f1c5a9" stroke-width="2.3"/>
+          <path d="m384 185 136-54v9l-141 56Z" fill="#9d655f" stroke="#55303a" stroke-width="1.5"/>
+          <path d="M112 185 249 82l135 103-5 11L249 96 118 196Z" fill="#f1c8a8" stroke="#55303a" stroke-width="1.6"/>
+          <path d="M116 186 249 86l132 100" fill="none" stroke="#fff0d5" stroke-opacity=".7"/>
+
+          <path d="M311 323v42l38 37h28" fill="none" stroke="#ffd5bd" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="311" cy="321" r="4" fill="#fff0d8" stroke="#66324a" stroke-width="1.4"/>
+          <text x="387" y="409" fill="#fce5d5" font-family="Instrument Sans, Arial, sans-serif" font-size="21" font-weight="600">Crawlspace insulation</text>
+        </svg>
+      </figure>
+
+      <div class="hero-copy">
+        <h1 id="rebate-title"><span>Crawlspace</span> <span>insulation rebate</span></h1>
+        <p>Available to county residents.</p>
+        <dl class="facts">
+          <div>
+            <dt>Rebate amount</dt>
+            <dd class="rebate-value"><span>Up to</span> <strong>$600</strong></dd>
+          </div>
+          <div class="deadline">
+            <dt>Application deadline</dt>
+            <dd><time datetime="11-30">November 30</time></dd>
+          </div>
+        </dl>
+        <a class="action" href="#eligibility">
+          Check eligibility
+          <svg width="19" height="19" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 4v15m-5-5 5 5 5-5"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <section class="requirements" id="requirements" aria-labelledby="requirements-title">
+      <div class="wrap">
+        <h2 id="requirements-title">Rebate requirements</h2>
+        <ul class="requirements-list">
+          <li>
+            <span class="requirement-icon">
+              <svg width="23" height="23" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 9.5c0 4.6-7 10.5-7 10.5S5 14.1 5 9.5a7 7 0 0 1 14 0Z"/>
+                <circle cx="12" cy="9.5" r="2.35"/>
+              </svg>
+            </span>
+            <span data-requirement="resident">Live in the county</span>
+          </li>
+          <li>
+            <span class="requirement-icon">
+              <svg width="23" height="23" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m3 10.5 9-7.5 9 7.5M5.5 9v11h13V9M10 20v-6h4v6"/>
+              </svg>
+            </span>
+            <span data-requirement="primary">Insulate your primary home</span>
+          </li>
+          <li>
+            <span class="requirement-icon">
+              <svg width="23" height="23" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3.5 19 6v5.5c0 4-2.7 7-7 9-4.3-2-7-5-7-9V6l7-2.5Z"/>
+                <path d="m9 12 2 2 4-4"/>
+              </svg>
+            </span>
+            <span data-requirement="installer">Use a licensed installer</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="wrap check" aria-labelledby="eligibility">
+      <div class="check-intro">
+        <h2 id="eligibility" tabindex="-1">Check your eligibility</h2>
+        <p>Answer all three questions to see if you meet the rebate requirements.</p>
+      </div>
+
+      <form class="check-form" id="eligibility-form" aria-labelledby="eligibility" autocomplete="off">
+        <fieldset class="question" aria-labelledby="resident-question">
+          <div class="question-row">
+            <p id="resident-question">Do you live in the county?</p>
+            <div class="answers">
+              <label class="choice"><input type="radio" name="resident" value="yes" required><span>Yes</span></label>
+              <label class="choice"><input type="radio" name="resident" value="no"><span>No</span></label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="question" aria-labelledby="primary-question">
+          <div class="question-row">
+            <p id="primary-question">Will the work be at your primary home?</p>
+            <div class="answers">
+              <label class="choice"><input type="radio" name="primary" value="yes" required><span>Yes</span></label>
+              <label class="choice"><input type="radio" name="primary" value="no"><span>No</span></label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="question" aria-labelledby="installer-question">
+          <div class="question-row">
+            <p id="installer-question">Will you use a licensed installer?</p>
+            <div class="answers">
+              <label class="choice"><input type="radio" name="installer" value="yes" required><span>Yes</span></label>
+              <label class="choice"><input type="radio" name="installer" value="no"><span>No</span></label>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="form-actions">
+          <button class="action" type="submit">
+            See my result
+            <svg width="19" height="19" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 12h15m-5-5 5 5-5 5"/>
+            </svg>
+          </button>
+          <button class="clear" type="reset" hidden>Clear answers</button>
+        </div>
+
+        <div class="result" id="eligibility-result" role="region" aria-labelledby="result-title" tabindex="-1" hidden>
+          <h3 id="result-title"></h3>
+          <ul id="unmet-requirements" hidden></ul>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    const form = document.querySelector("#eligibility-form");
+    const requirements = [...document.querySelectorAll("[data-requirement]")];
+    const firstAnswer = form.querySelector("input");
+    const clearButton = form.querySelector(".clear");
+    const result = document.querySelector("#eligibility-result");
+    const resultTitle = document.querySelector("#result-title");
+    const unmetList = document.querySelector("#unmet-requirements");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const answers = new FormData(form);
+      const unmetRequirements = requirements.filter(
+        (requirement) => answers.get(requirement.dataset.requirement) !== "yes"
+      );
+      const eligible = unmetRequirements.length === 0;
+
+      result.dataset.outcome = eligible ? "eligible" : "ineligible";
+      resultTitle.textContent = eligible
+        ? "Eligible based on your answers"
+        : "Ineligible based on your answers";
+
+      unmetList.replaceChildren(...unmetRequirements.map((requirement) => {
+        const item = document.createElement("li");
+        item.textContent = requirement.textContent;
+        return item;
+      }));
+      unmetList.hidden = eligible;
+      result.hidden = false;
+      result.focus();
+    });
+
+    form.addEventListener("change", () => {
+      result.hidden = true;
+      clearButton.hidden = false;
+    });
+
+    form.addEventListener("reset", () => {
+      result.hidden = true;
+      clearButton.hidden = true;
+      firstAnswer.focus();
+    });
+  </script>
+</body>
+</html>

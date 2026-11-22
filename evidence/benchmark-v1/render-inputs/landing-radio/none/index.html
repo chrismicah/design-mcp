@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Low Signal — Community Radio</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800;900&amp;family=IBM+Plex+Mono:wght@400;600&amp;family=Instrument+Serif:ital@1&amp;display=swap">
+  <style>
+    :root {
+      --paper: #f5efe3;
+      --ink: #22231e;
+      --muted: #625c50;
+      --rule: #aaa190;
+      --signal: #f16b50;
+      --indicator: #b73e2d;
+      --display: "Barlow Condensed", Impact, "Arial Narrow", sans-serif;
+      --mono: "IBM Plex Mono", "Courier New", monospace;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--mono);
+    }
+
+    .page {
+      width: min(calc(100% - 112px), 1264px);
+      margin-inline: auto;
+    }
+
+    .masthead {
+      display: flex;
+      min-height: 98px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid var(--ink);
+    }
+
+    .identity {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .identity svg {
+      display: block;
+      width: 42px;
+      height: auto;
+      flex: none;
+    }
+
+    .wordmark {
+      margin: 0;
+      font: 900 2.4rem/.88 var(--display);
+      letter-spacing: -.018em;
+      text-transform: uppercase;
+    }
+
+    .descriptor {
+      margin: 0;
+      color: var(--muted);
+      font-size: .69rem;
+      line-height: 1.5;
+      letter-spacing: .09em;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    main {
+      padding-block: 46px 43px;
+    }
+
+    .broadcast {
+      display: grid;
+      grid-template-columns: minmax(0, .84fr) minmax(0, 1fr);
+      align-items: center;
+      gap: clamp(32px, 5vw, 72px);
+    }
+
+    .on-air {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0;
+      font-size: .75rem;
+      font-weight: 600;
+      line-height: 1.3;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .on-air::before {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--indicator);
+      content: "";
+    }
+
+    h1 {
+      margin: 20px 0 0;
+      font: 900 clamp(5.2rem, 12.8vw, 11.5rem)/.79 var(--display);
+      letter-spacing: -.026em;
+      text-transform: uppercase;
+    }
+
+    h1 span {
+      display: block;
+    }
+
+    .host {
+      margin: 19px 0 0;
+      font: italic 400 clamp(2rem, 3.05vw, 2.75rem)/1 "Instrument Serif", Georgia, serif;
+    }
+
+    .schedule {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 21px 0 0;
+      font-size: .78rem;
+      line-height: 1.4;
+      letter-spacing: .045em;
+      text-transform: uppercase;
+    }
+
+    .schedule svg {
+      flex: none;
+    }
+
+    .schedule strong {
+      margin-inline-start: 4px;
+      font-weight: 600;
+    }
+
+    .player {
+      width: min(100%, 334px);
+      margin-top: 27px;
+    }
+
+    .play-button {
+      --shadow: var(--ink);
+      display: grid;
+      width: 100%;
+      min-height: 62px;
+      grid-template-columns: 58px 1fr 51px;
+      align-items: center;
+      padding: 0;
+      border: 1px solid var(--ink);
+      border-radius: 0;
+      background: var(--signal);
+      box-shadow: 4px 4px 0 var(--shadow);
+      color: var(--ink);
+      cursor: pointer;
+      font: 600 .91rem/1.2 var(--mono);
+      letter-spacing: .045em;
+      text-align: left;
+      text-transform: uppercase;
+      transition: background-color .18s, color .18s, box-shadow .18s, transform .18s;
+    }
+
+    .play-button:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 7px;
+    }
+
+    .play-button:active {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0 var(--shadow);
+    }
+
+    .play-button__icon {
+      display: grid;
+      align-self: stretch;
+      place-items: center;
+      border-inline-end: 1px solid currentColor;
+    }
+
+    .play-button__label {
+      padding-inline-start: 15px;
+    }
+
+    .stop-shape {
+      display: none;
+    }
+
+    .meter {
+      display: flex;
+      height: 24px;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      padding-inline-end: 7px;
+    }
+
+    .meter span {
+      width: 2px;
+      height: var(--bar-height);
+      background: currentColor;
+    }
+
+    .meter span:nth-child(1) { --bar-height: 6px; --phase: -.3s; }
+    .meter span:nth-child(2) { --bar-height: 11px; --phase: -.75s; }
+    .meter span:nth-child(3) { --bar-height: 17px; --phase: -.15s; }
+    .meter span:nth-child(4) { --bar-height: 10px; --phase: -.55s; }
+    .meter span:nth-child(5) { --bar-height: 5px; --phase: -.9s; }
+
+    .player-status {
+      display: flex;
+      min-height: 16px;
+      align-items: center;
+      gap: 8px;
+      margin: 13px 0 0;
+      color: var(--muted);
+      font-size: .69rem;
+      line-height: 1.45;
+    }
+
+    .player-status::before {
+      width: 7px;
+      height: 7px;
+      flex: none;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      content: "";
+    }
+
+    [data-listening="true"] .play-button {
+      --shadow: var(--signal);
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    [data-listening="true"] .play-shape {
+      display: none;
+    }
+
+    [data-listening="true"] .stop-shape {
+      display: block;
+    }
+
+    [data-listening="true"] .player-status {
+      color: var(--ink);
+    }
+
+    [data-listening="true"] .player-status::before {
+      border-color: var(--indicator);
+      background: var(--indicator);
+    }
+
+    [data-listening="true"] .meter {
+      color: var(--signal);
+    }
+
+    [data-listening="true"] .meter span {
+      animation: modulate .8s var(--phase) ease-in-out infinite alternate;
+    }
+
+    @keyframes modulate {
+      from { transform: scaleY(.4); }
+      to { transform: scaleY(1.18); }
+    }
+
+    @media (hover: hover) {
+      .play-button:hover {
+        background: #ff7e62;
+      }
+
+      [data-listening="true"] .play-button:hover {
+        background: #35362e;
+      }
+    }
+
+    .show-art {
+      margin: 0;
+      overflow: hidden;
+      isolation: isolate;
+      border: 1px solid var(--ink);
+      background: #23261f;
+    }
+
+    .show-art svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .tuner {
+      position: relative;
+      height: 21px;
+      margin-bottom: 32px;
+      border-top: 1px solid var(--rule);
+      background:
+        repeating-linear-gradient(90deg, var(--rule) 0 1px, transparent 1px 12px)
+          left top / 100% 5px no-repeat,
+        repeating-linear-gradient(90deg, var(--rule) 0 1px, transparent 1px 60px)
+          left top / 100% 10px no-repeat;
+    }
+
+    .tuner::after {
+      position: absolute;
+      top: -5px;
+      left: 77%;
+      width: 2px;
+      height: 17px;
+      background: var(--indicator);
+      content: "";
+    }
+
+    @media (max-width: 860px) {
+      .page {
+        width: min(calc(100% - 42px), 540px);
+      }
+
+      .masthead {
+        min-height: 70px;
+      }
+
+      .identity svg {
+        width: 33px;
+      }
+
+      .wordmark {
+        font-size: 1.95rem;
+      }
+
+      .descriptor {
+        font-size: .58rem;
+      }
+
+      main {
+        padding-block: 27px 22px;
+      }
+
+      .broadcast {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
+      }
+
+      .on-air {
+        font-size: .69rem;
+      }
+
+      h1 {
+        margin-top: 14px;
+        font-size: clamp(4rem, 24.8vw, 8rem);
+      }
+
+      .host {
+        margin-top: 12px;
+      }
+
+      .schedule {
+        margin-top: 13px;
+        font-size: .73rem;
+      }
+
+      .player {
+        width: calc(100% - 4px);
+        margin-top: 19px;
+      }
+
+      .play-button {
+        min-height: 56px;
+        grid-template-columns: 51px 1fr 48px;
+      }
+
+      .player-status {
+        margin-top: 11px;
+      }
+
+      .tuner {
+        height: 16px;
+        margin-bottom: 20px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .play-button {
+        transition: none;
+      }
+
+      [data-listening="true"] .meter span {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="masthead">
+      <div class="identity">
+        <svg viewBox="0 0 42 42" aria-hidden="true" focusable="false">
+          <path d="M0 0h42v42H0z" fill="#22231e"/>
+          <path d="M7 25h7l5-10 6 10h10M7 31h7l5-10 6 10h10"
+                fill="none" stroke="#f5efe3" stroke-width="1.65" stroke-linejoin="round"/>
+          <circle cx="19" cy="8.5" r="2" fill="#f16b50"/>
+        </svg>
+        <p class="wordmark">Low Signal</p>
+      </div>
+      <p class="descriptor">Nonprofit<br>community radio</p>
+    </header>
+
+    <main>
+      <section class="broadcast" aria-labelledby="show-title" data-listening="false">
+        <div class="show-details">
+          <p class="on-air">On air</p>
+          <h1 id="show-title"><span>Field</span> <span>Notes</span></h1>
+          <p class="host">with Ana Reyes</p>
+          <p class="schedule">
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none"
+                 stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false">
+              <circle cx="8" cy="8" r="6.3"/>
+              <path d="M8 4.4V8l2.4 1.4" stroke-linecap="round"/>
+            </svg>
+            <span>Weekdays <strong>7–9 am</strong></span>
+          </p>
+
+          <div class="player">
+            <button class="play-button" id="listen-live" type="button">
+              <span class="play-button__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" focusable="false">
+                  <path class="play-shape" d="M5.5 2.9 17 10 5.5 17.1Z"/>
+                  <rect class="stop-shape" x="4.5" y="4.5" width="11" height="11" rx=".5"/>
+                </svg>
+              </span>
+              <span class="play-button__label">Listen live</span>
+              <span class="meter" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span>
+              </span>
+            </button>
+            <p id="listen-status" class="player-status" role="status" aria-atomic="true">Demo player · No audio</p>
+          </div>
+        </div>
+
+        <figure class="show-art" aria-hidden="true">
+          <svg viewBox="0 0 660 600" width="660" height="600" focusable="false">
+            <defs>
+              <pattern id="sky-dots" width="11" height="11" patternUnits="userSpaceOnUse">
+                <circle cx="1.5" cy="1.5" r=".64" fill="#a99e80"/>
+              </pattern>
+              <pattern id="sun-lines" width="5" height="5" patternUnits="userSpaceOnUse">
+                <path d="M0 1.5h5" stroke="#542d26" stroke-width=".8" opacity=".32"/>
+              </pattern>
+              <linearGradient id="sun-ink" x1="0%" y1="0%" x2="24%" y2="100%">
+                <stop stop-color="#f78357"/>
+                <stop offset=".56" stop-color="#ee6547"/>
+                <stop offset="1" stop-color="#d74535"/>
+              </linearGradient>
+              <linearGradient id="ground-ink" x1="0%" y1="0%" x2="20%" y2="100%">
+                <stop stop-color="#292b22"/>
+                <stop offset="1" stop-color="#20231d"/>
+              </linearGradient>
+              <linearGradient id="contour-ink" x1="95" y1="271" x2="433" y2="600" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#f0d7a8"/>
+                <stop offset=".55" stop-color="#d5ac83"/>
+                <stop offset="1" stop-color="#b86d55"/>
+              </linearGradient>
+              <filter id="print-grain" x="0%" y="0%" width="100%" height="100%">
+                <feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="3" stitchTiles="stitch"/>
+                <feColorMatrix type="saturate" values="0"/>
+              </filter>
+              <path id="horizon" d="M-30 348 C31 362 82 354 125 319 S186 259 225 266
+                S297 329 347 346 S446 351 493 322 S584 265 626 272 S681 299 700 298"/>
+            </defs>
+
+            <rect width="660" height="600" fill="#23261f"/>
+            <rect width="660" height="390" fill="url(#sky-dots)" opacity=".34"/>
+
+            <g fill="none" stroke="#bd9e74">
+              <circle cx="382" cy="224" r="175" opacity=".53"/>
+              <circle cx="382" cy="224" r="199" opacity=".29"/>
+              <circle cx="382" cy="224" r="225" opacity=".48" stroke-dasharray="1 5"/>
+            </g>
+            <circle cx="382" cy="224" r="153" fill="url(#sun-ink)"/>
+            <circle cx="382" cy="224" r="153" fill="url(#sun-lines)"/>
+
+            <path d="M-30 348 C31 362 82 354 125 319 S186 259 225 266
+              S297 329 347 346 S446 351 493 322 S584 265 626 272 S681 299 700 298
+              V626H-30Z" fill="url(#ground-ink)"/>
+
+            <g fill="none" stroke="url(#contour-ink)" stroke-width="1.25">
+              <use href="#horizon"/>
+              <path d="M-30 355 C34 370 85 360 128 325 S192 266 231 274 S304 336 354 353 S452 358 500 328 S590 272 630 279 S684 307 700 305"/>
+              <path d="M-30 362 C38 378 89 369 134 333 S199 273 237 281 S311 344 361 361 S457 366 505 336 S596 279 635 286 S686 314 700 313"/>
+              <path d="M-30 370 C45 389 95 378 140 342 S207 279 244 289 S318 353 368 370 S465 373 512 343 S601 288 639 295 S688 322 700 321"/>
+              <path d="M-30 378 C51 401 103 389 148 351 S216 288 252 298 S324 362 376 379 S471 382 520 351 S608 297 646 304 S690 331 700 330"/>
+              <path d="M-30 387 C57 412 110 400 156 361 S225 296 262 308 S333 371 385 390 S478 390 528 361 S615 307 652 314 S691 341 700 339"/>
+              <path d="M-30 398 C61 425 117 412 165 372 S235 306 271 318 S343 382 395 401 S489 400 538 371 S625 318 659 325 S692 351 700 350"/>
+              <path d="M-30 409 C67 439 123 425 172 384 S244 316 282 330 S353 394 404 413 S498 411 547 383 S633 330 666 337 S693 364 700 362"/>
+              <path d="M-30 421 C67 453 129 439 180 397 S255 328 293 343 S364 407 414 426 S509 423 557 395 S642 343 674 350 S696 377 700 375"/>
+              <path d="M-30 434 C69 469 133 454 188 411 S268 342 306 357 S376 419 426 439 S520 436 568 408 S651 359 682 365 S697 391 700 390"/>
+              <path d="M-30 448 C69 487 138 470 196 425 S281 355 319 372 S389 434 439 454 S531 450 580 422 S660 375 692 382 S700 406 700 406"/>
+              <path d="M-30 464 C69 507 143 487 205 440 S294 371 333 389 S401 449 451 469 S545 464 593 438 S669 394 700 400"/>
+              <path d="M-30 481 C69 528 148 506 213 456 S306 387 346 406 S414 465 465 485 S558 480 606 455 S680 411 700 418"/>
+              <path d="M-30 501 C64 549 151 526 220 474 S319 406 361 426 S428 483 479 502 S572 497 621 472 S686 432 700 439"/>
+              <path d="M-30 522 C59 572 152 547 228 493 S332 426 376 447 S441 501 493 521 S586 515 635 491 S690 452 700 460"/>
+              <path d="M-30 545 C51 595 150 571 235 514 S346 446 392 470 S456 523 508 541 S600 534 649 511 S692 476 700 480"/>
+              <path d="M-30 569 C42 618 148 595 241 535 S360 469 408 494 S470 545 523 563 S614 555 662 532 S695 501 700 504"/>
+              <path d="M-30 595 C32 639 141 624 247 560 S375 493 424 520 S486 569 538 585 S631 576 678 555 S698 527 700 531"/>
+              <path d="M102 620 C166 619 210 612 256 585 S390 519 441 547 S501 594 554 610 S645 599 692 579 L700 560"/>
+              <path d="M215 623 C292 594 390 544 459 575 S522 615 565 627 M615 620 Q664 614 700 593"/>
+            </g>
+
+            <g fill="none" stroke="#f1d9ae" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M192 270 207 173 223 266 M195 250h24 M199 228h16 M202 207h10 M205 186h4
+                       M193 269l25-19-19-22 13-21-7-21 M223 266l-28-16 20-22-13-21 7-21"/>
+              <path d="M207 173v-12 M199 156q8-9 16 0 M193 149q14-15 28 0" opacity=".85"/>
+            </g>
+            <circle cx="207" cy="161" r="2.5" fill="#f78357"/>
+
+            <g fill="none" stroke="#e1c59a" opacity=".56">
+              <path d="M17 37V17h20 M623 17h20v20 M643 563v20h-20 M37 583H17v-20"/>
+              <path d="M49 58h14m-7-7v14 M588 88h12m-6-6v12"/>
+            </g>
+
+            <rect width="660" height="600" filter="url(#print-grain)"
+                  opacity=".29" style="mix-blend-mode: soft-light"/>
+          </svg>
+        </figure>
+      </section>
+    </main>
+
+    <div class="tuner" aria-hidden="true"></div>
+  </div>
+
+  <script>
+    const broadcast = document.querySelector(".broadcast");
+    const listenButton = document.getElementById("listen-live");
+    const listenLabel = listenButton.querySelector(".play-button__label");
+    const listenStatus = document.getElementById("listen-status");
+
+    listenButton.addEventListener("click", () => {
+      const listening = broadcast.dataset.listening !== "true";
+
+      broadcast.dataset.listening = String(listening);
+      listenLabel.textContent = listening ? "Stop listening" : "Listen live";
+      listenStatus.textContent = listening
+        ? "You’re listening live · No audio"
+        : "Demo player · No audio";
+    });
+  </script>
+</body>
+</html>

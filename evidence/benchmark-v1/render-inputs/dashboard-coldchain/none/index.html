@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cold-chain monitor</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400..800&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --canvas: #f1f5f3;
+      --ink: #172d27;
+      --muted: #52675e;
+      --line: #d8e4de;
+      --forest: #234c3e;
+      --danger: #953c2d;
+      --mono: "IBM Plex Mono", ui-monospace, monospace;
+      --limit-mark: 50%;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--canvas);
+      color: var(--ink);
+      font-family: "Geist", system-ui, sans-serif;
+      line-height: 1.45;
+    }
+
+    h1, h2, p { margin: 0; }
+
+    .board {
+      width: min(72rem, calc(100% - 5rem));
+      margin-inline: auto;
+      padding-block: 3rem 4rem;
+    }
+
+    .masthead {
+      display: flex;
+      align-items: center;
+      gap: .875rem;
+      margin-bottom: 1.75rem;
+    }
+
+    h1 {
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      font-weight: 750;
+      letter-spacing: -.055em;
+      line-height: 1.08;
+    }
+
+    .brand-mark {
+      display: grid;
+      flex: none;
+      width: 3.125rem;
+      height: 3.125rem;
+      place-items: center;
+      border-radius: .8125rem;
+      background: var(--forest);
+      color: #e1f4eb;
+    }
+
+    .snowflake {
+      position: relative;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+    .snowflake > span {
+      position: absolute;
+      inset-block: 0;
+      left: calc(50% - 1px);
+      width: 2px;
+      border-radius: 2px;
+      background: currentColor;
+    }
+
+    .snowflake > span:nth-child(2) { transform: rotate(60deg); }
+    .snowflake > span:nth-child(3) { transform: rotate(-60deg); }
+
+    .snowflake > span::before,
+    .snowflake > span::after {
+      position: absolute;
+      left: 50%;
+      width: 6px;
+      height: 6px;
+      border-top: 1.5px solid;
+      border-left: 1.5px solid;
+      content: "";
+    }
+
+    .snowflake > span::before {
+      top: 2px;
+      transform: translateX(-50%) rotate(225deg);
+    }
+
+    .snowflake > span::after {
+      bottom: 2px;
+      transform: translateX(-50%) rotate(45deg);
+    }
+
+    .excursion {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      overflow: hidden;
+      border: 1px solid #1a3a30;
+      border-radius: 1.125rem;
+      background: #162f28;
+      color: #f5fbf7;
+    }
+
+    .excursion-copy {
+      padding: 2rem 2.375rem;
+      box-shadow: inset 4px 0 #f49b84;
+    }
+
+    .excursion-label {
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+      color: #ffc1ae;
+      font: 600 .6875rem/1.35 var(--mono);
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .alert-icon {
+      display: grid;
+      width: 1.25rem;
+      height: 1.25rem;
+      place-items: center;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      font-size: .8125rem;
+      letter-spacing: 0;
+    }
+
+    .excursion h2 {
+      margin-top: .625rem;
+      font-size: clamp(2.5rem, 4.5vw, 3.875rem);
+      font-weight: 750;
+      letter-spacing: -.06em;
+      line-height: 1.03;
+    }
+
+    .excursion-detail {
+      margin-top: .625rem;
+      color: #cbdcd4;
+    }
+
+    .excursion-detail strong { color: #ffc1ae; }
+
+    .excursion-metric {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 1.75rem 2.25rem;
+      border-left: 1px solid #39554a;
+      background:
+        radial-gradient(ellipse at top right, #31574a66, transparent 76%),
+        repeating-linear-gradient(90deg, transparent 0 27px, #e4f8ec08 27px 28px),
+        #1b3930;
+    }
+
+    .metric-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .75rem;
+    }
+
+    .metric-label {
+      color: #d0e3d9;
+      font-size: .875rem;
+      font-weight: 550;
+    }
+
+    .metric-value {
+      color: #ffad96;
+      font: 600 clamp(3rem, 5vw, 4.625rem)/1 var(--mono);
+      letter-spacing: -.08em;
+      white-space: nowrap;
+    }
+
+    .metric-value span {
+      margin-left: .12em;
+      font-size: .46em;
+      letter-spacing: -.045em;
+    }
+
+    .meter {
+      position: relative;
+      display: block;
+      height: .375rem;
+      border-radius: 999px;
+      background: var(--meter-base, #e1ebe6);
+    }
+
+    .meter::before,
+    .meter::after,
+    .meter-excess {
+      position: absolute;
+      content: "";
+    }
+
+    .meter::before {
+      inset: 0 auto 0 0;
+      width: min(var(--level), var(--limit-mark));
+      border-radius: 999px;
+      background: var(--meter-safe, #7eaf9b);
+    }
+
+    .meter::after {
+      inset: -2px auto -2px var(--limit-mark);
+      width: 1px;
+      background: var(--meter-tick, #637f73);
+    }
+
+    .meter-excess {
+      inset: 0 auto 0 var(--limit-mark);
+      width: calc(var(--level) - var(--limit-mark));
+      border-radius: 0 999px 999px 0;
+      background: var(--meter-hot, #d97460);
+    }
+
+    .hero-meter::before,
+    tr[data-excursion] .meter::before {
+      border-radius: 999px 0 0 999px;
+    }
+
+    .hero-scale { margin-top: .875rem; }
+
+    .hero-meter {
+      --meter-base: #3a5a4e;
+      --meter-safe: #76a994;
+      --meter-tick: #e1eee7;
+      --meter-hot: #f69b84;
+      height: .625rem;
+    }
+
+    .meter-point {
+      position: absolute;
+      top: 50%;
+      left: var(--level);
+      width: .875rem;
+      height: .875rem;
+      transform: translate(-50%, -50%);
+      border: 3px solid #ffd0bf;
+      border-radius: 50%;
+      background: #914938;
+      box-shadow: 0 0 0 3px #ffb39a26;
+    }
+
+    .limit-caption {
+      margin-top: .55rem;
+      color: #cbded4;
+      font: 500 .6875rem/1.35 var(--mono);
+      text-align: center;
+    }
+
+    .fleet { margin-top: 2.25rem; }
+
+    .fleet-heading {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: .75rem;
+      margin-bottom: .875rem;
+    }
+
+    .fleet h2 {
+      font-size: 1.875rem;
+      font-weight: 720;
+      letter-spacing: -.045em;
+      line-height: 1.1;
+    }
+
+    .filters {
+      display: inline-flex;
+      gap: .25rem;
+      padding: .25rem;
+      border: 1px solid var(--line);
+      border-radius: .75rem;
+      background: #e6eeea;
+    }
+
+    .filter {
+      display: inline-flex;
+      min-height: 2.75rem;
+      align-items: center;
+      gap: .5rem;
+      padding-inline: .8rem;
+      border: 0;
+      border-radius: .5rem;
+      background: transparent;
+      color: #385247;
+      cursor: pointer;
+      font: 650 .875rem/1 "Geist", system-ui, sans-serif;
+      white-space: nowrap;
+    }
+
+    .filter:hover { background: #d9e6df; }
+
+    .filter[aria-pressed="true"] {
+      background: var(--forest);
+      color: #fff;
+    }
+
+    .filter:focus-visible {
+      outline: 2px solid #27634d;
+      outline-offset: 2px;
+    }
+
+    .filter-count {
+      display: grid;
+      min-width: 1.1875rem;
+      height: 1.1875rem;
+      place-items: center;
+      border-radius: .3125rem;
+      background: #d6e4dc;
+      font: 600 .6875rem/1 var(--mono);
+    }
+
+    .filter[data-filter="excursions"][aria-pressed="false"] .filter-count {
+      background: #f9e1d9;
+      color: var(--danger);
+    }
+
+    .filter[aria-pressed="true"] .filter-count { background: #ffffff26; }
+
+    .table-panel {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: .875rem;
+      background: #fff;
+      box-shadow: 0 5px 16px #1d392707;
+    }
+
+    table {
+      width: 100%;
+      table-layout: fixed;
+      border-collapse: collapse;
+    }
+
+    .truck-column { width: 36%; }
+    .temperature-column { width: 39%; }
+
+    th, td {
+      padding: 1rem 1.375rem;
+      text-align: left;
+    }
+
+    thead th {
+      padding-block: .7rem;
+      background: #eaf1ed;
+      color: var(--muted);
+      font: 600 .6875rem/1.3 var(--mono);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    tr > :last-child { text-align: right; }
+    tbody tr > * { border-top: 1px solid #e2ebe6; }
+    tbody tr[hidden] { display: none; }
+
+    tr[data-excursion] { background: #fff5f1; }
+
+    tr[data-excursion] th {
+      box-shadow: inset 3px 0 #d87965;
+    }
+
+    .vehicle, .temperature {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+
+    .vehicle {
+      font-weight: 680;
+      white-space: nowrap;
+    }
+
+    .vehicle-icon {
+      display: grid;
+      flex: none;
+      width: 2.5rem;
+      height: 2.5rem;
+      place-items: center;
+      border-radius: .5625rem;
+      background: #eaf3ee;
+      color: #3f6c59;
+    }
+
+    tr[data-excursion] .vehicle-icon {
+      background: #f9e6df;
+      color: var(--danger);
+    }
+
+    .truck-shape {
+      position: relative;
+      width: 21px;
+      height: 16px;
+    }
+
+    .truck-shape::before,
+    .truck-shape::after {
+      position: absolute;
+      border: 1.5px solid;
+      content: "";
+    }
+
+    .truck-shape::before {
+      top: 1px;
+      left: 0;
+      width: 14px;
+      height: 11px;
+      border-radius: 2px;
+    }
+
+    .truck-shape::after {
+      top: 4px;
+      left: 13px;
+      width: 8px;
+      height: 8px;
+      border-radius: 1px 4px 1px 1px;
+    }
+
+    .truck-wheels {
+      position: absolute;
+      z-index: 1;
+      top: 11px;
+      left: 4px;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: currentColor;
+      box-shadow: 12px 0 currentColor;
+    }
+
+    .temperature-value {
+      min-width: 3.5rem;
+      font: 600 1.25rem/1 var(--mono);
+      letter-spacing: -.055em;
+      white-space: nowrap;
+    }
+
+    .temperature-value span {
+      margin-left: .09em;
+      font-size: .7em;
+    }
+
+    tr[data-excursion] .temperature-value { color: var(--danger); }
+
+    .row-meter {
+      width: 9rem;
+      max-width: 52%;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .375rem;
+      padding: .3rem .55rem;
+      border-radius: .375rem;
+      background: #e8f2ec;
+      color: #285643;
+      font-size: .8125rem;
+      font-weight: 650;
+      white-space: nowrap;
+    }
+
+    .status-badge::before {
+      width: .375rem;
+      height: .375rem;
+      border-radius: 50%;
+      background: #418365;
+      content: "";
+    }
+
+    .status-excursion {
+      background: #f9e3dc;
+      color: var(--danger);
+    }
+
+    .status-excursion::before {
+      transform: rotate(45deg);
+      border-radius: 1px;
+      background: #bc5743;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 700px) {
+      .board {
+        width: min(34rem, calc(100% - 2rem));
+        padding-block: 1.625rem 2.5rem;
+      }
+
+      .masthead { margin-bottom: 1.25rem; }
+
+      .brand-mark {
+        width: 2.625rem;
+        height: 2.625rem;
+        border-radius: .6875rem;
+      }
+
+      .excursion { grid-template-columns: 1fr; }
+      .excursion-copy { padding: 1.25rem 1.375rem 1.125rem; }
+      .excursion-detail { margin-top: .375rem; }
+
+      .excursion-metric {
+        padding: .875rem 1.375rem 1.125rem;
+        border-top: 1px solid #39554a;
+        border-left: 0;
+      }
+
+      .hero-scale { margin-top: .75rem; }
+      .fleet { margin-top: 1.5rem; }
+      .fleet h2 { font-size: 1.625rem; }
+      .fleet-heading { margin-bottom: .625rem; }
+
+      .filter {
+        gap: .375rem;
+        padding-inline: .625rem;
+        font-size: .8125rem;
+      }
+
+      .truck-column { width: 37%; }
+      .temperature-column { width: 28%; }
+
+      th, td { padding: .75rem .625rem; }
+      thead th { padding-block: .65rem; }
+      tr > :first-child { padding-left: .75rem; }
+      tr > :last-child { padding-right: .75rem; }
+
+      .vehicle {
+        gap: .5rem;
+        font-size: .875rem;
+      }
+
+      .vehicle-icon {
+        width: 2rem;
+        height: 2rem;
+      }
+
+      .temperature-value { font-size: 1.125rem; }
+      .row-meter { display: none; }
+
+      .status-badge {
+        padding-inline: .4375rem;
+        font-size: .75rem;
+      }
+    }
+
+    @media (max-width: 350px) {
+      .vehicle-icon { display: none; }
+      thead th { letter-spacing: .02em; }
+    }
+  </style>
+</head>
+<body>
+  <div class="board">
+    <header class="masthead">
+      <span class="brand-mark" aria-hidden="true">
+        <span class="snowflake"><span></span><span></span><span></span></span>
+      </span>
+      <h1>Cold-chain monitor</h1>
+    </header>
+
+    <main>
+      <section class="excursion" aria-labelledby="excursion-title">
+        <div class="excursion-copy">
+          <p class="excursion-label">
+            <span class="alert-icon" aria-hidden="true">!</span>
+            Temperature excursion
+          </p>
+          <h2 id="excursion-title">Truck 14</h2>
+          <p class="excursion-detail"><strong>4°C above</strong> the 5°C limit</p>
+        </div>
+
+        <div class="excursion-metric">
+          <p class="metric-heading">
+            <span class="metric-label">Current temperature</span>
+            <strong class="metric-value">9<span>°C</span></strong>
+          </p>
+          <div class="hero-scale" aria-hidden="true">
+            <span class="meter hero-meter" style="--level: 90%">
+              <span class="meter-excess"></span>
+              <span class="meter-point"></span>
+            </span>
+            <p class="limit-caption">5°C limit</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="fleet" aria-labelledby="fleet-title">
+        <div class="fleet-heading">
+          <h2 id="fleet-title">Trucks</h2>
+          <div class="filters" role="group" aria-label="Filter trucks">
+            <button class="filter" type="button" data-filter="all"
+                    aria-pressed="true" aria-controls="truck-rows">
+              All trucks <span class="filter-count" aria-hidden="true">3</span>
+            </button>
+            <button class="filter" type="button" data-filter="excursions"
+                    aria-pressed="false" aria-controls="truck-rows">
+              Excursions <span class="filter-count" aria-hidden="true">1</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="table-panel">
+          <table aria-labelledby="fleet-title">
+            <colgroup>
+              <col class="truck-column">
+              <col class="temperature-column">
+              <col>
+            </colgroup>
+            <thead>
+              <tr>
+                <th scope="col">Truck</th>
+                <th scope="col">Temperature</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody id="truck-rows">
+              <tr data-excursion>
+                <th scope="row">
+                  <span class="vehicle">
+                    <span class="vehicle-icon" aria-hidden="true">
+                      <span class="truck-shape"><span class="truck-wheels"></span></span>
+                    </span>
+                    Truck 14
+                  </span>
+                </th>
+                <td>
+                  <span class="temperature">
+                    <span class="temperature-value">9<span>°C</span></span>
+                    <span class="meter row-meter" style="--level: 90%" aria-hidden="true">
+                      <span class="meter-excess"></span>
+                    </span>
+                  </span>
+                </td>
+                <td><span class="status-badge status-excursion">Excursion</span></td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  <span class="vehicle">
+                    <span class="vehicle-icon" aria-hidden="true">
+                      <span class="truck-shape"><span class="truck-wheels"></span></span>
+                    </span>
+                    Truck 8
+                  </span>
+                </th>
+                <td>
+                  <span class="temperature">
+                    <span class="temperature-value">3<span>°C</span></span>
+                    <span class="meter row-meter" style="--level: 30%" aria-hidden="true"></span>
+                  </span>
+                </td>
+                <td><span class="status-badge">Within limit</span></td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  <span class="vehicle">
+                    <span class="vehicle-icon" aria-hidden="true">
+                      <span class="truck-shape"><span class="truck-wheels"></span></span>
+                    </span>
+                    Truck 11
+                  </span>
+                </th>
+                <td>
+                  <span class="temperature">
+                    <span class="temperature-value">4<span>°C</span></span>
+                    <span class="meter row-meter" style="--level: 40%" aria-hidden="true"></span>
+                  </span>
+                </td>
+                <td><span class="status-badge">Within limit</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="visually-hidden" id="filter-status" role="status"></p>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const filters = document.querySelectorAll("[data-filter]");
+    const truckRows = document.querySelectorAll("#truck-rows > tr");
+    const filterStatus = document.getElementById("filter-status");
+
+    function applyFilter(event) {
+      const selected = event.currentTarget;
+      const excursionsOnly = selected.dataset.filter === "excursions";
+
+      for (const button of filters) {
+        button.setAttribute("aria-pressed", String(button === selected));
+      }
+
+      for (const row of truckRows) {
+        row.hidden = excursionsOnly && !row.hasAttribute("data-excursion");
+      }
+
+      filterStatus.textContent = excursionsOnly
+        ? "Showing 1 truck with an excursion."
+        : "Showing all 3 trucks.";
+    }
+
+    for (const button of filters) {
+      button.addEventListener("click", applyFilter);
+    }
+  </script>
+</body>
+</html>
