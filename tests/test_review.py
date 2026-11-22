@@ -902,6 +902,21 @@ class CliTests(unittest.TestCase):
             self.assertEqual((status, error, opened), (0, "", []))
             self.assertIn("Would capture https://boards.example/rooms in a separate browser.", out)
 
+    def test_public_url_json_reports_the_capture_and_review_milestones(self):
+        bundle = board()
+        bundle["url_capture_ms"] = {"chrome_ready": 250.4, "relay_ready": 92.1}
+        with tempfile.TemporaryDirectory() as folder, mock.patch.object(isolated, "capture", return_value=bundle):
+            status, out, error, opened = self.run_cli(
+                "boards.example/rooms", "--playwriter", "--out", folder, "--json",
+            )
+            self.assertEqual((status, error, opened), (0, "", []))
+            result = json.loads(out)
+            profile = result["url_capture_ms"]
+            self.assertEqual((profile["chrome_ready"], profile["relay_ready"]), (250.4, 92.1))
+            self.assertGreaterEqual(profile["local_decision"], 0)
+            self.assertLessEqual(profile["local_decision"], profile["preview_written"] + 0.2)
+            self.assertTrue(Path(result["preview_path"]).is_file())
+
     def test_addresses_that_are_not_public_pages_are_refused_with_the_reason(self):
         cases = (
             ("file:///etc/hosts", "Only http and https pages"),
@@ -1062,7 +1077,13 @@ class ExtensionTests(unittest.TestCase):
                             asyncio.run(review_page)
                         self.assertEqual(len(relay.calls), 2)
                     else:
-                        self.assertEqual(len(asyncio.run(review_page)["frames"]), 2)
+                        bundle = asyncio.run(review_page)
+                        self.assertEqual(len(bundle["frames"]), 2)
+                        self.assertEqual(bundle["timings_ms"], {"page_load": 42, "capture": 24})
+                        self.assertEqual(bundle["url_capture_ms"]["viewports"], [
+                            {"width": 1440, "page_load": 42, "capture": 12},
+                            {"width": 390, "page_load": 42, "capture": 12},
+                        ])
                         self.assertEqual(len(relay.calls), 8)
                     self.assertTrue(all(args["session"] == "isolated-review" for _, args in relay.calls[1:]))
 

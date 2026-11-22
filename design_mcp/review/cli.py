@@ -4,12 +4,13 @@ import argparse
 import json
 import re
 import sys
+import time
 import webbrowser
 from pathlib import Path
 
 from .address import credentials_reason, local_address_reason
 from .evidence import EvidenceError, inspect_url
-from .pipeline import describe, review
+from .pipeline import _ms, describe, review
 
 EXTENSION_DIR = Path(__file__).with_name("extension")
 _HAS_SCHEME = re.compile(r"^(?:[a-z][a-z0-9+.-]*://|(?:about|blob|chrome|data|file|javascript|mailto|view-source):)", re.I)
@@ -83,6 +84,7 @@ def _review_file(args):
 
 
 def _review_url(args, opener):
+    started = time.perf_counter()
     pasted = args.url.strip()
     if not _HAS_SCHEME.match(pasted):
         pasted = "https://" + pasted
@@ -110,7 +112,17 @@ def _review_url(args, opener):
         except (CaptureError, EvidenceError) as error:
             print(error.message, file=sys.stderr)
             return 1
-        return _report(review(bundle, args.out), args.json)
+        review_started = time.perf_counter()
+        result = review(bundle, args.out)
+        if args.json and result["ok"]:
+            before_review = _ms(started, review_started)
+            stages = result["timings_ms"]
+            result["url_capture_ms"] = {
+                **bundle["url_capture_ms"],
+                "local_decision": round(before_review + stages["sanitize"] + stages["local_checks"], 1),
+                "preview_written": _ms(started, time.perf_counter()),
+            }
+        return _report(result, args.json)
 
     print(f"{'Would open' if args.no_open else 'Opening'} {clean} in your browser.")
     print("On that tab in Chrome, click the Design MCP button, then “Review this page”.")

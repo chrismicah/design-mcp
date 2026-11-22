@@ -21,8 +21,8 @@ jobs:
       - name: Install both revisions and the shared browser tools
         shell: bash
         env:
-          BEFORE: e1cd4eb82bc60269ce42223523f73a862c0086a5
-          AFTER: 7bccfc14d4ce5652f81ee85f14bd56ee452a4aae
+          BEFORE: 7bccfc14d4ce5652f81ee85f14bd56ee452a4aae
+          AFTER: ${{ github.sha }}
         run: |
           proof="$RUNNER_TEMP/url-timing-proof"
           mkdir "$proof"

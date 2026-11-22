@@ -39,9 +39,19 @@ def capture(executable, chrome, playwriter, out):
         assert result["ok"] and result["frontier"]["status"] == "not-run" and (preview / "preview.html").is_file()
         assert [(f["viewport"]["width"], f["viewport"]["height"]) for f in frames] == [(390, 844), (1440, 900)]
         assert all(f["masks"]["applied"] and f["masks"]["counts"]["field"] > 0 for f in frames)
-        return {"wall_ms": elapsed_ms, "page_load_ms": result["timings_ms"]["page_load"],
-                "capture_ms": result["timings_ms"]["capture"], "masked_fields": result["masked"]["field"],
-                "frame_sha256": [f["screenshot"]["sha256"] for f in frames]}
+    trial = {"wall_ms": elapsed_ms, "page_load_ms": result["timings_ms"]["page_load"],
+             "capture_ms": result["timings_ms"]["capture"], "masked_fields": result["masked"]["field"],
+             "frame_sha256": [f["screenshot"]["sha256"] for f in frames]}
+    if "url_capture_ms" in result:
+        profile = result["url_capture_ms"]
+        viewports = profile["viewports"]
+        assert [view["width"] for view in viewports] == [1440, 390]
+        assert max(view["page_load"] for view in viewports) == trial["page_load_ms"]
+        assert sum(view["capture"] for view in viewports) == trial["capture_ms"]
+        assert profile["session_ready"] <= profile["drive"]
+        assert profile["local_decision"] <= profile["preview_written"] + 0.2 <= elapsed_ms + 0.2
+        trial["url_capture_ms"] = profile
+    return trial
 
 
 def stats(values):
@@ -70,6 +80,7 @@ def main():
                 print(json.dumps({"pair": index + 1, "arm": arm, **pair[arm]}), flush=True)
                 if "error" in pair[arm]:
                     raise RuntimeError(f"Review failed on pair {index + 1} in {arm}")
+            assert "url_capture_ms" in pair["after"]
         pairs = report["pairs"]
         report["identical_capture_pairs"] = sum(p["before"]["frame_sha256"] == p["after"]["frame_sha256"] for p in pairs)
         report["summary"] = {metric: {**{arm: stats([p[arm][metric] for p in pairs]) for arm in arms},

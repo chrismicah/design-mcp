@@ -25,6 +25,7 @@ from urllib.request import ProxyHandler, build_opener
 from .address import public_target
 from .evidence import MAX_REGIONS, SCHEMA
 from .network import public_proxy
+from .pipeline import _ms
 
 VIEWPORTS = ((1440, 900), (390, 844))
 DEFAULT_CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
@@ -127,6 +128,7 @@ def _free_port():
 
 
 async def _drive(url, playwriter, env, scratch, web_socket):
+    started = time.perf_counter()
     from fastmcp import Client
     from fastmcp.client.transports import StdioTransport
 
@@ -150,6 +152,7 @@ async def _drive(url, playwriter, env, scratch, web_socket):
             return output
 
         await execute(_ROUTE_JS)
+        session_ready = time.perf_counter()
         collect = json.dumps(collect_expression())
         frames, loads, captures = [], [], []
         for width, height in VIEWPORTS:
@@ -181,6 +184,13 @@ async def _drive(url, playwriter, env, scratch, web_socket):
         },
         "frames": frames,
         "timings_ms": {"page_load": max(loads), "capture": sum(captures)},
+        "url_capture_ms": {
+            "session_ready": _ms(started, session_ready),
+            "viewports": [
+                {"width": width, "page_load": load, "capture": capture}
+                for (width, _), load, capture in zip(VIEWPORTS, loads, captures, strict=True)
+            ],
+        },
     }
 
 
@@ -195,6 +205,7 @@ def _browser_arguments(chrome, profile, proxy_port):
 
 
 async def _capture_browser(url, host, address, chrome, playwriter, scratch, resolve):
+    started = time.perf_counter()
     profile, home = scratch / "profile", scratch / "home"
     home.mkdir()
     relay_port = _free_port()
@@ -204,6 +215,7 @@ async def _capture_browser(url, host, address, chrome, playwriter, scratch, reso
         chrome_args = _browser_arguments(chrome, profile, proxy_port) + [
             "--remote-debugging-address=127.0.0.1", "--remote-debugging-port=0", "about:blank",
         ]
+        chrome_started = time.perf_counter()
         with _child(chrome_args, scratch / "chrome.log") as browser:
             def devtools_port():
                 lines = (profile / "DevToolsActivePort").read_text().splitlines()
@@ -219,17 +231,29 @@ async def _capture_browser(url, host, address, chrome, playwriter, scratch, reso
                     return json.load(reply)
 
             web_socket = (await asyncio.to_thread(_wait_ready, browser, version))["webSocketDebuggerUrl"]
+            chrome_ready = time.perf_counter()
             with _child([str(playwriter), "serve", "--host", "127.0.0.1"], scratch / "relay.log", env=env) as relay:
                 def relay_ready():
                     with socket.create_connection(("127.0.0.1", relay_port), timeout=1):
                         return True
 
                 await asyncio.to_thread(_wait_ready, relay, relay_ready)
-                return await asyncio.wait_for(_drive(url, playwriter, env, scratch, web_socket), SESSION_SECONDS)
+                relay_ready_at = time.perf_counter()
+                bundle = await asyncio.wait_for(_drive(url, playwriter, env, scratch, web_socket), SESSION_SECONDS)
+                drive_done = time.perf_counter()
+    bundle["url_capture_ms"].update({
+        "proxy_setup": _ms(started, chrome_started),
+        "chrome_ready": _ms(chrome_started, chrome_ready),
+        "relay_ready": _ms(chrome_ready, relay_ready_at),
+        "drive": _ms(relay_ready_at, drive_done),
+        "process_cleanup": _ms(drive_done, time.perf_counter()),
+    })
+    return bundle
 
 
 def capture(url, playwriter=None, chrome=None, resolve=socket.getaddrinfo):
     """Capture one public page at both benchmark widths and return a page-evidence bundle."""
+    started = time.perf_counter()
     clean, host, address = public_target(url, resolve)
     if playwriter is None:
         playwriter = shutil.which("playwriter")
@@ -242,9 +266,16 @@ def capture(url, playwriter=None, chrome=None, resolve=socket.getaddrinfo):
     if not chrome.is_file():
         raise CaptureError(f"No Chrome at {chrome}. Pass --chrome with its location.")
     scratch = Path(tempfile.mkdtemp(prefix="design-mcp-review-"))
+    prepared = time.perf_counter()
     try:
-        return asyncio.run(_capture_browser(clean, host, address, chrome, playwriter, scratch, resolve))
+        bundle = asyncio.run(_capture_browser(clean, host, address, chrome, playwriter, scratch, resolve))
+        browser_done = time.perf_counter()
     except Exception as error:  # an external browser and tool: report one plain sentence, keep the cause
         raise CaptureError(f"The page could not be captured in the separate browser: {error}") from error
     finally:
         shutil.rmtree(scratch, ignore_errors=True)
+    bundle["url_capture_ms"].update({
+        "prepare": _ms(started, prepared),
+        "scratch_cleanup": _ms(browser_done, time.perf_counter()),
+    })
+    return bundle
