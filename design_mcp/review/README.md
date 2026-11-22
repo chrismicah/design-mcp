@@ -72,7 +72,7 @@ python -m pytest tests/test_review.py -q
 python -m pytest tests
 ```
 
-Replay the saved-capture route once the tests pass:
+Review a collector's input capture once the tests pass. The input JSON must contain its screenshot. The output folder puts the image in `preview.html` and saves geometry separately in `evidence.json`.
 
 ```bash
 design-mcp review --evidence capture.json --out ./review-out
