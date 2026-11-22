@@ -34,25 +34,33 @@ func elementCenter(_ element: AXUIElement) -> CGPoint? {
     return CGPoint(x: position.x + size.width / 2, y: position.y + size.height / 2)
 }
 
-func findToolbarAction(in window: AXUIElement, title: String) -> AXUIElement? {
+func findToolbarAction(in window: AXUIElement, title: String) -> AXUIElement {
     var queue = [window]
     var cursor = 0
     var matches = [AXUIElement]()
+    var observed = [String]()
     let buttonRoles = ["AXButton", "AXPopUpButton", "AXMenuButton"]
     while cursor < queue.count && cursor < 600 {
         let element = queue[cursor]
         cursor += 1
         let role = attribute(element, kAXRoleAttribute) as? String
         if role == "AXWebArea" { continue }
-        let labels = [kAXTitleAttribute, kAXDescriptionAttribute, kAXHelpAttribute]
-        if let role, buttonRoles.contains(role), labels.contains(where: {
-            attribute(element, $0) as? String == title
-        }) {
-            matches.append(element)
+        if let role, buttonRoles.contains(role) {
+            let labels = [kAXTitleAttribute, kAXDescriptionAttribute, kAXHelpAttribute]
+                .compactMap { attribute(element, $0) as? String }
+            if observed.count < 25, let label = labels.first(where: { !$0.isEmpty }) {
+                observed.append("\(role): \(label.prefix(140).debugDescription)")
+            }
+            // Chrome appends the current site-access status on a second line.
+            if labels.contains(where: { $0 == title || $0.hasPrefix(title + "\n") }) {
+                matches.append(element)
+            }
         }
         queue.append(contentsOf: attribute(element, kAXChildrenAttribute) as? [AXUIElement] ?? [])
     }
-    guard cursor == queue.count, matches.count == 1 else { return nil }
+    guard cursor == queue.count, matches.count == 1 else {
+        fail("Expected one \(title.debugDescription) toolbar button, matched \(matches.count) in \(cursor) elements. Buttons: \(observed.joined(separator: ", "))")
+    }
     return matches[0]
 }
 
@@ -78,9 +86,12 @@ if NSWorkspace.shared.frontmostApplication?.processIdentifier != pid {
 let app = AXUIElementCreateApplication(pid)
 AXUIElementSetMessagingTimeout(app, 0.4)
 let windows = attribute(app, kAXWindowsAttribute) as? [AXUIElement] ?? []
-guard windows.count == 1, let button = findToolbarAction(in: windows[0], title: args[1]),
-      let point = elementCenter(button) else {
-    fail("No unique visible toolbar action named \(args[1]) in the owned window.")
+guard windows.count == 1 else {
+    fail("Expected one window for the owned Chrome process, found \(windows.count).")
+}
+let button = findToolbarAction(in: windows[0], title: args[1])
+guard let point = elementCenter(button) else {
+    fail("The unique toolbar action named \(args[1]) had no clickable bounds.")
 }
 var hit: AXUIElement?
 guard AXUIElementCopyElementAtPosition(app, Float(point.x), Float(point.y), &hit) == .success,
