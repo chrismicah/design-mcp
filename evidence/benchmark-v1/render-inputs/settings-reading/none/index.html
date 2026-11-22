@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#EEF1E7">
+  <title>Reading preferences</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400..700&amp;family=Instrument+Serif&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --canvas: #EEF1E7;
+      --paper: #FFFDF4;
+      --ink: #1D3229;
+      --forest: #244638;
+      --leaf: #D6E795;
+      --rule: #788579;
+      --serif: "Instrument Serif", Georgia, serif;
+      --sans: "DM Sans", "Trebuchet MS", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      display: grid;
+      align-items: center;
+      min-block-size: 100vh;
+      min-block-size: 100svh;
+      margin: 0;
+      background: var(--canvas);
+      color: var(--ink);
+      font-family: var(--sans);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, .84fr) minmax(0, 1.16fr);
+      align-items: center;
+      gap: clamp(2rem, 7.2vw, 6.5rem);
+      inline-size: min(100%, 76rem);
+      margin-inline: auto;
+      padding: clamp(2rem, 6vh, 4.5rem) clamp(1.25rem, 4.45vw, 4rem);
+    }
+
+    h1 {
+      margin: 0 0 2rem;
+      font: 400 clamp(3.5rem, 5.65vw, 5.125rem) / .94 var(--serif);
+      letter-spacing: -.025em;
+      overflow-wrap: anywhere;
+    }
+
+    .preferences {
+      padding-block-start: 1.25rem;
+      border-block-start: 1px solid var(--rule);
+    }
+
+    fieldset {
+      min-inline-size: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    fieldset + fieldset { margin-block-start: 1.25rem; }
+
+    legend {
+      margin-block-end: .625rem;
+      padding: 0;
+      font-size: 1.0625rem;
+      font-weight: 650;
+    }
+
+    .choices {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      background: var(--rule);
+    }
+
+    .choice {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.25rem minmax(0, 1fr) .875rem;
+      align-items: center;
+      gap: .5rem;
+      min-block-size: 3.375rem;
+      padding: .625rem .75rem;
+      background: var(--paper);
+      font-size: .9375rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .choice:first-child { border-radius: 3px 0 0 3px; }
+    .choice:last-child { border-radius: 0 3px 3px 0; }
+
+    .choice-label { overflow-wrap: anywhere; }
+
+    .choice-icon {
+      inline-size: 1.25rem;
+      block-size: 1.25rem;
+    }
+
+    .radio-mark {
+      display: grid;
+      place-items: center;
+      inline-size: .875rem;
+      block-size: .875rem;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+    }
+
+    .radio-mark::after {
+      content: "";
+      display: none;
+      inline-size: .375rem;
+      block-size: .375rem;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .choice:has(input:checked) { background: var(--leaf); }
+    .choice:has(input:checked) .radio-mark::after { display: block; }
+
+    .choice:has(input:focus-visible) {
+      outline: 2px solid var(--ink);
+      outline-offset: -4px;
+    }
+
+    .reset {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      min-block-size: 2.75rem;
+      margin-block-start: .75rem;
+      padding: 0 .125rem;
+      border: 0;
+      background: transparent;
+      color: var(--forest);
+      font: 650 .9375rem var(--sans);
+      cursor: pointer;
+    }
+
+    .reset span {
+      text-decoration: underline;
+      text-underline-offset: .2em;
+    }
+
+    .reset:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    .preview {
+      --standard-size: 2.625rem;
+      --large-size: 3.5rem;
+      --comfortable-leading: 1.46;
+      --compact-leading: 1.13;
+      --fold: 1.75rem;
+      min-inline-size: 0;
+      padding: clamp(1.5rem, 3.2vw, 2.75rem);
+      border-radius: 4px 3rem 4px 4px;
+      background: var(--forest);
+      color: var(--paper);
+    }
+
+    .preview-heading {
+      display: flex;
+      align-items: center;
+      gap: .625rem;
+      margin: 0 0 1.125rem;
+      font-size: .9375rem;
+      font-weight: 650;
+    }
+
+    .preview-heading svg {
+      flex: none;
+      color: var(--leaf);
+    }
+
+    .preview-heading::after {
+      content: "";
+      flex: 1;
+      block-size: 1px;
+      margin-inline-start: .375rem;
+      background: currentColor;
+      opacity: .35;
+    }
+
+    .sheet {
+      position: relative;
+      display: grid;
+      grid-template-rows: minmax(calc(var(--large-size) * var(--comfortable-leading) * 2), auto) auto;
+      padding: 1.875rem 2rem 1rem;
+      border-inline-start: 3px solid var(--leaf);
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    .sheet::after {
+      content: "";
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-end: 0;
+      inline-size: var(--fold);
+      block-size: var(--fold);
+      background: linear-gradient(45deg, var(--leaf) 50%, var(--forest) 50%);
+      pointer-events: none;
+    }
+
+    .sample {
+      align-self: start;
+      margin: 0;
+      font-family: var(--serif);
+      font-size: var(--standard-size);
+      line-height: var(--comfortable-leading);
+      letter-spacing: -.012em;
+      overflow-wrap: anywhere;
+    }
+
+    .layout:has(#size-large:checked) .sample { font-size: var(--large-size); }
+    .layout:has(#spacing-compact:checked) .sample { line-height: var(--compact-leading); }
+
+    .dough-illustration {
+      display: block;
+      justify-self: end;
+      inline-size: min(70%, 16.5rem);
+      block-size: auto;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .sample { transition: font-size 160ms ease, line-height 160ms ease; }
+    }
+
+    @media (forced-colors: active) {
+      .choice:has(input:checked) .radio-mark::after {
+        forced-color-adjust: none;
+        background: Highlight;
+      }
+    }
+
+    @media (max-width: 52rem) {
+      body { align-items: start; }
+
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.25rem;
+        max-inline-size: 38rem;
+        padding: 1.75rem 1.25rem;
+      }
+
+      h1 {
+        margin-block-end: 1.125rem;
+        font-size: clamp(2.625rem, 11.8vw, 4.625rem);
+      }
+
+      .preferences { padding-block-start: 1rem; }
+      fieldset + fieldset { margin-block-start: 1rem; }
+      .reset { margin-block-start: .625rem; }
+
+      .preview {
+        --standard-size: 2.125rem;
+        --large-size: 2.75rem;
+        --fold: 1.25rem;
+        padding: 1.125rem;
+        border-start-end-radius: 2rem;
+      }
+
+      .preview-heading { margin-block-end: .75rem; }
+      .sheet { padding: 1rem 1rem .5rem; }
+      .dough-illustration { inline-size: min(62%, 11rem); }
+    }
+
+    @media (max-width: 22rem) {
+      .choice { grid-template-columns: minmax(0, 1fr) .875rem; }
+      .choice-icon { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="layout">
+    <section aria-labelledby="settings-title">
+      <h1 id="settings-title">Reading preferences</h1>
+
+      <form class="preferences" id="reading-preferences">
+        <fieldset>
+          <legend>Text size</legend>
+          <div class="choices">
+            <label class="choice">
+              <input class="visually-hidden" id="size-standard" type="radio" name="textSize" value="standard" checked>
+              <svg class="choice-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="m6.5 18 5-11h1l5 11m-9.2-4h7.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="choice-label">Standard</span>
+              <span class="radio-mark" aria-hidden="true"></span>
+            </label>
+            <label class="choice">
+              <input class="visually-hidden" id="size-large" type="radio" name="textSize" value="large">
+              <svg class="choice-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="m4 20 7.4-16h1.2L20 20M6.8 14h10.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="choice-label">Large</span>
+              <span class="radio-mark" aria-hidden="true"></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Line spacing</legend>
+          <div class="choices">
+            <label class="choice">
+              <input class="visually-hidden" id="spacing-comfortable" type="radio" name="lineSpacing" value="comfortable" checked>
+              <svg class="choice-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M4 5h16M4 12h12M4 19h16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+              <span class="choice-label">Comfortable</span>
+              <span class="radio-mark" aria-hidden="true"></span>
+            </label>
+            <label class="choice">
+              <input class="visually-hidden" id="spacing-compact" type="radio" name="lineSpacing" value="compact">
+              <svg class="choice-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M4 8h16M4 12h12M4 16h16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+              <span class="choice-label">Compact</span>
+              <span class="radio-mark" aria-hidden="true"></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <button class="reset" type="reset">
+          <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+            <path d="M4 9a6 6 0 1 1 1.8 5M4 9V4.5M4 9h4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Reset to defaults</span>
+        </button>
+        <p class="visually-hidden" id="reset-status" role="status"></p>
+      </form>
+    </section>
+
+    <section class="preview" aria-labelledby="preview-title">
+      <h2 class="preview-heading" id="preview-title">
+        <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+          <path d="M5 2.5h6.5L15.5 6.5v11H5zM11.5 2.5v4h4M8 10h4.5M8 13h4.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Preview
+      </h2>
+
+      <div class="sheet">
+        <p class="sample">Rest dough for<br> 20 minutes.</p>
+
+        <svg class="dough-illustration" viewBox="0 0 280 145" aria-hidden="true" focusable="false"
+             fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <ellipse cx="140" cy="130" rx="108" ry="8" fill="var(--leaf)" fill-opacity=".36" stroke="none"/>
+          <path d="M24 134h62m108 0h62" stroke-opacity=".35"/>
+          <path d="M107 121v6c0 3 15 6 33 6s33-3 33-6v-6" fill="var(--paper)"/>
+          <path d="M49 71c4 31 25 53 69 58 13 2 31 2 44 0 44-5 65-27 69-58Z" fill="var(--leaf)" fill-opacity=".64"/>
+          <path d="M60 93c17 18 44 28 80 28 35 0 62-10 80-28" stroke-opacity=".52"/>
+          <path d="M77 106c6 6 13 10 21 13m0-9c7 6 15 10 23 12m4-9 7 12m21-10-5 10m19-11-7 10m25-13-9 10m26-16-9 10" stroke-opacity=".42"/>
+          <path d="M32 81c16-8 21-24 39-38 24-19 45-28 72-26 27 2 55 13 73 33 12 13 16 22 30 26 5 1 4 7-2 10-9 6-25 2-37 7-9 4-13 12-26 12-14 0-20-7-32-9-16-3-28 5-40 7-15 2-24-5-36-7-13-3-23 3-34-1-11-3-15-9-7-14Z" fill="var(--paper)"/>
+          <path d="M47 76c20-11 26-27 55-39 24-10 48-11 72-3 23 7 36 20 48 37" stroke="var(--leaf)" stroke-width="8"/>
+          <path d="M48 76c19-10 27-27 55-39 24-10 48-10 71-3 22 7 36 20 48 37" stroke-opacity=".46" stroke-width=".9"/>
+          <path d="M35 86c12 6 24 0 38 2 14 2 22 10 37 7 12-2 25-10 41-7 11 2 17 9 30 9 10 0 16-8 24-11 11-5 26-2 36-8" stroke-dasharray="1 3"/>
+          <path d="M74 78c8-3 14-8 20-14m14 18c10-3 17-8 27-9m27 4c10 3 15 8 24 9m10-12c8-3 14-3 20-2" stroke-opacity=".65"/>
+          <path d="M113 58c11-6 24-8 37-6m-29 9c6-3 12-4 18-4" stroke-opacity=".4"/>
+        </svg>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const preferences = document.getElementById("reading-preferences");
+    const resetStatus = document.getElementById("reset-status");
+    const textSize = preferences.elements.namedItem("textSize");
+    const lineSpacing = preferences.elements.namedItem("lineSpacing");
+    const storageKey = "cookbook.reading-preferences";
+
+    try {
+      const saved = JSON.parse(localStorage.getItem(storageKey));
+      if (saved) {
+        textSize.value = saved.textSize === "large" ? "large" : "standard";
+        lineSpacing.value = saved.lineSpacing === "compact" ? "compact" : "comfortable";
+      }
+    } catch {
+      // The controls and preview also work without browser storage.
+    }
+
+    preferences.addEventListener("change", () => {
+      resetStatus.textContent = "";
+      try {
+        localStorage.setItem(storageKey, JSON.stringify({
+          textSize: textSize.value,
+          lineSpacing: lineSpacing.value
+        }));
+      } catch {
+        // The current choices remain active on the page.
+      }
+    });
+
+    preferences.addEventListener("reset", () => {
+      try {
+        localStorage.removeItem(storageKey);
+      } catch {
+        // The native reset still restores the default choices.
+      }
+      resetStatus.textContent = "Restored Standard text and Comfortable line spacing.";
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,400 @@
+<!doctype html>
+<!--
+  A visitor in Room 4 should be able to identify the work at a glance and open
+  its material note in place. The screen feels quiet, with the room, artwork,
+  credit, and disclosure forming the whole reading sequence.
+
+  The palette uses plaster #EEF1ED, ink #142C3B, rule #A5B5B2, pigment #2A5362,
+  shale #8AABA9, and wash #D8E4DE. Baskervville sets the artwork title and
+  Instrument Sans sets the room, credit, and controls.
+
+  An original river-shaped seam runs through the decorative panel. The label
+  sits beside it at 1440px and above it at 390px. The note starts closed and
+  opens or closes in place while focus stays on the button.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>River Wall in Room 4</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baskervville&amp;family=Instrument+Sans:wght@400;500;600&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --plaster: #EEF1ED;
+      --ink: #142C3B;
+      --rule: #A5B5B2;
+      --pigment: #2A5362;
+      --shale: #8AABA9;
+      --wash: #D8E4DE;
+      --gutter: clamp(1.5rem, 6vw, 6rem);
+      --sans: "Instrument Sans", "Helvetica Neue", sans-serif;
+      --serif: "Baskervville", Georgia, serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--plaster);
+      color: var(--ink);
+      font: 1rem/1.5 var(--sans);
+    }
+
+    .gallery {
+      inline-size: min(76rem, calc(100% - var(--gutter) - var(--gutter)));
+      margin-inline: auto;
+      padding-block: clamp(1.75rem, 4.4vw, 4rem) clamp(2rem, 6vw, 5rem);
+    }
+
+    .room {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      margin: 0;
+      padding-block-end: 1rem;
+      border-block-end: 1px solid var(--rule);
+      font-weight: 600;
+    }
+
+    .room::before {
+      content: "";
+      inline-size: .25rem;
+      block-size: .85rem;
+      background: var(--pigment);
+    }
+
+    .gallery-layout {
+      display: grid;
+      grid-template-columns: minmax(0, .86fr) minmax(0, 1fr);
+      align-items: start;
+      gap: clamp(2rem, 6.4vw, 6rem);
+      margin-block-start: clamp(2rem, 4.1vw, 3.75rem);
+    }
+
+    .art-label {
+      padding-block-start: clamp(2.75rem, 8.7vw, 7.85rem);
+    }
+
+    h1 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(3.5rem, 7.4vw, 6.875rem);
+      font-weight: 400;
+      letter-spacing: -.052em;
+      line-height: 1;
+    }
+
+    .credit {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: .35rem 1rem;
+      margin: 1.125rem 0 0;
+      font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    .credit time {
+      padding-inline-start: 1rem;
+      border-inline-start: 1px solid var(--rule);
+      color: var(--pigment);
+      font-size: .9em;
+      font-weight: 400;
+      font-variant-numeric: lining-nums;
+    }
+
+    .material {
+      inline-size: min(100%, 16.5rem);
+      margin-block-start: clamp(1.75rem, 3vw, 2.5rem);
+    }
+
+    .material-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      inline-size: 100%;
+      min-block-size: 3.25rem;
+      padding: .75rem 1rem;
+      border: 1px solid var(--ink);
+      border-radius: 0;
+      background: var(--ink);
+      color: var(--plaster);
+      font: 600 1rem/1.35 var(--sans);
+      text-align: start;
+      cursor: pointer;
+    }
+
+    .material-toggle:focus-visible {
+      outline: 2px solid var(--pigment);
+      outline-offset: 4px;
+    }
+
+    .toggle-symbol {
+      position: relative;
+      flex: 0 0 1rem;
+      block-size: 1rem;
+    }
+
+    .toggle-symbol::before,
+    .toggle-symbol::after {
+      content: "";
+      position: absolute;
+      inset-block-start: 50%;
+      inset-inline-start: 50%;
+      inline-size: .8rem;
+      border-block-start: 1.5px solid currentColor;
+      transform: translate(-50%, -50%);
+    }
+
+    .toggle-symbol::after {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    .material-toggle[aria-expanded="true"] .toggle-symbol::after {
+      visibility: hidden;
+    }
+
+    .material-note {
+      margin: 0;
+      padding: .85rem 1rem .95rem;
+      border: 1px solid var(--rule);
+      border-block-start: 0;
+      background: var(--wash);
+    }
+
+    .pigment-study {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      aspect-ratio: 640 / 600;
+      background: var(--shale);
+    }
+
+    .pigment-study svg {
+      position: absolute;
+      inset: 0;
+      display: block;
+      inline-size: 100%;
+      block-size: 100%;
+    }
+
+    @media (hover: hover) {
+      .material-toggle:hover {
+        border-color: var(--pigment);
+        background: var(--pigment);
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .material-note:not([hidden]) {
+        animation: reveal-note 150ms ease-out;
+      }
+
+      @keyframes reveal-note {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+    }
+
+    @media (max-width: 47.5rem) {
+      .gallery-layout {
+        grid-template-columns: minmax(0, 1fr);
+        row-gap: 2.25rem;
+      }
+
+      .art-label {
+        padding-block-start: 0;
+      }
+
+      h1 {
+        font-size: clamp(3.1rem, 17.5vw, 5.25rem);
+      }
+
+      .pigment-study {
+        aspect-ratio: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="gallery">
+    <header>
+      <p class="room">Room 4</p>
+    </header>
+
+    <main class="gallery-layout">
+      <article class="art-label" aria-labelledby="art-title">
+        <h1 id="art-title">River Wall</h1>
+        <p class="credit">
+          <span>Maya Chen</span>
+          <time datetime="1972">1972</time>
+        </p>
+
+        <div class="material">
+          <button class="material-toggle" id="material-toggle" type="button"
+                  aria-expanded="false" aria-controls="material-note">
+            <span id="material-toggle-text">Show material note</span>
+            <span class="toggle-symbol" aria-hidden="true"></span>
+          </button>
+          <p class="material-note" id="material-note" hidden>Pigment on plaster.</p>
+        </div>
+      </article>
+
+      <div class="pigment-study" aria-hidden="true">
+        <svg viewBox="0 0 640 600" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <defs>
+            <linearGradient id="stone" x1="12%" y1="5%" x2="95%" y2="91%">
+              <stop offset="0" stop-color="var(--plaster)"/>
+              <stop offset=".62" stop-color="var(--wash)"/>
+              <stop offset="1" stop-color="var(--shale)"/>
+            </linearGradient>
+            <linearGradient id="shallows" x1="20%" y1="13%" x2="87%" y2="92%">
+              <stop offset="0" stop-color="var(--shale)"/>
+              <stop offset=".56" stop-color="var(--wash)"/>
+              <stop offset="1" stop-color="var(--shale)"/>
+            </linearGradient>
+            <linearGradient id="bank" x1="9%" y1="8%" x2="88%" y2="85%">
+              <stop offset="0" stop-color="var(--ink)"/>
+              <stop offset=".68" stop-color="var(--pigment)"/>
+              <stop offset="1" stop-color="var(--ink)"/>
+            </linearGradient>
+            <filter id="broken-edge" x="-12%" y="-12%" width="124%" height="124%"
+                    color-interpolation-filters="sRGB">
+              <feTurbulence type="fractalNoise" baseFrequency=".033 .052"
+                            numOctaves="3" seed="19" result="edge-noise"/>
+              <feDisplacementMap in="SourceGraphic" in2="edge-noise" scale="15"
+                                 xChannelSelector="R" yChannelSelector="G"/>
+            </filter>
+            <filter id="paper-grain" x="0" y="0" width="100%" height="100%"
+                    color-interpolation-filters="sRGB">
+              <feTurbulence type="fractalNoise" baseFrequency=".72"
+                            numOctaves="3" seed="8"/>
+              <feColorMatrix type="saturate" values="0"/>
+            </filter>
+          </defs>
+
+          <rect width="640" height="600" fill="url(#stone)"/>
+
+          <g filter="url(#broken-edge)">
+            <path fill="var(--shale)" opacity=".38"
+                  d="M 670 106 C 624 190 547 207 496 244
+                     C 443 283 461 318 507 359
+                     C 560 406 546 453 488 493
+                     C 437 529 414 575 437 630 H 670 Z"/>
+            <path fill="var(--pigment)" opacity=".13"
+                  d="M 670 344 C 633 372 606 414 614 452
+                     C 625 501 581 520 540 552
+                     C 504 579 506 607 514 630 H 670 Z"/>
+            <path fill="var(--plaster)" opacity=".87"
+                  d="M -30 -30 H 580 C 535 61 396 110 348 176
+                     C 310 230 346 265 405 304
+                     C 466 344 481 389 449 431
+                     C 412 478 324 492 288 537
+                     C 262 572 275 610 290 630 H -30 Z"/>
+            <path fill="url(#shallows)"
+                  d="M -30 -30 H 527 C 485 57 367 101 322 157
+                     C 277 213 310 250 366 289
+                     C 421 326 438 361 420 402
+                     C 396 454 300 480 260 529
+                     C 234 564 240 604 253 630 H -30 Z"/>
+            <path fill="var(--pigment)" opacity=".64"
+                  d="M -30 -30 H 492 C 449 44 340 91 296 148
+                     C 253 203 274 240 327 279
+                     C 388 323 414 358 390 403
+                     C 363 453 275 475 234 523
+                     C 208 556 218 600 232 630 H -30 Z"/>
+            <path fill="url(#bank)"
+                  d="M -30 -30 H 466 C 432 42 320 83 277 140
+                     C 234 195 255 234 310 273
+                     C 374 318 401 350 375 395
+                     C 346 446 259 466 217 515
+                     C 190 547 195 595 209 630 H -30 Z"/>
+            <path fill="var(--ink)" opacity=".39"
+                  d="M -30 -30 H 365 C 344 36 220 82 171 143
+                     C 123 203 152 260 230 310
+                     C 292 350 314 379 279 421
+                     C 243 463 155 484 119 538
+                     C 95 575 102 606 116 630 H -30 Z"/>
+            <path fill="var(--shale)" opacity=".16"
+                  d="M -30 112 C 39 132 107 101 159 80
+                     C 225 53 283 24 303 -30 H -30 Z"/>
+          </g>
+
+          <g fill="none" stroke="var(--wash)" stroke-linecap="round">
+            <path opacity=".57" stroke-width="1.4"
+                  d="M 488 -12 C 450 49 344 93 301 147
+                     C 256 204 281 242 336 282
+                     C 390 322 418 358 394 403
+                     C 367 455 280 473 239 521
+                     C 215 550 220 578 227 608"/>
+            <path opacity=".38" stroke-width=".95"
+                  d="M 412 -9 C 369 42 275 78 234 126
+                     C 193 173 191 216 224 255
+                     C 246 281 280 298 306 321
+                     M 323 340 C 354 373 342 400 308 429
+                     C 271 460 211 477 174 514
+                     C 149 540 146 563 153 589"/>
+            <path opacity=".32" stroke-width=".8"
+                  d="M 384 -8 C 349 40 254 74 211 121
+                     C 168 168 164 210 192 245
+                     C 213 272 251 292 277 310
+                     M 305 342 C 334 371 322 394 290 421
+                     C 253 453 194 467 156 506
+                     C 130 532 128 556 133 577"/>
+            <path opacity=".28" stroke-width=".8"
+                  d="M 344 -8 C 298 45 215 75 174 120
+                     C 139 158 131 191 145 224
+                     M 264 354 C 288 383 273 403 247 421
+                     C 209 448 153 468 123 500"/>
+            <path opacity=".46" stroke-width="1"
+                  d="M 274 89 C 248 106 227 126 212 149
+                     M 241 269 C 260 285 281 295 306 315
+                     M 336 422 C 315 442 282 455 253 472
+                     M 194 519 C 182 536 178 551 181 566"/>
+          </g>
+
+          <g fill="none" stroke="var(--pigment)" stroke-linecap="round">
+            <path opacity=".25" stroke-width="1.05"
+                  d="M 553 -9 C 506 67 391 106 346 161
+                     C 307 208 329 247 374 281
+                     M 402 301 C 449 337 464 369 443 411
+                     C 416 466 327 483 287 529
+                     C 264 555 266 581 273 608"/>
+            <path opacity=".27" stroke-width=".9"
+                  d="M 652 148 C 620 206 547 223 508 252
+                     C 473 278 478 312 516 347
+                     C 565 392 560 432 520 470
+                     M 489 496 C 451 527 433 556 442 590"/>
+            <path opacity=".18" stroke-width=".85"
+                  d="M 652 181 C 619 229 558 240 525 267
+                     C 496 291 507 317 541 352
+                     C 588 401 575 441 545 475
+                     M 514 503 C 478 532 468 559 471 580"/>
+          </g>
+
+          <rect width="640" height="600" filter="url(#paper-grain)"
+                opacity=".55" style="mix-blend-mode: soft-light"/>
+        </svg>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const toggle = document.getElementById("material-toggle");
+    const toggleText = document.getElementById("material-toggle-text");
+    const note = document.getElementById("material-note");
+
+    toggle.addEventListener("click", () => {
+      const willOpen = note.hidden;
+      note.hidden = !willOpen;
+      toggle.setAttribute("aria-expanded", String(willOpen));
+      toggleText.textContent = willOpen ? "Hide material note" : "Show material note";
+    });
+  </script>
+</body>
+</html>
