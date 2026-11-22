@@ -1,0 +1,418 @@
+{
+  "calibration": {
+    "coherence": 7,
+    "originality": 4,
+    "craft": 6.5,
+    "usability": 6
+  },
+  "screens": {
+    "A-1440": {
+      "coherence": 8.5,
+      "originality": 6.5,
+      "craft": 8.5,
+      "usability": 9,
+      "primary_action": {
+        "input": "Tab three times to Choose Team, Enter, then Tab twice to Continue and press Enter.",
+        "expected": "Verify Team’s terms before continuing and receive confirmation of the selection.",
+        "observed": "Focus moved to the Review Team heading. The dialog showed $28 per month, 40 hours of transcription and Shared vocabulary above Continue. Activating Continue focused the Team selected heading and added Selected to the Team column. See A-1440-after.png."
+      },
+      "edge_observation": "Done returned visible focus to Choose Team. I then opened Studio and activated Back to plans. Focus returned to Choose Studio, and Team retained its Selected label.",
+      "fact_check": "Solo showed $12 per month and 10 hours. Team showed $28 per month, 40 hours and Shared vocabulary. Studio showed $60, 120 hours and Approvals. Studio’s billing interval was unspecified.",
+      "strength": "The serif headline draws the eye first. A fine waveform leading into a transcript illustration gives the open space on its right a purpose. Pale dividers keep the comparison calm, and the bold 10, 40 and 120 hours share one baseline. See A-1440-before.png.",
+      "weakness": "The three oversized plan names command more attention than the allowances. Without the illustration, the equal columns and three matching Choose buttons could belong to a standard pricing template.",
+      "repair": "Give the aligned hour values more prominence and reduce the plan-name size. Preserve the common baseline for all three buttons.",
+      "arm": "plain",
+      "html_sha256": "17d84adb2316b77958511c47c96972a4f51ea436467748a717bffc884e064bcf",
+      "weighted": 8.0,
+      "before": {
+        "sha256": "448eea2c1fc7b67f1156dc6cbfad16e4910ac4b534ab333c6ad6ce7f549ea45d",
+        "file": "A-1440-before.png",
+        "tool_call_id": "item_3"
+      },
+      "after": {
+        "sha256": "ab4ad79d4968bf8472a3cada2b7dae4ee67376b214ccebbb0dffed5e8d471271",
+        "file": "A-1440-after.png",
+        "tool_call_id": "item_12"
+      },
+      "layout_width": 1425,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ]
+    },
+    "A-390": {
+      "coherence": 8,
+      "originality": 6.5,
+      "craft": 8,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab through the choices to Studio, Shift+Tab to Choose Team, then Enter. Tab twice to Continue and press Enter.",
+        "expected": "Read the Team terms and complete the choice by keyboard at phone width.",
+        "observed": "The focused Review Team heading, monthly price, hours, feature and both actions fit together in the dialog. Continue moved focus to Team selected and repeated the terms. See A-390-after.png."
+      },
+      "edge_observation": "Done returned focus to Choose Team, with a visible ring and a separate Selected label. I opened Solo and pressed Escape. Focus returned to Choose Solo, and Team stayed selected.",
+      "fact_check": "The stacked choices showed Solo at $12 per month with 10 hours, Team at $28 per month with 40 hours and Shared vocabulary, and Studio at $60 with 120 hours and Approvals. Studio’s billing interval was unspecified.",
+      "strength": "Each bold allowance starts at the same left inset below its price. The fine rules and open spacing make the stack easy to read. Solo’s full entry and Team’s price, hours and feature are visible in the opening capture. See A-390-before.png.",
+      "weakness": "The header, introduction and illustration occupy roughly the first 370 pixels. Team’s button and Studio fall below the opening viewport. Once the waveform scrolls away, the repeated name, price and button dominate the design.",
+      "repair": "Shorten the introduction’s vertical spacing and bring each allowance closer to its price, preserving the shared left edge.",
+      "arm": "plain",
+      "html_sha256": "17d84adb2316b77958511c47c96972a4f51ea436467748a717bffc884e064bcf",
+      "weighted": 7.65,
+      "before": {
+        "sha256": "97c910eedffde14738ea3ddab9b21376e71381fa4f06124d2afc95e1e34cc07a",
+        "file": "A-390-before.png",
+        "tool_call_id": "item_21"
+      },
+      "after": {
+        "sha256": "153377bf0b48806f496ec2ec552a69f2de3ffe5ee6c57caa8705ece1e2f81364",
+        "file": "A-390-after.png",
+        "tool_call_id": "item_33"
+      },
+      "layout_width": 375,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Escape"
+        }
+      ]
+    },
+    "B-1440": {
+      "coherence": 9,
+      "originality": 8.5,
+      "craft": 8.5,
+      "usability": 9,
+      "primary_action": {
+        "input": "Tab twice to the prechecked Team radio. Press Left to select Solo, Right to reselect Team, then Tab and Enter on Continue with Team.",
+        "expected": "See the active plan and price update before opening a review of Team’s terms.",
+        "observed": "The checked radio, tinted column, waveform marker and Continue button changed with the selection. On Team, the marker showed 40 and the button named Team and $28 / month. Enter opened the Team plan dialog with all three terms and focus on Back to plans. See B-1440-after.png."
+      },
+      "edge_observation": "Back to plans returned focus to Continue with Team. On reopening, Confirm choice returned focus there and produced the status “Team plan choice confirmed.” Shift+Tab and Right then selected Studio, moved the marker to 120 and cleared the confirmation. I restored and confirmed Team.",
+      "fact_check": "Solo showed $12 / month and 10 hours. Team showed $28 / month, 40 hours and Shared vocabulary. Studio showed $60, 120 hours and Approvals. Its button also showed $60 without a billing interval.",
+      "strength": "The bold headline anchors the left, and the hour scale on the right explains what the plans vary by. The allowances align beneath matching rules. One tinted column and one green Continue button make the current choice easy to find across a quiet comparison grid. See B-1440-before.png.",
+      "weakness": "The headline letters are tightly packed, and the three heavy plan names compete with the smaller allowances. The selection-linked waveform carries most of the grid’s distinctive character.",
+      "repair": "Loosen the headline spacing and reduce the plan names by one weight so the aligned allowances are easier to pick out.",
+      "arm": "design-mcp",
+      "html_sha256": "17d5c78a476cb69750e08b8a21156ac34b3d157320417fb50ff15054cfac8471",
+      "weighted": 8.75,
+      "before": {
+        "sha256": "9f2274aa25131f87dd9810f98b3353996e3ed15e0f7127239c694b724ae56430",
+        "file": "B-1440-before.png",
+        "tool_call_id": "item_42"
+      },
+      "after": {
+        "sha256": "9d2ba7cdc2b4c326e1d2b429c78712b43c38481dffa0edc259f1644286e0ccbb",
+        "file": "B-1440-after.png",
+        "tool_call_id": "item_51"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ]
+    },
+    "B-390": {
+      "coherence": 8.5,
+      "originality": 9,
+      "craft": 8,
+      "usability": 9,
+      "primary_action": {
+        "input": "Tab twice to Team, press Down to select Studio and Up to reselect Team, then Tab and Enter on Continue with Team.",
+        "expected": "Identify Team and verify its price, hours and feature before continuing.",
+        "observed": "Team regained the checked radio, tinted row and 40-hour marker. The button read Continue with Team and $28 / month. Enter opened a Team plan dialog with separate price, transcription and feature rows. Back to plans received visible focus. See B-390-after.png."
+      },
+      "edge_observation": "Escape closed the review and returned focus to Continue with Team. Shift+Tab and Up selected Solo and moved the marker to 10. I reselected Team and confirmed it. The confirmation appeared above Continue, which regained focus.",
+      "fact_check": "All three choices were visible together. Solo showed $12 / month and 10 hours. Team showed $28 / month, 40 hours and Shared vocabulary. Studio showed $60, 120 hours and Approvals, with its billing interval unspecified.",
+      "strength": "The vertical waveform gives the three compact rows a shared hour scale. Thin rules separate the rows, and a filled radio identifies Team alongside the pale tint. All three plans and the named Continue button fit in the opening 390 × 844 view. See B-390-before.png.",
+      "weakness": "The bold hour values are legible, but their left edges drift right from Solo to Studio. The 120-hour value begins about 20 pixels farther right than the 10-hour value, interrupting a vertical scan.",
+      "repair": "Use a shared column start for the allowance and feature text across all three rows. Keep the waveform ticks on their proportional scale.",
+      "arm": "design-mcp",
+      "html_sha256": "17d5c78a476cb69750e08b8a21156ac34b3d157320417fb50ff15054cfac8471",
+      "weighted": 8.65,
+      "before": {
+        "sha256": "984e3a7f73065065ad4fe3a9549bc9fbb1b7310ca8fb3375bb73696457301076",
+        "file": "B-390-before.png",
+        "tool_call_id": "item_68"
+      },
+      "after": {
+        "sha256": "2d6923a27f22f91d173da174e454571de446eed7390c74e28fa50c91768ba02e",
+        "file": "B-390-after.png",
+        "tool_call_id": "item_77"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowDown"
+        },
+        {
+          "action": "key",
+          "value": "ArrowUp"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Escape"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowUp"
+        },
+        {
+          "action": "key",
+          "value": "ArrowDown"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        }
+      ]
+    }
+  },
+  "preference": {
+    "winner": "B",
+    "reason": "With the requested weights, B leads 8.75 to 8.00 at 1440 and 8.65 to 7.65 at 390. Its waveform shows the consequence of changing plans, and its Continue button names the active plan and price before review. A aligns the phone allowances more precisely and returns focus directly to the plan button. B makes the whole phone comparison possible in one viewport."
+  },
+  "case": "pricing-misleading",
+  "verified_screens": 4,
+  "required_screens": 4,
+  "browser": "Chrome/157.0.8103.79",
+  "evaluator_thread": "01a20302-7337-79f3-8647-afc6e2475ab1",
+  "usage": {
+    "input_tokens": 2401442,
+    "cached_input_tokens": 2331008,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 10495,
+    "reasoning_output_tokens": 6784
+  },
+  "trace_sha256": "4b645d50388a1eedeff0d6bb493d0a31246a82be11e00af63002b44982587dca",
+  "browser_audit_sha256": "dcfa2df934fa8689c68399f7258ede9a0c908b9a62cc4a6e14216a6518cffe77",
+  "model": "gpt-6.2-astra",
+  "effort": "max",
+  "playwriter": "0.12.0",
+  "reaction_number": 1,
+  "source_commit": "2fcd31221671590152401d958b904141e438e453",
+  "renderer_release": {
+    "pid": 16114,
+    "at_utc": "2026-11-22T11:32:29.485299+00:00",
+    "reason": "Shared Data volume fell below 20 GiB after all four before/after views were captured.",
+    "completed_primary_captures": 8,
+    "evaluator_process_preserved": true
+  },
+  "uncached_input_tokens": 70434,
+  "critic_prompt_sha256": "2120625eb992a8677f60d4bc463432d96f123fb4d14fb474d773efa461869e70"
+}
