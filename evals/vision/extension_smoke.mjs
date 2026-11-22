@@ -196,8 +196,40 @@ try {
     proof.nativeHostLauncher = manifest.path;
     assert.deepEqual(manifest.allowed_origins, [`chrome-extension://${extensionId}/`]);
     assert.equal(manifest.path, join(dirname(proof.nativeHostManifest), "design-mcp-review-host"));
+    await inspect(popup, `(() => {
+      const events = [];
+      window.__reviewSmokeInput = events;
+      for (const type of ['keydown', 'click']) {
+        document.addEventListener(type, event => {
+          if (events.length < 12) {
+            events.push({type, key:event.key, target:event.target.id, trusted:event.isTrusted});
+          }
+        }, {capture:true});
+      }
+      return true;
+    })()`);
   }
   key("Return");
+  if (mac) {
+    const events = () => inspect(popup, "window.__reviewSmokeInput");
+    const clicked = entries => entries.some(event => event.type === "click" && event.target === "scan" && event.trusted);
+    const deadline = Date.now() + 900;
+    do {
+      proof.hostRetryInput = await events();
+      if (clicked(proof.hostRetryInput)) break;
+      await delay(50);
+    } while (Date.now() < deadline);
+    proof.hostRetryDriver = "process-key";
+    if (!clicked(proof.hostRetryInput)) {
+      assert.equal((await observePopup()).focus, "scan");
+      proof.hostRetryDriver = "cdp-key";
+      const enter = {key: "Enter", code: "Enter", windowsVirtualKeyCode: 13, nativeVirtualKeyCode: 36};
+      await send("Input.dispatchKeyEvent", {type: "keyDown", text: "\r", ...enter}, popup);
+      await send("Input.dispatchKeyEvent", {type: "keyUp", ...enter}, popup);
+      proof.hostRetryInput = await events();
+      assert(clicked(proof.hostRetryInput), "Neither driver delivered a trusted click to the focused Scan control");
+    }
+  }
   let retryStarted = false;
   proof.result = await until("installed native review result", async () => {
     const result = await observePopup();
