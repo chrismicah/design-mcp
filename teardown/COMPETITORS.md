@@ -88,6 +88,8 @@ For the frozen maintenance form, shadcn's full-brief query returned zero items. 
 
 The maintenance comparator now requires a successful response containing a preregistered item or example before rendering. The replay accepted an official Field result and stopped on an empty response that echoed the same query. The live generation and visual score remain open. [Preregistered configuration](../evals/v1/shadcn-maintenance.json) · [Replay receipt](../evidence/benchmark-v1/shadcn-retrieval-gate.json)
 
+A clean macOS 15 arm64 job installed the pinned npm package and checked the relevance gate against real stdio replies. The unchanged maintenance brief again returned zero items. A targeted search returned Field in 63 ms. The details tool returned all four named components in 132 ms, and the examples tool returned `field-demo` with code in 153 ms. The nonsense control returned zero. The three targeted timings are single observations. [Installed stdio receipt](../evidence/benchmark-v1/shadcn-maintenance-installed.json)
+
 ## Visual scoreboard
 
 | Configuration | Matched briefs judged | Score / 100 |
