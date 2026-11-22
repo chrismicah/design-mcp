@@ -1,6 +1,6 @@
 {
   "scope": "Binary-only dependency resolution and an independent check of advertised PyPI wheel tags. The managed interpreter URLs come from uv's catalog. There is no guest OS or installation in this check.",
-  "source_commit": "0.13.9",
+  "source_commit": "e1cd4eb82bc60269ce42223523f73a862c0086a5",
   "uv": "uv 0.13.9 (6b2d39dcc 2026-11-17 aarch64-apple-darwin)",
   "macos_target": "13.0",
   "pyproject_sha256": "ae2efd75b11abbef9b15ab67196f84bbd4a638642a7b515a1f6656dbcdbba4f3",
@@ -3225,89 +3225,96 @@
     }
   ],
   "missing_wheels": [],
+  "observed_utc": "2026-11-22T14:37:28.897743+00:00",
+  "wheel_file_selections": 604,
   "managed_interpreter_head_checks": [
     {
       "architecture": "arm64",
       "python": "3.10.22",
-      "http_status": "200",
-      "exit_code": 0
+      "status": 200
     },
     {
       "architecture": "x86_64",
       "python": "3.10.22",
-      "http_status": "200",
-      "exit_code": 0
+      "status": 200
     },
     {
       "architecture": "arm64",
       "python": "3.11.18",
-      "http_status": "200",
-      "exit_code": 0
+      "status": 200
     },
     {
       "architecture": "x86_64",
       "python": "3.11.18",
-      "http_status": "200",
-      "exit_code": 0
+      "status": 200
     },
     {
       "architecture": "arm64",
       "python": "3.12.16",
-      "http_status": "200",
-      "exit_code": 0
+      "status": 200
     },
     {
       "architecture": "x86_64",
       "python": "3.12.16",
-      "http_status": "200",
-      "exit_code": 0
+      "status": 200
     },
     {
       "architecture": "arm64",
       "python": "3.13.18",
-      "http_status": "200",
-      "exit_code": 0
+      "status": 200
     },
     {
       "architecture": "x86_64",
       "python": "3.13.18",
-      "http_status": "200",
-      "exit_code": 0
+      "status": 200
     }
   ],
-  "resolver_target_controls": [
-    {
-      "architecture": "arm64",
-      "macos_target": "13.0",
-      "exit_code": 1,
-      "observed": "rejected platform tag"
-    },
-    {
-      "architecture": "arm64",
-      "macos_target": "14.0",
-      "exit_code": 0,
-      "observed": "resolved"
-    },
-    {
-      "architecture": "x86_64",
-      "macos_target": "13.0",
-      "exit_code": 1,
-      "observed": "rejected platform tag"
-    },
-    {
-      "architecture": "x86_64",
-      "macos_target": "14.0",
-      "exit_code": 0,
-      "observed": "resolved"
-    }
-  ],
-  "proof_inputs_stable_across_replays": true,
-  "raw_probe_sha256": "88c93feede5bfc1e32129a18d937d825f06a441d1db945c581fb43e361d84178",
-  "wheel_file_selections": 604,
-  "observed_uv_bootstrap_macho": {
-    "architecture": "arm64",
-    "minimum_macos": "11.0"
+  "raw_probe_sha256": "4511a2fd5865543e9eef0df8879ed1d3a0debfcbbfe008d8911140f4ef73d903",
+  "probe_source_sha256": "ba0bcc6d26ef71a1354ad4c61da26d629eba1124c172979b945e91e006efab5a",
+  "resolver_log_sha256": "6f0eb5b275679d3b8c2991257ac957f8e5493b56bd862e9a9660545d84440a63",
+  "previous_receipt": {
+    "source_commit_field": "0.13.9",
+    "pyproject_matches_current_receipt": true,
+    "matrix_and_wheels_match_current_receipt": true,
+    "scope": "The historical probe overwrote its source commit with a dependency version. The recorded pyproject digest matches the verified revision.",
+    "archive_sha256": "6d6e18c2a1c8f7d0aa5ca1ea3043df9a18fb084b7817d0173914a543f11d41c5",
+    "archive_commit": "7e15ea943e5163ca9effeb501db976a6bdde7885",
+    "archive_path": "evidence/benchmark-v1/ventura-wheel-preflight.json",
+    "resolver_target_controls": [
+      {
+        "architecture": "arm64",
+        "macos_target": "13.0",
+        "exit_code": 1,
+        "observed": "rejected platform tag"
+      },
+      {
+        "architecture": "arm64",
+        "macos_target": "14.0",
+        "exit_code": 0,
+        "observed": "resolved"
+      },
+      {
+        "architecture": "x86_64",
+        "macos_target": "13.0",
+        "exit_code": 1,
+        "observed": "rejected platform tag"
+      },
+      {
+        "architecture": "x86_64",
+        "macos_target": "14.0",
+        "exit_code": 0,
+        "observed": "resolved"
+      }
+    ]
   },
-  "observed_utc": "2026-11-22T13:07:20.839058+00:00",
-  "probe_source_sha256": "bc6d252999757125a2e3ed8b7752fa7b6cfac267e930c608a417d3e8fda0887c"
+  "verified_tart_input": {
+    "archive_commit": "e1cd4eb82bc60269ce42223523f73a862c0086a5",
+    "hashes": {
+      "candidate.tar": "ade74d7f75b68d044e77e81a1f0f158be7da5883f0d928983c43a57a5f738e00",
+      "uv": "0e17c316d23b33b4e840669f516f5cb7f5c1faa816ebd3824052ab50082ecefb",
+      "inside_guest.sh": "de12b1e6b4e92514f164857a2291cb1ffdab71a02870ab7e26b74b2e2a4b1ffd",
+      "input-check.log": "6ca64490fc9dcd98ffd86844084bb6f7f1f63af23048ee72864e378fc5e227c4"
+    },
+    "guest_booted": false
+  }
 }

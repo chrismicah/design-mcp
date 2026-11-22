@@ -94,8 +94,8 @@ def wheel_for(pair, metadata, version, ranks):
 
 
 def audit(uv, reference, out):
-    pin = run(["git", "rev-parse", "--verify", reference + "^{commit}"]).strip()
-    raw = run(["git", "show", pin + ":pyproject.toml"])
+    source_commit = run(["git", "rev-parse", "--verify", reference + "^{commit}"]).strip()
+    raw = run(["git", "show", source_commit + ":pyproject.toml"])
     project = tomllib.loads(raw)
     groups = {"runtime": project["project"]["dependencies"], "build_backend": project["build-system"]["requires"],
               "installers": ["pipx", "uv"]}
@@ -137,7 +137,7 @@ def audit(uv, reference, out):
     return {
         "scope": "Binary-only dependency resolution and an independent check of advertised PyPI wheel tags. "
                  "The managed interpreter URLs come from uv's catalog. There is no guest OS or installation in this check.",
-        "source_commit": pin, "uv": run([uv, "--version"]).strip(), "macos_target": "13.0",
+        "source_commit": source_commit, "uv": run([uv, "--version"]).strip(), "macos_target": "13.0",
         "pyproject_sha256": sha256(raw.encode()).hexdigest(), "input_requirements": groups,
         "unique_release_metadata_reads": len(metadata), "wheels": wheels, "matrix": matrix, "missing_wheels": missed,
     }
