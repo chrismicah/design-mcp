@@ -6,12 +6,14 @@ The baseline pins Design MCP at `fd6035d8732d177b811f81a0f5863e99134a85ca`. The 
 
 | Configuration | Judged pairs | Score / 100 |
 | --- | ---: | ---: |
-| Same generator without MCP | 0 / 36 | Pending |
-| Same generator with Design MCP v2 | 0 / 36 | Pending |
+| Same generator without MCP | 2 / 36 | 91.7 |
+| Same generator with Design MCP v2 | 2 / 36 | 95.8 |
+
+The first two pairs yielded a **+4.2-point** average difference, with one win and one tie. Rehearsal rooms scored 91.7 → 100.0. Ceramics scored 91.7 → 91.7. This is an early baseline for the existing revision. [Paired ballots and captures](evidence/benchmark-v1/first-pairs.json)
 
 The first dashboard attempt called `direct` successfully and reached the client’s 240-second timeout before returning HTML. There was no completed-turn token receipt. The paired run uses a 900-second allowance for both arms and retains the first attempt separately. Playwriter MCP `0.12.0` rendered the isolated Chrome 157 control at both widths. The injected failure control detected narrow viewport overflow and the expected JavaScript error. [Tracked receipts](evidence/benchmark-v1/preflight.json)
 
-The rehearsal-room and ceramics pairs returned HTML and token usage. The shared Mac’s memory-pressure gate held the next render. Generation continues on the existing subscription, and the scoring queue rechecks the gate.
+The shared Mac’s memory-pressure gate held subsequent local rendering. GitHub’s standard macOS runner captured both initial pairs with Playwriter 0.12.0 and Chrome for Testing 158.0.8127.36 at the two preset widths. Each capture had no horizontal overflow or page errors. The next pairs will use the same pinned hosted renderer. [Capture run](https://github.com/chrismicah/design-mcp/actions/runs/44984687051)
 
 | Brief | Configuration | Input tokens | Cached input | Output tokens | Seconds |
 | --- | --- | ---: | ---: | ---: | ---: |
@@ -35,7 +37,7 @@ Clean detached checkout on macOS 26.5.2, Apple Silicon. The smoke tests send rea
 | pipx with explicit Python 3.10.20 | 3.10.20 | Package metadata rejected it with `>=3.12` |
 | uv with `--python 3.10` | 3.12.13 | Installer selected a compatible interpreter |
 
-Intel, macOS 13, and fresh Tart VM coverage remain open. [Tracked preflight receipt](evidence/benchmark-v1/preflight.json) · [pipx smoke](.context/factory/benchmark-v1/install/stdio-both.json) · [uv smoke](.context/factory/benchmark-v1/install/stdio-uv-3.13-both.json) · [3.10 install log](.context/factory/benchmark-v1/install/pipx-exact-3.10.log)
+The hosted macOS 15 install matrix passed all four jobs. Both installers served 17/17 tools in each arm64 and Intel job on Python 3.12 and 3.13. macOS 13, Python 3.10–3.11, and a fresh Tart VM remain open. [Hosted jobs](https://github.com/chrismicah/design-mcp/actions/runs/44984617955) · [Tracked local preflight](evidence/benchmark-v1/preflight.json)
 
 ## How the score is calculated
 

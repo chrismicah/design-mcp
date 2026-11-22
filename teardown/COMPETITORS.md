@@ -51,8 +51,8 @@ Discovery covered GitHub, the official MCP Registry, Smithery, Glama, and publis
 
 | Configuration | Matched briefs judged | Score / 100 |
 | --- | ---: | ---: |
-| Plain generator | 0 / 36 | Pending |
-| Design MCP v2 | 0 / 36 | Pending |
+| Plain generator | 2 / 36 | 91.7 |
+| Design MCP v2 | 2 / 36 | 95.8 |
 | Credential-free competitor configurations above | 0 / 36 each | Pending |
 | Credentialed and hosted configurations above | 0 / 36 each | Access or isolated fixture required |
 

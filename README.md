@@ -67,7 +67,7 @@ The new direction library and the historical pattern data have separate roles. H
 
 ## Verified results
 
-The pinned baseline passed 308 tests. Fresh pipx on Python 3.12.13 and uv on Python 3.13.3 each served 17/17 tools on Apple Silicon. Python 3.10 and 3.11 are excluded by the current package metadata. The 36-brief visual comparison and Intel coverage are in progress. [Benchmark and install receipts](EVALS.md)
+The pinned baseline passed 308 tests. Fresh pipx and uv installs each served 17/17 tools on both Intel and Apple Silicon macOS 15 with Python 3.12 and 3.13. Python 3.10 and 3.11 are excluded by the current package metadata. The first two of 36 matched briefs averaged 91.7 without the MCP and 95.8 with it, with one win and one tie. [Benchmark and install receipts](EVALS.md)
 
 ## Verify locally
 
