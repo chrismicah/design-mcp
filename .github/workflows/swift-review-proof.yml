@@ -1,0 +1,53 @@
+name: Native Swift review proof
+
+on:
+  push:
+    branches: [design-mcp/swift-review-proof, design-mcp/review-integration]
+
+permissions:
+  contents: read
+
+jobs:
+  native:
+    runs-on: macos-15
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Install Design MCP and generate the fixture project
+        shell: bash
+        run: |
+          python -m venv "$RUNNER_TEMP/design-review"
+          "$RUNNER_TEMP/design-review/bin/python" -m pip install .
+          curl -fsSL https://github.com/yonaskolb/XcodeGen/releases/download/2.48.0/xcodegen.zip -o "$RUNNER_TEMP/xcodegen.zip"
+          printf '620c9f0dc10849f94728ab5df52d225ebab8187439dd6fee1925e59e80dff892  %s\n' "$RUNNER_TEMP/xcodegen.zip" | shasum -a 256 -c -
+          unzip -q "$RUNNER_TEMP/xcodegen.zip" -d "$RUNNER_TEMP/xcodegen"
+          generator=$(find "$RUNNER_TEMP/xcodegen" -type f -path '*/bin/xcodegen')
+          "$generator" generate --spec evals/vision/fixtures/swift/project.yml
+      - name: Open the Swift app, exercise the native control, and review captured geometry
+        shell: bash
+        run: |
+          sw_vers
+          uname -m
+          xcodebuild -version
+          xcodebuild test -project evals/vision/fixtures/swift/ReviewFixture.xcodeproj \
+            -scheme ReviewFixture -destination 'platform=macOS,arch=arm64' -parallel-testing-enabled NO \
+            -derivedDataPath "$RUNNER_TEMP/derived" -resultBundlePath "$RUNNER_TEMP/native-review.xcresult" \
+            2>&1 | tee "$RUNNER_TEMP/xcode.log"
+          xcrun xcresulttool export attachments --path "$RUNNER_TEMP/native-review.xcresult" --output-path "$RUNNER_TEMP/attachments"
+          "$RUNNER_TEMP/design-review/bin/python" evals/vision/verify_swift_capture.py \
+            "$RUNNER_TEMP/attachments" "$RUNNER_TEMP/design-review/bin/design-mcp" "$RUNNER_TEMP/swift-proof"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: swift-review-receipt
+          path: |
+            ${{ runner.temp }}/swift-proof/
+            ${{ runner.temp }}/attachments/manifest.json
+            ${{ runner.temp }}/xcode.log
+          if-no-files-found: warn
+          retention-days: 7
