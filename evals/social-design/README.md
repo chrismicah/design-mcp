@@ -56,3 +56,7 @@ python3 evals/reactions/audit_review.py --run "$ROUND" --cells "$CELLS" \
 Use the [Playwriter render and live browser setup](../v1/README.md) for additional responsive and reduced-motion checks. Use the same prompt permissions for both arms. To audit the recorded retrieval without generating a page, run `python3 evals/social-design/preflight.py`.
 
 [Source observations and access routes](../../research/SOCIAL-DESIGN.md)
+
+### Lighting, round 2
+
+The first blind critic found the existing catalog's human-scale scene easier to read. The revised portfolio should make a producer feel like they are watching a cue called from the wings. Use one proscenium view with a performer and shadow at the same scale in every cue. In the wings, a visible lighting source shows which direction the light comes from. Keep the cue controls and the current technique on the same rail. Remove the abstract sphere, plinth and detached status panel. Warm-black `#211C23` frames the stage, lilac-gray `#E7DDE9` supports the reading surface, and plum `#703E62` selects the cue. Amber `#E8AD54` and ice blue `#91C2E8` belong to the supplied stage states. Bricolage Grotesque names the show and cues. IBM Plex Sans sets the technique notes. Let the shape of the performer's shadow tell the story before the notes do.

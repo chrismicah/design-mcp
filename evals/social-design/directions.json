@@ -4,27 +4,59 @@
     "surface": "portfolio",
     "title": "The cue changes the stage",
     "summary": "Let the producer operate the lighting designer's portfolio through the selected cue. The stage itself is the work sample.",
-    "tags": ["lighting cues", "lighting designer", "theatre lighting", "stage lighting"],
-    "type": {"display": "Bricolage Grotesque", "body": "IBM Plex Sans", "ratio": 3.3, "tracking": -0.025, "weight": 800, "license": "OFL-1.1"},
-    "palette": {"ink": "#241826", "paper": "#F1E6F0", "accent": "#69385C"},
+    "tags": [
+      "lighting cues",
+      "lighting designer",
+      "theatre lighting",
+      "stage lighting"
+    ],
+    "type": {
+      "display": "Bricolage Grotesque",
+      "body": "IBM Plex Sans",
+      "ratio": 3.3,
+      "tracking": -0.025,
+      "weight": 800,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#211C23",
+      "paper": "#E7DDE9",
+      "accent": "#703E62"
+    },
     "layout": {
-      "skeleton": "Place the identity above a single wide illustrated stage, followed by a horizontal cue list and the selected technique. Keep the controls adjacent to the stage.",
-      "focus": "The physical boundary of a wash, side light or backlight cuts across one original stage set, changing the shape of the scene with each selection.",
-      "desktop": "Give the illustration most of the canvas. Align cue names and technique notes below it with the lit set edge.",
-      "mobile": "Put the title, stage, three visible named cue buttons and selected technique in reading order. Keep the stage compact and keep the buttons beside the result.",
-      "rhythm": "Use the width of the stage and generous side margins to set the scale. Let cue names and the technique carry the rest."
+      "skeleton": "Put a compact title above one wide proscenium view. Keep the three named controls and the current technique together on the same cue rail under the stage.",
+      "focus": "Show a performer at the same scale and position across three cues. Use light from the wings, the lit surfaces, and the shadow to make each direction unmistakable.",
+      "desktop": "Let the stage occupy the main width. Keep the technical words and cue buttons within the same visual field as the shadow.",
+      "mobile": "Crop the wings before cropping the performer or shadow. Keep the cue rail and its text within reach directly beneath the stage.",
+      "rhythm": "Use the dark proscenium and lit floor for contrast. Use a short stacked title and leave one clear margin around the stage."
     },
     "imagery": {
-      "subject": "One original stage silhouette reacts to the supplied amber, white and blue light cues. Use amber #E8AD54 and ice blue #91C2E8 for the corresponding light.",
-      "crop": "Keep the stage, beam boundary and one reference object visible at both widths.",
-      "fallback": "Use a static stage drawing with a different beam shape for each cue. Always show the selected technique in text."
+      "subject": "Draw a human-scale performer standing on a visible stage floor. Amber wash illuminates broadly, white side light produces a lateral shadow, and blue backlight contours the figure and throws the shadow toward the viewer.",
+      "crop": "Keep the performer large enough to see what changes. Show the beam direction and shadow at both widths.",
+      "fallback": "Show three distinct stage stills in the same frame. Expose a concise text description of each light effect next to the selected cue."
     },
-    "motion": {"trigger": "Selecting a named cue", "effect": "Crossfade the two illumination states while the set and controls stay fixed.", "duration_ms": 220, "reduced": "Replace the state immediately and keep focus on the cue."},
-    "action": {"instruction": "Use named native buttons with a visible selected state, update the stage and announce the current technique.", "label": "Use the actual cue name"},
+    "motion": {
+      "trigger": "Selecting a named cue",
+      "effect": "Switch the lighting and technique text together immediately. Animate only the underline of the selected cue.",
+      "duration_ms": 220,
+      "reduced": "Switch the light, current cue text, and underline immediately."
+    },
+    "action": {
+      "instruction": "Use native buttons, expose the selected cue, and keep visible focus. Announce the current technique and update the stage illustration’s accessible description with it.",
+      "label": "Use the actual cue name"
+    },
     "why": "The first interaction demonstrates the actual craft and lets a producer compare techniques without finding a separate demo.",
     "sources": [
-      {"url": "https://bruno-simon.com/", "observation": "Driving the car demonstrates the creative developer's work while the visitor explores the portfolio. The site lists a map, respawn and multiple input methods.", "strength": "evidence"},
-      {"url": "https://toyfight.co/", "observation": "The studio offers standard Work and Connect navigation alongside an optional themed command interface.", "strength": "evidence"}
+      {
+        "url": "https://bruno-simon.com/",
+        "observation": "Driving the car demonstrates the creative developer's work while the visitor explores the portfolio. The site lists a map, respawn and multiple input methods.",
+        "strength": "evidence"
+      },
+      {
+        "url": "https://toyfight.co/",
+        "observation": "The studio offers standard Work and Connect navigation alongside an optional themed command interface.",
+        "strength": "evidence"
+      }
     ],
     "credit": "Original stage composition inspired by Bruno Simon and ToyFight. Use only original artwork."
   },
