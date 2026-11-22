@@ -1,0 +1,275 @@
+{
+  "calibration": {
+    "coherence": 7.5,
+    "originality": 4.5,
+    "craft": 7,
+    "usability": 6.5
+  },
+  "screens": {
+    "A-1440": {
+      "coherence": 9,
+      "originality": 8,
+      "craft": 8.5,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab to “Focus LS-057” and press Enter.",
+        "expected": "Isolate LS-057 in the manifest and keep the next deadline readable.",
+        "observed": "The manifest showed “1 of 5 loads”. Keyboard focus and a white outline landed on the LS-057 row. The live status read “Showing 1 of 5 loads.”"
+      },
+      "edge_observation": "Reversal moved below the manifest. The starting button became the text “Load in focus”. One Tab from the row reached “Show all 5 loads”. Enter restored five rows and returned visible keyboard focus to “Focus LS-057”.",
+      "fact_check": "A-1440-before.png shows five rows, three marked “ID unavailable”. LS-057 is at Bay 4, 19 min late. LS-061 is due in 9 min. In A-1440-after.png, LS-061 and its deadline remain legible in the right-hand Upcoming load panel and present in the accessibility tree.",
+      "strength": "The oversized 19 establishes urgency at a glance. A single sand-colored button sits below it, while the subdued truck drawing identifies Bay 4. The smaller upcoming-load panel gives the next deadline a clear place without competing for first attention.",
+      "weakness": "The outlined “Load in focus” label still looks like a button. The actual reversal is visually quieter and in a different part of the board.",
+      "repair": "Let the original button toggle to “Show all 5 loads”. Keep the row outline and count as confirmation.",
+      "arm": "design-mcp",
+      "html_sha256": "f29ea52adb767fd59148679489c842e2a89de569cfbda75219b9960316ac6712",
+      "weighted": 8.5,
+      "before": {
+        "sha256": "278443e52b5de3d2ff7fb3932f4aedb7249c5f64f4b8ce90c0acc044db9d3b45",
+        "file": "A-1440-before.png",
+        "tool_call_id": "item_2"
+      },
+      "after": {
+        "sha256": "939bf7cb72c174c5da220ad4e1f4add0430ba4ecaca9d3bb58a86fabf3a13319",
+        "file": "A-1440-after.png",
+        "tool_call_id": "item_5"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ]
+    },
+    "A-390": {
+      "coherence": 9,
+      "originality": 7.5,
+      "craft": 8,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab to “Focus LS-057” and press Enter.",
+        "expected": "Focus the delayed load while keeping LS-061 and its deadline in view.",
+        "observed": "The manifest contracted to one outlined LS-057 row and keyboard focus landed on it. The upcoming-load strip remained visible immediately above the manifest."
+      },
+      "edge_observation": "The starting control became a status label. Tab from the focused row reached “Show all 5 loads” below it. Enter restored all five rows and returned visible focus to the original “Focus LS-057” button.",
+      "fact_check": "A-390-before.png fits all five rows in the viewport. LS-057 reads “Bay 4” and “19 min late”. LS-061 reads “Due in 9 min”. A-390-after.png still shows LS-061 and the full deadline together, matching the accessibility tree.",
+      "strength": "The large delay leads directly to the focus button. Below it, LS-061 and the bold 9 min occupy opposite ends of one short line. Both shift priorities can be read without scrolling.",
+      "weakness": "The faint truck nearly disappears beside “min late”. At this width the delay numeral and the upcoming-load strip carry most of the distinction from a conventional stack of dashboard cards.",
+      "repair": "Keep reversal in the original button position and simplify the narrow illustration to a clearer Bay 4 marker.",
+      "arm": "design-mcp",
+      "html_sha256": "f29ea52adb767fd59148679489c842e2a89de569cfbda75219b9960316ac6712",
+      "weighted": 8.25,
+      "before": {
+        "sha256": "03b8f49d12fa69e331a0ec55a56bf080de2a07b37bf0bffd9376ef0637ca0c98",
+        "file": "A-390-before.png",
+        "tool_call_id": "item_9"
+      },
+      "after": {
+        "sha256": "cc27b58e1145a6c9c6fb31ac1ed65d833de10ca680a0a6932e095075210d60e1",
+        "file": "A-390-after.png",
+        "tool_call_id": "item_12"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ]
+    },
+    "B-1440": {
+      "coherence": 8.5,
+      "originality": 7.5,
+      "craft": 8.5,
+      "usability": 7.5,
+      "primary_action": {
+        "input": "Tab to “Focus load”, named “Focus load LS-057” in the accessibility tree, and press Enter.",
+        "expected": "Isolate LS-057 and keep the next deadline readable.",
+        "observed": "Only LS-057 remained in the table. “Delayed 1” became pressed, keyboard focus landed on the outlined “Focused load” heading, and the live status identified LS-057, Bay 4 and the 19-minute delay."
+      },
+      "edge_observation": "“Exit focus” occupied the starting button position. Shift+Tab from the heading reached it. Enter restored five rows and returned visible focus to “Focus load LS-057”. In a separate filter test, reversing “Delayed 1” with “All loads 5” left focus on “All loads 5”.",
+      "fact_check": "B-1440-before.png shows “All loads 5” and five rows, three with unavailable IDs. LS-057 is 19 minutes late at Bay 4. LS-061 is due in 9 min in the second row. B-1440-after.png and the focused accessibility tree omit both LS-061 and its deadline. Both returned on reversal.",
+      "strength": "LS-057 is the largest text. The truck aligned with the numbered dock makes the bay recognizable, while the small amber delay marker and single teal action keep the panel calm.",
+      "weakness": "The delay is much smaller than the identifier. The dock drawing supplies most of the visual identity to an otherwise familiar pale summary panel, segmented filter and bordered table.",
+      "repair": "Keep a compact “LS-061 due in 9 min” line beside the focused summary, outside the filtered table.",
+      "arm": "plain",
+      "html_sha256": "1667353f0ce4d483bd8b501cd6accf31738f787e990740c6f7517071b0a12977",
+      "weighted": 8.0,
+      "before": {
+        "sha256": "3e2c6e0c8d653d2184dafcd045573d89eba57103f45a7728cb27262d46411c44",
+        "file": "B-1440-before.png",
+        "tool_call_id": "item_17"
+      },
+      "after": {
+        "sha256": "c91e4809da38ac33923fcad97a2f6b59d61b5848b094d6998c3df2cc1f17d1df",
+        "file": "B-1440-after.png",
+        "tool_call_id": "item_20"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ]
+    },
+    "B-390": {
+      "coherence": 8.5,
+      "originality": 7,
+      "craft": 8.5,
+      "usability": 7.5,
+      "primary_action": {
+        "input": "Tab to “Focus load LS-057” and press Enter.",
+        "expected": "Focus the delayed load while preserving access to the nine-minute deadline.",
+        "observed": "The table narrowed to LS-057 and “Delayed 1” became pressed. Keyboard focus moved to the visibly outlined “Focused load” heading. The primary button changed to “Exit focus” in place."
+      },
+      "edge_observation": "Shift+Tab and Enter activated “Exit focus”, restored five rows and returned visible focus to “Focus load LS-057”. Using the filter buttons instead restored five rows with focus on “All loads 5”.",
+      "fact_check": "B-390-before.png shows all five rows, LS-057 at Bay 4, 19 min late, and LS-061 due in 9 min. In B-390-after.png the total of five is still readable on the filter, but LS-061 and its deadline disappear from both the screen and the accessibility tree.",
+      "strength": "The large load ID, delay, bay and action fit together above the table. Thin rules and restrained color keep all five initial rows easy to scan in the 390-pixel view.",
+      "weakness": "During focus, the summary and sole table row repeat LS-057 while the next deadline disappears. The small dock drawing is the main visual detail distinguishing the stacked panel and table from a standard admin screen.",
+      "repair": "Use one line above the filters for LS-061 and its deadline during focus. Preserve the in-place “Exit focus” control.",
+      "arm": "plain",
+      "html_sha256": "1667353f0ce4d483bd8b501cd6accf31738f787e990740c6f7517071b0a12977",
+      "weighted": 7.85,
+      "before": {
+        "sha256": "b15abe8bce7b226253f9d169e735fc06b6accece4073169e1bd152395b02129e",
+        "file": "B-390-before.png",
+        "tool_call_id": "item_29"
+      },
+      "after": {
+        "sha256": "1b259ce7ba46e1dd32dc876277b633f566b0d140b07ae32d116fa0793740a1a7",
+        "file": "B-390-after.png",
+        "tool_call_id": "item_32"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ]
+    }
+  },
+  "preference": {
+    "winner": "A",
+    "reason": "A lets the dispatcher act on the 19-minute delay and still read the next nine-minute commitment at both widths. B offers the more predictable reversal, but checking LS-061 requires leaving focus. Both return keyboard focus correctly through their primary reversal controls. The weighted scores favor A by 8.50 to 8.00 at 1440 pixels and 8.25 to 7.85 at 390 pixels."
+  },
+  "case": "dashboard-clear",
+  "verified_screens": 4,
+  "required_screens": 4,
+  "browser": "Chrome/157.0.8103.79",
+  "evaluator_thread": "01a202fd-47d2-79e2-a6f0-6cf589477978",
+  "usage": {
+    "input_tokens": 956288,
+    "cached_input_tokens": 913280,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 7486,
+    "reasoning_output_tokens": 4251
+  },
+  "trace_sha256": "b60b7e7cfa788c54ddb012ada87aa3acd29a687ea21ab19b1dc5c93deda97f48",
+  "browser_audit_sha256": "5708b89385f25dce614f35d80eff315e54fdd2dfe34f7acf2cf34b44ffb20e1c",
+  "model": "gpt-6.2-astra",
+  "effort": "max",
+  "playwriter": "0.12.0",
+  "source_commit": "2fcd31221671590152401d958b904141e438e453",
+  "reaction_number": 1,
+  "uncached_input_tokens": 43008,
+  "critic_prompt_sha256": "a9476c54870d171dafa147bd1ab7de2a72981a5b5907314119bf0e78e6e77bd3"
+}
