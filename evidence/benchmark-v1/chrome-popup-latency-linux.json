@@ -135,5 +135,71 @@
     }
   },
   "open_target_reached": false,
-  "local_finding_target_reached": true
+  "local_finding_target_reached": true,
+  "input_delay_diagnostic": [
+    {
+      "run": "https://github.com/chrismicah/design-mcp/actions/runs/44997404461",
+      "source": "89e3445dde6c2cbd2170f7d5de0926b7cc1a5e11",
+      "receipt_sha256": "e12f4115f25bd1eb4230954cb262d298017e6946dad370333a38470371abff24",
+      "key_delay_ms": 12,
+      "p95": {
+        "openMs": 299,
+        "scanMs": 150
+      },
+      "timing_breakdown": {
+        "inputMs": {
+          "samples": 30,
+          "median": 45.0,
+          "p95": 49
+        },
+        "targetMs": {
+          "samples": 30,
+          "median": 255.5,
+          "p95": 264
+        },
+        "popupNavigationMs": {
+          "samples": 30,
+          "median": 248.0,
+          "p95": 250
+        },
+        "popupFirstContentfulPaintMs": {
+          "samples": 11,
+          "median": 36,
+          "p95": null
+        }
+      }
+    },
+    {
+      "run": "https://github.com/chrismicah/design-mcp/actions/runs/44997528998",
+      "source": "ac066d1ccbbb95abd28c5fe23197ce46040f8bef",
+      "receipt_sha256": "d85a459d70727fffa9f92b9da3123e7b9be3389ca8ac9550c2e7e7679579c01c",
+      "key_delay_ms": 0,
+      "p95": {
+        "openMs": 299,
+        "scanMs": 150
+      },
+      "timing_breakdown": {
+        "inputMs": {
+          "samples": 30,
+          "median": 7.0,
+          "p95": 8
+        },
+        "targetMs": {
+          "samples": 30,
+          "median": 258.0,
+          "p95": 263
+        },
+        "popupNavigationMs": {
+          "samples": 30,
+          "median": 249.0,
+          "p95": 250
+        },
+        "popupFirstContentfulPaintMs": {
+          "samples": 7,
+          "median": 36,
+          "p95": null
+        }
+      }
+    }
+  ]
 }
