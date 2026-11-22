@@ -1,4 +1,4 @@
-name: Credential-free competitor preflight
+name: Competitor retrieval on the 36 frozen briefs
 
 on:
   push:
@@ -30,6 +30,7 @@ jobs:
           python -m pip install 'fastmcp==4.2.4'
           root="$RUNNER_TEMP/competitor"
           mkdir -p "$root" "$RUNNER_TEMP/probe-home" "$GITHUB_WORKSPACE/probe"
+          result_key=results
           case "$COMPETITOR" in
             offline-designer)
               git clone --filter=blob:none https://github.com/gil906/designerMCP.git "$root"
@@ -37,6 +38,7 @@ jobs:
               python -m venv "$RUNNER_TEMP/competitor-env"
               "$RUNNER_TEMP/competitor-env/bin/pip" install -e "$root"
               cmd=("$RUNNER_TEMP/competitor-env/bin/designer-mcp" --root "$root")
+              pin=4038d16c4c0e684a5aec1bcecdb79ec40e9c59bf
               tool=designer_search
               fields='{}'
               ;;
@@ -47,27 +49,32 @@ jobs:
               "$RUNNER_TEMP/competitor-env/bin/pip" install -e "$root"
               (cd "$root" && "$RUNNER_TEMP/competitor-env/bin/python" -m designlib rebuild)
               cmd=("$RUNNER_TEMP/competitor-env/bin/python" -m designlib mcp)
+              pin=96310517ffcc484f4f820434c1cf51c16f763cec
               tool=search_designs
               fields='{"mode":"keyword"}'
               ;;
             inspo)
               npm install --prefix "$root" --ignore-scripts --no-fund --no-audit inspo-mcp@0.2.0
               cmd=("$root/node_modules/.bin/inspo-mcp")
+              pin=inspo-mcp@0.2.0
               tool=search_screens
               fields='{}'
               ;;
             screenshots)
               npm install --prefix "$root" --ignore-scripts --no-fund --no-audit screenshots-design-inspiration-mcp@1.1.1
               cmd=("$root/node_modules/.bin/screenshots-design-inspiration-mcp")
+              pin=screenshots-design-inspiration-mcp@1.1.1
+              result_key=products
               tool=search_inspiration
               fields='{}'
               ;;
           esac
-          env -i PATH="$PATH" HOME="$RUNNER_TEMP/probe-home" python teardown/probe.py \
-            --out "probe/$COMPETITOR.json" --cwd "$root" --tool "$tool" --fields "$fields" -- "${cmd[@]}"
+          env -i PATH="$PATH" HOME="$RUNNER_TEMP/probe-home" python evals/v1/probe_competitors.py \
+            --out "probe/$COMPETITOR.json" --cwd "$root" --name "$COMPETITOR" --pin "$pin" --tool "$tool" \
+            --result-key "$result_key" --fields "$fields" -- "${cmd[@]}"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: probe-${{ matrix.competitor }}
+          name: retrieval-v1-${{ matrix.competitor }}
           path: probe/*.json
           if-no-files-found: error
           retention-days: 7
