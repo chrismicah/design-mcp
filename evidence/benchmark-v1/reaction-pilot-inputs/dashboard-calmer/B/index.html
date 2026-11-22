@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#191f22">
+  <title>Linehaul | Dispatch board</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Sans+Condensed:wght@600&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: dark;
+      --graphite: #191f22;
+      --slate: #232b2f;
+      --steel: #3c484d;
+      --fog: #adb8ba;
+      --chalk: #e9eeeb;
+      --sand: #e3c5a9;
+      --rule: color-mix(in srgb, var(--steel) 80%, var(--graphite));
+      --body: "IBM Plex Sans", sans-serif;
+      --display: "IBM Plex Sans Condensed", sans-serif;
+      font-family: var(--body);
+      font-variant-numeric: tabular-nums;
+      color: var(--chalk);
+      background: var(--graphite);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    body, h1, h2, p { margin: 0; }
+
+    .shell {
+      width: min(1304px, calc(100% - 112px));
+      margin-inline: auto;
+    }
+
+    .masthead { border-bottom: 1px solid var(--rule); }
+
+    .masthead .shell {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 66px;
+    }
+
+    .brand, .shift {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand {
+      font: 600 25px/1 var(--display);
+      letter-spacing: -.015em;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 32px;
+      height: 32px;
+      place-items: center;
+      border: 1px solid var(--steel);
+      border-radius: 3px;
+      color: var(--fog);
+    }
+
+    .shift {
+      color: var(--fog);
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    main.shell { padding-block: 28px 40px; }
+
+    .page-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font: 600 clamp(2.25rem, 3.8vw, 3.25rem)/1.04 var(--display);
+      letter-spacing: -.025em;
+    }
+
+    .load-count {
+      color: var(--fog);
+      font-size: 15px;
+      white-space: nowrap;
+    }
+
+    .exception {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      padding: 29px 40px;
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      background: var(--slate);
+    }
+
+    .exception::before {
+      position: absolute;
+      top: 32px;
+      left: 0;
+      width: 3px;
+      height: 21px;
+      background: var(--sand);
+      content: "";
+    }
+
+    .exception-copy {
+      position: relative;
+      z-index: 1;
+    }
+
+    .load-context {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .load-context h2 {
+      font: 600 24px/1.1 var(--display);
+    }
+
+    .bay {
+      padding-left: 14px;
+      border-left: 1px solid var(--steel);
+      color: var(--fog);
+      font-size: 16px;
+      line-height: 1.25;
+    }
+
+    .delay {
+      display: flex;
+      align-items: baseline;
+      gap: 11px;
+      margin-block: 12px 20px;
+      font-family: var(--display);
+      font-weight: 600;
+      line-height: .94;
+    }
+
+    .delay-value {
+      font-size: clamp(3.75rem, 6.5vw, 5.25rem);
+      letter-spacing: -.04em;
+    }
+
+    .delay-unit {
+      color: var(--fog);
+      font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+      letter-spacing: -.02em;
+    }
+
+    button, .focus-state {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 44px;
+      padding: 0 14px;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      font: 600 15px/1.2 var(--body);
+    }
+
+    button { cursor: pointer; }
+
+    button:focus-visible {
+      outline: 2px solid var(--chalk);
+      outline-offset: 3px;
+    }
+
+    .focus-button {
+      color: var(--graphite);
+      background: var(--sand);
+    }
+
+    .focus-button:hover {
+      background: color-mix(in srgb, var(--sand) 84%, var(--chalk));
+    }
+
+    .focus-state {
+      border-color: var(--steel);
+      color: var(--chalk);
+    }
+
+    .dock-art {
+      position: absolute;
+      top: 50%;
+      right: 30px;
+      width: min(52%, 620px);
+      height: auto;
+      transform: translateY(-50%);
+      mask-image: linear-gradient(90deg, transparent, #000 38%);
+      pointer-events: none;
+    }
+
+    .board {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(240px, 28%);
+      grid-template-areas: "manifest upcoming";
+      align-items: start;
+      gap: 38px;
+      margin-top: 30px;
+    }
+
+    .upcoming {
+      grid-area: upcoming;
+      padding: 17px 20px 19px;
+      border-left: 1px solid var(--steel);
+      background: color-mix(in srgb, var(--slate) 60%, var(--graphite));
+    }
+
+    .upcoming h2 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--fog);
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.25;
+    }
+
+    .upcoming-reading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 13px;
+    }
+
+    .upcoming-id {
+      font: 600 29px/1 var(--display);
+      white-space: nowrap;
+    }
+
+    .upcoming-time {
+      color: var(--fog);
+      font-size: 15px;
+      white-space: nowrap;
+    }
+
+    .upcoming-time strong {
+      margin-left: 3px;
+      color: var(--chalk);
+      font: 600 22px/1 var(--display);
+    }
+
+    .manifest { grid-area: manifest; }
+
+    .manifest-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 36px;
+      margin-bottom: 9px;
+    }
+
+    .manifest-heading h2 {
+      font: 600 29px/1.05 var(--display);
+      letter-spacing: -.015em;
+    }
+
+    .focus-count {
+      color: var(--fog);
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    table {
+      width: 100%;
+      table-layout: fixed;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .load-col { width: 39%; }
+    .bay-col { width: 24%; }
+
+    th, td { padding: 0 16px; }
+    th:last-child, td:last-child { text-align: right; }
+
+    thead th {
+      height: 38px;
+      border-block: 1px solid var(--rule);
+      color: var(--fog);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    tbody th, tbody td {
+      height: 48px;
+      border-bottom: 1px solid var(--rule);
+      font-size: 15px;
+    }
+
+    tbody th {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .unavailable {
+      color: var(--fog);
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .delayed > * {
+      background: var(--slate);
+      transition: background-color 300ms ease-out;
+    }
+
+    .is-focused .delayed > * {
+      background: color-mix(in srgb, var(--slate) 68%, var(--steel));
+    }
+
+    .delayed:focus-visible {
+      outline: 2px solid var(--chalk);
+      outline-offset: -2px;
+    }
+
+    .late-timing {
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .restore-button {
+      margin-top: 14px;
+      border-color: var(--steel);
+      color: var(--chalk);
+      background: transparent;
+    }
+
+    .restore-button:hover { background: var(--slate); }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 900px) {
+      .shell { width: calc(100% - 64px); }
+      .board { gap: 24px; }
+      .dock-art { right: 16px; }
+    }
+
+    @media (max-width: 700px) {
+      .shell { width: calc(100% - 36px); }
+      .masthead .shell { min-height: 58px; }
+      .brand { font-size: 24px; }
+      .brand-mark { width: 30px; height: 30px; }
+      main.shell { padding-block: 21px 28px; }
+      .page-heading { margin-bottom: 17px; }
+      h1 { font-size: clamp(2rem, 9.5vw, 2.5rem); }
+
+      .exception { padding: 21px 20px 23px; }
+      .exception::before { top: 22px; height: 19px; }
+      .load-context { gap: 11px; }
+      .load-context h2 { font-size: 23px; }
+      .bay { padding-left: 11px; }
+      .delay { gap: 9px; margin-block: 10px 17px; }
+      .delay-value { font-size: 4.125rem; }
+      .delay-unit { font-size: 1.65rem; }
+
+      .dock-art {
+        top: 32px;
+        right: -2px;
+        width: min(90%, 390px);
+        opacity: .8;
+        transform: none;
+        mask-image: linear-gradient(90deg, transparent 34%, #000 74%);
+      }
+
+      .board {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas: "upcoming" "manifest";
+        gap: 20px;
+        margin-top: 21px;
+      }
+
+      .upcoming { padding: 12px 14px 13px; }
+      .upcoming-reading { margin-top: 8px; }
+      .upcoming-id { font-size: 26px; }
+      .manifest-heading { min-height: 34px; margin-bottom: 8px; }
+      .manifest-heading h2 { font-size: 27px; }
+
+      th, td { padding-inline: 10px; }
+      thead th { height: 34px; }
+      tbody th, tbody td { height: 44px; }
+      tbody td { font-size: 14px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .delayed > * { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="shell">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5h14l-4.4 5.5h-14z"/>
+            <path d="M6.4 13.5h14L16 19H2z" opacity=".55"/>
+          </svg>
+        </span>
+        Linehaul
+      </div>
+      <p class="shift">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+          <path d="M3 17h18M6 21h12M7 17a5 5 0 0 1 10 0M12 4v3M4.2 9.2l2 2m13.6-2-2 2"/>
+        </svg>
+        Morning shift
+      </p>
+    </div>
+  </header>
+
+  <main class="shell">
+    <div class="page-heading">
+      <h1>Dispatch board</h1>
+      <p class="load-count">5 loads</p>
+    </div>
+
+    <section class="exception" aria-labelledby="exception-title">
+      <div class="exception-copy">
+        <div class="load-context">
+          <h2 id="exception-title">LS-057</h2>
+          <p class="bay">Bay 4</p>
+        </div>
+        <p class="delay"><span class="delay-value">19</span> <span class="delay-unit">min late</span></p>
+
+        <button class="focus-button" id="focus-load" type="button" aria-controls="manifest-table">
+          Focus LS-057
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+            <path d="M9 4H4v5m11-5h5v5M4 15v5h5m11-5v5h-5"/>
+            <circle cx="12" cy="12" r="2.5"/>
+          </svg>
+        </button>
+        <span class="focus-state" id="focus-state" hidden>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m5 12 4 4L19 6"/>
+          </svg>
+          Load in focus
+        </span>
+      </div>
+
+      <svg class="dock-art" viewBox="0 0 600 230" fill="none" aria-hidden="true">
+        <path d="M16 65h430M16 165h430" stroke="var(--steel)"/>
+        <path d="M70 115h122" stroke="var(--fog)" stroke-opacity=".25" stroke-dasharray="8 9"/>
+        <path d="M446 33h144v164H446z" fill="var(--graphite)" fill-opacity=".5" stroke="var(--steel)"/>
+        <path d="M446 58h144M446 172h144m-132-114v114" stroke="var(--steel)"/>
+        <path d="M446 77v76" stroke="var(--fog)" stroke-opacity=".5" stroke-width="2"/>
+        <rect x="492" y="79" width="56" height="72" rx="2" stroke="var(--fog)" stroke-opacity=".34"/>
+        <text x="520" y="130" text-anchor="middle" fill="var(--fog)" fill-opacity=".7" font-family="IBM Plex Sans Condensed, sans-serif" font-size="42" font-weight="600">4</text>
+
+        <g stroke="var(--fog)" stroke-opacity=".37">
+          <path d="M248 108h22v14h-22z" fill="var(--graphite)"/>
+          <path d="M213 92h42v46h-42l-11-10v-26z" fill="var(--slate)"/>
+          <path d="M212 102h12v26h-12l-5-6v-14z" fill="var(--graphite)"/>
+          <rect x="269" y="88" width="162" height="54" rx="3" fill="var(--slate)"/>
+          <path d="M278 98h144v34H278zM312 98v34m36-34v34m36-34v34" stroke-opacity=".22"/>
+          <path d="M427 94v42" stroke-opacity=".55"/>
+        </g>
+        <path d="M434 106h7m-7 18h7" stroke="var(--fog)" stroke-opacity=".35"/>
+      </svg>
+    </section>
+
+    <div class="board">
+      <aside class="upcoming" aria-labelledby="upcoming-title">
+        <h2 id="upcoming-title">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="8.5"/>
+            <path d="M12 7.5V12l3.3 2"/>
+          </svg>
+          Upcoming load
+        </h2>
+        <div class="upcoming-reading">
+          <p class="upcoming-id">LS-061</p>
+          <p class="upcoming-time">Due in <strong>9 min</strong></p>
+        </div>
+      </aside>
+
+      <section class="manifest" id="manifest" aria-labelledby="manifest-title">
+        <div class="manifest-heading">
+          <h2 id="manifest-title">Shift manifest</h2>
+          <p class="focus-count" id="focus-count" hidden>1 of 5 loads</p>
+        </div>
+
+        <table id="manifest-table" aria-labelledby="manifest-title">
+          <colgroup>
+            <col class="load-col">
+            <col class="bay-col">
+            <col>
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col">Load</th>
+              <th scope="col">Bay</th>
+              <th scope="col">Timing</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="delayed" id="delayed-load" tabindex="-1">
+              <th scope="row">LS-057</th>
+              <td>Bay 4</td>
+              <td class="late-timing">19 min late</td>
+            </tr>
+            <tr data-other-load>
+              <th scope="row">LS-061</th>
+              <td class="unavailable"><span aria-hidden="true">—</span><span class="visually-hidden">Bay unavailable</span></td>
+              <td>Due in 9 min</td>
+            </tr>
+            <!-- The brief supplies two load IDs. The other three rows indicate unavailable details. -->
+            <tr data-other-load>
+              <th scope="row" class="unavailable">ID unavailable</th>
+              <td class="unavailable"><span aria-hidden="true">—</span><span class="visually-hidden">Bay unavailable</span></td>
+              <td class="unavailable"><span aria-hidden="true">—</span><span class="visually-hidden">Timing unavailable</span></td>
+            </tr>
+            <tr data-other-load>
+              <th scope="row" class="unavailable">ID unavailable</th>
+              <td class="unavailable"><span aria-hidden="true">—</span><span class="visually-hidden">Bay unavailable</span></td>
+              <td class="unavailable"><span aria-hidden="true">—</span><span class="visually-hidden">Timing unavailable</span></td>
+            </tr>
+            <tr data-other-load>
+              <th scope="row" class="unavailable">ID unavailable</th>
+              <td class="unavailable"><span aria-hidden="true">—</span><span class="visually-hidden">Bay unavailable</span></td>
+              <td class="unavailable"><span aria-hidden="true">—</span><span class="visually-hidden">Timing unavailable</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <button class="restore-button" id="show-all" type="button" aria-controls="manifest-table" hidden>
+          Show all 5 loads
+        </button>
+      </section>
+    </div>
+
+    <p class="visually-hidden" id="announcement" role="status"></p>
+  </main>
+
+  <script>
+    const manifest = document.getElementById("manifest");
+    const delayedLoad = document.getElementById("delayed-load");
+    const otherLoads = manifest.querySelectorAll("[data-other-load]");
+    const focusButton = document.getElementById("focus-load");
+    const restoreButton = document.getElementById("show-all");
+    const focusState = document.getElementById("focus-state");
+    const focusCount = document.getElementById("focus-count");
+    const announcement = document.getElementById("announcement");
+
+    function setLoadFocus(active) {
+      for (const row of otherLoads) {
+        row.hidden = active;
+      }
+
+      manifest.classList.toggle("is-focused", active);
+      focusButton.hidden = active;
+      focusState.hidden = !active;
+      focusCount.hidden = !active;
+      restoreButton.hidden = !active;
+
+      const target = active ? delayedLoad : focusButton;
+      target.focus({ preventScroll: true });
+      target.scrollIntoView({ block: "nearest", inline: "nearest" });
+      announcement.textContent = active ? "Showing 1 of 5 loads." : "Showing all 5 loads.";
+    }
+
+    focusButton.addEventListener("click", () => setLoadFocus(true));
+    restoreButton.addEventListener("click", () => setLoadFocus(false));
+  </script>
+</body>
+</html>

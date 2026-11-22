@@ -32,20 +32,23 @@ jobs:
         run: |
           chrome="$RUNNER_TEMP/browser/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
           "$chrome" --version
-          python evals/v1/render.py \
-            --cells evidence/benchmark-v1/reaction-pilot-inputs --case pricing-misleading --scratch "$RUNNER_TEMP/profile" \
+          python evals/v1/dashboard_reaction.py \
+            --cells evidence/benchmark-v1/reaction-pilot-inputs --case dashboard-clear --case dashboard-calmer --scratch "$RUNNER_TEMP/profile" \
             --playwriter "$RUNNER_TEMP/playwriter/node_modules/.bin/playwriter" --chrome "$chrome"
           python - <<'PY'
           from pathlib import Path
           import json
-          for path in Path('evidence/benchmark-v1/reaction-pilot-inputs/pricing-misleading').rglob('index.html'):
+          for path in (p for name in ('dashboard-clear', 'dashboard-calmer') for p in Path('evidence/benchmark-v1/reaction-pilot-inputs', name).rglob('index.html')):
               record = json.loads(path.with_name('render.json').read_text())
               assert record['browser'].endswith('158.0.8127.36'), record['browser']
-              assert all(item['status'] == 'rendered' for item in record['captures'].values()), record
+              assert all(item['status'] == 'rendered' and item.get('keyboard', {}).get('returnedToFocusButton')
+                         for item in record['captures'].values()), record
           PY
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: paired-playwriter-captures
-          path: evidence/benchmark-v1/reaction-pilot-inputs/pricing-misleading/
+          path: |
+            evidence/benchmark-v1/reaction-pilot-inputs/dashboard-clear/
+            evidence/benchmark-v1/reaction-pilot-inputs/dashboard-calmer/
           if-no-files-found: error
           retention-days: 7

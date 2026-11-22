@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f0f4f3">
+  <title>Linehaul | Load board</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --fog: #f0f4f3;
+      --paper: #fcfdfc;
+      --slate: #263f44;
+      --pine: #2c5c5b;
+      --tide: #dce9e8;
+      --amber: #785019;
+      --muted: color-mix(in srgb, var(--slate) 78%, var(--paper));
+      --rule: color-mix(in srgb, var(--slate) 16%, var(--paper));
+      --display: "Barlow Condensed", sans-serif;
+      --body: "Instrument Sans", sans-serif;
+      --gutter: clamp(16px, 5vw, 72px);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--fog);
+      color: var(--slate);
+      font: 400 1rem/1.45 var(--body);
+    }
+
+    button {
+      color: inherit;
+      font: inherit;
+    }
+
+    button:focus-visible,
+    h2:focus-visible {
+      outline: 2px solid var(--pine);
+      outline-offset: 3px;
+    }
+
+    .shell {
+      width: min(1152px, calc(100% - var(--gutter) - var(--gutter)));
+      margin-inline: auto;
+    }
+
+    .masthead {
+      border-bottom: 1px solid var(--rule);
+      background: var(--paper);
+    }
+
+    .masthead-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 62px;
+    }
+
+    .brand,
+    .shift {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand {
+      gap: 9px;
+      font: 700 1.6875rem/1 var(--display);
+    }
+
+    .brand svg,
+    .shift svg {
+      flex: none;
+      color: var(--pine);
+    }
+
+    .shift {
+      gap: 7px;
+      margin: 0;
+      color: var(--muted);
+      font-size: .875rem;
+      font-weight: 500;
+    }
+
+    main {
+      padding-block: 28px 40px;
+    }
+
+    h1 {
+      margin: 0 0 17px;
+      font: 600 clamp(2.5rem, 3.7vw, 3.25rem)/1 var(--display);
+      letter-spacing: -.012em;
+    }
+
+    .priority {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      background: var(--paper);
+    }
+
+    .priority-copy {
+      position: relative;
+      z-index: 1;
+      width: fit-content;
+      padding: 25px 30px 26px;
+    }
+
+    .delay-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 5px;
+      color: var(--amber);
+      font-size: .875rem;
+      font-weight: 600;
+    }
+
+    .delay-label::before {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+      content: "";
+    }
+
+    .priority h2 {
+      margin: 0 0 8px;
+      font: 600 clamp(3.4rem, 5vw, 4.125rem)/.96 var(--display);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .priority-meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 11px;
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .priority-meta strong {
+      font-weight: 600;
+    }
+
+    .priority-bay {
+      padding-inline-start: 11px;
+      border-inline-start: 1px solid var(--rule);
+      color: var(--muted);
+    }
+
+    .focus-action {
+      min-width: 118px;
+      min-height: 44px;
+      margin-top: 17px;
+      padding: 8px 15px;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      background: var(--pine);
+      color: var(--paper);
+      font-size: .9375rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .focus-action:hover {
+      background: var(--slate);
+    }
+
+    .dock-art {
+      position: absolute;
+      inset: 0 0 0 auto;
+      width: min(64%, 720px);
+      overflow: hidden;
+      background: linear-gradient(to right, transparent, var(--tide));
+      pointer-events: none;
+    }
+
+    .dock-art svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .queue {
+      margin-top: 25px;
+    }
+
+    .queue-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 9px 15px;
+      margin-bottom: 11px;
+    }
+
+    .queue-toolbar h2 {
+      margin: 0;
+      font: 600 1.875rem/1 var(--display);
+    }
+
+    .filters {
+      display: inline-flex;
+      gap: 2px;
+      padding: 3px;
+      border: 1px solid var(--rule);
+      border-radius: 5px;
+      background: var(--paper);
+    }
+
+    .filters button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 37px;
+      padding: 4px 10px;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      background: transparent;
+      color: var(--muted);
+      font-size: .875rem;
+      font-weight: 500;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .filters button:hover {
+      background: var(--fog);
+    }
+
+    .filters button[aria-pressed="true"] {
+      border-color: color-mix(in srgb, var(--pine) 18%, var(--tide));
+      background: var(--tide);
+      color: var(--slate);
+      font-weight: 600;
+    }
+
+    .filter-count {
+      color: var(--muted);
+      font-size: .8125em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .table-frame {
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      background: var(--paper);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    .load-column { width: 39%; }
+    .bay-column { width: 23%; }
+
+    th, td {
+      padding-inline: 19px;
+      text-align: start;
+    }
+
+    thead th {
+      padding-block: 10px;
+      border-bottom: 1px solid var(--rule);
+      background: color-mix(in srgb, var(--fog) 58%, var(--paper));
+      color: var(--muted);
+      font-size: .8125rem;
+      font-weight: 600;
+    }
+
+    tbody th, tbody td {
+      height: 50px;
+      padding-block: 8px;
+      font-size: .9375rem;
+    }
+
+    tbody tr + tr > * {
+      border-top: 1px solid var(--rule);
+    }
+
+    .load-id {
+      font-size: 1rem;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .late-row {
+      background: color-mix(in srgb, var(--tide) 29%, var(--paper));
+    }
+
+    .timing {
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .timing-late { color: var(--amber); }
+    .timing-due { color: var(--pine); }
+
+    .unavailable {
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 640px) {
+      :root {
+        --gutter: 16px;
+      }
+
+      .masthead-inner {
+        min-height: 55px;
+      }
+
+      main {
+        padding-block: 21px 30px;
+      }
+
+      h1 {
+        margin-bottom: 13px;
+      }
+
+      .priority-copy {
+        padding: 18px 16px 20px;
+      }
+
+      .priority h2 {
+        font-size: 3.375rem;
+      }
+
+      .priority-meta {
+        gap: 8px;
+        font-size: .9375rem;
+      }
+
+      .priority-bay {
+        padding-inline-start: 8px;
+      }
+
+      .dock-art {
+        width: 57%;
+        mask-image: linear-gradient(to right, transparent, black 50%);
+      }
+
+      .dock-art svg {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 280px;
+        height: auto;
+        transform: translateY(-50%);
+      }
+
+      .queue {
+        margin-top: 20px;
+      }
+
+      .queue-toolbar h2 {
+        font-size: 1.625rem;
+      }
+
+      .filters button {
+        padding-inline: 8px;
+        font-size: .8125rem;
+      }
+
+      .load-column { width: 39%; }
+      .bay-column { width: 22%; }
+
+      th, td {
+        padding-inline: 11px;
+      }
+
+      tbody th, tbody td {
+        height: 46px;
+        font-size: .875rem;
+      }
+
+      .load-id {
+        font-size: .9375rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="shell masthead-inner">
+      <div class="brand">
+        <svg width="30" height="30" viewBox="0 0 34 34" fill="none" aria-hidden="true">
+          <rect width="34" height="34" rx="5" fill="#dce9e8"/>
+          <path d="M8 23h6l9-12h3M8 16h5l4-5m2 12h7" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+        </svg>
+        <span>Linehaul</span>
+      </div>
+      <p class="shift">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M3 14.5h14m-11.2 0a4.2 4.2 0 0 1 8.4 0M10 3.5v2.2M4 7.2l1.5 1.5m9 0L16 7.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        Morning shift
+      </p>
+    </div>
+  </header>
+
+  <main class="shell">
+    <h1>Load board</h1>
+
+    <section class="priority" aria-labelledby="priority-load">
+      <div class="priority-copy">
+        <p class="delay-label">Delayed load</p>
+        <h2 id="priority-load">LS-057</h2>
+        <p class="priority-meta">
+          <strong>19 minutes late</strong>
+          <span class="priority-bay">Bay 4</span>
+        </p>
+        <button class="focus-action" id="focus-action" type="button" aria-controls="shift-loads" aria-label="Focus load LS-057">
+          Focus load
+        </button>
+      </div>
+
+      <div class="dock-art" aria-hidden="true">
+        <svg viewBox="0 0 640 220" fill="none" preserveAspectRatio="xMaxYMid slice">
+          <path d="M155 55h382v110H155" fill="#e6efed" fill-opacity=".78"/>
+          <path d="M155 55h382M155 165h382" stroke="#adc5c1" stroke-dasharray="6 8"/>
+          <path d="M177 110h349" stroke="#b2c8c4" stroke-dasharray="4 8"/>
+
+          <path d="M544 0h96v220h-96v-55h-21V55h21Z" fill="#d4e4e1" stroke="#aac3bf"/>
+          <path d="M555 0v220M567 32h73m-73 156h73M524 70h9v80h-9" stroke="#b0c8c3"/>
+          <path d="M523 79v62" stroke="#7f9c98" stroke-width="2"/>
+
+          <g fill="#769491" stroke="#769491">
+            <rect x="272" y="84" width="19" height="9" rx="2"/>
+            <rect x="272" y="127" width="19" height="9" rx="2"/>
+            <rect x="457" y="74" width="18" height="9" rx="2"/>
+            <rect x="480" y="74" width="18" height="9" rx="2"/>
+            <rect x="457" y="137" width="18" height="9" rx="2"/>
+            <rect x="480" y="137" width="18" height="9" rx="2"/>
+          </g>
+
+          <path d="M324 106h-18v8h18" fill="#acc2be" stroke="#7f9c98"/>
+          <path d="M309 88h-26c-9 0-16 3-21 9l-8 10v6l8 10c5 6 12 9 21 9h26Z" fill="#ccdedb" stroke="#7f9c98" stroke-width="1.4"/>
+          <path d="M278 93h10l-5 9v16l5 9h-10l-14-12v-10Z" fill="#eef5f3" stroke="#8fa9a5"/>
+          <path d="M296 94v32" stroke="#8fa9a5"/>
+          <rect x="323" y="79" width="186" height="62" rx="4" fill="#cbddda" stroke="#7f9c98" stroke-width="1.4"/>
+          <rect x="329" y="85" width="174" height="50" rx="2" fill="#eaf2f0" stroke="#aec5c1"/>
+          <path d="M346 86v48m29-48v48m29-48v48m29-48v48m29-48v48m29-48v48" stroke="#bdd1cd"/>
+
+          <rect x="569" y="79" width="54" height="62" rx="4" fill="#edf4f2" stroke="#aac3bf"/>
+          <path d="M600 95l-15 19h21m-6-19v31" stroke="#557773" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </section>
+
+    <section class="queue" id="shift-loads" aria-labelledby="queue-heading">
+      <div class="queue-toolbar">
+        <h2 id="queue-heading" tabindex="-1">Shift loads</h2>
+        <div class="filters" role="group" aria-label="Filter loads">
+          <button id="all-loads" type="button" aria-pressed="true" aria-controls="load-rows">
+            All loads <span class="filter-count">5</span>
+          </button>
+          <button id="delayed-loads" type="button" aria-pressed="false" aria-controls="load-rows">
+            Delayed <span class="filter-count">1</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="table-frame">
+        <table aria-labelledby="queue-heading">
+          <colgroup>
+            <col class="load-column">
+            <col class="bay-column">
+            <col>
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col">Load</th>
+              <th scope="col">Bay</th>
+              <th scope="col">Timing</th>
+            </tr>
+          </thead>
+          <tbody id="load-rows">
+            <tr class="late-row">
+              <th class="load-id" scope="row">LS-057</th>
+              <td>Bay 4</td>
+              <td class="timing timing-late">19 min late</td>
+            </tr>
+            <tr>
+              <th class="load-id" scope="row">LS-061</th>
+              <td class="unavailable"><span aria-hidden="true">—</span><span class="visually-hidden">Unavailable</span></td>
+              <td class="timing timing-due">Due in 9 min</td>
+            </tr>
+            <!-- Three rows represent loads whose identifiers, bays, and timing are unspecified. -->
+            <tr>
+              <th class="unavailable" scope="row">ID unavailable</th>
+              <td class="unavailable"><span aria-hidden="true">—</span><span class="visually-hidden">Unavailable</span></td>
+              <td class="unavailable"><span aria-hidden="true">—</span><span class="visually-hidden">Unavailable</span></td>
+            </tr>
+            <tr>
+              <th class="unavailable" scope="row">ID unavailable</th>
+              <td class="unavailable"><span aria-hidden="true">—</span><span class="visually-hidden">Unavailable</span></td>
+              <td class="unavailable"><span aria-hidden="true">—</span><span class="visually-hidden">Unavailable</span></td>
+            </tr>
+            <tr>
+              <th class="unavailable" scope="row">ID unavailable</th>
+              <td class="unavailable"><span aria-hidden="true">—</span><span class="visually-hidden">Unavailable</span></td>
+              <td class="unavailable"><span aria-hidden="true">—</span><span class="visually-hidden">Unavailable</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="visually-hidden" id="load-announcement" role="status"></p>
+    </section>
+  </main>
+
+  <script>
+    const focusAction = document.getElementById("focus-action");
+    const allLoads = document.getElementById("all-loads");
+    const delayedLoads = document.getElementById("delayed-loads");
+    const queue = document.getElementById("shift-loads");
+    const queueHeading = document.getElementById("queue-heading");
+    const otherRows = document.querySelectorAll("#load-rows tr:not(.late-row)");
+    const announcement = document.getElementById("load-announcement");
+    let delayFocused = false;
+
+    function setDelayFocus(focused) {
+      if (focused === delayFocused) return;
+
+      delayFocused = focused;
+      for (const row of otherRows) {
+        row.hidden = focused;
+      }
+
+      allLoads.setAttribute("aria-pressed", String(!focused));
+      delayedLoads.setAttribute("aria-pressed", String(focused));
+      queueHeading.textContent = focused ? "Focused load" : "Shift loads";
+      focusAction.textContent = focused ? "Exit focus" : "Focus load";
+      focusAction.setAttribute("aria-label", focused ? "Exit focus" : "Focus load LS-057");
+      announcement.textContent = focused
+        ? "Showing LS-057 at Bay 4, 19 minutes late."
+        : "Showing all five loads.";
+    }
+
+    focusAction.addEventListener("click", () => {
+      const enterFocus = !delayFocused;
+      setDelayFocus(enterFocus);
+
+      if (enterFocus) {
+        queueHeading.focus({ preventScroll: true });
+        queue.scrollIntoView({ block: "nearest" });
+      }
+    });
+
+    allLoads.addEventListener("click", () => setDelayFocus(false));
+    delayedLoads.addEventListener("click", () => setDelayFocus(true));
+  </script>
+</body>
+</html>
