@@ -1,0 +1,47 @@
+{
+  "scope": "Fresh installed package and real toolbar extension in isolated, headed Chrome on an Ubuntu GitHub runner",
+  "source": "b6c273e5e19ab1687f66f617f49569c595523b3e",
+  "run": "https://github.com/chrismicah/design-mcp/actions/runs/44994211431",
+  "artifact": "extension-review-receipt",
+  "browser": "Chrome/158.0.8127.36",
+  "viewport_css_px": [
+    1440,
+    797
+  ],
+  "checks": {
+    "toolbar_shortcut_opens_popup": true,
+    "scan_enabled_and_focused": true,
+    "missing_host_shows_install_command_and_restores_focus": true,
+    "native_host_installed_for_test_profile_then_scan_completes": true,
+    "popup_http_resource_entries_idle_error_result": [
+      0,
+      0,
+      0
+    ],
+    "preview_opens_via_primary_keyboard_action": true,
+    "before_after_switch_with_right_arrow": true,
+    "field_interior_uniform_mask_color": true,
+    "seeded_form_value_absent_from_saved_html_and_json": true
+  },
+  "scan_ms_single_popup_report": 87,
+  "reported_regions": 8,
+  "masked_fields": 1,
+  "first_finding": "Boarding begins at 6:30 p.m. measured 2.6:1 on its flat background, below 4.5:1.",
+  "limitations": [
+    "One synthetic page at desktop width on hosted Linux.",
+    "The scan time is one popup report, measured before first painted finding.",
+    "No macOS native extension smoke, frontier critique, or blinded design score in this run."
+  ],
+  "previous_runs": {
+    "44993809099": "Chrome startup needed a supported sandbox on the hosted runner.",
+    "44993909643": "Toolbar activation and missing-host state worked. Recovery stopped before a completed scan.",
+    "44994142673": "The observation script read the popup before its document was ready."
+  },
+  "sha256": {
+    "extension-review.json": "5d23358482490526a4b221f03cf2cf97cabaf48472a1c3d8de5eb016df5042e6",
+    "popup-idle.png": "642b75e48181084fb4504e66d025fb80c8e0c04b8340aa7e705a6c67198de44a",
+    "popup-result.png": "7d5e7c780aa8e4cf68ed0568b9be96584499d205eff55e8665cba17a97b21de8",
+    "preview-after.png": "4e5a5021f464492459b2d7098f1c28064df213196cce1f2f8a1c0a909b0e002a",
+    "preview-before.png": "a3e20295bdadb27e50639afb203d287b5467add753181ea4e7f0ae58c3fec204"
+  }
+}
