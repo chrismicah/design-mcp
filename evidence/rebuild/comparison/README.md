@@ -10,6 +10,12 @@ Playwriter reopened the three matched briefs for all four arms at 1440 and 390 C
 | --- | ---: | ---: | ---: | ---: |
 | Coffee launch | 9 | 9 | 9 | 7 |
 | Dispatcher board | 9 | 5 | 10 | 10 |
-| Train ticket | Pending | Pending | Pending | Pending |
+| Train ticket | 8 | 9 | 10 | 8 |
 
-The full coffee direction's pack illustration pushed the roast date below the mobile viewport and left the purchase button detached from the desktop facts. The candidate on `design-mcp/product-hero-mobile` changes the guidance that contributed to those issues. Both dispatcher directions made the delay and its action easy to find at both widths. All frozen views returned an empty loaded web-font list. The train ballot, contrast verification and product hero candidate comparison remain open. The rollout decision also takes the generation carry-over into account. [Coffee ballot](pilot-landing-ballot.json) · [Dispatcher ballot](pilot-dashboard-ballot.json) · [Pilot rubric](../benchmark-rubric.md) · [Rollout plan](../../../PLAN.md)
+The full coffee direction's pack illustration pushed the roast date below the mobile viewport and left the purchase button detached from the desktop facts. Both dispatcher directions made the delay and its action easy to find at both widths. The full train direction separated the time from the platform and hid the 08:58 alternative behind a generic label. All frozen views returned an empty loaded web-font list. [Coffee ballot](pilot-landing-ballot.json) · [Dispatcher ballot](pilot-dashboard-ballot.json) · [Train ballot](pilot-mobile-ballot.json) · [Pilot rubric](../benchmark-rubric.md)
+
+## Slice G decision
+
+**Repair and rerun the affected briefs before broad rollout.** The full direction averaged 8.33/10 across the three briefs, compared with 8.67 for the plain generator, 7.67 for legacy, and 9.67 for the ablated direction. It lost the coffee brief to both controls and the train brief to legacy. Equal keyboard outcomes and fewer source tells leave those visual losses unresolved. Keep the dispatcher direction, which scored 10 and passed its actions.
+
+The ablated arm used a different preceding session from the full arm. The result justifies a clean replay before changing how much rationale the tool returns. The repair branch `a18e08d` makes the product art shallower, puts the buy control next to the required facts, groups the three departure facts, and carries the later departure time onto the closed row when supplied. Source tests and route checks passed. Fresh matched renders will test whether those changes carry through. Contrast verification and the broad rollout gate remain open. [Rollout plan](../../../PLAN.md)
