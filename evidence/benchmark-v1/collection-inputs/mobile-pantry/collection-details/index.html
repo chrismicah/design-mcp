@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Food pantry collection</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@700&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f7f5ef;
+      --ink: #111111;
+      --signal-yellow: #ffcc00;
+      --shaded-paper: #efebe1;
+      --rule: #b7b0a2;
+      --display-font: "Archivo Narrow", "Liberation Sans Narrow", sans-serif;
+      --body-font: "Atkinson Hyperlegible", sans-serif;
+      --inset: clamp(1.25rem, 6.4vw, 1.75rem);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-block-size: 100svh;
+      background: var(--paper);
+      color: var(--ink);
+      font: 1.125rem/1.45 var(--body-font);
+    }
+
+    main {
+      inline-size: min(calc(100% - 2.5rem), 29rem);
+      margin-inline: auto;
+      padding-block: clamp(4rem, 17svh, 9rem) 2.5rem;
+    }
+
+    h1 {
+      margin: 0 0 1.25rem;
+      font: 700 clamp(2rem, 9.6vw, 2.75rem)/1.04 var(--display-font);
+      letter-spacing: -0.025em;
+      text-wrap: balance;
+    }
+
+    .collection-sign {
+      background: var(--ink);
+      color: var(--paper);
+      clip-path: polygon(0 0, calc(100% - 1.5rem) 0, 100% 1.5rem, 100% 100%, 0 100%);
+    }
+
+    .schedule {
+      padding: 1.35rem var(--inset) 1.55rem;
+    }
+
+    .day {
+      margin: 0 0 0.25rem;
+      font-size: 1.375rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .collection-time {
+      display: block;
+      margin-inline-start: -0.035em;
+      font: 700 clamp(4.25rem, 30vw, 8.75rem)/0.94 var(--display-font);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.035em;
+    }
+
+    .location {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      min-block-size: 4rem;
+      margin: 0;
+      padding: 0.75rem var(--inset);
+      background: var(--signal-yellow);
+      color: var(--ink);
+      font-size: clamp(1.375rem, 5.8vw, 1.625rem);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .pin {
+      position: relative;
+      flex: 0 0 1.25rem;
+      block-size: 1.5rem;
+    }
+
+    .pin::before {
+      position: absolute;
+      inset: 0.125rem auto auto 0.125rem;
+      inline-size: 1.0625rem;
+      block-size: 1.0625rem;
+      border: 2px solid currentColor;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      content: "";
+    }
+
+    .pin::after {
+      position: absolute;
+      inset: 0.53125rem auto auto 0.53125rem;
+      inline-size: 0.25rem;
+      block-size: 0.25rem;
+      border-radius: 50%;
+      background: currentColor;
+      content: "";
+    }
+
+    .details {
+      margin-block-start: 1rem;
+    }
+
+    .details-button {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      inline-size: 100%;
+      min-block-size: 3.625rem;
+      padding: 0.75rem var(--inset);
+      border: 1px solid var(--ink);
+      background: var(--paper);
+      color: var(--ink);
+      font: 700 1.1875rem/1.2 var(--body-font);
+      text-align: start;
+      cursor: pointer;
+    }
+
+    .details-button:focus-visible {
+      z-index: 1;
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 3px var(--paper);
+    }
+
+    .details-button[aria-expanded="true"] {
+      border-block-end-color: var(--rule);
+      background: var(--shaded-paper);
+    }
+
+    .toggle-icon {
+      display: grid;
+      flex: 0 0 1.25rem;
+      block-size: 1.25rem;
+      place-items: center;
+    }
+
+    .toggle-icon::before,
+    .toggle-icon::after {
+      grid-area: 1 / 1;
+      inline-size: 0.875rem;
+      block-size: 2px;
+      background: currentColor;
+      content: "";
+    }
+
+    .toggle-icon::after {
+      transform: rotate(90deg);
+    }
+
+    .details-button[aria-expanded="true"] .toggle-icon::after {
+      display: none;
+    }
+
+    .instructions {
+      padding: 1rem var(--inset) 1.125rem;
+      border: 1px solid var(--ink);
+      border-block-start: 0;
+      background: var(--shaded-paper);
+      font-size: 1.1875rem;
+    }
+
+    .instructions p {
+      margin: 0;
+    }
+
+    @media (max-width: 36rem) {
+      main {
+        padding-block-start: clamp(2.75rem, 10svh, 5rem);
+      }
+    }
+
+    @media (hover: hover) {
+      .details-button:hover {
+        background: var(--shaded-paper);
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .instructions:not([hidden]) p {
+        animation: reveal 240ms ease-out both;
+      }
+
+      @keyframes reveal {
+        from {
+          opacity: 0;
+          transform: translateY(0.375rem);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Food pantry collection</h1>
+
+    <div class="collection-sign">
+      <div class="schedule">
+        <p class="day">Friday</p>
+        <time class="collection-time" datetime="11:15">11:15</time>
+      </div>
+      <p class="location">
+        <span class="pin" aria-hidden="true"></span>
+        <span>18 Pine Avenue</span>
+      </p>
+    </div>
+
+    <div class="details">
+      <button
+        class="details-button"
+        id="details-button"
+        type="button"
+        aria-expanded="false"
+        aria-controls="collection-details"
+      >
+        <span>Details</span>
+        <span class="toggle-icon" aria-hidden="true"></span>
+      </button>
+
+      <div class="instructions" id="collection-details" hidden>
+        <p>Bring a bag and check in at the side door.</p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const detailsButton = document.getElementById("details-button");
+    const instructions = document.getElementById("collection-details");
+
+    detailsButton.addEventListener("click", () => {
+      const isOpening = instructions.hidden;
+      instructions.hidden = !isOpening;
+      detailsButton.setAttribute("aria-expanded", String(isOpening));
+    });
+  </script>
+</body>
+</html>
