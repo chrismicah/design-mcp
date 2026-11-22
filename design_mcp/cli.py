@@ -17,6 +17,7 @@ def main():
         print("Usage:")
         print("  design-mcp serve      Start the MCP server (stdio transport)")
         print("  design-mcp version    Show version")
+        print("  design-mcp review-app CAPTURE    Check a local Swift or Electron capture")
         print("  design-mcp doctor [--repair]    Check the interpreter, resources, and local stdio client")
         print()
         print("Add to Claude Code:")
@@ -34,6 +35,10 @@ def main():
         from design_mcp.server import mcp
         mcp.run()
         return
+
+    if command == "review-app":
+        from design_mcp.desktop_review import main as review_app
+        sys.exit(review_app(args[1:]))
 
     if command == "doctor":
         import argparse
