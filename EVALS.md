@@ -19,6 +19,8 @@ An interaction replay on the exact maintenance pages passed all four arm-by-view
 
 The exact pantry comparison pages both revealed and collapsed Details with Enter and kept focus on the control at 1440 and 390 CSS px. The day, time, and address stayed in the first viewport. The plain layout gave the address a text label in both views. The frozen v2 page used a pin icon and the address. Revealing the instructions loaded one permitted font resource on that page. [Keyboard replay and capture hashes](evidence/benchmark-v1/collection-baseline-actions.json)
 
+Both frozen notification settings pages restored their two changed switches and the saved browser record after reload at 1440 and 390 CSS px. A seeded control displayed the same Saved message and lost both values. The first replay wiped storage during every navigation, invalidating its reload result. The corrected replay used identical HTML and kept storage through reload. [Saved and reopened hashes](evidence/benchmark-v1/settings-persistence.json) · [Hosted replay](https://github.com/chrismicah/design-mcp/actions/runs/45000936717)
+
 | Median per judged brief | Input tokens | Cached input | Output tokens | Seconds |
 | --- | ---: | ---: | ---: | ---: |
 | Plain generator | 20,545 | 11,136 | 20,452 | 412 |
