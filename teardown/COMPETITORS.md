@@ -2,7 +2,7 @@
 
 **Start with Offline Designer MCP, Design Library MCP, and Inspo.** They provide three useful comparisons for the benchmark target: offline lexical search with inspectable assets, keyword and semantic search over the same library, and retrieval of real website examples with design tokens. Add Screenshots Design Inspiration as the control for finding an actual product screen.
 
-Public sources checked **2026-11-21**. The inventory covers 12 current MCP product families, one adjacent CLI, and one archived implementation. **Every entry is unmeasured.** Commands below come from publisher documentation or its published MCP launcher configuration. A package version identifies the software. A changing catalog or hosted backend needs its own observation date.
+Public sources checked **2026-11-21**. The inventory covers 12 current MCP product families, one adjacent CLI, and one archived implementation. **Visual performance is pending for every competitor.** Commands below come from publisher documentation or its published MCP launcher configuration. A package version identifies the software. A changing catalog or hosted backend needs its own observation date.
 
 Discovery covered GitHub, the official MCP Registry, Smithery, Glama, and publisher sites. Glama surfaced two close local competitors. The official registry identifies Figma’s hosted endpoint and guide repository. Smithery’s old listings require particular care because its managed proxy shut down on 2026-10-31. The benchmark target itself is excluded from the competitor count. [Benchmark target](https://github.com/chrismicah/design-mcp) · [Official registry record](https://registry.modelcontextprotocol.io/v0.1/servers/com.figma.mcp%2Fmcp/versions/1.0.3) · [Smithery Figma listing](https://smithery.ai/servers/figma) · [Smithery shutdown notice](https://www.smithery.ai/future) · [Glama Offline Designer schema](https://glama.ai/mcp/servers/gil906/designerMCP/schema) · [Glama Design Library listing](https://glama.ai/mcp/servers/Ashan-Iduranga/design-library-mcp)
 
@@ -46,6 +46,19 @@ Discovery covered GitHub, the official MCP Registry, Smithery, Glama, and publis
 2. **P0 — Give each server the same four briefs.** Use `mobile checkout progress`, `accessible account settings error state`, `B2B pricing comparison`, and the negative control `zzqv_74f18`. Request three results where supported. Retrieve the first result’s detail or asset. For example, call `search_screens` with `{"query":"B2B pricing comparison","limit":3}` on Inspo and `search_designs` with `{"query":"B2B pricing comparison","mode":"keyword","limit":3}` on Design Library. Score the top three against the requested pattern. Record duplicate sources, provenance, artifact type, negative-control behavior, response bytes, and cold and warm latency.
 3. **P1 — Isolate individual capabilities.** Repeat the same Design Library queries in `hybrid` mode against the same corpus snapshot. For component reuse, request an accordion example from shadcn and retrieve a known accordion story from a pinned Storybook fixture. Check whether each result contains the props and example needed to implement it. Give UI UX Pro Max the same product brief and score its guidance separately from screenshot retrieval.
 4. **P2 — Compare design-to-code on an owned fixture.** Give Framelink and Figma the same file and node. Compare returned text, dimensions, token names, component references, and screenshot availability against a prepared answer key. Penpot and pen.dev need equivalent native documents and an active editor session. For 21st and Mobbin, record the exact entitlement and search mode before a future run. Use `requires-token`, `requires-paid-seat`, `requires-active-editor`, or `archived` for unavailable cells. Leave their measurement status **unmeasured**.
+
+## Installed tool preflight
+
+Four pinned competitors initialized over stdio using isolated GitHub runners. Each returned a protocol result for all four fixed queries. [Hosted run](https://github.com/chrismicah/design-mcp/actions/runs/44985232374) · [Observed schemas and responses](../evidence/benchmark-v1/competitor-tool-preflight.json)
+
+| Tool | Tools listed | Observed retrieval on the three relevant queries |
+| --- | ---: | --- |
+| Offline Designer MCP | 7 | Led with determinate progress, an accessible settings flow, and transparent pricing respectively. Each response was about 3.8 KB. |
+| Design Library MCP | 7 | Keyword-only retrieval returned empty for checkout and pricing. The settings query returned a generic dashboard layout. |
+| Inspo | 15 | Found three references each with embedded thumbnails at 46.5–65.8 KB. Each high-level result included page analysis. |
+| Screenshots Design Inspiration | 7 | Found three catalog matches each. The result size was 27.8–48.5 KB and relevance varied. |
+
+All four returned no matches for the nonsense query. Response sizes describe serialized protocol content, including any encoded images. Visual generation and independent preference remain separate measures.
 
 ## Visual scoreboard
 

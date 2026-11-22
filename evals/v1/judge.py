@@ -42,7 +42,7 @@ def score_arm(record):
 
 
 def create_pair(args, task):
-    arms = ["none", "v2"]
+    arms = ["none", args.treatment]
     order = hashlib.sha256(f"{args.seed}:{task['id']}".encode()).digest()[0] % 2
     if order:
         arms.reverse()
@@ -84,7 +84,10 @@ def run_judge(args, task, pair, schema_path):
     out = args.out / "ratings" / f"{task['id']}.json"
     partial = args.out / "traces" / f"{task['id']}.jsonl"
     if out.exists():
-        return load(out)
+        prior = load(out)
+        if prior["blind_key"] != key or prior["model"] != args.model or prior["effort"] != args.effort:
+            raise ValueError(f"Judging configuration changed for {task['id']}")
+        return prior
     if partial.exists():
         raise RuntimeError(f"An incomplete judge trace is preserved at {partial}")
     prompt = (
@@ -122,13 +125,13 @@ def run_judge(args, task, pair, schema_path):
     return receipt
 
 
-def summarize(tasks, rows):
+def summarize(tasks, rows, treatment="v2"):
     result = {"requested_pairs": len(tasks), "judged_pairs": len(rows)}
     if not rows:
         return result
-    for arm in ("none", "v2"):
+    for arm in ("none", treatment):
         result[arm] = statistics.mean(row["scores"][arm] for row in rows)
-    differences = [row["scores"]["v2"] - row["scores"]["none"] for row in rows]
+    differences = [row["scores"][treatment] - row["scores"]["none"] for row in rows]
     result["difference"] = statistics.mean(differences)
     result["wins_ties_losses"] = [sum(d > 0 for d in differences), sum(d == 0 for d in differences),
                                  sum(d < 0 for d in differences)]
@@ -139,11 +142,11 @@ def summarize(tasks, rows):
     return result
 
 
-def generation_accounting(cells, tasks):
+def generation_accounting(cells, tasks, treatment):
     accounting = {}
     for task in tasks:
         arms = {}
-        for arm in ("none", "v2"):
+        for arm in ("none", treatment):
             path = cells / task["id"] / arm / "receipt.json"
             receipt = load(path) if path.is_file() else {}
             arms[arm] = {"status": receipt.get("status", "pending"),
@@ -163,6 +166,7 @@ def main():
     parser.add_argument("--effort", default="max")
     parser.add_argument("--timeout", type=int, default=900)
     parser.add_argument("--case", action="append")
+    parser.add_argument("--treatment", default="v2", help="Directory name for the treatment arm")
     parser.add_argument("--quota-probe", type=lambda path: Path(path).resolve(),
                         help="Python quota probe that supports --out and --check-dispatch")
     args = parser.parse_args()
@@ -184,9 +188,9 @@ def main():
         row = run_judge(args, task, pair, schema_path)
         rows.append(row)
         print(row["case"], row["scores"], flush=True)
-    summary = summarize(tasks, rows)
+    summary = summarize(tasks, rows, args.treatment)
     summary["unjudged"] = pending
-    summary["generation"] = generation_accounting(args.cells, tasks)
+    summary["generation"] = generation_accounting(args.cells, tasks, args.treatment)
     write(args.out / "summary.json", summary)
     print(json.dumps(summary), flush=True)
 

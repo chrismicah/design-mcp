@@ -10,6 +10,14 @@ python3 evals/v1/generate.py \
 
 Use repeated `--case` arguments to select named briefs. Run small batches when working within a subscription allowance. A complete cell is resumed from its receipt. A partially written cell stays in place. Use a new run directory for a retry and keep the earlier attempt.
 
+To compare a credential-free stdio competitor, pass its installed executable to `--server`. Supply a JSON file with `--competitor-config`.
+
+```json
+{"name":"inspo","args":[],"env":{},"expected_tool":"search_screens"}
+```
+
+Use a separate output directory for each comparison. With `--treatment-only`, copy the original control cells and their receipts into that directory and retain the same prompt, client, model, and effort. Run the judge with `--treatment inspo` to match this example. Choose files and local launch wrappers with read-only tool access and a clean environment. Keep credential or approval failures in the results.
+
 Install `playwriter@0.12.0` in an isolated npm prefix. Run the renderer using a Python environment containing FastMCP, with Chrome installed locally. The supplied scratch directory must be new so that Chrome starts with an empty profile.
 
 ```bash

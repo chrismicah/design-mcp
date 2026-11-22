@@ -5,7 +5,7 @@ from tempfile import TemporaryDirectory
 from types import SimpleNamespace
 import unittest
 
-from generate import parse_cell, sha256
+from generate import mcp_table, parse_cell, sha256
 from judge import WIDTHS, create_pair, summarize, write
 
 
@@ -28,7 +28,7 @@ class BenchmarkTests(unittest.TestCase):
     def test_blind_pair_requires_two_intact_renderings(self):
         with TemporaryDirectory() as path:
             base = Path(path)
-            args = SimpleNamespace(cells=base / "generated", out=base / "blind", seed="test")
+            args = SimpleNamespace(cells=base / "generated", out=base / "blind", seed="test", treatment="v2")
             task = {"id": "station"}
             for arm in ("none", "v2"):
                 cell = args.cells / task["id"] / arm
@@ -60,6 +60,21 @@ class BenchmarkTests(unittest.TestCase):
         self.assertEqual(result["requested_pairs"], 3)
         self.assertEqual(result["difference"], 12.5)
         self.assertEqual(result["wins_ties_losses"], [1, 1, 0])
+
+    def test_competitor_requires_its_own_successful_search(self):
+        call = {"type": "item.completed", "item": {"type": "mcp_tool_call", "server": "inspo",
+                  "tool": "search_screens", "status": "completed"}}
+        turn = {"type": "turn.completed", "usage": {"output_tokens": 7}}
+        message = {"type": "item.completed", "item": {
+            "type": "agent_message", "text": "```html\n<body>Test</body>\n```"}}
+        result, _ = parse_cell([call, message, turn], True, "inspo", "search_screens")
+        self.assertTrue(result["treatment_call"])
+        self.assertEqual(result["status"], "passed")
+        result, _ = parse_cell([call, message, turn], True)
+        self.assertEqual(result["status"], "mcp-unused-or-failed")
+        config = mcp_table("/test fixtures/start", "inspo", ["--stdio"], {"MODE": "local"})
+        self.assertIn('command="/test fixtures/start"', config)
+        self.assertIn('env={"MODE"="local"}', config)
 
 
 if __name__ == "__main__":

@@ -47,13 +47,11 @@ def client_command(args, mcp_config):
     ]
 
 
-def mcp_table(command):
-    path = json.dumps(str(command))
-    return (
-        "mcp_servers={design-mcp={command=" + path
-        + ',args=["serve"],required=true,default_tools_approval_mode="writes",'
-        + 'env={DESIGN_MCP_SURFACE="v2",FASTMCP_SHOW_SERVER_BANNER="false"}}}'
-    )
+def mcp_table(command, name, server_args, server_env):
+    environment = ",".join(f"{json.dumps(key)}={json.dumps(value)}" for key, value in server_env.items())
+    return (f"mcp_servers={{{json.dumps(name)}={{command={json.dumps(str(command))},"
+            f"args={json.dumps(server_args)},required=true,default_tools_approval_mode=\"writes\","
+            f"env={{{environment}}}}}}}")
 
 
 def read_trace(path):
@@ -68,7 +66,7 @@ def read_trace(path):
     return events
 
 
-def parse_cell(events, expect_mcp):
+def parse_cell(events, expect_mcp, server_name="design-mcp", expected_tool="direct"):
     result = {}
     completed_items = [event["item"] for event in events if event.get("type") == "item.completed"]
     turn = next((e for e in reversed(events) if e.get("type") == "turn.completed"), {})
@@ -82,11 +80,13 @@ def parse_cell(events, expect_mcp):
     failures = [e.get("message") or e.get("error") for e in events if e.get("type") == "error"]
     failures.extend(i.get("error") for i in completed_items if i.get("status") == "failed")
     result["client_errors"] = [f for f in failures if f]
-    result["direct_call"] = any(
-        item.get("type") == "mcp_tool_call" and item.get("server") == "design-mcp"
-        and item.get("tool") == "direct" and item.get("status") == "completed" and not item.get("error")
+    result["treatment_call"] = any(
+        item.get("type") == "mcp_tool_call" and item.get("server") == server_name
+        and item.get("tool") == expected_tool and item.get("status") == "completed" and not item.get("error")
         for item in completed_items
     )
+    if server_name == "design-mcp" and expected_tool == "direct":
+        result["direct_call"] = result["treatment_call"]
     result["status"] = "passed"
     if not turn:
         result["status"] = "generation-error"
@@ -94,7 +94,7 @@ def parse_cell(events, expect_mcp):
         result["status"] = "unpermitted-tool-call"
     elif not expect_mcp and result["tool_calls"]:
         result["status"] = "control-tool-leak"
-    elif expect_mcp and not result["direct_call"]:
+    elif expect_mcp and not result["treatment_call"]:
         result["status"] = "mcp-unused-or-failed"
     match = re.fullmatch(r"\s*```html\s*\n(.*)\n```\s*", messages[-1], re.S | re.I) if messages else None
     html = match.group(1) + "\n" if match else None
@@ -109,8 +109,11 @@ def run_cell(args, case, arm):
     cell = args.out / case["id"] / arm
     cell.mkdir(parents=True, exist_ok=True)
     prompt = PROMPT.format(brief=case["brief"])
+    config = mcp_table(args.server, args.server_name, args.server_args, args.server_env) if arm != "none" else "mcp_servers={}"
     identity = dict(case=case["id"], arm=arm, model=args.model, effort=args.effort, client=args.client_version,
                     prompt_sha256=sha256(prompt.encode()))
+    if arm not in {"none", "v2"}:
+        identity["mcp_config_sha256"] = sha256(config.encode())
     if (cell / "receipt.json").exists():
         receipt = json.loads((cell / "receipt.json").read_text(encoding="utf-8"))
         if any(receipt.get(key) != value for key, value in identity.items()):
@@ -120,7 +123,6 @@ def run_cell(args, case, arm):
         raise RuntimeError(f"Preserve the interrupted attempt at {cell}. Resume with a new output directory.")
     (cell / "prompt.txt").write_text(prompt, encoding="utf-8")
     trace_path = cell / "client.jsonl"
-    config = mcp_table(args.server) if arm == "v2" else "mcp_servers={}"
     start = time.monotonic()
     timed_out = False
     with trace_path.open("w", encoding="utf-8") as trace, (cell / "client.stderr").open("w", encoding="utf-8") as err:
@@ -131,7 +133,8 @@ def run_cell(args, case, arm):
         except subprocess.TimeoutExpired:
             exit_code = None
             timed_out = True
-    result, html = parse_cell(read_trace(trace_path), expect_mcp=arm == "v2")
+    result, html = parse_cell(read_trace(trace_path), expect_mcp=arm != "none", server_name=args.server_name,
+                              expected_tool=args.expected_tool)
     if timed_out:
         result["status"] = "timeout"
     elif exit_code:
@@ -149,7 +152,7 @@ def run_cell(args, case, arm):
 
 
 def run_case(args, case):
-    arms = ["none", "v2"]
+    arms = [args.treatment] if args.treatment_only else ["none", args.treatment]
     random.Random(case["id"]).shuffle(arms)
     failed = False
     for arm in arms:
@@ -166,6 +169,8 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--out", required=True, type=lambda path: Path(path).resolve())
     p.add_argument("--server", required=True, type=lambda path: Path(path).resolve())
+    p.add_argument("--competitor-config", type=Path, help="JSON object with name, args, env and expected_tool")
+    p.add_argument("--treatment-only", action="store_true", help="Reuse sealed controls from the same benchmark")
     p.add_argument("--codex", default="codex")
     p.add_argument("--model", required=True)
     p.add_argument("--effort", default="max")
@@ -175,6 +180,27 @@ def main():
     p.add_argument("--quota-probe", type=lambda path: Path(path).resolve(),
                    help="Python quota probe that supports --out and --check-dispatch")
     args = p.parse_args()
+    args.treatment = "v2"
+    args.server_name = "design-mcp"
+    args.server_args = ["serve"]
+    args.server_env = {"DESIGN_MCP_SURFACE": "v2", "FASTMCP_SHOW_SERVER_BANNER": "false"}
+    args.expected_tool = "direct"
+    if args.competitor_config:
+        competitor = json.loads(args.competitor_config.read_text(encoding="utf-8"))
+        name = competitor["name"]
+        if not isinstance(name, str) or name in {"none", "v2", "design-mcp"} or not re.fullmatch(r"[a-z0-9][a-z0-9-]{0,47}", name):
+            p.error("Competitor name must be a distinct lowercase slug")
+        args.treatment = name
+        args.server_name = name
+        args.server_args = competitor.get("args", [])
+        args.server_env = competitor.get("env", {})
+        args.expected_tool = competitor["expected_tool"]
+        if not isinstance(args.server_args, list) or not all(isinstance(value, str) for value in args.server_args):
+            p.error("Competitor args must be an array of strings")
+        if not isinstance(args.server_env, dict) or not all(isinstance(value, str) for value in args.server_env.values()):
+            p.error("Competitor env must be an object with string values")
+        if not isinstance(args.expected_tool, str) or not args.expected_tool:
+            p.error("Competitor expected_tool must name a tool")
     args.client_version = subprocess.check_output([args.codex, "--version"], text=True, env=clean_env()).strip()
     args.scratch = args.out / ".empty-client-workspace"
     args.scratch.mkdir(parents=True, exist_ok=True)
