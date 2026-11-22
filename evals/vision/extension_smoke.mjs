@@ -11,6 +11,8 @@ import { setTimeout as delay } from "node:timers/promises";
 const [chrome, cli, extension, output, fixturePath] = process.argv.slice(2);
 const mac = process.platform === "darwin";
 const macKeyHelper = process.env.DESIGN_MCP_CHROME_KEY_HELPER;
+const latencyRuns = Number(mac ? process.env.REVIEW_LATENCY_RUNS ?? 0 : 0);
+assert(Number.isInteger(latencyRuns) && latencyRuns >= 0 && latencyRuns <= 30);
 await mkdir(output, { recursive: true });
 const fixture = await readFile(fixturePath || new URL("fixtures/shuttle-dispatch.html", import.meta.url));
 const host = createServer((request, response) => {
@@ -29,7 +31,7 @@ const key = name => {
   proof.lastKey = name;
   return runMacKeyHelper(String(browser.pid), name);
 };
-async function until(description, check, milliseconds = 10000) {
+async function until(description, check, milliseconds = 10000, pollMs = 120) {
   const deadline = Date.now() + milliseconds;
   while (Date.now() < deadline) {
     if (browserError) throw browserError;
@@ -38,7 +40,7 @@ async function until(description, check, milliseconds = 10000) {
     if (browser.exitCode !== null || browser.signalCode !== null) {
       throw new Error(`Chrome exited: ${browser.exitCode ?? browser.signalCode}`);
     }
-    await delay(120);
+    await delay(pollMs);
   }
   throw new Error(`Timed out waiting for ${description}`);
 }
@@ -111,7 +113,7 @@ try {
     targetId: target.targetId, flatten: true,
   })).sessionId;
   const inspect = async (session, expression) => {
-    const output = await send("Runtime.evaluate", { expression, returnByValue: true }, session);
+    const output = await send("Runtime.evaluate", { expression, returnByValue: true, awaitPromise: true }, session);
     if (output.exceptionDetails) {
       throw new Error(output.exceptionDetails.exception?.description || output.exceptionDetails.text);
     }
@@ -321,6 +323,49 @@ try {
     assert.equal(proof.reopened.visible, false);
     assert.equal(proof.reopened.afterImageVisible, false);
     await image(session, "preview-reopened.png");
+    if (latencyRuns) {
+      proof.phase = "measure hosted popup and local finding";
+      proof.latency = {
+        scope: "Fresh popup documents and one-request native hosts in a warm hosted Chrome session",
+        drivers: {open: "macOS shortcut", scan: "CDP keyboard"},
+        expectedTrials: latencyRuns,
+        trials: [],
+      };
+      const findPopup = () => findTarget(isPopup);
+      const painted = (sessionId, selector, state) => inspect(sessionId, `(() => {
+        const ready = () => {
+          const node = document.querySelector(${JSON.stringify(selector)});
+          return document.readyState === 'complete' &&
+            document.body?.dataset.state === ${JSON.stringify(state)} &&
+            node?.checkVisibility() && !node.disabled && Boolean(node.textContent.trim());
+        };
+        if (document.body?.dataset.state === 'problem') throw new Error(document.querySelector('#status').textContent);
+        if (!ready()) return false;
+        return new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve(ready()))));
+      })()`);
+      assert((await send("Target.closeTarget", {targetId: newTarget.targetId})).success);
+      await send("Target.activateTarget", {targetId: fixturePage.targetId});
+      for (let trial = 0; trial < latencyRuns; trial++) {
+        await until("previous popup closed", async () => !(await findPopup()), 5000, 15);
+        const openedAt = performance.now();
+        key("Command+Shift+Y");
+        const opened = await until("fresh toolbar popup", findPopup, 5000, 15);
+        const tab = await attach(opened);
+        await until("painted enabled Scan", () => painted(tab, "#scan", "idle"), 5000, 15);
+        const openMs = performance.now() - openedAt;
+        assert.equal(await inspect(tab, "document.activeElement?.id"), "scan");
+        const scannedAt = performance.now();
+        await browserKey(tab, "Enter", 13, 36, "\r");
+        await until("painted finding", () => painted(tab, "#finding", "result"), 10000, 15);
+        const scanMs = performance.now() - scannedAt;
+        assert.match(await inspect(tab, "document.querySelector('#finding').textContent"), /2\.6 to 1/);
+        proof.latency.trials.push({number: trial + 1, openMs, scanMs});
+        assert((await send("Target.closeTarget", {targetId: opened.targetId})).success);
+      }
+      const p95 = metric => proof.latency.trials.map(row => row[metric]).toSorted((a, b) => a - b)[
+        Math.ceil(latencyRuns * .95) - 1];
+      proof.latency.p95 = {openMs: p95("openMs"), scanMs: p95("scanMs")};
+    }
     proof.phase = "browser checks complete";
     proof.browserChecksPassed = true;
   } else {
