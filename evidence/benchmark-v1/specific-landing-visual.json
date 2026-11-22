@@ -1,0 +1,494 @@
+{
+  "candidate": "384d61d",
+  "baseline_run": "https://github.com/chrismicah/design-mcp/actions/runs/44988686124",
+  "candidate_run": "https://github.com/chrismicah/design-mcp/actions/runs/44990359791",
+  "keyboard_run": "https://github.com/chrismicah/design-mcp/actions/runs/44990840120",
+  "summary": {
+    "requested_pairs": 2,
+    "judged_pairs": 2,
+    "v2": 89.58333333333333,
+    "specific-landing": 97.91666666666667,
+    "difference": 8.333333333333343,
+    "wins_ties_losses": [
+      2,
+      0,
+      0
+    ],
+    "paired_bootstrap_95_interval": [
+      8.333333333333343,
+      8.333333333333343
+    ]
+  },
+  "cases": {
+    "landing-repair": {
+      "ballot": {
+        "case": "landing-repair",
+        "surface": "landing",
+        "blind_key": {
+          "A": "specific-landing",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The orange booking link and prominent 48-hour, $85 offer lead the eye to \u201cChoose a day,\u201d with the summary beside the picker on desktop and directly below it on mobile."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The divider between picker and summary changes from vertical to horizontal on mobile, preserving the grouping and keeping all five evenly spaced day controls in one row."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The large italic \u201ctune-ups,\u201d smaller upright serif headings and bold sans-serif weekdays establish distinct roles that remain legible on mobile."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Orange connects the booking button and price badge to the illustrated bicycle crank, while the pale sage background distinguishes the summary from the picker."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Visible radio circles identify the choices, and both browser trees confirm full weekday names, a \u201cChoose a day\u201d group and a status region inside the booking summary."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "Second Spin displays 48-hour tune-ups for $85 at 41 Elm Street, spells out Tuesday-to-Saturday availability and pairs those five choices with a summary prompting \u201cSelect a day.\u201d"
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "The header link makes booking easy to find at both widths, though the bicycle poster dominates the upper half of the mobile view and the $85 price appears below the day picker."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The weekday row aligns with both edges of the summary at each width, and distinct vertical gaps separate the poster, picker and summary in the mobile layout."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The bold display serif emphasizes the offer, booking heading and price, while the sans-serif instructions, weekdays and summary details stay readable on mobile."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Burgundy ties the bicycle poster to the booking link and $85 price, and dark weekday labels stand out against the pale buttons at both widths."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "Both browser trees give the five radios full weekday names under \u201cBooking day,\u201d with selection feedback evidenced only by the initial \u201cSelect a day\u201d summary value."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "Second Spin explicitly invites visitors to pick one of the Tuesday-through-Saturday choices to preview a booking, and the summary shows the bike tune-up, $85 price, 48-hour turnaround and 41 Elm Street address."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26637,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5309,
+          "reasoning_output_tokens": 4645
+        },
+        "scores": {
+          "specific-landing": 100,
+          "v2": 91.66666666666666
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "1cad0a9c5698c8cd45fa0693430fcca2a428010f81503e91537de99d7fd4ea9a",
+          "A-390.png": "c9a9cc7a1df36d8ee81e3799069346069e633e29ddc18da96896d3b2ca524af5",
+          "B-1440.png": "53a281e3db402e889ccd87e399fdd8e9b105fc4df835ce0b06a93b96f829e194",
+          "B-390.png": "9b313f6049e772eb34bf2ac323d318fdc138447a6313f57a5d0433cf0774d887"
+        },
+        "judge_prompt_sha256": "7d9f3cf1046303b7cab295785af5f766831bd5b0a0a1e2f3ea75c329fcfe0ff4"
+      },
+      "arms": {
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 62552,
+              "cached_input_tokens": 40192,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 21876,
+              "reasoning_output_tokens": 15403
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "landing-repair",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "b2c2a44f5ad2fa66d6b17b7fd987d52389ea0a3f4bba0f9fb149e08582fda49c",
+            "elapsed_seconds": 444.16,
+            "exit_code": 0,
+            "trace_sha256": "b39275349b0bf777d015ae5bef9e907bd85d825e30bde9f664f87bc66f35b27f",
+            "html_sha256": "44eb406ca04f5747b3eb1ee822a0b019e7b44d87af84546c526c4b8a4f5828de"
+          },
+          "render": {
+            "renderer": "0.12.0",
+            "browser": "Chrome/158.0.8127.36",
+            "input_sha256": "44eb406ca04f5747b3eb1ee822a0b019e7b44d87af84546c526c4b8a4f5828de",
+            "captures": {
+              "1440": {
+                "viewport": 1440,
+                "width": 1440,
+                "height": 900,
+                "title": "Second Spin \u2014 Bike Repair",
+                "h1": "48-hour tune-ups.",
+                "loadedFonts": [
+                  "Fraunces",
+                  "Instrument Sans"
+                ],
+                "language": "en",
+                "reducedMotion": true,
+                "pageErrors": [],
+                "accessibility": "- banner:\n  - text: Second Spin\n  - link \"Book a tune-up\":\n    - /url: \"#booking\"\n- main:\n  - region \"48-hour tune-ups.\":\n    - paragraph: Bike repair\n    - heading \"48-hour tune-ups.\" [level=1]:\n      - text: 48-hour\n      - emphasis: tune-ups.\n  - region \"Choose a day\":\n    - heading \"Choose a day\" [level=2]\n    - paragraph: Pick a day to preview your booking.\n    - group \"Booking day\":\n      - text: Booking day\n      - radio \"Tuesday\"\n      - radio \"Wednesday\"\n      - radio \"Thursday\"\n      - radio \"Friday\"\n      - radio \"Saturday\"\n    - region \"Booking summary\":\n      - heading \"Booking summary\" [level=3]\n      - paragraph: Bike tune-up\n      - paragraph: $85\n      - term: Day\n      - definition: Select a day\n      - term: Turnaround\n      - definition: 48 hours\n      - term: Shop\n      - definition: 41 Elm Street",
+                "status": "rendered",
+                "sha256": "53a281e3db402e889ccd87e399fdd8e9b105fc4df835ce0b06a93b96f829e194"
+              },
+              "390": {
+                "viewport": 390,
+                "width": 375,
+                "height": 879,
+                "title": "Second Spin \u2014 Bike Repair",
+                "h1": "48-hour tune-ups.",
+                "loadedFonts": [
+                  "Fraunces",
+                  "Instrument Sans"
+                ],
+                "language": "en",
+                "reducedMotion": true,
+                "pageErrors": [],
+                "accessibility": "- banner:\n  - text: Second Spin\n  - link \"Book a tune-up\":\n    - /url: \"#booking\"\n- main:\n  - region \"48-hour tune-ups.\":\n    - paragraph: Bike repair\n    - heading \"48-hour tune-ups.\" [level=1]:\n      - text: 48-hour\n      - emphasis: tune-ups.\n  - region \"Choose a day\":\n    - heading \"Choose a day\" [level=2]\n    - paragraph: Pick a day to preview your booking.\n    - group \"Booking day\":\n      - text: Booking day\n      - radio \"Tuesday\"\n      - radio \"Wednesday\"\n      - radio \"Thursday\"\n      - radio \"Friday\"\n      - radio \"Saturday\"\n    - region \"Booking summary\":\n      - heading \"Booking summary\" [level=3]\n      - paragraph: Bike tune-up\n      - paragraph: $85\n      - term: Day\n      - definition: Select a day\n      - term: Turnaround\n      - definition: 48 hours\n      - term: Shop\n      - definition: 41 Elm Street",
+                "status": "rendered",
+                "sha256": "9b313f6049e772eb34bf2ac323d318fdc138447a6313f57a5d0433cf0774d887"
+              }
+            }
+          }
+        },
+        "specific-landing": {
+          "generation": {
+            "usage": {
+              "input_tokens": 64098,
+              "cached_input_tokens": 20864,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 21585,
+              "reasoning_output_tokens": 16182
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "treatment_call": true,
+            "direct_call": true,
+            "status": "passed",
+            "case": "landing-repair",
+            "arm": "specific-landing",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "b2c2a44f5ad2fa66d6b17b7fd987d52389ea0a3f4bba0f9fb149e08582fda49c",
+            "mcp_config_sha256": "3061215aaf5f1a6d674375ad4da1ea0824adff98f369c4405e4c09baac33c0fb",
+            "elapsed_seconds": 438.82,
+            "exit_code": 0,
+            "trace_sha256": "2a1a6f1a0c7569404a673b315fccb82a5b68590d6508304c188474f3855f01fe",
+            "html_sha256": "f22a4bfb4d90724c8c6ccfc365930ada465369fabf41dfc0a8cfdfcaaccec049"
+          },
+          "render": {
+            "renderer": "0.12.0",
+            "browser": "Chrome/158.0.8127.36",
+            "input_sha256": "f22a4bfb4d90724c8c6ccfc365930ada465369fabf41dfc0a8cfdfcaaccec049",
+            "captures": {
+              "1440": {
+                "viewport": 1440,
+                "width": 1440,
+                "height": 900,
+                "title": "Second Spin | Bike Tune-ups",
+                "h1": "48-hourtune-ups",
+                "loadedFonts": [
+                  "IBM Plex Sans",
+                  "Instrument Serif"
+                ],
+                "language": "en",
+                "reducedMotion": true,
+                "pageErrors": [],
+                "accessibility": "- banner:\n  - text: Second Spin\n  - link \"Book a tune-up\":\n    - /url: \"#booking\"\n- main:\n  - paragraph: Bike repair\n  - heading \"48-hour tune-ups\" [level=1]:\n    - text: 48-hour\n    - emphasis: tune-ups\n  - text: $85\n  - region \"Tune-up booking\":\n    - group \"Choose a day\":\n      - text: Choose a day\n      - paragraph: Bookings Tuesday to Saturday\n      - radio \"Tuesday\"\n      - text: Tue\n      - radio \"Wednesday\"\n      - text: Wed\n      - radio \"Thursday\"\n      - text: Thu\n      - radio \"Friday\"\n      - text: Fri\n      - radio \"Saturday\"\n      - text: Sat\n    - region \"Booking summary\":\n      - heading \"Booking summary\" [level=2]\n      - term: Day\n      - definition: Select a day\n      - term: Service\n      - definition: Bike tune-up\n      - term: Turnaround\n      - definition: 48 hours\n      - term: Price\n      - definition: $85\n      - status\n  - text: 41 Elm Street",
+                "status": "rendered",
+                "sha256": "1cad0a9c5698c8cd45fa0693430fcca2a428010f81503e91537de99d7fd4ea9a"
+              },
+              "390": {
+                "viewport": 390,
+                "width": 390,
+                "height": 844,
+                "title": "Second Spin | Bike Tune-ups",
+                "h1": "48-hourtune-ups",
+                "loadedFonts": [
+                  "IBM Plex Sans",
+                  "Instrument Serif"
+                ],
+                "language": "en",
+                "reducedMotion": true,
+                "pageErrors": [],
+                "accessibility": "- banner:\n  - text: Second Spin\n  - link \"Book a tune-up\":\n    - /url: \"#booking\"\n- main:\n  - paragraph: Bike repair\n  - heading \"48-hour tune-ups\" [level=1]:\n    - text: 48-hour\n    - emphasis: tune-ups\n  - text: $85\n  - region \"Tune-up booking\":\n    - group \"Choose a day\":\n      - text: Choose a day\n      - paragraph: Bookings Tuesday to Saturday\n      - radio \"Tuesday\"\n      - text: Tue\n      - radio \"Wednesday\"\n      - text: Wed\n      - radio \"Thursday\"\n      - text: Thu\n      - radio \"Friday\"\n      - text: Fri\n      - radio \"Saturday\"\n      - text: Sat\n    - region \"Booking summary\":\n      - heading \"Booking summary\" [level=2]\n      - term: Day\n      - definition: Select a day\n      - term: Service\n      - definition: Bike tune-up\n      - term: Turnaround\n      - definition: 48 hours\n      - term: Price\n      - definition: $85\n      - status\n  - text: 41 Elm Street",
+                "status": "rendered",
+                "sha256": "c9a9cc7a1df36d8ee81e3799069346069e633e29ddc18da96896d3b2ca524af5"
+              }
+            }
+          }
+        }
+      }
+    },
+    "landing-radio": {
+      "ballot": {
+        "case": "landing-radio",
+        "surface": "landing",
+        "blind_key": {
+          "A": "specific-landing",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The oversized \u201cField Notes\u201d title identifies the broadcast immediately, and the yellow \u201cListen live\u201d button stands out beside it on desktop and below the host on mobile."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "\u201cWeekdays\u201d aligns with the player\u2019s left edge on desktop, and consistent mobile margins keep the stacked player and ruled schedule row aligned."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The condensed title fits on one line even at 390 pixels, and the bold schedule numerals make \u201c7\u20139\u201d easy to pick out beside the smaller \u201cam.\u201d"
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Yellow draws attention to the on-air dot and listening control against navy, while the shift to cream marks the start of the schedule."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Visible \u201cOn air\u201d text explains the dot, and both browser trees expose the named \u201cListen live\u201d button, the \u201cSilent demo\u201d status and the Schedule region."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Low Signal\u2019s nonprofit identity, Field Notes with Ana Reyes and the weekday 7\u20139 am slot are exact, and \u201cSilent demo\u201d labels the player, though the evidence covers only its initial state."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "The illustrated radio draws the first glance, especially on mobile where the entire poster precedes the show title and the prominent \u201cListen live\u201d button."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The poster and show details sit side by side on desktop and share the same margins on mobile, with a tighter gap grouping the weekday hours and listening control at both widths."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The serif title shifts from two lines on desktop to one on mobile, preserving the italic emphasis on \u201cNotes\u201d and keeping the bold host name and airtime easy to scan."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Plum connects the radio artwork, station mark and listening control, and the red dot beside \u201cOn air\u201d gives broadcast status its own accent."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "The broadcast indicator has a readable \u201cOn air\u201d label and both browser trees name the \u201cListen live\u201d button, while the listener status is empty in both initial views."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "The station, show, host and weekday hours match the brief, and \u201cListen live\u201d is clear, though the supplied views give no indication that the demo is silent or how it identifies the listener as live after activation."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26090,
+          "cached_input_tokens": 17792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 6709,
+          "reasoning_output_tokens": 6030
+        },
+        "scores": {
+          "specific-landing": 95.83333333333334,
+          "v2": 87.5
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "1e2bc169bc1244749cd8f9c1c7bdb6b746bd5273d0ee72550c30057eb6fba865",
+          "A-390.png": "63bea7eb8c94d3cc5f9d6ccb053a8919118ead9a6b6db840166dd3b97124708d",
+          "B-1440.png": "04c1db4ef07684d3a22bcacba04b425cb274abb4dbe1519709c59dd221aa0e35",
+          "B-390.png": "f24e02c59ce7f3a1270658c42160a37057f0070ade49f900fff20a5c7a0b8b2e"
+        },
+        "judge_prompt_sha256": "757803660d4f6d3975f713a044474f673812ed04c6eb8216801dbe75fb3eeedd"
+      },
+      "arms": {
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 62607,
+              "cached_input_tokens": 40192,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 21230,
+              "reasoning_output_tokens": 14935
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "landing-radio",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "c6c100662332c753e490af5d7d784386018138c1d82f6405b2e6d5bca2008ef0",
+            "elapsed_seconds": 430.74,
+            "exit_code": 0,
+            "trace_sha256": "dbbe2453ea2b8b972c7b99ef2e49eb1b4cdc3fdb305ef4f49c0128a293d2683f",
+            "html_sha256": "80f8ff62b8d86f279ee548625887211e38fa6e2d1fe9149b3ac996e833fb5de0"
+          },
+          "render": {
+            "renderer": "0.12.0",
+            "browser": "Chrome/158.0.8127.36",
+            "input_sha256": "80f8ff62b8d86f279ee548625887211e38fa6e2d1fe9149b3ac996e833fb5de0",
+            "captures": {
+              "1440": {
+                "viewport": 1440,
+                "width": 1440,
+                "height": 900,
+                "title": "Low Signal \u2014 Community Radio",
+                "h1": "Field Notes",
+                "loadedFonts": [
+                  "Fraunces",
+                  "Instrument Sans"
+                ],
+                "language": "en",
+                "reducedMotion": true,
+                "pageErrors": [],
+                "accessibility": "- banner:\n  - text: Low Signal\n  - paragraph: Nonprofit community radio\n- main:\n  - region \"Field Notes\":\n    - paragraph: On air\n    - heading \"Field Notes\" [level=1]:\n      - text: Field\n      - emphasis: Notes\n    - paragraph:\n      - text: with\n      - strong: Ana Reyes\n    - paragraph:\n      - text: Weekdays\n      - time: \"7\"\n      - text: \u2013\n      - time: 9 am\n    - button \"Listen live\"\n    - status",
+                "status": "rendered",
+                "sha256": "04c1db4ef07684d3a22bcacba04b425cb274abb4dbe1519709c59dd221aa0e35"
+              },
+              "390": {
+                "viewport": 390,
+                "width": 390,
+                "height": 844,
+                "title": "Low Signal \u2014 Community Radio",
+                "h1": "Field Notes",
+                "loadedFonts": [
+                  "Fraunces",
+                  "Instrument Sans"
+                ],
+                "language": "en",
+                "reducedMotion": true,
+                "pageErrors": [],
+                "accessibility": "- banner:\n  - text: Low Signal\n  - paragraph: Nonprofit community radio\n- main:\n  - region \"Field Notes\":\n    - paragraph: On air\n    - heading \"Field Notes\" [level=1]:\n      - text: Field\n      - emphasis: Notes\n    - paragraph:\n      - text: with\n      - strong: Ana Reyes\n    - paragraph:\n      - text: Weekdays\n      - time: \"7\"\n      - text: \u2013\n      - time: 9 am\n    - button \"Listen live\"\n    - status",
+                "status": "rendered",
+                "sha256": "f24e02c59ce7f3a1270658c42160a37057f0070ade49f900fff20a5c7a0b8b2e"
+              }
+            }
+          }
+        },
+        "specific-landing": {
+          "generation": {
+            "usage": {
+              "input_tokens": 67965,
+              "cached_input_tokens": 20096,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 22029,
+              "reasoning_output_tokens": 18238
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "treatment_call": true,
+            "direct_call": true,
+            "status": "passed",
+            "case": "landing-radio",
+            "arm": "specific-landing",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "c6c100662332c753e490af5d7d784386018138c1d82f6405b2e6d5bca2008ef0",
+            "mcp_config_sha256": "3061215aaf5f1a6d674375ad4da1ea0824adff98f369c4405e4c09baac33c0fb",
+            "elapsed_seconds": 447.37,
+            "exit_code": 0,
+            "trace_sha256": "67636b79391fb836802bd374500eea53324983bf5e02a6c8d7a6725bb1dcb444",
+            "html_sha256": "92ed3896fef54079e091baba1f054d123c68ba35ea69ef5fe02f35ed7950ca6e"
+          },
+          "render": {
+            "renderer": "0.12.0",
+            "browser": "Chrome/158.0.8127.36",
+            "input_sha256": "92ed3896fef54079e091baba1f054d123c68ba35ea69ef5fe02f35ed7950ca6e",
+            "captures": {
+              "1440": {
+                "viewport": 1440,
+                "width": 1440,
+                "height": 900,
+                "title": "Low Signal \u2014 Community radio",
+                "h1": "Field Notes",
+                "loadedFonts": [
+                  "Atkinson Hyperlegible Next",
+                  "Barlow Condensed"
+                ],
+                "language": "en",
+                "reducedMotion": true,
+                "pageErrors": [],
+                "accessibility": "- banner:\n  - text: Low Signal\n  - paragraph: Nonprofit community radio\n- main:\n  - region \"Field Notes\":\n    - paragraph: On air\n    - heading \"Field Notes\" [level=1]\n    - paragraph:\n      - text: with\n      - strong: Ana Reyes\n    - button \"Listen live\"\n    - status: Silent demo\n  - region \"Schedule\":\n    - heading \"Schedule\" [level=2]\n    - term: Weekdays\n    - definition: 7\u20139 am",
+                "status": "rendered",
+                "sha256": "1e2bc169bc1244749cd8f9c1c7bdb6b746bd5273d0ee72550c30057eb6fba865"
+              },
+              "390": {
+                "viewport": 390,
+                "width": 390,
+                "height": 844,
+                "title": "Low Signal \u2014 Community radio",
+                "h1": "Field Notes",
+                "loadedFonts": [
+                  "Atkinson Hyperlegible Next",
+                  "Barlow Condensed"
+                ],
+                "language": "en",
+                "reducedMotion": true,
+                "pageErrors": [],
+                "accessibility": "- banner:\n  - text: Low Signal\n  - paragraph: Nonprofit community radio\n- main:\n  - region \"Field Notes\":\n    - paragraph: On air\n    - heading \"Field Notes\" [level=1]\n    - paragraph:\n      - text: with\n      - strong: Ana Reyes\n    - button \"Listen live\"\n    - status: Silent demo\n  - region \"Schedule\":\n    - heading \"Schedule\" [level=2]\n    - term: Weekdays\n    - definition: 7\u20139 am",
+                "status": "rendered",
+                "sha256": "63bea7eb8c94d3cc5f9d6ccb053a8919118ead9a6b6db840166dd3b97124708d"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
