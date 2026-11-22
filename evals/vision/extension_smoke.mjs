@@ -83,7 +83,9 @@ try {
   })).sessionId;
   const inspect = async (session, expression) => {
     const output = await send("Runtime.evaluate", { expression, returnByValue: true }, session);
-    if (output.exceptionDetails) throw new Error(output.exceptionDetails.text);
+    if (output.exceptionDetails) {
+      throw new Error(output.exceptionDetails.exception?.description || output.exceptionDetails.text);
+    }
     return output.result.value;
   };
   const image = async (session, name) => {
@@ -107,33 +109,36 @@ try {
   const extensionId = new URL(target.url).hostname;
   proof.extensionId = extensionId;
   const popup = await attach(target);
-  const observePopup = () => inspect(popup, `(() => ({
-    state: document.body.dataset.state,
-    focus: document.activeElement.id,
-    enabled: !document.querySelector('#scan').disabled,
-    status: document.querySelector('#status').textContent,
-    command: document.querySelector('#command-text').textContent,
-    requestCount: performance.getEntriesByType('resource').filter(entry => /^https?:/.test(entry.name)).length,
-    previewUrl: document.querySelector('#open').dataset.url || null
-  }))()`);
+  const observePopup = () => inspect(popup, `(() => {
+    if (!document.body?.dataset.state) return null;
+    return {
+      state: document.body.dataset.state,
+      focus: document.activeElement?.id,
+      enabled: !document.querySelector('#scan').disabled,
+      status: document.querySelector('#status').textContent,
+      command: document.querySelector('#command-text').textContent,
+      requestCount: performance.getEntriesByType('resource').filter(entry => /^https?:/.test(entry.name)).length,
+      previewUrl: document.querySelector('#open').dataset.url || null
+    };
+  })()`);
   proof.idle = await until("enabled, keyboard-focused Scan action", async () => {
     const state = await observePopup();
-    return state.state === "idle" && state.focus === "scan" && state.enabled ? state : null;
+    return state?.state === "idle" && state.focus === "scan" && state.enabled ? state : null;
   });
   assert.equal(proof.idle.requestCount, 0);
   await image(popup, "popup-idle.png");
   key("Return");
   proof.missingHost = await until("missing host recovery", async () => {
     const result = await observePopup();
-    return result.state === "problem" && result.focus === "scan" && result.enabled ? result : null;
+    return result?.state === "problem" && result.focus === "scan" && result.enabled ? result : null;
   });
   assert.equal(proof.missingHost.command, `design-mcp review --install-host ${extensionId}`);
   execFileSync(cli, ["review", "--install-host", extensionId, "--chrome-user-data-dir", profile], { encoding: "utf8" });
   key("Return");
   proof.result = await until("installed native review result", async () => {
     const result = await observePopup();
-    if (result.state === "problem") throw new Error(result.status);
-    return result.state === "result" ? result : null;
+    if (result?.state === "problem") throw new Error(result.status);
+    return result?.state === "result" ? result : null;
   }, 15000);
   assert.equal(proof.result.focus, "open");
   assert.equal(proof.result.requestCount, 0);
@@ -143,12 +148,17 @@ try {
   key("Return");
   const previewTarget = await until("preview tab after the popup action", () => findTarget(item => item.url === proof.result.previewUrl));
   const preview = await attach(previewTarget);
-  const observePreview = () => inspect(preview, `(() => ({
-    focus:document.activeElement.id,
-    title:document.title,
-    visible: getComputedStyle(document.querySelector('.state-after')).display !== 'none',
-    after: document.querySelector('#view-after').checked
-  }))()`);
+  const observePreview = () => inspect(preview, `(() => {
+    const after = document.querySelector('#view-after');
+    if (!after || document.readyState !== 'complete') return null;
+    return {
+      focus: document.activeElement?.id,
+      title: document.title,
+      visible: getComputedStyle(document.querySelector('.state-after')).display !== 'none',
+      after: after.checked
+    };
+  })()`);
+  await until("loaded Before and After controls", observePreview);
   for (let step = 0; step < 8 && (await observePreview()).focus !== "view-before"; step++) key("Tab");
   assert.equal((await observePreview()).focus, "view-before");
   await image(preview, "preview-before.png");
