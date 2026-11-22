@@ -13,6 +13,7 @@ import subprocess
 from threading import Thread
 import time
 from urllib.request import urlopen
+from urllib.parse import urlsplit
 
 from fastmcp import Client
 from fastmcp.client.transports import StdioTransport
@@ -158,14 +159,16 @@ async def render_all(args, chrome, server, env, web_socket):
         session = await client.call_tool("session_new", {"direct": web_socket})
         if not re.search(r"Session .+ created", result_text(session)):
             raise RuntimeError(f"Cannot open the isolated Playwriter session: {result_text(session)}")
-        url = f"http://127.0.0.1:{server.server_port}/index.html"
+        url = args.public_reference or f"http://127.0.0.1:{server.server_port}/index.html"
+        source = urlsplit(url)
+        same_origin = f"{source.scheme}://{source.netloc}" if args.public_reference else None
         await execute(client, f"""
           await context.route('**/*', route => {{
             const request = route.request();
             const origin = new URL(request.url()).origin;
             const font = (origin === 'https://fonts.googleapis.com' && request.resourceType() === 'stylesheet') ||
               (origin === 'https://fonts.gstatic.com' && request.resourceType() === 'font');
-            if (request.method() === 'GET' && (request.url() === {json.dumps(url)} || font)) {{
+            if (request.method() === 'GET' && (request.url() === {json.dumps(url)} || font || origin === {json.dumps(same_origin)})) {{
               return route.continue();
             }}
             return route.abort();
@@ -185,7 +188,7 @@ async def render_all(args, chrome, server, env, web_socket):
                     captures[width] = await capture(client, cell, width, height, url)
                 except (RuntimeError, ValueError, TimeoutError) as error:
                     captures[width] = {"status": "render-error", "message": str(error)}
-            record = {"renderer": args.renderer, "browser": chrome, "input_sha256": sha256(server.fixture),
+            record = {"renderer": args.renderer, "browser": chrome, "input_sha256": sha256(server.fixture), "source_url": args.public_reference,
                       "captures": captures}
             receipt.write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
             print(template.parent.relative_to(args.cells),
@@ -199,6 +202,7 @@ def main():
     p.add_argument("--chrome", default="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
     p.add_argument("--scratch", type=lambda path: Path(path).resolve(), required=True)
     p.add_argument("--case", action="append")
+    p.add_argument("--public-reference", choices=("https://designsystem.digital.gov/templates/form-templates/address-form/",))
     args = p.parse_args()
     args.scratch.mkdir(parents=True, exist_ok=False)
     profile = args.scratch / "profile"

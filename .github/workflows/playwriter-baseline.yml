@@ -1,9 +1,9 @@
-name: Compact frontier vision calibration
+name: Live public page vision preflight
 
 on:
   push:
-    branches: [design-mcp/vision-calibration]
-    paths: ['.github/workflows/playwriter-baseline.yml', 'evidence/benchmark-v1/render-inputs/**', 'evals/v1/render.py']
+    branches: [design-mcp/live-page-preflight]
+    paths: ['.github/workflows/playwriter-baseline.yml', 'evidence/benchmark-v1/live-source/**', 'evals/v1/render.py']
 
 permissions:
   contents: read
@@ -32,29 +32,20 @@ jobs:
           chrome="$RUNNER_TEMP/browser/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
           "$chrome" --version
           python evals/v1/render.py \
-            --cells evidence/benchmark-v1/render-inputs --scratch "$RUNNER_TEMP/profile" \
-            --playwriter "$RUNNER_TEMP/playwriter/node_modules/.bin/playwriter" --chrome "$chrome"
+            --cells evidence/benchmark-v1/live-source --scratch "$RUNNER_TEMP/profile" \
+            --playwriter "$RUNNER_TEMP/playwriter/node_modules/.bin/playwriter" --chrome "$chrome" \
+            --public-reference https://designsystem.digital.gov/templates/form-templates/address-form/
           python - <<'PY'
           from pathlib import Path
           import json
-          for path in Path('evidence/benchmark-v1/render-inputs').rglob('index.html'):
+          for path in Path('evidence/benchmark-v1/live-source').rglob('index.html'):
               record = json.loads(path.with_name('render.json').read_text())
               assert record['browser'].endswith('158.0.8127.36'), record['browser']
               assert all(item['status'] == 'rendered' for item in record['captures'].values()), record
           PY
-      - name: Resize desk views for comparison
-        shell: bash
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          from PIL import Image
-          for path in Path('evidence/benchmark-v1/render-inputs').rglob('1440.png'):
-              with Image.open(path) as image:
-                  image.resize((720, 450), Image.Resampling.LANCZOS).save(path.with_name('720.png'), optimize=True)
-          PY
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: compact-vision-captures
-          path: evidence/benchmark-v1/render-inputs/
+          name: live-page-vision
+          path: evidence/benchmark-v1/live-source/
           if-no-files-found: error
           retention-days: 7
