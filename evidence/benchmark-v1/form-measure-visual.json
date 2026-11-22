@@ -1,0 +1,408 @@
+{
+  "summary": {
+    "requested_pairs": 36,
+    "judged_pairs": 2,
+    "v2": 89.58333333333333,
+    "form-measure": 93.75,
+    "difference": 4.166666666666671,
+    "wins_ties_losses": [
+      1,
+      1,
+      0
+    ],
+    "paired_bootstrap_95_interval": [
+      0.0,
+      8.333333333333343
+    ],
+    "median_usage": {
+      "v2": {
+        "input_tokens": 65710.0,
+        "cached_input_tokens": 47552.0,
+        "output_tokens": 22701.0,
+        "elapsed_seconds": 460.245
+      },
+      "form-measure": {
+        "input_tokens": 65376.0,
+        "cached_input_tokens": 45120.0,
+        "output_tokens": 22713.5,
+        "elapsed_seconds": 461.765
+      }
+    }
+  },
+  "cases": {
+    "form-label": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44999509168",
+      "cells": {
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 65498,
+              "cached_input_tokens": 41728,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 22510,
+              "reasoning_output_tokens": 16875
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "form-label",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "ceb21eda22c3b3d27af601949c14f909587a5de93687c1133c0fa147edd25f0b",
+            "elapsed_seconds": 456.64,
+            "exit_code": 0,
+            "trace_sha256": "d172649d6c86f46972ae6de2417967e7332e3c4ac301d1b147366fc440fa50a7",
+            "html_sha256": "95c19d6df6dac3a66c3515ffeb8192cc3564dfcc26966b254d2a687ca189d86e"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "8e6d27a7b6706a4ac0daa42d03c8a7428f74346253be58b47afed1a930b53e9c",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "340b40f3fe61e26bbd70f101a66208a90805401f19f6ff6691740d37f4a65d3b",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "form-measure": {
+          "generation": {
+            "usage": {
+              "input_tokens": 65056,
+              "cached_input_tokens": 52608,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 24172,
+              "reasoning_output_tokens": 18900
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "treatment_call": true,
+            "direct_call": true,
+            "status": "passed",
+            "case": "form-label",
+            "arm": "form-measure",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "ceb21eda22c3b3d27af601949c14f909587a5de93687c1133c0fa147edd25f0b",
+            "mcp_config_sha256": "7093bd0836677c1a7b9714136158c3f6b5a9cb171b572174887e4ba06c7f57f0",
+            "elapsed_seconds": 489.87,
+            "exit_code": 0,
+            "trace_sha256": "c49da078ef75b1e5e03ffd67781edc95040c39d5df576a23aab6d0cc6ea62918",
+            "html_sha256": "e4e9901f3d6e52e394b5c7cc356a952a2ac4565cbd217f44d465308ec096ac50"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "70b3500ed39ce656b5bc58d3da715aa5f933577d2c2f4c2d2f19185286815eff",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "89b03bf4a6e1838cf7eb318e59195cf4ff08de2470de86773852a4f645b28a8e",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "form-label",
+        "surface": "form",
+        "blind_key": {
+          "A": "v2",
+          "B": "form-measure"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The title identifies the task at first glance on both screens, and the fields lead through the reason choices to the prominent \u201cRequest return label\u201d button."
+            },
+            "spacing": {
+              "score": 3,
+              "evidence": "Labels sit close to their inputs and the radio rows are evenly spaced, though the gap before \u201cReason for return\u201d is the same as the gap between the two order fields."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The serif title breaks cleanly after \u201cRequest a\u201d at both widths, and the bold sans-serif field labels are easy to distinguish from the instructions and choices."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The plum panel and pink record sleeve give the shop a recognizable identity, while the berry-colored button stands out on the pale form."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "Both browser trees name the form, textboxes, radio group and individual choices, though the page gives no explicit cue that every field is required."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "The form asks for the order number, email and one of the three specified reasons, while confirmation showing the chosen reason, messages for missing or invalid entries, and retention of entered values remain unverified."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "Below the task title, \u201cOrder details\u201d and \u201cReason for return\u201d guide the eye from one group to the next, with \u201cReview return request\u201d directly beneath the choices on both screens."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The shorter order-number field and wider email field share a left edge, and the section headings move from beside their controls on desktop to directly above them on mobile."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The large condensed title, smaller bold section headings and regular-weight choices remain distinct and readable at 390 pixels."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The teal review button echoes the record sleeve and draws attention to the action, while dark text stays clear against the pale background."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "\u201cAll fields are required\u201d makes the requirement explicit at both widths, and both browser trees identify the two groups, each input and choice, and the review button by name."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both views show the requested fields and all three reasons before \u201cReview return request,\u201d with no interaction evidence for confirmation naming the chosen reason, feedback on missing or invalid entries, or preservation of entered values."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26196,
+          "cached_input_tokens": 17792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4261,
+          "reasoning_output_tokens": 3600
+        },
+        "scores": {
+          "v2": 87.5,
+          "form-measure": 95.83333333333334
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "8e6d27a7b6706a4ac0daa42d03c8a7428f74346253be58b47afed1a930b53e9c",
+          "A-390.png": "340b40f3fe61e26bbd70f101a66208a90805401f19f6ff6691740d37f4a65d3b",
+          "B-1440.png": "70b3500ed39ce656b5bc58d3da715aa5f933577d2c2f4c2d2f19185286815eff",
+          "B-390.png": "89b03bf4a6e1838cf7eb318e59195cf4ff08de2470de86773852a4f645b28a8e"
+        },
+        "judge_prompt_sha256": "c020a55067cab49182f7fed184f49f1173152a656432b485c49764014ddf008c"
+      }
+    },
+    "form-exhibition": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44999509168",
+      "cells": {
+        "form-measure": {
+          "generation": {
+            "usage": {
+              "input_tokens": 65696,
+              "cached_input_tokens": 37632,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 21255,
+              "reasoning_output_tokens": 15719
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "treatment_call": true,
+            "direct_call": true,
+            "status": "passed",
+            "case": "form-exhibition",
+            "arm": "form-measure",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "4704e50326e6c6f8fc948714d7f9eb64a4d9b1b4a91295e5b3836a8b69c45734",
+            "mcp_config_sha256": "7093bd0836677c1a7b9714136158c3f6b5a9cb171b572174887e4ba06c7f57f0",
+            "elapsed_seconds": 433.66,
+            "exit_code": 0,
+            "trace_sha256": "6e6d6a20550ccd4fa8aa2790bab0fa402de2e684f1c7aa789e52e8bf2d590ab4",
+            "html_sha256": "2f019d15da46a6b6f3ca5d1ffbdbcaed0f8506eff13194de67d1c215dbd35d17"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "056cb2b0a6ecf603da49ed5ac224e0d457f72b9fe0b201c2ad3584f6989412bd",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "6217b8d08ee80c0f53a49cda7981ebd785ce1188bb6398aefd585d39cd35108a",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 65922,
+              "cached_input_tokens": 53376,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 22892,
+              "reasoning_output_tokens": 16469
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "form-exhibition",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "4704e50326e6c6f8fc948714d7f9eb64a4d9b1b4a91295e5b3836a8b69c45734",
+            "elapsed_seconds": 463.85,
+            "exit_code": 0,
+            "trace_sha256": "0531ade33c5861f74954572e5b61af9ce9b160366ffb96528db942e466c2ddcb",
+            "html_sha256": "2f9061e6294add3eb18d70e7b1c996253946c67f43d0c74078a8480a539e1c7f"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "a6750620cb525231bede8795bbd2bb7441bff5b3a5cfdbf4f511b86c345c9b73",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "be2e352ab37131cca9aefabe89ff023df3d413be764c60ff41da3ce9f8aed6f0",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "form-exhibition",
+        "surface": "form",
+        "blind_key": {
+          "A": "form-measure",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The title leads directly into Contact details, Visit details and one prominent confirmation button, with the arch reduced to a thumbnail beside the mobile title."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "Section headings occupy a separate column on desktop and sit directly above their fields on mobile, with horizontal rules preserving the group boundaries."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The condensed title holds its two-line shape at both widths, and the bold field labels remain distinct from the lighter \u201c1\u201325 people\u201d hint on mobile."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Deep teal connects the illustrated arch to the confirmation button, which stands out as the only dark-filled control on the pale background at both widths."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "Both browser trees corroborate the visible field labels and grouped visit options, though neither initial view provides evidence of accessible confirmation feedback."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both views show name, email, the 1\u201325 range, both visit choices and the privacy note, while the size-and-type confirmation and local data handling remain unverified."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "The request title and action are clear at both widths, though the gold sculpture draws the eye between the mobile heading and the first field."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "Name and email share a row on desktop and stack on mobile, while the size hint stays beside its stepper and the visit choices remain paired."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The serif title and italic privacy note distinguish the introduction from the bold sans-serif field labels, and the full title fits on one line at 390 pixels."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Forest green ties the masthead and confirmation button to the gallery illustration, while the muted minus sign is visibly distinct from the active plus sign."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "At both widths the browser tree names the size controls, identifies \u201cDecrease group size\u201d as disabled at 1, and exposes a status region and a labeled radio group."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both contact fields, the displayed 1\u201325 range and the exact visit choices are present, but no interaction receipt verifies the confirmed size and type or the on-page privacy claim."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 25567,
+          "cached_input_tokens": 11776,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4893,
+          "reasoning_output_tokens": 4258
+        },
+        "scores": {
+          "form-measure": 91.66666666666666,
+          "v2": 91.66666666666666
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "056cb2b0a6ecf603da49ed5ac224e0d457f72b9fe0b201c2ad3584f6989412bd",
+          "A-390.png": "6217b8d08ee80c0f53a49cda7981ebd785ce1188bb6398aefd585d39cd35108a",
+          "B-1440.png": "a6750620cb525231bede8795bbd2bb7441bff5b3a5cfdbf4f511b86c345c9b73",
+          "B-390.png": "be2e352ab37131cca9aefabe89ff023df3d413be764c60ff41da3ce9f8aed6f0"
+        },
+        "judge_prompt_sha256": "04dc45578492670ff4119a6f25c01be1fa09d97e5c81fe98d1ee4da69169db06"
+      }
+    }
+  },
+  "scope": "Matched rematches on two repair briefs with unchanged frozen v2 controls and the original six-criterion rubric.",
+  "candidate_commit": "9856a234bbe6e8be3e1e43d704a902649090c673"
+}
