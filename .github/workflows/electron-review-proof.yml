@@ -25,6 +25,7 @@ jobs:
           python -m venv "$RUNNER_TEMP/design-review"
           "$RUNNER_TEMP/design-review/bin/python" -m pip install .
           npm install --prefix "$RUNNER_TEMP/review-electron" --no-audit --no-fund electron@43.4.0
+          "$RUNNER_TEMP/review-electron/node_modules/.bin/install-electron"
           sandbox="$RUNNER_TEMP/review-electron/node_modules/electron/dist/chrome-sandbox"
           sudo install -o root -g root -m 4755 "$sandbox" /usr/local/sbin/electron-sandbox
       - name: Review a real Electron window before and after keyboard input
