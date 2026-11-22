@@ -1,0 +1,204 @@
+{
+  "observed_on": "2026-11-22",
+  "capture": "Playwriter 0.12.0 with the activated Chrome extension, original CSS-scale PNGs under .context/x-visual-references/diverse/",
+  "searches": [
+    {
+      "query": "(from:posthog OR from:usgraphics) PostHog website",
+      "rendered_posts": 7
+    },
+    {
+      "query": "from:puddingviz (interactive OR data OR visual) min_faves:40",
+      "rendered_posts": 7
+    },
+    {
+      "query": "Shopify Editions interactive website min_faves:80",
+      "rendered_posts": 1
+    },
+    {
+      "query": "(radio.garden OR radio garden) min_faves:75",
+      "rendered_posts": 7
+    },
+    {
+      "query": "from:shopify (Editions OR edition) filter:media min_faves:100",
+      "rendered_posts": 5
+    },
+    {
+      "query": "(from:linear OR from:karrisaarinen) (website OR redesign) filter:media min_faves:100",
+      "rendered_posts": 5
+    }
+  ],
+  "x_result_scroll": {
+    "query": "UI design filter:images min_faves:200",
+    "new_post_paths": [
+      "/UiMunna/status/2122585575614259630",
+      "/dieegosf/status/2122023680607674457",
+      "/CY160909/status/2122513805506965729"
+    ]
+  },
+  "tests": [
+    {
+      "name": "posthog-section",
+      "url": "https://posthog.com/",
+      "changed_scroll_containers": [
+        [
+          "DIV",
+          935
+        ]
+      ],
+      "visible_headings": [
+        "Social proof",
+        "How PostHog helps you build better products",
+        "1. Get the data in"
+      ],
+      "capture": {
+        "png": "posthog-section.png",
+        "css_dimensions": [
+          1280,
+          900
+        ],
+        "sha256": "6deb04934e3f09656b6ea7fe2c271d7f8432a65f199c63cb945fdf353d280a4f"
+      }
+    },
+    {
+      "name": "karri-writing",
+      "url": "https://karrisaarinen.com/",
+      "changed_scroll_containers": [
+        [
+          "HTML",
+          1040
+        ]
+      ],
+      "visible_headings": [
+        "2025"
+      ],
+      "capture": {
+        "png": "karri-writing.png",
+        "css_dimensions": [
+          1280,
+          900
+        ],
+        "sha256": "8fdc2779fa0f71a7c5fc242ee57c368a59e6155e65246e68a1d5e5aa0cba7af8"
+      }
+    },
+    {
+      "name": "pudding-census",
+      "url": "https://pudding.cool/2020/03/census-history/",
+      "changed_scroll_containers": [
+        [
+          "HTML",
+          1040
+        ]
+      ],
+      "visible_headings": [],
+      "capture": {
+        "png": "pudding-census.png",
+        "css_dimensions": [
+          1280,
+          900
+        ],
+        "sha256": "3ac5e0182dcb22cec0daaee46c7e24b26d07ffbbfb56b30f2618b94fe28ba226"
+      }
+    },
+    {
+      "name": "PostHog Pricing",
+      "outcome_url": "https://posthog.com/pricing",
+      "capture": {
+        "png": "posthog-pricing.png",
+        "css_dimensions": [
+          1280,
+          900
+        ],
+        "sha256": "be3d59dd3e3c0de299ecadc26360aac034fded0f996ccbefada68c1153f55ce0"
+      }
+    },
+    {
+      "name": "Karri article",
+      "outcome_url": "https://karrisaarinen.com/posts/design-is-more-than-code/",
+      "capture": {
+        "png": "karri-article.png",
+        "css_dimensions": [
+          1280,
+          900
+        ],
+        "sha256": "ecc02b25dd8c8b2bed5cc60c3332871ae504e75e5c8ec1169a16a266edb57368"
+      },
+      "index_mobile_capture": {
+        "png": "karri-390.png",
+        "css_dimensions": [
+          390,
+          844
+        ],
+        "sha256": "3a946e9729875c9d29e2b0c9c3e3c99760c2353b86b8a67090f1d63fb3c83189"
+      }
+    },
+    {
+      "name": "Pentagram Archive",
+      "url": "https://www.pentagram.com/archive/results?color=8d819d",
+      "actions": "Opened archive and scrolled the filtered results 680 CSS pixels.",
+      "captures": [
+        {
+          "png": "pentagram-explored.png",
+          "css_dimensions": [
+            1280,
+            900
+          ],
+          "sha256": "15b4fcc4030aff36698bccc99a67829d5536d156b741a0a8115a25e784d697b4"
+        },
+        {
+          "png": "pentagram-scrolled.png",
+          "css_dimensions": [
+            1280,
+            900
+          ],
+          "sha256": "d1fadf80f7e5c4085038ae36882e914b0b183b73f2e2c7a17c4006a98b48b5e8"
+        }
+      ]
+    },
+    {
+      "name": "WWF Blue Corridors",
+      "url": "https://bluecorridors.org/explore/conservation",
+      "actions": "Opened Layers, closed it, and switched from the static globe to a static flat map.",
+      "verification": "The screenshots show changed projection and a distinct selection affordance. Migration Corridors did not change on the static globe.",
+      "captures": [
+        {
+          "png": "blue-corridors-settled.png",
+          "css_dimensions": [
+            1280,
+            900
+          ],
+          "sha256": "bc481e93be9dd4eafb2fbd004ad8734c625a4aa42e99cd95b3611faa1aea0bf3"
+        },
+        {
+          "png": "blue-corridors-layers.png",
+          "css_dimensions": [
+            1280,
+            900
+          ],
+          "sha256": "8c19a8feb913fe1747f9cfdab32618211e8dc1e553fee33c13fdcb59332af017"
+        },
+        {
+          "png": "blue-corridors-flat.png",
+          "css_dimensions": [
+            1280,
+            900
+          ],
+          "sha256": "b48ecab5d01241ff9eba2b49b2157788d923497df024398a64927eb66d558478"
+        }
+      ]
+    }
+  ],
+  "limited_captures": [
+    {
+      "site": "Shopify Renaissance Edition",
+      "observed": "Intro screen remained over the content after navigating to Shop app."
+    },
+    {
+      "site": "The Pudding Book Covers",
+      "observed": "Opening screenshot showed the title and controls with a blank map."
+    },
+    {
+      "site": "Radio Garden",
+      "observed": "Reviewed the Play entry screen."
+    }
+  ]
+}
