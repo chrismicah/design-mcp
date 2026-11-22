@@ -75,7 +75,7 @@ Try “calmer” after the first draft. The result adjusts focal spacing, the si
 - **The active Chrome tab.** Load the extension from the folder printed by `design-mcp review --extension-path`. Open the toolbar popup, choose **Review this page**, and follow its one-time host setup. [Extension setup](design_mcp/review/README.md#set-up-the-extension)
 - **Your SwiftUI or Electron app.** Use the app-specific exporter, then run `design-mcp review-app capture.json` to check the visible controls for clipping and occlusion. [Swift exporter](integrations/desktop/SwiftCapture.swift) · [Electron exporter](integrations/desktop/electron.mjs)
 
-Hosted checks covered a public URL on macOS, the Chrome extension on Linux, and owned SwiftUI and Electron fixtures on macOS 15 arm64. Reference-Mac latency, independent design review, and final GPT Computer Use smoke remain open. [Smoke receipts](SMOKE-RECEIPTS.md)
+Hosted checks covered a public URL on macOS, the Chrome extension on Linux and macOS 15 arm64, and owned SwiftUI and Electron fixtures on macOS 15 arm64. The macOS Chrome test opened the toolbar, recovered the local host, selected After by keyboard, and reopened the saved preview with the seeded field masked. Reference-Mac latency, independent design review, and final GPT Computer Use smoke remain open. [Smoke receipts](SMOKE-RECEIPTS.md)
 
 ## Compatibility
 
