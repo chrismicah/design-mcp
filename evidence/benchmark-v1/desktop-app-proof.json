@@ -1,0 +1,62 @@
+{
+  "scope": "Installed package with one owned Electron fixture on headed Linux. Screenshots are fixture evidence. The adapter exports control bounds and hit testing.",
+  "source": "ad4ad485da0f8e3ce326e1cd69b1cd7305d2f4cb",
+  "run": "https://github.com/chrismicah/design-mcp/actions/runs/44994843695",
+  "artifact": "electron-review-receipt",
+  "viewport": [
+    880,
+    640
+  ],
+  "review": {
+    "electron": "43.4.0",
+    "platform": "linux",
+    "initial": {
+      "focus": "reveal",
+      "status": "Control covered"
+    },
+    "before": [
+      [
+        "control-not-hittable",
+        "r2"
+      ],
+      [
+        "control-clipped",
+        "r4"
+      ]
+    ],
+    "updated": {
+      "focus": "reveal",
+      "status": "Control revealed"
+    },
+    "after": [
+      [
+        "control-clipped",
+        "r4"
+      ]
+    ],
+    "originalEvidencePreserved": true,
+    "unsupportedSourceRefused": true,
+    "passed": true
+  },
+  "sha256": {
+    "before.png": "51c6a4986ef5bd80bf06eb68eafd4346541d590ca54e21eda459025c5614b021",
+    "after.png": "30084eaac1bac6857316cddc20e861a539464c2772e752ec6e946927054ce87d",
+    "before.json": "784d7e051a4303c92f98b2b232c5114aecc9a2602123df949047fce0ea0a8df0",
+    "after.json": "1b41d11726c7c1397011d33095a60bbc0d3ccc265c694abbd96afa3b481e9301",
+    "receipt.json": "27c1787b2d1fc95b493ec171b4b4c8351f531389c742da76abf579a2b9f664d8"
+  },
+  "swift_source_typecheck": {
+    "target": "arm64-apple-macosx13.0",
+    "sdk": "26.5",
+    "swift": "6.3.2",
+    "warnings_as_errors": true,
+    "source_sha256": "719f124aa829599f2b76f3e02c4960a0f36974ef2229709bf2e4262f08c626f2",
+    "exit": 0
+  },
+  "previous_runs": {
+    "44994450709": "The npm package had not downloaded Electron before sandbox installation.",
+    "44994517193": "Electron required its bundled sandbox helper to have the correct permissions.",
+    "44994633624": "Canceled after the ESM fixture waited for app readiness before module loading could finish.",
+    "44994757988": "The live fixture opened but the test assumed autofocus before sending keyboard input."
+  }
+}

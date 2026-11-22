@@ -12,6 +12,10 @@ On November 22, GPT Computer Use could enumerate native apps and the browser acc
 
 A fresh package install on hosted Linux opened the real toolbar popup by keyboard on a synthetic shuttle dispatch board. Scan started focused. With the host missing, the popup gave the install command and returned focus to Scan. After installing the host into the isolated Chrome user data directory, Enter scanned eight regions, opened a saved preview, and the Right Arrow switched to After. The archived capture masked the seeded field and the private value was absent from the saved HTML and JSON. The popup reported 87 ms on this run. macOS extension smoke, p95 timing and blind visual scoring remain open. [Run and screenshots](https://github.com/chrismicah/design-mcp/actions/runs/44994211431) · [Receipt and hashes](evidence/benchmark-v1/vision-extension-proof.json)
 
+## Hosted Electron window smoke, November 22
+
+A fresh package install reviewed an owned Electron 43.4.0 fixture on Linux. The first capture identified a covered button and a clipped button. Tab followed by Enter revealed the covered button, and a second capture cleared that finding while retaining the clipping finding. The export excluded the seeded input value, refused an unsupported source, and kept the original file intact. The separate Swift exporter type-checked with warnings as errors for the macOS 13 arm64 target. Live native macOS captures and desktop visual review remain open. [Electron run and screenshots](https://github.com/chrismicah/design-mcp/actions/runs/44994843695) · [Receipts and hashes](evidence/benchmark-v1/desktop-app-proof.json)
+
 ## November 20 source-checkout smoke
 
 The owner rejected the original visual output after the functional pass. The theatre follow-up has its own direction and browser receipt. [Theatre call sheet revision](evidence/rebuild/live-smoke/theatre-revision.md)
