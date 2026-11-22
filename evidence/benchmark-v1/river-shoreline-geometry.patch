@@ -1,0 +1,63 @@
+--- a/index.html
++++ b/index.html
+@@ -150,7 +150,7 @@
+
+     .plate {
+       position: relative;
+-      height: clamp(390px, 39vw, 560px);
++      aspect-ratio: 1000 / 590;
+       overflow: hidden;
+       background: var(--bank);
+       border: 1px solid var(--ink);
+@@ -174,7 +174,7 @@
+
+     .survey {
+       position: absolute;
+-      inset: auto 0 13% 0;
++      inset: calc(83% - 5.5px) 0 auto;
+       height: 46px;
+     }
+
+@@ -195,7 +195,6 @@
+       translate: -50% 0;
+       display: grid;
+       justify-items: center;
+-      gap: 7px;
+     }
+
+     .mark::before {
+@@ -208,6 +207,10 @@
+     }
+
+     .mark span {
++      position: absolute;
++      bottom: calc(100% + 8px);
++      left: 50%;
++      translate: -50% 0;
+       padding: 1px 7px 2px;
+       background: var(--paper);
+       border: 1px solid var(--ink);
+@@ -265,10 +268,13 @@
+       .report { margin-top: 20px; }
+       h2 { margin-bottom: 8px; }
+       .outcomes li { min-height: 42px; }
+-      .plate { height: clamp(225px, 64vw, 370px); }
+       figcaption { margin-top: 7px; }
+     }
+
++    @media (max-width: 380px) {
++      .mark span { padding-inline: 3px; }
++    }
++
+     @media (prefers-reduced-motion: reduce) {
+       .water { transition: none; }
+     }
+@@ -322,7 +328,7 @@
+
+       <figure>
+         <div class="plate" data-level="4" aria-hidden="true">
+-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 590" preserveAspectRatio="none">
++          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 590">
+             <defs>
+               <path id="shore" d="M341 -24 C369 56 542 72 513 156 C487 228 291 233 254 318 C222 393 329 443 253 484 C225 499 200 535 238 615"/>
+               <pattern id="land-grain" width="37" height="31" patternUnits="userSpaceOnUse">

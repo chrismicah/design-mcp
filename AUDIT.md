@@ -4,6 +4,8 @@ Commit audited: `82fe6e3` (branch `chrismicah/content-quality-audit`, equal to `
 Author: coordinator session `eb3116f5` (Claude Fable 5.2). Status: **pre-approval.** Independent verification and limits are recorded in §9.
 Scope of this file: the 14 runtime tools, ranking/selection, schema, docs, install. The [per-entry corpus audit](CONTENT-AUDIT.md) and [research](research/) are companion deliverables.
 
+This audit records the starting revision. The [benchmark](EVALS.md) and [smoke receipts](SMOKE-RECEIPTS.md) track the rebuilt server, current verification, and outstanding release checks.
+
 ## 0. Verdict
 
 The server does not do the job in the brief. One call cannot return a distinctive, art-directed direction, because no tool selects a direction: search is keyword overlap on a corpus that is 85% undifferentiated landing pages, and the "design system" tool returns the same Inter-based dark-SaaS kit for every non-dashboard page type. The critique tools miss every banned tell in a sample built from the banned list and then recommend Inter and `#3b82f6` as the fix. A default search returns 86k–169k characters of JSON (roughly 21k–42k tokens at 4 characters per token; no tokenizer was run), and about 80% of each result is the embedded recipe and design-system kit.
