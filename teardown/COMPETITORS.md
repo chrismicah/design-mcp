@@ -73,6 +73,8 @@ Each pinned tool received the same 36 unedited briefs and a three-result limit. 
 
 Design Library's earlier short settings query returned a result. Its empty full-brief results make query formulation an important part of its generator trial. Inspect the actual generator traces for search terms and use the same briefs, model and tool policy in every arm. Offline Designer responded with the widest range of first choices in this probe. Relevance has yet to be scored.
 
+Fresh local installs reproduced the full-brief match counts for Screenshots and Design Library. Screenshots ranked workforce and finance references on the ceramics brief. Design Library returned no match for `pottery` and returned three cart examples for `ecommerce checkout`. The visual comparison lets the generator choose its own search terms. [Local install and search receipts](../evidence/benchmark-v1/competitor-local-replay.json)
+
 ## Visual scoreboard
 
 | Configuration | Matched briefs judged | Score / 100 |
