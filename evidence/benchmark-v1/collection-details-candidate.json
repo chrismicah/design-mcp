@@ -426,5 +426,46 @@
         "html_sha256": "97e00764fad80636aef0cff73319c0a32033dbcbb54bfcbf63059cd5d124559e"
       }
     }
+  },
+  "qualified_source_replay_followup": {
+    "candidate": "cf1b567b59db53322d23d3a3e9ba3b5b0ec03de6",
+    "arguments": {
+      "surface": "mobile",
+      "brief": "Design a very small, reassuring appointment screen for a resident collecting food from a food pantry. Their single task is to find the collection day, time, and address at a glance: Friday, 11:15, 18 Pine Avenue. A button labeled Details expands the only visit instructions: bring a bag and check in at the side door. These are the only known facts. Do not infer a calendar date, AM/PM, an organization, a route, or further services. Deliver as one self-contained HTML document for Chrome at both 390px and 1440px. Any visual should be original inline illustration or CSS and rooted in the subject. No remote runtime assets except optional Google Fonts CSS. Aim for a clear mobile reading order and a deliberate, distinctive desktop composition suited to a resident, with generous tap targets, visibly accessible contrast and no filler UI. Give one sourced approach, including a concrete layout, palette, typography and focal detail that apply to this amount of content."
+    },
+    "returned_direction_id": "platform-sign",
+    "generation": {
+      "usage": {
+        "input_tokens": 65771,
+        "cached_input_tokens": 41984,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 16209,
+        "reasoning_output_tokens": 13837
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "design-mcp",
+          "tool": "direct",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "treatment_call": true,
+      "direct_call": true,
+      "status": "passed",
+      "case": "mobile-pantry",
+      "arm": "collection-details",
+      "model": "gpt-6.2-sol",
+      "effort": "max",
+      "client": "codex-cli 0.170.0",
+      "prompt_sha256": "234e8dc129b7355fe2323967b2ac41bc5328b9ddaaccce83f3d96a1437bf7632",
+      "mcp_config_sha256": "e0ddf179db745e562e48dfa3e7777d76ee62f792bfa6291552616d4c4e51600a",
+      "elapsed_seconds": 331.07,
+      "exit_code": 0,
+      "trace_sha256": "75cb04b058617f76600d2d518ae6a6ccac98538cef7f7c12390a8a0b94591922",
+      "html_sha256": "459fd43e12539994efa9bcec13474c627151b58e2d6103419772f575d774db42"
+    },
+    "decision": "Hold automatic collection routing after three real request misses. The subject and task were clear, but three natural paraphrases missed the specialist route. Preserve its design references and source tests for a different routing approach."
   }
 }

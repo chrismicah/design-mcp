@@ -1,0 +1,242 @@
+{
+  "summary": {
+    "requested_pairs": 36,
+    "judged_pairs": 1,
+    "v2": 91.66666666666666,
+    "screenshots": 91.66666666666666,
+    "difference": 0.0,
+    "wins_ties_losses": [
+      0,
+      1,
+      0
+    ],
+    "median_usage": {
+      "v2": {
+        "input_tokens": 60450,
+        "cached_input_tokens": 49920,
+        "output_tokens": 32004,
+        "elapsed_seconds": 814.66
+      },
+      "screenshots": {
+        "input_tokens": 140732,
+        "cached_input_tokens": 122624,
+        "output_tokens": 32943,
+        "elapsed_seconds": 896.26
+      }
+    }
+  },
+  "cases": {
+    "mobile-gallery": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/45002279105",
+      "cells": {
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 60450,
+              "cached_input_tokens": 49920,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 32004,
+              "reasoning_output_tokens": 25300
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "treatment_call": true,
+            "direct_call": true,
+            "status": "passed",
+            "case": "mobile-gallery",
+            "arm": "v2",
+            "model": "gpt-6.2-astra",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "847453dfc2faee5d70dc9c58fb8c6c05f189d28418ab66c6a9b6c12a3b84279d",
+            "shell_tool": false,
+            "elapsed_seconds": 814.66,
+            "exit_code": 0,
+            "trace_sha256": "4a32057b70357f4166af92df92245d5501b53083f3c3f68fd6e515d0581faa21",
+            "html_sha256": "c2342b447c927b1441a4f373fd0fe24d3ebac8b19cf154c5a4cc5a694d78cb65"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "df926f2694c1fc4f960c64e460f1b7fbe13e5e32df773e4e606f41f1ead876bd",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "800459c0b62fd747e937cbfae1f7ec547c0556b9c4eebdafe2a87ef337a2814f",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "screenshots": {
+          "generation": {
+            "usage": {
+              "input_tokens": 140732,
+              "cached_input_tokens": 122624,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 32943,
+              "reasoning_output_tokens": 27958
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "screenshots",
+                "tool": "search_inspiration",
+                "status": "completed"
+              },
+              {
+                "type": "mcp_tool_call",
+                "server": "screenshots",
+                "tool": "search_inspiration",
+                "status": "completed"
+              },
+              {
+                "type": "mcp_tool_call",
+                "server": "screenshots",
+                "tool": "search_inspiration",
+                "status": "completed"
+              },
+              {
+                "type": "mcp_tool_call",
+                "server": "screenshots",
+                "tool": "search_inspiration",
+                "status": "completed"
+              },
+              {
+                "type": "mcp_tool_call",
+                "server": "screenshots",
+                "tool": "get_product_screenshots",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "treatment_call": true,
+            "status": "passed",
+            "case": "mobile-gallery",
+            "arm": "screenshots",
+            "model": "gpt-6.2-astra",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "847453dfc2faee5d70dc9c58fb8c6c05f189d28418ab66c6a9b6c12a3b84279d",
+            "shell_tool": false,
+            "mcp_config_sha256": "116a2e0cf7dc2044a17b077cf8c880a48c8cd5140e18ca20e8608e5dbdc89d53",
+            "elapsed_seconds": 896.26,
+            "exit_code": 0,
+            "trace_sha256": "a009bbc289696f80f2c1abb9857ac4a3d49cf13925dd840d5e1d832c28b1f223",
+            "html_sha256": "4dffc69a848f3da599bb194f380a64d2f29041f23e0290dbd0b400ec20f3b744"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "0561c936f85fe30e1b517016f943c4fbb0ca6e138a7fa2bf894eb2a60c9cfd54",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "cf88c2d1bb4b93338b8803f55cd42f15790d7a6e075f353ab9bef0bb66b1c19e",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "mobile-gallery",
+        "surface": "mobile",
+        "blind_key": {
+          "A": "v2",
+          "B": "screenshots"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, the artwork leads the eye to the large River Wall title, with the artist and year grouped beneath it and Room 4 visible in the header."
+            },
+            "spacing": {
+              "score": 3,
+              "evidence": "The mobile note row aligns directly beneath the credit, while the roughly 500-pixel gap between the desktop title and note control weakens their visual connection."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The broad serif title fits on one line at 390 pixels, and the sans-serif artist name and italic year remain easy to distinguish on the same baseline."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The rust dot beside Room 4 echoes the rust band in the artwork, while dark lettering keeps the label and note control legible against the warm background."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "The plus sign accompanies the visible label \u201cShow material note,\u201d and both browser trees expose that named button, a level-one heading and an image description of the winding current."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both widths show Room 4, River Wall, Maya Chen, 1972 and the show button, while the closed state leaves the requested wording \u201cPigment on plaster\u201d and the hide action unverified."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The framed artwork draws attention first, and the large River Wall title anchors the label whether it sits beside the work on desktop or beneath it on mobile."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The desktop label is vertically centered beside the print, and the mobile layout aligns the frame, date, title and credit along one edge with a rule separating the note action."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The tall serif title, medium-sized sans-serif artist credit and smaller date retain three distinct, readable levels even at 390 pixels."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Navy ties the room marker, date rule and note control to the blue print, keeping the controls distinct against the pale background at both widths."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "Both browser trees identify the River Wall heading and the \u201cShow material note\u201d button, though neither supplies a description of the prominent artwork."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "The room, title, year and artist match the brief at both widths, but only \u201cShow material note\u201d is captured, leaving the note text and hide action unverified."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 25161,
+          "cached_input_tokens": 11776,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 6475,
+          "reasoning_output_tokens": 5816
+        },
+        "scores": {
+          "v2": 91.66666666666666,
+          "screenshots": 91.66666666666666
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "df926f2694c1fc4f960c64e460f1b7fbe13e5e32df773e4e606f41f1ead876bd",
+          "A-390.png": "800459c0b62fd747e937cbfae1f7ec547c0556b9c4eebdafe2a87ef337a2814f",
+          "B-1440.png": "0561c936f85fe30e1b517016f943c4fbb0ca6e138a7fa2bf894eb2a60c9cfd54",
+          "B-390.png": "cf88c2d1bb4b93338b8803f55cd42f15790d7a6e075f353ab9bef0bb66b1c19e"
+        },
+        "judge_prompt_sha256": "af6bb316427ead66c496d6b781356cec4459402ec019a4a20bd7caa4a5b788f7"
+      }
+    }
+  }
+}

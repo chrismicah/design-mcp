@@ -88,11 +88,11 @@ The full-brief calls measure direct search behavior. Visual trials give the gene
 
 | Configuration | Matched briefs judged | Score / 100 |
 | --- | ---: | ---: |
-| Plain generator | 30 / 36 | 92.4 |
-| Design MCP v2 | 30 / 36 | 94.9 |
+| Plain generator | 32 / 36 | 92.4 |
+| Design MCP v2 | 32 / 36 | 94.5 |
 | Inspo hosted | 1 / 36 | 87.5 on ceramics. Design MCP scored 91.7 on the matched brief. |
 | Offline Designer MCP | 1 / 36 | 91.7 on ceramics. Design MCP also scored 91.7. |
-| Screenshots Design Inspiration | 0 / 36 | Both ceramics attempts produced HTML with zero MCP calls. |
+| Screenshots Design Inspiration | 1 / 36 | 91.7 on the gallery label. Design MCP also scored 91.7 in the matched Astra run. |
 | Design Library MCP, keyword | 1 / 36 | 87.5 on ceramics. Design MCP scored 95.8 in the matched shell-disabled run. |
 | Other credential-free competitor configurations above | 0 / 36 each | Pending |
 | Credentialed and hosted configurations above | 0 / 36 each | Access or isolated fixture required |
@@ -105,4 +105,6 @@ Offline Designer 0.4.0 was installed at its pinned source commit. The generator 
 
 Screenshots Design Inspiration 1.1.1 registered all seven reviewed tools in a separate Codex catalog check with the same configuration hash. The ceramics generator returned HTML without any tool calls or client errors. The attempt used 20,577 input tokens and 25,560 output tokens. It remains in the coverage record as an unscored attempt. [Generation and catalog receipts](../evidence/benchmark-v1/screenshots-first-attempt.json)
 
-In the shell-disabled rematch, Design Library made seven MCP calls and produced a browser-verified initial render. The critic rated both layouts equally on hierarchy, spacing, color, and fidelity. Design MCP led on typography and browser accessibility evidence. Design Library used 117,266 input tokens across the turn, compared with 63,205 for Design MCP. Screenshots again returned HTML with zero tool calls and remains unscored. [Rematch and token receipt](../evidence/benchmark-v1/competitor-shell-disabled-rematch.json) · [Original Design Library attempt](../evidence/benchmark-v1/design-library-first-attempt.json)
+In the shell-disabled ceramics rematch, Design Library made seven MCP calls and produced a browser-verified initial render. The critic rated both layouts equally on hierarchy, spacing, color, and fidelity. Design MCP led on typography and browser accessibility evidence. Design Library used 117,266 input tokens across the turn, compared with 63,205 for Design MCP. The Screenshots ceramics attempts returned HTML with zero tool calls and remain unscored. [Rematch and token receipt](../evidence/benchmark-v1/competitor-shell-disabled-rematch.json) · [Original Design Library attempt](../evidence/benchmark-v1/design-library-first-attempt.json)
+
+Screenshots completed five calls on the gallery label. Both arms used the same shell-disabled GPT-6.2 Astra configuration. The critic favored Screenshots' desktop spacing and Design MCP's artwork description. Screenshots used 140,732 input tokens, of which 122,624 were cached. Design MCP used 60,450 input tokens, of which 49,920 were cached. The ballot covers this one brief and its two initial browser states. [Matched captures and ballot](../evidence/benchmark-v1/screenshots-astra-gallery.json) · [Capture run](https://github.com/chrismicah/design-mcp/actions/runs/45002279105)

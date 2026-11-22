@@ -1,25 +1,25 @@
 {
   "summary": {
     "requested_pairs": 36,
-    "judged_pairs": 30,
-    "none": 92.36111111111111,
-    "v2": 94.86111111111111,
-    "difference": 2.500000000000005,
+    "judged_pairs": 32,
+    "none": 92.44791666666666,
+    "v2": 94.53125,
+    "difference": 2.0833333333333375,
     "wins_ties_losses": [
       17,
       9,
-      4
+      6
     ],
     "paired_bootstrap_95_interval": [
-      0.5555555555555561,
-      4.3055555555555625
+      0.13020833333333837,
+      3.9062500000000098
     ],
     "median_usage": {
       "none": {
-        "input_tokens": 20544.5,
+        "input_tokens": 20543.5,
         "cached_input_tokens": 11136.0,
-        "output_tokens": 20257.0,
-        "elapsed_seconds": 408.49
+        "output_tokens": 20042.5,
+        "elapsed_seconds": 406.17999999999995
       },
       "v2": {
         "input_tokens": 64389.5,
@@ -5322,6 +5322,360 @@
           "B-390.png": "4ff2934873b8fc770cb81d1964b1b688407cc1060cda2138959307fee3956ccb"
         },
         "judge_prompt_sha256": "9d3ea1f35c98850d56c2716416f7fbcf968585650da257d1030c90a712f10881"
+      }
+    },
+    "empty-saved": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/45001223462",
+      "cells": {
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 65440,
+              "cached_input_tokens": 62336,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 22504,
+              "reasoning_output_tokens": 16265
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "empty-saved",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "fea7c4bc98f94c2bf7bdc3b0f312ecec473c68dca7446ba5100912304b3258ed",
+            "elapsed_seconds": 457.49,
+            "exit_code": 0,
+            "trace_sha256": "eea394e20dbc131a8742dd66169ed54253f10015312d389b022d4284aae29e6f",
+            "html_sha256": "8b175a6610190cfeb70fbf748bf0734aaa540f1fdacce8efbb9d3265e06b7d5f"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "2ba7dec48f38e7ffad011189bde767c6ab460ae6dfc96baf719db43c398cf503",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "fe43832fa9e81740a5a0ccc8f82c947f980afb811e6374d15554d1849a1fb3d2",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 20543,
+              "cached_input_tokens": 20352,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 19563,
+              "reasoning_output_tokens": 15119
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "empty-saved",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "fea7c4bc98f94c2bf7bdc3b0f312ecec473c68dca7446ba5100912304b3258ed",
+            "elapsed_seconds": 405.59,
+            "exit_code": 0,
+            "trace_sha256": "db44735c6b9d3ab71472c1a8de58c63ad5cb116410e31ff53b99a05017cb7b4f",
+            "html_sha256": "def7ca150661e051bfc93d86566e84932f5537742a2eeba1f88b27bdc106379d"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "378c20644bd217cefde3401acde498945c71437dd3280da25558eae955b12b70",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "783b58629cb2d15d49abe7d1d0190c1639942c2579c29ca03d16efa37a2f4566",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "empty-saved",
+        "surface": "empty-state",
+        "blind_key": {
+          "A": "v2",
+          "B": "none"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "Cedar Bend and the gold save button stand out, though the empty-state message is easy to overlook at the far right of the desktop header and the illustration precedes the suggestion on mobile."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The trail name, mileage and button share a left edge in both the desktop panel and mobile stack, with extra space above the button separating the action from the details."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "Bold condensed headings distinguish the page and trail names at both widths, while the wider lettering keeps the mileage and button label easy to read at 390 px."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The gold path through the green landscape echoes the gold save button, whose dark icon and label stand out clearly at both widths."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "At both widths, the browser tree exposes the visible \u201cNo trails saved yet\u201d message as a status and the large \u201cSave trail\u201d control as a named button within the \u201cNearby trail\u201d region."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both empty views offer exactly one nearby trail, Cedar Bend at 2.4 miles, with a \u201cSave trail\u201d button, while its appearance in the saved list and removal back to an empty list remain unverified."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "\u201cNo trails saved yet\u201d and its short prompt lead directly to Cedar Bend and \u201cSave trail,\u201d with the map beside this sequence on desktop and below the action on mobile."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "A divider with space on both sides separates the empty-state explanation from the route details, and both groups retain their left alignment when the map moves below them on mobile."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "Distinct serif sizes distinguish the page title, empty-state heading and trail name at both widths, while the sans-serif guidance and mileage stay legible on mobile."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The gold route line echoes the trail mark in the header, and the solid green \u201cSave trail\u201d button stands out against the pale panel at both widths."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Both browser trees expose \u201cNo trails saved yet\u201d as a heading and group the mileage and named \u201cSave trail\u201d button inside the \u201cCedar Bend\u201d article, matching the visible reading order."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both views show \u201c0 saved\u201d and offer to save the single nearby route, Cedar Bend at 2.4 miles, with no interaction receipt showing the resulting list entry or its removal to restore the empty state."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 25278,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5105,
+          "reasoning_output_tokens": 4406
+        },
+        "scores": {
+          "v2": 91.66666666666666,
+          "none": 95.83333333333334
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "2ba7dec48f38e7ffad011189bde767c6ab460ae6dfc96baf719db43c398cf503",
+          "A-390.png": "fe43832fa9e81740a5a0ccc8f82c947f980afb811e6374d15554d1849a1fb3d2",
+          "B-1440.png": "378c20644bd217cefde3401acde498945c71437dd3280da25558eae955b12b70",
+          "B-390.png": "783b58629cb2d15d49abe7d1d0190c1639942c2579c29ca03d16efa37a2f4566"
+        },
+        "judge_prompt_sha256": "1a72de72f77b659d66dd8b2b86693f778c97fc00490134dcb65fe96842fcdf8e"
+      }
+    },
+    "empty-drafts": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/45001223462",
+      "cells": {
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 63663,
+              "cached_input_tokens": 61824,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 17793,
+              "reasoning_output_tokens": 13346
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "empty-drafts",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "129f81b718ed36da60c734cd5f37dceaf28905d9f12d2efb50c012c8686e9c01",
+            "elapsed_seconds": 367.78,
+            "exit_code": 0,
+            "trace_sha256": "4b9861a09660cee13b2a0642cb570f49b7081c6c9631084670c580a6120f09ae",
+            "html_sha256": "3820ee04974cca4a69f20048785da4ec76284a4bb491b21f6685d9e4471131c3"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "2fd0ca5ad36e05a7f3496162ea3b113c0b729de7e52b16462109bbd0218dc32f",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "ba459cd14efa0f8173e9a655930aeffd94965e1292c3975f19a97a691be69d1d",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "none": {
+          "generation": {
+            "usage": {
+              "input_tokens": 20537,
+              "cached_input_tokens": 20352,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 18531,
+              "reasoning_output_tokens": 14454
+            },
+            "tool_calls": [],
+            "client_errors": [],
+            "direct_call": false,
+            "status": "passed",
+            "case": "empty-drafts",
+            "arm": "none",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "129f81b718ed36da60c734cd5f37dceaf28905d9f12d2efb50c012c8686e9c01",
+            "elapsed_seconds": 380.49,
+            "exit_code": 0,
+            "trace_sha256": "47a1a56e6dcb873eccf43865c653d2dfadc5a3a9d76b83a9425938e524f7bdf6",
+            "html_sha256": "70baf5ff452f3d77664e896e32d09324cb219ed3d2b37e3487472fcf76818e29"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "0afd7372dafe4daf0264aa236796a054de310165fbbd3edabb80e69ae7fb49ae",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "4c9994fee7d997a61eda10d3782fb741b96cbd09d9ecf52f1458c1618b6b81f9",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "empty-drafts",
+        "surface": "empty-state",
+        "blind_key": {
+          "A": "v2",
+          "B": "none"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "The red \u201cCreate draft\u201d button is easy to find at both widths, though the large desktop illustration competes with the form for attention."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The field and button share a row on desktop and stack with matching edges on mobile, where a larger gap separates them from the illustration."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "Both serif headings remain legible on one line at 390 pixels, and the bold sans-serif \u201cArticle title\u201d label stands apart from the instruction above it."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Burgundy connects the desk icon and pencil to \u201cCreate draft,\u201d whose solid fill and white label stand out against the pale background."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Both widths show a readable \u201c0 drafts\u201d count, and both browser trees expose the \u201cArticle title\u201d textbox, the \u201cCreate draft\u201d button and a status region."
+            },
+            "fidelity": {
+              "score": 2,
+              "evidence": "\u201cLocal demo,\u201d \u201c0 drafts\u201d and the title form establish how to start a named article draft, but the evidence ends before a newly titled draft or a way to clear it appears."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The white panel leads from \u201cNo drafts yet\u201d through the working-title prompt to \u201cCreate draft,\u201d and the entire sequence precedes the artwork on mobile."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The desktop card separates the form and artwork into columns, while the mobile card gives the stacked controls matching side margins and keeps the storage note just below the card."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "\u201cDrafts\u201d stays distinctly larger than \u201cNo drafts yet\u201d at both widths, and bold sans-serif type makes the field label and button easy to pick out."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Saturated blue links the desk icon to the primary button, while the pale blue illustration panel gives the artwork less emphasis than the action."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "The visible \u201cDraft title\u201d and \u201cCreate draft\u201d labels match the textbox and button names in both browser trees, which also expose alert and status regions."
+            },
+            "fidelity": {
+              "score": 2,
+              "evidence": "The working-title prompt and \u201cDrafts are saved in this browser\u201d make local creation explicit, but the supplied views stop before the first-draft transition and clearing step."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 25980,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5424,
+          "reasoning_output_tokens": 4774
+        },
+        "scores": {
+          "v2": 87.5,
+          "none": 91.66666666666666
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "2fd0ca5ad36e05a7f3496162ea3b113c0b729de7e52b16462109bbd0218dc32f",
+          "A-390.png": "ba459cd14efa0f8173e9a655930aeffd94965e1292c3975f19a97a691be69d1d",
+          "B-1440.png": "0afd7372dafe4daf0264aa236796a054de310165fbbd3edabb80e69ae7fb49ae",
+          "B-390.png": "4c9994fee7d997a61eda10d3782fb741b96cbd09d9ecf52f1458c1618b6b81f9"
+        },
+        "judge_prompt_sha256": "b3972f04fce8a3cc4ae12debf232fa32c4185093443e4ae7094d1bfd7e60b801"
       }
     }
   }
