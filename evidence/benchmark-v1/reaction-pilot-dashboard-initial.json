@@ -1,0 +1,72 @@
+{
+  "run": "https://github.com/chrismicah/design-mcp/actions/runs/45014944252",
+  "commit": "55b02dcd167f899f003ecadd69cf5503618315a5",
+  "browser": "158.0.8127.36",
+  "playwriter": "0.12.0",
+  "scope": "Deterministic initial-state captures of the matched dashboard pair",
+  "arms": {
+    "plain": {
+      "html_sha256": "4d2de20aa697622e2f8e9b1579c72a76d85f11a3a677d989fe26b0d77522e2c2",
+      "captures": {
+        "1440": {
+          "sha256": "bead62b181535579f76ac7252a71030d6f5cec0a157e1bcba1355f446c925afb",
+          "layout_width": 1440,
+          "page_errors": []
+        },
+        "390": {
+          "sha256": "23ab2ab68228cd2d7a4d702a28eb616276db178366519db5332fc89ffdbc645c",
+          "layout_width": 390,
+          "page_errors": []
+        }
+      },
+      "source_commit": null,
+      "model": "gpt-6.2-sol",
+      "effort": "max",
+      "client": "codex-cli 0.170.0",
+      "elapsed_seconds": 521.71,
+      "usage": {
+        "input_tokens": 19970,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 25132,
+        "reasoning_output_tokens": 18923
+      },
+      "prompt_sha256": "086c539fb9be7c9c81cccedb2c8cdf5d1831f5a662a822804db6ec2e1f1e2c7c",
+      "trace_sha256": "5ef678e9d5538fdcc277acd29aee20b021d882e87d137f73b495dc4b5478cfba",
+      "questions_answered": 0
+    },
+    "design-mcp": {
+      "html_sha256": "27c14419c8c63cac3356edfc844dae1f00632e847cc56cca28df53582cc6a87c",
+      "captures": {
+        "1440": {
+          "sha256": "d0ce4f883a79043a41e1084fe67051f89bbe882d987911e03ff1e2a40227d891",
+          "layout_width": 1440,
+          "page_errors": []
+        },
+        "390": {
+          "sha256": "fd8988bb9889a41fb2c0e0efb7da78c921fd41c283712f0c329e1c12e0d749d7",
+          "layout_width": 390,
+          "page_errors": []
+        }
+      },
+      "source_commit": "2fcd31221671590152401d958b904141e438e453",
+      "model": "gpt-6.2-sol",
+      "effort": "max",
+      "client": "codex-cli 0.170.0",
+      "elapsed_seconds": 421.07,
+      "usage": {
+        "input_tokens": 62793,
+        "cached_input_tokens": 56960,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 20709,
+        "reasoning_output_tokens": 14584
+      },
+      "prompt_sha256": "086c539fb9be7c9c81cccedb2c8cdf5d1831f5a662a822804db6ec2e1f1e2c7c",
+      "trace_sha256": "49c906645bf43b28970fad001dfe83fd236500ea01b86507cb503fa44ae754c3",
+      "questions_answered": 0,
+      "direction": "exception-first",
+      "static_findings": 0
+    }
+  },
+  "case": "dashboard-clear"
+}
