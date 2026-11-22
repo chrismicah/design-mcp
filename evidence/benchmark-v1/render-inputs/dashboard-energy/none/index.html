@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Building electricity use</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f1f3eb;
+      --surface: #fcfdf8;
+      --ink: #1c2d24;
+      --muted: #526359;
+      --line: #d8e0d4;
+      --forest: #203b2d;
+      --bar: #3c6e51;
+      --lime: #e0f39d;
+      --mono: "IBM Plex Mono", ui-monospace, monospace;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Instrument Sans", system-ui, sans-serif;
+    }
+
+    h1, h2, p {
+      margin: 0;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    main {
+      width: min(70rem, calc(100% - 3rem));
+      margin-inline: auto;
+      padding-block: clamp(2rem, 11vh, 7rem) 3rem;
+    }
+
+    .page-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .title {
+      display: flex;
+      align-items: center;
+      gap: clamp(.75rem, 1.6vw, 1.375rem);
+    }
+
+    .title-mark {
+      flex: none;
+      display: grid;
+      place-items: center;
+      width: clamp(2.25rem, 4vw, 3.25rem);
+      aspect-ratio: 1;
+      border: 1px solid #d8e3b6;
+      border-radius: 30%;
+      background: #e6edce;
+    }
+
+    .title-mark::before {
+      content: "";
+      width: 55%;
+      height: 55%;
+      background: var(--forest);
+      clip-path: polygon(59% 0, 17% 55%, 46% 55%, 39% 100%, 84% 38%, 55% 38%);
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5.35vw, 4.75rem);
+      font-weight: 600;
+      letter-spacing: -.068em;
+      line-height: 1;
+    }
+
+    .day-picker {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(5.75rem, 1fr));
+      flex: none;
+      min-inline-size: 0;
+      gap: .25rem;
+      margin: 0;
+      padding: .25rem;
+      border: 1px solid var(--line);
+      border-radius: .875rem;
+      background: var(--surface);
+    }
+
+    .day-picker label {
+      display: grid;
+      min-height: 2.75rem;
+      place-items: center;
+      padding-inline: .875rem;
+      border-radius: .625rem;
+      color: var(--muted);
+      font-size: .9375rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .day-picker label:hover {
+      background: #ecf1e7;
+    }
+
+    .day-picker input:checked + label {
+      background: var(--forest);
+      color: #fff;
+    }
+
+    .day-picker input:focus-visible + label {
+      outline: 2px solid #407454;
+      outline-offset: 2px;
+    }
+
+    .overview {
+      display: grid;
+      grid-template-columns: minmax(16rem, .94fr) minmax(0, 2.06fr);
+      gap: 1.125rem;
+    }
+
+    .total-card,
+    .breakdown {
+      min-width: 0;
+      border-radius: 1.375rem;
+    }
+
+    .total-card {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      padding: clamp(1.5rem, 2.7vw, 2.375rem);
+      background: var(--forest);
+      color: #f0f5eb;
+    }
+
+    .total-card h2 {
+      font-size: 1.0625rem;
+      font-weight: 600;
+    }
+
+    .total-value {
+      display: flex;
+      align-items: baseline;
+      gap: .5rem;
+      margin-top: .8rem;
+      color: var(--lime);
+      white-space: nowrap;
+    }
+
+    .total-number {
+      font-size: clamp(4rem, 7vw, 6.25rem);
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -.075em;
+      line-height: 1;
+    }
+
+    .total-unit {
+      font-family: var(--mono);
+      font-size: clamp(1rem, 1.45vw, 1.25rem);
+    }
+
+    .coil {
+      position: absolute;
+      z-index: -1;
+      right: -5.75rem;
+      bottom: -10.5rem;
+      display: grid;
+      place-items: center;
+      width: 24rem;
+      aspect-ratio: 1;
+      transform: rotate(-29deg);
+      mask-image: linear-gradient(115deg, transparent 3%, #000 68%);
+      pointer-events: none;
+    }
+
+    .coil span {
+      grid-area: 1 / 1;
+      width: var(--ring);
+      aspect-ratio: 1;
+      border: 1px solid rgb(208 237 162 / .34);
+      border-radius: 30%;
+    }
+
+    .breakdown {
+      padding: clamp(1.25rem, 2.8vw, 2.375rem);
+      border: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .breakdown h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -.035em;
+    }
+
+    .chart {
+      --label-width: 7.5rem;
+      --value-width: 5rem;
+      --gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .plot {
+      position: relative;
+    }
+
+    .guides {
+      position: absolute;
+      inset-block: 0;
+      inset-inline-start: calc(var(--label-width) + var(--gap));
+      inset-inline-end: calc(var(--value-width) + var(--gap));
+      border-bottom: 1px solid var(--line);
+      pointer-events: none;
+    }
+
+    .guides span {
+      position: absolute;
+      inset-block: 0;
+      left: var(--tick);
+      border-left: 1px dashed var(--line);
+    }
+
+    .guides span:first-child,
+    .guides span:last-child {
+      border-left-style: solid;
+    }
+
+    .readings {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .reading,
+    .axis {
+      display: grid;
+      grid-template-columns: var(--label-width) minmax(0, 1fr) var(--value-width);
+      column-gap: var(--gap);
+    }
+
+    .reading {
+      grid-template-areas: "source bar value";
+      align-items: center;
+      min-height: 5rem;
+    }
+
+    .source {
+      grid-area: source;
+      display: flex;
+      align-items: center;
+      gap: .625rem;
+      font-weight: 600;
+    }
+
+    .source-icon {
+      display: grid;
+      flex: none;
+      place-items: center;
+      width: 2.125rem;
+      aspect-ratio: 1;
+      border-radius: .625rem;
+      background: #eaf0e4;
+      color: var(--forest);
+    }
+
+    .glyph {
+      position: relative;
+      width: 13px;
+      height: 15px;
+      border: 1.5px solid currentColor;
+      border-radius: 3px;
+    }
+
+    .glyph::before,
+    .glyph::after {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .boiler .glyph::before {
+      content: "";
+      top: 2px;
+      width: 6px;
+      height: 6px;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+    }
+
+    .boiler .glyph::after {
+      content: "";
+      bottom: 2px;
+      width: 5px;
+      border-bottom: 1px solid currentColor;
+    }
+
+    .lighting .glyph {
+      width: 11px;
+      height: 11px;
+      border-radius: 50% 50% 42% 42%;
+      transform: translateY(-2px);
+    }
+
+    .lighting .glyph::after {
+      content: "";
+      top: 100%;
+      width: 5px;
+      height: 5px;
+      border: 1px solid currentColor;
+      border-top: 0;
+      border-radius: 0 0 2px 2px;
+    }
+
+    .lift .glyph::before {
+      content: "";
+      inset-block: 4px 0;
+      border-left: 1px solid currentColor;
+    }
+
+    .lift .glyph::after {
+      content: "";
+      top: 2px;
+      width: 5px;
+      border-top: 1px solid currentColor;
+    }
+
+    .bar {
+      grid-area: bar;
+      height: 1.375rem;
+    }
+
+    .bar-fill {
+      display: block;
+      width: var(--share);
+      height: 100%;
+      border-radius: 0 .25rem .25rem 0;
+      background: var(--bar);
+      box-shadow: inset -3px 0 #83a77f;
+      transition: width 280ms ease;
+    }
+
+    .reading-value {
+      grid-area: value;
+      display: flex;
+      align-items: baseline;
+      justify-content: flex-end;
+      gap: .3rem;
+      font-family: var(--mono);
+      white-space: nowrap;
+    }
+
+    .reading-number {
+      font-size: 1.375rem;
+      font-weight: 600;
+      letter-spacing: -.045em;
+    }
+
+    .reading-unit,
+    .ticks {
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: .75rem;
+    }
+
+    .axis {
+      margin-top: .625rem;
+    }
+
+    .ticks {
+      position: relative;
+      grid-column: 2;
+      height: 1.125rem;
+    }
+
+    .ticks span {
+      position: absolute;
+      left: var(--tick);
+      transform: translateX(-50%);
+    }
+
+    .ticks span:first-child {
+      transform: none;
+    }
+
+    .ticks span:last-child {
+      transform: translateX(-100%);
+    }
+
+    @media (max-width: 780px) {
+      main {
+        width: min(40rem, calc(100% - 2.25rem));
+        padding-block: 2rem;
+      }
+
+      .page-header {
+        flex-direction: column;
+        align-items: stretch;
+        margin-bottom: 1rem;
+      }
+
+      .overview {
+        grid-template-columns: minmax(0, 1fr);
+        gap: .875rem;
+      }
+
+      .total-card {
+        min-height: 9.5rem;
+        padding: 1.25rem;
+      }
+
+      .total-value {
+        margin-top: .5rem;
+      }
+
+      .total-number {
+        font-size: 4rem;
+      }
+
+      .coil {
+        right: -2.5rem;
+        bottom: -8.5rem;
+        width: 17rem;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .breakdown {
+        padding: 1.125rem;
+      }
+
+      .breakdown h2 {
+        font-size: 1.375rem;
+      }
+
+      .chart {
+        margin-top: .625rem;
+      }
+
+      .guides {
+        display: none;
+      }
+
+      .reading {
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-areas: "source value" "bar bar";
+        gap: .5rem .75rem;
+        min-height: 0;
+        padding-block: .5625rem;
+      }
+
+      .source-icon {
+        width: 1.875rem;
+      }
+
+      .bar {
+        height: .875rem;
+        border-radius: 0 .25rem .25rem 0;
+        background: linear-gradient(to right, var(--line) 1px, transparent 1px)
+          0 0 / 25% 100% #edf1e8;
+      }
+
+      .reading-number {
+        font-size: 1.25rem;
+      }
+
+      .axis {
+        grid-template-columns: minmax(0, 1fr);
+        margin-top: .25rem;
+      }
+
+      .ticks {
+        grid-column: 1;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .bar-fill {
+        transition: none;
+      }
+    }
+
+    @media (forced-colors: active) {
+      .day-picker input:checked + label,
+      .bar-fill {
+        forced-color-adjust: none;
+        background: Highlight;
+        color: HighlightText;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="page-header">
+      <div class="title">
+        <span class="title-mark" aria-hidden="true"></span>
+        <h1>Electricity use</h1>
+      </div>
+
+      <fieldset class="day-picker" id="day-picker">
+        <legend class="sr-only">Day</legend>
+        <input class="sr-only" type="radio" name="day" id="yesterday" value="Yesterday" checked>
+        <label for="yesterday">Yesterday</label>
+        <input class="sr-only" type="radio" name="day" id="today" value="Today">
+        <label for="today">Today</label>
+      </fieldset>
+    </header>
+
+    <div class="overview">
+      <section class="total-card" aria-labelledby="total-label">
+        <h2 id="total-label">Yesterday’s total</h2>
+        <p class="total-value">
+          <span class="total-number" id="total-number">207</span>
+          <span class="total-unit">kWh</span>
+        </p>
+        <div class="coil" aria-hidden="true">
+          <span style="--ring: 32%"></span>
+          <span style="--ring: 43%"></span>
+          <span style="--ring: 54%"></span>
+          <span style="--ring: 65%"></span>
+          <span style="--ring: 76%"></span>
+          <span style="--ring: 87%"></span>
+          <span style="--ring: 98%"></span>
+        </div>
+      </section>
+
+      <section class="breakdown" aria-labelledby="breakdown-title">
+        <h2 id="breakdown-title">Use by equipment</h2>
+        <div class="chart">
+          <div class="plot">
+            <div class="guides" aria-hidden="true">
+              <span style="--tick: 0%"></span>
+              <span style="--tick: 25%"></span>
+              <span style="--tick: 50%"></span>
+              <span style="--tick: 75%"></span>
+              <span style="--tick: 100%"></span>
+            </div>
+
+            <ul class="readings" role="list">
+              <li class="reading" data-source="Boiler" style="--share: 100%">
+                <span class="source">
+                  <span class="source-icon boiler" aria-hidden="true"><span class="glyph"></span></span>
+                  Boiler
+                </span>
+                <span class="bar" aria-hidden="true"><span class="bar-fill"></span></span>
+                <span class="reading-value">
+                  <span class="reading-number">120</span> <span class="reading-unit">kWh</span>
+                </span>
+              </li>
+              <li class="reading" data-source="Lighting" style="--share: 55%">
+                <span class="source">
+                  <span class="source-icon lighting" aria-hidden="true"><span class="glyph"></span></span>
+                  Lighting
+                </span>
+                <span class="bar" aria-hidden="true"><span class="bar-fill"></span></span>
+                <span class="reading-value">
+                  <span class="reading-number">66</span> <span class="reading-unit">kWh</span>
+                </span>
+              </li>
+              <li class="reading" data-source="Lift" style="--share: 17.5%">
+                <span class="source">
+                  <span class="source-icon lift" aria-hidden="true"><span class="glyph"></span></span>
+                  Lift
+                </span>
+                <span class="bar" aria-hidden="true"><span class="bar-fill"></span></span>
+                <span class="reading-value">
+                  <span class="reading-number">21</span> <span class="reading-unit">kWh</span>
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="axis" aria-hidden="true">
+            <div class="ticks">
+              <span style="--tick: 0%">0</span>
+              <span style="--tick: 25%">30</span>
+              <span style="--tick: 50%">60</span>
+              <span style="--tick: 75%">90</span>
+              <span style="--tick: 100%">120</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <p class="sr-only" id="day-status" role="status" aria-atomic="true"></p>
+  </main>
+
+  <script>
+    const usage = {
+      Yesterday: { Boiler: 120, Lighting: 66, Lift: 21 },
+      Today: { Boiler: 103, Lighting: 58, Lift: 16 }
+    };
+
+    const scaleMax = 120;
+    const dayPicker = document.getElementById("day-picker");
+    const totalLabel = document.getElementById("total-label");
+    const totalNumber = document.getElementById("total-number");
+    const dayStatus = document.getElementById("day-status");
+    const rows = document.querySelectorAll("[data-source]");
+
+    function showDay(day, announce = false) {
+      const readings = usage[day];
+      let total = 0;
+
+      for (const row of rows) {
+        const kWh = readings[row.dataset.source];
+        row.querySelector(".reading-number").textContent = kWh;
+        row.style.setProperty("--share", `${kWh / scaleMax * 100}%`);
+        total += kWh;
+      }
+
+      totalLabel.textContent = `${day}’s total`;
+      totalNumber.textContent = total;
+
+      if (announce) {
+        const details = Object.entries(readings)
+          .map(([source, kWh]) => `${source} ${kWh} kilowatt-hours`)
+          .join(", ");
+        dayStatus.textContent = `${day}. ${details}. Total ${total} kilowatt-hours.`;
+      }
+    }
+
+    dayPicker.addEventListener("change", (event) => {
+      showDay(event.target.value, true);
+    });
+
+    showDay(dayPicker.querySelector("input:checked").value);
+  </script>
+</body>
+</html>

@@ -1,0 +1,612 @@
+<!doctype html>
+<!--
+  Art direction
+  A workshop guest should feel welcome and be able to choose a time, enter
+  their details, and reserve up to four seats. Omit navigation and studio
+  backstory. Use fog #E9EEF0, porcelain #F9FAF5, ink #142542, cobalt #214AA1,
+  slip #B7D5DA, and oxide #A22D42. Set headings in Gloock and controls in
+  Instrument Sans. Place a cobalt-painted vessel against potter’s wheel rings
+  beside the form on desktop and above it on phones.
+
+  Acceptance
+  At 1440 px and 390 px, both workshop times and all fields remain accessible.
+  Start with one seat selected and let the guest choose the time. Show inline
+  errors and focus the first invalid field. A valid submission shows the
+  selected time, seat count, name, and email for the current page load.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ceramics workshop reservation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&amp;family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --fog: #e9eef0;
+      --porcelain: #f9faf5;
+      --ink: #142542;
+      --cobalt: #214aa1;
+      --slip: #b7d5da;
+      --oxide: #a22d42;
+      --line: color-mix(in srgb, var(--ink) 52%, var(--porcelain));
+      --rule: color-mix(in srgb, var(--ink) 22%, var(--porcelain));
+      --tint: color-mix(in srgb, var(--slip) 34%, var(--porcelain));
+      --muted: color-mix(in srgb, var(--ink) 80%, var(--porcelain));
+      --display: "Gloock", Georgia, serif;
+      --text: "Instrument Sans", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    [hidden] { display: none; }
+
+    body {
+      min-block-size: 100vh;
+      min-block-size: 100svh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: clamp(28px, 5vh, 56px) clamp(20px, 5vw, 72px);
+      background: var(--fog);
+      color: var(--ink);
+      font: 400 1rem/1.45 var(--text);
+    }
+
+    .sheet {
+      display: grid;
+      grid-template-columns: minmax(0, .91fr) minmax(0, 1fr);
+      inline-size: min(100%, 1152px);
+      min-block-size: 672px;
+      border: 1px solid var(--rule);
+      background: var(--porcelain);
+    }
+
+    .poster {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      padding: 52px clamp(34px, 4vw, 58px);
+      background: var(--ink);
+      color: var(--porcelain);
+    }
+
+    h1, h2 {
+      margin: 0;
+      font-family: var(--display);
+      font-weight: 400;
+      letter-spacing: -.045em;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      font-size: clamp(49px, 5.5vw, 80px);
+      line-height: 1.01;
+    }
+
+    h1 span { display: block; }
+
+    .vessel {
+      position: absolute;
+      inset-inline-start: 50%;
+      inset-block-end: 9px;
+      inline-size: min(105%, 580px);
+      block-size: auto;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .panel {
+      display: grid;
+      align-content: center;
+      min-inline-size: 0;
+      padding: 46px clamp(31px, 4.1vw, 59px);
+    }
+
+    h2 {
+      margin-block-end: 25px;
+      font-size: clamp(39px, 3.85vw, 55px);
+      line-height: 1.08;
+    }
+
+    form {
+      display: grid;
+      gap: 17px;
+    }
+
+    fieldset {
+      min-inline-size: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    legend, .field > label {
+      display: block;
+      margin-block-end: 8px;
+      padding: 0;
+      font-size: .9375rem;
+      font-weight: 650;
+      line-height: 1.25;
+    }
+
+    input, button { font: inherit; }
+
+    :focus-visible {
+      outline: 2px solid var(--cobalt);
+      outline-offset: 3px;
+    }
+
+    .times {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .time-option, .seat-option {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .time-option input {
+      position: absolute;
+      inset-block-start: 50%;
+      inset-inline-end: 13px;
+      inline-size: 18px;
+      block-size: 18px;
+      margin: 0;
+      transform: translateY(-50%);
+      accent-color: var(--cobalt);
+      cursor: pointer;
+    }
+
+    .time-face {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2px;
+      min-block-size: 70px;
+      padding: 9px 37px 9px 13px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+    }
+
+    .day { font-weight: 700; }
+    .hour { color: var(--muted); font-size: .9375rem; }
+
+    .time-option input:checked + .time-face {
+      border-color: var(--cobalt);
+      background: var(--tint);
+    }
+
+    .time-option input:focus-visible { outline: 0; }
+
+    .time-option input:focus-visible + .time-face,
+    .seat-option input:focus-visible + .seat-number {
+      outline: 2px solid var(--cobalt);
+      outline-offset: 3px;
+    }
+
+    .seat-options {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      max-inline-size: 256px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+    }
+
+    .seat-option + .seat-option { border-inline-start: 1px solid var(--line); }
+
+    .seat-option input {
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      margin: 0;
+      clip-path: inset(50%);
+    }
+
+    .seat-number {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-block-size: 44px;
+      font-weight: 650;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .seat-option:first-child .seat-number { border-radius: 3px 0 0 3px; }
+    .seat-option:last-child .seat-number { border-radius: 0 3px 3px 0; }
+
+    .seat-option input:checked + .seat-number {
+      background: var(--cobalt);
+      color: var(--porcelain);
+    }
+
+    .seat-option input:focus-visible + .seat-number { z-index: 1; }
+
+    .text-input {
+      display: block;
+      inline-size: 100%;
+      min-block-size: 46px;
+      padding: 9px 12px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: var(--porcelain);
+      color: var(--ink);
+    }
+
+    .text-input[aria-invalid="true"],
+    .time-option input[aria-invalid="true"] + .time-face,
+    .seat-options:has(input[aria-invalid="true"]) {
+      border-color: var(--oxide);
+    }
+
+    .error {
+      margin: 6px 0 0;
+      color: var(--oxide);
+      font-size: .875rem;
+      line-height: 1.35;
+    }
+
+    .action {
+      inline-size: 100%;
+      min-block-size: 51px;
+      padding: 10px 18px;
+      border: 1px solid var(--cobalt);
+      border-radius: 4px;
+      background: var(--cobalt);
+      color: var(--porcelain);
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    form .action { margin-block-start: 2px; }
+
+    .action.secondary {
+      background: var(--porcelain);
+      color: var(--cobalt);
+    }
+
+    @media (hover: hover) {
+      .action:hover { background: var(--ink); }
+      .action.secondary:hover { background: var(--tint); }
+      .time-option:hover input:not(:checked) + .time-face,
+      .seat-option:hover input:not(:checked) + .seat-number {
+        background: var(--tint);
+      }
+    }
+
+    .seal {
+      display: grid;
+      place-items: center;
+      inline-size: 46px;
+      block-size: 46px;
+      margin-block-end: 17px;
+      border-radius: 50%;
+      background: var(--tint);
+      color: var(--cobalt);
+    }
+
+    .summary {
+      margin: 0 0 24px;
+      border-block-start: 1px solid var(--rule);
+    }
+
+    .summary div {
+      display: grid;
+      grid-template-columns: minmax(106px, .7fr) minmax(0, 1.3fr);
+      gap: 12px;
+      padding-block: 12px;
+      border-block-end: 1px solid var(--rule);
+    }
+
+    .summary dt { color: var(--muted); }
+    .summary dd { margin: 0; font-weight: 650; overflow-wrap: anywhere; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .confirmation:not([hidden]) { animation: reveal 220ms ease-out both; }
+
+      @keyframes reveal {
+        from { opacity: 0; transform: translateY(6px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }
+
+    @media (forced-colors: active) {
+      .seat-option input:checked + .seat-number {
+        forced-color-adjust: none;
+        background: Highlight;
+        color: HighlightText;
+      }
+    }
+
+    @media (max-width: 800px) {
+      body { align-items: start; padding: 22px 16px; }
+
+      .sheet {
+        grid-template-columns: minmax(0, 1fr);
+        inline-size: min(100%, 586px);
+        min-block-size: 0;
+      }
+
+      .poster {
+        display: grid;
+        align-content: center;
+        min-block-size: clamp(204px, 39vw, 274px);
+        padding: 28px clamp(23px, 5vw, 42px);
+      }
+
+      h1 { font-size: clamp(39px, 9.9vw, 66px); }
+
+      .vessel {
+        inset-inline-start: auto;
+        inset-inline-end: -15px;
+        inset-block-end: -7px;
+        inline-size: clamp(230px, 56vw, 336px);
+        transform: none;
+      }
+
+      .panel { padding: 32px clamp(23px, 5.8vw, 42px) 34px; }
+      h2 { margin-block-end: 21px; }
+    }
+
+    @media (max-width: 480px) {
+      body { padding: 14px 14px 22px; }
+      .poster { min-block-size: 192px; }
+      .vessel { inset-inline-end: -29px; inset-block-end: -9px; }
+      .panel { padding: 27px 22px 29px; }
+      h2 { font-size: clamp(32px, 9.5vw, 43px); }
+      form { gap: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="sheet" aria-labelledby="workshop-title">
+    <header class="poster">
+      <h1 id="workshop-title"><span>Ceramics</span> <span>workshop</span></h1>
+
+      <svg class="vessel" viewBox="0 0 540 470" aria-hidden="true" focusable="false">
+        <defs>
+          <radialGradient id="wheel" cx="37%" cy="39%" r="67%">
+            <stop stop-color="var(--slip)" stop-opacity=".55"/>
+            <stop offset=".7" stop-color="var(--cobalt)" stop-opacity=".6"/>
+            <stop offset="1" stop-color="var(--cobalt)" stop-opacity=".12"/>
+          </radialGradient>
+          <linearGradient id="glaze" x1="3%" y1="38%" x2="97%" y2="56%">
+            <stop stop-color="var(--cobalt)"/>
+            <stop offset=".18" stop-color="var(--slip)"/>
+            <stop offset=".39" stop-color="var(--porcelain)"/>
+            <stop offset=".69" stop-color="var(--slip)"/>
+            <stop offset="1" stop-color="var(--cobalt)"/>
+          </linearGradient>
+          <linearGradient id="pigment" x1="20%" y1="15%" x2="89%" y2="91%">
+            <stop stop-color="var(--cobalt)"/>
+            <stop offset=".55" stop-color="var(--cobalt)"/>
+            <stop offset="1" stop-color="var(--ink)"/>
+          </linearGradient>
+          <linearGradient id="mouth" x1="36%" y1="100%" x2="65%" y2="0%">
+            <stop stop-color="var(--cobalt)"/>
+            <stop offset=".75" stop-color="var(--ink)"/>
+          </linearGradient>
+          <filter id="glaze-grain" color-interpolation-filters="sRGB">
+            <feTurbulence type="fractalNoise" baseFrequency=".64" numOctaves="3" stitchTiles="stitch"/>
+            <feColorMatrix type="saturate" values="0"/>
+          </filter>
+          <filter id="shadow-blur" x="-25%" y="-150%" width="150%" height="400%">
+            <feGaussianBlur stdDeviation="9"/>
+          </filter>
+          <path id="pot-body" d="M185 116C191 146 186 160 162 179C134 201 104 226 102 271C99 316 124 355 164 377C187 390 210 397 220 400C225 409 241 414 266 414C294 414 311 411 316 401C360 387 400 362 415 322C434 271 415 225 376 195C347 173 333 153 344 116Z"/>
+          <clipPath id="pot-clip"><use href="#pot-body"/></clipPath>
+        </defs>
+
+        <circle cx="270" cy="234" r="197" fill="url(#wheel)"/>
+        <g fill="none" stroke="var(--slip)">
+          <circle cx="270" cy="234" r="211" opacity=".18"/>
+          <circle cx="270" cy="234" r="197" opacity=".45"/>
+          <circle cx="270" cy="234" r="181" opacity=".25"/>
+          <circle cx="270" cy="234" r="164" opacity=".16"/>
+        </g>
+
+        <ellipse cx="272" cy="421" rx="150" ry="16" fill="var(--ink)" opacity=".85" filter="url(#shadow-blur)"/>
+        <ellipse cx="267" cy="414" rx="75" ry="8" fill="var(--ink)" opacity=".72"/>
+
+        <use href="#pot-body" fill="url(#glaze)"/>
+        <g clip-path="url(#pot-clip)">
+          <g fill="url(#pigment)" opacity=".94">
+            <path d="M195 112C207 153 180 178 151 213C111 261 129 331 174 374C188 388 205 399 223 407C177 377 144 334 143 281C142 237 177 208 198 176C212 154 211 132 205 111Z"/>
+            <path d="M219 111C229 146 218 171 196 204C160 260 167 322 200 376C212 395 224 405 237 414C205 372 193 340 192 293C191 254 204 225 221 197C239 168 239 134 231 110Z"/>
+            <path d="M249 111C254 145 247 174 233 212C213 263 216 339 240 393C244 403 250 412 254 418C246 384 239 346 240 300C240 262 250 225 260 194C271 159 268 133 264 111Z"/>
+            <path d="M279 111C277 145 276 168 280 205C286 259 285 342 271 390C267 404 265 411 262 419C288 389 308 312 302 257C298 215 292 167 292 132L292 111Z"/>
+            <path d="M308 112C302 148 311 180 328 211C355 261 355 317 322 371C312 387 300 401 291 413C325 392 357 356 367 316C378 273 365 232 345 203C323 170 317 141 321 111Z"/>
+            <path d="M332 113C324 148 343 176 369 202C398 231 408 269 396 309C385 347 359 376 319 401C352 390 387 365 409 331C438 286 425 236 389 206C351 174 339 155 343 112Z"/>
+          </g>
+          <g fill="none" stroke="var(--porcelain)" stroke-width="1.2" opacity=".38">
+            <path d="M157 181C216 201 304 202 367 181"/>
+            <path d="M129 210C199 235 329 238 394 209"/>
+            <path d="M108 248C183 275 344 279 420 247"/>
+            <path d="M100 286C176 321 345 320 424 288"/>
+            <path d="M110 324C179 359 342 363 414 328"/>
+            <path d="M144 365C210 395 322 395 382 363"/>
+            <path d="M189 390C233 408 300 408 343 393"/>
+          </g>
+          <rect x="98" y="112" width="330" height="305" filter="url(#glaze-grain)" opacity=".18" style="mix-blend-mode: multiply"/>
+        </g>
+
+        <use href="#pot-body" fill="none" stroke="var(--porcelain)" stroke-opacity=".36"/>
+        <path d="M184 116C185 101 224 92 265 93C310 94 344 103 345 116C346 130 307 138 266 139C220 139 183 130 184 116Z" fill="url(#glaze)" stroke="var(--slip)" stroke-opacity=".66"/>
+        <path d="M195 115C197 106 229 100 265 100C302 101 332 106 334 115C334 125 300 131 265 131C230 131 193 125 195 115Z" fill="url(#mouth)"/>
+        <path d="M195 119C215 133 299 137 333 120" fill="none" stroke="var(--porcelain)" stroke-opacity=".62" stroke-width="1.7"/>
+        <path d="M221 402C243 409 294 411 315 402" fill="none" stroke="var(--slip)" stroke-opacity=".65"/>
+      </svg>
+    </header>
+
+    <div class="panel">
+      <section id="booking" aria-labelledby="booking-title">
+        <h2 id="booking-title" tabindex="-1">Reserve a seat</h2>
+
+        <form id="reservation" novalidate>
+          <fieldset>
+            <legend>Workshop time</legend>
+            <div class="times">
+              <label class="time-option">
+                <input type="radio" name="workshop" value="Saturday at 10 am" required aria-describedby="workshop-error">
+                <span class="time-face">
+                  <span class="day">Saturday</span>
+                  <span class="hour">10 am</span>
+                </span>
+              </label>
+              <label class="time-option">
+                <input type="radio" name="workshop" value="Sunday at 2 pm" required aria-describedby="workshop-error">
+                <span class="time-face">
+                  <span class="day">Sunday</span>
+                  <span class="hour">2 pm</span>
+                </span>
+              </label>
+            </div>
+            <p class="error" id="workshop-error" aria-live="polite" hidden></p>
+          </fieldset>
+
+          <fieldset>
+            <legend>Seats</legend>
+            <div class="seat-options">
+              <label class="seat-option">
+                <input type="radio" name="seats" value="1" checked required aria-describedby="seats-error">
+                <span class="seat-number">1</span>
+              </label>
+              <label class="seat-option">
+                <input type="radio" name="seats" value="2" required aria-describedby="seats-error">
+                <span class="seat-number">2</span>
+              </label>
+              <label class="seat-option">
+                <input type="radio" name="seats" value="3" required aria-describedby="seats-error">
+                <span class="seat-number">3</span>
+              </label>
+              <label class="seat-option">
+                <input type="radio" name="seats" value="4" required aria-describedby="seats-error">
+                <span class="seat-number">4</span>
+              </label>
+            </div>
+            <p class="error" id="seats-error" aria-live="polite" hidden></p>
+          </fieldset>
+
+          <div class="field">
+            <label for="guest-name">Name</label>
+            <input class="text-input" id="guest-name" name="name" type="text" autocomplete="name" required aria-describedby="name-error">
+            <p class="error" id="name-error" aria-live="polite" hidden></p>
+          </div>
+
+          <div class="field">
+            <label for="guest-email">Email</label>
+            <input class="text-input" id="guest-email" name="email" type="email" autocomplete="email" autocapitalize="none" spellcheck="false" required aria-describedby="email-error">
+            <p class="error" id="email-error" aria-live="polite" hidden></p>
+          </div>
+
+          <button class="action" type="submit">Confirm reservation</button>
+        </form>
+      </section>
+
+      <section class="confirmation" id="confirmation" aria-labelledby="confirmation-title" hidden>
+        <div class="seal" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" focusable="false">
+            <path d="m5.5 12 4.2 4.2 8.7-8.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h2 id="confirmation-title" tabindex="-1">Reservation confirmed</h2>
+        <dl class="summary">
+          <div><dt>Workshop time</dt><dd id="confirmed-time"></dd></div>
+          <div><dt>Seats</dt><dd id="confirmed-seats"></dd></div>
+          <div><dt>Name</dt><dd id="confirmed-name"></dd></div>
+          <div><dt>Email</dt><dd id="confirmed-email"></dd></div>
+        </dl>
+        <button class="action secondary" id="edit-reservation" type="button">Edit reservation</button>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const form = document.getElementById("reservation");
+    const booking = document.getElementById("booking");
+    const confirmation = document.getElementById("confirmation");
+    const workshop = form.elements.namedItem("workshop");
+    const seats = form.elements.namedItem("seats");
+    const guestName = document.getElementById("guest-name");
+    const email = document.getElementById("guest-email");
+
+    const fields = [
+      {
+        inputs: Array.from(workshop),
+        error: document.getElementById("workshop-error"),
+        check: () => workshop.value ? "" : "Choose a workshop time."
+      },
+      {
+        inputs: Array.from(seats),
+        error: document.getElementById("seats-error"),
+        check: () => seats.value ? "" : "Choose the number of seats."
+      },
+      {
+        inputs: [guestName],
+        error: document.getElementById("name-error"),
+        check: () => guestName.value.trim() ? "" : "Enter your name."
+      },
+      {
+        inputs: [email],
+        error: document.getElementById("email-error"),
+        check: () => {
+          if (!email.value.trim()) return "Enter your email address.";
+          if (email.validity.typeMismatch) {
+            return "Use an email address in the format name@example.com.";
+          }
+          return "";
+        }
+      }
+    ];
+
+    function updateError(field) {
+      const message = field.check();
+      field.error.hidden = !message;
+      if (field.error.textContent !== message) field.error.textContent = message;
+
+      for (const input of field.inputs) {
+        if (message) input.setAttribute("aria-invalid", "true");
+        else input.removeAttribute("aria-invalid");
+      }
+
+      return message;
+    }
+
+    form.addEventListener("input", (event) => {
+      const field = fields.find(({ inputs }) => inputs.includes(event.target));
+      if (field && !field.error.hidden) updateError(field);
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      let firstInvalid;
+      for (const field of fields) {
+        if (updateError(field) && !firstInvalid) firstInvalid = field.inputs[0];
+      }
+
+      if (firstInvalid) {
+        firstInvalid.focus();
+        return;
+      }
+
+      document.getElementById("confirmed-time").textContent = workshop.value;
+      document.getElementById("confirmed-seats").textContent = seats.value;
+      document.getElementById("confirmed-name").textContent = guestName.value.trim();
+      document.getElementById("confirmed-email").textContent = email.value.trim();
+
+      booking.hidden = true;
+      confirmation.hidden = false;
+      document.getElementById("confirmation-title").focus();
+    });
+
+    document.getElementById("edit-reservation").addEventListener("click", () => {
+      confirmation.hidden = true;
+      booking.hidden = false;
+      document.getElementById("booking-title").focus();
+    });
+  </script>
+</body>
+</html>
