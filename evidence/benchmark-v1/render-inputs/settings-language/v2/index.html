@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Display settings | Visitor Center</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Sans+Condensed:wght@600&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #eef0ec;
+      --surface: #f9faf7;
+      --ink: #14181b;
+      --muted: #43524a;
+      --rule: #b9c3ba;
+      --accent: #ffaa72;
+      --selected: color-mix(in srgb, var(--accent) 26%, var(--surface));
+      --preview-rule: color-mix(in srgb, var(--paper) 30%, transparent);
+      --preview-label: color-mix(in srgb, var(--paper) 78%, var(--ink));
+      --body-font: "IBM Plex Sans", sans-serif;
+      --display-font: "IBM Plex Sans Condensed", "IBM Plex Sans", sans-serif;
+      --gutter: clamp(20px, 5vw, 60px);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 400 16px/1.5 var(--body-font);
+    }
+
+    svg {
+      display: block;
+    }
+
+    .frame {
+      width: min(1104px, calc(100% - var(--gutter) - var(--gutter)));
+      margin-inline: auto;
+    }
+
+    .masthead {
+      border-bottom: 1px solid var(--rule);
+      background: var(--surface);
+    }
+
+    .masthead-inner,
+    .wordmark {
+      display: flex;
+      align-items: center;
+    }
+
+    .masthead-inner {
+      min-height: 73px;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .wordmark {
+      gap: 11px;
+      font-weight: 600;
+    }
+
+    .wayfinding-mark {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      flex: none;
+      place-items: center;
+      border-radius: 4px;
+      background: var(--accent);
+    }
+
+    .account-label {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    main {
+      padding-block: 58px 64px;
+    }
+
+    .intro {
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      margin: 0;
+      font: 600 clamp(48px, 5vw, 70px)/1.04 var(--display-font);
+      letter-spacing: -0.035em;
+    }
+
+    .intro p {
+      margin: 9px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .preview {
+      position: relative;
+      display: grid;
+      min-height: 214px;
+      grid-template-columns: minmax(0, 1fr) clamp(155px, 22%, 244px);
+      overflow: hidden;
+      border-radius: 6px;
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .preview-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 28px clamp(25px, 3.1vw, 42px);
+    }
+
+    .preview-heading {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .preview-heading::before {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      content: "";
+    }
+
+    .preview-values {
+      display: grid;
+      grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+      gap: 22px;
+      margin: 24px 0 0;
+    }
+
+    .preview-values > div + div {
+      padding-inline-start: 28px;
+      border-inline-start: 1px solid var(--preview-rule);
+    }
+
+    .preview-values dt {
+      color: var(--preview-label);
+      font-size: 14px;
+    }
+
+    .preview-values dd {
+      margin: 4px 0 0;
+      font: 600 clamp(32px, 3.65vw, 52px)/1.06 var(--display-font);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.025em;
+    }
+
+    #example-temperature {
+      white-space: nowrap;
+    }
+
+    .preview-stub {
+      position: relative;
+      display: grid;
+      place-items: center;
+      border-inline-start: 1px dashed var(--preview-rule);
+      background: color-mix(in srgb, var(--ink) 93%, var(--muted));
+      color: var(--rule);
+    }
+
+    .preview-stub::before,
+    .preview-stub::after {
+      position: absolute;
+      inset-inline-start: -7px;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: var(--paper);
+      content: "";
+    }
+
+    .preview-stub::before {
+      top: -7px;
+    }
+
+    .preview-stub::after {
+      bottom: -7px;
+    }
+
+    .preview-stub svg {
+      width: 84%;
+      max-width: 190px;
+      height: auto;
+    }
+
+    form {
+      margin-top: 32px;
+    }
+
+    .settings-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 34px;
+    }
+
+    fieldset {
+      min-inline-size: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    legend {
+      margin-bottom: 11px;
+      padding: 0;
+      font: 600 24px/1.2 var(--display-font);
+      letter-spacing: -0.015em;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 9px;
+    }
+
+    .option {
+      position: relative;
+      display: flex;
+      min-height: 69px;
+      align-items: center;
+      gap: 11px;
+      padding: 10px 13px;
+      border: 1px solid var(--rule);
+      border-radius: 5px;
+      background: var(--surface);
+      cursor: pointer;
+    }
+
+    .option:has(input:checked) {
+      border-color: var(--ink);
+      background: var(--selected);
+    }
+
+    .radio-mark {
+      display: grid;
+      width: 18px;
+      height: 18px;
+      flex: none;
+      place-items: center;
+      border: 1.5px solid var(--muted);
+      border-radius: 50%;
+    }
+
+    .option:has(input:checked) .radio-mark {
+      border-color: var(--ink);
+    }
+
+    .option:has(input:checked) .radio-mark::after {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--ink);
+      content: "";
+    }
+
+    .option-name,
+    .option-detail {
+      display: block;
+    }
+
+    .option-name {
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .option-detail {
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.3;
+    }
+
+    .form-footer {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 25px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .reset {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px 13px;
+      border: 1px solid var(--muted);
+      border-radius: 5px;
+      background: transparent;
+      color: var(--ink);
+      font: 600 14px/1.25 var(--body-font);
+      cursor: pointer;
+    }
+
+    .option:has(input:focus-visible),
+    .reset:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    @media (hover: hover) {
+      .option:hover,
+      .reset:hover {
+        border-color: var(--ink);
+      }
+
+      .reset:hover {
+        background: var(--surface);
+      }
+    }
+
+    @media (max-width: 760px) {
+      .masthead-inner {
+        min-height: 60px;
+      }
+
+      .account-label {
+        font-size: 13px;
+      }
+
+      main {
+        padding-block: 29px 36px;
+      }
+
+      .intro {
+        margin-bottom: 23px;
+      }
+
+      h1 {
+        font-size: clamp(40px, 10.5vw, 54px);
+      }
+
+      .intro p {
+        margin-top: 8px;
+        font-size: 16px;
+      }
+
+      .preview {
+        display: block;
+        min-height: 0;
+      }
+
+      .preview-content {
+        padding: 18px 20px;
+      }
+
+      .preview-values {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+        margin-top: 15px;
+      }
+
+      .preview-values > div + div {
+        padding: 11px 0 0;
+        border-inline-start: 0;
+        border-top: 1px solid var(--preview-rule);
+      }
+
+      .preview-values dd {
+        font-size: clamp(30px, 9.15vw, 42px);
+      }
+
+      .preview-stub {
+        position: absolute;
+        inset: auto 16px 6px auto;
+        display: block;
+        width: 119px;
+        border: 0;
+        background: transparent;
+        pointer-events: none;
+      }
+
+      .preview-stub::before,
+      .preview-stub::after {
+        display: none;
+      }
+
+      .preview-stub svg {
+        width: 100%;
+      }
+
+      form {
+        margin-top: 24px;
+      }
+
+      .settings-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 19px;
+      }
+
+      legend {
+        margin-bottom: 9px;
+        font-size: 23px;
+      }
+
+      .option {
+        min-height: 60px;
+        padding-inline: 11px;
+      }
+
+      .form-footer {
+        margin-top: 20px;
+        padding-top: 13px;
+      }
+    }
+
+    @media (max-width: 330px) {
+      .options {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .preview-stub {
+        width: 95px;
+      }
+    }
+
+    @media (forced-colors: active) {
+      .option:has(input:checked),
+      .option:has(input:checked) .radio-mark {
+        border-color: Highlight;
+      }
+
+      .option:has(input:checked) .radio-mark::after {
+        forced-color-adjust: none;
+        background: Highlight;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="frame masthead-inner">
+      <div class="wordmark">
+        <span class="wayfinding-mark" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2v3m0 5v3m0 5v4M5 5h12l3 2.5-3 2.5H5V5Zm14 8H7l-3 2.5L7 18h12v-5Z"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span>Visitor Center</span>
+      </div>
+      <span class="account-label">Account settings</span>
+    </div>
+  </header>
+
+  <main class="frame">
+    <div class="intro">
+      <h1 id="page-title">Display settings</h1>
+      <p>Choose how dates and temperatures appear.</p>
+    </div>
+
+    <section class="preview" aria-labelledby="preview-heading">
+      <div class="preview-content">
+        <h2 class="preview-heading" id="preview-heading">Live preview</h2>
+        <dl class="preview-values">
+          <div>
+            <dt>Date</dt>
+            <dd><time id="example-date" datetime="2026-11-21">November 21, 2026</time></dd>
+          </div>
+          <div>
+            <dt>Temperature</dt>
+            <dd><span id="example-temperature">68°F</span></dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="preview-stub" aria-hidden="true">
+        <svg viewBox="0 0 210 164" fill="none" focusable="false">
+          <g stroke="currentColor" opacity=".62" stroke-linejoin="round">
+            <path d="M105 14c24-5 42 8 51 25 7 13 31 14 34 36 4 19-9 35-25 42-16 7-23 27-43 28-17 1-26-9-42-7-23 3-44-8-50-29-4-15 1-28 9-41C49 51 46 38 63 26c13-10 28-9 42-12Z"/>
+            <path d="M105 27c20-4 34 5 42 20 8 15 28 16 31 32 4 16-8 25-21 32-15 7-20 20-36 22-14 1-25-9-41-6-17 3-34-6-38-21-4-12 2-24 9-35 8-13 5-25 18-34 10-7 22-7 36-10Z"/>
+            <path d="M104 39c15-4 27 4 33 17 7 13 24 15 27 28 3 12-8 19-18 24-12 6-16 14-27 14-13 1-21-8-35-5-15 3-26-4-30-15-3-11 4-20 9-29 6-10 3-20 14-27 8-5 17-5 27-7Z"/>
+            <path d="M102 51c13-3 21 2 26 13 6 11 19 12 21 21 3 11-7 15-16 19-7 4-11 7-17 7-11 0-17-6-27-4-12 2-20-2-22-11-2-8 3-15 7-22 4-7 4-15 11-19 5-3 11-2 17-4Z"/>
+            <path d="M24 28h14m-7-7v14m144 104h14m-7-7v14"/>
+          </g>
+          <path d="M105 27c20-4 34 5 42 20" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="m107 67 11 14-11 14-11-14 11-14Z" fill="var(--accent)"/>
+          <circle cx="107" cy="81" r="2.5" fill="var(--ink)"/>
+        </svg>
+      </div>
+    </section>
+
+    <form id="preferences" aria-labelledby="page-title" autocomplete="off">
+      <div class="settings-grid">
+        <fieldset>
+          <legend>Date format</legend>
+          <div class="options">
+            <label class="option">
+              <input class="visually-hidden" type="radio" name="dateFormat" value="us"
+                aria-labelledby="month-first" aria-describedby="month-pattern" checked>
+              <span class="radio-mark" aria-hidden="true"></span>
+              <span>
+                <span class="option-name" id="month-first">Month first</span>
+                <span class="option-detail" id="month-pattern">Month day, year</span>
+              </span>
+            </label>
+
+            <label class="option">
+              <input class="visually-hidden" type="radio" name="dateFormat" value="dayFirst"
+                aria-labelledby="day-first" aria-describedby="day-pattern">
+              <span class="radio-mark" aria-hidden="true"></span>
+              <span>
+                <span class="option-name" id="day-first">Day first</span>
+                <span class="option-detail" id="day-pattern">Day month year</span>
+              </span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Temperature unit</legend>
+          <div class="options">
+            <label class="option">
+              <input class="visually-hidden" type="radio" name="temperatureUnit" value="fahrenheit" checked>
+              <span class="radio-mark" aria-hidden="true"></span>
+              <span>
+                <span class="option-name">Fahrenheit</span>
+                <span class="option-detail" aria-hidden="true">°F</span>
+              </span>
+            </label>
+
+            <label class="option">
+              <input class="visually-hidden" type="radio" name="temperatureUnit" value="celsius">
+              <span class="radio-mark" aria-hidden="true"></span>
+              <span>
+                <span class="option-name">Celsius</span>
+                <span class="option-detail" aria-hidden="true">°C</span>
+              </span>
+            </label>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="form-footer">
+        <button class="reset" type="reset">
+          <svg width="17" height="17" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M3.5 4.5V9H8m-4.4-.3a6.25 6.25 0 1 1 .8 5.3"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Reset to defaults
+        </button>
+      </div>
+      <div class="visually-hidden" id="preview-status" role="status" aria-atomic="true"></div>
+    </form>
+  </main>
+
+  <script>
+    // Selections live in the form for the current page.
+    const dates = {
+      us: "November 21, 2026",
+      dayFirst: "21 November 2026"
+    };
+    const temperatures = {
+      fahrenheit: "68°F",
+      celsius: "20°C"
+    };
+
+    const form = document.getElementById("preferences");
+    const exampleDate = document.getElementById("example-date");
+    const exampleTemperature = document.getElementById("example-temperature");
+    const status = document.getElementById("preview-status");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    function showValue(element, value) {
+      if (element.textContent === value) return;
+
+      element.textContent = value;
+      if (!reducedMotion.matches) {
+        element.animate([{ opacity: 0.6 }, { opacity: 1 }], {
+          duration: 200,
+          easing: "ease-out"
+        });
+      }
+    }
+
+    form.addEventListener("change", (event) => {
+      const date = dates[form.elements.dateFormat.value];
+      const temperature = temperatures[form.elements.temperatureUnit.value];
+
+      showValue(exampleDate, date);
+      showValue(exampleTemperature, temperature);
+
+      status.textContent = event.target.name === "dateFormat"
+        ? `The example date is ${date}.`
+        : `The example temperature is ${temperature}.`;
+    });
+
+    form.addEventListener("reset", () => {
+      showValue(exampleDate, dates.us);
+      showValue(exampleTemperature, temperatures.fahrenheit);
+      status.textContent = `Defaults restored. The examples show ${dates.us} and ${temperatures.fahrenheit}.`;
+    });
+
+    form.addEventListener("submit", (event) => event.preventDefault());
+  </script>
+</body>
+</html>

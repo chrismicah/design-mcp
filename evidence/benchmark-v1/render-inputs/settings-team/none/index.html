@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Teammate roles | Northline Books</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&amp;family=Newsreader:opsz,wght@6..72,400..600&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f3f0e7;
+      --porcelain: #fffdf7;
+      --pine: #173b32;
+      --ink: #222921;
+      --slate: #505d53;
+      --brass: #d8b574;
+      --rule: color-mix(in srgb, var(--pine) 19%, var(--porcelain));
+      --wash: color-mix(in srgb, var(--pine) 9%, var(--porcelain));
+      --control-border: color-mix(in srgb, var(--slate) 73%, var(--porcelain));
+      --serif: "Newsreader", Georgia, serif;
+      --sans: "Instrument Sans", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 1rem/1.5 var(--sans);
+    }
+
+    .page-width {
+      width: min(68rem, calc(100% - 3rem));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .brand {
+      min-height: 4.625rem;
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      color: var(--pine);
+    }
+
+    .brand-name {
+      padding-top: .15em;
+      font: 600 1.8rem/1 var(--serif);
+      letter-spacing: -.035em;
+    }
+
+    .brand-mark {
+      position: relative;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 4px;
+      background: var(--pine);
+      color: var(--porcelain);
+    }
+
+    .brand-mark::before,
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      top: 9px;
+      width: 9px;
+      height: 12px;
+      border: 1px solid currentColor;
+    }
+
+    .brand-mark::before {
+      left: 7px;
+      border-radius: 2px 0 0 2px;
+      transform: skewY(12deg);
+    }
+
+    .brand-mark::after {
+      right: 7px;
+      border-radius: 0 2px 2px 0;
+      transform: skewY(-12deg);
+    }
+
+    main {
+      padding-block: 2.375rem 4rem;
+    }
+
+    .masthead {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      min-height: 13.75rem;
+      padding: 2rem 3rem;
+      border-radius: 5px;
+      background: var(--pine);
+      color: var(--porcelain);
+    }
+
+    .masthead::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 13px;
+      border-right: 1px solid color-mix(in srgb, var(--pine) 61%, var(--brass));
+      background: color-mix(in srgb, var(--pine) 65%, var(--ink));
+    }
+
+    h1, h2 { margin: 0; }
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      max-width: calc(100% - 17rem);
+      padding-top: .13em;
+      font: 500 clamp(3.4rem, 6vw, 5.25rem)/.97 var(--serif);
+      letter-spacing: -.047em;
+    }
+
+    .book-art {
+      position: absolute;
+      right: 2.15rem;
+      bottom: 0;
+      width: 357px;
+      height: 220px;
+      color: color-mix(in srgb, var(--brass) 64%, var(--pine));
+      pointer-events: none;
+      transform-origin: bottom right;
+    }
+
+    .book-window {
+      position: absolute;
+      left: 73px;
+      bottom: 27px;
+      width: 236px;
+      height: 178px;
+      border: 1px solid currentColor;
+      border-bottom: 0;
+      border-radius: 118px 118px 0 0;
+      background: color-mix(in srgb, var(--pine) 91%, var(--brass));
+    }
+
+    .book-window::before {
+      content: "";
+      position: absolute;
+      inset: 7px 7px 0;
+      border: 1px solid currentColor;
+      border-bottom: 0;
+      border-radius: 110px 110px 0 0;
+      opacity: .46;
+    }
+
+    .book {
+      position: absolute;
+      bottom: 28px;
+      border: 1px solid currentColor;
+      border-radius: 3px 3px 2px 2px;
+      box-shadow: inset 4px 0 rgb(23 59 50 / .15);
+    }
+
+    .book::before,
+    .book::after {
+      content: "";
+      position: absolute;
+      inset-inline: 7px;
+      height: 6px;
+      border-block: 1px solid currentColor;
+      opacity: .78;
+    }
+
+    .book::before { top: 11px; }
+    .book::after { bottom: 11px; }
+
+    .book-paper {
+      left: 91px;
+      width: 48px;
+      height: 134px;
+      transform: rotate(-11deg);
+      transform-origin: bottom right;
+      background: var(--paper);
+      color: var(--pine);
+    }
+
+    .book-pine {
+      left: 139px;
+      width: 66px;
+      height: 160px;
+      background: color-mix(in srgb, var(--pine) 72%, var(--ink));
+      color: var(--brass);
+    }
+
+    .book-brass {
+      left: 205px;
+      width: 42px;
+      height: 128px;
+      background: var(--brass);
+      color: var(--pine);
+    }
+
+    .book-sage {
+      left: 247px;
+      width: 42px;
+      height: 112px;
+      transform: rotate(14deg);
+      transform-origin: bottom left;
+      background: color-mix(in srgb, var(--pine) 67%, var(--porcelain));
+      color: var(--porcelain);
+    }
+
+    .stamp {
+      position: absolute;
+      top: 46%;
+      left: 50%;
+      width: 14px;
+      height: 14px;
+      border: 1px solid currentColor;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    .book-pine .stamp {
+      width: 28px;
+      height: 40px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .book-pine .stamp::before {
+      content: "";
+      position: absolute;
+      inset: 3px;
+      border: 1px solid currentColor;
+      border-radius: inherit;
+    }
+
+    .book-pine .stamp::after {
+      content: "";
+      position: absolute;
+      top: 14px;
+      left: 8px;
+      width: 10px;
+      height: 10px;
+      border: 1px solid currentColor;
+      transform: rotate(45deg);
+    }
+
+    .book-brass .stamp {
+      width: 10px;
+      height: 25px;
+      border-radius: 5px;
+      transform: translate(-50%, -50%);
+    }
+
+    .shelf {
+      position: absolute;
+      left: 58px;
+      bottom: 27px;
+      width: 265px;
+      height: 1px;
+      background: currentColor;
+      box-shadow: 0 5px color-mix(in srgb, var(--brass) 31%, var(--pine));
+    }
+
+    .settings {
+      display: grid;
+      grid-template-columns: minmax(0, 1.14fr) minmax(0, 1fr);
+      overflow: hidden;
+      margin-top: 1.5rem;
+      border: 1px solid var(--rule);
+      border-radius: 5px;
+      background: var(--porcelain);
+      box-shadow: 0 5px 16px rgb(23 59 50 / .045);
+    }
+
+    .roster, .role-editor {
+      padding: 2rem 2.25rem 2.125rem;
+    }
+
+    .role-editor {
+      border-inline-start: 1px solid var(--rule);
+      background: color-mix(in srgb, var(--paper) 53%, var(--porcelain));
+    }
+
+    h2 {
+      margin-bottom: 1.1rem;
+      color: var(--pine);
+      font: 600 2rem/1.08 var(--serif);
+      letter-spacing: -.033em;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th { text-align: start; }
+
+    thead th {
+      padding: 0 0 .55rem;
+      color: var(--slate);
+      font-size: .875rem;
+      font-weight: 600;
+    }
+
+    tbody th, tbody td {
+      padding: .7rem 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    tbody tr:last-child > * {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    tbody th { font-weight: 650; }
+
+    th:last-child, td:last-child {
+      text-align: end;
+    }
+
+    .identity {
+      display: inline-flex;
+      align-items: center;
+      gap: .625rem;
+      vertical-align: middle;
+    }
+
+    .initials {
+      display: grid;
+      flex: 0 0 2.125rem;
+      width: 2.125rem;
+      height: 2.125rem;
+      place-items: center;
+      border-radius: 4px;
+      background: var(--wash);
+      color: var(--pine);
+      font-size: .75rem;
+      font-weight: 700;
+    }
+
+    .initials-ari {
+      background: color-mix(in srgb, var(--brass) 36%, var(--porcelain));
+    }
+
+    .current-role {
+      display: inline-block;
+      padding: .19rem .55rem;
+      border-radius: 3px;
+      background: var(--paper);
+      color: var(--slate);
+      font-size: .875rem;
+      font-weight: 600;
+    }
+
+    .current-role[data-role="Editor"] {
+      background: var(--wash);
+      color: var(--pine);
+    }
+
+    fieldset {
+      min-inline-size: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    .choices {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .625rem;
+    }
+
+    .choice {
+      display: flex;
+      min-height: 3rem;
+      align-items: center;
+      gap: .6rem;
+      padding: .55rem .8rem;
+      border: 1px solid var(--control-border);
+      border-radius: 4px;
+      background: var(--porcelain);
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .choice:has(input:checked) {
+      border-color: var(--pine);
+      background: var(--wash);
+      color: var(--pine);
+    }
+
+    .choice input {
+      flex: 0 0 1rem;
+      width: 1rem;
+      height: 1rem;
+      margin: 0;
+      accent-color: var(--pine);
+      cursor: inherit;
+    }
+
+    .choice:has(input:focus-visible),
+    .save-button:focus-visible {
+      outline: 2px solid var(--pine);
+      outline-offset: 3px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: .65rem .875rem;
+      margin-top: 1.125rem;
+    }
+
+    .save-button {
+      min-height: 2.75rem;
+      padding: .55rem .95rem;
+      border: 1px solid var(--pine);
+      border-radius: 4px;
+      background: var(--pine);
+      color: var(--porcelain);
+      font: 650 .9375rem/1.25 var(--sans);
+      cursor: pointer;
+    }
+
+    .save-button[aria-disabled="true"] {
+      border-color: var(--rule);
+      background: var(--wash);
+      color: var(--slate);
+      cursor: default;
+    }
+
+    .save-button[aria-disabled="false"]:hover {
+      background: color-mix(in srgb, var(--pine) 70%, var(--ink));
+    }
+
+    .feedback {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      margin: 0;
+      color: var(--slate);
+      font-size: .875rem;
+      line-height: 1.35;
+    }
+
+    .feedback.is-saved {
+      color: var(--pine);
+      font-weight: 600;
+    }
+
+    .feedback.is-saved::before {
+      content: "";
+      width: .39rem;
+      height: .68rem;
+      margin-top: -.18rem;
+      border: solid currentColor;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    @media (max-width: 700px) {
+      .page-width { width: calc(100% - 2rem); }
+      .brand { min-height: 3.75rem; }
+      .brand-name { font-size: 1.6rem; }
+      main { padding-block: 1.125rem 2.5rem; }
+
+      .masthead {
+        min-height: 9.125rem;
+        padding: 1.3rem;
+      }
+
+      .masthead::before { width: 8px; }
+
+      h1 {
+        max-width: calc(100% - 8rem);
+        font-size: clamp(2.25rem, 10.8vw, 3.75rem);
+      }
+
+      .book-art {
+        right: -.25rem;
+        transform: scale(.55);
+      }
+
+      .settings {
+        grid-template-columns: minmax(0, 1fr);
+        margin-top: 1rem;
+      }
+
+      .roster, .role-editor { padding: 1.25rem; }
+
+      .role-editor {
+        border-inline-start: 0;
+        border-top: 1px solid var(--rule);
+      }
+
+      h2 {
+        margin-bottom: .85rem;
+        font-size: 1.875rem;
+      }
+    }
+
+    @media (max-width: 360px) {
+      h1 { max-width: calc(100% - 5.5rem); }
+
+      .book-art {
+        right: -.75rem;
+        transform: scale(.44);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="page-width brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">Northline Books</span>
+    </div>
+  </header>
+
+  <main class="page-width">
+    <div class="masthead">
+      <h1>Teammate roles</h1>
+      <div class="book-art" aria-hidden="true">
+        <span class="book-window"></span>
+        <span class="book book-paper"><span class="stamp"></span></span>
+        <span class="book book-pine"><span class="stamp"></span></span>
+        <span class="book book-brass"><span class="stamp"></span></span>
+        <span class="book book-sage"><span class="stamp"></span></span>
+        <span class="shelf"></span>
+      </div>
+    </div>
+
+    <div class="settings">
+      <section class="roster" aria-labelledby="teammates-heading">
+        <h2 id="teammates-heading">Teammates</h2>
+        <table aria-labelledby="teammates-heading">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Current role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">
+                <span class="identity"><span class="initials" aria-hidden="true">SL</span>Sam Lee</span>
+              </th>
+              <td><span class="current-role" data-role="Editor">Editor</span></td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <span class="identity"><span class="initials initials-ari" aria-hidden="true">AB</span>Ari Bell</span>
+              </th>
+              <td><span class="current-role" id="ari-current-role" data-role="Viewer">Viewer</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <form class="role-editor" id="role-form" aria-labelledby="edit-heading" autocomplete="off">
+        <h2 id="edit-heading">Change Ari Bell’s role</h2>
+        <fieldset>
+          <legend class="visually-hidden">New role for Ari Bell</legend>
+          <div class="choices">
+            <label class="choice">
+              <input type="radio" name="role" value="Viewer" checked>
+              Viewer
+            </label>
+            <label class="choice">
+              <input type="radio" name="role" value="Editor">
+              Editor
+            </label>
+          </div>
+        </fieldset>
+        <div class="actions">
+          <button class="save-button" type="submit" aria-disabled="true">Save changes</button>
+          <p class="feedback" id="save-feedback" role="status"></p>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    const form = document.getElementById("role-form");
+    const choices = form.elements.namedItem("role");
+    const saveButton = form.querySelector("button");
+    const feedback = document.getElementById("save-feedback");
+    const currentRole = document.getElementById("ari-current-role");
+    const storageKey = "northline-books.ari-bell.role";
+
+    let savedRole = "Viewer";
+    try {
+      if (localStorage.getItem(storageKey) === "Editor") {
+        savedRole = "Editor";
+      }
+    } catch {
+      // Use the initial role when browser storage is unavailable.
+    }
+
+    function showSavedRole() {
+      currentRole.textContent = savedRole;
+      currentRole.dataset.role = savedRole;
+    }
+
+    choices.value = savedRole;
+    showSavedRole();
+
+    form.addEventListener("change", () => {
+      const hasChange = choices.value !== savedRole;
+      saveButton.setAttribute("aria-disabled", String(!hasChange));
+      feedback.classList.remove("is-saved");
+      feedback.textContent = hasChange ? "Unsaved change" : "";
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const selectedRole = choices.value;
+      if (selectedRole === savedRole) return;
+
+      savedRole = selectedRole;
+      try {
+        localStorage.setItem(storageKey, savedRole);
+      } catch {
+        // Keep the role for the current page when browser storage is unavailable.
+      }
+
+      showSavedRole();
+      saveButton.setAttribute("aria-disabled", "true");
+      feedback.classList.add("is-saved");
+      feedback.textContent = `Saved as ${savedRole}.`;
+    });
+  </script>
+</body>
+</html>

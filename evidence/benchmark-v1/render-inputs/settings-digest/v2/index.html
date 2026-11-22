@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Supplier digest preferences</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Sans+Condensed:wght@600&amp;display=swap">
+  <style>
+    :root {
+      color-scheme: dark;
+      --paper: #14181b;
+      --surface: #1c2225;
+      --ink: #eef0ec;
+      --muted: #adb8bc;
+      --line: #394347;
+      --accent: #ffaa72;
+      --selected: color-mix(in srgb, var(--surface), var(--accent) 12%);
+      --selection-line: color-mix(in srgb, var(--line), var(--accent) 58%);
+      --body: "IBM Plex Sans", sans-serif;
+      --display: "IBM Plex Sans Condensed", "Arial Narrow", sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-block-size: 100vh;
+      margin: 0;
+      background: radial-gradient(ellipse 60rem 30rem at 50% 0%, var(--surface), transparent), var(--paper);
+      color: var(--ink);
+      font: 400 1rem / 1.5 var(--body);
+    }
+
+    .preferences {
+      inline-size: calc(100% - 2.5rem);
+      max-inline-size: 62rem;
+      margin-inline: auto;
+      padding-block: clamp(3.5rem, 10vh, 6rem) 3rem;
+    }
+
+    .page-heading {
+      margin-block-end: 2rem;
+    }
+
+    h1 {
+      margin: 0;
+      font: 600 clamp(2.75rem, 5.4vw, 4.25rem) / 1 var(--display);
+      letter-spacing: -.025em;
+    }
+
+    .intro {
+      margin: .65rem 0 0;
+      color: var(--muted);
+      font-size: 1.125rem;
+    }
+
+    .schedule {
+      position: relative;
+      display: grid;
+      align-items: center;
+      min-block-size: 11rem;
+      overflow: hidden;
+      padding: 1.5rem 2rem;
+      border: 1px solid var(--line);
+      border-inline-start: 3px solid var(--accent);
+      border-radius: .5rem;
+      background: var(--surface);
+    }
+
+    .schedule-copy {
+      position: relative;
+      z-index: 1;
+      padding-inline-end: min(36%, 23rem);
+    }
+
+    .schedule-label {
+      margin: 0 0 .4rem;
+      color: var(--muted);
+      font-size: .9375rem;
+      font-weight: 500;
+    }
+
+    .schedule-value {
+      margin: 0;
+      font: 600 clamp(2.125rem, 4vw, 3.375rem) / 1.05 var(--display);
+      letter-spacing: -.02em;
+    }
+
+    .schedule-art {
+      position: absolute;
+      inset-block: 0;
+      inset-inline-end: .375rem;
+      inline-size: min(42%, 25rem);
+      block-size: 100%;
+      pointer-events: none;
+    }
+
+    .calendar-day rect {
+      fill: var(--line);
+      stroke: var(--muted);
+      stroke-opacity: .25;
+    }
+
+    .calendar-day circle {
+      fill: var(--muted);
+      opacity: .65;
+    }
+
+    .calendar-day.is-delivery-day rect {
+      fill: var(--accent);
+      stroke: var(--accent);
+      stroke-opacity: 1;
+    }
+
+    .calendar-day.is-delivery-day circle {
+      fill: var(--paper);
+      opacity: 1;
+    }
+
+    .settings {
+      margin-block-start: 1.75rem;
+    }
+
+    .setting-row {
+      display: grid;
+      grid-template-columns: minmax(8rem, 1fr) minmax(0, 32rem);
+      align-items: center;
+      gap: 1.25rem;
+      padding-block: 1rem;
+      border-block-end: 1px solid var(--line);
+    }
+
+    .setting-row:first-child {
+      padding-block-start: 0;
+    }
+
+    .setting-row[hidden] {
+      display: none;
+    }
+
+    .setting-label {
+      margin: 0;
+      font-size: 1.1875rem;
+      font-weight: 600;
+    }
+
+    .choices {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .1875rem;
+      padding: .1875rem;
+      border: 1px solid var(--line);
+      border-radius: .5rem;
+      background: var(--paper);
+    }
+
+    .choices--days {
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+    }
+
+    .choice {
+      position: relative;
+      min-inline-size: 0;
+    }
+
+    .choice input {
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      inline-size: 100%;
+      block-size: 100%;
+      margin: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .choice-face {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      min-block-size: 2.75rem;
+      padding-inline: .125rem;
+      border: 1px solid transparent;
+      border-radius: .3125rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .choices--days .choice-face {
+      font-size: .9375rem;
+    }
+
+    .radio-mark {
+      display: grid;
+      flex: 0 0 .875rem;
+      place-items: center;
+      block-size: .875rem;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+    }
+
+    .choice input:checked + .choice-face {
+      border-color: var(--selection-line);
+      background: var(--selected);
+      color: var(--accent);
+    }
+
+    .choice input:checked + .choice-face .radio-mark::after {
+      inline-size: .375rem;
+      block-size: .375rem;
+      border-radius: 50%;
+      background: currentColor;
+      content: "";
+    }
+
+    .choice input:focus-visible + .choice-face,
+    .save-button:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 2px;
+    }
+
+    .actions {
+      display: grid;
+      justify-items: end;
+      gap: .625rem;
+      margin-block-start: 1.125rem;
+    }
+
+    .save-button {
+      min-block-size: 3rem;
+      padding: .625rem 1.25rem;
+      border: 1px solid transparent;
+      border-radius: .375rem;
+      background: var(--accent);
+      color: var(--paper);
+      font: 600 1rem / 1.25 var(--body);
+      cursor: pointer;
+    }
+
+    .save-button:active {
+      background: color-mix(in srgb, var(--accent), var(--paper) 12%);
+    }
+
+    .feedback {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      margin: 0;
+      color: var(--muted);
+      font-size: .9375rem;
+    }
+
+    .feedback[data-state="saved"] {
+      color: var(--ink);
+    }
+
+    .feedback[data-state="saved"]::before {
+      flex: 0 0 auto;
+      inline-size: .42rem;
+      block-size: .7rem;
+      margin-inline: .2rem;
+      border: solid var(--accent);
+      border-width: 0 2px 2px 0;
+      transform: translateY(-.125rem) rotate(45deg);
+      content: "";
+    }
+
+    @media (hover: hover) {
+      .choice:hover input:not(:checked) + .choice-face {
+        background: var(--surface);
+        color: var(--ink);
+      }
+
+      .save-button:hover:not(:active) {
+        background: color-mix(in srgb, var(--accent), var(--ink) 17%);
+      }
+    }
+
+    @media (max-width: 40rem) {
+      .preferences {
+        padding-block-start: 2.125rem;
+      }
+
+      .page-heading {
+        margin-block-end: 1.5rem;
+      }
+
+      .intro {
+        font-size: 1.0625rem;
+      }
+
+      .schedule {
+        min-block-size: 8rem;
+        padding: 1.125rem;
+      }
+
+      .schedule-copy {
+        padding-inline-end: 4.625rem;
+      }
+
+      .schedule-value {
+        font-size: 2rem;
+      }
+
+      .schedule-art {
+        inset-inline-end: -1rem;
+        inline-size: 11.5rem;
+        opacity: .85;
+      }
+
+      .settings {
+        margin-block-start: 1.375rem;
+      }
+
+      .setting-row {
+        grid-template-columns: minmax(0, 1fr);
+        gap: .5rem;
+        padding-block: .875rem;
+      }
+
+      .setting-label {
+        font-size: 1.125rem;
+      }
+
+      .actions {
+        justify-items: stretch;
+        margin-block-start: 1rem;
+      }
+    }
+
+    @media (forced-colors: active) {
+      .choice input:checked + .choice-face {
+        border-color: Highlight;
+        color: Highlight;
+      }
+
+      .save-button {
+        border-color: ButtonText;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="preferences">
+    <header class="page-heading">
+      <h1>Supplier digest</h1>
+      <p class="intro">Choose when you receive your digest.</p>
+    </header>
+
+    <section class="schedule" aria-labelledby="schedule-label">
+      <div class="schedule-copy">
+        <p class="schedule-label" id="schedule-label">Saved schedule</p>
+        <p class="schedule-value" id="saved-schedule">Weekly on Monday</p>
+      </div>
+
+      <svg class="schedule-art" viewBox="0 0 380 176" aria-hidden="true" focusable="false">
+        <defs>
+          <pattern id="drafting-dots" width="12" height="12" patternUnits="userSpaceOnUse">
+            <circle cx="1" cy="1" r=".8" fill="var(--muted)" opacity=".26"/>
+          </pattern>
+          <linearGradient id="drafting-fade">
+            <stop offset="0" stop-color="white" stop-opacity="0"/>
+            <stop offset=".35" stop-color="white"/>
+            <stop offset=".84" stop-color="white"/>
+            <stop offset="1" stop-color="white" stop-opacity="0"/>
+          </linearGradient>
+          <mask id="drafting-mask">
+            <rect width="380" height="176" fill="url(#drafting-fade)"/>
+          </mask>
+        </defs>
+
+        <rect width="380" height="176" fill="url(#drafting-dots)" mask="url(#drafting-mask)"/>
+        <path d="M30 130h57a14 14 0 0 0 14-14v-13a14 14 0 0 1 14-14h31"
+              fill="none" stroke="var(--accent)" stroke-opacity=".62"
+              stroke-width="1.2" stroke-dasharray="2 5" stroke-linecap="round"/>
+        <circle cx="30" cy="130" r="3" fill="var(--surface)" stroke="var(--accent)" stroke-opacity=".8"/>
+
+        <g transform="rotate(-13 175 91)">
+          <rect x="109" y="49" width="142" height="87" rx="7"
+                fill="var(--surface)" stroke="var(--muted)" stroke-opacity=".65" stroke-width="1.2"/>
+          <path d="m112 57 62 45a10 10 0 0 0 12 0l62-45M112 130l39-35m97 35-39-35"
+                fill="none" stroke="var(--muted)" stroke-opacity=".48" stroke-linejoin="round"/>
+        </g>
+
+        <g transform="rotate(7 255 88)">
+          <rect x="165" y="35" width="177" height="109" rx="7"
+                fill="var(--surface)" stroke="var(--muted)" stroke-opacity=".8" stroke-width="1.3"/>
+          <path d="M166 63h175" stroke="var(--muted)" stroke-opacity=".45"/>
+          <path d="M194 30v12m119-12v12" stroke="var(--accent)" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M182 78h33m6 0h12M182 126h57m6 0h14"
+                stroke="var(--muted)" stroke-opacity=".55" stroke-linecap="round"/>
+
+          <g class="calendar-day is-delivery-day" data-day="Monday">
+            <rect x="182" y="91" width="17" height="21" rx="3"/>
+            <circle cx="190.5" cy="101.5" r="2"/>
+          </g>
+          <g class="calendar-day" data-day="Tuesday">
+            <rect x="203" y="91" width="17" height="21" rx="3"/>
+            <circle cx="211.5" cy="101.5" r="2"/>
+          </g>
+          <g class="calendar-day" data-day="Wednesday">
+            <rect x="224" y="91" width="17" height="21" rx="3"/>
+            <circle cx="232.5" cy="101.5" r="2"/>
+          </g>
+          <g class="calendar-day" data-day="Thursday">
+            <rect x="245" y="91" width="17" height="21" rx="3"/>
+            <circle cx="253.5" cy="101.5" r="2"/>
+          </g>
+          <g class="calendar-day" data-day="Friday">
+            <rect x="266" y="91" width="17" height="21" rx="3"/>
+            <circle cx="274.5" cy="101.5" r="2"/>
+          </g>
+          <g class="calendar-day" data-day="Saturday">
+            <rect x="287" y="91" width="17" height="21" rx="3"/>
+            <circle cx="295.5" cy="101.5" r="2"/>
+          </g>
+          <g class="calendar-day" data-day="Sunday">
+            <rect x="308" y="91" width="17" height="21" rx="3"/>
+            <circle cx="316.5" cy="101.5" r="2"/>
+          </g>
+        </g>
+      </svg>
+    </section>
+
+    <form class="settings" id="digest-preferences">
+      <div class="setting-row">
+        <h2 class="setting-label" id="frequency-label">Frequency</h2>
+        <div class="choices" role="radiogroup" aria-labelledby="frequency-label">
+          <label class="choice">
+            <input type="radio" name="frequency" value="daily">
+            <span class="choice-face"><span class="radio-mark" aria-hidden="true"></span>Daily</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="frequency" value="weekly" aria-controls="delivery-day" checked>
+            <span class="choice-face"><span class="radio-mark" aria-hidden="true"></span>Weekly</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="frequency" value="off">
+            <span class="choice-face"><span class="radio-mark" aria-hidden="true"></span>Off</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="setting-row" id="delivery-day">
+        <h2 class="setting-label" id="day-label">Delivery day</h2>
+        <div class="choices choices--days" role="radiogroup" aria-labelledby="day-label">
+          <label class="choice">
+            <input type="radio" name="weekday" value="Monday" aria-label="Monday" checked>
+            <span class="choice-face">Mon</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="weekday" value="Tuesday" aria-label="Tuesday">
+            <span class="choice-face">Tue</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="weekday" value="Wednesday" aria-label="Wednesday">
+            <span class="choice-face">Wed</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="weekday" value="Thursday" aria-label="Thursday">
+            <span class="choice-face">Thu</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="weekday" value="Friday" aria-label="Friday">
+            <span class="choice-face">Fri</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="weekday" value="Saturday" aria-label="Saturday">
+            <span class="choice-face">Sat</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="weekday" value="Sunday" aria-label="Sunday">
+            <span class="choice-face">Sun</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="save-button" type="submit">Save preferences</button>
+        <p class="feedback" id="save-feedback" role="status" aria-atomic="true"></p>
+      </div>
+    </form>
+  </main>
+
+  <script>
+    const form = document.querySelector("#digest-preferences");
+    const frequency = form.elements.namedItem("frequency");
+    const weekday = form.elements.namedItem("weekday");
+    const deliveryDay = document.querySelector("#delivery-day");
+    const scheduleValue = document.querySelector("#saved-schedule");
+    const calendarDays = document.querySelectorAll(".calendar-day");
+    const feedback = document.querySelector("#save-feedback");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const storageKey = "supplier-digest-preferences";
+
+    const frequencyValues = Array.from(frequency, input => input.value);
+    const weekdayValues = Array.from(weekday, input => input.value);
+
+    function readSavedPreferences() {
+      try {
+        const stored = JSON.parse(localStorage.getItem(storageKey));
+
+        if (stored && frequencyValues.includes(stored.frequency) && weekdayValues.includes(stored.weekday)) {
+          return stored;
+        }
+      } catch {
+        // The form also works when browser storage is unavailable.
+      }
+
+      return { frequency: "weekly", weekday: "Monday" };
+    }
+
+    function showDeliveryDay() {
+      deliveryDay.hidden = frequency.value !== "weekly";
+    }
+
+    function showSavedSchedule() {
+      const summaries = {
+        daily: "Daily",
+        weekly: `Weekly on ${saved.weekday}`,
+        off: "Off"
+      };
+
+      scheduleValue.textContent = summaries[saved.frequency];
+
+      for (const day of calendarDays) {
+        const delivers = saved.frequency === "daily" ||
+          (saved.frequency === "weekly" && day.dataset.day === saved.weekday);
+
+        day.classList.toggle("is-delivery-day", delivers);
+      }
+    }
+
+    let saved = readSavedPreferences();
+    frequency.value = saved.frequency;
+    weekday.value = saved.weekday;
+    showDeliveryDay();
+    showSavedSchedule();
+
+    form.addEventListener("change", () => {
+      showDeliveryDay();
+
+      const changed = frequency.value !== saved.frequency ||
+        (frequency.value === "weekly" && weekday.value !== saved.weekday);
+      const message = changed ? "Unsaved changes" : "";
+
+      feedback.dataset.state = changed ? "pending" : "";
+      if (feedback.textContent !== message) {
+        feedback.textContent = message;
+      }
+    });
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      saved = { frequency: frequency.value, weekday: weekday.value };
+
+      try {
+        localStorage.setItem(storageKey, JSON.stringify(saved));
+      } catch {
+        // The saved schedule remains available for the current visit.
+      }
+
+      showSavedSchedule();
+
+      const confirmations = {
+        daily: "Daily delivery saved.",
+        weekly: `Weekly delivery saved for ${saved.weekday}s.`,
+        off: "Digest turned off."
+      };
+
+      feedback.dataset.state = "saved";
+      feedback.textContent = confirmations[saved.frequency];
+
+      if (!reducedMotion.matches) {
+        for (const animation of scheduleValue.getAnimations()) {
+          animation.cancel();
+        }
+
+        scheduleValue.animate([{ opacity: .65 }, { opacity: 1 }], {
+          duration: 220,
+          easing: "ease-out"
+        });
+      }
+    });
+  </script>
+</body>
+</html>
