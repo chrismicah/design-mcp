@@ -1,0 +1,127 @@
+name: Design Library visual adapter proof
+
+on:
+  push:
+    branches: [design-mcp/design-library-adapter-proof]
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: macos-15
+    timeout-minutes: 28
+    env:
+      LIBRARY_REVISION: 96310517ffcc484f4f820434c1cf51c16f763cec
+      ENTRIES_TREE: a8c57f30c9278fdf985c31622227b0448f49a9c2
+      MODEL_REVISION: 1110a243fdf4706b3f48f1d95db1a4f5529b4d41
+      WEIGHT_SHA256: 53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Install the pinned competitor with semantic search
+        shell: bash
+        run: |
+          repo="$RUNNER_TEMP/design-library"
+          proof="$RUNNER_TEMP/design-library-proof"
+          mkdir "$repo" "$proof" "$RUNNER_TEMP/probe-home"
+          python -m pip install 'uv==0.13.9' 'fastmcp==4.2.4'
+          uv --no-config python install 3.12.13
+          semantic_python="$(uv --no-config python find --managed-python 3.12.13)"
+          "$semantic_python" -c 'import sqlite3; sqlite3.connect(":memory:").enable_load_extension(True)'
+          git -C "$repo" init
+          git -C "$repo" fetch --depth 1 https://github.com/Ashan-Iduranga/design-library-mcp.git "$LIBRARY_REVISION"
+          git -C "$repo" checkout --detach FETCH_HEAD
+          test "$(git -C "$repo" rev-parse HEAD)" = "$LIBRARY_REVISION"
+          test "$(git -C "$repo" rev-parse HEAD:library/entries)" = "$ENTRIES_TREE"
+          cd "$repo"
+          uv sync --locked --no-dev --group semantic --python "$semantic_python"
+          "$repo/.venv/bin/python" - <<'PY' > "$proof/sqlite.txt"
+          import sqlite3
+          import sys
+          import sqlite_vec
+
+          connection = sqlite3.connect(":memory:")
+          connection.enable_load_extension(True)
+          sqlite_vec.load(connection)
+          connection.enable_load_extension(False)
+          print(sys.version)
+          print("SQLite", sqlite3.sqlite_version, "sqlite-vec", connection.execute("SELECT vec_version()").fetchone()[0])
+          PY
+          uv pip freeze --python "$repo/.venv/bin/python" > "$proof/dependencies.txt"
+          shasum -a 256 uv.lock > "$proof/lock.sha256"
+          sw_vers > "$proof/platform.txt"
+          uname -m >> "$proof/platform.txt"
+      - name: Verify the public encoder and build the frozen indexes
+        shell: bash
+        run: |
+          repo="$RUNNER_TEMP/design-library"
+          proof="$RUNNER_TEMP/design-library-proof"
+          cd "$repo"
+          export HF_HOME="$RUNNER_TEMP/encoder" HF_HUB_DISABLE_TELEMETRY=1 HF_HUB_DISABLE_XET=1
+          export OMP_NUM_THREADS=2 VECLIB_MAXIMUM_THREADS=2 TOKENIZERS_PARALLELISM=false
+          "$repo/.venv/bin/python" - "$proof/encoder.json" <<'PY'
+          from hashlib import file_digest
+          import json
+          import os
+          from pathlib import Path
+          import sys
+          from huggingface_hub import snapshot_download
+
+          model = "sentence-transformers/all-MiniLM-L6-v2"
+          revision = os.environ["MODEL_REVISION"]
+          snapshot = Path(snapshot_download(
+              model, revision=revision, allow_patterns=["*.json", "vocab.txt", "model.safetensors", "1_Pooling/*"],
+          ))
+          assert snapshot.name == revision
+          with (snapshot / "model.safetensors").open("rb") as stream:
+              digest = file_digest(stream, "sha256").hexdigest()
+          assert digest == os.environ["WEIGHT_SHA256"]
+          refs = snapshot.parents[1] / "refs"
+          refs.mkdir(exist_ok=True)
+          (refs / "main").write_text(revision)
+          Path(sys.argv[1]).write_text(json.dumps({"model": model, "revision": revision, "weights_sha256": digest}) + "\n")
+          PY
+          export HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1
+          "$repo/.venv/bin/python" -m designlib rebuild 2>&1 | tee "$proof/rebuild.log"
+          "$repo/.venv/bin/python" - "$proof/index.json" <<'PY'
+          from hashlib import file_digest
+          import json
+          import os
+          from pathlib import Path
+          import sqlite3
+          import sys
+          from designlib.core import semantic
+
+          assert semantic.enabled()
+          indexed = sqlite3.connect("library/index.db").execute("SELECT COUNT(*) FROM entries").fetchone()[0]
+          embedded = sqlite3.connect("library/vectors.db").execute("SELECT COUNT(*) FROM embedded").fetchone()[0]
+          assert indexed == embedded and indexed > 0, (indexed, embedded)
+          with open("library/vectors.db", "rb") as stream:
+              vector_digest = file_digest(stream, "sha256").hexdigest()
+          Path(sys.argv[1]).write_text(json.dumps({
+              "source_commit": os.environ["LIBRARY_REVISION"],
+              "entries_tree": os.environ["ENTRIES_TREE"],
+              "indexed": indexed, "embedded": embedded, "vector_index_sha256": vector_digest,
+          }) + "\n")
+          PY
+      - name: Verify both fixed modes through the visual adapter
+        shell: bash
+        run: |
+          repo="$RUNNER_TEMP/design-library"
+          proof="$RUNNER_TEMP/design-library-proof"
+          env -i PATH="$PATH" HOME="$RUNNER_TEMP/probe-home" HF_HOME="$RUNNER_TEMP/encoder" \
+            HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TOKENIZERS_PARALLELISM=false \
+            OMP_NUM_THREADS=2 VECLIB_MAXIMUM_THREADS=2 python evals/v1/probe_design_library_adapter.py \
+            --python "$repo/.venv/bin/python" --checkout "$repo" --out "$proof/adapter.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: design-library-hybrid
+          path: ${{ runner.temp }}/design-library-proof
+          if-no-files-found: warn
+          retention-days: 7
