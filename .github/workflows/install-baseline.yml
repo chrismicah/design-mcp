@@ -1,0 +1,58 @@
+name: Pinned Mac install baseline
+
+on:
+  push:
+    branches: [design-mcp/compatibility-baseline]
+
+permissions:
+  contents: read
+
+jobs:
+  clean-install:
+    name: ${{ matrix.host.arch }} / Python ${{ matrix.python }}
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.12', '3.13']
+        host:
+          - runner: macos-15
+            arch: arm64
+          - runner: macos-15-intel
+            arch: x86_64
+    runs-on: ${{ matrix.host.runner }}
+    timeout-minutes: 12
+    steps:
+      - name: Check out the frozen runtime
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: fd6035d8732d177b811f81a0f5863e99134a85ca
+          persist-credentials: false
+      - name: Select the exact Python interpreter
+        id: python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install from the clean checkout using pipx and uv
+        shell: bash
+        env:
+          EXPECTED_ARCH: ${{ matrix.host.arch }}
+          PYTHON_EXECUTABLE: ${{ steps.python.outputs.python-path }}
+          PIPX_HOME: ${{ runner.temp }}/pipx-home
+          PIPX_BIN_DIR: ${{ runner.temp }}/pipx-bin
+          PIPX_MAN_DIR: ${{ runner.temp }}/pipx-man
+          UV_TOOL_DIR: ${{ runner.temp }}/uv-tools
+          UV_TOOL_BIN_DIR: ${{ runner.temp }}/uv-bin
+          UV_NO_MODIFY_PATH: 1
+        run: |
+          test "$(uname -m)" = "$EXPECTED_ARCH"
+          echo "Architecture: $(uname -m), $(sw_vers -productVersion), $($PYTHON_EXECUTABLE -V)" >> "$GITHUB_STEP_SUMMARY"
+          "$PYTHON_EXECUTABLE" -m venv "$RUNNER_TEMP/install-client"
+          client="$RUNNER_TEMP/install-client/bin"
+          "$client/python" -m pip install pipx uv 'fastmcp==4.2.4'
+          "$client/pipx" install --python "$PYTHON_EXECUTABLE" "$GITHUB_WORKSPACE"
+          "$client/uv" tool install --no-python-downloads --python "$PYTHON_EXECUTABLE" "$GITHUB_WORKSPACE"
+          cd "$RUNNER_TEMP"
+          for executable in "$PIPX_BIN_DIR/design-mcp" "$UV_TOOL_BIN_DIR/design-mcp"; do
+            "$executable" version
+            DESIGN_MCP_SURFACE=both "$client/python" "$GITHUB_WORKSPACE/scripts/smoke_design_mcp.py" "$executable" serve
+          done
