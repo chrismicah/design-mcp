@@ -117,6 +117,8 @@ Both specific-landing v2 controls were scored again alongside the candidate. The
 
 The local reviewer now detects large text below WCAG's 3 to 1 minimum and keeps the 4.5 to 1 check for smaller text. Three boundary cases failed before the change and passed after it. Installed Chrome reproduced the large-text finding, showed a 3 to 1 recolor, and let a keyboard user switch the preview to After. The original small-text flow and field masking passed in the same CI run. [Regression and browser receipts](evidence/benchmark-v1/large-text-contrast.json) · [WCAG contrast requirements](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)
 
+On hosted macOS 15, 30 first activations on the real Chrome toolbar button completed with the pinned extension from `2fcd312`. The p95 open of 516 ms missed the 250 ms target. The 233 ms p95 to the first finding cleared 1 second. The 371 ms p95 to observe the popup target includes delivery and polling and precedes the in-popup readiness check. [Pointer timings and mask receipt](evidence/benchmark-v1/chrome-pointer-activation-mac.json)
+
 ## Compact vision experiment
 
 Across two briefs, the compact packets used 48,695 input tokens versus 51,112 with full screenshots, a 4.7% reduction. The theatre comparison kept both scores. The ceramics comparison moved from a tie to a 4.2-point lead for the plain generator. The compact run changed image size and supplied region measurements, so this comparison cannot isolate either change. Keep the full-size packets for the benchmark and measure region detection, decision agreement, and token savings on unseen examples before using compact packets by default. [Blind ballots and usage](evidence/benchmark-v1/compact-vision.json)
