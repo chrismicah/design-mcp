@@ -1,0 +1,313 @@
+{
+  "classification": "Controlled scratch MCP trial. Candidate rejected on phone result visibility.",
+  "candidate_file": "design_mcp/directions.py",
+  "generation": {
+    "control_pin": "0978712149674ad7fd5738c53d4b7966ba163b43",
+    "original_html_sha256": "a622163c28975c8cb25d866488dc8079960a09d19ee8a0e0d73e5941641d67b4",
+    "trial_module_sha256": "05af55f2faf3cec1e9be394395fd2d602bd33aac10fd2b0a7dfc2f1192baa5de",
+    "arms": [
+      {
+        "usage": {
+          "input_tokens": 64295,
+          "cached_input_tokens": 42240,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3341,
+          "reasoning_output_tokens": 0
+        },
+        "tool_calls": [
+          {
+            "type": "mcp_tool_call",
+            "server": "design-mcp",
+            "tool": "react",
+            "status": "completed"
+          }
+        ],
+        "client_errors": [],
+        "treatment_call": true,
+        "status": "passed",
+        "milliseconds": 69397,
+        "exit_code": 0,
+        "sessions": [
+          "01a206b7-ce7f-7c61-b560-208d741c897c"
+        ],
+        "prompt_sha256": "85242d560db6ada5d2a8a639ee99d7276d4643c52437f476e964aa062acd1f30",
+        "trace_sha256": "338f97fb025931804c6682e05975cb4a30b6f7f42725e75cb99ebb7faf5f9931",
+        "html_sha256": "a622163c28975c8cb25d866488dc8079960a09d19ee8a0e0d73e5941641d67b4"
+      },
+      {
+        "usage": {
+          "input_tokens": 64459,
+          "cached_input_tokens": 56576,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3432,
+          "reasoning_output_tokens": 0
+        },
+        "tool_calls": [
+          {
+            "type": "mcp_tool_call",
+            "server": "design-mcp",
+            "tool": "react",
+            "status": "completed"
+          }
+        ],
+        "client_errors": [],
+        "treatment_call": true,
+        "status": "passed",
+        "milliseconds": 67185,
+        "exit_code": 0,
+        "sessions": [
+          "01a206b7-ce7f-7632-8ef1-ff2802f176d2"
+        ],
+        "prompt_sha256": "85242d560db6ada5d2a8a639ee99d7276d4643c52437f476e964aa062acd1f30",
+        "trace_sha256": "d25d31dfe3ab1dd42fa987ddd9afaa9c47207dc4f680f2bc27f04791c2a7cb52",
+        "html_sha256": "0b87be6d7ff6358c4984f20e452f76c8148b3fda793a1c187b7ea0cb51c08f2c"
+      }
+    ]
+  },
+  "stdio": {
+    "schema_sha256": "0680ba11ab629be2d8cda40d8647b7db512cde96d9091a968eb97dba022622f0",
+    "trial_module_sha256": "05af55f2faf3cec1e9be394395fd2d602bd33aac10fd2b0a7dfc2f1192baa5de",
+    "counts": {
+      "identical": 73,
+      "changed": 8
+    },
+    "changed_form_replies": {
+      "grouped-fieldsets": {
+        "direction_id": "grouped-fieldsets",
+        "changes": {
+          "spacing": "If a non-task intro is present, reduce its vertical padding or minimum height by about 25% and cap its display title near 80% of its current size. Preserve its color contrast and artwork. Without an intro, only trim oversized decorative type outside the task. When a choice updates an on-page result, place the changed value just after the controls on phones so it is visible without extra scrolling. Keep supporting details in their existing section. Preserve the form, selection and result, labels, focus, and target sizes."
+        },
+        "why": "Reduce the visual weight of the introduction while keeping the form easy to use.",
+        "keep": [
+          "primary task",
+          "project content",
+          "brand constraints",
+          "accessibility",
+          "The first field of the active group, aligned with its legend across the rule.",
+          "selection and responsive result",
+          "labels, focus, and target sizes"
+        ]
+      },
+      "question-column": {
+        "direction_id": "question-column",
+        "changes": {
+          "spacing": "If a non-task intro is present, reduce its vertical padding or minimum height by about 25% and cap its display title near 80% of its current size. Preserve its color contrast and artwork. Without an intro, only trim oversized decorative type outside the task. When a choice updates an on-page result, place the changed value just after the controls on phones so it is visible without extra scrolling. Keep supporting details in their existing section. Preserve the form, selection and result, labels, focus, and target sizes."
+        },
+        "why": "Reduce the visual weight of the introduction while keeping the form easy to use.",
+        "keep": [
+          "primary task",
+          "project content",
+          "brand constraints",
+          "accessibility",
+          "The question and its answer share one left edge. The question is the largest text on the surface.",
+          "selection and responsive result",
+          "labels, focus, and target sizes"
+        ]
+      }
+    }
+  },
+  "focused_source_tests": 44,
+  "browser": "Chrome/158.0.8127.36",
+  "geometry": {
+    "passed": false,
+    "widths": {
+      "1440": {
+        "checks": {
+          "both_booking_journeys_pass": true,
+          "visible_change": true,
+          "heading_legible_and_quieter": true,
+          "all_choice_targets_at_least_44px": true,
+          "summary_visible_immediately_after_selection": true
+        },
+        "heading_px": [
+          86.0,
+          69.0
+        ],
+        "reported_summary_visible_on_friday": [
+          true,
+          true
+        ]
+      },
+      "390": {
+        "checks": {
+          "both_booking_journeys_pass": true,
+          "visible_change": true,
+          "heading_legible_and_quieter": true,
+          "all_choice_targets_at_least_44px": true,
+          "summary_visible_immediately_after_selection": false
+        },
+        "heading_px": [
+          52.0,
+          42.0
+        ],
+        "reported_summary_visible_on_friday": [
+          false,
+          false
+        ]
+      },
+      "320": {
+        "checks": {
+          "both_booking_journeys_pass": true,
+          "visible_change": true,
+          "heading_legible_and_quieter": true,
+          "all_choice_targets_at_least_44px": true,
+          "summary_visible_immediately_after_selection": false
+        },
+        "heading_px": [
+          52.0,
+          42.0
+        ],
+        "reported_summary_visible_on_friday": [
+          true,
+          false
+        ]
+      }
+    }
+  },
+  "captures": {
+    "initial": {
+      "1440": [
+        {
+          "phase": "before",
+          "sha256": "535d366dfe6b1768cd7c9f9335131bf16e1bd6d7c5538f98261387d87108af42",
+          "summaryInView": true,
+          "file": "initial-1440-before.png"
+        },
+        {
+          "phase": "keyboard-friday",
+          "sha256": "dc4721509f966f87d3a91203ca17ea0cc54f0eb47e91752f59b15691c67c4436",
+          "summaryInView": true,
+          "file": "initial-1440-friday.png"
+        },
+        {
+          "phase": "pointer-tuesday",
+          "sha256": "f8613718843dc7a2b202ee5d20b6b0e81d1a8914e686b0cada46c904230370de",
+          "summaryInView": true,
+          "file": "initial-1440-tuesday.png"
+        }
+      ],
+      "390": [
+        {
+          "phase": "before",
+          "sha256": "314c83a3ea6cef9c77f9e34c91398bc055f5aa6bb24b85be3b2a51cb7f0908ef",
+          "summaryInView": false,
+          "file": "initial-390-before.png"
+        },
+        {
+          "phase": "keyboard-friday",
+          "sha256": "55f9d94a9c0af9c63fb96e07302069550c4bc1c13bf7291e02d5d0fe20850a9d",
+          "summaryInView": false,
+          "file": "initial-390-friday.png"
+        },
+        {
+          "phase": "pointer-tuesday",
+          "sha256": "e4cd7429cf258542ca06af3dd13ff3a5fa4a8501659d3a9188a4ad0b7183da27",
+          "summaryInView": false,
+          "file": "initial-390-tuesday.png"
+        },
+        {
+          "phase": "scroll-to-summary",
+          "sha256": "eca96686e6be6c6f6b95fd36efb264c2167ffc850a6fbf7ed19c80036818206b",
+          "summaryInView": true,
+          "file": "initial-390-summary.png"
+        }
+      ],
+      "320": [
+        {
+          "phase": "before",
+          "sha256": "658a3fb36f85f440edd18196379624254942136e93eea1f6943128bf21c4cb15",
+          "summaryInView": false,
+          "file": "initial-320-before.png"
+        },
+        {
+          "phase": "keyboard-friday",
+          "sha256": "895327d8b420871ae91df6dd12dbe5c2c0d9a10ab1bd68e6f87f4c80fb74144e",
+          "summaryInView": true,
+          "file": "initial-320-friday.png"
+        },
+        {
+          "phase": "pointer-tuesday",
+          "sha256": "7501aaa21fb7a2c844e4ee9c465d84064e5e9717da373da2099af9c2666d7d13",
+          "summaryInView": true,
+          "file": "initial-320-tuesday.png"
+        }
+      ]
+    },
+    "calmer": {
+      "1440": [
+        {
+          "phase": "before",
+          "sha256": "8b0c5dff80fdce1f30b8561cd2e2530ba970146534e47dfd3122753da49d55e9",
+          "summaryInView": true,
+          "file": "calmer-1440-before.png"
+        },
+        {
+          "phase": "keyboard-friday",
+          "sha256": "ebcca7e7aee31fb08bc2bbee9c21baab65faf21b73a49b647056edf2fd43bd2c",
+          "summaryInView": true,
+          "file": "calmer-1440-friday.png"
+        },
+        {
+          "phase": "pointer-tuesday",
+          "sha256": "849acfe926033692f2d3372bf52d112e72013f2b72f38c309385b1fddcdc62e2",
+          "summaryInView": true,
+          "file": "calmer-1440-tuesday.png"
+        }
+      ],
+      "390": [
+        {
+          "phase": "before",
+          "sha256": "dd1ec6ef10f847bc7b3157f2cc01cb5ee3e72dc6803d84a340fc5435994866cd",
+          "summaryInView": false,
+          "file": "calmer-390-before.png"
+        },
+        {
+          "phase": "keyboard-friday",
+          "sha256": "4bed839295633fbca1126b3959e09df266350f2c2844da316c98445de61b3049",
+          "summaryInView": false,
+          "file": "calmer-390-friday.png"
+        },
+        {
+          "phase": "pointer-tuesday",
+          "sha256": "577588e8408b08aaf25d0b1c5b5e805b656aa4b35f593547e89b875501f9d6c1",
+          "summaryInView": false,
+          "file": "calmer-390-tuesday.png"
+        },
+        {
+          "phase": "scroll-to-summary",
+          "sha256": "69bff845509a6cd01bb732f972a73d2ff654107c70afd65ac0f88c7442b26cdb",
+          "summaryInView": true,
+          "file": "calmer-390-summary.png"
+        }
+      ],
+      "320": [
+        {
+          "phase": "before",
+          "sha256": "103788b78297782ead52081b84959cc9cfa44c82c0d7720399ba45a9fbbf5528",
+          "summaryInView": false,
+          "file": "calmer-320-before.png"
+        },
+        {
+          "phase": "keyboard-friday",
+          "sha256": "1b6e85808908beedc473effbd2449d4666a1ecd5990989c7f2cdd96de09e1f2c",
+          "summaryInView": false,
+          "file": "calmer-320-friday.png"
+        },
+        {
+          "phase": "pointer-tuesday",
+          "sha256": "d674e6d663fb041e40aa42e25cb8e9a05c16a89178090dd905cb20abddf791b1",
+          "summaryInView": false,
+          "file": "calmer-320-tuesday.png"
+        },
+        {
+          "phase": "scroll-to-summary",
+          "sha256": "69f815c225adae2aef6bf3c2ab1c381d1712ad0a88c9c2dc097adaf6d4b929c3",
+          "summaryInView": true,
+          "file": "calmer-320-summary.png"
+        }
+      ]
+    }
+  },
+  "raw_evidence_directory": ".context/creative-research-2026-11-22/form-calm-generated-placement",
+  "review_status": "No visual ballot. Candidate failed the predeclared phone geometry gate."
+}
