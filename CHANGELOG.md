@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+- Exercise successful `review_page` calls over stdio in the hosted public URL workflow. Verify original masked PNGs at both widths and recovery after an HTTP 404 and an unsupported address.
+
 - Count a creative pivot that misses the best score toward the stopping rule. A verified interaction can distinguish the new premise while its visual score still falls short. [Series verifier](evals/vision/rubric.md#verify-a-creative-series)
 
 - Added Hacker News front-page visual projects and the MUUUUU.ORG gallery to the daily design report. The archived front-page replay found two active projects the Show HN filter misses. [November 22 reference replay](research/CREATIVE-ROUNDS.md#november-22-references-verified-november-23)
