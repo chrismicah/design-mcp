@@ -224,7 +224,17 @@
       .result-field legend { margin-bottom: 10px; }
       .result-field .summary { padding: 12px 16px; }
     }
+    .choice-status {
+      min-height: 24px;
+      margin: 8px 0 0;
+      color: var(--ink);
+      font-weight: 700;
+    }
     @media (max-width: 380px) {
+      .intro { min-height: 225px; }
+      .intro-copy { padding-block: 14px 12px; }
+      .booking-area { padding-top: 18px; }
+      .lead { margin-bottom: 16px; }
       .day-list { gap: 5px; }
       .day-option label { font-size: 12px; }
     }
@@ -273,7 +283,7 @@
     <section class="booking-area" aria-label="Tune-up booking">
       <form class="booking" id="booking-form">
         <h2>Choose a booking day</h2>
-        <p class="lead">Select a day to see your booking summary.</p>
+        <p class="lead">Select a day to preview your booking.</p>
 
         <fieldset>
           <legend>Your tune-up</legend>
@@ -310,13 +320,12 @@
               <label for="saturday">Sat</label>
             </div>
           </div>
-          <p class="hint">Bookings are available Tuesday to Saturday.</p>
+          <p class="choice-status" role="status" id="summary-day">No day selected</p>
         </fieldset>
 
         <fieldset class="result-field">
-          <legend>Booking summary</legend>
+          <legend>Booking details</legend>
           <div class="summary" id="summary">
-            <p class="summary-title" role="status" id="summary-day">Choose a booking day to add it to your summary.</p>
             <div class="summary-line"><span>Service</span><strong>Tune-up</strong></div>
             <div class="summary-line"><span>Time</span><strong>48 hours</strong></div>
             <div class="summary-line"><span>Price</span><strong>$85</strong></div>
