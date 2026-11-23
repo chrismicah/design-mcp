@@ -44,6 +44,22 @@ async def test_stage_turnaround_and_dispatch_get_distinct_directions():
     assert alternate["direction"]["id"] == "exception-first"
 
 
+@pytest.mark.asyncio
+async def test_measured_choice_fragment_preserves_reply_budget_and_routing():
+    brief = "Choose fit 40 mm swing 12°"
+    result = await direct(brief)
+    assert result["direction"]["id"] == "constraint-comparison"
+    assert result["questions"]
+    assert len(json.dumps(result, ensure_ascii=False).encode("utf-8")) <= 6000
+    assert result["choice_layout"]["html"].count('<button type="button">') == 2
+    assert "choice_layout" not in await direct(brief, avoid=["constraint-comparison"])
+
+    ferry = await direct("Choose a ferry with a $18 fare maximum and arrive by 22:45.")
+    assert ferry["direction"]["id"] == "object-hero"
+    assert "choice_layout" in ferry
+    assert "choice_layout" not in await direct("Make an evening ferry landing page.")
+
+
 @pytest.mark.parametrize(("brief", "expected"), [
     ("A form.", "grouped-fieldsets"),
     ("A form a volunteer can finish after work.", "grouped-fieldsets"),
