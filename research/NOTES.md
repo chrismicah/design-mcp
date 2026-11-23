@@ -38,6 +38,8 @@ The installed Design Library comparison found matches for 34 of 36 full briefs w
 
 The November 22 scan returned both of these papers through OpenAlex. Their first local application is the recorded test contract. Shipping a new generation instruction still requires a matched improvement on a held-out brief. [Recurring source review](../.github/workflows/design-source-review.yml)
 
+**Rubrics as Visual-Repair Context.** RubSE selects typed repair criteria before revising code. Its ablation links repeated spacing and density edits to missed opportunities to fix missing or misplaced elements. The authors also report higher API cost for their multi-call workflow. The booking experiment tests a smaller adaptation using the existing `react` call. It puts the result placement in its own field and checks the updated value in the post-selection viewport. Count the change only when the generated repair preserves booking behavior and the result is visible after both keyboard and pointer selection at all three widths. [Paper, Appendices B.3 and B.4](https://arxiv.org/html/2608.24138v1)
+
 ## Interaction craft checks for the release candidate
 
 | Primary example | Mechanism to test | Acceptance observation |

@@ -69,7 +69,7 @@ The agent calls `direct` first. Give the audience, task, real content, and any e
 | `react` | `direction_id`, `reaction`, optional `comparison_id` | Concrete changes for “calmer”, “bolder”, “too generic”, or “more like A”. For a compared direction, pass its ID. |
 | `check` | `source_code` | Located source findings for recognized font, copy, surface, and composition patterns. Use a rendered browser to check geometry, imagery, active fonts, motion, and usability. |
 
-Try “calmer” after the first draft. The result adjusts focal spacing, the size of the display type, accent use, and motion timing while preserving the product facts and main task.
+Try “calmer” after the first draft. The advice depends on the selected direction. On a form it suggests more space before a primary button. Other directions can adjust the type scale, accent, spacing, and motion. For the booking example, check that the chosen day appears beside the controls after selection on a phone. [Booking walkthrough and open checks](EVALS.md#candidate-decisions)
 
 ## Review an existing interface
 
@@ -102,7 +102,7 @@ The optional historical maintenance scripts write to `data/`. Run `python3 scrip
 
 ## Verified results
 
-All eight macOS 15 clean-install jobs passed on Intel and Apple Silicon with Python 3.10–3.13. Both installers fetched the exact pinned Git commit, passed `doctor`, and exercised the default, historical and combined stdio surfaces with and without the optional review tool. An earlier pin (`a9e1211`) passed all eight installs in a fresh Apple Silicon Ventura 13.7.4 Tart guest. Intel Ventura runtime verification remains open. [macOS 15 matrix](evidence/benchmark-v1/release-ci-0978712.json) · [Ventura matrix](evidence/benchmark-v1/ventura-tart-a9e1211.json)
+All eight macOS 15 clean-install jobs passed on Intel and Apple Silicon with Python 3.10–3.13. Both installers fetched the exact pinned Git commit, passed `doctor`, and exercised the default, historical and combined stdio surfaces with and without the optional review tool. The same pin passed **eight clean installs and 48 stdio checks** on Ventura 13.7.4 arm64 in a disposable Tart clone of the existing benchmark guest. Intel Ventura runtime verification remains open. [macOS 15 matrix](evidence/benchmark-v1/release-ci-0978712.json) · [Ventura matrix](evidence/benchmark-v1/ventura-tart-0978712.json)
 
 All 36 matched design briefs have blinded scores. The plain generator averaged 92.7 and frozen Design MCP v2 averaged 94.1, with 17 wins, 11 ties, and eight losses. The paired 95% interval of −0.46 to +3.13 points leaves the average advantage inconclusive. [Benchmark and receipts](EVALS.md)
 

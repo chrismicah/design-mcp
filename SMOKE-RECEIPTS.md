@@ -6,7 +6,7 @@
 
 On the reference Mac, GPT Computer Use verified both native Chrome flows with the updated extension files and a newly installed exact host. The active tab measured the seeded 2.64:1 contrast in 141 ms and saved a masked preview. Keyboard input opened the After view and the fixture changed from three routes to one and back to three. The pasted 404 restored focus and saved nothing. A retry created a 1440 × 900 capture with five masks in 6.37 seconds. Both saved previews reopened after reload. The current pasted-URL sample is slower than the earlier reference-Mac run. [Exact native Chrome receipt](evidence/benchmark-v1/release-native-chrome-0978712.json)
 
-The fresh Ventura 13.7.4 Apple Silicon matrix below applies to `a9e1211`. The cleanup pin has the exact macOS 15 and reference-Mac evidence above. Intel Ventura remains unverified.
+The cleanup pin also passed **eight clean installs, eight `doctor` calls, and 48 stdio runs** on Apple Silicon Ventura 13.7.4. The repeat used a disposable copy of the existing benchmark VM and new interpreter, tool, package, and evidence directories. The optional review calls checked its URL refusal path. The clone was stopped and deleted, and the scoped OCI cache remained empty. The earlier `a9e1211` run booted from a freshly pulled image. Intel Ventura remains unverified. [Exact Ventura transcript audit](evidence/benchmark-v1/ventura-tart-0978712.json)
 
 ## Active-tab capture candidate, November 22
 

@@ -1,6 +1,8 @@
 # Fresh Mac verification
 
-The README pin `a9e1211` passed in a freshly cloned **macOS 13.7.4 arm64 Tart guest**. Both installers fetched the exact commit on Python 3.10 through 3.13. The transcript audit verified eight pinned installs, eight passing `doctor` calls and 48 stdio runs across all supported modes. This covers the opt-in URL refusal path. Intel Ventura runtime remains open. [Exact Ventura transcript audit](ventura-tart-a9e1211.json) · [Exact macOS 15 matrix](release-ci-a9e1211.json)
+The README pin `0978712` passed on **macOS 13.7.4 arm64** in a disposable copy of the existing Tart benchmark guest. Both installers fetched the exact commit on Python 3.10 through 3.13 with new installation directories. The transcript audit verified eight pinned installs, eight passing `doctor` calls and 48 stdio runs, including the opt-in URL refusal path. The clone was stopped and deleted. The scoped OCI cache remained empty. Intel Ventura runtime remains open. [Exact Ventura transcript audit](ventura-tart-0978712.json) · [Exact macOS 15 matrix](release-ci-0978712.json)
+
+The earlier `a9e1211` pin passed the same eight installs and 48 stdio checks in a guest cloned from the freshly pulled image. The current pin was verified with fresh installs on the existing OS image. [Earlier Ventura transcript audit](ventura-tart-a9e1211.json)
 
 An earlier fresh Tart guest verified eight installs and 24 stdio runs against `b868307`, using an earlier set of smoke commands. [First Ventura transcript audit](ventura-tart-b868307.json)
 
@@ -32,9 +34,10 @@ Use native uv on the Intel Ventura machine. The pinned x86_64 uv archive has SHA
 
 ```sh
 set -o pipefail
+VENTURA_PIN=0978712149674ad7fd5738c53d4b7966ba163b43
 bash scripts/verify_install_matrix.sh --check-host 13 x86_64
 bash scripts/verify_install_matrix.sh 13 x86_64 \
-  a9e121112d6aa25315471e5c6f1401540f125e8a "$(command -v uv)" "$NEW_EVIDENCE_DIRECTORY" \
+  "$VENTURA_PIN" "$(command -v uv)" "$NEW_EVIDENCE_DIRECTORY" \
   2>&1 | tee "$MATRIX_LOG"
 ```
 
@@ -42,7 +45,7 @@ Use the Tart launcher's `guest-install.log` on arm64 and the saved terminal log 
 
 ```sh
 python3 scripts/audit_install_matrix.py 13 "$EXPECTED_ARCH" \
-  a9e121112d6aa25315471e5c6f1401540f125e8a "$MATRIX_LOG" --require-review > "$MATRIX_RECEIPT"
+  "$VENTURA_PIN" "$MATRIX_LOG" --require-review > "$MATRIX_RECEIPT"
 ```
 
 Verify the guest reports macOS 13 before counting these results toward support on Ventura. Tart 2.42.0 requires macOS 14 or later on the host for `tart exec` and a running guest agent. The base-image template available at the upload date installs the agent through launchd. Verify the agent connection at runtime. If the pinned guest cannot boot or exposes no guest agent, preserve the failure evidence and retry on compatible hardware or a prepared image. [Host requirement](https://github.com/openai/tart/blob/2.42.0/Sources/tart/Commands/Exec.swift) · [Guest template at upload](https://github.com/cirruslabs/macos-image-templates/blob/db71c44bc1aaf11ca0db08522f6fe3c0ff1440cc/templates/base.pkr.hcl#L155-L178)
