@@ -1,30 +1,5 @@
-# Screenshots (Optional)
+# Historical reference screenshots
 
-This directory contains **742 high-resolution design screenshots** used to build the patterns database.
+The current checkout contains this guide. The original 742 Git LFS pointers are in commit `5f2f990`. Their remote availability is unverified. The package streams no screenshots on install or first run.
 
-**You don't need these to use the MCP.** The server runs entirely off `data/patterns.json`, which already contains all extracted design intelligence (page types, colors, layouts, UI elements, quality scores).
-
-## When you'd want them
-
-- Browsing source designs for visual inspiration
-- Re-running vision analysis to update `data/vision_results.json`
-- Adding new screenshots and re-building the database
-
-## How to download
-
-Screenshots are stored in Git LFS. After cloning:
-
-```bash
-git lfs pull
-```
-
-This downloads all 742 screenshots (~600 MB).
-
-## Contents
-
-| Directory | Files | Size | Source |
-|-----------|-------|------|--------|
-| `awwwards/` | 300 | 312 MB | Site of the Day winners |
-| `dribbble/` | 284 | 260 MB | Popular web design shots |
-| `curated/` | 68 | 24 MB | Top SaaS products (Stripe, Linear, etc.) |
-| `landbook/` | 90 | 6 MB | Landing page gallery |
+Use the [curated direction source links](../design_mcp/data/directions.json) for current references. The [content audit](../CONTENT-AUDIT.md) records which historical images were reachable and which rows need a new source. When collecting fresh screenshots, save the page URL, viewport, state and capture hash with each original.

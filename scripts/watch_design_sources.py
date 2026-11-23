@@ -1,6 +1,6 @@
 """Collect public design and browser source leads for review."""
 
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta, timezone
 from html import escape
 import json
 import re
@@ -15,6 +15,11 @@ RESEARCH = ("screenshot to code UI generation", "visual critique user interface 
 MAX_BYTES = 256_000
 CROSSREF_TYPES = {"journal-article", "proceedings-article", "posted-content"}
 CROSSREF_INTERVAL_SECONDS = 1.25
+HN_API = "https://hacker-news.firebaseio.com/v0"
+SHOW_HN_LOOKUP_LIMIT = 10
+VISUAL_DEMO = re.compile(
+    r"\b(?:interactive|design system|visuali[sz]ation|typography|gallery|portfolio|webgl|3d map|exhibit)\b", re.I
+)
 
 
 def fetch_json(url):
@@ -86,6 +91,39 @@ def read_crossref(query, since, fetch):
     return leads
 
 
+
+def read_show_hn(today, fetch):
+    ids = fetch(f"{HN_API}/showstories.json")
+    if not isinstance(ids, list):
+        raise ValueError("Unexpected Show HN feed")
+    relevant = []
+    failures = []
+    ids = tuple(dict.fromkeys(i for i in ids[:SHOW_HN_LOOKUP_LIMIT] if type(i) is int and i > 0))
+    for item_id in ids:
+        try:
+            item = fetch(f"{HN_API}/item/{item_id}.json")
+        except OSError as error:
+            failures.append(error)
+            continue
+        if not isinstance(item, dict) or item.get("id") != item_id or item.get("type") != "story":
+            continue
+        if item.get("dead") or item.get("deleted"):
+            continue
+        title, timestamp, score = item.get("title"), item.get("time"), item.get("score")
+        if not isinstance(title, str) or not VISUAL_DEMO.search(title):
+            continue
+        if type(timestamp) is not int or type(score) is not int or not 0 < timestamp < 4_102_444_800:
+            continue
+        published = datetime.fromtimestamp(timestamp, timezone.utc).date()
+        if not today - timedelta(days=14) <= published <= today:
+            continue
+        url = f"https://news.ycombinator.com/item?id={item_id}"
+        relevant.append({**lead(title, published.isoformat(), url), "points": score})
+    if ids and len(failures) == len(ids):
+        raise failures[0]
+    return sorted(relevant, key=lambda item: (-item["points"], item["date"], item["url"]))[:5]
+
+
 def source_result(name, read, *arguments):
     try:
         return {"source": name, "leads": read(*arguments)}
@@ -98,6 +136,7 @@ def source_result(name, read, *arguments):
 def collect(today, fetch=fetch_json, pause=sleep):
     since = today - timedelta(days=90)
     sources = [source_result(repo, read_release, repo, fetch) for repo in RELEASES]
+    sources.append(source_result("Show HN visual demos", read_show_hn, today, fetch))
     primary_error = None
     crossref_used = False
     for query in RESEARCH:
@@ -118,6 +157,9 @@ def collect(today, fetch=fetch_json, pause=sleep):
 def print_report(sources):
     print("# Design source review\n")
     print("Review these public leads before proposing a design or harness change.\n")
+    print("- [Awwwards current winner and nominees](https://www.awwwards.com/)")
+    print("- [CSS Design Awards current winners](https://www.cssdesignawards.com/)")
+    print("- [FWA launches from award winners](https://www.thefwa.net/label/launch)\n")
     for source in sources:
         print(f"## {source['source']}\n")
         if "openalex_error" in source:
@@ -129,7 +171,8 @@ def print_report(sources):
             print("No results in the current search.\n")
         for lead in source["leads"]:
             url = escape(lead["url"], quote=True)
-            print(f'- {lead["date"]} · <a href="{url}">{escape(lead["title"])}</a>')
+            points = f" ({lead['points']} points at capture)" if "points" in lead else ""
+            print(f'- {lead["date"]} · <a href="{url}">{escape(lead["title"])}</a>{points}')
         print()
 
 

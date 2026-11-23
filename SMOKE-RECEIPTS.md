@@ -1,5 +1,13 @@
 # Design MCP live smoke
 
+## Checkout cleanup and exact Chrome replay
+
+`0978712149674ad7fd5738c53d4b7966ba163b43` is the README install pin. The migration staged 14 writable copies from a fresh Git archive, then wrote zero on repeat. The canonical legacy corpus retained its SHA-256. The root script exposed and called the historical surface from another working directory. The candidate passed **545 source tests and 120 subtests**. All eight hosted macOS 15 architecture/Python cells passed, with 16 fresh installs and 96 stdio sessions across the three surfaces with and without `review_page`. The exact hosted extension, public URL, SwiftUI, and Electron workflows passed. [Exact jobs and migration](evidence/benchmark-v1/release-ci-0978712.json)
+
+On the reference Mac, GPT Computer Use verified both native Chrome flows with the updated extension files and a newly installed exact host. The active tab measured the seeded 2.64:1 contrast in 141 ms and saved a masked preview. Keyboard input opened the After view and the fixture changed from three routes to one and back to three. The pasted 404 restored focus and saved nothing. A retry created a 1440 × 900 capture with five masks in 6.37 seconds. Both saved previews reopened after reload. The current pasted-URL sample is slower than the earlier reference-Mac run. [Exact native Chrome receipt](evidence/benchmark-v1/release-native-chrome-0978712.json)
+
+The fresh Ventura 13.7.4 Apple Silicon matrix below applies to `a9e1211`. The cleanup pin has the exact macOS 15 and reference-Mac evidence above. Intel Ventura remains unverified.
+
 ## Active-tab capture candidate, November 22
 
 `12e9524` passed all eight macOS 15 install jobs and the hosted Chrome, public URL, SwiftUI, and Electron workflows. The clean-install jobs used pipx and uv on Apple Silicon and Intel across Python 3.10–3.13. The hosted Chrome run verified active-tab masking, missing-host recovery, the Before and After keyboard switch, and opening the capture from a pasted URL. It saved the masked public form after **1.49 seconds** in that run. [Exact jobs and capture hashes](evidence/benchmark-v1/release-ci-12e9524.json)

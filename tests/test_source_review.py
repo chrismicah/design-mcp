@@ -1,11 +1,13 @@
-from datetime import date
+from datetime import date, datetime, timezone
 from urllib.error import HTTPError
 
-from scripts.watch_design_sources import CROSSREF_INTERVAL_SECONDS, collect, print_report
+from scripts.watch_design_sources import CROSSREF_INTERVAL_SECONDS, collect, print_report, read_show_hn
 
 
 def test_source_review_survives_rate_limiting_and_escapes_source_text(capsys):
     def fetch(url):
+        if "showstories.json" in url:
+            return []
         if "USWDS" in url:
             raise HTTPError(url, 429, "limited", {}, None)
         if "github.com" in url:
@@ -32,7 +34,7 @@ def test_source_review_exposes_a_complete_outage():
         raise TimeoutError
 
     sources = collect(date(2026, 11, 21), unavailable, lambda _: None)
-    assert len(sources) == 4
+    assert len(sources) == 5
     assert all(source["error"] == "TimeoutError" for source in sources)
 
 
@@ -48,6 +50,8 @@ def test_paper_search_falls_back_once_per_query_and_keeps_verified_doi_links(cap
 
     def fetch(url):
         requests.append(url)
+        if "showstories.json" in url:
+            return []
         if "api.github.com" in url:
             raise TimeoutError
         if "api.openalex.org" in url:
@@ -78,3 +82,24 @@ def test_paper_search_falls_back_once_per_query_and_keeps_verified_doi_links(cap
     print_report(sources)
     report = capsys.readouterr().out
     assert "&lt;analysis&gt; &amp; code" in report and "javascript:" not in report
+
+
+def test_show_hn_ranks_verified_discussions_and_bounds_requests():
+    seen = []
+    when = int(datetime(2026, 11, 21, tzinfo=timezone.utc).timestamp())
+
+    def fetch(url):
+        if url.endswith("showstories.json"):
+            return list(range(1, 101))
+        item_id = int(url.rsplit("/", 1)[-1].split(".")[0])
+        seen.append(item_id)
+        if item_id == 2:
+            raise TimeoutError
+        return {"id": item_id, "type": "story", "time": when, "score": item_id * 2,
+                "title": "Show HN: Interactive specimen gallery" if item_id != 9 else "Show HN: SQL runner",
+                "deleted": item_id == 10, "url": "javascript:ignored"}
+
+    leads = read_show_hn(date(2026, 11, 22), fetch)
+    assert seen == list(range(1, 11))
+    assert [lead["points"] for lead in leads] == [16, 14, 12, 10, 8]
+    assert leads[0]["url"] == "https://news.ycombinator.com/item?id=8"

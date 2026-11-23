@@ -7,12 +7,12 @@ Turn a brief into one sourced art direction. The response gives the coding agent
 Install the verified development build with either command. Both support an explicit `--python` option to select an installed interpreter.
 
 ```bash
-pipx install 'git+https://github.com/chrismicah/design-mcp.git@a9e121112d6aa25315471e5c6f1401540f125e8a'
+pipx install 'git+https://github.com/chrismicah/design-mcp.git@0978712149674ad7fd5738c53d4b7966ba163b43'
 # or
-uv tool install 'git+https://github.com/chrismicah/design-mcp.git@a9e121112d6aa25315471e5c6f1401540f125e8a'
+uv tool install 'git+https://github.com/chrismicah/design-mcp.git@0978712149674ad7fd5738c53d4b7966ba163b43'
 ```
 
-For a local checkout, pass `.` to your installer. [Candidate install matrix](https://github.com/chrismicah/design-mcp/actions/runs/45094147876)
+For a local checkout, pass `.` to your installer. [Candidate install matrix](https://github.com/chrismicah/design-mcp/actions/runs/45102389694)
 
 If Design MCP is already installed, add `--force` after `pipx install` or `uv tool install` in the matching command. Run `design-mcp doctor` and reconnect your MCP client after changing the installed version.
 
@@ -78,7 +78,7 @@ Try “calmer” after the first draft. The result adjusts focal spacing, the si
 - **Capture both widths from the terminal.** With Playwriter 0.12.0 installed, run `design-mcp review https://example.com --playwriter`. The command uses a separate Chrome profile, checks the page at 1440 and 390 CSS px, and saves a local preview. [Browser setup](design_mcp/review/README.md)
 - **Your SwiftUI or Electron app.** Copy the matching exporter from this repository into your UI test project. The Swift exporter needs an XCTest target. The Electron exporter reads a supplied BrowserWindow. Run `design-mcp review-app capture.json` to check recorded clipping and hittability. [Swift exporter](integrations/desktop/SwiftCapture.swift) · [Electron exporter](integrations/desktop/electron.mjs)
 
-GPT Computer Use tested both Chrome flows with the pinned build. The active-tab scan flagged **2.6:1 contrast** and opened a saved comparison that supports keyboard access. A pasted URL returned a **1440 × 900** capture in **2.48 seconds** with five fields masked. A 404 returned focus to the address field and left the saved reviews untouched. These are single walkthrough timings. [Native Chrome receipt](evidence/benchmark-v1/release-native-chrome-a9e1211.json)
+GPT Computer Use tested both Chrome flows with the pinned build. The active-tab scan flagged **2.6:1 contrast** and opened a saved comparison that supports keyboard access. A pasted URL returned a **1440 × 900** capture in **6.37 seconds** with five fields masked. A 404 returned focus to the address field and left the saved reviews untouched. These are single walkthrough timings. [Native Chrome receipt](evidence/benchmark-v1/release-native-chrome-0978712.json)
 
 The same commit passed fresh SwiftUI and Electron captures on macOS CI. SwiftUI revealed a sixth control. An Electron action cleared the covered control finding and retained the independent clipping finding. [Desktop proof and past timings](SMOKE-RECEIPTS.md)
 
@@ -102,7 +102,7 @@ The optional historical maintenance scripts write to `data/`. Run `python3 scrip
 
 ## Verified results
 
-All eight macOS 15 clean-install jobs passed on Intel and Apple Silicon with Python 3.10–3.13. Both installers fetched the exact pinned Git commit, passed `doctor`, and exercised the default, historical and combined stdio surfaces with and without the optional review tool. The same pin also passed all eight installs in a fresh Apple Silicon Ventura 13.7.4 Tart guest. Intel Ventura runtime verification remains open. [macOS 15 matrix](evidence/benchmark-v1/release-ci-a9e1211.json) · [Ventura matrix](evidence/benchmark-v1/ventura-tart-a9e1211.json)
+All eight macOS 15 clean-install jobs passed on Intel and Apple Silicon with Python 3.10–3.13. Both installers fetched the exact pinned Git commit, passed `doctor`, and exercised the default, historical and combined stdio surfaces with and without the optional review tool. An earlier pin (`a9e1211`) passed all eight installs in a fresh Apple Silicon Ventura 13.7.4 Tart guest. Intel Ventura runtime verification remains open. [macOS 15 matrix](evidence/benchmark-v1/release-ci-0978712.json) · [Ventura matrix](evidence/benchmark-v1/ventura-tart-a9e1211.json)
 
 All 36 matched design briefs have blinded scores. The plain generator averaged 92.7 and frozen Design MCP v2 averaged 94.1, with 17 wins, 11 ties, and eight losses. The paired 95% interval of −0.46 to +3.13 points leaves the average advantage inconclusive. [Benchmark and receipts](EVALS.md)
 
