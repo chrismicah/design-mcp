@@ -11,3 +11,8 @@ The diagnostic extension replays both installed drafts on the same browser. Its 
 The authored single-service arm removes the duplicate service list from the exact unified-composition HTML, aligns the form to the reading edge, and tightens its lead-in on small screens. It retains the original header facts, keyboard controls and JavaScript. Its identity and parent are recorded separately from first-pass generation.
 
 Dayton adds a distinct frozen practitioner, contact target, office hours, visit labels and visitor name. The replay loads those expected values from the case fixture. It uses one ordered keyboard journey at the same three viewports and gives Dayton a separate verdict. The original Tacoma arms stay in the workflow as behavioral controls.
+
+Result focus, first-frame containment and keyboard editing are measured
+independently. A draft that appears after submission is still eligible for the
+keyboard editing check when it starts with focus on an unsupported target.
+The focus check keeps its requirement for the heading or editable control.

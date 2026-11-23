@@ -102,7 +102,7 @@ if (checks.previewReady) {
   await page.waitForFunction(() => Boolean(window.qaOpeningFrame), undefined, {timeout: 1500});
 }
 const firstFrame = await page.evaluate(() => window.qaOpeningFrame || null);
-checks.previewInFirstViewport = checks.previewFocused && inView(firstFrame?.editable) &&
+checks.previewInFirstViewport = inView(firstFrame?.editable) &&
   firstFrame.editable.width > 0 && firstFrame.editable.height > 0;
 checks.statusAnnouncement = await page.getByRole("status").count() === 1 &&
   /reminder|draft|note/i.test(await page.getByRole("status").innerText());
@@ -115,7 +115,7 @@ checks.honestResultVisible = Boolean(draftBox && disclosures.some(box => inView(
 if (checks.previewReady) {
   await page.screenshot({path: paths.preview, animations: "disabled"});
 }
-checks.reachEditableDraft = checks.previewFocused && await reach(draft);
+checks.reachEditableDraft = checks.previewReady && await reach(draft);
 if (checks.reachEditableDraft) {
   await page.keyboard.press("End");
   await page.keyboard.type(" I can call Thursday.");
