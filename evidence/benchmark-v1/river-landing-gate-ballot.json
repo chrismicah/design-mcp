@@ -1,0 +1,245 @@
+{
+  "calibration": {
+    "example": "Legible repair intake with clear labels, familiar layout, and misplaced focus after an invalid number",
+    "coherence": 7,
+    "originality": 4,
+    "craft": 6,
+    "usability": 6
+  },
+  "screens": {
+    "A-1440": {
+      "coherence": 8,
+      "originality": 8,
+      "craft": 7,
+      "usability": 8,
+      "primary_action": {
+        "input": "Tab to the selected 4 m radio, then ArrowRight to 6 m.",
+        "expected": "Show the crossings affected at 6 m.",
+        "observed": "The 6 m radio was selected and the list showed the riverside path closes, the ferry stops, and the footbridge closes. Captures: A-1440-before and A-1440-after."
+      },
+      "edge_observation": "At exactly 2 m, reached with ArrowLeft twice, the list showed only 'The riverside path closes'. Capture: A-1440-edge-2m.",
+      "fact_check": "At 6 m the rendered water reaches the bridge and covers the landing; the ferry appears tethered beside a 'Ferry closed' sign. The sign communicates the stopped service, though the still image alone cannot establish motion. The scene does not clearly identify the riverside path. Actual local thresholds and live conditions are unsupported by the view.",
+      "strength": "The changing water level gives the crossing a tangible sense of place, and the selected radio has clear keyboard focus.",
+      "weakness": "The large scene makes the unlabeled path difficult to locate, and transitional accessibility output briefly included multiple level images.",
+      "repair": "Label the path in the scene and expose only the current image description after a level change.",
+      "arm": "proposed",
+      "html_sha256": "88853fad00106735b857b9806ebef29c6c6ae0970ef4fbc96c69b6bde6325f6f",
+      "weighted": 7.8,
+      "before": {
+        "sha256": "0550ed5a60fd230916201a86555d7e3dc90a9e8ffbd0891368096886133cfadf",
+        "file": "A-1440-before.png",
+        "tool_call_id": "item_2"
+      },
+      "after": {
+        "sha256": "d2a6a447f5c8112fb9f3ca00c7d225839ba3f011c71a9415aaa9e5c218f6bf67",
+        "file": "A-1440-after.png",
+        "tool_call_id": "item_5"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ],
+      "confirmed_levels": [
+        6,
+        2
+      ]
+    },
+    "A-390": {
+      "coherence": 8,
+      "originality": 8,
+      "craft": 7,
+      "usability": 8,
+      "primary_action": {
+        "input": "Tab to 4 m, then ArrowRight to 6 m.",
+        "expected": "Show all three affected crossings alongside the controls.",
+        "observed": "The riverside path, ferry, and footbridge appeared in the 6 m list. The controls and complete answer fit in the 390-by-844 viewport. Captures: A-390-before and A-390-after."
+      },
+      "edge_observation": "At exactly 2 m, reached with ArrowLeft twice, only 'The riverside path closes' appeared. Capture: A-390-edge-2m.",
+      "fact_check": "At 6 m water meets the bridge and covers the landing, while the tether and small 'Ferry closed' sign indicate stopped service. The sign is difficult to read at phone size, and the path remains hard to identify. Real-world thresholds are unsupported.",
+      "strength": "The full control and answer remain visible without scrolling.",
+      "weakness": "The tall scene occupies much of the phone screen while its ferry sign and crossing details become small.",
+      "repair": "Add concise, readable scene labels or a tighter mobile composition that identifies the path and ferry status.",
+      "arm": "proposed",
+      "html_sha256": "88853fad00106735b857b9806ebef29c6c6ae0970ef4fbc96c69b6bde6325f6f",
+      "weighted": 7.8,
+      "before": {
+        "sha256": "d5e8f136cd8accd43581339e03dfff2c5a2a210f77183a25266b410690380921",
+        "file": "A-390-before.png",
+        "tool_call_id": "item_10"
+      },
+      "after": {
+        "sha256": "b4358ae48443d3a64c8987b389c6adc33885713587625473e86f57e0a6ba9aae",
+        "file": "A-390-after.png",
+        "tool_call_id": "item_13"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ],
+      "confirmed_levels": [
+        6,
+        2
+      ]
+    },
+    "B-1440": {
+      "coherence": 8.5,
+      "originality": 8,
+      "craft": 8,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab to the selected 4 m radio, then ArrowRight to 6 m.",
+        "expected": "Show the crossings affected at 6 m.",
+        "observed": "The 6 m radio was selected and the result listed the riverside path, ferry, and footbridge. Captures: B-1440-before and B-1440-after."
+      },
+      "edge_observation": "At exactly 2 m, reached with ArrowLeft twice, only 'The riverside path closes' appeared. Capture: B-1440-edge-2m.",
+      "fact_check": "The labeled cross-section raises the water line to the bridge at 6 m and highlights affected features. The ferry stays at the 4 m line even at 2 m, visually suspended above the water; its yellow highlight and the result text signal a stoppage at higher levels, but the picture does not independently depict why it stopped. The threshold labels are design claims without a cited source.",
+      "strength": "The labeled threshold lines make the relationship between levels and crossings easy to compare.",
+      "weakness": "The stationary ferry's position can be mistaken for a physical depiction even when it is above the selected water level.",
+      "repair": "Clarify that the graphic is schematic, and use an explicit stopped-service marker or place the ferry consistently with the water.",
+      "arm": "current",
+      "html_sha256": "6c865202d697125bf3cc70a0edd4d57dc32d2144423c35a3e653cd7766230339",
+      "weighted": 8.25,
+      "before": {
+        "sha256": "f0b0f429014cc9d04e3f6c5353132fb4759cc61a73f42af3e59f8d6e0c42221c",
+        "file": "B-1440-before.png",
+        "tool_call_id": "item_19"
+      },
+      "after": {
+        "sha256": "b1f1c3e8f68d7e1963ef839c9bd1f22cbb2a596621a552da02850f458d1e61a3",
+        "file": "B-1440-after.png",
+        "tool_call_id": "item_22"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ],
+      "confirmed_levels": [
+        6,
+        2
+      ]
+    },
+    "B-390": {
+      "coherence": 8.5,
+      "originality": 8,
+      "craft": 8,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab to 4 m, then ArrowRight to 6 m.",
+        "expected": "Show all three affected crossings alongside the controls.",
+        "observed": "The 6 m list showed the riverside path, ferry, and footbridge. The controls, complete answer, and diagram fit in the 390-by-844 viewport. Captures: B-390-before and B-390-after."
+      },
+      "edge_observation": "At exactly 2 m, reached with ArrowLeft twice, only 'The riverside path closes' appeared. Capture: B-390-edge-2m.",
+      "fact_check": "The water line moves between labeled thresholds and reaches the footbridge at 6 m. The ferry remains at the 4 m line at 2 m, above the water, so the diagram is schematic rather than a literal depiction. Yellow highlights and text identify affected items, but the ferry has no explicit stopped marker in the picture. Real-world thresholds are unsupported.",
+      "strength": "The answer appears immediately below the controls, with the compact labeled diagram still visible.",
+      "weakness": "The small ferry and fixed vertical position make its status and physical relationship to the water ambiguous.",
+      "repair": "Label the drawing as schematic and add a readable stopped indicator to the ferry.",
+      "arm": "current",
+      "html_sha256": "6c865202d697125bf3cc70a0edd4d57dc32d2144423c35a3e653cd7766230339",
+      "weighted": 8.25,
+      "before": {
+        "sha256": "8b5c2d0642531944ae6170a03577ae588b5268902eb2070f4a11f4e497d75184",
+        "file": "B-390-before.png",
+        "tool_call_id": "item_27"
+      },
+      "after": {
+        "sha256": "2d81d6b669da554c91a3a05ad7646fa5b1320ef2c6d7866680364928464b4403",
+        "file": "B-390-after.png",
+        "tool_call_id": "item_30"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ],
+      "confirmed_levels": [
+        6,
+        2
+      ]
+    }
+  },
+  "preference": {
+    "winner": "B",
+    "reason": "B puts the answer next to the controls and uses labeled threshold lines to explain all three crossings at both widths. Its fixed ferry position needs clarification, but A's scene leaves the path difficult to identify and its phone-sized closure sign is small."
+  },
+  "case": "social-river",
+  "verified_screens": 4,
+  "required_screens": 4,
+  "browser": "Chrome/158.0.8127.36",
+  "evaluator_thread": "01a206f5-491c-7f62-be40-1d20b95ff9e8",
+  "usage": {
+    "input_tokens": 806380,
+    "cached_input_tokens": 780416,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2907,
+    "reasoning_output_tokens": 11
+  },
+  "trace_sha256": "7ec74296cad085ceaabcd3c9036f086ac30584cd8a414b6810b572ba7a6ceed2",
+  "browser_audit_sha256": "3118202415c4b23452712494f2788ca78185c85d5e05fe7ae178cbfb8d0f1f74"
+}

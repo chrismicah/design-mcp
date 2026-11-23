@@ -162,3 +162,15 @@ Owner approved A–G and continuation through the full rebuild on 2026-11-20. Th
 | Booking dedicated feedback placement | Two Luna low cells, 44 focused source tests and three-width Playwriter. Stdio found 73 unchanged and eight deliberately changed replies. | The candidate moved the entire summary instead of the live value. The selected day remained below the fold at both phone widths after both inputs. No blind visual round was incurred after the functional failure. [Rejected trial](evidence/benchmark-v1/booking-calm-feedback-structure-rejected.json) |
 | Booking browser-driven placement trial | A bounded Astra planning arbitration, a deterministic Playwriter probe, and one separate live Terra ballot. | The replay accepted one of two generated drafts and left ambiguous or unrelated forms alone. The successful draft gained 0.45 on mobile and tied on desktop. The critic found the selected value detached from its summary, so keep the installed reaction. [Replay](evidence/benchmark-v1/booking-live-value-repair-probe.json) · [Blind ballot](evidence/benchmark-v1/booking-live-value-repair-ballot.json) |
 | Booking single work order | Playwriter replayed two frozen fixtures at three widths. A separate recorded Chrome replay and 47 focused tests exercised the evaluator's radio-name check. | The manual prototype passed keyboard and pointer selection, with the revised summary visible at all widths. One attempted visual ballot was ineligible. The evaluator now checks the accessible name of the focused radio and confirmed Friday at 1440 and 390 px. [Browser evidence](evidence/benchmark-v1/booking-work-order-playwriter.json) |
+
+## November 23 creative research
+
+| Lane | Model and evaluation | Evidence |
+| --- | --- | --- |
+| Mechanism planning | Astra 6.2, one bounded planning turn. Compared overhead routes, close-ups and a gauge drum against the frozen River brief. | [Creative research](research/CREATIVE-ROUNDS.md#november-23-research-and-critique) |
+| Independent source analysis and challenge | Two separate Luna turns read creator and community evidence. The challenge flagged a generic-map risk and specified a path-tracing task. | [Research and proposals](research/CREATIVE-ROUNDS.md#november-23-research-and-critique) |
+| Reference and source replay | Playwriter captured 14 full viewport PNGs across DKTON and BreakingChips. The daily source watcher finished locally and passed six deterministic tests. | [Browser metadata and capture hashes](evidence/benchmark-v1/nov23-reference-replay.json) |
+
+The factory recorded the model routes. Per-turn token usage for the read-only research turns was unavailable through its summary.
+
+Sol authored the overhead prototype. Three fresh Terra sessions graded the live comparisons with 15,000 or fewer combined output tokens. Exact input, cached input and output counts are in the ballots. The last matched pair scored 7.30 → 8.00 on each screen. Source verification passed 558 tests and 123 subtests. [Critique history](research/CREATIVE-ROUNDS.md#river-experiment-outcomes)

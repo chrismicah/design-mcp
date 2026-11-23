@@ -27,7 +27,7 @@ SHOW_HN_LOOKUP_LIMIT = 30
 SHOW_HN_WORKERS = 4
 VISUAL_DEMO = re.compile(
     r"\b(?:interactive|design system|visuali[sz]ation|typography|gallery|portfolio|"
-    r"webgl|webgpu|(?:3d|star) map|exhibit|simulator|animate your code)\b",
+    r"webgl|webgpu|(?:3d|star) map|exhibit|simulator|calculator|animate your code)\b",
     re.I,
 )
 HTML_TAG = re.compile(r"<[^>]*>")
@@ -210,6 +210,17 @@ def print_report(sources):
     print("- [CSS Design Awards current winners](https://www.cssdesignawards.com/)")
     print("- [FWA launches from award winners](https://www.thefwa.net/label/launch)")
     print("- [Codrops Creative Hub demos](https://tympanus.net/codrops/hub/all/)\n")
+    print("## Social leads to check in the browser\n")
+    for label, query in (
+        ("UI design on X", "UI design filter:images min_faves:200"),
+        ("Design engineering on X", "design engineering filter:videos min_faves:200"),
+        ("Redesign comparisons on X", "before and after redesign filter:images min_faves:300"),
+    ):
+        params = urlencode({"q": query, "f": "live"})
+        print(f"- [{label}](https://x.com/search?{params})")
+    params = urlencode({"q": "portfolio OR interactive", "sort": "top", "t": "week"})
+    print(f"- [Recent web design discussions on Reddit](https://www.reddit.com/r/webdesign/search/?{params})\n")
+    print("Open the live work and verify the original post, engagement and interaction.\n")
     for source in sources:
         print(f"## {source['source']}\n")
         if "openalex_error" in source:

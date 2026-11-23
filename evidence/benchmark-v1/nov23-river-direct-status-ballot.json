@@ -1,0 +1,245 @@
+{
+  "calibration": {
+    "example": "Legible repair intake with clear labels, familiar layout, and misplaced focus after an invalid number",
+    "coherence": 7,
+    "originality": 4,
+    "craft": 6,
+    "usability": 6
+  },
+  "screens": {
+    "A-1440": {
+      "coherence": 8,
+      "originality": 7.5,
+      "craft": 7,
+      "usability": 7,
+      "primary_action": {
+        "input": "Tab to the selected 4 m radio, then ArrowRight",
+        "expected": "Select 6 m and show all affected crossings",
+        "observed": "6 m was selected with visible focus. The answer lists the riverside path closing, the ferry stopping, and the footbridge closing. Captures: A-1440-before and A-1440-after."
+      },
+      "edge_observation": "Two ArrowLeft presses selected 2 m; A-1440-edge shows only the path in the answer. Its two amber end bars are visible at the lower-left and upper-right ends of the curved bank-side path. The open footbridge is continuous; the open ferry has a dotted connection between banks. The path itself remains continuous, so its end bars carry the closure cue.",
+      "fact_check": "The rendered answer supports the requested path-only result at 2 m and the three affected crossings at 6 m. At 6 m the ferry is docked and its connection is interrupted, but the picture alone does not make a stopped ferry unmistakable; the answer text supplies that meaning. Real-world thresholds were not independently verified.",
+      "strength": "The large river illustration makes the three locations easy to associate with their labels.",
+      "weakness": "The closed path retains a bright continuous line, and the stopped ferry is visually subtle.",
+      "repair": "Show an unmistakable interruption or obstruction on the closed path and a clearer stationary ferry state.",
+      "arm": "current",
+      "html_sha256": "eeb63b47b3fecab8a9dd734aa1510010e0a2ba6476854b52d11df8671c0432e5",
+      "weighted": 7.45,
+      "before": {
+        "sha256": "e3879b329380e887fec4d0a3c51be7a3445abb2183903927874ca6656d9d890a",
+        "file": "A-1440-before.png",
+        "tool_call_id": "item_2"
+      },
+      "after": {
+        "sha256": "d9fd27eb5a8bdf8dff91d3489bd3fab23d792923406c6afd47f9bbf73ba0c542",
+        "file": "A-1440-after.png",
+        "tool_call_id": "item_5"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ],
+      "confirmed_levels": [
+        6,
+        2
+      ]
+    },
+    "A-390": {
+      "coherence": 8,
+      "originality": 7.5,
+      "craft": 7,
+      "usability": 7,
+      "primary_action": {
+        "input": "Tab to 4 m, then ArrowRight",
+        "expected": "Select 6 m and show all affected crossings",
+        "observed": "6 m was selected and the answer listed the path, ferry, and footbridge. Controls, map, and answer fit in the 390 by 844 viewport. Captures: A-390-before and A-390-after."
+      },
+      "edge_observation": "Two ArrowLeft presses selected 2 m; A-390-edge shows only the path in the answer. Both path end bars remain visible: one near the left edge and one above the bend. The open bridge is continuous and the ferry connection is dotted; the closed path also remains continuous between its small end bars.",
+      "fact_check": "The on-screen answer supports path-only closure at 2 m. The 6 m answer says the ferry stops, but the small docked boat and interrupted route do not independently make that state unmistakable. Real-world thresholds were not independently verified.",
+      "strength": "The entire task fits on screen with a clear keyboard focus outline.",
+      "weakness": "The small closure markers are easy to miss, especially the left path endpoint.",
+      "repair": "Make the endpoint barriers and closed route geometry more legible at phone size.",
+      "arm": "current",
+      "html_sha256": "eeb63b47b3fecab8a9dd734aa1510010e0a2ba6476854b52d11df8671c0432e5",
+      "weighted": 7.45,
+      "before": {
+        "sha256": "5cfbb7db9d34040cbd2b7b6174b2642fbe1fe9f03e86e8bb8b7a8938f3fcc12e",
+        "file": "A-390-before.png",
+        "tool_call_id": "item_11"
+      },
+      "after": {
+        "sha256": "260031f05b26bef690442d6ca36d9f722a30fef8ed4ca96e8a4e99a91ed9047f",
+        "file": "A-390-after.png",
+        "tool_call_id": "item_14"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ],
+      "confirmed_levels": [
+        6,
+        2
+      ]
+    },
+    "B-1440": {
+      "coherence": 8.5,
+      "originality": 7.5,
+      "craft": 7.5,
+      "usability": 8,
+      "primary_action": {
+        "input": "Tab to 4 m, then ArrowRight",
+        "expected": "Select 6 m and show all affected crossings",
+        "observed": "6 m was selected with visible focus. The answer lists the path closing, ferry stopping, and footbridge closing; the map labels them Closed, Stopped, and Closed. Captures: B-1440-before and B-1440-after."
+      },
+      "edge_observation": "Two ArrowLeft presses selected 2 m; B-1440-edge shows the path closed and the footbridge and ferry open. Both path endpoints are visible as amber bars at the lower-left and upper-right ends of the curved bank-side route. The bridge is continuous and the ferry has a dotted crossing; the closed path remains continuous between its end bars.",
+      "fact_check": "The answer and map labels agree on the path-only result at 2 m and the three affected crossings at 6 m. The docked boat and broken connection suggest a stopped ferry, but the imagery alone is ambiguous; the Stopped label makes the stated status explicit. Real-world thresholds were not independently verified.",
+      "strength": "Route-specific status labels let residents read the state directly beside each crossing.",
+      "weakness": "The closed path's continuous line and small barriers still require interpretation; the ferry relies on its status label for certainty.",
+      "repair": "Strengthen the physical interruption at both path ends and make the ferry's stopped state recognizable without text or color.",
+      "arm": "proposed",
+      "html_sha256": "c702dd3519a3a15bd98195621d6a9f0ef92a1e83825f4fbcf5feb9b1b4364299",
+      "weighted": 7.9,
+      "before": {
+        "sha256": "83048bd9204ad29906c11137074a352c71ef02f9c71ef26784e4d7be393a1c46",
+        "file": "B-1440-before.png",
+        "tool_call_id": "item_19"
+      },
+      "after": {
+        "sha256": "d1604d676f40541a897783418d3be5a201ad85083fe2cf482dbc8b17a024d022",
+        "file": "B-1440-after.png",
+        "tool_call_id": "item_22"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ],
+      "confirmed_levels": [
+        6,
+        2
+      ]
+    },
+    "B-390": {
+      "coherence": 8.5,
+      "originality": 7.5,
+      "craft": 7.5,
+      "usability": 8,
+      "primary_action": {
+        "input": "Tab to 4 m, then ArrowRight",
+        "expected": "Select 6 m and show all affected crossings",
+        "observed": "6 m was selected and the path, ferry, and footbridge were all listed and labeled with their states. Controls, illustration, and answer fit in the 390 by 844 viewport. Captures: B-390-before and B-390-after."
+      },
+      "edge_observation": "Two ArrowLeft presses selected 2 m; B-390-edge shows only the path closed, with the footbridge and ferry labeled open. Both path end bars are visible: the lower-left bar lies close to the screen edge and the upper-right bar sits above the bend. The open bridge is continuous and the ferry route dotted, while the closed path remains a continuous curve between small barriers.",
+      "fact_check": "The visible answer and labels support the path-only result. At 6 m, the stopped label is clear, but the small boat and interrupted ferry connection alone do not make its stopped state unmistakable. Real-world thresholds were not independently verified.",
+      "strength": "The local status labels and full answer remain visible alongside the controls.",
+      "weakness": "Small route geometry and barriers make the visual distinction depend heavily on labels and color.",
+      "repair": "Enlarge or redraw the barriers and interrupted ferry route so their states remain recognizable at phone scale without relying on labels, animation, or color.",
+      "arm": "proposed",
+      "html_sha256": "c702dd3519a3a15bd98195621d6a9f0ef92a1e83825f4fbcf5feb9b1b4364299",
+      "weighted": 7.9,
+      "before": {
+        "sha256": "04c6f665e07a5293eab6a369b17a97dafdedb05d3543936ff32c8bee3f651c41",
+        "file": "B-390-before.png",
+        "tool_call_id": "item_28"
+      },
+      "after": {
+        "sha256": "559b48936ffcc3d1344569fd71d07e5bd2be61a5ee687ab63d727b8744a8d294",
+        "file": "B-390-after.png",
+        "tool_call_id": "item_31"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ],
+      "confirmed_levels": [
+        6,
+        2
+      ]
+    }
+  },
+  "preference": {
+    "winner": "B",
+    "reason": "B preserves the clear keyboard interaction and compact layout while placing explicit status beside each crossing. Both designs need stronger visual route-state cues, especially for the stopped ferry and the continuous-looking closed path."
+  },
+  "case": "social-river",
+  "verified_screens": 4,
+  "required_screens": 4,
+  "browser": "Chrome/158.0.8127.36",
+  "evaluator_thread": "01a20709-13d8-7211-a790-b190948730fe",
+  "usage": {
+    "input_tokens": 450146,
+    "cached_input_tokens": 413184,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2792,
+    "reasoning_output_tokens": 0
+  },
+  "trace_sha256": "0555cedfc3f3f3227da7cb12cf114b7c5d17c19da7835284f29f1d50b40c9db0",
+  "browser_audit_sha256": "10e03977d80516a841296301b6022ae4eb2a5cb82cf4fd55d2b4653961ca5bce"
+}

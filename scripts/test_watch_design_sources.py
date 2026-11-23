@@ -1,7 +1,10 @@
+from contextlib import redirect_stdout
 from datetime import date, datetime, timezone
+from io import StringIO
 import unittest
+from urllib.parse import parse_qs, urlsplit
 
-from watch_design_sources import CSSDA, HN_API, read_css_award, read_show_hn, source_result
+from watch_design_sources import CSSDA, HN_API, print_report, read_css_award, read_show_hn, source_result
 
 
 TODAY = date(2026, 11, 22)
@@ -60,3 +63,35 @@ class ShowHNTest(unittest.TestCase):
             "title": "Show HN: You Are Hilbert", "date": "2026-11-22",
             "url": "https://news.ycombinator.com/item?id=16", "points": 8, "comments": 3,
         }])
+
+    def test_retains_an_interactive_calculator_from_its_description(self):
+        timestamp = int(datetime(2026, 11, 22, tzinfo=timezone.utc).timestamp())
+
+        def fetch(url):
+            if url == f"{HN_API}/showstories.json":
+                return [1, 2]
+            item_id = 1 if url.endswith("/1.json") else 2
+            return {
+                "id": item_id, "type": "story", "time": timestamp, "score": 4,
+                "title": "Show HN: A machining reference",
+                "text": "Try the speeds and feeds calculator." if item_id == 1 else "Read the reference.",
+            }
+
+        self.assertEqual(
+            [item["url"] for item in read_show_hn(TODAY, fetch)],
+            ["https://news.ycombinator.com/item?id=1"],
+        )
+
+
+class SocialLeadTest(unittest.TestCase):
+    def test_report_links_to_searches_with_original_queries(self):
+        output = StringIO()
+        with redirect_stdout(output):
+            print_report([])
+        links = [line.split("](", 1)[1][:-1] for line in output.getvalue().splitlines()
+                 if line.startswith("- [") and ("https://x.com/" in line or "reddit.com/" in line)]
+        targets = [urlsplit(link) for link in links]
+        self.assertEqual([target.netloc for target in targets], ["x.com"] * 3 + ["www.reddit.com"])
+        queries = [parse_qs(target.query) for target in targets]
+        self.assertEqual(queries[0]["q"], ["UI design filter:images min_faves:200"])
+        self.assertEqual(queries[-1]["t"], ["week"])

@@ -108,6 +108,8 @@ The installed `review_page` tool returned original masked PNGs at 1440 × 900 an
 
 All 36 matched design briefs have blinded scores. The plain generator averaged 92.7 and frozen Design MCP v2 averaged 94.1, with 17 wins, 11 ties, and eight losses. The paired 95% interval of −0.46 to +3.13 points leaves the average advantage inconclusive. [Benchmark and receipts](EVALS.md)
 
+Creative prototypes go through separate live desktop and phone reviews. River's strongest fixture scored 8.85 from one critic and 8.75 from a second at both widths. The release target is 9.5 from both critics. The daily source review collects new leads that can inform the next experiment. [Creative research and reviews](research/CREATIVE-ROUNDS.md) · [Source review workflow](DESIGN-HARNESS.md#recurring-improvement)
+
 The pinned install routed **15 of 36** briefs to the matching surface with only a brief supplied, up from **9 of 36** in frozen v2. All six forms routed correctly. Settings and empty states remain uncovered as exact surfaces. [Current installed routing](evidence/benchmark-v1/release-initial-6e9a239.json) · [Earlier comparison](evidence/benchmark-v1/current-direct-routing.json)
 
 In a targeted two-brief comparison, the radio and repair-shop directions averaged 97.9 versus 89.6 for frozen v2. The listening demo and booking summary passed keyboard checks at 1440 and 390 CSS px. [Matched visual results](evidence/benchmark-v1/specific-landing-visual.json) · [Browser actions](evidence/benchmark-v1/specific-landing-actions.json)

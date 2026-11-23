@@ -4,6 +4,12 @@ on:
   schedule:
     - cron: '23 15 * * *'
   workflow_dispatch:
+  pull_request:
+    branches: [master]
+    paths:
+      - '.github/workflows/design-source-review.yml'
+      - 'scripts/watch_design_sources.py'
+      - 'scripts/test_watch_design_sources.py'
   push:
     branches:
       - design-mcp/source-review-ci

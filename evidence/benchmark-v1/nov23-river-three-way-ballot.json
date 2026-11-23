@@ -1,0 +1,329 @@
+{
+  "calibration": {
+    "coherence": 7,
+    "originality": 4,
+    "craft": 6,
+    "usability": 6,
+    "reason": "Clear labels and a legible familiar layout support the task, while misplaced focus after invalid input is a material recovery weakness."
+  },
+  "screens": {
+    "A-1440": {
+      "coherence": 8,
+      "originality": 8,
+      "craft": 7.5,
+      "usability": 7.5,
+      "primary_action": {
+        "input": "Tab to the checked 4 m radio, then ArrowRight.",
+        "expected": "Select 6 m and show all affected crossings.",
+        "observed": "6 m is selected; the list says the riverside path closes, the ferry stops, and the footbridge closes. Capture: A-1440-after."
+      },
+      "edge_observation": "ArrowRight wraps to 2 m. Only the riverside path is listed as closed. Its route has amber end barriers; the open footbridge is a continuous mint line and the ferry route is mint dashed. The ferry's open status is implied by omission and its changed line, rather than explicitly labeled.",
+      "fact_check": "The scene is a schematic river bend, with no identified real route or endpoints to verify. It has no elevation labels in the artwork. The selected level is clear in the controls and result heading; real-world closure thresholds are unsupported by the view.",
+      "strength": "The river-bend scene gives the crossings a memorable spatial relationship.",
+      "weakness": "The graphic's status encoding has no legend, and the ferry's stopped state relies on small barriers and the separate list.",
+      "repair": "Add direct open, closed, and stopped labels or a concise legend beside each route.",
+      "arm": "map",
+      "html_sha256": "eeb63b47b3fecab8a9dd734aa1510010e0a2ba6476854b52d11df8671c0432e5",
+      "weighted": 7.8,
+      "before": {
+        "sha256": "e3879b329380e887fec4d0a3c51be7a3445abb2183903927874ca6656d9d890a",
+        "file": "A-1440-before.png",
+        "tool_call_id": "item_2"
+      },
+      "after": {
+        "sha256": "d9fd27eb5a8bdf8dff91d3489bd3fab23d792923406c6afd47f9bbf73ba0c542",
+        "file": "A-1440-after.png",
+        "tool_call_id": "item_5"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "confirmed_levels": [
+        6,
+        2
+      ]
+    },
+    "A-390": {
+      "coherence": 8,
+      "originality": 8,
+      "craft": 7.5,
+      "usability": 7.5,
+      "primary_action": {
+        "input": "Tab to 4 m, then ArrowRight.",
+        "expected": "Select 6 m and show all affected crossings.",
+        "observed": "6 m is selected and all three affected crossings are listed. Capture: A-390-after."
+      },
+      "edge_observation": "ArrowRight wraps to 2 m; the on-screen list contains only the closed path. Amber bars mark the path, while the bridge remains continuous and the ferry route dashed. Ferry status is inferred rather than directly labeled in the artwork.",
+      "fact_check": "The scene is an unlabeled schematic, so real route endpoints and external threshold accuracy cannot be established. No artwork elevation labels compete with the selected level. Controls, graphic, and answer fit together in the 390 by 844 viewport.",
+      "strength": "The entire interaction and answer fit on screen while retaining the recognizable river scene.",
+      "weakness": "Small ferry details and the absence of a legend make its status less immediate.",
+      "repair": "Add compact text statuses to the graphic and preserve their legibility at phone size.",
+      "arm": "map",
+      "html_sha256": "eeb63b47b3fecab8a9dd734aa1510010e0a2ba6476854b52d11df8671c0432e5",
+      "weighted": 7.8,
+      "before": {
+        "sha256": "5cfbb7db9d34040cbd2b7b6174b2642fbe1fe9f03e86e8bb8b7a8938f3fcc12e",
+        "file": "A-390-before.png",
+        "tool_call_id": "item_9"
+      },
+      "after": {
+        "sha256": "260031f05b26bef690442d6ca36d9f722a30fef8ed4ca96e8a4e99a91ed9047f",
+        "file": "A-390-after.png",
+        "tool_call_id": "item_12"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "confirmed_levels": [
+        6,
+        2
+      ]
+    },
+    "B-1440": {
+      "coherence": 8,
+      "originality": 7.5,
+      "craft": 7,
+      "usability": 7.5,
+      "primary_action": {
+        "input": "Tab to 4 m, then ArrowRight.",
+        "expected": "Select 6 m and show all affected crossings.",
+        "observed": "6 m is selected; the path closes, ferry stops, and footbridge closes. Capture: B-1440-after."
+      },
+      "edge_observation": "ArrowRight wraps to 2 m; only the path is listed. The path turns amber, while the bridge and ferry are outlined and pale. The ferry's status is conveyed indirectly through color and the closure list.",
+      "fact_check": "The figure is a cross-section, not an identified real route with traceable endpoints. The 2, 4, and 6 m labels align with named thresholds, but the ferry is drawn at the 4 m line even when selected water is at 2 m, making its physical relationship to the water confusing. The labels do not explicitly say 'closure threshold'; external accuracy is unsupported.",
+      "strength": "The cutaway and rising water give the level change a distinctive physical form.",
+      "weakness": "The ferry appears suspended above the water at 2 m, and amber status has no legend.",
+      "repair": "Label threshold lines explicitly, explain status colors, and keep the ferry's relationship to the water physically legible.",
+      "arm": "current",
+      "html_sha256": "6c865202d697125bf3cc70a0edd4d57dc32d2144423c35a3e653cd7766230339",
+      "weighted": 7.55,
+      "before": {
+        "sha256": "f0b0f429014cc9d04e3f6c5353132fb4759cc61a73f42af3e59f8d6e0c42221c",
+        "file": "B-1440-before.png",
+        "tool_call_id": "item_17"
+      },
+      "after": {
+        "sha256": "8b18cef5efe285c093408e1a3e803f40d7395e0f20074549b9cc6cc810dcc3d2",
+        "file": "B-1440-after.png",
+        "tool_call_id": "item_20"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "confirmed_levels": [
+        6,
+        2
+      ]
+    },
+    "B-390": {
+      "coherence": 7.5,
+      "originality": 7.5,
+      "craft": 7,
+      "usability": 7.5,
+      "primary_action": {
+        "input": "Tab to 4 m, then ArrowRight.",
+        "expected": "Select 6 m and show all affected crossings.",
+        "observed": "6 m is selected and all three affected crossings are listed. Capture: B-390-after."
+      },
+      "edge_observation": "ArrowRight wraps to 2 m; only the path is listed. Its amber shape contrasts with the pale outlined ferry and bridge, though the meaning of the colors is unstated and the ferry remains above the depicted water.",
+      "fact_check": "This is a schematic cross-section with no identifiable real route endpoints. Threshold labels and selected water line are visible, but their roles need explicit explanation. The controls, answer, and figure fit in the phone viewport; real-world threshold accuracy is unverified.",
+      "strength": "The controls and concise answer precede the complete illustration without scrolling.",
+      "weakness": "The scaled-down artwork makes status cues small and the ferry-water inconsistency more noticeable.",
+      "repair": "Add a threshold and status key and simplify the phone illustration while maintaining legible crossing states.",
+      "arm": "current",
+      "html_sha256": "6c865202d697125bf3cc70a0edd4d57dc32d2144423c35a3e653cd7766230339",
+      "weighted": 7.4,
+      "before": {
+        "sha256": "8b5c2d0642531944ae6170a03577ae588b5268902eb2070f4a11f4e497d75184",
+        "file": "B-390-before.png",
+        "tool_call_id": "item_24"
+      },
+      "after": {
+        "sha256": "738132f7b7f8435539df5e2951f81f51e3f05e24fb020960435df54a44bcb041",
+        "file": "B-390-after.png",
+        "tool_call_id": "item_27"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "confirmed_levels": [
+        6,
+        2
+      ]
+    },
+    "C-1440": {
+      "coherence": 8,
+      "originality": 7,
+      "craft": 7.5,
+      "usability": 8,
+      "primary_action": {
+        "input": "Tab to 4 m, then ArrowRight.",
+        "expected": "Select 6 m and show all affected crossings.",
+        "observed": "6 m is selected; the list and graphic show the path closed, ferry stopped, and footbridge closed. Capture: C-1440-after."
+      },
+      "edge_observation": "ArrowRight wraps to 2 m. The list contains only the path; the graphic explicitly says path closed, ferry open, and footbridge open. The closed row is blue with amber text, while open rows are pale.",
+      "fact_check": "The scene is an abstract gauge, not a depicted real route. The numbers sit next to crossing names but are not explicitly labeled as closure thresholds, so they could be mistaken for the selected level or crossing elevations. The selected level also appears in the control and result heading. Real-world thresholds are unverified.",
+      "strength": "Each crossing has a direct status, including the ferry, making the 2 m state easy to check.",
+      "weakness": "Large unlabeled numbers suggest thresholds without explaining their meaning; the gauge has less sense of place than A.",
+      "repair": "Label the numbers as closure thresholds and distinguish the selected water level with a caption.",
+      "arm": "drum",
+      "html_sha256": "4f820b1d0e70eff7ab0eb4884a74635fc3cf65ad5c1ab3460e7cff8add8acdef",
+      "weighted": 7.6,
+      "before": {
+        "sha256": "67546c5936d533beb2cfc44111fc9834420e750af47fa51152bc6be2baad8a43",
+        "file": "C-1440-before.png",
+        "tool_call_id": "item_31"
+      },
+      "after": {
+        "sha256": "3f3678ebb633c6fa3d694c1c90a842e6868e23e0c5e9119a7a74caeb798e2d3d",
+        "file": "C-1440-after.png",
+        "tool_call_id": "item_34"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "confirmed_levels": [
+        6,
+        2
+      ]
+    },
+    "C-390": {
+      "coherence": 8,
+      "originality": 7,
+      "craft": 7.5,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab to 4 m, then ArrowRight.",
+        "expected": "Select 6 m and show all affected crossings.",
+        "observed": "6 m is selected and the list and graphic show all three affected crossings. Capture: C-390-after."
+      },
+      "edge_observation": "ArrowRight wraps to 2 m. The visible result lists only the path, and the gauge explicitly marks the path closed and both ferry and footbridge open. Blue and amber distinguish the affected row from the pale open rows.",
+      "fact_check": "The gauge does not depict an identifiable real route. Its numbers are not explicitly identified as closure thresholds and may be confused with selected level or crossing elevations. Controls, answer, and all three statuses fit in the phone viewport; external threshold accuracy is unsupported.",
+      "strength": "The answer and explicit status of every crossing remain visible with the controls.",
+      "weakness": "The numerical labels need explanation, and the main scene communicates less local character than the river illustration.",
+      "repair": "Add a short 'closes at' threshold label to each row and a clear selected-level caption.",
+      "arm": "drum",
+      "html_sha256": "4f820b1d0e70eff7ab0eb4884a74635fc3cf65ad5c1ab3460e7cff8add8acdef",
+      "weighted": 7.7,
+      "before": {
+        "sha256": "6b86d3427ededc56da4c4c8795e73ecbc442509140ee840bc5f300e01a3eba6c",
+        "file": "C-390-before.png",
+        "tool_call_id": "item_38"
+      },
+      "after": {
+        "sha256": "bdfec212947c17f1c5253f1275cde68bbcd666b3e17fc2ffe8325f835f0ac861",
+        "file": "C-390-after.png",
+        "tool_call_id": "item_41"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "confirmed_levels": [
+        6,
+        2
+      ]
+    }
+  },
+  "preference": {
+    "winner": "C",
+    "reason": "All three complete the keyboard task at both widths. C makes the actual result clearest: it explicitly labels the ferry open or stopped and shows all three statuses beside the controls on a phone. A has the strongest visual identity and spatial scene, but its ferry status depends more on interpreting small graphic cues and the separate list. C still needs explicit threshold labels."
+  },
+  "case": "social-river",
+  "verified_screens": 6,
+  "required_screens": 6,
+  "browser": "Chrome/158.0.8127.36",
+  "evaluator_thread": "01a20706-35b1-7033-a676-0458fe9f7e99",
+  "usage": {
+    "input_tokens": 730403,
+    "cached_input_tokens": 662144,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 3651,
+    "reasoning_output_tokens": 0
+  },
+  "trace_sha256": "1850325b7f47352269994b024cbc19113e81775ed665820525c7ee5ad796c31d",
+  "browser_audit_sha256": "833431ae2a90799f0a1eb7c8b35e9087c1c30f8da28656dd8caf51847461a5f0"
+}

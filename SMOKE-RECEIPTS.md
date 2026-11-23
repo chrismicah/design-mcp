@@ -14,6 +14,8 @@ A separate reference-Mac replay of the pinned installed `review_page` over stdio
 
 On `46e9913`, 11 of 12 hosted checks completed successfully. The Intel Python 3.11 job reached both installed entry points, then hit its 12-minute limit during the uv smoke commands. Its installer bootstrap spent five minutes compiling `cryptography` for the additional FastMCP client. The verifier now uses the client from each pipx and uv installation. A local replay with both existing environments passed all 12 stdio checks from an empty directory. The new hosted run will verify clean installs and timing. [Timed-out Intel job](https://github.com/chrismicah/design-mcp/actions/runs/45117704881/job/137504215007)
 
+All 12 hosted checks then passed on `d27f386`, including all eight clean macOS 15 install cells. The preceding verifier commit `517145c` passed the previously timed-out Intel Python 3.11 cell in 4 minutes and 50 seconds. The pinned Ventura results remain a separate test. [Exact hosted jobs](evidence/benchmark-v1/release-ci-d27f386.json) · [First successful Intel rerun](https://github.com/chrismicah/design-mcp/actions/runs/45119455041/job/137509630188)
+
 ## Active-tab capture candidate, November 22
 
 `12e9524` passed all eight macOS 15 install jobs and the hosted Chrome, public URL, SwiftUI, and Electron workflows. The clean-install jobs used pipx and uv on Apple Silicon and Intel across Python 3.10–3.13. The hosted Chrome run verified active-tab masking, missing-host recovery, the Before and After keyboard switch, and opening the capture from a pasted URL. It saved the masked public form after **1.49 seconds** in that run. [Exact jobs and capture hashes](evidence/benchmark-v1/release-ci-12e9524.json)

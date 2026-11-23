@@ -1,0 +1,245 @@
+{
+  "calibration": {
+    "example": "Legible repair intake with clear labels, a familiar layout and misplaced focus after an invalid number.",
+    "coherence": 7,
+    "originality": 4,
+    "craft": 6,
+    "usability": 6
+  },
+  "screens": {
+    "A-1440": {
+      "coherence": 8.5,
+      "originality": 7.5,
+      "craft": 8,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab to the selected 4 m radio, then ArrowRight to 6 m.",
+        "expected": "Show the three affected crossings.",
+        "observed": "6 m is selected; the list says the riverside path closes, the ferry stops and the footbridge closes. Capture: A-1440-after.png."
+      },
+      "edge_observation": "At exactly 2 m, reached with two ArrowLeft presses, the list shows only the riverside path closes. Capture: A-1440-edge-2m.png.",
+      "fact_check": "The cross-section puts the waterline at the selected threshold and highlights affected features. At 4 m the ferry is yellow beside the landing, but the illustration alone does not clearly communicate that it has stopped; the text supplies that fact. At 2 m the boat remains visually above the waterline, so the drawing reads as a threshold diagram rather than a literal floating scene. No external evidence was provided to verify the actual crossing thresholds.",
+      "strength": "The controls, answer and labeled thresholds are visible together, with clear keyboard focus.",
+      "weakness": "The boat's position and color do not independently explain its operating state.",
+      "repair": "Show a stopped ferry with an explicit mooring or closed boarding cue, and distinguish diagrammatic threshold positions from literal water behavior.",
+      "arm": "current",
+      "html_sha256": "6c865202d697125bf3cc70a0edd4d57dc32d2144423c35a3e653cd7766230339",
+      "weighted": 8.1,
+      "before": {
+        "sha256": "f0b0f429014cc9d04e3f6c5353132fb4759cc61a73f42af3e59f8d6e0c42221c",
+        "file": "A-1440-before.png",
+        "tool_call_id": "item_2"
+      },
+      "after": {
+        "sha256": "b1f1c3e8f68d7e1963ef839c9bd1f22cbb2a596621a552da02850f458d1e61a3",
+        "file": "A-1440-after.png",
+        "tool_call_id": "item_5"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ],
+      "confirmed_levels": [
+        6,
+        2
+      ]
+    },
+    "A-390": {
+      "coherence": 8.5,
+      "originality": 7.5,
+      "craft": 8,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab to 4 m, then ArrowRight to 6 m.",
+        "expected": "Show all three affected crossings alongside the controls.",
+        "observed": "The selected control and all three results fit in the 390 by 844 viewport, above the illustration. Capture: A-390-after.png."
+      },
+      "edge_observation": "At exactly 2 m, reached with two ArrowLeft presses, only the riverside path closure appears. Capture: A-390-edge-2m.png.",
+      "fact_check": "The compact labeled cross-section shows water rising to the selected line and highlights the affected features. The stopped ferry is conveyed by the result text and color, not by an unambiguous stop cue. The static captures do not establish a motion claim; real-world thresholds remain unverified.",
+      "strength": "The complete answer and controls remain visible without scrolling.",
+      "weakness": "Small illustration details make the ferry's status less apparent.",
+      "repair": "Add a legible stopped or moored cue that works at phone size.",
+      "arm": "current",
+      "html_sha256": "6c865202d697125bf3cc70a0edd4d57dc32d2144423c35a3e653cd7766230339",
+      "weighted": 8.1,
+      "before": {
+        "sha256": "8b5c2d0642531944ae6170a03577ae588b5268902eb2070f4a11f4e497d75184",
+        "file": "A-390-before.png",
+        "tool_call_id": "item_11"
+      },
+      "after": {
+        "sha256": "c200a9f7092fbc4c37ef67051f8c3b36a939d3679fadebb1f1a54ae3ec948fbf",
+        "file": "A-390-after.png",
+        "tool_call_id": "item_14"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ],
+      "confirmed_levels": [
+        6,
+        2
+      ]
+    },
+    "B-1440": {
+      "coherence": 6,
+      "originality": 8,
+      "craft": 6,
+      "usability": 7,
+      "primary_action": {
+        "input": "Tab to the selected 4 m radio, then ArrowRight to 6 m.",
+        "expected": "Show the riverside path, ferry and footbridge as affected.",
+        "observed": "The result lists all three. The scene labels a submerged bridge, while the immediate capture still shows the bridge deck above much of the visible water. Capture: B-1440-after.png."
+      },
+      "edge_observation": "At exactly 2 m, reached with two ArrowLeft presses, the result list says only the riverside path closes. The captured scene nevertheless retains a prominent FERRY CLOSED sign and moored boat, contradicting the path-only result. Capture: B-1440-edge-2m.png.",
+      "fact_check": "At the initial 4 m state, a mooring line, boarding gate label and FERRY CLOSED sign convey a stopped ferry. The 6 m image's submerged-bridge label is not clearly supported by the immediate rendered water position. The immediate 2 m capture shows water high around the bridge and ferry; the changing scene and labels therefore obscure the level relationship at capture time. A transient animation may contribute, but the captures alone do not establish its timing or final state. Real-world thresholds are unverified.",
+      "strength": "The landing scene gives the ferry a concrete physical context.",
+      "weakness": "The scene can conflict with the selected level and textual result.",
+      "repair": "Synchronize the water, gate, sign and labels with the selected level; ensure the final and transitional states do not assert contradictory closures.",
+      "arm": "proposed",
+      "html_sha256": "1c5ccf1f8712b37d47c1cdda3b05c79f3043bcc4888a5793206beeadd3135472",
+      "weighted": 6.8,
+      "before": {
+        "sha256": "6c355509d6c981118011fd978da3f28a314eec32b1109c1bf0f7b7feb0c64539",
+        "file": "B-1440-before.png",
+        "tool_call_id": "item_19"
+      },
+      "after": {
+        "sha256": "707883e4d478f086f67208639f1bd00ae06a68ad7ddce892f88cdfbd5a3249eb",
+        "file": "B-1440-after.png",
+        "tool_call_id": "item_22"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ],
+      "confirmed_levels": [
+        6,
+        2
+      ]
+    },
+    "B-390": {
+      "coherence": 6,
+      "originality": 8,
+      "craft": 6,
+      "usability": 7,
+      "primary_action": {
+        "input": "Tab to 4 m, then ArrowRight to 6 m.",
+        "expected": "Show all three affected crossings alongside the controls.",
+        "observed": "The selected control and all three results fit in the 390 by 844 viewport. The scene labels the bridge submerged, though the immediate image does not clearly show the deck underwater. Capture: B-390-after.png."
+      },
+      "edge_observation": "At exactly 2 m, reached with two ArrowLeft presses, the list contains only the riverside path closure, while the scene still displays FERRY CLOSED. Capture: B-390-edge-2m.png.",
+      "fact_check": "The initial scene uses a boarding gate, sign and mooring line to show the stopped ferry. At 2 m the sign contradicts the path-only text, and the captured water appears high around the bridge. The submerged-path label points into a visually ambiguous area; the image does not independently establish the claimed water relationship. Real-world thresholds are unverified.",
+      "strength": "The full answer fits with the controls on the phone screen.",
+      "weakness": "Small scene details and contradictory signage undermine the otherwise clear result.",
+      "repair": "Tie scene cues to the selected state and make the path and water boundary legible at phone size.",
+      "arm": "proposed",
+      "html_sha256": "1c5ccf1f8712b37d47c1cdda3b05c79f3043bcc4888a5793206beeadd3135472",
+      "weighted": 6.8,
+      "before": {
+        "sha256": "a42aa9b0504a2a20b3272113cf06a9a6885ddeea8b0cd0012169a4c9dae90ced",
+        "file": "B-390-before.png",
+        "tool_call_id": "item_28"
+      },
+      "after": {
+        "sha256": "ecd0415579cc55c5b679b59a533804940553cefe18094c91ed62f1c5733108aa",
+        "file": "B-390-after.png",
+        "tool_call_id": "item_31"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ],
+      "confirmed_levels": [
+        6,
+        2
+      ]
+    }
+  },
+  "preference": {
+    "winner": "A",
+    "reason": "Both designs support the keyboard checks and fit the 6 m answer with the controls on the phone. A's labeled threshold diagram and results remain more internally consistent; B's immediate 2 m scene still displays a ferry-closed sign despite the path-only result."
+  },
+  "case": "social-river",
+  "verified_screens": 4,
+  "required_screens": 4,
+  "browser": "Chrome/158.0.8127.36",
+  "evaluator_thread": "01a206f9-d2aa-72a2-9aae-ada2043c1610",
+  "usage": {
+    "input_tokens": 497343,
+    "cached_input_tokens": 462464,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2745,
+    "reasoning_output_tokens": 0
+  },
+  "trace_sha256": "bad6f221acd63bcc87823d8e0d3104aedf18c5b73310df21234f69f405645083",
+  "browser_audit_sha256": "3a411ec2bdd040b7f27524a3238913aa1a106f951664e1e17133912be400d0f8"
+}
