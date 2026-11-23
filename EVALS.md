@@ -725,3 +725,14 @@ Playwriter ran 12 keyboard and touch journeys across the swan painting and a hel
 | Replace the study image and retain a locator | 7.50 | 7.50 |
 
 The independent critic preferred the focus layout on both widths. The locator's small mark was the main remaining weakness. Both pages were composed from fixed assets and the installed resource for this experiment. Ordinary-client resource adoption and the dual-critic 9.5 release gate remain open. [Exact package identity, Playwriter runs and ballot](evidence/benchmark-v1/executable-image-disclosure.json)
+
+### Ordinary-client image detail transfer
+
+Two fresh Codex CLI sessions received the same brief and both verified Milkmaid assets. On `d146160`, Codex paraphrased the request as “visitors inspecting the stream of milk.” That exact request returned the general editorial direction on both preceding wheels. The repaired `534f335` wheel returned the artifact-inspection direction and resource pointer for the captured arguments. The repair passed doctor and 614 tests with 134 subtests and one skip. A second fresh session used the artifact-inspection direction. The stdio trace recorded zero resource requests from either session, so only the direction influenced the generated pages.
+
+| Untouched generation | 320 × 700 | 390 × 844 | 1440 × 900 |
+| --- | --- | --- | --- |
+| General editorial route | Note and overview below viewport | Overview partially below viewport | Passed |
+| Artifact-inspection route | Passed | Passed | Target in detail below viewport |
+
+The corrected browser replay waited at most 350 ms for finite motion to finish without additional input and inspected the original frames. The first replay had sampled the start of a fade and missed an alternate wording of the caption. Both original HTML hashes survived the correction. All 48 frames from the two replays passed dimension and hash checks. The repaired mobile interaction preserved the focus, target, note and overview. Desktop placement still needs a full replay before blind visual scoring. Retain the trial separately. [Exact wheel, client, and browser receipts](evidence/benchmark-v1/ordinary-image-disclosure.json)
