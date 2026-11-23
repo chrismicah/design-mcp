@@ -41,6 +41,11 @@ def viewport_scores(pair, arm):
     return {width: pair[(arm, width)]["weighted"] for width in WIDTHS}
 
 
+def capture_signature(pair, arm):
+    return tuple(pair[arm, width][state]["sha256"]
+                 for width in WIDTHS for state in ("before", "after"))
+
+
 def gates(pair):
     candidate = viewport_scores(pair, "social")
     control = viewport_scores(pair, "v2")
@@ -74,6 +79,7 @@ def result(case, receipts=RECEIPTS, confirmation=None):
     misses = 0
     critic_threads = set()
     candidate_hashes = set()
+    candidate_captures = set()
     control_hash = candidates[0]["generation"]["v2"]["html_sha256"]
     for expected_round, receipt in enumerate(candidates, start=1):
         if (receipt["source"]["round"] != expected_round or
@@ -91,6 +97,10 @@ def result(case, receipts=RECEIPTS, confirmation=None):
         if candidate_hash == control_hash or candidate_hash in candidate_hashes:
             raise ValueError("Each round requires a distinct candidate build")
         candidate_hashes.add(candidate_hash)
+        signature = capture_signature(pair, "social")
+        if signature == capture_signature(pair, "v2") or signature in candidate_captures:
+            raise ValueError("Identical live captures cannot count as a new creative round")
+        candidate_captures.add(signature)
         values = [Decimal(str(score)) for score in viewport_scores(pair, "social").values()]
         rank = (min(values), sum(values) / len(values))
         if strongest is None or rank > strongest["rank"]:
