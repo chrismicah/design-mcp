@@ -164,6 +164,14 @@ async def direct(brief: str, surface: Surface | None = None, avoid: list[str] | 
             keyboard="Use native controls in reading order. On invalid submission, preserve entries and focus the first "
                      "invalid input. Mark each invalid field aria-invalid and link its correction text with aria-describedby.",
         )
+    if choice.id == "performance-program":
+        output["handoff"] = (
+            "Preserve the supplied facts and brand constraints. Use the palette and type as examples of "
+            "hierarchy. For an unbranded brief, derive a visual identity from the specific subject and "
+            "check contrast with the resulting colors. Let the artwork reveal what differs between "
+            "the performances. Test the complete choice and recovery at 390 px, including focus, "
+            "the visible reason a choice no longer fits, and the alternate's trade-off."
+        )
     if choice.id == "service-work-order":
         output["interaction"].update(
             keyboard="Announce the selection through the one visible status. Keep it next to the chooser on desktop "

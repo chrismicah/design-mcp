@@ -197,7 +197,11 @@ async def test_calmer_keeps_the_operational_exception_as_the_focal_point(reactio
 async def test_performance_program_keeps_the_decision_and_outcome_together(brief):
     result = await direct(brief)
     assert result["direction"]["id"] == "performance-program"
-    assert "estimate's actual origin" in result["direction"]["action"]["instruction"]
+    action = result["direction"]["action"]["instruction"]
+    assert "keep its selected row visible" in action
+    assert "wait for the visitor to change selection" in action
+    assert "before any decorative scene" in result["direction"]["layout"]["mobile"]
+    assert "derive a visual identity from the specific subject" in result["handoff"]
     assert result["questions"] == []
     assert len(json.dumps(result, ensure_ascii=False)) <= 6000
     assert (await direct(brief, avoid=["performance-program"]))["direction"]["id"] == "object-hero"
