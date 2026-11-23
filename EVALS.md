@@ -607,3 +607,6 @@ A hosted diagnostic replay exercised all four frozen drafts at the same three wi
 
 
 The next isolated candidate, `d2ad739`, passed four pinned macOS 15 installs across Apple Silicon and Intel with pipx and uv. All four reproduced both complete expected practice replies. The unedited Tacoma draft passed the full browser contract at **390 and 1440 px** versus **1440 px only** for the prior generated draft. The first name input moved from **883 to 709 CSS px** at 390 px. At 320 px it starts at 755 px in a 700 px viewport. The generated page repeats service names and still misses the smallest opening. The full visual gate stays open. [Exact installs, captures and decision](evidence/benchmark-v1/consultation-unified-composition.json)
+
+
+An authored repair of the exact unified-composition draft removed the repeated service list and put the 320 px preview button’s lower edge at **713 CSS px**, down from **868 px**. Shortening one redundant sentence moved it to **689 px** inside the 700 px screen. The final variant passed all three browser widths, including keyboard recovery, editable result and zero post-load requests. It remains an authored repair. Installed generation and independent visual scoring stay separate. [Two browser runs and capture hashes](evidence/benchmark-v1/consultation-single-service-diagnostic.json)
