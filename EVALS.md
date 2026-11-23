@@ -117,6 +117,8 @@ A separate critic reviewed the follow-up with only the affected crossings listed
 
 An original rendered porcelain scale study scored **8.00 desktop and 7.90 mobile** against **8.70** at both widths for River round 5. All four blind views reached the required keyboard states. At 390 px, both drafts showed all three closures above the fold. The critic found the three terraces visually clear and their relationship to the named crossings too abstract. Keep round 5 while testing a labeled scale. [Ballot, critique, and asset hashes](evidence/benchmark-v1/release-river-scale-blind.json)
 
+Adding crossing names to the porcelain study scored **7.90 desktop and 7.80 mobile** against **8.45** at both widths for River round 5 in the same blind session. Both drafts passed the 6 m and 2 m keyboard checks across all four views. The critic found the tank and guide labels small at 390 px and the desktop 2 m label too close to the closure heading. Keep round 5. Its directly labeled cross-section made the connection between height and each crossing easier to read. [Blind comparison and original capture hashes](evidence/benchmark-v1/release-river-crossings-blind.json)
+
 The cold-storage runner now verifies that both Design MCP arms use the exact brief as the sole argument to `direct`. A synthetic three-arm run passed with the original brief. Supplying a `dashboard` hint produced the expected direction but failed generation eligibility before any browser or judge ran. The original prompt and parser results matched all 72 archived generator traces across the 36 frozen pairs. The cold-storage visual comparison remains pending. [Generation and replay proof](evidence/benchmark-v1/unhinted-direct-gate.json)
 
 | Candidate | Observed change | Status |
