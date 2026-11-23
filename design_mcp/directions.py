@@ -4,6 +4,7 @@ import json
 import re
 from urllib.parse import urlencode
 
+from .choice_layout import CHOICE_LAYOUT
 from .design_checks import inspect_design
 from .direction_records import Surface, library
 from .models.visual_analyzer import contrast_ratio
@@ -23,11 +24,8 @@ _TERMS = {
 
 _RECOVERY_HANDOFFS = {
     "constraint-comparison": (
-        "Replay by keyboard at 320 and 390 px. 1. Choose a fitting option and verify its initial pickup. "
-        "2. If the brief supplies a stock update, apply it separately. Keep the old choice selected. "
-        "Show the reason, replacement measurements, pickup and an explicit replacement button together. "
-        "3. Choose the replacement. Verify that the new choice and old reason remain visible. Keep focus on "
-        "a surviving control or move it directly to the visible recovery button."
+        "At 320/390 px, choose by keyboard and apply any stock update separately. Keep the prior choice, "
+        "reason and replacement evidence beside its action. Confirm replacement. Keep result, history and focus visible."
     ),
     "access-window": (
         "Replay by keyboard at 320 and 390 px. 1. Choose the original route and check its estimate. "
@@ -133,6 +131,14 @@ def _access_window(text: str) -> bool:
     return bool(step_free and _match("train", text) and departure and time and route_choice)
 
 
+def _timed_ferry_choice(text: str) -> bool:
+    return (
+        all(_match(term, text) for term in ("ferry", "fare", "choose"))
+        and bool(re.search(r"\$\d+\b", text))
+        and bool(re.search(r"\barrive by (?:[01]?\d|2[0-3]):[0-5]\d\b", text))
+    )
+
+
 async def direct(brief: str, surface: Surface | None = None, avoid: list[str] | None = None) -> dict:
     """Choose one sourced art direction for a brief. Call first for new interface work.
 
@@ -201,6 +207,9 @@ async def direct(brief: str, surface: Surface | None = None, avoid: list[str] | 
             " At 320 × 700, check the complete short choice group and its result line from the top "
             "after keyboard and pointer selection."
         )
+    if choice.id == "constraint-comparison" or (kind in {"landing", "mobile"} and _timed_ferry_choice(text)):
+        output["choice_layout"] = CHOICE_LAYOUT.copy()
+        output["handoff"] = "Keep the brief's facts. Load the named fonts. Test keyboard and reading order."
     if recovery_handoff := _RECOVERY_HANDOFFS.get(choice.id):
         output["handoff"] += " " + recovery_handoff
     return _bounded("direct", output)
