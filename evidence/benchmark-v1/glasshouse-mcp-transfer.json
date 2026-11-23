@@ -1,0 +1,666 @@
+{
+  "test": {
+    "case": "glasshouse-recital",
+    "brief": "Build a creative page for Glasshouse, a fictional chamber music festival. A visitor wants to hear bass clarinet and needs a step-free entrance. Reed and Glass starts at 18:15 in Atrium with bass clarinet and glass harp. The garden door is step-free. Night Reeds starts at 19:00 in Loft with bass clarinet and viola. The Loft entrance has five steps. Both recitals are free. Let the visitor choose either recital and see the instruments, start time, and entrance for their selection. Start with Reed and Glass selected and both choices visible. Include a Step-free entrances only filter. If the visitor chooses Night Reeds and enables the filter, explain that their choice has five steps and offer Reed and Glass for them to select. Turning the filter off must restore both choices. Keep the selected state, focus and entrance details clear even at 390 pixels. Use original artwork if useful. This is a preview.",
+    "arms": [
+      "candidate",
+      "control"
+    ],
+    "browser": "Chrome/160.0.8178.0",
+    "require_unhinted_direct": true,
+    "directions": {
+      "candidate": "performance-program",
+      "control": "object-hero"
+    },
+    "task": "You want to hear bass clarinet and need a step-free entrance. Capture -before at the top before using the page. Identify which recital, start time, and entrance match, and whether the recital choices are immediately visible. Select Night Reeds by keyboard and verify its start and five entrance steps. Turn on the step-free filter by keyboard. Observe whether the conflicting choice is explained, whether its focus or selection changes, and whether the eligible 18:15 recital is offered. Choose that recital by keyboard and capture -after. Turn the filter off and capture -edge after checking that both choices return. Report visible focus and any invented access promises. Score the page and describe the concrete visual mechanism and whether it made the trade-off easier to understand."
+  },
+  "installed": {
+    "control": "d4c4d707aaecf2f6816a0dd51afc85ff48020070",
+    "candidate": "310bade38082c137160fc4e9100978db53852db3",
+    "candidate_wheel_sha256": "f10f9800c30824519611be28be42457426cd24244a16b21e25fb8c4f82b2f094"
+  },
+  "original_captures_local": ".context/recital-transfer-2026-11-23/live/captures",
+  "generation": {
+    "candidate": {
+      "usage": {
+        "input_tokens": 59016,
+        "cached_input_tokens": 46848,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 5161,
+        "reasoning_output_tokens": 19
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "design-mcp",
+          "tool": "direct",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "treatment_call": true,
+      "direct_call": true,
+      "status": "passed",
+      "observed_directions": [
+        "performance-program"
+      ],
+      "unhinted_direct": true,
+      "case": "glasshouse-recital",
+      "arm": "candidate",
+      "model": "gpt-6.1-terra",
+      "effort": "low",
+      "client": "codex-cli 0.170.0",
+      "prompt_sha256": "1b54067287843e7bdaad412258a59083c45d47e18c8108f3ea6851ccbd2971dd",
+      "expected_direction": "performance-program",
+      "require_unhinted_direct": true,
+      "shell_tool": false,
+      "mcp_config_sha256": "15cb7d574a7bf02bead0a5599591e296f777264a42cc22472e193ce9b1b18c8e",
+      "elapsed_seconds": 101.52,
+      "exit_code": 0,
+      "trace_sha256": "eee1439083b89c9c3cf5ec9b850096575e4c0c44be03ba8bb041f8a5e79b1c39",
+      "html_sha256": "a03aa3b3501252c26fc0a7a7f02e86556317e5068e7877b3162fb2fffd2e699f"
+    },
+    "control": {
+      "usage": {
+        "input_tokens": 58938,
+        "cached_input_tokens": 52992,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 5505,
+        "reasoning_output_tokens": 0
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "design-mcp",
+          "tool": "direct",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "treatment_call": true,
+      "direct_call": true,
+      "status": "passed",
+      "observed_directions": [
+        "object-hero"
+      ],
+      "unhinted_direct": true,
+      "case": "glasshouse-recital",
+      "arm": "control",
+      "model": "gpt-6.1-terra",
+      "effort": "low",
+      "client": "codex-cli 0.170.0",
+      "prompt_sha256": "1b54067287843e7bdaad412258a59083c45d47e18c8108f3ea6851ccbd2971dd",
+      "expected_direction": "object-hero",
+      "require_unhinted_direct": true,
+      "shell_tool": false,
+      "mcp_config_sha256": "3474c571ef4a59db7cebace84904f980322a56d3e86d0e0914c155d07d220d4b",
+      "elapsed_seconds": 106.43,
+      "exit_code": 0,
+      "trace_sha256": "bb67e70401ed99cc80923179fe768c320b37577e4dfbd49bb14ee26ced92d4c8",
+      "html_sha256": "5ed75a5f4352542b574fc9fc55727be2b67c3e09b2e5b6645856617518b3c2cd"
+    }
+  },
+  "verified_live_review": {
+    "calibration": {
+      "coherence": 7,
+      "originality": 4,
+      "craft": 6,
+      "usability": 5,
+      "reason": "Clear labels and a familiar layout support the task, but misplaced focus after an invalid number materially impairs recovery."
+    },
+    "screens": {
+      "A-1440": {
+        "coherence": 8.5,
+        "originality": 8,
+        "craft": 8,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Tab to Night Reeds and press Enter; Shift+Tab to the filter and press Space; Tab to Reed and Glass and press Enter.",
+          "expected": "Show the conflict without silently changing the selection, then allow selection of the step-free recital.",
+          "observed": "Night Reeds selected at 19:00 with five Loft entrance steps. The filter retained that selection in the detail panel, hid its choice, and explained the conflict while offering Reed and Glass. Focus stayed on the switch, then moved to the eligible button; Enter selected it with a prominent yellow focus outline."
+        },
+        "edge_observation": "Space turned the filter off; both choices returned and Reed and Glass remained selected. Focus remained visibly on the switch. Captures: A-1440-before, A-1440-after, A-1440-edge.",
+        "fact_check": "Both choices and their entrance summaries were visible at the top. Reed and Glass is presented as bass clarinet at 18:15 in the Atrium with a step-free garden door; Night Reeds is 19:00 in the Loft with five steps. No additional access promise was observed. Venue facts were not independently verified.",
+        "strength": "The large contrasting choice rows place time and entrance together; the conflict message names both the barrier and the alternative, making the trade-off legible.",
+        "weakness": "The selected Night Reeds row disappears while its detail remains selected, creating a temporary mismatch between the list and detail.",
+        "repair": "Keep the conflicting selected row visible with a clear ineligible state until the visitor chooses the alternative.",
+        "arm": "candidate",
+        "html_sha256": "a03aa3b3501252c26fc0a7a7f02e86556317e5068e7877b3162fb2fffd2e699f",
+        "weighted": 8.25,
+        "before": {
+          "sha256": "d65f896a12639ae4d972fda16b2eafaa1d24c38aa311c26eb1fd7e4a14473685",
+          "file": "A-1440-before.png",
+          "tool_call_id": "item_2"
+        },
+        "after": {
+          "sha256": "72387bcf11543530876baf2bb34f04fbda69c039656ba08cbd38b1a827834925",
+          "file": "A-1440-after.png",
+          "tool_call_id": "item_13"
+        },
+        "layout_width": 1425,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Space"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Space"
+          }
+        ]
+      },
+      "A-390": {
+        "coherence": 8.5,
+        "originality": 8,
+        "craft": 8,
+        "usability": 8,
+        "primary_action": {
+          "input": "Tab to Night Reeds and press Enter; Shift+Tab twice and Space; Tab and Enter on Reed and Glass.",
+          "expected": "Explain the conflict and let the visitor choose the step-free recital with a keyboard.",
+          "observed": "Night Reeds selected at 19:00 with five steps. The filter kept its selection in the detail, showed the conflict status and offered Reed and Glass; selection then changed to Reed and Glass. The switch and selected button had visible yellow focus outlines."
+        },
+        "edge_observation": "Turning the filter off restored both choices and retained Reed and Glass. Captures: A-390-before, A-390-after, A-390-edge.",
+        "fact_check": "Both complete choice rows, including times and entrance summaries, were visible in the initial viewport. Reed and Glass is the displayed 18:15 bass clarinet option with a step-free garden door. No additional access promise was observed; venue facts were not independently verified.",
+        "strength": "The compact stacked rows put the key accessibility comparison in the first viewport; the color and selection treatment remain clear.",
+        "weakness": "The detailed selection is below the choices, so the conflict between the hidden row and retained selection is less immediately visible.",
+        "repair": "Keep the selected conflicting row in place and associate the explanation directly with it.",
+        "arm": "candidate",
+        "html_sha256": "a03aa3b3501252c26fc0a7a7f02e86556317e5068e7877b3162fb2fffd2e699f",
+        "weighted": 8.15,
+        "before": {
+          "sha256": "50d3a30eaa656b3e41a57d24618ef003dd2eb05b0d19d21db8b9441adf156b38",
+          "file": "A-390-before.png",
+          "tool_call_id": "item_19"
+        },
+        "after": {
+          "sha256": "6d663ed8e7cc324f056d1383e0ba279a53c86b295a0b28a9f36143562d204024",
+          "file": "A-390-after.png",
+          "tool_call_id": "item_30"
+        },
+        "layout_width": 375,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Space"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Space"
+          }
+        ]
+      },
+      "B-1440": {
+        "coherence": 8.5,
+        "originality": 7.5,
+        "craft": 8.5,
+        "usability": 8,
+        "primary_action": {
+          "input": "Tab to the radio group and press Right Arrow; Shift+Tab and Space on the filter; Tab and Left Arrow to Reed and Glass.",
+          "expected": "Explain the conflict, preserve the visitor's selection and offer the step-free alternative.",
+          "observed": "Night Reeds selected at 19:00 with five Loft entrance steps. Filtering kept both radios and Night Reeds selected, left focus on the switch, and displayed a status with a Select Reed and Glass action. Left Arrow selected Reed and Glass, after which Night Reeds disappeared. The focused radio had a visible burgundy outline."
+        },
+        "edge_observation": "Turning the filter off restored both radios with Reed and Glass selected and visible focus on the switch. Captures: B-1440-before, B-1440-after, B-1440-edge.",
+        "fact_check": "Both choice names and times were immediately visible, but their entrance details required selecting or reading the detail. Reed and Glass is presented as bass clarinet at 18:15 with a step-free Atrium garden door. No additional access promise was observed; venue facts were not independently verified.",
+        "strength": "The illustrated instrument and restrained editorial layout create a coherent recital identity. Keeping the conflicting choice visible alongside an explicit alternative makes the change understandable.",
+        "weakness": "The initial radio cards omit entrance information, making the accessibility trade-off harder to compare before selecting each recital.",
+        "repair": "Add a concise entrance summary to each radio card while preserving the conflict explanation.",
+        "arm": "control",
+        "html_sha256": "5ed75a5f4352542b574fc9fc55727be2b67c3e09b2e5b6645856617518b3c2cd",
+        "weighted": 8.1,
+        "before": {
+          "sha256": "f2c4159eb8f772eb0600e3e2ca4428610ef11d6240f39dbf055086135b5a8195",
+          "file": "B-1440-before.png",
+          "tool_call_id": "item_35"
+        },
+        "after": {
+          "sha256": "980237a8ddb76d9db13ef75288ef87cf1130f7a49e1102f01e03befaa8170209",
+          "file": "B-1440-after.png",
+          "tool_call_id": "item_43"
+        },
+        "layout_width": 1425,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Space"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowLeft"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Space"
+          }
+        ]
+      },
+      "B-390": {
+        "coherence": 8,
+        "originality": 7.5,
+        "craft": 7.5,
+        "usability": 7,
+        "primary_action": {
+          "input": "Tab to the radio group and press Right Arrow; Shift+Tab and Space; Tab and Left Arrow.",
+          "expected": "Explain the conflict and allow keyboard selection of the step-free alternative.",
+          "observed": "Night Reeds selected at 19:00 with five entrance steps. The filter retained it and both choices, presented the conflict and alternative, and kept focus on the switch. Left Arrow selected Reed and Glass; Night Reeds then disappeared. Focus was visibly outlined."
+        },
+        "edge_observation": "Turning the filter off restored both choices with Reed and Glass selected. Captures: B-390-before, B-390-after, B-390-edge.",
+        "fact_check": "The choice names begin at the bottom of the initial viewport, but their times and entrance details are below the fold. The page identifies Reed and Glass as the 18:15 bass clarinet recital with a step-free Atrium garden door. No additional access promise was observed; venue facts were not independently verified.",
+        "strength": "The conflict preserves the selected option and explicitly offers a step-free alternative; the illustrated panel gives the page a recognizable music identity.",
+        "weakness": "The large illustration pushes the actionable comparison and its details below the fold on mobile.",
+        "repair": "Reduce or reposition the illustration on narrow screens and show time and entrance details directly in the choice rows.",
+        "arm": "control",
+        "html_sha256": "5ed75a5f4352542b574fc9fc55727be2b67c3e09b2e5b6645856617518b3c2cd",
+        "weighted": 7.55,
+        "before": {
+          "sha256": "ac019ce5bd6bce1b05ba892653f4e32525c4ecbca30b5344bf85b288812d53de",
+          "file": "B-390-before.png",
+          "tool_call_id": "item_49"
+        },
+        "after": {
+          "sha256": "bfed63d63cdc7d79896c38f8879ed46e9fa0a0c5cdfbe5b2c1fae68d96755843",
+          "file": "B-390-after.png",
+          "tool_call_id": "item_57"
+        },
+        "layout_width": 375,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Space"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowLeft"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Space"
+          }
+        ]
+      }
+    },
+    "preference": {
+      "winner": "A",
+      "reason": "A makes both times and entrance conditions immediately visible at both tested widths, with clear keyboard focus and an explicit conflict explanation. B handles the conflicting selection more consistently, but its cards omit entrance details and its mobile illustration pushes the comparison down."
+    },
+    "case": "glasshouse-recital",
+    "verified_screens": 4,
+    "required_screens": 4,
+    "browser": "Chrome/160.0.8178.0",
+    "evaluator_thread": "01a20868-a1cd-7213-9cf5-6d041b269ef3",
+    "usage": {
+      "input_tokens": 704590,
+      "cached_input_tokens": 652160,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 3211,
+      "reasoning_output_tokens": 0
+    },
+    "trace_sha256": "19f98091f461c60ad48a526ea6392f7467239457b2ead9a043e49704f93d373b",
+    "browser_audit_sha256": "edfc00884487dc8ee2328cfcdd95136367aacc238518ecfd2391963387ea12bb"
+  },
+  "checked_frames": {
+    "A-1440": {
+      "conflict": {
+        "input": "Space",
+        "url": "http://127.0.0.1:58670/index.html",
+        "width": 1440,
+        "height": 900,
+        "layout_width": 1425,
+        "focus": {
+          "tag": "input",
+          "type": "checkbox",
+          "label": "",
+          "visible": true,
+          "embedded": false,
+          "document_focused": true
+        },
+        "ax": "- banner:\n  - link \"Glasshouse home\":\n    - /url: \"#\"\n    - text: Glasshouse\n  - text: Chamber music festival Preview\n- main:\n  - region \"Listen closely.\":\n    - paragraph: The recital programme\n    - heading \"Listen closely.\" [level=1]\n    - paragraph: Two recitals, both featuring bass clarinet. Find the sound and entrance that work for you.\n  - region \"Choose a recital\":\n    - heading \"Choose a recital\" [level=2]\n    - paragraph: Both recitals are free\n    - strong: Step-free entrances only\n    - text: Show recitals with a step-free entrance\n    - checkbox \"Step-free entrances only\" [checked]\n    - status:\n      - strong: Night Reeds has five steps at the entrance.\n      - text: Reed and Glass has a step-free garden door. Select it below if you prefer.\n    - button \"Reed and Glass 18:15 · Atrium Step-free garden door\"\n  - region \"Your selection\":\n    - heading \"Your selection\" [level=2]\n    - text: Free recital\n    - heading \"Night Reeds\" [level=3]\n    - text: Starts 19:00 Place Loft Instruments Bass clarinet and viola Admission Free Entrance Loft entrance has five steps\n- contentinfo: Glasshouse · Chamber music festival Preview"
+      },
+      "before": {
+        "path": "A-1440-before.png",
+        "sha256": "d65f896a12639ae4d972fda16b2eafaa1d24c38aa311c26eb1fd7e4a14473685",
+        "focus": {
+          "tag": "body",
+          "type": null,
+          "label": "",
+          "visible": false,
+          "embedded": false,
+          "document_focused": true
+        },
+        "last_observed_ax": "- banner:\n  - link \"Glasshouse home\":\n    - /url: \"#\"\n    - text: Glasshouse\n  - text: Chamber music festival Preview\n- main:\n  - region \"Listen closely.\":\n    - paragraph: The recital programme\n    - heading \"Listen closely.\" [level=1]\n    - paragraph: Two recitals, both featuring bass clarinet. Find the sound and entrance that work for you.\n  - region \"Choose a recital\":\n    - heading \"Choose a recital\" [level=2]\n    - paragraph: Both recitals are free\n    - strong: Step-free entrances only\n    - text: Show recitals with a step-free entrance\n    - checkbox \"Step-free entrances only\"\n    - button \"Reed and Glass 18:15 · Atrium Step-free garden door Selected\" [pressed]\n    - button \"Night Reeds 19:00 · Loft Five steps at entrance\"\n  - region \"Your selection\":\n    - heading \"Your selection\" [level=2]\n    - text: Free recital\n    - heading \"Reed and Glass\" [level=3]\n    - text: Starts 18:15 Place Atrium Instruments Bass clarinet and glass harp Admission Free Entrance Garden door is step-free\n- contentinfo: Glasshouse · Chamber music festival Preview"
+      },
+      "after": {
+        "path": "A-1440-after.png",
+        "sha256": "72387bcf11543530876baf2bb34f04fbda69c039656ba08cbd38b1a827834925",
+        "focus": {
+          "tag": "button",
+          "type": null,
+          "label": "Reed and Glass\n18:15 · Atrium\nStep-free garden door\nSelected",
+          "visible": true,
+          "embedded": false,
+          "document_focused": true
+        },
+        "last_observed_ax": "- banner:\n  - link \"Glasshouse home\":\n    - /url: \"#\"\n    - text: Glasshouse\n  - text: Chamber music festival Preview\n- main:\n  - region \"Listen closely.\":\n    - paragraph: The recital programme\n    - heading \"Listen closely.\" [level=1]\n    - paragraph: Two recitals, both featuring bass clarinet. Find the sound and entrance that work for you.\n  - region \"Choose a recital\":\n    - heading \"Choose a recital\" [level=2]\n    - paragraph: Both recitals are free\n    - strong: Step-free entrances only\n    - text: Show recitals with a step-free entrance\n    - checkbox \"Step-free entrances only\" [checked]\n    - button \"Reed and Glass 18:15 · Atrium Step-free garden door Selected\" [pressed]\n  - region \"Your selection\":\n    - heading \"Your selection\" [level=2]\n    - text: Free recital\n    - heading \"Reed and Glass\" [level=3]\n    - text: Starts 18:15 Place Atrium Instruments Bass clarinet and glass harp Admission Free Entrance Garden door is step-free\n- contentinfo: Glasshouse · Chamber music festival Preview"
+      },
+      "edge": {
+        "path": "A-1440-edge.png",
+        "sha256": "e88c114af1389e7fa58d417ac50902d71b5b5315db78ac0788566158b795d4e5",
+        "focus": {
+          "tag": "input",
+          "type": "checkbox",
+          "label": "",
+          "visible": true,
+          "embedded": false,
+          "document_focused": true
+        },
+        "last_observed_ax": "- banner:\n  - link \"Glasshouse home\":\n    - /url: \"#\"\n    - text: Glasshouse\n  - text: Chamber music festival Preview\n- main:\n  - region \"Listen closely.\":\n    - paragraph: The recital programme\n    - heading \"Listen closely.\" [level=1]\n    - paragraph: Two recitals, both featuring bass clarinet. Find the sound and entrance that work for you.\n  - region \"Choose a recital\":\n    - heading \"Choose a recital\" [level=2]\n    - paragraph: Both recitals are free\n    - strong: Step-free entrances only\n    - text: Show recitals with a step-free entrance\n    - checkbox \"Step-free entrances only\"\n    - button \"Reed and Glass 18:15 · Atrium Step-free garden door Selected\" [pressed]\n    - button \"Night Reeds 19:00 · Loft Five steps at entrance\"\n  - region \"Your selection\":\n    - heading \"Your selection\" [level=2]\n    - text: Free recital\n    - heading \"Reed and Glass\" [level=3]\n    - text: Starts 18:15 Place Atrium Instruments Bass clarinet and glass harp Admission Free Entrance Garden door is step-free\n- contentinfo: Glasshouse · Chamber music festival Preview"
+      }
+    },
+    "A-390": {
+      "conflict": {
+        "input": "Space",
+        "url": "http://127.0.0.1:58670/index.html",
+        "width": 390,
+        "height": 844,
+        "layout_width": 375,
+        "focus": {
+          "tag": "input",
+          "type": "checkbox",
+          "label": "",
+          "visible": true,
+          "embedded": false,
+          "document_focused": true
+        },
+        "ax": "- banner:\n  - link \"Glasshouse home\":\n    - /url: \"#\"\n    - text: Glasshouse\n  - text: Chamber music festival Preview\n- main:\n  - region \"Listen closely.\":\n    - paragraph: The recital programme\n    - heading \"Listen closely.\" [level=1]\n    - paragraph: Two recitals, both featuring bass clarinet. Find the sound and entrance that work for you.\n  - region \"Choose a recital\":\n    - heading \"Choose a recital\" [level=2]\n    - paragraph: Both recitals are free\n    - strong: Step-free entrances only\n    - text: Show recitals with a step-free entrance\n    - checkbox \"Step-free entrances only\" [checked]\n    - status:\n      - strong: Night Reeds has five steps at the entrance.\n      - text: Reed and Glass has a step-free garden door. Select it below if you prefer.\n    - button \"Reed and Glass 18:15 · Atrium Step-free garden door\"\n  - region \"Your selection\":\n    - heading \"Your selection\" [level=2]\n    - text: Free recital\n    - heading \"Night Reeds\" [level=3]\n    - text: Starts 19:00 Place Loft Instruments Bass clarinet and viola Admission Free Entrance Loft entrance has five steps\n- contentinfo: Glasshouse · Chamber music festival Preview"
+      },
+      "before": {
+        "path": "A-390-before.png",
+        "sha256": "50d3a30eaa656b3e41a57d24618ef003dd2eb05b0d19d21db8b9441adf156b38",
+        "focus": {
+          "tag": "body",
+          "type": null,
+          "label": "",
+          "visible": false,
+          "embedded": false,
+          "document_focused": true
+        },
+        "last_observed_ax": "- banner:\n  - link \"Glasshouse home\":\n    - /url: \"#\"\n    - text: Glasshouse\n  - text: Chamber music festival Preview\n- main:\n  - region \"Listen closely.\":\n    - paragraph: The recital programme\n    - heading \"Listen closely.\" [level=1]\n    - paragraph: Two recitals, both featuring bass clarinet. Find the sound and entrance that work for you.\n  - region \"Choose a recital\":\n    - heading \"Choose a recital\" [level=2]\n    - paragraph: Both recitals are free\n    - strong: Step-free entrances only\n    - text: Show recitals with a step-free entrance\n    - checkbox \"Step-free entrances only\"\n    - button \"Reed and Glass 18:15 · Atrium Step-free garden door Selected\" [pressed]\n    - button \"Night Reeds 19:00 · Loft Five steps at entrance\"\n  - region \"Your selection\":\n    - heading \"Your selection\" [level=2]\n    - text: Free recital\n    - heading \"Reed and Glass\" [level=3]\n    - text: Starts 18:15 Place Atrium Instruments Bass clarinet and glass harp Admission Free Entrance Garden door is step-free\n- contentinfo: Glasshouse · Chamber music festival Preview"
+      },
+      "after": {
+        "path": "A-390-after.png",
+        "sha256": "6d663ed8e7cc324f056d1383e0ba279a53c86b295a0b28a9f36143562d204024",
+        "focus": {
+          "tag": "button",
+          "type": null,
+          "label": "Reed and Glass\n18:15 · Atrium\nStep-free garden door\nSelected",
+          "visible": true,
+          "embedded": false,
+          "document_focused": true
+        },
+        "last_observed_ax": "- banner:\n  - link \"Glasshouse home\":\n    - /url: \"#\"\n    - text: Glasshouse\n  - text: Chamber music festival Preview\n- main:\n  - region \"Listen closely.\":\n    - paragraph: The recital programme\n    - heading \"Listen closely.\" [level=1]\n    - paragraph: Two recitals, both featuring bass clarinet. Find the sound and entrance that work for you.\n  - region \"Choose a recital\":\n    - heading \"Choose a recital\" [level=2]\n    - paragraph: Both recitals are free\n    - strong: Step-free entrances only\n    - text: Show recitals with a step-free entrance\n    - checkbox \"Step-free entrances only\" [checked]\n    - button \"Reed and Glass 18:15 · Atrium Step-free garden door Selected\" [pressed]\n  - region \"Your selection\":\n    - heading \"Your selection\" [level=2]\n    - text: Free recital\n    - heading \"Reed and Glass\" [level=3]\n    - text: Starts 18:15 Place Atrium Instruments Bass clarinet and glass harp Admission Free Entrance Garden door is step-free\n- contentinfo: Glasshouse · Chamber music festival Preview"
+      },
+      "edge": {
+        "path": "A-390-edge.png",
+        "sha256": "07d747da54adb56d77a6d30e733f4f075833a6d6692a24837ca2de02d5bcecd2",
+        "focus": {
+          "tag": "input",
+          "type": "checkbox",
+          "label": "",
+          "visible": true,
+          "embedded": false,
+          "document_focused": true
+        },
+        "last_observed_ax": "- banner:\n  - link \"Glasshouse home\":\n    - /url: \"#\"\n    - text: Glasshouse\n  - text: Chamber music festival Preview\n- main:\n  - region \"Listen closely.\":\n    - paragraph: The recital programme\n    - heading \"Listen closely.\" [level=1]\n    - paragraph: Two recitals, both featuring bass clarinet. Find the sound and entrance that work for you.\n  - region \"Choose a recital\":\n    - heading \"Choose a recital\" [level=2]\n    - paragraph: Both recitals are free\n    - strong: Step-free entrances only\n    - text: Show recitals with a step-free entrance\n    - checkbox \"Step-free entrances only\"\n    - button \"Reed and Glass 18:15 · Atrium Step-free garden door Selected\" [pressed]\n    - button \"Night Reeds 19:00 · Loft Five steps at entrance\"\n  - region \"Your selection\":\n    - heading \"Your selection\" [level=2]\n    - text: Free recital\n    - heading \"Reed and Glass\" [level=3]\n    - text: Starts 18:15 Place Atrium Instruments Bass clarinet and glass harp Admission Free Entrance Garden door is step-free\n- contentinfo: Glasshouse · Chamber music festival Preview"
+      }
+    },
+    "B-1440": {
+      "conflict": {
+        "input": "Space",
+        "url": "http://127.0.0.1:58671/index.html",
+        "width": 1440,
+        "height": 900,
+        "layout_width": 1425,
+        "focus": {
+          "tag": "input",
+          "type": "checkbox",
+          "label": "Step-free entrances only",
+          "visible": true,
+          "embedded": false,
+          "document_focused": true
+        },
+        "ax": "- banner: Glasshouse Chamber music festival Preview\n- main:\n  - region \"Find your recital.\":\n    - paragraph: A little room for listening\n    - heading \"Find your recital.\" [level=1]\n    - paragraph: Two ways to hear the bass clarinet. Choose the one that feels right for you.\n    - text: Both recitals are free\n  - region \"Choose a recital\":\n    - heading \"Make your choice\" [level=2]\n    - text: Both are free Step-free entrances only\n    - switch \"Step-free entrances only\" [checked]\n    - group \"Choose a recital\":\n      - text: Choose a recital\n      - radio \"Reed and Glass 18:15 · Atrium\"\n      - text: Reed and Glass 18:15 · Atrium\n      - radio \"Night Reeds 19:00 · Loft\" [checked]\n      - text: Night Reeds 19:00 · Loft\n    - status:\n      - text: Your selected recital, Night Reeds, has five steps at the Loft entrance.\n      - button \"Select Reed and Glass\"\n      - text: for a step-free entrance.\n    - region \"Night Reeds\":\n      - heading \"Night Reeds\" [level=3]\n      - text: Your selection\n      - term: Starts\n      - definition: 19:00\n      - term: Instruments\n      - definition: Bass clarinet and viola\n      - term: Entrance\n      - definition: Loft · Entrance has five steps\n      - term: Admission\n      - definition: Free\n- contentinfo: Glasshouse · Chamber music festival Preview"
+      },
+      "before": {
+        "path": "B-1440-before.png",
+        "sha256": "f2c4159eb8f772eb0600e3e2ca4428610ef11d6240f39dbf055086135b5a8195",
+        "focus": {
+          "tag": "body",
+          "type": null,
+          "label": "",
+          "visible": false,
+          "embedded": false,
+          "document_focused": true
+        },
+        "last_observed_ax": "- banner: Glasshouse Chamber music festival Preview\n- main:\n  - region \"Find your recital.\":\n    - paragraph: A little room for listening\n    - heading \"Find your recital.\" [level=1]\n    - paragraph: Two ways to hear the bass clarinet. Choose the one that feels right for you.\n    - text: Both recitals are free\n  - region \"Choose a recital\":\n    - heading \"Make your choice\" [level=2]\n    - text: Both are free Step-free entrances only\n    - switch \"Step-free entrances only\"\n    - group \"Choose a recital\":\n      - text: Choose a recital\n      - radio \"Reed and Glass 18:15 · Atrium\" [checked]\n      - text: Reed and Glass 18:15 · Atrium\n      - radio \"Night Reeds 19:00 · Loft\"\n      - text: Night Reeds 19:00 · Loft\n    - region \"Reed and Glass\":\n      - heading \"Reed and Glass\" [level=3]\n      - text: Your selection\n      - term: Starts\n      - definition: 18:15\n      - term: Instruments\n      - definition: Bass clarinet and glass harp\n      - term: Entrance\n      - definition: Atrium · Garden door is step-free\n      - term: Admission\n      - definition: Free\n- contentinfo: Glasshouse · Chamber music festival Preview"
+      },
+      "after": {
+        "path": "B-1440-after.png",
+        "sha256": "980237a8ddb76d9db13ef75288ef87cf1130f7a49e1102f01e03befaa8170209",
+        "focus": {
+          "tag": "input",
+          "type": "radio",
+          "label": "Reed and Glass\n18:15 · Atrium",
+          "visible": true,
+          "embedded": false,
+          "document_focused": true
+        },
+        "last_observed_ax": "- banner: Glasshouse Chamber music festival Preview\n- main:\n  - region \"Find your recital.\":\n    - paragraph: A little room for listening\n    - heading \"Find your recital.\" [level=1]\n    - paragraph: Two ways to hear the bass clarinet. Choose the one that feels right for you.\n    - text: Both recitals are free\n  - region \"Choose a recital\":\n    - heading \"Make your choice\" [level=2]\n    - text: Both are free Step-free entrances only\n    - switch \"Step-free entrances only\" [checked]\n    - group \"Choose a recital\":\n      - text: Choose a recital\n      - radio \"Reed and Glass 18:15 · Atrium\" [checked]\n      - text: Reed and Glass 18:15 · Atrium\n    - region \"Reed and Glass\":\n      - heading \"Reed and Glass\" [level=3]\n      - text: Your selection\n      - term: Starts\n      - definition: 18:15\n      - term: Instruments\n      - definition: Bass clarinet and glass harp\n      - term: Entrance\n      - definition: Atrium · Garden door is step-free\n      - term: Admission\n      - definition: Free\n- contentinfo: Glasshouse · Chamber music festival Preview"
+      },
+      "edge": {
+        "path": "B-1440-edge.png",
+        "sha256": "37bdf19591545286ece1e03846756d50d9c72bd0295b52841945b29ce6d79b52",
+        "focus": {
+          "tag": "input",
+          "type": "checkbox",
+          "label": "Step-free entrances only",
+          "visible": true,
+          "embedded": false,
+          "document_focused": true
+        },
+        "last_observed_ax": "- banner: Glasshouse Chamber music festival Preview\n- main:\n  - region \"Find your recital.\":\n    - paragraph: A little room for listening\n    - heading \"Find your recital.\" [level=1]\n    - paragraph: Two ways to hear the bass clarinet. Choose the one that feels right for you.\n    - text: Both recitals are free\n  - region \"Choose a recital\":\n    - heading \"Make your choice\" [level=2]\n    - text: Both are free Step-free entrances only\n    - switch \"Step-free entrances only\"\n    - group \"Choose a recital\":\n      - text: Choose a recital\n      - radio \"Reed and Glass 18:15 · Atrium\" [checked]\n      - text: Reed and Glass 18:15 · Atrium\n      - radio \"Night Reeds 19:00 · Loft\"\n      - text: Night Reeds 19:00 · Loft\n    - region \"Reed and Glass\":\n      - heading \"Reed and Glass\" [level=3]\n      - text: Your selection\n      - term: Starts\n      - definition: 18:15\n      - term: Instruments\n      - definition: Bass clarinet and glass harp\n      - term: Entrance\n      - definition: Atrium · Garden door is step-free\n      - term: Admission\n      - definition: Free\n- contentinfo: Glasshouse · Chamber music festival Preview"
+      }
+    },
+    "B-390": {
+      "conflict": {
+        "input": "Space",
+        "url": "http://127.0.0.1:58671/index.html",
+        "width": 390,
+        "height": 844,
+        "layout_width": 375,
+        "focus": {
+          "tag": "input",
+          "type": "checkbox",
+          "label": "Step-free entrances only",
+          "visible": true,
+          "embedded": false,
+          "document_focused": true
+        },
+        "ax": "- banner: Glasshouse Chamber music festival Preview\n- main:\n  - region \"Find your recital.\":\n    - paragraph: A little room for listening\n    - heading \"Find your recital.\" [level=1]\n    - paragraph: Two ways to hear the bass clarinet. Choose the one that feels right for you.\n  - region \"Choose a recital\":\n    - heading \"Make your choice\" [level=2]\n    - text: Both are free Step-free entrances only\n    - switch \"Step-free entrances only\" [checked]\n    - group \"Choose a recital\":\n      - text: Choose a recital\n      - radio \"Reed and Glass 18:15 · Atrium\"\n      - text: Reed and Glass 18:15 · Atrium\n      - radio \"Night Reeds 19:00 · Loft\" [checked]\n      - text: Night Reeds 19:00 · Loft\n    - status:\n      - text: Your selected recital, Night Reeds, has five steps at the Loft entrance.\n      - button \"Select Reed and Glass\"\n      - text: for a step-free entrance.\n    - region \"Night Reeds\":\n      - heading \"Night Reeds\" [level=3]\n      - text: Your selection\n      - term: Starts\n      - definition: 19:00\n      - term: Instruments\n      - definition: Bass clarinet and viola\n      - term: Entrance\n      - definition: Loft · Entrance has five steps\n      - term: Admission\n      - definition: Free\n- contentinfo: Glasshouse · Chamber music festival Preview"
+      },
+      "before": {
+        "path": "B-390-before.png",
+        "sha256": "ac019ce5bd6bce1b05ba892653f4e32525c4ecbca30b5344bf85b288812d53de",
+        "focus": {
+          "tag": "body",
+          "type": null,
+          "label": "",
+          "visible": false,
+          "embedded": false,
+          "document_focused": true
+        },
+        "last_observed_ax": "- banner: Glasshouse Chamber music festival Preview\n- main:\n  - region \"Find your recital.\":\n    - paragraph: A little room for listening\n    - heading \"Find your recital.\" [level=1]\n    - paragraph: Two ways to hear the bass clarinet. Choose the one that feels right for you.\n  - region \"Choose a recital\":\n    - heading \"Make your choice\" [level=2]\n    - text: Both are free Step-free entrances only\n    - switch \"Step-free entrances only\"\n    - group \"Choose a recital\":\n      - text: Choose a recital\n      - radio \"Reed and Glass 18:15 · Atrium\" [checked]\n      - text: Reed and Glass 18:15 · Atrium\n      - radio \"Night Reeds 19:00 · Loft\"\n      - text: Night Reeds 19:00 · Loft\n    - region \"Reed and Glass\":\n      - heading \"Reed and Glass\" [level=3]\n      - text: Your selection\n      - term: Starts\n      - definition: 18:15\n      - term: Instruments\n      - definition: Bass clarinet and glass harp\n      - term: Entrance\n      - definition: Atrium · Garden door is step-free\n      - term: Admission\n      - definition: Free\n- contentinfo: Glasshouse · Chamber music festival Preview"
+      },
+      "after": {
+        "path": "B-390-after.png",
+        "sha256": "bfed63d63cdc7d79896c38f8879ed46e9fa0a0c5cdfbe5b2c1fae68d96755843",
+        "focus": {
+          "tag": "input",
+          "type": "radio",
+          "label": "Reed and Glass\n18:15 · Atrium",
+          "visible": true,
+          "embedded": false,
+          "document_focused": true
+        },
+        "last_observed_ax": "- banner: Glasshouse Chamber music festival Preview\n- main:\n  - region \"Find your recital.\":\n    - paragraph: A little room for listening\n    - heading \"Find your recital.\" [level=1]\n    - paragraph: Two ways to hear the bass clarinet. Choose the one that feels right for you.\n  - region \"Choose a recital\":\n    - heading \"Make your choice\" [level=2]\n    - text: Both are free Step-free entrances only\n    - switch \"Step-free entrances only\" [checked]\n    - group \"Choose a recital\":\n      - text: Choose a recital\n      - radio \"Reed and Glass 18:15 · Atrium\" [checked]\n      - text: Reed and Glass 18:15 · Atrium\n    - region \"Reed and Glass\":\n      - heading \"Reed and Glass\" [level=3]\n      - text: Your selection\n      - term: Starts\n      - definition: 18:15\n      - term: Instruments\n      - definition: Bass clarinet and glass harp\n      - term: Entrance\n      - definition: Atrium · Garden door is step-free\n      - term: Admission\n      - definition: Free\n- contentinfo: Glasshouse · Chamber music festival Preview"
+      },
+      "edge": {
+        "path": "B-390-edge.png",
+        "sha256": "2d596f80f1385b5082890a85a90afdddca3470e02b578166814cdf0719dadb03",
+        "focus": {
+          "tag": "input",
+          "type": "checkbox",
+          "label": "Step-free entrances only",
+          "visible": true,
+          "embedded": false,
+          "document_focused": true
+        },
+        "last_observed_ax": "- banner: Glasshouse Chamber music festival Preview\n- main:\n  - region \"Find your recital.\":\n    - paragraph: A little room for listening\n    - heading \"Find your recital.\" [level=1]\n    - paragraph: Two ways to hear the bass clarinet. Choose the one that feels right for you.\n  - region \"Choose a recital\":\n    - heading \"Make your choice\" [level=2]\n    - text: Both are free Step-free entrances only\n    - switch \"Step-free entrances only\"\n    - group \"Choose a recital\":\n      - text: Choose a recital\n      - radio \"Reed and Glass 18:15 · Atrium\" [checked]\n      - text: Reed and Glass 18:15 · Atrium\n      - radio \"Night Reeds 19:00 · Loft\"\n      - text: Night Reeds 19:00 · Loft\n    - region \"Reed and Glass\":\n      - heading \"Reed and Glass\" [level=3]\n      - text: Your selection\n      - term: Starts\n      - definition: 18:15\n      - term: Instruments\n      - definition: Bass clarinet and glass harp\n      - term: Entrance\n      - definition: Atrium · Garden door is step-free\n      - term: Admission\n      - definition: Free\n- contentinfo: Glasshouse · Chamber music festival Preview"
+      }
+    }
+  }
+}

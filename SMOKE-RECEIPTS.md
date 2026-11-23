@@ -1,5 +1,9 @@
 # Design MCP live smoke
 
+## Hosted Chrome toolbar blank-frame repair
+
+At `de93864`, CDP found the visible fixture's seeded field, while the Xvfb screenshot contained only a solid 1440 × 940 window on a black desktop. The job stopped before the toolbar click. At `39f483a`, the isolated Linux harness launched Chrome with software compositing. Two hosted attempts each found and clicked the real toolbar marker twice, reached distinct popup targets, saved and reopened the reviews, and verified keyboard focus, history, and masks. The pasted URL runs took 2.231 and 2.265 seconds and masked five fields each. The six active-tab consistency tests also passed. [Failure and repeated capture receipts](evidence/benchmark-v1/chrome-x11-software-compositor.json)
+
 ## Exact toolbar replay and hosted install matrix
 
 All 13 checks passed on `d4c4d70`, including eight hosted macOS 15 architecture and Python cells. Two hosted Chrome runs pressed the actual toolbar action and reopened the masked saved result. Pasted URL took 1.858 and 1.619 seconds in those runs. The fresh SwiftUI capture showed five reviewed controls before Reveal and six after. The packaged Electron fixture removed the seeded occlusion and retained the clipping finding. Both original public URL PNGs matched the hosted receipt. The exact fresh Apple Silicon install also passed all six stdio configurations and recovered after a 404. The native BenQ replay and Intel Ventura test remain open. [Exact runs, local install and original frame hashes](evidence/benchmark-v1/release-ci-d4c4d70.json)
