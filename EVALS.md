@@ -547,3 +547,17 @@ Round five has the highest lower-screen score so far. At 390 px its four opening
 A fresh critic matched the exact round-five build against the frozen round-two cutaway. The four-tool bench won at **8.10 desktop and 7.75 phone** against **7.50 and 7.15**. The critic confirmed the comparison before input and the later selection changes at both widths. The Fine control still requires a Tab or scroll to become fully visible during the phone conflict. The six ballots include 72 original capture hashes. The 9.5 gate remains open.
 
 On a separate stdio call, the installed release package selected `object-hero` for the full borrowing brief and asked for size, price, and a purchase control. The installation was pinned to `3350fea` and its package Git files match the release branch. This reproduces a routing and guidance gap. The five visual comparisons above isolate the design mechanism. They do not measure the effect of any MCP routing change.
+
+## Installed recovery handoff trials
+
+Two isolated wheels changed only the handoff in six replies out of the same 57 verified inputs. Each trial used the sealed parent generation for both cases. Fresh Playwriter visits at 320, 390 and 1440 CSS px checked the selection, conflict and replacement. The receipt records the original image dimensions and hashes, inputs, focused controls and generation usage.
+
+- Reworded prose at `39a1182` failed at least one check in each of its six candidate views. In borrowing it cleared the selected tool during withdrawal. In train access it omitted the dedicated recovery action.
+- Ordered acceptance instructions at `ca8fc6b` preserved the withdrawn tool and focused the replacement. The draft still withdrew Offset immediately on selection, skipping the usable 17:45 outcome. At 390 px the Mini action and the selected row appeared together, with the timestamped withdrawal outside the viewport.
+- Ordered train instructions restored the direct Margins button. The lift toggle, 22:19 estimate, four-minute miss and button appeared together at all three widths. After clicking the recovery button by keyboard, focus moved to the Margins card and the new 22:04 result started below the viewport at 320 and 390 px. At 390 px the estimate began at 845.7 CSS px in an 844 px viewport.
+
+Both handoffs remain experimental. The keyboard replay found a functional failure in each candidate, so no new visual ballot ran. [Exact installed and browser receipts](evidence/benchmark-v1/installed-recovery-handoff-trials.json)
+
+## Hosted release retry
+
+All 13 hosted jobs passed at release commit `f30e6ff`. The SwiftUI retry ran on the same commit, and the archive digest and both geometry and PNG hash pairs matched. The fresh native test revealed a fifth button. [Job and artifact receipt](evidence/benchmark-v1/release-ci-f30e6ff.json)

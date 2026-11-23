@@ -1,0 +1,3063 @@
+{
+  "comparison": "Reworded prose and ordered acceptance instructions, each against the same sealed parent output",
+  "decision": "withhold both trials",
+  "visual_ballots": 0,
+  "reworded": {
+    "test_commit": "39a1182328a3396e8edbdf128a7d42a09cf170b9",
+    "installed_input_replay_sha256": "1c718c27d95c1f1d115a4d5282bc21bde49ad589445cbcda102c41cfbe903beb",
+    "installed_comparison": {
+      "control": "5470024a2c6c815b1a435f4b81cb7e6d5e3c6b09",
+      "candidate": "39a1182328a3396e8edbdf128a7d42a09cf170b9",
+      "cases": 57,
+      "unchanged": 51,
+      "failures": []
+    },
+    "browser": "Chrome/160.0.8178.0",
+    "verified_browser_receipt_sha256": "d9a702fbd8144713ec01d87f493c12b06cd2f278b6a75920ccd8c0c4d2fe3af9",
+    "generated": {
+      "bike-coop-clearance": {
+        "parent": {
+          "model": "gpt-6.1-terra",
+          "effort": "low",
+          "prompt_sha256": "4f4179043a7aaf94e2c711d2a4f6a543591522f46330de1424b5151e0b34ff35",
+          "trace_sha256": "ba30e7541cd69b6a206a6631a1b7d76a3f5d15680cf197ed04528342145b8405",
+          "html_sha256": "fd93c4bf09e063847b5ae3ea16a16e6acb3c330cfa0f491b915e233fa7050bff",
+          "usage": {
+            "input_tokens": 59081,
+            "cached_input_tokens": 49152,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 6491,
+            "reasoning_output_tokens": 48
+          },
+          "elapsed_seconds": 123.49
+        },
+        "candidate": {
+          "model": "gpt-6.1-terra",
+          "effort": "low",
+          "prompt_sha256": "4f4179043a7aaf94e2c711d2a4f6a543591522f46330de1424b5151e0b34ff35",
+          "trace_sha256": "afd21b96ac75351753a77e75387a5637d152adb0c6615276116652200daaa37d",
+          "html_sha256": "f647984f5734206ef173479ba8f5b01eb7dcdae3a40c6da53910abe39e974f8e",
+          "usage": {
+            "input_tokens": 59223,
+            "cached_input_tokens": 56576,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 6534,
+            "reasoning_output_tokens": 20
+          },
+          "elapsed_seconds": 127.06
+        }
+      },
+      "poetry-last-train": {
+        "parent": {
+          "model": "gpt-6.1-terra",
+          "effort": "low",
+          "prompt_sha256": "6214fe309fc06afb3bad36680596828b7722ba84fac076a899f65ebac063d4cb",
+          "trace_sha256": "f683c81a48a2a00eba6532723c6738bc55ddfd59a346cd900257ac66a9bbf9eb",
+          "html_sha256": "12585acd6d831dbc8ef96b76d671466ff090fcf3d8d5c57d91c81e310b398e04",
+          "usage": {
+            "input_tokens": 59215,
+            "cached_input_tokens": 53248,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 4810,
+            "reasoning_output_tokens": 26
+          },
+          "elapsed_seconds": 93.89
+        },
+        "candidate": {
+          "model": "gpt-6.1-terra",
+          "effort": "low",
+          "prompt_sha256": "6214fe309fc06afb3bad36680596828b7722ba84fac076a899f65ebac063d4cb",
+          "trace_sha256": "be4e0cacb39dbc5229ed2f2bd0232bd3c88ef6732099f6aec1d6a089ed4daa1d",
+          "html_sha256": "54f650d9a87d3772b3efcf3c22b49cfe2f1109b31a4b69245a58c460e88161d2",
+          "usage": {
+            "input_tokens": 58749,
+            "cached_input_tokens": 52992,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 4520,
+            "reasoning_output_tokens": 0
+          },
+          "elapsed_seconds": 89.3
+        }
+      }
+    },
+    "journeys": {
+      "bike-coop-clearance-parent-320": {
+        "width": 320,
+        "height": 700,
+        "html_sha256": "fd93c4bf09e063847b5ae3ea16a16e6acb3c330cfa0f491b915e233fa7050bff",
+        "images": {
+          "before": {
+            "file": "bike-coop-clearance-parent-320-before.png",
+            "sha256": "e74c0e2fa3f65a2ab1e110384fbe92b098d65d03838c07d5804c25dfed6eb859"
+          },
+          "chosen": {
+            "file": "bike-coop-clearance-parent-320-chosen.png",
+            "sha256": "1bb75be0433d18ec46e350cab46e3e5a651820088c6d35d92e69b403ca2a06c3"
+          },
+          "after": {
+            "file": "bike-coop-clearance-parent-320-after.png",
+            "sha256": "1bb75be0433d18ec46e350cab46e3e5a651820088c6d35d92e69b403ca2a06c3"
+          },
+          "edge": {
+            "file": "bike-coop-clearance-parent-320-edge.png",
+            "sha256": "953683443891132c5b3f6b52224fa796d87a1bb06106a9ae25c2aa74d2a51922"
+          }
+        },
+        "checks": {
+          "selection_reached_by_keyboard": true,
+          "separate_change_reached_by_keyboard": false,
+          "replacement_reached_by_keyboard": true,
+          "focus_visible_after_change": false,
+          "focus_visible_after_recovery": true,
+          "no_page_errors": true,
+          "no_horizontal_overflow": true,
+          "initial_selection_before_change": false,
+          "old_selection_retained": false,
+          "replacement_and_withdrawal_visible_together": false,
+          "replacement_selected": true,
+          "withdrawal_visible_after_recovery": false
+        }
+      },
+      "bike-coop-clearance-parent-390": {
+        "width": 390,
+        "height": 844,
+        "html_sha256": "fd93c4bf09e063847b5ae3ea16a16e6acb3c330cfa0f491b915e233fa7050bff",
+        "images": {
+          "before": {
+            "file": "bike-coop-clearance-parent-390-before.png",
+            "sha256": "f5d38f690678e2effc174d83aae3096ef5191348dd278be7a63fc8f0ec883fef"
+          },
+          "chosen": {
+            "file": "bike-coop-clearance-parent-390-chosen.png",
+            "sha256": "c9e715017f6ce07c51d28c288ba5d2d442ad094b9db6316b3c3876566b9399ad"
+          },
+          "after": {
+            "file": "bike-coop-clearance-parent-390-after.png",
+            "sha256": "c9e715017f6ce07c51d28c288ba5d2d442ad094b9db6316b3c3876566b9399ad"
+          },
+          "edge": {
+            "file": "bike-coop-clearance-parent-390-edge.png",
+            "sha256": "d892f8b28b194b2c7806be45e317c5a745dc2eed1a9d18c978f66d1d2a6f7c02"
+          }
+        },
+        "checks": {
+          "selection_reached_by_keyboard": true,
+          "separate_change_reached_by_keyboard": false,
+          "replacement_reached_by_keyboard": true,
+          "focus_visible_after_change": false,
+          "focus_visible_after_recovery": true,
+          "no_page_errors": true,
+          "no_horizontal_overflow": true,
+          "initial_selection_before_change": false,
+          "old_selection_retained": false,
+          "replacement_and_withdrawal_visible_together": false,
+          "replacement_selected": true,
+          "withdrawal_visible_after_recovery": false
+        }
+      },
+      "bike-coop-clearance-parent-1440": {
+        "width": 1440,
+        "height": 900,
+        "html_sha256": "fd93c4bf09e063847b5ae3ea16a16e6acb3c330cfa0f491b915e233fa7050bff",
+        "images": {
+          "before": {
+            "file": "bike-coop-clearance-parent-1440-before.png",
+            "sha256": "187b2574d1473f5d5c34023c81d7d10e27242409459c707165d15ddc6d6767f1"
+          },
+          "chosen": {
+            "file": "bike-coop-clearance-parent-1440-chosen.png",
+            "sha256": "3a4d24cebb79a299cfae8bb33e3fb4b319bf06809f1ebad091d659688bbb3ef4"
+          },
+          "after": {
+            "file": "bike-coop-clearance-parent-1440-after.png",
+            "sha256": "3a4d24cebb79a299cfae8bb33e3fb4b319bf06809f1ebad091d659688bbb3ef4"
+          },
+          "edge": {
+            "file": "bike-coop-clearance-parent-1440-edge.png",
+            "sha256": "cabdf939bffa0ce90f9f22955ee8135561743c3ec4eeb40badc1253310251c1b"
+          }
+        },
+        "checks": {
+          "selection_reached_by_keyboard": true,
+          "separate_change_reached_by_keyboard": false,
+          "replacement_reached_by_keyboard": true,
+          "focus_visible_after_change": false,
+          "focus_visible_after_recovery": true,
+          "no_page_errors": true,
+          "no_horizontal_overflow": true,
+          "initial_selection_before_change": false,
+          "old_selection_retained": false,
+          "replacement_and_withdrawal_visible_together": true,
+          "replacement_selected": true,
+          "withdrawal_visible_after_recovery": true
+        }
+      },
+      "bike-coop-clearance-candidate-320": {
+        "width": 320,
+        "height": 700,
+        "html_sha256": "f647984f5734206ef173479ba8f5b01eb7dcdae3a40c6da53910abe39e974f8e",
+        "images": {
+          "before": {
+            "file": "bike-coop-clearance-candidate-320-before.png",
+            "sha256": "579f6a9400d7b86546a46d6a2b76f62a99a3efb01a6ad4d88ffd0d2ef5a2e2a9"
+          },
+          "chosen": {
+            "file": "bike-coop-clearance-candidate-320-chosen.png",
+            "sha256": "1db3fb51b00f80f5578a45deca6df90ac5b75da643240405818d21301deee467"
+          },
+          "after": {
+            "file": "bike-coop-clearance-candidate-320-after.png",
+            "sha256": "1db3fb51b00f80f5578a45deca6df90ac5b75da643240405818d21301deee467"
+          },
+          "edge": {
+            "file": "bike-coop-clearance-candidate-320-edge.png",
+            "sha256": "bfc7524817573086f7706208ae3a6213c61a6bca5f9b6544d59bce30836f9432"
+          }
+        },
+        "checks": {
+          "selection_reached_by_keyboard": true,
+          "separate_change_reached_by_keyboard": false,
+          "replacement_reached_by_keyboard": true,
+          "focus_visible_after_change": true,
+          "focus_visible_after_recovery": true,
+          "no_page_errors": true,
+          "no_horizontal_overflow": true,
+          "initial_selection_before_change": false,
+          "old_selection_retained": false,
+          "replacement_and_withdrawal_visible_together": false,
+          "replacement_selected": true,
+          "withdrawal_visible_after_recovery": false
+        },
+        "observed": {
+          "conflict_input": "no separate control",
+          "focus_after_change": "Choose Mini as replacement",
+          "focus_after_replacement": "Mini selected",
+          "conflict_boxes": {
+            "limits": {
+              "top": 436.390625,
+              "left": 20,
+              "width": 265,
+              "height": 132.96875,
+              "text": "Reading the fit The clearance could be as little as 38 mm. A reset angle must be at or below the available 14\u00b0 swing. Direct drive has no reset angle stated.",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "slim": {
+              "top": -426.484375,
+              "left": 20,
+              "width": 265,
+              "height": 312.546875,
+              "text": "Slim Socket tool Assembled height 25\u201326 mm Fits clearance Handle movement 17\u00b0 reset Exceeds 14\u00b0 swing Earliest pickup 17:45 Ready 17:30 Choose Slim as replacement Reset needs more swing",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "offset": {
+              "top": 51.84375,
+              "left": 160,
+              "width": 113,
+              "height": 46,
+              "text": "Unavailable",
+              "visible": true,
+              "pressed": "false",
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "mini": {
+              "top": 306.421875,
+              "left": 160,
+              "width": 125,
+              "height": 87.171875,
+              "text": "Choose Mini as replacement",
+              "visible": true,
+              "pressed": "false",
+              "focused": true,
+              "accessibleLabel": null
+            },
+            "mini-evidence": {
+              "top": 140.640625,
+              "left": 20,
+              "width": 265,
+              "height": 295.75,
+              "text": "Mini Socket tool Assembled height 30\u201331 mm Fits clearance Handle movement 7\u00b0 reset Within 14\u00b0 swing Earliest pickup 18:10 Ready 18:10 Choose Mini as replacement Fits both limits",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "failure": {
+              "top": -985.96875,
+              "left": 20,
+              "width": 265,
+              "height": 241.734375,
+              "text": "Offset is no longer available. Stock update \u00b7 17:42 After you chose Offset, its socket lock was recorded as failed. Your choice is kept below. Choose a replacement to continue.",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "history": {
+              "top": 693.546875,
+              "left": 20,
+              "width": 265,
+              "height": 142.375,
+              "text": "Slim chosen. Offset chosen. 17:42 stock update: Offset\u2019s socket lock failed; Offset became unavailable.",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            }
+          },
+          "replacement_boxes": {
+            "limits": {
+              "top": 414.171875,
+              "left": 20,
+              "width": 265,
+              "height": 132.96875,
+              "text": "Reading the fit The clearance could be as little as 38 mm. A reset angle must be at or below the available 14\u00b0 swing. Direct drive has no reset angle stated.",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "slim": {
+              "top": -426.3125,
+              "left": 20,
+              "width": 265,
+              "height": 312.546875,
+              "text": "Slim Socket tool Assembled height 25\u201326 mm Fits clearance Handle movement 17\u00b0 reset Exceeds 14\u00b0 swing Earliest pickup 17:45 Ready 17:30 Choose Slim as replacement Reset needs more swing",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "offset": {
+              "top": 52.015625,
+              "left": 160,
+              "width": 113,
+              "height": 46,
+              "text": "Unavailable",
+              "visible": true,
+              "pressed": "false",
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "mini": {
+              "top": 306.59375,
+              "left": 160,
+              "width": 113,
+              "height": 64.78125,
+              "text": "Mini selected",
+              "visible": true,
+              "pressed": "true",
+              "focused": true,
+              "accessibleLabel": null
+            },
+            "mini-evidence": {
+              "top": 140.8125,
+              "left": 20,
+              "width": 265,
+              "height": 273.359375,
+              "text": "Mini Socket tool Assembled height 30\u201331 mm Fits clearance Handle movement 7\u00b0 reset Within 14\u00b0 swing Earliest pickup 18:10 Ready 18:10 Mini selected Fits both limits",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "failure": {
+              "top": -1059.96875,
+              "left": 20,
+              "width": 265,
+              "height": 315.90625,
+              "text": "Offset is no longer available. Stock update \u00b7 17:42 After you chose Offset, its socket lock was recorded as failed. Your choice is kept below. Choose a replacement to continue. Mini selected: 30\u201331 mm, 7\u00b0 reset, pickup from 18:10. It fits both limits.",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "current": {
+              "top": -828.234375,
+              "left": 45,
+              "width": 220,
+              "height": 67.171875,
+              "text": "Mini selected: 30\u201331 mm, 7\u00b0 reset, pickup from 18:10. It fits both limits.",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "history": {
+              "top": 671.328125,
+              "left": 20,
+              "width": 265,
+              "height": 182.96875,
+              "text": "Slim chosen. Offset chosen. 17:42 stock update: Offset\u2019s socket lock failed; Offset became unavailable. Mini chosen as replacement.",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            }
+          }
+        }
+      },
+      "bike-coop-clearance-candidate-390": {
+        "width": 390,
+        "height": 844,
+        "html_sha256": "f647984f5734206ef173479ba8f5b01eb7dcdae3a40c6da53910abe39e974f8e",
+        "images": {
+          "before": {
+            "file": "bike-coop-clearance-candidate-390-before.png",
+            "sha256": "6a3250e2e7262652ec006e843a83fae3537fb75e7658fd567dc65bb4ec870049"
+          },
+          "chosen": {
+            "file": "bike-coop-clearance-candidate-390-chosen.png",
+            "sha256": "630e197aef8db8d85386b3599464a1cd43fa45ab01ab3caf6c919f20dddc5a53"
+          },
+          "after": {
+            "file": "bike-coop-clearance-candidate-390-after.png",
+            "sha256": "630e197aef8db8d85386b3599464a1cd43fa45ab01ab3caf6c919f20dddc5a53"
+          },
+          "edge": {
+            "file": "bike-coop-clearance-candidate-390-edge.png",
+            "sha256": "2d4c66c9a8d4eb16280f3e6897c68a326d1d3aa9a49940a0c0791d6be79c0119"
+          }
+        },
+        "checks": {
+          "selection_reached_by_keyboard": true,
+          "separate_change_reached_by_keyboard": false,
+          "replacement_reached_by_keyboard": true,
+          "focus_visible_after_change": true,
+          "focus_visible_after_recovery": true,
+          "no_page_errors": true,
+          "no_horizontal_overflow": true,
+          "initial_selection_before_change": false,
+          "old_selection_retained": false,
+          "replacement_and_withdrawal_visible_together": false,
+          "replacement_selected": true,
+          "withdrawal_visible_after_recovery": false
+        },
+        "observed": {
+          "conflict_input": "no separate control",
+          "focus_after_change": "Choose Mini as replacement",
+          "focus_after_replacement": "Mini selected",
+          "conflict_boxes": {
+            "limits": {
+              "top": 497.1875,
+              "left": 20,
+              "width": 335,
+              "height": 113.375,
+              "text": "Reading the fit The clearance could be as little as 38 mm. A reset angle must be at or below the available 14\u00b0 swing. Direct drive has no reset angle stated.",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "slim": {
+              "top": -304.109375,
+              "left": 20,
+              "width": 335,
+              "height": 273.359375,
+              "text": "Slim Socket tool Assembled height 25\u201326 mm Fits clearance Handle movement 17\u00b0 reset Exceeds 14\u00b0 swing Earliest pickup 17:45 Ready 17:30 Choose Slim as replacement Reset needs more swing",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "offset": {
+              "top": 135.03125,
+              "left": 195,
+              "width": 148,
+              "height": 46,
+              "text": "Unavailable",
+              "visible": true,
+              "pressed": "false",
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "mini": {
+              "top": 389.609375,
+              "left": 195,
+              "width": 160,
+              "height": 64.78125,
+              "text": "Choose Mini as replacement",
+              "visible": true,
+              "pressed": "false",
+              "focused": true,
+              "accessibleLabel": null
+            },
+            "mini-evidence": {
+              "top": 223.828125,
+              "left": 20,
+              "width": 335,
+              "height": 273.359375,
+              "text": "Mini Socket tool Assembled height 30\u201331 mm Fits clearance Handle movement 7\u00b0 reset Within 14\u00b0 swing Earliest pickup 18:10 Ready 18:10 Choose Mini as replacement Fits both limits",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "failure": {
+              "top": -788.015625,
+              "left": 20,
+              "width": 335,
+              "height": 188.546875,
+              "text": "Offset is no longer available. Stock update \u00b7 17:42 After you chose Offset, its socket lock was recorded as failed. Your choice is kept below. Choose a replacement to continue.",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "history": {
+              "top": 734.75,
+              "left": 20,
+              "width": 335,
+              "height": 142.375,
+              "text": "Slim chosen. Offset chosen. 17:42 stock update: Offset\u2019s socket lock failed; Offset became unavailable.",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            }
+          },
+          "replacement_boxes": {
+            "limits": {
+              "top": 478.1875,
+              "left": 20,
+              "width": 335,
+              "height": 113.375,
+              "text": "Reading the fit The clearance could be as little as 38 mm. A reset angle must be at or below the available 14\u00b0 swing. Direct drive has no reset angle stated.",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "slim": {
+              "top": -304.328125,
+              "left": 20,
+              "width": 335,
+              "height": 273.359375,
+              "text": "Slim Socket tool Assembled height 25\u201326 mm Fits clearance Handle movement 17\u00b0 reset Exceeds 14\u00b0 swing Earliest pickup 17:45 Ready 17:30 Choose Slim as replacement Reset needs more swing",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "offset": {
+              "top": 134.8125,
+              "left": 195,
+              "width": 148,
+              "height": 46,
+              "text": "Unavailable",
+              "visible": true,
+              "pressed": "false",
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "mini": {
+              "top": 389.390625,
+              "left": 195,
+              "width": 148,
+              "height": 46,
+              "text": "Mini selected",
+              "visible": true,
+              "pressed": "true",
+              "focused": true,
+              "accessibleLabel": null
+            },
+            "mini-evidence": {
+              "top": 223.609375,
+              "left": 20,
+              "width": 335,
+              "height": 254.578125,
+              "text": "Mini Socket tool Assembled height 30\u201331 mm Fits clearance Handle movement 7\u00b0 reset Within 14\u00b0 swing Earliest pickup 18:10 Ready 18:10 Mini selected Fits both limits",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "failure": {
+              "top": -840.015625,
+              "left": 20,
+              "width": 335,
+              "height": 240.328125,
+              "text": "Offset is no longer available. Stock update \u00b7 17:42 After you chose Offset, its socket lock was recorded as failed. Your choice is kept below. Choose a replacement to continue. Mini selected: 30\u201331 mm, 7\u00b0 reset, pickup from 18:10. It fits both limits.",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "current": {
+              "top": -661.46875,
+              "left": 45,
+              "width": 290,
+              "height": 44.78125,
+              "text": "Mini selected: 30\u201331 mm, 7\u00b0 reset, pickup from 18:10. It fits both limits.",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "history": {
+              "top": 715.75,
+              "left": 20,
+              "width": 335,
+              "height": 182.96875,
+              "text": "Slim chosen. Offset chosen. 17:42 stock update: Offset\u2019s socket lock failed; Offset became unavailable. Mini chosen as replacement.",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            }
+          }
+        }
+      },
+      "bike-coop-clearance-candidate-1440": {
+        "width": 1440,
+        "height": 900,
+        "html_sha256": "f647984f5734206ef173479ba8f5b01eb7dcdae3a40c6da53910abe39e974f8e",
+        "images": {
+          "before": {
+            "file": "bike-coop-clearance-candidate-1440-before.png",
+            "sha256": "644d0d228b2bdb4ff424419bf519600fd055182cd208e24c99ed023ff5e29813"
+          },
+          "chosen": {
+            "file": "bike-coop-clearance-candidate-1440-chosen.png",
+            "sha256": "baf02b9983a508cedae01059c664d55fd018573bb2c305cf2e46b990bc1e314f"
+          },
+          "after": {
+            "file": "bike-coop-clearance-candidate-1440-after.png",
+            "sha256": "baf02b9983a508cedae01059c664d55fd018573bb2c305cf2e46b990bc1e314f"
+          },
+          "edge": {
+            "file": "bike-coop-clearance-candidate-1440-edge.png",
+            "sha256": "3a8009f2e4ca1c1729656ca6c46a75e0815f5d2913c173073e2be256cdb0a290"
+          }
+        },
+        "checks": {
+          "selection_reached_by_keyboard": true,
+          "separate_change_reached_by_keyboard": false,
+          "replacement_reached_by_keyboard": true,
+          "focus_visible_after_change": true,
+          "focus_visible_after_recovery": true,
+          "no_page_errors": true,
+          "no_horizontal_overflow": true,
+          "initial_selection_before_change": false,
+          "old_selection_retained": false,
+          "replacement_and_withdrawal_visible_together": false,
+          "replacement_selected": true,
+          "withdrawal_visible_after_recovery": false
+        },
+        "observed": {
+          "conflict_input": "no separate control",
+          "focus_after_change": "Choose Mini as replacement",
+          "focus_after_replacement": "Mini selected",
+          "conflict_boxes": {
+            "limits": {
+              "top": 618.75,
+              "left": 85.5,
+              "width": 1254,
+              "height": 54.59375,
+              "text": "Reading the fit The clearance could be as little as 38 mm. A reset angle must be at or below the available 14\u00b0 swing. Direct drive has no reset angle stated.",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "slim": {
+              "top": 252.796875,
+              "left": 85.5,
+              "width": 1254,
+              "height": 128.578125,
+              "text": "Slim Socket tool 25\u201326 mm Fits clearance 17\u00b0 reset Exceeds 14\u00b0 swing 17:45 Ready 17:30 Choose Slim as replacement Reset needs more swing",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "offset": {
+              "top": 401.375,
+              "left": 1132.46875,
+              "width": 189.015625,
+              "height": 45,
+              "text": "Unavailable",
+              "visible": true,
+              "pressed": "false",
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "mini": {
+              "top": 510.171875,
+              "left": 1132.46875,
+              "width": 189.015625,
+              "height": 64.78125,
+              "text": "Choose Mini as replacement",
+              "visible": true,
+              "pressed": "false",
+              "focused": true,
+              "accessibleLabel": null
+            },
+            "mini-evidence": {
+              "top": 490.171875,
+              "left": 85.5,
+              "width": 1254,
+              "height": 128.578125,
+              "text": "Mini Socket tool 30\u201331 mm Fits clearance 7\u00b0 reset Within 14\u00b0 swing 18:10 Ready 18:10 Choose Mini as replacement Fits both limits",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "failure": {
+              "top": -53.15625,
+              "left": 85.5,
+              "width": 1254,
+              "height": 113.578125,
+              "text": "Offset is no longer available. Stock update \u00b7 17:42 After you chose Offset, its socket lock was recorded as failed. Your choice is kept below. Choose a replacement to continue.",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "history": {
+              "top": 707.34375,
+              "left": 523.5,
+              "width": 816,
+              "height": 122.78125,
+              "text": "Slim chosen. Offset chosen. 17:42 stock update: Offset\u2019s socket lock failed; Offset became unavailable.",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            }
+          },
+          "replacement_boxes": {
+            "limits": {
+              "top": 628.359375,
+              "left": 85.5,
+              "width": 1254,
+              "height": 54.59375,
+              "text": "Reading the fit The clearance could be as little as 38 mm. A reset angle must be at or below the available 14\u00b0 swing. Direct drive has no reset angle stated.",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "slim": {
+              "top": 282.1875,
+              "left": 85.5,
+              "width": 1254,
+              "height": 128.578125,
+              "text": "Slim Socket tool 25\u201326 mm Fits clearance 17\u00b0 reset Exceeds 14\u00b0 swing 17:45 Ready 17:30 Choose Slim as replacement Reset needs more swing",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "offset": {
+              "top": 430.765625,
+              "left": 1132.46875,
+              "width": 189.015625,
+              "height": 45,
+              "text": "Unavailable",
+              "visible": true,
+              "pressed": "false",
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "mini": {
+              "top": 539.5625,
+              "left": 1132.46875,
+              "width": 189.015625,
+              "height": 45,
+              "text": "Mini selected",
+              "visible": true,
+              "pressed": "true",
+              "focused": true,
+              "accessibleLabel": null
+            },
+            "mini-evidence": {
+              "top": 519.5625,
+              "left": 85.5,
+              "width": 1254,
+              "height": 108.796875,
+              "text": "Mini Socket tool 30\u201331 mm Fits clearance 7\u00b0 reset Within 14\u00b0 swing 18:10 Ready 18:10 Mini selected Fits both limits",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "failure": {
+              "top": -53.15625,
+              "left": 85.5,
+              "width": 1254,
+              "height": 142.96875,
+              "text": "Offset is no longer available. Stock update \u00b7 17:42 After you chose Offset, its socket lock was recorded as failed. Your choice is kept below. Choose a replacement to continue. Mini selected: 30\u201331 mm, 7\u00b0 reset, pickup from 18:10. It fits both limits.",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "current": {
+              "top": 50.421875,
+              "left": 110.5,
+              "width": 684,
+              "height": 22.390625,
+              "text": "Mini selected: 30\u201331 mm, 7\u00b0 reset, pickup from 18:10. It fits both limits.",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "history": {
+              "top": 716.953125,
+              "left": 523.5,
+              "width": 816,
+              "height": 163.375,
+              "text": "Slim chosen. Offset chosen. 17:42 stock update: Offset\u2019s socket lock failed; Offset became unavailable. Mini chosen as replacement.",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            }
+          }
+        }
+      },
+      "poetry-last-train-parent-320": {
+        "width": 320,
+        "height": 700,
+        "html_sha256": "12585acd6d831dbc8ef96b76d671466ff090fcf3d8d5c57d91c81e310b398e04",
+        "images": {
+          "before": {
+            "file": "poetry-last-train-parent-320-before.png",
+            "sha256": "97224e9b8429426d115ea7d4edbce74ccb64d85e41f9dbe09a85bbe20bc9e332"
+          },
+          "chosen": {
+            "file": "poetry-last-train-parent-320-chosen.png",
+            "sha256": "3a60d4218ebac4337ff3438021b064a883a54b5e6fd98c383693fe2340e5f88d"
+          },
+          "after": {
+            "file": "poetry-last-train-parent-320-after.png",
+            "sha256": "b237997fc4673727216b031edcecbefed5e896431b927714710536cb0f303cbe"
+          },
+          "edge": {
+            "file": "poetry-last-train-parent-320-edge.png",
+            "sha256": "e03d26a411861efba3c6df7a705f18e3225931739523e7a521d3256e22911454"
+          }
+        },
+        "checks": {
+          "selection_reached_by_keyboard": true,
+          "separate_change_reached_by_keyboard": true,
+          "replacement_reached_by_keyboard": true,
+          "focus_visible_after_change": true,
+          "focus_visible_after_recovery": true,
+          "no_page_errors": true,
+          "no_horizontal_overflow": true,
+          "original_selection_verified": true,
+          "old_route_retained": true,
+          "three_recovery_elements_visible_together": false,
+          "arcade_estimate_present": true,
+          "alternative_selected": true
+        }
+      },
+      "poetry-last-train-parent-390": {
+        "width": 390,
+        "height": 844,
+        "html_sha256": "12585acd6d831dbc8ef96b76d671466ff090fcf3d8d5c57d91c81e310b398e04",
+        "images": {
+          "before": {
+            "file": "poetry-last-train-parent-390-before.png",
+            "sha256": "1e591c3190ce2143ebda9c0ec161c4cca2c296d7fe0f3ac6b858219b8f50d243"
+          },
+          "chosen": {
+            "file": "poetry-last-train-parent-390-chosen.png",
+            "sha256": "66974a83851af6ad6f2f7c7e7f4cf23156255af52934dc4e181eb6f2ebfd5b70"
+          },
+          "after": {
+            "file": "poetry-last-train-parent-390-after.png",
+            "sha256": "f6cb72baa2f6c697feb88f1b74bd1f22f1aa0815b726b060692f1e71cb659946"
+          },
+          "edge": {
+            "file": "poetry-last-train-parent-390-edge.png",
+            "sha256": "ee82eefc8c12ed95013efeaeadb1fec1acb35f87f75832f9f3a9ec3c64fbc5e8"
+          }
+        },
+        "checks": {
+          "selection_reached_by_keyboard": true,
+          "separate_change_reached_by_keyboard": true,
+          "replacement_reached_by_keyboard": true,
+          "focus_visible_after_change": true,
+          "focus_visible_after_recovery": true,
+          "no_page_errors": true,
+          "no_horizontal_overflow": true,
+          "original_selection_verified": true,
+          "old_route_retained": true,
+          "three_recovery_elements_visible_together": false,
+          "arcade_estimate_present": true,
+          "alternative_selected": true
+        }
+      },
+      "poetry-last-train-parent-1440": {
+        "width": 1440,
+        "height": 900,
+        "html_sha256": "12585acd6d831dbc8ef96b76d671466ff090fcf3d8d5c57d91c81e310b398e04",
+        "images": {
+          "before": {
+            "file": "poetry-last-train-parent-1440-before.png",
+            "sha256": "6676ca3a2b88d316807a37fd20c491c7ca0c8d4bf282fdc538e503046ab7df5d"
+          },
+          "chosen": {
+            "file": "poetry-last-train-parent-1440-chosen.png",
+            "sha256": "ac91832f877876cdf92764358b64967670fbc75c54447cff9d96a505ee3007d1"
+          },
+          "after": {
+            "file": "poetry-last-train-parent-1440-after.png",
+            "sha256": "b5ed912351f634ed56af481804fecb10db4d95de6d4ae11ac47c3f1dafe14b92"
+          },
+          "edge": {
+            "file": "poetry-last-train-parent-1440-edge.png",
+            "sha256": "97e121adedae487ceaa15032c6c6621498e08143e5b0d87840102a518b9c24d5"
+          }
+        },
+        "checks": {
+          "selection_reached_by_keyboard": true,
+          "separate_change_reached_by_keyboard": true,
+          "replacement_reached_by_keyboard": true,
+          "focus_visible_after_change": true,
+          "focus_visible_after_recovery": true,
+          "no_page_errors": true,
+          "no_horizontal_overflow": true,
+          "original_selection_verified": true,
+          "old_route_retained": true,
+          "three_recovery_elements_visible_together": false,
+          "arcade_estimate_present": true,
+          "alternative_selected": true
+        }
+      },
+      "poetry-last-train-candidate-320": {
+        "width": 320,
+        "height": 700,
+        "html_sha256": "54f650d9a87d3772b3efcf3c22b49cfe2f1109b31a4b69245a58c460e88161d2",
+        "images": {
+          "before": {
+            "file": "poetry-last-train-candidate-320-before.png",
+            "sha256": "78ec5c03bca31ddde996d118685d7344c2392cfb5ec768db7431e2ded9074339"
+          },
+          "chosen": {
+            "file": "poetry-last-train-candidate-320-chosen.png",
+            "sha256": "e0ed5ee39f4237eee7dce4ad2277afd5b93616a6df4879efd23c2da1e3d90530"
+          },
+          "after": {
+            "file": "poetry-last-train-candidate-320-after.png",
+            "sha256": "79ea99463504499bac0f6bae72d3c6a2e62e5bb0c453a9e4de3b1d4a1566ee21"
+          },
+          "edge": {
+            "file": "poetry-last-train-candidate-320-edge.png",
+            "sha256": "20f6a83075f94e6339fb41d08e9c41426640b234de9008dad82c8eb0673270ae"
+          }
+        },
+        "checks": {
+          "selection_reached_by_keyboard": true,
+          "separate_change_reached_by_keyboard": true,
+          "replacement_reached_by_keyboard": true,
+          "focus_visible_after_change": true,
+          "focus_visible_after_recovery": true,
+          "no_page_errors": true,
+          "no_horizontal_overflow": true,
+          "original_selection_verified": true,
+          "old_route_retained": true,
+          "three_recovery_elements_visible_together": false,
+          "arcade_estimate_present": true,
+          "alternative_selected": true
+        },
+        "observed": {
+          "conflict_input": "Enter",
+          "focus_after_change": "lift-toggle",
+          "focus_after_replacement": "choose-margins",
+          "conflict_boxes": {
+            "control": {
+              "top": 521.234375,
+              "left": 41,
+              "width": 191.640625,
+              "height": 46,
+              "text": "Restore Courtyard lift",
+              "visible": true,
+              "pressed": "true",
+              "focused": true,
+              "accessibleLabel": null
+            },
+            "voices": {
+              "top": -137.65625,
+              "left": 43,
+              "width": 219,
+              "height": 48,
+              "text": "Choose Voices",
+              "visible": false,
+              "pressed": "true",
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "margin-option": {
+              "top": 326,
+              "left": 43,
+              "width": 219,
+              "height": 48,
+              "text": "Choose Margins",
+              "visible": true,
+              "pressed": "false",
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "forecast": {
+              "top": 586.234375,
+              "left": 20,
+              "width": 265,
+              "height": 268.375,
+              "text": "Voices would miss the last train The Arcade ramp route reaches level boarding at an estimated 22:19, 4 minutes after departure. Choose Margins to reach boarding at an estimated 22:04. Times are estimates from the end of each reading.",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "route": {
+              "top": -399.125,
+              "left": 70,
+              "width": 192,
+              "height": 21.59375,
+              "text": "Arcade ramp",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "estimate": {
+              "top": -194.65625,
+              "left": 43,
+              "width": 83.890625,
+              "height": 40,
+              "text": "22:19",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            }
+          },
+          "replacement_boxes": {
+            "control": {
+              "top": 521.234375,
+              "left": 41,
+              "width": 191.640625,
+              "height": 46,
+              "text": "Restore Courtyard lift",
+              "visible": true,
+              "pressed": "true",
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "voices": {
+              "top": -137.65625,
+              "left": 43,
+              "width": 219,
+              "height": 48,
+              "text": "Choose Voices",
+              "visible": false,
+              "pressed": "false",
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "margin-option": {
+              "top": 326,
+              "left": 43,
+              "width": 219,
+              "height": 48,
+              "text": "Choose Margins",
+              "visible": true,
+              "pressed": "true",
+              "focused": true,
+              "accessibleLabel": null
+            },
+            "forecast": {
+              "top": 586.234375,
+              "left": 20,
+              "width": 265,
+              "height": 233.28125,
+              "text": "Margins is your choice The Canal ramp route reaches level boarding at an estimated 22:04, 11 minutes before the last train. With the Courtyard lift closed, Voices is estimated to reach boarding at 22:19. Times are estimates from the end of each reading.",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "route": {
+              "top": -399.125,
+              "left": 70,
+              "width": 192,
+              "height": 21.59375,
+              "text": "Arcade ramp",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "estimate": {
+              "top": -194.65625,
+              "left": 43,
+              "width": 83.890625,
+              "height": 40,
+              "text": "22:19",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            }
+          }
+        }
+      },
+      "poetry-last-train-candidate-390": {
+        "width": 390,
+        "height": 844,
+        "html_sha256": "54f650d9a87d3772b3efcf3c22b49cfe2f1109b31a4b69245a58c460e88161d2",
+        "images": {
+          "before": {
+            "file": "poetry-last-train-candidate-390-before.png",
+            "sha256": "78bdf4274c4d018a544626544417ee8a500043eeec1bb5c154c72235ee1351d0"
+          },
+          "chosen": {
+            "file": "poetry-last-train-candidate-390-chosen.png",
+            "sha256": "6cae4dbcdf644ecf5f7a7a53f2612b58f87cf76c5177cf12206af7bc1f101277"
+          },
+          "after": {
+            "file": "poetry-last-train-candidate-390-after.png",
+            "sha256": "2ff4a6eb2bfd4b2aa4439cecfa4cbebf8ac2d2f1cd8c969cbca36efc72c64004"
+          },
+          "edge": {
+            "file": "poetry-last-train-candidate-390-edge.png",
+            "sha256": "37c1ecf4080a4cc7396549ebee0777a5eee2f47ebf6dc5fa8e6301d21610c013"
+          }
+        },
+        "checks": {
+          "selection_reached_by_keyboard": true,
+          "separate_change_reached_by_keyboard": true,
+          "replacement_reached_by_keyboard": true,
+          "focus_visible_after_change": true,
+          "focus_visible_after_recovery": true,
+          "no_page_errors": true,
+          "no_horizontal_overflow": true,
+          "original_selection_verified": true,
+          "old_route_retained": true,
+          "three_recovery_elements_visible_together": false,
+          "arcade_estimate_present": true,
+          "alternative_selected": true
+        },
+        "observed": {
+          "conflict_input": "Enter",
+          "focus_after_change": "lift-toggle",
+          "focus_after_replacement": "choose-margins",
+          "conflict_boxes": {
+            "control": {
+              "top": 593.234375,
+              "left": 41,
+              "width": 191.640625,
+              "height": 46,
+              "text": "Restore Courtyard lift",
+              "visible": true,
+              "pressed": "true",
+              "focused": true,
+              "accessibleLabel": null
+            },
+            "voices": {
+              "top": -23.8125,
+              "left": 43,
+              "width": 289,
+              "height": 48,
+              "text": "Choose Voices",
+              "visible": false,
+              "pressed": "true",
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "margin-option": {
+              "top": 398,
+              "left": 43,
+              "width": 289,
+              "height": 48,
+              "text": "Choose Margins",
+              "visible": true,
+              "pressed": "false",
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "forecast": {
+              "top": 658.234375,
+              "left": 20,
+              "width": 335,
+              "height": 190.09375,
+              "text": "Voices would miss the last train The Arcade ramp route reaches level boarding at an estimated 22:19, 4 minutes after departure. Choose Margins to reach boarding at an estimated 22:04. Times are estimates from the end of each reading.",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "route": {
+              "top": -243.4375,
+              "left": 70,
+              "width": 262,
+              "height": 21.59375,
+              "text": "Arcade ramp",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "estimate": {
+              "top": -80.8125,
+              "left": 43,
+              "width": 112.1875,
+              "height": 40,
+              "text": "22:19",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            }
+          },
+          "replacement_boxes": {
+            "control": {
+              "top": 617.046875,
+              "left": 41,
+              "width": 191.640625,
+              "height": 46,
+              "text": "Restore Courtyard lift",
+              "visible": true,
+              "pressed": "true",
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "voices": {
+              "top": 0,
+              "left": 43,
+              "width": 289,
+              "height": 48,
+              "text": "Choose Voices",
+              "visible": true,
+              "pressed": "false",
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "margin-option": {
+              "top": 421.8125,
+              "left": 43,
+              "width": 289,
+              "height": 48,
+              "text": "Choose Margins",
+              "visible": true,
+              "pressed": "true",
+              "focused": true,
+              "accessibleLabel": null
+            },
+            "forecast": {
+              "top": 682.046875,
+              "left": 20,
+              "width": 335,
+              "height": 190.09375,
+              "text": "Margins is your choice The Canal ramp route reaches level boarding at an estimated 22:04, 11 minutes before the last train. With the Courtyard lift closed, Voices is estimated to reach boarding at 22:19. Times are estimates from the end of each reading.",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "route": {
+              "top": -219.625,
+              "left": 70,
+              "width": 262,
+              "height": 21.59375,
+              "text": "Arcade ramp",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "estimate": {
+              "top": -57,
+              "left": 43,
+              "width": 112.1875,
+              "height": 40,
+              "text": "22:19",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            }
+          }
+        }
+      },
+      "poetry-last-train-candidate-1440": {
+        "width": 1440,
+        "height": 900,
+        "html_sha256": "54f650d9a87d3772b3efcf3c22b49cfe2f1109b31a4b69245a58c460e88161d2",
+        "images": {
+          "before": {
+            "file": "poetry-last-train-candidate-1440-before.png",
+            "sha256": "385494fcd41512cd689993ed8055b06bc6e14eab9a0b46fdc006f4b4e2a0f554"
+          },
+          "chosen": {
+            "file": "poetry-last-train-candidate-1440-chosen.png",
+            "sha256": "98e132233a0341b4f256b0924be7c31d0d4e176131384f540923638b6f9b1aa6"
+          },
+          "after": {
+            "file": "poetry-last-train-candidate-1440-after.png",
+            "sha256": "ec2661d1ef042c3f7760f962d5e79db5b62b6a95d6193a05b03750a1eeb9ea89"
+          },
+          "edge": {
+            "file": "poetry-last-train-candidate-1440-edge.png",
+            "sha256": "f6895fba0a11dfe1099f5cc6a527a9c854cd83d6e00d4ed9e6a1e89db68a5d6f"
+          }
+        },
+        "checks": {
+          "selection_reached_by_keyboard": true,
+          "separate_change_reached_by_keyboard": true,
+          "replacement_reached_by_keyboard": true,
+          "focus_visible_after_change": true,
+          "focus_visible_after_recovery": true,
+          "no_page_errors": true,
+          "no_horizontal_overflow": true,
+          "original_selection_verified": true,
+          "old_route_retained": true,
+          "three_recovery_elements_visible_together": false,
+          "arcade_estimate_present": true,
+          "alternative_selected": true
+        },
+        "observed": {
+          "conflict_input": "Enter",
+          "focus_after_change": "lift-toggle",
+          "focus_after_replacement": "choose-margins",
+          "conflict_boxes": {
+            "control": {
+              "top": 667.265625,
+              "left": 1134.265625,
+              "width": 191.640625,
+              "height": 46,
+              "text": "Restore Courtyard lift",
+              "visible": true,
+              "pressed": "true",
+              "focused": true,
+              "accessibleLabel": null
+            },
+            "voices": {
+              "top": 554.453125,
+              "left": 102.09375,
+              "width": 575.40625,
+              "height": 48,
+              "text": "Choose Voices",
+              "visible": true,
+              "pressed": "true",
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "margin-option": {
+              "top": 554.453125,
+              "left": 747.5,
+              "width": 575.40625,
+              "height": 48,
+              "text": "Choose Margins",
+              "visible": true,
+              "pressed": "false",
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "forecast": {
+              "top": 739.09375,
+              "left": 74.09375,
+              "width": 1276.8125,
+              "height": 113.96875,
+              "text": "Voices would miss the last train The Arcade ramp route reaches level boarding at an estimated 22:19, 4 minutes after departure. Choose Margins to reach boarding at an estimated 22:04. Times are estimates from the end of each reading.",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "route": {
+              "top": 334.828125,
+              "left": 129.09375,
+              "width": 548.40625,
+              "height": 21.59375,
+              "text": "Arcade ramp",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "estimate": {
+              "top": 497.453125,
+              "left": 102.09375,
+              "width": 112.1875,
+              "height": 40,
+              "text": "22:19",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            }
+          },
+          "replacement_boxes": {
+            "control": {
+              "top": 667.265625,
+              "left": 1134.265625,
+              "width": 191.640625,
+              "height": 46,
+              "text": "Restore Courtyard lift",
+              "visible": true,
+              "pressed": "true",
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "voices": {
+              "top": 554.453125,
+              "left": 102.09375,
+              "width": 575.40625,
+              "height": 48,
+              "text": "Choose Voices",
+              "visible": true,
+              "pressed": "false",
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "margin-option": {
+              "top": 554.453125,
+              "left": 747.5,
+              "width": 575.40625,
+              "height": 48,
+              "text": "Choose Margins",
+              "visible": true,
+              "pressed": "true",
+              "focused": true,
+              "accessibleLabel": null
+            },
+            "forecast": {
+              "top": 739.09375,
+              "left": 74.09375,
+              "width": 1276.8125,
+              "height": 113.96875,
+              "text": "Margins is your choice The Canal ramp route reaches level boarding at an estimated 22:04, 11 minutes before the last train. With the Courtyard lift closed, Voices is estimated to reach boarding at 22:19. Times are estimates from the end of each reading.",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "route": {
+              "top": 334.828125,
+              "left": 129.09375,
+              "width": 548.40625,
+              "height": 21.59375,
+              "text": "Arcade ramp",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "estimate": {
+              "top": 497.453125,
+              "left": 102.09375,
+              "width": 112.1875,
+              "height": 40,
+              "text": "22:19",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            }
+          }
+        }
+      }
+    }
+  },
+  "ordered": {
+    "test_commit": "ca8fc6bacf07a53e7e1681a10ecb0b6262c6515c",
+    "installed_input_replay_sha256": "a496522ff5ade00ed49a475992a7ace953d71fc3806014e5f3bd3c8d9c3bea2b",
+    "installed_comparison": {
+      "control": "5470024a2c6c815b1a435f4b81cb7e6d5e3c6b09",
+      "candidate": "ca8fc6bacf07a53e7e1681a10ecb0b6262c6515c",
+      "cases": 57,
+      "unchanged": 51,
+      "failures": []
+    },
+    "browser": "Chrome/160.0.8178.0",
+    "verified_browser_receipt_sha256": "b2e02f00f0191bdb310647ce08eddd1546279fe2fd34d52b99c7f9c69eb3b354",
+    "generated": {
+      "bike-coop-clearance": {
+        "parent": {
+          "model": "gpt-6.1-terra",
+          "effort": "low",
+          "prompt_sha256": "4f4179043a7aaf94e2c711d2a4f6a543591522f46330de1424b5151e0b34ff35",
+          "trace_sha256": "ba30e7541cd69b6a206a6631a1b7d76a3f5d15680cf197ed04528342145b8405",
+          "html_sha256": "fd93c4bf09e063847b5ae3ea16a16e6acb3c330cfa0f491b915e233fa7050bff",
+          "usage": {
+            "input_tokens": 59081,
+            "cached_input_tokens": 49152,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 6491,
+            "reasoning_output_tokens": 48
+          },
+          "elapsed_seconds": 123.49
+        },
+        "acceptance": {
+          "model": "gpt-6.1-terra",
+          "effort": "low",
+          "prompt_sha256": "4f4179043a7aaf94e2c711d2a4f6a543591522f46330de1424b5151e0b34ff35",
+          "trace_sha256": "6e00fb3fd8c53e697c1241b2343bee335672de9873994c0a2df25454df91c4a9",
+          "html_sha256": "1d71ec8bc552b606c79e32ebe2ac271aafd07eeb4a71ee8099a24102539cd7a8",
+          "usage": {
+            "input_tokens": 59272,
+            "cached_input_tokens": 53120,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 5782,
+            "reasoning_output_tokens": 12
+          },
+          "elapsed_seconds": 112.55
+        }
+      },
+      "poetry-last-train": {
+        "parent": {
+          "model": "gpt-6.1-terra",
+          "effort": "low",
+          "prompt_sha256": "6214fe309fc06afb3bad36680596828b7722ba84fac076a899f65ebac063d4cb",
+          "trace_sha256": "f683c81a48a2a00eba6532723c6738bc55ddfd59a346cd900257ac66a9bbf9eb",
+          "html_sha256": "12585acd6d831dbc8ef96b76d671466ff090fcf3d8d5c57d91c81e310b398e04",
+          "usage": {
+            "input_tokens": 59215,
+            "cached_input_tokens": 53248,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 4810,
+            "reasoning_output_tokens": 26
+          },
+          "elapsed_seconds": 93.89
+        },
+        "acceptance": {
+          "model": "gpt-6.1-terra",
+          "effort": "low",
+          "prompt_sha256": "6214fe309fc06afb3bad36680596828b7722ba84fac076a899f65ebac063d4cb",
+          "trace_sha256": "19b6bf5b7975216e393678eb67370e645273c691a946a09a95dae85856adab76",
+          "html_sha256": "701bacbaac63493e926e7e37f0ef75b3e9a240babfc6b200f4503c7b1613ab86",
+          "usage": {
+            "input_tokens": 59384,
+            "cached_input_tokens": 46976,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 4894,
+            "reasoning_output_tokens": 17
+          },
+          "elapsed_seconds": 97.93
+        }
+      }
+    },
+    "journeys": {
+      "bike-coop-clearance-parent-320": {
+        "width": 320,
+        "height": 700,
+        "html_sha256": "fd93c4bf09e063847b5ae3ea16a16e6acb3c330cfa0f491b915e233fa7050bff",
+        "images": {
+          "before": {
+            "file": "bike-coop-clearance-parent-320-before.png",
+            "sha256": "e74c0e2fa3f65a2ab1e110384fbe92b098d65d03838c07d5804c25dfed6eb859"
+          },
+          "chosen": {
+            "file": "bike-coop-clearance-parent-320-chosen.png",
+            "sha256": "1bb75be0433d18ec46e350cab46e3e5a651820088c6d35d92e69b403ca2a06c3"
+          },
+          "after": {
+            "file": "bike-coop-clearance-parent-320-after.png",
+            "sha256": "1bb75be0433d18ec46e350cab46e3e5a651820088c6d35d92e69b403ca2a06c3"
+          },
+          "edge": {
+            "file": "bike-coop-clearance-parent-320-edge.png",
+            "sha256": "953683443891132c5b3f6b52224fa796d87a1bb06106a9ae25c2aa74d2a51922"
+          }
+        },
+        "checks": {
+          "selection_reached_by_keyboard": true,
+          "separate_change_reached_by_keyboard": false,
+          "replacement_reached_by_keyboard": true,
+          "focus_visible_after_change": false,
+          "focus_visible_after_recovery": true,
+          "no_page_errors": true,
+          "no_horizontal_overflow": true,
+          "initial_selection_before_change": false,
+          "old_selection_retained": false,
+          "replacement_and_withdrawal_visible_together": false,
+          "replacement_selected": true,
+          "withdrawal_visible_after_recovery": false
+        }
+      },
+      "bike-coop-clearance-parent-390": {
+        "width": 390,
+        "height": 844,
+        "html_sha256": "fd93c4bf09e063847b5ae3ea16a16e6acb3c330cfa0f491b915e233fa7050bff",
+        "images": {
+          "before": {
+            "file": "bike-coop-clearance-parent-390-before.png",
+            "sha256": "f5d38f690678e2effc174d83aae3096ef5191348dd278be7a63fc8f0ec883fef"
+          },
+          "chosen": {
+            "file": "bike-coop-clearance-parent-390-chosen.png",
+            "sha256": "c9e715017f6ce07c51d28c288ba5d2d442ad094b9db6316b3c3876566b9399ad"
+          },
+          "after": {
+            "file": "bike-coop-clearance-parent-390-after.png",
+            "sha256": "c9e715017f6ce07c51d28c288ba5d2d442ad094b9db6316b3c3876566b9399ad"
+          },
+          "edge": {
+            "file": "bike-coop-clearance-parent-390-edge.png",
+            "sha256": "d892f8b28b194b2c7806be45e317c5a745dc2eed1a9d18c978f66d1d2a6f7c02"
+          }
+        },
+        "checks": {
+          "selection_reached_by_keyboard": true,
+          "separate_change_reached_by_keyboard": false,
+          "replacement_reached_by_keyboard": true,
+          "focus_visible_after_change": false,
+          "focus_visible_after_recovery": true,
+          "no_page_errors": true,
+          "no_horizontal_overflow": true,
+          "initial_selection_before_change": false,
+          "old_selection_retained": false,
+          "replacement_and_withdrawal_visible_together": false,
+          "replacement_selected": true,
+          "withdrawal_visible_after_recovery": false
+        }
+      },
+      "bike-coop-clearance-parent-1440": {
+        "width": 1440,
+        "height": 900,
+        "html_sha256": "fd93c4bf09e063847b5ae3ea16a16e6acb3c330cfa0f491b915e233fa7050bff",
+        "images": {
+          "before": {
+            "file": "bike-coop-clearance-parent-1440-before.png",
+            "sha256": "187b2574d1473f5d5c34023c81d7d10e27242409459c707165d15ddc6d6767f1"
+          },
+          "chosen": {
+            "file": "bike-coop-clearance-parent-1440-chosen.png",
+            "sha256": "3a4d24cebb79a299cfae8bb33e3fb4b319bf06809f1ebad091d659688bbb3ef4"
+          },
+          "after": {
+            "file": "bike-coop-clearance-parent-1440-after.png",
+            "sha256": "3a4d24cebb79a299cfae8bb33e3fb4b319bf06809f1ebad091d659688bbb3ef4"
+          },
+          "edge": {
+            "file": "bike-coop-clearance-parent-1440-edge.png",
+            "sha256": "cabdf939bffa0ce90f9f22955ee8135561743c3ec4eeb40badc1253310251c1b"
+          }
+        },
+        "checks": {
+          "selection_reached_by_keyboard": true,
+          "separate_change_reached_by_keyboard": false,
+          "replacement_reached_by_keyboard": true,
+          "focus_visible_after_change": false,
+          "focus_visible_after_recovery": true,
+          "no_page_errors": true,
+          "no_horizontal_overflow": true,
+          "initial_selection_before_change": false,
+          "old_selection_retained": false,
+          "replacement_and_withdrawal_visible_together": true,
+          "replacement_selected": true,
+          "withdrawal_visible_after_recovery": true
+        }
+      },
+      "bike-coop-clearance-acceptance-320": {
+        "width": 320,
+        "height": 700,
+        "html_sha256": "1d71ec8bc552b606c79e32ebe2ac271aafd07eeb4a71ee8099a24102539cd7a8",
+        "images": {
+          "before": {
+            "file": "bike-coop-clearance-acceptance-320-before.png",
+            "sha256": "8751ef956708882dc63aaa345cb017bc8502992b758af67e74160aa8e8feaaa5"
+          },
+          "chosen": {
+            "file": "bike-coop-clearance-acceptance-320-chosen.png",
+            "sha256": "462cd2592ed971381dc9252d45f97c9c29ec7a54094de906ab96263c6e831ca2"
+          },
+          "after": {
+            "file": "bike-coop-clearance-acceptance-320-after.png",
+            "sha256": "462cd2592ed971381dc9252d45f97c9c29ec7a54094de906ab96263c6e831ca2"
+          },
+          "edge": {
+            "file": "bike-coop-clearance-acceptance-320-edge.png",
+            "sha256": "8e347916a448093cd5c99a19c5d97db532ff0c32a47d095710d3f7bde34d7c1b"
+          }
+        },
+        "checks": {
+          "selection_reached_by_keyboard": true,
+          "separate_change_reached_by_keyboard": false,
+          "replacement_reached_by_keyboard": true,
+          "focus_visible_after_change": true,
+          "focus_visible_after_recovery": true,
+          "no_page_errors": true,
+          "no_horizontal_overflow": true,
+          "initial_selection_before_change": false,
+          "old_selection_retained": true,
+          "replacement_and_withdrawal_visible_together": false,
+          "replacement_selected": true,
+          "withdrawal_visible_after_recovery": true
+        },
+        "observed": {
+          "conflict_input": "no separate control",
+          "focus_after_change": "Choose Mini",
+          "focus_after_replacement": "selection",
+          "conflict_boxes": {
+            "limits": {
+              "top": 495.515625,
+              "left": 20,
+              "width": 265,
+              "height": 72.75,
+              "text": "Height is compared with the smallest possible clearance, 38 mm. Reset swing is compared with the 14\u00b0 limit. Hand clearance is not measured here.",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "slim": {
+              "top": 50.5,
+              "left": 182.234375,
+              "width": 92.765625,
+              "height": 42,
+              "text": "Choose Slim",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "offset": {
+              "top": 181.578125,
+              "left": 20,
+              "width": 265,
+              "height": 148.96875,
+              "text": "Offset Socket lock failed Height 33\u201334 mm Fits Reset swing 9\u00b0 Within limit Ready 17:40 Before arrival Unavailable",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": "Offset"
+            },
+            "mini": {
+              "top": 348.4375,
+              "left": 184.28125,
+              "width": 90.71875,
+              "height": 42,
+              "text": "Choose Mini",
+              "visible": true,
+              "pressed": null,
+              "focused": true,
+              "accessibleLabel": null
+            },
+            "mini-evidence": {
+              "top": 330.546875,
+              "left": 20,
+              "width": 265,
+              "height": 149.96875,
+              "text": "Mini Fits both limits Height 30\u201331 mm Fits Reset swing 7\u00b0 Within limit Ready 18:10 After arrival Choose Mini",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": "Mini"
+            },
+            "failure": {
+              "top": -392.484375,
+              "left": 39,
+              "width": 227,
+              "height": 107.375,
+              "text": "Stock update \u00b7 17:42 Offset\u2019s socket lock failed. It is unavailable; choose a replacement.",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "current": {
+              "top": -486.671875,
+              "left": 39,
+              "width": 227,
+              "height": 76.1875,
+              "text": "Offset \u00b7 unavailable Your choice is preserved. The socket lock failed; select another tool below.",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            }
+          },
+          "replacement_boxes": {
+            "limits": {
+              "top": 1371.96875,
+              "left": 20,
+              "width": 265,
+              "height": 72.75,
+              "text": "Height is compared with the smallest possible clearance, 38 mm. Reset swing is compared with the 14\u00b0 limit. Hand clearance is not measured here.",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "slim": {
+              "top": 926.953125,
+              "left": 182.234375,
+              "width": 92.765625,
+              "height": 42,
+              "text": "Choose Slim",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "offset": {
+              "top": 1058.03125,
+              "left": 20,
+              "width": 265,
+              "height": 148.96875,
+              "text": "Offset Socket lock failed Height 33\u201334 mm Fits Reset swing 9\u00b0 Within limit Ready 17:40 Before arrival Unavailable",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": "Offset"
+            },
+            "mini": {
+              "top": 1224.890625,
+              "left": 199.328125,
+              "width": 75.65625,
+              "height": 42,
+              "text": "Selected",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "mini-evidence": {
+              "top": 1207,
+              "left": 20,
+              "width": 265,
+              "height": 149.96875,
+              "text": "Mini Fits both limits Height 30\u201331 mm Fits Reset swing 7\u00b0 Within limit Ready 18:10 After arrival Selected",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": "Mini"
+            },
+            "failure": {
+              "top": 460.78125,
+              "left": 39,
+              "width": 227,
+              "height": 107.375,
+              "text": "Stock update \u00b7 17:42 Offset\u2019s socket lock failed. It is unavailable; choose a replacement.",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "current": {
+              "top": 257.21875,
+              "left": 39,
+              "width": 227,
+              "height": 185.5625,
+              "text": "Mini selected Fits the measured height and swing limits. Earliest pickup 18:10 Tool ready 18:10 \u00b7 desk closes 19:00",
+              "visible": true,
+              "pressed": null,
+              "focused": true,
+              "accessibleLabel": null
+            }
+          }
+        }
+      },
+      "bike-coop-clearance-acceptance-390": {
+        "width": 390,
+        "height": 844,
+        "html_sha256": "1d71ec8bc552b606c79e32ebe2ac271aafd07eeb4a71ee8099a24102539cd7a8",
+        "images": {
+          "before": {
+            "file": "bike-coop-clearance-acceptance-390-before.png",
+            "sha256": "9d67d56f39c5d6cae614232e635c8ca7f3a20cf8dca9c81b9e976a2b9fe72cc2"
+          },
+          "chosen": {
+            "file": "bike-coop-clearance-acceptance-390-chosen.png",
+            "sha256": "f602682e04c627f6c0453dbd3adb39d9df1bb4d3a191f8eba7e8eb8fc3a95cc7"
+          },
+          "after": {
+            "file": "bike-coop-clearance-acceptance-390-after.png",
+            "sha256": "f602682e04c627f6c0453dbd3adb39d9df1bb4d3a191f8eba7e8eb8fc3a95cc7"
+          },
+          "edge": {
+            "file": "bike-coop-clearance-acceptance-390-edge.png",
+            "sha256": "e9fdd200d672122d6b42b474ae53f00bacaefc02be6df692b659878a7570876f"
+          }
+        },
+        "checks": {
+          "selection_reached_by_keyboard": true,
+          "separate_change_reached_by_keyboard": false,
+          "replacement_reached_by_keyboard": true,
+          "focus_visible_after_change": true,
+          "focus_visible_after_recovery": true,
+          "no_page_errors": true,
+          "no_horizontal_overflow": true,
+          "initial_selection_before_change": false,
+          "old_selection_retained": true,
+          "replacement_and_withdrawal_visible_together": false,
+          "replacement_selected": true,
+          "withdrawal_visible_after_recovery": true
+        },
+        "observed": {
+          "conflict_input": "no separate control",
+          "focus_after_change": "Choose Mini",
+          "focus_after_replacement": "selection",
+          "conflict_boxes": {
+            "limits": {
+              "top": 658.015625,
+              "left": 20,
+              "width": 335,
+              "height": 54.5625,
+              "text": "Height is compared with the smallest possible clearance, 38 mm. Reset swing is compared with the 14\u00b0 limit. Hand clearance is not measured here.",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "slim": {
+              "top": 213,
+              "left": 246,
+              "width": 99,
+              "height": 42,
+              "text": "Choose Slim",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "offset": {
+              "top": 344.078125,
+              "left": 20,
+              "width": 335,
+              "height": 148.96875,
+              "text": "Offset Socket lock failed Height 33\u201334 mm Fits Reset swing 9\u00b0 Within limit Ready 17:40 Before arrival Unavailable",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": "Offset"
+            },
+            "mini": {
+              "top": 510.9375,
+              "left": 246,
+              "width": 99,
+              "height": 42,
+              "text": "Choose Mini",
+              "visible": true,
+              "pressed": null,
+              "focused": true,
+              "accessibleLabel": null
+            },
+            "mini-evidence": {
+              "top": 493.046875,
+              "left": 20,
+              "width": 335,
+              "height": 149.96875,
+              "text": "Mini Fits both limits Height 30\u201331 mm Fits Reset swing 7\u00b0 Within limit Ready 18:10 After arrival Choose Mini",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": "Mini"
+            },
+            "failure": {
+              "top": -210.390625,
+              "left": 39,
+              "width": 297,
+              "height": 87.78125,
+              "text": "Stock update \u00b7 17:42 Offset\u2019s socket lock failed. It is unavailable; choose a replacement.",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "current": {
+              "top": -304.578125,
+              "left": 39,
+              "width": 297,
+              "height": 76.1875,
+              "text": "Offset \u00b7 unavailable Your choice is preserved. The socket lock failed; select another tool below.",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            }
+          },
+          "replacement_boxes": {
+            "limits": {
+              "top": 1414.578125,
+              "left": 20,
+              "width": 335,
+              "height": 54.5625,
+              "text": "Height is compared with the smallest possible clearance, 38 mm. Reset swing is compared with the 14\u00b0 limit. Hand clearance is not measured here.",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "slim": {
+              "top": 969.5625,
+              "left": 246,
+              "width": 99,
+              "height": 42,
+              "text": "Choose Slim",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "offset": {
+              "top": 1100.640625,
+              "left": 20,
+              "width": 335,
+              "height": 148.96875,
+              "text": "Offset Socket lock failed Height 33\u201334 mm Fits Reset swing 9\u00b0 Within limit Ready 17:40 Before arrival Unavailable",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": "Offset"
+            },
+            "mini": {
+              "top": 1267.5,
+              "left": 246,
+              "width": 99,
+              "height": 42,
+              "text": "Selected",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "mini-evidence": {
+              "top": 1249.609375,
+              "left": 20,
+              "width": 335,
+              "height": 149.96875,
+              "text": "Mini Fits both limits Height 30\u201331 mm Fits Reset swing 7\u00b0 Within limit Ready 18:10 After arrival Selected",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": "Mini"
+            },
+            "failure": {
+              "top": 522.984375,
+              "left": 39,
+              "width": 297,
+              "height": 87.78125,
+              "text": "Stock update \u00b7 17:42 Offset\u2019s socket lock failed. It is unavailable; choose a replacement.",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "current": {
+              "top": 339.015625,
+              "left": 39,
+              "width": 297,
+              "height": 165.96875,
+              "text": "Mini selected Fits the measured height and swing limits. Earliest pickup 18:10 Tool ready 18:10 \u00b7 desk closes 19:00",
+              "visible": true,
+              "pressed": null,
+              "focused": true,
+              "accessibleLabel": null
+            }
+          }
+        }
+      },
+      "bike-coop-clearance-acceptance-1440": {
+        "width": 1440,
+        "height": 900,
+        "html_sha256": "1d71ec8bc552b606c79e32ebe2ac271aafd07eeb4a71ee8099a24102539cd7a8",
+        "images": {
+          "before": {
+            "file": "bike-coop-clearance-acceptance-1440-before.png",
+            "sha256": "3ab312287d151e798fa070d7393c6319eec11bba0fdf0765eef65b947584dd31"
+          },
+          "chosen": {
+            "file": "bike-coop-clearance-acceptance-1440-chosen.png",
+            "sha256": "164e2e547369614bc59c757803a2ad8de88890b8808721995586d1654386e40b"
+          },
+          "after": {
+            "file": "bike-coop-clearance-acceptance-1440-after.png",
+            "sha256": "164e2e547369614bc59c757803a2ad8de88890b8808721995586d1654386e40b"
+          },
+          "edge": {
+            "file": "bike-coop-clearance-acceptance-1440-edge.png",
+            "sha256": "442630e15952c9a5cd0eb71da2bbf8b9468b2430b9c4f9eebf51cfb3b84713a4"
+          }
+        },
+        "checks": {
+          "selection_reached_by_keyboard": true,
+          "separate_change_reached_by_keyboard": false,
+          "replacement_reached_by_keyboard": true,
+          "focus_visible_after_change": true,
+          "focus_visible_after_recovery": true,
+          "no_page_errors": true,
+          "no_horizontal_overflow": true,
+          "initial_selection_before_change": false,
+          "old_selection_retained": true,
+          "replacement_and_withdrawal_visible_together": false,
+          "replacement_selected": true,
+          "withdrawal_visible_after_recovery": true
+        },
+        "observed": {
+          "conflict_input": "no separate control",
+          "focus_after_change": "Choose Mini",
+          "focus_after_replacement": "selection",
+          "conflict_boxes": {
+            "limits": {
+              "top": 948,
+              "left": 71.25,
+              "width": 550.875,
+              "height": 36.375,
+              "text": "Height is compared with the smallest possible clearance, 38 mm. Reset swing is compared with the 14\u00b0 limit. Hand clearance is not measured here.",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "slim": {
+              "top": 642.5,
+              "left": 889.734375,
+              "width": 116,
+              "height": 42,
+              "text": "Choose Slim",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "offset": {
+              "top": 717,
+              "left": 71.25,
+              "width": 947.5,
+              "height": 108,
+              "text": "Offset Socket lock failed 33\u201334 mm Fits 9\u00b0 Within limit 17:40 Before arrival Unavailable",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": "Offset"
+            },
+            "mini": {
+              "top": 858,
+              "left": 889.734375,
+              "width": 116,
+              "height": 42,
+              "text": "Choose Mini",
+              "visible": true,
+              "pressed": null,
+              "focused": true,
+              "accessibleLabel": null
+            },
+            "mini-evidence": {
+              "top": 825,
+              "left": 71.25,
+              "width": 947.5,
+              "height": 108,
+              "text": "Mini Fits both limits 30\u201331 mm Fits 7\u00b0 Within limit 18:10 After arrival Choose Mini",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": "Mini"
+            },
+            "failure": {
+              "top": 618.578125,
+              "left": 1076.75,
+              "width": 254,
+              "height": 87.78125,
+              "text": "Stock update \u00b7 17:42 Offset\u2019s socket lock failed. It is unavailable; choose a replacement.",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "current": {
+              "top": 520.390625,
+              "left": 1076.75,
+              "width": 254,
+              "height": 80.1875,
+              "text": "Offset \u00b7 unavailable Your choice is preserved. The socket lock failed; select another tool below.",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            }
+          },
+          "replacement_boxes": {
+            "limits": {
+              "top": 948,
+              "left": 71.25,
+              "width": 550.875,
+              "height": 36.375,
+              "text": "Height is compared with the smallest possible clearance, 38 mm. Reset swing is compared with the 14\u00b0 limit. Hand clearance is not measured here.",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "slim": {
+              "top": 642.5,
+              "left": 889.734375,
+              "width": 116,
+              "height": 42,
+              "text": "Choose Slim",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "offset": {
+              "top": 717,
+              "left": 71.25,
+              "width": 947.5,
+              "height": 108,
+              "text": "Offset Socket lock failed 33\u201334 mm Fits 9\u00b0 Within limit 17:40 Before arrival Unavailable",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": "Offset"
+            },
+            "mini": {
+              "top": 858,
+              "left": 889.734375,
+              "width": 116,
+              "height": 42,
+              "text": "Selected",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "mini-evidence": {
+              "top": 825,
+              "left": 71.25,
+              "width": 947.5,
+              "height": 108,
+              "text": "Mini Fits both limits 30\u201331 mm Fits 7\u00b0 Within limit 18:10 After arrival Selected",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": "Mini"
+            },
+            "failure": {
+              "top": 727.953125,
+              "left": 1076.75,
+              "width": 254,
+              "height": 87.78125,
+              "text": "Stock update \u00b7 17:42 Offset\u2019s socket lock failed. It is unavailable; choose a replacement.",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "current": {
+              "top": 520.390625,
+              "left": 1076.75,
+              "width": 254,
+              "height": 189.5625,
+              "text": "Mini selected Fits the measured height and swing limits. Earliest pickup 18:10 Tool ready 18:10 \u00b7 desk closes 19:00",
+              "visible": true,
+              "pressed": null,
+              "focused": true,
+              "accessibleLabel": null
+            }
+          }
+        }
+      },
+      "poetry-last-train-parent-320": {
+        "width": 320,
+        "height": 700,
+        "html_sha256": "12585acd6d831dbc8ef96b76d671466ff090fcf3d8d5c57d91c81e310b398e04",
+        "images": {
+          "before": {
+            "file": "poetry-last-train-parent-320-before.png",
+            "sha256": "97224e9b8429426d115ea7d4edbce74ccb64d85e41f9dbe09a85bbe20bc9e332"
+          },
+          "chosen": {
+            "file": "poetry-last-train-parent-320-chosen.png",
+            "sha256": "3a60d4218ebac4337ff3438021b064a883a54b5e6fd98c383693fe2340e5f88d"
+          },
+          "after": {
+            "file": "poetry-last-train-parent-320-after.png",
+            "sha256": "b237997fc4673727216b031edcecbefed5e896431b927714710536cb0f303cbe"
+          },
+          "edge": {
+            "file": "poetry-last-train-parent-320-edge.png",
+            "sha256": "e03d26a411861efba3c6df7a705f18e3225931739523e7a521d3256e22911454"
+          }
+        },
+        "checks": {
+          "selection_reached_by_keyboard": true,
+          "separate_change_reached_by_keyboard": true,
+          "replacement_reached_by_keyboard": true,
+          "focus_visible_after_change": true,
+          "focus_visible_after_recovery": true,
+          "no_page_errors": true,
+          "no_horizontal_overflow": true,
+          "original_selection_verified": true,
+          "old_route_retained": true,
+          "three_recovery_elements_visible_together": false,
+          "arcade_estimate_present": true,
+          "alternative_selected": true
+        }
+      },
+      "poetry-last-train-parent-390": {
+        "width": 390,
+        "height": 844,
+        "html_sha256": "12585acd6d831dbc8ef96b76d671466ff090fcf3d8d5c57d91c81e310b398e04",
+        "images": {
+          "before": {
+            "file": "poetry-last-train-parent-390-before.png",
+            "sha256": "1e591c3190ce2143ebda9c0ec161c4cca2c296d7fe0f3ac6b858219b8f50d243"
+          },
+          "chosen": {
+            "file": "poetry-last-train-parent-390-chosen.png",
+            "sha256": "66974a83851af6ad6f2f7c7e7f4cf23156255af52934dc4e181eb6f2ebfd5b70"
+          },
+          "after": {
+            "file": "poetry-last-train-parent-390-after.png",
+            "sha256": "f6cb72baa2f6c697feb88f1b74bd1f22f1aa0815b726b060692f1e71cb659946"
+          },
+          "edge": {
+            "file": "poetry-last-train-parent-390-edge.png",
+            "sha256": "ee82eefc8c12ed95013efeaeadb1fec1acb35f87f75832f9f3a9ec3c64fbc5e8"
+          }
+        },
+        "checks": {
+          "selection_reached_by_keyboard": true,
+          "separate_change_reached_by_keyboard": true,
+          "replacement_reached_by_keyboard": true,
+          "focus_visible_after_change": true,
+          "focus_visible_after_recovery": true,
+          "no_page_errors": true,
+          "no_horizontal_overflow": true,
+          "original_selection_verified": true,
+          "old_route_retained": true,
+          "three_recovery_elements_visible_together": false,
+          "arcade_estimate_present": true,
+          "alternative_selected": true
+        }
+      },
+      "poetry-last-train-parent-1440": {
+        "width": 1440,
+        "height": 900,
+        "html_sha256": "12585acd6d831dbc8ef96b76d671466ff090fcf3d8d5c57d91c81e310b398e04",
+        "images": {
+          "before": {
+            "file": "poetry-last-train-parent-1440-before.png",
+            "sha256": "6676ca3a2b88d316807a37fd20c491c7ca0c8d4bf282fdc538e503046ab7df5d"
+          },
+          "chosen": {
+            "file": "poetry-last-train-parent-1440-chosen.png",
+            "sha256": "ac91832f877876cdf92764358b64967670fbc75c54447cff9d96a505ee3007d1"
+          },
+          "after": {
+            "file": "poetry-last-train-parent-1440-after.png",
+            "sha256": "b5ed912351f634ed56af481804fecb10db4d95de6d4ae11ac47c3f1dafe14b92"
+          },
+          "edge": {
+            "file": "poetry-last-train-parent-1440-edge.png",
+            "sha256": "97e121adedae487ceaa15032c6c6621498e08143e5b0d87840102a518b9c24d5"
+          }
+        },
+        "checks": {
+          "selection_reached_by_keyboard": true,
+          "separate_change_reached_by_keyboard": true,
+          "replacement_reached_by_keyboard": true,
+          "focus_visible_after_change": true,
+          "focus_visible_after_recovery": true,
+          "no_page_errors": true,
+          "no_horizontal_overflow": true,
+          "original_selection_verified": true,
+          "old_route_retained": true,
+          "three_recovery_elements_visible_together": false,
+          "arcade_estimate_present": true,
+          "alternative_selected": true
+        }
+      },
+      "poetry-last-train-acceptance-320": {
+        "width": 320,
+        "height": 700,
+        "html_sha256": "701bacbaac63493e926e7e37f0ef75b3e9a240babfc6b200f4503c7b1613ab86",
+        "images": {
+          "before": {
+            "file": "poetry-last-train-acceptance-320-before.png",
+            "sha256": "c8aab499fe4932d623d59e26f17f2991ef3ba8ad06dc8343dd3b405e86912260"
+          },
+          "chosen": {
+            "file": "poetry-last-train-acceptance-320-chosen.png",
+            "sha256": "a5bf197f21f09b5298a23d5419a49e4da0d90fd885d6b29e92d68c1562c32ff9"
+          },
+          "after": {
+            "file": "poetry-last-train-acceptance-320-after.png",
+            "sha256": "f47996c6c4e43d0aa01d8a10f91761ae4eb2937c19f493194e5dcec00060de14"
+          },
+          "edge": {
+            "file": "poetry-last-train-acceptance-320-edge.png",
+            "sha256": "6dbf8bf8c8da6cca8335e06423a01a808bcd53511eeebb9ae204387a4f83651d"
+          }
+        },
+        "checks": {
+          "selection_reached_by_keyboard": true,
+          "separate_change_reached_by_keyboard": true,
+          "replacement_reached_by_keyboard": true,
+          "focus_visible_after_change": true,
+          "focus_visible_after_recovery": true,
+          "no_page_errors": true,
+          "no_horizontal_overflow": true,
+          "original_selection_verified": true,
+          "old_route_retained": true,
+          "three_recovery_elements_visible_together": false,
+          "arcade_estimate_present": true,
+          "alternative_selected": true
+        },
+        "observed": {
+          "conflict_input": "Enter",
+          "focus_after_change": "lift-toggle",
+          "focus_after_replacement": "margins-choice",
+          "conflict_boxes": {
+            "control": {
+              "top": 533.234375,
+              "left": 20,
+              "width": 129.375,
+              "height": 45,
+              "text": "Lift closed",
+              "visible": true,
+              "pressed": "false",
+              "focused": true,
+              "accessibleLabel": "Courtyard lift open"
+            },
+            "voices": {
+              "top": -768.0625,
+              "left": 21,
+              "width": 263,
+              "height": 237.96875,
+              "text": "Selected Ends 21:50 Voices Arcade ramp 29 min to boarding 4 min after train",
+              "visible": false,
+              "pressed": "true",
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "margin-option": {
+              "top": -530.09375,
+              "left": 21,
+              "width": 263,
+              "height": 238.96875,
+              "text": "Choose reading Ends 21:45 Margins Canal ramp 19 min to boarding 11 min before train",
+              "visible": false,
+              "pressed": "false",
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "direct-recovery": {
+              "top": 347.4375,
+              "left": 41,
+              "width": 159.03125,
+              "height": 26.796875,
+              "text": "Choose Margins instead",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "forecast": {
+              "top": -270.125,
+              "left": 20,
+              "width": 265,
+              "height": 667.359375,
+              "text": "Your journey from Voices Arcade ramp \u00b7 complete step-free route Misses the last train Reading ends 21:50 Voices Estimated at level boarding 22:19 29 minutes via Arcade ramp Last train departs 22:15 Your departure 4 minutes after departure Step-free from street to seat and back to level boarding. Choose Margins instead",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "route": {
+              "top": -153.125,
+              "left": 41,
+              "width": 130.046875,
+              "height": 71.390625,
+              "text": "Arcade ramp \u00b7 complete step-free route",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "estimate": {
+              "top": 66.859375,
+              "left": 71,
+              "width": 193,
+              "height": 39.59375,
+              "text": "22:19",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "margin": {
+              "top": 263.046875,
+              "left": 41,
+              "width": 171.765625,
+              "height": 28,
+              "text": "4 minutes after departure",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            }
+          },
+          "replacement_boxes": {
+            "control": {
+              "top": 1323.84375,
+              "left": 20,
+              "width": 129.375,
+              "height": 45,
+              "text": "Lift closed",
+              "visible": false,
+              "pressed": "false",
+              "focused": false,
+              "accessibleLabel": "Courtyard lift open"
+            },
+            "voices": {
+              "top": -7.453125,
+              "left": 21,
+              "width": 263,
+              "height": 237.96875,
+              "text": "Choose reading Ends 21:50 Voices Arcade ramp 29 min to boarding 4 min after train",
+              "visible": false,
+              "pressed": "false",
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "margin-option": {
+              "top": 230.515625,
+              "left": 21,
+              "width": 263,
+              "height": 238.96875,
+              "text": "Selected Ends 21:45 Margins Canal ramp 19 min to boarding 11 min before train",
+              "visible": true,
+              "pressed": "true",
+              "focused": true,
+              "accessibleLabel": null
+            },
+            "direct-recovery": {
+              "top": 1138.046875,
+              "left": 41,
+              "width": 148.6875,
+              "height": 26.796875,
+              "text": "Choose Voices instead",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "forecast": {
+              "top": 490.484375,
+              "left": 20,
+              "width": 265,
+              "height": 697.359375,
+              "text": "Your journey from Margins Canal ramp \u00b7 complete step-free route Makes the last train Reading ends 21:45 Margins Estimated at level boarding 22:04 19 minutes via Canal ramp Last train departs 22:15 Your departure 11 minutes before departure Step-free from street to seat and back to level boarding. Choose Voices instead",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "route": {
+              "top": 637.484375,
+              "left": 41,
+              "width": 132.875,
+              "height": 71.390625,
+              "text": "Canal ramp \u00b7 complete step-free route",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "estimate": {
+              "top": 857.46875,
+              "left": 71,
+              "width": 193,
+              "height": 39.59375,
+              "text": "22:04",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "margin": {
+              "top": 1053.65625,
+              "left": 41,
+              "width": 187.25,
+              "height": 28,
+              "text": "11 minutes before departure",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            }
+          }
+        }
+      },
+      "poetry-last-train-acceptance-390": {
+        "width": 390,
+        "height": 844,
+        "html_sha256": "701bacbaac63493e926e7e37f0ef75b3e9a240babfc6b200f4503c7b1613ab86",
+        "images": {
+          "before": {
+            "file": "poetry-last-train-acceptance-390-before.png",
+            "sha256": "08a333e75b2aff1b51ac42739837914ec1c3e1ddd510824e2f01f150d8463699"
+          },
+          "chosen": {
+            "file": "poetry-last-train-acceptance-390-chosen.png",
+            "sha256": "c53857a956f81195b912585f426e5da140a76aec8d12d703cf7fe648e969b7e3"
+          },
+          "after": {
+            "file": "poetry-last-train-acceptance-390-after.png",
+            "sha256": "fe53228bd306def0f265c4ccb82294f051d31e980cae50c9a9571fb23c1cea21"
+          },
+          "edge": {
+            "file": "poetry-last-train-acceptance-390-edge.png",
+            "sha256": "5cfc4dc031ff4e8255d5d23f0bac3bc4a0bf570c7daa5b04fe093b7fc06bf7ee"
+          }
+        },
+        "checks": {
+          "selection_reached_by_keyboard": true,
+          "separate_change_reached_by_keyboard": true,
+          "replacement_reached_by_keyboard": true,
+          "focus_visible_after_change": true,
+          "focus_visible_after_recovery": true,
+          "no_page_errors": true,
+          "no_horizontal_overflow": true,
+          "original_selection_verified": true,
+          "old_route_retained": true,
+          "three_recovery_elements_visible_together": false,
+          "arcade_estimate_present": true,
+          "alternative_selected": true
+        },
+        "observed": {
+          "conflict_input": "Enter",
+          "focus_after_change": "lift-toggle",
+          "focus_after_replacement": "margins-choice",
+          "conflict_boxes": {
+            "control": {
+              "top": 677.296875,
+              "left": 20,
+              "width": 129.375,
+              "height": 45,
+              "text": "Lift closed",
+              "visible": true,
+              "pressed": "false",
+              "focused": true,
+              "accessibleLabel": "Courtyard lift open"
+            },
+            "voices": {
+              "top": -570.203125,
+              "left": 21,
+              "width": 333,
+              "height": 237.96875,
+              "text": "Selected Ends 21:50 Voices Arcade ramp 29 min to boarding 4 min after train",
+              "visible": false,
+              "pressed": "true",
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "margin-option": {
+              "top": -332.234375,
+              "left": 21,
+              "width": 333,
+              "height": 238.96875,
+              "text": "Choose reading Ends 21:45 Margins Canal ramp 19 min to boarding 11 min before train",
+              "visible": false,
+              "pressed": "false",
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "direct-recovery": {
+              "top": 491.5,
+              "left": 41,
+              "width": 159.03125,
+              "height": 26.796875,
+              "text": "Choose Margins instead",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "forecast": {
+              "top": -72.265625,
+              "left": 20,
+              "width": 335,
+              "height": 613.5625,
+              "text": "Your journey from Voices Arcade ramp \u00b7 complete step-free route Misses the last train Reading ends 21:50 Voices Estimated at level boarding 22:19 29 minutes via Arcade ramp Last train departs 22:15 Your departure 4 minutes after departure Step-free from street to seat and back to level boarding. Choose Margins instead",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "route": {
+              "top": 14.734375,
+              "left": 41,
+              "width": 180.90625,
+              "height": 47.59375,
+              "text": "Arcade ramp \u00b7 complete step-free route",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "estimate": {
+              "top": 210.921875,
+              "left": 71,
+              "width": 263,
+              "height": 39.59375,
+              "text": "22:19",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "margin": {
+              "top": 407.109375,
+              "left": 41,
+              "width": 171.765625,
+              "height": 28,
+              "text": "4 minutes after departure",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            }
+          },
+          "replacement_boxes": {
+            "control": {
+              "top": 1312.046875,
+              "left": 20,
+              "width": 129.375,
+              "height": 45,
+              "text": "Lift closed",
+              "visible": false,
+              "pressed": "false",
+              "focused": false,
+              "accessibleLabel": "Courtyard lift open"
+            },
+            "voices": {
+              "top": 64.546875,
+              "left": 21,
+              "width": 333,
+              "height": 237.96875,
+              "text": "Choose reading Ends 21:50 Voices Arcade ramp 29 min to boarding 4 min after train",
+              "visible": true,
+              "pressed": "false",
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "margin-option": {
+              "top": 302.515625,
+              "left": 21,
+              "width": 333,
+              "height": 238.96875,
+              "text": "Selected Ends 21:45 Margins Canal ramp 19 min to boarding 11 min before train",
+              "visible": true,
+              "pressed": "true",
+              "focused": true,
+              "accessibleLabel": null
+            },
+            "direct-recovery": {
+              "top": 1126.25,
+              "left": 41,
+              "width": 148.6875,
+              "height": 26.796875,
+              "text": "Choose Voices instead",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "forecast": {
+              "top": 562.484375,
+              "left": 20,
+              "width": 335,
+              "height": 613.5625,
+              "text": "Your journey from Margins Canal ramp \u00b7 complete step-free route Makes the last train Reading ends 21:45 Margins Estimated at level boarding 22:04 19 minutes via Canal ramp Last train departs 22:15 Your departure 11 minutes before departure Step-free from street to seat and back to level boarding. Choose Voices instead",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "route": {
+              "top": 649.484375,
+              "left": 41,
+              "width": 184.84375,
+              "height": 47.59375,
+              "text": "Canal ramp \u00b7 complete step-free route",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "estimate": {
+              "top": 845.671875,
+              "left": 71,
+              "width": 263,
+              "height": 39.59375,
+              "text": "22:04",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "margin": {
+              "top": 1041.859375,
+              "left": 41,
+              "width": 187.25,
+              "height": 28,
+              "text": "11 minutes before departure",
+              "visible": false,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            }
+          }
+        }
+      },
+      "poetry-last-train-acceptance-1440": {
+        "width": 1440,
+        "height": 900,
+        "html_sha256": "701bacbaac63493e926e7e37f0ef75b3e9a240babfc6b200f4503c7b1613ab86",
+        "images": {
+          "before": {
+            "file": "poetry-last-train-acceptance-1440-before.png",
+            "sha256": "36083c56b882c80920c98121cb6d9069255c3830215403b2b09b71beec1e0365"
+          },
+          "chosen": {
+            "file": "poetry-last-train-acceptance-1440-chosen.png",
+            "sha256": "002799b5e835c8b6b2a93455de1e115e9fcf7b9f7e8a35a1105f8c6016af6146"
+          },
+          "after": {
+            "file": "poetry-last-train-acceptance-1440-after.png",
+            "sha256": "1b6640406243de4b5be7297a6540f0385949871cfc76b6c87c58ba74b3c4ce4e"
+          },
+          "edge": {
+            "file": "poetry-last-train-acceptance-1440-edge.png",
+            "sha256": "28b01bd61bcd7f703172670aacf40bea1603c27a8bc092af6b81eb9bd9102164"
+          }
+        },
+        "checks": {
+          "selection_reached_by_keyboard": true,
+          "separate_change_reached_by_keyboard": true,
+          "replacement_reached_by_keyboard": true,
+          "focus_visible_after_change": true,
+          "focus_visible_after_recovery": true,
+          "no_page_errors": true,
+          "no_horizontal_overflow": true,
+          "original_selection_verified": true,
+          "old_route_retained": true,
+          "three_recovery_elements_visible_together": true,
+          "arcade_estimate_present": true,
+          "alternative_selected": true
+        },
+        "observed": {
+          "conflict_input": "Enter",
+          "focus_after_change": "lift-toggle",
+          "focus_after_replacement": "margins-choice",
+          "conflict_boxes": {
+            "control": {
+              "top": 727.9375,
+              "left": 1196.703125,
+              "width": 141.375,
+              "height": 45,
+              "text": "Lift closed",
+              "visible": true,
+              "pressed": "false",
+              "focused": true,
+              "accessibleLabel": "Courtyard lift open"
+            },
+            "voices": {
+              "top": 20.75,
+              "left": 87.921875,
+              "width": 624.578125,
+              "height": 286,
+              "text": "Selected Ends 21:50 Voices Arcade ramp 29 min to boarding 4 min after train",
+              "visible": true,
+              "pressed": "true",
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "margin-option": {
+              "top": 20.75,
+              "left": 712.5,
+              "width": 624.578125,
+              "height": 286,
+              "text": "Choose reading Ends 21:45 Margins Canal ramp 19 min to boarding 11 min before train",
+              "visible": true,
+              "pressed": "false",
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "direct-recovery": {
+              "top": 617.234375,
+              "left": 1148.046875,
+              "width": 159.03125,
+              "height": 26.796875,
+              "text": "Choose Margins instead",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "forecast": {
+              "top": 335.75,
+              "left": 86.921875,
+              "width": 1251.15625,
+              "height": 349.6875,
+              "text": "Your journey from Voices Arcade ramp \u00b7 complete step-free route Misses the last train Reading ends 21:50 Voices Estimated at level boarding 22:19 29 minutes via Arcade ramp Last train departs 22:15 Your departure 4 minutes after departure Step-free from street to seat and back to level boarding. Choose Margins instead",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "route": {
+              "top": 405.75,
+              "left": 117.921875,
+              "width": 315.703125,
+              "height": 23.796875,
+              "text": "Arcade ramp \u00b7 complete step-free route",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "estimate": {
+              "top": 503.546875,
+              "left": 472.890625,
+              "width": 465.203125,
+              "height": 47.296875,
+              "text": "22:19",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "margin": {
+              "top": 603.84375,
+              "left": 117.921875,
+              "width": 171.765625,
+              "height": 28,
+              "text": "4 minutes after departure",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            }
+          },
+          "replacement_boxes": {
+            "control": {
+              "top": 727.9375,
+              "left": 1196.703125,
+              "width": 141.375,
+              "height": 45,
+              "text": "Lift closed",
+              "visible": true,
+              "pressed": "false",
+              "focused": false,
+              "accessibleLabel": "Courtyard lift open"
+            },
+            "voices": {
+              "top": 20.75,
+              "left": 87.921875,
+              "width": 624.578125,
+              "height": 286,
+              "text": "Choose reading Ends 21:50 Voices Arcade ramp 29 min to boarding 4 min after train",
+              "visible": true,
+              "pressed": "false",
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "margin-option": {
+              "top": 20.75,
+              "left": 712.5,
+              "width": 624.578125,
+              "height": 286,
+              "text": "Selected Ends 21:45 Margins Canal ramp 19 min to boarding 11 min before train",
+              "visible": true,
+              "pressed": "true",
+              "focused": true,
+              "accessibleLabel": null
+            },
+            "direct-recovery": {
+              "top": 617.234375,
+              "left": 1158.390625,
+              "width": 148.6875,
+              "height": 26.796875,
+              "text": "Choose Voices instead",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "forecast": {
+              "top": 335.75,
+              "left": 86.921875,
+              "width": 1251.15625,
+              "height": 349.6875,
+              "text": "Your journey from Margins Canal ramp \u00b7 complete step-free route Makes the last train Reading ends 21:45 Margins Estimated at level boarding 22:04 19 minutes via Canal ramp Last train departs 22:15 Your departure 11 minutes before departure Step-free from street to seat and back to level boarding. Choose Voices instead",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "route": {
+              "top": 405.75,
+              "left": 117.921875,
+              "width": 334.078125,
+              "height": 23.796875,
+              "text": "Canal ramp \u00b7 complete step-free route",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "estimate": {
+              "top": 503.546875,
+              "left": 472.890625,
+              "width": 465.203125,
+              "height": 47.296875,
+              "text": "22:04",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            },
+            "margin": {
+              "top": 603.84375,
+              "left": 117.921875,
+              "width": 187.25,
+              "height": 28,
+              "text": "11 minutes before departure",
+              "visible": true,
+              "pressed": null,
+              "focused": false,
+              "accessibleLabel": null
+            }
+          }
+        }
+      }
+    }
+  },
+  "ordered_poetry_specific_visibility": {
+    "320": {
+      "closure_miss_and_replacement_visible_together": true,
+      "new_2204_outcome_fully_visible_after_switch": false,
+      "new_2204_top_css_px": 857.46875
+    },
+    "390": {
+      "closure_miss_and_replacement_visible_together": true,
+      "new_2204_outcome_fully_visible_after_switch": false,
+      "new_2204_top_css_px": 845.671875
+    },
+    "1440": {
+      "closure_miss_and_replacement_visible_together": true,
+      "new_2204_outcome_fully_visible_after_switch": true,
+      "new_2204_top_css_px": 503.546875
+    }
+  },
+  "borrowing": "Both trial drafts applied the 17:42 withdrawal on the same activation that chose Offset. The ordered trial kept the choice and put Mini in focus, with the timestamped update outside the 390 px viewport.",
+  "audit_scope": "Keyboard-only Chromium replay at 320, 390 and 1440 CSS px. The whole-forecast geometry proxy was stricter than required, so the ordered poetry receipt also reads individual controls and the actual new estimate."
+}
