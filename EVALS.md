@@ -604,3 +604,6 @@ The unedited `04d7320` Tacoma draft moved the 390 px name input from **1,067 to 
 
 
 A hosted diagnostic replay exercised all four frozen drafts at the same three widths. It accepts equivalent weekday ranges and checks that the editable result is visible and keyboard reachable when the heading receives focus. The earlier draft now verifies hours, first-frame result visibility, keyboard editing and retained selections at **3/3 widths**. Its first field and preview still miss the initial view at 320 and 390 px. The authored call board passed every check at all three widths. [Revised replay and image hashes](evidence/benchmark-v1/consultation-opening-view-semantic-replay.json)
+
+
+The next isolated candidate, `d2ad739`, passed four pinned macOS 15 installs across Apple Silicon and Intel with pipx and uv. All four reproduced both complete expected practice replies. The unedited Tacoma draft passed the full browser contract at **390 and 1440 px** versus **1440 px only** for the prior generated draft. The first name input moved from **883 to 709 CSS px** at 390 px. At 320 px it starts at 755 px in a 700 px viewport. The generated page repeats service names and still misses the smallest opening. The full visual gate stays open. [Exact installs, captures and decision](evidence/benchmark-v1/consultation-unified-composition.json)
