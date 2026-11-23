@@ -60,11 +60,11 @@ _CLAUSE_BREAK = re.compile(
 _FIELD_COLLECTION = re.compile(r"\b(?:collect|ask for|enter|provide|record)\b")
 _ENTRY_OUTCOME = re.compile(r"\b(?:confirmation|submission|invalid|validat\w*|submitted)\b")
 _ARTIFACT_INSPECTION = re.compile(
-    r"\b(?:inspect|examine|reveal|look closely at|(?:take )?a closer look at|zoom in on|"
-    r"(?:open|show) a close[- ]up of)\s+"
+    r"\b(?:inspect(?:ing|ion of)?|examin(?:e|ing|ation of)|reveal|look closely at|"
+    r"(?:take )?a closer look at|zoom in on|(?:open|show) a close[- ]up of)\s+"
     r"(?:[\w’'-]+\s+){0,5}"
     r"(?:eggs?|handles?|clasps?|inscriptions?|engravings?|signatures?|seams?|stitching|"
-    r"brushwork|carvings?|grain|hallmarks?|hinges?|watermarks?|glaze crackle|"
+    r"brushwork|carvings?|grain|hallmarks?|hinges?|watermarks?|glaze crackle|milk stream|stream of milk|"
     r"(?:inventory|serial) numbers?|(?:maker(?:[’']s)?|tool) marks?|stamps?)\b"
 )
 # Require physical context as well as an inspection phrase. Common words such
@@ -176,7 +176,7 @@ async def direct(brief: str, surface: Surface | None = None, avoid: list[str] | 
             f"Read {DETAIL_RESOURCE_URI} for an executable disclosure. Keep its activation and return behavior, "
             "fill slots with verified content, and style from the brief. When your client cannot read resources, "
             "use the same whole-to-detail interaction with the explanation in the opening view. "
-            " If a verified crop is supplied, display it undistorted. For a normalized source point (x,y) "
+            "If a verified crop is supplied, display it undistorted. For a normalized source point (x,y) "
             "in a full image, measure the opened crop frame (W,H) and decoded image (Nw,Nh). "
             "Use scale s above max(W/Nw,H/Nh) for magnification. Set image width w=Nw*s and height h=Nh*s. "
             "In an overflow-hidden relative frame place the absolute image at "
