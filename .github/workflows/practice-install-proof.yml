@@ -1,0 +1,57 @@
+name: Installed practice routing holdout
+
+on:
+  push:
+    branches: [design-mcp/practice-install-proof]
+    paths:
+      - 'evals/practice_install/**'
+      - '.github/workflows/practice-install-proof.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  clean-install:
+    runs-on: macos-15
+    timeout-minutes: 10
+    env:
+      CANDIDATE: 392e1cdd2d0774f32a9ddc770a23c5f48d781738
+      EXPECTED_ARCH: arm64
+      EXPECTED_PYTHON: '3.13'
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: ${{ env.CANDIDATE }}
+          path: candidate
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        id: python
+        with:
+          python-version: '3.13'
+      - name: Install exact candidate from Git with pipx and uv
+        env:
+          PYTHON_EXECUTABLE: ${{ steps.python.outputs.python-path }}
+        run: |
+          test "$(git -C candidate rev-parse HEAD)" = "$CANDIDATE"
+          bash candidate/scripts/verify_install_matrix.sh --check-host 15 "$EXPECTED_ARCH"
+          bash candidate/scripts/verify_clean_install.sh candidate "$PYTHON_EXECUTABLE" \
+            "$RUNNER_TEMP/design-install" "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY.git"
+      - name: Replay the signed-off brief against both installed executables
+        run: |
+          install="$RUNNER_TEMP/design-install"
+          receipts="$RUNNER_TEMP/receipts"
+          mkdir "$receipts"
+          for method in pipx uv; do
+            "$install/uv-tools/design-mcp/bin/python" -I evals/practice_install/replay.py \
+              "$install/$method-bin/design-mcp" "$CANDIDATE" "$method" \
+              > "$receipts/$method.json"
+          done
+          cat "$receipts/pipx.json" "$receipts/uv.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: installed-practice-routing
+          path: ${{ runner.temp }}/receipts
+          retention-days: 14
