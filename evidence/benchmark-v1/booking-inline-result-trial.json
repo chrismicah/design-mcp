@@ -1,0 +1,1248 @@
+{
+  "hypothesis": "Place a short live date within the selection area in both direct and react.",
+  "decision": "Do not ship. The treatment kept selected dates visible and introduced horizontal overflow at 320 px. The next layout revision reached the client with an unrequested surface and could not be scored on the brief-only protocol.",
+  "control": {
+    "install_dependency_pin": "0978712149674ad7fd5738c53d4b7966ba163b43",
+    "trial_package": false,
+    "model": "gpt-6-luna",
+    "reasoning": "low",
+    "fresh_thread": "01a20728-894e-7c23-95d2-dfdb0587e578",
+    "user_messages": 2,
+    "clarification_turns": 0,
+    "direction": "service-work-order",
+    "brief_sha256": "431f864deaa33b9ab1582fe93e4b8a4e669713bace9a8f9ab4d6c76f5148afa1",
+    "initial": {
+      "usage": {
+        "input_tokens": 56462,
+        "cached_input_tokens": 44160,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2971,
+        "reasoning_output_tokens": 0
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "design-mcp",
+          "tool": "direct",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "treatment_call": true,
+      "direct_call": true,
+      "status": "passed",
+      "milliseconds": 59221,
+      "exit_code": 0,
+      "sessions": [
+        "01a20728-894e-7c23-95d2-dfdb0587e578"
+      ],
+      "prompt_sha256": "e38c16c9702aa4ddfa6f40a16ae2599d2872c8078231b30ff1702931d1b08bd8",
+      "trace_sha256": "d0bfbe70df44508ea89bf2f51cf8aea833b12f9a98291b1ae610268a312574f5",
+      "html_sha256": "7c9fbe025c94a93a48fe22c45d961e7f95dbf31df6499c57d6210ea20e1de496"
+    },
+    "calmer": {
+      "usage": {
+        "input_tokens": 102727,
+        "cached_input_tokens": 87040,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 5787,
+        "reasoning_output_tokens": 0
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "design-mcp",
+          "tool": "react",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "treatment_call": true,
+      "status": "passed",
+      "milliseconds": 56989,
+      "exit_code": 0,
+      "sessions": [
+        "01a20728-894e-7c23-95d2-dfdb0587e578"
+      ],
+      "prompt_sha256": "4418427c2a96f454039784b52e0ae9cc18d066a8457579e09056060f72879c18",
+      "trace_sha256": "3f93e05d18b7b7d1d3f2a16d2b8d4dd1d4976084c1d0316778da045ade10ebc1",
+      "html_sha256": "0c055a8877c0f1467f56b26edcf01a88b055d8a5ae7e3b14279bd53108dd2b5e"
+    }
+  },
+  "proposed": {
+    "install_dependency_pin": "0978712149674ad7fd5738c53d4b7966ba163b43",
+    "trial_package": true,
+    "model": "gpt-6-luna",
+    "reasoning": "low",
+    "fresh_thread": "01a20728-71ed-7843-a694-48df7b5a00d2",
+    "user_messages": 2,
+    "clarification_turns": 0,
+    "direction": "service-work-order",
+    "brief_sha256": "431f864deaa33b9ab1582fe93e4b8a4e669713bace9a8f9ab4d6c76f5148afa1",
+    "initial": {
+      "usage": {
+        "input_tokens": 56251,
+        "cached_input_tokens": 40320,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2823,
+        "reasoning_output_tokens": 0
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "design-mcp",
+          "tool": "direct",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "treatment_call": true,
+      "direct_call": true,
+      "status": "passed",
+      "milliseconds": 56314,
+      "exit_code": 0,
+      "sessions": [
+        "01a20728-71ed-7843-a694-48df7b5a00d2"
+      ],
+      "prompt_sha256": "e38c16c9702aa4ddfa6f40a16ae2599d2872c8078231b30ff1702931d1b08bd8",
+      "trace_sha256": "85e1cd56aeeefd9c7b39d769a6f6ff2a260edb4f2ff64750f42b40b284035c51",
+      "html_sha256": "244a7cee459a4b0d382243cc7bb78515220e179621c986afdefa30aafcfac0a8"
+    },
+    "calmer": {
+      "usage": {
+        "input_tokens": 102091,
+        "cached_input_tokens": 82816,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 5548,
+        "reasoning_output_tokens": 0
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "design-mcp",
+          "tool": "react",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "treatment_call": true,
+      "status": "passed",
+      "milliseconds": 53353,
+      "exit_code": 0,
+      "sessions": [
+        "01a20728-71ed-7843-a694-48df7b5a00d2"
+      ],
+      "prompt_sha256": "4418427c2a96f454039784b52e0ae9cc18d066a8457579e09056060f72879c18",
+      "trace_sha256": "25b5c4ce36a33d919e8c90581d832cb840d30be5a218c40c6f789e306d07438d",
+      "html_sha256": "d800ae4f1e8c9ee8cafbcf6daf6696e198e0b3aadbd84b4c156cb37ebbb8c45c"
+    }
+  },
+  "browser": "Chrome/158.0.8127.36",
+  "control_browser": {
+    "initial": {
+      "html_sha256": "7c9fbe025c94a93a48fe22c45d961e7f95dbf31df6499c57d6210ea20e1de496",
+      "screens": [
+        {
+          "width": 1440,
+          "checks": {
+            "facts": true,
+            "days": true,
+            "fits_width": true,
+            "reduced_motion_preference": true,
+            "keyboard_booking": true,
+            "pointer_booking": true,
+            "feedback_visible_after_both_actions": true,
+            "tap_targets": true
+          },
+          "captures": [
+            {
+              "phase": "before",
+              "sha256": "e91730798ed1ca9c31063903c606d5c110b3d1d22f085371c9d4825df62d781f",
+              "pixel_dimensions": [
+                1440,
+                900
+              ],
+              "clientWidth": 1440,
+              "scrollWidth": 1440,
+              "summaryBounds": {
+                "x": 1137.84375,
+                "y": 486.71875,
+                "width": 89.15625,
+                "height": 19,
+                "top": 486.71875,
+                "right": 1227,
+                "bottom": 505.71875,
+                "left": 1137.84375
+              },
+              "summaryInView": true,
+              "selectedVisible": false,
+              "file": ".context/first-run-brief-only/inline-result/browser-control/initial-1440-before.png"
+            },
+            {
+              "phase": "keyboard-friday",
+              "sha256": "4af2212781f30856e4dc40731c150dc962531a4f627fbc2f6692486ee2d1ee99",
+              "pixel_dimensions": [
+                1440,
+                900
+              ],
+              "clientWidth": 1440,
+              "scrollWidth": 1440,
+              "summaryBounds": {
+                "x": 1185.15625,
+                "y": 486.71875,
+                "width": 41.84375,
+                "height": 19,
+                "top": 486.71875,
+                "right": 1227,
+                "bottom": 505.71875,
+                "left": 1185.15625
+              },
+              "summaryInView": true,
+              "selectedVisible": true,
+              "file": ".context/first-run-brief-only/inline-result/browser-control/initial-1440-friday.png"
+            },
+            {
+              "phase": "pointer-tuesday",
+              "sha256": "e5790adbff98c14b714776534e8a6f3dd0249441d779da51172b71eb28820c6e",
+              "pixel_dimensions": [
+                1440,
+                900
+              ],
+              "clientWidth": 1440,
+              "scrollWidth": 1440,
+              "summaryBounds": {
+                "x": 1170.953125,
+                "y": 486.71875,
+                "width": 56.046875,
+                "height": 19,
+                "top": 486.71875,
+                "right": 1227,
+                "bottom": 505.71875,
+                "left": 1170.953125
+              },
+              "summaryInView": true,
+              "selectedVisible": true,
+              "file": ".context/first-run-brief-only/inline-result/browser-control/initial-1440-tuesday.png"
+            }
+          ]
+        },
+        {
+          "width": 390,
+          "checks": {
+            "facts": true,
+            "days": true,
+            "fits_width": true,
+            "reduced_motion_preference": true,
+            "keyboard_booking": true,
+            "pointer_booking": true,
+            "feedback_visible_after_both_actions": true,
+            "tap_targets": true
+          },
+          "captures": [
+            {
+              "phase": "before",
+              "sha256": "7bb15147d0f6c5c9a53cab836d837a6bf510c2290b6654c7ea24f6db4e8ba5b5",
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "clientWidth": 375,
+              "scrollWidth": 375,
+              "summaryBounds": {
+                "x": 246.859375,
+                "y": 820.375,
+                "width": 89.140625,
+                "height": 19,
+                "top": 820.375,
+                "right": 336,
+                "bottom": 839.375,
+                "left": 246.859375
+              },
+              "summaryInView": true,
+              "selectedVisible": false,
+              "file": ".context/first-run-brief-only/inline-result/browser-control/initial-390-before.png"
+            },
+            {
+              "phase": "keyboard-friday",
+              "sha256": "0bd4e1eb60f95b3f70e35088b3f6fc1761c2a833be388266fdb16f4aa28364ea",
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "clientWidth": 375,
+              "scrollWidth": 375,
+              "summaryBounds": {
+                "x": 294.15625,
+                "y": 820.375,
+                "width": 41.84375,
+                "height": 19,
+                "top": 820.375,
+                "right": 336,
+                "bottom": 839.375,
+                "left": 294.15625
+              },
+              "summaryInView": true,
+              "selectedVisible": true,
+              "file": ".context/first-run-brief-only/inline-result/browser-control/initial-390-friday.png"
+            },
+            {
+              "phase": "pointer-tuesday",
+              "sha256": "f42ba793cc26856870badac703ca4d9fee9f8783c6713dbbf1fba597fa4d87dd",
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "clientWidth": 375,
+              "scrollWidth": 375,
+              "summaryBounds": {
+                "x": 279.96875,
+                "y": 820.375,
+                "width": 56.03125,
+                "height": 19,
+                "top": 820.375,
+                "right": 336,
+                "bottom": 839.375,
+                "left": 279.96875
+              },
+              "summaryInView": true,
+              "selectedVisible": true,
+              "file": ".context/first-run-brief-only/inline-result/browser-control/initial-390-tuesday.png"
+            }
+          ]
+        },
+        {
+          "width": 320,
+          "checks": {
+            "facts": true,
+            "days": true,
+            "fits_width": true,
+            "reduced_motion_preference": true,
+            "keyboard_booking": true,
+            "pointer_booking": true,
+            "feedback_visible_after_both_actions": false,
+            "tap_targets": true
+          },
+          "captures": [
+            {
+              "phase": "before",
+              "sha256": "aaac26573d2bcb98359ce111af91452a45b7844e3e79dcb4ddd3309aab5108cc",
+              "pixel_dimensions": [
+                320,
+                700
+              ],
+              "clientWidth": 305,
+              "scrollWidth": 305,
+              "summaryBounds": {
+                "x": 176.859375,
+                "y": 851.28125,
+                "width": 89.140625,
+                "height": 19,
+                "top": 851.28125,
+                "right": 266,
+                "bottom": 870.28125,
+                "left": 176.859375
+              },
+              "summaryInView": false,
+              "selectedVisible": false,
+              "file": ".context/first-run-brief-only/inline-result/browser-control/initial-320-before.png"
+            },
+            {
+              "phase": "keyboard-friday",
+              "sha256": "03c583504154fbfa0929808b5231e8284599dbbd299375bc552e7d440a913944",
+              "pixel_dimensions": [
+                320,
+                700
+              ],
+              "clientWidth": 305,
+              "scrollWidth": 305,
+              "summaryBounds": {
+                "x": 224.15625,
+                "y": 851.28125,
+                "width": 41.84375,
+                "height": 19,
+                "top": 851.28125,
+                "right": 266,
+                "bottom": 870.28125,
+                "left": 224.15625
+              },
+              "summaryInView": false,
+              "selectedVisible": true,
+              "file": ".context/first-run-brief-only/inline-result/browser-control/initial-320-friday.png"
+            },
+            {
+              "phase": "pointer-tuesday",
+              "sha256": "1294737408e55e484290a0cbb846e6f9e659240401d737dba502ad2c81c390da",
+              "pixel_dimensions": [
+                320,
+                700
+              ],
+              "clientWidth": 305,
+              "scrollWidth": 305,
+              "summaryBounds": {
+                "x": 209.96875,
+                "y": 851.28125,
+                "width": 56.03125,
+                "height": 19,
+                "top": 851.28125,
+                "right": 266,
+                "bottom": 870.28125,
+                "left": 209.96875
+              },
+              "summaryInView": false,
+              "selectedVisible": true,
+              "file": ".context/first-run-brief-only/inline-result/browser-control/initial-320-tuesday.png"
+            }
+          ]
+        }
+      ]
+    },
+    "calmer": {
+      "html_sha256": "0c055a8877c0f1467f56b26edcf01a88b055d8a5ae7e3b14279bd53108dd2b5e",
+      "screens": [
+        {
+          "width": 1440,
+          "checks": {
+            "facts": true,
+            "days": true,
+            "fits_width": true,
+            "reduced_motion_preference": true,
+            "keyboard_booking": true,
+            "pointer_booking": true,
+            "feedback_visible_after_both_actions": true,
+            "tap_targets": true
+          },
+          "captures": [
+            {
+              "phase": "before",
+              "sha256": "b376ca772fd938562d24147fd1abe8ac68d7bf32bb3d3f56ae52d0f4a521ea9f",
+              "pixel_dimensions": [
+                1440,
+                900
+              ],
+              "clientWidth": 1425,
+              "scrollWidth": 1425,
+              "summaryBounds": {
+                "x": 1124.34375,
+                "y": 532.71875,
+                "width": 89.15625,
+                "height": 19,
+                "top": 532.71875,
+                "right": 1213.5,
+                "bottom": 551.71875,
+                "left": 1124.34375
+              },
+              "summaryInView": true,
+              "selectedVisible": false,
+              "file": ".context/first-run-brief-only/inline-result/browser-control/calmer-1440-before.png"
+            },
+            {
+              "phase": "keyboard-friday",
+              "sha256": "277c41cc4c3ea5e77106524943352df4922d86414fe0ec62e64169e00767a849",
+              "pixel_dimensions": [
+                1440,
+                900
+              ],
+              "clientWidth": 1425,
+              "scrollWidth": 1425,
+              "summaryBounds": {
+                "x": 1171.65625,
+                "y": 532.71875,
+                "width": 41.84375,
+                "height": 19,
+                "top": 532.71875,
+                "right": 1213.5,
+                "bottom": 551.71875,
+                "left": 1171.65625
+              },
+              "summaryInView": true,
+              "selectedVisible": true,
+              "file": ".context/first-run-brief-only/inline-result/browser-control/calmer-1440-friday.png"
+            },
+            {
+              "phase": "pointer-tuesday",
+              "sha256": "21b695fd3eca1de00b2c10a7e2536fcf5a4d2527c92ca56449c0a9ff84abbd08",
+              "pixel_dimensions": [
+                1440,
+                900
+              ],
+              "clientWidth": 1425,
+              "scrollWidth": 1425,
+              "summaryBounds": {
+                "x": 1157.453125,
+                "y": 532.71875,
+                "width": 56.046875,
+                "height": 19,
+                "top": 532.71875,
+                "right": 1213.5,
+                "bottom": 551.71875,
+                "left": 1157.453125
+              },
+              "summaryInView": true,
+              "selectedVisible": true,
+              "file": ".context/first-run-brief-only/inline-result/browser-control/calmer-1440-tuesday.png"
+            }
+          ]
+        },
+        {
+          "width": 390,
+          "checks": {
+            "facts": true,
+            "days": true,
+            "fits_width": true,
+            "reduced_motion_preference": true,
+            "keyboard_booking": true,
+            "pointer_booking": true,
+            "feedback_visible_after_both_actions": false,
+            "tap_targets": true
+          },
+          "captures": [
+            {
+              "phase": "before",
+              "sha256": "a2b1ec8315a1b92d8e0a4f85fb5fe29f9d423580867482998ce782ad1c896005",
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "clientWidth": 375,
+              "scrollWidth": 375,
+              "summaryBounds": {
+                "x": 246.859375,
+                "y": 894.59375,
+                "width": 89.140625,
+                "height": 19,
+                "top": 894.59375,
+                "right": 336,
+                "bottom": 913.59375,
+                "left": 246.859375
+              },
+              "summaryInView": false,
+              "selectedVisible": false,
+              "file": ".context/first-run-brief-only/inline-result/browser-control/calmer-390-before.png"
+            },
+            {
+              "phase": "keyboard-friday",
+              "sha256": "13886eb054c873b7064e48123f20e6b5a674f449ab43fcfe07aa1a79c70be684",
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "clientWidth": 375,
+              "scrollWidth": 375,
+              "summaryBounds": {
+                "x": 294.15625,
+                "y": 894.59375,
+                "width": 41.84375,
+                "height": 19,
+                "top": 894.59375,
+                "right": 336,
+                "bottom": 913.59375,
+                "left": 294.15625
+              },
+              "summaryInView": false,
+              "selectedVisible": true,
+              "file": ".context/first-run-brief-only/inline-result/browser-control/calmer-390-friday.png"
+            },
+            {
+              "phase": "pointer-tuesday",
+              "sha256": "a6daf0a29d8757e0a88525582af073716a736c338887d14cf1e041c3de9fd566",
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "clientWidth": 375,
+              "scrollWidth": 375,
+              "summaryBounds": {
+                "x": 279.96875,
+                "y": 894.59375,
+                "width": 56.03125,
+                "height": 19,
+                "top": 894.59375,
+                "right": 336,
+                "bottom": 913.59375,
+                "left": 279.96875
+              },
+              "summaryInView": false,
+              "selectedVisible": true,
+              "file": ".context/first-run-brief-only/inline-result/browser-control/calmer-390-tuesday.png"
+            }
+          ]
+        },
+        {
+          "width": 320,
+          "checks": {
+            "facts": true,
+            "days": true,
+            "fits_width": true,
+            "reduced_motion_preference": true,
+            "keyboard_booking": true,
+            "pointer_booking": true,
+            "feedback_visible_after_both_actions": false,
+            "tap_targets": true
+          },
+          "captures": [
+            {
+              "phase": "before",
+              "sha256": "f5ada55c9228afb192d585bf54f71b4c957d7fd34081a581cb929c8cf5d063bb",
+              "pixel_dimensions": [
+                320,
+                700
+              ],
+              "clientWidth": 305,
+              "scrollWidth": 305,
+              "summaryBounds": {
+                "x": 176.859375,
+                "y": 926.140625,
+                "width": 89.140625,
+                "height": 19,
+                "top": 926.140625,
+                "right": 266,
+                "bottom": 945.140625,
+                "left": 176.859375
+              },
+              "summaryInView": false,
+              "selectedVisible": false,
+              "file": ".context/first-run-brief-only/inline-result/browser-control/calmer-320-before.png"
+            },
+            {
+              "phase": "keyboard-friday",
+              "sha256": "0aea61711253bf92bdf3408be41878b604928aeabb0c4985c179cd09acaf7208",
+              "pixel_dimensions": [
+                320,
+                700
+              ],
+              "clientWidth": 305,
+              "scrollWidth": 305,
+              "summaryBounds": {
+                "x": 224.15625,
+                "y": 926.140625,
+                "width": 41.84375,
+                "height": 19,
+                "top": 926.140625,
+                "right": 266,
+                "bottom": 945.140625,
+                "left": 224.15625
+              },
+              "summaryInView": false,
+              "selectedVisible": true,
+              "file": ".context/first-run-brief-only/inline-result/browser-control/calmer-320-friday.png"
+            },
+            {
+              "phase": "pointer-tuesday",
+              "sha256": "8e101abb6205fd705fd4eaea57ecd231a8da1dc58c075e9c8e846b88819fc99f",
+              "pixel_dimensions": [
+                320,
+                700
+              ],
+              "clientWidth": 305,
+              "scrollWidth": 305,
+              "summaryBounds": {
+                "x": 209.96875,
+                "y": 926.140625,
+                "width": 56.03125,
+                "height": 19,
+                "top": 926.140625,
+                "right": 266,
+                "bottom": 945.140625,
+                "left": 209.96875
+              },
+              "summaryInView": false,
+              "selectedVisible": true,
+              "file": ".context/first-run-brief-only/inline-result/browser-control/calmer-320-tuesday.png"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "proposed_browser": {
+    "initial": {
+      "html_sha256": "244a7cee459a4b0d382243cc7bb78515220e179621c986afdefa30aafcfac0a8",
+      "screens": [
+        {
+          "width": 1440,
+          "checks": {
+            "facts": true,
+            "days": true,
+            "fits_width": true,
+            "reduced_motion_preference": true,
+            "keyboard_booking": true,
+            "pointer_booking": true,
+            "feedback_visible_after_both_actions": true,
+            "tap_targets": true
+          },
+          "captures": [
+            {
+              "phase": "before",
+              "sha256": "2199efa131c16f78a1f737f85c7241a0e78cdafc157ce212d303ca80af472121",
+              "pixel_dimensions": [
+                1440,
+                900
+              ],
+              "clientWidth": 1425,
+              "scrollWidth": 1425,
+              "summaryBounds": {
+                "x": 225.5,
+                "y": 809.578125,
+                "width": 338.1875,
+                "height": 46,
+                "top": 809.578125,
+                "right": 563.6875,
+                "bottom": 855.578125,
+                "left": 225.5
+              },
+              "summaryInView": true,
+              "selectedVisible": false,
+              "file": ".context/first-run-brief-only/inline-result/browser-proposed-hit/initial-1440-before.png"
+            },
+            {
+              "phase": "keyboard-friday",
+              "sha256": "843fbcec7f5d3726e60d251336597a37fcca9b5f800371913c107dae3aa1a798",
+              "pixel_dimensions": [
+                1440,
+                900
+              ],
+              "clientWidth": 1425,
+              "scrollWidth": 1425,
+              "summaryBounds": {
+                "x": 225.5,
+                "y": 809.578125,
+                "width": 338.1875,
+                "height": 46,
+                "top": 809.578125,
+                "right": 563.6875,
+                "bottom": 855.578125,
+                "left": 225.5
+              },
+              "summaryInView": true,
+              "selectedVisible": true,
+              "file": ".context/first-run-brief-only/inline-result/browser-proposed-hit/initial-1440-friday.png"
+            },
+            {
+              "phase": "pointer-tuesday",
+              "sha256": "8f5858168bc2fe2ba3883a14f065218ae0747c03389b0ee079bb98eb92bff487",
+              "pixel_dimensions": [
+                1440,
+                900
+              ],
+              "clientWidth": 1425,
+              "scrollWidth": 1425,
+              "summaryBounds": {
+                "x": 225.5,
+                "y": 809.578125,
+                "width": 338.1875,
+                "height": 46,
+                "top": 809.578125,
+                "right": 563.6875,
+                "bottom": 855.578125,
+                "left": 225.5
+              },
+              "summaryInView": true,
+              "selectedVisible": true,
+              "file": ".context/first-run-brief-only/inline-result/browser-proposed-hit/initial-1440-tuesday.png"
+            }
+          ]
+        },
+        {
+          "width": 390,
+          "checks": {
+            "facts": true,
+            "days": true,
+            "fits_width": true,
+            "reduced_motion_preference": true,
+            "keyboard_booking": true,
+            "pointer_booking": true,
+            "feedback_visible_after_both_actions": true,
+            "tap_targets": true
+          },
+          "captures": [
+            {
+              "phase": "before",
+              "sha256": "fb823a53cd9d9d998347a6bd52f1f8600ff1658e705ac11bd006d667bf3aff7e",
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "clientWidth": 375,
+              "scrollWidth": 375,
+              "summaryBounds": {
+                "x": 45,
+                "y": 571.78125,
+                "width": 285,
+                "height": 46,
+                "top": 571.78125,
+                "right": 330,
+                "bottom": 617.78125,
+                "left": 45
+              },
+              "summaryInView": true,
+              "selectedVisible": false,
+              "file": ".context/first-run-brief-only/inline-result/browser-proposed-hit/initial-390-before.png"
+            },
+            {
+              "phase": "keyboard-friday",
+              "sha256": "ca50f8b5d0296af70ad93b20c6cccafab6f8f4eecb2cd984b3937faf5fe1c1c6",
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "clientWidth": 375,
+              "scrollWidth": 375,
+              "summaryBounds": {
+                "x": 45,
+                "y": 571.78125,
+                "width": 285,
+                "height": 46,
+                "top": 571.78125,
+                "right": 330,
+                "bottom": 617.78125,
+                "left": 45
+              },
+              "summaryInView": true,
+              "selectedVisible": true,
+              "file": ".context/first-run-brief-only/inline-result/browser-proposed-hit/initial-390-friday.png"
+            },
+            {
+              "phase": "pointer-tuesday",
+              "sha256": "05e499bfa1e7625c5a1b95bc769e5bcecfb6ad2aaaa352bb204bfae5650106de",
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "clientWidth": 375,
+              "scrollWidth": 375,
+              "summaryBounds": {
+                "x": 45,
+                "y": 571.78125,
+                "width": 285,
+                "height": 46,
+                "top": 571.78125,
+                "right": 330,
+                "bottom": 617.78125,
+                "left": 45
+              },
+              "summaryInView": true,
+              "selectedVisible": true,
+              "file": ".context/first-run-brief-only/inline-result/browser-proposed-hit/initial-390-tuesday.png"
+            }
+          ]
+        },
+        {
+          "width": 320,
+          "checks": {
+            "facts": true,
+            "days": true,
+            "fits_width": false,
+            "reduced_motion_preference": true,
+            "keyboard_booking": true,
+            "pointer_booking": true,
+            "feedback_visible_after_both_actions": true,
+            "tap_targets": true
+          },
+          "captures": [
+            {
+              "phase": "before",
+              "sha256": "f6ec1e4b11facf05a476ca31284a6408153af52b52c5e7cd855a1d7d65555c2b",
+              "pixel_dimensions": [
+                320,
+                700
+              ],
+              "clientWidth": 305,
+              "scrollWidth": 329,
+              "summaryBounds": {
+                "x": 45,
+                "y": 571.78125,
+                "width": 260.21875,
+                "height": 46,
+                "top": 571.78125,
+                "right": 305.21875,
+                "bottom": 617.78125,
+                "left": 45
+              },
+              "summaryInView": true,
+              "selectedVisible": false,
+              "file": ".context/first-run-brief-only/inline-result/browser-proposed-hit/initial-320-before.png"
+            },
+            {
+              "phase": "keyboard-friday",
+              "sha256": "4947d1a53263dc23c057470f85c504b19e9e7d40a240739e63ab9dbc55ae612e",
+              "pixel_dimensions": [
+                320,
+                700
+              ],
+              "clientWidth": 305,
+              "scrollWidth": 329,
+              "summaryBounds": {
+                "x": 45,
+                "y": 571.78125,
+                "width": 260.21875,
+                "height": 46,
+                "top": 571.78125,
+                "right": 305.21875,
+                "bottom": 617.78125,
+                "left": 45
+              },
+              "summaryInView": true,
+              "selectedVisible": true,
+              "file": ".context/first-run-brief-only/inline-result/browser-proposed-hit/initial-320-friday.png"
+            },
+            {
+              "phase": "pointer-tuesday",
+              "sha256": "fd9f8e6ef0ec785f491dd4754ef6b044c34cab6bd940e98ac0410bbd3142bae3",
+              "pixel_dimensions": [
+                320,
+                700
+              ],
+              "clientWidth": 305,
+              "scrollWidth": 329,
+              "summaryBounds": {
+                "x": 45,
+                "y": 571.78125,
+                "width": 260.21875,
+                "height": 46,
+                "top": 571.78125,
+                "right": 305.21875,
+                "bottom": 617.78125,
+                "left": 45
+              },
+              "summaryInView": true,
+              "selectedVisible": true,
+              "file": ".context/first-run-brief-only/inline-result/browser-proposed-hit/initial-320-tuesday.png"
+            }
+          ]
+        }
+      ]
+    },
+    "calmer": {
+      "html_sha256": "d800ae4f1e8c9ee8cafbcf6daf6696e198e0b3aadbd84b4c156cb37ebbb8c45c",
+      "screens": [
+        {
+          "width": 1440,
+          "checks": {
+            "facts": true,
+            "days": true,
+            "fits_width": true,
+            "reduced_motion_preference": true,
+            "keyboard_booking": true,
+            "pointer_booking": true,
+            "feedback_visible_after_both_actions": true,
+            "tap_targets": true
+          },
+          "captures": [
+            {
+              "phase": "before",
+              "sha256": "b708dfb78e01ecf05853a6e90688897d8a1dcdd392b812b19b00c3e1c05a08ea",
+              "pixel_dimensions": [
+                1440,
+                900
+              ],
+              "clientWidth": 1425,
+              "scrollWidth": 1425,
+              "summaryBounds": {
+                "x": 225.5,
+                "y": 809.578125,
+                "width": 338.1875,
+                "height": 46,
+                "top": 809.578125,
+                "right": 563.6875,
+                "bottom": 855.578125,
+                "left": 225.5
+              },
+              "summaryInView": true,
+              "selectedVisible": false,
+              "file": ".context/first-run-brief-only/inline-result/browser-proposed-hit/calmer-1440-before.png"
+            },
+            {
+              "phase": "keyboard-friday",
+              "sha256": "44e7593ce6a55e89b4a8fe643bb9ff19e40ba80de829af510168010099a65e00",
+              "pixel_dimensions": [
+                1440,
+                900
+              ],
+              "clientWidth": 1425,
+              "scrollWidth": 1425,
+              "summaryBounds": {
+                "x": 225.5,
+                "y": 809.578125,
+                "width": 338.1875,
+                "height": 46,
+                "top": 809.578125,
+                "right": 563.6875,
+                "bottom": 855.578125,
+                "left": 225.5
+              },
+              "summaryInView": true,
+              "selectedVisible": true,
+              "file": ".context/first-run-brief-only/inline-result/browser-proposed-hit/calmer-1440-friday.png"
+            },
+            {
+              "phase": "pointer-tuesday",
+              "sha256": "bee7d78367aa858784f1d0d11069226bfba61d0d23df4afb7e98b2ad7e5342a3",
+              "pixel_dimensions": [
+                1440,
+                900
+              ],
+              "clientWidth": 1425,
+              "scrollWidth": 1425,
+              "summaryBounds": {
+                "x": 225.5,
+                "y": 809.578125,
+                "width": 338.1875,
+                "height": 46,
+                "top": 809.578125,
+                "right": 563.6875,
+                "bottom": 855.578125,
+                "left": 225.5
+              },
+              "summaryInView": true,
+              "selectedVisible": true,
+              "file": ".context/first-run-brief-only/inline-result/browser-proposed-hit/calmer-1440-tuesday.png"
+            }
+          ]
+        },
+        {
+          "width": 390,
+          "checks": {
+            "facts": true,
+            "days": true,
+            "fits_width": true,
+            "reduced_motion_preference": true,
+            "keyboard_booking": true,
+            "pointer_booking": true,
+            "feedback_visible_after_both_actions": true,
+            "tap_targets": true
+          },
+          "captures": [
+            {
+              "phase": "before",
+              "sha256": "fb823a53cd9d9d998347a6bd52f1f8600ff1658e705ac11bd006d667bf3aff7e",
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "clientWidth": 375,
+              "scrollWidth": 375,
+              "summaryBounds": {
+                "x": 45,
+                "y": 571.78125,
+                "width": 285,
+                "height": 46,
+                "top": 571.78125,
+                "right": 330,
+                "bottom": 617.78125,
+                "left": 45
+              },
+              "summaryInView": true,
+              "selectedVisible": false,
+              "file": ".context/first-run-brief-only/inline-result/browser-proposed-hit/calmer-390-before.png"
+            },
+            {
+              "phase": "keyboard-friday",
+              "sha256": "76a734317c3339f5fe17ca48bd1f29e81413226c00293669e27470fc753f656c",
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "clientWidth": 375,
+              "scrollWidth": 375,
+              "summaryBounds": {
+                "x": 45,
+                "y": 571.78125,
+                "width": 285,
+                "height": 46,
+                "top": 571.78125,
+                "right": 330,
+                "bottom": 617.78125,
+                "left": 45
+              },
+              "summaryInView": true,
+              "selectedVisible": true,
+              "file": ".context/first-run-brief-only/inline-result/browser-proposed-hit/calmer-390-friday.png"
+            },
+            {
+              "phase": "pointer-tuesday",
+              "sha256": "edd9506cd17602475909d2bdb1e6904714a60fca49f75fe89f2bab93661c5090",
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "clientWidth": 375,
+              "scrollWidth": 375,
+              "summaryBounds": {
+                "x": 45,
+                "y": 571.78125,
+                "width": 285,
+                "height": 46,
+                "top": 571.78125,
+                "right": 330,
+                "bottom": 617.78125,
+                "left": 45
+              },
+              "summaryInView": true,
+              "selectedVisible": true,
+              "file": ".context/first-run-brief-only/inline-result/browser-proposed-hit/calmer-390-tuesday.png"
+            }
+          ]
+        },
+        {
+          "width": 320,
+          "checks": {
+            "facts": true,
+            "days": true,
+            "fits_width": false,
+            "reduced_motion_preference": true,
+            "keyboard_booking": true,
+            "pointer_booking": true,
+            "feedback_visible_after_both_actions": true,
+            "tap_targets": true
+          },
+          "captures": [
+            {
+              "phase": "before",
+              "sha256": "5d5b30d2d62eeb9d2dbd0f27562b1a18c25b42344994f890850266ff360ee449",
+              "pixel_dimensions": [
+                320,
+                700
+              ],
+              "clientWidth": 305,
+              "scrollWidth": 329,
+              "summaryBounds": {
+                "x": 45,
+                "y": 571.78125,
+                "width": 260.21875,
+                "height": 46,
+                "top": 571.78125,
+                "right": 305.21875,
+                "bottom": 617.78125,
+                "left": 45
+              },
+              "summaryInView": true,
+              "selectedVisible": false,
+              "file": ".context/first-run-brief-only/inline-result/browser-proposed-hit/calmer-320-before.png"
+            },
+            {
+              "phase": "keyboard-friday",
+              "sha256": "5b18be0eb160d0479df91bc2db6202f4ff101207d6096cd3e66201cf57d2016a",
+              "pixel_dimensions": [
+                320,
+                700
+              ],
+              "clientWidth": 305,
+              "scrollWidth": 329,
+              "summaryBounds": {
+                "x": 45,
+                "y": 571.78125,
+                "width": 260.21875,
+                "height": 46,
+                "top": 571.78125,
+                "right": 305.21875,
+                "bottom": 617.78125,
+                "left": 45
+              },
+              "summaryInView": true,
+              "selectedVisible": true,
+              "file": ".context/first-run-brief-only/inline-result/browser-proposed-hit/calmer-320-friday.png"
+            },
+            {
+              "phase": "pointer-tuesday",
+              "sha256": "d76b62ace4f2a15b39f03528e119f2ab57e1f91fb5daf134938ae71e2ad22b32",
+              "pixel_dimensions": [
+                320,
+                700
+              ],
+              "clientWidth": 305,
+              "scrollWidth": 329,
+              "summaryBounds": {
+                "x": 45,
+                "y": 571.78125,
+                "width": 260.21875,
+                "height": 46,
+                "top": 571.78125,
+                "right": 305.21875,
+                "bottom": 617.78125,
+                "left": 45
+              },
+              "summaryInView": true,
+              "selectedVisible": true,
+              "file": ".context/first-run-brief-only/inline-result/browser-proposed-hit/calmer-320-tuesday.png"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "pointer_probe": "The first two pointer recipes targeted the label node and timed out because the input itself covers the label. The final replay validated the real hit at the control center, then used Playwriter mouse input.",
+  "compact_fallback_attempts": [
+    {
+      "receipt": {
+        "usage": {
+          "input_tokens": 54882,
+          "cached_input_tokens": 35840,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 233,
+          "reasoning_output_tokens": 0
+        },
+        "tool_calls": [
+          {
+            "type": "mcp_tool_call",
+            "server": "design-mcp",
+            "tool": "direct",
+            "status": "failed"
+          }
+        ],
+        "client_errors": [],
+        "treatment_call": false,
+        "direct_call": false,
+        "status": "failed",
+        "milliseconds": 10481,
+        "exit_code": 0,
+        "sessions": [
+          "01a2072d-659e-7810-8565-e06b180b7503"
+        ],
+        "prompt_sha256": "e38c16c9702aa4ddfa6f40a16ae2599d2872c8078231b30ff1702931d1b08bd8",
+        "trace_sha256": "4b45a4d463e55eb9304207171824bbfe866ce5baf47720312754a98779e3c8e4"
+      },
+      "direct_status": "failed",
+      "arguments": {
+        "brief": "Second Spin is a local bike shop at 41 Elm Street. It offers a tune-up that takes 48 hours for $85. Bookings are Tuesday to Saturday. Let a visitor choose one of those days by keyboard or pointer and see the booking summary, with no invented availability, dates, fees or contact details. make it feel premium."
+      },
+      "explanation": "Error calling tool 'direct': 1 validation error for Direction\nlayout.mobile\n  String should have at most 420 characters [type=string_too_long, input_value='On phones place one comp...targets at least 44 px.', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/string_too_long"
+    },
+    {
+      "receipt": {
+        "usage": {
+          "input_tokens": 56850,
+          "cached_input_tokens": 35840,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2540,
+          "reasoning_output_tokens": 0
+        },
+        "tool_calls": [
+          {
+            "type": "mcp_tool_call",
+            "server": "design-mcp",
+            "tool": "direct",
+            "status": "completed"
+          }
+        ],
+        "client_errors": [],
+        "treatment_call": true,
+        "direct_call": true,
+        "status": "passed",
+        "milliseconds": 50675,
+        "exit_code": 0,
+        "sessions": [
+          "01a2072d-f974-7d71-8d21-f6291931561b"
+        ],
+        "prompt_sha256": "e38c16c9702aa4ddfa6f40a16ae2599d2872c8078231b30ff1702931d1b08bd8",
+        "trace_sha256": "8d0368d4f4d263d1ad6c72657b255c11705779b0a9c2bdfebbf21fc6a03edb89",
+        "html_sha256": "8e2c0835b627f5cd88a1c5fc628cb8463b0bbbd692f341180af51d1910e3f9bb"
+      },
+      "direct_status": "completed",
+      "arguments": {
+        "brief": "Second Spin is a local bike shop at 41 Elm Street. It offers a tune-up that takes 48 hours for $85. Bookings are Tuesday to Saturday. Let a visitor choose one of those days by keyboard or pointer and see the booking summary, with no invented availability, dates, fees or contact details. make it feel premium.",
+        "surface": "form"
+      },
+      "explanation": "Client supplied form surface despite brief-only contract."
+    }
+  ]
+}

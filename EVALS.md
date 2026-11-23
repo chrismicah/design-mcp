@@ -189,6 +189,8 @@ The next fresh Codex session on the README pin passed the booking brief verbatim
 
 A one-field `calmer` trial directed extra space to desktop and protected phone space. On the frozen work-order page it passed the 320 px interaction and raised the independent mobile grade from **6.90 to 7.25**, with desktop steady at **7.25**. A clean uv install changed only the four work-order calm aliases in 77 installed reaction probes. The fresh connected client produced both turns in 60.5 and 58.3 seconds without questions. Both drafts passed at 1440 and 390 px. At 320 × 700 the revised day ended at **767.7 px** versus **801.8 px** in its first draft. Both missed the visible-result gate. The trial was reverted. Test a shared action and result area in both `direct` and `react` next. [Matched ballot, installed protocol and fresh browser replay](evidence/benchmark-v1/booking-work-order-spacing-trial.json)
 
+A separate matched experiment moved a short live date into the choice area from the first draft. The two fresh clients received the same brief-only prompt, model, and one-word reaction. The new date remained visible at **617.8 px** in both 320 × 700 drafts, versus **870.3 and 945.1 px** for the matched control. The generated two-column chooser overflowed by **24 CSS px** at the minimum width. It stayed in bounds at 390 px. The compact follow-up did not complete a comparable run. Its first package copy exceeded the direction field's 420-character limit. The shortened copy passed package validation, then its client supplied `surface: "form"` despite the brief-only instruction. The guided layout remains experimental. [Paired protocol, browser checks and rejected follow-ups](evidence/benchmark-v1/booking-inline-result-trial.json)
+
 With the same critic model and eight-view coverage, the compact trial used 33,768 uncached input tokens versus 147,205 in the first comparison, a 77.1% reduction. Total reported input fell 33.8% and review duration fell from 636 to 314 seconds. These comparisons use different treatment pages and tool surfaces. The compact adapter is available for development rounds. Release review uses the full-resolution originals. [Comparison receipts](evidence/benchmark-v1/compact-live-repair-ballot.json) · [Adapter setup](evals/v1/README.md#compact-live-review)
 
 The train layout repair scored 95.8 against 87.5 for both fresh controls. It passed live ticket reveal and collapse at both widths and was integrated at `a7d1019`. The coffee repair beat fresh v2, 100.0 to 91.7, and passed the keyboard purchase replay. Its layout is already included in the mobile product direction. Against the exact historical install, train scored 95.8 to 87.5 and coffee tied at 95.8. The historical comparison used three read-only legacy tools and the same prompts, generator, browser, and blind rubric. [Fresh v2 ballots](evidence/benchmark-v1/pilot-repair-vs-v2.json) · [Historical ballots](evidence/benchmark-v1/pilot-repair-vs-legacy.json) · [Interactions and integration](evidence/benchmark-v1/pilot-repair-actions.json)
@@ -202,6 +204,21 @@ The final portability candidate also returned the same structured results as the
 Apply the same prompts, asset policy and scoring to each candidate. Preserve failed runs and report coverage alongside quality and tokens.
 
 Both specific-landing v2 controls were scored again alongside the candidate. Their rescored values differ from the earlier v2-versus-plain ballots. Use the scores within each pair for candidate decisions. Both comparisons used the original benchmark rubric for captured states.
+
+## Bakery live comparison
+
+In *Last tray out*, a baker uses one oven to finish two trays by noon. Every pair used the same timing facts, controls, local fonts, initial selection, and two-way keyboard task. Each critic opened both anonymous pages at 1440 and 390 px, selected the later start, then switched back without losing the alternative. Separate Playwriter preflight verified **216 original frames** at 1440, 390, and 320 px, with standard and reduced motion, plus emulated touch in both cells. Browser audits bind the selected radio and the separate clock value to the original screenshots. [Six live ballots and preflight receipts](evidence/benchmark-v1/last-tray-out-live-rounds.json)
+
+| Round | Design change | Desktop control → candidate | Phone control → candidate | Critic's observation |
+| --- | --- | ---: | ---: | --- |
+| 1 | Text schedule to proportioned oven strips | 7.40 → 7.65 | 7.40 → 7.40 | Preferred the text control. Fine texture and unmarked boundaries obscured the difference between preheat and the first bake. |
+| 2 | Stamp the actual time at each boundary | 7.50 → 7.95 | 7.50 → 7.50 | Preferred the stamped version. The 11:35 and 11:44 marks were crowded on phones. |
+| 3 | Name the two trays on the strips | 7.60 → 8.10 | 7.40 → 7.90 | Seeing which tray is in the oven made the strip more useful. Phone labels still took close reading. |
+| 4 | Use readable text instead of the narrow strip on phones | 8.10 → 8.10 | 7.55 → 8.05 | Both schedules stayed visible and the phone comparison was easier to read. First-tray finish still had to be inferred. |
+| 5 | Light enamel surfaces with a shared control ledge | 7.85 → 7.85 | 7.50 → 7.70 | Preferred the lighter version on phone. The finish-time issue remained. |
+| 6 | Name the first tray's in and out times and the last tray's finish | 7.60 → 7.95 | 7.50 → 7.95 | Preferred the explicit times. Both tasks worked at both widths. |
+
+The highest observed pair of grades was **8.10 desktop and 8.05 phone**, in round 4. Rounds 5 and 6 earned matched wins with new critics and fell below that absolute peak. Retain round 4 as a high-water mark and transfer explicit timing labels into the next creative direction. No prototype reached 9.5, and the installed product did not change. [Source and concept history](research/CREATIVE-ROUNDS.md#november-23-concept-workshop)
 
 ## Local review checks
 

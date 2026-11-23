@@ -1,0 +1,238 @@
+{
+  "head_sha": "01ba5727ba3c0e5e9ce7f17308e4c15ea916cbc9",
+  "pin": "0978712149674ad7fd5738c53d4b7966ba163b43",
+  "matching_package_paths": [
+    "design_mcp",
+    "integrations",
+    "pyproject.toml"
+  ],
+  "jobs_passed": 13,
+  "workflows": {
+    "source review": {
+      "run_id": 45126022770,
+      "url": "https://github.com/chrismicah/design-mcp/actions/runs/45126022770",
+      "jobs": [
+        {
+          "name": "sources",
+          "url": "https://github.com/chrismicah/design-mcp/actions/runs/45126022770/job/137530425113",
+          "status": "success",
+          "completed_steps": [
+            "Set up job",
+            "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+            "Test source parsing",
+            "Collect public leads for review",
+            "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+            "Complete job"
+          ]
+        }
+      ]
+    },
+    "extension": {
+      "run_id": 45126022757,
+      "url": "https://github.com/chrismicah/design-mcp/actions/runs/45126022757",
+      "jobs": [
+        {
+          "name": "popup",
+          "url": "https://github.com/chrismicah/design-mcp/actions/runs/45126022757/job/137530425343",
+          "status": "success",
+          "completed_steps": [
+            "Set up job",
+            "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+            "Run actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1",
+            "Verify active-tab capture consistency",
+            "Install the package and isolated browser",
+            "Verify the active-tab and pasted URL review journeys",
+            "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+            "Post Run actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1",
+            "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+            "Complete job"
+          ]
+        }
+      ]
+    },
+    "electron": {
+      "run_id": 45126022657,
+      "url": "https://github.com/chrismicah/design-mcp/actions/runs/45126022657",
+      "jobs": [
+        {
+          "name": "electron",
+          "url": "https://github.com/chrismicah/design-mcp/actions/runs/45126022657/job/137530424868",
+          "status": "success",
+          "completed_steps": [
+            "Set up job",
+            "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+            "Run actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1",
+            "Install Design MCP and the pinned Electron runtime",
+            "Capture and exercise the owned app window",
+            "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+            "Post Run actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1",
+            "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+            "Complete job"
+          ]
+        }
+      ]
+    },
+    "public URL": {
+      "run_id": 45126022788,
+      "url": "https://github.com/chrismicah/design-mcp/actions/runs/45126022788",
+      "jobs": [
+        {
+          "name": "review",
+          "url": "https://github.com/chrismicah/design-mcp/actions/runs/45126022788/job/137530425233",
+          "status": "success",
+          "completed_steps": [
+            "Set up job",
+            "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+            "Run actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1",
+            "Install the candidate and the pinned browser tools",
+            "Capture the public address-form reference",
+            "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+            "Post Run actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1",
+            "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+            "Complete job"
+          ]
+        }
+      ]
+    },
+    "portable": {
+      "run_id": 45126022813,
+      "url": "https://github.com/chrismicah/design-mcp/actions/runs/45126022813",
+      "jobs": [
+        {
+          "name": "arm64 / Python 3.12",
+          "url": "https://github.com/chrismicah/design-mcp/actions/runs/45126022813/job/137530425221",
+          "status": "success",
+          "completed_steps": [
+            "Set up job",
+            "Check out the portability candidate",
+            "Select the exact Python interpreter",
+            "Install from the pinned Git revision using pipx and uv",
+            "Post Select the exact Python interpreter",
+            "Post Check out the portability candidate",
+            "Complete job"
+          ]
+        },
+        {
+          "name": "x86_64 / Python 3.10",
+          "url": "https://github.com/chrismicah/design-mcp/actions/runs/45126022813/job/137530425419",
+          "status": "success",
+          "completed_steps": [
+            "Set up job",
+            "Check out the portability candidate",
+            "Select the exact Python interpreter",
+            "Install from the pinned Git revision using pipx and uv",
+            "Post Select the exact Python interpreter",
+            "Post Check out the portability candidate",
+            "Complete job"
+          ]
+        },
+        {
+          "name": "x86_64 / Python 3.13",
+          "url": "https://github.com/chrismicah/design-mcp/actions/runs/45126022813/job/137530425432",
+          "status": "success",
+          "completed_steps": [
+            "Set up job",
+            "Check out the portability candidate",
+            "Select the exact Python interpreter",
+            "Install from the pinned Git revision using pipx and uv",
+            "Post Select the exact Python interpreter",
+            "Post Check out the portability candidate",
+            "Complete job"
+          ]
+        },
+        {
+          "name": "x86_64 / Python 3.12",
+          "url": "https://github.com/chrismicah/design-mcp/actions/runs/45126022813/job/137530425441",
+          "status": "success",
+          "completed_steps": [
+            "Set up job",
+            "Check out the portability candidate",
+            "Select the exact Python interpreter",
+            "Install from the pinned Git revision using pipx and uv",
+            "Post Select the exact Python interpreter",
+            "Post Check out the portability candidate",
+            "Complete job"
+          ]
+        },
+        {
+          "name": "arm64 / Python 3.13",
+          "url": "https://github.com/chrismicah/design-mcp/actions/runs/45126022813/job/137530425484",
+          "status": "success",
+          "completed_steps": [
+            "Set up job",
+            "Check out the portability candidate",
+            "Select the exact Python interpreter",
+            "Install from the pinned Git revision using pipx and uv",
+            "Post Select the exact Python interpreter",
+            "Post Check out the portability candidate",
+            "Complete job"
+          ]
+        },
+        {
+          "name": "arm64 / Python 3.11",
+          "url": "https://github.com/chrismicah/design-mcp/actions/runs/45126022813/job/137530425488",
+          "status": "success",
+          "completed_steps": [
+            "Set up job",
+            "Check out the portability candidate",
+            "Select the exact Python interpreter",
+            "Install from the pinned Git revision using pipx and uv",
+            "Post Select the exact Python interpreter",
+            "Post Check out the portability candidate",
+            "Complete job"
+          ]
+        },
+        {
+          "name": "arm64 / Python 3.10",
+          "url": "https://github.com/chrismicah/design-mcp/actions/runs/45126022813/job/137530425570",
+          "status": "success",
+          "completed_steps": [
+            "Set up job",
+            "Check out the portability candidate",
+            "Select the exact Python interpreter",
+            "Install from the pinned Git revision using pipx and uv",
+            "Post Select the exact Python interpreter",
+            "Post Check out the portability candidate",
+            "Complete job"
+          ]
+        },
+        {
+          "name": "x86_64 / Python 3.11",
+          "url": "https://github.com/chrismicah/design-mcp/actions/runs/45126022813/job/137530425626",
+          "status": "success",
+          "completed_steps": [
+            "Set up job",
+            "Check out the portability candidate",
+            "Select the exact Python interpreter",
+            "Install from the pinned Git revision using pipx and uv",
+            "Post Select the exact Python interpreter",
+            "Post Check out the portability candidate",
+            "Complete job"
+          ]
+        }
+      ]
+    },
+    "swift": {
+      "run_id": 45126022809,
+      "url": "https://github.com/chrismicah/design-mcp/actions/runs/45126022809",
+      "jobs": [
+        {
+          "name": "native",
+          "url": "https://github.com/chrismicah/design-mcp/actions/runs/45126022809/job/137530425563",
+          "status": "success",
+          "completed_steps": [
+            "Set up job",
+            "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+            "Run actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1",
+            "Install Design MCP and generate the fixture project",
+            "Open the Swift app, exercise the native control, and review captured geometry",
+            "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+            "Post Run actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1",
+            "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+            "Complete job"
+          ]
+        }
+      ]
+    }
+  }
+}

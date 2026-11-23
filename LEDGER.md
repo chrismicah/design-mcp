@@ -18,6 +18,14 @@
 | MenuXL reference | Playwriter scrolled twice and selected a project at 1440 and 390 px. The opening and project transitions are distinguished from settled visual evidence. | Ten original PNGs with dimensions, SHA-256 and browser metadata. [Receipt](evidence/benchmark-v1/nov23-menuxl-reference.json) |
 | Connected booking | Fresh installation and exact one-word replay at `37dd4f2` left the day below the fold at 320 × 700. Reverted. | The brief-only initial and revision calls took 60.5 and 58.3 seconds. Receipts contain both token counters, the independent ballot and all 18 fresh browser captures. [Trial](evidence/benchmark-v1/booking-work-order-spacing-trial.json) |
 
+## November 23 live oven study and installed-client gate
+
+| Lane | Outcome | Evidence |
+| --- | --- | --- |
+| Exact PR head | All 13 hosted jobs passed at `01ba572`. The workflow jobs cover the source report, all eight portable installation targets, Chrome keyboard review, public URL review, SwiftUI and Electron. | [Run IDs and verified steps](evidence/benchmark-v1/creative-workshop-ci.json) |
+| Booking mobile output | The inline day stayed in view at 320 px. The generated grid overflowed. A later trial also exposed the client sometimes overriding the unhinted direction. | [Matched calls, tokens, and original frames](evidence/benchmark-v1/booking-inline-result-trial.json) |
+| Independent bakery reviews | Each critic started with equivalent task details and completed a choice and reversal at both widths. Both builds in each round also passed the preflight keyboard and touch sequences. | [Live scores, critic sessions and tokens](evidence/benchmark-v1/last-tray-out-live-rounds.json) |
+
 ## Baseline audit
 
 Baseline and fetched `origin/master` both resolved to `82fe6e3749acccf80aecfd523e531be4302865e3`. The workspace branch is `chrismicah/content-quality-audit`. The first section covers work before the product-code approval gate. The audit used light local reads, local probes and public source retrieval, with no paid service or model API calls.
