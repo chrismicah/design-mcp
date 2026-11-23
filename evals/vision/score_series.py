@@ -98,7 +98,6 @@ def evaluate_series(series, root):
             if control["capture_set"] in captures or control["capture_set"] == result["capture_set"]:
                 raise ValueError("A pivot needs fresh control and candidate captures")
             captures.add(control["capture_set"])
-            stalled_rounds = 0
         if result["build_sha256"] in builds:
             raise ValueError(f"Round {number} repeats a previously reviewed build")
         if result["capture_set"] in captures:

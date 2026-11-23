@@ -380,6 +380,8 @@ The creative series verifier binds each submitted revision to its own browser re
 
 The follow-up adds a paired check for a pivot after two non-improving rounds. Six regression cases test continuation, a valid pivot, a cosmetic change that passes on both sides, a phone-only failure, a wrong control, and a mismatched reviewer. All 31 scoring tests passed. The strongest editorial score remains 7.95 on both screens. The next mechanism has a testable hypothesis and still needs a live ballot. [Pivot research](research/CREATIVE-ROUNDS.md#november-23-pivot-research)
 
+A regression test now requires the series to close after round five when a valid pivot and its successor both miss the best result. The pivot can prove a useful difference while still counting as a miss. All 36 scoring tests and nine source-watcher tests passed. [Stopping rule](evals/vision/rubric.md#verify-a-creative-series)
+
 ### Desk-ledger form study
 
 The live keyboard journey covered empty validation, Elm confirmation and editing to Oak. Both comparisons improved against their own contemporaneous control. The two score pairs were 7.05 → 8.00 at both widths, then 7.20 → 7.55 desktop and 7.20 → 7.65 phone. The critics pointed to a clearer permit result in the first pass and clearer input affordance in the second. The latter still made a read-only field look editable. These are local design probes outside the frozen MCP retrieval benchmark. [Matched ballots](evidence/benchmark-v1/library-desk-ledger-live.json)
@@ -425,18 +427,26 @@ The separate Playwriter runs captured **195 checked browser states**. They verif
 
 ### Ticket window holdout
 
-Three fresh critics exercised the same print-readiness task and recovery. Each recorded a prediction from the opening frame before interacting.
+Five independent critics exercised the same print-readiness task and recovery. Each recorded a prediction from the opening frame before interacting.
 
 | Matched live round | Desktop | Phone | Finding |
 | --- | ---: | ---: | --- |
 | Platen to the first ticket strip | 8.80 → 8.00 | 8.45 → 8.00 | The ticket exposed all six marks. The critic correctly chose C before input in both ticket views and marked the equivalent Platen decision unclear. Platen still won for artwork and readability. Release proof sounded consequential. |
 | First strip to larger overprinted marks and Check proof | 7.55 → 8.15 | 7.30 → 8.15 | The critic read all three choices correctly on entry and understood the check. The stronger event lettering gave the strip more identity. The coincident inks still need a clear key or larger detail. |
 | Identical overprinted crosses to a cross in a hollow diamond | 7.50 → 8.10 | 7.40 → 8.00 | The critic identified two separate marks on the aligned ticket at both widths. In the control, the aligned inks merge into one dark cross. The critic still found the marks small and the preselected wrong proof potentially misleading. |
+| Static strip to reversible plate shift | 7.40 → 7.85 | 7.50 → 7.65 | The critic saw both ends of A align and the left end of B separate. Both controls competed at entry, and the movement was subtle on the phone. |
+| Always-visible shift to contextual reveal and larger marks | 7.70 → 8.15 | 7.60 → 8.05 | Check proof became the sole entry action. The revised marks clarified the shift at both widths. Checking the ready ticket then hid the reset while the plate stayed shifted. |
 
-The three ticket builds passed all 45 preflight states across 320, 390 and 1440 px. The test verified the selected action, keyboard focus, touch recovery after the rotated proof, reduced motion, loaded fonts, fit and zero external requests. The third build also completed the task with 200% text sizing simulated at 320 px. Keep the matched scores paired by critic. Ticket remains experimental. [Live ballots, token usage and original PNG hashes](evidence/benchmark-v1/ticket-window-live-comparisons.json)
+The first three builds passed 45 preflight states across 320, 390 and 1440 px. The two plate builds added 42 captures and verified keyboard and touch activation, the early reset, actual mark transforms, reduced motion, and reloading. The phone review exposed the later reset problem after the ready verdict. The second ticket retains the highest observed lower-screen score at **8.15**. Close this visual direction after five rounds and keep the plate demo as evidence for a different direction. The 9.5 gate remains open. [Live ballots, token usage and original PNG hashes](evidence/benchmark-v1/ticket-window-live-comparisons.json)
 
 ### Saved-trails competitor comparison
 
 The tested candidate `c7fd37e` and pinned UI UX Pro Max used the same archived brief and one verified tool reply before generating. Design MCP chose Object Hero. Both pages passed all 18 keyboard entry, save and remove frames across 320, 390 and 1440 px. The initial view, saved view and restored empty state stayed on the same URL. Both pages brought focus back to Save after removal.
 
 The independent blind critic scored Design MCP **8.10 desktop / 7.85 phone** and UI UX Pro Max **7.65 / 7.10**. The route name, distance and named save action were visible at 390 px in the Design MCP frame, while the UI UX Pro Max frame required scrolling. The Design MCP illustration still competes with the route details. This is one additional matched brief. Product-wide competitor coverage and the 9.5 floor remain open. [Browser ballot, artifact hashes and token receipts](evidence/benchmark-v1/uiux-pro-max-empty-saved-live.json) · [Competitor scoreboard](teardown/COMPETITORS.md#visual-scoreboard)
+
+### Saved-trails action-first trial
+
+The installed trial returned a named first-item direction for all six empty-state briefs. The other 33 replies were identical to the frozen control. The follow-up routing commit preserved all 39 trial replies and resolved two earlier unhinted routing misses. An explicit dashboard request still selected the dashboard direction.
+
+A fresh independent critic reached and used Save and Remove by keyboard in both builds at both widths. Both restored the empty state and focus on the Save action. The critic preferred the trial's action placement but identified its conventional card and sparse desktop composition. The trial scored **7.60 at both widths**. The control scored **7.95 desktop / 7.70 phone** in the same ballot. The trial stays isolated. [Clean-install comparison, live ballot and capture hashes](evidence/benchmark-v1/empty-entry-saved-trails-live.json)

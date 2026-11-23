@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+- Count a creative pivot that misses the best score toward the stopping rule. A verified interaction can distinguish the new premise while its visual score still falls short. [Series verifier](evals/vision/rubric.md#verify-a-creative-series)
+
 - Added Hacker News front-page visual projects and the MUUUUU.ORG gallery to the daily design report. The archived front-page replay found two active projects the Show HN filter misses. [November 22 reference replay](research/CREATIVE-ROUNDS.md#november-22-references-verified-november-23)
 
 - Keep the delayed item visually prominent when a user asks to make an exception-first dashboard calmer. The matched live comparison improved from 7.50 to 7.70 at both widths. [Installed replay](EVALS.md#calmer-shift-queue-matched-repair)

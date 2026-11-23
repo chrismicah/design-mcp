@@ -236,6 +236,25 @@ class CreativeSeriesTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Round 6 exceeds the stop rule"):
             evaluate_series(self.series, self.folder)
 
+    def test_a_pivot_below_the_best_score_still_counts_as_a_miss(self):
+        self.series["finalist_round"] = 3
+        self.series["confirmation"] = self.review("confirmed-round-3", 3, "fresh-critic", 9)
+        self.series["rounds"][3] = {
+            **self.series["rounds"][3],
+            "review": self.review("round-4-pivot", 4, "critic-4", 8.5, pivot_passed=True),
+            "pivot": {
+                "assertion": "Selection switches the citation clock",
+                "control": self.review("round-4-pivot-control", 3, "critic-4", 9, pivot_passed=False),
+            },
+        }
+        self.assertEqual(len(evaluate_series(self.series, self.folder)["rounds"]), 5)
+        self.series["rounds"].append({
+            **self.series["rounds"][4],
+            "review": self.review("round-6", 6, "critic-6", 10),
+        })
+        with self.assertRaisesRegex(ValueError, "Round 6 exceeds the stop rule"):
+            evaluate_series(self.series, self.folder)
+
     def test_short_history_cannot_release(self):
         self.series["rounds"].pop()
         with self.assertRaisesRegex(ValueError, "5–15 live revision rounds"):
