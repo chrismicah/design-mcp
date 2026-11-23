@@ -307,3 +307,5 @@ One bounded Astra 6.2 planning session defined the paired pivot test. One indepe
 
 - Confirmatory maintenance form. A fresh Terra low builder used 76,244 input tokens (65,152 cached) and 4,679 output. The independent Terra critic used 810,011 input (773,760 cached) and 3,975 output. Two frozen builder receipts were reused. All six keyboard runs and eighteen original PNGs passed audit. [Receipt](evidence/benchmark-v1/strict-maintenance-live.json)
 - Exact `f30e6ff` Ventura dependency and guest preflight. Deterministic tooling verified 604 wheel selections, eight public interpreter assets, and the staged archive with its runtime scripts. Current Ventura runtime remains open. [Receipt](evidence/benchmark-v1/ventura-f30e6ff-preflight.json)
+
+- Maintenance first-view prototype round one. Deterministic browser replay verified six journeys. The independent Terra low critic used 397,918 input tokens (343,168 reported cached) and 2,857 output. The exact repair improved the matched desktop score by 0.30 and phone by 0.55. [Live result and browser evidence](evidence/benchmark-v1/form-first-view-round1.json)

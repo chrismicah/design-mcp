@@ -1,0 +1,1500 @@
+{
+  "scope": "Standalone matched prototype and original Design MCP draft. No new package guidance is measured.",
+  "spec": {
+    "case": "form-maintenance-first-view",
+    "arms": [
+      "control",
+      "trial"
+    ],
+    "browser": "Chrome/160.0.8178.0",
+    "task": "You are reporting a broken common-area light. At opening, capture -before. Without scrolling, identify the first input, which answers are required, and where the draft is prepared. Use Tab and Enter to attempt an empty submission and capture -edge. Check what tells you to correct it and where focus lands. Use the keyboard to enter Oak Court, Second-floor landing, and Common-area light is out in the building, location, and description fields. Confirm Routine and Safety issue are offered. Choose Safety issue, prepare the request, and capture -after. Verify the result says it was prepared locally, preserves the supplied facts, and exposes a clear way back. Use the keyboard to edit and confirm retained values and the returned focus. Ground the four scores in both the opening and completed screens. Describe the readability and density difference at 390 px and avoid credit for decoration alone.",
+    "brief": "A tenant needs to report a broken common-area light. Collect building, location and a description, and offer Routine and Safety issue as urgency options. Make it usable by keyboard and show that the request was prepared locally after valid submission."
+  },
+  "exact_release_pin": "f30e6ffcb7c8fab97580a353ff5b770849162594",
+  "contract": "# Lighting report, first view\n\nA tenant has noticed a broken common-area light and wants to prepare a repair request. They need a clear first input, a readable indication of which fields are required, and confidence about where their details go. Aim for a practical, calm building-service notice. Omit the second masthead, bulb icon, redundant instruction under the description, and display space that pushes the job down the screen.\n\nUse Switchboard blue #173B91 for the opening placard, cable ink #182745 for text, clear enamel #F5F8FF for input surfaces, conduit gray #5C6D89 for hints and rules, test-lamp yellow #FFD664 for the angled edge of the placard, and fault red #A03127 for correction text. Archivo Narrow carries the placard heading and group dividers. Mulish carries labels, inputs and status. The placard's angled junction meets the ruled form at the first field, like a label attached to a single station on a distribution board. Keep the accent outside the reading column. Retain the same local editable draft and native controls.\n\nThe frozen Design MCP control is de64536b4a3d8fea9792adbd02f4ef4a5a722d2c7b6e43c0647fd1b28f5b6df0. Reuse its HTML input requirements, local form behavior, confirmation facts and keyboard logic. Independent live scoring compares the exact same maintenance task at 1440 and 390. Protective replays use 320 and 390 phone widths and 1440 desktop. The candidate must show the whole first input by y=330 at 390 and 320 px, and place it at least 80 CSS px earlier than the frozen control at 390 px. Required status and local preparation must be visible from opening without scroll. Keyboard must reach the controls in order, preserve the first error focus, confirm the exact filled facts, and return focus with all answers retained. No horizontal overflow. Confirm screenshots at their original aspect ratio. Use the same source, model rubric and case facts for both arms. A standalone visual prototype measures the layout's value before any package change.\n\nThe social reference pass measured Sera's restrained linework and readable status typography. Apply that separation of surface, rule and task text here. The public U.S. Web Design System guidance supports pairing related form controls and placing visible signals beside labels. [Sera observed in browser](../../research/SOCIAL-DESIGN.md#access-x) \u00b7 [USWDS forms](https://designsystem.digital.gov/components/form/)\n",
+  "input_generation_control": {
+    "usage": {
+      "input_tokens": 59265,
+      "cached_input_tokens": 52992,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 4010,
+      "reasoning_output_tokens": 0
+    },
+    "tool_calls": [
+      {
+        "type": "mcp_tool_call",
+        "server": "design-mcp",
+        "tool": "direct",
+        "status": "completed"
+      }
+    ],
+    "client_errors": [],
+    "treatment_call": true,
+    "direct_call": true,
+    "status": "passed",
+    "case": "form-maintenance",
+    "arm": "v2",
+    "model": "gpt-6.1-terra",
+    "effort": "low",
+    "client": "codex-cli 0.170.0",
+    "prompt_sha256": "12fd372ef8ceb893d6d110b931b0eb5db38508ba800393f4faef5e245d316c14",
+    "shell_tool": false,
+    "elapsed_seconds": 81.26,
+    "exit_code": 0,
+    "trace_sha256": "a260a3781a6d1761bd10be086535eb2ef447aa0f6dfda95031d14e6675c5d210",
+    "html_sha256": "de64536b4a3d8fea9792adbd02f4ef4a5a722d2c7b6e43c0647fd1b28f5b6df0"
+  },
+  "script_sha256_shared": "642a805fcf2823b40fd33fd875f371f8cb3aa4416f5514f0afdb6b9b311e9082",
+  "witnesses": {
+    "control": {
+      "renderer": "0.12.0",
+      "browser": "Chrome/160.0.8178.0",
+      "input_sha256": "de64536b4a3d8fea9792adbd02f4ef4a5a722d2c7b6e43c0647fd1b28f5b6df0",
+      "captures": {
+        "320": {
+          "viewport": 320,
+          "width": 305,
+          "height": 1284,
+          "title": "Report a broken light",
+          "h1": "Report a broken light",
+          "loadedFonts": [
+            "Barlow Semi Condensed",
+            "Source Sans 3"
+          ],
+          "language": "en",
+          "reducedMotion": true,
+          "pageErrors": [],
+          "accessibility": "- main:\n  - text: Common-area maintenance\n  - paragraph: Maintenance request\n  - heading \"Report a broken light\" [level=1]\n  - paragraph: Share where the light is and what\u2019s wrong so the request can be prepared.\n  - region \"Where is it?\":\n    - heading \"Where is it?\" [level=2]\n    - text: Building\n    - textbox \"Building\"\n    - text: Location\n    - paragraph: For example, a hallway, stairwell, or lobby.\n    - textbox \"Location\"\n  - region \"What\u2019s happening?\":\n    - heading \"What\u2019s happening?\" [level=2]\n    - text: Description\n    - paragraph: Describe the problem with the light.\n    - textbox \"Description\"\n    - group \"Urgency\":\n      - text: Urgency\n      - radio \"Routine\"\n      - text: Routine\n      - radio \"Safety issue\"\n      - text: Safety issue\n  - button \"Prepare request\"\n  - paragraph: Your details stay in this browser.",
+          "status": "rendered",
+          "sha256": "5d3347b2f235edd655bc97c52f0d8722639487fb1fc54ea5b024ef24fcad1684",
+          "interaction": {
+            "opening": {
+              "first": {
+                "top": 443.265625,
+                "bottom": 491.90625,
+                "width": 273,
+                "height": 48.640625,
+                "left": 16,
+                "right": 289
+              },
+              "labels": [
+                {
+                  "text": "Building",
+                  "top": 413.625,
+                  "bottom": 438.265625,
+                  "width": 273,
+                  "height": 24.640625,
+                  "left": 16,
+                  "right": 289
+                },
+                {
+                  "text": "Location",
+                  "top": 511.90625,
+                  "bottom": 536.546875,
+                  "width": 273,
+                  "height": 24.640625,
+                  "left": 16,
+                  "right": 289
+                },
+                {
+                  "text": "Description",
+                  "top": 715.328125,
+                  "bottom": 739.96875,
+                  "width": 273,
+                  "height": 24.640625,
+                  "left": 16,
+                  "right": 289
+                },
+                {
+                  "text": "Urgency",
+                  "top": 920.71875,
+                  "bottom": 945.359375,
+                  "width": 62.046875,
+                  "height": 24.640625,
+                  "left": 16,
+                  "right": 78.046875
+                }
+              ],
+              "local": null,
+              "fonts": [
+                "Barlow Semi Condensed",
+                "Source Sans 3",
+                "Source Sans 3",
+                "Source Sans 3"
+              ],
+              "overflow": false
+            },
+            "checks": {
+              "reachesSubmit": true,
+              "firstInvalidFocused": true,
+              "allErrors": true,
+              "reachedAllFieldsInOrder": true,
+              "checkedSafety": true,
+              "reachesFilledSubmit": true,
+              "confirmationOK": true,
+              "reachesEdit": true,
+              "returnedToBuilding": true,
+              "retained": true,
+              "remainsOnFixture": true,
+              "noOverflow": true,
+              "noPageErrors": true
+            },
+            "captures": {
+              "edge": {
+                "sha256": "b4bfea7f3a9c838dace1eaac4cf29e7e0541507bdf11d02b11f2bd14324beb5c",
+                "file": "320-edge.png"
+              },
+              "after": {
+                "sha256": "4737a63d6a645257f9489f54b39a2db7b606e02460c1b590ff801489c5e41888",
+                "file": "320-after.png"
+              },
+              "returned": {
+                "sha256": "92b81033471c7906247dbb48fcd1290cce50f8dae384ac7a228cde2983e08829",
+                "file": "320-returned.png"
+              }
+            }
+          }
+        },
+        "390": {
+          "viewport": 390,
+          "width": 375,
+          "height": 1234,
+          "title": "Report a broken light",
+          "h1": "Report a broken light",
+          "loadedFonts": [
+            "Barlow Semi Condensed",
+            "Source Sans 3"
+          ],
+          "language": "en",
+          "reducedMotion": true,
+          "pageErrors": [],
+          "accessibility": "- main:\n  - text: Common-area maintenance\n  - paragraph: Maintenance request\n  - heading \"Report a broken light\" [level=1]\n  - paragraph: Share where the light is and what\u2019s wrong so the request can be prepared.\n  - region \"Where is it?\":\n    - heading \"Where is it?\" [level=2]\n    - text: Building\n    - textbox \"Building\"\n    - text: Location\n    - paragraph: For example, a hallway, stairwell, or lobby.\n    - textbox \"Location\"\n  - region \"What\u2019s happening?\":\n    - heading \"What\u2019s happening?\" [level=2]\n    - text: Description\n    - paragraph: Describe the problem with the light.\n    - textbox \"Description\"\n    - group \"Urgency\":\n      - text: Urgency\n      - radio \"Routine\"\n      - text: Routine\n      - radio \"Safety issue\"\n      - text: Safety issue\n  - button \"Prepare request\"\n  - paragraph: Your details stay in this browser.",
+          "status": "rendered",
+          "sha256": "8d8f15bb4fd281955628a67f134249c69c31b6585d1d6c7b1145e68613b949ae",
+          "interaction": {
+            "opening": {
+              "first": {
+                "top": 455.640625,
+                "bottom": 504.28125,
+                "width": 343,
+                "height": 48.640625,
+                "left": 16,
+                "right": 359
+              },
+              "labels": [
+                {
+                  "text": "Building",
+                  "top": 426,
+                  "bottom": 450.640625,
+                  "width": 343,
+                  "height": 24.640625,
+                  "left": 16,
+                  "right": 359
+                },
+                {
+                  "text": "Location",
+                  "top": 524.28125,
+                  "bottom": 548.921875,
+                  "width": 343,
+                  "height": 24.640625,
+                  "left": 16,
+                  "right": 359
+                },
+                {
+                  "text": "Description",
+                  "top": 727.703125,
+                  "bottom": 752.34375,
+                  "width": 343,
+                  "height": 24.640625,
+                  "left": 16,
+                  "right": 359
+                },
+                {
+                  "text": "Urgency",
+                  "top": 933.09375,
+                  "bottom": 957.734375,
+                  "width": 62.046875,
+                  "height": 24.640625,
+                  "left": 16,
+                  "right": 78.046875
+                }
+              ],
+              "local": null,
+              "fonts": [
+                "Barlow Semi Condensed",
+                "Source Sans 3",
+                "Source Sans 3",
+                "Source Sans 3"
+              ],
+              "overflow": false
+            },
+            "checks": {
+              "reachesSubmit": true,
+              "firstInvalidFocused": true,
+              "allErrors": true,
+              "reachedAllFieldsInOrder": true,
+              "checkedSafety": true,
+              "reachesFilledSubmit": true,
+              "confirmationOK": true,
+              "reachesEdit": true,
+              "returnedToBuilding": true,
+              "retained": true,
+              "remainsOnFixture": true,
+              "noOverflow": true,
+              "noPageErrors": true
+            },
+            "captures": {
+              "edge": {
+                "sha256": "c159aae5a1fa436092b38ee1af0eb3071d1335f0f2b47f5668bf548769dbfe3f",
+                "file": "390-edge.png"
+              },
+              "after": {
+                "sha256": "11e72e05b2da955c4cd05e69ce698183ca0f94caf0312f73b9384904e0858194",
+                "file": "390-after.png"
+              },
+              "returned": {
+                "sha256": "84c9e8173431893d37e1a68c710b36fddcdf5f3425bf3779de9ce49a97b46aab",
+                "file": "390-returned.png"
+              }
+            }
+          }
+        },
+        "1440": {
+          "viewport": 1440,
+          "width": 1425,
+          "height": 1132,
+          "title": "Report a broken light",
+          "h1": "Report a broken light",
+          "loadedFonts": [
+            "Barlow Semi Condensed",
+            "Source Sans 3"
+          ],
+          "language": "en",
+          "reducedMotion": true,
+          "pageErrors": [],
+          "accessibility": "- main:\n  - text: Common-area maintenance\n  - paragraph: Maintenance request\n  - heading \"Report a broken light\" [level=1]\n  - paragraph: Share where the light is and what\u2019s wrong so the request can be prepared.\n  - region \"Where is it?\":\n    - heading \"Where is it?\" [level=2]\n    - text: Building\n    - textbox \"Building\"\n    - text: Location\n    - paragraph: For example, a hallway, stairwell, or lobby.\n    - textbox \"Location\"\n  - region \"What\u2019s happening?\":\n    - heading \"What\u2019s happening?\" [level=2]\n    - text: Description\n    - paragraph: Describe the problem with the light.\n    - textbox \"Description\"\n    - group \"Urgency\":\n      - text: Urgency\n      - radio \"Routine\"\n      - text: Routine\n      - radio \"Safety issue\"\n      - text: Safety issue\n  - button \"Prepare request\"\n  - paragraph: Your details stay in this browser.",
+          "status": "rendered",
+          "sha256": "65766c98f7ea5e58000c558f6725c176341e690af22c1f39e9eb1e43c33188d7",
+          "interaction": {
+            "opening": {
+              "first": {
+                "top": 385.640625,
+                "bottom": 434.28125,
+                "width": 360,
+                "height": 48.640625,
+                "left": 504.5,
+                "right": 864.5
+              },
+              "labels": [
+                {
+                  "text": "Building",
+                  "top": 356,
+                  "bottom": 380.640625,
+                  "width": 512,
+                  "height": 24.640625,
+                  "left": 504.5,
+                  "right": 1016.5
+                },
+                {
+                  "text": "Location",
+                  "top": 454.28125,
+                  "bottom": 478.921875,
+                  "width": 512,
+                  "height": 24.640625,
+                  "left": 504.5,
+                  "right": 1016.5
+                },
+                {
+                  "text": "Description",
+                  "top": 621.3125,
+                  "bottom": 645.953125,
+                  "width": 512,
+                  "height": 24.640625,
+                  "left": 504.5,
+                  "right": 1016.5
+                },
+                {
+                  "text": "Urgency",
+                  "top": 826.703125,
+                  "bottom": 851.34375,
+                  "width": 62.046875,
+                  "height": 24.640625,
+                  "left": 504.5,
+                  "right": 566.546875
+                }
+              ],
+              "local": null,
+              "fonts": [
+                "Barlow Semi Condensed",
+                "Source Sans 3",
+                "Source Sans 3",
+                "Source Sans 3"
+              ],
+              "overflow": false
+            },
+            "checks": {
+              "reachesSubmit": true,
+              "firstInvalidFocused": true,
+              "allErrors": true,
+              "reachedAllFieldsInOrder": true,
+              "checkedSafety": true,
+              "reachesFilledSubmit": true,
+              "confirmationOK": true,
+              "reachesEdit": true,
+              "returnedToBuilding": true,
+              "retained": true,
+              "remainsOnFixture": true,
+              "noOverflow": true,
+              "noPageErrors": true
+            },
+            "captures": {
+              "edge": {
+                "sha256": "f48b7ebd88c2e7b2c31ebb3f4378a4ae71e65e33721d97c4379fa83ba6855357",
+                "file": "1440-edge.png"
+              },
+              "after": {
+                "sha256": "e491891c3580f428a63bf6ca539467f29ac551e02c2eb9b95a8bb12c96634c46",
+                "file": "1440-after.png"
+              },
+              "returned": {
+                "sha256": "55b05d27df1e3a0d524bc539bc0b0fc970c9b9517534703c4a5b426dc64b4028",
+                "file": "1440-returned.png"
+              }
+            }
+          }
+        }
+      }
+    },
+    "trial": {
+      "renderer": "0.12.0",
+      "browser": "Chrome/160.0.8178.0",
+      "input_sha256": "d467b13288eb23bf6d0075d76da015b1cfd2d16c092050bdd497504423298948",
+      "captures": {
+        "320": {
+          "viewport": 320,
+          "width": 305,
+          "height": 914,
+          "title": "Report a broken light",
+          "h1": "Report a broken light",
+          "loadedFonts": [
+            "Archivo Narrow",
+            "Mulish"
+          ],
+          "language": "en",
+          "reducedMotion": true,
+          "pageErrors": [],
+          "accessibility": "- main:\n  - heading \"Report a broken light\" [level=1]\n  - paragraph: Prepare a draft on this device.\n  - region \"Where is it?\":\n    - heading \"Where is it?\" [level=2]\n    - text: Building Required\n    - textbox \"Building Required\"\n    - text: Location Required\n    - paragraph: For example, a hallway, stairwell, or lobby.\n    - textbox \"Location Required\"\n  - region \"What\u2019s happening?\":\n    - heading \"What\u2019s happening?\" [level=2]\n    - text: Description Required\n    - textbox \"Description Required\"\n    - group \"Urgency Required\":\n      - text: Urgency Required\n      - radio \"Routine\"\n      - text: Routine\n      - radio \"Safety issue\"\n      - text: Safety issue\n  - button \"Prepare request\"\n  - paragraph: Review the draft and edit your answers.",
+          "status": "rendered",
+          "sha256": "e356b001f6322d1ee985b8395729a4c124555d0169b7821bca9deb03ee43e43c",
+          "interaction": {
+            "opening": {
+              "first": {
+                "top": 224.609375,
+                "bottom": 272.609375,
+                "width": 273,
+                "height": 48,
+                "left": 16,
+                "right": 289
+              },
+              "labels": [
+                {
+                  "text": "Building Required",
+                  "top": 196.421875,
+                  "bottom": 219.609375,
+                  "width": 273,
+                  "height": 23.1875,
+                  "left": 16,
+                  "right": 289
+                },
+                {
+                  "text": "Location Required",
+                  "top": 285.609375,
+                  "bottom": 308.796875,
+                  "width": 273,
+                  "height": 23.1875,
+                  "left": 16,
+                  "right": 289
+                },
+                {
+                  "text": "Description Required",
+                  "top": 477.390625,
+                  "bottom": 500.578125,
+                  "width": 273,
+                  "height": 23.1875,
+                  "left": 16,
+                  "right": 289
+                },
+                {
+                  "text": "Urgency Required",
+                  "top": 610.578125,
+                  "bottom": 633.765625,
+                  "width": 130.234375,
+                  "height": 23.1875,
+                  "left": 16,
+                  "right": 146.234375
+                }
+              ],
+              "local": {
+                "top": 110.03125,
+                "bottom": 130.328125,
+                "width": 220,
+                "height": 20.296875,
+                "left": 33,
+                "right": 253
+              },
+              "fonts": [
+                "Archivo Narrow",
+                "Mulish",
+                "Mulish",
+                "Mulish"
+              ],
+              "overflow": false
+            },
+            "checks": {
+              "reachesSubmit": true,
+              "firstInvalidFocused": true,
+              "allErrors": true,
+              "reachedAllFieldsInOrder": true,
+              "checkedSafety": true,
+              "reachesFilledSubmit": true,
+              "confirmationOK": true,
+              "reachesEdit": true,
+              "returnedToBuilding": true,
+              "retained": true,
+              "remainsOnFixture": true,
+              "noOverflow": true,
+              "noPageErrors": true
+            },
+            "captures": {
+              "edge": {
+                "sha256": "4f68cefcab4a5151cfbbdb03d5f7e44aa16f458347525752150dd8e2075912be",
+                "file": "320-edge.png"
+              },
+              "after": {
+                "sha256": "4ed9edb41019d430c0036dc807d29efe3ba66625264634bf2134279401f389ad",
+                "file": "320-after.png"
+              },
+              "returned": {
+                "sha256": "0ade650528bb9c92aef5ae448622daacfa725506b3d3be70e904903b18b8716d",
+                "file": "320-returned.png"
+              }
+            }
+          }
+        },
+        "390": {
+          "viewport": 390,
+          "width": 375,
+          "height": 859,
+          "title": "Report a broken light",
+          "h1": "Report a broken light",
+          "loadedFonts": [
+            "Archivo Narrow",
+            "Mulish"
+          ],
+          "language": "en",
+          "reducedMotion": true,
+          "pageErrors": [],
+          "accessibility": "- main:\n  - heading \"Report a broken light\" [level=1]\n  - paragraph: Prepare a draft on this device.\n  - region \"Where is it?\":\n    - heading \"Where is it?\" [level=2]\n    - text: Building Required\n    - textbox \"Building Required\"\n    - text: Location Required\n    - paragraph: For example, a hallway, stairwell, or lobby.\n    - textbox \"Location Required\"\n  - region \"What\u2019s happening?\":\n    - heading \"What\u2019s happening?\" [level=2]\n    - text: Description Required\n    - textbox \"Description Required\"\n    - group \"Urgency Required\":\n      - text: Urgency Required\n      - radio \"Routine\"\n      - text: Routine\n      - radio \"Safety issue\"\n      - text: Safety issue\n  - button \"Prepare request\"\n  - paragraph: Review the draft and edit your answers.",
+          "status": "rendered",
+          "sha256": "13dc572b6cb98a338ce36af5bc971741f85bfec4abdc5cf249776ad27fe5c95d",
+          "interaction": {
+            "opening": {
+              "first": {
+                "top": 236.515625,
+                "bottom": 284.515625,
+                "width": 343,
+                "height": 48,
+                "left": 16,
+                "right": 359
+              },
+              "labels": [
+                {
+                  "text": "Building Required",
+                  "top": 208.328125,
+                  "bottom": 231.515625,
+                  "width": 343,
+                  "height": 23.1875,
+                  "left": 16,
+                  "right": 359
+                },
+                {
+                  "text": "Location Required",
+                  "top": 297.515625,
+                  "bottom": 320.703125,
+                  "width": 343,
+                  "height": 23.1875,
+                  "left": 16,
+                  "right": 359
+                },
+                {
+                  "text": "Description Required",
+                  "top": 467.546875,
+                  "bottom": 490.734375,
+                  "width": 343,
+                  "height": 23.1875,
+                  "left": 16,
+                  "right": 359
+                },
+                {
+                  "text": "Urgency Required",
+                  "top": 600.734375,
+                  "bottom": 623.921875,
+                  "width": 130.234375,
+                  "height": 23.1875,
+                  "left": 16,
+                  "right": 146.234375
+                }
+              ],
+              "local": {
+                "top": 121.9375,
+                "bottom": 142.234375,
+                "width": 290,
+                "height": 20.296875,
+                "left": 33,
+                "right": 323
+              },
+              "fonts": [
+                "Archivo Narrow",
+                "Mulish",
+                "Mulish",
+                "Mulish"
+              ],
+              "overflow": false
+            },
+            "checks": {
+              "reachesSubmit": true,
+              "firstInvalidFocused": true,
+              "allErrors": true,
+              "reachedAllFieldsInOrder": true,
+              "checkedSafety": true,
+              "reachesFilledSubmit": true,
+              "confirmationOK": true,
+              "reachesEdit": true,
+              "returnedToBuilding": true,
+              "retained": true,
+              "remainsOnFixture": true,
+              "noOverflow": true,
+              "noPageErrors": true
+            },
+            "captures": {
+              "edge": {
+                "sha256": "f8bea5a606f6673922abcab3b6ce31e5aeb600c26455368c03ca12a8ee8072d1",
+                "file": "390-edge.png"
+              },
+              "after": {
+                "sha256": "25edbc1bdfb9ce390e75ddeffdbb0cf3a6098c37fcea44372477089af6305ae2",
+                "file": "390-after.png"
+              },
+              "returned": {
+                "sha256": "f54615c3dd7cd24575d2d538e14b02512b5909c32dd8ae50c965a2bd539acc35",
+                "file": "390-returned.png"
+              }
+            }
+          }
+        },
+        "1440": {
+          "viewport": 1440,
+          "width": 1440,
+          "height": 900,
+          "title": "Report a broken light",
+          "h1": "Report a broken light",
+          "loadedFonts": [
+            "Archivo Narrow",
+            "Mulish"
+          ],
+          "language": "en",
+          "reducedMotion": true,
+          "pageErrors": [],
+          "accessibility": "- main:\n  - heading \"Report a broken light\" [level=1]\n  - paragraph: Prepare a draft on this device.\n  - region \"Where is it?\":\n    - heading \"Where is it?\" [level=2]\n    - text: Building Required\n    - textbox \"Building Required\"\n    - text: Location Required\n    - paragraph: For example, a hallway, stairwell, or lobby.\n    - textbox \"Location Required\"\n  - region \"What\u2019s happening?\":\n    - heading \"What\u2019s happening?\" [level=2]\n    - text: Description Required\n    - textbox \"Description Required\"\n    - group \"Urgency Required\":\n      - text: Urgency Required\n      - radio \"Routine\"\n      - text: Routine\n      - radio \"Safety issue\"\n      - text: Safety issue\n  - button \"Prepare request\"\n  - paragraph: Review the draft and edit your answers.",
+          "status": "rendered",
+          "sha256": "e9820c56d4b25f9ce923f522c96ca98663d9b0edbdbfb90b9e6b06a16d0b3ce8",
+          "interaction": {
+            "opening": {
+              "first": {
+                "top": 244.375,
+                "bottom": 292.375,
+                "width": 688,
+                "height": 48,
+                "left": 476,
+                "right": 1164
+              },
+              "labels": [
+                {
+                  "text": "Building Required",
+                  "top": 216.1875,
+                  "bottom": 239.375,
+                  "width": 688,
+                  "height": 23.1875,
+                  "left": 476,
+                  "right": 1164
+                },
+                {
+                  "text": "Location Required",
+                  "top": 305.375,
+                  "bottom": 328.5625,
+                  "width": 688,
+                  "height": 23.1875,
+                  "left": 476,
+                  "right": 1164
+                },
+                {
+                  "text": "Description Required",
+                  "top": 453.3125,
+                  "bottom": 476.5,
+                  "width": 688,
+                  "height": 23.1875,
+                  "left": 476,
+                  "right": 1164
+                },
+                {
+                  "text": "Urgency Required",
+                  "top": 586.5,
+                  "bottom": 609.6875,
+                  "width": 130.234375,
+                  "height": 23.1875,
+                  "left": 476,
+                  "right": 606.234375
+                }
+              ],
+              "local": {
+                "top": 139,
+                "bottom": 162.1875,
+                "width": 888,
+                "height": 23.1875,
+                "left": 276,
+                "right": 1164
+              },
+              "fonts": [
+                "Archivo Narrow",
+                "Mulish",
+                "Mulish",
+                "Mulish"
+              ],
+              "overflow": false
+            },
+            "checks": {
+              "reachesSubmit": true,
+              "firstInvalidFocused": true,
+              "allErrors": true,
+              "reachedAllFieldsInOrder": true,
+              "checkedSafety": true,
+              "reachesFilledSubmit": true,
+              "confirmationOK": true,
+              "reachesEdit": true,
+              "returnedToBuilding": true,
+              "retained": true,
+              "remainsOnFixture": true,
+              "noOverflow": true,
+              "noPageErrors": true
+            },
+            "captures": {
+              "edge": {
+                "sha256": "5973aaa3628ea80289e234c9679594dd65d5f05e3c253d147378b6f57e4579d0",
+                "file": "1440-edge.png"
+              },
+              "after": {
+                "sha256": "49da1f2e8204995e9cc319324f9348bf46c68faa819d8867245a77411d420cc3",
+                "file": "1440-after.png"
+              },
+              "returned": {
+                "sha256": "3072ea880d6606ae72455b5f2535da295ddfd67858a5cc753069d1583af7b515",
+                "file": "1440-returned.png"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "ballot": {
+    "calibration": {
+      "example": "Legible repair intake with clear labels, familiar layout, and misplaced focus after an invalid number",
+      "coherence": 7,
+      "originality": 4,
+      "craft": 6,
+      "usability": 6,
+      "reason": "Clear labels support the task, but the familiar layout is only moderately distinctive and misplaced error focus impairs recovery."
+    },
+    "screens": {
+      "A-1440": {
+        "coherence": 8,
+        "originality": 6,
+        "craft": 7.5,
+        "usability": 7.5,
+        "primary_action": {
+          "input": "Keyboard: Oak Court; Second-floor landing; Common-area light is out; Safety issue.",
+          "expected": "Prepare a local draft containing all four answers.",
+          "observed": "The prepared screen displayed all four answers, stated that it had not been sent, and focused its heading."
+        },
+        "edge_observation": "Empty submission displayed specific inline errors for building, location, description, and urgency, and focused Building. The opening did not identify required answers; the local-browser statement and action were below the initial viewport.",
+        "fact_check": "Both urgency options were offered. Edit request retained all values and returned focus to Building. The screen claims local preparation; persistence or network behavior was not independently verified.",
+        "strength": "The section labels and aligned fields create a clear reading order, and the completed summary is easy to scan.",
+        "weakness": "Required status is undisclosed until submission, and the opening view does not expose the preparation action or local-browser statement.",
+        "repair": "Mark required answers before entry and bring the preparation context closer to the opening instructions.",
+        "arm": "control",
+        "html_sha256": "de64536b4a3d8fea9792adbd02f4ef4a5a722d2c7b6e43c0647fd1b28f5b6df0",
+        "weighted": 7.2,
+        "before": {
+          "sha256": "65766c98f7ea5e58000c558f6725c176341e690af22c1f39e9eb1e43c33188d7",
+          "file": "A-1440-before.png",
+          "tool_call_id": "item_2"
+        },
+        "after": {
+          "sha256": "e491891c3580f428a63bf6ca539467f29ac551e02c2eb9b95a8bb12c96634c46",
+          "file": "A-1440-after.png",
+          "tool_call_id": "item_19"
+        },
+        "layout_width": 1440,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          },
+          {
+            "action": "text",
+            "value": "Oak Court"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "text",
+            "value": "Second-floor landing"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "text",
+            "value": "Common-area light is out"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge": {
+          "sha256": "f48b7ebd88c2e7b2c31ebb3f4378a4ae71e65e33721d97c4379fa83ba6855357",
+          "file": "A-1440-edge.png",
+          "tool_call_id": "item_9"
+        },
+        "journey": {
+          "invalid_submission_exercised_empty": true,
+          "invalid_focus": {
+            "tag": "input",
+            "type": "text",
+            "label": "Building",
+            "visible": true,
+            "embedded": false,
+            "document_focused": true
+          },
+          "valid_input_exact": true,
+          "selected_safety_trace": true,
+          "local_confirmation_trace": true,
+          "confirmation_contains_suite_values": true,
+          "confirmation_urgency_is_safety": true,
+          "confirmation_ax": "- main:\n  - text: Common-area maintenance\n  - paragraph: Maintenance request\n  - heading \"Report a broken light\" [level=1]\n  - paragraph: Share where the light is and what\u2019s wrong so the request can be prepared.\n  - region \"Request prepared locally\":\n    - heading \"Request prepared locally\" [level=2]\n    - paragraph: Your request is ready to review. It has not been sent.\n    - term: Building\n    - definition: Oak Court\n    - term: Location\n    - definition: Second-floor landing\n    - term: Description\n    - definition: Common-area light is out\n    - term: Urgency\n    - definition: Safety issue\n    - button \"Edit request\"",
+          "confirmation_focus": {
+            "tag": "h2",
+            "type": null,
+            "label": "Request prepared locally",
+            "visible": true,
+            "embedded": false,
+            "document_focused": true
+          },
+          "no_horizontal_overflow": true,
+          "captured": {
+            "before": "65766c98f7ea5e58000c558f6725c176341e690af22c1f39e9eb1e43c33188d7",
+            "edge": "f48b7ebd88c2e7b2c31ebb3f4378a4ae71e65e33721d97c4379fa83ba6855357",
+            "after": "e491891c3580f428a63bf6ca539467f29ac551e02c2eb9b95a8bb12c96634c46"
+          },
+          "keyboard_activation_after_confirmation": true
+        }
+      },
+      "A-390": {
+        "coherence": 7.5,
+        "originality": 6,
+        "craft": 7,
+        "usability": 7,
+        "primary_action": {
+          "input": "Keyboard: Oak Court; Second-floor landing; Common-area light is out; Safety issue.",
+          "expected": "Prepare a local draft containing all four answers.",
+          "observed": "The summary showed the supplied facts, said it was prepared locally and not sent, and offered Edit request."
+        },
+        "edge_observation": "Empty submission showed inline correction messages and focused Building. Required status and the local-browser statement were not visible at opening.",
+        "fact_check": "Routine and Safety issue were offered. Editing retained the values and returned focus to Building. Actual storage and network behavior were not independently verified.",
+        "strength": "Labels, inputs, and the stacked summary remain legible without horizontal scrolling.",
+        "weakness": "The large introductory area makes the opening considerably less dense than desktop: the urgency choices and action are below the fold. The focused summary heading wraps tightly.",
+        "repair": "Reduce introductory height on small screens and give the wrapped summary heading more breathing room.",
+        "arm": "control",
+        "html_sha256": "de64536b4a3d8fea9792adbd02f4ef4a5a722d2c7b6e43c0647fd1b28f5b6df0",
+        "weighted": 6.85,
+        "before": {
+          "sha256": "8d8f15bb4fd281955628a67f134249c69c31b6585d1d6c7b1145e68613b949ae",
+          "file": "A-390-before.png",
+          "tool_call_id": "item_24"
+        },
+        "after": {
+          "sha256": "11e72e05b2da955c4cd05e69ce698183ca0f94caf0312f73b9384904e0858194",
+          "file": "A-390-after.png",
+          "tool_call_id": "item_41"
+        },
+        "layout_width": 375,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          },
+          {
+            "action": "text",
+            "value": "Oak Court"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "text",
+            "value": "Second-floor landing"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "text",
+            "value": "Common-area light is out"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge": {
+          "sha256": "342c135f398ca0cf32a5f02eca5195fa8fc0b337e96c100c7448ab5e3990070f",
+          "file": "A-390-edge.png",
+          "tool_call_id": "item_31"
+        },
+        "journey": {
+          "invalid_submission_exercised_empty": true,
+          "invalid_focus": {
+            "tag": "input",
+            "type": "text",
+            "label": "Building",
+            "visible": true,
+            "embedded": false,
+            "document_focused": true
+          },
+          "valid_input_exact": true,
+          "selected_safety_trace": true,
+          "local_confirmation_trace": true,
+          "confirmation_contains_suite_values": true,
+          "confirmation_urgency_is_safety": true,
+          "confirmation_ax": "- main:\n  - text: Common-area maintenance\n  - paragraph: Maintenance request\n  - heading \"Report a broken light\" [level=1]\n  - paragraph: Share where the light is and what\u2019s wrong so the request can be prepared.\n  - region \"Request prepared locally\":\n    - heading \"Request prepared locally\" [level=2]\n    - paragraph: Your request is ready to review. It has not been sent.\n    - term: Building\n    - definition: Oak Court\n    - term: Location\n    - definition: Second-floor landing\n    - term: Description\n    - definition: Common-area light is out\n    - term: Urgency\n    - definition: Safety issue\n    - button \"Edit request\"",
+          "confirmation_focus": {
+            "tag": "h2",
+            "type": null,
+            "label": "Request prepared locally",
+            "visible": true,
+            "embedded": false,
+            "document_focused": true
+          },
+          "no_horizontal_overflow": true,
+          "captured": {
+            "before": "8d8f15bb4fd281955628a67f134249c69c31b6585d1d6c7b1145e68613b949ae",
+            "edge": "342c135f398ca0cf32a5f02eca5195fa8fc0b337e96c100c7448ab5e3990070f",
+            "after": "11e72e05b2da955c4cd05e69ce698183ca0f94caf0312f73b9384904e0858194"
+          },
+          "keyboard_activation_after_confirmation": true
+        }
+      },
+      "B-1440": {
+        "coherence": 8,
+        "originality": 6,
+        "craft": 8,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Keyboard: Oak Court; Second-floor landing; Common-area light is out; Safety issue.",
+          "expected": "Prepare a local draft containing all four answers.",
+          "observed": "The prepared screen displayed all four answers, said it had not been sent, and focused its heading."
+        },
+        "edge_observation": "All four answers were marked Required at opening. Empty submission gave specific inline errors and focused Building.",
+        "fact_check": "The opening says the draft is prepared on this device, and both urgency options were offered. Edit request retained all values and returned focus to Building. Actual storage and network behavior were not independently verified.",
+        "strength": "The complete form, required indicators, local-draft explanation, and action fit in the opening viewport; the result presents a compact, readable summary.",
+        "weakness": "The narrow section-heading column forces 'What\u2019s happening?' onto two lines despite ample overall width.",
+        "repair": "Give the section-heading column enough width for its heading while maintaining the clear field alignment.",
+        "arm": "trial",
+        "html_sha256": "d467b13288eb23bf6d0075d76da015b1cfd2d16c092050bdd497504423298948",
+        "weighted": 7.5,
+        "before": {
+          "sha256": "e9820c56d4b25f9ce923f522c96ca98663d9b0edbdbfb90b9e6b06a16d0b3ce8",
+          "file": "B-1440-before.png",
+          "tool_call_id": "item_45"
+        },
+        "after": {
+          "sha256": "49da1f2e8204995e9cc319324f9348bf46c68faa819d8867245a77411d420cc3",
+          "file": "B-1440-after.png",
+          "tool_call_id": "item_62"
+        },
+        "layout_width": 1440,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          },
+          {
+            "action": "text",
+            "value": "Oak Court"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "text",
+            "value": "Second-floor landing"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "text",
+            "value": "Common-area light is out"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge": {
+          "sha256": "5973aaa3628ea80289e234c9679594dd65d5f05e3c253d147378b6f57e4579d0",
+          "file": "B-1440-edge.png",
+          "tool_call_id": "item_52"
+        },
+        "journey": {
+          "invalid_submission_exercised_empty": true,
+          "invalid_focus": {
+            "tag": "input",
+            "type": "text",
+            "label": "Building Required",
+            "visible": true,
+            "embedded": false,
+            "document_focused": true
+          },
+          "valid_input_exact": true,
+          "selected_safety_trace": true,
+          "local_confirmation_trace": true,
+          "confirmation_contains_suite_values": true,
+          "confirmation_urgency_is_safety": true,
+          "confirmation_ax": "- main:\n  - heading \"Report a broken light\" [level=1]\n  - paragraph: Prepare a draft on this device.\n  - region \"Request prepared locally\":\n    - heading \"Request prepared locally\" [level=2]\n    - paragraph: Your request is ready to review. It has not been sent.\n    - term: Building\n    - definition: Oak Court\n    - term: Location\n    - definition: Second-floor landing\n    - term: Description\n    - definition: Common-area light is out\n    - term: Urgency\n    - definition: Safety issue\n    - button \"Edit request\"",
+          "confirmation_focus": {
+            "tag": "h2",
+            "type": null,
+            "label": "Request prepared locally",
+            "visible": true,
+            "embedded": false,
+            "document_focused": true
+          },
+          "no_horizontal_overflow": true,
+          "captured": {
+            "before": "e9820c56d4b25f9ce923f522c96ca98663d9b0edbdbfb90b9e6b06a16d0b3ce8",
+            "edge": "5973aaa3628ea80289e234c9679594dd65d5f05e3c253d147378b6f57e4579d0",
+            "after": "49da1f2e8204995e9cc319324f9348bf46c68faa819d8867245a77411d420cc3"
+          },
+          "keyboard_activation_after_confirmation": true
+        }
+      },
+      "B-390": {
+        "coherence": 8,
+        "originality": 6,
+        "craft": 7.5,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Keyboard: Oak Court; Second-floor landing; Common-area light is out; Safety issue.",
+          "expected": "Prepare a local draft containing all four answers.",
+          "observed": "The summary showed the supplied facts, said it was prepared locally and not sent, and offered Edit request."
+        },
+        "edge_observation": "Empty submission showed specific inline errors and focused Building. All answers were marked Required at opening.",
+        "fact_check": "Routine and Safety issue were offered. Editing retained the values and returned focus to Building. Actual storage and network behavior were not independently verified.",
+        "strength": "The opening fits the complete form and action at 390 px while retaining readable labels and usable-looking controls; the completed facts remain clearly separated.",
+        "weakness": "The compact layout is denser than A, and error messages extend it beyond the viewport. The focused result heading wraps inside a prominent outline.",
+        "repair": "Add space around the wrapped result heading and retain the compact form while ensuring errors remain easy to scan.",
+        "arm": "trial",
+        "html_sha256": "d467b13288eb23bf6d0075d76da015b1cfd2d16c092050bdd497504423298948",
+        "weighted": 7.4,
+        "before": {
+          "sha256": "13dc572b6cb98a338ce36af5bc971741f85bfec4abdc5cf249776ad27fe5c95d",
+          "file": "B-390-before.png",
+          "tool_call_id": "item_67"
+        },
+        "after": {
+          "sha256": "25edbc1bdfb9ce390e75ddeffdbb0cf3a6098c37fcea44372477089af6305ae2",
+          "file": "B-390-after.png",
+          "tool_call_id": "item_84"
+        },
+        "layout_width": 390,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          },
+          {
+            "action": "text",
+            "value": "Oak Court"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "text",
+            "value": "Second-floor landing"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "text",
+            "value": "Common-area light is out"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge": {
+          "sha256": "01c43f8dc8eed59068917b87d05d7d5c692298a6958ece8be82bc199302f507a",
+          "file": "B-390-edge.png",
+          "tool_call_id": "item_74"
+        },
+        "journey": {
+          "invalid_submission_exercised_empty": true,
+          "invalid_focus": {
+            "tag": "input",
+            "type": "text",
+            "label": "Building Required",
+            "visible": true,
+            "embedded": false,
+            "document_focused": true
+          },
+          "valid_input_exact": true,
+          "selected_safety_trace": true,
+          "local_confirmation_trace": true,
+          "confirmation_contains_suite_values": true,
+          "confirmation_urgency_is_safety": true,
+          "confirmation_ax": "- main:\n  - heading \"Report a broken light\" [level=1]\n  - paragraph: Prepare a draft on this device.\n  - region \"Request prepared locally\":\n    - heading \"Request prepared locally\" [level=2]\n    - paragraph: Your request is ready to review. It has not been sent.\n    - term: Building\n    - definition: Oak Court\n    - term: Location\n    - definition: Second-floor landing\n    - term: Description\n    - definition: Common-area light is out\n    - term: Urgency\n    - definition: Safety issue\n    - button \"Edit request\"",
+          "confirmation_focus": {
+            "tag": "h2",
+            "type": null,
+            "label": "Request prepared locally",
+            "visible": true,
+            "embedded": false,
+            "document_focused": true
+          },
+          "no_horizontal_overflow": true,
+          "captured": {
+            "before": "13dc572b6cb98a338ce36af5bc971741f85bfec4abdc5cf249776ad27fe5c95d",
+            "edge": "01c43f8dc8eed59068917b87d05d7d5c692298a6958ece8be82bc199302f507a",
+            "after": "25edbc1bdfb9ce390e75ddeffdbb0cf3a6098c37fcea44372477089af6305ae2"
+          },
+          "keyboard_activation_after_confirmation": true
+        }
+      }
+    },
+    "preference": {
+      "winner": "B",
+      "reason": "Both versions completed the keyboard flow and supported recovery, but B discloses every required answer and the on-device draft at opening. Its full form and action are visible at both tested widths. The preference is based on those task advantages rather than the colored banner."
+    },
+    "case": "form-maintenance-first-view",
+    "verified_screens": 4,
+    "required_screens": 4,
+    "browser": "Chrome/160.0.8178.0",
+    "evaluator_thread": "01a20931-2bab-73a1-9a73-6ce2223d8950",
+    "usage": {
+      "input_tokens": 397918,
+      "cached_input_tokens": 343168,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 2857,
+      "reasoning_output_tokens": 0
+    },
+    "trace_sha256": "871b440bb782543f3611b279a000efce53e285837fa33c15bdf91960d861b075",
+    "browser_audit_sha256": "edbdd4c0e82786cafa9e4dafb7a30d3dedd59e9604cf7787bfcccab9b8d42086"
+  },
+  "scores": {
+    "control": {
+      "desktop": 7.2,
+      "phone": 6.85
+    },
+    "trial": {
+      "desktop": 7.5,
+      "phone": 7.4
+    }
+  },
+  "first_input_y": {
+    "control": {
+      "320": 443.265625,
+      "390": 455.640625,
+      "1440": 385.640625
+    },
+    "trial": {
+      "320": 224.609375,
+      "390": 236.515625,
+      "1440": 244.375
+    }
+  },
+  "original_source_checks": {
+    "tools": [
+      "check",
+      "direct",
+      "react"
+    ],
+    "direct": {
+      "form-maintenance": {
+        "brief": "A tenant needs to report a broken common-area light. Collect building, location and a description, and offer Routine and Safety issue as urgency options. Make it usable by keyboard and show that the request was prepared locally after valid submission.",
+        "direction": {
+          "direction": {
+            "id": "grouped-fieldsets",
+            "surface": "form",
+            "title": "Grouped details",
+            "summary": "A compact worksheet for entering related facts together. A reader can find a field again by its group and its persistent label.",
+            "type": {
+              "display": "Barlow Semi Condensed",
+              "body": "Source Sans 3",
+              "ratio": 2.5,
+              "tracking": -0.02,
+              "weight": 600,
+              "license": "OFL-1.1"
+            },
+            "palette": {
+              "ink": "#203136",
+              "paper": "#F5F8F6",
+              "accent": "#175F55"
+            },
+            "layout": {
+              "skeleton": "Set a short task title over a ruled worksheet. Include only the fields the task needs. Wrap related inputs in a fieldset with one visible legend. When there is just one group, its legend can supply the title.",
+              "focus": "The first field of the active group, aligned with its legend across the rule.",
+              "desktop": "Within 54rem, give short legends at least 12rem or the width of their text, and stack labeled controls in a right column up to 32rem wide. If the tracks no longer leave room for the inputs, move the legends over their fields. Start each group on a rule. Align the primary button with the inputs.",
+              "mobile": "At 390px use 16px side gutters, with each legend above its fields. Keep short task phrases and numeric ranges together. Adjust title size or break before the phrase if needed, and let longer text wrap. Read label, hint, input, then inline error. Put the action after the last field.",
+              "rhythm": "Use 16px input text in controls at least 44px high. Keep 4px from label to input, 12px between fields and 32px between fieldsets. Leave 24px before the primary button."
+            },
+            "imagery": {
+              "subject": "The inputs carry the composition. Size each for its expected answer.",
+              "crop": "For a short value, allow its expected character count plus padding. Longer text can use the available measure.",
+              "fallback": "Plain native inputs and a 1px rule at each group boundary."
+            },
+            "motion": {
+              "trigger": "The user submits the entered details.",
+              "effect": "Announce pending while sending. Keep values on failure and offer retry. On success, focus a confirmation heading describing the actual result and fade in the receipt text.",
+              "duration_ms": 220,
+              "reduced": "Show the same result immediately with the same focus and announcement."
+            },
+            "action": {
+              "instruction": "Name the button for its effect, such as \u2018Save address\u2019 or \u2018Request repair\u2019 when that operation is available. In a local preview, \u2018Review answers\u2019 opens the entered values with an Edit action. Show a receipt only after a successful submission.",
+              "label": "[Task verb] [object]"
+            },
+            "why": "Grouping by meaning lets someone check a related set of answers in one pass. Varying field widths gives a clue to the length of each answer.",
+            "sources": [
+              {
+                "url": "https://designsystem.digital.gov/templates/form-templates/#accessibility-guidance",
+                "observation": "USWDS places related controls in a fieldset with a named legend, keeps the controls in document order and aligns validation messages with their inputs.",
+                "strength": "evidence"
+              },
+              {
+                "url": "https://designsystem.digital.gov/templates/form-templates/address-form/",
+                "observation": "The Address form example puts street, city, state and ZIP under one mailing-address legend. Each input has a visible label, and the ZIP input uses a shorter width.",
+                "strength": "evidence"
+              }
+            ],
+            "credit": "U.S. Web Design System, Form templates and Address form. The side legends, typography and colors are original."
+          },
+          "font_stylesheet": "https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed%3Awght%40600&family=Source+Sans+3&display=swap",
+          "interaction": {
+            "accent_foreground": "#F5F8F6",
+            "easing": "ease-out",
+            "focus": "Bind each persistent label to its input. Give each focused control a 2px paper ring with a 2px ink outer ring.",
+            "accent_role": "Reserve accent fill for the primary button and checked controls.",
+            "keyboard": "Use native controls in reading order. On invalid submission, preserve entries and focus the first invalid input. Mark each invalid field aria-invalid and link its correction text with aria-describedby."
+          },
+          "assumptions": [
+            "Use form as the surface.",
+            "Use only the project facts and assets in the brief."
+          ],
+          "questions": [],
+          "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px."
+        }
+      },
+      "form-garden": {
+        "brief": "Our community garden is registering volunteers for two shifts, Wednesday 5 pm or Saturday 9 am. Collect first name and shift, and allow an optional note about tools. Make it look like something a neighbor would want to use, with a confirmation that repeats the shift.",
+        "direction": {
+          "direction": {
+            "id": "grouped-fieldsets",
+            "surface": "form",
+            "title": "Grouped details",
+            "summary": "A compact worksheet for entering related facts together. A reader can find a field again by its group and its persistent label.",
+            "type": {
+              "display": "Barlow Semi Condensed",
+              "body": "Source Sans 3",
+              "ratio": 2.5,
+              "tracking": -0.02,
+              "weight": 600,
+              "license": "OFL-1.1"
+            },
+            "palette": {
+              "ink": "#203136",
+              "paper": "#F5F8F6",
+              "accent": "#175F55"
+            },
+            "layout": {
+              "skeleton": "Set a short task title over a ruled worksheet. Include only the fields the task needs. Wrap related inputs in a fieldset with one visible legend. When there is just one group, its legend can supply the title.",
+              "focus": "The first field of the active group, aligned with its legend across the rule.",
+              "desktop": "Within 54rem, give short legends at least 12rem or the width of their text, and stack labeled controls in a right column up to 32rem wide. If the tracks no longer leave room for the inputs, move the legends over their fields. Start each group on a rule. Align the primary button with the inputs.",
+              "mobile": "At 390px use 16px side gutters, with each legend above its fields. Keep short task phrases and numeric ranges together. Adjust title size or break before the phrase if needed, and let longer text wrap. Read label, hint, input, then inline error. Put the action after the last field.",
+              "rhythm": "Use 16px input text in controls at least 44px high. Keep 4px from label to input, 12px between fields and 32px between fieldsets. Leave 24px before the primary button."
+            },
+            "imagery": {
+              "subject": "The inputs carry the composition. Size each for its expected answer.",
+              "crop": "For a short value, allow its expected character count plus padding. Longer text can use the available measure.",
+              "fallback": "Plain native inputs and a 1px rule at each group boundary."
+            },
+            "motion": {
+              "trigger": "The user submits the entered details.",
+              "effect": "Announce pending while sending. Keep values on failure and offer retry. On success, focus a confirmation heading describing the actual result and fade in the receipt text.",
+              "duration_ms": 220,
+              "reduced": "Show the same result immediately with the same focus and announcement."
+            },
+            "action": {
+              "instruction": "Name the button for its effect, such as \u2018Save address\u2019 or \u2018Request repair\u2019 when that operation is available. In a local preview, \u2018Review answers\u2019 opens the entered values with an Edit action. Show a receipt only after a successful submission.",
+              "label": "[Task verb] [object]"
+            },
+            "why": "Grouping by meaning lets someone check a related set of answers in one pass. Varying field widths gives a clue to the length of each answer.",
+            "sources": [
+              {
+                "url": "https://designsystem.digital.gov/templates/form-templates/#accessibility-guidance",
+                "observation": "USWDS places related controls in a fieldset with a named legend, keeps the controls in document order and aligns validation messages with their inputs.",
+                "strength": "evidence"
+              },
+              {
+                "url": "https://designsystem.digital.gov/templates/form-templates/address-form/",
+                "observation": "The Address form example puts street, city, state and ZIP under one mailing-address legend. Each input has a visible label, and the ZIP input uses a shorter width.",
+                "strength": "evidence"
+              }
+            ],
+            "credit": "U.S. Web Design System, Form templates and Address form. The side legends, typography and colors are original."
+          },
+          "font_stylesheet": "https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed%3Awght%40600&family=Source+Sans+3&display=swap",
+          "interaction": {
+            "accent_foreground": "#F5F8F6",
+            "easing": "ease-out",
+            "focus": "Bind each persistent label to its input. Give each focused control a 2px paper ring with a 2px ink outer ring.",
+            "accent_role": "Reserve accent fill for the primary button and checked controls.",
+            "keyboard": "Use native controls in reading order. On invalid submission, preserve entries and focus the first invalid input. Mark each invalid field aria-invalid and link its correction text with aria-describedby."
+          },
+          "assumptions": [
+            "Use form as the surface.",
+            "Use only the project facts and assets in the brief."
+          ],
+          "questions": [],
+          "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px."
+        }
+      }
+    },
+    "check": {
+      "control": {
+        "finding_count": 0,
+        "findings": [],
+        "scope": "Source checks. A zero count needs rendered verification.",
+        "render_checks": [
+          "layout and overflow",
+          "type scale and loaded fonts",
+          "imagery and contrast",
+          "full interaction and reduced motion"
+        ],
+        "truncated": false
+      },
+      "trial": {
+        "finding_count": 0,
+        "findings": [],
+        "scope": "Source checks. A zero count needs rendered verification.",
+        "render_checks": [
+          "layout and overflow",
+          "type scale and loaded fonts",
+          "imagery and contrast",
+          "full interaction and reduced motion"
+        ],
+        "truncated": false
+      }
+    }
+  }
+}
