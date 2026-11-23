@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>John Snow’s map of the 1854 Soho outbreak</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gloock:wght@400&family=News+Cycle:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --paper: #173532;
+      --surface: #102623;
+      --ink: #fff1d6;
+      --muted: #b5c1aa;
+      --accent: #f3c77c;
+      --display: "Gloock", Georgia, serif;
+      --body: "News Cycle", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { background: var(--paper); }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 1.125rem;
+      line-height: 1.45;
+    }
+
+    button, a { font: inherit; }
+
+    a {
+      color: var(--ink);
+      text-decoration-color: var(--muted);
+      text-underline-offset: 0.2em;
+    }
+
+    a:hover { text-decoration-color: var(--accent); }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 5px var(--surface);
+    }
+
+    .page {
+      max-width: 1600px;
+      margin: auto;
+      padding: clamp(1rem, 3vw, 2.5rem);
+    }
+
+    .opening {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(17rem, 25rem);
+      gap: clamp(1.5rem, 4vw, 4rem);
+      align-items: center;
+      min-height: calc(100svh - 2 * clamp(1rem, 3vw, 2.5rem));
+    }
+
+    .map-figure {
+      margin: 0;
+      min-width: 0;
+    }
+
+    .map-frame {
+      position: relative;
+      width: fit-content;
+      max-width: 100%;
+      margin: auto;
+      line-height: 0;
+      background: var(--surface);
+    }
+
+    .map-frame img {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: calc(100svh - 5rem);
+      object-fit: contain;
+    }
+
+    .locator {
+      position: absolute;
+      left: 50%;
+      top: 40%;
+      width: 16%;
+      height: 15%;
+      border: 3px solid var(--accent);
+      outline: 1px solid var(--surface);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 240ms ease-out;
+    }
+
+    body.is-open .locator { opacity: 1; }
+
+    .identity {
+      padding: 1rem 0;
+    }
+
+    .identity h1 {
+      max-width: 12ch;
+      margin: 0 0 1rem;
+      font-family: var(--display);
+      font-size: clamp(2.2rem, 4.1vw, 4.6rem);
+      font-weight: 400;
+      line-height: 1.06;
+      letter-spacing: -0.02em;
+    }
+
+    .identity .date {
+      margin: 0 0 1.25rem;
+      color: var(--muted);
+      font-size: 1.2rem;
+    }
+
+    .credit {
+      max-width: 30ch;
+      margin: 0 0 1.75rem;
+      color: var(--muted);
+    }
+
+    .credit a { color: var(--ink); }
+
+    .control {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 3.25rem;
+      padding: 0.75rem 1.2rem;
+      border: 0;
+      border-radius: 0;
+      background: var(--accent);
+      color: var(--paper);
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .control:hover { background: var(--ink); }
+
+    .detail {
+      margin-top: clamp(2.5rem, 5vw, 5rem);
+      padding-top: clamp(1.5rem, 3vw, 2.5rem);
+      border-top: 1px solid var(--muted);
+    }
+
+    .detail[hidden] { display: none; }
+
+    .detail-heading {
+      margin: 0 0 1.25rem;
+      font-family: var(--display);
+      font-size: clamp(1.8rem, 3vw, 3rem);
+      font-weight: 400;
+      line-height: 1.1;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(16rem, 23rem);
+      gap: clamp(1.5rem, 3vw, 3rem);
+      align-items: start;
+    }
+
+    .crop {
+      margin: 0;
+      min-width: 0;
+    }
+
+    .crop img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .reading {
+      background: var(--surface);
+      padding: clamp(1.25rem, 2.5vw, 2rem);
+    }
+
+    .reading h3 {
+      margin: 0 0 0.35rem;
+      color: var(--accent);
+      font-size: 1.25rem;
+      line-height: 1.2;
+    }
+
+    .reading p {
+      margin: 0 0 1.35rem;
+      max-width: 38ch;
+    }
+
+    .reading p:last-child { margin-bottom: 0; }
+
+    .overview {
+      margin: 1.5rem 0 0;
+      max-width: 13rem;
+    }
+
+    .overview .map-frame { width: 100%; }
+
+    .overview img {
+      width: 100%;
+      max-height: none;
+    }
+
+    .overview .locator { opacity: 1; border-width: 2px; }
+
+    .overview figcaption {
+      margin-top: 0.5rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.25;
+    }
+
+    .status {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 700px) {
+      .page { padding: 1rem; }
+
+      .opening {
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+      }
+
+      .map-frame img {
+        width: 100%;
+        max-height: min(52svh, 36rem);
+      }
+
+      .identity { padding: 0; }
+
+      .identity h1 {
+        max-width: 20ch;
+        margin-bottom: 0.35rem;
+        font-size: clamp(1.8rem, 7vw, 2.5rem);
+      }
+
+      .identity .date { margin-bottom: 0.35rem; font-size: 1rem; }
+      .credit { margin-bottom: 0.75rem; font-size: 1rem; }
+      .control { min-height: 2.9rem; padding: 0.6rem 1rem; }
+      .detail-grid { grid-template-columns: 1fr; }
+      .detail { margin-top: 2rem; }
+      .reading { padding: 1.25rem; }
+      .overview { max-width: 10rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .locator { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="opening" aria-labelledby="page-title">
+      <figure class="map-figure">
+        <div class="map-frame">
+          <img
+            src="/fixture/soho.jpg"
+            width="1601"
+            height="1486"
+            alt="The whole original print of John Snow’s map of the Soho outbreak."
+          >
+          <span class="locator" aria-hidden="true"></span>
+        </div>
+      </figure>
+
+      <div class="identity">
+        <h1 id="page-title">John Snow’s map of the Soho outbreak</h1>
+        <p class="date">London, 1854 · Original print, 1855</p>
+        <p class="credit">
+          John Snow.
+          <a href="https://wellcomecollection.org/works/uxgfjt62">Wellcome Collection</a>,
+          Public Domain Mark.
+        </p>
+        <button
+          class="control"
+          id="detail-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="broad-street-detail"
+        >Read the Broad Street detail</button>
+        <span class="status" id="status" role="status" aria-live="polite"></span>
+      </div>
+    </section>
+
+    <section
+      class="detail"
+      id="broad-street-detail"
+      aria-labelledby="detail-title"
+      hidden
+    >
+      <h2 class="detail-heading" id="detail-title">Broad Street and Cambridge Street</h2>
+      <div class="detail-grid">
+        <figure class="crop">
+          <img
+            src="/fixture/broad-street.jpg"
+            width="720"
+            height="628"
+            alt="Enlarged detail of Broad Street and Cambridge Street, showing a circle beside PUMP and a nearby stack of black bars."
+          >
+        </figure>
+
+        <aside class="reading" aria-label="Reading the marks">
+          <h3>The circle beside PUMP</h3>
+          <p>The circle identifies a public water pump.</p>
+
+          <h3>The black bars nearby</h3>
+          <p>Each printed bar represents one recorded death.</p>
+
+          <figure class="overview">
+            <div class="map-frame">
+              <img
+                src="/fixture/soho.jpg"
+                width="1601"
+                height="1486"
+                alt=""
+              >
+              <span class="locator" aria-hidden="true"></span>
+            </div>
+            <figcaption>The outlined area shows the approximate location of the detail.</figcaption>
+          </figure>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const toggle = document.getElementById("detail-toggle");
+    const detail = document.getElementById("broad-street-detail");
+    const status = document.getElementById("status");
+
+    toggle.addEventListener("click", () => {
+      const opening = toggle.getAttribute("aria-expanded") !== "true";
+
+      detail.hidden = !opening;
+      document.body.classList.toggle("is-open", opening);
+      toggle.setAttribute("aria-expanded", String(opening));
+      toggle.textContent = opening
+        ? "Return to the map"
+        : "Read the Broad Street detail";
+      status.textContent = opening
+        ? "Broad Street detail opened."
+        : "Broad Street detail closed.";
+
+      if (!opening) {
+        toggle.scrollIntoView({
+          block: "nearest",
+          behavior: "instant"
+        });
+      }
+    });
+  </script>
+</body>
+</html>

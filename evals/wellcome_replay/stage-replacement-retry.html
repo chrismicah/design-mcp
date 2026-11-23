@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>John Snow’s map of the Soho outbreak</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gloock:wght@400&family=News+Cycle:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --paper: #173532;
+      --surface: #102623;
+      --ink: #fff1d6;
+      --muted: #b5c1aa;
+      --accent: #f3c77c;
+      --display: "Gloock", Georgia, serif;
+      --body: "News Cycle", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { margin: 0; min-height: 100%; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 17px;
+      line-height: 1.35;
+    }
+
+    button, a { font: inherit; }
+
+    a {
+      color: inherit;
+      text-decoration-color: var(--accent);
+      text-underline-offset: 3px;
+    }
+
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--paper);
+      outline-offset: 2px;
+      box-shadow: 0 0 0 4px var(--ink);
+    }
+
+    .page {
+      width: min(100%, 1600px);
+      min-height: 100svh;
+      margin: auto;
+      padding: clamp(16px, 2.5vw, 36px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(240px, 310px);
+      gap: clamp(20px, 3vw, 48px);
+      align-items: center;
+    }
+
+    .stage {
+      min-width: 0;
+      display: grid;
+      place-items: center;
+    }
+
+    .image-frame {
+      position: relative;
+      width: min(100%, calc((100svh - 72px) * 1601 / 1486));
+    }
+
+    .image-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .detail-frame { display: none; }
+
+    .reading-column {
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+    }
+
+    .identity { max-width: 28rem; }
+
+    h1 {
+      font-family: var(--display);
+      font-size: clamp(2rem, 3.3vw, 3.3rem);
+      font-weight: 400;
+      letter-spacing: -.02em;
+      line-height: 1.04;
+      margin: 0 0 14px;
+    }
+
+    .meta {
+      color: var(--muted);
+      margin: 0 0 8px;
+    }
+
+    .credit {
+      color: var(--muted);
+      font-size: .9rem;
+      margin: 0;
+    }
+
+    .action {
+      align-self: flex-start;
+      margin-top: 24px;
+      border: 0;
+      background: var(--accent);
+      color: var(--paper);
+      padding: 12px 18px;
+      min-height: 48px;
+      cursor: pointer;
+      font-weight: 700;
+      text-align: left;
+    }
+
+    .action:hover { background: var(--ink); }
+
+    .detail-content {
+      display: none;
+      margin-top: 24px;
+    }
+
+    .readings {
+      display: grid;
+      gap: 12px;
+    }
+
+    .reading {
+      background: var(--surface);
+      padding: 12px 14px;
+    }
+
+    .reading h2 {
+      color: var(--accent);
+      font-size: 1rem;
+      line-height: 1.15;
+      margin: 0 0 4px;
+    }
+
+    .reading p { margin: 0; }
+
+    .locator {
+      margin: 18px 0 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .locator-image {
+      position: relative;
+      flex: 0 0 112px;
+    }
+
+    .locator-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .locator-box {
+      position: absolute;
+      left: 50%;
+      top: 40%;
+      width: 16%;
+      height: 15%;
+      border: 2px solid #9b3a1f;
+      box-shadow: 0 0 0 1px #fff;
+    }
+
+    .locator figcaption {
+      color: var(--muted);
+      font-size: .88rem;
+      line-height: 1.2;
+    }
+
+    .edge-key {
+      position: absolute;
+      left: 0;
+      transform: translate(-100%, -50%);
+      padding-right: 7px;
+      color: var(--ink);
+      font-size: .8rem;
+      font-weight: 700;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .edge-key::after {
+      content: "";
+      display: inline-block;
+      width: 14px;
+      border-top: 2px solid var(--accent);
+      vertical-align: middle;
+      margin-left: 5px;
+    }
+
+    .key-pump { top: 37%; }
+    .key-bars { top: 55%; }
+
+    .is-open .whole-frame { display: none; }
+    .is-open .detail-frame,
+    .is-open .detail-content { display: block; }
+
+    .is-open .detail-frame {
+      width: min(100%, calc((100svh - 72px) * 720 / 628));
+    }
+
+    @media (min-width: 701px) {
+      .is-open .stage { padding-left: 50px; }
+    }
+
+    @media (max-width: 700px) {
+      body { font-size: 16px; }
+
+      .page {
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 14px 16px;
+        align-items: stretch;
+        justify-content: center;
+      }
+
+      .stage { order: 2; }
+
+      .reading-column {
+        display: contents;
+      }
+
+      .identity { order: 1; }
+
+      h1 {
+        font-size: clamp(1.65rem, 7vw, 2.1rem);
+        margin-bottom: 5px;
+      }
+
+      .meta, .credit {
+        display: inline;
+        font-size: .85rem;
+        margin: 0;
+      }
+
+      .meta::after { content: " · "; }
+
+      .image-frame {
+        width: min(100%, calc((100svh - 220px) * 1601 / 1486));
+      }
+
+      .action {
+        order: 3;
+        margin: 0;
+        padding: 9px 14px;
+        min-height: 44px;
+      }
+
+      .detail-content {
+        order: 4;
+        margin: 0;
+      }
+
+      .is-open .stage {
+        padding-left: 42px;
+      }
+
+      .is-open .detail-frame {
+        width: min(100%, calc((100svh - 360px) * 720 / 628));
+      }
+
+      .readings {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      .reading {
+        padding: 8px 10px;
+        font-size: .9rem;
+        line-height: 1.18;
+      }
+
+      .reading h2 {
+        font-size: .9rem;
+        margin-bottom: 3px;
+      }
+
+      .locator { margin-top: 8px; }
+      .locator-image { flex-basis: 64px; }
+      .locator figcaption { font-size: .8rem; }
+      .edge-key { font-size: .72rem; }
+      .edge-key::after { width: 8px; }
+    }
+
+    @media (max-height: 620px) and (max-width: 700px) {
+      .page { justify-content: flex-start; }
+      .is-open .detail-frame {
+        width: min(100%, 260px);
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .detail-content, .detail-frame {
+        animation: reveal 240ms ease-out;
+      }
+
+      @keyframes reveal {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page" id="page">
+    <section class="stage" aria-label="Map image">
+      <div class="image-frame whole-frame">
+        <img src="/fixture/soho.jpg"
+             width="1601" height="1486"
+             alt="The whole original print of John Snow’s map of the 1854 Soho outbreak.">
+      </div>
+
+      <div class="image-frame detail-frame" id="detail-image">
+        <img src="/fixture/broad-street.jpg"
+             width="720" height="628"
+             alt="Enlarged detail of Broad Street and Cambridge Street, showing PUMP beside a circle and nearby stacks of black bars.">
+        <span class="edge-key key-pump" aria-hidden="true">Circle</span>
+        <span class="edge-key key-bars" aria-hidden="true">Bars</span>
+      </div>
+    </section>
+
+    <aside class="reading-column">
+      <header class="identity">
+        <h1>Map of the Soho outbreak</h1>
+        <p class="meta">John Snow, 1855</p>
+        <p class="credit">
+          <a href="https://wellcomecollection.org/works/uxgfjt62">Wellcome Collection</a>,
+          Public Domain Mark
+        </p>
+      </header>
+
+      <button class="action" id="toggle" type="button"
+              aria-expanded="false" aria-controls="detail-content">
+        Read the Broad Street detail
+      </button>
+
+      <section class="detail-content" id="detail-content" hidden
+               aria-label="Broad Street detail readings">
+        <div class="readings">
+          <div class="reading">
+            <h2>Circle</h2>
+            <p>The circle beside PUMP identifies a public water pump.</p>
+          </div>
+          <div class="reading">
+            <h2>Bars</h2>
+            <p>Each printed black bar represents one recorded death.</p>
+          </div>
+        </div>
+
+        <figure class="locator">
+          <div class="locator-image">
+            <img src="/fixture/soho.jpg" width="1601" height="1486" alt="">
+            <span class="locator-box" aria-hidden="true"></span>
+          </div>
+          <figcaption>
+            The outline shows the approximate location of the detail on the whole print.
+          </figcaption>
+        </figure>
+      </section>
+    </aside>
+  </main>
+
+  <script>
+    const page = document.getElementById("page");
+    const button = document.getElementById("toggle");
+    const detail = document.getElementById("detail-content");
+
+    button.addEventListener("click", () => {
+      const opening = button.getAttribute("aria-expanded") !== "true";
+      button.setAttribute("aria-expanded", String(opening));
+      button.textContent = opening
+        ? "Return to the map"
+        : "Read the Broad Street detail";
+      detail.hidden = !opening;
+      page.classList.toggle("is-open", opening);
+    });
+  </script>
+</body>
+</html>

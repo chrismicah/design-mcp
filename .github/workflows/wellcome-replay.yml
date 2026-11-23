@@ -1,0 +1,53 @@
+name: Wellcome held-out browser replay
+
+on:
+  push:
+    branches: [design-mcp/wellcome-hosted-proof]
+    paths:
+      - 'evals/wellcome_replay/**'
+      - '.github/workflows/wellcome-replay.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.13'
+      - name: Verify exact inputs and annotation tests
+        run: |
+          node --test evals/wellcome_replay/map-annotation-geometry.test.cjs
+          python evals/wellcome_replay/prepare.py "$RUNNER_TEMP/cells"
+      - name: Prepare isolated Playwriter and Chrome
+        run: |
+          python -m venv "$RUNNER_TEMP/design-review"
+          "$RUNNER_TEMP/design-review/bin/python" -m pip install .
+          npm install --ignore-scripts --prefix "$RUNNER_TEMP/playwriter" playwriter@0.12.0
+          curl --fail --silent --show-error --location --max-time 60 \
+            https://storage.googleapis.com/chrome-for-testing-public/157.0.8103.79/linux64/chrome-linux64.zip \
+            -o "$RUNNER_TEMP/chrome.zip"
+          unzip -q "$RUNNER_TEMP/chrome.zip" -d "$RUNNER_TEMP/browser"
+          sudo install -o root -g root -m 4755 \
+            "$RUNNER_TEMP/browser/chrome-linux64/chrome_sandbox" /usr/local/sbin/chrome-devel-sandbox
+      - name: Exercise the map journeys and print receipts
+        run: |
+          CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox \
+          "$RUNNER_TEMP/design-review/bin/python" evals/wellcome_replay/playback.py \
+            --cells "$RUNNER_TEMP/cells" --case wellcome \
+            --playwriter "$RUNNER_TEMP/playwriter/node_modules/.bin/playwriter" \
+            --chrome "$RUNNER_TEMP/browser/chrome-linux64/chrome" \
+            --scratch "$RUNNER_TEMP/wellcome-browser"
+          python evals/wellcome_replay/summarize.py "$RUNNER_TEMP/cells"
+      - name: Print browser start diagnostics on failure
+        if: failure()
+        run: |
+          for log in "$RUNNER_TEMP/wellcome-browser/chrome.log" "$RUNNER_TEMP/wellcome-browser/relay.log"; do
+            if test -f "$log"; then tail -20 "$log"; fi
+          done
