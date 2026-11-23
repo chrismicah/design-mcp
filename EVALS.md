@@ -712,3 +712,16 @@ The clean `4211d85` wheel passed doctor and 608 tests plus 134 subtests, with on
 | Milkmaid, framing handoff | 3/3 | 0/3 |
 
 The image-only repair consumed the verified source point and live frame and asset dimensions. It used the same clamped placement for each observed miss. It corrected all nine missed crops and preserved the three already passing views. The point appeared in the initial open viewport in 11 of 12 replays. The annotations still required scrolling in all 12. An exploratory unguarded repair regressed the already working Milkmaid crop, so the final guard keeps its original bytes. Both untouched pairs failed the visual qualification, and no fresh taste score was assigned. [Exact wheel, matched tool calls, browser evidence, and 96 original frame hashes](evidence/benchmark-v1/artwork-framing-handoff.json)
+
+## Executable image detail
+
+The experimental clean wheel `d146160` exposes an offline HTML pattern through `design://patterns/image-detail`. The default and combined surfaces returned the same resource bytes as the wheel. The legacy surface and all advertised tool schemas matched the prior wheel. Doctor, 609 source tests, 134 subtests and all 18 combined smoke calls passed, with one source-test skip.
+
+Playwriter ran 12 keyboard and touch journeys across the swan painting and a held-out Webb observation at 320, 390 and 1440 px. The focus layout had the target and full annotation in the viewport immediately on all six activations. The append control had both initially visible in one of six. All 48 original frames passed dimension and hash verification. At 390 px the component also preserved readable content with scripts blocked and with a missing panel ID. Two disclosure instances kept their open states independent. The source's live wavelength comparison was exercised at desktop and phone widths. [ESA source and image credit](https://www.esa.int/ESA_Multimedia/Images/2023/08/Webb_captures_detailed_beauty_of_Ring_Nebula_NIRCam_image)
+
+| Anonymous nebula comparison | Desktop 1440 px | Phone 390 px |
+| --- | ---: | ---: |
+| Append the same crop | 6.30 | 6.30 |
+| Replace the study image and retain a locator | 7.50 | 7.50 |
+
+The independent critic preferred the focus layout on both widths. The locator's small mark was the main remaining weakness. Both pages were composed from fixed assets and the installed resource for this experiment. Ordinary-client resource adoption and the dual-critic 9.5 release gate remain open. [Exact package identity, Playwriter runs and ballot](evidence/benchmark-v1/executable-image-disclosure.json)

@@ -1,0 +1,2190 @@
+{
+  "scope": "Composed resource and matched append control, with two assets and a blind nebula ballot.",
+  "manifest": {
+    "package_commit": "d1461605f4634934a20cf6a55c9e71b67f66a648",
+    "resource": "design://patterns/image-detail",
+    "sha256": "d66d9ef6c06b98bd7579a64f25a38002a6913dfd58cea2b0dec133cd189a3ab7",
+    "installed": {
+      "v2": {
+        "tools": 3,
+        "schemas_equal": true,
+        "resources": [
+          "design://patterns/image-detail"
+        ],
+        "resource_sha256": "d66d9ef6c06b98bd7579a64f25a38002a6913dfd58cea2b0dec133cd189a3ab7"
+      },
+      "both": {
+        "tools": 17,
+        "schemas_equal": true,
+        "resources": [
+          "design://patterns/image-detail"
+        ],
+        "resource_sha256": "d66d9ef6c06b98bd7579a64f25a38002a6913dfd58cea2b0dec133cd189a3ab7"
+      },
+      "legacy": {
+        "tools": 14,
+        "schemas_equal": true,
+        "resources": []
+      }
+    },
+    "cases": {
+      "swan": {
+        "title": "The Threatened Swan",
+        "metadata": "Jan Asselijn, c. 1650. Oil on canvas.",
+        "point": [
+          0.9,
+          0.667
+        ],
+        "region": [
+          0.7535641547861507,
+          0.5098919029165817,
+          0.24643584521384929,
+          0.24474811339995922
+        ],
+        "source": "https://www.rijksmuseum.nl/en/collection/object/The-Threatened-Swan--22040f90565e730131983a44a85b989f",
+        "asset": "https://iiif.micr.io/hZepb/full/1400,/0/default.webp",
+        "detail_asset": "https://iiif.micr.io/hZepb/4440,2500,1452,1200/1200,/0/default.webp",
+        "size": [
+          1400,
+          1165
+        ],
+        "detail_size": [
+          1200,
+          992
+        ],
+        "open": "Inspect the egg",
+        "close": "Back to the painting",
+        "note": "The egg reads Holland. A later interpretation saw the swan as a defender of the country.",
+        "rights": "Public domain",
+        "credit": "Rijksmuseum. The Threatened Swan, SK-A-4. Public domain.",
+        "arms": {
+          "append": "58feffed5f0751911b0c21bbecf6e03241bd8d4abb8fab4dbea8a87d5404302e",
+          "focus": "93436d5ab62c302761a7c4c8492464f650c329f8ac49cf838b9e50f5ff499dac"
+        },
+        "asset_sha256": "eae45c7bbd43aaccad43dfcdbfaf476ab6489cdca19bf0a128e7441dbce74244",
+        "detail_sha256": "b6f7e7ae89e5c623374096dca619c59a1cd2d815e0eae699e7d08ec1ee431fc4"
+      },
+      "nebula": {
+        "title": "The Ring Nebula",
+        "metadata": "Webb Near-Infrared Camera. M57 in Lyra.",
+        "point": [
+          0.65,
+          0.29
+        ],
+        "region": [
+          0.4375,
+          0.13856812933025403,
+          0.4375,
+          0.4618937644341801
+        ],
+        "source": "https://science.nasa.gov/asset/webb/ring-nebula-nircam-image/",
+        "asset": "https://cdn.esawebb.org/archives/images/screen/weic2320b.jpg",
+        "detail_asset": "Cropped from the same 1280 × 1299 ESA JPEG at x=560, y=180, width 560, height 600.",
+        "size": [
+          1280,
+          1299
+        ],
+        "detail_size": [
+          560,
+          600
+        ],
+        "open": "Inspect the inner ring",
+        "close": "Back to the full nebula",
+        "note": "Fine filaments line the inner rim. Webb’s near-infrared camera reveals these strands against the cavity.",
+        "rights": "CC BY 4.0. Cropped derivative.",
+        "credit": "ESA/Webb, NASA, CSA, M. Barlow (UCL), N. Cox (ACRI-ST), R. Wesson (Cardiff University).",
+        "arms": {
+          "append": "f5fd9790f1ea1c7851e97705658600be195ac4e5d313d99279c0559984ff4580",
+          "focus": "fb7f3488f3cb7f3b44f655f0a15caddbf2f21df94b20d3b56892fcbb89c3ae4d"
+        },
+        "asset_sha256": "c1bc9ed28a5f30b6dcadf55115d1e1fc660f7498ec085d06f1333b5e293e47c2",
+        "detail_sha256": "86bdd49be127a52379ea10138fa7144a94b4a10809b23e028aa92a49b98361e1"
+      }
+    }
+  },
+  "playwriter": {
+    "swan/append": {
+      "renderer": "0.12.0",
+      "browser": "Chrome/157.0.8103.79",
+      "input_sha256": "58feffed5f0751911b0c21bbecf6e03241bd8d4abb8fab4dbea8a87d5404302e",
+      "captures": {
+        "320": {
+          "viewport": 320,
+          "width": 305,
+          "height": 700,
+          "title": "The Threatened Swan",
+          "h1": "The Threatened Swan",
+          "loadedFonts": [
+            "Gloock",
+            "News Cycle"
+          ],
+          "language": "en",
+          "reducedMotion": true,
+          "pageErrors": [],
+          "accessibility": "- main:\n  - heading \"The Threatened Swan\" [level=1]\n  - paragraph: Jan Asselijn, c. 1650. Oil on canvas.\n  - button \"Inspect the egg\"\n  - figure:\n    - img \"A swan spreads its wings above a nest as a dog approaches.\"\n  - paragraph: Rijksmuseum. The Threatened Swan, SK-A-4. Public domain.\n  - link \"Source record\":\n    - /url: https://www.rijksmuseum.nl/en/collection/object/The-Threatened-Swan--22040f90565e730131983a44a85b989f\n  - text: . Public domain.",
+          "status": "rendered",
+          "sha256": "04236aa270d6716bb4da782a62afbc5f936ba686a08f6fe9776fb14acec7b97b",
+          "interaction": {
+            "checks": {
+              "startsClosed": true,
+              "keyboardFocus": true,
+              "opens": true,
+              "keptFocus": true,
+              "closes": true,
+              "overview": true,
+              "stableAction": true,
+              "clearAction": true,
+              "source": true,
+              "correctOrder": true,
+              "noOverflow": true,
+              "target": true,
+              "touch": true,
+              "reducedMotion": true,
+              "pageErrors": true
+            },
+            "projection": {
+              "status": "pass",
+              "x": 178.22066115702484,
+              "y": 580.9580031554342,
+              "clearance": 80.8544968445658,
+              "inViewport": true,
+              "limits": {
+                "left": 16,
+                "right": 289,
+                "top": 436.140625,
+                "bottom": 661.8125
+              }
+            },
+            "touchProjection": {
+              "status": "pass",
+              "x": 178.22066115702484,
+              "y": 580.9580031554342,
+              "clearance": 80.8544968445658,
+              "inViewport": true,
+              "limits": {
+                "left": 16,
+                "right": 289,
+                "top": 436.140625,
+                "bottom": 661.8125
+              }
+            },
+            "firstNote": {
+              "x": 16,
+              "y": 673.8125,
+              "width": 273,
+              "height": 46.375
+            },
+            "touchNote": {
+              "x": 16,
+              "y": 673.8125,
+              "width": 273,
+              "height": 46.375
+            },
+            "initial": {
+              "x": 16,
+              "y": 132.96875,
+              "width": 138.3125,
+              "height": 48
+            },
+            "openPosition": {
+              "x": 16,
+              "y": 132.96875,
+              "width": 170.609375,
+              "height": 48
+            },
+            "closedPosition": {
+              "x": 16,
+              "y": 132.96875,
+              "width": 138.3125,
+              "height": 48
+            },
+            "order": [
+              "dm-inspect__heading",
+              "dm-inspect__whole",
+              "dm-inspect__detail",
+              "dm-inspect__credit"
+            ],
+            "frames": {
+              "before": {
+                "file": "320.png",
+                "sha256": "04236aa270d6716bb4da782a62afbc5f936ba686a08f6fe9776fb14acec7b97b"
+              },
+              "open": {
+                "file": "320-open.png",
+                "sha256": "3581770718a97f16f144064e608da1013cea1df41d456d00ab00de3812aa7094"
+              },
+              "closed": {
+                "file": "320-closed.png",
+                "sha256": "f44b3cf82cec56fbe562bccfd789e15938d74afe227f59acbf51877428a371c0"
+              },
+              "touch": {
+                "file": "320-touch.png",
+                "sha256": "7d18a44f089699baecb3e4ce036bccab1a3e62dcecf487d648ba32690059fc2b"
+              }
+            }
+          }
+        },
+        "390": {
+          "viewport": 390,
+          "width": 375,
+          "height": 844,
+          "title": "The Threatened Swan",
+          "h1": "The Threatened Swan",
+          "loadedFonts": [
+            "Gloock",
+            "News Cycle"
+          ],
+          "language": "en",
+          "reducedMotion": true,
+          "pageErrors": [],
+          "accessibility": "- main:\n  - heading \"The Threatened Swan\" [level=1]\n  - paragraph: Jan Asselijn, c. 1650. Oil on canvas.\n  - button \"Inspect the egg\"\n  - figure:\n    - img \"A swan spreads its wings above a nest as a dog approaches.\"\n  - paragraph: Rijksmuseum. The Threatened Swan, SK-A-4. Public domain.\n  - link \"Source record\":\n    - /url: https://www.rijksmuseum.nl/en/collection/object/The-Threatened-Swan--22040f90565e730131983a44a85b989f\n  - text: . Public domain.",
+          "status": "rendered",
+          "sha256": "40239fc07e7465864d83a895e7f93929f079ef4fa11a1002ba91323ebed23e76",
+          "interaction": {
+            "checks": {
+              "startsClosed": true,
+              "keyboardFocus": true,
+              "opens": true,
+              "keptFocus": true,
+              "closes": true,
+              "overview": true,
+              "stableAction": true,
+              "clearAction": true,
+              "source": true,
+              "correctOrder": true,
+              "noOverflow": true,
+              "target": true,
+              "touch": true,
+              "reducedMotion": true,
+              "pageErrors": true
+            },
+            "projection": {
+              "status": "pass",
+              "x": 219.81570247933888,
+              "y": 681.205066426812,
+              "clearance": 101.59180857318802,
+              "inViewport": true,
+              "limits": {
+                "left": 16,
+                "right": 359,
+                "top": 499.265625,
+                "bottom": 782.796875
+              }
+            },
+            "touchProjection": {
+              "status": "pass",
+              "x": 219.81570247933888,
+              "y": 681.205066426812,
+              "clearance": 101.59180857318802,
+              "inViewport": true,
+              "limits": {
+                "left": 16,
+                "right": 359,
+                "top": 499.265625,
+                "bottom": 782.796875
+              }
+            },
+            "firstNote": {
+              "x": 16,
+              "y": 794.796875,
+              "width": 343,
+              "height": 46.375
+            },
+            "touchNote": {
+              "x": 16,
+              "y": 794.796875,
+              "width": 343,
+              "height": 46.375
+            },
+            "initial": {
+              "x": 16,
+              "y": 137.84375,
+              "width": 138.3125,
+              "height": 48
+            },
+            "openPosition": {
+              "x": 16,
+              "y": 137.84375,
+              "width": 170.609375,
+              "height": 48
+            },
+            "closedPosition": {
+              "x": 16,
+              "y": 137.84375,
+              "width": 138.3125,
+              "height": 48
+            },
+            "order": [
+              "dm-inspect__heading",
+              "dm-inspect__whole",
+              "dm-inspect__detail",
+              "dm-inspect__credit"
+            ],
+            "frames": {
+              "before": {
+                "file": "390.png",
+                "sha256": "40239fc07e7465864d83a895e7f93929f079ef4fa11a1002ba91323ebed23e76"
+              },
+              "open": {
+                "file": "390-open.png",
+                "sha256": "79e6f9d3db7a512627cf21a6e469676a4357a775f3aba621667420d36fe431ca"
+              },
+              "closed": {
+                "file": "390-closed.png",
+                "sha256": "d1f6174a1cf69c4bfd418e1b6fb65807c0255573ae6af04801f8eb2624b009b1"
+              },
+              "touch": {
+                "file": "390-touch.png",
+                "sha256": "0727ce56ecd6e0be59a9326148d50e3b8634d18f418f4e65f23ca2347e6d5e41"
+              }
+            }
+          }
+        },
+        "1440": {
+          "viewport": 1440,
+          "width": 1425,
+          "height": 900,
+          "title": "The Threatened Swan",
+          "h1": "The Threatened Swan",
+          "loadedFonts": [
+            "Gloock",
+            "News Cycle"
+          ],
+          "language": "en",
+          "reducedMotion": true,
+          "pageErrors": [],
+          "accessibility": "- main:\n  - heading \"The Threatened Swan\" [level=1]\n  - paragraph: Jan Asselijn, c. 1650. Oil on canvas.\n  - button \"Inspect the egg\"\n  - figure:\n    - img \"A swan spreads its wings above a nest as a dog approaches.\"\n  - paragraph: Rijksmuseum. The Threatened Swan, SK-A-4. Public domain.\n  - link \"Source record\":\n    - /url: https://www.rijksmuseum.nl/en/collection/object/The-Threatened-Swan--22040f90565e730131983a44a85b989f\n  - text: . Public domain.",
+          "status": "rendered",
+          "sha256": "58757a36bc28105590a6217b12178f5eb024b9a7df29d5b551f207aed1261501",
+          "interaction": {
+            "checks": {
+              "startsClosed": true,
+              "keyboardFocus": true,
+              "opens": true,
+              "keptFocus": true,
+              "closes": true,
+              "overview": true,
+              "stableAction": true,
+              "clearAction": true,
+              "source": true,
+              "correctOrder": true,
+              "noOverflow": true,
+              "target": true,
+              "touch": true,
+              "reducedMotion": true,
+              "pageErrors": true
+            },
+            "projection": {
+              "status": "pass",
+              "x": 547.4529222535991,
+              "y": 1007.3970825,
+              "clearance": 196.5872925,
+              "inViewport": false,
+              "limits": {
+                "left": 56.5,
+                "right": 913.296875,
+                "top": 654.984375,
+                "bottom": 1203.984375
+              }
+            },
+            "touchProjection": {
+              "status": "pass",
+              "x": 547.4529222535991,
+              "y": 1007.3970825,
+              "clearance": 196.5872925,
+              "inViewport": false,
+              "limits": {
+                "left": 56.5,
+                "right": 913.296875,
+                "top": 654.984375,
+                "bottom": 1203.984375
+              }
+            },
+            "firstNote": {
+              "x": 56.5,
+              "y": 1215.984375,
+              "width": 518.71875,
+              "height": 52.1875
+            },
+            "touchNote": {
+              "x": 56.5,
+              "y": 1215.984375,
+              "width": 518.71875,
+              "height": 52.1875
+            },
+            "initial": {
+              "x": 965.296875,
+              "y": 402.171875,
+              "width": 138.3125,
+              "height": 48
+            },
+            "openPosition": {
+              "x": 965.296875,
+              "y": 402.171875,
+              "width": 170.609375,
+              "height": 48
+            },
+            "closedPosition": {
+              "x": 965.296875,
+              "y": 402.171875,
+              "width": 138.3125,
+              "height": 48
+            },
+            "order": [
+              "dm-inspect__heading",
+              "dm-inspect__whole",
+              "dm-inspect__detail",
+              "dm-inspect__credit"
+            ],
+            "frames": {
+              "before": {
+                "file": "1440.png",
+                "sha256": "58757a36bc28105590a6217b12178f5eb024b9a7df29d5b551f207aed1261501"
+              },
+              "open": {
+                "file": "1440-open.png",
+                "sha256": "b2db7717e0e898f47461b3b08a5a90e0ce781bca2aff57bd30dae038d980dad8"
+              },
+              "closed": {
+                "file": "1440-closed.png",
+                "sha256": "6bfd3eb90cf55fc854795d67e881bb6393faeb5226ad2566bd5b3cc851d5d3b1"
+              },
+              "touch": {
+                "file": "1440-touch.png",
+                "sha256": "ce467ac3b9a40cbec55fe700e65d14303be2751b256284a90654cda7ab30169a"
+              }
+            }
+          }
+        }
+      }
+    },
+    "swan/focus": {
+      "renderer": "0.12.0",
+      "browser": "Chrome/157.0.8103.79",
+      "input_sha256": "93436d5ab62c302761a7c4c8492464f650c329f8ac49cf838b9e50f5ff499dac",
+      "captures": {
+        "320": {
+          "viewport": 320,
+          "width": 305,
+          "height": 700,
+          "title": "The Threatened Swan",
+          "h1": "The Threatened Swan",
+          "loadedFonts": [
+            "Gloock",
+            "News Cycle"
+          ],
+          "language": "en",
+          "reducedMotion": true,
+          "pageErrors": [],
+          "accessibility": "- main:\n  - heading \"The Threatened Swan\" [level=1]\n  - paragraph: Jan Asselijn, c. 1650. Oil on canvas.\n  - button \"Inspect the egg\"\n  - figure:\n    - img \"A swan spreads its wings above a nest as a dog approaches.\"\n  - paragraph: Rijksmuseum. The Threatened Swan, SK-A-4. Public domain.\n  - link \"Source record\":\n    - /url: https://www.rijksmuseum.nl/en/collection/object/The-Threatened-Swan--22040f90565e730131983a44a85b989f\n  - text: . Public domain.",
+          "status": "rendered",
+          "sha256": "04236aa270d6716bb4da782a62afbc5f936ba686a08f6fe9776fb14acec7b97b",
+          "interaction": {
+            "checks": {
+              "startsClosed": true,
+              "keyboardFocus": true,
+              "opens": true,
+              "keptFocus": true,
+              "closes": true,
+              "overview": true,
+              "stableAction": true,
+              "clearAction": true,
+              "source": true,
+              "correctOrder": true,
+              "noOverflow": true,
+              "target": true,
+              "touch": true,
+              "reducedMotion": true,
+              "pageErrors": true,
+              "immediateDetail": true,
+              "immediateTouchDetail": true
+            },
+            "projection": {
+              "status": "pass",
+              "x": 178.22066115702484,
+              "y": 339.7861281554342,
+              "clearance": 80.8544968445658,
+              "inViewport": true,
+              "limits": {
+                "left": 16,
+                "right": 289,
+                "top": 194.96875,
+                "bottom": 420.640625
+              }
+            },
+            "touchProjection": {
+              "status": "pass",
+              "x": 178.22066115702484,
+              "y": 339.7861281554342,
+              "clearance": 80.8544968445658,
+              "inViewport": true,
+              "limits": {
+                "left": 16,
+                "right": 289,
+                "top": 194.96875,
+                "bottom": 420.640625
+              }
+            },
+            "firstNote": {
+              "x": 16,
+              "y": 432.640625,
+              "width": 273,
+              "height": 46.375
+            },
+            "touchNote": {
+              "x": 16,
+              "y": 432.640625,
+              "width": 273,
+              "height": 46.375
+            },
+            "initial": {
+              "x": 16,
+              "y": 132.96875,
+              "width": 138.3125,
+              "height": 48
+            },
+            "openPosition": {
+              "x": 16,
+              "y": 132.96875,
+              "width": 170.609375,
+              "height": 48
+            },
+            "closedPosition": {
+              "x": 16,
+              "y": 132.96875,
+              "width": 138.3125,
+              "height": 48
+            },
+            "order": [
+              "dm-inspect__heading",
+              "dm-inspect__detail",
+              "dm-inspect__whole",
+              "dm-inspect__credit"
+            ],
+            "frames": {
+              "before": {
+                "file": "320.png",
+                "sha256": "04236aa270d6716bb4da782a62afbc5f936ba686a08f6fe9776fb14acec7b97b"
+              },
+              "open": {
+                "file": "320-open.png",
+                "sha256": "e6140c732ef56ff83327052a0ec61d0fe8f12230256c4037f9786a49e18d98e8"
+              },
+              "closed": {
+                "file": "320-closed.png",
+                "sha256": "f44b3cf82cec56fbe562bccfd789e15938d74afe227f59acbf51877428a371c0"
+              },
+              "touch": {
+                "file": "320-touch.png",
+                "sha256": "4a60392c6ea124d91c9f66e4d3b0396cdb11db5770fcb19aa5160ce00853445a"
+              }
+            }
+          }
+        },
+        "390": {
+          "viewport": 390,
+          "width": 375,
+          "height": 844,
+          "title": "The Threatened Swan",
+          "h1": "The Threatened Swan",
+          "loadedFonts": [
+            "Gloock",
+            "News Cycle"
+          ],
+          "language": "en",
+          "reducedMotion": true,
+          "pageErrors": [],
+          "accessibility": "- main:\n  - heading \"The Threatened Swan\" [level=1]\n  - paragraph: Jan Asselijn, c. 1650. Oil on canvas.\n  - button \"Inspect the egg\"\n  - figure:\n    - img \"A swan spreads its wings above a nest as a dog approaches.\"\n  - paragraph: Rijksmuseum. The Threatened Swan, SK-A-4. Public domain.\n  - link \"Source record\":\n    - /url: https://www.rijksmuseum.nl/en/collection/object/The-Threatened-Swan--22040f90565e730131983a44a85b989f\n  - text: . Public domain.",
+          "status": "rendered",
+          "sha256": "40239fc07e7465864d83a895e7f93929f079ef4fa11a1002ba91323ebed23e76",
+          "interaction": {
+            "checks": {
+              "startsClosed": true,
+              "keyboardFocus": true,
+              "opens": true,
+              "keptFocus": true,
+              "closes": true,
+              "overview": true,
+              "stableAction": true,
+              "clearAction": true,
+              "source": true,
+              "correctOrder": true,
+              "noOverflow": true,
+              "target": true,
+              "touch": true,
+              "reducedMotion": true,
+              "pageErrors": true,
+              "immediateDetail": true,
+              "immediateTouchDetail": true,
+              "withoutScript": true,
+              "independentInstances": true,
+              "missingPanelId": true
+            },
+            "projection": {
+              "status": "pass",
+              "x": 219.81570247933888,
+              "y": 381.7831914268119,
+              "clearance": 101.59180857318808,
+              "inViewport": true,
+              "limits": {
+                "left": 16,
+                "right": 359,
+                "top": 199.84375,
+                "bottom": 483.375
+              }
+            },
+            "touchProjection": {
+              "status": "pass",
+              "x": 219.81570247933888,
+              "y": 381.7831914268119,
+              "clearance": 101.59180857318808,
+              "inViewport": true,
+              "limits": {
+                "left": 16,
+                "right": 359,
+                "top": 199.84375,
+                "bottom": 483.375
+              }
+            },
+            "firstNote": {
+              "x": 16,
+              "y": 495.375,
+              "width": 343,
+              "height": 46.375
+            },
+            "touchNote": {
+              "x": 16,
+              "y": 495.375,
+              "width": 343,
+              "height": 46.375
+            },
+            "initial": {
+              "x": 16,
+              "y": 137.84375,
+              "width": 138.3125,
+              "height": 48
+            },
+            "openPosition": {
+              "x": 16,
+              "y": 137.84375,
+              "width": 170.609375,
+              "height": 48
+            },
+            "closedPosition": {
+              "x": 16,
+              "y": 137.84375,
+              "width": 138.3125,
+              "height": 48
+            },
+            "order": [
+              "dm-inspect__heading",
+              "dm-inspect__detail",
+              "dm-inspect__whole",
+              "dm-inspect__credit"
+            ],
+            "frames": {
+              "before": {
+                "file": "390.png",
+                "sha256": "40239fc07e7465864d83a895e7f93929f079ef4fa11a1002ba91323ebed23e76"
+              },
+              "open": {
+                "file": "390-open.png",
+                "sha256": "a9735f7278e988f33e963f740a70b3731068b02bc1996490b2e7746dfb744d75"
+              },
+              "closed": {
+                "file": "390-closed.png",
+                "sha256": "d1f6174a1cf69c4bfd418e1b6fb65807c0255573ae6af04801f8eb2624b009b1"
+              },
+              "touch": {
+                "file": "390-touch.png",
+                "sha256": "9e81654c45ca5ca528bd2867df824213d215ab417397707f3859e4847b285c04"
+              }
+            }
+          }
+        },
+        "1440": {
+          "viewport": 1440,
+          "width": 1425,
+          "height": 900,
+          "title": "The Threatened Swan",
+          "h1": "The Threatened Swan",
+          "loadedFonts": [
+            "Gloock",
+            "News Cycle"
+          ],
+          "language": "en",
+          "reducedMotion": true,
+          "pageErrors": [],
+          "accessibility": "- main:\n  - heading \"The Threatened Swan\" [level=1]\n  - paragraph: Jan Asselijn, c. 1650. Oil on canvas.\n  - button \"Inspect the egg\"\n  - figure:\n    - img \"A swan spreads its wings above a nest as a dog approaches.\"\n  - paragraph: Rijksmuseum. The Threatened Swan, SK-A-4. Public domain.\n  - link \"Source record\":\n    - /url: https://www.rijksmuseum.nl/en/collection/object/The-Threatened-Swan--22040f90565e730131983a44a85b989f\n  - text: . Public domain.",
+          "status": "rendered",
+          "sha256": "58757a36bc28105590a6217b12178f5eb024b9a7df29d5b551f207aed1261501",
+          "interaction": {
+            "checks": {
+              "startsClosed": true,
+              "keyboardFocus": true,
+              "opens": true,
+              "keptFocus": true,
+              "closes": true,
+              "overview": true,
+              "stableAction": true,
+              "clearAction": true,
+              "source": true,
+              "correctOrder": true,
+              "noOverflow": true,
+              "target": true,
+              "touch": true,
+              "reducedMotion": true,
+              "pageErrors": true,
+              "immediateDetail": true,
+              "immediateTouchDetail": true
+            },
+            "projection": {
+              "status": "pass",
+              "x": 547.4529222535991,
+              "y": 406.4127075,
+              "clearance": 196.5872925,
+              "inViewport": true,
+              "limits": {
+                "left": 56.5,
+                "right": 913.296875,
+                "top": 54,
+                "bottom": 603
+              }
+            },
+            "touchProjection": {
+              "status": "pass",
+              "x": 547.4529222535991,
+              "y": 406.4127075,
+              "clearance": 196.5872925,
+              "inViewport": true,
+              "limits": {
+                "left": 56.5,
+                "right": 913.296875,
+                "top": 54,
+                "bottom": 603
+              }
+            },
+            "firstNote": {
+              "x": 56.5,
+              "y": 615,
+              "width": 518.71875,
+              "height": 52.1875
+            },
+            "touchNote": {
+              "x": 56.5,
+              "y": 615,
+              "width": 518.71875,
+              "height": 52.1875
+            },
+            "initial": {
+              "x": 965.296875,
+              "y": 402.171875,
+              "width": 138.3125,
+              "height": 48
+            },
+            "openPosition": {
+              "x": 965.296875,
+              "y": 402.171875,
+              "width": 170.609375,
+              "height": 48
+            },
+            "closedPosition": {
+              "x": 965.296875,
+              "y": 402.171875,
+              "width": 138.3125,
+              "height": 48
+            },
+            "order": [
+              "dm-inspect__heading",
+              "dm-inspect__detail",
+              "dm-inspect__whole",
+              "dm-inspect__credit"
+            ],
+            "frames": {
+              "before": {
+                "file": "1440.png",
+                "sha256": "58757a36bc28105590a6217b12178f5eb024b9a7df29d5b551f207aed1261501"
+              },
+              "open": {
+                "file": "1440-open.png",
+                "sha256": "619762eee2526023d1efa01d89cd8bffa298eba3226b46951f43280327d8498a"
+              },
+              "closed": {
+                "file": "1440-closed.png",
+                "sha256": "0c2e75c854a99697fc017d66de5833c67fd8c919a3e465443b346ec1e2e2c2d0"
+              },
+              "touch": {
+                "file": "1440-touch.png",
+                "sha256": "b2db61a735ae4a5ad02404c46f8059da9b6775d3d0c6b5ca145e2027e54d6e8f"
+              }
+            }
+          }
+        }
+      }
+    },
+    "nebula/append": {
+      "renderer": "0.12.0",
+      "browser": "Chrome/157.0.8103.79",
+      "input_sha256": "f5fd9790f1ea1c7851e97705658600be195ac4e5d313d99279c0559984ff4580",
+      "captures": {
+        "320": {
+          "viewport": 320,
+          "width": 305,
+          "height": 700,
+          "title": "The Ring Nebula",
+          "h1": "The Ring Nebula",
+          "loadedFonts": [
+            "Archivo Black",
+            "Atkinson Hyperlegible Next"
+          ],
+          "language": "en",
+          "reducedMotion": true,
+          "pageErrors": [],
+          "accessibility": "- main:\n  - heading \"The Ring Nebula\" [level=1]\n  - paragraph: Webb Near-Infrared Camera. M57 in Lyra.\n  - button \"Inspect the inner ring\"\n  - figure:\n    - img \"A luminous ring surrounds a green and blue cavity in a dark field of stars.\"\n  - paragraph: ESA/Webb, NASA, CSA, M. Barlow (UCL), N. Cox (ACRI-ST), R. Wesson (Cardiff University).\n  - link \"Source record\":\n    - /url: https://science.nasa.gov/asset/webb/ring-nebula-nircam-image/\n  - text: .\n  - link \"CC BY 4.0\":\n    - /url: https://creativecommons.org/licenses/by/4.0/\n  - text: . Detail cropped from the original.",
+          "status": "rendered",
+          "sha256": "0802454c6117a74d7a69969878c1549c59400215575e79688ab23cafa756b36e",
+          "interaction": {
+            "checks": {
+              "startsClosed": true,
+              "keyboardFocus": true,
+              "opens": true,
+              "keptFocus": true,
+              "closes": true,
+              "overview": true,
+              "stableAction": true,
+              "clearAction": true,
+              "source": true,
+              "correctOrder": true,
+              "noOverflow": true,
+              "target": true,
+              "touch": true,
+              "reducedMotion": true,
+              "pageErrors": true
+            },
+            "projection": {
+              "status": "pass",
+              "x": 148.60000000000002,
+              "y": 608.0914281143345,
+              "clearance": 95.98205311433446,
+              "inViewport": true,
+              "limits": {
+                "left": 16,
+                "right": 289,
+                "top": 512.109375,
+                "bottom": 804.609375
+              }
+            },
+            "touchProjection": {
+              "status": "pass",
+              "x": 148.60000000000002,
+              "y": 608.0914281143345,
+              "clearance": 95.98205311433446,
+              "inViewport": true,
+              "limits": {
+                "left": 16,
+                "right": 289,
+                "top": 512.109375,
+                "bottom": 804.609375
+              }
+            },
+            "firstNote": {
+              "x": 16,
+              "y": 816.609375,
+              "width": 273,
+              "height": 69.5625
+            },
+            "touchNote": {
+              "x": 16,
+              "y": 816.609375,
+              "width": 273,
+              "height": 69.5625
+            },
+            "initial": {
+              "x": 16,
+              "y": 159.0625,
+              "width": 214.296875,
+              "height": 48
+            },
+            "openPosition": {
+              "x": 16,
+              "y": 159.0625,
+              "width": 222.71875,
+              "height": 48
+            },
+            "closedPosition": {
+              "x": 16,
+              "y": 159.0625,
+              "width": 214.296875,
+              "height": 48
+            },
+            "order": [
+              "dm-inspect__heading",
+              "dm-inspect__whole",
+              "dm-inspect__detail",
+              "dm-inspect__credit"
+            ],
+            "frames": {
+              "before": {
+                "file": "320.png",
+                "sha256": "0802454c6117a74d7a69969878c1549c59400215575e79688ab23cafa756b36e"
+              },
+              "open": {
+                "file": "320-open.png",
+                "sha256": "9cec88b7337dd2dcb2bd3f363fb5bb30ab12be3be1d0a606729b0af33407c931"
+              },
+              "closed": {
+                "file": "320-closed.png",
+                "sha256": "8e73667e4a40955fc4cb564f78d1a3e91be73562f5abb696324db6e961dafe67"
+              },
+              "touch": {
+                "file": "320-touch.png",
+                "sha256": "f193a877bb9a87613d39250e9e4723110156343775608c6ce02c0750ce8bc6e1"
+              }
+            }
+          }
+        },
+        "390": {
+          "viewport": 390,
+          "width": 375,
+          "height": 844,
+          "title": "The Ring Nebula",
+          "h1": "The Ring Nebula",
+          "loadedFonts": [
+            "Archivo Black",
+            "Atkinson Hyperlegible Next"
+          ],
+          "language": "en",
+          "reducedMotion": true,
+          "pageErrors": [],
+          "accessibility": "- main:\n  - heading \"The Ring Nebula\" [level=1]\n  - paragraph: Webb Near-Infrared Camera. M57 in Lyra.\n  - button \"Inspect the inner ring\"\n  - figure:\n    - img \"A luminous ring surrounds a green and blue cavity in a dark field of stars.\"\n  - paragraph: ESA/Webb, NASA, CSA, M. Barlow (UCL), N. Cox (ACRI-ST), R. Wesson (Cardiff University).\n  - link \"Source record\":\n    - /url: https://science.nasa.gov/asset/webb/ring-nebula-nircam-image/\n  - text: .\n  - link \"CC BY 4.0\":\n    - /url: https://creativecommons.org/licenses/by/4.0/\n  - text: . Detail cropped from the original.",
+          "status": "rendered",
+          "sha256": "aa344edbb1f2c967686a821b7406197852317b6875f3786a4eb53cf5673a1249",
+          "interaction": {
+            "checks": {
+              "startsClosed": true,
+              "keyboardFocus": true,
+              "opens": true,
+              "keptFocus": true,
+              "closes": true,
+              "overview": true,
+              "stableAction": true,
+              "clearAction": true,
+              "source": true,
+              "correctOrder": true,
+              "noOverflow": true,
+              "target": true,
+              "touch": true,
+              "reducedMotion": true,
+              "pageErrors": true
+            },
+            "projection": {
+              "status": "pass",
+              "x": 182.60000000000002,
+              "y": 646.1177080502717,
+              "clearance": 120.57083305027174,
+              "inViewport": true,
+              "limits": {
+                "left": 16,
+                "right": 359,
+                "top": 525.546875,
+                "bottom": 893.046875
+              }
+            },
+            "touchProjection": {
+              "status": "pass",
+              "x": 182.60000000000002,
+              "y": 646.1177080502717,
+              "clearance": 120.57083305027174,
+              "inViewport": true,
+              "limits": {
+                "left": 16,
+                "right": 359,
+                "top": 525.546875,
+                "bottom": 893.046875
+              }
+            },
+            "firstNote": {
+              "x": 16,
+              "y": 905.046875,
+              "width": 343,
+              "height": 69.5625
+            },
+            "touchNote": {
+              "x": 16,
+              "y": 905.046875,
+              "width": 343,
+              "height": 69.5625
+            },
+            "initial": {
+              "x": 16,
+              "y": 101.46875,
+              "width": 214.296875,
+              "height": 48
+            },
+            "openPosition": {
+              "x": 16,
+              "y": 101.46875,
+              "width": 222.71875,
+              "height": 48
+            },
+            "closedPosition": {
+              "x": 16,
+              "y": 101.46875,
+              "width": 214.296875,
+              "height": 48
+            },
+            "order": [
+              "dm-inspect__heading",
+              "dm-inspect__whole",
+              "dm-inspect__detail",
+              "dm-inspect__credit"
+            ],
+            "frames": {
+              "before": {
+                "file": "390.png",
+                "sha256": "aa344edbb1f2c967686a821b7406197852317b6875f3786a4eb53cf5673a1249"
+              },
+              "open": {
+                "file": "390-open.png",
+                "sha256": "9474314501bdbf73471a8267789ff4d71356d4731c58d74c2e01fd725081b0df"
+              },
+              "closed": {
+                "file": "390-closed.png",
+                "sha256": "0d5eba9e6394c118b9698c98032267fdca787dd7fd962d2a9693a9f715453139"
+              },
+              "touch": {
+                "file": "390-touch.png",
+                "sha256": "e908d48a5b1d1bf8880c4bc164eb618a7664fe9cdd3b8a9c35a4fa17d3023e3d"
+              }
+            }
+          }
+        },
+        "1440": {
+          "viewport": 1440,
+          "width": 1425,
+          "height": 900,
+          "title": "The Ring Nebula",
+          "h1": "The Ring Nebula",
+          "loadedFonts": [
+            "Archivo Black",
+            "Atkinson Hyperlegible Next"
+          ],
+          "language": "en",
+          "reducedMotion": true,
+          "pageErrors": [],
+          "accessibility": "- main:\n  - heading \"The Ring Nebula\" [level=1]\n  - paragraph: Webb Near-Infrared Camera. M57 in Lyra.\n  - button \"Inspect the inner ring\"\n  - figure:\n    - img \"A luminous ring surrounds a green and blue cavity in a dark field of stars.\"\n  - paragraph: ESA/Webb, NASA, CSA, M. Barlow (UCL), N. Cox (ACRI-ST), R. Wesson (Cardiff University).\n  - link \"Source record\":\n    - /url: https://science.nasa.gov/asset/webb/ring-nebula-nircam-image/\n  - text: .\n  - link \"CC BY 4.0\":\n    - /url: https://creativecommons.org/licenses/by/4.0/\n  - text: . Detail cropped from the original.",
+          "status": "rendered",
+          "sha256": "fea37c382f82b3c139ef68a6691088647d39a9f672771fa38d0cda031dfe320e",
+          "interaction": {
+            "checks": {
+              "startsClosed": true,
+              "keyboardFocus": true,
+              "opens": true,
+              "keptFocus": true,
+              "closes": true,
+              "overview": true,
+              "stableAction": true,
+              "clearAction": true,
+              "source": true,
+              "correctOrder": true,
+              "noOverflow": true,
+              "target": true,
+              "touch": true,
+              "reducedMotion": true,
+              "pageErrors": true
+            },
+            "projection": {
+              "status": "pass",
+              "x": 477.5801724766628,
+              "y": 834.974025,
+              "clearance": 179.98964999999998,
+              "inViewport": true,
+              "limits": {
+                "left": 56.5,
+                "right": 913.296875,
+                "top": 654.984375,
+                "bottom": 1203.984375
+              }
+            },
+            "touchProjection": {
+              "status": "pass",
+              "x": 477.5801724766628,
+              "y": 834.974025,
+              "clearance": 179.98964999999998,
+              "inViewport": true,
+              "limits": {
+                "left": 56.5,
+                "right": 913.296875,
+                "top": 654.984375,
+                "bottom": 1203.984375
+              }
+            },
+            "firstNote": {
+              "x": 56.5,
+              "y": 1215.984375,
+              "width": 606.515625,
+              "height": 52.1875
+            },
+            "touchNote": {
+              "x": 56.5,
+              "y": 1215.984375,
+              "width": 606.515625,
+              "height": 52.1875
+            },
+            "initial": {
+              "x": 965.296875,
+              "y": 402.171875,
+              "width": 214.296875,
+              "height": 48
+            },
+            "openPosition": {
+              "x": 965.296875,
+              "y": 402.171875,
+              "width": 222.71875,
+              "height": 48
+            },
+            "closedPosition": {
+              "x": 965.296875,
+              "y": 402.171875,
+              "width": 214.296875,
+              "height": 48
+            },
+            "order": [
+              "dm-inspect__heading",
+              "dm-inspect__whole",
+              "dm-inspect__detail",
+              "dm-inspect__credit"
+            ],
+            "frames": {
+              "before": {
+                "file": "1440.png",
+                "sha256": "fea37c382f82b3c139ef68a6691088647d39a9f672771fa38d0cda031dfe320e"
+              },
+              "open": {
+                "file": "1440-open.png",
+                "sha256": "c8c079f8fa9609e8bcff0ffd0338fa3e6477cf643cb09add1e603b6a141cb422"
+              },
+              "closed": {
+                "file": "1440-closed.png",
+                "sha256": "4e11b279c9267c1c4dff48209512c3ae81ccb5ca6c6b0322fd535124562f9bb1"
+              },
+              "touch": {
+                "file": "1440-touch.png",
+                "sha256": "2a03698e1d4694b2dc381ca65cbaa8ce3fbbf5cb3204fecb6f25a073417463e7"
+              }
+            }
+          }
+        }
+      }
+    },
+    "nebula/focus": {
+      "renderer": "0.12.0",
+      "browser": "Chrome/157.0.8103.79",
+      "input_sha256": "fb7f3488f3cb7f3b44f655f0a15caddbf2f21df94b20d3b56892fcbb89c3ae4d",
+      "captures": {
+        "320": {
+          "viewport": 320,
+          "width": 305,
+          "height": 700,
+          "title": "The Ring Nebula",
+          "h1": "The Ring Nebula",
+          "loadedFonts": [
+            "Archivo Black",
+            "Atkinson Hyperlegible Next"
+          ],
+          "language": "en",
+          "reducedMotion": true,
+          "pageErrors": [],
+          "accessibility": "- main:\n  - heading \"The Ring Nebula\" [level=1]\n  - paragraph: Webb Near-Infrared Camera. M57 in Lyra.\n  - button \"Inspect the inner ring\"\n  - figure:\n    - img \"A luminous ring surrounds a green and blue cavity in a dark field of stars.\"\n  - paragraph: ESA/Webb, NASA, CSA, M. Barlow (UCL), N. Cox (ACRI-ST), R. Wesson (Cardiff University).\n  - link \"Source record\":\n    - /url: https://science.nasa.gov/asset/webb/ring-nebula-nircam-image/\n  - text: .\n  - link \"CC BY 4.0\":\n    - /url: https://creativecommons.org/licenses/by/4.0/\n  - text: . Detail cropped from the original.",
+          "status": "rendered",
+          "sha256": "0802454c6117a74d7a69969878c1549c59400215575e79688ab23cafa756b36e",
+          "interaction": {
+            "checks": {
+              "startsClosed": true,
+              "keyboardFocus": true,
+              "opens": true,
+              "keptFocus": true,
+              "closes": true,
+              "overview": true,
+              "stableAction": true,
+              "clearAction": true,
+              "source": true,
+              "correctOrder": true,
+              "noOverflow": true,
+              "target": true,
+              "touch": true,
+              "reducedMotion": true,
+              "pageErrors": true,
+              "immediateDetail": true,
+              "immediateTouchDetail": true
+            },
+            "projection": {
+              "status": "pass",
+              "x": 148.60000000000002,
+              "y": 317.04455311433446,
+              "clearance": 95.98205311433446,
+              "inViewport": true,
+              "limits": {
+                "left": 16,
+                "right": 289,
+                "top": 221.0625,
+                "bottom": 513.5625
+              }
+            },
+            "touchProjection": {
+              "status": "pass",
+              "x": 148.60000000000002,
+              "y": 317.04455311433446,
+              "clearance": 95.98205311433446,
+              "inViewport": true,
+              "limits": {
+                "left": 16,
+                "right": 289,
+                "top": 221.0625,
+                "bottom": 513.5625
+              }
+            },
+            "firstNote": {
+              "x": 16,
+              "y": 525.5625,
+              "width": 273,
+              "height": 69.5625
+            },
+            "touchNote": {
+              "x": 16,
+              "y": 525.5625,
+              "width": 273,
+              "height": 69.5625
+            },
+            "initial": {
+              "x": 16,
+              "y": 159.0625,
+              "width": 214.296875,
+              "height": 48
+            },
+            "openPosition": {
+              "x": 16,
+              "y": 159.0625,
+              "width": 222.71875,
+              "height": 48
+            },
+            "closedPosition": {
+              "x": 16,
+              "y": 159.0625,
+              "width": 214.296875,
+              "height": 48
+            },
+            "order": [
+              "dm-inspect__heading",
+              "dm-inspect__detail",
+              "dm-inspect__whole",
+              "dm-inspect__credit"
+            ],
+            "frames": {
+              "before": {
+                "file": "320.png",
+                "sha256": "0802454c6117a74d7a69969878c1549c59400215575e79688ab23cafa756b36e"
+              },
+              "open": {
+                "file": "320-open.png",
+                "sha256": "9ec35aa75a080a01086692014300e1052cc07fc81aab54667edb8f91cd5ecb2e"
+              },
+              "closed": {
+                "file": "320-closed.png",
+                "sha256": "8e73667e4a40955fc4cb564f78d1a3e91be73562f5abb696324db6e961dafe67"
+              },
+              "touch": {
+                "file": "320-touch.png",
+                "sha256": "4d76fc51e7e04a16ce69a7306fe04d7c2b99498365701f87cff0267b50cace73"
+              }
+            }
+          }
+        },
+        "390": {
+          "viewport": 390,
+          "width": 375,
+          "height": 844,
+          "title": "The Ring Nebula",
+          "h1": "The Ring Nebula",
+          "loadedFonts": [
+            "Archivo Black",
+            "Atkinson Hyperlegible Next"
+          ],
+          "language": "en",
+          "reducedMotion": true,
+          "pageErrors": [],
+          "accessibility": "- main:\n  - heading \"The Ring Nebula\" [level=1]\n  - paragraph: Webb Near-Infrared Camera. M57 in Lyra.\n  - button \"Inspect the inner ring\"\n  - figure:\n    - img \"A luminous ring surrounds a green and blue cavity in a dark field of stars.\"\n  - paragraph: ESA/Webb, NASA, CSA, M. Barlow (UCL), N. Cox (ACRI-ST), R. Wesson (Cardiff University).\n  - link \"Source record\":\n    - /url: https://science.nasa.gov/asset/webb/ring-nebula-nircam-image/\n  - text: .\n  - link \"CC BY 4.0\":\n    - /url: https://creativecommons.org/licenses/by/4.0/\n  - text: . Detail cropped from the original.",
+          "status": "rendered",
+          "sha256": "aa344edbb1f2c967686a821b7406197852317b6875f3786a4eb53cf5673a1249",
+          "interaction": {
+            "checks": {
+              "startsClosed": true,
+              "keyboardFocus": true,
+              "opens": true,
+              "keptFocus": true,
+              "closes": true,
+              "overview": true,
+              "stableAction": true,
+              "clearAction": true,
+              "source": true,
+              "correctOrder": true,
+              "noOverflow": true,
+              "target": true,
+              "touch": true,
+              "reducedMotion": true,
+              "pageErrors": true,
+              "immediateDetail": true,
+              "immediateTouchDetail": true,
+              "withoutScript": true,
+              "independentInstances": true,
+              "missingPanelId": true
+            },
+            "projection": {
+              "status": "pass",
+              "x": 182.60000000000002,
+              "y": 284.03958305027174,
+              "clearance": 120.57083305027174,
+              "inViewport": true,
+              "limits": {
+                "left": 16,
+                "right": 359,
+                "top": 163.46875,
+                "bottom": 530.96875
+              }
+            },
+            "touchProjection": {
+              "status": "pass",
+              "x": 182.60000000000002,
+              "y": 284.03958305027174,
+              "clearance": 120.57083305027174,
+              "inViewport": true,
+              "limits": {
+                "left": 16,
+                "right": 359,
+                "top": 163.46875,
+                "bottom": 530.96875
+              }
+            },
+            "firstNote": {
+              "x": 16,
+              "y": 542.96875,
+              "width": 343,
+              "height": 69.5625
+            },
+            "touchNote": {
+              "x": 16,
+              "y": 542.96875,
+              "width": 343,
+              "height": 69.5625
+            },
+            "initial": {
+              "x": 16,
+              "y": 101.46875,
+              "width": 214.296875,
+              "height": 48
+            },
+            "openPosition": {
+              "x": 16,
+              "y": 101.46875,
+              "width": 222.71875,
+              "height": 48
+            },
+            "closedPosition": {
+              "x": 16,
+              "y": 101.46875,
+              "width": 214.296875,
+              "height": 48
+            },
+            "order": [
+              "dm-inspect__heading",
+              "dm-inspect__detail",
+              "dm-inspect__whole",
+              "dm-inspect__credit"
+            ],
+            "frames": {
+              "before": {
+                "file": "390.png",
+                "sha256": "aa344edbb1f2c967686a821b7406197852317b6875f3786a4eb53cf5673a1249"
+              },
+              "open": {
+                "file": "390-open.png",
+                "sha256": "674dc59ca750ac17785e72bc9e85393da35ef3b1ec2c4cecb9ec20cb09182377"
+              },
+              "closed": {
+                "file": "390-closed.png",
+                "sha256": "0d5eba9e6394c118b9698c98032267fdca787dd7fd962d2a9693a9f715453139"
+              },
+              "touch": {
+                "file": "390-touch.png",
+                "sha256": "da06de8530a4a4055d23bd222d718c54b57f3cbb02e5c8b91dcbdaf546dcf080"
+              }
+            }
+          }
+        },
+        "1440": {
+          "viewport": 1440,
+          "width": 1425,
+          "height": 900,
+          "title": "The Ring Nebula",
+          "h1": "The Ring Nebula",
+          "loadedFonts": [
+            "Archivo Black",
+            "Atkinson Hyperlegible Next"
+          ],
+          "language": "en",
+          "reducedMotion": true,
+          "pageErrors": [],
+          "accessibility": "- main:\n  - heading \"The Ring Nebula\" [level=1]\n  - paragraph: Webb Near-Infrared Camera. M57 in Lyra.\n  - button \"Inspect the inner ring\"\n  - figure:\n    - img \"A luminous ring surrounds a green and blue cavity in a dark field of stars.\"\n  - paragraph: ESA/Webb, NASA, CSA, M. Barlow (UCL), N. Cox (ACRI-ST), R. Wesson (Cardiff University).\n  - link \"Source record\":\n    - /url: https://science.nasa.gov/asset/webb/ring-nebula-nircam-image/\n  - text: .\n  - link \"CC BY 4.0\":\n    - /url: https://creativecommons.org/licenses/by/4.0/\n  - text: . Detail cropped from the original.",
+          "status": "rendered",
+          "sha256": "fea37c382f82b3c139ef68a6691088647d39a9f672771fa38d0cda031dfe320e",
+          "interaction": {
+            "checks": {
+              "startsClosed": true,
+              "keyboardFocus": true,
+              "opens": true,
+              "keptFocus": true,
+              "closes": true,
+              "overview": true,
+              "stableAction": true,
+              "clearAction": true,
+              "source": true,
+              "correctOrder": true,
+              "noOverflow": true,
+              "target": true,
+              "touch": true,
+              "reducedMotion": true,
+              "pageErrors": true,
+              "immediateDetail": true,
+              "immediateTouchDetail": true
+            },
+            "projection": {
+              "status": "pass",
+              "x": 477.5801724766628,
+              "y": 233.98964999999998,
+              "clearance": 179.98964999999998,
+              "inViewport": true,
+              "limits": {
+                "left": 56.5,
+                "right": 913.296875,
+                "top": 54,
+                "bottom": 603
+              }
+            },
+            "touchProjection": {
+              "status": "pass",
+              "x": 477.5801724766628,
+              "y": 233.98964999999998,
+              "clearance": 179.98964999999998,
+              "inViewport": true,
+              "limits": {
+                "left": 56.5,
+                "right": 913.296875,
+                "top": 54,
+                "bottom": 603
+              }
+            },
+            "firstNote": {
+              "x": 56.5,
+              "y": 615,
+              "width": 606.515625,
+              "height": 52.1875
+            },
+            "touchNote": {
+              "x": 56.5,
+              "y": 615,
+              "width": 606.515625,
+              "height": 52.1875
+            },
+            "initial": {
+              "x": 965.296875,
+              "y": 402.171875,
+              "width": 214.296875,
+              "height": 48
+            },
+            "openPosition": {
+              "x": 965.296875,
+              "y": 402.171875,
+              "width": 222.71875,
+              "height": 48
+            },
+            "closedPosition": {
+              "x": 965.296875,
+              "y": 402.171875,
+              "width": 214.296875,
+              "height": 48
+            },
+            "order": [
+              "dm-inspect__heading",
+              "dm-inspect__detail",
+              "dm-inspect__whole",
+              "dm-inspect__credit"
+            ],
+            "frames": {
+              "before": {
+                "file": "1440.png",
+                "sha256": "fea37c382f82b3c139ef68a6691088647d39a9f672771fa38d0cda031dfe320e"
+              },
+              "open": {
+                "file": "1440-open.png",
+                "sha256": "0a5a4e758054082c09b1370c63a7b65568e90df7ff247edde58bb106c796fd09"
+              },
+              "closed": {
+                "file": "1440-closed.png",
+                "sha256": "4e11b279c9267c1c4dff48209512c3ae81ccb5ca6c6b0322fd535124562f9bb1"
+              },
+              "touch": {
+                "file": "1440-touch.png",
+                "sha256": "580dd82978f3c2e2b67c8d3ca0b7561f1eed593b3aa44220a6fecc41c93fab2e"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "blind_ballot": {
+    "calibration": {
+      "example": "Legible repair intake with clear labels, familiar layout, and misplaced focus after an invalid number.",
+      "coherence": 7,
+      "originality": 4,
+      "craft": 6,
+      "usability": 6
+    },
+    "screens": {
+      "A-1440": {
+        "coherence": 7,
+        "originality": 6,
+        "craft": 6,
+        "usability": 6,
+        "primary_action": {
+          "input": "Tab, Enter",
+          "expected": "Reveal the inner-ring detail and its note.",
+          "observed": "The button changed to Back to the full nebula and retained visible focus. The detail was inserted below the full image; only its upper portion appeared in A-1440-after, and the note was not visible."
+        },
+        "edge_observation": "Tab moved focus to Source record and scrolled the detail and complete note into view. Shift+Tab returned to the back button; Enter collapsed the detail and left visible focus on Inspect the inner ring in A-1440-edge.",
+        "fact_check": "The crop shows thin, tangled pale strands along the blue-green cavity's inner rim, especially across the upper and right edges. The full image marks an upper-right area with a small circle. The displayed camera attribution and scientific description were not independently verified.",
+        "strength": "The large full image and bold heading establish a clear visual hierarchy, with a conspicuous focus outline.",
+        "weakness": "The revealed note is entirely below the viewport immediately after activation, so the result requires further navigation to discover.",
+        "repair": "Place the detail and note in the primary image position on activation while retaining a visible full-image locator.",
+        "arm": "append",
+        "html_sha256": "f5fd9790f1ea1c7851e97705658600be195ac4e5d313d99279c0559984ff4580",
+        "weighted": 6.3,
+        "before": {
+          "sha256": "fea37c382f82b3c139ef68a6691088647d39a9f672771fa38d0cda031dfe320e",
+          "file": "A-1440-before.png",
+          "tool_call_id": "item_2"
+        },
+        "after": {
+          "sha256": "ff806c347b8c8166c22d6079e0f8d1d81a06c18cdcfd79e3e22762248fa15c87",
+          "file": "A-1440-after.png",
+          "tool_call_id": "item_5"
+        },
+        "layout_width": 1425,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge": {
+          "sha256": "48cde462ee3fc7507013fce6c4858d37459610be810db3ae2da9b94de9025d1e",
+          "file": "A-1440-edge.png",
+          "tool_call_id": "item_12"
+        }
+      },
+      "A-390": {
+        "coherence": 7,
+        "originality": 6,
+        "craft": 6,
+        "usability": 6,
+        "primary_action": {
+          "input": "Tab, Enter",
+          "expected": "Reveal the inner-ring detail and its note.",
+          "observed": "The focused button changed to Back to the full nebula. The full image remained above the detail; the detail was partly visible and the note was below the viewport in A-390-after."
+        },
+        "edge_observation": "Tab to Source record brought the complete detail and note into view. Shift+Tab, Enter returned to the full image, with visible focus on Inspect the inner ring in A-390-edge.",
+        "fact_check": "The crop shows pale tangled filaments bordering the blue-green cavity; the full image's small circle is on the upper-right rim. The note was fully readable after navigation, not immediately after activation. Attribution and scientific claims remain unverified against the source.",
+        "strength": "The single-column layout keeps the title, action, and image readable at mobile width.",
+        "weakness": "The full image separates the toggle from the new detail, leaving the explanation below the fold.",
+        "repair": "Show the detail directly beneath the toggle and preserve a compact locator for context.",
+        "arm": "append",
+        "html_sha256": "f5fd9790f1ea1c7851e97705658600be195ac4e5d313d99279c0559984ff4580",
+        "weighted": 6.3,
+        "before": {
+          "sha256": "aa344edbb1f2c967686a821b7406197852317b6875f3786a4eb53cf5673a1249",
+          "file": "A-390-before.png",
+          "tool_call_id": "item_15"
+        },
+        "after": {
+          "sha256": "6da0786f33ccb9e372bdb6b7e95e50f50b146e77bbaedadcca18c928b8637621",
+          "file": "A-390-after.png",
+          "tool_call_id": "item_18"
+        },
+        "layout_width": 375,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge": {
+          "sha256": "a233769eb7b3dd42d06ccb3a67b3bccd43b482155e25e4b7092eda15eae48575",
+          "file": "A-390-edge.png",
+          "tool_call_id": "item_23"
+        }
+      },
+      "B-1440": {
+        "coherence": 8,
+        "originality": 6,
+        "craft": 8,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Tab, Enter",
+          "expected": "Reveal the inner-ring detail and its note.",
+          "observed": "The detail replaced the large full-image position. The entire note and a small full-image locator were visible immediately in B-1440-after; the back button retained visible focus."
+        },
+        "edge_observation": "Enter on the still-focused back button restored the full image and left visible focus on Inspect the inner ring in B-1440-edge.",
+        "fact_check": "The crop shows fine pale filaments along the upper and right border of the blue-green cavity. The locator marks the upper-right region of the full ring. The note is completely visible immediately after activation. Attribution and the camera claim were not independently checked.",
+        "strength": "The detail, note, return control, and locator are visible together, making the task and return path clear.",
+        "weakness": "The small locator makes the marked region difficult to inspect precisely.",
+        "repair": "Enlarge the locator or provide a clearer outlined crop boundary without competing with the detail.",
+        "arm": "focus",
+        "html_sha256": "fb7f3488f3cb7f3b44f655f0a15caddbf2f21df94b20d3b56892fcbb89c3ae4d",
+        "weighted": 7.5,
+        "before": {
+          "sha256": "fea37c382f82b3c139ef68a6691088647d39a9f672771fa38d0cda031dfe320e",
+          "file": "B-1440-before.png",
+          "tool_call_id": "item_25"
+        },
+        "after": {
+          "sha256": "416ecddeb03275be1a44fd1155d21f0a65f22d5038cdcbc7d61037225239c908",
+          "file": "B-1440-after.png",
+          "tool_call_id": "item_28"
+        },
+        "layout_width": 1425,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge": {
+          "sha256": "48cde462ee3fc7507013fce6c4858d37459610be810db3ae2da9b94de9025d1e",
+          "file": "B-1440-edge.png",
+          "tool_call_id": "item_30"
+        }
+      },
+      "B-390": {
+        "coherence": 8,
+        "originality": 6,
+        "craft": 8,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Tab, Enter",
+          "expected": "Reveal the inner-ring detail and its note.",
+          "observed": "The detail replaced the full image below the focused back button. The complete note and a small locator were visible immediately in B-390-after."
+        },
+        "edge_observation": "Enter on the focused back button restored the full image; focus remained visibly on Inspect the inner ring in B-390-edge.",
+        "fact_check": "The pale threadlike structures follow the inner edge of the ring against the blue-green cavity. The locator places the marked area at the upper-right of the full nebula. The complete note was visible without scrolling. Attribution and scientific claims remain independently unverified.",
+        "strength": "The mobile sequence presents the crop, explanation, and locator in task order without requiring a scroll to read the note.",
+        "weakness": "The locator is small and its marked area is difficult to distinguish at mobile size.",
+        "repair": "Increase the locator's size or strengthen the crop marker while keeping the note visible.",
+        "arm": "focus",
+        "html_sha256": "fb7f3488f3cb7f3b44f655f0a15caddbf2f21df94b20d3b56892fcbb89c3ae4d",
+        "weighted": 7.5,
+        "before": {
+          "sha256": "aa344edbb1f2c967686a821b7406197852317b6875f3786a4eb53cf5673a1249",
+          "file": "B-390-before.png",
+          "tool_call_id": "item_32"
+        },
+        "after": {
+          "sha256": "011330526e0f90f1750f9cb858da91ea8055f744b58a87ffbe47c1c0d65d0f05",
+          "file": "B-390-after.png",
+          "tool_call_id": "item_35"
+        },
+        "layout_width": 375,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge": {
+          "sha256": "a233769eb7b3dd42d06ccb3a67b3bccd43b482155e25e4b7092eda15eae48575",
+          "file": "B-390-edge.png",
+          "tool_call_id": "item_37"
+        }
+      }
+    },
+    "preference": {
+      "winner": "B",
+      "reason": "At both widths, B immediately presents the target and complete note while retaining a full-image locator and a keyboard-accessible return. A requires navigating past the full image to read the revealed note."
+    },
+    "case": "nebula-detail",
+    "verified_screens": 4,
+    "required_screens": 4,
+    "browser": "Chrome/157.0.8103.79",
+    "evaluator_thread": "01a2097c-7e59-7762-8076-7ec464b4f80c",
+    "usage": {
+      "input_tokens": 698672,
+      "cached_input_tokens": 645760,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 2700,
+      "reasoning_output_tokens": 0
+    },
+    "trace_sha256": "696013c3493b42fc9109ccc88689956f56923fb9e8291bb46c3e9b1a10c25d81",
+    "browser_audit_sha256": "0ef5e7ab76aa27fe3198ca56814953e07f65a8f31fd9424d047d8b7f5285d0d5"
+  },
+  "source_tests": "609 passed, 1 skipped, 5 warnings, 134 subtests passed in 9.09s",
+  "wheel": {
+    "commit": "d1461605f4634934a20cf6a55c9e71b67f66a648",
+    "files": {
+      "design_mcp/__init__.py": "4b6e7d73f7f2fe01ae460f58c2a2ab586243e68f2528e66ec29fec48defece0d",
+      "design_mcp/cli.py": "e045323969ed6dbc8ad3a62199f7bb0a15a1464adc44875ce8c59db22ce223be",
+      "design_mcp/corpus.py": "be6772f134c2e969f521cdd7043f5729b500f045a426fea16642bcecd8c0b36f",
+      "design_mcp/data/anti_generic_system.json": "32959d994d1294b70374303ea282c347361c1a7d01b0365376e9b66aae1ac37f",
+      "design_mcp/data/anti_pattern_fixes.json": "8818108671dc8761562819a9047adeb7907714e9bfa2d23d5d27ef9c919445b0",
+      "design_mcp/data/behavioral_templates.json": "c3f3f2fbe970fc5ceb3015bc8aad9bec81f90cab7547e6893b2f30fa767e82a9",
+      "design_mcp/data/component_code.json": "1667bba1a48c0dc4df13384ea1334e02aa34614e78d7eac92e9eaa2898f29f1a",
+      "design_mcp/data/decision_trees.json": "ea0061ab858cef42f878c7fba8b2a471150cecde8f50820909222cc6185fc2c7",
+      "design_mcp/data/decision_trees_indexed.json": "a113d248ebd219781b0cf946349fd06a0d9bbcfe63d5755414736a7c81603a14",
+      "design_mcp/data/detail-disclosure.html": "d66d9ef6c06b98bd7579a64f25a38002a6913dfd58cea2b0dec133cd189a3ab7",
+      "design_mcp/data/directions.json": "6a1f35452ffa626f85e142709950ce7d682e097fad2d3990d598aa925506e613",
+      "design_mcp/data/layout_templates.json": "cd9f616aabbd8b7cd8a87c53f363c2a93c96df8e76b1de0f6f2499481685501f",
+      "design_mcp/data/libraries.json": "64f77c98ee11772bd357b6a00892d845f1b93095feb7f6932d8a0a7275749d03",
+      "design_mcp/data/taxonomy.json": "752dd0ec6bf1c7dbdc79b3682964c875e09f47ed959b7fa44d45dcacad3ab99e",
+      "design_mcp/data/tokens/semantic_tokens.json": "36e637664b7896edfde2c6f7084a7782b1f7ad2fd39784abde7067e88cef5d27",
+      "design_mcp/data/tokens/token_sets.json": "4bdd4e0875e71eeb366d2fdc36323ee1d7522896dc87f6a9e15ba01a5c7813ac",
+      "design_mcp/data/visual_recipes.json": "ef2f8876d44e738a1de47dd7f1c8bcf07bcd9e48867e8c407dd5eb7fb753fa4d",
+      "design_mcp/database.py": "d69ab504317920277fd577fc02246eaa944d1e1952f9b2365fe0c1ab6a8c3d6e",
+      "design_mcp/design_checks.py": "556ad3a69ae2874e2aea50ff2db84fa4f9f4fa7ce7396a3e5f1a096dbed416bd",
+      "design_mcp/desktop_review.py": "56268a306ef2bf394222b0c1e1bb61e7f1beed4b049f335c54ae7a36aa66d3c5",
+      "design_mcp/detail_resource.py": "bd260b77788a82247a938e3c8a8dd980fc6b264b2245df2da79dec4bb90f4d27",
+      "design_mcp/direction_records.py": "ec674083df079ce8ce7579c37c26dc84612a1db76e3f7387badfb66077b5070f",
+      "design_mcp/directions.py": "ab1ec00c61c494cad967c1b4b53c87413f7c47f2766804e5e36b4a1d0a916a17",
+      "design_mcp/doctor.py": "ca36aa77fcd90b10426bd3aadc2f928421cd92f7ab00c1c93c3fdf8ffbbe0a75",
+      "design_mcp/enrichment.py": "3b48d6ee002773885a5c913004296c3892d1e1f887843d4bba8577d9f9a6fba4",
+      "design_mcp/models/__init__.py": "1fcfe134b8dd13ae3d7a5ff95cfa16479e2f06cd0860cdbf186fc5bfa6d467b0",
+      "design_mcp/models/analyzer.py": "62e00840547547f25aa34f9e395d8d300c6fe8da563638372c552f3d2efdbfb1",
+      "design_mcp/models/quality_scorer.py": "c5e3ad10486f458260748e17267fae303c37a3ece5f14c30f7470fc13dc7e8de",
+      "design_mcp/models/train_scorer.py": "be6be900cb27743e9110e485211dede5d859eb602eb01aa7dbbb9d2daea83ca8",
+      "design_mcp/models/visual_analyzer.py": "74303881e8c0fae24bffd64a23508409ed07b5ed8f163fa39713b1c3d64ce735",
+      "design_mcp/palettes.py": "d2840e1a3d81ae0d7aadbfda51137eb4988646903e05c55a68d4cb23ae8bdcdf",
+      "design_mcp/resources.py": "c8279e50688eae6db2a9a5b562998347629e4a5eff39578934c1427a9fa269cb",
+      "design_mcp/review/__init__.py": "3eb559a8193dc49c195d527fe8fbdba7ed82772eda8997ee8707b7efc8756b02",
+      "design_mcp/review/address.py": "224ed5b975df8f959d9f3d44b5703193cbbb84d5b3a3b14e36c774bcdb010c22",
+      "design_mcp/review/checks.py": "78fb3eb206e0984a6e1d90ddeb4656dff0983a7957c55e2666852723ff242dee",
+      "design_mcp/review/cli.py": "cdac94a072d7ba5076e1d3e5cfe2d24e1bce65845487a0d5931c158d43260d06",
+      "design_mcp/review/direct_capture.py": "9381fa0926fee06bacc1deed9113a1aef1400ec8bc9719ce5907869abc42bf2f",
+      "design_mcp/review/evidence.py": "1c0f0881799cf80a206f93a5c18a73b07d69c660158229486e7eece84d012966",
+      "design_mcp/review/extension/collector.js": "d137cc99d85f652d5d204a83eb867bffe4e3e58002fb79b055afb71cb117e3c2",
+      "design_mcp/review/extension/manifest.json": "827bc1580d45a4c5cdb5770ce1b0ba9f69c8a1a9a3c87fa4f1120723b3e57941",
+      "design_mcp/review/extension/mask.js": "cd384a9e08104381a4fa2da57bfca445024864978e2064a38efa71ed4ac564a0",
+      "design_mcp/review/extension/popup.css": "e870c8d1351b8b5f2627f1b009e25ab5c469f6a7e48e62528b38e0c5e22a469c",
+      "design_mcp/review/extension/popup.html": "9f444dbfc73c544046a17fcd41fc8d28902a471e4440ffc0319c997744727c51",
+      "design_mcp/review/extension/popup.js": "d79f68a03e805d61740e70405ba5deca0dbcf5b7b8d9378a7f739c20a16c9771",
+      "design_mcp/review/host.py": "2a0afc74bcb75c9dd8f27737af9430c3c2ea10d1f07801a177604558d73b2206",
+      "design_mcp/review/isolated.py": "2ce72bfcd3d4d716135a8516506ccbd4de9c3260a1b00d20592dc79b9b2e60b9",
+      "design_mcp/review/network.py": "f3b2262ea03e8216de039949d9cc0da65ea35092419f3958e5844e9894b3947e",
+      "design_mcp/review/pipeline.py": "979620bc6539c220a60030213ad0fe79703099486f655da245638867abf6ba3b",
+      "design_mcp/review/preview.py": "eeca7ac9f6095c5b1c445964b5b36df9397da9b2ec481f8ec0395a822ac47cf5",
+      "design_mcp/review/tool.py": "813a31ff553a60e2e9a3b3aaffce894f9b27e234e5b553813c43e89d96f8bdc1",
+      "design_mcp/schema.py": "a819d916a43edf6f104b8a9ee99f7e5b389ca3af89d40742a44830fca6e4075c",
+      "design_mcp/server.py": "f2307139d34542afba76ceddc6d978eac8a5642ec23bf91347eb6d97b74ed5c6"
+    },
+    "wheel_sha256": "e1586f7a70d14881c0e01f238f99f0ccb711f5a0db22852298ed6c4be62244a8"
+  },
+  "installed_smoke": {
+    "fastmcp": "4.2.5",
+    "mode": "both",
+    "tools": {
+      "direct": {
+        "keys": [
+          "direction",
+          "font_stylesheet",
+          "interaction",
+          "assumptions",
+          "questions",
+          "handoff"
+        ],
+        "milliseconds": 64
+      },
+      "react": {
+        "keys": [
+          "direction_id",
+          "changes",
+          "why",
+          "keep"
+        ],
+        "milliseconds": 2
+      },
+      "check": {
+        "keys": [
+          "finding_count",
+          "findings",
+          "scope",
+          "render_checks",
+          "truncated"
+        ],
+        "milliseconds": 2
+      },
+      "search_design_patterns": {
+        "keys": [
+          "result"
+        ],
+        "milliseconds": 94
+      },
+      "get_design_blueprint": {
+        "keys": [
+          "id",
+          "name",
+          "page_type",
+          "layout_type",
+          "layout_notes",
+          "ux_patterns",
+          "ui_elements",
+          "primary_colors",
+          "color_mode",
+          "visual_style",
+          "behavioral_description",
+          "accessibility_notes",
+          "semantic_tokens",
+          "component_hints",
+          "decision_tree",
+          "visual_recipes",
+          "design_system",
+          "source_url"
+        ],
+        "milliseconds": 3
+      },
+      "get_semantic_tokens": {
+        "keys": [
+          "tokens",
+          "primary_shades",
+          "accent_shades",
+          "color_mode",
+          "wcag_aa_verified"
+        ],
+        "milliseconds": 2
+      },
+      "get_design_taxonomy": {
+        "keys": [
+          "page_types",
+          "ux_patterns",
+          "ui_elements",
+          "industries",
+          "visual_styles"
+        ],
+        "milliseconds": 2
+      },
+      "get_behavioral_pattern": {
+        "keys": [
+          "description",
+          "best_practice",
+          "required_elements",
+          "anti_patterns",
+          "reference"
+        ],
+        "milliseconds": 2
+      },
+      "compare_design_approaches": {
+        "keys": [
+          "page_type",
+          "examples",
+          "summary"
+        ],
+        "milliseconds": 4
+      },
+      "analyze_and_devibecode": {
+        "keys": [
+          "anti_patterns_found",
+          "recommended_layout",
+          "semantic_tokens_to_apply",
+          "suggested_component_structure",
+          "severity_summary",
+          "refactoring_suggestions",
+          "code_fixes",
+          "visual_recipes",
+          "recommended_libraries",
+          "detected_component_type"
+        ],
+        "milliseconds": 14
+      },
+      "get_design_system": {
+        "keys": [
+          "font_system",
+          "spacing_system",
+          "global_anti_patterns",
+          "elevation",
+          "elevation_rules",
+          "color_tokens",
+          "delta_colors",
+          "component_classes",
+          "composition_rules"
+        ],
+        "milliseconds": 3
+      },
+      "get_library_recommendations": {
+        "keys": [
+          "recommendations",
+          "premium_stack",
+          "matching_design_patterns",
+          "total_libraries"
+        ],
+        "milliseconds": 10
+      },
+      "get_library_details": {
+        "keys": [
+          "library",
+          "pairs_with"
+        ],
+        "milliseconds": 2
+      },
+      "scan_project": {
+        "keys": [
+          "project_health_score",
+          "files_scanned",
+          "files_with_issues",
+          "total_issues",
+          "severity_summary",
+          "top_issues",
+          "priority_fixes",
+          "recommended_libraries",
+          "file_reports",
+          "component_types_found",
+          "visual_issues"
+        ],
+        "milliseconds": 4
+      },
+      "generate_refactored_code": {
+        "keys": [
+          "detected_component_type",
+          "total_issues",
+          "severity_summary",
+          "target_library",
+          "imports_needed",
+          "transformations",
+          "component_suggestion",
+          "design_reference",
+          "semantic_tokens",
+          "code_fixes",
+          "visual_recipes"
+        ],
+        "milliseconds": 12
+      },
+      "get_visual_recipe": {
+        "keys": [
+          "color_restraint",
+          "depth_system",
+          "typography_is_design",
+          "component_design",
+          "whitespace_as_design",
+          "motion_restraint",
+          "layout_hierarchy"
+        ],
+        "milliseconds": 2
+      },
+      "get_visual_suggestions": {
+        "keys": [
+          "visual_analysis",
+          "structural_analysis",
+          "color_palette",
+          "typography",
+          "spacing",
+          "implementation",
+          "quick_wins"
+        ],
+        "milliseconds": 2
+      },
+      "review_page": {
+        "keys": [
+          "ok",
+          "code",
+          "message"
+        ],
+        "milliseconds": 2
+      }
+    }
+  },
+  "source_interaction": [
+    {
+      "before": {
+        "value": 50,
+        "attr": null,
+        "style": "cursor: pointer;",
+        "images": [
+          [
+            "Webb captures detailed beauty of Ring Nebula (NIRCam image - cropped)",
+            1280,
+            992
+          ],
+          [
+            "Webb captures detailed beauty of Ring Nebula (MIRI image - cropped)",
+            1280,
+            992
+          ]
+        ],
+        "scroll": 320
+      },
+      "after": {
+        "value": 71.95411392405063,
+        "attr": null,
+        "style": "cursor: pointer;",
+        "images": [
+          [
+            "Webb captures detailed beauty of Ring Nebula (NIRCam image - cropped)",
+            1280,
+            992
+          ],
+          [
+            "Webb captures detailed beauty of Ring Nebula (MIRI image - cropped)",
+            1280,
+            992
+          ]
+        ],
+        "scroll": 320
+      },
+      "box": {
+        "x": 80.5,
+        "y": -79.875,
+        "width": 1264,
+        "height": 979.59375
+      },
+      "width": 1440,
+      "height": 900,
+      "changed": true,
+      "frames": {
+        "before": {
+          "file": "1440-before.png",
+          "sha256": "247bfd453d94f3ac721bac37fae4524329aab44d90953e93bd1da03bb9d30618"
+        },
+        "after": {
+          "file": "1440-after.png",
+          "sha256": "f7964985c478d82e64929b89b399c3e34e450b19ca3778d3ce0e888ca8fab68d"
+        }
+      }
+    },
+    {
+      "before": {
+        "value": 50,
+        "attr": null,
+        "style": "cursor: pointer;",
+        "images": [
+          [
+            "Webb captures detailed beauty of Ring Nebula (NIRCam image - cropped)",
+            1280,
+            992
+          ],
+          [
+            "Webb captures detailed beauty of Ring Nebula (MIRI image - cropped)",
+            1280,
+            992
+          ]
+        ],
+        "scroll": 323
+      },
+      "after": {
+        "value": 71.78683385579937,
+        "attr": null,
+        "style": "cursor: pointer;",
+        "images": [
+          [
+            "Webb captures detailed beauty of Ring Nebula (NIRCam image - cropped)",
+            1280,
+            992
+          ],
+          [
+            "Webb captures detailed beauty of Ring Nebula (MIRI image - cropped)",
+            1280,
+            992
+          ]
+        ],
+        "scroll": 323
+      },
+      "box": {
+        "x": 28,
+        "y": -0.5,
+        "width": 319,
+        "height": 247.21875
+      },
+      "width": 390,
+      "height": 844,
+      "changed": true,
+      "frames": {
+        "before": {
+          "file": "390-before.png",
+          "sha256": "d759f383549afa30f2321bebd456426130ccba6e6dd1c55829fa044107b26270"
+        },
+        "after": {
+          "file": "390-after.png",
+          "sha256": "a68c946e916c18c2c252d6f33ca8b0be01d97b98e5d6d694494c8f4439843a28"
+        }
+      }
+    }
+  ],
+  "blind_evidence_sha256": {
+    "critic.jsonl": "696013c3493b42fc9109ccc88689956f56923fb9e8291bb46c3e9b1a10c25d81",
+    "critic-prompt.md": "9b07e09795d3bf0c1237fd980d0377f47e1e82b4a795a03f909b4937c71fb738",
+    "captures/audit.jsonl": "0ef5e7ab76aa27fe3198ca56814953e07f65a8f31fd9424d047d8b7f5285d0d5",
+    "sealed-key.json": "4cd5407a4aed81136afc1023c277ccf6f2beb4dd9f1acaa067cbd6c4935c8248",
+    "benchmark-spec.json": "cbd2f8b642ebd3ae558820704178a00451046d86d8512a815b1a131ec862e44f"
+  },
+  "audit_recovery": "The first audit adapter expected a generation brief and raised KeyError. The offline re-audit used the exact matched fixture hashes and verified the shared author using the preserved ballot and image trace.",
+  "qualification": "Isolated experimental wheel. Deterministic composition and one blind matched comparison. Ordinary-client resource use and the 9.5 gate are open."
+}
