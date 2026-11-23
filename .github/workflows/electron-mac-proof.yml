@@ -3,6 +3,16 @@ name: Installed Electron review on macOS
 on:
   push:
     branches: [design-mcp/electron-mac-proof, design-mcp/review-integration, design-mcp/electron-input-proof]
+  pull_request:
+    branches: [master]
+    paths:
+      - 'design_mcp/desktop_review.py'
+      - 'design_mcp/cli.py'
+      - 'integrations/desktop/electron.mjs'
+      - 'evals/vision/electron_smoke.mjs'
+      - 'evals/vision/fixtures/electron-review.*'
+      - 'pyproject.toml'
+      - '.github/workflows/electron-mac-proof.yml'
 
 permissions:
   contents: read

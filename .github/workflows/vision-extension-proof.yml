@@ -7,6 +7,14 @@ on:
       - design-mcp/review-integration
       - design-mcp/large-text-contrast
       - design-mcp/profile-review-isolation
+  pull_request:
+    branches: [master]
+    paths:
+      - 'design_mcp/review/**'
+      - 'design_mcp/cli.py'
+      - 'evals/vision/extension_smoke.mjs'
+      - 'pyproject.toml'
+      - '.github/workflows/vision-extension-proof.yml'
 
 permissions:
   contents: read

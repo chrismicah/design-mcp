@@ -1,5 +1,9 @@
 # Design MCP live smoke
 
+## Release candidate on both architectures
+
+At `6e9a239`, all eight macOS 15 jobs passed on Intel and Apple Silicon with Python 3.10–3.13. Both installers fetched the exact Git pin, passed `doctor`, exercised the default and combined surfaces, and verified the opt-in `review_page` error response. On the reference Mac, the fresh installed MCP also returned original 1440 × 900 and 390 × 844 PNGs of the public USWDS address form with five and four masked fields respectively. Playwriter separately exercised the theatre filter and restored the full list at both widths. In a disposable headless Chrome for Testing profile, submitting the URL returned a visual result in 4.14 seconds, preserved the masked preview after reload, and recovered from a missing reviewer host. [Mac install matrix](https://github.com/chrismicah/design-mcp/actions/runs/45089158186) · [Installed browser and MCP receipt](evidence/benchmark-v1/release-initial-6e9a239.json)
+
 ## Direct Git install on both architectures, November 22
 
 Both README commands installed `7bccfc1` directly from Git on clean macOS 15 runners. All eight Intel and Apple Silicon jobs passed on Python 3.10–3.13. The archived logs show 16 installs, 16 doctor checks, and 32 smoke runs across the default and compatibility surfaces. Each install verified the exact Git commit in its package metadata. Fresh Ventura remains open. [Current job and source receipts](evidence/benchmark-v1/direct-git-install-7bccfc1.json) · [Native walkthrough install pin](evidence/benchmark-v1/direct-git-install-f17bd6f.json)

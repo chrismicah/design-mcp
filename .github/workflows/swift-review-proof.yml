@@ -3,6 +3,16 @@ name: Native Swift review proof
 on:
   push:
     branches: [design-mcp/swift-review-proof, design-mcp/review-integration]
+  pull_request:
+    branches: [master]
+    paths:
+      - 'design_mcp/desktop_review.py'
+      - 'design_mcp/cli.py'
+      - 'integrations/desktop/SwiftCapture.swift'
+      - 'evals/vision/fixtures/swift/**'
+      - 'evals/vision/verify_swift_capture.py'
+      - 'pyproject.toml'
+      - '.github/workflows/swift-review-proof.yml'
 
 permissions:
   contents: read

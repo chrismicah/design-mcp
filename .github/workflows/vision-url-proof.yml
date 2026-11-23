@@ -3,6 +3,15 @@ name: Installed public URL review proof
 on:
   push:
     branches: [design-mcp/vision-url-proof, design-mcp/review-integration, design-mcp/url-session-proof]
+  pull_request:
+    branches: [master]
+    paths:
+      - 'design_mcp/review/**'
+      - 'design_mcp/cli.py'
+      - 'design_mcp/server.py'
+      - 'evals/vision/verify_browser_proxy.py'
+      - 'pyproject.toml'
+      - '.github/workflows/vision-url-proof.yml'
 
 permissions:
   contents: read

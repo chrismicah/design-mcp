@@ -20,7 +20,7 @@ Each local route produces a scrubbed capture, runs three checks and saves a prev
 
 ## Visual critique and a live task
 
-Install from the current development checkout, which includes `review_page`. In your MCP client config, change the Design MCP server's arguments to `["serve", "--review"]` and reconnect the server. Select a model and client that can see image attachments returned by MCP. Configure Playwriter in the same client for browser input. [Client setup](../../README.md#install) · [Connect Playwriter](../../evals/v1/README.md#connect-playwriter)
+Install the build pinned in the README. In your MCP client config, change the Design MCP server's arguments to `["serve", "--review"]` and reconnect the server. The tool list should include `review_page`. Select a model and client that can see image attachments returned by MCP. Configure Playwriter in the same client for browser input. [Client setup](../../README.md#install) · [Connect Playwriter](../../evals/v1/README.md#connect-playwriter)
 
 Give your agent a URL and one visitor task. For example:
 

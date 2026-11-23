@@ -7,12 +7,12 @@ Turn a brief into one sourced art direction. The response gives the coding agent
 Install the verified development build with either command. Both support an explicit `--python` option to select an installed interpreter.
 
 ```bash
-pipx install 'git+https://github.com/chrismicah/design-mcp.git@7bccfc14d4ce5652f81ee85f14bd56ee452a4aae'
+pipx install 'git+https://github.com/chrismicah/design-mcp.git@6e9a239499d46bdf50f4896dcc70f3b6c0f0b7c8'
 # or
-uv tool install 'git+https://github.com/chrismicah/design-mcp.git@7bccfc14d4ce5652f81ee85f14bd56ee452a4aae'
+uv tool install 'git+https://github.com/chrismicah/design-mcp.git@6e9a239499d46bdf50f4896dcc70f3b6c0f0b7c8'
 ```
 
-For a local checkout, pass `.` to your installer. [Verified installs](evidence/benchmark-v1/direct-git-install-7bccfc1.json)
+For a local checkout, pass `.` to your installer. [Candidate install matrix](https://github.com/chrismicah/design-mcp/actions/runs/45089158186)
 
 Run `design-mcp doctor` in the installed environment. It reports the interpreter and executable, validates bundled resources, and uses a local stdio client to discover the selected tools and call one. Each check reports pass, fail, or skip. A failed check gives a nonzero exit status.
 
@@ -71,11 +71,11 @@ Try “calmer” after the first draft. The result adjusts focal spacing, the si
 
 ## Review an existing interface
 
-- **Critique a website with your agent.** On the current development branch, add `--review` to the MCP server's `serve` arguments to enable `review_page`. The tool returns a masked screenshot and measured layout facts. Connect Playwriter so the agent can try a visitor task and see the states that follow. [Setup and example prompt](design_mcp/review/README.md#visual-critique-and-a-live-task)
-- **Paste a URL in Chrome.** The pasted-URL update adds **Review URL**. The review opens with a masked capture and the first measured issue, or a summary of the checks that ran. Install the linked revision to use this flow, then reload the unpacked extension and reconnect its local host. [Update `9ecf94c`](https://github.com/chrismicah/design-mcp/tree/9ecf94c02cf8fe1043fa6624620b32ad6851d4ee) · [Extension setup](design_mcp/review/README.md#set-up-the-extension) · [Installed Chrome test](evidence/benchmark-v1/chrome-review-url-one-submit.json)
+- **Critique a website with your agent.** Add `--review` to the installed MCP server's `serve` arguments to enable `review_page`. Reconnect the client and ask it to inspect the masked screenshot and layout facts. Connect Playwriter so the agent can perform a visitor task and compare the resulting screens. [Setup and example prompt](design_mcp/review/README.md#visual-critique-and-a-live-task)
+- **Paste a URL in Chrome.** Open the extension, paste the address and press **Review URL**. The result tab shows the masked capture and its first measured issue, or a summary of the checks that ran. After upgrading, reload the unpacked extension from the installed path and reconnect its local host. [Extension setup](design_mcp/review/README.md#set-up-the-extension) · [Installed Chrome test](evidence/benchmark-v1/chrome-review-url-one-submit.json)
 - **A public website.** With Playwriter 0.12.0 installed, run `design-mcp review https://example.com --playwriter`. The command uses a separate Chrome profile, saves a local preview, and reports any measured finding. [Browser setup](design_mcp/review/README.md)
 - **The active Chrome tab.** Load the extension from the folder printed by `design-mcp review --extension-path`. Open the toolbar popup, choose **Review this page**, and follow its one-time host setup. [Extension setup](design_mcp/review/README.md#set-up-the-extension)
-- **Your SwiftUI or Electron app.** Use the app-specific exporter, then run `design-mcp review-app capture.json` to check the visible controls for clipping and occlusion. [Swift exporter](integrations/desktop/SwiftCapture.swift) · [Electron exporter](integrations/desktop/electron.mjs)
+- **Your SwiftUI or Electron app.** Copy the matching exporter from this repository into your UI test project. The Swift exporter needs an XCTest target. The Electron exporter reads a supplied BrowserWindow. Run `design-mcp review-app capture.json` to check recorded clipping and hittability. [Swift exporter](integrations/desktop/SwiftCapture.swift) · [Electron exporter](integrations/desktop/electron.mjs)
 
 GPT Computer Use verified the `f17bd6f` Chrome extension on the reference Mac. It loaded the extension in a disposable profile, recovered from a missing native host, found the seeded contrast issue, switched to After by keyboard, and reopened the same preview with the field masked. Across 30 separate popup opens in the running browser, p95 was **136 ms to Scan** and **100 ms from Scan to the first finding**. These measurements use the visible controls exposed through Accessibility. The `7bccfc1` install passed the hosted public URL check at desktop and mobile widths and refused both owned private fixture targets. [Reference Mac walkthrough](evidence/benchmark-v1/reference-mac-chrome-f17bd6f.json) · [Timing receipt](evidence/benchmark-v1/chrome-reference-latency-f17bd6f.json) · [Public URL receipt](evidence/benchmark-v1/browser-public-network-7bccfc1.json)
 
@@ -99,13 +99,13 @@ The new direction library and the historical pattern data have separate roles. H
 
 ## Verified results
 
-The pinned Git commands passed all eight native clean-install jobs on Intel and Apple Silicon macOS 15 with Python 3.10–3.13. Each installer verified the package commit, passed `doctor` and exercised all 17 compatibility tools. The dependency manifest is byte-identical to the one verified for all eight macOS 13 targets. Ventura runtime and fresh Tart verification remain open. [Native install matrix](evidence/benchmark-v1/native-install-matrix-qualification.json) · [Ventura preflight](evidence/benchmark-v1/ventura-wheel-preflight.json)
+The pinned Git commands passed all eight clean-install jobs on Intel and Apple Silicon macOS 15 with Python 3.10–3.13. Both installers verified the package commit, passed `doctor`, exercised all 17 tools in combined mode and checked the opt-in browser tool's error response. An installed local copy also returned masked public-page screenshots through MCP at desktop and mobile widths. Ventura dependency resolution passed on both architectures. Ventura runtime and fresh Tart verification remain open. [Candidate install matrix](https://github.com/chrismicah/design-mcp/actions/runs/45089158186) · [Installed screenshot receipt](evidence/benchmark-v1/release-initial-6e9a239.json) · [Ventura preflight](evidence/benchmark-v1/ventura-wheel-preflight.json)
 
 All 36 matched design briefs have blinded scores. The plain generator averaged 92.7 and frozen Design MCP v2 averaged 94.1, with 17 wins, 11 ties, and eight losses. The paired 95% interval of −0.46 to +3.13 points leaves the average advantage inconclusive. [Benchmark and receipts](EVALS.md)
 
-The current install routed **15 of 36** briefs to the matching surface with only a brief supplied, up from **9 of 36** in frozen v2. All six forms routed correctly. Settings and empty states remain uncovered as exact surfaces. [Installed routing comparison](evidence/benchmark-v1/current-direct-routing.json)
+The pinned install routed **15 of 36** briefs to the matching surface with only a brief supplied, up from **9 of 36** in frozen v2. All six forms routed correctly. Settings and empty states remain uncovered as exact surfaces. [Current installed routing](evidence/benchmark-v1/release-initial-6e9a239.json) · [Earlier comparison](evidence/benchmark-v1/current-direct-routing.json)
 
-The current radio and repair-shop directions averaged 97.9 versus 89.6 for the frozen v2 on those two briefs. The listening demo and booking summary also passed keyboard checks at 1440 and 390 CSS px. [Matched visual results](evidence/benchmark-v1/specific-landing-visual.json) · [Browser actions](evidence/benchmark-v1/specific-landing-actions.json)
+In a targeted two-brief comparison, the radio and repair-shop directions averaged 97.9 versus 89.6 for frozen v2. The listening demo and booking summary passed keyboard checks at 1440 and 390 CSS px. [Matched visual results](evidence/benchmark-v1/specific-landing-visual.json) · [Browser actions](evidence/benchmark-v1/specific-landing-actions.json)
 
 ## Verify locally
 
