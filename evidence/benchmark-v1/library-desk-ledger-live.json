@@ -1,0 +1,1081 @@
+{
+  "scope": "Local HTML design study against archived permit, then exact prior prototype. Reviewers were fresh GPT-6.1 Terra sessions. This tests a fixture and supplies no MCP retrieval claim.",
+  "rounds": [
+    {
+      "proposal": ".context/creative-next/permit/index.html",
+      "anonymous_input_sha256": {
+        "A": "7f0226e30ec6dcab99a54de5c88fccef2ad65d9ed261ae986f091cacc5c4748b",
+        "B": "c639a6802c7bbda585c45f9aa95852345dde0f85bd9770b56b6fc27f445528e4"
+      },
+      "ballot": {
+        "calibration": {
+          "coherence": 7,
+          "originality": 4,
+          "craft": 6,
+          "usability": 5.5
+        },
+        "screens": {
+          "A-1440": {
+            "coherence": 8,
+            "originality": 4.5,
+            "craft": 8,
+            "usability": 8.5,
+            "primary_action": {
+              "input": "Tab to Confirm permit details and press Enter with both fields empty.",
+              "expected": "Show both field errors and focus the first invalid field.",
+              "observed": "Both errors appeared, and focus moved visibly to Name."
+            },
+            "edge_observation": "Jamie and Elm appeared after submission. Edit restored both values and focused Name; changing Elm to Oak and resubmitting produced Jamie and Oak, with focus on the result heading.",
+            "fact_check": "The rendered result confirms the entered values; actual permit issuance beyond this screen was not verified.",
+            "strength": "Clear form order, restrained hierarchy, explicit errors, and a visible focus indicator.",
+            "weakness": "The finished permit reads as a plain list beneath the original form instructions, with little visual distinction for the confirmed values.",
+            "repair": "Give the confirmed values a stronger hierarchy and replace the stale instruction with result-specific guidance.",
+            "arm": "current",
+            "html_sha256": "7f0226e30ec6dcab99a54de5c88fccef2ad65d9ed261ae986f091cacc5c4748b",
+            "weighted": 7.05,
+            "before": {
+              "sha256": "07a9df199dbadd054764c36cc712e72c99b9bd2144cd2a039db67f705b0272fd",
+              "file": "A-1440-before.png",
+              "tool_call_id": "item_2"
+            },
+            "after": {
+              "sha256": "aaf00e2752b67f3866c3d5b2b2a748bb01d70c1a6536880db09a2788c70f85d0",
+              "file": "A-1440-after.png",
+              "tool_call_id": "item_7"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "text",
+                "value": "Jamie"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "A-390": {
+            "coherence": 8,
+            "originality": 4.5,
+            "craft": 8,
+            "usability": 8.5,
+            "primary_action": {
+              "input": "Tab to Confirm permit details and press Enter with both fields empty.",
+              "expected": "Show both field errors and focus the first invalid field.",
+              "observed": "Both errors appeared and focus moved visibly to Name."
+            },
+            "edge_observation": "Jamie and Elm were confirmed; editing preserved Jamie and allowed Oak to be selected. The resulting Jamie/Oak permit and edit action were visible without scrolling at 390 \u00d7 844 CSS pixels. Both room choices were also visible without scrolling in the initial form.",
+            "fact_check": "No actual issuance or persistence beyond the displayed result was tested.",
+            "strength": "The complete form, errors, and compact result fit comfortably in the viewport.",
+            "weakness": "The result retains instructions to enter a name and choose a room, making the completed state less clear.",
+            "repair": "Change the supporting copy when the permit is confirmed and emphasize the values.",
+            "arm": "current",
+            "html_sha256": "7f0226e30ec6dcab99a54de5c88fccef2ad65d9ed261ae986f091cacc5c4748b",
+            "weighted": 7.05,
+            "before": {
+              "sha256": "599a43dadb33ff4ca01b763c6843dfd0a8b6864142afc253bf1314a28dd95690",
+              "file": "A-390-before.png",
+              "tool_call_id": "item_22"
+            },
+            "after": {
+              "sha256": "643decbd50d9da16444afa45cd8a7a1338585354b770b86b8b478d966698a178",
+              "file": "A-390-after.png",
+              "tool_call_id": "item_27"
+            },
+            "layout_width": 390,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "text",
+                "value": "Jamie"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-1440": {
+            "coherence": 8.5,
+            "originality": 7.5,
+            "craft": 8,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab to Create permit and press Enter with both fields empty.",
+              "expected": "Show both field errors and focus the first invalid field.",
+              "observed": "Both errors appeared, and focus moved visibly to the first room radio, Oak."
+            },
+            "edge_observation": "Jamie and Elm appeared after submission. Edit restored both values and focused the selected Elm radio; changing to Oak and resubmitting produced Jamie and Oak, with focus on the result heading.",
+            "fact_check": "The screen says Permit created, but actual issuance or persistence was not verified.",
+            "strength": "The bold room panel and large values carry through from selection to a distinctive, readily scanned permit.",
+            "weakness": "The oversized page heading dominates the form, while the room error is underlined like a link and the name input has a relatively subtle boundary.",
+            "repair": "Reduce the heading scale, distinguish error text from links, and strengthen the input boundary.",
+            "arm": "proposed",
+            "html_sha256": "c639a6802c7bbda585c45f9aa95852345dde0f85bd9770b56b6fc27f445528e4",
+            "weighted": 8.0,
+            "before": {
+              "sha256": "bae6e74dd17aed554cbd40cce2e4042d6220eff185bf4b29232cf6ff7718991d",
+              "file": "B-1440-before.png",
+              "tool_call_id": "item_41"
+            },
+            "after": {
+              "sha256": "5ba17d20d44575827858e792d6aa3b57d27b99f3e6d10948fb53a5a3a104cad1",
+              "file": "B-1440-after.png",
+              "tool_call_id": "item_46"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "text",
+                "value": "Jamie"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-390": {
+            "coherence": 8.5,
+            "originality": 7.5,
+            "craft": 8,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab to Create permit and press Enter with both fields empty.",
+              "expected": "Show both field errors and focus the first invalid field.",
+              "observed": "Both errors appeared and focus moved visibly to Oak."
+            },
+            "edge_observation": "Jamie and Elm were confirmed; editing preserved Jamie and focused Elm, and the resubmitted result showed Jamie and Oak. Both room choices and the complete result were visible without scrolling at 390 \u00d7 844 CSS pixels.",
+            "fact_check": "The displayed creation claim does not establish actual issuance or persistence.",
+            "strength": "The stacked room and name sections retain a strong hierarchy and fit the viewport with the edit action.",
+            "weakness": "The large title wraps to two lines, and the underlined room error can suggest a link.",
+            "repair": "Moderate the mobile title size and use a distinct error treatment without link-like underlining.",
+            "arm": "proposed",
+            "html_sha256": "c639a6802c7bbda585c45f9aa95852345dde0f85bd9770b56b6fc27f445528e4",
+            "weighted": 8.0,
+            "before": {
+              "sha256": "adb0b40bc102f78c44308fbffeb0846a47b513cc892b10a371c23cafa01120cb",
+              "file": "B-390-before.png",
+              "tool_call_id": "item_61"
+            },
+            "after": {
+              "sha256": "4294ce5ba207497cebe80112043560a46a39704e62b63674a6734d7e6862b42e",
+              "file": "B-390-after.png",
+              "tool_call_id": "item_66"
+            },
+            "layout_width": 390,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "text",
+                "value": "Jamie"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          }
+        },
+        "preference": {
+          "winner": "B",
+          "reason": "Both completed the keyboard and recovery flow with visible focus and fit the tested mobile viewport. B makes the finished permit more distinctive and easier to scan through its prominent room and name values. Its oversized heading and link-like error treatment remain material weaknesses."
+        },
+        "case": "social-permit",
+        "verified_screens": 4,
+        "required_screens": 4,
+        "browser": "Chrome/158.0.8127.36",
+        "evaluator_thread": "01a207a3-8955-7a02-b1bd-4e67e1ec4735",
+        "usage": {
+          "input_tokens": 584736,
+          "cached_input_tokens": 541312,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2575,
+          "reasoning_output_tokens": 0
+        },
+        "trace_sha256": "2db1f8a0828e97a4e0d86dcf21e7b5622d24685cc138e805d8a79828f5ed0e59",
+        "browser_audit_sha256": "963fd30d0f4c6c0afd548620cae9491723e62d0b0ba2976bcd8b671632b83152"
+      },
+      "observed_keyboard_submissions": {
+        "A-1440": [
+          "empty",
+          "Elm",
+          "edit",
+          "Oak"
+        ],
+        "A-390": [
+          "empty",
+          "Elm",
+          "edit",
+          "Oak"
+        ],
+        "B-1440": [
+          "empty",
+          "Elm",
+          "edit",
+          "Oak"
+        ],
+        "B-390": [
+          "empty",
+          "Elm",
+          "edit",
+          "Oak"
+        ]
+      },
+      "critic_captures": [
+        {
+          "file": ".context/creative-next/permit-blind/captures/A-1440-after.png",
+          "sha256": "aaf00e2752b67f3866c3d5b2b2a748bb01d70c1a6536880db09a2788c70f85d0"
+        },
+        {
+          "file": ".context/creative-next/permit-blind/captures/A-1440-before.png",
+          "sha256": "07a9df199dbadd054764c36cc712e72c99b9bd2144cd2a039db67f705b0272fd"
+        },
+        {
+          "file": ".context/creative-next/permit-blind/captures/A-1440-edge.png",
+          "sha256": "6012a14dad2f29dedde598690a43b3f8ed4854f7f6bc70cac26f3a9cc68675ad"
+        },
+        {
+          "file": ".context/creative-next/permit-blind/captures/A-390-after.png",
+          "sha256": "643decbd50d9da16444afa45cd8a7a1338585354b770b86b8b478d966698a178"
+        },
+        {
+          "file": ".context/creative-next/permit-blind/captures/A-390-before.png",
+          "sha256": "599a43dadb33ff4ca01b763c6843dfd0a8b6864142afc253bf1314a28dd95690"
+        },
+        {
+          "file": ".context/creative-next/permit-blind/captures/A-390-edge.png",
+          "sha256": "888a233f73f2e98457efc013e7384d286422c28396de3e41a344bdd7a5dca9f3"
+        },
+        {
+          "file": ".context/creative-next/permit-blind/captures/B-1440-after.png",
+          "sha256": "5ba17d20d44575827858e792d6aa3b57d27b99f3e6d10948fb53a5a3a104cad1"
+        },
+        {
+          "file": ".context/creative-next/permit-blind/captures/B-1440-before.png",
+          "sha256": "bae6e74dd17aed554cbd40cce2e4042d6220eff185bf4b29232cf6ff7718991d"
+        },
+        {
+          "file": ".context/creative-next/permit-blind/captures/B-1440-edge.png",
+          "sha256": "3c955d228ba42815fdc6053032eba52b4b83450903ef8f853b6018cec877b6e4"
+        },
+        {
+          "file": ".context/creative-next/permit-blind/captures/B-390-after.png",
+          "sha256": "4294ce5ba207497cebe80112043560a46a39704e62b63674a6734d7e6862b42e"
+        },
+        {
+          "file": ".context/creative-next/permit-blind/captures/B-390-before.png",
+          "sha256": "adb0b40bc102f78c44308fbffeb0846a47b513cc892b10a371c23cafa01120cb"
+        },
+        {
+          "file": ".context/creative-next/permit-blind/captures/B-390-edge.png",
+          "sha256": "afcc9900aecae0e365db0e768cb569256cb9e02f0eaca356f9f526c2ad1ee01e"
+        }
+      ],
+      "preflight": {
+        "source_sha256": "c639a6802c7bbda585c45f9aa95852345dde0f85bd9770b56b6fc27f445528e4",
+        "source_bytes": 72153,
+        "browser": "Chrome/158.0.8127.36",
+        "size_and_motion_pairs": 6,
+        "rows": [
+          {"width": 1440, "height": 900, "mode": "no-preference", "state": "entry", "focus": "body", "actionBottom": 520.484375, "overflow": 0, "sha256": "bae6e74dd17aed554cbd40cce2e4042d6220eff185bf4b29232cf6ff7718991d", "file": ".context/creative-next/permit-browser-r4/1440-no-preference-entry.png"},
+          {"width": 1440, "height": 900, "mode": "no-preference", "state": "empty", "focus": "Oak", "actionBottom": 552.46875, "overflow": 0, "sha256": "5ba17d20d44575827858e792d6aa3b57d27b99f3e6d10948fb53a5a3a104cad1", "file": ".context/creative-next/permit-browser-r4/1440-no-preference-empty.png"},
+          {"width": 1440, "height": 900, "mode": "no-preference", "state": "name-only", "focus": "Oak", "actionBottom": 552.46875, "overflow": 0, "sha256": "1563a6933f1cc16b2f3fc4c7bc8e205ba7e50d078b3b235a12512325e24b3d41", "file": ".context/creative-next/permit-browser-r4/1440-no-preference-name-only.png"},
+          {"width": 1440, "height": 900, "mode": "no-preference", "state": "elm", "focus": "result-heading", "actionBottom": 603.09375, "overflow": 0, "sha256": "2640ac02f83358a549b7effd11a470bda9e66f8749499025ddab2fb3e718c186", "file": ".context/creative-next/permit-browser-r4/1440-no-preference-elm.png"},
+          {"width": 1440, "height": 900, "mode": "no-preference", "state": "edit", "focus": "Elm", "actionBottom": 520.484375, "overflow": 0, "sha256": "a5ca91c5514f7b6d966472b3f92645ebcd6c9f70c99c8c90a456bcf4ee4162fa", "file": ".context/creative-next/permit-browser-r4/1440-no-preference-edit.png"},
+          {"width": 1440, "height": 900, "mode": "no-preference", "state": "oak", "focus": "result-heading", "actionBottom": 603.09375, "overflow": 0, "sha256": "3c955d228ba42815fdc6053032eba52b4b83450903ef8f853b6018cec877b6e4", "file": ".context/creative-next/permit-browser-r4/1440-no-preference-oak.png"},
+          {"width": 1440, "height": 900, "mode": "no-preference", "state": "long", "focus": "edit", "actionBottom": 605.640625, "overflow": 0, "sha256": "35129ee23ee5bf80a4793aa9dee98aa84a70ae5451a65246b18d4ca0377e7eb5", "file": ".context/creative-next/permit-browser-r4/1440-no-preference-long.png"},
+          {"width": 1440, "height": 900, "mode": "reduce", "state": "entry", "focus": "body", "actionBottom": 520.484375, "overflow": 0, "sha256": "bae6e74dd17aed554cbd40cce2e4042d6220eff185bf4b29232cf6ff7718991d", "file": ".context/creative-next/permit-browser-r4/1440-reduce-entry.png"},
+          {"width": 1440, "height": 900, "mode": "reduce", "state": "empty", "focus": "Oak", "actionBottom": 552.46875, "overflow": 0, "sha256": "5ba17d20d44575827858e792d6aa3b57d27b99f3e6d10948fb53a5a3a104cad1", "file": ".context/creative-next/permit-browser-r4/1440-reduce-empty.png"},
+          {"width": 1440, "height": 900, "mode": "reduce", "state": "name-only", "focus": "Oak", "actionBottom": 552.46875, "overflow": 0, "sha256": "1563a6933f1cc16b2f3fc4c7bc8e205ba7e50d078b3b235a12512325e24b3d41", "file": ".context/creative-next/permit-browser-r4/1440-reduce-name-only.png"},
+          {"width": 1440, "height": 900, "mode": "reduce", "state": "elm", "focus": "result-heading", "actionBottom": 603.09375, "overflow": 0, "sha256": "2640ac02f83358a549b7effd11a470bda9e66f8749499025ddab2fb3e718c186", "file": ".context/creative-next/permit-browser-r4/1440-reduce-elm.png"},
+          {"width": 1440, "height": 900, "mode": "reduce", "state": "edit", "focus": "Elm", "actionBottom": 520.484375, "overflow": 0, "sha256": "a5ca91c5514f7b6d966472b3f92645ebcd6c9f70c99c8c90a456bcf4ee4162fa", "file": ".context/creative-next/permit-browser-r4/1440-reduce-edit.png"},
+          {"width": 1440, "height": 900, "mode": "reduce", "state": "oak", "focus": "result-heading", "actionBottom": 603.09375, "overflow": 0, "sha256": "3c955d228ba42815fdc6053032eba52b4b83450903ef8f853b6018cec877b6e4", "file": ".context/creative-next/permit-browser-r4/1440-reduce-oak.png"},
+          {"width": 1440, "height": 900, "mode": "reduce", "state": "long", "focus": "edit", "actionBottom": 605.640625, "overflow": 0, "sha256": "35129ee23ee5bf80a4793aa9dee98aa84a70ae5451a65246b18d4ca0377e7eb5", "file": ".context/creative-next/permit-browser-r4/1440-reduce-long.png"},
+          {"width": 390, "height": 844, "mode": "no-preference", "state": "entry", "focus": "body", "actionBottom": 462.921875, "overflow": 0, "sha256": "adb0b40bc102f78c44308fbffeb0846a47b513cc892b10a371c23cafa01120cb", "file": ".context/creative-next/permit-browser-r4/390-no-preference-entry.png"},
+          {"width": 390, "height": 844, "mode": "no-preference", "state": "empty", "focus": "Oak", "actionBottom": 525.296875, "overflow": 0, "sha256": "4294ce5ba207497cebe80112043560a46a39704e62b63674a6734d7e6862b42e", "file": ".context/creative-next/permit-browser-r4/390-no-preference-empty.png"},
+          {"width": 390, "height": 844, "mode": "no-preference", "state": "name-only", "focus": "Oak", "actionBottom": 494.90625, "overflow": 0, "sha256": "be7c7536c924e35d433f50ad490f33ae35446971b2d3fcf521d5d408bb986d75", "file": ".context/creative-next/permit-browser-r4/390-no-preference-name-only.png"},
+          {"width": 390, "height": 844, "mode": "no-preference", "state": "elm", "focus": "result-heading", "actionBottom": 501.203125, "overflow": 0, "sha256": "87a7ca79be62a1320aa6a286548156782062d207a00c6e9ea5b8959713a1d35f", "file": ".context/creative-next/permit-browser-r4/390-no-preference-elm.png"},
+          {"width": 390, "height": 844, "mode": "no-preference", "state": "edit", "focus": "Elm", "actionBottom": 462.921875, "overflow": 0, "sha256": "52b74eea05f9301a7ff02c8c002e16b171fee65e1f3dc82f8294feb3ab3ef02b", "file": ".context/creative-next/permit-browser-r4/390-no-preference-edit.png"},
+          {"width": 390, "height": 844, "mode": "no-preference", "state": "oak", "focus": "result-heading", "actionBottom": 501.203125, "overflow": 0, "sha256": "afcc9900aecae0e365db0e768cb569256cb9e02f0eaca356f9f526c2ad1ee01e", "file": ".context/creative-next/permit-browser-r4/390-no-preference-oak.png"},
+          {"width": 390, "height": 844, "mode": "no-preference", "state": "long", "focus": "edit", "actionBottom": 588.609375, "overflow": 0, "sha256": "308919a71368248152d20cd96dcfc8f8d4a02007a0d2d32e208ea6d30f34f9bd", "file": ".context/creative-next/permit-browser-r4/390-no-preference-long.png"},
+          {"width": 390, "height": 844, "mode": "reduce", "state": "entry", "focus": "body", "actionBottom": 462.921875, "overflow": 0, "sha256": "adb0b40bc102f78c44308fbffeb0846a47b513cc892b10a371c23cafa01120cb", "file": ".context/creative-next/permit-browser-r4/390-reduce-entry.png"},
+          {"width": 390, "height": 844, "mode": "reduce", "state": "empty", "focus": "Oak", "actionBottom": 525.296875, "overflow": 0, "sha256": "4294ce5ba207497cebe80112043560a46a39704e62b63674a6734d7e6862b42e", "file": ".context/creative-next/permit-browser-r4/390-reduce-empty.png"},
+          {"width": 390, "height": 844, "mode": "reduce", "state": "name-only", "focus": "Oak", "actionBottom": 494.90625, "overflow": 0, "sha256": "be7c7536c924e35d433f50ad490f33ae35446971b2d3fcf521d5d408bb986d75", "file": ".context/creative-next/permit-browser-r4/390-reduce-name-only.png"},
+          {"width": 390, "height": 844, "mode": "reduce", "state": "elm", "focus": "result-heading", "actionBottom": 501.203125, "overflow": 0, "sha256": "87a7ca79be62a1320aa6a286548156782062d207a00c6e9ea5b8959713a1d35f", "file": ".context/creative-next/permit-browser-r4/390-reduce-elm.png"},
+          {"width": 390, "height": 844, "mode": "reduce", "state": "edit", "focus": "Elm", "actionBottom": 462.921875, "overflow": 0, "sha256": "52b74eea05f9301a7ff02c8c002e16b171fee65e1f3dc82f8294feb3ab3ef02b", "file": ".context/creative-next/permit-browser-r4/390-reduce-edit.png"},
+          {"width": 390, "height": 844, "mode": "reduce", "state": "oak", "focus": "result-heading", "actionBottom": 501.203125, "overflow": 0, "sha256": "afcc9900aecae0e365db0e768cb569256cb9e02f0eaca356f9f526c2ad1ee01e", "file": ".context/creative-next/permit-browser-r4/390-reduce-oak.png"},
+          {"width": 390, "height": 844, "mode": "reduce", "state": "long", "focus": "edit", "actionBottom": 588.609375, "overflow": 0, "sha256": "308919a71368248152d20cd96dcfc8f8d4a02007a0d2d32e208ea6d30f34f9bd", "file": ".context/creative-next/permit-browser-r4/390-reduce-long.png"},
+          {"width": 320, "height": 568, "mode": "no-preference", "state": "entry", "focus": "body", "actionBottom": 459.421875, "overflow": 0, "sha256": "dad1ad621e077c4f8441f4ee076bfd8b68e7b085d3525acf09c5530569201249", "file": ".context/creative-next/permit-browser-r4/320-no-preference-entry.png"},
+          {"width": 320, "height": 568, "mode": "no-preference", "state": "empty", "focus": "Oak", "actionBottom": 521.796875, "overflow": 0, "sha256": "ba2187da7075e243f9517d52b5280ec517228bdaaf3a6265af8343975ead599e", "file": ".context/creative-next/permit-browser-r4/320-no-preference-empty.png"},
+          {"width": 320, "height": 568, "mode": "no-preference", "state": "name-only", "focus": "Oak", "actionBottom": 491.40625, "overflow": 0, "sha256": "954322a9834b8d2e2b1c2d1a3609bd2f93cbb1ede84f00ce13768426725e1b68", "file": ".context/creative-next/permit-browser-r4/320-no-preference-name-only.png"},
+          {"width": 320, "height": 568, "mode": "no-preference", "state": "elm", "focus": "result-heading", "actionBottom": 497.703125, "overflow": 0, "sha256": "7f510531903b43fd368d59a6594298a164f1be20fd79ae363e42373e417467d2", "file": ".context/creative-next/permit-browser-r4/320-no-preference-elm.png"},
+          {"width": 320, "height": 568, "mode": "no-preference", "state": "edit", "focus": "Elm", "actionBottom": 459.421875, "overflow": 0, "sha256": "f2aad3ea4a9f5e19e1e4c99f739509671e2f6986413c479266ef88009a4cd641", "file": ".context/creative-next/permit-browser-r4/320-no-preference-edit.png"},
+          {"width": 320, "height": 568, "mode": "no-preference", "state": "oak", "focus": "result-heading", "actionBottom": 497.703125, "overflow": 0, "sha256": "3fa3fc073d8cf32eb5400bbb4cadba646d5fd7b852fdfc33bb308dc47e81e2ff", "file": ".context/creative-next/permit-browser-r4/320-no-preference-oak.png"},
+          {"width": 320, "height": 568, "mode": "no-preference", "state": "long", "focus": "edit", "actionBottom": 552.109375, "overflow": -15, "sha256": "45612b286a478a3268e877bad2430c61859267573222f24253a76ba44f0c0f42", "file": ".context/creative-next/permit-browser-r4/320-no-preference-long.png"},
+          {"width": 320, "height": 568, "mode": "reduce", "state": "entry", "focus": "body", "actionBottom": 459.421875, "overflow": 0, "sha256": "dad1ad621e077c4f8441f4ee076bfd8b68e7b085d3525acf09c5530569201249", "file": ".context/creative-next/permit-browser-r4/320-reduce-entry.png"},
+          {"width": 320, "height": 568, "mode": "reduce", "state": "empty", "focus": "Oak", "actionBottom": 521.796875, "overflow": 0, "sha256": "ba2187da7075e243f9517d52b5280ec517228bdaaf3a6265af8343975ead599e", "file": ".context/creative-next/permit-browser-r4/320-reduce-empty.png"},
+          {"width": 320, "height": 568, "mode": "reduce", "state": "name-only", "focus": "Oak", "actionBottom": 491.40625, "overflow": 0, "sha256": "954322a9834b8d2e2b1c2d1a3609bd2f93cbb1ede84f00ce13768426725e1b68", "file": ".context/creative-next/permit-browser-r4/320-reduce-name-only.png"},
+          {"width": 320, "height": 568, "mode": "reduce", "state": "elm", "focus": "result-heading", "actionBottom": 497.703125, "overflow": 0, "sha256": "7f510531903b43fd368d59a6594298a164f1be20fd79ae363e42373e417467d2", "file": ".context/creative-next/permit-browser-r4/320-reduce-elm.png"},
+          {"width": 320, "height": 568, "mode": "reduce", "state": "edit", "focus": "Elm", "actionBottom": 459.421875, "overflow": 0, "sha256": "f2aad3ea4a9f5e19e1e4c99f739509671e2f6986413c479266ef88009a4cd641", "file": ".context/creative-next/permit-browser-r4/320-reduce-edit.png"},
+          {"width": 320, "height": 568, "mode": "reduce", "state": "oak", "focus": "result-heading", "actionBottom": 497.703125, "overflow": 0, "sha256": "3fa3fc073d8cf32eb5400bbb4cadba646d5fd7b852fdfc33bb308dc47e81e2ff", "file": ".context/creative-next/permit-browser-r4/320-reduce-oak.png"},
+          {"width": 320, "height": 568, "mode": "reduce", "state": "long", "focus": "edit", "actionBottom": 552.109375, "overflow": -15, "sha256": "45612b286a478a3268e877bad2430c61859267573222f24253a76ba44f0c0f42", "file": ".context/creative-next/permit-browser-r4/320-reduce-long.png"}
+        ]
+      }
+    },
+    {
+      "proposal": ".context/creative-next/permit-refined/index.html",
+      "anonymous_input_sha256": {
+        "A": "c639a6802c7bbda585c45f9aa95852345dde0f85bd9770b56b6fc27f445528e4",
+        "B": "aef8e04fb6e42b18c27b384f881c2618bc5a7d2645b0f383f757ce444c964199"
+      },
+      "ballot": {
+        "calibration": {
+          "example": "Legible repair intake with clear labels, familiar layout and misplaced focus after an invalid number",
+          "coherence": 7,
+          "originality": 5,
+          "craft": 6.5,
+          "usability": 6
+        },
+        "screens": {
+          "A-1440": {
+            "coherence": 7.5,
+            "originality": 6.5,
+            "craft": 7,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab to Create permit and press Enter with both fields empty.",
+              "expected": "Show both field errors and focus the first field needing correction.",
+              "observed": "Both errors appeared and focus moved visibly to Oak."
+            },
+            "edge_observation": "Arrow keys selected Elm; Jamie and Elm appeared in the result. Edit returned focus to Elm and preserved Jamie. Switching to Oak and submitting produced Jamie and Oak, with focus on Permit created.",
+            "fact_check": "The displayed name and room matched both submissions. Captures: A-1440-before, A-1440-after and A-1440-edge.",
+            "strength": "The bold type and dark room panel make the room choice prominent; the result has clear labels and values.",
+            "weakness": "The oversized page title dominates the form, and the name field has only a bottom border. The instruction to choose a room remains above the finished permit.",
+            "repair": "Reduce title scale, outline the name input and remove the form instruction in the result state.",
+            "arm": "current",
+            "html_sha256": "c639a6802c7bbda585c45f9aa95852345dde0f85bd9770b56b6fc27f445528e4",
+            "weighted": 7.2,
+            "before": {
+              "sha256": "bae6e74dd17aed554cbd40cce2e4042d6220eff185bf4b29232cf6ff7718991d",
+              "file": "A-1440-before.png",
+              "tool_call_id": "item_2"
+            },
+            "after": {
+              "sha256": "5ba17d20d44575827858e792d6aa3b57d27b99f3e6d10948fb53a5a3a104cad1",
+              "file": "A-1440-after.png",
+              "tool_call_id": "item_7"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "text",
+                "value": "Jamie"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "A-390": {
+            "coherence": 7.5,
+            "originality": 6.5,
+            "craft": 7,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab to Create permit and press Enter with both fields empty.",
+              "expected": "Show both field errors and focus the first field needing correction.",
+              "observed": "Both errors appeared and focus moved visibly to Oak."
+            },
+            "edge_observation": "Jamie and Elm appeared after submission; editing preserved Jamie and allowed Oak to be selected. The resulting permit showed Jamie and Oak. Room choices and the complete Oak result were visible without scrolling in the 390 by 844 viewport.",
+            "fact_check": "Keyboard selection, edit and resubmission worked in this view. Captures: A-390-before, A-390-after and A-390-edge.",
+            "strength": "The stacked form and permit fit comfortably in the viewport, with visible focus recovery.",
+            "weakness": "The two-line title takes substantial vertical space, and the completed state retains the form instruction.",
+            "repair": "Use a smaller mobile title and replace the instruction with the result heading.",
+            "arm": "current",
+            "html_sha256": "c639a6802c7bbda585c45f9aa95852345dde0f85bd9770b56b6fc27f445528e4",
+            "weighted": 7.2,
+            "before": {
+              "sha256": "adb0b40bc102f78c44308fbffeb0846a47b513cc892b10a371c23cafa01120cb",
+              "file": "A-390-before.png",
+              "tool_call_id": "item_22"
+            },
+            "after": {
+              "sha256": "4294ce5ba207497cebe80112043560a46a39704e62b63674a6734d7e6862b42e",
+              "file": "A-390-after.png",
+              "tool_call_id": "item_27"
+            },
+            "layout_width": 390,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "text",
+                "value": "Jamie"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-1440": {
+            "coherence": 8,
+            "originality": 6.5,
+            "craft": 7.5,
+            "usability": 8.5,
+            "primary_action": {
+              "input": "Tab to Create permit and press Enter with both fields empty.",
+              "expected": "Show both field errors and focus the first field needing correction.",
+              "observed": "Both errors appeared and focus moved visibly to Oak."
+            },
+            "edge_observation": "Jamie and Elm appeared in the first result. Edit focused the selected Elm radio and preserved Jamie; changing to Oak and submitting produced Jamie and Oak, with focus on Permit created.",
+            "fact_check": "The displayed name and room matched both submissions. Captures: B-1440-before, B-1440-after and B-1440-edge.",
+            "strength": "The outlined name input reads clearly as a control, and the finished permit removes the now-obsolete instruction.",
+            "weakness": "The result's name value retains an input-like shaded field, which can suggest it is editable.",
+            "repair": "Give the result value a distinct read-only presentation while retaining its clear label.",
+            "arm": "proposed",
+            "html_sha256": "aef8e04fb6e42b18c27b384f881c2618bc5a7d2645b0f383f757ce444c964199",
+            "weighted": 7.55,
+            "before": {
+              "sha256": "082351adce70186e2432230eaae708fa8d8432a1b2e1663b6676662c6a5d86ac",
+              "file": "B-1440-before.png",
+              "tool_call_id": "item_41"
+            },
+            "after": {
+              "sha256": "6f4e8dae776154f9fe79fbda98eee7a06f59099e50230e16b365ec9cf130da00",
+              "file": "B-1440-after.png",
+              "tool_call_id": "item_46"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "text",
+                "value": "Jamie"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-390": {
+            "coherence": 8,
+            "originality": 6.5,
+            "craft": 8,
+            "usability": 8.5,
+            "primary_action": {
+              "input": "Tab to Create permit and press Enter with both fields empty.",
+              "expected": "Show both field errors and focus the first field needing correction.",
+              "observed": "Both errors appeared and focus moved visibly to Oak."
+            },
+            "edge_observation": "Jamie and Elm appeared after submission; editing preserved Jamie and allowed Oak to be selected. The resulting permit showed Jamie and Oak. Room choices and the complete Oak result were visible without scrolling in the 390 by 844 viewport.",
+            "fact_check": "Keyboard selection, edit and resubmission worked in this view. Captures: B-390-before, B-390-after and B-390-edge.",
+            "strength": "The single-line title leaves more room for the task, and the compact result clearly identifies the room and name.",
+            "weakness": "The shaded result name resembles the editable input, and the two large headings compete for attention.",
+            "repair": "Differentiate read-only values and reduce the page title's prominence once the permit is created.",
+            "arm": "proposed",
+            "html_sha256": "aef8e04fb6e42b18c27b384f881c2618bc5a7d2645b0f383f757ce444c964199",
+            "weighted": 7.65,
+            "before": {
+              "sha256": "7940213652fa41c9db86608d9e9f612d4383160a848513da0bdffcdeb2b8f488",
+              "file": "B-390-before.png",
+              "tool_call_id": "item_61"
+            },
+            "after": {
+              "sha256": "cfca3b63a6f0fbf5782db458cc7ad4044731ba3bec511ae8748bf33212e093ca",
+              "file": "B-390-after.png",
+              "tool_call_id": "item_66"
+            },
+            "layout_width": 390,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "text",
+                "value": "Jamie"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          }
+        },
+        "preference": {
+          "winner": "B",
+          "reason": "Both views completed the tested keyboard flow and recovered focus consistently. B has a clearer input affordance, a more restrained title and a cleaner finished state without the form instruction."
+        },
+        "unsupported_claims": "No claims about persistence, screen-reader announcements, other viewport heights or behavior beyond the tested flow were verified.",
+        "case": "social-permit",
+        "verified_screens": 4,
+        "required_screens": 4,
+        "browser": "Chrome/158.0.8127.36",
+        "evaluator_thread": "01a207a5-eae1-7ba3-a4d0-e3cdc9b3377d",
+        "usage": {
+          "input_tokens": 539416,
+          "cached_input_tokens": 486400,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2848,
+          "reasoning_output_tokens": 0
+        },
+        "trace_sha256": "c71c8850774064d68f8095559433a2d999d9afb74d7617bcd62250d8c3c133b2",
+        "browser_audit_sha256": "b268150edffbe5525e1b08c8f98f0dc1989ee962ba99e2f58c106156d73c53b4"
+      },
+      "observed_keyboard_submissions": {
+        "A-1440": [
+          "empty",
+          "Elm",
+          "edit",
+          "Oak"
+        ],
+        "A-390": [
+          "empty",
+          "Elm",
+          "edit",
+          "Oak"
+        ],
+        "B-1440": [
+          "empty",
+          "Elm",
+          "edit",
+          "Oak"
+        ],
+        "B-390": [
+          "empty",
+          "Elm",
+          "edit",
+          "Oak"
+        ]
+      },
+      "critic_captures": [
+        {
+          "file": ".context/creative-next/permit-blind-r2/captures/A-1440-after.png",
+          "sha256": "5ba17d20d44575827858e792d6aa3b57d27b99f3e6d10948fb53a5a3a104cad1"
+        },
+        {
+          "file": ".context/creative-next/permit-blind-r2/captures/A-1440-before.png",
+          "sha256": "bae6e74dd17aed554cbd40cce2e4042d6220eff185bf4b29232cf6ff7718991d"
+        },
+        {
+          "file": ".context/creative-next/permit-blind-r2/captures/A-1440-edge.png",
+          "sha256": "3c955d228ba42815fdc6053032eba52b4b83450903ef8f853b6018cec877b6e4"
+        },
+        {
+          "file": ".context/creative-next/permit-blind-r2/captures/A-390-after.png",
+          "sha256": "4294ce5ba207497cebe80112043560a46a39704e62b63674a6734d7e6862b42e"
+        },
+        {
+          "file": ".context/creative-next/permit-blind-r2/captures/A-390-before.png",
+          "sha256": "adb0b40bc102f78c44308fbffeb0846a47b513cc892b10a371c23cafa01120cb"
+        },
+        {
+          "file": ".context/creative-next/permit-blind-r2/captures/A-390-edge.png",
+          "sha256": "afcc9900aecae0e365db0e768cb569256cb9e02f0eaca356f9f526c2ad1ee01e"
+        },
+        {
+          "file": ".context/creative-next/permit-blind-r2/captures/B-1440-after.png",
+          "sha256": "6f4e8dae776154f9fe79fbda98eee7a06f59099e50230e16b365ec9cf130da00"
+        },
+        {
+          "file": ".context/creative-next/permit-blind-r2/captures/B-1440-before.png",
+          "sha256": "082351adce70186e2432230eaae708fa8d8432a1b2e1663b6676662c6a5d86ac"
+        },
+        {
+          "file": ".context/creative-next/permit-blind-r2/captures/B-1440-edge.png",
+          "sha256": "7db138a62ff7fd4541a8b64a767be864f05ab6fee799436e2bd4bcd878176fe9"
+        },
+        {
+          "file": ".context/creative-next/permit-blind-r2/captures/B-390-after.png",
+          "sha256": "cfca3b63a6f0fbf5782db458cc7ad4044731ba3bec511ae8748bf33212e093ca"
+        },
+        {
+          "file": ".context/creative-next/permit-blind-r2/captures/B-390-before.png",
+          "sha256": "7940213652fa41c9db86608d9e9f612d4383160a848513da0bdffcdeb2b8f488"
+        },
+        {
+          "file": ".context/creative-next/permit-blind-r2/captures/B-390-edge.png",
+          "sha256": "43266b2a8025a956bff995fbfec0dbdd01e175273e5bc45659fd4d8efe66e65e"
+        }
+      ],
+      "preflight": {
+        "source_sha256": "aef8e04fb6e42b18c27b384f881c2618bc5a7d2645b0f383f757ce444c964199",
+        "source_bytes": 72296,
+        "browser": "Chrome/158.0.8127.36",
+        "size_and_motion_pairs": 6,
+        "rows": [
+          {"width": 1440, "height": 900, "mode": "no-preference", "state": "entry", "focus": "body", "actionBottom": 475.78125, "overflow": 0, "sha256": "082351adce70186e2432230eaae708fa8d8432a1b2e1663b6676662c6a5d86ac", "file": ".context/creative-next/permit-refined-browser/1440-no-preference-entry.png"},
+          {"width": 1440, "height": 900, "mode": "no-preference", "state": "empty", "focus": "Oak", "actionBottom": 507.765625, "overflow": 0, "sha256": "6f4e8dae776154f9fe79fbda98eee7a06f59099e50230e16b365ec9cf130da00", "file": ".context/creative-next/permit-refined-browser/1440-no-preference-empty.png"},
+          {"width": 1440, "height": 900, "mode": "no-preference", "state": "name-only", "focus": "Oak", "actionBottom": 507.765625, "overflow": 0, "sha256": "5c333397024323d6d76e719a1f8b3184093acebaa4a92a636d157da578547705", "file": ".context/creative-next/permit-refined-browser/1440-no-preference-name-only.png"},
+          {"width": 1440, "height": 900, "mode": "no-preference", "state": "elm", "focus": "result-heading", "actionBottom": 526.40625, "overflow": 0, "sha256": "47c136241dc03e325aa82cda6b3a4e22bf72be8d55b41bd9f68d073fe4032b00", "file": ".context/creative-next/permit-refined-browser/1440-no-preference-elm.png"},
+          {"width": 1440, "height": 900, "mode": "no-preference", "state": "edit", "focus": "Elm", "actionBottom": 475.78125, "overflow": 0, "sha256": "d9729937e2620de26839945aa332042ac006bb7b8256d1cc76f08d23ecc42511", "file": ".context/creative-next/permit-refined-browser/1440-no-preference-edit.png"},
+          {"width": 1440, "height": 900, "mode": "no-preference", "state": "oak", "focus": "result-heading", "actionBottom": 526.40625, "overflow": 0, "sha256": "7db138a62ff7fd4541a8b64a767be864f05ab6fee799436e2bd4bcd878176fe9", "file": ".context/creative-next/permit-refined-browser/1440-no-preference-oak.png"},
+          {"width": 1440, "height": 900, "mode": "no-preference", "state": "long", "focus": "edit", "actionBottom": 528.953125, "overflow": 0, "sha256": "a9191438b15057e0b2d28fa36a3065a41e00f32b31b13c886630661ceb268e76", "file": ".context/creative-next/permit-refined-browser/1440-no-preference-long.png"},
+          {"width": 1440, "height": 900, "mode": "reduce", "state": "entry", "focus": "body", "actionBottom": 475.78125, "overflow": 0, "sha256": "082351adce70186e2432230eaae708fa8d8432a1b2e1663b6676662c6a5d86ac", "file": ".context/creative-next/permit-refined-browser/1440-reduce-entry.png"},
+          {"width": 1440, "height": 900, "mode": "reduce", "state": "empty", "focus": "Oak", "actionBottom": 507.765625, "overflow": 0, "sha256": "6f4e8dae776154f9fe79fbda98eee7a06f59099e50230e16b365ec9cf130da00", "file": ".context/creative-next/permit-refined-browser/1440-reduce-empty.png"},
+          {"width": 1440, "height": 900, "mode": "reduce", "state": "name-only", "focus": "Oak", "actionBottom": 507.765625, "overflow": 0, "sha256": "5c333397024323d6d76e719a1f8b3184093acebaa4a92a636d157da578547705", "file": ".context/creative-next/permit-refined-browser/1440-reduce-name-only.png"},
+          {"width": 1440, "height": 900, "mode": "reduce", "state": "elm", "focus": "result-heading", "actionBottom": 526.40625, "overflow": 0, "sha256": "47c136241dc03e325aa82cda6b3a4e22bf72be8d55b41bd9f68d073fe4032b00", "file": ".context/creative-next/permit-refined-browser/1440-reduce-elm.png"},
+          {"width": 1440, "height": 900, "mode": "reduce", "state": "edit", "focus": "Elm", "actionBottom": 475.78125, "overflow": 0, "sha256": "d9729937e2620de26839945aa332042ac006bb7b8256d1cc76f08d23ecc42511", "file": ".context/creative-next/permit-refined-browser/1440-reduce-edit.png"},
+          {"width": 1440, "height": 900, "mode": "reduce", "state": "oak", "focus": "result-heading", "actionBottom": 526.40625, "overflow": 0, "sha256": "7db138a62ff7fd4541a8b64a767be864f05ab6fee799436e2bd4bcd878176fe9", "file": ".context/creative-next/permit-refined-browser/1440-reduce-oak.png"},
+          {"width": 1440, "height": 900, "mode": "reduce", "state": "long", "focus": "edit", "actionBottom": 528.953125, "overflow": 0, "sha256": "a9191438b15057e0b2d28fa36a3065a41e00f32b31b13c886630661ceb268e76", "file": ".context/creative-next/permit-refined-browser/1440-reduce-long.png"},
+          {"width": 390, "height": 844, "mode": "no-preference", "state": "entry", "focus": "body", "actionBottom": 398.515625, "overflow": 0, "sha256": "7940213652fa41c9db86608d9e9f612d4383160a848513da0bdffcdeb2b8f488", "file": ".context/creative-next/permit-refined-browser/390-no-preference-entry.png"},
+          {"width": 390, "height": 844, "mode": "no-preference", "state": "empty", "focus": "Oak", "actionBottom": 460.890625, "overflow": 0, "sha256": "cfca3b63a6f0fbf5782db458cc7ad4044731ba3bec511ae8748bf33212e093ca", "file": ".context/creative-next/permit-refined-browser/390-no-preference-empty.png"},
+          {"width": 390, "height": 844, "mode": "no-preference", "state": "name-only", "focus": "Oak", "actionBottom": 430.5, "overflow": 0, "sha256": "8bc8a643556b89171ee0b4c79c72d27ff222600a222d049a5614a97ae6586ee7", "file": ".context/creative-next/permit-refined-browser/390-no-preference-name-only.png"},
+          {"width": 390, "height": 844, "mode": "no-preference", "state": "elm", "focus": "result-heading", "actionBottom": 404.8125, "overflow": 0, "sha256": "8b78eb4ccf98f9e2bcb87a41ff226931c47b99e6275bc3885b0478ab2a343cb3", "file": ".context/creative-next/permit-refined-browser/390-no-preference-elm.png"},
+          {"width": 390, "height": 844, "mode": "no-preference", "state": "edit", "focus": "Elm", "actionBottom": 398.515625, "overflow": 0, "sha256": "630ec53d4c5ff4b6de162562007fdf81fd4dbd503c6703387e15c16d0d5afa63", "file": ".context/creative-next/permit-refined-browser/390-no-preference-edit.png"},
+          {"width": 390, "height": 844, "mode": "no-preference", "state": "oak", "focus": "result-heading", "actionBottom": 404.8125, "overflow": 0, "sha256": "43266b2a8025a956bff995fbfec0dbdd01e175273e5bc45659fd4d8efe66e65e", "file": ".context/creative-next/permit-refined-browser/390-no-preference-oak.png"},
+          {"width": 390, "height": 844, "mode": "no-preference", "state": "long", "focus": "edit", "actionBottom": 492.21875, "overflow": 0, "sha256": "818c52393e363b2939596ac138651ac9c6a4f745bf6da09a0fcce4a3c7eb3392", "file": ".context/creative-next/permit-refined-browser/390-no-preference-long.png"},
+          {"width": 390, "height": 844, "mode": "reduce", "state": "entry", "focus": "body", "actionBottom": 398.515625, "overflow": 0, "sha256": "7940213652fa41c9db86608d9e9f612d4383160a848513da0bdffcdeb2b8f488", "file": ".context/creative-next/permit-refined-browser/390-reduce-entry.png"},
+          {"width": 390, "height": 844, "mode": "reduce", "state": "empty", "focus": "Oak", "actionBottom": 460.890625, "overflow": 0, "sha256": "cfca3b63a6f0fbf5782db458cc7ad4044731ba3bec511ae8748bf33212e093ca", "file": ".context/creative-next/permit-refined-browser/390-reduce-empty.png"},
+          {"width": 390, "height": 844, "mode": "reduce", "state": "name-only", "focus": "Oak", "actionBottom": 430.5, "overflow": 0, "sha256": "8bc8a643556b89171ee0b4c79c72d27ff222600a222d049a5614a97ae6586ee7", "file": ".context/creative-next/permit-refined-browser/390-reduce-name-only.png"},
+          {"width": 390, "height": 844, "mode": "reduce", "state": "elm", "focus": "result-heading", "actionBottom": 404.8125, "overflow": 0, "sha256": "8b78eb4ccf98f9e2bcb87a41ff226931c47b99e6275bc3885b0478ab2a343cb3", "file": ".context/creative-next/permit-refined-browser/390-reduce-elm.png"},
+          {"width": 390, "height": 844, "mode": "reduce", "state": "edit", "focus": "Elm", "actionBottom": 398.515625, "overflow": 0, "sha256": "630ec53d4c5ff4b6de162562007fdf81fd4dbd503c6703387e15c16d0d5afa63", "file": ".context/creative-next/permit-refined-browser/390-reduce-edit.png"},
+          {"width": 390, "height": 844, "mode": "reduce", "state": "oak", "focus": "result-heading", "actionBottom": 404.8125, "overflow": 0, "sha256": "43266b2a8025a956bff995fbfec0dbdd01e175273e5bc45659fd4d8efe66e65e", "file": ".context/creative-next/permit-refined-browser/390-reduce-oak.png"},
+          {"width": 390, "height": 844, "mode": "reduce", "state": "long", "focus": "edit", "actionBottom": 492.21875, "overflow": 0, "sha256": "818c52393e363b2939596ac138651ac9c6a4f745bf6da09a0fcce4a3c7eb3392", "file": ".context/creative-next/permit-refined-browser/390-reduce-long.png"},
+          {"width": 320, "height": 568, "mode": "no-preference", "state": "entry", "focus": "body", "actionBottom": 436.140625, "overflow": 0, "sha256": "70750b8c924eff4ef82beba27e830709e3fe706bb74de78a5e4770ede8ff0b4e", "file": ".context/creative-next/permit-refined-browser/320-no-preference-entry.png"},
+          {"width": 320, "height": 568, "mode": "no-preference", "state": "empty", "focus": "Oak", "actionBottom": 498.515625, "overflow": 0, "sha256": "81632c59b6915e647afae39cad09ce14fbfe349134b7eca24c9083bc454e78f1", "file": ".context/creative-next/permit-refined-browser/320-no-preference-empty.png"},
+          {"width": 320, "height": 568, "mode": "no-preference", "state": "name-only", "focus": "Oak", "actionBottom": 468.125, "overflow": 0, "sha256": "1c64fd31e6268d3df20d529e160656dae184caf0d9752e7be06185a21c967b82", "file": ".context/creative-next/permit-refined-browser/320-no-preference-name-only.png"},
+          {"width": 320, "height": 568, "mode": "no-preference", "state": "elm", "focus": "result-heading", "actionBottom": 442.4375, "overflow": 0, "sha256": "419194e76d7fae698a060dbcf4520724da8be171df1f219900e5ffdab425dc0e", "file": ".context/creative-next/permit-refined-browser/320-no-preference-elm.png"},
+          {"width": 320, "height": 568, "mode": "no-preference", "state": "edit", "focus": "Elm", "actionBottom": 436.140625, "overflow": 0, "sha256": "af60af11c0bec3a2157c04a725c258b8125a5241096124040e27f0b6e5610982", "file": ".context/creative-next/permit-refined-browser/320-no-preference-edit.png"},
+          {"width": 320, "height": 568, "mode": "no-preference", "state": "oak", "focus": "result-heading", "actionBottom": 442.4375, "overflow": 0, "sha256": "e4e27856f4dc574c1d8f8cbeeadecdbd832c67a3437c2287d86a093cfca42be7", "file": ".context/creative-next/permit-refined-browser/320-no-preference-oak.png"},
+          {"width": 320, "height": 568, "mode": "no-preference", "state": "long", "focus": "edit", "actionBottom": 567.84375, "overflow": -15, "sha256": "46be409975483bfdbb704d5f9fe49f47b48ada88033950701466aae6a1b20c2d", "file": ".context/creative-next/permit-refined-browser/320-no-preference-long.png"},
+          {"width": 320, "height": 568, "mode": "reduce", "state": "entry", "focus": "body", "actionBottom": 436.140625, "overflow": 0, "sha256": "70750b8c924eff4ef82beba27e830709e3fe706bb74de78a5e4770ede8ff0b4e", "file": ".context/creative-next/permit-refined-browser/320-reduce-entry.png"},
+          {"width": 320, "height": 568, "mode": "reduce", "state": "empty", "focus": "Oak", "actionBottom": 498.515625, "overflow": 0, "sha256": "81632c59b6915e647afae39cad09ce14fbfe349134b7eca24c9083bc454e78f1", "file": ".context/creative-next/permit-refined-browser/320-reduce-empty.png"},
+          {"width": 320, "height": 568, "mode": "reduce", "state": "name-only", "focus": "Oak", "actionBottom": 468.125, "overflow": 0, "sha256": "1c64fd31e6268d3df20d529e160656dae184caf0d9752e7be06185a21c967b82", "file": ".context/creative-next/permit-refined-browser/320-reduce-name-only.png"},
+          {"width": 320, "height": 568, "mode": "reduce", "state": "elm", "focus": "result-heading", "actionBottom": 442.4375, "overflow": 0, "sha256": "419194e76d7fae698a060dbcf4520724da8be171df1f219900e5ffdab425dc0e", "file": ".context/creative-next/permit-refined-browser/320-reduce-elm.png"},
+          {"width": 320, "height": 568, "mode": "reduce", "state": "edit", "focus": "Elm", "actionBottom": 436.140625, "overflow": 0, "sha256": "af60af11c0bec3a2157c04a725c258b8125a5241096124040e27f0b6e5610982", "file": ".context/creative-next/permit-refined-browser/320-reduce-edit.png"},
+          {"width": 320, "height": 568, "mode": "reduce", "state": "oak", "focus": "result-heading", "actionBottom": 442.4375, "overflow": 0, "sha256": "e4e27856f4dc574c1d8f8cbeeadecdbd832c67a3437c2287d86a093cfca42be7", "file": ".context/creative-next/permit-refined-browser/320-reduce-oak.png"},
+          {"width": 320, "height": 568, "mode": "reduce", "state": "long", "focus": "edit", "actionBottom": 567.84375, "overflow": -15, "sha256": "46be409975483bfdbb704d5f9fe49f47b48ada88033950701466aae6a1b20c2d", "file": ".context/creative-next/permit-refined-browser/320-reduce-long.png"}
+        ]
+      }
+    }
+  ]
+}
