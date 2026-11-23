@@ -598,3 +598,6 @@ The blind live critic preferred the compact layout and scored it **8.20 desktop 
 
 
 The isolated `04d7320` trial turns the opening-view study into conditional layout guidance for short draft preparation. A fresh arm64 wheel passed doctor and served the two revised layout fields in the two practice briefs. The actual-site brief selected consultation, all **48** frozen full replies matched the release, and all **seven** practice and control routes passed. The change stays on its trial branch pending the paired browser and blind visual results. [Exact clean-wheel and reply evidence](evidence/benchmark-v1/consultation-opening-view-installed.json)
+
+
+The unedited `04d7320` Tacoma draft moved the 390 px name input from **1,067 to 883 CSS px**. The name and preview button fit together only on desktop. Both drafts made zero post-load requests and passed blank-name recovery. The candidate focused its result heading. The scripted check expected textarea focus, so edit behavior there remains unverified. The weekday check also flagged the equivalent “Tuesday–Saturday” as a mismatch. The phone layout still missed the measured requirement, so the change stays out of the release. [Matched generation and browser evidence](evidence/benchmark-v1/consultation-opening-view-generation.json)

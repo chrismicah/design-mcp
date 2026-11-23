@@ -1,0 +1,679 @@
+{
+  "scope": "Unedited Tacoma generation, matched installed guidance. Local Playwriter captures.",
+  "outcome": "Rejected on the 320 and 390 px opening-view contract. No visual promotion.",
+  "observations": [
+    "At 390 px the name starts at 883 CSS pixels versus 1,067 in the frozen control. The first field and preview button fit together only at 1440 px.",
+    "Both drafts made zero requests after initial load. The candidate correctly handles blank name and keeps the selected service.",
+    "The candidate focuses its result heading. The fixed script requires textarea focus and therefore does not measure edit behavior on this variant.",
+    "The strict weekday matcher expects “Tuesday through Saturday”. The candidate visibly uses “Tuesday–Saturday”. That is a matcher mismatch and does not explain the form placement.",
+    "The candidate retains a separate services paragraph and a decorative line before the form. Both consume room that the authored call board uses for visitor input."
+  ],
+  "installed_smoke": {
+    "commit": "04d73204d2802bc91e598f143887990a8cb9b40b",
+    "log_sha256": "4f4d7b6d6d8072344f01755037bc8e33d7ab2e8979dd47efe2739cd3337a9232",
+    "runs": [
+      {
+        "mode": "v2",
+        "tool_calls": [
+          "direct",
+          "react",
+          "check"
+        ],
+        "review_enabled": false
+      },
+      {
+        "mode": "v2",
+        "tool_calls": [
+          "direct",
+          "react",
+          "check",
+          "review_page"
+        ],
+        "review_enabled": true
+      },
+      {
+        "mode": "both",
+        "tool_calls": [
+          "direct",
+          "react",
+          "check",
+          "search_design_patterns",
+          "get_design_blueprint",
+          "get_semantic_tokens",
+          "get_design_taxonomy",
+          "get_behavioral_pattern",
+          "compare_design_approaches",
+          "analyze_and_devibecode",
+          "get_design_system",
+          "get_library_recommendations",
+          "get_library_details",
+          "scan_project",
+          "generate_refactored_code",
+          "get_visual_recipe",
+          "get_visual_suggestions"
+        ],
+        "review_enabled": false
+      },
+      {
+        "mode": "both",
+        "tool_calls": [
+          "direct",
+          "react",
+          "check",
+          "search_design_patterns",
+          "get_design_blueprint",
+          "get_semantic_tokens",
+          "get_design_taxonomy",
+          "get_behavioral_pattern",
+          "compare_design_approaches",
+          "analyze_and_devibecode",
+          "get_design_system",
+          "get_library_recommendations",
+          "get_library_details",
+          "scan_project",
+          "generate_refactored_code",
+          "get_visual_recipe",
+          "get_visual_suggestions",
+          "review_page"
+        ],
+        "review_enabled": true
+      },
+      {
+        "mode": "legacy",
+        "tool_calls": [
+          "search_design_patterns",
+          "get_design_blueprint",
+          "get_semantic_tokens",
+          "get_design_taxonomy",
+          "get_behavioral_pattern",
+          "compare_design_approaches",
+          "analyze_and_devibecode",
+          "get_design_system",
+          "get_library_recommendations",
+          "get_library_details",
+          "scan_project",
+          "generate_refactored_code",
+          "get_visual_recipe",
+          "get_visual_suggestions"
+        ],
+        "review_enabled": false
+      },
+      {
+        "mode": "legacy",
+        "tool_calls": [
+          "search_design_patterns",
+          "get_design_blueprint",
+          "get_semantic_tokens",
+          "get_design_taxonomy",
+          "get_behavioral_pattern",
+          "compare_design_approaches",
+          "analyze_and_devibecode",
+          "get_design_system",
+          "get_library_recommendations",
+          "get_library_details",
+          "scan_project",
+          "generate_refactored_code",
+          "get_visual_recipe",
+          "get_visual_suggestions",
+          "review_page"
+        ],
+        "review_enabled": true
+      }
+    ],
+    "review_scope": "Opt-in review_page rejects an unsupported URL. Live visual review remains separate."
+  },
+  "arms": {
+    "earlier-draft": {
+      "generation": {
+        "case": "tacoma-eye-care",
+        "arm": "earlier-draft",
+        "status": "passed",
+        "receipt_scope": "Matched generation from a previously captured installed MCP response",
+        "commit": "04d73204d2802bc91e598f143887990a8cb9b40b",
+        "model": "gpt-6.1-terra",
+        "effort": "low",
+        "shell_tool": false,
+        "thread_id": "01a20a73-faa9-7af3-9730-a4513bc292b3",
+        "usage": {
+          "input_tokens": 17981,
+          "cached_input_tokens": 13312,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2941,
+          "reasoning_output_tokens": 0
+        },
+        "elapsed_seconds": 57.49,
+        "prompt_prefix_sha256": "63613d202318a57b37f3b281c0ff1868880113394d924fd615f1c547412ca17c",
+        "prompt_sha256": "51c65a5b5dadf91e99421bc67af12501233867c0d03d13b62c50dc3109f2ad24",
+        "reply_sha256": "a2c6173036222509cc9110ebd0c9d174ed926ab12db9668d6831db63b0390269",
+        "trace_sha256": "23b0b9f3a836941e78ebb24361d799471be4128d6c28b8f8cb57082a9da3a23c",
+        "html_sha256": "311c51347880b7f87fe68abe16084a008eedc4ff01b5f9ae3a3bef1592e00a90"
+      },
+      "browser": "Chrome/158.0.8127.37",
+      "captures": {
+        "320": {
+          "viewport": 320,
+          "width": 305,
+          "height": 1120,
+          "title": "Lena Ortiz, optometrist",
+          "h1": "Lena Ortiz",
+          "loadedFonts": [
+            "Bodoni Moda",
+            "Instrument Sans"
+          ],
+          "language": "en",
+          "reducedMotion": true,
+          "pageErrors": [],
+          "accessibility": "- banner:\n  - paragraph: Tacoma eye care\n  - heading \"Lena Ortiz\" [level=1]\n  - paragraph: Independent optometrist\n  - paragraph: Routine eye exams and glasses fittings for new patients.\n  - link \"Call 253-555-0143\":\n    - /url: tel:+12535550143\n  - paragraph:\n    - strong: Call hours\n    - text: 9 am–4 pm, Tuesday–Saturday\n  - paragraph:\n    - strong: Location\n    - text: 42 Example Way, Suite 2 Tacoma\n- main:\n  - region \"Prepare a reminder\":\n    - paragraph: Before you call\n    - heading \"Prepare a reminder\" [level=2]\n    - paragraph: Make a short draft to have ready when you call. It stays in this browser page; nothing is sent or booked.\n    - group \"What are you calling about?\":\n      - text: What are you calling about?\n      - radio \"Eye exam\" [checked]\n      - text: Eye exam\n      - radio \"Glasses fitting\"\n      - text: Glasses fitting\n    - text: First name\n    - textbox \"First name\"\n    - button \"Preview reminder\"\n    - status",
+          "status": "rendered",
+          "sha256": "efe502d69605708db852de2300414b3cd491b0443526deb0d6d6317e8198ee7d",
+          "interaction": {
+            "checks": {
+              "nameInitiallyVisible": false,
+              "previewInitiallyVisible": false,
+              "openingIdentity": true,
+              "openingHours": false,
+              "openingServices": true,
+              "openingPhone": true,
+              "openingWidth": true,
+              "normalMotion": true,
+              "contactFocus": true,
+              "reachService": true,
+              "serviceSelected": true,
+              "reachPreview": true,
+              "emptyNameRecovery": true,
+              "errorVisible": true,
+              "selectionAfterError": true,
+              "previewFocused": false,
+              "previewReady": false,
+              "previewInFirstViewport": false,
+              "statusAnnouncement": true,
+              "honestResultVisible": false,
+              "editableDraft": false,
+              "returnToOriginal": false,
+              "noNetworkSubmission": true,
+              "noPageErrors": true,
+              "finalWidth": true
+            },
+            "viewport": {
+              "width": 320,
+              "height": 700
+            },
+            "finalFocus": "",
+            "requests": [],
+            "firstFrame": null,
+            "initialForm": {
+              "name": {
+                "x": 20,
+                "y": 943.234375,
+                "width": 265,
+                "height": 48
+              },
+              "preview": {
+                "x": 20,
+                "y": 1007.234375,
+                "width": 168.1875,
+                "height": 48.375
+              }
+            },
+            "frames": {
+              "before": {
+                "sha256": "efe502d69605708db852de2300414b3cd491b0443526deb0d6d6317e8198ee7d",
+                "file": "320.png"
+              },
+              "invalid": {
+                "sha256": "e1ed0063258dc5d0763e86bce372c695e4d7ad7469984ba16304ef2b6b4fa073",
+                "file": "320-invalid.png"
+              }
+            }
+          }
+        },
+        "390": {
+          "viewport": 390,
+          "width": 375,
+          "height": 1060,
+          "title": "Lena Ortiz, optometrist",
+          "h1": "Lena Ortiz",
+          "loadedFonts": [
+            "Bodoni Moda",
+            "Instrument Sans"
+          ],
+          "language": "en",
+          "reducedMotion": true,
+          "pageErrors": [],
+          "accessibility": "- banner:\n  - paragraph: Tacoma eye care\n  - heading \"Lena Ortiz\" [level=1]\n  - paragraph: Independent optometrist\n  - paragraph: Routine eye exams and glasses fittings for new patients.\n  - link \"Call 253-555-0143\":\n    - /url: tel:+12535550143\n  - paragraph:\n    - strong: Call hours\n    - text: 9 am–4 pm, Tuesday–Saturday\n  - paragraph:\n    - strong: Location\n    - text: 42 Example Way, Suite 2 Tacoma\n- main:\n  - region \"Prepare a reminder\":\n    - paragraph: Before you call\n    - heading \"Prepare a reminder\" [level=2]\n    - paragraph: Make a short draft to have ready when you call. It stays in this browser page; nothing is sent or booked.\n    - group \"What are you calling about?\":\n      - text: What are you calling about?\n      - radio \"Eye exam\" [checked]\n      - text: Eye exam\n      - radio \"Glasses fitting\"\n      - text: Glasses fitting\n    - text: First name\n    - textbox \"First name\"\n    - button \"Preview reminder\"\n    - status",
+          "status": "rendered",
+          "sha256": "f4eebe251f37dc116d536a68b2f93e6be98d32742710b1007659f6ce8adf2ee3",
+          "interaction": {
+            "checks": {
+              "nameInitiallyVisible": false,
+              "previewInitiallyVisible": false,
+              "openingIdentity": true,
+              "openingHours": false,
+              "openingServices": true,
+              "openingPhone": true,
+              "openingWidth": true,
+              "normalMotion": true,
+              "contactFocus": true,
+              "reachService": true,
+              "serviceSelected": true,
+              "reachPreview": true,
+              "emptyNameRecovery": true,
+              "errorVisible": true,
+              "selectionAfterError": true,
+              "previewFocused": false,
+              "previewReady": false,
+              "previewInFirstViewport": false,
+              "statusAnnouncement": true,
+              "honestResultVisible": false,
+              "editableDraft": false,
+              "returnToOriginal": false,
+              "noNetworkSubmission": true,
+              "noPageErrors": true,
+              "finalWidth": true
+            },
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "finalFocus": "",
+            "requests": [],
+            "firstFrame": {
+              "tag": "H3",
+              "top": 526.96875,
+              "bottom": 554.578125,
+              "height": 844
+            },
+            "initialForm": {
+              "name": {
+                "x": 20,
+                "y": 883.40625,
+                "width": 335,
+                "height": 48
+              },
+              "preview": {
+                "x": 20,
+                "y": 947.40625,
+                "width": 168.1875,
+                "height": 48.375
+              }
+            },
+            "frames": {
+              "before": {
+                "sha256": "f4eebe251f37dc116d536a68b2f93e6be98d32742710b1007659f6ce8adf2ee3",
+                "file": "390.png"
+              },
+              "invalid": {
+                "sha256": "9688819193f95da6a35d0be21f3d7eddd9f474337bd5ef375635e763bbcf6d7f",
+                "file": "390-invalid.png"
+              }
+            }
+          }
+        },
+        "1440": {
+          "viewport": 1440,
+          "width": 1440,
+          "height": 900,
+          "title": "Lena Ortiz, optometrist",
+          "h1": "Lena Ortiz",
+          "loadedFonts": [
+            "Bodoni Moda",
+            "Instrument Sans"
+          ],
+          "language": "en",
+          "reducedMotion": true,
+          "pageErrors": [],
+          "accessibility": "- banner:\n  - paragraph: Tacoma eye care\n  - heading \"Lena Ortiz\" [level=1]\n  - paragraph: Independent optometrist\n  - paragraph: Routine eye exams and glasses fittings for new patients.\n  - link \"Call 253-555-0143\":\n    - /url: tel:+12535550143\n  - paragraph:\n    - strong: Call hours\n    - text: 9 am–4 pm, Tuesday–Saturday\n  - paragraph:\n    - strong: Location\n    - text: 42 Example Way, Suite 2 Tacoma\n- main:\n  - region \"Prepare a reminder\":\n    - paragraph: Before you call\n    - heading \"Prepare a reminder\" [level=2]\n    - paragraph: Make a short draft to have ready when you call. It stays in this browser page; nothing is sent or booked.\n    - group \"What are you calling about?\":\n      - text: What are you calling about?\n      - radio \"Eye exam\" [checked]\n      - text: Eye exam\n      - radio \"Glasses fitting\"\n      - text: Glasses fitting\n    - text: First name\n    - textbox \"First name\"\n    - button \"Preview reminder\"\n    - status",
+          "status": "rendered",
+          "sha256": "1b5b2ccd5946a1a87061c841ca928da362861f49f13e0a5757bc353bfd57cd44",
+          "interaction": {
+            "checks": {
+              "nameInitiallyVisible": true,
+              "previewInitiallyVisible": true,
+              "openingIdentity": true,
+              "openingHours": false,
+              "openingServices": true,
+              "openingPhone": true,
+              "openingWidth": true,
+              "normalMotion": true,
+              "contactFocus": true,
+              "reachService": true,
+              "serviceSelected": true,
+              "reachPreview": true,
+              "emptyNameRecovery": true,
+              "errorVisible": true,
+              "selectionAfterError": true,
+              "previewFocused": false,
+              "previewReady": false,
+              "previewInFirstViewport": false,
+              "statusAnnouncement": true,
+              "honestResultVisible": false,
+              "editableDraft": false,
+              "returnToOriginal": false,
+              "noNetworkSubmission": true,
+              "noPageErrors": true,
+              "finalWidth": true
+            },
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "finalFocus": "",
+            "requests": [],
+            "firstFrame": null,
+            "initialForm": {
+              "name": {
+                "x": 744,
+                "y": 579.734375,
+                "width": 552,
+                "height": 48
+              },
+              "preview": {
+                "x": 744,
+                "y": 643.734375,
+                "width": 168.1875,
+                "height": 48.375
+              }
+            },
+            "frames": {
+              "before": {
+                "sha256": "1b5b2ccd5946a1a87061c841ca928da362861f49f13e0a5757bc353bfd57cd44",
+                "file": "1440.png"
+              },
+              "invalid": {
+                "sha256": "c09376d9f3caf86b7fbcc11515dd9b348269edcc660570e08ce65b6938c57319",
+                "file": "1440-invalid.png"
+              }
+            }
+          }
+        }
+      }
+    },
+    "visible-handoff": {
+      "generation": {
+        "case": "tacoma-eye-care",
+        "arm": "visible-handoff",
+        "status": "passed",
+        "receipt_scope": "Matched generation from a previously captured installed MCP response",
+        "commit": "5206acdd7a8a27e8f62eb541a54b4f316c512437",
+        "model": "gpt-6.1-terra",
+        "effort": "low",
+        "shell_tool": false,
+        "thread_id": "01a20a53-2a0c-77b1-9be9-04d6cfdaec93",
+        "usage": {
+          "input_tokens": 17946,
+          "cached_input_tokens": 13312,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2883,
+          "reasoning_output_tokens": 0
+        },
+        "elapsed_seconds": 55.13,
+        "prompt_prefix_sha256": "63613d202318a57b37f3b281c0ff1868880113394d924fd615f1c547412ca17c",
+        "prompt_sha256": "154691a72e3e71c459b6d18d9b3cb0ac9b79ba8584674443855a995d735fce97",
+        "reply_sha256": "c7fb7565ae955dbe80d6d2b72d55d23e267748b0dec407be66a71cc3eb7b72f3",
+        "trace_sha256": "dde5c7aaf79e8d1c15719c47b91e35b9db2ed21e0e70c01240a4f1b16d7f620c",
+        "html_sha256": "d82f6c1051b15f5191ebe6c6e14bf03b294db4ff95ce70bedda72c28161c28c5"
+      },
+      "browser": "Chrome/158.0.8127.37",
+      "captures": {
+        "320": {
+          "viewport": 320,
+          "width": 305,
+          "height": 1273,
+          "title": "Lena Ortiz | Optometrist in Tacoma",
+          "h1": "Lena Ortiz",
+          "loadedFonts": [
+            "Bodoni Moda",
+            "Instrument Sans"
+          ],
+          "language": "en",
+          "reducedMotion": true,
+          "pageErrors": [],
+          "accessibility": "- banner:\n  - paragraph: Independent optometrist · Tacoma\n  - heading \"Lena Ortiz\" [level=1]\n  - paragraph: Routine eye exams and glasses fittings for new patients.\n  - link \"Call 253-555-0143\":\n    - /url: tel:+12535550143\n  - paragraph: Tuesday through Saturday, 9 am–4 pm\n  - strong: Lena Ortiz\n  - paragraph: 42 Example Way, Suite 2 Tacoma\n- main:\n  - region \"Services\":\n    - heading \"Services\" [level=2]\n    - list:\n      - listitem: Eye exam\n      - listitem: Glasses fitting\n  - region \"Get ready to call\":\n    - heading \"Get ready to call\" [level=2]\n    - paragraph: Prepare a short reminder to have in front of you when you call. It stays in this browser and does not book an appointment.\n    - text: Service\n    - combobox \"Service\":\n      - option \"Eye exam\" [selected]\n      - option \"Glasses fitting\"\n    - text: First name\n    - textbox \"First name\"\n    - button \"Preview reminder\"\n    - status",
+          "status": "rendered",
+          "sha256": "68686b4d8e069e8c5a8682394640f72ae232cbe67ad12edf9e575b8986f1e71f",
+          "interaction": {
+            "checks": {
+              "nameInitiallyVisible": false,
+              "previewInitiallyVisible": false,
+              "openingIdentity": true,
+              "openingHours": true,
+              "openingServices": true,
+              "openingPhone": true,
+              "openingWidth": true,
+              "normalMotion": true,
+              "contactFocus": true,
+              "reachService": true,
+              "serviceSelected": true,
+              "reachPreview": true,
+              "emptyNameRecovery": true,
+              "errorVisible": true,
+              "selectionAfterError": true,
+              "previewFocused": true,
+              "previewReady": true,
+              "previewInFirstViewport": true,
+              "statusAnnouncement": true,
+              "honestResultVisible": false,
+              "editableDraft": true,
+              "returnToOriginal": true,
+              "noNetworkSubmission": true,
+              "noPageErrors": true,
+              "finalWidth": true
+            },
+            "viewport": {
+              "width": 320,
+              "height": 700
+            },
+            "finalFocus": "First name",
+            "requests": [],
+            "firstFrame": {
+              "tag": "TEXTAREA",
+              "top": 564.8125,
+              "bottom": 692.8125,
+              "height": 700
+            },
+            "initialForm": {
+              "name": {
+                "x": 16,
+                "y": 1089.28125,
+                "width": 273,
+                "height": 48
+              },
+              "preview": {
+                "x": 16,
+                "y": 1157.28125,
+                "width": 173.375,
+                "height": 52
+              }
+            },
+            "frames": {
+              "before": {
+                "sha256": "68686b4d8e069e8c5a8682394640f72ae232cbe67ad12edf9e575b8986f1e71f",
+                "file": "320.png"
+              },
+              "invalid": {
+                "sha256": "5394e3f186fef654bd83b6b7a3fbc52473a94ab1f767b6e840fcf0375f504569",
+                "file": "320-invalid.png"
+              },
+              "preview": {
+                "sha256": "8445e06756df0219b5e9f648005d242f2f6332ef9eda453f6d28dec0533908ef",
+                "file": "320-preview.png"
+              }
+            }
+          }
+        },
+        "390": {
+          "viewport": 390,
+          "width": 375,
+          "height": 1251,
+          "title": "Lena Ortiz | Optometrist in Tacoma",
+          "h1": "Lena Ortiz",
+          "loadedFonts": [
+            "Bodoni Moda",
+            "Instrument Sans"
+          ],
+          "language": "en",
+          "reducedMotion": true,
+          "pageErrors": [],
+          "accessibility": "- banner:\n  - paragraph: Independent optometrist · Tacoma\n  - heading \"Lena Ortiz\" [level=1]\n  - paragraph: Routine eye exams and glasses fittings for new patients.\n  - link \"Call 253-555-0143\":\n    - /url: tel:+12535550143\n  - paragraph: Tuesday through Saturday, 9 am–4 pm\n  - strong: Lena Ortiz\n  - paragraph: 42 Example Way, Suite 2 Tacoma\n- main:\n  - region \"Services\":\n    - heading \"Services\" [level=2]\n    - list:\n      - listitem: Eye exam\n      - listitem: Glasses fitting\n  - region \"Get ready to call\":\n    - heading \"Get ready to call\" [level=2]\n    - paragraph: Prepare a short reminder to have in front of you when you call. It stays in this browser and does not book an appointment.\n    - text: Service\n    - combobox \"Service\":\n      - option \"Eye exam\" [selected]\n      - option \"Glasses fitting\"\n    - text: First name\n    - textbox \"First name\"\n    - button \"Preview reminder\"\n    - status",
+          "status": "rendered",
+          "sha256": "caac9b8950ef91e745da09bc1b61a80d9bc7683863fb7bb084ddcff1a48906ce",
+          "interaction": {
+            "checks": {
+              "nameInitiallyVisible": false,
+              "previewInitiallyVisible": false,
+              "openingIdentity": true,
+              "openingHours": true,
+              "openingServices": true,
+              "openingPhone": true,
+              "openingWidth": true,
+              "normalMotion": true,
+              "contactFocus": true,
+              "reachService": true,
+              "serviceSelected": true,
+              "reachPreview": true,
+              "emptyNameRecovery": true,
+              "errorVisible": true,
+              "selectionAfterError": true,
+              "previewFocused": true,
+              "previewReady": true,
+              "previewInFirstViewport": true,
+              "statusAnnouncement": true,
+              "honestResultVisible": false,
+              "editableDraft": true,
+              "returnToOriginal": true,
+              "noNetworkSubmission": true,
+              "noPageErrors": true,
+              "finalWidth": true
+            },
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "finalFocus": "First name",
+            "requests": [],
+            "firstFrame": {
+              "tag": "TEXTAREA",
+              "top": 709.25,
+              "bottom": 837.25,
+              "height": 844
+            },
+            "initialForm": {
+              "name": {
+                "x": 16,
+                "y": 1066.71875,
+                "width": 343,
+                "height": 48
+              },
+              "preview": {
+                "x": 16,
+                "y": 1134.71875,
+                "width": 173.375,
+                "height": 52
+              }
+            },
+            "frames": {
+              "before": {
+                "sha256": "caac9b8950ef91e745da09bc1b61a80d9bc7683863fb7bb084ddcff1a48906ce",
+                "file": "390.png"
+              },
+              "invalid": {
+                "sha256": "eb8f64c8cbaed4d5448b9b45da801e96941c9fb38d73f8c615e1d169bec568bb",
+                "file": "390-invalid.png"
+              },
+              "preview": {
+                "sha256": "5ac4d36a1583cec02687d0f470cd95a272b947b9a53a350c3f359fe8e09deb48",
+                "file": "390-preview.png"
+              }
+            }
+          }
+        },
+        "1440": {
+          "viewport": 1440,
+          "width": 1425,
+          "height": 1079,
+          "title": "Lena Ortiz | Optometrist in Tacoma",
+          "h1": "Lena Ortiz",
+          "loadedFonts": [
+            "Bodoni Moda",
+            "Instrument Sans"
+          ],
+          "language": "en",
+          "reducedMotion": true,
+          "pageErrors": [],
+          "accessibility": "- banner:\n  - paragraph: Independent optometrist · Tacoma\n  - heading \"Lena Ortiz\" [level=1]\n  - paragraph: Routine eye exams and glasses fittings for new patients.\n  - link \"Call 253-555-0143\":\n    - /url: tel:+12535550143\n  - paragraph: Tuesday through Saturday, 9 am–4 pm\n  - strong: Lena Ortiz\n  - paragraph: 42 Example Way, Suite 2 Tacoma\n- main:\n  - region \"Services\":\n    - heading \"Services\" [level=2]\n    - list:\n      - listitem: Eye exam\n      - listitem: Glasses fitting\n  - region \"Get ready to call\":\n    - heading \"Get ready to call\" [level=2]\n    - paragraph: Prepare a short reminder to have in front of you when you call. It stays in this browser and does not book an appointment.\n    - text: Service\n    - combobox \"Service\":\n      - option \"Eye exam\" [selected]\n      - option \"Glasses fitting\"\n    - text: First name\n    - textbox \"First name\"\n    - button \"Preview reminder\"\n    - status",
+          "status": "rendered",
+          "sha256": "156964ac094a75ad3a61c6e92747edb2e1123d223995456e989b3dec1df94ff4",
+          "interaction": {
+            "checks": {
+              "nameInitiallyVisible": true,
+              "previewInitiallyVisible": false,
+              "openingIdentity": true,
+              "openingHours": true,
+              "openingServices": true,
+              "openingPhone": true,
+              "openingWidth": true,
+              "normalMotion": true,
+              "contactFocus": true,
+              "reachService": true,
+              "serviceSelected": true,
+              "reachPreview": true,
+              "emptyNameRecovery": true,
+              "errorVisible": true,
+              "selectionAfterError": true,
+              "previewFocused": true,
+              "previewReady": true,
+              "previewInFirstViewport": true,
+              "statusAnnouncement": true,
+              "honestResultVisible": false,
+              "editableDraft": true,
+              "returnToOriginal": true,
+              "noNetworkSubmission": true,
+              "noPageErrors": true,
+              "finalWidth": true
+            },
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "finalFocus": "First name",
+            "requests": [],
+            "firstFrame": {
+              "tag": "TEXTAREA",
+              "top": 764.71875,
+              "bottom": 892.71875,
+              "height": 900
+            },
+            "initialForm": {
+              "name": {
+                "x": 720.484375,
+                "y": 846.984375,
+                "width": 568.015625,
+                "height": 48
+              },
+              "preview": {
+                "x": 720.484375,
+                "y": 914.984375,
+                "width": 173.375,
+                "height": 52
+              }
+            },
+            "frames": {
+              "before": {
+                "sha256": "156964ac094a75ad3a61c6e92747edb2e1123d223995456e989b3dec1df94ff4",
+                "file": "1440.png"
+              },
+              "invalid": {
+                "sha256": "ae5d25770f7d62a370103e5bfb6eff892fa7a92993ed4192e46c2572051376fe",
+                "file": "1440-invalid.png"
+              },
+              "preview": {
+                "sha256": "1782a8f03d61802519d7b16683dcafcd429d8b1dc9abc7a7ddc3156592f500b0",
+                "file": "1440-preview.png"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
