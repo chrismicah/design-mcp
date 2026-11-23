@@ -1,0 +1,61 @@
+name: Matched booking geometry proof
+
+on:
+  push:
+    branches: [design-mcp/booking-geometry-proof]
+
+permissions:
+  contents: read
+
+jobs:
+  geometry:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Install benchmark dependencies
+        shell: bash
+        run: |
+          python -m venv "$RUNNER_TEMP/proof-venv"
+          "$RUNNER_TEMP/proof-venv/bin/python" -m pip install .
+          npm install --prefix "$RUNNER_TEMP/playwriter" --ignore-scripts --no-fund --no-audit 'playwriter@0.12.0'
+          curl -fsSL https://storage.googleapis.com/chrome-for-testing-public/158.0.8127.36/linux64/chrome-linux64.zip -o "$RUNNER_TEMP/chrome.zip"
+          unzip -q "$RUNNER_TEMP/chrome.zip" -d "$RUNNER_TEMP/browser"
+          sudo install -o root -g root -m 4755 "$RUNNER_TEMP/browser/chrome-linux64/chrome_sandbox" /usr/local/sbin/chrome-devel-sandbox
+      - name: Exercise the matched booking drafts
+        shell: bash
+        run: |
+          trial=evals/reactions/booking-geometry-proof
+          result="$RUNNER_TEMP/booking-receipt"
+          python="$RUNNER_TEMP/proof-venv/bin/python"
+          chrome="$RUNNER_TEMP/browser/chrome-linux64/chrome"
+          playwriter="$RUNNER_TEMP/playwriter/node_modules/.bin/playwriter"
+          export CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox
+          browser_exit=0
+          "$python" "$trial/live_check.py" "$trial" "$chrome" "$playwriter" "$result" || browser_exit=$?
+          if [[ ! -s "$result/receipt.json" ]]; then
+            tail -30 "$result/chrome.log" "$result/relay.log" >&2 || true
+            exit "${browser_exit:-1}"
+          fi
+          "$python" - "$result/receipt.json" <<'PY'
+          import json, sys
+          from pathlib import Path
+          report = json.loads(Path(sys.argv[1]).read_text())
+          print("BOOKING_BROWSER", report["browser"])
+          for arm, page in report["pages"].items():
+              for screen in page["screens"]:
+                  frames = [{key: frame[key] for key in (
+                      "phase", "sha256", "pixel_dimensions", "summaryInView", "size"
+                  )} for frame in screen["evidence"]]
+                  print("BOOKING_EVIDENCE", json.dumps({
+                      "arm": arm, "width": screen["width"], "html_sha256": page["html_sha256"],
+                      "checks": screen["checks"], "frames": frames,
+                  }, separators=(",", ":")))
+          PY
+          "$python" "$trial/verify_geometry.py" "$result/receipt.json"
