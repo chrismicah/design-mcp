@@ -1,0 +1,433 @@
+{
+  "calibration": {
+    "coherence": 7,
+    "originality": 4,
+    "craft": 6.5,
+    "usability": 6,
+    "reason": "The repair intake is legible and clearly labeled, but its familiar layout limits originality and misplaced focus after an invalid number impairs recovery."
+  },
+  "screens": {
+    "A-1440": {
+      "coherence": 8.5,
+      "originality": 7.5,
+      "craft": 8,
+      "usability": 8,
+      "primary_action": {
+        "input": "Tab to the specimen radio, ArrowRight to Harriman, then Tab and Enter on Full specimen and Etched detail.",
+        "expected": "Inspect both specimens and return to Harriman etched detail.",
+        "observed": "Both etched photographs remained visible; selection changed the accompanying specimen description and museum link. Full specimen and Etched detail changed both photographs. The final capture shows Harriman selected and Etched detail pressed.",
+        "captures": [
+          "A-1440-before",
+          "A-1440-after"
+        ]
+      },
+      "edge_observation": "About the collection focused the collection section; the next Tab focused View the Harriman museum record. No dedicated Compare with button was present.",
+      "fact_check": "The visible Pitts image has a dark inclusion and Harriman has crossing bands. The Harriman link points to a Smithsonian URL ending in nmnhmineralsciences_1021031; the destination record itself was not opened, so its identity remains unverified.",
+      "strength": "The two labeled photographs make the contrasting structures visible at once, with a clear selected specimen and focus ring.",
+      "weakness": "The view controls sit far below the description, and Trace the bands does not communicate its effect before activation. Its behavior was not tested.",
+      "repair": "Bring the photograph controls closer to the images and explain the trace action's visible result.",
+      "arm": "comparison-selectors",
+      "html_sha256": "ccd9b18bcbd9d387cc0bd8f0cfa8c61b143fe57df15a3e722987b7ff9e7a3283",
+      "weighted": 8.0,
+      "before": {
+        "sha256": "9c8a90d73a111c5bcc37767f273eda21981f3d3a3e1bd104d7d0e084c9824b3f",
+        "file": "A-1440-before.png",
+        "tool_call_id": "item_2"
+      },
+      "after": {
+        "sha256": "d0d9b3580b3ef0e6b4588b22b70315b119d5b37ff8ed0a375ea776e236645b3e",
+        "file": "A-1440-after.png",
+        "tool_call_id": "item_11"
+      },
+      "layout_width": 1425,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        }
+      ]
+    },
+    "A-390": {
+      "coherence": 8,
+      "originality": 7,
+      "craft": 8,
+      "usability": 8,
+      "primary_action": {
+        "input": "Tab to Pitts, ArrowRight to Harriman, then activate Full specimen and Etched detail with Enter.",
+        "expected": "Inspect the details at mobile width and finish on Harriman etched detail.",
+        "observed": "The actual photographs show Pitts's large dark inclusion and Harriman's crossing bands at a legible size. The radio and view controls updated correctly, and the final capture shows Harriman detail.",
+        "captures": [
+          "A-390-before",
+          "A-390-after"
+        ]
+      },
+      "edge_observation": "About the collection focused the collection section; the next Tab focused the Harriman record link. No dedicated Compare with button was present.",
+      "fact_check": "The visual descriptions are supported by the rendered photographs. The linked museum record was not opened and its identity is unverified.",
+      "strength": "The specimen image, name and controls fit the mobile viewport without visible horizontal clipping.",
+      "weakness": "Only the selected photograph remains visible, so comparison requires remembering the other image; the small selector thumbnails offer limited detail.",
+      "repair": "Offer a quick, clearly labeled way to alternate specimens while keeping the image frame stable.",
+      "arm": "comparison-selectors",
+      "html_sha256": "ccd9b18bcbd9d387cc0bd8f0cfa8c61b143fe57df15a3e722987b7ff9e7a3283",
+      "weighted": 7.7,
+      "before": {
+        "sha256": "928f30f2f9f40bee4a7c5e05d65b5bdb5ada2374428998ef53b85da1b4f00d6c",
+        "file": "A-390-before.png",
+        "tool_call_id": "item_20"
+      },
+      "after": {
+        "sha256": "0734a3179f355b806b006197e99a78f1e353a0deb6df7eb62732a105516c1bf8",
+        "file": "A-390-after.png",
+        "tool_call_id": "item_29"
+      },
+      "layout_width": 375,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        }
+      ]
+    },
+    "B-1440": {
+      "coherence": 8,
+      "originality": 7,
+      "craft": 8,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab to Compare with Harriman and press Enter, then Enter on Compare with Pitts and again on Compare with Harriman; activate Full specimen and Etched detail.",
+        "expected": "Switch in both directions while preserving the photograph position, then finish on Harriman etched detail.",
+        "observed": "Both compare directions updated the image, selected specimen, description and button label while focus remained on the button. Before and final captures show the photograph frame in the same position. Full specimen and Etched detail updated the image.",
+        "captures": [
+          "B-1440-before",
+          "B-1440-after"
+        ]
+      },
+      "edge_observation": "About the collection focused the collection section; the next Tab focused View the Harriman museum record.",
+      "fact_check": "The rendered detail images support the inclusion and crossing-band descriptions. The Harriman link points to a Smithsonian URL ending in nmnhmineralsciences_1021031, but the destination record was not opened.",
+      "strength": "The large detail image and reversible compare button support close inspection with stable keyboard focus.",
+      "weakness": "The view controls are separated from the prominent compare action by a large empty area, and the other specimen is absent during each comparison.",
+      "repair": "Group the view controls closer to the compare action and provide a concise reminder of the other specimen's distinguishing feature.",
+      "arm": "fixed-window",
+      "html_sha256": "4981eeec665d7051ffa1ae7400654e474402440be6a28db45a5bd7f9f3162aec",
+      "weighted": 7.8,
+      "before": {
+        "sha256": "e00ff14e8ebbbc33b124d56d34f0dcf7c4fee7a9412280c2c4810305de59b12b",
+        "file": "B-1440-before.png",
+        "tool_call_id": "item_37",
+        "transport": {
+          "mime_type": "image/webp",
+          "sha256": "6a744f1a7c6fcf5917b11f023b90d186cde8aae2df47d876b336e2f61aed70c4"
+        }
+      },
+      "after": {
+        "sha256": "3b9b4e24b91b852087c74c6d8e74c7d4c21938c9cf4e9562030b6d5264fe8b06",
+        "file": "B-1440-after.png",
+        "tool_call_id": "item_48"
+      },
+      "layout_width": 1425,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        }
+      ]
+    },
+    "B-390": {
+      "coherence": 8,
+      "originality": 7,
+      "craft": 8,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab to Compare with Harriman, activate it in both directions, then activate Full specimen and Etched detail.",
+        "expected": "Switch specimens in place and finish on a legible Harriman detail.",
+        "observed": "The compare button changed labels and specimen state in both directions while retaining focus. Before and final captures show the image frame in the same position; Pitts's dark inclusion and Harriman's crossing bands are discernible in the actual images.",
+        "captures": [
+          "B-390-before",
+          "B-390-after"
+        ]
+      },
+      "edge_observation": "About the collection focused the collection section; the next Tab focused the Harriman record link.",
+      "fact_check": "The pictured features are visible. The link label and Smithsonian URL identify the intended Harriman record, but the destination was not opened and correctness is unverified.",
+      "strength": "The prominent compare button makes alternating specimens straightforward, and the detail image is large enough to inspect.",
+      "weakness": "Comparison depends on visual memory because the prior specimen disappears; the thumbnails are too small for detailed inspection.",
+      "repair": "Keep a short distinguishing description of the other specimen available during comparison.",
+      "arm": "fixed-window",
+      "html_sha256": "4981eeec665d7051ffa1ae7400654e474402440be6a28db45a5bd7f9f3162aec",
+      "weighted": 7.8,
+      "before": {
+        "sha256": "f2b232c4635ec8aa76a534dc6152a75777f3d262cb3abb5a54635bb26ec61b45",
+        "file": "B-390-before.png",
+        "tool_call_id": "item_57"
+      },
+      "after": {
+        "sha256": "934c9b97090e44afefbc92a448f6b12502b62ac2df050c87bc2df2c622cd2293",
+        "file": "B-390-after.png",
+        "tool_call_id": "item_68"
+      },
+      "layout_width": 375,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        }
+      ]
+    }
+  },
+  "preference": {
+    "winner": "A",
+    "reason": "A's desktop presentation makes both distinguishing features available together and preserves their labels and context. B's reversible compare control is stronger for keyboard comparison, especially on mobile; the choice reflects the observed task support rather than a preference for a particular number of frames."
+  },
+  "review_limits": "No perceptible delay or clipping was evident in the captured states, but timing was not measured. No loss of specimen context was observed. Record destinations and scientific claims beyond the visible features were not independently verified. The trace actions in A were not exercised.",
+  "case": "specimen-exhibit",
+  "verified_screens": 4,
+  "required_screens": 4,
+  "browser": "Chrome/158.0.8127.36",
+  "evaluator_thread": "01a2069d-13d2-7c53-ac2b-6dd2653a7aa4",
+  "usage": {
+    "input_tokens": 832907,
+    "cached_input_tokens": 785280,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2874,
+    "reasoning_output_tokens": 0
+  },
+  "trace_sha256": "c193d3fccda17790e243f75b5d0af5d046ccb3cec3bd9c5331f6a262a44c2a99",
+  "browser_audit_sha256": "28cc107bb68d22b509661588f37644e6627d76e3c5f2733ed601ebb9bce6eae9",
+  "source": {
+    "date": "2026-11-22",
+    "critic_model": "gpt-6.1-terra",
+    "critic_effort": "low",
+    "captures": ".context/creative-research-2026-11-22/blink-ballot/captures",
+    "task": "You're visiting a natural history exhibit. Compare how the two etched metal specimens differ. Use the keyboard to inspect Pitts and Harriman at both widths. Return to Full specimen, then Etched detail. Look for the dark inclusion on Pitts and the crossing bands on Harriman. Leave the final capture on Harriman Etched detail. If a dedicated Compare with button is available, use it in both directions and record whether the photograph stays in the same position. For the edge after the final capture, use the About the collection link and see whether you can find the correct Harriman museum record with keyboard focus. Grade design and originality independently of whether you prefer two side-by-side frames or one frame, and report evidence of any delay, clipping, delay in finding the controls, or lost specimen context. On mobile verify the actual detail is legible rather than relying on the caption."
+  }
+}

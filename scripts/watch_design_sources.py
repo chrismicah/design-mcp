@@ -1,7 +1,7 @@
 """Collect public design and browser source leads for review."""
 
 from datetime import date, datetime, timedelta, timezone
-from html import escape
+from html import escape, unescape
 import json
 import re
 from time import sleep
@@ -16,23 +16,52 @@ MAX_BYTES = 256_000
 CROSSREF_TYPES = {"journal-article", "proceedings-article", "posted-content"}
 CROSSREF_INTERVAL_SECONDS = 1.25
 HN_API = "https://hacker-news.firebaseio.com/v0"
+CSSDA = "https://www.cssdesignawards.com"
+AWARD_LINK = re.compile(
+    r'<h3\s+class="home-wotd__title">\s*<a\s+href="(/sites/[a-z0-9-]+/[0-9]+/)">([^<]+)</a>',
+    re.I,
+)
+AWARD_DATE = re.compile(r'<h1\s+class="single-website__date">Website Of The Day (\d{4} [A-Za-z]{3} \d{1,2})</h1>')
 SHOW_HN_LOOKUP_LIMIT = 10
 VISUAL_DEMO = re.compile(
     r"\b(?:interactive|design system|visuali[sz]ation|typography|gallery|portfolio|webgl|3d map|exhibit)\b", re.I
 )
 
 
-def fetch_json(url):
-    request = Request(url, headers={"User-Agent": "Design-MCP-source-review", "Accept": "application/json"})
+def fetch_bytes(url, accept):
+    request = Request(url, headers={"User-Agent": "Design-MCP-source-review", "Accept": accept})
     with urlopen(request, timeout=10) as response:
         body = response.read(MAX_BYTES + 1)
     if len(body) > MAX_BYTES:
         raise ValueError("Response exceeded the source review byte limit")
-    return json.loads(body)
+    return body
+
+
+def fetch_json(url):
+    return json.loads(fetch_bytes(url, "application/json"))
+
+
+def fetch_award_page(url):
+    return fetch_bytes(url, "text/html").decode("utf-8")
 
 
 def lead(title, published, url):
     return {"title": " ".join(title.split())[:220], "date": date.fromisoformat(published).isoformat(), "url": url}
+
+
+def read_css_award(today, fetch):
+    winner = AWARD_LINK.search(fetch(f"{CSSDA}/"))
+    if not winner:
+        raise ValueError("Website of the Day link was not found")
+    link, title = winner.groups()
+    url = CSSDA + link
+    award = AWARD_DATE.search(fetch(url))
+    if not award:
+        raise ValueError("Website of the Day date was not found")
+    published = datetime.strptime(award[1], "%Y %b %d").date()
+    if not today - timedelta(days=7) <= published <= today:
+        raise ValueError("Website of the Day date is outside the review window")
+    return [lead(unescape(title), published.isoformat(), url)]
 
 
 def read_release(repo, fetch):
@@ -133,10 +162,11 @@ def source_result(name, read, *arguments):
         return {"source": name, "error": type(error).__name__}
 
 
-def collect(today, fetch=fetch_json, pause=sleep):
+def collect(today, fetch=fetch_json, pause=sleep, fetch_award=fetch_award_page):
     since = today - timedelta(days=90)
     sources = [source_result(repo, read_release, repo, fetch) for repo in RELEASES]
     sources.append(source_result("Show HN visual demos", read_show_hn, today, fetch))
+    sources.append(source_result("CSS Design Awards Website of the Day", read_css_award, today, fetch_award))
     primary_error = None
     crossref_used = False
     for query in RESEARCH:

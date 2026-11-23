@@ -11,6 +11,8 @@ RECEIPTS = ROOT / "evidence" / "benchmark-v1"
 WIDTHS = (1440, 390)
 ARMS = ("v2", "social")
 THRESHOLD = Decimal("9.5")
+MIN_ROUNDS = 5
+MAX_ROUNDS = 15
 
 
 def scores(ballot):
@@ -53,6 +55,10 @@ def gates(pair):
     }
 
 
+def series_closed(rounds, misses):
+    return rounds >= MAX_ROUNDS or (rounds >= MIN_ROUNDS and misses >= 2)
+
+
 def result(case, receipts=RECEIPTS, confirmation=None):
     candidates = []
     for path in receipts.glob(f"social-{case}-live-r*.json"):
@@ -67,6 +73,7 @@ def result(case, receipts=RECEIPTS, confirmation=None):
     series_best = None
     misses = 0
     critic_threads = set()
+    candidate_hashes = set()
     control_hash = candidates[0]["generation"]["v2"]["html_sha256"]
     for expected_round, receipt in enumerate(candidates, start=1):
         if (receipt["source"]["round"] != expected_round or
@@ -80,6 +87,10 @@ def result(case, receipts=RECEIPTS, confirmation=None):
         critic_threads.add(thread)
         pair = scores(ballot)
         verify_builds(pair, receipt["generation"])
+        candidate_hash = receipt["generation"]["social"]["html_sha256"]
+        if candidate_hash == control_hash or candidate_hash in candidate_hashes:
+            raise ValueError("Each round requires a distinct candidate build")
+        candidate_hashes.add(candidate_hash)
         values = [Decimal(str(score)) for score in viewport_scores(pair, "social").values()]
         rank = (min(values), sum(values) / len(values))
         if strongest is None or rank > strongest["rank"]:
@@ -91,6 +102,8 @@ def result(case, receipts=RECEIPTS, confirmation=None):
             series[name] = 0
             series_name = name
             series_best = None
+        elif series_closed(series[name], misses):
+            raise ValueError("This series is closed. Try a distinct design premise in a new series.")
         series[name] += 1
         if series_best is None or rank > series_best:
             series_best = rank
@@ -119,21 +132,26 @@ def result(case, receipts=RECEIPTS, confirmation=None):
             **gates(second),
         }
     active_rounds = series[series_name]
+    minimum_rounds_met = len(candidates) >= MIN_ROUNDS
+    closed = series_closed(active_rounds, misses)
+    next_round = "new premise" if closed else "pivot" if misses else "refine"
     return {
         "scored_rounds": len(candidates),
+        "minimum_rounds_met": minimum_rounds_met,
         "best_round": strongest["round"],
         "best": viewport_scores(best, "social"),
         "paired_control": viewport_scores(best, "v2"),
         **primary_gates,
         "confirmation": confirmation_report,
         "confirmed_score_gate": (
-            all(primary_gates.values()) and confirmation_report is not None and
+            minimum_rounds_met and all(primary_gates.values()) and confirmation_report is not None and
             all(confirmation_report[key] for key in primary_gates)
         ),
         "current_series": series_name,
         "rounds_in_current_series": active_rounds,
         "consecutive_rounds_without_improvement": misses,
-        "series_stopping_rule_met": active_rounds >= 15 or (active_rounds >= 5 and misses >= 2),
+        "series_stopping_rule_met": closed,
+        "next_round": next_round,
     }
 
 

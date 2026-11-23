@@ -21,8 +21,27 @@ class ConfirmationTest(unittest.TestCase):
         self.second = copy.deepcopy(self.primary["ballot"])
         self.second.update(evaluator_thread="fresh", trace_sha256="new-trace", browser_audit_sha256="new-visit")
 
+    def add_round(self, number, score=9.3, *, build=None, series=None):
+        receipt = copy.deepcopy(self.primary)
+        receipt["source"]["round"] = number
+        if series is not None:
+            receipt["source"]["series"] = series
+        receipt["ballot"]["evaluator_thread"] = f"critic-{number}"
+        candidate = build or f"candidate-{number}"
+        receipt["generation"]["social"]["html_sha256"] = candidate
+        for view in receipt["ballot"]["screens"].values():
+            if view["arm"] == "social":
+                view["weighted"] = score
+                view["html_sha256"] = candidate
+        path = self.receipts / f"social-river-live-r{number}.json"
+        path.write_text(json.dumps(receipt), encoding="utf-8")
+
     def test_confirmation_cannot_average_away_a_lower_mobile_score(self):
         self.assertFalse(result("river", self.receipts)["confirmed_score_gate"])
+        for number in range(2, 5):
+            self.add_round(number)
+        self.assertFalse(result("river", self.receipts, self.second)["confirmed_score_gate"])
+        self.add_round(5)
         self.assertTrue(result("river", self.receipts, self.second)["confirmed_score_gate"])
         for key, view in self.second["screens"].items():
             if view["arm"] == "social" and key.endswith("-390"):
@@ -37,15 +56,25 @@ class ConfirmationTest(unittest.TestCase):
             result("river", self.receipts, self.second)
 
     def test_a_pivot_keeps_the_previous_best(self):
-        revision = copy.deepcopy(self.primary)
-        revision["source"].update(round=2, series="floodwall")
-        revision["ballot"]["evaluator_thread"] = "pivot"
-        for view in revision["ballot"]["screens"].values():
-            if view["arm"] == "social":
-                view["weighted"] = 9.3
-        (self.receipts / "social-river-live-r2.json").write_text(json.dumps(revision), encoding="utf-8")
-
+        self.add_round(2, series="floodwall")
         report = result("river", self.receipts)
         self.assertEqual(report["best_round"], 1)
         self.assertEqual(report["current_series"], "floodwall")
         self.assertEqual(report["consecutive_rounds_without_improvement"], 0)
+
+    def test_rejects_a_duplicate_build_even_with_a_fresh_critic(self):
+        self.add_round(2, build=self.primary["generation"]["social"]["html_sha256"])
+        with self.assertRaisesRegex(ValueError, "distinct candidate"):
+            result("river", self.receipts)
+
+    def test_a_stalled_series_requires_a_new_premise(self):
+        self.add_round(2)
+        self.assertEqual(result("river", self.receipts)["next_round"], "pivot")
+        for number in range(3, 6):
+            self.add_round(number)
+        self.assertEqual(result("river", self.receipts)["next_round"], "new premise")
+        self.add_round(6)
+        with self.assertRaisesRegex(ValueError, "series is closed"):
+            result("river", self.receipts)
+        self.add_round(6, series="floodwall")
+        self.assertEqual(result("river", self.receipts)["next_round"], "refine")
