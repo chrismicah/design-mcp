@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Morgan Reyes | Physical therapy in Dayton</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@600&family=Instrument+Sans:wght@400;600;700&display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --navy: #172747;
+      --support: #d7e1fa;
+      --accent: #bfcfff;
+      --ink: #18243a;
+      --paper: #f0f3fa;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Instrument Sans", sans-serif;
+      line-height: 1.5;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--paper);
+      outline-offset: 2px;
+      box-shadow: 0 0 0 6px var(--ink);
+    }
+
+    .intro :focus-visible {
+      outline-color: var(--navy);
+      box-shadow: 0 0 0 6px var(--accent);
+    }
+
+    .intro {
+      background: var(--navy);
+      color: var(--paper);
+    }
+
+    .wrap {
+      width: min(100% - 2rem, 72rem);
+      margin-inline: auto;
+    }
+
+    .intro-inner {
+      padding-block: 1.25rem 1.5rem;
+    }
+
+    .role {
+      margin: 0 0 .35rem;
+      color: var(--support);
+      font-size: .95rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Bodoni Moda", serif;
+      font-size: clamp(2.3rem, 6vw, 4.8rem);
+      font-weight: 600;
+      line-height: 1.05;
+      letter-spacing: -.034em;
+    }
+
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: .75rem 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .call {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 3rem;
+      padding: .65rem 1rem;
+      background: var(--accent);
+      color: var(--ink);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .call:hover { background: #d7e1fa; }
+
+    .details {
+      margin: 0;
+      color: var(--support);
+      font-size: .95rem;
+    }
+
+    .details span { display: block; }
+
+    main { padding-block: 1.5rem 3rem; }
+
+    .layout {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .opening h2 {
+      margin: 0 0 .35rem;
+      font-size: 1.35rem;
+      line-height: 1.2;
+    }
+
+    .opening p {
+      max-width: 50ch;
+      margin: 0;
+    }
+
+    form {
+      border-top: 2px solid var(--ink);
+      padding-top: 1rem;
+    }
+
+    .fields {
+      display: grid;
+      gap: .8rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: .25rem;
+      font-weight: 700;
+    }
+
+    input, select, textarea, button {
+      font: inherit;
+    }
+
+    input, select, textarea {
+      display: block;
+      width: 100%;
+      border: 1px solid var(--ink);
+      border-radius: 0;
+      background: #fff;
+      color: var(--ink);
+      padding: .65rem .7rem;
+    }
+
+    input, select { min-height: 2.85rem; }
+
+    textarea {
+      min-height: 7rem;
+      resize: vertical;
+    }
+
+    .error {
+      margin: .3rem 0 0;
+      color: #8b1927;
+      font-weight: 700;
+    }
+
+    button {
+      min-height: 3rem;
+      border: 0;
+      border-radius: 0;
+      padding: .65rem 1.1rem;
+      background: var(--ink);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      text-align: left;
+    }
+
+    button:hover { background: #304567; }
+
+    .draft {
+      margin-top: 1.5rem;
+      border-left: 4px solid var(--accent);
+      padding: .1rem 0 .1rem 1rem;
+    }
+
+    .draft h2 {
+      margin: 0 0 .3rem;
+      font-size: 1.25rem;
+    }
+
+    .draft p { margin: 0 0 .75rem; }
+
+    .draft:focus { outline: none; }
+    .draft:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 5px;
+      box-shadow: none;
+    }
+
+    @media (min-width: 48rem) {
+      .intro-inner { padding-block: 2.5rem 3rem; }
+      main { padding-block: 3rem 4rem; }
+      .layout {
+        grid-template-columns: minmax(12rem, .8fr) minmax(20rem, 1.2fr);
+        gap: clamp(2rem, 8vw, 8rem);
+      }
+      .fields {
+        grid-template-columns: 1fr 1fr;
+        align-items: end;
+      }
+      .fields button { grid-column: 1 / -1; justify-self: start; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="intro">
+    <div class="wrap intro-inner">
+      <p class="role">Independent physical therapist in Dayton</p>
+      <h1>Morgan Reyes</h1>
+      <div class="contact">
+        <a class="call" href="tel:+19375550127">Call 937-555-0127</a>
+        <p class="details">
+          <span>Office hours: 8 am to 3 pm, weekdays</span>
+          <span>25 Example Lane, Dayton</span>
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="layout">
+      <div class="opening">
+        <h2>Before you call</h2>
+        <p>Prepare a short note about post-surgery or running-injury rehabilitation.</p>
+      </div>
+
+      <div>
+        <form id="note-form" novalidate>
+          <div class="fields">
+            <div>
+              <label for="visit">What would you like to discuss?</label>
+              <select id="visit" name="visit">
+                <option>Knee rehabilitation</option>
+                <option>Running assessment</option>
+              </select>
+            </div>
+            <div>
+              <label for="first-name">First name</label>
+              <input id="first-name" name="first-name" autocomplete="given-name"
+                     aria-describedby="name-error">
+              <p class="error" id="name-error" hidden>Enter your first name to preview your note.</p>
+            </div>
+            <button type="submit">Preview note</button>
+          </div>
+        </form>
+
+        <section class="draft" id="draft" tabindex="-1" hidden>
+          <h2>Your call note draft</h2>
+          <p>Edit this note here before you call. It stays on this page and is not sent.</p>
+          <label for="draft-text">Call note</label>
+          <textarea id="draft-text"></textarea>
+        </section>
+        <p id="status" role="status" class="error"></p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const form = document.getElementById("note-form");
+    const nameField = document.getElementById("first-name");
+    const error = document.getElementById("name-error");
+    const draft = document.getElementById("draft");
+    const draftText = document.getElementById("draft-text");
+    const status = document.getElementById("status");
+
+    nameField.addEventListener("input", () => {
+      if (nameField.value.trim()) {
+        error.hidden = true;
+        nameField.removeAttribute("aria-invalid");
+      }
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const firstName = nameField.value.trim();
+
+      if (!firstName) {
+        error.hidden = false;
+        nameField.setAttribute("aria-invalid", "true");
+        status.textContent = "";
+        nameField.focus();
+        return;
+      }
+
+      error.hidden = true;
+      nameField.removeAttribute("aria-invalid");
+      draftText.value = "Hi, my name is " + firstName +
+        ". I’d like to discuss " +
+        document.getElementById("visit").value.toLowerCase() + ".";
+      draft.hidden = false;
+      status.textContent = "Your call note draft is ready.";
+      draft.focus({ preventScroll: true });
+      draft.scrollIntoView({ behavior: "instant", block: "nearest" });
+    });
+  </script>
+</body>
+</html>

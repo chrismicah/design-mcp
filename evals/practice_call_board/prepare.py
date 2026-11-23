@@ -41,4 +41,17 @@ for key in ("case", "model", "effort", "shell_tool", "prompt_prefix_sha256", "re
 reply = json.dumps(installed["measured_reaction"], ensure_ascii=False, sort_keys=True)
 assert control["reply_sha256"] == sha256(b"null").hexdigest()
 assert repair["reply_sha256"] == sha256(reply.encode()).hexdigest()
+dayton = ROOT / "cells/dayton-physiotherapy/unified-composition"
+if dayton.is_dir():
+    proof = ROOT.parents[1] / "evidence/benchmark-v1/dayton-initial-installed.json"
+    dayton_install = json.loads(proof.read_bytes())
+    row = json.loads((dayton / "receipt.json").read_bytes())
+    assert row["case"] == dayton.parent.name and row["arm"] == dayton.name and row["status"] == "passed"
+    assert row["commit"] == dayton_install["candidate"]
+    assert row["reply_sha256"] == dayton_install["reply_sha256"]
+    assert sha256((dayton / "index.html").read_bytes()).hexdigest() == row["html_sha256"]
+    assert row["html_sha256"] == dayton_install["html_sha256"]
+    assert len(dayton_install["install_receipts"]) == 4
+    print(row["case"], row["arm"], row["html_sha256"])
+
 shutil.copytree(ROOT / "cells", sys.argv[1])
