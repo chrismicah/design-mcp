@@ -214,7 +214,12 @@ def print_report(sources):
     for label, query in (
         ("UI design on X", "UI design filter:images min_faves:200"),
         ("Design engineering on X", "design engineering filter:videos min_faves:200"),
+        ("Micro-interactions on X", "micro-interaction filter:videos min_faves:100"),
+        ("Design details on X", "design details filter:images min_faves:200"),
+        ("Interface critique on X", "interface design critique min_faves:100"),
         ("Redesign comparisons on X", "before and after redesign filter:images min_faves:300"),
+        ("Interface motion on X", "motion design UI filter:videos min_faves:200"),
+        ("Product design breakdowns on X", "product design breakdown filter:images min_faves:150"),
     ):
         params = urlencode({"q": query, "f": "live"})
         print(f"- [{label}](https://x.com/search?{params})")

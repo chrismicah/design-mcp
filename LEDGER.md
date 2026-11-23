@@ -10,6 +10,14 @@
 | Exact README pin on Ventura | `0978712` passed eight clean installs, eight doctor calls and 48 stdio runs on macOS 13.7.4 arm64. The existing VM supplied the OS for a disposable clone with isolated install directories. The clone was stopped and deleted after the run. | [Transcript audit](evidence/benchmark-v1/ventura-tart-0978712.json) |
 | Installed browser image tool and migration | Stdio returned original masked PNGs at 1440 and 390 px. A real 404 returned the documented error. Read-only default operation worked with networking denied and an empty cache. A same-size legacy cache corruption failed its checksum, and repair restored the pinned bytes. | [Image receipts](evidence/benchmark-v1/release-mcp-images-a9e1211.json) · [Cache receipt](evidence/benchmark-v1/release-cache-a9e1211.json) |
 
+## November 23 concept workshop and booking replay
+
+| Lane | Outcome | Accounting and proof |
+| --- | --- | --- |
+| Independent concepts | Astra proposed transit signage, a small bakery scheduling tool, and an oral history exhibit. A separate Luna challenge and Luna revision refined the bakery brief. These rounds evaluated the concepts. | Factory run `bern-creative-concepts`. The successful planner and two concept calls reported 28,618, 12,932 and 11,761 tokens. One file-relative refinement dispatch failed after two attempts. The isolated inline brief resolved the working-directory issue. [Round history](research/CREATIVE-ROUNDS.md#november-23-concept-workshop) |
+| MenuXL reference | Playwriter scrolled twice and selected a project at 1440 and 390 px. The opening and project transitions are distinguished from settled visual evidence. | Ten original PNGs with dimensions, SHA-256 and browser metadata. [Receipt](evidence/benchmark-v1/nov23-menuxl-reference.json) |
+| Connected booking | Fresh installation and exact one-word replay at `37dd4f2` left the day below the fold at 320 × 700. Reverted. | The brief-only initial and revision calls took 60.5 and 58.3 seconds. Receipts contain both token counters, the independent ballot and all 18 fresh browser captures. [Trial](evidence/benchmark-v1/booking-work-order-spacing-trial.json) |
+
 ## Baseline audit
 
 Baseline and fetched `origin/master` both resolved to `82fe6e3749acccf80aecfd523e531be4302865e3`. The workspace branch is `chrismicah/content-quality-audit`. The first section covers work before the product-code approval gate. The audit used light local reads, local probes and public source retrieval, with no paid service or model API calls.

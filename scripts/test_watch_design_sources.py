@@ -91,7 +91,8 @@ class SocialLeadTest(unittest.TestCase):
         links = [line.split("](", 1)[1][:-1] for line in output.getvalue().splitlines()
                  if line.startswith("- [") and ("https://x.com/" in line or "reddit.com/" in line)]
         targets = [urlsplit(link) for link in links]
-        self.assertEqual([target.netloc for target in targets], ["x.com"] * 3 + ["www.reddit.com"])
+        self.assertEqual([target.netloc for target in targets], ["x.com"] * 8 + ["www.reddit.com"])
         queries = [parse_qs(target.query) for target in targets]
         self.assertEqual(queries[0]["q"], ["UI design filter:images min_faves:200"])
+        self.assertEqual(queries[-2]["q"], ["product design breakdown filter:images min_faves:150"])
         self.assertEqual(queries[-1]["t"], ["week"])

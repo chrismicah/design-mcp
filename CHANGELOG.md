@@ -4,6 +4,10 @@
 
 ## Unreleased
 
+- Added a separate concept challenge before building expressive directions. Live critics record the objection each revision addresses. The daily source report now links all eight supplied X searches. [Workflow](DESIGN-HARNESS.md#creative-rounds) · [Workshop and reference replay](research/CREATIVE-ROUNDS.md#november-23-concept-workshop)
+
+- Rejected a calmer booking spacing trial after a fresh installed client left the 320 px result below the fold. [Matched and fresh receipts](evidence/benchmark-v1/booking-work-order-spacing-trial.json)
+
 - Added a daily public design review with recent Show HN demos, research papers, and current award feeds. [Source review](DESIGN-HARNESS.md#recurring-improvement)
 
 - Added X and Reddit browser shortcuts to the daily source report and included interactive calculator leads in the Show HN filter. [Research workflow](DESIGN-HARNESS.md#recurring-improvement)
