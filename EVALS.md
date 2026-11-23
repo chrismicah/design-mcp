@@ -111,6 +111,8 @@ The owner found the River repair's visual style elementary. The new direction us
 
 The first audited shoreline geometry ballot completed all four screens. The repair scored **8.25 at both widths** against **8.15** for its frozen parent. The critic preferred its more compact figure and clearer label position. Both drafts reached the 6 m and 2 m states by keyboard. At 2 m, the unmarked ferry and footbridge statuses were ambiguous, and the three illustration labels still nearly touched on mobile. The repair remains experimental below the 9.5 gate. [Blind live ballot](evidence/benchmark-v1/social-river-shoreline-geometry-first.json)
 
+A separate critic reviewed the follow-up with only the affected crossings listed. It scored **8.35 desktop and 8.10 mobile** against **7.75** at both widths for the frozen shoreline parent. The 2 m state now shows just the path closure, and all three outcomes fit in the first 390 px view at 6 m. The critic found that several callouts covered the part of the shoreline they described. The earlier River round 5 remains the strongest verified draft. [Four live views and screenshot hashes](evidence/benchmark-v1/release-river-closures-blind.json)
+
 The cold-storage runner now verifies that both Design MCP arms use the exact brief as the sole argument to `direct`. A synthetic three-arm run passed with the original brief. Supplying a `dashboard` hint produced the expected direction but failed generation eligibility before any browser or judge ran. The original prompt and parser results matched all 72 archived generator traces across the 36 frozen pairs. The cold-storage visual comparison remains pending. [Generation and replay proof](evidence/benchmark-v1/unhinted-direct-gate.json)
 
 | Candidate | Observed change | Status |

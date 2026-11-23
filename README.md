@@ -96,7 +96,7 @@ The new direction library and the historical pattern data have separate roles. H
 
 ## Verified results
 
-All eight macOS 15 clean-install jobs passed on Intel and Apple Silicon with Python 3.10–3.13. Both installers fetched the exact pinned Git commit, passed `doctor`, and exercised the default, historical and combined stdio surfaces with and without the optional review tool. An earlier branch build also passed the full Apple Silicon matrix in a Ventura 13.7.4 Tart guest. Intel Ventura runtime verification remains open. [Exact install and review matrix](evidence/benchmark-v1/release-ci-a9e1211.json) · [Ventura status](evidence/benchmark-v1/TART.md)
+All eight macOS 15 clean-install jobs passed on Intel and Apple Silicon with Python 3.10–3.13. Both installers fetched the exact pinned Git commit, passed `doctor`, and exercised the default, historical and combined stdio surfaces with and without the optional review tool. The same pin also passed all eight installs in a fresh Apple Silicon Ventura 13.7.4 Tart guest. Intel Ventura runtime verification remains open. [macOS 15 matrix](evidence/benchmark-v1/release-ci-a9e1211.json) · [Ventura matrix](evidence/benchmark-v1/ventura-tart-a9e1211.json)
 
 All 36 matched design briefs have blinded scores. The plain generator averaged 92.7 and frozen Design MCP v2 averaged 94.1, with 17 wins, 11 ties, and eight losses. The paired 95% interval of −0.46 to +3.13 points leaves the average advantage inconclusive. [Benchmark and receipts](EVALS.md)
 

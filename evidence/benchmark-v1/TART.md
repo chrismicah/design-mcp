@@ -1,6 +1,10 @@
 # Fresh Mac verification
 
-The first fresh Tart guest booted **macOS 13.7.4 on Apple Silicon**. Both installers fetched `b868307` directly from Git with Python 3.10, 3.11, 3.12, and 3.13. The transcript audit verified eight source-pinned installs, eight `doctor` results, and 24 stdio runs covering the default and combined surfaces and the opt-in review refusal. The pinned version in the README passed the hosted macOS 15 matrix. Intel Ventura runtime coverage is still open. [Fresh Tart transcript audit](ventura-tart-b868307.json) · [Current macOS 15 matrix](release-ci-a9e1211.json)
+The README pin `a9e1211` passed in a freshly cloned **macOS 13.7.4 arm64 Tart guest**. Both installers fetched the exact commit on Python 3.10 through 3.13. The transcript audit verified eight pinned installs, eight passing `doctor` calls and 48 stdio runs across all supported modes. This covers the opt-in URL refusal path. Intel Ventura runtime remains open. [Exact Ventura transcript audit](ventura-tart-a9e1211.json) · [Exact macOS 15 matrix](release-ci-a9e1211.json)
+
+An earlier fresh Tart guest verified eight installs and 24 stdio runs against `b868307`, using an earlier set of smoke commands. [First Ventura transcript audit](ventura-tart-b868307.json)
+
+## Earlier attempts
 
 The hosted matrix covers both Mac CPU architectures on macOS 15. The shared clean-install script passed all eight hosted jobs. Use that script for each interpreter inside a fresh Tart guest. Record the image digest, guest `sw_vers`, `uname -m`, exact checkout SHA, both installer results, and the 17-tool smoke output. Tart runs on Apple Silicon. The Intel evidence comes from the hosted Intel runner. [Shared-script verification](https://github.com/chrismicah/design-mcp/actions/runs/44988412952) · [Tart documentation](https://tart.run/quick-start/)
 

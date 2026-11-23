@@ -1,0 +1,231 @@
+{
+  "calibration": {
+    "coherence": 7,
+    "originality": 4,
+    "craft": 6,
+    "usability": 6,
+    "reason": "Clear labels and legibility support the task, while the familiar layout limits originality and misplaced focus after invalid input harms recovery."
+  },
+  "screens": {
+    "A-1440": {
+      "coherence": 8,
+      "originality": 7.5,
+      "craft": 8,
+      "usability": 7.5,
+      "primary_action": {
+        "input": "Tab, then ArrowRight from the default 4 m radio",
+        "expected": "Select 6 m and show path, ferry and footbridge closures.",
+        "observed": "6 m received visible focus; Riverside path was Closed, Ferry Stopped, and Footbridge Closed."
+      },
+      "edge_observation": "Two ArrowLeft presses selected 2 m. Only the path had a closure label, but ferry and footbridge remained in the list without statuses.",
+      "fact_check": "The figure caption and selected marker say 6 m, and the shoreline advances compared with 4 m. Actual local closure thresholds and water levels were not independently verified.",
+      "strength": "A clear two-column composition pairs a legible result with an evocative shoreline illustration.",
+      "weakness": "Under a heading describing closures, unlabeled ferry and footbridge rows at 2 m make their status ambiguous.",
+      "repair": "Show only active closures, or explicitly label the other crossings as unaffected.",
+      "arm": "original",
+      "html_sha256": "90e4f17c5c6d1ecf6642bfc1d1e3040f5612f301871326e2726165d00ced44d2",
+      "weighted": 7.75,
+      "before": {
+        "sha256": "bfc35199c24e81e5947bc888dcbfcfdc16c55df97be38e92b69a8af42c5277cc",
+        "file": "A-1440-before.png",
+        "tool_call_id": "item_2"
+      },
+      "after": {
+        "sha256": "cefa0ab0290e6f4d5fb9c10803ca213ea99dc47ddff0cbce4249fa108564cb99",
+        "file": "A-1440-after.png",
+        "tool_call_id": "item_5"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ]
+    },
+    "A-390": {
+      "coherence": 8,
+      "originality": 7.5,
+      "craft": 8,
+      "usability": 7.5,
+      "primary_action": {
+        "input": "Tab, then ArrowRight from 4 m",
+        "expected": "Select 6 m and show all three closure results.",
+        "observed": "All three results, the shoreline, and the 6 m caption were readable within the first 390 by 844 CSS-pixel viewport."
+      },
+      "edge_observation": "Two ArrowLeft presses selected 2 m; only the path had a closure label, while ferry and footbridge remained as unlabeled rows.",
+      "fact_check": "The selected 6 m control, heading, marker and figure caption agree; the shoreline visibly changes from 4 m. Real-world conditions remain unverified.",
+      "strength": "The stacked layout keeps the full result and illustration visible without scrolling.",
+      "weakness": "The 2 m list includes crossings with no stated status under a closures heading.",
+      "repair": "Filter the list to active closures or provide explicit unaffected statuses.",
+      "arm": "original",
+      "html_sha256": "90e4f17c5c6d1ecf6642bfc1d1e3040f5612f301871326e2726165d00ced44d2",
+      "weighted": 7.75,
+      "before": {
+        "sha256": "896051f794803020da13950ac25ade9ef2bc569d54a03e25a7d0cfb421aa64d5",
+        "file": "A-390-before.png",
+        "tool_call_id": "item_9"
+      },
+      "after": {
+        "sha256": "560ca97226b2015ca7ff6e0b60a2ed12b5d84bd58033fec08db0344304680a33",
+        "file": "A-390-after.png",
+        "tool_call_id": "item_12"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ]
+    },
+    "B-1440": {
+      "coherence": 8.5,
+      "originality": 8,
+      "craft": 8.5,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab, then ArrowRight from 4 m",
+        "expected": "Select 6 m and show path, ferry and footbridge closures.",
+        "observed": "6 m received visible focus and the list showed path Closed, ferry Stopped and footbridge Closed."
+      },
+      "edge_observation": "Two ArrowLeft presses selected 2 m; the list contained only Riverside path Closed.",
+      "fact_check": "The caption and highlighted 6 m callout agree with the selected control and heading. The shoreline changes from 4 m, though its curved edge does not meet the 6 m marker uniformly. Actual local conditions were not independently verified.",
+      "strength": "Named callouts connect each threshold to its crossing, while the list contains only active closures.",
+      "weakness": "The stylized, curved shoreline makes the exact relationship between its edge and the selected marker somewhat difficult to read.",
+      "repair": "Clarify the marker-to-water relationship with a consistent reference line or short legend.",
+      "arm": "repair",
+      "html_sha256": "4212602c76d4a0972ce980dea1a4c98f71a667632c873ab1a000130a9f9b602a",
+      "weighted": 8.35,
+      "before": {
+        "sha256": "7798ee53a43f9f274956f6ef1a646ccd84194c5d50295b4e4f1cfc25c019fa5f",
+        "file": "B-1440-before.png",
+        "tool_call_id": "item_17"
+      },
+      "after": {
+        "sha256": "72ae6cb09560c27ebacddf129ff41dee8edc431c9eacabbe048ec3fbc5ef3cca",
+        "file": "B-1440-after.png",
+        "tool_call_id": "item_20"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ]
+    },
+    "B-390": {
+      "coherence": 8,
+      "originality": 8,
+      "craft": 8,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab, then ArrowRight from 4 m",
+        "expected": "Select 6 m and show all three closure results.",
+        "observed": "All three closure rows, the labeled shoreline and the 6 m caption were readable within the first 390 by 844 CSS-pixel viewport."
+      },
+      "edge_observation": "Two ArrowLeft presses selected 2 m; the list contained only Riverside path Closed.",
+      "fact_check": "The heading, selected radio, highlighted callout and figure caption all state 6 m; the shoreline changes from 4 m. Real-world conditions remain unverified.",
+      "strength": "The complete result fits on screen and the callouts identify the crossings.",
+      "weakness": "Callout boxes occupy much of the small illustration and obscure parts of the shoreline.",
+      "repair": "Use a more compact mobile annotation arrangement while retaining the crossing names.",
+      "arm": "repair",
+      "html_sha256": "4212602c76d4a0972ce980dea1a4c98f71a667632c873ab1a000130a9f9b602a",
+      "weighted": 8.1,
+      "before": {
+        "sha256": "3c4e9c28736d9bb1f72a57a66fdb4ac3c2f7eb7d239041ca6e095c5adfbe5eed",
+        "file": "B-390-before.png",
+        "tool_call_id": "item_24"
+      },
+      "after": {
+        "sha256": "1c2f78fb1d47707fed329118e78af6d0cc2e51c2a5a620e227e9f686edb141a4",
+        "file": "B-390-after.png",
+        "tool_call_id": "item_27"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ]
+    }
+  },
+  "preference": {
+    "winner": "B",
+    "reason": "Both versions support the keyboard task and fit the complete 6 m result in the tested mobile viewport. B correctly limits the 2 m closure list to the path and connects thresholds to named crossings in the illustration, despite somewhat crowded mobile callouts."
+  },
+  "case": "social-river",
+  "verified_screens": 4,
+  "required_screens": 4,
+  "browser": "Chrome/158.0.8127.36",
+  "evaluator_thread": "01a20609-a495-7b02-ba45-d184da25e7d0",
+  "usage": {
+    "input_tokens": 545301,
+    "cached_input_tokens": 522880,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2261,
+    "reasoning_output_tokens": 0
+  },
+  "trace_sha256": "c9e31c61d0ed87936f88031f3b3e29958c8ed44a8af02a6c1e2eb2225769cfb4",
+  "browser_audit_sha256": "11016c32b7bf0aa016618077952153dbc396c7a2f6c3f75d6ff9c0617f2699d6",
+  "capture_directory": ".context/release-five-hour/river-closures-ballot/captures",
+  "experiment": "Same frozen brief and exact shoreline parent. Targeted repair, distinct from a retrieval comparison."
+}

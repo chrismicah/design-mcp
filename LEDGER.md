@@ -6,7 +6,8 @@
 | --- | --- | --- |
 | Native Chrome | GPT Computer Use exercised the installed `a9e1211` active-tab and pasted-URL paths. Captures survived reload. The failure case kept the review folder unchanged and returned focus to the address field. | [Native walkthrough](evidence/benchmark-v1/release-native-chrome-a9e1211.json) |
 | Mac package and desktop CI | Exact Git pin passed 16 fresh installs across both architectures and all four Python versions on macOS 15. Fresh SwiftUI and Electron captures verified their expected state changes. Local source suite passed 543 tests and 120 subtests. | [Exact CI and artifact hashes](evidence/benchmark-v1/release-ci-a9e1211.json) |
-| Fresh Ventura guest | The arm64 Tart guest ran macOS 13.7.4. The older `b868307` candidate passed eight source-pinned installs and 24 stdio runs. | [Transcript audit](evidence/benchmark-v1/ventura-tart-b868307.json) |
+| Fresh Ventura guest | The exact `a9e1211` pin passed eight clean installs, eight doctor calls and 48 stdio runs in a fresh macOS 13.7.4 arm64 guest. Intel Ventura runtime remains open. | [Transcript audit](evidence/benchmark-v1/ventura-tart-a9e1211.json) |
+| Installed browser image tool and migration | Stdio returned original masked PNGs at 1440 and 390 px. A real 404 returned the documented error. Read-only default operation worked with networking denied and an empty cache. A same-size legacy cache corruption failed its checksum, and repair restored the pinned bytes. | [Image receipts](evidence/benchmark-v1/release-mcp-images-a9e1211.json) · [Cache receipt](evidence/benchmark-v1/release-cache-a9e1211.json) |
 
 ## Baseline audit
 
