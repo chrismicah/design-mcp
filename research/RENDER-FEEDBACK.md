@@ -22,3 +22,11 @@ With a warm stdio connection on the shared arm64 Mac, the trial's 30 measured re
 ## Clean install replay
 
 Both pipx and uv reproduced the exact measured reply and all six unchanged reaction cases on macOS 15 with Python 3.13, on Intel and Apple Silicon. Intel passed after one rerun. The first attempt passed the default stdio checks and timed out during a combined-surface tool call. The first log leaves the tool name unknown. [Install receipts](../evidence/benchmark-v1/opening-view-reaction-installed.json) · [Hosted run](https://github.com/chrismicah/design-mcp/actions/runs/45280229322/attempts/2)
+
+## Matched repair outcome
+
+Both low-effort Terra sessions received the same frozen Tacoma page and the same repair brief. The only prompt change was the installed measured reply in the treatment. The browser replay verified unedited HTML and all original frame hashes.
+
+At 320 × 700 the frozen preview ended at 867.66 px. The control placed the call-preparation area before the separate service list and ended at 627.39 px. The measured arm kept the separate list above the form and ended at 740.47 px. The name field fit in both. At 390 and 1440 px both revisions passed. All six keyboard journeys recovered from a blank name, kept the service choice, produced an editable reminder, and sent zero post-load requests. Generation took 59.09 seconds and 3,060 output tokens for the control, and 57.22 seconds and 2,976 output tokens for the measured arm. The treatment added 227 input tokens in this pair.
+
+Decision: keep the measured reaction on its trial branch. It improved the frozen page and missed the opening action that the matched control reached. The score gate stays open. A stronger follow-up should test whether giving the model a task-specific replacement for the repeated service list helps over the same ordinary repair, and should use a different holdout before any promotion. [Matched browser results](../evidence/benchmark-v1/opening-view-reaction-comparison.json) · [Original Chrome artifact](https://github.com/chrismicah/design-mcp/actions/runs/45282461449)
