@@ -191,3 +191,15 @@ The static tell sweep returned zero recognized findings. The source checker does
 All 307 tests passed. Stdio smoke exercised all 17 tools in `both`, all 14 in `legacy`, and all three in `v2`. `react` with “calmer” returned a bounded revision for this direction over stdio. A live revised render remains pending. [Test log](evidence/rebuild/live-smoke/pytest.log) · [Both](evidence/rebuild/live-smoke/stdio-both-annotations.json) · [Legacy](evidence/rebuild/live-smoke/stdio-legacy-annotations.json) · [V2](evidence/rebuild/live-smoke/stdio-v2-annotations.json)
 
 The shared Mac reported 30.31 GiB free and memory pressure level 2. Its resource gate declined the batch browser captures and fresh package build. The six-brief comparison, corpus cull and expansion, adversarial rerun and fresh-clone smoke are open. Conductor declined a new Astra session at the same pressure level.
+
+### Hosted Chrome toolbar activation
+
+On `6a64796`, Chrome loaded the synthetic dispatch fixture and exposed its
+seeded field in the debugging session. The OS shortcut produced no toolbar
+popup during the ten-second observation window. The run stopped before
+scanning. The revised harness finds the visible window by Chrome PID and
+fixture title, checks X11 focus immediately before sending the shortcut,
+and records bounded retries when no popup appears. The pasted-URL path
+also verifies that it opens a fresh popup after the first one closes.
+Both journeys still have to save a review and pass the masking and keyboard
+checks. [Failed job and receipt](https://github.com/chrismicah/design-mcp/actions/runs/45164010853/job/137656215286)

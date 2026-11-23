@@ -77,6 +77,11 @@ jobs:
           proof = json.loads(proof_path.read_text())
           assert proof['passed'], proof
           assert proof['profileHistoryVerified'], proof
+          activations = proof['toolbarActivations']
+          assert [item['flow'] for item in activations] == ['active tab', 'pasted URL'], activations
+          assert all(1 <= len(item['attempts']) <= 3 for item in activations), activations
+          assert len({item['windowId'] for item in activations}) == 1, activations
+          assert len({item['targetId'] for item in activations}) == 2, activations
           preview = Path(proof['previewFolder'])
           evidence = preview/'evidence.json'
           html = (preview/'preview.html').read_text()

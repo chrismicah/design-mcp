@@ -26,6 +26,7 @@ const profile = join(output, "chrome-profile");
 const debugLog = openSync(join(output, "browser.log"), "w");
 const browser = spawn(chrome, [
   `--user-data-dir=${profile}`, "--no-first-run", "--no-default-browser-check",
+  "--ozone-platform=x11",
   "--disable-background-networking", "--disable-sync", "--disable-component-update",
   `--disable-extensions-except=${extension}`, `--load-extension=${extension}`,
   "--remote-debugging-port=0", "--remote-debugging-address=127.0.0.1",
@@ -106,19 +107,48 @@ try {
     const r = field.getBoundingClientRect();
     return {x:r.x,y:r.y,width:r.width,height:r.height,viewport:[innerWidth,innerHeight]};
   })()`));
-  // The page can be ready in CDP before the window title is visible to X11.
-  const windowId = await until("visible dispatch fixture window", () => {
-    try {
-      return execFileSync("xdotool", ["search", "--onlyvisible", "--name", "Evening shuttle dispatch"],
-        { encoding: "utf8" }).trim().split("\n")[0];
-    } catch (error) {
-      if (error.status !== 1 || error.signal) throw error;
-      return undefined;
-    }
-  });
-  execFileSync("xdotool", ["windowfocus", "--sync", windowId]);
-  key("ctrl+shift+y");
-  const target = await until("toolbar popup", () => findTarget(item => /^chrome-extension:\/\/[a-p]{32}\/popup\.html$/.test(item.url)));
+  const isPopup = item => /^chrome-extension:\/\/[a-p]{32}\/popup\.html$/.test(item.url);
+  proof.toolbarActivations = [];
+  async function openToolbarPopup(flow) {
+    await send("Target.activateTarget", { targetId: fixturePage.targetId });
+    // CDP can report the page before the X11 top-level window is visible.
+    const windowId = await until("visible dispatch fixture window", () => {
+      try {
+        const ids = execFileSync("xdotool", ["search", "--onlyvisible", "--all", "--pid",
+          String(browser.pid), "--name", "^Evening shuttle dispatch($| - )"],
+        { encoding: "utf8" }).trim().split("\n");
+        assert.equal(ids.length, 1, "Expected one visible window for the launched fixture");
+        return ids[0];
+      } catch (error) {
+        if (error.status !== 1 || error.signal) throw error;
+        return undefined;
+      }
+    });
+
+    const activation = { flow, windowId, attempts: [] };
+    proof.toolbarActivations.push(activation);
+    let lastAttempt = -Infinity;
+    return until(`toolbar popup for ${flow}`, async () => {
+      const popupTarget = await findTarget(isPopup);
+      if (popupTarget) {
+        assert.ok(activation.attempts.length, "The journey must open a new popup using the shortcut");
+        activation.targetId = popupTarget.targetId;
+        return popupTarget;
+      }
+      // Retry the real shortcut only while there is still no popup to inspect.
+      if (activation.attempts.length < 3 && performance.now() - lastAttempt >= 2500) {
+        execFileSync("xdotool", ["windowfocus", "--sync", windowId], { timeout: 2000 });
+        const focused = execFileSync("xdotool", ["getwindowfocus"], { encoding: "utf8" }).trim();
+        assert.equal(focused, windowId, "Shortcut would go to a different X11 window");
+        const pageFocused = await inspect(fixtureSession, "document.hasFocus()");
+        activation.attempts.push({ pageFocused });
+        key("ctrl+shift+y");
+        lastAttempt = performance.now();
+      }
+      return null;
+    });
+  }
+  const target = await openToolbarPopup("active tab");
   const extensionId = new URL(target.url).hostname;
   proof.extensionId = extensionId;
   const popup = await attach(target);
@@ -187,10 +217,10 @@ try {
 
   if (pastedUrlProof) {
     // Exercise URL validation in the actual toolbar popup before entering the URL flow.
-    await send("Target.activateTarget", { targetId: fixturePage.targetId });
-    key("ctrl+shift+y");
-    const urlPopupTarget = await until("toolbar popup for pasted URL proof", () => findTarget(item =>
-      /^chrome-extension:\/\/[a-p]{32}\/popup\.html$/.test(item.url)));
+    await until("the active-tab toolbar popup to close", async () => !await findTarget(isPopup));
+    const urlPopupTarget = await openToolbarPopup("pasted URL");
+    assert.equal(new URL(urlPopupTarget.url).hostname, extensionId);
+    assert.notEqual(urlPopupTarget.targetId, target.targetId);
     const urlPopup = await attach(urlPopupTarget);
     const urlState = () => inspect(urlPopup, `(() => ({
       state: document.body?.dataset.state,
