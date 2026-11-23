@@ -31,6 +31,7 @@ jobs:
         run: |
           python evals/practice_call_board/prepare.py "$RUNNER_TEMP/cells"
           python evals/practice_startup/prepare.py "$RUNNER_TEMP/startup-cells"
+          python evals/practice_startup/prepare.py "$RUNNER_TEMP/startup-live-cells"
           python -m venv "$RUNNER_TEMP/design-review"
           "$RUNNER_TEMP/design-review/bin/python" -m pip install .
           npm install --ignore-scripts --prefix "$RUNNER_TEMP/playwriter" playwriter@0.12.0
@@ -61,6 +62,15 @@ jobs:
             --chrome "$RUNNER_TEMP/browser/chrome-linux64/chrome" \
             --scratch "$RUNNER_TEMP/startup-browser"
           python evals/practice_startup/verify.py "$RUNNER_TEMP/startup-cells"
+          PRACTICE_RENDER_HARNESS="$GITHUB_WORKSPACE/browser-harness/evals/wellcome_replay" \
+          PRACTICE_FONT_MODE=live \
+          CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox \
+          "$RUNNER_TEMP/design-review/bin/python" evals/practice_startup/playback.py \
+            --cells "$RUNNER_TEMP/startup-live-cells" \
+            --playwriter "$RUNNER_TEMP/playwriter/node_modules/.bin/playwriter" \
+            --chrome "$RUNNER_TEMP/browser/chrome-linux64/chrome" \
+            --scratch "$RUNNER_TEMP/startup-live-browser"
+          python evals/practice_startup/verify.py "$RUNNER_TEMP/startup-live-cells" live
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
@@ -72,4 +82,10 @@ jobs:
         with:
           name: practice-font-startup-receipts
           path: ${{ runner.temp }}/startup-cells
+          retention-days: 14
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: practice-font-startup-live-receipts
+          path: ${{ runner.temp }}/startup-live-cells
           retention-days: 14

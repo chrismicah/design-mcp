@@ -10,6 +10,8 @@ def read(path):
     return json.loads(path.read_bytes())
 
 root = Path(sys.argv[1])
+mode = sys.argv[2] if len(sys.argv) > 2 else "synthetic"
+assert mode in {"synthetic", "live"}
 summary = {}
 for case in ("dayton-physiotherapy", "tacoma-eye-care"):
     versions = {}
@@ -30,6 +32,9 @@ for case in ("dayton-physiotherapy", "tacoma-eye-care"):
         assert png.startswith(b"\x89PNG\r\n\x1a\n") and struct.unpack(">II", png[16:24]) == (390, 844)
         assert sha256(png).hexdigest() == capture["sha256"]
         assert capture["released"]["first_contentful_paint_ms"] is not None
+        assert capture.get("fontMode", "synthetic") == mode
+        if mode == "live":
+            assert {"Bodoni Moda", "Instrument Sans"} <= set(capture["loadedFamilies"])
         held = capture["held"]
         usable = (held["first_contentful_paint_ms"] is not None and held["call_focused"] and
                   held["call_in_view"] and held["heading_in_view"])

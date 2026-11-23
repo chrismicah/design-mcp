@@ -13,7 +13,11 @@ try {
     fontRequests += 1;
     interceptedFont();
     await fontGate;
-    await route.fulfill({status: 200, contentType: "text/css", body: "/* deterministic font fixture */"});
+    if (spec.fontMode === "live") {
+      await route.continue();
+    } else {
+      await route.fulfill({status: 200, contentType: "text/css", body: "/* deterministic font fixture */"});
+    }
   });
   await page.goto(spec.url, {waitUntil: "commit"});
   await Promise.race([
@@ -49,8 +53,15 @@ try {
   await page.waitForLoadState("load");
   await page.waitForFunction(() => performance.getEntriesByName("first-contentful-paint").length === 1);
   const released = await page.evaluate(inspect);
+  const loadedFamilies = await page.evaluate(async () => {
+    await document.fonts.ready;
+    return [...new Set([...document.fonts].filter(font => font.status === "loaded").map(font => font.family))];
+  });
+  if (spec.fontMode === "live" && !["Bodoni Moda", "Instrument Sans"].every(family => loadedFamilies.includes(family))) {
+    throw new Error("Final font families unavailable: " + loadedFamilies.join(", "));
+  }
   await page.screenshot({path: spec.shot, animations: "disabled"});
-  console.log("STARTUP_RESULT " + JSON.stringify({held, released, pending, fontRequests, errors}));
+  console.log("STARTUP_RESULT " + JSON.stringify({held, released, pending, fontRequests, errors, loadedFamilies, fontMode: spec.fontMode}));
 } finally {
   releaseFont();
   await page.close();

@@ -15,7 +15,8 @@ render.VIEWPORTS = ((390, 844),)
 
 async def capture(client, cell, width, height, url, _interact, **_options):
     shot = cell / f"{width}.png"
-    args = json.dumps({"width": width, "height": height, "url": url, "shot": str(shot)})
+    args = json.dumps({"width": width, "height": height, "url": url, "shot": str(shot),
+                       "fontMode": os.environ.get("PRACTICE_FONT_MODE", "synthetic")})
     response = await render.execute(client, f"const spec = {args};\n" + (ROOT / "startup.js").read_text())
     line = next((line for line in response.splitlines() if "STARTUP_RESULT " in line), None)
     if line is None or not shot.is_file():
