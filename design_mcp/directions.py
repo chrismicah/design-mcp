@@ -170,6 +170,17 @@ async def direct(brief: str, surface: Surface | None = None, avoid: list[str] | 
             keyboard="Use native controls in reading order. On invalid submission, preserve entries and focus the first "
                      "invalid input. Mark each invalid field aria-invalid and link its correction text with aria-describedby.",
         )
+    if choice.id == "artifact-inspection":
+        output["handoff"] += (
+            " If a verified crop is supplied, display it undistorted. For a normalized source point (x,y) "
+            "in a full image, measure the opened crop frame (W,H) and decoded image (Nw,Nh). "
+            "Use scale s above max(W/Nw,H/Nh) for magnification. Set image width w=Nw*s and height h=Nh*s. "
+            "In an overflow-hidden relative frame place the absolute image at "
+            "left=max(W-w,min(0,W/2-x*w)) and top=max(H-h,min(0,H/2-y*h)). "
+            "Use CSS pixel units and recalculate on open and resize. Check the actual target inside the crop "
+            "and its annotation in view at phone and desktop widths. If no location is verified, keep the "
+            "whole image and a sourced description."
+        )
     if choice.id == "service-work-order":
         output["interaction"].update(
             keyboard="Announce the selection through the one visible status. Keep it next to the chooser on desktop "

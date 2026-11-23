@@ -245,3 +245,16 @@ async def test_calmer_keeps_the_operational_exception_as_the_focal_point(reactio
     assert "its status in the queue" in accent
     assert "secondary controls" in accent
     assert "status labeled in words" in accent
+
+
+@pytest.mark.asyncio
+async def test_artifact_inspection_handoff_checks_a_measured_crop():
+    brief = "Inspect the maker's mark on this antique compass."
+    reply = await direct(brief)
+    assert "decoded image" in reply["handoff"]
+    assert "left=max(W-w,min(0,W/2-x*w))" in reply["handoff"]
+    assert "top=max(H-h,min(0,H/2-y*h))" in reply["handoff"]
+    assert "recalculate on open and resize" in reply["handoff"]
+    assert len(json.dumps(reply, ensure_ascii=False)) <= 6000
+    retail = await direct(brief, surface="landing")
+    assert "decoded image" not in retail["handoff"]
