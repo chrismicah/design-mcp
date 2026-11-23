@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lena Ortiz | Optometrist in Tacoma</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@600&family=Instrument+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #172747;
+      --pale: #d7e1fa;
+      --accent: #bfcfff;
+      --ink: #18243a;
+      --paper: #f0f3fa;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { background: var(--paper); }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Instrument Sans", sans-serif;
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    h1, h2, p { margin-top: 0; }
+
+    h1, h2 {
+      font-family: "Bodoni Moda", Georgia, serif;
+      font-weight: 600;
+      letter-spacing: -0.034em;
+      line-height: 1.12;
+    }
+
+    a, button, input, select, textarea { font: inherit; }
+
+    :focus-visible {
+      outline: 2px solid var(--paper);
+      outline-offset: 2px;
+      box-shadow: 0 0 0 6px var(--ink);
+    }
+
+    .intro :focus-visible {
+      outline-color: var(--navy);
+      box-shadow: 0 0 0 6px var(--paper);
+    }
+
+    .wrap {
+      width: min(100% - 2.5rem, 72rem);
+      margin-inline: auto;
+    }
+
+    .intro {
+      background: var(--navy);
+      color: var(--paper);
+    }
+
+    .intro-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(14rem, 0.65fr);
+      gap: clamp(2.5rem, 7vw, 7rem);
+      align-items: end;
+      padding-block: clamp(2rem, 5vw, 4.5rem) clamp(2.5rem, 6vw, 5rem);
+    }
+
+    .identity {
+      margin-bottom: 1.5rem;
+      color: var(--pale);
+      font-weight: 600;
+    }
+
+    h1 {
+      max-width: 12ch;
+      margin-bottom: 1rem;
+      font-size: clamp(3rem, 7vw, 6.4rem);
+    }
+
+    .intro-copy {
+      max-width: 34rem;
+      margin-bottom: 1.5rem;
+      color: var(--pale);
+      font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+    }
+
+    .call {
+      display: inline-flex;
+      min-height: 3.25rem;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.15rem;
+      border: 2px solid var(--accent);
+      background: var(--accent);
+      color: var(--ink);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .call:hover { background: var(--paper); border-color: var(--paper); }
+
+    .hours {
+      margin: 0.8rem 0 0;
+      color: var(--pale);
+      font-size: 0.95rem;
+    }
+
+    .signature {
+      border-top: 1px solid var(--pale);
+      padding-top: 1.2rem;
+      color: var(--pale);
+    }
+
+    .signature strong {
+      display: block;
+      color: var(--paper);
+      font-family: "Bodoni Moda", Georgia, serif;
+      font-size: 1.6rem;
+      line-height: 1.2;
+    }
+
+    .signature p { margin: 0.55rem 0 0; }
+
+    .content {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+      gap: clamp(3rem, 9vw, 9rem);
+      padding-block: clamp(3rem, 7vw, 6rem);
+    }
+
+    h2 {
+      margin-bottom: 1.3rem;
+      font-size: clamp(2rem, 3vw, 3rem);
+    }
+
+    .services ul {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid var(--ink);
+    }
+
+    .services li {
+      min-height: 4.5rem;
+      display: flex;
+      align-items: center;
+      padding: 1rem 2rem 1rem 0;
+      border-bottom: 1px solid var(--ink);
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .services ul::after {
+      content: "";
+      position: absolute;
+      right: 0.3rem;
+      top: 50%;
+      width: 1.35rem;
+      height: 1.35rem;
+      border: 1px solid var(--ink);
+      border-radius: 75% 15%;
+      transform: translateY(-50%) rotate(45deg);
+      background: var(--paper);
+    }
+
+    .reminder > p { max-width: 36rem; }
+
+    form { margin-top: 1.75rem; }
+
+    .field { margin-bottom: 1.25rem; }
+
+    label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 700;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid var(--ink);
+      border-radius: 0;
+      background: #fff;
+      color: var(--ink);
+    }
+
+    input, select {
+      min-height: 3rem;
+      padding: 0.65rem 0.75rem;
+    }
+
+    textarea {
+      min-height: 8rem;
+      padding: 0.75rem;
+      resize: vertical;
+    }
+
+    .error {
+      margin: 0.4rem 0 0;
+      color: #8b1d2c;
+      font-weight: 700;
+    }
+
+    [hidden] { display: none !important; }
+
+    button {
+      min-height: 3.25rem;
+      padding: 0.7rem 1.1rem;
+      border: 2px solid var(--ink);
+      border-radius: 0;
+      background: var(--ink);
+      color: var(--paper);
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    button:hover { background: var(--navy); }
+
+    .draft {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--ink);
+    }
+
+    .draft h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .draft p { margin-bottom: 1rem; }
+
+    @media (max-width: 650px) {
+      .wrap { width: min(100% - 2rem, 72rem); }
+      .intro-inner { display: block; padding-block: 1.5rem 2.5rem; }
+      .identity { margin-bottom: 1rem; }
+      h1 { font-size: clamp(2.8rem, 12vw, 4.4rem); }
+      .signature { margin-top: 2rem; }
+      .content { grid-template-columns: 1fr; gap: 3rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="intro">
+    <div class="wrap intro-inner">
+      <div>
+        <p class="identity">Independent optometrist · Tacoma</p>
+        <h1>Lena Ortiz</h1>
+        <p class="intro-copy">Routine eye exams and glasses fittings for new patients.</p>
+        <a class="call" href="tel:+12535550143">Call 253-555-0143</a>
+        <p class="hours">Tuesday through Saturday, 9 am–4 pm</p>
+      </div>
+      <div class="signature">
+        <strong>Lena Ortiz</strong>
+        <p>42 Example Way, Suite 2<br>Tacoma</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap content">
+    <section class="services" aria-labelledby="services-title">
+      <h2 id="services-title">Services</h2>
+      <ul>
+        <li>Eye exam</li>
+        <li>Glasses fitting</li>
+      </ul>
+    </section>
+
+    <section class="reminder" aria-labelledby="reminder-title">
+      <h2 id="reminder-title">Get ready to call</h2>
+      <p>Prepare a short reminder to have in front of you when you call. It stays in this browser and does not book an appointment.</p>
+
+      <form id="reminder-form" novalidate>
+        <div class="field">
+          <label for="service">Service</label>
+          <select id="service" name="service">
+            <option>Eye exam</option>
+            <option>Glasses fitting</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="first-name">First name</label>
+          <input id="first-name" name="first-name" autocomplete="given-name" aria-describedby="name-error">
+          <p class="error" id="name-error" hidden>Enter your first name to preview your reminder.</p>
+        </div>
+
+        <button type="submit">Preview reminder</button>
+      </form>
+
+      <div class="draft" id="draft" hidden>
+        <h3>Reminder draft</h3>
+        <p>Edit this text as you like. Nothing is sent or booked.</p>
+        <label for="draft-text">Your reminder</label>
+        <textarea id="draft-text"></textarea>
+      </div>
+      <p id="announcement" role="status" class="status"></p>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById("reminder-form");
+    const nameInput = document.getElementById("first-name");
+    const serviceInput = document.getElementById("service");
+    const error = document.getElementById("name-error");
+    const draft = document.getElementById("draft");
+    const draftText = document.getElementById("draft-text");
+    const announcement = document.getElementById("announcement");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      const name = nameInput.value.trim();
+
+      if (!name) {
+        error.hidden = false;
+        nameInput.setAttribute("aria-invalid", "true");
+        nameInput.focus();
+        return;
+      }
+
+      error.hidden = true;
+      nameInput.removeAttribute("aria-invalid");
+      draftText.value = "Hi, my name is " + name +
+        ". I’m calling about an " +
+        (serviceInput.value === "Eye exam" ? "eye exam" : "appointment for a glasses fitting") +
+        ".";
+      draft.hidden = false;
+      announcement.textContent = "Your reminder draft is ready to edit.";
+      draftText.focus({ preventScroll: true });
+      draft.scrollIntoView({ block: "nearest", behavior: "instant" });
+    });
+
+    nameInput.addEventListener("input", function () {
+      if (nameInput.value.trim()) {
+        error.hidden = true;
+        nameInput.removeAttribute("aria-invalid");
+      }
+    });
+  </script>
+</body>
+</html>

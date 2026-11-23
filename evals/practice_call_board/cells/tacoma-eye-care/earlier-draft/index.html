@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lena Ortiz, optometrist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@600&family=Instrument+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --navy: #172747;
+      --soft-blue: #d7e1fa;
+      --ink: #18243a;
+      --paper: #f0f3fa;
+      --accent: #bfcfff;
+      --line: #a9b5ca;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Instrument Sans", sans-serif;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--paper);
+      outline-offset: 2px;
+      box-shadow: 0 0 0 4px var(--ink);
+    }
+
+    .intro :focus-visible {
+      outline-color: var(--navy);
+      box-shadow: 0 0 0 4px var(--paper);
+    }
+
+    .wrap {
+      width: min(100% - 2.5rem, 72rem);
+      margin-inline: auto;
+    }
+
+    .intro {
+      background: var(--navy);
+      color: var(--paper);
+      padding-block: 1.5rem 2rem;
+    }
+
+    .practice {
+      margin: 0 0 1.2rem;
+      color: var(--soft-blue);
+      font-weight: 700;
+      font-size: .95rem;
+    }
+
+    .intro-grid {
+      display: grid;
+      gap: 1.5rem 3rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Bodoni Moda", Georgia, serif;
+      font-size: clamp(2.65rem, 8vw, 5.8rem);
+      font-weight: 600;
+      letter-spacing: -.034em;
+      line-height: 1.03;
+    }
+
+    .role {
+      margin: .6rem 0 0;
+      color: var(--soft-blue);
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+    }
+
+    .services {
+      margin: .9rem 0 1.25rem;
+      max-width: 34rem;
+    }
+
+    .call {
+      display: inline-flex;
+      align-items: center;
+      min-height: 3rem;
+      padding: .7rem 1rem;
+      background: var(--accent);
+      color: var(--ink);
+      font-weight: 700;
+      text-decoration-thickness: .08em;
+      text-underline-offset: .18em;
+    }
+
+    .contact {
+      border-top: 1px solid rgba(215, 225, 250, .45);
+      padding-top: 1rem;
+      color: var(--soft-blue);
+    }
+
+    .contact p { margin: 0; }
+    .contact p + p { margin-top: .7rem; }
+    .contact strong { color: var(--paper); }
+
+    main { padding-block: 2rem 4rem; }
+
+    .reminder {
+      display: grid;
+      gap: 1.5rem 3rem;
+    }
+
+    .section-label {
+      margin: 0 0 .6rem;
+      font-weight: 700;
+      font-size: .9rem;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: "Bodoni Moda", Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.12;
+      letter-spacing: -.025em;
+    }
+
+    .description {
+      max-width: 36rem;
+      margin: .8rem 0 0;
+    }
+
+    .eye-line {
+      margin: 1.2rem 0 0;
+      color: #52637e;
+      font-family: "Bodoni Moda", Georgia, serif;
+      font-weight: 600;
+      font-size: 1.25rem;
+      letter-spacing: .18em;
+    }
+
+    form {
+      border-top: 1px solid var(--ink);
+      padding-top: 1.2rem;
+    }
+
+    fieldset {
+      margin: 0 0 1.2rem;
+      padding: 0;
+      border: 0;
+    }
+
+    legend, .field-label {
+      display: block;
+      margin-bottom: .5rem;
+      font-weight: 700;
+    }
+
+    .choices {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem 1.5rem;
+    }
+
+    .choice {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      min-height: 2.75rem;
+      cursor: pointer;
+    }
+
+    input[type="radio"] {
+      width: 1.2rem;
+      height: 1.2rem;
+      margin: 0;
+      accent-color: var(--navy);
+    }
+
+    input[type="text"], textarea {
+      display: block;
+      width: 100%;
+      border: 1px solid var(--ink);
+      border-radius: 0;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+    }
+
+    input[type="text"] {
+      min-height: 3rem;
+      padding: .65rem .75rem;
+    }
+
+    .error {
+      margin: .4rem 0 0;
+      color: #9b2020;
+      font-weight: 700;
+    }
+
+    button {
+      min-height: 3rem;
+      margin-top: 1rem;
+      padding: .7rem 1rem;
+      border: 1px solid var(--navy);
+      border-radius: 0;
+      background: var(--navy);
+      color: white;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button:hover { background: #293e65; }
+
+    .draft {
+      margin-top: 1.5rem;
+      border-top: 1px solid var(--line);
+      padding-top: 1.2rem;
+    }
+
+    .draft h3 {
+      margin: 0 0 .35rem;
+      font-size: 1.15rem;
+    }
+
+    .draft p { margin: 0 0 .75rem; }
+
+    textarea {
+      min-height: 8rem;
+      padding: .75rem;
+      resize: vertical;
+    }
+
+    [hidden] { display: none !important; }
+
+    @media (min-width: 48rem) {
+      .intro { padding-block: 2rem 3rem; }
+      .practice { margin-bottom: 2.5rem; }
+      .intro-grid { grid-template-columns: 1.5fr 1fr; align-items: end; }
+      .contact { padding-top: 1.25rem; }
+      main { padding-block: 3rem 5rem; }
+      .reminder { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="intro">
+    <div class="wrap">
+      <p class="practice">Tacoma eye care</p>
+      <div class="intro-grid">
+        <div>
+          <h1>Lena Ortiz</h1>
+          <p class="role">Independent optometrist</p>
+          <p class="services">Routine eye exams and glasses fittings for new patients.</p>
+          <a class="call" href="tel:+12535550143">Call 253-555-0143</a>
+        </div>
+        <div class="contact">
+          <p><strong>Call hours</strong><br>9 am–4 pm, Tuesday–Saturday</p>
+          <p><strong>Location</strong><br>42 Example Way, Suite 2<br>Tacoma</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="reminder" aria-labelledby="reminder-title">
+      <div>
+        <p class="section-label">Before you call</p>
+        <h2 id="reminder-title">Prepare a reminder</h2>
+        <p class="description">Make a short draft to have ready when you call. It stays in this browser page; nothing is sent or booked.</p>
+        <p class="eye-line" aria-hidden="true">L O &nbsp; E G</p>
+      </div>
+
+      <div>
+        <form id="reminder-form" novalidate>
+          <fieldset>
+            <legend>What are you calling about?</legend>
+            <div class="choices">
+              <label class="choice">
+                <input type="radio" name="service" value="eye exam" checked>
+                Eye exam
+              </label>
+              <label class="choice">
+                <input type="radio" name="service" value="glasses fitting">
+                Glasses fitting
+              </label>
+            </div>
+          </fieldset>
+
+          <label class="field-label" for="first-name">First name</label>
+          <input id="first-name" name="first-name" type="text"
+                 autocomplete="given-name" aria-describedby="name-error">
+          <p id="name-error" class="error" hidden>Enter your first name to preview your reminder.</p>
+
+          <button type="submit">Preview reminder</button>
+        </form>
+
+        <section id="draft" class="draft" aria-labelledby="draft-title" hidden>
+          <h3 id="draft-title" tabindex="-1">Your reminder draft</h3>
+          <p>Edit this text however you like. It stays on this page.</p>
+          <label class="field-label" for="draft-text">Reminder</label>
+          <textarea id="draft-text"></textarea>
+        </section>
+        <p id="announcement" role="status" class="sr-only"></p>
+      </div>
+    </section>
+  </main>
+
+  <style>
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+  <script>
+    const form = document.getElementById("reminder-form");
+    const nameField = document.getElementById("first-name");
+    const error = document.getElementById("name-error");
+    const draft = document.getElementById("draft");
+    const draftTitle = document.getElementById("draft-title");
+    const draftText = document.getElementById("draft-text");
+    const announcement = document.getElementById("announcement");
+
+    nameField.addEventListener("input", () => {
+      if (nameField.value.trim()) {
+        error.hidden = true;
+        nameField.removeAttribute("aria-invalid");
+      }
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const firstName = nameField.value.trim();
+
+      if (!firstName) {
+        error.hidden = false;
+        nameField.setAttribute("aria-invalid", "true");
+        nameField.focus();
+        return;
+      }
+
+      error.hidden = true;
+      nameField.removeAttribute("aria-invalid");
+      const service = form.elements.service.value;
+      draftText.value = `Hi, my name is ${firstName}. I’m a new patient calling about an ${service === "eye exam" ? "eye exam" : "appointment for a glasses fitting"}.`;
+      draft.hidden = false;
+      announcement.textContent = "Reminder draft ready.";
+      draftTitle.focus({ preventScroll: true });
+      draftTitle.scrollIntoView({ behavior: "instant", block: "start" });
+    });
+  </script>
+</body>
+</html>

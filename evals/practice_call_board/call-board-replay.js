@@ -6,7 +6,9 @@ const eyeExam = page.getByRole("radio", {name: "Eye exam", exact: true});
 const service = page.getByRole("combobox", {name: "Service", exact: true});
 const name = page.getByRole("textbox", {name: "First name", exact: true});
 const preview = page.getByRole("button", {name: "Preview reminder", exact: true});
-const draft = page.getByRole("textbox", {name: /^(your )?(editable )?reminder$/i});
+const draft = page.getByRole("textbox", {name: /^(your )?(editable )?reminder(?: draft)?$/i});
+const resultHeading = page.getByRole("heading", {name: /^(your )?(editable )?reminder(?: draft)?$/i});
+const noSend = /nothing (?:was |is )?sent or booked|(?:draft|reminder|text) stays (?:on|in) this (?:browser )?(?:page|tab)|it stays (?:on|in) this (?:browser )?(?:page|tab)/i;
 const nativeSelect = await service.count() === 1;
 const firstService = nativeSelect ? service : eyeExam;
 async function fittingSelected() {
@@ -50,7 +52,7 @@ const checks = {
   nameInitiallyVisible: inView(initialForm.name),
   previewInitiallyVisible: inView(initialForm.preview),
   openingIdentity: /Lena Ortiz/i.test(opening.text) && /optometrist/i.test(opening.text) && /Tacoma/i.test(opening.text),
-  openingHours: /9 am.{1,5}4 pm/i.test(opening.text) && /Tuesday through Saturday/i.test(opening.text),
+  openingHours: /9 am.{1,5}4 pm/i.test(opening.text) && /Tuesday(?:\s+(?:through|to)\s+|\s*[-–—]\s*)Saturday/i.test(opening.text),
   openingServices: /eye exams?/i.test(opening.text) && /glasses fittings?/i.test(opening.text),
   openingPhone: opening.dial,
   openingWidth: await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
@@ -75,33 +77,46 @@ if (checks.emptyNameRecovery) {
     const form = document.querySelector("form");
     form.addEventListener("submit", () => {
       requestAnimationFrame(() => {
-        const node = document.activeElement;
-        const rect = node?.getBoundingClientRect();
-        window.qaOpeningFrame = {tag: node?.tagName, top: rect?.top, bottom: rect?.bottom, height: innerHeight};
+        const focus = document.activeElement;
+        const textAreas = [...document.querySelectorAll("textarea")].filter(el => el.checkVisibility());
+        const box = textAreas.length === 1 ? textAreas[0].getBoundingClientRect() : null;
+        window.qaOpeningFrame = {
+          focusTag: focus?.tagName,
+          focusLabel: (focus?.innerText || "").trim().slice(0, 120),
+          editable: box && {x: box.x, y: box.y, width: box.width, height: box.height}
+        };
       });
     }, {once: true});
   });
   await page.keyboard.type("Morgan");
   if (await reach(preview)) await page.keyboard.press("Enter");
 }
-checks.previewFocused = await draft.isVisible() && await active(draft);
-checks.previewReady = checks.previewFocused && /Morgan.*glasses fitting/i.test(await draft.inputValue());
-if (checks.previewFocused) {
+const headingFocused = await resultHeading.count() === 1 && await active(resultHeading);
+checks.previewFocused = await draft.isVisible() && (await active(draft) || headingFocused);
+checks.previewReady = await draft.isVisible() && /Morgan.*glasses fitting/i.test(await draft.inputValue());
+if (checks.previewReady) {
   await page.waitForFunction(() => Boolean(window.qaOpeningFrame), undefined, {timeout: 1500});
 }
 const firstFrame = await page.evaluate(() => window.qaOpeningFrame || null);
-checks.previewInFirstViewport = firstFrame?.tag === "TEXTAREA" &&
-  firstFrame.top >= 0 && firstFrame.bottom <= firstFrame.height + 1;
+checks.previewInFirstViewport = checks.previewFocused && inView(firstFrame?.editable) &&
+  firstFrame.editable.width > 0 && firstFrame.editable.height > 0;
 checks.statusAnnouncement = await page.getByRole("status").count() === 1 &&
   /reminder|draft/i.test(await page.getByRole("status").innerText());
-const honest = page.getByText(/Nothing was sent or booked/i);
-checks.honestResultVisible = await honest.count() === 1 && inView(await honest.boundingBox());
+// Visible text near the draft must say that the result stays local or sends nothing.
+const disclosure = await page.getByText(noSend).all();
+const draftBox = await draft.boundingBox();
+const disclosures = await Promise.all(disclosure.map(label => label.boundingBox()));
+checks.honestResultVisible = Boolean(draftBox && disclosures.some(box => inView(box) &&
+  Math.abs(box.y - draftBox.y) <= Math.min(300, viewport.height / 2)));
 if (checks.previewReady) {
   await page.screenshot({path: paths.preview, animations: "disabled"});
+}
+checks.reachEditableDraft = checks.previewFocused && await reach(draft);
+if (checks.reachEditableDraft) {
   await page.keyboard.press("End");
   await page.keyboard.type(" I can call Thursday.");
 }
-checks.editableDraft = checks.previewReady && /I can call Thursday\./.test(await draft.inputValue());
+checks.editableDraft = checks.reachEditableDraft && /I can call Thursday\./.test(await draft.inputValue());
 checks.returnToOriginal = checks.previewReady && await reach(name, "Shift+Tab") &&
   await name.inputValue() === "Morgan" && await fittingSelected();
 checks.noNetworkSubmission = !requests.some(method => method !== "GET");
