@@ -118,7 +118,7 @@ def _infer_surface(text: str) -> str | None:
 def _constraint_comparison(text: str) -> bool:
     """Narrowly recognize an alternatives decision constrained by height and swing."""
     choice = re.search(r"\b(?:choose|select|compare|borrow|replacement|alternative|withdrawn)\b", text)
-    fit = re.search(r"\b(?:fit|fits|clearance|recess|opening|limit|limits)\b", text)
+    fit = re.search(r"\b(?:fit|fits|clearance|recess(?:ed)?|opening|allowance|limits?)\b", text)
     height = re.search(r"\d+(?:[.,]\d+)?\s*(?:mm|cm|millimet(?:er|re)s?|centimet(?:er|re)s?)\b", text)
     swing = re.search(r"\b(?:swing|reset)\b", text) and re.search(r"\d+\s*(?:°|degrees?\b)", text)
     return bool(choice and fit and height and swing)
