@@ -145,3 +145,7 @@ All 13 hosted jobs passed at the exact prior `e7c600e` head, including the eight
 ### Installed constraint evidence checkpoint
 
 After the standalone study, the isolated `5470024` wheel served separate directions for the tool's measured clearance and the dancer's route deadline. It passed doctor, 71 stdio calls, and a 55-input installed replay with 51 unchanged results. Two fresh matched generation comparisons found a train-access win and a mixed borrowing result. The 9.5 and promotion gates stay open. [Exact comparison](EVALS.md#installed-borrowing-and-train-access-transfer)
+
+### November 23 recovery follow-through
+
+Independent reviewers preferred both manually repaired trial drafts. The cabinet scored 8.20 desktop and 7.95 phone. Train access scored 7.80 at both widths. The exact repairs passed eight scripted keyboard and touch journeys. The next installed test must reproduce their improvements from the MCP response across different briefs. The dual 9.5 gate, Intel Ventura runtime, exact BenQ replay and common competitor scoreboard remain open. The current Mac display inventory still lists only Color LCD. The local Tart benchmark cache and VM directories use zero bytes. [Matched recovery playback and ballots](EVALS.md#standalone-cabinet-and-train-recovery-repairs)

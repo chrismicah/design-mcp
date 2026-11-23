@@ -560,3 +560,14 @@ The control came from the installed `3350fea` package, whose source matches rele
 | Catch the last train using a step-free route | 7.70 → 8.20 | 7.50 → 7.75 | Preferred the trial's changing route and explicit recovery action. The 390 px closure switch and its result were separated vertically. The critic reached Groove and confirmed the ten-minute margin by keyboard. |
 
 The browser loaded different type pairings and subjects. The borrowing treatment used Plex Condensed and Barlow for dimensions and rows. The train treatment used Archivo Narrow and News Cycle for a travel sequence. No horizontal overflow appeared in the 12 opening layouts across 320, 390 and 1440 px. The audited ballots include 29 original frames. The route repair changes what the MCP returns, while the resulting borrowing layout still needs stronger cabinet evidence and persistent focus. The train treatment needs the constraint failure and substitute action beside the closure control. Both remain below the 9.5 threshold. Keep the two records on the isolated branch. [Build hashes, token counts, opening layouts, and ballots](evidence/benchmark-v1/constraint-evidence-transfer.json)
+
+### Standalone cabinet and train recovery repairs
+
+The live comparison froze each installed trial draft as its own control. The manual revisions used the same task facts. Playwriter ran 16 journeys across the four HTML files, including keyboard at 320, 390 and 1440 px and touch with reduced motion at 390 px. The eight repaired journeys met their checks. The preflight retains the failed smooth-scroll pass and the train CTA that initially clipped by 11 px at 320. The final assets and original PNGs have matching hashes and dimensions. [Playback and blind ballots](evidence/benchmark-v1/constraint-recovery-repairs.json)
+
+| Task | Desktop, frozen → repaired | Phone, frozen → repaired | Independent finding |
+| --- | ---: | ---: | --- |
+| Cabinet and tool withdrawal | 5.80 → 8.20 | 5.30 → 7.95 | The section explains Flat's height and reset independently. The chosen Pocket, reason, Fine's evidence and the focused 18:25 action remain together. The opening figure is dense on phone. |
+| Lift closure and last train | 7.10 → 7.80 | 6.65 → 7.80 | West's two-minute miss and Dock's ten-minute margin stay beside the keyboard switch. The warning still dominates after Groove is selected. |
+
+Each fresh critic preferred the repaired draft and tested recovery in the same visit at both widths. The controls were scored more strictly than in the previous installed comparison. Use the matched scores within these ballots. A future installed comparison must reproduce the gains before promotion. The desktop and phone scores remain below 9.5. [Original installed comparison](#installed-borrowing-and-train-access-transfer)

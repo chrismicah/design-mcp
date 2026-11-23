@@ -283,3 +283,8 @@ One bounded Astra 6.2 planning session defined the paired pivot test. One indepe
 
 - The offline `5470024` wheel passed doctor, 71 stdio calls, and all six surfaced configurations. Source tests reached 602 passes and 134 passing subtests, with one skip and four warnings. Installed replay changed four targeted replies and preserved 51 others. [Trial receipt](evidence/benchmark-v1/constraint-evidence-transfer.json)
 - Two fresh blind comparisons favored train access but preferred the borrowed-tool control's cutaway despite higher trial criterion totals. The tool draft lost focus and the train consequence began below its switch on phone. [Exact scores and tool traces](EVALS.md#installed-borrowing-and-train-access-transfer)
+
+### Cabinet and train recovery repairs
+
+- Two fresh GPT‑6.1 Terra critics interacted with anonymous frozen pairs. The cabinet repair kept focus on the replacement across stock withdrawal and selection. The train repair kept West, Dock, and the direct alternative beside the closure switch. All eight repaired journeys passed the scripted browser checks. [Matched scores](EVALS.md#standalone-cabinet-and-train-recovery-repairs)
+- The receipt records each critic's token usage, the installed parent SHAs, 48 scripted captures and the independent live captures. The experiments are standalone HTML. A fresh installed replay remains required for distribution. [Hashes and full ballots](evidence/benchmark-v1/constraint-recovery-repairs.json)

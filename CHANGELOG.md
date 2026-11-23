@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+- Verified standalone repairs for focus after a tool is withdrawn and access to the alternate route after a lift is closed. Both won their matched live comparisons. [Recovery proof](EVALS.md#standalone-cabinet-and-train-recovery-repairs)
+
 - Measured separate borrowing and train-access directions on an isolated branch. The train draft won its blind comparison. The borrowing control still showed the cabinet geometry better. [Installed transfer](EVALS.md#installed-borrowing-and-train-access-transfer)
 
 - Use software compositing for the hosted X11 toolbar proof. The two repeated runs clicked the real extension action and verified the saved active-tab and pasted-URL captures. [Hosted Chrome receipts](evidence/benchmark-v1/chrome-x11-software-compositor.json)
