@@ -687,6 +687,29 @@ class PipelineTests(unittest.TestCase):
 
 
 class HostTests(unittest.TestCase):
+    def test_review_url_reports_capture_errors_and_saves_nothing(self):
+        address = "https://boards.example/missing"
+        cases = (
+            (isolated.CaptureError("The site returned HTTP 404."), "capture-failed", "HTTP 404"),
+            (evidence.EvidenceError("private-address", "The page redirected to a private address."),
+             "private-address", "private address"),
+            (OSError("browser exited before startup"), "capture-failed", "review it from its open tab"),
+        )
+        for error, code, message in cases:
+            with (self.subTest(code=code, error=type(error).__name__),
+                  tempfile.TemporaryDirectory() as folder,
+                  mock.patch.object(isolated, "public_target", return_value=(address, "boards.example", "8.8.8.8")),
+                  mock.patch.object(isolated, "DEFAULT_CHROME", sys.executable),
+                  mock.patch.object(isolated.shutil, "which", return_value=None),
+                  mock.patch.object(isolated, "_capture_browser", side_effect=error)):
+                request = io.BytesIO()
+                host.write_frame(request, {"type": "review-url", "url": address})
+                status, reply = self.serve(request.getvalue(), root=Path(folder))
+                result = host.read_frame(io.BytesIO(reply))
+                self.assertEqual((status, result["ok"], result["code"]), (1, False, code))
+                self.assertIn(message, result["message"])
+                self.assertEqual(list(Path(folder).iterdir()), [])
+
     def test_review_url_rejects_private_or_signed_addresses_before_chrome_starts(self):
         with tempfile.TemporaryDirectory() as folder, mock.patch.object(isolated, "_capture_browser") as launch:
             for address, code in (("https://127.0.0.1/", "private-address"),

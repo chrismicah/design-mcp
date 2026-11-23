@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+- Show the page-load error and recovery when Chrome cannot capture a pasted URL. The local reviewer saves a preview only after a successful capture.
+
 - Removed duplicate offline vision queues from the package source and an obsolete failed transcript from the checkout. The offline scripts continue to use the canonical root queues. The wheel excludes both queues and the legacy pattern snapshot. [Corpus audit](CONTENT-AUDIT.md)
 
 - Run the install, browser, and desktop checks against the pull request head. Align both README installers and the Chrome and MCP review instructions with one verified source tree. [Release candidate proof](SMOKE-RECEIPTS.md#release-candidate-on-both-architectures)

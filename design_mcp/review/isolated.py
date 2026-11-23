@@ -24,7 +24,7 @@ from pathlib import Path
 from urllib.request import ProxyHandler, build_opener
 
 from .address import public_target
-from .evidence import MAX_REGIONS, SCHEMA
+from .evidence import MAX_REGIONS, SCHEMA, EvidenceError
 from .network import public_proxy
 from .pipeline import _ms
 
