@@ -6,6 +6,8 @@
 
 The active-tab fix compares the mask geometry around capture. Six focused tests exercised stable capture, a moving or newly visible field, scroll, a changed tab, and successful retry. The changed cases returned focus to the scan action without handing off a capture. A fresh GPT Computer Use toolbar replay on macOS remains open for this commit. The Ventura and native walkthrough receipts below apply to `a9e1211`.
 
+On the Apple Silicon reference Mac, a fresh uv install of `12e9524` completed all six stdio configurations from a separate empty working directory. The default, historical, and combined surfaces exercised **3, 14, and 17** successful fixture calls. Enabling review added a tested unsupported-address refusal to each. Over five fresh default processes, the median time through the first `direct` result was **555 ms**. The median of 15 warm `direct` calls was **1.65 ms**. The installed package measured **602 KB** and excluded the historical pattern snapshot and offline queues. The historical tools read the existing verified 10,092,399-byte cache. [Local stdio and package receipt](evidence/benchmark-v1/reference-mac-stdio-12e9524.json)
+
 ## Pinned release candidate, November 22
 
 `a9e1211` passed **543 source tests and 120 subtests**, and **16 clean Git installs** across eight macOS 15 jobs. CI checked Python 3.10–3.13 on Apple Silicon and Intel, with pipx and uv in each job. Both installers ran all three stdio modes with and without `review_page`. The opt-in smoke verifies its structured refusal path. The installed Playwriter CLI reviewed the public address form at 1440 and 390 CSS px. [Exact workflows and artifacts](evidence/benchmark-v1/release-ci-a9e1211.json)
