@@ -64,7 +64,10 @@ for executable in "$PIPX_BIN_DIR/design-mcp" "$UV_TOOL_BIN_DIR/design-mcp"; do
   grep -F 'PASS stdio tools/list — v2, 3 tools' <<< "$report"
   (unset DESIGN_MCP_SURFACE && "$installer/python" "$checkout/scripts/smoke_design_mcp.py" "$executable" serve)
   DESIGN_MCP_SURFACE=both "$installer/python" "$checkout/scripts/smoke_design_mcp.py" "$executable" serve
+  DESIGN_MCP_SURFACE=legacy "$installer/python" "$checkout/scripts/smoke_design_mcp.py" "$executable" serve
   (unset DESIGN_MCP_SURFACE && "$installer/python" "$checkout/scripts/smoke_design_mcp.py" "$executable" serve --review)
+  DESIGN_MCP_SURFACE=both "$installer/python" "$checkout/scripts/smoke_design_mcp.py" "$executable" serve --review
+  DESIGN_MCP_SURFACE=legacy "$installer/python" "$checkout/scripts/smoke_design_mcp.py" "$executable" serve --review
   extension=$("$executable" review --extension-path | head -1)
   test -f "$extension/manifest.json"
   test -f "$extension/popup.html"
