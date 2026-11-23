@@ -121,15 +121,17 @@ async function capture() {
   try {
     picture = await chrome.tabs.captureVisibleTab(tab.windowId, {format: 'png'});
     [probe] = await chrome.scripting.executeScript({
-      target: {tabId: tab.id},
-      func: () => [Math.round(window.scrollX), Math.round(window.scrollY), window.innerWidth, window.innerHeight],
+      target: {tabId: tab.id}, func: designMcpCollect, args: [{maxRegions: 8}],
     });
   } catch (error) {
     throw problem('Chrome did not allow a picture of this tab, so nothing was saved. Press the button again.');
   }
   const [still] = await chrome.tabs.query({active: true, currentWindow: true});
-  const before = [frame.document.scroll_x, frame.document.scroll_y, frame.viewport.width, frame.viewport.height];
-  if (!still || still.id !== tab.id || still.url !== tab.url || !probe || String(probe.result) !== String(before)) {
+  const after = probe?.result;
+  // A field can move or appear without changing the tab, viewport, or scroll position.
+  const geometry = value => JSON.stringify([value.document, value.viewport, value.masks?.boxes]);
+  if (!still || still.id !== tab.id || still.url !== tab.url || !after ||
+      geometry(after) !== geometry(frame)) {
     throw problem('The page moved or the tab changed during the scan, so nothing was saved. Leave the page still for a second and press the button again.');
   }
 

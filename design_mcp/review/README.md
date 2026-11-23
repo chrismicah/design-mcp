@@ -2,7 +2,7 @@
 
 The Chrome extension and review CLI scan a page locally and show the first measured issue. The optional MCP tool sends the captured image and layout facts to your connected client for visual critique.
 
-The installed CLI captured the USWDS address form at desktop and mobile widths through Playwriter. Both views retained the masked Street address field in the eight-region context. On the reference Mac, GPT Computer Use exercised Chrome's missing-host recovery, switched to After by keyboard, and reopened the same preview. [Installed URL run](../../evidence/benchmark-v1/isolated-url-session-e1cd4eb.json) · [Reference Mac walkthrough](../../evidence/benchmark-v1/reference-mac-chrome-f17bd6f.json)
+On the reference Mac, GPT Computer Use verified both Chrome buttons with the pinned build. The active-tab flow opened a saved contrast comparison and reached After by keyboard. The pasted-address flow recovered from an HTTP 404, captured the public address form, and reopened the same masked preview. The installed MCP also returned original masked images at both widths. [Chrome walkthrough](../../evidence/benchmark-v1/release-native-chrome-a9e1211.json) · [MCP image receipts](../../evidence/benchmark-v1/release-mcp-images-a9e1211.json)
 
 ## Three ways in
 
@@ -43,6 +43,8 @@ design-mcp review --install-host <extension id>
 ```
 
 That writes two files: Chrome's host manifest for `com.design_mcp.review`, and a launcher that starts the reviewer for that one extension. `--dry-run` prints both paths without writing. `--uninstall-host` removes them.
+
+Open the popup again. For the current page, press **Review this page**. For a public address, paste it and press **Review URL** once. Stay on the Design MCP tab until it shows the capture and a finding or empty state. Use **Open the capture**, **Open the marked-up capture**, or **Open before and after**, depending on the result. An HTTP error returns focus to the address for a retry.
 
 If Chrome was launched with a custom `--user-data-dir`, add `--chrome-user-data-dir` with that directory's absolute path when installing or removing the host. Each directory keeps its own launcher, allowed extension ID, and preview history. Run the installation command again to update an existing custom launcher.
 
@@ -108,9 +110,9 @@ Repeat the installed browser acceptance steps on the reference Mac.
 ## Known gaps
 
 - The popup and preview still need independent live review and a 9.5 per screen release score.
-- No model review, no redesign builder, and no after view for layout findings. The first finding comes from three local checks only.
+- The Chrome popup's findings come from the three local checks. For model critique, use `review_page` in a vision-capable client. The saved After view is available for the local contrast finding.
 - The reference Mac walkthrough observed the recolor in After. A pixel-level check of the recolor remains open.
-- No keyboard activation is performed on a live page, so the interaction part of the capture format is validated but never produced.
+- For live keyboard and focus evidence, run a separate Playwriter task. The local checks measure the captured state.
 - The 8 reported regions are chosen by the collector: first heading, main button, up to three hardest-to-read lines, first status, then reading order. That choice has not been checked against human labels.
 - Host setup covers Chrome on macOS and Linux. The unpacked extension has no icon and no fixed ID, so the ID must be passed once.
 - Font family is the first family in the computed stack, which may differ from the face actually drawn.

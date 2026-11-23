@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+- Retry active-tab review if fields move or appear between the two layout readings. Chrome sends the capture to the local reviewer only after its field positions and viewport agree.
+
 - Show the page-load error and recovery when Chrome cannot capture a pasted URL. The local reviewer saves a preview only after a successful capture.
 
 - Removed duplicate offline vision queues from the package source and an obsolete failed transcript from the checkout. The offline scripts continue to use the canonical root queues. The wheel excludes both queues and the legacy pattern snapshot. [Corpus audit](CONTENT-AUDIT.md)

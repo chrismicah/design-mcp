@@ -1,0 +1,254 @@
+{
+  "calibration": {
+    "coherence": 7,
+    "originality": 4,
+    "craft": 6,
+    "usability": 5.5,
+    "basis": "Clear labels and legibility support the task, while the familiar layout limits distinctiveness and misplaced focus makes error recovery harder."
+  },
+  "screens": {
+    "A-1440": {
+      "coherence": 8.5,
+      "originality": 6.5,
+      "craft": 8,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab, Enter, Enter",
+        "expected": "Focus Past SLA, sort lowest first, then restore highest first.",
+        "observed": "Focus was visible. Rows changed to Central, West, East and then East, West, Central. The highlighted column, arrow and Highest first label showed the active sort."
+      },
+      "edge_observation": "A further Enter reversed the rows to Central, West, East and changed the label to Lowest first.",
+      "fact_check": "East retained 14 open, West 11 and Central 6 through both directions.",
+      "strength": "The highlighted SLA column and East queue callout make the priority easy to scan.",
+      "weakness": "The large desktop table leaves substantial empty space and the treatment is fairly familiar.",
+      "repair": "Tighten the table width or use the space for relevant queue context.",
+      "captures": [
+        "A-1440-before.png",
+        "A-1440-after.png",
+        "A-1440-edge.png"
+      ],
+      "arm": "guarded",
+      "html_sha256": "a69d448f2210bf7c7539adb1458c89b447df2f6f86985496cebb8227234d004e",
+      "weighted": 7.8,
+      "before": {
+        "sha256": "1d528820f62d53eb54a06ab5c9a5a7e6bf450b2dff4bcf183d619b328b3ff97a",
+        "file": "A-1440-before.png",
+        "tool_call_id": "item_2"
+      },
+      "after": {
+        "sha256": "bac2d89dd241cd12060d45450a4c683f77254b4c343ff7842eaf37844213dba7",
+        "file": "A-1440-after.png",
+        "tool_call_id": "item_6"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ]
+    },
+    "A-390": {
+      "coherence": 8.5,
+      "originality": 6.5,
+      "craft": 8,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab, Enter, Enter",
+        "expected": "Focus Past SLA, sort lowest first, then restore highest first.",
+        "observed": "The focused control remained visible and the rows reversed and returned to East, West, Central. The arrow and Highest first label were visible."
+      },
+      "edge_observation": "Another Enter restored Central, West, East with Lowest first visible. The control and all row values fit in the viewport.",
+      "fact_check": "East 14, West 11 and Central 6 remained paired with their queues. The rendered table fits at 390 CSS pixels; review metadata reports a 390-pixel layout width.",
+      "strength": "The compact table preserves readable labels, values and a clear focus ring.",
+      "weakness": "The sort control looks like a highlighted column heading before focus, so its interactivity could be clearer.",
+      "repair": "Add a persistent affordance that makes the sort action discoverable without weakening the direction label.",
+      "captures": [
+        "A-390-before.png",
+        "A-390-after.png",
+        "A-390-edge.png"
+      ],
+      "arm": "guarded",
+      "html_sha256": "a69d448f2210bf7c7539adb1458c89b447df2f6f86985496cebb8227234d004e",
+      "weighted": 7.8,
+      "before": {
+        "sha256": "81e6542ae2a41dd46e7629b1b7b1457b648a31fc0083f93f9219d5dc830e8dc2",
+        "file": "A-390-before.png",
+        "tool_call_id": "item_10"
+      },
+      "after": {
+        "sha256": "be024a32d631f0aaa5e1c387325e4881bd3c6fa1caccfc2ae1c67ecd7cdaaa12",
+        "file": "A-390-after.png",
+        "tool_call_id": "item_14"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ]
+    },
+    "B-1440": {
+      "coherence": 8.5,
+      "originality": 8,
+      "craft": 8.5,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab, Enter, Enter",
+        "expected": "Focus Past SLA, sort lowest first, then restore highest first.",
+        "observed": "Focus was visible. Rows changed to Central, West, East and returned to East, West, Central. The colored active column, arrow and Highest first label remained visible."
+      },
+      "edge_observation": "A further Enter changed the order to Central, West, East and displayed Lowest first.",
+      "fact_check": "East retained 14 open, West 11 and Central 6. The displayed total of 5 past SLA agrees with 3 + 2 + 0.",
+      "strength": "The prominent total and expressive typography give the summary a distinctive hierarchy.",
+      "weakness": "The large total does not identify which queue needs attention until the table is read.",
+      "repair": "Pair the total with a concise indication of the highest-risk queue.",
+      "captures": [
+        "B-1440-before.png",
+        "B-1440-after.png",
+        "B-1440-edge.png"
+      ],
+      "arm": "stock",
+      "html_sha256": "7641a16491a3eb5e4ee3fbe85697945bde96da68f83a0695f730bf422f748299",
+      "weighted": 8.35,
+      "before": {
+        "sha256": "7e0134348cd722da1c9083e3b05a9bfd622184233b392178ab053bf35df6b221",
+        "file": "B-1440-before.png",
+        "tool_call_id": "item_19"
+      },
+      "after": {
+        "sha256": "10eff64cb5c3876b84780146eeb878bd97bc479de2053fcf84924df7575073c1",
+        "file": "B-1440-after.png",
+        "tool_call_id": "item_23"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ]
+    },
+    "B-390": {
+      "coherence": 8.5,
+      "originality": 8,
+      "craft": 8.5,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab, Enter, Enter",
+        "expected": "Focus Past SLA, sort lowest first, then restore highest first.",
+        "observed": "The focused sort control was outlined, the rows reversed and then returned to East, West, Central, and Highest first was visible."
+      },
+      "edge_observation": "Another Enter produced Central, West, East with Lowest first visible. The sort control and all rows fit in the viewport.",
+      "fact_check": "East 14, West 11 and Central 6 remained paired with their queues. The rendered table fits at 390 CSS pixels; review metadata reports a 390-pixel layout width.",
+      "strength": "The summary and table retain their hierarchy and legibility on the narrow screen.",
+      "weakness": "The large total consumes vertical space while leaving the specific priority queue implicit.",
+      "repair": "Add the highest-risk queue to the total area in compact supporting copy.",
+      "captures": [
+        "B-390-before.png",
+        "B-390-after.png",
+        "B-390-edge.png"
+      ],
+      "arm": "stock",
+      "html_sha256": "7641a16491a3eb5e4ee3fbe85697945bde96da68f83a0695f730bf422f748299",
+      "weighted": 8.35,
+      "before": {
+        "sha256": "29c7c63aba9733ad794beb7a0ec3f028444105fd0d98a11f9d878e57fe6101ad",
+        "file": "B-390-before.png",
+        "tool_call_id": "item_27"
+      },
+      "after": {
+        "sha256": "c5dc50dd93a56dc3d8a939f7475d1041805c4d2f9fcff449e76ee939c42bc3ff",
+        "file": "B-390-after.png",
+        "tool_call_id": "item_31"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ]
+    }
+  },
+  "preference": {
+    "winner": "B",
+    "reason": "Both designs completed the keyboard task and retained correct values at both widths. B has a more distinctive typographic and color treatment while keeping the active sort and focus clear. A is stronger at identifying East as the immediate priority."
+  },
+  "unsupported_claims": [
+    "No claim is made about unseen queue data, screen-reader announcements in an actual screen reader, or horizontal scrolling outside the rendered viewport and reported layout width."
+  ],
+  "case": "dashboard-support",
+  "verified_screens": 4,
+  "required_screens": 4,
+  "browser": "Chrome/158.0.8127.36",
+  "evaluator_thread": "01a20617-1066-7a42-8c13-3d038ac46470",
+  "usage": {
+    "input_tokens": 466533,
+    "cached_input_tokens": 443776,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2442,
+    "reasoning_output_tokens": 0
+  },
+  "trace_sha256": "e21f78467581cbc488ac8216882375c02e83f5fd674db328f6f7d0f1c4476373",
+  "browser_audit_sha256": "d6ba546ecf827153ed039d6eb4a4a0a77cef1b837d66ed6b3847f1f183ff5c85",
+  "decision": "Keep the stock router. The guarded draft improved priority identification, but lost the independent live comparison at both widths.",
+  "scope": "One frozen dashboard brief with exact unhinted direct responses for both arms. The retry required a real sort reversal and restoration before the scored after capture."
+}

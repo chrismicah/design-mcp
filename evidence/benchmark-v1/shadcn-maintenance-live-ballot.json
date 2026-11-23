@@ -1,0 +1,533 @@
+{
+  "calibration": {
+    "example": "Legible repair intake with clear labels, familiar layout, and misplaced focus after an invalid number",
+    "coherence": 7,
+    "originality": 4,
+    "craft": 6,
+    "usability": 6
+  },
+  "screens": {
+    "A-1440": {
+      "coherence": 8.5,
+      "originality": 7.5,
+      "craft": 8.5,
+      "usability": 9,
+      "primary_action": {
+        "input": "Keyboard: submit empty, then enter Oak Court, Second-floor landing, and Common-area light is out; select Safety issue with the arrow key and submit.",
+        "expected": "Show actionable validation, then prepare the specified request locally and provide a return action.",
+        "observed": "All three fields received inline errors and focus moved to Building. Both urgency choices were available. Valid submission showed the exact values and Safety issue under 'Request prepared locally'; focus moved to that heading. Edit request returned to the populated form and focused Building."
+      },
+      "edge_observation": "Empty submission displayed 'Enter the building.', 'Enter the light’s location.', and 'Describe what’s wrong with the light.'",
+      "fact_check": "The visible confirmation says the request has not been sent. Actual network behavior was not independently inspected; no unsupported delivery claim was observed.",
+      "strength": "The corridor illustration, condensed typography, and restrained green rules form a coherent, task-specific composition.",
+      "weakness": "Required fields are not identified before the first submission.",
+      "repair": "State that the three detail fields are required before submission.",
+      "arm": "v2",
+      "html_sha256": "7d07ee94dd8f9898489076a90ac74db86174f7b4c77a9ca0da24f84ce2b59c99",
+      "weighted": 8.3,
+      "before": {
+        "sha256": "599a83b36ca967d85e4c6ef0347811a9eddaca165e62df84fd10b6bfad82076e",
+        "file": "A-1440-before.png",
+        "tool_call_id": "item_2"
+      },
+      "after": {
+        "sha256": "059a8fdb26547914e9598a632a59691808a16bc644c62a3cab3c52d7f16d9d6c",
+        "file": "A-1440-after.png",
+        "tool_call_id": "item_19"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "text",
+          "value": "Oak Court"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "text",
+          "value": "Second-floor landing"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "text",
+          "value": "Common-area light is out"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ]
+    },
+    "A-390": {
+      "coherence": 8.5,
+      "originality": 7.5,
+      "craft": 8.5,
+      "usability": 9,
+      "primary_action": {
+        "input": "Repeat the empty and valid submissions using the keyboard with the specified values and Safety issue.",
+        "expected": "Keep validation and confirmation usable at 390 CSS pixels.",
+        "observed": "The inline errors appeared with focus on Building. The valid confirmation displayed all values and focused its heading. Edit request restored the values and focused Building."
+      },
+      "edge_observation": "All three error messages were visible in the captured state. The page used vertical scrolling; no horizontal overflow was apparent in the captured states, although horizontal scroll range was not directly measured.",
+      "fact_check": "The confirmation visibly says 'Request prepared locally' and says it has not been sent; network behavior was not independently inspected.",
+      "strength": "The compact illustration and stacked form preserve the hierarchy while keeping controls comfortably sized.",
+      "weakness": "Required status is disclosed only after an invalid submission.",
+      "repair": "Add a concise required-fields instruction above the inputs.",
+      "arm": "v2",
+      "html_sha256": "7d07ee94dd8f9898489076a90ac74db86174f7b4c77a9ca0da24f84ce2b59c99",
+      "weighted": 8.3,
+      "before": {
+        "sha256": "32d422141381d3a6cd12d3472579d4c52c7d7661f42fd9be4a2af37ccf67162d",
+        "file": "A-390-before.png",
+        "tool_call_id": "item_24"
+      },
+      "after": {
+        "sha256": "798946814e15f4a26a469e0fa05123970d89f75ff46d73ac715e4b1e6f6a0912",
+        "file": "A-390-after.png",
+        "tool_call_id": "item_41"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "text",
+          "value": "Oak Court"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "text",
+          "value": "Second-floor landing"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "text",
+          "value": "Common-area light is out"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ]
+    },
+    "B-1440": {
+      "coherence": 8.5,
+      "originality": 7.5,
+      "craft": 8,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Keyboard: submit empty, then enter the specified values, select Safety issue with the arrow key, and submit.",
+        "expected": "Show actionable validation, then prepare the specified request locally and provide a return action.",
+        "observed": "Browser validation said 'Please fill out this field' and focused Building. Both urgency choices were available. Valid submission showed the exact values and Safety issue under 'Request prepared locally'; focus moved to that heading. Edit request restored the populated form and focused Request details."
+      },
+      "edge_observation": "Native validation exposed the first missing field at a time rather than displaying all missing fields together.",
+      "fact_check": "The confirmation says nothing was sent to maintenance. Actual network behavior was not independently inspected; no unsupported delivery claim was observed.",
+      "strength": "The illustrated light, editorial type, and structured confirmation create a distinctive and consistent presentation.",
+      "weakness": "The native validation message is generic and reveals required omissions sequentially.",
+      "repair": "Add field-specific inline errors while retaining focus on the first invalid field.",
+      "arm": "shadcn",
+      "html_sha256": "a2fa45bf55fae2e12eca4ad7b1ee0d7a52bbbfca7c4408b0d2a3ea67d12cba57",
+      "weighted": 8.1,
+      "before": {
+        "sha256": "5cdf88674bd3a6683e32e0562062da825cd4ffe1b778a099b5131ccd5bf8229c",
+        "file": "B-1440-before.png",
+        "tool_call_id": "item_46"
+      },
+      "after": {
+        "sha256": "e55d9eb5e892fe0f2819a5a1d73b8accd1d6837f5de609c192f147ca8dc46bdf",
+        "file": "B-1440-after.png",
+        "tool_call_id": "item_63"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "text",
+          "value": "Oak Court"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "text",
+          "value": "Second-floor landing"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "text",
+          "value": "Common-area light is out"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ]
+    },
+    "B-390": {
+      "coherence": 8,
+      "originality": 7.5,
+      "craft": 7.5,
+      "usability": 8,
+      "primary_action": {
+        "input": "Repeat the empty and valid submissions using the keyboard with the specified values and Safety issue.",
+        "expected": "Keep validation and confirmation usable at 390 CSS pixels.",
+        "observed": "Browser validation focused Building and displayed 'Please fill out this field.' The valid confirmation showed all values and focused its heading. Edit request restored the values and focused Request details."
+      },
+      "edge_observation": "The validation bubble was readable but overlapped the Location label and input. Vertical scrolling was needed; no horizontal overflow was apparent in the captured states, although horizontal scroll range was not directly measured.",
+      "fact_check": "The confirmation visibly says 'Request prepared locally' and 'Nothing was sent to maintenance'; network behavior was not independently inspected.",
+      "strength": "The confirmation summary remains legible and the return action is visible at the narrow width.",
+      "weakness": "The large introduction and illustration push the form down, and the validation bubble obscures the next field.",
+      "repair": "Use compact, field-specific inline errors and reduce the mobile introduction height.",
+      "arm": "shadcn",
+      "html_sha256": "a2fa45bf55fae2e12eca4ad7b1ee0d7a52bbbfca7c4408b0d2a3ea67d12cba57",
+      "weighted": 7.75,
+      "before": {
+        "sha256": "af7fc8c32f9fed6d2695d4dc52e66061cfd1cf23b7a35e1ac8c8550ae9d49114",
+        "file": "B-390-before.png",
+        "tool_call_id": "item_67"
+      },
+      "after": {
+        "sha256": "4df3425ea547835d9f705570caf8a5950d48ff188ec3f896375a9cc0fb9e38ac",
+        "file": "B-390-after.png",
+        "tool_call_id": "item_84"
+      },
+      "layout_width": 375,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "text",
+          "value": "Oak Court"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "text",
+          "value": "Second-floor landing"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "text",
+          "value": "Common-area light is out"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ]
+    }
+  },
+  "preference": {
+    "winner": "A",
+    "reason": "Both completed the specified keyboard flow and preserved values on return. A gives actionable errors for all missing fields at once and fits more of the form into the mobile viewport, while maintaining a clear subject-specific visual identity."
+  },
+  "case": "form-maintenance",
+  "verified_screens": 4,
+  "required_screens": 4,
+  "browser": "Chrome/158.0.8127.36",
+  "evaluator_thread": "01a20622-bc7d-72e0-bcda-b46454882753",
+  "usage": {
+    "input_tokens": 806772,
+    "cached_input_tokens": 760576,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 3037,
+    "reasoning_output_tokens": 0
+  },
+  "trace_sha256": "53f8024b10c2ef5c6f17dc91ae18e3a353b9ef0eeefd81ec506e0cbbc6a236a9",
+  "browser_audit_sha256": "52c6422b017b25c7097a26725f996507082d9da2ec8a412b253cee76f84eb918",
+  "source_pins": {
+    "v2": "a9e121112d6aa25315471e5c6f1401540f125e8a",
+    "shadcn": "shadcn@4.23.0"
+  },
+  "contract": "# Live maintenance form comparison\n\nAn earlier matched generation used the pinned Design MCP and skipped the installed\nshadcn tools entirely, so the archived pair remains unscored. This trial varies\none procedural choice, a mandatory successful relevant context response before\ngeneration. Both arms see the same instruction. It describes a recovery using\none exact component name if a registry search is empty, without supplying names,\na design direction, or treatment identity.\n\nHold fixed the frozen form brief, model and effort, client version, no-shell\npolicy, asset limits, and existing receipt verification. Verify real relevant\ncalls on both installed arms. If either arm misses its gate, withhold the\ncomparison. A separate anonymous live critic must try the error, valid save,\nand any offered recovery on desktop and mobile, while verifying prompt facts\nand the actual state. Scores are for this case and context protocol.\n",
+  "terms": {
+    "case": "form-maintenance",
+    "arms": [
+      "v2",
+      "shadcn"
+    ],
+    "brief": "A tenant needs to report a broken common-area light. Collect building, location and a description, and offer Routine and Safety issue as urgency options. Make it usable by keyboard and show that the request was prepared locally after valid submission.",
+    "task": "Use the keyboard to try submitting with the required data empty. Note the actionable message or browser validation and where focus lands. Then enter Oak Court as the building, Second-floor landing as the location, and Common-area light is out as the description. Verify that Routine and Safety issue are available. Select Safety issue and submit. Verify that the visible confirmation says the request was prepared locally and check focus and any available return action. Report any differences from the exact brief. At 390 px, check for horizontal scrolling or obscured feedback. Capture -before on entry, -edge where the invalid submission is visible, and -after once a real valid submission has reached confirmation."
+  },
+  "generation": {
+    "v2": {
+      "usage": {
+        "input_tokens": 60661,
+        "cached_input_tokens": 23040,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2957,
+        "reasoning_output_tokens": 6
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "design-mcp",
+          "tool": "direct",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "treatment_call": true,
+      "direct_call": true,
+      "status": "passed",
+      "case": "form-maintenance",
+      "arm": "v2",
+      "model": "gpt-6.2-sol",
+      "effort": "low",
+      "client": "codex-cli 0.170.0",
+      "prompt_sha256": "cfd2e8fde1701c51fb0f087bc7f56a151fc5f56d18211c3d0b9cc689c31ec6e1",
+      "shell_tool": false,
+      "elapsed_seconds": 66.15,
+      "exit_code": 0,
+      "trace_sha256": "681844d4c9e134834169a2269a892e3d3f0a2878465095af10cc958f1fb5c61d",
+      "html_sha256": "7d07ee94dd8f9898489076a90ac74db86174f7b4c77a9ca0da24f84ce2b59c99"
+    },
+    "shadcn": {
+      "usage": {
+        "input_tokens": 61860,
+        "cached_input_tokens": 50816,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3601,
+        "reasoning_output_tokens": 6
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "shadcn",
+          "tool": "get_item_examples_from_registries",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "treatment_call": true,
+      "status": "passed",
+      "matched_shadcn_items": [
+        "radio-group-demo"
+      ],
+      "case": "form-maintenance",
+      "arm": "shadcn",
+      "model": "gpt-6.2-sol",
+      "effort": "low",
+      "client": "codex-cli 0.170.0",
+      "prompt_sha256": "cfd2e8fde1701c51fb0f087bc7f56a151fc5f56d18211c3d0b9cc689c31ec6e1",
+      "required_shadcn_items": [
+        "field",
+        "field-demo",
+        "field-input",
+        "field-textarea",
+        "input",
+        "input-demo",
+        "radio-group",
+        "radio-group-demo",
+        "textarea",
+        "textarea-demo"
+      ],
+      "shell_tool": false,
+      "mcp_config_sha256": "899ef0eaf8ab50003d8cc06abd5559f61ff73d80a782aec4b760c85687a87ae4",
+      "elapsed_seconds": 80.53,
+      "exit_code": 0,
+      "trace_sha256": "cd1848f5b79555fcd9a3ce81d6b496c5881838daad9d3b39cb77a55536652ee7",
+      "html_sha256": "a2fa45bf55fae2e12eca4ad7b1ee0d7a52bbbfca7c4408b0d2a3ea67d12cba57"
+    }
+  },
+  "shared_prompt": "Build the UI in the brief below. Produce one complete HTML document with inline CSS and JavaScript. Return it in a single html code fence. Keep interactions local and use only the supplied facts. Google Fonts stylesheets are allowed. Use original inline illustrations or CSS for visuals. Do not use other remote assets, imports, or calls. The review runs in Chrome at widths of 1440 and 390 pixels. If a design context tool is available, you must call it and obtain a successful result relevant to this brief before you generate the HTML. When a component registry returns no match for a phrase, retry with one exact component name that fits the task. Do not write files or call other tools.\n\nBrief:\nA tenant needs to report a broken common-area light. Collect building, location and a description, and offer Routine and Safety issue as urgency options. Make it usable by keyboard and show that the request was prepared locally after valid submission.\n"
+}

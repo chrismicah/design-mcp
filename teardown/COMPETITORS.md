@@ -123,11 +123,14 @@ The gallery task uses the fixture's disclosure behavior with the task's own cont
 | Offline Designer MCP | 1 / 36 | 91.7 on ceramics. Design MCP also scored 91.7. |
 | Screenshots Design Inspiration | 1 / 36 | 91.7 on the gallery label. Design MCP also scored 91.7 in the matched Astra run. |
 | Design Library MCP, keyword | 1 / 36 | 87.5 on ceramics. Design MCP scored 95.8 in the matched shell-disabled run. |
+| shadcn/ui MCP | 1 / 36 | Separate live rubric. At desktop and mobile, shadcn scored 8.10 and 7.75 out of 10. Design MCP scored 8.30 on both. |
 | UI UX Pro Max | 1 / 36 | Beat frozen v2 on bike booking, 100.0 to 91.7. Tied the newer service-work-order direction at 95.8 in a direct rematch. |
 | Other credential-free competitor configurations above | 0 / 36 each | Pending |
 | Credentialed and hosted configurations above | 0 / 36 each | Access or isolated fixture required |
 
 The retrieval probe is a separate test of tool behavior. A visual score requires generation and blinded browser captures on the same 36 briefs. The earlier market inventory covers additional products and publisher examples, including PyModel Designer Skill, Refero, Better Design and Claude Design. [Eval status](../EVALS.md) · [Earlier market inventory](../research/RESEARCH-COMPETITORS.md)
+
+In the maintenance rematch, both generators received the same wording requiring a successful context result. Shadcn retrieved `radio-group-demo` from the installed official registry. Design MCP called `direct`. The blind critic ran invalid submission, valid preparation, and edit by keyboard at both widths. Design MCP showed all three actionable validation messages together and used less vertical space on mobile. Shadcn used the browser's first-error message. The run covers one brief and uses the live 0–10 rubric. [Ballot, prompts, tool calls, and token receipts](../evidence/benchmark-v1/shadcn-maintenance-live-ballot.json)
 
 The public Inspo endpoint completed `recommend` on the frozen ceramics brief. It suggested Marquee Hero from an evidence set of 24 sites. The original run required `search_screens` and flagged the cell. The documented `recommend` endpoint also supplies relevant art direction. Replaying the original trace with both documented tools eligible verified the generation and its unchanged HTML hash. The blind critic found stronger typography and accessibility evidence in Design MCP, and could not confirm the completed bag action in either capture. The comparison covers one brief and the hosted build. [Paired ballot, browser receipts, and token counts](../evidence/benchmark-v1/hosted-inspo-ceramics.json) · [Tool documentation](https://github.com/Nutlope/inspo/blob/main/apps/mcp/README.md) · [Capture run](https://github.com/chrismicah/design-mcp/actions/runs/44989604073)
 
