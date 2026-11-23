@@ -80,7 +80,9 @@ jobs:
           proof="$RUNNER_TEMP/review-proof"
           "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --version > "$proof/mcp-browser-version.txt"
           cd "$RUNNER_TEMP"
-          TMPDIR="$RUNNER_TEMP/review-tmp" "$RUNNER_TEMP/design-review/bin/python" -I +            "$GITHUB_WORKSPACE/evals/vision/verify_mcp_review.py" +            "$RUNNER_TEMP/design-review/bin/design-mcp" "$proof/mcp"
+          verifier="$GITHUB_WORKSPACE/evals/vision/verify_mcp_review.py"
+          bin="$RUNNER_TEMP/design-review/bin"
+          TMPDIR="$RUNNER_TEMP/review-tmp" "$bin/python" -I "$verifier" "$bin/design-mcp" "$proof/mcp"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
