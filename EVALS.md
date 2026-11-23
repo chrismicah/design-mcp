@@ -580,7 +580,7 @@ All six recorded journeys exercised an empty submission, entered the exact value
 
 ## Cupboard pickup-window comparison
 
-Three independent live rounds compared the same tool-lending interaction. Each matched comparison used the same four tools, fit and reset limits, inventory states, preview times, and recovery behavior. At **18:24** Fine was unavailable. At **18:25** it became available while Pocket remained selected. The separate withdrawal action kept Pocket's jam reason and moved focus to the explicit Fine action.
+Four independent live rounds compared the same tool-lending interaction. Each matched comparison used the same four tools, fit and reset limits, inventory states, preview times, and recovery behavior. At **18:24** Fine was unavailable. At **18:25** it became available while Pocket remained selected. The separate withdrawal action kept Pocket's jam reason and moved focus to the explicit Fine action.
 
 | Round | Timetable desktop / phone | Plain table desktop / phone | Finding |
 | --- | ---: | ---: | --- |
@@ -589,4 +589,6 @@ Three independent live rounds compared the same tool-lending interaction. Each m
 
 Round three tested the same discrete schedule with two measurement layouts. Both layouts replaced the wait comparison after withdrawal with the next available time, 9 mm of guaranteed room, and the 6° reset. The compact table scored **7.95 desktop / 7.75 phone** versus **7.75 / 7.40** for the expanded gauge rows. The critic preferred the table because it showed all four tools and both choice controls on opening. Both omitted the explicit prior 18:10 choice after recovery. The jam reason persisted.
 
-An intermediate geometry replay separately verified the stacked recovery layout. Across four builds, Playwriter checked **24 journeys and 144 original frames**, with keyboard at 390 and 1440 px and touch with reduced motion at 320 px. The round-three critic contributed 12 additional verified original frames. The scores describe standalone prototypes and remain below 9.5. [Replays and individual live grades](evidence/benchmark-v1/cupboard-pickup-window.json)
+Round four moved compact measurement tracks into the table and put the two panels beside each other on desktop. Both arms preserved the explicit 18:10 choice, timestamp, and jam reason after confirming Fine. The new layout scored **8.10 desktop / 7.75 phone** versus **7.75 / 7.75** for the tabular control. The critic preferred the desktop comparison and identified a missing legend and cramped measurement columns at 390 px.
+
+An intermediate geometry replay separately verified the stacked recovery layout. Across five builds, Playwriter checked **30 journeys and 180 original frames**, with keyboard at 390 and 1440 px and touch with reduced motion at 320 px. The third and fourth critics contributed 24 additional verified original frames. The scores describe standalone prototypes and remain below 9.5. [Replays and individual live grades](evidence/benchmark-v1/cupboard-pickup-window.json)

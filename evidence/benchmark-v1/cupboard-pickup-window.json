@@ -899,7 +899,8 @@
       },
       "witness_receipt_sha256": "5b5a83384a5b88c15d1b1efe1edda48c678538379837cbd0ea48222028bef334",
       "layout_source_sha256": "5bf711103fe3fe409594e801a9aa4cde7d66289d8be5cdd39b005c0e32d05ca3",
-      "model_source_sha256": "eb4d6a5efc72cff1a9afa0dfb77dca1c7d4741492e8557559da91f23d4ea4cc9"
+      "model_source_sha256": "eb4d6a5efc72cff1a9afa0dfb77dca1c7d4741492e8557559da91f23d4ea4cc9",
+      "art_direction_sha256": "bbb4708f1d37dc76d4972e08df3e3b3a400b0971fdba42bca68b8a67a033a1cb"
     },
     "discrete-slots": {
       "html": {
@@ -1146,6 +1147,7 @@
       "witness_receipt_sha256": "9b3f87b796865fd3c9db71a2cb182314206cc0db5247fda8d4fe650559830e3f",
       "layout_source_sha256": "6485b419c411b6035d8eae34452fa2a2aed3a2e8a137d257d6db568a934876d1",
       "model_source_sha256": "eb4d6a5efc72cff1a9afa0dfb77dca1c7d4741492e8557559da91f23d4ea4cc9",
+      "art_direction_sha256": "46ce76852d49566d08cbc77f6678a49e1a8140f0fc9f48232c55001dabc0735e",
       "ballot": {
         "calibration": {
           "example": "Legible repair intake with clear labels, familiar layout and misplaced focus after an invalid number",
@@ -1793,6 +1795,7 @@
       "witness_receipt_sha256": "fe1cca787febfc2d33534edbae66cc9df89d9dbf6f5c220f20d6dd647943f86e",
       "layout_source_sha256": "4592658806bdab00a8c2c0f57ce5f8ba0cb898eb2e637a138abd422c5d822280",
       "model_source_sha256": "eb4d6a5efc72cff1a9afa0dfb77dca1c7d4741492e8557559da91f23d4ea4cc9",
+      "art_direction_sha256": "c78985501857bbc1aede80bc88d9ac2310b5f468a7ba85d4a4a9b87a21886605",
       "ballot": {
         "calibration": {
           "coherence": 7.5,
@@ -2183,65 +2186,799 @@
         "browser_audit_sha256": "cb06f4592b1736ddbe89a8b75816a7ae0310af92f4216db0c635a033ddfddf4a"
       },
       "critic_originals": {
-        "A-1440-before": {
-          "width": 1440,
-          "height": 900,
-          "sha256": "16f9074bd6a9a43da5785d388c8fa648d4fcf9cfd43221bb9e84a207d202fc65"
-        },
         "A-1440-after": {
-          "width": 1440,
           "height": 900,
-          "sha256": "a3c32c7434c1dbe07cf3d82ae44580841ef3df67bd4f2ed3ebc4acfa95b96836"
+          "sha256": "a3c32c7434c1dbe07cf3d82ae44580841ef3df67bd4f2ed3ebc4acfa95b96836",
+          "width": 1440
+        },
+        "A-1440-before": {
+          "height": 900,
+          "sha256": "16f9074bd6a9a43da5785d388c8fa648d4fcf9cfd43221bb9e84a207d202fc65",
+          "width": 1440
         },
         "A-1440-edge": {
-          "width": 1440,
           "height": 900,
-          "sha256": "3130731ce4bebbd588ed9e2711f2dbc2f5741b88b09e382408ee1adb54da88a1"
-        },
-        "A-390-before": {
-          "width": 390,
-          "height": 844,
-          "sha256": "b8842ee6c86b92c13673718db19f3c603ff70e074ccea075f27a12e9b85b3fdb"
+          "sha256": "3130731ce4bebbd588ed9e2711f2dbc2f5741b88b09e382408ee1adb54da88a1",
+          "width": 1440
         },
         "A-390-after": {
-          "width": 390,
           "height": 844,
-          "sha256": "430bf74e452eee3d00dce7da0ca876164ba430996a7af8b386a94be33f5dc51c"
+          "sha256": "430bf74e452eee3d00dce7da0ca876164ba430996a7af8b386a94be33f5dc51c",
+          "width": 390
+        },
+        "A-390-before": {
+          "height": 844,
+          "sha256": "b8842ee6c86b92c13673718db19f3c603ff70e074ccea075f27a12e9b85b3fdb",
+          "width": 390
         },
         "A-390-edge": {
-          "width": 390,
           "height": 844,
-          "sha256": "41a9024ec72dca6957bdbcd1520f85ab1c965a1b08760b9e8f2e7ea5a6c388cc"
-        },
-        "B-1440-before": {
-          "width": 1440,
-          "height": 900,
-          "sha256": "b729e18559c77ce51bb95a8399d638a4a8a17f41fac1a903358ac55be82b4856"
+          "sha256": "41a9024ec72dca6957bdbcd1520f85ab1c965a1b08760b9e8f2e7ea5a6c388cc",
+          "width": 390
         },
         "B-1440-after": {
-          "width": 1440,
           "height": 900,
-          "sha256": "a29cd94706b324530a0eb6840b3c8c3642ac2966f5ac4383d671cea1ba70dc62"
+          "sha256": "a29cd94706b324530a0eb6840b3c8c3642ac2966f5ac4383d671cea1ba70dc62",
+          "width": 1440
+        },
+        "B-1440-before": {
+          "height": 900,
+          "sha256": "b729e18559c77ce51bb95a8399d638a4a8a17f41fac1a903358ac55be82b4856",
+          "width": 1440
         },
         "B-1440-edge": {
-          "width": 1440,
           "height": 900,
-          "sha256": "54c11959a280482ffd16d726ac349153b1adfd161e23d44b2422f919c58dd55e"
-        },
-        "B-390-before": {
-          "width": 390,
-          "height": 844,
-          "sha256": "89341de6e0facad8ef082cd0e7a4c598922156d95b8bf4952366bfc42d54a596"
+          "sha256": "54c11959a280482ffd16d726ac349153b1adfd161e23d44b2422f919c58dd55e",
+          "width": 1440
         },
         "B-390-after": {
-          "width": 390,
           "height": 844,
-          "sha256": "4d18da3f00cce10e4660639fbc3031520372abd293d2082b99846f7ab9453a18"
+          "sha256": "4d18da3f00cce10e4660639fbc3031520372abd293d2082b99846f7ab9453a18",
+          "width": 390
+        },
+        "B-390-before": {
+          "height": 844,
+          "sha256": "89341de6e0facad8ef082cd0e7a4c598922156d95b8bf4952366bfc42d54a596",
+          "width": 390
         },
         "B-390-edge": {
-          "width": 390,
           "height": 844,
-          "sha256": "669c16e3bae9fb33cddbf202ae01a24e759510a424a091710f27a90536633b1a"
+          "sha256": "669c16e3bae9fb33cddbf202ae01a24e759510a424a091710f27a90536633b1a",
+          "width": 390
+        }
+      }
+    },
+    "bench-panel": {
+      "html": {
+        "table": "cc7acbb1b83d1f73f83be2ba8018a6636dc6475c423a136ec0089f4ca415fd34",
+        "timetable": "67a6c994ddc33e864ca317cedbea8dc0b24b4b6defd157d1f505f36c5f0ddf46"
+      },
+      "browser": "Chrome/160.0.8178.0",
+      "journeys": {
+        "table-320": {
+          "checks": {
+            "no_errors_overflow_or_asset_violations": true,
+            "correct_opening_constraints": true,
+            "selected_pocket_before_update": true,
+            "preview_changes_only_availability": true,
+            "current_pickup_replaces_wait_comparison": true,
+            "flat_shows_limits_on_correct_sides": true,
+            "visible_conflict_and_recovery": true,
+            "conflict_text_has_room": true,
+            "explicit_replacement_keeps_the_old_reason": true
+          },
+          "captures": {
+            "before": {
+              "filename": "table-320-before.png",
+              "sha256": "a62b478df0131d1a215986322a4739bcd6805260b04f2d148ecb8a33f1760b42"
+            },
+            "chosen": {
+              "filename": "table-320-chosen.png",
+              "sha256": "12853aaf0effc2fe53346e16b062220022494b9a442201a6897a62a78cd26229"
+            },
+            "early": {
+              "filename": "table-320-early.png",
+              "sha256": "0baff0399ec674ab2414e2efb39669a5b5324e84255a500223c955649ea104d5"
+            },
+            "later": {
+              "filename": "table-320-later.png",
+              "sha256": "eb9663fde6f7c3516af5c4df8a7975fc6aca1724b8b825c1d93998142b88593a"
+            },
+            "conflict": {
+              "filename": "table-320-conflict.png",
+              "sha256": "9b72dfeacce76e8ebc165108c7cce0969c02cb764ddb279ae3dbe72fbe6ec371"
+            },
+            "recovered": {
+              "filename": "table-320-recovered.png",
+              "sha256": "b9be3e1bb9dbfb1624653e65119f7921661af8a8e0c4a753c5812df2e2fbe0fa"
+            }
+          },
+          "focus": "recover",
+          "width": 243
+        },
+        "table-390": {
+          "checks": {
+            "no_errors_overflow_or_asset_violations": true,
+            "correct_opening_constraints": true,
+            "selected_pocket_before_update": true,
+            "preview_changes_only_availability": true,
+            "current_pickup_replaces_wait_comparison": true,
+            "flat_shows_limits_on_correct_sides": true,
+            "visible_conflict_and_recovery": true,
+            "conflict_text_has_room": true,
+            "explicit_replacement_keeps_the_old_reason": true,
+            "both_opening_choices_in_view": true
+          },
+          "captures": {
+            "before": {
+              "filename": "table-390-before.png",
+              "sha256": "0c89b3ff401647897ebca91ebab80a05e67a66e0015e020f2df80f1655d81085"
+            },
+            "chosen": {
+              "filename": "table-390-chosen.png",
+              "sha256": "225cf7bdf4fb1017f027107baf05538b750bd26c4a56aeadd3351c0f423e3c9b"
+            },
+            "early": {
+              "filename": "table-390-early.png",
+              "sha256": "9def2074ff17fec9433150f7a334fd6d55cd4c2d4851e66d66e95a2f5c5a4c39"
+            },
+            "later": {
+              "filename": "table-390-later.png",
+              "sha256": "ddc648c6d9298c2dc02d80623951dd9167ec9a4bcc86e79ebd82845badac6f30"
+            },
+            "conflict": {
+              "filename": "table-390-conflict.png",
+              "sha256": "c0f9415b610a20bcd1691d523bcdf0f606629e4a35fa221b01eee7820fdf3142"
+            },
+            "recovered": {
+              "filename": "table-390-recovered.png",
+              "sha256": "c8a76e65be59b33ab5156b916a0954a05c71c6ec7e474aef9e15047915522b55"
+            }
+          },
+          "focus": "recover",
+          "width": 313
+        },
+        "table-1440": {
+          "checks": {
+            "no_errors_overflow_or_asset_violations": true,
+            "correct_opening_constraints": true,
+            "selected_pocket_before_update": true,
+            "preview_changes_only_availability": true,
+            "current_pickup_replaces_wait_comparison": true,
+            "flat_shows_limits_on_correct_sides": true,
+            "visible_conflict_and_recovery": true,
+            "conflict_text_has_room": true,
+            "explicit_replacement_keeps_the_old_reason": true,
+            "both_opening_choices_in_view": true
+          },
+          "captures": {
+            "before": {
+              "filename": "table-1440-before.png",
+              "sha256": "50a37420f49174a60c022c23297584f23d5ffc002a9acf1327b4994b51d81169"
+            },
+            "chosen": {
+              "filename": "table-1440-chosen.png",
+              "sha256": "9d22531cb68bbe3385c0ef7585a58361504d09b32a69ac29c75da0cd5ccc6a17"
+            },
+            "early": {
+              "filename": "table-1440-early.png",
+              "sha256": "f3c4a47e27b6ea35cdc5096d398ca6bd479ddfc7edf05b2c3760f80fa2777248"
+            },
+            "later": {
+              "filename": "table-1440-later.png",
+              "sha256": "fe16b1280f34bed33af251431d477e0033e287fa75c46d85b72278b622f37978"
+            },
+            "conflict": {
+              "filename": "table-1440-conflict.png",
+              "sha256": "8cd67d9c89f7c2f329c4e0b677ccd99d01851551c23f903c07f2599f4f9e1aae"
+            },
+            "recovered": {
+              "filename": "table-1440-recovered.png",
+              "sha256": "a4d6ddfb6fbe8396bd4a5b1c2fdec96a4741d3bb8019d00cc7adb160c84a045b"
+            }
+          },
+          "focus": "recover",
+          "width": 749.546875
+        },
+        "timetable-320": {
+          "checks": {
+            "no_errors_overflow_or_asset_violations": true,
+            "correct_opening_constraints": true,
+            "selected_pocket_before_update": true,
+            "preview_changes_only_availability": true,
+            "current_pickup_replaces_wait_comparison": true,
+            "flat_shows_limits_on_correct_sides": true,
+            "visible_conflict_and_recovery": true,
+            "conflict_text_has_room": true,
+            "explicit_replacement_keeps_the_old_reason": true
+          },
+          "captures": {
+            "before": {
+              "filename": "timetable-320-before.png",
+              "sha256": "5ba21cffee82a378ab638be5ee55e03e8a0bc9ec9f278bcd9f2f6588beb8fcc4"
+            },
+            "chosen": {
+              "filename": "timetable-320-chosen.png",
+              "sha256": "20f00592d0cfa4610925864971da626eab4acb90970c279dd726d01fcfbda23a"
+            },
+            "early": {
+              "filename": "timetable-320-early.png",
+              "sha256": "c4adf276cb79e04d3709cabed4aea9be56c476664907b3016029db3ddbd35a83"
+            },
+            "later": {
+              "filename": "timetable-320-later.png",
+              "sha256": "94d32c36e648bfab7fca3a970148c271318adb8a41dccc3ebefcf40fb24e5eec"
+            },
+            "conflict": {
+              "filename": "timetable-320-conflict.png",
+              "sha256": "db1a82a1f465b520fc4098fa2cffcd6a692a5516789194faf87be426c5baff0f"
+            },
+            "recovered": {
+              "filename": "timetable-320-recovered.png",
+              "sha256": "bc3e7df32ad0592fa9d307698e6417e7e7e6b47fd8c3705c4eeb979060b7f503"
+            }
+          },
+          "focus": "recover",
+          "width": 243
+        },
+        "timetable-390": {
+          "checks": {
+            "no_errors_overflow_or_asset_violations": true,
+            "correct_opening_constraints": true,
+            "selected_pocket_before_update": true,
+            "preview_changes_only_availability": true,
+            "current_pickup_replaces_wait_comparison": true,
+            "flat_shows_limits_on_correct_sides": true,
+            "visible_conflict_and_recovery": true,
+            "conflict_text_has_room": true,
+            "explicit_replacement_keeps_the_old_reason": true,
+            "both_opening_choices_in_view": true
+          },
+          "captures": {
+            "before": {
+              "filename": "timetable-390-before.png",
+              "sha256": "a64bff6a83033bf3dac8dca8eaa516dac15c48f2ddbae0f922dea4c1af412035"
+            },
+            "chosen": {
+              "filename": "timetable-390-chosen.png",
+              "sha256": "4fadd6148339de86c8bc1d6d242afc2664d53ee36dbe6d9423d4e32462016fde"
+            },
+            "early": {
+              "filename": "timetable-390-early.png",
+              "sha256": "8622229797eb95113383ac1669749a748ee05993e8b690c481e31ad1b8e9b674"
+            },
+            "later": {
+              "filename": "timetable-390-later.png",
+              "sha256": "6ce8deb5c13d9040ae095936d11fb08f7d4844cd6c40e8e342059a1bc902eadd"
+            },
+            "conflict": {
+              "filename": "timetable-390-conflict.png",
+              "sha256": "decda80ca4cba22eb3b2aa506315bcfa66e4c6b4856a00e0a19e02e5017a309f"
+            },
+            "recovered": {
+              "filename": "timetable-390-recovered.png",
+              "sha256": "b120d5913dd8a7948da5e8cae181693fadce8e0f230ab9830672ad0c00c1c02d"
+            }
+          },
+          "focus": "recover",
+          "width": 313
+        },
+        "timetable-1440": {
+          "checks": {
+            "no_errors_overflow_or_asset_violations": true,
+            "correct_opening_constraints": true,
+            "selected_pocket_before_update": true,
+            "preview_changes_only_availability": true,
+            "current_pickup_replaces_wait_comparison": true,
+            "flat_shows_limits_on_correct_sides": true,
+            "visible_conflict_and_recovery": true,
+            "conflict_text_has_room": true,
+            "explicit_replacement_keeps_the_old_reason": true,
+            "both_opening_choices_in_view": true
+          },
+          "captures": {
+            "before": {
+              "filename": "timetable-1440-before.png",
+              "sha256": "0e6bf396d6811aabba1893f4a18c8702fe70658c88790f3deefbcbfa5f587b43"
+            },
+            "chosen": {
+              "filename": "timetable-1440-chosen.png",
+              "sha256": "a42fb24a27cd4e21c3b1c8db0c5ae6a9cf400c9c9e9be2d4dcda649c45e8ef17"
+            },
+            "early": {
+              "filename": "timetable-1440-early.png",
+              "sha256": "2244c334c46e547f94eb9aec8e1fad7640414a76639dcee031e268527a5fe2c5"
+            },
+            "later": {
+              "filename": "timetable-1440-later.png",
+              "sha256": "8becbe172d069392753b46699eeebf533d276020914d2b1baedd3af29f795d1f"
+            },
+            "conflict": {
+              "filename": "timetable-1440-conflict.png",
+              "sha256": "de61d528aaf11288b59903ca499f2d909d871cb06aad4225079f5d167cc83e16"
+            },
+            "recovered": {
+              "filename": "timetable-1440-recovered.png",
+              "sha256": "5c1e859337bc3207cb0a644c6926ba0a1887d8bcce694792bf7dc18ee7006db0"
+            }
+          },
+          "focus": "recover",
+          "width": 436.4375
+        }
+      },
+      "witness_receipt_sha256": "2cb6b5b74fc801c075033616e523f579b5a20d91b3341ad9cc34d5072bc0022f",
+      "layout_source_sha256": "192e675b4bf3a188aff8cce1cb617224331684cb2bf2053c2909fd725104accd",
+      "model_source_sha256": "eb4d6a5efc72cff1a9afa0dfb77dca1c7d4741492e8557559da91f23d4ea4cc9",
+      "art_direction_sha256": "8d1751e513e143fd449ff51d61526ffb86fc0aceb7f8b18f223811febd9c86e7",
+      "ballot": {
+        "calibration": {
+          "example": "Legible repair intake with clear labels, familiar layout, and misplaced focus after an invalid number",
+          "coherence": 7,
+          "originality": 4,
+          "craft": 6,
+          "usability": 6
+        },
+        "screens": {
+          "A-1440": {
+            "coherence": 8.5,
+            "originality": 7.5,
+            "craft": 8,
+            "usability": 8.5,
+            "primary_action": {
+              "input": "Tab to Choose Pocket, Enter; use Shift+Tab, Tab, and Enter to preview 18:24 and 18:25.",
+              "expected": "Choose Pocket for 18:10, then compare later availability without changing the choice.",
+              "observed": "Pocket was chosen for 18:10 with 3 mm guaranteed room. At 18:24 Pocket remained available; at 18:25 Pocket and Fine were available, while Pocket remained chosen."
+            },
+            "edge_observation": "Applying the 17:56 update moved focus to Choose Fine at 18:25. Enter chose Fine, kept 18:25 selected and retained the Pocket withdrawal history. Focus moved to the visible Fine confirmation.",
+            "fact_check": "Flat is 27\u201328 mm tall, clearing the 41 mm minimum gap, but needs a 15\u00b0 reset against 12\u00b0 available swing: 3\u00b0 short. Fine becomes available at 18:25 and provides 6 mm more guaranteed room and a 4\u00b0 smaller reset than Pocket. After withdrawal, Fine shows 31\u201332 mm, 6\u00b0 reset, 9 mm guaranteed room and pickup at 18:25; Pocket was withdrawn because its ratchet jammed. Hand clearance is explicitly unmeasured. The page says choices stay in the demo, so a reservation is not established. The equally spaced time buttons are presented as discrete previews, not a labeled proportional time scale.",
+            "strength": "Measurements, thresholds and pickup options appear together on opening; the bars help compare height and reset against the limits.",
+            "weakness": "The bars have no visible scale or legend, and the generic Show measurements and pickup times control appears above evidence that is already visible.",
+            "repair": "Label the bar thresholds and clarify the purpose of the disclosure control.",
+            "captures": [
+              "A-1440-before.png",
+              "A-1440-after.png",
+              "A-1440-edge.png"
+            ],
+            "arm": "timetable",
+            "html_sha256": "67a6c994ddc33e864ca317cedbea8dc0b24b4b6defd157d1f505f36c5f0ddf46",
+            "weighted": 8.1,
+            "before": {
+              "sha256": "0e6bf396d6811aabba1893f4a18c8702fe70658c88790f3deefbcbfa5f587b43",
+              "file": "A-1440-before.png",
+              "tool_call_id": "item_2"
+            },
+            "after": {
+              "sha256": "de61d528aaf11288b59903ca499f2d909d871cb06aad4225079f5d167cc83e16",
+              "file": "A-1440-after.png",
+              "tool_call_id": "item_16"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Shift+Tab"
+              },
+              {
+                "action": "key",
+                "value": "Shift+Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "A-390": {
+            "coherence": 8,
+            "originality": 7.5,
+            "craft": 7.5,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab to Choose Pocket, Enter; use Shift+Tab, Tab, and Enter for the two previews.",
+              "expected": "Choose Pocket at 18:10 and inspect 18:24 and 18:25 without losing the selection.",
+              "observed": "Pocket was confirmed at 18:10 and remained chosen through both previews; Fine appeared at 18:25."
+            },
+            "edge_observation": "The update focused the visible Choose Fine action. Enter selected Fine for 18:25, preserved the jammed-ratchet history and focused the visible confirmation.",
+            "fact_check": "Flat clears the minimum gap at 27\u201328 mm but its 15\u00b0 reset exceeds the 12\u00b0 swing by 3\u00b0. Fine adds 6 mm room and reduces reset by 4\u00b0 versus Pocket; after the withdrawal it is shown as 31\u201332 mm, 6\u00b0, 9 mm room, available at 18:25. The demo does not establish a reservation; hand clearance is unmeasured. Equal-width preview buttons should not be read as a proportional timeline.",
+            "strength": "The opening viewport contains the task, time choices and complete comparison table.",
+            "weakness": "The compact five-column table and small measurement bars are crowded on mobile; after recovery the page needs vertical scrolling.",
+            "repair": "Increase table legibility and label the bar thresholds while retaining the side-by-side facts.",
+            "captures": [
+              "A-390-before.png",
+              "A-390-after.png",
+              "A-390-edge.png"
+            ],
+            "arm": "timetable",
+            "html_sha256": "67a6c994ddc33e864ca317cedbea8dc0b24b4b6defd157d1f505f36c5f0ddf46",
+            "weighted": 7.75,
+            "before": {
+              "sha256": "a64bff6a83033bf3dac8dca8eaa516dac15c48f2ddbae0f922dea4c1af412035",
+              "file": "A-390-before.png",
+              "tool_call_id": "item_21"
+            },
+            "after": {
+              "sha256": "3dbf59070e13acc7547449075d25e573d1e3d884ff25fa27b3ac79a861bd1216",
+              "file": "A-390-after.png",
+              "tool_call_id": "item_35"
+            },
+            "layout_width": 375,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Shift+Tab"
+              },
+              {
+                "action": "key",
+                "value": "Shift+Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-1440": {
+            "coherence": 8,
+            "originality": 7.5,
+            "craft": 7.5,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab to Choose Pocket, Enter; use Shift+Tab, Tab, and Enter to preview 18:24 and 18:25.",
+              "expected": "Confirm Pocket at 18:10 and compare later availability without changing the choice.",
+              "observed": "Pocket was confirmed at 18:10. The 18:24 preview showed Pocket, and 18:25 showed Pocket and Fine while preserving the Pocket choice."
+            },
+            "edge_observation": "The update focused Choose Fine at 18:25. Enter selected Fine, kept the preview at 18:25 and preserved the Pocket withdrawal reason; focus landed on the visible Fine confirmation.",
+            "fact_check": "Flat's 27\u201328 mm height clears 41 mm, but its 15\u00b0 reset needs 3\u00b0 more than the available 12\u00b0. Fine becomes available at 18:25, with 6 mm more room and a 4\u00b0 smaller reset than Pocket. After the update, Fine is 31\u201332 mm with a 6\u00b0 reset and 9 mm guaranteed room; Pocket was withdrawn at 17:56 because its ratchet jammed. A real reservation is unsupported by the demo. The equal-width time options are discrete buttons, not an explicitly proportional scale.",
+            "strength": "The vivid preview panel makes availability and the recovery action prominent; the numerical table is readable.",
+            "weakness": "The large preview panel takes priority over the measurements needed to justify the choice, and the table lacks visual threshold comparisons.",
+            "repair": "Give the fit evidence more prominence beside the time decision and explicitly connect each measurement to its limit.",
+            "captures": [
+              "B-1440-before.png",
+              "B-1440-after.png",
+              "B-1440-edge.png"
+            ],
+            "arm": "table",
+            "html_sha256": "cc7acbb1b83d1f73f83be2ba8018a6636dc6475c423a136ec0089f4ca415fd34",
+            "weighted": 7.75,
+            "before": {
+              "sha256": "50a37420f49174a60c022c23297584f23d5ffc002a9acf1327b4994b51d81169",
+              "file": "B-1440-before.png",
+              "tool_call_id": "item_39"
+            },
+            "after": {
+              "sha256": "b65921839a8b29bca3aa2b30840e0a95029de42ad983e763426239971a2b8156",
+              "file": "B-1440-after.png",
+              "tool_call_id": "item_53"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Shift+Tab"
+              },
+              {
+                "action": "key",
+                "value": "Shift+Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-390": {
+            "coherence": 8,
+            "originality": 7.5,
+            "craft": 7.5,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab to Choose Pocket, Enter; use Shift+Tab, Tab, and Enter for the two previews.",
+              "expected": "Confirm Pocket at 18:10 and inspect the later times without changing it.",
+              "observed": "Pocket remained chosen through 18:24 and 18:25; Fine appeared at 18:25."
+            },
+            "edge_observation": "The update focused Choose Fine; Enter confirmed Fine for 18:25, kept the old choice and reason visible, and focused the confirmation.",
+            "fact_check": "Flat clears the 41 mm minimum at 27\u201328 mm but needs a 15\u00b0 reset for a 12\u00b0 swing. Fine offers 6 mm more room and a 4\u00b0 smaller reset than Pocket; after withdrawal it shows 31\u201332 mm, 6\u00b0, 9 mm room and 18:25 pickup. The demo does not establish a reservation, and hand clearance is unmeasured. The time buttons are discrete choices rather than a labeled proportional scale.",
+            "strength": "The full numerical comparison is visible on opening, and the recovery action has a clear focus outline.",
+            "weakness": "The bright preview dominates the compact table, and users must calculate the fit margins from the numbers.",
+            "repair": "Add concise, visible fit margins or threshold indicators to the table and reduce the preview's visual dominance.",
+            "captures": [
+              "B-390-before.png",
+              "B-390-after.png",
+              "B-390-edge.png"
+            ],
+            "arm": "table",
+            "html_sha256": "cc7acbb1b83d1f73f83be2ba8018a6636dc6475c423a136ec0089f4ca415fd34",
+            "weighted": 7.75,
+            "before": {
+              "sha256": "0c89b3ff401647897ebca91ebab80a05e67a66e0015e020f2df80f1655d81085",
+              "file": "B-390-before.png",
+              "tool_call_id": "item_58"
+            },
+            "after": {
+              "sha256": "813a06e254f766c0d313fa9e32473b2b03c33327fc8c664683f65f1b2c550cf2",
+              "file": "B-390-after.png",
+              "tool_call_id": "item_72"
+            },
+            "layout_width": 375,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Shift+Tab"
+              },
+              {
+                "action": "key",
+                "value": "Shift+Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          }
+        },
+        "preference": {
+          "winner": "A",
+          "reason": "A places the comparison alongside the preview on desktop and adds threshold bars, making the fit evidence easier to inspect early. Both completed the tested keyboard and recovery flow; A's bars still need a visible legend and its mobile table is compact."
+        },
+        "case": "cupboard-pickup-window",
+        "verified_screens": 4,
+        "required_screens": 4,
+        "browser": "Chrome/160.0.8178.0",
+        "evaluator_thread": "01a208f8-6fc8-7242-bbbe-b9e60586a1ef",
+        "usage": {
+          "input_tokens": 628163,
+          "cached_input_tokens": 574208,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3255,
+          "reasoning_output_tokens": 0
+        },
+        "trace_sha256": "0f49a64f7a2fa7008379738dd6454c6adadad29cf7a49399706f3cb799a8fe90",
+        "browser_audit_sha256": "b8764e50c6580b979aec1e65272fa0b334fc84f653edd5289c143e74f7c81e04"
+      },
+      "critic_originals": {
+        "A-1440-after": {
+          "height": 900,
+          "sha256": "de61d528aaf11288b59903ca499f2d909d871cb06aad4225079f5d167cc83e16",
+          "width": 1440
+        },
+        "A-1440-before": {
+          "height": 900,
+          "sha256": "0e6bf396d6811aabba1893f4a18c8702fe70658c88790f3deefbcbfa5f587b43",
+          "width": 1440
+        },
+        "A-1440-edge": {
+          "height": 900,
+          "sha256": "5c1e859337bc3207cb0a644c6926ba0a1887d8bcce694792bf7dc18ee7006db0",
+          "width": 1440
+        },
+        "A-390-after": {
+          "height": 844,
+          "sha256": "3dbf59070e13acc7547449075d25e573d1e3d884ff25fa27b3ac79a861bd1216",
+          "width": 390
+        },
+        "A-390-before": {
+          "height": 844,
+          "sha256": "a64bff6a83033bf3dac8dca8eaa516dac15c48f2ddbae0f922dea4c1af412035",
+          "width": 390
+        },
+        "A-390-edge": {
+          "height": 844,
+          "sha256": "b120d5913dd8a7948da5e8cae181693fadce8e0f230ab9830672ad0c00c1c02d",
+          "width": 390
+        },
+        "B-1440-after": {
+          "height": 900,
+          "sha256": "b65921839a8b29bca3aa2b30840e0a95029de42ad983e763426239971a2b8156",
+          "width": 1440
+        },
+        "B-1440-before": {
+          "height": 900,
+          "sha256": "50a37420f49174a60c022c23297584f23d5ffc002a9acf1327b4994b51d81169",
+          "width": 1440
+        },
+        "B-1440-edge": {
+          "height": 900,
+          "sha256": "a4d6ddfb6fbe8396bd4a5b1c2fdec96a4741d3bb8019d00cc7adb160c84a045b",
+          "width": 1440
+        },
+        "B-390-after": {
+          "height": 844,
+          "sha256": "813a06e254f766c0d313fa9e32473b2b03c33327fc8c664683f65f1b2c550cf2",
+          "width": 390
+        },
+        "B-390-before": {
+          "height": 844,
+          "sha256": "0c89b3ff401647897ebca91ebab80a05e67a66e0015e020f2df80f1655d81085",
+          "width": 390
+        },
+        "B-390-edge": {
+          "height": 844,
+          "sha256": "c8a76e65be59b33ab5156b916a0954a05c71c6ec7e474aef9e15047915522b55",
+          "width": 390
         }
       }
     }
