@@ -39,7 +39,7 @@ def test_source_review_exposes_a_complete_outage():
     assert [source["source"] for source in sources] == [
         *RELEASES, "Show HN visual demos", "Hacker News front-page visual projects",
         "CSS Design Awards Website of the Day",
-        "Awwwards Site of the Day", *RESEARCH,
+        "Awwwards Site of the Day", "MUUUUU.ORG Site of the Day", *RESEARCH,
     ]
     assert all(source["error"] == "TimeoutError" for source in sources)
 
