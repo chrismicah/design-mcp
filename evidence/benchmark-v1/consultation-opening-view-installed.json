@@ -1,0 +1,330 @@
+{
+  "scope": "Clean offline wheel, macOS arm64 and Python 3.13.3. Experimental layout guidance.",
+  "candidate": "04d73204d2802bc91e598f143887990a8cb9b40b",
+  "control": "5206acdd",
+  "install": {
+    "doctor": "passed",
+    "wheel_sha256": "29fa77cb43f308e8ad3b089cbfabdb68c9c49c71702b7b6cea75486debd2f0df",
+    "catalog_sha256": "203198656f718855ebb6a6e68bdd20994ead135c8d3d290531480862f9129eee",
+    "installed_files_verified_against_archive": 50
+  },
+  "verification": {
+    "distribution_reply_parity": {
+      "benchmark": 36,
+      "briefs": 6,
+      "heldout": 6
+    },
+    "explicit_form_override_preserved": true,
+    "real_site_route": {
+      "before": "grouped-fieldsets",
+      "after": "direct-consultation",
+      "full_template_still_merchandise": false,
+      "before_reply_sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+      "after_reply_sha256": "a2c6173036222509cc9110ebd0c9d174ed926ab12db9668d6831db63b0390269"
+    },
+    "practice_and_control_suite": {
+      "passes": 7,
+      "total": 7
+    },
+    "layout_only_fields": [
+      "desktop",
+      "skeleton"
+    ],
+    "practice_reply_receipt_sha256": "06c003bf8df38cae55a887a00db992ebae8007ad58b2273e141396a64278b06c",
+    "cases": {
+      "tacoma-eye-care": {
+        "brief": "Build a homepage for Lena Ortiz, an independent optometrist in Tacoma. Lena sees new patients for routine eye exams and glasses fittings at 42 Example Way, Suite 2. Visitors can call 253-555-0143 between 9 am and 4 pm, Tuesday through Saturday. Make the right person, the two services and the call link easy to find. There is no portrait. Below the introduction, offer a short reminder people can prepare to have ready when they call. Let people choose Eye exam or Glasses fitting, enter a first name and preview their own editable reminder in the browser. No information leaves the page and nothing is booked. Show how to fix a blank name and retain the service choice when the user edits. Avoid photos, insurance claims, reviews, pricing or extra destinations.",
+        "brief_sha256": "1f9c70dafdb189c2286f99756547d0658757e089ed1eae2d8a04de05ced34826",
+        "control_reply": {
+          "direction": {
+            "id": "direct-consultation",
+            "surface": "landing",
+            "title": "Direct consultation",
+            "summary": "Pair the named practice and person with the one verified way to start a conversation.",
+            "type": {
+              "display": "Bodoni Moda",
+              "body": "Instrument Sans",
+              "ratio": 4.3,
+              "tracking": -0.034,
+              "weight": 600,
+              "license": "OFL-1.1"
+            },
+            "palette": {
+              "ink": "#18243A",
+              "paper": "#F0F3FA",
+              "accent": "#BFCFFF"
+            },
+            "layout": {
+              "skeleton": "Give the introduction one deliberate split. Put the person, scope and primary contact action on the reading side. Put the supplied portrait beside that action. Follow with a ruled service list and one contact section.",
+              "focus": "The actual professional and how to reach them. Give their name and the primary contact path a clear position beside the portrait or its text alternative.",
+              "desktop": "Keep the supplied place and practice visible near the headline. Group the contact action with the deciding fact about who responds. Keep any secondary consultation form below the first view unless the brief makes it the primary task.",
+              "mobile": "At 390 px show the practice, location, named person and first contact action before a large portrait. Preserve section access with a compact keyboard menu if needed. At 320 px drop duplicated contact links before shrinking targets.",
+              "rhythm": "Use #172747 for a full-width introduction, #D7E1FA for supporting text in it and #52637E on the light reading area. Use thin rules and asymmetric spacing to separate service links from the intake area."
+            },
+            "imagery": {
+              "subject": "The practitioner shown in a supplied portrait, with their name and supplied role.",
+              "crop": "Crop for a readable face and clear space over the head. Verify the smallest width. Keep the portrait separate from text and use the image at its natural proportions.",
+              "fallback": "Set the supplied name and practice as the signature. Use no stock stand-in for a real person and no invented license, result or testimonial."
+            },
+            "motion": {
+              "trigger": "A visitor expands one service in the practice list.",
+              "effect": "Reveal the relevant text below the named control. Keep the control and its description in view after keyboard activation.",
+              "duration_ms": 230,
+              "reduced": "Show the description without motion and retain focus at the same control."
+            },
+            "action": {
+              "instruction": "When calling is the task, show the supplied number as a call link. Give any requested form a section action and announce its result. If the form previews a draft, label it as a draft and preserve the entries. Move focus to the draft so it is fully visible on activation without waiting for a scroll animation. Say a request was sent only if the form actually sends it.",
+              "label": "Call or request a consultation"
+            },
+            "why": "A visitor choosing a professional service needs to know who can help and how to reach them. Putting the supplied identity and contact path together makes that decision possible before secondary details.",
+            "sources": [
+              {
+                "url": "https://kieferandkiefer.com/contact/",
+                "observation": "The firm identifies distinct phone numbers for prospective and existing clients. Each label tells the caller which path applies.",
+                "strength": "evidence"
+              },
+              {
+                "url": "https://designsystem.digital.gov/components/link/",
+                "observation": "USWDS recommends including the country code in click-to-call destinations.",
+                "strength": "evidence"
+              }
+            ],
+            "credit": "Kiefer & Kiefer contact page and U.S. Web Design System link guidance. Original composition."
+          },
+          "font_stylesheet": "https://fonts.googleapis.com/css2?family=Bodoni+Moda%3Awght%40600&family=Instrument+Sans&display=swap",
+          "interaction": {
+            "accent_foreground": "#18243A",
+            "easing": "ease-out",
+            "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+            "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+            "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+          },
+          "assumptions": [
+            "Use landing as the surface.",
+            "Use only the project facts and assets in the brief."
+          ],
+          "questions": [],
+          "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px."
+        },
+        "trial_reply": {
+          "direction": {
+            "id": "direct-consultation",
+            "surface": "landing",
+            "title": "Direct consultation",
+            "summary": "Pair the named practice and person with the one verified way to start a conversation.",
+            "type": {
+              "display": "Bodoni Moda",
+              "body": "Instrument Sans",
+              "ratio": 4.3,
+              "tracking": -0.034,
+              "weight": 600,
+              "license": "OFL-1.1"
+            },
+            "palette": {
+              "ink": "#18243A",
+              "paper": "#F0F3FA",
+              "accent": "#BFCFFF"
+            },
+            "layout": {
+              "skeleton": "Lead with the person, scope and contact action. A supplied portrait can share the introduction. If the brief requests a short draft to prepare for a call, put it directly after the contact details. If the draft asks visitors to choose a service, let those labeled choices introduce the services once.",
+              "focus": "The actual professional and how to reach them. Give their name and the primary contact path a clear position beside the portrait or its text alternative.",
+              "desktop": "Group the supplied phone, hours and place. When a short call draft is requested, keep its first field and preview button in the opening view if they fit after contact details, including at 390 px. Preserve the brief’s order and keep longer intake in its own section.",
+              "mobile": "At 390 px show the practice, location, named person and first contact action before a large portrait. Preserve section access with a compact keyboard menu if needed. At 320 px drop duplicated contact links before shrinking targets.",
+              "rhythm": "Use #172747 for a full-width introduction, #D7E1FA for supporting text in it and #52637E on the light reading area. Use thin rules and asymmetric spacing to separate service links from the intake area."
+            },
+            "imagery": {
+              "subject": "The practitioner shown in a supplied portrait, with their name and supplied role.",
+              "crop": "Crop for a readable face and clear space over the head. Verify the smallest width. Keep the portrait separate from text and use the image at its natural proportions.",
+              "fallback": "Set the supplied name and practice as the signature. Use no stock stand-in for a real person and no invented license, result or testimonial."
+            },
+            "motion": {
+              "trigger": "A visitor expands one service in the practice list.",
+              "effect": "Reveal the relevant text below the named control. Keep the control and its description in view after keyboard activation.",
+              "duration_ms": 230,
+              "reduced": "Show the description without motion and retain focus at the same control."
+            },
+            "action": {
+              "instruction": "When calling is the task, show the supplied number as a call link. Give any requested form a section action and announce its result. If the form previews a draft, label it as a draft and preserve the entries. Move focus to the draft so it is fully visible on activation without waiting for a scroll animation. Say a request was sent only if the form actually sends it.",
+              "label": "Call or request a consultation"
+            },
+            "why": "A visitor choosing a professional service needs to know who can help and how to reach them. Putting the supplied identity and contact path together makes that decision possible before secondary details.",
+            "sources": [
+              {
+                "url": "https://kieferandkiefer.com/contact/",
+                "observation": "The firm identifies distinct phone numbers for prospective and existing clients. Each label tells the caller which path applies.",
+                "strength": "evidence"
+              },
+              {
+                "url": "https://designsystem.digital.gov/components/link/",
+                "observation": "USWDS recommends including the country code in click-to-call destinations.",
+                "strength": "evidence"
+              }
+            ],
+            "credit": "Kiefer & Kiefer contact page and U.S. Web Design System link guidance. Original composition."
+          },
+          "font_stylesheet": "https://fonts.googleapis.com/css2?family=Bodoni+Moda%3Awght%40600&family=Instrument+Sans&display=swap",
+          "interaction": {
+            "accent_foreground": "#18243A",
+            "easing": "ease-out",
+            "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+            "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+            "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+          },
+          "assumptions": [
+            "Use landing as the surface.",
+            "Use only the project facts and assets in the brief."
+          ],
+          "questions": [],
+          "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px."
+        }
+      },
+      "dayton-physiotherapy": {
+        "brief": "Make a homepage for Morgan Reyes, an independent physical therapist in Dayton. Morgan handles post-surgery and running-injury rehabilitation at 25 Example Lane. The office answers 937-555-0127 from 8 am to 3 pm on weekdays. Show who answers, the phone and the hours first. Visitors can prepare a short, editable note for the call. Let them choose Knee rehabilitation or Running assessment, enter a first name and preview. Show a recovery for a missing name. Keep the draft on the page and send nothing. Avoid photos, outcome guarantees and pricing.",
+        "brief_sha256": "f29bdcf735df70ebcf3ab0e596ede1383cd79060cee8eff4c4c952f1b5c92182",
+        "control_reply": {
+          "direction": {
+            "id": "direct-consultation",
+            "surface": "landing",
+            "title": "Direct consultation",
+            "summary": "Pair the named practice and person with the one verified way to start a conversation.",
+            "type": {
+              "display": "Bodoni Moda",
+              "body": "Instrument Sans",
+              "ratio": 4.3,
+              "tracking": -0.034,
+              "weight": 600,
+              "license": "OFL-1.1"
+            },
+            "palette": {
+              "ink": "#18243A",
+              "paper": "#F0F3FA",
+              "accent": "#BFCFFF"
+            },
+            "layout": {
+              "skeleton": "Give the introduction one deliberate split. Put the person, scope and primary contact action on the reading side. Put the supplied portrait beside that action. Follow with a ruled service list and one contact section.",
+              "focus": "The actual professional and how to reach them. Give their name and the primary contact path a clear position beside the portrait or its text alternative.",
+              "desktop": "Keep the supplied place and practice visible near the headline. Group the contact action with the deciding fact about who responds. Keep any secondary consultation form below the first view unless the brief makes it the primary task.",
+              "mobile": "At 390 px show the practice, location, named person and first contact action before a large portrait. Preserve section access with a compact keyboard menu if needed. At 320 px drop duplicated contact links before shrinking targets.",
+              "rhythm": "Use #172747 for a full-width introduction, #D7E1FA for supporting text in it and #52637E on the light reading area. Use thin rules and asymmetric spacing to separate service links from the intake area."
+            },
+            "imagery": {
+              "subject": "The practitioner shown in a supplied portrait, with their name and supplied role.",
+              "crop": "Crop for a readable face and clear space over the head. Verify the smallest width. Keep the portrait separate from text and use the image at its natural proportions.",
+              "fallback": "Set the supplied name and practice as the signature. Use no stock stand-in for a real person and no invented license, result or testimonial."
+            },
+            "motion": {
+              "trigger": "A visitor expands one service in the practice list.",
+              "effect": "Reveal the relevant text below the named control. Keep the control and its description in view after keyboard activation.",
+              "duration_ms": 230,
+              "reduced": "Show the description without motion and retain focus at the same control."
+            },
+            "action": {
+              "instruction": "When calling is the task, show the supplied number as a call link. Give any requested form a section action and announce its result. If the form previews a draft, label it as a draft and preserve the entries. Move focus to the draft so it is fully visible on activation without waiting for a scroll animation. Say a request was sent only if the form actually sends it.",
+              "label": "Call or request a consultation"
+            },
+            "why": "A visitor choosing a professional service needs to know who can help and how to reach them. Putting the supplied identity and contact path together makes that decision possible before secondary details.",
+            "sources": [
+              {
+                "url": "https://kieferandkiefer.com/contact/",
+                "observation": "The firm identifies distinct phone numbers for prospective and existing clients. Each label tells the caller which path applies.",
+                "strength": "evidence"
+              },
+              {
+                "url": "https://designsystem.digital.gov/components/link/",
+                "observation": "USWDS recommends including the country code in click-to-call destinations.",
+                "strength": "evidence"
+              }
+            ],
+            "credit": "Kiefer & Kiefer contact page and U.S. Web Design System link guidance. Original composition."
+          },
+          "font_stylesheet": "https://fonts.googleapis.com/css2?family=Bodoni+Moda%3Awght%40600&family=Instrument+Sans&display=swap",
+          "interaction": {
+            "accent_foreground": "#18243A",
+            "easing": "ease-out",
+            "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+            "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+            "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+          },
+          "assumptions": [
+            "Use landing as the surface.",
+            "Use only the project facts and assets in the brief."
+          ],
+          "questions": [],
+          "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px."
+        },
+        "trial_reply": {
+          "direction": {
+            "id": "direct-consultation",
+            "surface": "landing",
+            "title": "Direct consultation",
+            "summary": "Pair the named practice and person with the one verified way to start a conversation.",
+            "type": {
+              "display": "Bodoni Moda",
+              "body": "Instrument Sans",
+              "ratio": 4.3,
+              "tracking": -0.034,
+              "weight": 600,
+              "license": "OFL-1.1"
+            },
+            "palette": {
+              "ink": "#18243A",
+              "paper": "#F0F3FA",
+              "accent": "#BFCFFF"
+            },
+            "layout": {
+              "skeleton": "Lead with the person, scope and contact action. A supplied portrait can share the introduction. If the brief requests a short draft to prepare for a call, put it directly after the contact details. If the draft asks visitors to choose a service, let those labeled choices introduce the services once.",
+              "focus": "The actual professional and how to reach them. Give their name and the primary contact path a clear position beside the portrait or its text alternative.",
+              "desktop": "Group the supplied phone, hours and place. When a short call draft is requested, keep its first field and preview button in the opening view if they fit after contact details, including at 390 px. Preserve the brief’s order and keep longer intake in its own section.",
+              "mobile": "At 390 px show the practice, location, named person and first contact action before a large portrait. Preserve section access with a compact keyboard menu if needed. At 320 px drop duplicated contact links before shrinking targets.",
+              "rhythm": "Use #172747 for a full-width introduction, #D7E1FA for supporting text in it and #52637E on the light reading area. Use thin rules and asymmetric spacing to separate service links from the intake area."
+            },
+            "imagery": {
+              "subject": "The practitioner shown in a supplied portrait, with their name and supplied role.",
+              "crop": "Crop for a readable face and clear space over the head. Verify the smallest width. Keep the portrait separate from text and use the image at its natural proportions.",
+              "fallback": "Set the supplied name and practice as the signature. Use no stock stand-in for a real person and no invented license, result or testimonial."
+            },
+            "motion": {
+              "trigger": "A visitor expands one service in the practice list.",
+              "effect": "Reveal the relevant text below the named control. Keep the control and its description in view after keyboard activation.",
+              "duration_ms": 230,
+              "reduced": "Show the description without motion and retain focus at the same control."
+            },
+            "action": {
+              "instruction": "When calling is the task, show the supplied number as a call link. Give any requested form a section action and announce its result. If the form previews a draft, label it as a draft and preserve the entries. Move focus to the draft so it is fully visible on activation without waiting for a scroll animation. Say a request was sent only if the form actually sends it.",
+              "label": "Call or request a consultation"
+            },
+            "why": "A visitor choosing a professional service needs to know who can help and how to reach them. Putting the supplied identity and contact path together makes that decision possible before secondary details.",
+            "sources": [
+              {
+                "url": "https://kieferandkiefer.com/contact/",
+                "observation": "The firm identifies distinct phone numbers for prospective and existing clients. Each label tells the caller which path applies.",
+                "strength": "evidence"
+              },
+              {
+                "url": "https://designsystem.digital.gov/components/link/",
+                "observation": "USWDS recommends including the country code in click-to-call destinations.",
+                "strength": "evidence"
+              }
+            ],
+            "credit": "Kiefer & Kiefer contact page and U.S. Web Design System link guidance. Original composition."
+          },
+          "font_stylesheet": "https://fonts.googleapis.com/css2?family=Bodoni+Moda%3Awght%40600&family=Instrument+Sans&display=swap",
+          "interaction": {
+            "accent_foreground": "#18243A",
+            "easing": "ease-out",
+            "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+            "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+            "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+          },
+          "assumptions": [
+            "Use landing as the surface.",
+            "Use only the project facts and assets in the brief."
+          ],
+          "questions": [],
+          "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px."
+        }
+      }
+    }
+  },
+  "pending": "No generated browser result from new wording yet. Reproduce on both practice briefs and compare with independent live critics before promotion."
+}
