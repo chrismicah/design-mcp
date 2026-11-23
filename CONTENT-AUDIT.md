@@ -124,6 +124,24 @@ Run it inside that checkout.
 python3 -I evidence/content/score_content.py          # writes CSVs, distribution.json/.svg (deterministic: two runs, identical SHA-256)
 ```
 
+## 9. Release resample
+
+Read 18 raw records from `data/patterns.json` in nine source-and-disposition groups. The sample used two rows per group from the scored CSV in file order, with Python's `random.Random(20261123)`. The examples below explain why these rows stay out of default retrieval. The sample did not score the original designs' pixels.
+
+| Rows read | What the records actually contain | Disposition |
+|---|---|---|
+| `awwwards-nfinite`, `awwwards-ava-srg` | Both describe the same hero, alternating feature sections and social proof. The layout field points to a shared template. | Keep the audited archival merge decisions. Use the original work to describe either site. |
+| `screenshot-awwwards-a30a34c726`, `screenshot-awwwards-041a80522e` | Portfolio and editorial descriptions, with component references where recipe code would go. The historic screenshot files are missing. | Source recapture before rewrite. |
+| `seed-saas-landing`, `seed-marketplace` | The first repeats the prebuilt indigo SaaS composition. The second gives a concrete 260 px filter sidebar, grid and sort order, and points to an example.com placeholder. | Keep as synthetic compatibility references. |
+| `screenshot-curated-cdb60cf06e`, `screenshot-curated-9e99f1536b` | Liveblocks and shadcn share a landing template. The shadcn record prescribes generic hero behavior and includes no component implementation. | Source recapture before rewrite. |
+| `dribbble-20448703-TimeTracker-Settings-Page`, `dribbble-11487714-Instant-Checkout-ECommerce-App` | The settings and checkout records both describe content occupying a main area with supporting navigation. The records supply no asset, interaction or source-specific composition. | Cull from retrieval. |
+| `screenshot-dribbble-5402ed9b86`, `screenshot-dribbble-165e64a709` | The missing assets are the only way to tell whether the product-grid and chart metadata describe the named records. | Cull unless the original can be recovered and inspected. |
+| `screenshot-dribbble-0104d15163`, `screenshot-dribbble-6584746c50` | Both crypto examples mention sidebars and KPI cards. The second also claims inline table actions and an empty state. The local assets are missing. | Confirm the claimed distinction before rewrite. |
+| `screenshot-landbook-b638a11eb3`, `screenshot-landbook-a2169b0bce` | Both use a generic landing layout reference. The Cassia Freire record provides actual hex values, which is sufficient to investigate the source. | Verify the type, palette and navigation at the original sites before reuse. |
+| `webui7k-1656392474976`, `webui7k-1655934872915` | The Tribblix 32-bit page carries the generic landing description. The Seaside book introduction carries a centered sign-in form description. Neither retains a screenshot. | Cull. The Seaside URL is a crawl reference with no verified connection to the Tyre material. |
+
+The verified catalog and original compatibility snapshot remain distinct. This read-through yielded zero additions to the default catalog. [Reference-material audit](evidence/content/REFERENCE-MATERIAL.md) · [Per-row scores](evidence/content/patterns_scored.csv)
+
 The scorer inventories package JSON with `rglob("*.json")` for the mirror hash
 check and loads specific files for scoring. In future audits, record the counts
 and SHA-256 hashes of `data/batch_list.json` and `data/remaining_vision.json` as
