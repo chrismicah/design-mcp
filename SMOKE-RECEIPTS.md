@@ -229,3 +229,12 @@ installed action with a real click on a visible test icon. Keyboard
 input still exercises scan, host recovery, both preview paths and saved
 result navigation. The alternate invocation adds no site access and
 leaves the shipped extension untouched. [Transient popup](https://github.com/chrismicah/design-mcp/actions/runs/45164436421) · [Managed X11 shortcut attempt](https://github.com/chrismicah/design-mcp/actions/runs/45164909456)
+
+### Exact hosted run at `8440d96`
+
+All 13 hosted checks passed. The portable install workflow passed all
+eight macOS 15 architecture and Python cells. The source report, Chrome
+popup, public URL review, SwiftUI and Electron jobs completed successfully.
+The documentation checkpoint at `b148b6d` has identical package and
+extension sources and passed 580 local tests and 122 subtests with four
+warnings. [Exact checks](https://github.com/chrismicah/design-mcp/commit/8440d969c3563d5f490f84c52ed9c88dfec6fe26/checks) · [Portable install workflow](https://github.com/chrismicah/design-mcp/actions/runs/45176436210)
