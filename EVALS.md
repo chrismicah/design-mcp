@@ -485,3 +485,5 @@ and round 4 as the head-to-head preference. At 320, 390 and 1440 px, 12
 separate first-frame, mid-transition, settled and reduced-motion checks on
 round 3 kept the label and reading visible. The first run remains
 unverified by the trace checker. [Ballots, actions, and frame hashes](evidence/benchmark-v1/vault-contact-strip-live.json)
+
+The subsequent festival workshop used two independent concept critiques. The first found that a travel estimate could look like a guaranteed schedule. The revised calculation handles the exact arrival buffer and a one-minute miss. The second found that the layout was still conventional and proposed making the rehearsal sequence the focal element. The concepts have no live ballots, so this leaves the vault scores and the release threshold unchanged. [Workshop and live reference evidence](research/CREATIVE-ROUNDS.md#festival-workshop)

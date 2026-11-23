@@ -1,5 +1,9 @@
 # Design MCP live smoke
 
+## Exact toolbar replay and hosted install matrix
+
+All 13 checks passed on `d4c4d70`, including eight hosted macOS 15 architecture and Python cells. Two hosted Chrome runs pressed the actual toolbar action and reopened the masked saved result. Pasted URL took 1.858 and 1.619 seconds in those runs. The fresh SwiftUI capture showed five reviewed controls before Reveal and six after. The packaged Electron fixture removed the seeded occlusion and retained the clipping finding. Both original public URL PNGs matched the hosted receipt. The exact fresh Apple Silicon install also passed all six stdio configurations and recovered after a 404. The native BenQ replay and Intel Ventura test remain open. [Exact runs, local install and original frame hashes](evidence/benchmark-v1/release-ci-d4c4d70.json)
+
 ## Creative verifier branch checkpoint
 
 All 13 hosted checks passed on `bb0a124`, including 16 clean installs and 96 stdio sessions on macOS 15. The hosted Chrome replay exercised active-tab and pasted-URL review, five-field masking, and the saved keyboard preview. The pasted result opened in 2.49 seconds in this run. Fresh macOS SwiftUI captures showed five reviewed controls before Reveal and six after. In Electron, Reveal cleared the occlusion finding and the seeded clipping finding remained. The installed public URL review completed at 1440 and 390 CSS px. The package source matches the README install pin. [Exact jobs and captures](evidence/benchmark-v1/release-ci-bb0a124.json)
