@@ -8,6 +8,7 @@
 | Connected signup and shift queue | Both literal calmer revisions preserved the interaction. The signup score tied. The queue dropped 0.40 desktop and 0.50 phone when the timing button took visual priority. | [Exact install, user turns, live traces and blind ballots](evidence/benchmark-v1/connected-first-run-transfer-ff38284.json) |
 | Matched shift queue repair | The revised installed reaction restored the delayed bay as the focal point. A fresh blind session rated it 7.70 at both widths against 7.50 for the control. | 48 installed tests, 88 compared replies, and 30 browser states. [Matched receipt](evidence/benchmark-v1/exception-first-calmer-matched.json) |
 | Current creative research | A low-cost scout and separate concept critics examined recent design leads and challenged two new briefs. The portfolio and product replays distinguish loader, settled artwork, navigation and sign-in. | 46 dimension- and hash-checked frames. [Research and concept rounds](research/CREATIVE-ROUNDS.md#november-23-reference-replay-and-stronger-review-gate) |
+| Source review regression suite | The complete-outage test now covers all five live source groups and the research queries. Award fetches are mocked in the unit tests. | The combined source, package, and visual suite passed 498 tests and 99 subtests. The daily report also completed against public sources. |
 
 ## Release candidate verification
 

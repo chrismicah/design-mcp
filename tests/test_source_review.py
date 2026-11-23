@@ -1,7 +1,11 @@
 from datetime import date, datetime, timezone
 from urllib.error import HTTPError
 
-from scripts.watch_design_sources import CROSSREF_INTERVAL_SECONDS, RESEARCH, collect, print_report, read_show_hn
+from scripts.watch_design_sources import CROSSREF_INTERVAL_SECONDS, RELEASES, RESEARCH, collect, print_report, read_show_hn
+
+
+def unavailable(_url):
+    raise TimeoutError
 
 
 def test_source_review_survives_rate_limiting_and_escapes_source_text(capsys):
@@ -21,7 +25,7 @@ def test_source_review_survives_rate_limiting_and_escapes_source_text(capsys):
             {"id": "https://openalex.org/W123", "title": "UI repair", "publication_date": "2026-11-19"},
         ]}
 
-    print_report(collect(date(2026, 11, 21), fetch))
+    print_report(collect(date(2026, 11, 21), fetch, fetch_award=unavailable))
     report = capsys.readouterr().out
     assert "HTTP 429" in report
     assert "&lt;script&gt; &amp; test" in report and "<script>" not in report
@@ -31,11 +35,11 @@ def test_source_review_survives_rate_limiting_and_escapes_source_text(capsys):
 
 
 def test_source_review_exposes_a_complete_outage():
-    def unavailable(url):
-        raise TimeoutError
-
     sources = collect(date(2026, 11, 21), unavailable, lambda _: None, fetch_award=unavailable)
-    assert len(sources) == 4 + len(RESEARCH)
+    assert [source["source"] for source in sources] == [
+        *RELEASES, "Show HN visual demos", "CSS Design Awards Website of the Day",
+        "Awwwards Site of the Day", *RESEARCH,
+    ]
     assert all(source["error"] == "TimeoutError" for source in sources)
 
 
@@ -70,7 +74,7 @@ def test_paper_search_falls_back_once_per_query_and_keeps_verified_doi_links(cap
             {**paper, "DOI": "10.1234/ui.42"},
         ]}}
 
-    sources = collect(date(2026, 11, 21), fetch, waits.append)
+    sources = collect(date(2026, 11, 21), fetch, waits.append, fetch_award=unavailable)
     assert sum("api.openalex.org" in url for url in requests) == 1
     assert sum("api.crossref.org" in url for url in requests) == len(RESEARCH)
     assert waits == [CROSSREF_INTERVAL_SECONDS] * (len(RESEARCH) - 1)
