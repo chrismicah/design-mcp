@@ -1,0 +1,4029 @@
+{
+  "candidate": "5470024a2c6c815b1a435f4b81cb7e6d5e3c6b09",
+  "control": "3350fea8beeaca85369b9dd643d8f9d961fbbfd4",
+  "cases": 55,
+  "tool_discovery_matches": true,
+  "unchanged": 51,
+  "differences": [
+    {
+      "case": "last-train-access",
+      "before": "object-hero",
+      "after": "access-window",
+      "expected": "access-window"
+    },
+    {
+      "case": "last-train-access-generate",
+      "before": "object-hero",
+      "after": "access-window",
+      "expected": "access-window"
+    },
+    {
+      "case": "tool-library",
+      "before": "object-hero",
+      "after": "constraint-comparison",
+      "expected": "constraint-comparison"
+    },
+    {
+      "case": "tool-library-generate",
+      "before": "object-hero",
+      "after": "constraint-comparison",
+      "expected": "constraint-comparison"
+    }
+  ],
+  "failures": [],
+  "receipts": {
+    "landing-ceramics": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "landing-repair": {
+      "before_sha256": "1a0cbd896014aa69c8d01ba7a4749b844d247e390f68c692e04f821ef94a04c4",
+      "after_sha256": "1a0cbd896014aa69c8d01ba7a4749b844d247e390f68c692e04f821ef94a04c4",
+      "baseline_direction": "service-work-order",
+      "trial_direction": "service-work-order"
+    },
+    "landing-radio": {
+      "before_sha256": "f0af9bd2bdf2c3a928b5347759211bd30d182ac2084acae49e4debe7e17923aa",
+      "after_sha256": "f0af9bd2bdf2c3a928b5347759211bd30d182ac2084acae49e4debe7e17923aa",
+      "baseline_direction": "broadcast-board",
+      "trial_direction": "broadcast-board"
+    },
+    "landing-festival": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "landing-archive": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "landing-energy": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "dashboard-coldchain": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "dashboard-venue": {
+      "before_sha256": "3b4e5f65b8927004d276655624af68d733d80ff5790abc54f89e9aac37e84881",
+      "after_sha256": "3b4e5f65b8927004d276655624af68d733d80ff5790abc54f89e9aac37e84881",
+      "baseline_direction": "stage-call-sheet",
+      "trial_direction": "stage-call-sheet"
+    },
+    "dashboard-harvest": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "dashboard-support": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "dashboard-energy": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "dashboard-library": {
+      "before_sha256": "3e8b773491c731b3774a98d407fec0a72d067947410cfd65c843677f55ee3650",
+      "after_sha256": "3e8b773491c731b3774a98d407fec0a72d067947410cfd65c843677f55ee3650",
+      "baseline_direction": "exception-first",
+      "trial_direction": "exception-first"
+    },
+    "form-venue": {
+      "before_sha256": "fdf631794cecf1bd1c22dbdf5367237705d2cd24287b653125e5b19fc3de5803",
+      "after_sha256": "fdf631794cecf1bd1c22dbdf5367237705d2cd24287b653125e5b19fc3de5803",
+      "baseline_direction": "grouped-fieldsets",
+      "trial_direction": "grouped-fieldsets"
+    },
+    "form-maintenance": {
+      "before_sha256": "fdf631794cecf1bd1c22dbdf5367237705d2cd24287b653125e5b19fc3de5803",
+      "after_sha256": "fdf631794cecf1bd1c22dbdf5367237705d2cd24287b653125e5b19fc3de5803",
+      "baseline_direction": "grouped-fieldsets",
+      "trial_direction": "grouped-fieldsets"
+    },
+    "form-label": {
+      "before_sha256": "fdf631794cecf1bd1c22dbdf5367237705d2cd24287b653125e5b19fc3de5803",
+      "after_sha256": "fdf631794cecf1bd1c22dbdf5367237705d2cd24287b653125e5b19fc3de5803",
+      "baseline_direction": "grouped-fieldsets",
+      "trial_direction": "grouped-fieldsets"
+    },
+    "form-garden": {
+      "before_sha256": "fdf631794cecf1bd1c22dbdf5367237705d2cd24287b653125e5b19fc3de5803",
+      "after_sha256": "fdf631794cecf1bd1c22dbdf5367237705d2cd24287b653125e5b19fc3de5803",
+      "baseline_direction": "grouped-fieldsets",
+      "trial_direction": "grouped-fieldsets"
+    },
+    "form-exhibition": {
+      "before_sha256": "fdf631794cecf1bd1c22dbdf5367237705d2cd24287b653125e5b19fc3de5803",
+      "after_sha256": "fdf631794cecf1bd1c22dbdf5367237705d2cd24287b653125e5b19fc3de5803",
+      "baseline_direction": "grouped-fieldsets",
+      "trial_direction": "grouped-fieldsets"
+    },
+    "form-invoice": {
+      "before_sha256": "fdf631794cecf1bd1c22dbdf5367237705d2cd24287b653125e5b19fc3de5803",
+      "after_sha256": "fdf631794cecf1bd1c22dbdf5367237705d2cd24287b653125e5b19fc3de5803",
+      "baseline_direction": "grouped-fieldsets",
+      "trial_direction": "grouped-fieldsets"
+    },
+    "mobile-train": {
+      "before_sha256": "21cd7bd24fafb1aebc9477d83f82015fcd01437a3db41dc98b3e58e8993dbdc4",
+      "after_sha256": "21cd7bd24fafb1aebc9477d83f82015fcd01437a3db41dc98b3e58e8993dbdc4",
+      "baseline_direction": "platform-sign",
+      "trial_direction": "platform-sign"
+    },
+    "mobile-field": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "mobile-recital": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "mobile-court": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "mobile-pantry": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "mobile-gallery": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "settings-notifications": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "settings-reading": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "settings-team": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "settings-focus": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "settings-digest": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "settings-language": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "empty-saved": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "empty-drafts": {
+      "before_sha256": "a080ab13e1dfd6de9d55dc889c908c221b0372dab27bc7474650ac94ec6fd142",
+      "after_sha256": "a080ab13e1dfd6de9d55dc889c908c221b0372dab27bc7474650ac94ec6fd142",
+      "baseline_direction": "margin-front",
+      "trial_direction": "margin-front"
+    },
+    "empty-search": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "empty-handoff": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "empty-exhibits": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "empty-shifts": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "launch-water": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "dispatch-room": {
+      "before_sha256": "3b4e5f65b8927004d276655624af68d733d80ff5790abc54f89e9aac37e84881",
+      "after_sha256": "3b4e5f65b8927004d276655624af68d733d80ff5790abc54f89e9aac37e84881",
+      "baseline_direction": "stage-call-sheet",
+      "trial_direction": "stage-call-sheet"
+    },
+    "museum-entry": {
+      "before_sha256": "21cd7bd24fafb1aebc9477d83f82015fcd01437a3db41dc98b3e58e8993dbdc4",
+      "after_sha256": "21cd7bd24fafb1aebc9477d83f82015fcd01437a3db41dc98b3e58e8993dbdc4",
+      "baseline_direction": "platform-sign",
+      "trial_direction": "platform-sign"
+    },
+    "letterforms": {
+      "before_sha256": "24af0652c70ee92868fc0ac6b36ae5523edebe27bc0200f7eff681248b34b488",
+      "after_sha256": "24af0652c70ee92868fc0ac6b36ae5523edebe27bc0200f7eff681248b34b488",
+      "baseline_direction": "ground-plane",
+      "trial_direction": "ground-plane"
+    },
+    "photo-pricing": {
+      "before_sha256": "a37848ab0345e7a1fd782a5aae1062accd9b533a021bf1a870f2245c32c15e56",
+      "after_sha256": "a37848ab0345e7a1fd782a5aae1062accd9b533a021bf1a870f2245c32c15e56",
+      "baseline_direction": "scale-ledger",
+      "trial_direction": "scale-ledger"
+    },
+    "radio-journal": {
+      "before_sha256": "a080ab13e1dfd6de9d55dc889c908c221b0372dab27bc7474650ac94ec6fd142",
+      "after_sha256": "a080ab13e1dfd6de9d55dc889c908c221b0372dab27bc7474650ac94ec6fd142",
+      "baseline_direction": "margin-front",
+      "trial_direction": "margin-front"
+    },
+    "tool-library": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "ab80bd2346f9e47f32f2f168eadca54e5851ee0450118de0c6aa6a9c5274a3de",
+      "baseline_direction": "object-hero",
+      "trial_direction": "constraint-comparison"
+    },
+    "last-train-access": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "ee59df1edf8f3996623dd20ee16d5d3a03bc632ea4f662c5d6e18191faf6d196",
+      "baseline_direction": "object-hero",
+      "trial_direction": "access-window"
+    },
+    "single-product-control": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "catalog-control": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "tool-library-generate": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "ab80bd2346f9e47f32f2f168eadca54e5851ee0450118de0c6aa6a9c5274a3de",
+      "baseline_direction": "object-hero",
+      "trial_direction": "constraint-comparison"
+    },
+    "last-train-access-generate": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "ee59df1edf8f3996623dd20ee16d5d3a03bc632ea4f662c5d6e18191faf6d196",
+      "baseline_direction": "object-hero",
+      "trial_direction": "access-window"
+    },
+    "height-only": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "angles-only": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "step-free-without-train": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "explicit-portfolio": {
+      "before_sha256": "24af0652c70ee92868fc0ac6b36ae5523edebe27bc0200f7eff681248b34b488",
+      "after_sha256": "24af0652c70ee92868fc0ac6b36ae5523edebe27bc0200f7eff681248b34b488",
+      "baseline_direction": "ground-plane",
+      "trial_direction": "ground-plane"
+    },
+    "explicit-form": {
+      "before_sha256": "fdf631794cecf1bd1c22dbdf5367237705d2cd24287b653125e5b19fc3de5803",
+      "after_sha256": "fdf631794cecf1bd1c22dbdf5367237705d2cd24287b653125e5b19fc3de5803",
+      "baseline_direction": "grouped-fieldsets",
+      "trial_direction": "grouped-fieldsets"
+    },
+    "avoid-fit": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    },
+    "avoid-access": {
+      "before_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "after_sha256": "434bae1cd1d341b09fa7d10fb99be0f678d133597a2e29fd4861d1c8fe0a4f05",
+      "baseline_direction": "object-hero",
+      "trial_direction": "object-hero"
+    }
+  },
+  "responses": {
+    "tool-library": {
+      "direction": {
+        "id": "constraint-comparison",
+        "surface": "landing",
+        "title": "Constraint comparison",
+        "summary": "Put the two measured fit limits beside the available choices and keep a withdrawn selection visible until the visitor chooses a replacement.",
+        "type": {
+          "display": "IBM Plex Sans Condensed",
+          "body": "Barlow",
+          "ratio": 3.2,
+          "tracking": -0.025,
+          "weight": 700,
+          "license": "OFL-1.1"
+        },
+        "palette": {
+          "ink": "#18352E",
+          "paper": "#E4EAE5",
+          "accent": "#E7B766"
+        },
+        "layout": {
+          "skeleton": "Open with one shared dimensional datum, then a ruled choice comparison; keep the current selection and ready time beside the replacement decision.",
+          "focus": "The supplied height limit and swing limit shown as separate measured cues beside each tool's actual fit evidence.",
+          "desktop": "Set the cabinet datum and the two constraint readings across the opening. Below, align each tool's assembled height, required swing, readiness and selection control on consistent rules. Keep a withdrawn selection named until the visitor selects another tool.",
+          "mobile": "At 390px keep the selected tool, withdrawal reason, readiness time and replacement choices in the first view. Show height in mm with its supplied tolerance and swing in degrees as separate cues. Verify at 320px without hiding an action. State that unmeasured hand clearance remains uncertain.",
+          "rhythm": "Use a 12px rule grid, compact comparison rows and one generous break after the shared datum. No repeated cards."
+        },
+        "imagery": {
+          "subject": "A dimension line and small swing arc drawn only from the supplied geometry.",
+          "crop": "Keep the dimensional datum connected to the choice rows; do not imply a product photo or inventory image.",
+          "fallback": "Use type, rules and a simple dimension line. Identify any physical clearance the brief does not measure."
+        },
+        "motion": {
+          "trigger": "The visitor chooses a replacement tool.",
+          "effect": "Move the selection marker to the chosen row and update one adjacent selection status.",
+          "duration_ms": 220,
+          "reduced": "Change the marker and status immediately."
+        },
+        "action": {
+          "instruction": "Keep the withdrawn choice visible with the reason supplied by the brief. Offer only supplied alternatives and let the visitor make the replacement selection.",
+          "label": "Choose [tool]"
+        },
+        "why": "A borrower making a fit decision needs the shared scale and both independent constraints beside the actual alternatives. A shared datum helps visitors reconcile evidence across the alternatives before choosing.",
+        "sources": [
+          {
+            "url": "https://www.vessel.co.jp/english/product/screwdriver/251428",
+            "observation": "Vessel distinguishes assembled screwdriver geometry and states a 6-degree ratchet swing. This is a reference for presenting two measured properties; it does not identify any item in the fixture as Vessel inventory.",
+            "strength": "evidence"
+          },
+          {
+            "url": "https://www.watched.earth/place/eiffel-tower",
+            "observation": "The observed page separates its globe visualization from the evidence explaining the outcome. Adapted here as a principle: show the comparison and its supporting measurements together.",
+            "strength": "evidence"
+          }
+        ],
+        "credit": "Original workshop comparison informed by observed measurement and evidence presentation."
+      },
+      "font_stylesheet": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed%3Awght%40700&family=Barlow&display=swap",
+      "interaction": {
+        "accent_foreground": "#18352E",
+        "easing": "ease-out",
+        "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+        "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+        "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+      },
+      "assumptions": [
+        "Use landing as the surface.",
+        "Use only the project facts and assets in the brief."
+      ],
+      "questions": [],
+      "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px."
+    },
+    "tool-library-generate": {
+      "direction": {
+        "id": "constraint-comparison",
+        "surface": "landing",
+        "title": "Constraint comparison",
+        "summary": "Put the two measured fit limits beside the available choices and keep a withdrawn selection visible until the visitor chooses a replacement.",
+        "type": {
+          "display": "IBM Plex Sans Condensed",
+          "body": "Barlow",
+          "ratio": 3.2,
+          "tracking": -0.025,
+          "weight": 700,
+          "license": "OFL-1.1"
+        },
+        "palette": {
+          "ink": "#18352E",
+          "paper": "#E4EAE5",
+          "accent": "#E7B766"
+        },
+        "layout": {
+          "skeleton": "Open with one shared dimensional datum, then a ruled choice comparison; keep the current selection and ready time beside the replacement decision.",
+          "focus": "The supplied height limit and swing limit shown as separate measured cues beside each tool's actual fit evidence.",
+          "desktop": "Set the cabinet datum and the two constraint readings across the opening. Below, align each tool's assembled height, required swing, readiness and selection control on consistent rules. Keep a withdrawn selection named until the visitor selects another tool.",
+          "mobile": "At 390px keep the selected tool, withdrawal reason, readiness time and replacement choices in the first view. Show height in mm with its supplied tolerance and swing in degrees as separate cues. Verify at 320px without hiding an action. State that unmeasured hand clearance remains uncertain.",
+          "rhythm": "Use a 12px rule grid, compact comparison rows and one generous break after the shared datum. No repeated cards."
+        },
+        "imagery": {
+          "subject": "A dimension line and small swing arc drawn only from the supplied geometry.",
+          "crop": "Keep the dimensional datum connected to the choice rows; do not imply a product photo or inventory image.",
+          "fallback": "Use type, rules and a simple dimension line. Identify any physical clearance the brief does not measure."
+        },
+        "motion": {
+          "trigger": "The visitor chooses a replacement tool.",
+          "effect": "Move the selection marker to the chosen row and update one adjacent selection status.",
+          "duration_ms": 220,
+          "reduced": "Change the marker and status immediately."
+        },
+        "action": {
+          "instruction": "Keep the withdrawn choice visible with the reason supplied by the brief. Offer only supplied alternatives and let the visitor make the replacement selection.",
+          "label": "Choose [tool]"
+        },
+        "why": "A borrower making a fit decision needs the shared scale and both independent constraints beside the actual alternatives. A shared datum helps visitors reconcile evidence across the alternatives before choosing.",
+        "sources": [
+          {
+            "url": "https://www.vessel.co.jp/english/product/screwdriver/251428",
+            "observation": "Vessel distinguishes assembled screwdriver geometry and states a 6-degree ratchet swing. This is a reference for presenting two measured properties; it does not identify any item in the fixture as Vessel inventory.",
+            "strength": "evidence"
+          },
+          {
+            "url": "https://www.watched.earth/place/eiffel-tower",
+            "observation": "The observed page separates its globe visualization from the evidence explaining the outcome. Adapted here as a principle: show the comparison and its supporting measurements together.",
+            "strength": "evidence"
+          }
+        ],
+        "credit": "Original workshop comparison informed by observed measurement and evidence presentation."
+      },
+      "font_stylesheet": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed%3Awght%40700&family=Barlow&display=swap",
+      "interaction": {
+        "accent_foreground": "#18352E",
+        "easing": "ease-out",
+        "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+        "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+        "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+      },
+      "assumptions": [
+        "Use landing as the surface.",
+        "Use only the project facts and assets in the brief."
+      ],
+      "questions": [],
+      "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px."
+    },
+    "last-train-access": {
+      "direction": {
+        "id": "access-window",
+        "surface": "landing",
+        "title": "Access window",
+        "summary": "Show a route choice against its step-free access condition and a fixed train departure, with the remaining time margin visible.",
+        "type": {
+          "display": "Archivo Narrow",
+          "body": "News Cycle",
+          "ratio": 3.4,
+          "tracking": -0.024,
+          "weight": 700,
+          "license": "OFL-1.1"
+        },
+        "palette": {
+          "ink": "#301D42",
+          "paper": "#F0EFF7",
+          "accent": "#006667"
+        },
+        "layout": {
+          "skeleton": "Put the route drawing, the changed step-free entrance and the fixed departure on one continuous arrival line, followed by a compact route choice.",
+          "focus": "The actual access change and signed time margin before the specific train cutoff.",
+          "desktop": "Draw the active route from supplied locations and turns. Mark the step-free entrance that changed, then align its arrival time and the specific train departure so the remaining margin can be read directly.",
+          "mobile": "Keep the complete route evidence, changed step-free entrance, arrival time, signed margin and train departure in the immediate view. Keep route selection available there. Distinguish platform access from access to trains; claim neither without evidence.",
+          "rhythm": "Use a continuous route line, restrained station rules and one clear time break. Keep the evidence beside the route."
+        },
+        "imagery": {
+          "subject": "An original route graphic derived only from supplied stops, entrance changes and times.",
+          "crop": "Keep the changed entrance and deadline within the same visible route segment.",
+          "fallback": "Use a text route with named steps and times when the brief lacks map geometry. Do not invent transfers, buffers or venue promises."
+        },
+        "motion": {
+          "trigger": "The visitor selects a route or its recovery.",
+          "effect": "Trace only the supplied route segment and update the signed time margin beside the departure.",
+          "duration_ms": 260,
+          "reduced": "Show the selected route and margin without animation."
+        },
+        "action": {
+          "instruction": "Name the route choice and show the exact step-free access evidence and fixed train departure that support it.",
+          "label": "Choose [route]"
+        },
+        "why": "Arrival planning depends on access and a real deadline at once. A continuous route and explicit signed margin keep both conditions visible during selection or recovery.",
+        "sources": [
+          {
+            "url": "https://content.tfl.gov.uk/step-free-tube-guide-map.pdf",
+            "observation": "Transport for London's step-free guide distinguishes step-free access to the platform from access to trains. The route drawing should preserve that distinction and state only the evidence supplied for the actual journey.",
+            "strength": "evidence"
+          }
+        ],
+        "credit": "Transport for London step-free route distinctions; original access-and-time composition."
+      },
+      "font_stylesheet": "https://fonts.googleapis.com/css2?family=Archivo+Narrow%3Awght%40700&family=News+Cycle&display=swap",
+      "interaction": {
+        "accent_foreground": "#F0EFF7",
+        "easing": "ease-out",
+        "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+        "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+        "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+      },
+      "assumptions": [
+        "Use landing as the surface.",
+        "Use only the project facts and assets in the brief."
+      ],
+      "questions": [],
+      "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px."
+    },
+    "last-train-access-generate": {
+      "direction": {
+        "id": "access-window",
+        "surface": "landing",
+        "title": "Access window",
+        "summary": "Show a route choice against its step-free access condition and a fixed train departure, with the remaining time margin visible.",
+        "type": {
+          "display": "Archivo Narrow",
+          "body": "News Cycle",
+          "ratio": 3.4,
+          "tracking": -0.024,
+          "weight": 700,
+          "license": "OFL-1.1"
+        },
+        "palette": {
+          "ink": "#301D42",
+          "paper": "#F0EFF7",
+          "accent": "#006667"
+        },
+        "layout": {
+          "skeleton": "Put the route drawing, the changed step-free entrance and the fixed departure on one continuous arrival line, followed by a compact route choice.",
+          "focus": "The actual access change and signed time margin before the specific train cutoff.",
+          "desktop": "Draw the active route from supplied locations and turns. Mark the step-free entrance that changed, then align its arrival time and the specific train departure so the remaining margin can be read directly.",
+          "mobile": "Keep the complete route evidence, changed step-free entrance, arrival time, signed margin and train departure in the immediate view. Keep route selection available there. Distinguish platform access from access to trains; claim neither without evidence.",
+          "rhythm": "Use a continuous route line, restrained station rules and one clear time break. Keep the evidence beside the route."
+        },
+        "imagery": {
+          "subject": "An original route graphic derived only from supplied stops, entrance changes and times.",
+          "crop": "Keep the changed entrance and deadline within the same visible route segment.",
+          "fallback": "Use a text route with named steps and times when the brief lacks map geometry. Do not invent transfers, buffers or venue promises."
+        },
+        "motion": {
+          "trigger": "The visitor selects a route or its recovery.",
+          "effect": "Trace only the supplied route segment and update the signed time margin beside the departure.",
+          "duration_ms": 260,
+          "reduced": "Show the selected route and margin without animation."
+        },
+        "action": {
+          "instruction": "Name the route choice and show the exact step-free access evidence and fixed train departure that support it.",
+          "label": "Choose [route]"
+        },
+        "why": "Arrival planning depends on access and a real deadline at once. A continuous route and explicit signed margin keep both conditions visible during selection or recovery.",
+        "sources": [
+          {
+            "url": "https://content.tfl.gov.uk/step-free-tube-guide-map.pdf",
+            "observation": "Transport for London's step-free guide distinguishes step-free access to the platform from access to trains. The route drawing should preserve that distinction and state only the evidence supplied for the actual journey.",
+            "strength": "evidence"
+          }
+        ],
+        "credit": "Transport for London step-free route distinctions; original access-and-time composition."
+      },
+      "font_stylesheet": "https://fonts.googleapis.com/css2?family=Archivo+Narrow%3Awght%40700&family=News+Cycle&display=swap",
+      "interaction": {
+        "accent_foreground": "#F0EFF7",
+        "easing": "ease-out",
+        "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+        "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+        "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+      },
+      "assumptions": [
+        "Use landing as the surface.",
+        "Use only the project facts and assets in the brief."
+      ],
+      "questions": [],
+      "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px."
+    }
+  },
+  "wheel_sha256": "b97b408d33e2b30ea876dbca51d0065ace650e94da33228d9f687987f05f838c",
+  "host_scope": "Offline uv wheel install on Apple Silicon, Python 3.13.3",
+  "source_tests": "602 passed, 1 skipped, 4 warnings, 134 subtests passed in 9.35s",
+  "installed_smoke": {
+    "stdio-both-default": {
+      "fastmcp": "4.2.5",
+      "mode": "both",
+      "tools": {
+        "direct": {
+          "keys": [
+            "direction",
+            "font_stylesheet",
+            "interaction",
+            "assumptions",
+            "questions",
+            "handoff"
+          ],
+          "milliseconds": 23
+        },
+        "react": {
+          "keys": [
+            "direction_id",
+            "changes",
+            "why",
+            "keep"
+          ],
+          "milliseconds": 2
+        },
+        "check": {
+          "keys": [
+            "finding_count",
+            "findings",
+            "scope",
+            "render_checks",
+            "truncated"
+          ],
+          "milliseconds": 2
+        },
+        "search_design_patterns": {
+          "keys": [
+            "result"
+          ],
+          "milliseconds": 85
+        },
+        "get_design_blueprint": {
+          "keys": [
+            "id",
+            "name",
+            "page_type",
+            "layout_type",
+            "layout_notes",
+            "ux_patterns",
+            "ui_elements",
+            "primary_colors",
+            "color_mode",
+            "visual_style",
+            "behavioral_description",
+            "accessibility_notes",
+            "semantic_tokens",
+            "component_hints",
+            "decision_tree",
+            "visual_recipes",
+            "design_system",
+            "source_url"
+          ],
+          "milliseconds": 3
+        },
+        "get_semantic_tokens": {
+          "keys": [
+            "tokens",
+            "primary_shades",
+            "accent_shades",
+            "color_mode",
+            "wcag_aa_verified"
+          ],
+          "milliseconds": 2
+        },
+        "get_design_taxonomy": {
+          "keys": [
+            "page_types",
+            "ux_patterns",
+            "ui_elements",
+            "industries",
+            "visual_styles"
+          ],
+          "milliseconds": 1
+        },
+        "get_behavioral_pattern": {
+          "keys": [
+            "description",
+            "best_practice",
+            "required_elements",
+            "anti_patterns",
+            "reference"
+          ],
+          "milliseconds": 1
+        },
+        "compare_design_approaches": {
+          "keys": [
+            "page_type",
+            "examples",
+            "summary"
+          ],
+          "milliseconds": 3
+        },
+        "analyze_and_devibecode": {
+          "keys": [
+            "anti_patterns_found",
+            "recommended_layout",
+            "semantic_tokens_to_apply",
+            "suggested_component_structure",
+            "severity_summary",
+            "refactoring_suggestions",
+            "code_fixes",
+            "visual_recipes",
+            "recommended_libraries",
+            "detected_component_type"
+          ],
+          "milliseconds": 12
+        },
+        "get_design_system": {
+          "keys": [
+            "font_system",
+            "spacing_system",
+            "global_anti_patterns",
+            "elevation",
+            "elevation_rules",
+            "color_tokens",
+            "delta_colors",
+            "component_classes",
+            "composition_rules"
+          ],
+          "milliseconds": 2
+        },
+        "get_library_recommendations": {
+          "keys": [
+            "recommendations",
+            "premium_stack",
+            "matching_design_patterns",
+            "total_libraries"
+          ],
+          "milliseconds": 9
+        },
+        "get_library_details": {
+          "keys": [
+            "library",
+            "pairs_with"
+          ],
+          "milliseconds": 2
+        },
+        "scan_project": {
+          "keys": [
+            "project_health_score",
+            "files_scanned",
+            "files_with_issues",
+            "total_issues",
+            "severity_summary",
+            "top_issues",
+            "priority_fixes",
+            "recommended_libraries",
+            "file_reports",
+            "component_types_found",
+            "visual_issues"
+          ],
+          "milliseconds": 3
+        },
+        "generate_refactored_code": {
+          "keys": [
+            "detected_component_type",
+            "total_issues",
+            "severity_summary",
+            "target_library",
+            "imports_needed",
+            "transformations",
+            "component_suggestion",
+            "design_reference",
+            "semantic_tokens",
+            "code_fixes",
+            "visual_recipes"
+          ],
+          "milliseconds": 11
+        },
+        "get_visual_recipe": {
+          "keys": [
+            "color_restraint",
+            "depth_system",
+            "typography_is_design",
+            "component_design",
+            "whitespace_as_design",
+            "motion_restraint",
+            "layout_hierarchy"
+          ],
+          "milliseconds": 2
+        },
+        "get_visual_suggestions": {
+          "keys": [
+            "visual_analysis",
+            "structural_analysis",
+            "color_palette",
+            "typography",
+            "spacing",
+            "implementation",
+            "quick_wins"
+          ],
+          "milliseconds": 2
+        }
+      }
+    },
+    "stdio-both-review": {
+      "fastmcp": "4.2.5",
+      "mode": "both",
+      "tools": {
+        "direct": {
+          "keys": [
+            "direction",
+            "font_stylesheet",
+            "interaction",
+            "assumptions",
+            "questions",
+            "handoff"
+          ],
+          "milliseconds": 24
+        },
+        "react": {
+          "keys": [
+            "direction_id",
+            "changes",
+            "why",
+            "keep"
+          ],
+          "milliseconds": 2
+        },
+        "check": {
+          "keys": [
+            "finding_count",
+            "findings",
+            "scope",
+            "render_checks",
+            "truncated"
+          ],
+          "milliseconds": 2
+        },
+        "search_design_patterns": {
+          "keys": [
+            "result"
+          ],
+          "milliseconds": 84
+        },
+        "get_design_blueprint": {
+          "keys": [
+            "id",
+            "name",
+            "page_type",
+            "layout_type",
+            "layout_notes",
+            "ux_patterns",
+            "ui_elements",
+            "primary_colors",
+            "color_mode",
+            "visual_style",
+            "behavioral_description",
+            "accessibility_notes",
+            "semantic_tokens",
+            "component_hints",
+            "decision_tree",
+            "visual_recipes",
+            "design_system",
+            "source_url"
+          ],
+          "milliseconds": 3
+        },
+        "get_semantic_tokens": {
+          "keys": [
+            "tokens",
+            "primary_shades",
+            "accent_shades",
+            "color_mode",
+            "wcag_aa_verified"
+          ],
+          "milliseconds": 2
+        },
+        "get_design_taxonomy": {
+          "keys": [
+            "page_types",
+            "ux_patterns",
+            "ui_elements",
+            "industries",
+            "visual_styles"
+          ],
+          "milliseconds": 1
+        },
+        "get_behavioral_pattern": {
+          "keys": [
+            "description",
+            "best_practice",
+            "required_elements",
+            "anti_patterns",
+            "reference"
+          ],
+          "milliseconds": 1
+        },
+        "compare_design_approaches": {
+          "keys": [
+            "page_type",
+            "examples",
+            "summary"
+          ],
+          "milliseconds": 3
+        },
+        "analyze_and_devibecode": {
+          "keys": [
+            "anti_patterns_found",
+            "recommended_layout",
+            "semantic_tokens_to_apply",
+            "suggested_component_structure",
+            "severity_summary",
+            "refactoring_suggestions",
+            "code_fixes",
+            "visual_recipes",
+            "recommended_libraries",
+            "detected_component_type"
+          ],
+          "milliseconds": 13
+        },
+        "get_design_system": {
+          "keys": [
+            "font_system",
+            "spacing_system",
+            "global_anti_patterns",
+            "elevation",
+            "elevation_rules",
+            "color_tokens",
+            "delta_colors",
+            "component_classes",
+            "composition_rules"
+          ],
+          "milliseconds": 2
+        },
+        "get_library_recommendations": {
+          "keys": [
+            "recommendations",
+            "premium_stack",
+            "matching_design_patterns",
+            "total_libraries"
+          ],
+          "milliseconds": 9
+        },
+        "get_library_details": {
+          "keys": [
+            "library",
+            "pairs_with"
+          ],
+          "milliseconds": 2
+        },
+        "scan_project": {
+          "keys": [
+            "project_health_score",
+            "files_scanned",
+            "files_with_issues",
+            "total_issues",
+            "severity_summary",
+            "top_issues",
+            "priority_fixes",
+            "recommended_libraries",
+            "file_reports",
+            "component_types_found",
+            "visual_issues"
+          ],
+          "milliseconds": 3
+        },
+        "generate_refactored_code": {
+          "keys": [
+            "detected_component_type",
+            "total_issues",
+            "severity_summary",
+            "target_library",
+            "imports_needed",
+            "transformations",
+            "component_suggestion",
+            "design_reference",
+            "semantic_tokens",
+            "code_fixes",
+            "visual_recipes"
+          ],
+          "milliseconds": 10
+        },
+        "get_visual_recipe": {
+          "keys": [
+            "color_restraint",
+            "depth_system",
+            "typography_is_design",
+            "component_design",
+            "whitespace_as_design",
+            "motion_restraint",
+            "layout_hierarchy"
+          ],
+          "milliseconds": 2
+        },
+        "get_visual_suggestions": {
+          "keys": [
+            "visual_analysis",
+            "structural_analysis",
+            "color_palette",
+            "typography",
+            "spacing",
+            "implementation",
+            "quick_wins"
+          ],
+          "milliseconds": 2
+        },
+        "review_page": {
+          "keys": [
+            "ok",
+            "code",
+            "message"
+          ],
+          "milliseconds": 1
+        }
+      }
+    },
+    "stdio-legacy-default": {
+      "fastmcp": "4.2.5",
+      "mode": "legacy",
+      "tools": {
+        "search_design_patterns": {
+          "keys": [
+            "result"
+          ],
+          "milliseconds": 111
+        },
+        "get_design_blueprint": {
+          "keys": [
+            "id",
+            "name",
+            "page_type",
+            "layout_type",
+            "layout_notes",
+            "ux_patterns",
+            "ui_elements",
+            "primary_colors",
+            "color_mode",
+            "visual_style",
+            "behavioral_description",
+            "accessibility_notes",
+            "semantic_tokens",
+            "component_hints",
+            "decision_tree",
+            "visual_recipes",
+            "design_system",
+            "source_url"
+          ],
+          "milliseconds": 3
+        },
+        "get_semantic_tokens": {
+          "keys": [
+            "tokens",
+            "primary_shades",
+            "accent_shades",
+            "color_mode",
+            "wcag_aa_verified"
+          ],
+          "milliseconds": 2
+        },
+        "get_design_taxonomy": {
+          "keys": [
+            "page_types",
+            "ux_patterns",
+            "ui_elements",
+            "industries",
+            "visual_styles"
+          ],
+          "milliseconds": 2
+        },
+        "get_behavioral_pattern": {
+          "keys": [
+            "description",
+            "best_practice",
+            "required_elements",
+            "anti_patterns",
+            "reference"
+          ],
+          "milliseconds": 1
+        },
+        "compare_design_approaches": {
+          "keys": [
+            "page_type",
+            "examples",
+            "summary"
+          ],
+          "milliseconds": 4
+        },
+        "analyze_and_devibecode": {
+          "keys": [
+            "anti_patterns_found",
+            "recommended_layout",
+            "semantic_tokens_to_apply",
+            "suggested_component_structure",
+            "severity_summary",
+            "refactoring_suggestions",
+            "code_fixes",
+            "visual_recipes",
+            "recommended_libraries",
+            "detected_component_type"
+          ],
+          "milliseconds": 13
+        },
+        "get_design_system": {
+          "keys": [
+            "font_system",
+            "spacing_system",
+            "global_anti_patterns",
+            "elevation",
+            "elevation_rules",
+            "color_tokens",
+            "delta_colors",
+            "component_classes",
+            "composition_rules"
+          ],
+          "milliseconds": 2
+        },
+        "get_library_recommendations": {
+          "keys": [
+            "recommendations",
+            "premium_stack",
+            "matching_design_patterns",
+            "total_libraries"
+          ],
+          "milliseconds": 10
+        },
+        "get_library_details": {
+          "keys": [
+            "library",
+            "pairs_with"
+          ],
+          "milliseconds": 2
+        },
+        "scan_project": {
+          "keys": [
+            "project_health_score",
+            "files_scanned",
+            "files_with_issues",
+            "total_issues",
+            "severity_summary",
+            "top_issues",
+            "priority_fixes",
+            "recommended_libraries",
+            "file_reports",
+            "component_types_found",
+            "visual_issues"
+          ],
+          "milliseconds": 3
+        },
+        "generate_refactored_code": {
+          "keys": [
+            "detected_component_type",
+            "total_issues",
+            "severity_summary",
+            "target_library",
+            "imports_needed",
+            "transformations",
+            "component_suggestion",
+            "design_reference",
+            "semantic_tokens",
+            "code_fixes",
+            "visual_recipes"
+          ],
+          "milliseconds": 12
+        },
+        "get_visual_recipe": {
+          "keys": [
+            "color_restraint",
+            "depth_system",
+            "typography_is_design",
+            "component_design",
+            "whitespace_as_design",
+            "motion_restraint",
+            "layout_hierarchy"
+          ],
+          "milliseconds": 2
+        },
+        "get_visual_suggestions": {
+          "keys": [
+            "visual_analysis",
+            "structural_analysis",
+            "color_palette",
+            "typography",
+            "spacing",
+            "implementation",
+            "quick_wins"
+          ],
+          "milliseconds": 2
+        }
+      }
+    },
+    "stdio-legacy-review": {
+      "fastmcp": "4.2.5",
+      "mode": "legacy",
+      "tools": {
+        "search_design_patterns": {
+          "keys": [
+            "result"
+          ],
+          "milliseconds": 111
+        },
+        "get_design_blueprint": {
+          "keys": [
+            "id",
+            "name",
+            "page_type",
+            "layout_type",
+            "layout_notes",
+            "ux_patterns",
+            "ui_elements",
+            "primary_colors",
+            "color_mode",
+            "visual_style",
+            "behavioral_description",
+            "accessibility_notes",
+            "semantic_tokens",
+            "component_hints",
+            "decision_tree",
+            "visual_recipes",
+            "design_system",
+            "source_url"
+          ],
+          "milliseconds": 3
+        },
+        "get_semantic_tokens": {
+          "keys": [
+            "tokens",
+            "primary_shades",
+            "accent_shades",
+            "color_mode",
+            "wcag_aa_verified"
+          ],
+          "milliseconds": 2
+        },
+        "get_design_taxonomy": {
+          "keys": [
+            "page_types",
+            "ux_patterns",
+            "ui_elements",
+            "industries",
+            "visual_styles"
+          ],
+          "milliseconds": 2
+        },
+        "get_behavioral_pattern": {
+          "keys": [
+            "description",
+            "best_practice",
+            "required_elements",
+            "anti_patterns",
+            "reference"
+          ],
+          "milliseconds": 2
+        },
+        "compare_design_approaches": {
+          "keys": [
+            "page_type",
+            "examples",
+            "summary"
+          ],
+          "milliseconds": 4
+        },
+        "analyze_and_devibecode": {
+          "keys": [
+            "anti_patterns_found",
+            "recommended_layout",
+            "semantic_tokens_to_apply",
+            "suggested_component_structure",
+            "severity_summary",
+            "refactoring_suggestions",
+            "code_fixes",
+            "visual_recipes",
+            "recommended_libraries",
+            "detected_component_type"
+          ],
+          "milliseconds": 13
+        },
+        "get_design_system": {
+          "keys": [
+            "font_system",
+            "spacing_system",
+            "global_anti_patterns",
+            "elevation",
+            "elevation_rules",
+            "color_tokens",
+            "delta_colors",
+            "component_classes",
+            "composition_rules"
+          ],
+          "milliseconds": 2
+        },
+        "get_library_recommendations": {
+          "keys": [
+            "recommendations",
+            "premium_stack",
+            "matching_design_patterns",
+            "total_libraries"
+          ],
+          "milliseconds": 10
+        },
+        "get_library_details": {
+          "keys": [
+            "library",
+            "pairs_with"
+          ],
+          "milliseconds": 2
+        },
+        "scan_project": {
+          "keys": [
+            "project_health_score",
+            "files_scanned",
+            "files_with_issues",
+            "total_issues",
+            "severity_summary",
+            "top_issues",
+            "priority_fixes",
+            "recommended_libraries",
+            "file_reports",
+            "component_types_found",
+            "visual_issues"
+          ],
+          "milliseconds": 4
+        },
+        "generate_refactored_code": {
+          "keys": [
+            "detected_component_type",
+            "total_issues",
+            "severity_summary",
+            "target_library",
+            "imports_needed",
+            "transformations",
+            "component_suggestion",
+            "design_reference",
+            "semantic_tokens",
+            "code_fixes",
+            "visual_recipes"
+          ],
+          "milliseconds": 12
+        },
+        "get_visual_recipe": {
+          "keys": [
+            "color_restraint",
+            "depth_system",
+            "typography_is_design",
+            "component_design",
+            "whitespace_as_design",
+            "motion_restraint",
+            "layout_hierarchy"
+          ],
+          "milliseconds": 2
+        },
+        "get_visual_suggestions": {
+          "keys": [
+            "visual_analysis",
+            "structural_analysis",
+            "color_palette",
+            "typography",
+            "spacing",
+            "implementation",
+            "quick_wins"
+          ],
+          "milliseconds": 2
+        },
+        "review_page": {
+          "keys": [
+            "ok",
+            "code",
+            "message"
+          ],
+          "milliseconds": 1
+        }
+      }
+    },
+    "stdio-v2-default": {
+      "fastmcp": "4.2.5",
+      "mode": "v2",
+      "tools": {
+        "direct": {
+          "keys": [
+            "direction",
+            "font_stylesheet",
+            "interaction",
+            "assumptions",
+            "questions",
+            "handoff"
+          ],
+          "milliseconds": 30
+        },
+        "react": {
+          "keys": [
+            "direction_id",
+            "changes",
+            "why",
+            "keep"
+          ],
+          "milliseconds": 2
+        },
+        "check": {
+          "keys": [
+            "finding_count",
+            "findings",
+            "scope",
+            "render_checks",
+            "truncated"
+          ],
+          "milliseconds": 2
+        }
+      }
+    },
+    "stdio-v2-review": {
+      "fastmcp": "4.2.5",
+      "mode": "v2",
+      "tools": {
+        "direct": {
+          "keys": [
+            "direction",
+            "font_stylesheet",
+            "interaction",
+            "assumptions",
+            "questions",
+            "handoff"
+          ],
+          "milliseconds": 24
+        },
+        "react": {
+          "keys": [
+            "direction_id",
+            "changes",
+            "why",
+            "keep"
+          ],
+          "milliseconds": 2
+        },
+        "check": {
+          "keys": [
+            "finding_count",
+            "findings",
+            "scope",
+            "render_checks",
+            "truncated"
+          ],
+          "milliseconds": 2
+        },
+        "review_page": {
+          "keys": [
+            "ok",
+            "code",
+            "message"
+          ],
+          "milliseconds": 2
+        }
+      }
+    }
+  },
+  "live": {
+    "tool-library": {
+      "generators": {
+        "prior": {
+          "usage": {
+            "input_tokens": 58935,
+            "cached_input_tokens": 42880,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 5830,
+            "reasoning_output_tokens": 0
+          },
+          "tool_calls": [
+            {
+              "type": "mcp_tool_call",
+              "server": "design-mcp",
+              "tool": "direct",
+              "status": "completed"
+            }
+          ],
+          "client_errors": [],
+          "treatment_call": true,
+          "direct_call": true,
+          "status": "passed",
+          "observed_directions": [
+            "object-hero"
+          ],
+          "unhinted_direct": true,
+          "case": "tool-library",
+          "arm": "prior",
+          "model": "gpt-6.1-terra",
+          "effort": "low",
+          "client": "codex-cli 0.170.0",
+          "prompt_sha256": "5add1d0cc4c864f6948067e313d8c63c32b703bb6aed99ce4ef3ae56ba67dc86",
+          "expected_direction": "object-hero",
+          "require_unhinted_direct": true,
+          "shell_tool": false,
+          "mcp_config_sha256": "9c5ffda2d81ee7d2008bb70b226cf70ad130e3d5f5ff8a1b7cd6dcef18f2d296",
+          "elapsed_seconds": 112.76,
+          "exit_code": 0,
+          "trace_sha256": "9c60452085e81e483a2922248665ae689b8d2550c82af36b90e92d6301bf9c37",
+          "html_sha256": "a4f77aebfddba267540a1c05f79b0d64d74e17e58817a2de8f809ed0848ce834"
+        },
+        "trial": {
+          "usage": {
+            "input_tokens": 59033,
+            "cached_input_tokens": 53120,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 6365,
+            "reasoning_output_tokens": 58
+          },
+          "tool_calls": [
+            {
+              "type": "mcp_tool_call",
+              "server": "design-mcp",
+              "tool": "direct",
+              "status": "completed"
+            }
+          ],
+          "client_errors": [],
+          "treatment_call": true,
+          "direct_call": true,
+          "status": "passed",
+          "observed_directions": [
+            "constraint-comparison"
+          ],
+          "unhinted_direct": true,
+          "case": "tool-library",
+          "arm": "trial",
+          "model": "gpt-6.1-terra",
+          "effort": "low",
+          "client": "codex-cli 0.170.0",
+          "prompt_sha256": "5add1d0cc4c864f6948067e313d8c63c32b703bb6aed99ce4ef3ae56ba67dc86",
+          "expected_direction": "constraint-comparison",
+          "require_unhinted_direct": true,
+          "shell_tool": false,
+          "mcp_config_sha256": "f064f34378130327c4b7d58f328f4201cf0724ee26abeb3d22529ff066e5acbd",
+          "elapsed_seconds": 122.81,
+          "exit_code": 0,
+          "trace_sha256": "2bf24f2454092b1d20e16e24b3ae4002e911cf1ef726d30973b5870644fb6a13",
+          "html_sha256": "bba15e8d68131880906ae0225de867fd25c15d96fe23725572d7ed660599c3ca"
+        }
+      },
+      "private_spec": {
+        "case": "tool-library",
+        "brief": "Make the town tool library site for a first-time borrower who needs a PH2 tool tonight. The cabinet has 42 ±1 mm between the screw and the face rail, and a cleat limits swing to 12°. The desk is open 18:00–19:00. The borrower can arrive from 18:10. Stubby is 45–46 mm with direct drive and ready 18:00. Flat is 27–28 mm, needs 15° to reset and is ready 18:00. Pocket is 37–38 mm, needs 10° and is ready 18:00. Fine is 31–32 mm, needs 6° and is ready 18:25. A selected Pocket is withdrawn at 17:56 because the ratchet jams; let the visitor choose the replacement. Show the trade-off clearly and make the site visually expressive, fast, and accessible on phone. Give the visitor an explicit demo control to apply the stock update after Pocket is chosen. Retain the selection until they select a substitute. No checkout.",
+        "task": "You arrive at the town tool library at 18:10 and need a tool that fits the cabinet and can turn there. Capture -before on opening. Name the visible dimensions at the cabinet and the tool you can collect first. Using the keyboard, show why Flat's 28 mm maximum is below the 41 mm low limit and why 15° cannot reset in 12°. Choose Pocket and verify its 18:10 pickup. Apply the page's stock update by keyboard. Record whether Pocket remains represented and selected with the reason it is unavailable, and whether Fine's 32 mm, 6° and 18:25 action are visible together after the update. Capture -after in the conflict. Choose Fine by keyboard and capture -edge. Verify that the choice updates without hiding the withdrawal and that focus remains useful. Describe specifically what the visual composition lets the visitor verify about this cabinet. If a needed action is missing, report it.",
+        "arms": [
+          "prior",
+          "trial"
+        ],
+        "require_unhinted_direct": true,
+        "directions": {
+          "prior": "object-hero",
+          "trial": "constraint-comparison"
+        }
+      },
+      "ballot": {
+        "calibration": {
+          "coherence": 7,
+          "originality": 4,
+          "craft": 6,
+          "usability": 6,
+          "reason": "Clear labels and legibility support the task; a familiar layout limits distinction, and misplaced focus after invalid input is a material usability flaw."
+        },
+        "screens": {
+          "A-1440": {
+            "coherence": 8,
+            "originality": 7.5,
+            "craft": 7.5,
+            "usability": 7,
+            "primary_action": {
+              "input": "Tab to Flat and press Enter; Tab to Pocket and press Enter; Tab to the stock update and press Enter.",
+              "expected": "Compare Flat with the cabinet limits, select Pocket for arrival at 18:10, and expose a stock conflict.",
+              "observed": "Flat shows 27–28 mm and 15°; Pocket shows 37–38 mm, 10°, and ready at 18:00, so it can be collected at 18:10. After the update, Pocket remains selected and is marked withdrawn because its ratchet jams. Fine shows 31–32 mm, 6°, 18:25, and Select Fine together."
+            },
+            "edge_observation": "Fine can be selected by keyboard; its selection is confirmed and Pocket remains visibly withdrawn with the reason. Focus remains on Fine after selection, but applying the stock update drops focus to the body. Captures: A-1440-before, A-1440-after, A-1440-edge-corrected. The earlier A-1440-edge capture preceded the Fine selection.",
+            "fact_check": "The cabinet is 42 ±1 mm screw to face rail, with a 12° maximum swing. Flat's 28 mm maximum is 13 mm below the 41 mm low clearance limit, but its 15° reset exceeds available swing by 3°. Fine is ready 15 minutes after arrival. A selection is not a checkout; no checkout action is provided.",
+            "strength": "The labeled cabinet diagram places the screw, face rail, distance and swing in one composition, making the two physical constraints understandable before comparing the illustrated tools.",
+            "weakness": "The update removes useful focus, and the selected withdrawn button has weak text contrast. The initial viewport cuts off the comparison details.",
+            "repair": "Move focus to an announced conflict or the replacement action after the update, improve disabled-state contrast, and bring the comparison higher.",
+            "arm": "prior",
+            "html_sha256": "a4f77aebfddba267540a1c05f79b0d64d74e17e58817a2de8f809ed0848ce834",
+            "weighted": 7.55,
+            "before": {
+              "sha256": "ceb5ba9353f525d0446e7e0c263c6cad5a51cc0b72a028aca1b18fe8a218b766",
+              "file": "A-1440-before.png",
+              "tool_call_id": "item_2"
+            },
+            "after": {
+              "sha256": "230facb550d39bcdb09fe468f43a359b1154b63bcb7056d99b6ae667ef909168",
+              "file": "A-1440-after.png",
+              "tool_call_id": "item_13"
+            },
+            "layout_width": 1425,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Shift+Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Shift+Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "A-390": {
+            "coherence": 7.5,
+            "originality": 7,
+            "craft": 6.5,
+            "usability": 6.5,
+            "primary_action": {
+              "input": "Tab and Enter on Flat, then Pocket; Tab to the update and press Enter.",
+              "expected": "Select the initially suitable tool and expose the withdrawal and alternative.",
+              "observed": "Pocket is selected, then remains selected and marked withdrawn because the ratchet jams. The conflict capture shows Fine's 31–32 mm, 6°, 18:25 and selection action together. Pocket is ready at 18:00, before the 18:10 arrival."
+            },
+            "edge_observation": "Fine can be selected and Pocket remains represented as withdrawn. Focus is reported on the selected Fine button, but the captured viewport after selection shows Pocket rather than the focused Fine control. The update itself drops focus to the body. Captures: A-390-before, A-390-after, A-390-edge-corrected; A-390-edge captured an intermediate Flat selection.",
+            "fact_check": "The page shows 42 ±1 mm and 12°. Flat is 27–28 mm and requires 15°: 28 < 41 mm, while 15° > 12°. Fine is ready at 18:25. No checkout action was observed.",
+            "strength": "The stacked Pocket and Fine cards expose the conflict and replacement measurements together in the captured mobile viewport.",
+            "weakness": "The cabinet diagram's face-rail label and 'Not to scale' overlap, and selection changes leave the visual viewport away from the focused control.",
+            "repair": "Reflow the diagram labels at narrow widths and keep the focused selection or conflict visible after updates.",
+            "arm": "prior",
+            "html_sha256": "a4f77aebfddba267540a1c05f79b0d64d74e17e58817a2de8f809ed0848ce834",
+            "weighted": 6.95,
+            "before": {
+              "sha256": "99e50bf690092fbe6a63dc49ea98bcf6f71845fabec84f636ee233a1ec22dcbd",
+              "file": "A-390-before.png",
+              "tool_call_id": "item_26"
+            },
+            "after": {
+              "sha256": "46fa6f878a6921873afcf09ad640392cfb2d9c64228243a295e1c486e70f54d9",
+              "file": "A-390-after.png",
+              "tool_call_id": "item_36"
+            },
+            "layout_width": 375,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-1440": {
+            "coherence": 8.5,
+            "originality": 7,
+            "craft": 8,
+            "usability": 7,
+            "primary_action": {
+              "input": "Tab to Flat and press Enter, then choose Pocket and apply the stock update with Tab and Enter.",
+              "expected": "Compare fit and pickup, retain the selected tool during the stock conflict, and expose a replacement.",
+              "observed": "Flat is 27–28 mm with a 15° reset. Pocket is ready at 18:00, before the 18:10 arrival. After the update it remains selected, marked withdrawn, and identified as having a jammed ratchet. Fine's 31–32 mm, 6°, 18:25 and Choose action are together in its row, although the row sits at the bottom edge of the captured viewport."
+            },
+            "edge_observation": "Shift+Tab and Enter selects Fine; Pocket remains in the comparison as withdrawn with 'Ratchet jams'. The selection panel updates to Fine and 18:25. Focus drops to the body after selection and after the stock update. Captures: B-1440-before, B-1440-after, B-1440-edge.",
+            "fact_check": "The displayed 42 ±1 mm gives a 41 mm low limit: Flat's 28 mm maximum fits, but 15° exceeds 12° by 3°. Fine is 15 minutes later than arrival. No checkout action was observed.",
+            "strength": "Aligned comparison columns let visitors scan length, reset and ready time across all tools; the selection panel makes the conflict explicit.",
+            "weakness": "The two small measurement icons identify the limits but do not depict the cabinet geometry or how the tool sits behind the rail. Focus is lost on state changes.",
+            "repair": "Retain or deliberately move focus after selection and updates, and add a labeled cabinet cross-section showing the screw, rail and swing.",
+            "arm": "trial",
+            "html_sha256": "bba15e8d68131880906ae0225de867fd25c15d96fe23725572d7ed660599c3ca",
+            "weighted": 7.65,
+            "before": {
+              "sha256": "d9d91305b18314bb34d4ce40593f0922b7dee38c193336ac596f472cff037676",
+              "file": "B-1440-before.png",
+              "tool_call_id": "item_46"
+            },
+            "after": {
+              "sha256": "e90df3eb78fa6139bdd67e7f31c58533f634bd5d020913fe51812df05a034423",
+              "file": "B-1440-after.png",
+              "tool_call_id": "item_57"
+            },
+            "layout_width": 1425,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Shift+Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-390": {
+            "coherence": 8,
+            "originality": 7,
+            "craft": 7.5,
+            "usability": 6.5,
+            "primary_action": {
+              "input": "Tab and Enter on Flat, then Pocket; Tab to the stock update and press Enter.",
+              "expected": "Select Pocket and show the withdrawal alongside a viable alternative.",
+              "observed": "Pocket is selected and shown ready at 18:00 before the update. Afterward it remains selected and marked withdrawn because the ratchet jams. Fine's 31–32 mm, 6°, 18:25 and Choose action appear together in the captured comparison."
+            },
+            "edge_observation": "Shift+Tab and Enter selects Fine, and the selection panel shows 18:25. Pocket remains withdrawn in the comparison, but is outside the resulting captured viewport. Focus drops to the body and the viewport moves away from the selected row. Captures: B-390-before, B-390-after, B-390-edge.",
+            "fact_check": "The cabinet labels give 42 ±1 mm and 12°; Flat's 28 mm maximum is below the 41 mm low clearance, while its 15° reset exceeds the 12° swing. Fine is ready at 18:25. No checkout action was observed.",
+            "strength": "Compact rows retain all three comparison dimensions and the action without horizontal scrolling.",
+            "weakness": "The selection panel precedes the comparison visually, while keyboard navigation reaches comparison controls first; selection moves the viewport away from the chosen row and loses focus.",
+            "repair": "Align visual and keyboard flow, preserve focus on the chosen control, and announce the updated selection and withdrawal.",
+            "arm": "trial",
+            "html_sha256": "bba15e8d68131880906ae0225de867fd25c15d96fe23725572d7ed660599c3ca",
+            "weighted": 7.3,
+            "before": {
+              "sha256": "3a497853a28f33cc0a0c8d4e5fb79bb4342b230f202ff1ab33919e7a332111f4",
+              "file": "B-390-before.png",
+              "tool_call_id": "item_63"
+            },
+            "after": {
+              "sha256": "efc66b65220ba40795b779372978bb340215164279ed519dec0115677d5d6732",
+              "file": "B-390-after.png",
+              "tool_call_id": "item_74"
+            },
+            "layout_width": 375,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Shift+Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          }
+        },
+        "preference": {
+          "winner": "A",
+          "reason": "A's cabinet cross-section conveys the physical relationship between screw, rail, clearance and swing more concretely, while preserving the withdrawal and a usable Fine selection. B has a stronger compact comparison, but both need focus repair; A also needs its mobile diagram labels fixed."
+        },
+        "unsupported_claims": [
+          "The page measurements and stock status were assessed as displayed; physical tool fit, hand clearance, actual inventory, and a real reservation or checkout were not independently verified.",
+          "Pocket's 18:10 pickup is inferred from its displayed 18:00 ready time and the stated 18:10 arrival; neither view provides an observed pickup booking."
+        ],
+        "case": "tool-library",
+        "verified_screens": 4,
+        "required_screens": 4,
+        "browser": "Chrome/160.0.8178.0",
+        "evaluator_thread": "01a2089c-1125-7521-ba52-c242e6aff2a3",
+        "usage": {
+          "input_tokens": 824650,
+          "cached_input_tokens": 760832,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3910,
+          "reasoning_output_tokens": 0
+        },
+        "trace_sha256": "efcba4da8fdad66eb9b84d34c4f130eb96ff8cf71199d5f7ba4b5a52baad63e1",
+        "browser_audit_sha256": "38db4888d4fbb28f90258c0cc1cb02c7c2d21bce2c3e82978d015a794d8a8af5"
+      },
+      "review_captures": [
+        {
+          "file": "live-tool-library/captures/A-1440-after.png",
+          "sha256": "230facb550d39bcdb09fe468f43a359b1154b63bcb7056d99b6ae667ef909168",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "live-tool-library/captures/A-1440-before.png",
+          "sha256": "ceb5ba9353f525d0446e7e0c263c6cad5a51cc0b72a028aca1b18fe8a218b766",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "live-tool-library/captures/A-1440-edge-corrected.png",
+          "sha256": "7069ab962ce25e87b17e3f153db1266bc8bd6dda50300d59967c5915a3ab0af5",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "live-tool-library/captures/A-1440-edge.png",
+          "sha256": "230facb550d39bcdb09fe468f43a359b1154b63bcb7056d99b6ae667ef909168",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "live-tool-library/captures/A-390-after.png",
+          "sha256": "46fa6f878a6921873afcf09ad640392cfb2d9c64228243a295e1c486e70f54d9",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "live-tool-library/captures/A-390-before.png",
+          "sha256": "99e50bf690092fbe6a63dc49ea98bcf6f71845fabec84f636ee233a1ec22dcbd",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "live-tool-library/captures/A-390-edge-corrected.png",
+          "sha256": "c48ce6d4a9d34e40b09e7e5cef80aa3be4c983b09c5c5320681bc36488d538a9",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "live-tool-library/captures/A-390-edge.png",
+          "sha256": "e1e11ad1a9f40570b351a17b47515ae93db2892571b5585707c11532ecd7151f",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "live-tool-library/captures/A-390-pocket.png",
+          "sha256": "58f00f878d547bac71c1dec6121cc2ca60eb0e7739bc66a2cd98b24859472207",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "live-tool-library/captures/B-1440-after.png",
+          "sha256": "e90df3eb78fa6139bdd67e7f31c58533f634bd5d020913fe51812df05a034423",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "live-tool-library/captures/B-1440-before.png",
+          "sha256": "d9d91305b18314bb34d4ce40593f0922b7dee38c193336ac596f472cff037676",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "live-tool-library/captures/B-1440-edge.png",
+          "sha256": "a1a6af4e992836a0565b2d5582a9994c80396c1573efa546a6390b094742c838",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "live-tool-library/captures/B-1440-pocket.png",
+          "sha256": "124ca20a10715d8aa1cbfad9acf9eb84d1c98e5a3b0b9dd715619cd191a405e0",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "live-tool-library/captures/B-390-after.png",
+          "sha256": "efc66b65220ba40795b779372978bb340215164279ed519dec0115677d5d6732",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "live-tool-library/captures/B-390-before.png",
+          "sha256": "3a497853a28f33cc0a0c8d4e5fb79bb4342b230f202ff1ab33919e7a332111f4",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "live-tool-library/captures/B-390-edge.png",
+          "sha256": "98809842215a5ff96ff2389c42bdde1d3ee41efe59e6c11b57fd7a4ed1472e74",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "live-tool-library/captures/B-390-pocket.png",
+          "sha256": "6b9be4a3975ae5dc129584636216036d4a3190362773885e0176d9bcf86d3b7a",
+          "size": [
+            390,
+            844
+          ]
+        }
+      ]
+    },
+    "last-train-access": {
+      "generators": {
+        "prior": {
+          "usage": {
+            "input_tokens": 58711,
+            "cached_input_tokens": 52992,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 5454,
+            "reasoning_output_tokens": 0
+          },
+          "tool_calls": [
+            {
+              "type": "mcp_tool_call",
+              "server": "design-mcp",
+              "tool": "direct",
+              "status": "completed"
+            }
+          ],
+          "client_errors": [],
+          "treatment_call": true,
+          "direct_call": true,
+          "status": "passed",
+          "observed_directions": [
+            "object-hero"
+          ],
+          "unhinted_direct": true,
+          "case": "last-train-access",
+          "arm": "prior",
+          "model": "gpt-6.1-terra",
+          "effort": "low",
+          "client": "codex-cli 0.170.0",
+          "prompt_sha256": "b185c8208ea38ef6ab42af9984f98f6a4eb7ed63d8b1dc349ba08e8ab2a56191",
+          "expected_direction": "object-hero",
+          "require_unhinted_direct": true,
+          "shell_tool": false,
+          "mcp_config_sha256": "9c5ffda2d81ee7d2008bb70b226cf70ad130e3d5f5ff8a1b7cd6dcef18f2d296",
+          "elapsed_seconds": 104.26,
+          "exit_code": 0,
+          "trace_sha256": "2cbc60eac8527b55ca6b0e9aed64d29b06fb4d091da8b9642d75d111a36b9c33",
+          "html_sha256": "da14e45aae770e6a34f31f39e5087b574cdfbd795e7813ea07c53ca97672ad03"
+        },
+        "trial": {
+          "usage": {
+            "input_tokens": 58531,
+            "cached_input_tokens": 37248,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 4991,
+            "reasoning_output_tokens": 0
+          },
+          "tool_calls": [
+            {
+              "type": "mcp_tool_call",
+              "server": "design-mcp",
+              "tool": "direct",
+              "status": "completed"
+            }
+          ],
+          "client_errors": [],
+          "treatment_call": true,
+          "direct_call": true,
+          "status": "passed",
+          "observed_directions": [
+            "access-window"
+          ],
+          "unhinted_direct": true,
+          "case": "last-train-access",
+          "arm": "trial",
+          "model": "gpt-6.1-terra",
+          "effort": "low",
+          "client": "codex-cli 0.170.0",
+          "prompt_sha256": "b185c8208ea38ef6ab42af9984f98f6a4eb7ed63d8b1dc349ba08e8ab2a56191",
+          "expected_direction": "access-window",
+          "require_unhinted_direct": true,
+          "shell_tool": false,
+          "mcp_config_sha256": "f064f34378130327c4b7d58f328f4201cf0724ee26abeb3d22529ff066e5acbd",
+          "elapsed_seconds": 98.12,
+          "exit_code": 0,
+          "trace_sha256": "089e706bab0c05794d498cab213f4ec5210467cef57911886cc9056a60ca6974",
+          "html_sha256": "c34e6dfc75c049a3fe666930a667e048686f6a09c02d97787ed1a2a5ebb1a2ab"
+        }
+      },
+      "private_spec": {
+        "case": "last-train-access",
+        "brief": "Design a public program for an evening of dance. You need a step-free class and the 21:10 last train. Floorwork ends at 20:50. The East lift serves the whole step-free route and reaching level boarding takes 12 minutes. After East closes, West ramp still gives step-free access but takes 22 minutes. Groove ends at 20:45, has a complete step-free Dock route and takes 15 minutes. Both classes remain bookable. Help the dancer check the entrance and time margin and switch if needed. Give the visitor an explicit demo control to close or restore East lift and show why an existing choice cannot catch the train. Use times from this brief. There is no payment or extra boarding buffer.",
+        "task": "You need a step-free route to a dance class and level boarding for the 21:10 train. Capture -before on opening. Choose Floorwork and East by keyboard if available. Report Floorwork's 20:50 end, 12-minute return, 21:02 arrival and eight-minute margin. Close East lift using the demo and capture -after. Keep that same visit. Report whether the selected Floorwork is still represented, West's 22-minute return arrives at 21:12 and misses by two minutes, and whether the route and class alternative are visible and keyboard reachable. Choose Groove by keyboard. Confirm Dock access, Groove's 20:45 end and 15-minute return, 21:00 arrival and ten-minute margin. Capture -edge. Report whether any route or boarding certainty was invented. Describe the specific visual treatment linking entrance, journey and deadline, and whether the first useful choices appear at 390 px without scrolling. If any required input or output is absent, report it.",
+        "arms": [
+          "prior",
+          "trial"
+        ],
+        "require_unhinted_direct": true,
+        "directions": {
+          "prior": "object-hero",
+          "trial": "access-window"
+        }
+      },
+      "ballot": {
+        "calibration": {
+          "example": "Legible repair intake with clear labels, familiar layout, and misplaced focus after an invalid number",
+          "coherence": 7,
+          "originality": 4,
+          "craft": 6,
+          "usability": 6
+        },
+        "screens": {
+          "A-1440": {
+            "coherence": 8,
+            "originality": 7,
+            "craft": 8,
+            "usability": 8,
+            "primary_action": {
+              "input": "Floorwork and East were selected on opening. Tab to the demo and press Enter.",
+              "expected": "Show the Floorwork journey, then recalculate it when East closes.",
+              "observed": "Floorwork ends at 20:50; the East lift route takes 12 minutes and reaches level boarding at 21:02, eight minutes before the 21:10 train. Closing East retains Floorwork and changes the result to West ramp, 22 minutes, 21:12, two minutes late. There is no separate East route selector."
+            },
+            "edge_observation": "The West route and Groove class alternative are visible together after closure. Shift+Tab reaches Groove and Enter selects it. Groove shows Dock, a 20:45 end, 15-minute route, 21:00 arrival and ten-minute margin. Captured A-1440-before, A-1440-after and A-1440-edge.",
+            "fact_check": "The displayed arithmetic matches the supplied task. The interface asserts complete step-free routes and level boarding; the review cannot independently verify those real-world claims. 'Can catch train' expresses more certainty than the timing alone establishes.",
+            "strength": "The selected class sits beside a plum journey panel; a vertical three-stop line connects class end, route arrival and train deadline, with the margin given dominant type.",
+            "weakness": "The recovery instruction is prose rather than a direct action, and the result sits partly below the initial desktop viewport.",
+            "repair": "Add a keyboard-reachable Switch to Groove action beside the missed-train result and qualify the outcome as a timing estimate.",
+            "arm": "prior",
+            "html_sha256": "da14e45aae770e6a34f31f39e5087b574cdfbd795e7813ea07c53ca97672ad03",
+            "weighted": 7.7,
+            "before": {
+              "sha256": "f6fffd605dbd91e324f76c032de562603bff4c993ab08f4cb5860e580e6e2ff0",
+              "file": "A-1440-before.png",
+              "tool_call_id": "item_2"
+            },
+            "after": {
+              "sha256": "ab2a19076a2b99a47e62c615a36573407ff0232c6b0271ff2b76834ef1eaa6cc",
+              "file": "A-1440-after.png",
+              "tool_call_id": "item_7"
+            },
+            "layout_width": 1425,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Shift+Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "A-390": {
+            "coherence": 8,
+            "originality": 7,
+            "craft": 7.5,
+            "usability": 7.5,
+            "primary_action": {
+              "input": "Floorwork and East were selected on opening. Tab to Close East lift and press Enter.",
+              "expected": "Retain the selection and show the West-route consequence.",
+              "observed": "Floorwork remains selected; West is shown as 22 minutes, arriving 21:12 and missing the train by two minutes. The initial East calculation is 20:50 plus 12 minutes to 21:02, with eight minutes to spare. There is no separate East selector."
+            },
+            "edge_observation": "Both class choices appear without scrolling on opening. After closure, the West result is visible near the demo control, while Groove is higher on the page; Shift+Tab reaches Groove and Enter selects it. The Dock result reports 20:45, 15 minutes, 21:00 and ten minutes. Captured A-390-before, A-390-after and A-390-edge.",
+            "fact_check": "The task arithmetic is correct. Step-free access and level boarding are asserted by the interface but were not independently verified; 'Can catch train' is stronger than the calculated margin alone supports.",
+            "strength": "The class choices fit in the first viewport and the stacked journey panel retains the connected timeline and prominent margin.",
+            "weakness": "The closure control, changed route and class alternative are separated vertically; the user must travel back up to choose Groove.",
+            "repair": "Place a direct Switch to Groove control in the missed-train panel and keep the consequence close to the demo control.",
+            "arm": "prior",
+            "html_sha256": "da14e45aae770e6a34f31f39e5087b574cdfbd795e7813ea07c53ca97672ad03",
+            "weighted": 7.5,
+            "before": {
+              "sha256": "4fe3f80858f2832d5b906177b1f6131b50807b9cbb3ee63b4fea9a7380edfb0d",
+              "file": "A-390-before.png",
+              "tool_call_id": "item_13"
+            },
+            "after": {
+              "sha256": "fecd8b5eb499c3d9ba785d4cf0ce79c97b133f76962ad9817810721a5043aace",
+              "file": "A-390-after.png",
+              "tool_call_id": "item_18"
+            },
+            "layout_width": 375,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Shift+Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-1440": {
+            "coherence": 8.5,
+            "originality": 7.5,
+            "craft": 8.5,
+            "usability": 8.5,
+            "primary_action": {
+              "input": "Floorwork and East were selected on opening. Tab to the East lift switch and press Space.",
+              "expected": "Show the Floorwork journey, then recalculate it when East closes.",
+              "observed": "Floorwork ends at 20:50; East takes 12 minutes to reach level boarding at 21:02, eight minutes before departure. Closing East retains Floorwork and displays West ramp, 22 minutes, 21:12 and two minutes after departure. There is no separate East route selector."
+            },
+            "edge_observation": "The West route is visible after closure; the direct Switch to Groove action is below the initial captured viewport but reachable by Tab. Enter selects Groove and moves focus to its class choice. Dock is shown as step-free, with a 20:45 end, 15-minute route, 21:00 arrival and ten-minute margin. Captured B-1440-before, B-1440-after and B-1440-edge.",
+            "fact_check": "The displayed arithmetic matches the task. The footer explicitly says there is no extra boarding buffer. Route accessibility and level boarding are asserted but not independently verified; 'Makes the train' is a timing conclusion, not proof of boarding.",
+            "strength": "A teal vertical line joins class end, entrance route, level boarding and departure in a clear itinerary, with the margin in a contrasting horizontal band.",
+            "weakness": "The margin and recovery action fall below the initial desktop viewport; the changing switch name describes its state rather than a stable action.",
+            "repair": "Bring the margin and recovery action into the primary result area and give the switch a stable accessible name with its checked state.",
+            "arm": "trial",
+            "html_sha256": "c34e6dfc75c049a3fe666930a667e048686f6a09c02d97787ed1a2a5ebb1a2ab",
+            "weighted": 8.2,
+            "before": {
+              "sha256": "3e98449868b574f8a292878b3351b10c1922d88fd96e1e55c08926d0178668c2",
+              "file": "B-1440-before.png",
+              "tool_call_id": "item_23"
+            },
+            "after": {
+              "sha256": "767e0dfabddec87a91b5f2175cbd8d3a716476fde8983924fcd19ee8b1448359",
+              "file": "B-1440-after.png",
+              "tool_call_id": "item_28"
+            },
+            "layout_width": 1425,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Space"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-390": {
+            "coherence": 8,
+            "originality": 7.5,
+            "craft": 8,
+            "usability": 7.5,
+            "primary_action": {
+              "input": "Floorwork and East were selected on opening. Tab to the lift switch and press Space.",
+              "expected": "Retain Floorwork and show the consequence of the closed lift.",
+              "observed": "Floorwork remains selected. The resulting route reports West ramp, 22 minutes, arrival at 21:12 and two minutes after departure. The initial East calculation is 20:50 plus 12 minutes to 21:02, with an eight-minute margin. There is no separate East selector."
+            },
+            "edge_observation": "Both class choices and the demo switch appear without scrolling on opening. The changed route and Switch to Groove action are lower on the page; Tab reaches the action, and Enter selects Groove and returns focus to its class choice. The result reports Dock, 20:45, 15 minutes, 21:00 and ten minutes. Captured B-390-before, B-390-after and B-390-edge.",
+            "fact_check": "The supplied timing arithmetic is correct and the footer discloses no additional boarding buffer. Real-world route and boarding accessibility were not independently verified; 'Makes the train' should not be treated as a guarantee.",
+            "strength": "The first viewport contains the two choices and lift control, and the itinerary uses a consistent line and time column to connect the journey.",
+            "weakness": "The changed consequence is below the switch, and activating the recovery action returns focus to the class choice rather than the updated result.",
+            "repair": "Surface the missed-train summary beside the switch and announce the updated result while preserving a useful focus position.",
+            "arm": "trial",
+            "html_sha256": "c34e6dfc75c049a3fe666930a667e048686f6a09c02d97787ed1a2a5ebb1a2ab",
+            "weighted": 7.75,
+            "before": {
+              "sha256": "f9be5628f26fc385edefec58d193e4e251bc59164a06e17c2c394beb8bf471b9",
+              "file": "B-390-before.png",
+              "tool_call_id": "item_34"
+            },
+            "after": {
+              "sha256": "3c64048d3b0940b7a1f1d6034675da71e1d8f5b44ecedc2b38963f593c4d91ab",
+              "file": "B-390-after.png",
+              "tool_call_id": "item_39"
+            },
+            "layout_width": 375,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Space"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          }
+        },
+        "preference": {
+          "winner": "B",
+          "reason": "B makes the journey sequence more explicit, provides a direct keyboard-operable recovery action, and discloses the absence of a boarding buffer. Its mobile separation between the switch and result remains a material weakness."
+        },
+        "case": "last-train-access",
+        "verified_screens": 4,
+        "required_screens": 4,
+        "browser": "Chrome/160.0.8178.0",
+        "evaluator_thread": "01a2089a-4c49-79c0-b23d-8e1eec4ce2bb",
+        "usage": {
+          "input_tokens": 681964,
+          "cached_input_tokens": 633472,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3162,
+          "reasoning_output_tokens": 0
+        },
+        "trace_sha256": "705831c8d7e7889303b07924b2c81e71135a7ee5f50d62a4d26decff73b664c5",
+        "browser_audit_sha256": "a1febbe0d14e7c19704efe5e117176245176ce853a68509c34f568e394cbd4ac"
+      },
+      "review_captures": [
+        {
+          "file": "live-last-train-access/captures/A-1440-after.png",
+          "sha256": "ab2a19076a2b99a47e62c615a36573407ff0232c6b0271ff2b76834ef1eaa6cc",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "live-last-train-access/captures/A-1440-before.png",
+          "sha256": "f6fffd605dbd91e324f76c032de562603bff4c993ab08f4cb5860e580e6e2ff0",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "live-last-train-access/captures/A-1440-edge.png",
+          "sha256": "a2a467cda6892eb082c6a2ec9817125302ab508b96cd59d30e5043d6078fd535",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "live-last-train-access/captures/A-390-after.png",
+          "sha256": "fecd8b5eb499c3d9ba785d4cf0ce79c97b133f76962ad9817810721a5043aace",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "live-last-train-access/captures/A-390-before.png",
+          "sha256": "4fe3f80858f2832d5b906177b1f6131b50807b9cbb3ee63b4fea9a7380edfb0d",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "live-last-train-access/captures/A-390-edge.png",
+          "sha256": "32155ee286a44fd4ddbaf3242f50a809c4e9616defc7605c73152a37c9b78517",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "live-last-train-access/captures/B-1440-after.png",
+          "sha256": "767e0dfabddec87a91b5f2175cbd8d3a716476fde8983924fcd19ee8b1448359",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "live-last-train-access/captures/B-1440-before.png",
+          "sha256": "3e98449868b574f8a292878b3351b10c1922d88fd96e1e55c08926d0178668c2",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "live-last-train-access/captures/B-1440-edge.png",
+          "sha256": "02e85d74a8c0975bc562e66f24b1c1835448ed64cd3e8ea55eb1f764fdf38734",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "live-last-train-access/captures/B-390-after.png",
+          "sha256": "3c64048d3b0940b7a1f1d6034675da71e1d8f5b44ecedc2b38963f593c4d91ab",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "live-last-train-access/captures/B-390-before.png",
+          "sha256": "f9be5628f26fc385edefec58d193e4e251bc59164a06e17c2c394beb8bf471b9",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "live-last-train-access/captures/B-390-edge.png",
+          "sha256": "7a8cb24481081c8e003f6b1cd99495a43165a7ab2ddadc06713a922fb7f5a601",
+          "size": [
+            390,
+            844
+          ]
+        }
+      ]
+    }
+  },
+  "opening_geometry": {
+    "browser": "Chrome/160.0.8178.0",
+    "rows": [
+      {
+        "body": {
+          "text": "✳ Town Tool Library Desk open tonight 18:00–19:00 A little help for a tight spot The right turn for tonight. Find a PH2 tool that fits your cabinet and has room to work. You can arrive from 18:10. 42 ±1 mm Screw to face rail 12° Maximum swi",
+          "size": [
+            0,
+            0,
+            375,
+            2916.3
+          ],
+          "fullyVisible": false,
+          "font": "\"Instrument Sans\", sans-serif",
+          "fontSize": "16px",
+          "weight": "400",
+          "color": "rgb(42, 22, 16)",
+          "background": "rgb(243, 235, 224)",
+          "opacity": "1"
+        },
+        "headings": [
+          {
+            "text": "The right turn for tonight.",
+            "size": [
+              18,
+              138,
+              339,
+              170.5
+            ],
+            "fullyVisible": true,
+            "font": "Fraunces, Georgia, serif",
+            "fontSize": "58px",
+            "weight": "700",
+            "color": "rgb(42, 22, 16)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Choose your tool.",
+            "size": [
+              18,
+              769.8,
+              339,
+              36
+            ],
+            "fullyVisible": true,
+            "font": "Fraunces, Georgia, serif",
+            "fontSize": "36px",
+            "weight": "700",
+            "color": "rgb(42, 22, 16)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "No tool selected yet.",
+            "size": [
+              38,
+              2608.3,
+              299,
+              33
+            ],
+            "fullyVisible": false,
+            "font": "Fraunces, Georgia, serif",
+            "fontSize": "30px",
+            "weight": "700",
+            "color": "rgb(255, 250, 244)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          }
+        ],
+        "options": [
+          {
+            "text": "Select Stubby",
+            "size": [
+              37,
+              1239.8,
+              301,
+              50
+            ],
+            "fullyVisible": false,
+            "font": "\"Instrument Sans\", sans-serif",
+            "fontSize": "16px",
+            "weight": "700",
+            "color": "rgb(42, 22, 16)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          }
+        ],
+        "fonts": [
+          "Fraunces",
+          "Instrument Sans",
+          "Instrument Sans"
+        ],
+        "overflow": false,
+        "title": "PH2 tools for tonight | Town Tool Library",
+        "case": "tool-library",
+        "arm": "prior",
+        "viewport": [
+          390,
+          844
+        ],
+        "html_sha256": "a4f77aebfddba267540a1c05f79b0d64d74e17e58817a2de8f809ed0848ce834",
+        "image": "tool-library-prior-390.png",
+        "image_sha256": "99e50bf690092fbe6a63dc49ea98bcf6f71845fabec84f636ee233a1ec22dcbd"
+      },
+      {
+        "body": {
+          "text": "✳ Town Tool Library Desk open tonight 18:00–19:00 A little help for a tight spot The right turn for tonight. Find a PH2 tool that fits your cabinet and has room to work. You can arrive from 18:10. 42 ±1 mm Screw to face rail 12° Maximum swi",
+          "size": [
+            0,
+            0,
+            1425,
+            1537.2
+          ],
+          "fullyVisible": false,
+          "font": "\"Instrument Sans\", sans-serif",
+          "fontSize": "16px",
+          "weight": "400",
+          "color": "rgb(42, 22, 16)",
+          "background": "rgb(243, 235, 224)",
+          "opacity": "1"
+        },
+        "headings": [
+          {
+            "text": "The right turn for tonight.",
+            "size": [
+              52.5,
+              183,
+              549.8,
+              270.9
+            ],
+            "fullyVisible": true,
+            "font": "Fraunces, Georgia, serif",
+            "fontSize": "92.16px",
+            "weight": "700",
+            "color": "rgb(42, 22, 16)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Choose your tool.",
+            "size": [
+              52.5,
+              729.7,
+              452.6,
+              56
+            ],
+            "fullyVisible": true,
+            "font": "Fraunces, Georgia, serif",
+            "fontSize": "56px",
+            "weight": "700",
+            "color": "rgb(42, 22, 16)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "No tool selected yet.",
+            "size": [
+              80.5,
+              1356.2,
+              1013.6,
+              33
+            ],
+            "fullyVisible": false,
+            "font": "Fraunces, Georgia, serif",
+            "fontSize": "30px",
+            "weight": "700",
+            "color": "rgb(255, 250, 244)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          }
+        ],
+        "options": [
+          {
+            "text": "Select Stubby",
+            "size": [
+              73.5,
+              1208.7,
+              279,
+              50
+            ],
+            "fullyVisible": false,
+            "font": "\"Instrument Sans\", sans-serif",
+            "fontSize": "16px",
+            "weight": "700",
+            "color": "rgb(42, 22, 16)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Select Flat",
+            "size": [
+              406.5,
+              1208.7,
+              279,
+              50
+            ],
+            "fullyVisible": false,
+            "font": "\"Instrument Sans\", sans-serif",
+            "fontSize": "16px",
+            "weight": "700",
+            "color": "rgb(42, 22, 16)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Select Pocket",
+            "size": [
+              739.5,
+              1208.7,
+              279,
+              50
+            ],
+            "fullyVisible": false,
+            "font": "\"Instrument Sans\", sans-serif",
+            "fontSize": "16px",
+            "weight": "700",
+            "color": "rgb(42, 22, 16)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Select Fine",
+            "size": [
+              1072.5,
+              1208.7,
+              279,
+              50
+            ],
+            "fullyVisible": false,
+            "font": "\"Instrument Sans\", sans-serif",
+            "fontSize": "16px",
+            "weight": "700",
+            "color": "rgb(42, 22, 16)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          }
+        ],
+        "fonts": [
+          "Fraunces",
+          "Instrument Sans",
+          "Instrument Sans"
+        ],
+        "overflow": false,
+        "title": "PH2 tools for tonight | Town Tool Library",
+        "case": "tool-library",
+        "arm": "prior",
+        "viewport": [
+          1440,
+          900
+        ],
+        "html_sha256": "a4f77aebfddba267540a1c05f79b0d64d74e17e58817a2de8f809ed0848ce834",
+        "image": "tool-library-prior-1440.png",
+        "image_sha256": "ceb5ba9353f525d0446e7e0c263c6cad5a51cc0b72a028aca1b18fe8a218b766"
+      },
+      {
+        "body": {
+          "text": "✳ Town Tool Library Desk open tonight 18:00–19:00 A little help for a tight spot The right turn for tonight. Find a PH2 tool that fits your cabinet and has room to work. You can arrive from 18:10. 42 ±1 mm Screw to face rail 12° Maximum swi",
+          "size": [
+            0,
+            0,
+            305,
+            3033.3
+          ],
+          "fullyVisible": false,
+          "font": "\"Instrument Sans\", sans-serif",
+          "fontSize": "16px",
+          "weight": "400",
+          "color": "rgb(42, 22, 16)",
+          "background": "rgb(243, 235, 224)",
+          "opacity": "1"
+        },
+        "headings": [
+          {
+            "text": "The right turn for tonight.",
+            "size": [
+              18,
+              138,
+              269,
+              170.5
+            ],
+            "fullyVisible": true,
+            "font": "Fraunces, Georgia, serif",
+            "fontSize": "58px",
+            "weight": "700",
+            "color": "rgb(42, 22, 16)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Choose your tool.",
+            "size": [
+              18,
+              793.8,
+              269,
+              72
+            ],
+            "fullyVisible": false,
+            "font": "Fraunces, Georgia, serif",
+            "fontSize": "36px",
+            "weight": "700",
+            "color": "rgb(42, 22, 16)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "No tool selected yet.",
+            "size": [
+              38,
+              2692.3,
+              229,
+              66
+            ],
+            "fullyVisible": false,
+            "font": "Fraunces, Georgia, serif",
+            "fontSize": "30px",
+            "weight": "700",
+            "color": "rgb(255, 250, 244)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          }
+        ],
+        "options": [],
+        "fonts": [
+          "Fraunces",
+          "Instrument Sans",
+          "Instrument Sans"
+        ],
+        "overflow": false,
+        "title": "PH2 tools for tonight | Town Tool Library",
+        "case": "tool-library",
+        "arm": "prior",
+        "viewport": [
+          320,
+          700
+        ],
+        "html_sha256": "a4f77aebfddba267540a1c05f79b0d64d74e17e58817a2de8f809ed0848ce834",
+        "image": "tool-library-prior-320.png",
+        "image_sha256": "489660309d36889ff9753d995791645dbb8de0a754b7b76474d12c7dc9a9b9c8"
+      },
+      {
+        "body": {
+          "text": "✳ Town Tool Library Desk tonight: 18:00–19:00 A little help for a tight spot Find your PH2 fit. A cabinet, a tight angle, and a job to do tonight. Compare the tools before you head to the desk. Screw to face rail 42 ±1 mm Available clearanc",
+          "size": [
+            0,
+            0,
+            375,
+            1778.7
+          ],
+          "fullyVisible": false,
+          "font": "Barlow, sans-serif",
+          "fontSize": "16px",
+          "weight": "400",
+          "color": "rgb(24, 53, 46)",
+          "background": "rgb(237, 240, 232)",
+          "opacity": "1"
+        },
+        "headings": [
+          {
+            "text": "Find your PH2 fit.",
+            "size": [
+              18,
+              128.3,
+              339,
+              91
+            ],
+            "fullyVisible": true,
+            "font": "\"IBM Plex Sans Condensed\", sans-serif",
+            "fontSize": "50px",
+            "weight": "700",
+            "color": "rgb(24, 53, 46)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Choose your tool",
+            "size": [
+              18,
+              909.1,
+              339,
+              30
+            ],
+            "fullyVisible": false,
+            "font": "\"IBM Plex Sans Condensed\", sans-serif",
+            "fontSize": "30px",
+            "weight": "700",
+            "color": "rgb(24, 53, 46)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          }
+        ],
+        "options": [
+          {
+            "text": "Choose",
+            "size": [
+              249.3,
+              1019.7,
+              107.7,
+              42
+            ],
+            "fullyVisible": false,
+            "font": "Barlow, sans-serif",
+            "fontSize": "16px",
+            "weight": "700",
+            "color": "rgb(24, 53, 46)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Choose",
+            "size": [
+              249.3,
+              1165.3,
+              107.7,
+              42
+            ],
+            "fullyVisible": false,
+            "font": "Barlow, sans-serif",
+            "fontSize": "16px",
+            "weight": "700",
+            "color": "rgb(24, 53, 46)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Apply stock update",
+            "size": [
+              38,
+              789.8,
+              299,
+              46
+            ],
+            "fullyVisible": true,
+            "font": "Barlow, sans-serif",
+            "fontSize": "16px",
+            "weight": "700",
+            "color": "rgb(213, 223, 213)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          }
+        ],
+        "fonts": [
+          "Barlow",
+          "Barlow",
+          "Barlow",
+          "IBM Plex Sans Condensed"
+        ],
+        "overflow": false,
+        "title": "Find a PH2 tool — Town Tool Library",
+        "case": "tool-library",
+        "arm": "trial",
+        "viewport": [
+          390,
+          844
+        ],
+        "html_sha256": "bba15e8d68131880906ae0225de867fd25c15d96fe23725572d7ed660599c3ca",
+        "image": "tool-library-trial-390.png",
+        "image_sha256": "3a497853a28f33cc0a0c8d4e5fb79bb4342b230f202ff1ab33919e7a332111f4"
+      },
+      {
+        "body": {
+          "text": "✳ Town Tool Library Desk tonight: 18:00–19:00 A little help for a tight spot Find your PH2 fit. A cabinet, a tight angle, and a job to do tonight. Compare the tools before you head to the desk. Screw to face rail 42 ±1 mm Available clearanc",
+          "size": [
+            0,
+            0,
+            1425,
+            1097.3
+          ],
+          "fullyVisible": false,
+          "font": "Barlow, sans-serif",
+          "fontSize": "16px",
+          "weight": "400",
+          "color": "rgb(24, 53, 46)",
+          "background": "rgb(237, 240, 232)",
+          "opacity": "1"
+        },
+        "headings": [
+          {
+            "text": "Find your PH2 fit.",
+            "size": [
+              56.5,
+              158.3,
+              600,
+              144.1
+            ],
+            "fullyVisible": true,
+            "font": "\"IBM Plex Sans Condensed\", sans-serif",
+            "fontSize": "79.2px",
+            "weight": "700",
+            "color": "rgb(24, 53, 46)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Choose your tool",
+            "size": [
+              56.5,
+              475.1,
+              229.4,
+              34
+            ],
+            "fullyVisible": true,
+            "font": "\"IBM Plex Sans Condensed\", sans-serif",
+            "fontSize": "34px",
+            "weight": "700",
+            "color": "rgb(24, 53, 46)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          }
+        ],
+        "options": [
+          {
+            "text": "Choose",
+            "size": [
+              872.5,
+              593.4,
+              114,
+              42
+            ],
+            "fullyVisible": true,
+            "font": "Barlow, sans-serif",
+            "fontSize": "16px",
+            "weight": "700",
+            "color": "rgb(24, 53, 46)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Choose",
+            "size": [
+              872.5,
+              689.4,
+              114,
+              42
+            ],
+            "fullyVisible": true,
+            "font": "Barlow, sans-serif",
+            "fontSize": "16px",
+            "weight": "700",
+            "color": "rgb(24, 53, 46)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Choose",
+            "size": [
+              872.5,
+              785.4,
+              114,
+              42
+            ],
+            "fullyVisible": true,
+            "font": "Barlow, sans-serif",
+            "fontSize": "16px",
+            "weight": "700",
+            "color": "rgb(24, 53, 46)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Choose",
+            "size": [
+              872.5,
+              881.4,
+              114,
+              42
+            ],
+            "fullyVisible": false,
+            "font": "Barlow, sans-serif",
+            "fontSize": "16px",
+            "weight": "700",
+            "color": "rgb(24, 53, 46)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Apply stock update",
+            "size": [
+              1062.5,
+              845.8,
+              282,
+              46
+            ],
+            "fullyVisible": true,
+            "font": "Barlow, sans-serif",
+            "fontSize": "16px",
+            "weight": "700",
+            "color": "rgb(213, 223, 213)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          }
+        ],
+        "fonts": [
+          "Barlow",
+          "Barlow",
+          "Barlow",
+          "IBM Plex Sans Condensed"
+        ],
+        "overflow": false,
+        "title": "Find a PH2 tool — Town Tool Library",
+        "case": "tool-library",
+        "arm": "trial",
+        "viewport": [
+          1440,
+          900
+        ],
+        "html_sha256": "bba15e8d68131880906ae0225de867fd25c15d96fe23725572d7ed660599c3ca",
+        "image": "tool-library-trial-1440.png",
+        "image_sha256": "d9d91305b18314bb34d4ce40593f0922b7dee38c193336ac596f472cff037676"
+      },
+      {
+        "body": {
+          "text": "✳ Town Tool Library Desk tonight: 18:00–19:00 A little help for a tight spot Find your PH2 fit. A cabinet, a tight angle, and a job to do tonight. Compare the tools before you head to the desk. Screw to face rail 42 ±1 mm Available clearanc",
+          "size": [
+            0,
+            0,
+            305,
+            1867.5
+          ],
+          "fullyVisible": false,
+          "font": "Barlow, sans-serif",
+          "fontSize": "16px",
+          "weight": "400",
+          "color": "rgb(24, 53, 46)",
+          "background": "rgb(237, 240, 232)",
+          "opacity": "1"
+        },
+        "headings": [
+          {
+            "text": "Find your PH2 fit.",
+            "size": [
+              18,
+              128.3,
+              269,
+              91
+            ],
+            "fullyVisible": true,
+            "font": "\"IBM Plex Sans Condensed\", sans-serif",
+            "fontSize": "50px",
+            "weight": "700",
+            "color": "rgb(24, 53, 46)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Choose your tool",
+            "size": [
+              18,
+              984.7,
+              269,
+              30
+            ],
+            "fullyVisible": false,
+            "font": "\"IBM Plex Sans Condensed\", sans-serif",
+            "fontSize": "30px",
+            "weight": "700",
+            "color": "rgb(24, 53, 46)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          }
+        ],
+        "options": [
+          {
+            "text": "Choose",
+            "size": [
+              202.7,
+              1095.3,
+              84.3,
+              42
+            ],
+            "fullyVisible": false,
+            "font": "Barlow, sans-serif",
+            "fontSize": "16px",
+            "weight": "700",
+            "color": "rgb(24, 53, 46)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Choose",
+            "size": [
+              202.7,
+              1240.9,
+              84.3,
+              42
+            ],
+            "fullyVisible": false,
+            "font": "Barlow, sans-serif",
+            "fontSize": "16px",
+            "weight": "700",
+            "color": "rgb(24, 53, 46)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Apply stock update",
+            "size": [
+              38,
+              865.4,
+              229,
+              46
+            ],
+            "fullyVisible": false,
+            "font": "Barlow, sans-serif",
+            "fontSize": "16px",
+            "weight": "700",
+            "color": "rgb(213, 223, 213)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          }
+        ],
+        "fonts": [
+          "Barlow",
+          "Barlow",
+          "Barlow",
+          "IBM Plex Sans Condensed"
+        ],
+        "overflow": false,
+        "title": "Find a PH2 tool — Town Tool Library",
+        "case": "tool-library",
+        "arm": "trial",
+        "viewport": [
+          320,
+          700
+        ],
+        "html_sha256": "bba15e8d68131880906ae0225de867fd25c15d96fe23725572d7ed660599c3ca",
+        "image": "tool-library-trial-320.png",
+        "image_sha256": "b68c5177a28d27475ca24e180be6720e534fccf59976c3e2b39ca73efc03dbe2"
+      },
+      {
+        "body": {
+          "text": "An evening of dance Program & journey planner Make your evening move Dance, then catch your train. Choose a class and check its step-free route against the 21:10 last train. Choose your class Both bookable Floorwork Bookable Ends 20:50 · St",
+          "size": [
+            0,
+            0,
+            375,
+            1589.8
+          ],
+          "fullyVisible": false,
+          "font": "\"Instrument Sans\", sans-serif",
+          "fontSize": "16px",
+          "weight": "400",
+          "color": "rgb(42, 22, 16)",
+          "background": "rgb(245, 238, 228)",
+          "opacity": "1"
+        },
+        "headings": [
+          {
+            "text": "Dance, then catch your train.",
+            "size": [
+              16,
+              147.2,
+              343,
+              146.9
+            ],
+            "fullyVisible": true,
+            "font": "Fraunces, serif",
+            "fontSize": "51px",
+            "weight": "600",
+            "color": "rgb(42, 22, 16)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Choose your class",
+            "size": [
+              35,
+              425,
+              196.8,
+              27.5
+            ],
+            "fullyVisible": true,
+            "font": "Fraunces, serif",
+            "fontSize": "25px",
+            "weight": "600",
+            "color": "rgb(42, 22, 16)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Floorwork to train",
+            "size": [
+              35,
+              792.6,
+              305,
+              35.7
+            ],
+            "fullyVisible": true,
+            "font": "Fraunces, serif",
+            "fontSize": "34px",
+            "weight": "600",
+            "color": "rgb(255, 250, 244)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          }
+        ],
+        "options": [
+          {
+            "text": "Floorwork Bookable Ends 20:50 · Step-free route",
+            "size": [
+              35,
+              474.5,
+              305,
+              96.2
+            ],
+            "fullyVisible": true,
+            "font": "\"Instrument Sans\", sans-serif",
+            "fontSize": "16px",
+            "weight": "400",
+            "color": "rgb(42, 22, 16)",
+            "background": "rgb(249, 237, 240)",
+            "opacity": "1"
+          },
+          {
+            "text": "Groove Bookable Ends 20:45 · Step-free Dock route",
+            "size": [
+              35,
+              582.7,
+              305,
+              96.2
+            ],
+            "fullyVisible": true,
+            "font": "\"Instrument Sans\", sans-serif",
+            "fontSize": "16px",
+            "weight": "400",
+            "color": "rgb(42, 22, 16)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          }
+        ],
+        "fonts": [
+          "Fraunces",
+          "Instrument Sans",
+          "Instrument Sans",
+          "Instrument Sans"
+        ],
+        "overflow": false,
+        "title": "Evening of dance — Plan your journey",
+        "case": "last-train-access",
+        "arm": "prior",
+        "viewport": [
+          390,
+          844
+        ],
+        "html_sha256": "da14e45aae770e6a34f31f39e5087b574cdfbd795e7813ea07c53ca97672ad03",
+        "image": "last-train-access-prior-390.png",
+        "image_sha256": "4fe3f80858f2832d5b906177b1f6131b50807b9cbb3ee63b4fea9a7380edfb0d"
+      },
+      {
+        "body": {
+          "text": "An evening of dance Program & journey planner Make your evening move Dance, then catch your train. Choose a class and check its step-free route against the 21:10 last train. Choose your class Both bookable Floorwork Bookable Ends 20:50 · St",
+          "size": [
+            0,
+            0,
+            1425,
+            1178
+          ],
+          "fullyVisible": false,
+          "font": "\"Instrument Sans\", sans-serif",
+          "fontSize": "16px",
+          "weight": "400",
+          "color": "rgb(42, 22, 16)",
+          "background": "rgb(245, 238, 228)",
+          "opacity": "1"
+        },
+        "headings": [
+          {
+            "text": "Dance, then catch your train.",
+            "size": [
+              52.5,
+              187.2,
+              724.5,
+              180.5
+            ],
+            "fullyVisible": true,
+            "font": "Fraunces, serif",
+            "fontSize": "94px",
+            "weight": "600",
+            "color": "rgb(42, 22, 16)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Choose your class",
+            "size": [
+              85.5,
+              454.7,
+              220.4,
+              30.8
+            ],
+            "fullyVisible": true,
+            "font": "Fraunces, serif",
+            "fontSize": "28px",
+            "weight": "600",
+            "color": "rgb(42, 22, 16)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Floorwork to train",
+            "size": [
+              797.2,
+              483.5,
+              542.3,
+              39.9
+            ],
+            "fullyVisible": true,
+            "font": "Fraunces, serif",
+            "fontSize": "38px",
+            "weight": "600",
+            "color": "rgb(255, 250, 244)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          }
+        ],
+        "options": [
+          {
+            "text": "Floorwork Bookable Ends 20:50 · Step-free route",
+            "size": [
+              85.5,
+              507.5,
+              646.7,
+              108.2
+            ],
+            "fullyVisible": true,
+            "font": "\"Instrument Sans\", sans-serif",
+            "fontSize": "16px",
+            "weight": "400",
+            "color": "rgb(42, 22, 16)",
+            "background": "rgb(249, 237, 240)",
+            "opacity": "1"
+          },
+          {
+            "text": "Groove Bookable Ends 20:45 · Step-free Dock route",
+            "size": [
+              85.5,
+              627.6,
+              646.7,
+              108.2
+            ],
+            "fullyVisible": true,
+            "font": "\"Instrument Sans\", sans-serif",
+            "fontSize": "16px",
+            "weight": "400",
+            "color": "rgb(42, 22, 16)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Close East lift",
+            "size": [
+              1189.5,
+              1026.3,
+              150,
+              42.8
+            ],
+            "fullyVisible": false,
+            "font": "\"Instrument Sans\", sans-serif",
+            "fontSize": "13px",
+            "weight": "700",
+            "color": "rgb(255, 250, 244)",
+            "background": "rgb(42, 22, 16)",
+            "opacity": "1"
+          }
+        ],
+        "fonts": [
+          "Fraunces",
+          "Instrument Sans",
+          "Instrument Sans",
+          "Instrument Sans"
+        ],
+        "overflow": false,
+        "title": "Evening of dance — Plan your journey",
+        "case": "last-train-access",
+        "arm": "prior",
+        "viewport": [
+          1440,
+          900
+        ],
+        "html_sha256": "da14e45aae770e6a34f31f39e5087b574cdfbd795e7813ea07c53ca97672ad03",
+        "image": "last-train-access-prior-1440.png",
+        "image_sha256": "f6fffd605dbd91e324f76c032de562603bff4c993ab08f4cb5860e580e6e2ff0"
+      },
+      {
+        "body": {
+          "text": "An evening of dance Program & journey planner Make your evening move Dance, then catch your train. Choose a class and check its step-free route against the 21:10 last train. Choose your class Both bookable Floorwork Bookable Ends 20:50 · St",
+          "size": [
+            0,
+            0,
+            305,
+            1866.8
+          ],
+          "fullyVisible": false,
+          "font": "\"Instrument Sans\", sans-serif",
+          "fontSize": "16px",
+          "weight": "400",
+          "color": "rgb(42, 22, 16)",
+          "background": "rgb(245, 238, 228)",
+          "opacity": "1"
+        },
+        "headings": [
+          {
+            "text": "Dance, then catch your train.",
+            "size": [
+              16,
+              147.2,
+              273,
+              146.9
+            ],
+            "fullyVisible": true,
+            "font": "Fraunces, serif",
+            "fontSize": "51px",
+            "weight": "600",
+            "color": "rgb(42, 22, 16)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Choose your class",
+            "size": [
+              35,
+              425,
+              151.1,
+              55
+            ],
+            "fullyVisible": true,
+            "font": "Fraunces, serif",
+            "fontSize": "25px",
+            "weight": "600",
+            "color": "rgb(42, 22, 16)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Floorwork to train",
+            "size": [
+              35,
+              961.2,
+              235,
+              71.4
+            ],
+            "fullyVisible": false,
+            "font": "Fraunces, serif",
+            "fontSize": "34px",
+            "weight": "600",
+            "color": "rgb(255, 250, 244)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          }
+        ],
+        "options": [
+          {
+            "text": "Floorwork Bookable Ends 20:50 · Step-free route",
+            "size": [
+              35,
+              502,
+              235,
+              157.3
+            ],
+            "fullyVisible": true,
+            "font": "\"Instrument Sans\", sans-serif",
+            "fontSize": "16px",
+            "weight": "400",
+            "color": "rgb(42, 22, 16)",
+            "background": "rgb(249, 237, 240)",
+            "opacity": "1"
+          },
+          {
+            "text": "Groove Bookable Ends 20:45 · Step-free Dock route",
+            "size": [
+              35,
+              671.4,
+              235,
+              157.3
+            ],
+            "fullyVisible": false,
+            "font": "\"Instrument Sans\", sans-serif",
+            "fontSize": "16px",
+            "weight": "400",
+            "color": "rgb(42, 22, 16)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          }
+        ],
+        "fonts": [
+          "Fraunces",
+          "Instrument Sans",
+          "Instrument Sans",
+          "Instrument Sans"
+        ],
+        "overflow": false,
+        "title": "Evening of dance — Plan your journey",
+        "case": "last-train-access",
+        "arm": "prior",
+        "viewport": [
+          320,
+          700
+        ],
+        "html_sha256": "da14e45aae770e6a34f31f39e5087b574cdfbd795e7813ea07c53ca97672ad03",
+        "image": "last-train-access-prior-320.png",
+        "image_sha256": "6fc13d2ae63a7a6d21ec41f2da494ed375716fdf154a1f05eebb7b5690347ae7"
+      },
+      {
+        "body": {
+          "text": "An evening of dance Plan your journey home The program / Your way home Dance, then make your train. Choose a class and check your step-free route to the 21:10 last train. Choose your class Both bookable Floorwork Ends 20:50 Bookable Groove ",
+          "size": [
+            0,
+            0,
+            375,
+            1633.7
+          ],
+          "fullyVisible": false,
+          "font": "\"News Cycle\", sans-serif",
+          "fontSize": "17px",
+          "weight": "400",
+          "color": "rgb(48, 29, 66)",
+          "background": "rgb(240, 239, 247)",
+          "opacity": "1"
+        },
+        "headings": [
+          {
+            "text": "Dance, then make your train.",
+            "size": [
+              20,
+              139.6,
+              335,
+              153.1
+            ],
+            "fullyVisible": true,
+            "font": "\"Archivo Narrow\", sans-serif",
+            "fontSize": "58px",
+            "weight": "700",
+            "color": "rgb(48, 29, 66)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Choose your class",
+            "size": [
+              43,
+              418.5,
+              192.3,
+              28
+            ],
+            "fullyVisible": true,
+            "font": "\"Archivo Narrow\", sans-serif",
+            "fontSize": "28px",
+            "weight": "700",
+            "color": "rgb(48, 29, 66)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Your route home",
+            "size": [
+              43,
+              878.2,
+              171.5,
+              28
+            ],
+            "fullyVisible": false,
+            "font": "\"Archivo Narrow\", sans-serif",
+            "fontSize": "28px",
+            "weight": "700",
+            "color": "rgb(48, 29, 66)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          }
+        ],
+        "options": [
+          {
+            "text": "Floorwork Ends 20:50 Bookable",
+            "size": [
+              43,
+              466.5,
+              289,
+              96.6
+            ],
+            "fullyVisible": true,
+            "font": "\"News Cycle\", sans-serif",
+            "fontSize": "17px",
+            "weight": "400",
+            "color": "rgb(48, 29, 66)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Groove Ends 20:45 Bookable",
+            "size": [
+              43,
+              563.1,
+              289,
+              97.6
+            ],
+            "fullyVisible": true,
+            "font": "\"News Cycle\", sans-serif",
+            "fontSize": "17px",
+            "weight": "400",
+            "color": "rgb(48, 29, 66)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          }
+        ],
+        "fonts": [
+          "Archivo Narrow",
+          "News Cycle",
+          "News Cycle"
+        ],
+        "overflow": false,
+        "title": "An evening of dance — route planner",
+        "case": "last-train-access",
+        "arm": "trial",
+        "viewport": [
+          390,
+          844
+        ],
+        "html_sha256": "c34e6dfc75c049a3fe666930a667e048686f6a09c02d97787ed1a2a5ebb1a2ab",
+        "image": "last-train-access-trial-390.png",
+        "image_sha256": "f9be5628f26fc385edefec58d193e4e251bc59164a06e17c2c394beb8bf471b9"
+      },
+      {
+        "body": {
+          "text": "An evening of dance Plan your journey home The program / Your way home Dance, then make your train. Choose a class and check your step-free route to the 21:10 last train. Choose your class Both bookable Floorwork Ends 20:50 Bookable Groove ",
+          "size": [
+            0,
+            0,
+            1425,
+            1132.5
+          ],
+          "fullyVisible": false,
+          "font": "\"News Cycle\", sans-serif",
+          "fontSize": "17px",
+          "weight": "400",
+          "color": "rgb(48, 29, 66)",
+          "background": "rgb(240, 239, 247)",
+          "opacity": "1"
+        },
+        "headings": [
+          {
+            "text": "Dance, then make your train.",
+            "size": [
+              74.1,
+              166.6,
+              800,
+              187.5
+            ],
+            "fullyVisible": true,
+            "font": "\"Archivo Narrow\", sans-serif",
+            "fontSize": "106.56px",
+            "weight": "700",
+            "color": "rgb(48, 29, 66)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Choose your class",
+            "size": [
+              107.1,
+              431.1,
+              212.9,
+              31
+            ],
+            "fullyVisible": true,
+            "font": "\"Archivo Narrow\", sans-serif",
+            "fontSize": "31px",
+            "weight": "700",
+            "color": "rgb(48, 29, 66)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Your route home",
+            "size": [
+              642.1,
+              431.1,
+              189.9,
+              31
+            ],
+            "fullyVisible": true,
+            "font": "\"Archivo Narrow\", sans-serif",
+            "fontSize": "31px",
+            "weight": "700",
+            "color": "rgb(48, 29, 66)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          }
+        ],
+        "options": [
+          {
+            "text": "Floorwork Ends 20:50 Bookable",
+            "size": [
+              107.1,
+              482.1,
+              464,
+              96.6
+            ],
+            "fullyVisible": true,
+            "font": "\"News Cycle\", sans-serif",
+            "fontSize": "17px",
+            "weight": "400",
+            "color": "rgb(48, 29, 66)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Groove Ends 20:45 Bookable",
+            "size": [
+              107.1,
+              578.7,
+              464,
+              97.6
+            ],
+            "fullyVisible": true,
+            "font": "\"News Cycle\", sans-serif",
+            "fontSize": "17px",
+            "weight": "400",
+            "color": "rgb(48, 29, 66)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          }
+        ],
+        "fonts": [
+          "Archivo Narrow",
+          "News Cycle",
+          "News Cycle"
+        ],
+        "overflow": false,
+        "title": "An evening of dance — route planner",
+        "case": "last-train-access",
+        "arm": "trial",
+        "viewport": [
+          1440,
+          900
+        ],
+        "html_sha256": "c34e6dfc75c049a3fe666930a667e048686f6a09c02d97787ed1a2a5ebb1a2ab",
+        "image": "last-train-access-trial-1440.png",
+        "image_sha256": "3e98449868b574f8a292878b3351b10c1922d88fd96e1e55c08926d0178668c2"
+      },
+      {
+        "body": {
+          "text": "An evening of dance Plan your journey home The program / Your way home Dance, then make your train. Choose a class and check your step-free route to the 21:10 last train. Choose your class Both bookable Floorwork Ends 20:50 Bookable Groove ",
+          "size": [
+            0,
+            0,
+            305,
+            1806.1
+          ],
+          "fullyVisible": false,
+          "font": "\"News Cycle\", sans-serif",
+          "fontSize": "17px",
+          "weight": "400",
+          "color": "rgb(48, 29, 66)",
+          "background": "rgb(240, 239, 247)",
+          "opacity": "1"
+        },
+        "headings": [
+          {
+            "text": "Dance, then make your train.",
+            "size": [
+              20,
+              139.6,
+              265,
+              153.1
+            ],
+            "fullyVisible": true,
+            "font": "\"Archivo Narrow\", sans-serif",
+            "fontSize": "58px",
+            "weight": "700",
+            "color": "rgb(48, 29, 66)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Choose your class",
+            "size": [
+              43,
+              418.5,
+              126.8,
+              56
+            ],
+            "fullyVisible": true,
+            "font": "\"Archivo Narrow\", sans-serif",
+            "fontSize": "28px",
+            "weight": "700",
+            "color": "rgb(48, 29, 66)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Your route home",
+            "size": [
+              43,
+              969.6,
+              109.2,
+              56
+            ],
+            "fullyVisible": false,
+            "font": "\"Archivo Narrow\", sans-serif",
+            "fontSize": "28px",
+            "weight": "700",
+            "color": "rgb(48, 29, 66)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          }
+        ],
+        "options": [
+          {
+            "text": "Floorwork Ends 20:50 Bookable",
+            "size": [
+              43,
+              494.5,
+              219,
+              96.6
+            ],
+            "fullyVisible": true,
+            "font": "\"News Cycle\", sans-serif",
+            "fontSize": "17px",
+            "weight": "400",
+            "color": "rgb(48, 29, 66)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "text": "Groove Ends 20:45 Bookable",
+            "size": [
+              43,
+              591.1,
+              219,
+              97.6
+            ],
+            "fullyVisible": true,
+            "font": "\"News Cycle\", sans-serif",
+            "fontSize": "17px",
+            "weight": "400",
+            "color": "rgb(48, 29, 66)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          }
+        ],
+        "fonts": [
+          "Archivo Narrow",
+          "News Cycle",
+          "News Cycle"
+        ],
+        "overflow": false,
+        "title": "An evening of dance — route planner",
+        "case": "last-train-access",
+        "arm": "trial",
+        "viewport": [
+          320,
+          700
+        ],
+        "html_sha256": "c34e6dfc75c049a3fe666930a667e048686f6a09c02d97787ed1a2a5ebb1a2ab",
+        "image": "last-train-access-trial-320.png",
+        "image_sha256": "c4623d62c0b3dfe40044f8dab89b90d9184182b36c54173b4ddda0e3e51a3263"
+      }
+    ]
+  }
+}
