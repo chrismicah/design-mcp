@@ -486,4 +486,23 @@ separate first-frame, mid-transition, settled and reduced-motion checks on
 round 3 kept the label and reading visible. The first run remains
 unverified by the trace checker. [Ballots, actions, and frame hashes](evidence/benchmark-v1/vault-contact-strip-live.json)
 
-The subsequent festival workshop used two independent concept critiques. The first found that a travel estimate could look like a guaranteed schedule. The revised calculation handles the exact arrival buffer and a one-minute miss. The second found that the layout was still conventional and proposed making the rehearsal sequence the focal element. The concepts have no live ballots, so this leaves the vault scores and the release threshold unchanged. [Workshop and live reference evidence](research/CREATIVE-ROUNDS.md#festival-workshop)
+The subsequent festival workshop used two independent concept critiques. The first found that a travel estimate could look like a guaranteed schedule. The revised calculation handles the exact arrival buffer and a one-minute miss. The second found that the layout was still conventional and proposed making the rehearsal sequence the focal element. The festival was later built and tested in the Counterweight study below. [Workshop and live reference evidence](research/CREATIVE-ROUNDS.md#festival-workshop)
+
+### Counterweight festival live study
+
+Two visitors choose a duet costing up to £60 and need to make the 20:40 train. The fabricated schedule keeps both duets, fares, and the assumed 10-minute station buffer fixed. Fresh critics opened anonymous builds, operated the show and pace choices by keyboard, and captured desktop and phone results with Playwriter. These scores belong to local design fixtures.
+
+| Revision | Desktop, control → candidate | Phone, control → candidate | What the independent critic found |
+| --- | ---: | ---: | --- |
+| 1. Show the three rehearsal beats | 6.10 → 7.50 | 5.85 → 7.25 | The movement was easier to understand in the figures. Both builds showed a stale end time and walk after changing duets. |
+| 2. Correct the explanation and enlarge the contact pose | 7.15 → 8.40 | 7.00 → 7.90 | The times became consistent. Both end times still required a selection to read, and the narrow side captions squeezed the phone view. |
+| 3. Use one moving camera and show both end times | 8.30 → 7.95 | 7.70 → 7.95 | The phone view and time comparison improved. The single camera required interaction to see the other poses. |
+| 4. Pair the stage with previews and booking | 7.60 → 8.15 | 7.60 → 8.05 | The scene showed all three ideas again. Desktop focus reached the right-hand stage first, while small phone thumbnails competed for space. |
+| 5. Use matte rehearsal ink and align reading order | 8.10 → 7.85 | 7.85 → 7.60 | The fresh critic preferred the brighter stage and could not confidently distinguish a supporting grip from a high-five in either view. |
+| 6. Show the supporting grip in close-up | 7.85 → 8.25 | 7.75 → 8.25 | The inset made the supporting grip distinguishable from a high-five at both widths. The keyboard reached the rehearsal first on desktop, and the walking duration lacked context. |
+| 7. Name where the walk starts | 8.00 → 8.25 | 7.90 → 8.15 | Both show names appeared as route origins after selection. The brief supplies no venues. The revised copy won the matched ballot and its weaker viewport fell below round six's. |
+| 8. Put the box office first in keyboard order | 8.15 → 8.25 | 8.15 → 7.95 | Tab entered the show selector first. On phone the planner pushed the stage and its caption down, weakening the opening. |
+
+Round six is the strongest by the lower of its two scores at **8.25 on both screens**. The next two rounds missed that mark, so the series retained round six. A later fresh critic scored that same frozen build 8.15 at both widths. The 9.5 gate remains open. The selected build passed 32 checked browser states across the plain and rehearsal treatments, including keyboard selection, touch, 320 px, enlarged text, motion and canvas fallback. [Audited ballots, case facts and original PNG hashes](evidence/benchmark-v1/counterweight-festival-live.json)
+
+The installed default sent the festival brief to `object-hero` and recommended product sizes and an add-to-bag action. In the isolated [program routing trial](https://github.com/chrismicah/design-mcp/tree/design-mcp/festival-program-trial), matching fresh-wheel stdio calls routed the dance, recital, and film-screening briefs to `performance-program`. All 41 other replies matched, including an explicit mobile request, the avoid list and four controls. The candidate passed all 55 direction tests. These counts measure routing. The visual scores above measure a standalone fixture. [Routing inputs, output hashes and candidate wheel digest](evidence/benchmark-v1/counterweight-festival-live.json)

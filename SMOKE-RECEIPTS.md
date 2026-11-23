@@ -8,6 +8,8 @@ Two slower local captures spent 7.56 and 9.59 seconds in cleanup. A loopback reg
 
 The independent reviewer reproduced another hang when a client stopped reading buffered output. The second patch aborts the disposed browser's client transports and passes both shutdown regressions. All ten replay pairs matched their PNGs, masks, and findings. Cleanup fell from 130.75 to 22.3 ms median. The full interval improved in eight pairs, with a 9.75% median paired reduction, so this still falls below the full-speed gate. The experiment passed 457 source tests and remains on its own branch. [Second replay](evidence/benchmark-v1/nov23-url-cleanup-pairs.json) · [Experiment branch](https://github.com/chrismicah/design-mcp/tree/design-mcp/url-cleanup-fix)
 
+The release branch completed all 13 hosted checks again at `8b8415c`, including the eight install cells and fresh SwiftUI, Electron, Chrome toolbar, and public URL workflows. That run exercised the release runtime. [Exact checkpoint](https://github.com/chrismicah/design-mcp/commit/8b8415c27c1f6670130cd08bb4502f8aa0140782/checks)
+
 ## Creative verifier branch checkpoint
 
 All 13 hosted checks passed on `bb0a124`, including 16 clean installs and 96 stdio sessions on macOS 15. The hosted Chrome replay exercised active-tab and pasted-URL review, five-field masking, and the saved keyboard preview. The pasted result opened in 2.49 seconds in this run. Fresh macOS SwiftUI captures showed five reviewed controls before Reveal and six after. In Electron, Reveal cleared the occlusion finding and the seeded clipping finding remained. The installed public URL review completed at 1440 and 390 CSS px. The package source matches the README install pin. [Exact jobs and captures](evidence/benchmark-v1/release-ci-bb0a124.json)
