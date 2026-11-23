@@ -1,0 +1,2384 @@
+{
+  "scope": "Executable geometry on three installed brief-only pairs using the same direction IDs. The ferry is the fresh cross-domain brief.",
+  "package": {
+    "control_commit": "b100a35870f333cc5aab989c06652f60b5bc2c74",
+    "trial_commit": "4c252200fb667152d61a96f8f9235c2c2982e97d",
+    "control_wheel_sha256": "2c8edf6d21ce200b0b05b75f7f10ea22c92fdccaae0bd9f72b42f2cf737c2470",
+    "trial_wheel_sha256": "55464904dba973c2e7ccf23c286722edc1b938819d57e5656e9a2ad284c3fc4b",
+    "changed_wheel_files": [
+      "design_mcp-0.1.0.dist-info/RECORD",
+      "design_mcp/directions.py"
+    ],
+    "added_wheel_files": [
+      "design_mcp/choice_layout.py"
+    ],
+    "matching_installed_package_files": {
+      "control": 50,
+      "trial": 51
+    },
+    "schemas_match": true,
+    "calls_per_arm": 47,
+    "changed_cases": [
+      "bike-coop-clearance",
+      "mending-guide-tool",
+      "night-ferry-cutoff",
+      "press-guide-tool",
+      "scenic-track-tool",
+      "short-fit"
+    ],
+    "unrelated_exact_matches": 41,
+    "matched_cases": [
+      "allowance-only",
+      "avoid-fit",
+      "bike-coop-clearance",
+      "dashboard-coldchain",
+      "dashboard-energy",
+      "dashboard-harvest",
+      "dashboard-library",
+      "dashboard-support",
+      "dashboard-venue",
+      "empty-drafts",
+      "empty-exhibits",
+      "empty-handoff",
+      "empty-saved",
+      "empty-search",
+      "empty-shifts",
+      "explicit-form",
+      "form-exhibition",
+      "form-garden",
+      "form-invoice",
+      "form-label",
+      "form-maintenance",
+      "form-venue",
+      "landing-archive",
+      "landing-ceramics",
+      "landing-energy",
+      "landing-festival",
+      "landing-radio",
+      "landing-repair",
+      "mending-guide-tool",
+      "mobile-court",
+      "mobile-field",
+      "mobile-gallery",
+      "mobile-pantry",
+      "mobile-recital",
+      "mobile-train",
+      "night-ferry-cutoff",
+      "poetry-last-train",
+      "press-guide-tool",
+      "recessed-only",
+      "scenic-track-tool",
+      "settings-digest",
+      "settings-focus",
+      "settings-language",
+      "settings-notifications",
+      "settings-reading",
+      "settings-team",
+      "short-fit"
+    ],
+    "example": {
+      "control": {
+        "direction": {
+          "id": "constraint-comparison",
+          "surface": "landing",
+          "title": "Constraint comparison",
+          "summary": "Put the two measured fit limits beside the available choices and keep a withdrawn selection visible until the visitor chooses a replacement.",
+          "type": {
+            "display": "IBM Plex Sans Condensed",
+            "body": "Barlow",
+            "ratio": 3.2,
+            "tracking": -0.025,
+            "weight": 700,
+            "license": "OFL-1.1"
+          },
+          "palette": {
+            "ink": "#18352E",
+            "paper": "#E4EAE5",
+            "accent": "#E7B766"
+          },
+          "layout": {
+            "skeleton": "Open with a compact fit-and-pickup comparison under one short title. Put both measured limits above the options, with current choice and recovery directly after the list.",
+            "focus": "The supplied height limit and swing limit shown as separate measured cues beside each tool's actual fit evidence.",
+            "desktop": "Align assembled height, required swing, and the feasible pickup action for each option against the same limits. Place the recovery panel beside the list. Use a section drawing only if it clarifies an otherwise ambiguous constraint.",
+            "mobile": "At 390px show both limits and viable actions from the first view. Use one row per option, with the two measures and a labeled pickup action. Put illustrations after the interaction. After withdrawal keep the old choice and timestamped reason beside the replacement measurements and action. Verify at 320px. Flag unmeasured hand clearance.",
+            "rhythm": "Use a 12px rule grid, compact comparison rows and one generous break after the shared datum. No repeated cards."
+          },
+          "imagery": {
+            "subject": "A dimension line and small swing arc drawn only from the supplied geometry.",
+            "crop": "Keep the dimensional datum connected to the choice rows; do not imply a product photo or inventory image.",
+            "fallback": "Use type, rules and a simple dimension line. Identify any physical clearance the brief does not measure."
+          },
+          "motion": {
+            "trigger": "The visitor chooses a replacement tool.",
+            "effect": "Move the selection marker to the chosen row and update one adjacent selection status.",
+            "duration_ms": 220,
+            "reduced": "Change the marker and status immediately."
+          },
+          "action": {
+            "instruction": "Before labeling an action, compute earliest pickup as the latest of stock readiness, desk opening and visitor arrival. A pickup at or after closing is unavailable. Keep stock-ready times distinct. Show the tool and feasible pickup on its action. Keep the withdrawn choice and its reason until the visitor explicitly chooses a replacement.",
+            "label": "Choose [tool] at [earliest feasible pickup]"
+          },
+          "why": "A borrower making a fit decision needs the shared scale and both independent constraints beside the actual alternatives. A shared datum helps visitors reconcile evidence across the alternatives before choosing.",
+          "sources": [
+            {
+              "url": "https://www.vessel.co.jp/english/product/screwdriver/251428",
+              "observation": "Vessel distinguishes assembled screwdriver geometry and states a 6-degree ratchet swing. This is a reference for presenting two measured properties; it does not identify any item in the fixture as Vessel inventory.",
+              "strength": "evidence"
+            },
+            {
+              "url": "https://www.watched.earth/place/eiffel-tower",
+              "observation": "The observed page separates its globe visualization from the evidence explaining the outcome. Adapted here as a principle: show the comparison and its supporting measurements together.",
+              "strength": "evidence"
+            }
+          ],
+          "credit": "Original workshop comparison informed by observed measurement and evidence presentation."
+        },
+        "font_stylesheet": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed%3Awght%40700&family=Barlow&display=swap",
+        "interaction": {
+          "accent_foreground": "#18352E",
+          "easing": "ease-out",
+          "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+          "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+          "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+        },
+        "assumptions": [
+          "Use landing as the surface.",
+          "Use only the project facts and assets in the brief."
+        ],
+        "questions": [],
+        "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px. Replay by keyboard at 320 and 390 px. 1. Choose a fitting option and verify its initial pickup. 2. If the brief supplies a stock update, apply it separately. Keep the old choice selected. Show the reason, replacement measurements, pickup and an explicit replacement button together. 3. Choose the replacement. Verify that the new choice and old reason remain visible. Keep focus on a surviving control or move it directly to the visible recovery button."
+      },
+      "trial": {
+        "direction": {
+          "id": "constraint-comparison",
+          "surface": "landing",
+          "title": "Constraint comparison",
+          "summary": "Put the two measured fit limits beside the available choices and keep a withdrawn selection visible until the visitor chooses a replacement.",
+          "type": {
+            "display": "IBM Plex Sans Condensed",
+            "body": "Barlow",
+            "ratio": 3.2,
+            "tracking": -0.025,
+            "weight": 700,
+            "license": "OFL-1.1"
+          },
+          "palette": {
+            "ink": "#18352E",
+            "paper": "#E4EAE5",
+            "accent": "#E7B766"
+          },
+          "layout": {
+            "skeleton": "Open with a compact fit-and-pickup comparison under one short title. Put both measured limits above the options, with current choice and recovery directly after the list.",
+            "focus": "The supplied height limit and swing limit shown as separate measured cues beside each tool's actual fit evidence.",
+            "desktop": "Align assembled height, required swing, and the feasible pickup action for each option against the same limits. Place the recovery panel beside the list. Use a section drawing only if it clarifies an otherwise ambiguous constraint.",
+            "mobile": "At 390px show both limits and viable actions from the first view. Use one row per option, with the two measures and a labeled pickup action. Put illustrations after the interaction. After withdrawal keep the old choice and timestamped reason beside the replacement measurements and action. Verify at 320px. Flag unmeasured hand clearance.",
+            "rhythm": "Use a 12px rule grid, compact comparison rows and one generous break after the shared datum. No repeated cards."
+          },
+          "imagery": {
+            "subject": "A dimension line and small swing arc drawn only from the supplied geometry.",
+            "crop": "Keep the dimensional datum connected to the choice rows; do not imply a product photo or inventory image.",
+            "fallback": "Use type, rules and a simple dimension line. Identify any physical clearance the brief does not measure."
+          },
+          "motion": {
+            "trigger": "The visitor chooses a replacement tool.",
+            "effect": "Move the selection marker to the chosen row and update one adjacent selection status.",
+            "duration_ms": 220,
+            "reduced": "Change the marker and status immediately."
+          },
+          "action": {
+            "instruction": "Before labeling an action, compute earliest pickup as the latest of stock readiness, desk opening and visitor arrival. A pickup at or after closing is unavailable. Keep stock-ready times distinct. Show the tool and feasible pickup on its action. Keep the withdrawn choice and its reason until the visitor explicitly chooses a replacement.",
+            "label": "Choose [tool] at [earliest feasible pickup]"
+          },
+          "why": "A borrower making a fit decision needs the shared scale and both independent constraints beside the actual alternatives. A shared datum helps visitors reconcile evidence across the alternatives before choosing.",
+          "sources": [
+            {
+              "url": "https://www.vessel.co.jp/english/product/screwdriver/251428",
+              "observation": "Vessel distinguishes assembled screwdriver geometry and states a 6-degree ratchet swing. This is a reference for presenting two measured properties; it does not identify any item in the fixture as Vessel inventory.",
+              "strength": "evidence"
+            },
+            {
+              "url": "https://www.watched.earth/place/eiffel-tower",
+              "observation": "The observed page separates its globe visualization from the evidence explaining the outcome. Adapted here as a principle: show the comparison and its supporting measurements together.",
+              "strength": "evidence"
+            }
+          ],
+          "credit": "Original workshop comparison informed by observed measurement and evidence presentation."
+        },
+        "font_stylesheet": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed%3Awght%40700&family=Barlow&display=swap",
+        "interaction": {
+          "accent_foreground": "#18352E",
+          "easing": "ease-out",
+          "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+          "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+          "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+        },
+        "assumptions": [
+          "Use landing as the surface.",
+          "Use only the project facts and assets in the brief."
+        ],
+        "questions": [],
+        "handoff": "Keep the brief's facts. Load the named fonts. Test keyboard and reading order. At 320/390 px, choose by keyboard and apply any stock update separately. Keep the prior choice, reason and replacement evidence beside its action. Confirm replacement. Keep result, history and focus visible.",
+        "choice_layout": {
+          "use": "Put this fragment first in main. Keep its selectors, fill the factual slots, bind both buttons and style it for the brief. Put supporting material after it. Verify both actions at scroll zero at 320 and 390 px.",
+          "html": "<section class=\"dm-choice\" aria-labelledby=\"dm-title\">\n  <h1 id=\"dm-title\">[task]</h1>\n  <p data-limits>[two limits, with units]</p>\n  <article data-option=\"first\">\n    <div data-evidence><strong>[first option]</strong><p>[its two values]</p></div>\n    <button type=\"button\">Choose [first option] at [time]</button>\n  </article>\n  <article data-option=\"second\">\n    <div data-evidence><strong>[second option]</strong><p>[its two values]</p></div>\n    <button type=\"button\">Choose [second option] at [time]</button>\n  </article>\n  <p data-result role=\"status\" tabindex=\"-1\"></p>\n</section>",
+          "css": ".dm-choice { display: grid; gap: 8px; }\n.dm-choice :is(h1,p) { margin: 0; }\n.dm-choice h1 { font-size: clamp(1.625rem,4vw,2.75rem); line-height: 1.04; }\n.dm-choice [data-option] {\n  display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr);\n  align-items: center; gap: 8px; padding-block: 6px;\n}\n.dm-choice button { min-inline-size: 44px; min-block-size: 44px; overflow-wrap: anywhere; }\n.dm-choice button:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }"
+        }
+      }
+    }
+  },
+  "generation": {
+    "press-guide-tool": {
+      "feasible-pickup": {
+        "usage": {
+          "input_tokens": 59457,
+          "cached_input_tokens": 53120,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5940,
+          "reasoning_output_tokens": 53
+        },
+        "tool_calls": [
+          {
+            "type": "mcp_tool_call",
+            "server": "design-mcp",
+            "tool": "direct",
+            "status": "completed"
+          }
+        ],
+        "client_errors": [],
+        "treatment_call": true,
+        "direct_call": true,
+        "status": "passed",
+        "observed_directions": [
+          "constraint-comparison"
+        ],
+        "unhinted_direct": true,
+        "case": "press-guide-tool",
+        "arm": "feasible-pickup",
+        "model": "gpt-6.1-terra",
+        "effort": "low",
+        "client": "codex-cli 0.170.0",
+        "prompt_sha256": "41b6fe87a53684a0193df66639c52d75a25426c9827112e448d15d0cd965876e",
+        "expected_direction": "constraint-comparison",
+        "require_unhinted_direct": true,
+        "shell_tool": false,
+        "mcp_config_sha256": "d46d3b036b33f60baa1de1800fc58ea912ec25ab9e54d8f1371add957420f623",
+        "elapsed_seconds": 117.94,
+        "exit_code": 0,
+        "trace_sha256": "651d58c0a799c29296a46bd15322d02930f9762061912315e49296bf8840d439",
+        "html_sha256": "a806a4631236adcc10ac68e8574d9fbe2204032aa33bb481699808abda0b2c4d",
+        "received_choice_layout": false
+      },
+      "executable-layout": {
+        "usage": {
+          "input_tokens": 60147,
+          "cached_input_tokens": 53248,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 6462,
+          "reasoning_output_tokens": 16
+        },
+        "tool_calls": [
+          {
+            "type": "mcp_tool_call",
+            "server": "design-mcp",
+            "tool": "direct",
+            "status": "completed"
+          }
+        ],
+        "client_errors": [],
+        "treatment_call": true,
+        "direct_call": true,
+        "status": "passed",
+        "observed_directions": [
+          "constraint-comparison"
+        ],
+        "unhinted_direct": true,
+        "case": "press-guide-tool",
+        "arm": "executable-layout",
+        "model": "gpt-6.1-terra",
+        "effort": "low",
+        "client": "codex-cli 0.170.0",
+        "prompt_sha256": "41b6fe87a53684a0193df66639c52d75a25426c9827112e448d15d0cd965876e",
+        "expected_direction": "constraint-comparison",
+        "require_unhinted_direct": true,
+        "shell_tool": false,
+        "mcp_config_sha256": "e75d93b06671d0639ff6f5ee70b67433146b53488235103628141cee28dc1864",
+        "elapsed_seconds": 126.33,
+        "exit_code": 0,
+        "trace_sha256": "b3d413d0c9b46b538d430dbe34380560d325a381c043db33f7851fe031dffab0",
+        "html_sha256": "f5bd1e04bb7ab9e97026764de346bc4dba96981b68e2ddcec2da76f7d45fb678",
+        "received_choice_layout": true
+      }
+    },
+    "mending-guide-tool": {
+      "feasible-pickup": {
+        "usage": {
+          "input_tokens": 59435,
+          "cached_input_tokens": 53120,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 7565,
+          "reasoning_output_tokens": 0
+        },
+        "tool_calls": [
+          {
+            "type": "mcp_tool_call",
+            "server": "design-mcp",
+            "tool": "direct",
+            "status": "completed"
+          }
+        ],
+        "client_errors": [],
+        "treatment_call": true,
+        "direct_call": true,
+        "status": "passed",
+        "observed_directions": [
+          "constraint-comparison"
+        ],
+        "unhinted_direct": true,
+        "case": "mending-guide-tool",
+        "arm": "feasible-pickup",
+        "model": "gpt-6.1-terra",
+        "effort": "low",
+        "client": "codex-cli 0.170.0",
+        "prompt_sha256": "313ed3d9dde86735c7dc8744ef977d987190cb3c756e0880c7e67f3196184d1f",
+        "expected_direction": "constraint-comparison",
+        "require_unhinted_direct": true,
+        "shell_tool": false,
+        "mcp_config_sha256": "d46d3b036b33f60baa1de1800fc58ea912ec25ab9e54d8f1371add957420f623",
+        "elapsed_seconds": 145.26,
+        "exit_code": 0,
+        "trace_sha256": "e3675b68979626f7893470beeebbb730a5bc71bf02e5e73468ac7362e6cf698c",
+        "html_sha256": "e299477ac774873807303276ea232423d45361d723532d868b17c756a99141fb",
+        "received_choice_layout": false
+      },
+      "executable-layout": {
+        "usage": {
+          "input_tokens": 60139,
+          "cached_input_tokens": 42880,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 6153,
+          "reasoning_output_tokens": 0
+        },
+        "tool_calls": [
+          {
+            "type": "mcp_tool_call",
+            "server": "design-mcp",
+            "tool": "direct",
+            "status": "completed"
+          }
+        ],
+        "client_errors": [],
+        "treatment_call": true,
+        "direct_call": true,
+        "status": "passed",
+        "observed_directions": [
+          "constraint-comparison"
+        ],
+        "unhinted_direct": true,
+        "case": "mending-guide-tool",
+        "arm": "executable-layout",
+        "model": "gpt-6.1-terra",
+        "effort": "low",
+        "client": "codex-cli 0.170.0",
+        "prompt_sha256": "313ed3d9dde86735c7dc8744ef977d987190cb3c756e0880c7e67f3196184d1f",
+        "expected_direction": "constraint-comparison",
+        "require_unhinted_direct": true,
+        "shell_tool": false,
+        "mcp_config_sha256": "e75d93b06671d0639ff6f5ee70b67433146b53488235103628141cee28dc1864",
+        "elapsed_seconds": 117.33,
+        "exit_code": 0,
+        "trace_sha256": "b1aaf5cb740e1798385a1f3961cace49d7ac5bab03fe494c80e3fb8f4e4ed0c2",
+        "html_sha256": "f7686fe80b88a0384244d8aab53930e732581e9a0e5c16694789b208d657b417",
+        "received_choice_layout": true
+      }
+    },
+    "night-ferry-cutoff": {
+      "feasible-pickup": {
+        "usage": {
+          "input_tokens": 59046,
+          "cached_input_tokens": 53120,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 6024,
+          "reasoning_output_tokens": 11
+        },
+        "tool_calls": [
+          {
+            "type": "mcp_tool_call",
+            "server": "design-mcp",
+            "tool": "direct",
+            "status": "completed"
+          }
+        ],
+        "client_errors": [],
+        "treatment_call": true,
+        "direct_call": true,
+        "status": "passed",
+        "observed_directions": [
+          "object-hero"
+        ],
+        "unhinted_direct": true,
+        "case": "night-ferry-cutoff",
+        "arm": "feasible-pickup",
+        "model": "gpt-6.1-terra",
+        "effort": "low",
+        "client": "codex-cli 0.170.0",
+        "prompt_sha256": "11977d47affa4831dbb018979f3e9f16674cedb6adbeb128e04dc299a46a66fc",
+        "expected_direction": "object-hero",
+        "require_unhinted_direct": true,
+        "shell_tool": false,
+        "mcp_config_sha256": "d46d3b036b33f60baa1de1800fc58ea912ec25ab9e54d8f1371add957420f623",
+        "elapsed_seconds": 115.1,
+        "exit_code": 0,
+        "trace_sha256": "b3b8a75b459742e67264363bb56d280ad6e66b3b6437dc94dba60c4ea42f9658",
+        "html_sha256": "16aa79510816dbd604cfea41fc1b9e4233ab6e51b6caef2eaa99b33e4dd10cae",
+        "received_choice_layout": false
+      },
+      "executable-layout": {
+        "usage": {
+          "input_tokens": 59747,
+          "cached_input_tokens": 52608,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5591,
+          "reasoning_output_tokens": 10
+        },
+        "tool_calls": [
+          {
+            "type": "mcp_tool_call",
+            "server": "design-mcp",
+            "tool": "direct",
+            "status": "completed"
+          }
+        ],
+        "client_errors": [],
+        "treatment_call": true,
+        "direct_call": true,
+        "status": "passed",
+        "observed_directions": [
+          "object-hero"
+        ],
+        "unhinted_direct": true,
+        "case": "night-ferry-cutoff",
+        "arm": "executable-layout",
+        "model": "gpt-6.1-terra",
+        "effort": "low",
+        "client": "codex-cli 0.170.0",
+        "prompt_sha256": "11977d47affa4831dbb018979f3e9f16674cedb6adbeb128e04dc299a46a66fc",
+        "expected_direction": "object-hero",
+        "require_unhinted_direct": true,
+        "shell_tool": false,
+        "mcp_config_sha256": "e75d93b06671d0639ff6f5ee70b67433146b53488235103628141cee28dc1864",
+        "elapsed_seconds": 107.14,
+        "exit_code": 0,
+        "trace_sha256": "7ff7f427f445180d2f7fc118427e8e1309902749eb8551a739238be5ee2247fb",
+        "html_sha256": "51c72b517399e721355edaf8092432c0a97431d61b38a7c3a0cf0b408a68ef62",
+        "received_choice_layout": true
+      }
+    }
+  },
+  "fixture": {
+    "press-guide-tool": {
+      "allowance": [
+        47,
+        15
+      ],
+      "initial": [
+        "Low head",
+        "10:30"
+      ],
+      "withdrawal": [
+        "10:25",
+        "failed direction switch"
+      ],
+      "replacement": [
+        "Fine pawl",
+        "11:00",
+        "36–37 mm",
+        "7°"
+      ],
+      "opening_evidence": [
+        [
+          "41–42 mm",
+          "12°"
+        ],
+        [
+          "36–37 mm",
+          "7°"
+        ]
+      ]
+    },
+    "mending-guide-tool": {
+      "allowance": [
+        44,
+        13
+      ],
+      "initial": [
+        "Drift",
+        "12:20"
+      ],
+      "withdrawal": [
+        "12:18",
+        "spindle slips"
+      ],
+      "replacement": [
+        "Pinion",
+        "12:45",
+        "35–36 mm",
+        "7°"
+      ],
+      "closes": "13:00",
+      "opening_evidence": [
+        [
+          "40–41 mm",
+          "10°"
+        ],
+        [
+          "35–36 mm",
+          "7°"
+        ]
+      ]
+    },
+    "night-ferry-cutoff": {
+      "limits": [
+        "$18",
+        "22:45"
+      ],
+      "initial": [
+        "Sound",
+        "20:55"
+      ],
+      "withdrawal": [
+        "20:25",
+        "dock light failed"
+      ],
+      "replacement": [
+        "Dusk",
+        "21:05",
+        "22:35",
+        "$13"
+      ],
+      "opening_evidence": [
+        [
+          "22:10",
+          "$16"
+        ],
+        [
+          "22:35",
+          "$13"
+        ]
+      ]
+    }
+  },
+  "browser": "Chrome/160.0.8178.0",
+  "journeys": {
+    "press-guide-tool-feasible-pickup-320": {
+      "arm": "feasible-pickup",
+      "case": "press-guide-tool",
+      "width": 320,
+      "height": 700,
+      "html_sha256": "a806a4631236adcc10ac68e8574d9fbe2204032aa33bb481699808abda0b2c4d",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": true,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": true,
+        "replacement_call_to_action_in_view": true,
+        "replacement_and_history_in_view": false,
+        "focus_visible": true,
+        "approved_fonts_loaded": true,
+        "no_page_failures": true,
+        "opening_actions_fit_and_hit_test": false,
+        "opening_evidence_for_both_choices": false,
+        "opening_times_on_both_actions": false,
+        "opening_limits_in_view": false
+      },
+      "opening_fragment": null,
+      "opening_scroll": 0,
+      "opening_actions": {
+        "first": {
+          "top": 1501.671875,
+          "left": 72.515625,
+          "bottom": 1560.046875,
+          "right": 277,
+          "width": 204.484375,
+          "height": 58.375,
+          "text": "Choose Low head at 10:30",
+          "visible": false,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        },
+        "second": {
+          "top": 1742.359375,
+          "left": 72.515625,
+          "bottom": 1800.734375,
+          "right": 277,
+          "width": 204.484375,
+          "height": 58.375,
+          "text": "Choose Fine pawl at 11:00",
+          "visible": false,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        }
+      },
+      "selected_result": {
+        "top": 921.4375,
+        "left": 38,
+        "bottom": 1022.171875,
+        "right": 267,
+        "width": 229,
+        "height": 100.734375,
+        "text": "Selected for pickup Low head Pickup from 10:30 41–42 mm assembled · 12° reset",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": [],
+        "missingFonts": []
+      },
+      "frames": {
+        "before": {
+          "file": "press-guide-tool-feasible-pickup-320-before.png",
+          "sha256": "fe0eb1e789d95c99b1779304abd27fb06635312d70c1c37357c452f293f6d3d5"
+        },
+        "chosen": {
+          "file": "press-guide-tool-feasible-pickup-320-chosen.png",
+          "sha256": "6df0d6a4db93a2e3fb3d500f5d833513bebde7ff71a1c1d669d0e0ee34949493"
+        },
+        "after": {
+          "file": "press-guide-tool-feasible-pickup-320-after.png",
+          "sha256": "cf3415e7553cd906e7924f802568a86732f0c3509cddb684a6fd89885e19e38f"
+        },
+        "edge": {
+          "file": "press-guide-tool-feasible-pickup-320-edge.png",
+          "sha256": "1bd27f915c190cb98f7d82719c4c5a40b44632c7cc5103db7b93b65351b58ba8"
+        }
+      },
+      "qualified": false
+    },
+    "press-guide-tool-feasible-pickup-390": {
+      "arm": "feasible-pickup",
+      "case": "press-guide-tool",
+      "width": 390,
+      "height": 844,
+      "html_sha256": "a806a4631236adcc10ac68e8574d9fbe2204032aa33bb481699808abda0b2c4d",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": true,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": true,
+        "replacement_call_to_action_in_view": true,
+        "replacement_and_history_in_view": true,
+        "focus_visible": true,
+        "approved_fonts_loaded": true,
+        "no_page_failures": true,
+        "opening_actions_fit_and_hit_test": false,
+        "opening_evidence_for_both_choices": false,
+        "opening_times_on_both_actions": false,
+        "opening_limits_in_view": false
+      },
+      "opening_fragment": null,
+      "opening_scroll": 0,
+      "opening_actions": {
+        "first": {
+          "top": 1429.984375,
+          "left": 137.4375,
+          "bottom": 1469.171875,
+          "right": 347,
+          "width": 209.5625,
+          "height": 39.1875,
+          "text": "Choose Low head at 10:30",
+          "visible": false,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        },
+        "second": {
+          "top": 1651.484375,
+          "left": 141.078125,
+          "bottom": 1690.671875,
+          "right": 347,
+          "width": 205.921875,
+          "height": 39.1875,
+          "text": "Choose Fine pawl at 11:00",
+          "visible": false,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        }
+      },
+      "selected_result": {
+        "top": 908.46875,
+        "left": 38,
+        "bottom": 1009.203125,
+        "right": 337,
+        "width": 299,
+        "height": 100.734375,
+        "text": "Selected for pickup Low head Pickup from 10:30 41–42 mm assembled · 12° reset",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": [],
+        "missingFonts": []
+      },
+      "frames": {
+        "before": {
+          "file": "press-guide-tool-feasible-pickup-390-before.png",
+          "sha256": "b420a62ebc641ed07978d349d9b2c11bca4e3705ec078bac49b0a8dd88b5d928"
+        },
+        "chosen": {
+          "file": "press-guide-tool-feasible-pickup-390-chosen.png",
+          "sha256": "4a42b85021d8eb63605821be7f6f18bf26bec835697e8b47f75896871006ad00"
+        },
+        "after": {
+          "file": "press-guide-tool-feasible-pickup-390-after.png",
+          "sha256": "6842267238cfbe0cfaaf9dc4443f3e964e3e776444bbf746bb0b4465acc1fbf4"
+        },
+        "edge": {
+          "file": "press-guide-tool-feasible-pickup-390-edge.png",
+          "sha256": "41b3941673fa68d549ab0cd81ee978e4f0d558774a4af7968e0520db0a68d289"
+        }
+      },
+      "qualified": false
+    },
+    "press-guide-tool-feasible-pickup-1440": {
+      "arm": "feasible-pickup",
+      "case": "press-guide-tool",
+      "width": 1440,
+      "height": 900,
+      "html_sha256": "a806a4631236adcc10ac68e8574d9fbe2204032aa33bb481699808abda0b2c4d",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": true,
+        "original_choice_visible_during_conflict": true,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": true,
+        "replacement_call_to_action_in_view": true,
+        "replacement_and_history_in_view": true,
+        "focus_visible": true,
+        "approved_fonts_loaded": true,
+        "no_page_failures": true,
+        "opening_actions_fit_and_hit_test": false,
+        "opening_evidence_for_both_choices": false,
+        "opening_times_on_both_actions": false,
+        "opening_limits_in_view": false
+      },
+      "opening_fragment": null,
+      "opening_scroll": 0,
+      "opening_actions": {
+        "first": {
+          "top": 871.171875,
+          "left": 782.84375,
+          "bottom": 910.359375,
+          "right": 1021.5,
+          "width": 238.65625,
+          "height": 39.1875,
+          "text": "Choose Low head at 10:30",
+          "visible": false,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        },
+        "second": {
+          "top": 978.203125,
+          "left": 782.84375,
+          "bottom": 1017.390625,
+          "right": 1021.5,
+          "width": 238.65625,
+          "height": 39.1875,
+          "text": "Choose Fine pawl at 11:00",
+          "visible": false,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        }
+      },
+      "selected_result": {
+        "top": 557.765625,
+        "left": 1095.5,
+        "bottom": 658.5,
+        "right": 1349.5,
+        "width": 254,
+        "height": 100.734375,
+        "text": "Selected for pickup Low head Pickup from 10:30 41–42 mm assembled · 12° reset",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": [],
+        "missingFonts": []
+      },
+      "frames": {
+        "before": {
+          "file": "press-guide-tool-feasible-pickup-1440-before.png",
+          "sha256": "abe140c0be20b5610c90f9bbe500146464a1f09b5bef0629668d1e972db53479"
+        },
+        "chosen": {
+          "file": "press-guide-tool-feasible-pickup-1440-chosen.png",
+          "sha256": "6c05a6be05e6f7a5e359a1b0c4f1df819ca4e896119826a1062fd52d19c7c047"
+        },
+        "after": {
+          "file": "press-guide-tool-feasible-pickup-1440-after.png",
+          "sha256": "6b0a528530cd9bdebc1029de2a1a11e012069bf0c0341bb9814c0de77b313fac"
+        },
+        "edge": {
+          "file": "press-guide-tool-feasible-pickup-1440-edge.png",
+          "sha256": "a1ce77415b98137c75d18fb23d915a046da2195e4f64cf0ca3850c3b7e7f3c39"
+        }
+      },
+      "qualified": false
+    },
+    "press-guide-tool-executable-layout-320": {
+      "arm": "executable-layout",
+      "case": "press-guide-tool",
+      "width": 320,
+      "height": 700,
+      "html_sha256": "f5bd1e04bb7ab9e97026764de346bc4dba96981b68e2ddcec2da76f7d45fb678",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": false,
+        "withdrawal_reason_in_view": false,
+        "replacement_measurements_in_view": true,
+        "replacement_call_to_action_in_view": true,
+        "replacement_and_history_in_view": false,
+        "focus_visible": true,
+        "approved_fonts_loaded": true,
+        "no_page_failures": true,
+        "opening_actions_fit_and_hit_test": false,
+        "opening_evidence_for_both_choices": false,
+        "opening_times_on_both_actions": false,
+        "opening_limits_in_view": true
+      },
+      "opening_fragment": null,
+      "opening_scroll": 0,
+      "opening_actions": {
+        "first": {
+          "top": 1178.71875,
+          "left": 30,
+          "bottom": 1223.109375,
+          "right": 275,
+          "width": 245,
+          "height": 44.390625,
+          "text": "Choose Low head at 10:30",
+          "visible": false,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        },
+        "second": {
+          "top": 1389.28125,
+          "left": 30,
+          "bottom": 1433.671875,
+          "right": 275,
+          "width": 245,
+          "height": 44.390625,
+          "text": "Choose Fine pawl at 11:00",
+          "visible": false,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        }
+      },
+      "selected_result": {
+        "top": 821.5,
+        "left": 16,
+        "bottom": 984.875,
+        "right": 289,
+        "width": 273,
+        "height": 163.375,
+        "text": "Selected driver Low head 41–42 mm assembled height 12° reset Pickup from 10:30",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": [],
+        "missingFonts": []
+      },
+      "frames": {
+        "before": {
+          "file": "press-guide-tool-executable-layout-320-before.png",
+          "sha256": "7041291012a991f81cdfa46f7c97942d51720cc55932c4fdc8df8dc5e86f6c08"
+        },
+        "chosen": {
+          "file": "press-guide-tool-executable-layout-320-chosen.png",
+          "sha256": "5f8f85412eec9915a7b7bb912264152510005329319f3b99bfbee3255250cb2a"
+        },
+        "after": {
+          "file": "press-guide-tool-executable-layout-320-after.png",
+          "sha256": "de8a15208db0a00077f705dd540a5a16675dbdb12edb54e5ce297daab8f86ea4"
+        },
+        "edge": {
+          "file": "press-guide-tool-executable-layout-320-edge.png",
+          "sha256": "d17dfb6f7864ca102f1277c1af8790b45f2198a6262043dcb23cb31560f7d483"
+        }
+      },
+      "qualified": false
+    },
+    "press-guide-tool-executable-layout-390": {
+      "arm": "executable-layout",
+      "case": "press-guide-tool",
+      "width": 390,
+      "height": 844,
+      "html_sha256": "f5bd1e04bb7ab9e97026764de346bc4dba96981b68e2ddcec2da76f7d45fb678",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": true,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": false,
+        "replacement_call_to_action_in_view": true,
+        "replacement_and_history_in_view": true,
+        "focus_visible": true,
+        "approved_fonts_loaded": true,
+        "no_page_failures": true,
+        "opening_actions_fit_and_hit_test": false,
+        "opening_evidence_for_both_choices": false,
+        "opening_times_on_both_actions": false,
+        "opening_limits_in_view": true
+      },
+      "opening_fragment": null,
+      "opening_scroll": 0,
+      "opening_actions": {
+        "first": {
+          "top": 1139.53125,
+          "left": 30,
+          "bottom": 1183.921875,
+          "right": 345,
+          "width": 315,
+          "height": 44.390625,
+          "text": "Choose Low head at 10:30",
+          "visible": false,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        },
+        "second": {
+          "top": 1350.09375,
+          "left": 30,
+          "bottom": 1394.484375,
+          "right": 345,
+          "width": 315,
+          "height": 44.390625,
+          "text": "Choose Fine pawl at 11:00",
+          "visible": false,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        }
+      },
+      "selected_result": {
+        "top": 875.3125,
+        "left": 16,
+        "bottom": 1038.6875,
+        "right": 359,
+        "width": 343,
+        "height": 163.375,
+        "text": "Selected driver Low head 41–42 mm assembled height 12° reset Pickup from 10:30",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": [],
+        "missingFonts": []
+      },
+      "frames": {
+        "before": {
+          "file": "press-guide-tool-executable-layout-390-before.png",
+          "sha256": "3ed4c8ef1376d1be671bb7ff682b2f6a43d48fa6e6d850d99bece07d99aff0c9"
+        },
+        "chosen": {
+          "file": "press-guide-tool-executable-layout-390-chosen.png",
+          "sha256": "a4f852b890fb70716e67cfa710dbd43f152936b8240a96d1eda6074fe6613f90"
+        },
+        "after": {
+          "file": "press-guide-tool-executable-layout-390-after.png",
+          "sha256": "c00159846fb295d2cd17e2313d569052be1d6d0a032e1abe9de6cd41122b9052"
+        },
+        "edge": {
+          "file": "press-guide-tool-executable-layout-390-edge.png",
+          "sha256": "aac56eabb23650eeef74931fe56c6ff84a7651afbb696664ba7dd6d62fbf5352"
+        }
+      },
+      "qualified": false
+    },
+    "press-guide-tool-executable-layout-1440": {
+      "arm": "executable-layout",
+      "case": "press-guide-tool",
+      "width": 1440,
+      "height": 900,
+      "html_sha256": "f5bd1e04bb7ab9e97026764de346bc4dba96981b68e2ddcec2da76f7d45fb678",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": true,
+        "original_choice_visible_during_conflict": true,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": false,
+        "replacement_call_to_action_in_view": true,
+        "replacement_and_history_in_view": true,
+        "focus_visible": true,
+        "approved_fonts_loaded": true,
+        "no_page_failures": true,
+        "opening_actions_fit_and_hit_test": false,
+        "opening_evidence_for_both_choices": false,
+        "opening_times_on_both_actions": false,
+        "opening_limits_in_view": true
+      },
+      "opening_fragment": null,
+      "opening_scroll": 0,
+      "opening_actions": {
+        "first": {
+          "top": 775.046875,
+          "left": 770.65625,
+          "bottom": 819.4375,
+          "right": 997.484375,
+          "width": 226.828125,
+          "height": 44.390625,
+          "text": "Choose Low head at 10:30",
+          "visible": true,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        },
+        "second": {
+          "top": 885.046875,
+          "left": 770.65625,
+          "bottom": 929.4375,
+          "right": 997.484375,
+          "width": 226.828125,
+          "height": 44.390625,
+          "text": "Choose Fine pawl at 11:00",
+          "visible": false,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        }
+      },
+      "selected_result": {
+        "top": 558.21875,
+        "left": 1040.5,
+        "bottom": 721.59375,
+        "right": 1340.5,
+        "width": 300,
+        "height": 163.375,
+        "text": "Selected driver Low head 41–42 mm assembled height 12° reset Pickup from 10:30",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": [],
+        "missingFonts": []
+      },
+      "frames": {
+        "before": {
+          "file": "press-guide-tool-executable-layout-1440-before.png",
+          "sha256": "0492e89c5635574fc585f2dc986cfa7cbde873e4718b889806d0b5c3a2a88b52"
+        },
+        "chosen": {
+          "file": "press-guide-tool-executable-layout-1440-chosen.png",
+          "sha256": "3e42819a2811b873c1ae3b6a0d8de258b152f6a39a1574c09dd74f2376aff10f"
+        },
+        "after": {
+          "file": "press-guide-tool-executable-layout-1440-after.png",
+          "sha256": "94318dd79ae1f2bf90b097bbc02d44c88d7235ac77c7ded5a1cb464a2716a1b9"
+        },
+        "edge": {
+          "file": "press-guide-tool-executable-layout-1440-edge.png",
+          "sha256": "e593bf3bd68306a8a30fb501336bca8a44bf3fd3794092875b5516d7aaea0f46"
+        }
+      },
+      "qualified": false
+    },
+    "mending-guide-tool-feasible-pickup-320": {
+      "arm": "feasible-pickup",
+      "case": "mending-guide-tool",
+      "width": 320,
+      "height": 700,
+      "html_sha256": "e299477ac774873807303276ea232423d45361d723532d868b17c756a99141fb",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": false,
+        "withdrawal_reason_in_view": false,
+        "replacement_measurements_in_view": true,
+        "replacement_call_to_action_in_view": true,
+        "replacement_and_history_in_view": false,
+        "focus_visible": false,
+        "approved_fonts_loaded": true,
+        "no_page_failures": false,
+        "opening_actions_fit_and_hit_test": false,
+        "opening_evidence_for_both_choices": false,
+        "opening_times_on_both_actions": false,
+        "opening_limits_in_view": false,
+        "fitting_tool_at_closing_cannot_be_chosen": true
+      },
+      "opening_fragment": null,
+      "opening_scroll": 0,
+      "opening_actions": {
+        "first": {
+          "top": 893.890625,
+          "left": 39,
+          "bottom": 935.890625,
+          "right": 266,
+          "width": 227,
+          "height": 42,
+          "text": "Choose Drift at 12:20",
+          "visible": false,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        },
+        "second": {
+          "top": 1097.671875,
+          "left": 39,
+          "bottom": 1139.671875,
+          "right": 266,
+          "width": 227,
+          "height": 42,
+          "text": "Choose Pinion at 12:45",
+          "visible": false,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        }
+      },
+      "selected_result": {
+        "top": 992,
+        "left": 31,
+        "bottom": 1056.59375,
+        "right": 274,
+        "width": 243,
+        "height": 64.59375,
+        "text": "Drift Earliest pickup: 12:20",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": [],
+        "missingFonts": []
+      },
+      "frames": {
+        "before": {
+          "file": "mending-guide-tool-feasible-pickup-320-before.png",
+          "sha256": "a418af853404028055eeb94c6f8452351e81738a8230c54d644fe99da8815d7a"
+        },
+        "chosen": {
+          "file": "mending-guide-tool-feasible-pickup-320-chosen.png",
+          "sha256": "6b863e85da79026752970b0670f167b37621eee3cccbbe854b13f8e925c423fa"
+        },
+        "after": {
+          "file": "mending-guide-tool-feasible-pickup-320-after.png",
+          "sha256": "be0a6761ef8336cf40e84ea107775a87c65816de0219810df97aebbc10608225"
+        },
+        "edge": {
+          "file": "mending-guide-tool-feasible-pickup-320-edge.png",
+          "sha256": "63347180551d7ae11e93fe2571bd96cc2cadf849c9a32b293014a1aa47bff845"
+        }
+      },
+      "qualified": false
+    },
+    "mending-guide-tool-feasible-pickup-390": {
+      "arm": "feasible-pickup",
+      "case": "mending-guide-tool",
+      "width": 390,
+      "height": 844,
+      "html_sha256": "e299477ac774873807303276ea232423d45361d723532d868b17c756a99141fb",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": true,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": false,
+        "replacement_call_to_action_in_view": true,
+        "replacement_and_history_in_view": true,
+        "focus_visible": false,
+        "approved_fonts_loaded": true,
+        "no_page_failures": true,
+        "opening_actions_fit_and_hit_test": false,
+        "opening_evidence_for_both_choices": false,
+        "opening_times_on_both_actions": false,
+        "opening_limits_in_view": true,
+        "fitting_tool_at_closing_cannot_be_chosen": true
+      },
+      "opening_fragment": null,
+      "opening_scroll": 0,
+      "opening_actions": {
+        "first": {
+          "top": 872.890625,
+          "left": 39,
+          "bottom": 914.890625,
+          "right": 336,
+          "width": 297,
+          "height": 42,
+          "text": "Choose Drift at 12:20",
+          "visible": false,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        },
+        "second": {
+          "top": 1076.671875,
+          "left": 39,
+          "bottom": 1118.671875,
+          "right": 336,
+          "width": 297,
+          "height": 42,
+          "text": "Choose Pinion at 12:45",
+          "visible": false,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        }
+      },
+      "selected_result": {
+        "top": 1053.3125,
+        "left": 31,
+        "bottom": 1117.90625,
+        "right": 344,
+        "width": 313,
+        "height": 64.59375,
+        "text": "Drift Earliest pickup: 12:20",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": [],
+        "missingFonts": []
+      },
+      "frames": {
+        "before": {
+          "file": "mending-guide-tool-feasible-pickup-390-before.png",
+          "sha256": "2f179c5c6ffc24b715a3ac3919297ad554903cf1bfa2b97e57a14df42ed963e6"
+        },
+        "chosen": {
+          "file": "mending-guide-tool-feasible-pickup-390-chosen.png",
+          "sha256": "d3087b50fd8dba8cb0fdd9b0553d189084eff48bacc90d07d1a6665b4cbcf576"
+        },
+        "after": {
+          "file": "mending-guide-tool-feasible-pickup-390-after.png",
+          "sha256": "1715dbc73fd39d743fa861211e2bf65fab9af3663d4ff87448291faa33cea1f0"
+        },
+        "edge": {
+          "file": "mending-guide-tool-feasible-pickup-390-edge.png",
+          "sha256": "01115d0964a6046aea27f891c87d1e42abd6f27429437bbebbab60ece4d4f388"
+        }
+      },
+      "qualified": false
+    },
+    "mending-guide-tool-feasible-pickup-1440": {
+      "arm": "feasible-pickup",
+      "case": "mending-guide-tool",
+      "width": 1440,
+      "height": 900,
+      "html_sha256": "e299477ac774873807303276ea232423d45361d723532d868b17c756a99141fb",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": true,
+        "original_choice_visible_during_conflict": true,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": true,
+        "replacement_call_to_action_in_view": true,
+        "replacement_and_history_in_view": true,
+        "focus_visible": false,
+        "approved_fonts_loaded": true,
+        "no_page_failures": true,
+        "opening_actions_fit_and_hit_test": false,
+        "opening_evidence_for_both_choices": true,
+        "opening_times_on_both_actions": true,
+        "opening_limits_in_view": true,
+        "fitting_tool_at_closing_cannot_be_chosen": true
+      },
+      "opening_fragment": null,
+      "opening_scroll": 0,
+      "opening_actions": {
+        "first": {
+          "top": 599.796875,
+          "left": 736.5,
+          "bottom": 641.796875,
+          "right": 1005.5,
+          "width": 269,
+          "height": 42,
+          "text": "Choose Drift at 12:20",
+          "visible": true,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        },
+        "second": {
+          "top": 690.59375,
+          "left": 736.5,
+          "bottom": 732.59375,
+          "right": 1005.5,
+          "width": 269,
+          "height": 42,
+          "text": "Choose Pinion at 12:45",
+          "visible": true,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        }
+      },
+      "selected_result": {
+        "top": 494.59375,
+        "left": 1070.5,
+        "bottom": 559.1875,
+        "right": 1317.5,
+        "width": 247,
+        "height": 64.59375,
+        "text": "Drift Earliest pickup: 12:20",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": [],
+        "missingFonts": []
+      },
+      "frames": {
+        "before": {
+          "file": "mending-guide-tool-feasible-pickup-1440-before.png",
+          "sha256": "ff3697ec543589ed2846618b9f0131ae1cac25666707262c9f7c38b6adbba135"
+        },
+        "chosen": {
+          "file": "mending-guide-tool-feasible-pickup-1440-chosen.png",
+          "sha256": "0f6070e1c3f8608f8c57562cf6239829828a28c8fe62facf00c1341fcfd7d8d1"
+        },
+        "after": {
+          "file": "mending-guide-tool-feasible-pickup-1440-after.png",
+          "sha256": "025d42f1ff059b393fefd7a2da9055988018c9ffd103db54a21fd804a47c1f47"
+        },
+        "edge": {
+          "file": "mending-guide-tool-feasible-pickup-1440-edge.png",
+          "sha256": "eb7f8223ccde50aa38bd57d189c3d575a9b503a207b534f24444167d9fef3fef"
+        }
+      },
+      "qualified": false
+    },
+    "mending-guide-tool-executable-layout-320": {
+      "arm": "executable-layout",
+      "case": "mending-guide-tool",
+      "width": 320,
+      "height": 700,
+      "html_sha256": "f7686fe80b88a0384244d8aab53930e732581e9a0e5c16694789b208d657b417",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": true,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": false,
+        "replacement_call_to_action_in_view": false,
+        "replacement_and_history_in_view": false,
+        "focus_visible": false,
+        "approved_fonts_loaded": true,
+        "no_page_failures": true,
+        "opening_actions_fit_and_hit_test": false,
+        "opening_evidence_for_both_choices": false,
+        "opening_times_on_both_actions": false,
+        "opening_limits_in_view": true,
+        "fitting_tool_at_closing_cannot_be_chosen": true
+      },
+      "opening_fragment": null,
+      "opening_scroll": 0,
+      "opening_actions": {
+        "first": {
+          "top": 977.296875,
+          "left": 30,
+          "bottom": 1021.296875,
+          "right": 275,
+          "width": 245,
+          "height": 44,
+          "text": "Choose Drift at 12:20",
+          "visible": false,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        },
+        "second": {
+          "top": 1186.15625,
+          "left": 30,
+          "bottom": 1230.15625,
+          "right": 275,
+          "width": 245,
+          "height": 44,
+          "text": "Choose Pinion at 12:45",
+          "visible": false,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        }
+      },
+      "selected_result": {
+        "top": 1017.359375,
+        "left": 41,
+        "bottom": 1112.546875,
+        "right": 264,
+        "width": 223,
+        "height": 95.1875,
+        "text": "Drift Earliest pickup: 12:20 Chosen",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": [],
+        "missingFonts": []
+      },
+      "frames": {
+        "before": {
+          "file": "mending-guide-tool-executable-layout-320-before.png",
+          "sha256": "0c511924f63e2b4910f911f11a3861363ba4e9d98bfbbcfd9da5025632b95f02"
+        },
+        "chosen": {
+          "file": "mending-guide-tool-executable-layout-320-chosen.png",
+          "sha256": "6e1490044f70ee21c78baa0a7a8e04e4be2df124dff195321ab340b858dd9e24"
+        },
+        "after": {
+          "file": "mending-guide-tool-executable-layout-320-after.png",
+          "sha256": "0a825cdcffee539ec3de2a89b1c50d138938d52ec729db4e11fe4f12e8695af4"
+        },
+        "edge": {
+          "file": "mending-guide-tool-executable-layout-320-edge.png",
+          "sha256": "448ba5c1b867e119815dc3f36c1bc28af3025d5a037aa22c1b2cf1eeb9007351"
+        }
+      },
+      "qualified": false
+    },
+    "mending-guide-tool-executable-layout-390": {
+      "arm": "executable-layout",
+      "case": "mending-guide-tool",
+      "width": 390,
+      "height": 844,
+      "html_sha256": "f7686fe80b88a0384244d8aab53930e732581e9a0e5c16694789b208d657b417",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": true,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": false,
+        "replacement_call_to_action_in_view": false,
+        "replacement_and_history_in_view": false,
+        "focus_visible": false,
+        "approved_fonts_loaded": true,
+        "no_page_failures": true,
+        "opening_actions_fit_and_hit_test": false,
+        "opening_evidence_for_both_choices": false,
+        "opening_times_on_both_actions": false,
+        "opening_limits_in_view": true,
+        "fitting_tool_at_closing_cannot_be_chosen": true
+      },
+      "opening_fragment": null,
+      "opening_scroll": 0,
+      "opening_actions": {
+        "first": {
+          "top": 901.734375,
+          "left": 30,
+          "bottom": 945.734375,
+          "right": 345,
+          "width": 315,
+          "height": 44,
+          "text": "Choose Drift at 12:20",
+          "visible": false,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        },
+        "second": {
+          "top": 1110.59375,
+          "left": 30,
+          "bottom": 1154.59375,
+          "right": 345,
+          "width": 315,
+          "height": 44,
+          "text": "Choose Pinion at 12:45",
+          "visible": false,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        }
+      },
+      "selected_result": {
+        "top": 1071.171875,
+        "left": 41,
+        "bottom": 1166.359375,
+        "right": 334,
+        "width": 293,
+        "height": 95.1875,
+        "text": "Drift Earliest pickup: 12:20 Chosen",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": [],
+        "missingFonts": []
+      },
+      "frames": {
+        "before": {
+          "file": "mending-guide-tool-executable-layout-390-before.png",
+          "sha256": "8194569d783dadc1d12300201c8028acb936f6da970a775370402e66fb82a58a"
+        },
+        "chosen": {
+          "file": "mending-guide-tool-executable-layout-390-chosen.png",
+          "sha256": "321bbfd0338234aada5c0dad77857e88dbbfd9e4282c2c5483ce3d3153bddb57"
+        },
+        "after": {
+          "file": "mending-guide-tool-executable-layout-390-after.png",
+          "sha256": "eb19d768c14c0b3b5ac5006b46fd4704e803ea38aef9093412e1ec1e0b692822"
+        },
+        "edge": {
+          "file": "mending-guide-tool-executable-layout-390-edge.png",
+          "sha256": "89dd5fe3126ac54efdda12a985a247546b07fdf22004db1170334ae2e50e2684"
+        }
+      },
+      "qualified": false
+    },
+    "mending-guide-tool-executable-layout-1440": {
+      "arm": "executable-layout",
+      "case": "mending-guide-tool",
+      "width": 1440,
+      "height": 900,
+      "html_sha256": "f7686fe80b88a0384244d8aab53930e732581e9a0e5c16694789b208d657b417",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": true,
+        "original_choice_visible_during_conflict": true,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": true,
+        "replacement_call_to_action_in_view": true,
+        "replacement_and_history_in_view": true,
+        "focus_visible": false,
+        "approved_fonts_loaded": true,
+        "no_page_failures": true,
+        "opening_actions_fit_and_hit_test": true,
+        "opening_evidence_for_both_choices": true,
+        "opening_times_on_both_actions": true,
+        "opening_limits_in_view": true,
+        "fitting_tool_at_closing_cannot_be_chosen": true
+      },
+      "opening_fragment": null,
+      "opening_scroll": 0,
+      "opening_actions": {
+        "first": {
+          "top": 671.6875,
+          "left": 768.3125,
+          "bottom": 717.6875,
+          "right": 996.984375,
+          "width": 228.671875,
+          "height": 46,
+          "text": "Choose Drift at 12:20",
+          "visible": true,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        },
+        "second": {
+          "top": 776.6875,
+          "left": 768.3125,
+          "bottom": 822.6875,
+          "right": 996.984375,
+          "width": 228.671875,
+          "height": 46,
+          "text": "Choose Pinion at 12:45",
+          "visible": true,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        }
+      },
+      "selected_result": {
+        "top": 551.15625,
+        "left": 1067,
+        "bottom": 646.34375,
+        "right": 1329,
+        "width": 262,
+        "height": 95.1875,
+        "text": "Drift Earliest pickup: 12:20 Chosen",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": [],
+        "missingFonts": []
+      },
+      "frames": {
+        "before": {
+          "file": "mending-guide-tool-executable-layout-1440-before.png",
+          "sha256": "ed06e000009f5be1169ec1ca4b79870d4e98823ea872db1480db0f1d7956406d"
+        },
+        "chosen": {
+          "file": "mending-guide-tool-executable-layout-1440-chosen.png",
+          "sha256": "8ddc0f1f8d5be82cf3e1d52d3ca8f2045e3ce4823716e817e1450f76438c9404"
+        },
+        "after": {
+          "file": "mending-guide-tool-executable-layout-1440-after.png",
+          "sha256": "9812b6690fa22437249a1e3c238f68aeb9efa1027d6a8df9544b57a11102e926"
+        },
+        "edge": {
+          "file": "mending-guide-tool-executable-layout-1440-edge.png",
+          "sha256": "adc1deb5a7bf0515253fc001708f0d4df25bc1fd8301446101747c71979c9fd2"
+        }
+      },
+      "qualified": false
+    },
+    "night-ferry-cutoff-feasible-pickup-320": {
+      "arm": "feasible-pickup",
+      "case": "night-ferry-cutoff",
+      "width": 320,
+      "height": 700,
+      "html_sha256": "16aa79510816dbd604cfea41fc1b9e4233ab6e51b6caef2eaa99b33e4dd10cae",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": true,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": false,
+        "replacement_call_to_action_in_view": false,
+        "replacement_and_history_in_view": false,
+        "focus_visible": false,
+        "approved_fonts_loaded": true,
+        "no_page_failures": true,
+        "opening_actions_fit_and_hit_test": false,
+        "opening_evidence_for_both_choices": false,
+        "opening_times_on_both_actions": false,
+        "opening_limits_in_view": true
+      },
+      "opening_fragment": null,
+      "opening_scroll": 0,
+      "opening_actions": {
+        "first": {
+          "top": 1067.515625,
+          "left": 38,
+          "bottom": 1109.515625,
+          "right": 267,
+          "width": 229,
+          "height": 42,
+          "text": "Choose Sound",
+          "visible": false,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        },
+        "second": {
+          "top": 1254.546875,
+          "left": 38,
+          "bottom": 1296.546875,
+          "right": 267,
+          "width": 229,
+          "height": 42,
+          "text": "Choose Dusk",
+          "visible": false,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        }
+      },
+      "selected_result": {
+        "top": 1153.015625,
+        "left": 39,
+        "bottom": 1284.28125,
+        "right": 266,
+        "width": 227,
+        "height": 131.265625,
+        "text": "Selected sailing Sound Departs 20:55 Arrives 22:10 $16 Confirmed in demo",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": [],
+        "missingFonts": []
+      },
+      "frames": {
+        "before": {
+          "file": "night-ferry-cutoff-feasible-pickup-320-before.png",
+          "sha256": "006daeb0ec93c27a117eb85cfc7fc96e2ca4ad966c5173d7b238b3545542cd89"
+        },
+        "chosen": {
+          "file": "night-ferry-cutoff-feasible-pickup-320-chosen.png",
+          "sha256": "99b869041e7a0e5b4744d59fb8b55ea25767d20ecef91f1a7b93dd192ce881d9"
+        },
+        "after": {
+          "file": "night-ferry-cutoff-feasible-pickup-320-after.png",
+          "sha256": "c47a15e4f1dbd319f60171451f88c2eebe2a04796633377fd73dbb69b459c342"
+        },
+        "edge": {
+          "file": "night-ferry-cutoff-feasible-pickup-320-edge.png",
+          "sha256": "83ee1fda03942dbf501cb231ced3e3cc5a19a8663f91b5bea35f9fd0f1e738f1"
+        }
+      },
+      "qualified": false
+    },
+    "night-ferry-cutoff-feasible-pickup-390": {
+      "arm": "feasible-pickup",
+      "case": "night-ferry-cutoff",
+      "width": 390,
+      "height": 844,
+      "html_sha256": "16aa79510816dbd604cfea41fc1b9e4233ab6e51b6caef2eaa99b33e4dd10cae",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": true,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": false,
+        "replacement_call_to_action_in_view": false,
+        "replacement_and_history_in_view": false,
+        "focus_visible": false,
+        "approved_fonts_loaded": true,
+        "no_page_failures": true,
+        "opening_actions_fit_and_hit_test": false,
+        "opening_evidence_for_both_choices": false,
+        "opening_times_on_both_actions": false,
+        "opening_limits_in_view": true
+      },
+      "opening_fragment": null,
+      "opening_scroll": 0,
+      "opening_actions": {
+        "first": {
+          "top": 947.953125,
+          "left": 38,
+          "bottom": 989.953125,
+          "right": 337,
+          "width": 299,
+          "height": 42,
+          "text": "Choose Sound",
+          "visible": false,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        },
+        "second": {
+          "top": 1134.984375,
+          "left": 38,
+          "bottom": 1176.984375,
+          "right": 337,
+          "width": 299,
+          "height": 42,
+          "text": "Choose Dusk",
+          "visible": false,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        }
+      },
+      "selected_result": {
+        "top": 1181.578125,
+        "left": 39,
+        "bottom": 1312.84375,
+        "right": 336,
+        "width": 297,
+        "height": 131.265625,
+        "text": "Selected sailing Sound Departs 20:55 Arrives 22:10 $16 Confirmed in demo",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": [],
+        "missingFonts": []
+      },
+      "frames": {
+        "before": {
+          "file": "night-ferry-cutoff-feasible-pickup-390-before.png",
+          "sha256": "cb8e2ece13bd9edb6690be6dec72e52870cac9ce91bca1334825189b62ecba80"
+        },
+        "chosen": {
+          "file": "night-ferry-cutoff-feasible-pickup-390-chosen.png",
+          "sha256": "69e74c0c6fb9cfd2923cb16b3eb05eb6ff0dc3b43ca534e7f3d9813ee8a753f5"
+        },
+        "after": {
+          "file": "night-ferry-cutoff-feasible-pickup-390-after.png",
+          "sha256": "d15aa3bcedf73d070b30b6249d7e9ba4b08124a79e58045129509c293e25592d"
+        },
+        "edge": {
+          "file": "night-ferry-cutoff-feasible-pickup-390-edge.png",
+          "sha256": "3cdf923c1f7b79e48dee1af88ba9d83fb8fb6383a76227dcbf5334eaa488d893"
+        }
+      },
+      "qualified": false
+    },
+    "night-ferry-cutoff-feasible-pickup-1440": {
+      "arm": "feasible-pickup",
+      "case": "night-ferry-cutoff",
+      "width": 1440,
+      "height": 900,
+      "html_sha256": "16aa79510816dbd604cfea41fc1b9e4233ab6e51b6caef2eaa99b33e4dd10cae",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": true,
+        "original_choice_visible_during_conflict": true,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": true,
+        "replacement_call_to_action_in_view": false,
+        "replacement_and_history_in_view": true,
+        "focus_visible": false,
+        "approved_fonts_loaded": true,
+        "no_page_failures": true,
+        "opening_actions_fit_and_hit_test": false,
+        "opening_evidence_for_both_choices": false,
+        "opening_times_on_both_actions": false,
+        "opening_limits_in_view": true
+      },
+      "opening_fragment": null,
+      "opening_scroll": 0,
+      "opening_actions": {
+        "first": {
+          "top": 737.1875,
+          "left": 855,
+          "bottom": 779.1875,
+          "right": 987,
+          "width": 132,
+          "height": 42,
+          "text": "Choose Sound",
+          "visible": true,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        },
+        "second": {
+          "top": 833.1875,
+          "left": 855,
+          "bottom": 875.1875,
+          "right": 987,
+          "width": 132,
+          "height": 42,
+          "text": "Choose Dusk",
+          "visible": true,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        }
+      },
+      "selected_result": {
+        "top": 740.328125,
+        "left": 1065,
+        "bottom": 871.59375,
+        "right": 1343,
+        "width": 278,
+        "height": 131.265625,
+        "text": "Selected sailing Sound Departs 20:55 Arrives 22:10 $16 Confirmed in demo",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": [],
+        "missingFonts": []
+      },
+      "frames": {
+        "before": {
+          "file": "night-ferry-cutoff-feasible-pickup-1440-before.png",
+          "sha256": "ad4a42514ac269159a6c683e3c3e53d712e61f75c527f1d72f10dc7ec339eb3e"
+        },
+        "chosen": {
+          "file": "night-ferry-cutoff-feasible-pickup-1440-chosen.png",
+          "sha256": "dbd70ea46968f39768dbacec90da55888876f01e63d533566e897dc26dd3fe1f"
+        },
+        "after": {
+          "file": "night-ferry-cutoff-feasible-pickup-1440-after.png",
+          "sha256": "d7ad9f0c1cdcfc6b883aae3b56afd6f04a9239b3d12d7fe33b0bfb8092153989"
+        },
+        "edge": {
+          "file": "night-ferry-cutoff-feasible-pickup-1440-edge.png",
+          "sha256": "3ab878c929ea86592fd9d22d0946d78f410e8895929cb0a75e770b5a1b0e82ef"
+        }
+      },
+      "qualified": false
+    },
+    "night-ferry-cutoff-executable-layout-320": {
+      "arm": "executable-layout",
+      "case": "night-ferry-cutoff",
+      "width": 320,
+      "height": 700,
+      "html_sha256": "51c72b517399e721355edaf8092432c0a97431d61b38a7c3a0cf0b408a68ef62",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": true,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": false,
+        "replacement_call_to_action_in_view": false,
+        "replacement_and_history_in_view": false,
+        "focus_visible": false,
+        "approved_fonts_loaded": true,
+        "no_page_failures": true,
+        "opening_actions_fit_and_hit_test": false,
+        "opening_evidence_for_both_choices": false,
+        "opening_times_on_both_actions": false,
+        "opening_limits_in_view": false
+      },
+      "opening_fragment": null,
+      "opening_scroll": 0,
+      "opening_actions": {
+        "first": {
+          "top": 692.84375,
+          "left": 195.203125,
+          "bottom": 746.84375,
+          "right": 269,
+          "width": 73.796875,
+          "height": 54,
+          "text": "Choose Sound",
+          "visible": false,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        },
+        "second": {
+          "top": 833.84375,
+          "left": 195.203125,
+          "bottom": 887.84375,
+          "right": 269,
+          "width": 73.796875,
+          "height": 54,
+          "text": "Choose Dusk",
+          "visible": false,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        }
+      },
+      "selected_result": {
+        "top": 1481.734375,
+        "left": 38,
+        "bottom": 1540.875,
+        "right": 267,
+        "width": 229,
+        "height": 59.140625,
+        "text": "Sound · $16 Departs 20:55 · Arrives 22:10",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": [],
+        "missingFonts": []
+      },
+      "frames": {
+        "before": {
+          "file": "night-ferry-cutoff-executable-layout-320-before.png",
+          "sha256": "f6bbcbd5e51fec3a0dceea41184df02f41185d4690fb16e8963b610a5df38eac"
+        },
+        "chosen": {
+          "file": "night-ferry-cutoff-executable-layout-320-chosen.png",
+          "sha256": "1df1c3ea45fa66a1a5612a258574758bda1216ed88d26f93ff2241636870cac2"
+        },
+        "after": {
+          "file": "night-ferry-cutoff-executable-layout-320-after.png",
+          "sha256": "0011675fa291e0f44ca2bff2391bb1015a6c1976daa64e1a0d67934d18f662c9"
+        },
+        "edge": {
+          "file": "night-ferry-cutoff-executable-layout-320-edge.png",
+          "sha256": "74e40200d017108a32a4d0d31e83afcb0f13159a494275f691f788c474ab2d01"
+        }
+      },
+      "qualified": false
+    },
+    "night-ferry-cutoff-executable-layout-390": {
+      "arm": "executable-layout",
+      "case": "night-ferry-cutoff",
+      "width": 390,
+      "height": 844,
+      "html_sha256": "51c72b517399e721355edaf8092432c0a97431d61b38a7c3a0cf0b408a68ef62",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": true,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": false,
+        "replacement_call_to_action_in_view": false,
+        "replacement_and_history_in_view": false,
+        "focus_visible": false,
+        "approved_fonts_loaded": true,
+        "no_page_failures": true,
+        "opening_actions_fit_and_hit_test": true,
+        "opening_evidence_for_both_choices": true,
+        "opening_times_on_both_actions": false,
+        "opening_limits_in_view": false
+      },
+      "opening_fragment": null,
+      "opening_scroll": 0,
+      "opening_actions": {
+        "first": {
+          "top": 573.5625,
+          "left": 243.328125,
+          "bottom": 627.5625,
+          "right": 338.984375,
+          "width": 95.65625,
+          "height": 54,
+          "text": "Choose Sound",
+          "visible": true,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        },
+        "second": {
+          "top": 714.5625,
+          "left": 243.328125,
+          "bottom": 768.5625,
+          "right": 338.984375,
+          "width": 95.65625,
+          "height": 54,
+          "text": "Choose Dusk",
+          "visible": true,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        }
+      },
+      "selected_result": {
+        "top": 1409.296875,
+        "left": 38,
+        "bottom": 1468.4375,
+        "right": 337,
+        "width": 299,
+        "height": 59.140625,
+        "text": "Sound · $16 Departs 20:55 · Arrives 22:10",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": [],
+        "missingFonts": []
+      },
+      "frames": {
+        "before": {
+          "file": "night-ferry-cutoff-executable-layout-390-before.png",
+          "sha256": "251f173db3a86b0b4f723150a4a6af2ad52d2217d9bc433982e9c02acfb56510"
+        },
+        "chosen": {
+          "file": "night-ferry-cutoff-executable-layout-390-chosen.png",
+          "sha256": "92c551666d8a5def5e3692d1ffc8beb881c82f2a0060735b8fa0ae03ef886bd2"
+        },
+        "after": {
+          "file": "night-ferry-cutoff-executable-layout-390-after.png",
+          "sha256": "17608444d67047d553f42c66cd553b062730281c223cc1905e73794ae5e098b0"
+        },
+        "edge": {
+          "file": "night-ferry-cutoff-executable-layout-390-edge.png",
+          "sha256": "3840e57528b5ab2b5b828dc4424b054659beb05429db8bbeebc81fbb3eabc3c9"
+        }
+      },
+      "qualified": false
+    },
+    "night-ferry-cutoff-executable-layout-1440": {
+      "arm": "executable-layout",
+      "case": "night-ferry-cutoff",
+      "width": 1440,
+      "height": 900,
+      "html_sha256": "51c72b517399e721355edaf8092432c0a97431d61b38a7c3a0cf0b408a68ef62",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": true,
+        "original_choice_visible_during_conflict": true,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": true,
+        "replacement_call_to_action_in_view": false,
+        "replacement_and_history_in_view": true,
+        "focus_visible": false,
+        "approved_fonts_loaded": true,
+        "no_page_failures": true,
+        "opening_actions_fit_and_hit_test": false,
+        "opening_evidence_for_both_choices": true,
+        "opening_times_on_both_actions": false,
+        "opening_limits_in_view": true
+      },
+      "opening_fragment": null,
+      "opening_scroll": 0,
+      "opening_actions": {
+        "first": {
+          "top": 616.75,
+          "left": 800.953125,
+          "bottom": 670.75,
+          "right": 914.953125,
+          "width": 114,
+          "height": 54,
+          "text": "Choose Sound",
+          "visible": true,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        },
+        "second": {
+          "top": 717.75,
+          "left": 800.953125,
+          "bottom": 759.75,
+          "right": 914.953125,
+          "width": 114,
+          "height": 42,
+          "text": "Choose Dusk",
+          "visible": true,
+          "pressed": null,
+          "focused": false,
+          "accessibleLabel": "",
+          "acceptsChoice": true
+        }
+      },
+      "selected_result": {
+        "top": 726.484375,
+        "left": 992.953125,
+        "bottom": 785.625,
+        "right": 1350.984375,
+        "width": 358.03125,
+        "height": 59.140625,
+        "text": "Sound · $16 Departs 20:55 · Arrives 22:10",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": [],
+        "missingFonts": []
+      },
+      "frames": {
+        "before": {
+          "file": "night-ferry-cutoff-executable-layout-1440-before.png",
+          "sha256": "7751b807aad699843e3ee4ed279ecaf8cdcf3e0a196358323db293a5c321c9b4"
+        },
+        "chosen": {
+          "file": "night-ferry-cutoff-executable-layout-1440-chosen.png",
+          "sha256": "1da815b5ef930844173553abd0b3cb26b7e7b140ea3153dd877cc1fa22d43d68"
+        },
+        "after": {
+          "file": "night-ferry-cutoff-executable-layout-1440-after.png",
+          "sha256": "4272b8f9bd67a9a4976392232b73f8e6e7e5ac66acda7f864a5735fa7257df79"
+        },
+        "edge": {
+          "file": "night-ferry-cutoff-executable-layout-1440-edge.png",
+          "sha256": "eb44b6574a0e2409f303aa042239b3530e771b40434bba1b5f886be0ca48c96f"
+        }
+      },
+      "qualified": false
+    }
+  },
+  "trial_qualified_at_all_sizes": {
+    "press-guide-tool": false,
+    "mending-guide-tool": false,
+    "night-ferry-cutoff": false
+  }
+}
