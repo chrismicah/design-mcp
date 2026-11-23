@@ -21,6 +21,14 @@ _TERMS = {
     "landing": ("landing", "launch", "product page", "bag", "shop", "roaster", "retail"),
 }
 
+_PERFORMANCE_CHOICE = re.compile(
+    r"\b(?:choos(?:e|ing)|pick(?:s|ing)?|select(?:s|ing)?|compare)\b"
+    r"(?:\s+(?!(?:and|after|before|for|near|to)\b)[\w/-]+){0,4}"
+    r"\s+(?:duets?|screenings?|concerts?|recitals?|shows?|performances?)\b"
+)
+_EVENT_CONTEXT = re.compile(r"\b(?:festival|film weekend|concert|recital|theat(?:re|er)|chamber music)\b")
+_MERCHANDISE_JOB = re.compile(r"\b(?:merch(?:andise)?|shirts?|add to (?:the )?(?:bag|cart))\b")
+
 _FORM_SEPARATORS = str.maketrans("-\u2010\u2011", "   ")
 _FORM_NAME = r"(?:forms?|questionnaires?|surveys?|polls?|rsvp|intake|registration|sign ?(?:in|up)|waitlist)"
 # These phrases name formats, tools or records that have already been collected.
@@ -111,10 +119,20 @@ async def direct(brief: str, surface: Surface | None = None, avoid: list[str] | 
     matched = surface or _infer_surface(text)
     kind = matched or "landing"
     candidates = [row for row in library().values() if row.surface == kind and row.id not in (avoid or [])]
+    if kind == "landing":
+        chooses_performance = (
+            _EVENT_CONTEXT.search(text) and _PERFORMANCE_CHOICE.search(text)
+            and not _MERCHANDISE_JOB.search(text)
+        )
+        if not chooses_performance:
+            candidates = [row for row in candidates if row.id != "performance-program"]
     if not candidates:
         return {"error": f"No reviewed direction remains for {kind}.", "surface": kind}
     tag_text = text.translate(_FORM_SEPARATORS) if kind == "form" else text
-    choice = max(candidates, key=lambda row: sum(_match(term, tag_text) for term in row.tags))
+    choice = max(
+        candidates,
+        key=lambda row: (row.id == "performance-program", sum(_match(term, tag_text) for term in row.tags)),
+    )
     questions = []
     if matched is None and len(text.split()) <= 8:
         questions = [{"question": "What will people use this screen for?",

@@ -186,3 +186,31 @@ async def test_calmer_keeps_the_operational_exception_as_the_focal_point(reactio
     assert "its status in the queue" in accent
     assert "secondary controls" in accent
     assert "status labeled in words" in accent
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("brief", [
+    "Make a creative festival site where two people choose a duet with shared-weight choreography for £60 or less.",
+    "Build a chamber music festival guide so evening visitors can compare two recitals by instrument and start time.",
+    "Film weekend landing page. Let someone pick one of two screenings and see its place and time.",
+])
+async def test_performance_program_keeps_the_decision_and_outcome_together(brief):
+    result = await direct(brief)
+    assert result["direction"]["id"] == "performance-program"
+    assert "estimate's actual origin" in result["direction"]["action"]["instruction"]
+    assert result["questions"] == []
+    assert len(json.dumps(result, ensure_ascii=False)) <= 6000
+    assert (await direct(brief, avoid=["performance-program"]))["direction"]["id"] == "object-hero"
+    assert (await direct(brief, surface="mobile"))["direction"]["id"] == "platform-sign"
+    assert "composition" in (await react("performance-program", "too generic"))["changes"]
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("brief,expected", [
+    ("Festival shop. Choose a performance shirt and add it to the bag.", "object-hero"),
+    ("Show a mobile ticket for a theatre performance.", "platform-sign"),
+    ("Theatre stage manager needs the turnaround board for the rehearsal room.", "stage-call-sheet"),
+    ("Theatre repair shop needs a booking page. Choose a day for the show workshop.", "service-work-order"),
+])
+async def test_performance_context_does_not_override_other_jobs(brief, expected):
+    assert (await direct(brief))["direction"]["id"] == expected

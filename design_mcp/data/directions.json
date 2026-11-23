@@ -630,5 +630,65 @@
       }
     ],
     "credit": "GOV.UK Design System, Question pages. The offset column, serif scale and plum palette are original."
+  },
+  {
+    "id": "performance-program",
+    "surface": "landing",
+    "title": "Performance program",
+    "summary": "Help a visitor compare scheduled performances. Put the program and the selected performance's time and practical details in one composition.",
+    "tags": [
+      "duet",
+      "screening",
+      "performance program"
+    ],
+    "type": {
+      "display": "Barlow Condensed",
+      "body": "Atkinson Hyperlegible",
+      "ratio": 3.6,
+      "tracking": -0.03,
+      "weight": 700,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#FDFAFF",
+      "paper": "#2424B8",
+      "accent": "#E7ED64"
+    },
+    "layout": {
+      "skeleton": "Pair a synopsis of the work with a program of selectable performances. Give each choice the same comparable facts and place the selected outcome beside the program.",
+      "focus": "An original close view of the decisive difference between the works, with a short plain-language description and a prominent selected performance.",
+      "desktop": "Use a strong title and a compact program next to the evidence from the selected work. Keep controls in reading order and the selected timetable close to its choice.",
+      "mobile": "Use a small featured scene and two readable choices near the result. Check that comparing the supplied cost and schedule works at 390 px and with enlarged text.",
+      "rhythm": "Group each performance's essential facts by aligned edges and shared rules. Give the selected work its own space instead of making every cover equally loud."
+    },
+    "imagery": {
+      "subject": "Use original art or cleared assets to show the difference a visitor can use to choose. Keep a lightweight depiction immediately available, with a close detail when the decisive feature is small.",
+      "crop": "Keep the decisive detail visible at desktop and phone widths. Retain any important timing or description as text.",
+      "fallback": "Use a short factual description or labeled still when live art is unavailable. Keep all choices and journey information usable."
+    },
+    "motion": {
+      "trigger": "Selecting a performance or an optional named detail",
+      "effect": "Update the chosen work and its details together. Animate the one visual change that communicates a difference.",
+      "duration_ms": 240,
+      "reduced": "Show the final state immediately with the same labels and outcomes."
+    },
+    "action": {
+      "instruction": "Give each choice a clear, persistent selected state. Keep the supplied facts needed for a decision visible and use each estimate's actual origin. When the brief gives enough facts, recalculate timing when a show or travel assumption changes.",
+      "label": "Use the supplied performance name"
+    },
+    "why": "Understand what makes a show worth choosing and see whether it fits the practical constraints in the same visit.",
+    "sources": [
+      {
+        "url": "https://experience2026.funtech.inc/",
+        "observation": "The tested wireframe view displayed the original on a full canvas with labeled controls separate from it. Keep the decisive evidence available while more elaborate art loads.",
+        "strength": "evidence"
+      },
+      {
+        "url": "https://www.ycombinator.com/blog/design-review-tips-for-increasing-conversions/",
+        "observation": "The review uses a direct call to action and fast access to the first useful result. Keep the program immediately operable while visitors compare shows.",
+        "strength": "evidence"
+      }
+    ],
+    "credit": "Original program direction from the Counterweight study with independently observed FunTech and YC references."
   }
 ]
