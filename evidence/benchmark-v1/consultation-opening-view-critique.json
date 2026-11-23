@@ -1,0 +1,352 @@
+{
+  "scope": "Blind live comparison of a manually authored optometry fixture and repaired generated control. No package change.",
+  "browser_proof": {
+    "path": "consultation-opening-view.json",
+    "sha256": "5634dae863935a99e055de9f7be0cb946d4cc6e7e8953e397be7054f363dee03",
+    "hosted_run": "https://github.com/chrismicah/design-mcp/actions/runs/45272048156"
+  },
+  "sealed_key_sha256": "7a7977ccf5b40378fd7145d75118dd46a0d0edba957ba59a6654d2f381b091c5",
+  "preferred_arm": "call-board",
+  "ballot": {
+    "calibration": {
+      "coherence": 7,
+      "originality": 4,
+      "craft": 6,
+      "usability": 6,
+      "reason": "Clear labels and legibility support the task; the familiar layout limits originality, and misplaced focus after validation impairs recovery."
+    },
+    "screens": {
+      "A-1440": {
+        "coherence": 8,
+        "originality": 7,
+        "craft": 8,
+        "usability": 7.5,
+        "primary_action": {
+          "input": "Tab to the service group, ArrowRight to Glasses fitting, attempt preview with no name, enter Morgan, then preview.",
+          "expected": "An actionable name error followed by an editable glasses-fitting reminder.",
+          "observed": "The empty submission marked First name invalid and focused it. Morgan produced an editable reminder about a glasses fitting. Shift+Tab twice returned to First name; Morgan and Glasses fitting remained."
+        },
+        "edge_observation": "The first-name field and Preview reminder are below the initial viewport. The form says the reminder stays in the browser and does not book an appointment; the preview does not separately say that no message was sent.",
+        "fact_check": "The page identifies independent Tacoma optometrist Lena Ortiz, offers a call to 253-555-0143, and lists Tuesday–Saturday, 9 am–4 pm. These are page claims, not independently verified facts; the telephone link was not activated.",
+        "strength": "The restrained navy palette, large serif name and glasses illustration form a coherent optometry identity.",
+        "weakness": "The separate service list repeats the form choices and pushes the input and preview below the initial screen.",
+        "repair": "Bring the form closer to the contact details and explicitly state at preview that nothing was sent.",
+        "arm": "focus-repair",
+        "html_sha256": "589215a5c7efb1c4c47bc581814a29ad829252d8b5f0b5d45430d15812229e66",
+        "weighted": 7.6,
+        "before": {
+          "sha256": "288602eecc99207d865aa5ea2f001b0a44f3675ac254e6560735ca42902e9b10",
+          "file": "A-1440-before.png",
+          "tool_call_id": "item_2"
+        },
+        "after": {
+          "sha256": "29da4e3214a9bfd60269d603cf854894951787deb2edcea30521a7ae6ebfb59b",
+          "file": "A-1440-after.png",
+          "tool_call_id": "item_7"
+        },
+        "layout_width": 1440,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          },
+          {
+            "action": "text",
+            "value": "Morgan"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          }
+        ]
+      },
+      "A-390": {
+        "coherence": 8,
+        "originality": 7,
+        "craft": 7.5,
+        "usability": 7,
+        "primary_action": {
+          "input": "Use Tab and ArrowRight to select Glasses fitting, submit without a name, enter Morgan and preview.",
+          "expected": "Recover from the missing name and see an editable reminder.",
+          "observed": "The error focused the invalid name field; entering Morgan and previewing focused the correct reminder. Shift+Tab twice returned to the retained name, with Glasses fitting still selected."
+        },
+        "edge_observation": "Neither the first-name field nor Preview reminder is visible initially; the separate service list consumes much of the first screen. The page says the reminder stays in the browser and does not book, but does not explicitly say at the result that no message was sent.",
+        "fact_check": "The page claims Lena Ortiz is an independent Tacoma optometrist, with a call link for 253-555-0143 and hours Tuesday–Saturday, 9 am–4 pm. Those claims were not independently verified; the call link was not activated.",
+        "strength": "The layout remains legible and the preview fits comfortably in the mobile viewport.",
+        "weakness": "The long introductory area delays access to the form.",
+        "repair": "Reduce the duplicated service presentation and surface the form earlier on mobile.",
+        "arm": "focus-repair",
+        "html_sha256": "589215a5c7efb1c4c47bc581814a29ad829252d8b5f0b5d45430d15812229e66",
+        "weighted": 7.4,
+        "before": {
+          "sha256": "255471c9375133b530c577e43139b41d51595c94e23a88482129301826f5283e",
+          "file": "A-390-before.png",
+          "tool_call_id": "item_11"
+        },
+        "after": {
+          "sha256": "62dfff56765844a93a08962cc4acc4b8cbc76788e96e7a5c47d244ccfeb1c991",
+          "file": "A-390-after.png",
+          "tool_call_id": "item_16"
+        },
+        "layout_width": 390,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          },
+          {
+            "action": "text",
+            "value": "Morgan"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          }
+        ]
+      },
+      "B-1440": {
+        "coherence": 8.5,
+        "originality": 7.5,
+        "craft": 8.5,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Tab to the service group, select Glasses fitting with ArrowRight, preview without a name, enter Morgan and preview again.",
+          "expected": "A recoverable validation error and an editable reminder with the selected details.",
+          "observed": "The error focused the invalid First name field. The successful preview focused an editable reminder containing Morgan and glasses fitting. Shift+Tab twice returned to the retained name; the service remained selected."
+        },
+        "edge_observation": "First name and Preview reminder are visible initially. The result explicitly states that nothing was sent or booked. Putting service choices in the form makes their purpose and selection easier to understand than a separate informational list.",
+        "fact_check": "The page claims Lena Ortiz is an independent Tacoma optometrist, gives 253-555-0143 as the first contact action, and lists Tuesday–Saturday, 9 am–4 pm. These claims were not independently verified; the telephone link was not activated.",
+        "strength": "The prominent call block and compact form make the contact route and preparation task easy to scan together.",
+        "weakness": "The large empty area below the compact form makes the desktop composition feel top-heavy.",
+        "repair": "Rebalance the desktop vertical composition while retaining the immediately visible form.",
+        "arm": "call-board",
+        "html_sha256": "df8c6018c08a38b2137a6fbda5fb5f2aa92698076291a41986a239fa73b31217",
+        "weighted": 8.2,
+        "before": {
+          "sha256": "d05caa39994dfb9969719ec931641d35f79957f57b879fc0f33f8c88d595e4a2",
+          "file": "B-1440-before.png",
+          "tool_call_id": "item_19"
+        },
+        "after": {
+          "sha256": "4028c43ba8e084b41e512f9c8426abcb1950bfa405e865da5278232be83cfb9f",
+          "file": "B-1440-after.png",
+          "tool_call_id": "item_24"
+        },
+        "layout_width": 1440,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          },
+          {
+            "action": "text",
+            "value": "Morgan"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          }
+        ]
+      },
+      "B-390": {
+        "coherence": 8.5,
+        "originality": 7.5,
+        "craft": 8.5,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Select Glasses fitting with the keyboard, attempt an empty-name preview, enter Morgan and preview.",
+          "expected": "A clear validation recovery and a reminder retaining both inputs.",
+          "observed": "The empty submission focused the invalid name field. The preview focused the editable Morgan glasses-fitting reminder. Shift+Tab twice returned to First name, with both values retained."
+        },
+        "edge_observation": "First name and Preview reminder are visible on the initial screen. The grouped service choices are clearly part of the reminder form, and the result says nothing was sent or booked.",
+        "fact_check": "The page claims Lena Ortiz is an independent Tacoma optometrist, offers a call to 253-555-0143, and lists Tuesday–Saturday, 9 am–4 pm. Those claims were not independently verified; the call link was not activated.",
+        "strength": "Contact details, service choices and the complete form fit in the initial mobile viewport.",
+        "weakness": "The bold, condensed name and phone typography compete for attention.",
+        "repair": "Moderate one of those display treatments while keeping the phone action prominent.",
+        "arm": "call-board",
+        "html_sha256": "df8c6018c08a38b2137a6fbda5fb5f2aa92698076291a41986a239fa73b31217",
+        "weighted": 8.2,
+        "before": {
+          "sha256": "6dc55beac0eabf6d3417bdae77d66428d0cc84421846d7b1e4b26691acfdc18e",
+          "file": "B-390-before.png",
+          "tool_call_id": "item_28"
+        },
+        "after": {
+          "sha256": "7b645bde6f4be5c1a2994423d210f369019582f8cd4a759fbf83ceaa95ac8d99",
+          "file": "B-390-after.png",
+          "tool_call_id": "item_33"
+        },
+        "layout_width": 390,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          },
+          {
+            "action": "text",
+            "value": "Morgan"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          }
+        ]
+      }
+    },
+    "preference": {
+      "winner": "B",
+      "reason": "B exposes the full preparation task immediately at both widths, connects service choices directly to the form, and explicitly resolves sending and booking ambiguity in the result. Both views completed the tested keyboard and recovery flow."
+    },
+    "case": "tacoma-eye-care",
+    "verified_screens": 4,
+    "required_screens": 4,
+    "browser": "Chrome/158.0.8127.37",
+    "evaluator_thread": "01a20a5d-ddfe-7633-9e63-2c20d99c6f53",
+    "usage": {
+      "input_tokens": 943600,
+      "cached_input_tokens": 916864,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 2846,
+      "reasoning_output_tokens": 0
+    },
+    "trace_sha256": "39d4fce766798c9bc84a8958b3a3ffb1075e4627be2bee766f0fca5cdfb55cd5",
+    "browser_audit_sha256": "9d0f84bcd22b1e13cbd3e3cceab85c0785da6e1ec7130bb3cdd3e41a434131bc"
+  },
+  "promotion": "Open. Both widths scored below 9.5, one independent ballot, and no installed layout transfer has been tested."
+}
