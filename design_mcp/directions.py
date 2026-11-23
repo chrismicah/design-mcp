@@ -21,6 +21,22 @@ _TERMS = {
     "landing": ("landing", "launch", "product page", "bag", "shop", "roaster", "retail"),
 }
 
+_RECOVERY_HANDOFFS = {
+    "constraint-comparison": (
+        "Replay by keyboard at 320 and 390 px. 1. Choose a fitting option and verify its initial pickup. "
+        "2. If the brief supplies a stock update, apply it separately. Keep the old choice selected. "
+        "Show the reason, replacement measurements, pickup and an explicit replacement button together. "
+        "3. Choose the replacement. Verify that the new choice and old reason remain visible. Keep focus on "
+        "a surviving control or move it directly to the visible recovery button."
+    ),
+    "access-window": (
+        "Replay by keyboard at 320 and 390 px. 1. Choose the original route and check its estimate. "
+        "2. Change the specified entrance condition. Keep the current choice. Check its changed time margin "
+        "beside the entrance input, with the viable alternative's estimate and a dedicated button to choose it. "
+        "3. Activate that button. Give the new route and margin priority and keep focus on a visible control."
+    ),
+}
+
 _FORM_SEPARATORS = str.maketrans("-\u2010\u2011", "   ")
 _FORM_NAME = r"(?:forms?|questionnaires?|surveys?|polls?|rsvp|intake|registration|sign ?(?:in|up)|waitlist)"
 # These phrases name formats, tools or records that have already been collected.
@@ -185,6 +201,8 @@ async def direct(brief: str, surface: Surface | None = None, avoid: list[str] | 
             " At 320 × 700, check the complete short choice group and its result line from the top "
             "after keyboard and pointer selection."
         )
+    if recovery_handoff := _RECOVERY_HANDOFFS.get(choice.id):
+        output["handoff"] += " " + recovery_handoff
     return _bounded("direct", output)
 
 
