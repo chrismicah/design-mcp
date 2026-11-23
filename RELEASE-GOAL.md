@@ -119,3 +119,13 @@ The action-first empty-state direction corrected the installed routing on six be
 All 13 jobs passed at this commit. The hosted install logs verify both Git pins in each macOS 15 cell, all 16 doctor calls, and 96 stdio runs. The Chrome popup and pasted URL both saved a result. SwiftUI exposed a fifth button, while Electron cleared the occlusion with its independent clipping finding intact. The fresh geometry exports gave the same results when reviewed again with a local installed executable. Its separate public `review_page` probe returned original masked PNGs on desktop and phone and recovered in the same session after both a 404 and an unsupported URL. The display inventory still exposed only Color LCD. [Exact runs, transcripts and screenshots](evidence/benchmark-v1/release-ci-3350fea.json)
 
 The same package at `5e45952` passed the new hosted `review_page` success case and its recovery checks on both widths. The isolated worklist trial improved brief-only routing and won its single held-out visual comparison. Its 8.10 maximum leaves the 9.5 gate open. [Hosted visual run](https://github.com/chrismicah/design-mcp/actions/runs/45160030518) · [Worklist comparison](EVALS.md#operational-worklist-inference-trial)
+
+### November 23 film-vault study and source review
+
+Five blind live rounds and a fresh comparison tracked the shared ruler,
+motion clipping, phone type scale, and the shelf alternative. The highest
+single ballot was 8.45 at both widths. The confirmation critic preferred
+the explicitly labeled excess in the next revision and scored it 8.09
+desktop and 7.97 phone. The visual bar remains open. The daily workflow
+retrieves the dated Japanese award winner and remains on the pull request
+branch. [Vault comparison](EVALS.md#vault-contact-strip-study) · [Source and concept research](research/CREATIVE-ROUNDS.md#november-23--when-the-visual-device-earns-its-place)

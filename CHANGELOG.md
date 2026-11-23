@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+- Fetch Japan's dated MUUUUU.ORG winner in the daily design report. The live report found RE:SHAPE alongside both existing award sources. Added an early-frame motion check to the design workflow after the vault study exposed mobile clipping. [Source and critique notes](research/CREATIVE-ROUNDS.md#november-23--when-the-visual-device-earns-its-place)
+
 - Exercise successful `review_page` calls over stdio in the hosted public URL workflow. Verify original masked PNGs at both widths and recovery after an HTTP 404 and an unsupported address.
 
 - Count a creative pivot that misses the best score toward the stopping rule. A verified interaction can distinguish the new premise while its visual score still falls short. [Series verifier](evals/vision/rubric.md#verify-a-creative-series)

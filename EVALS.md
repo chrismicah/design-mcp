@@ -456,3 +456,32 @@ A fresh independent critic reached and used Save and Remove by keyboard in both 
 Two clean installs replayed the 36 frozen briefs with the surface omitted. Requiring an operational worklist, an exception, and a triage action improved dashboard routing from **2/6 to 5/6** and overall surface routing from **15/36 to 18/36**. Cold chain, greenhouse, and support queue changed. All 33 other response digests matched. The source suite checked new worklist wording, lookalike landing pages and forms, and an explicit surface override.
 
 In the held-out film vault brief, both generators called `direct` once with the same brief and no hints. The control returned Object Hero and the trial returned Exception First. An independent critic isolated the humid vault and restored the list with the keyboard at both widths. The result improved from **7.15 to 8.10 desktop** and **6.70 to 8.10 phone**. Only the trial kept Vault B, its 58% reading, and the 50% limit together in the phone opening. Its exception summary pushes routine readings below the fold. A separate replay checked 18 states across 320, 390, and 1440 px. Keep the candidate isolated below the visual threshold. [Installed comparison, blind ballot, and captures](evidence/benchmark-v1/worklist-inference-vault-live.json)
+
+### Vault contact strip study
+
+The fixed brief is to recognize Vault B at 58% relative humidity against a 50% limit,
+isolate the reading, and restore the comparison. Every live review used the same
+1440 px and 390 px viewports. Fresh critics chose their keyboard inputs and
+captured the opening, filtered result, and recovery. The scores below come from
+each contemporaneous comparison.
+
+| Round | Frozen control, desktop / phone | Trial, desktop / phone | Critic's finding |
+| --- | --- | --- | --- |
+| 1. Contact strip | 7.30 / 7.10 | 8.40 / 7.15 | All readings fit on first load. The default-motion reveal clipped the filtered value on phone. This is the raw blind ballot. The original trace verifier rejected the run's builder-count configuration. |
+| 2. Move the effect behind the plot | 8.25 / 8.10 | 8.35 / 8.20 | The immediate reading stayed visible. The phone values remained small and the extra grid lines needed explanation. |
+| 3. Larger readings and one threshold | 8.10 / 7.90 | **8.45 / 8.45** | The critic preferred the simpler comparison and larger phone readings. Longer names remained untested in that ballot. |
+| 4. Show the size of the breach | 7.70 / 7.60 | 8.00 / 7.80 | The critic found the 8-point difference directly in the filtered result and preferred it to the same-session control. The mobile treatment wrapped the difference inside a narrow plot. |
+| 5. Keep the reading in its shelf slot | 8.45 / 8.25 | 7.10 / 6.90 | The explicit scope helped identify the filter. The rail did little to communicate the measurement, and its empty space squeezed the mobile result. |
+
+Round 3 leads the series by the lower of the two screen scores. Rounds 4 and 5
+fell short of that result. No round reached the 9.5 release gate. These trials
+are controlled HTML fixtures for one brief.
+
+A fresh confirmation critic preferred round 4 to round 3 by **8.09 / 7.97
+versus 7.95 / 7.95**. Round 4's exact excess was easier to act on. The
+isolated panel still needed more width on phones, and the scale lacked
+visible endpoints. Keep round 3 as the highest score recorded in the series
+and round 4 as the head-to-head preference. At 320, 390 and 1440 px, 12
+separate first-frame, mid-transition, settled and reduced-motion checks on
+round 3 kept the label and reading visible. The first run remains
+unverified by the trace checker. [Ballots, actions, and frame hashes](evidence/benchmark-v1/vault-contact-strip-live.json)

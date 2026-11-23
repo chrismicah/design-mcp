@@ -5,8 +5,8 @@ import unittest
 from urllib.parse import parse_qs, urlsplit
 
 from watch_design_sources import (
-    AWWWARDS, CSSDA, HN_API, print_report, read_awwwards, read_css_award, read_show_hn,
-    read_top_hn, source_result,
+    AWWWARDS, CSSDA, HN_API, MUUUUU, print_report, read_awwwards, read_css_award,
+    read_muuuuu_award, read_show_hn, read_top_hn, source_result,
 )
 
 
@@ -70,6 +70,31 @@ class AwwwardsTest(unittest.TestCase):
                     source_result("Awwwards", read_awwwards, TODAY, lambda _: page),
                     {"source": "Awwwards", "error": "ValueError"},
                 )
+
+
+class MuuuuuAwardTest(unittest.TestCase):
+    LINK = MUUUUU + "industry/art/123.html"
+    HEADER = (
+        '<h2 class="p-top-fv__head-txt">SITE OF THE DAY</h2><time datetime="2026-11-22"\n'
+        'class="p-top-fv__date">NOV 22,2026</time></div>'
+        f'<p class="p-top-fv__title"><a href="{LINK}" class="c-linelink">'
+        '<span class="c-linelink__txt bottom-8">Shape &amp; Type</span></a></p>'
+    )
+
+    def test_dated_winner_with_official_detail_link(self):
+        self.assertEqual(read_muuuuu_award(TODAY, {MUUUUU: self.HEADER}.__getitem__), [
+            {"title": "Shape & Type", "date": "2026-11-22", "url": self.LINK},
+        ])
+
+    def test_rejects_outside_links_and_unverified_dates(self):
+        for page in (
+            self.HEADER.replace(self.LINK, "https://example.test/industry/art/123.html"),
+            self.HEADER.replace("2026-11-22", ""),
+            self.HEADER.replace("2026-11-22", "2026-11-10"),
+            self.HEADER.replace("2026-11-22", "2026-11-23"),
+        ):
+            with self.subTest(page=page), self.assertRaises(ValueError):
+                read_muuuuu_award(TODAY, lambda _: page)
 
 
 class ShowHNTest(unittest.TestCase):

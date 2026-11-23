@@ -267,3 +267,52 @@ Astra asked for a prediction the visitor can test. Which rejected ticket can the
 Astra proposed three mechanisms. A ticket window exposes both ends of each object, a press bed makes the visitor try an alignment correction, and a marquee shows the ink layers moving relative to each other. A separate agent picked the ticket silhouette and challenged the initial artwork: small decorative rosettes could hide the error on the far end. It also corrected the physical premise. Pins keep the paper position repeatable, while alignment belongs to the print plates. The planner then revised the concept to a continuous perforated strip with six complete overprinted crosshairs and one release control. The paper and interaction share the same focal area. This probes whether the print itself can carry the evidence that Platen exposes in separate magnifications. [Planning and revision](conductor://workspace?id=74a3d728-740d-4ccc-af7a-eb3ceb641950&session=37af1aef-68ae-4f48-84e9-1c94d7af12e5) · [Independent challenge](conductor://workspace?id=74a3d728-740d-4ccc-af7a-eb3ceb641950&session=16035aa7-4a25-4396-89b1-277df55942be)
 
 The ticket's cold prediction worked at both widths. The independent critic still preferred Platen's larger artwork and said the first ticket's Release action implied approval. A second build renamed it Check, enlarged the printed crosses, and made the act name the strongest text on the strip. In that pairing, it rose from 7.55 to 8.15 on desktop and from 7.30 to 8.15 on phone. The next critic distinguished the two aligned inks after the third build put a hollow copper diamond around a teal cross. The control's two aligned shapes still merged into a single dark stroke. The revised mark shapes were a matched win. Unearned emphasis on an initially selected proof remains an issue. [Three live ballots](../EVALS.md#ticket-window-holdout)
+
+## November 23 · When the visual device earns its place
+
+The workshop asked what a visitor can discover with the main visual element.
+The answer depends on the job. A garment project can make the process of
+remaking fabric visible. A personal collection can invite visitors to inspect
+a real object. A working status display needs the exception readable during
+interaction, including the first frame after input.
+
+| Reference | What people responded to | What the live visit showed |
+| --- | --- | --- |
+| **RE:SHAPE**, Japan's MUUUUU.ORG Site of the Day for November 23 | The listing credits Yusuke Fukunaga for implementation. The credited X post returned HTTP 403 in this pass, so likes and replies remain unverified. | Fabric photographs fill a cut-out mask on desktop. The first phone capture was still in the opening sequence. Two wheel inputs reached the About content without changing the document scroll offset. The first Tab later reached the header logo at both sizes. The useful pattern is to link the interaction's material to the project's subject and give readers a direct path past it. [Award and credit](https://muuuuu.org/en/) · [Live project](https://reshape-local.com/) · [Credited post](https://x.com/f_f_y_y/status/2105893529470013711) |
+| **Twelve things**, Yash Mouje | Show HN showed 3 points and 3 comments when checked. Two readers singled out the look or interface. This is a small discussion with specific feedback. | The halftone objects and restrained monochrome form one visual system. On desktop the Side B article heading measured 41.6 CSS px. Its index link jumped directly to the article on desktop and phone, with two scroll stops captured separately. On the phone, the opening 54.4 px serif title and record artwork establish the premise before the index. Give an experimental graphic a direct text route to each useful destination. [Live project](https://yashmouje.com/record) · [Show HN](https://news.ycombinator.com/item?id=50550753) |
+| **Studio Evoxao** | Readers praised the artist's world and also reported freezes, slow hardware, and work buried behind the interface. The artist explained the layered Photoshop and 3D workflow and asked readers where they got stuck. | Both browser visits remained in the preloader through two wheel inputs and a keyboard probe. The last phone capture read 62%. Keep this as a counterexample for time to the first useful action. The captured viewport provides evidence about that visit, and aggregate performance remains unmeasured. [Artist's discussion](https://www.reddit.com/r/indieweb/comments/1y13n8e/i_made_my_portfolio_into_an_immersive_about_me/) · [Live project](https://evoxao.studio/) |
+
+The Design Creativity Bench paper measures originality, creative range, and
+appropriateness separately. Its tested models met most brief requirements
+and showed substantially less range than the human comparison set. Compare
+the shape of the design across two related briefs, as well as whether the
+current one works. Apple recommends making motion optional and keeping
+feedback brief. These sources lead to two different checks: a motif has to
+survive transfer to a novel task, and all critical information has to remain
+visible throughout the state change.
+[Design Creativity Bench](https://arxiv.org/abs/2610.11539) · [Apple HIG on motion](https://developer.apple.com/design/human-interface-guidelines/motion)
+
+The daily source script now fetches the dated MUUUUU.ORG winner. The live
+November 23 run returned RE:SHAPE alongside La boite à slides at Awwwards
+and Ethiack at CSS Design Awards. The report is a discovery queue. The browser
+visit, community response, and award are recorded separately.
+
+The independent concept panel considered a shelf marker, a splice at the
+threshold, and a shift handover that opens with the exception. The skeptic
+challenged the shelf idea because an empty slot could imply a reel had
+physically moved. The revised trial kept the B reading in its original slot
+and labeled the visible scope. A live critic found that the scarlet label was
+easy to scan, but the shelf left empty space on mobile and the rail conveyed
+no measurement. The shared ruler had a stronger reason to be there.
+[Astra 6.2 concepts](conductor://workspace?id=74a3d728-740d-4ccc-af7a-eb3ceb641950&session=18c76a8d-b031-42fb-b9b5-2f3dc44a9ea7) · [Independent concept challenge](conductor://workspace?id=74a3d728-740d-4ccc-af7a-eb3ceb641950&session=84dfd521-d055-45ee-897d-4fc0232f561f) · [Live vault comparison](../EVALS.md#vault-contact-strip-study)
+
+Awwwards' November 23 winner, **La boite à slides**, stayed in the purple
+loading screen in both initial visits. With another 12 seconds, the headline,
+moving translucent slide shapes and the quote action were visible. Two
+wheel inputs reached 1,437 px on desktop and 1,347 px on phone. The desktop
+header still exposed the quote action, and the keyboard reached it. The
+slides are legible as a creative medium, and the fixed action gives a client
+a route past the opening. The loader makes the first useful action
+unavailable in the early capture. Use both observations when deciding
+whether an expressive opening is acceptable.
+[Awwwards listing](https://www.awwwards.com/sites/la-boite-a-slide) · [Live project](https://laboiteaslides.fr/) · [Forty original viewport captures and browser metadata](../evidence/benchmark-v1/nov23-awarded-web-follow-through.json)

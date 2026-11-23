@@ -19,11 +19,13 @@ RESEARCH = (
 )
 MAX_BYTES = 256_000
 AWWWARDS_MAX_BYTES = 512_000
+MUUUUU_MAX_BYTES = 768_000
 CROSSREF_TYPES = {"journal-article", "proceedings-article", "posted-content"}
 CROSSREF_INTERVAL_SECONDS = 1.25
 HN_API = "https://hacker-news.firebaseio.com/v0"
 CSSDA = "https://www.cssdesignawards.com"
 AWWWARDS = "https://www.awwwards.com"
+MUUUUU = "https://muuuuu.org/en/"
 AWARD_LINK = re.compile(
     r'<h3\s+class="home-wotd__title">\s*<a\s+href="(/sites/[a-z0-9-]+/[0-9]+/)">([^<]+)</a>',
     re.I,
@@ -39,6 +41,14 @@ AWWWARDS_DATE = re.compile(
     re.I,
 )
 AWWWARDS_TITLE = re.compile(r'<h1\b[^>]*>([^<]+)$', re.I)
+MUUUUU_WINNER = re.compile(
+    r'<h2 class="p-top-fv__head-txt">Site of the Day</h2>\s*'
+    r'<time datetime="(\d{4}-\d{2}-\d{2})"[^>]*>[^<]*</time>\s*</div>\s*'
+    r'<p class="p-top-fv__title">\s*<a href="'
+    r'(https://muuuuu\.org/en/industry/[a-z0-9-]+/[0-9]+\.html)"[^>]*>\s*'
+    r'<span\b[^>]*>([^<]+)</span>',
+    re.I,
+)
 SHOW_HN_LOOKUP_LIMIT = 30
 TOP_HN_LOOKUP_LIMIT = 20
 SHOW_HN_WORKERS = 4
@@ -66,7 +76,8 @@ def fetch_json(url):
 
 
 def fetch_award_page(url):
-    max_bytes = AWWWARDS_MAX_BYTES if url == f"{AWWWARDS}/" else MAX_BYTES
+    byte_caps = {f"{AWWWARDS}/": AWWWARDS_MAX_BYTES, MUUUUU: MUUUUU_MAX_BYTES}
+    max_bytes = byte_caps.get(url, MAX_BYTES)
     return fetch_bytes(url, "text/html", max_bytes).decode("utf-8")
 
 
@@ -102,6 +113,17 @@ def read_awwwards(today, fetch):
     if not today - timedelta(days=7) <= published <= today:
         raise ValueError("Site of the Day date is outside the review window")
     return [lead(unescape(title[1]), published.isoformat(), AWWWARDS + link[1])]
+
+
+def read_muuuuu_award(today, fetch):
+    winner = MUUUUU_WINNER.search(fetch(MUUUUU))
+    if not winner:
+        raise ValueError("MUUUUU.ORG winner header was not found")
+    raw_date, url, title = winner.groups()
+    published = date.fromisoformat(raw_date)
+    if not title.strip() or not today - timedelta(days=7) <= published <= today:
+        raise ValueError("MUUUUU.ORG winner is incomplete or outside the review window")
+    return [lead(unescape(title), raw_date, url)]
 
 
 def read_release(repo, fetch):
@@ -241,6 +263,7 @@ def collect(today, fetch=fetch_json, pause=sleep, fetch_award=fetch_award_page):
     sources.append(source_result("Hacker News front-page visual projects", read_top_hn, today, fetch))
     sources.append(source_result("CSS Design Awards Website of the Day", read_css_award, today, fetch_award))
     sources.append(source_result("Awwwards Site of the Day", read_awwwards, today, fetch_award))
+    sources.append(source_result("MUUUUU.ORG Site of the Day", read_muuuuu_award, today, fetch_award))
     primary_error = None
     crossref_used = False
     for query in RESEARCH:
