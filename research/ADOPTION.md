@@ -11,3 +11,7 @@ Responsively opens one site at several viewport sizes. Its observable value is a
 | Real-work examples | Let a visitor try a working form, dashboard, or landing page fixture from the install guide. | Measure whether visitors who finish the fixture reach their first successful real scan. Use product recordings and exact before/after captures for a later launch. |
 
 Collect aggregate event counts only after opt-in. Exclude URLs, page text, and screenshots from telemetry. Compare the same fixtures and onboarding steps before attributing gains to a change. Keep the extension's first feedback fast and the next action legible when connection or model service is unavailable.
+
+## November 23 review signal
+
+An Awwwards entry now appears in the daily source report when its award date falls in the current review window. The exact hosted source run verified the November 23 winner after an earlier fetch error. Continue to verify the live work beyond the opening viewport. For an access notice, the paired probe found that explicit availability supports the first useful answer. Adoption still requires a held-out generation test and the independent visual threshold. [Hosted source run](https://github.com/chrismicah/design-mcp/actions/runs/45144052786/job/137588831618) · [Matched River trial](../evidence/benchmark-v1/river-access-captions-live.json)

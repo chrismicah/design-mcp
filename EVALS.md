@@ -383,3 +383,7 @@ The follow-up adds a paired check for a pivot after two non-improving rounds. Si
 ### Desk-ledger form study
 
 The live keyboard journey covered empty validation, Elm confirmation and editing to Oak. Both comparisons improved against their own contemporaneous control. The two score pairs were 7.05 → 8.00 at both widths, then 7.20 → 7.55 desktop and 7.20 → 7.65 phone. The critics pointed to a clearer permit result in the first pass and clearer input affordance in the second. The latter still made a read-only field look editable. These are local design probes outside the frozen MCP retrieval benchmark. [Matched ballots](evidence/benchmark-v1/library-desk-ledger-live.json)
+
+### River access choices
+
+A resident deciding when both ferry and footbridge are available can now read “2 m” and both crossings together on entry. Two independent Playwriter ballots scored the caption cards **7.65 → 8.10** against frozen River round 5, then the full-width rows **8.00 → 8.35** against the cards. Each score pair held at desktop and phone widths. The 6→2 m keyboard and touch checks preserved all three closure thresholds. The rows still leave ochre highlights unexplained. These local fixtures test presentation and task clarity. The prior River finalist remains the strongest independently confirmed design. [Caption ballot](evidence/benchmark-v1/river-access-captions-live.json) · [Row ballot](evidence/benchmark-v1/river-access-rows-live.json)
