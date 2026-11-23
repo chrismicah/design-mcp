@@ -53,6 +53,8 @@ async def test_stage_turnaround_and_dispatch_get_distinct_directions():
     ("Request replacement tools.", "grouped-fieldsets"),
     ("Help volunteers file a travel reimbursement request.", "grouped-fieldsets"),
     ("Make a portfolio submission form for artists.", "grouped-fieldsets"),
+    ("Add a consultation form to the homepage. Collect name and phone.", "grouped-fieldsets"),
+    ("Create a homepage contact form with email and a message.", "grouped-fieldsets"),
     ("Give me one question on a form to check eligibility.", "question-column"),
     ("Neighbors can vote on a meeting time on their phones.", "question-column"),
     ("A sign-up asking for email only.", "question-column"),
@@ -75,6 +77,14 @@ async def test_primary_entry_task_selects_a_form(brief, expected):
 @pytest.mark.parametrize(("brief", "expected"), [
     ("A landing page with a request form in the footer.", "landing"),
     ("A signup landing page for a local club.", "landing"),
+    ("Redesign the homepage for a local practice. A short consultation form belongs below the services. "
+     "Make the site distinctive, editorial, direct and calm.", "landing"),
+    ("Design a home page with a contact form for a local clinic. Give it an editorial look.", "landing"),
+    ("Build a home-page with a callback form and clearly list the opening hours.", "landing"),
+    ("Make a mobile-friendly homepage for a local electrician, with a callback form.", "landing"),
+    ("A dashboard home page that includes a feedback form.", "dashboard"),
+    ("An editorial homepage for a journal, with a newsletter signup.", "editorial"),
+    ("A photographer's portfolio homepage with a contact form.", "portfolio"),
     ("A portfolio featuring a signup for studio news.", "portfolio"),
     ("A dashboard to review applications and survey results.", "dashboard"),
     ("A registration dashboard that includes a contact form.", "dashboard"),
