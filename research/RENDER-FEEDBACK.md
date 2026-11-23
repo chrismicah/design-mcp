@@ -18,3 +18,7 @@ Anthropic's evaluator interacts with running applications and checks the negotia
 ## Measured overhead
 
 With a warm stdio connection on the shared arm64 Mac, the trial's 30 measured replies had **2.91 ms p95** and 893 bytes of structured JSON. The same process returned the ordinary reaction at **2.68 ms p95** and 394 bytes over 30 calls. Browser work, startup and model use are outside these measurements. This records the cost of requesting the feedback. The matched repair test will establish its effect on the rendered result. [Timing samples](../evidence/benchmark-v1/opening-view-reaction-overhead.json)
+
+## Clean install replay
+
+Both pipx and uv reproduced the exact measured reply and all six unchanged reaction cases on macOS 15 with Python 3.13, on Intel and Apple Silicon. Intel passed after one rerun. The first attempt passed the default stdio checks and timed out during a combined-surface tool call. The first log leaves the tool name unknown. [Install receipts](../evidence/benchmark-v1/opening-view-reaction-installed.json) · [Hosted run](https://github.com/chrismicah/design-mcp/actions/runs/45280229322/attempts/2)

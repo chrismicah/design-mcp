@@ -1,0 +1,147 @@
+{
+  "kind": "installed",
+  "candidate": "877660c7bf464a762b6d4ef1c14c65b6fda58019",
+  "captured_html_sha256": "cc2ed1c659fba07e518b9f1e2c16687818f9d05f8c6ce8dfde7926b13aeb9f49",
+  "capture_summary_sha256": "4a48f905b422afb3b797129471f736cf0d6c22c857d0e675428cd834351190c8",
+  "old_reaction_parity": {
+    "calmer": "e53dde179ecff43358faff320844c6b802726bf3877065f21580fc29f38ec265",
+    "bolder": "e265980f0c23313144a9d9eeda0756299868f8e000ed3b7cad306f2f5647aac8",
+    "too generic": "1f31692be2620fe52bb9d0a53cf88512694326dfe0a32e7cf1d691a0e2dedf60",
+    "quieter": "e53dde179ecff43358faff320844c6b802726bf3877065f21580fc29f38ec265",
+    "more like A": "ca028fb6deb0429eb65ddf5c6202adb2247ecbc72b778fd06a49004a3c4ccb40",
+    "try anything": "173c7c168bbad02539e071816dcb7345cb33ade9513f60b59dd2e18d95eddf4c"
+  },
+  "failed_view": {
+    "width": 320,
+    "height": 700,
+    "required_controls": [
+      {
+        "label": "First name",
+        "left": 16,
+        "top": 754.5,
+        "right": 289,
+        "bottom": 802.875
+      },
+      {
+        "label": "Preview reminder",
+        "left": 16,
+        "top": 818.875,
+        "right": 186.1875,
+        "bottom": 867.65625
+      }
+    ]
+  },
+  "measured_reaction": {
+    "direction_id": "direct-consultation",
+    "keep": [
+      "primary task",
+      "project content",
+      "brand constraints",
+      "accessibility"
+    ],
+    "why": "Required controls extend beyond the measured 320 × 700 opening view.",
+    "changes": {
+      "viewport_css_px": {
+        "width": 320,
+        "height": 700
+      },
+      "clipped_controls": [
+        {
+          "label": "First name",
+          "overflow_css_px": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 103
+          }
+        },
+        {
+          "label": "Preview reminder",
+          "overflow_css_px": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 168
+          }
+        }
+      ],
+      "composition": "Use the measured overflow to set the amount of space to recover. Remove repeated content and excess space before the required controls first. Reflow the composition while preserving reading order, focus and control size.",
+      "recheck": "At the top of a fresh 320 × 700 viewport, capture the same required controls. Check their bounds, visibility and keyboard interaction before claiming a pass."
+    }
+  },
+  "healthy_view": {
+    "width": 390,
+    "height": 844,
+    "required_controls": [
+      {
+        "label": "First name",
+        "left": 16,
+        "top": 709.46875,
+        "right": 359,
+        "bottom": 757.84375
+      },
+      {
+        "label": "Preview reminder",
+        "left": 16,
+        "top": 773.84375,
+        "right": 186.1875,
+        "bottom": 822.625
+      }
+    ]
+  },
+  "healthy_reaction": {
+    "direction_id": "direct-consultation",
+    "keep": [
+      "primary task",
+      "project content",
+      "brand constraints",
+      "accessibility"
+    ],
+    "why": "All required control bounds fit in the measured 390 × 844 opening view.",
+    "changes": {}
+  },
+  "missing_measurements": {
+    "error": "Capture the opening viewport and supply the required controls' CSS pixel bounds."
+  },
+  "workflow": "https://github.com/chrismicah/design-mcp/actions/runs/45280229322",
+  "workflow_head": "6ba13c7c468b40b31768e15a284d13add722df02",
+  "install_receipts": {
+    "arm64/pipx": {
+      "host": {
+        "macos": "15.8.2",
+        "arch": "arm64",
+        "python": "3.13.17"
+      },
+      "artifact_digest": "sha256:3d59450d8b08c463f365ed65407596c96affb080f7f9296a5209355daff7e076",
+      "receipt_sha256": "d2854d6a1f2e7ebf4f4d952ca3b06a2f572b7fb1d0398e4ba0ae0e44d2964968"
+    },
+    "arm64/uv": {
+      "host": {
+        "macos": "15.8.2",
+        "arch": "arm64",
+        "python": "3.13.17"
+      },
+      "artifact_digest": "sha256:3d59450d8b08c463f365ed65407596c96affb080f7f9296a5209355daff7e076",
+      "receipt_sha256": "0df05afc405353742444e6c14326b576aa75be62ecae95e8db5a1514a52d4f63"
+    },
+    "x86_64/pipx": {
+      "host": {
+        "macos": "15.7.9",
+        "arch": "x86_64",
+        "python": "3.13.15"
+      },
+      "artifact_digest": "sha256:840c20dfc70c7d22ef6be8219a52d64db4fe34ccfd59f3b53bf394b58d67da16",
+      "receipt_sha256": "2ac69f09376421a948e6c2d2c4b944d84c4238bf0b99891c35cd1439d4bd7b36"
+    },
+    "x86_64/uv": {
+      "host": {
+        "macos": "15.7.9",
+        "arch": "x86_64",
+        "python": "3.13.15"
+      },
+      "artifact_digest": "sha256:840c20dfc70c7d22ef6be8219a52d64db4fe34ccfd59f3b53bf394b58d67da16",
+      "receipt_sha256": "de8af89ab5f67084e5e05e5fcf41a222b58ca3abd0d8eaf59abf4cba80a8360c"
+    }
+  },
+  "complete_architecture_pair": true
+}
