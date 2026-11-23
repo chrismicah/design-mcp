@@ -4,6 +4,10 @@
 
 ## Unreleased
 
+- Added a daily public design review with recent Show HN demos, research papers, and current award feeds. [Source review](DESIGN-HARNESS.md#recurring-improvement)
+
+- Kept full-resolution review frames when the original PNG is larger than the critic client's image limit. The evaluator can send lossless WebP and verify every decoded pixel against the PNG. [Transport proof](evidence/benchmark-v1/fieldglass-capture-transport.json)
+
 - Consolidated the checkout and installed server on one implementation. `server.py` still launches the legacy surface for historical client configs. Source tests exercise the installed implementation. Removed 14 duplicate tracked data files. Historical maintenance scripts can stage writable copies without overwriting existing work. [Migration](README.md#existing-source-checkout-configurations)
 
 - Retry active-tab review if fields move or appear between the two layout readings. Chrome sends the capture to the local reviewer only after its field positions and viewport agree.
