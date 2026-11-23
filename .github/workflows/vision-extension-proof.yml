@@ -14,6 +14,7 @@ on:
       - 'design_mcp/cli.py'
       - 'evals/vision/extension_smoke.mjs'
       - 'evals/vision/chrome_x11.sh'
+      - 'evals/vision/locate_toolbar_marker.py'
       - 'evals/vision/popup_capture.test.cjs'
       - 'pyproject.toml'
       - '.github/workflows/vision-extension-proof.yml'
@@ -40,7 +41,7 @@ jobs:
         shell: bash
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq --no-install-recommends xvfb xauth xdotool openbox x11-utils
+          sudo apt-get install -y -qq --no-install-recommends xvfb xauth xdotool openbox x11-utils scrot
           python -m venv "$RUNNER_TEMP/design-review"
           "$RUNNER_TEMP/design-review/bin/python" -m pip install . 'pillow>=11,<13'
           curl -fsSL https://storage.googleapis.com/chrome-for-testing-public/158.0.8127.36/linux64/chrome-linux64.zip -o "$RUNNER_TEMP/chrome.zip"
@@ -54,12 +55,17 @@ jobs:
           chrome="$RUNNER_TEMP/browser/chrome-linux64/chrome"
           proof="$RUNNER_TEMP/extension-proof"
           cp -R "$("$cli" review --extension-path | head -1)" "$extension"
-          python - "$extension/manifest.json" <<'PY'
+          "$RUNNER_TEMP/design-review/bin/python" - "$extension/manifest.json" <<'PY'
           from pathlib import Path
+          from PIL import Image, ImageDraw
           import json, sys
           path = Path(sys.argv[1])
           manifest = json.loads(path.read_text())
-          manifest['commands'] = {'_execute_action': {'suggested_key': {'default': 'Ctrl+Shift+Y'}}}
+          icon = path.with_name('ci-toolbar-marker.png')
+          image = Image.new('RGBA', (16, 16), (18, 36, 56, 255))
+          ImageDraw.Draw(image).rectangle((2, 2, 13, 13), fill=(246, 27, 177, 255))
+          image.save(icon)
+          manifest['action']['default_icon'] = {'16': icon.name}
           path.write_text(json.dumps(manifest))
           PY
           mkdir -p "$RUNNER_TEMP/browser-bin"
@@ -80,7 +86,7 @@ jobs:
           assert proof['profileHistoryVerified'], proof
           activations = proof['toolbarActivations']
           assert [item['flow'] for item in activations] == ['active tab', 'pasted URL'], activations
-          assert all(1 <= len(item['attempts']) <= 2 for item in activations), activations
+          assert all(item['method'] == 'toolbar-click' and len(item['point']) == 2 for item in activations), activations
           assert len({item['windowId'] for item in activations}) == 1, activations
           assert len({item['targetId'] for item in activations}) == 2, activations
           preview = Path(proof['previewFolder'])

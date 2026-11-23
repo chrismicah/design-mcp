@@ -203,3 +203,11 @@ and records bounded retries when no popup appears. The pasted-URL path
 also verifies that it opens a fresh popup after the first one closes.
 Both journeys still have to save a review and pass the masking and keyboard
 checks. [Failed job and receipt](https://github.com/chrismicah/design-mcp/actions/runs/45164010853/job/137656215286)
+
+The shortcut reached the fixture window on the next two runs. One run
+saw a popup that disappeared before the first idle observation, and the
+managed X11 run saw no usable popup. The hosted test now invokes the
+installed action with a real click on a visible test icon. Keyboard
+input still exercises scan, host recovery, both preview paths and saved
+result navigation. The alternate invocation adds no site access and
+leaves the shipped extension untouched. [Transient popup](https://github.com/chrismicah/design-mcp/actions/runs/45164436421) · [Managed X11 shortcut attempt](https://github.com/chrismicah/design-mcp/actions/runs/45164909456)

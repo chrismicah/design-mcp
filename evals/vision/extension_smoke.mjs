@@ -23,12 +23,20 @@ host.listen(0, "127.0.0.1");
 await once(host, "listening");
 const fixtureUrl = `http://127.0.0.1:${host.address().port}/dispatch`;
 const profile = join(output, "chrome-profile");
+const extensionPath = await realpath(extension);
+// Chromium derives an unpacked extension ID from the first 16 SHA-256 bytes of its path.
+const expectedExtensionId = [...createHash("sha256").update(extensionPath).digest("hex").slice(0, 32)]
+  .map(digit => String.fromCharCode(97 + parseInt(digit, 16))).join("");
+await mkdir(join(profile, "Default"), { recursive: true });
+await writeFile(join(profile, "Default", "Preferences"), JSON.stringify({
+  extensions: { pinned_extensions: [expectedExtensionId] },
+}));
 const debugLog = openSync(join(output, "browser.log"), "w");
 const browser = spawn(chrome, [
   `--user-data-dir=${profile}`, "--no-first-run", "--no-default-browser-check",
   "--ozone-platform=x11",
   "--disable-background-networking", "--disable-sync", "--disable-component-update",
-  `--disable-extensions-except=${extension}`, `--load-extension=${extension}`,
+  `--disable-extensions-except=${extensionPath}`, `--load-extension=${extensionPath}`,
   "--remote-debugging-port=0", "--remote-debugging-address=127.0.0.1",
   "--window-size=1440,940", fixtureUrl,
 ], { stdio: ["ignore", debugLog, debugLog] });
@@ -107,7 +115,7 @@ try {
     const r = field.getBoundingClientRect();
     return {x:r.x,y:r.y,width:r.width,height:r.height,viewport:[innerWidth,innerHeight]};
   })()`));
-  const isPopup = item => /^chrome-extension:\/\/[a-p]{32}\/popup\.html$/.test(item.url);
+  const isPopup = item => item.url === `chrome-extension://${expectedExtensionId}/popup.html`;
   proof.toolbarActivations = [];
   async function openToolbarPopup(flow) {
     await send("Target.activateTarget", { targetId: fixturePage.targetId });
@@ -125,14 +133,29 @@ try {
       }
     });
 
-    const activation = { flow, windowId, attempts: [], disappearedTargets: [] };
+    execFileSync("xdotool", ["windowactivate", "--sync", windowId], { timeout: 2000 });
+    execFileSync("xdotool", ["windowmove", "--sync", windowId, "0", "0"], { timeout: 2000 });
+    const active = execFileSync("xdotool", ["getactivewindow"], { encoding: "utf8" }).trim();
+    assert.equal(active, windowId, "Toolbar click would go to a different X11 window");
+    const geometry = execFileSync("xdotool", ["getwindowgeometry", "--shell", windowId],
+      { encoding: "utf8" });
+    const width = Number(geometry.match(/^WIDTH=(\d+)$/m)?.[1]);
+    assert.ok(width > 0, "Could not determine browser window width");
+    const activation = { flow, windowId, method: "toolbar-click", disappearedTargets: [] };
     proof.toolbarActivations.push(activation);
-    let lastAttempt = -Infinity;
+    const toolbarScreenshot = join(output, `toolbar-${flow.replaceAll(" ", "-")}.png`);
+    const locator = fileURLToPath(new URL("locate_toolbar_marker.py", import.meta.url));
+    activation.point = await until(`visible pinned extension icon for ${flow}`, () => {
+      execFileSync("scrot", ["--overwrite", toolbarScreenshot], { timeout: 2000 });
+      const point = execFileSync(join(dirname(cli), "python"), [locator, toolbarScreenshot, String(width)],
+        { encoding: "utf8", timeout: 3000 }).trim();
+      return point ? point.split(" ").map(Number) : null;
+    });
+    execFileSync("xdotool", ["mousemove", ...activation.point.map(String), "click", "1"]);
     let opening;
     return until(`toolbar popup for ${flow}`, async () => {
       const popupTarget = await findTarget(isPopup);
       if (popupTarget) {
-        assert.ok(activation.attempts.length, "The journey must open a new popup using the shortcut");
         try {
           if (opening?.targetId !== popupTarget.targetId) {
             opening = { targetId: popupTarget.targetId, session: await attach(popupTarget) };
@@ -150,17 +173,6 @@ try {
           activation.disappearedTargets.push(popupTarget.targetId);
           opening = undefined;
         }
-        return null;
-      }
-      // Give a pending shortcut time to open without a second key toggling it shut.
-      if (activation.attempts.length < 2 && performance.now() - lastAttempt >= 6000) {
-        execFileSync("xdotool", ["windowactivate", "--sync", windowId], { timeout: 2000 });
-        const active = execFileSync("xdotool", ["getactivewindow"], { encoding: "utf8" }).trim();
-        assert.equal(active, windowId, "Shortcut would go to a different X11 window");
-        const pageFocused = await inspect(fixtureSession, "document.hasFocus()");
-        activation.attempts.push({ pageFocused });
-        key("ctrl+shift+y");
-        lastAttempt = performance.now();
       }
       return null;
     }, 15000);
