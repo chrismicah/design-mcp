@@ -34,7 +34,8 @@ await writeFile(join(profile, "Default", "Preferences"), JSON.stringify({
 const debugLog = openSync(join(output, "browser.log"), "w");
 const browser = spawn(chrome, [
   `--user-data-dir=${profile}`, "--no-first-run", "--no-default-browser-check",
-  "--ozone-platform=x11",
+  // Capture the rendered Xvfb desktop with a software compositor.
+  "--ozone-platform=x11", "--disable-gpu",
   "--disable-background-networking", "--disable-sync", "--disable-component-update",
   `--disable-extensions-except=${extensionPath}`, `--load-extension=${extensionPath}`,
   "--remote-debugging-port=0", "--remote-debugging-address=127.0.0.1",
