@@ -35,12 +35,14 @@ export UV_NO_MODIFY_PATH=1
 
 "$python" -m venv "$scratch/installer"
 installer="$scratch/installer/bin"
-"$installer/python" -m pip install pipx uv "fastmcp==4.1.8; python_version < '3.11'" "fastmcp~=4.2.4; python_version >= '3.11'"
+"$installer/python" -m pip install pipx uv
 "$installer/pipx" install --python "$python" "$install_source"
 "$installer/uv" tool install --no-python-downloads --python "$python" "$install_source"
 
+pipx_python="$PIPX_HOME/venvs/design-mcp/bin/python"
+uv_python="$UV_TOOL_DIR/design-mcp/bin/python"
 if [[ $# == 4 ]]; then
-  for installed_python in "$PIPX_HOME/venvs/design-mcp/bin/python" "$UV_TOOL_DIR/design-mcp/bin/python"; do
+  for installed_python in "$pipx_python" "$uv_python"; do
     "$installed_python" -I - "$revision" <<'PY'
 from importlib.metadata import distribution
 import json
@@ -63,21 +65,25 @@ PY
   done
 fi
 
-cd "$scratch"
-for executable in "$PIPX_BIN_DIR/design-mcp" "$UV_TOOL_BIN_DIR/design-mcp"; do
+verify_installed_tool() {
+  local executable=$1 client_python=$2 report extension
   "$executable" version
   report=$(unset DESIGN_MCP_SURFACE && "$executable" doctor)
   printf '%s\n' "$report"
   grep -F "PASS interpreter — $python_minor." <<< "$report"
   grep -F 'PASS stdio tools/list — v2, 3 tools' <<< "$report"
-  (unset DESIGN_MCP_SURFACE && "$installer/python" "$checkout/scripts/smoke_design_mcp.py" "$executable" serve)
-  DESIGN_MCP_SURFACE=both "$installer/python" "$checkout/scripts/smoke_design_mcp.py" "$executable" serve
-  DESIGN_MCP_SURFACE=legacy "$installer/python" "$checkout/scripts/smoke_design_mcp.py" "$executable" serve
-  (unset DESIGN_MCP_SURFACE && "$installer/python" "$checkout/scripts/smoke_design_mcp.py" "$executable" serve --review)
-  DESIGN_MCP_SURFACE=both "$installer/python" "$checkout/scripts/smoke_design_mcp.py" "$executable" serve --review
-  DESIGN_MCP_SURFACE=legacy "$installer/python" "$checkout/scripts/smoke_design_mcp.py" "$executable" serve --review
+  (unset DESIGN_MCP_SURFACE && "$client_python" -I "$checkout/scripts/smoke_design_mcp.py" "$executable" serve)
+  DESIGN_MCP_SURFACE=both "$client_python" -I "$checkout/scripts/smoke_design_mcp.py" "$executable" serve
+  DESIGN_MCP_SURFACE=legacy "$client_python" -I "$checkout/scripts/smoke_design_mcp.py" "$executable" serve
+  (unset DESIGN_MCP_SURFACE && "$client_python" -I "$checkout/scripts/smoke_design_mcp.py" "$executable" serve --review)
+  DESIGN_MCP_SURFACE=both "$client_python" -I "$checkout/scripts/smoke_design_mcp.py" "$executable" serve --review
+  DESIGN_MCP_SURFACE=legacy "$client_python" -I "$checkout/scripts/smoke_design_mcp.py" "$executable" serve --review
   extension=$("$executable" review --extension-path | head -1)
   test -f "$extension/manifest.json"
   test -f "$extension/popup.html"
   "$executable" review-app --help >/dev/null
-done
+}
+
+cd "$scratch"
+verify_installed_tool "$PIPX_BIN_DIR/design-mcp" "$pipx_python"
+verify_installed_tool "$UV_TOOL_BIN_DIR/design-mcp" "$uv_python"
