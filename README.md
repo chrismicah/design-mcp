@@ -106,6 +106,8 @@ All eight macOS 15 clean-install jobs passed on Intel and Apple Silicon with Pyt
 
 The PR branch's work-order booking study kept the selected date and price visible at 320, 390, and 1440 px through the first draft and a one-word revision. Blind comparisons favored the revised guidance at both widths. Its package passed all 14 hosted checks at `a700f82`, including 16 macOS 15 clean installs, 96 stdio runs, both Chrome review flows, SwiftUI and Electron fixtures. [Booking comparison](evidence/benchmark-v1/booking-work-order-first.json) · [Hosted receipt](evidence/benchmark-v1/release-ci-a700f82.json) · [Exact follow-up CI at `559aee8`](evidence/benchmark-v1/release-ci-559aee8.json)
 
+The newer PR candidate at `3ef13cd` passed all 13 hosted checks. The two Chrome entry points saved previews. Fresh SwiftUI and Electron captures confirmed the native state changes, and the macOS 15 install matrix passed for both installers. [Exact candidate receipt](evidence/benchmark-v1/release-ci-3ef13cd.json)
+
 The installed `review_page` tool returned original masked PNGs at 1440 × 900 and 390 × 844. The same stdio session returned a structured error for an HTTP 404. [Installed review receipt](evidence/benchmark-v1/release-mcp-images-0978712.json)
 
 All 36 matched design briefs have blinded scores. The plain generator averaged 92.7 and frozen Design MCP v2 averaged 94.1, with 17 wins, 11 ties, and eight losses. The paired 95% interval of −0.46 to +3.13 points leaves the average advantage inconclusive. [Benchmark and receipts](EVALS.md)

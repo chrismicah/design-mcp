@@ -408,3 +408,16 @@ The independent live critic scored the ceramics signup **7.20 desktop / 7.30 pho
 The same frozen dashboard fed two fresh installed-client sessions. Both revised pages passed all 30 Chrome and Playwriter states across 320, 390, and 1440 px. Both preserve the keyboard focus, reveal 09:10 and 09:25, hide the details on reload, and keep the two queue statuses. The candidate puts the strongest fill on Bay B and echoes it on the delayed status. The control gives the timing button the strongest fill.
 
 The independently audited live comparison rose from **7.50 to 7.70** on desktop and phone. The critic preferred the candidate’s focus on the delayed bay and identified the lower-contrast timing button as its biggest weakness. The installed reply comparison covered 88 direction and reaction pairs. Only the four calm aliases for the exception-first direction changed. [Browser states, frozen inputs and independent ballot](evidence/benchmark-v1/exception-first-calmer-matched.json)
+
+### Letterpress proof comparison
+
+Five local builds use the same print task. Find the sheet where both inks align. One wrong option translates the red layer. The deceptive option rotates around the left mark, which still appears aligned. Four fresh critics used each matched pair at 1440 and 390 px. Each tested a wrong proof and recovered to the ready-to-print result. Scores use the live rubric and stay paired by critic.
+
+| Change | Desktop | Phone | Finding |
+| --- | ---: | ---: | --- |
+| Show both proof marks together | 7.30 → 7.80 | 7.30 → 7.80 | Comparison took six keyboard presses instead of nine. The artwork was familiar and its lower caption overlapped the ink bands. |
+| Intersect the ink fields and give the caption space | 7.60 → 8.25 | 7.50 → 8.15 | The new sheet reads as a single composition. The fine offsets remain small. |
+| Enlarge the paired marks and label each corner | 8.15 → 8.45 | 8.05 → 8.25 | The diagnostic marks are easier to compare. The sheet labels compete slightly with the poster, and the workshop has little editorial context. |
+| Add a control that lifts the red impression and puts it back | 7.70 → 7.80 | 7.70 → 7.60 | The interaction works. The extra toolbar pushes the lower sheet out of the phone view. Retained the larger marked proof without the toolbar. |
+
+The separate Playwriter runs captured **153 checked browser states**. They verified keyboard, touch emulation, reduced motion, correct outcomes, local operation, and fit at 320, 390 and 1440 px. The proof history remains below the two-critic 9.5 gate. The next comparison should give the artwork a curatorial context and allow close inspection inside the existing sheet area. [Frozen HTML hashes and four live ballots](evidence/benchmark-v1/letterpress-live-comparisons.json)

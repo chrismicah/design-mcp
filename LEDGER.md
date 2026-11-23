@@ -226,3 +226,11 @@ One bounded Astra 6.2 planning session defined the paired pivot test. One indepe
 
 - Two fresh GPT-6.1 Terra low live critics used 29,885 and 41,332 uncached input tokens, plus 2,612 and 2,583 output tokens. The matched gains were 0.45 for explicit captions and 0.35 for the row treatment at both widths. The three exact fixtures passed 24 keyboard and media frames each plus two touch states. [Card trial](evidence/benchmark-v1/river-access-captions-live.json) · [Row trial](evidence/benchmark-v1/river-access-rows-live.json)
 - The diagram-label trial used a separate GPT-6.1 Terra low review with 39,729 uncached input tokens and 2,715 output tokens. It scored 7.40 → 7.95 desktop and 7.40 → 7.75 phone in the matched ballot. The same states survived the keyboard, touch, and monochrome preflights. [Literal figure states and captures](evidence/benchmark-v1/river-access-labels-live.json)
+
+## November 23 hosted verification and letterpress prototype
+
+| Lane | Outcome | Evidence |
+| --- | --- | --- |
+| PR package and visual smoke | All 13 checks passed at `3ef13cd`, including eight clean macOS 15 targets and fresh Chrome, SwiftUI and Electron artifacts. | [Exact workflow and capture receipt](evidence/benchmark-v1/release-ci-3ef13cd.json) |
+| Native Chrome staging | The current workspace exposed only the built-in display. The BenQ-only native replay stays open for this package. | [Previously completed native walkthrough](evidence/benchmark-v1/release-native-chrome-0978712.json) |
+| Letterpress routing trial | The installed default returned an object-purchase direction on the print brief. Wording that included registration marks sent the visitor to a data-entry form. The isolated branch `design-mcp/letterpress-direction-trial` adds an exhibit direction and preserves workshop registration as a real form. | 51 direction tests passed in the trial checkout. An exact uv install of `0d4e23d` passed doctor and routed both print briefs and the registration control correctly. The matched installed generation and blind review remain separate gates. |
