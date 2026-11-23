@@ -14,6 +14,10 @@ The independent reviewer reproduced another hang when a client stopped reading b
 
 The release branch completed all 13 hosted checks again at `8b8415c`, including the eight install cells and fresh SwiftUI, Electron, Chrome toolbar, and public URL workflows. That run exercised the release runtime. [Exact checkpoint](https://github.com/chrismicah/design-mcp/commit/8b8415c27c1f6670130cd08bb4502f8aa0140782/checks)
 
+### BenQ replay availability
+
+At `8440d96`, the Mac inventory showed one attached built-in display and the browser connector was unavailable. The native replay requires the BenQ. The browser review package, CLI entry point and package metadata matched the Git objects from the earlier verified `0978712` walkthrough. [Display inventory and Git comparison](evidence/benchmark-v1/native-benq-availability-8440d96.json) · [Prior native replay](evidence/benchmark-v1/release-native-chrome-0978712.json)
+
 ## Creative verifier branch checkpoint
 
 All 13 hosted checks passed on `bb0a124`, including 16 clean installs and 96 stdio sessions on macOS 15. The hosted Chrome replay exercised active-tab and pasted-URL review, five-field masking, and the saved keyboard preview. The pasted result opened in 2.49 seconds in this run. Fresh macOS SwiftUI captures showed five reviewed controls before Reveal and six after. In Electron, Reveal cleared the occlusion finding and the seeded clipping finding remained. The installed public URL review completed at 1440 and 390 CSS px. The package source matches the README install pin. [Exact jobs and captures](evidence/benchmark-v1/release-ci-bb0a124.json)

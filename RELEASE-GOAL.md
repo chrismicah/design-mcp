@@ -129,3 +129,9 @@ the explicitly labeled excess in the next revision and scored it 8.09
 desktop and 7.97 phone. The visual bar remains open. The daily workflow
 retrieves the dated Japanese award winner and remains on the pull request
 branch. [Vault comparison](EVALS.md#vault-contact-strip-study) · [Source and concept research](research/CREATIVE-ROUNDS.md#november-23--when-the-visual-device-earns-its-place)
+
+### Program refinement and display checkpoint
+
+The two held-out program studies now have installed reruns and independent live ballots. Glasshouse retained the conflicting option and improved in the new matched comparison. Counterweight brought both options into the first phone view and lost desktop points. Both used similar art direction. The revised guidance stays on its trial branch below 9.5. [Installed and live evidence](evidence/benchmark-v1/program-choice-replay.json)
+
+Hosted Chrome passed both user journeys twice at `39f483a`, with fresh masked images and keyboard preview. The BenQ replay remains unverified. The read-only host inventory found only the built-in display, and the earlier native Chrome walkthrough used identical review, CLI, and packaging Git objects. Intel Ventura runtime and the common competitor scoreboard remain open. [Hosted repetitions](evidence/benchmark-v1/chrome-x11-software-compositor.json) · [Display and package scope](evidence/benchmark-v1/native-benq-availability-8440d96.json) · [Competitor results](teardown/COMPETITORS.md#visual-scoreboard)
