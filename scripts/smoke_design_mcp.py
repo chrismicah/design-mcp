@@ -18,7 +18,7 @@ SAMPLE = """<main>
   <div class="bg-[#ff0000]" onclick="showTicket()">Show ticket</div>
   <button>Get started</button>
 </main>"""
-CURRENT_TOOLS = {"direct", "react", "check"}
+CURRENT_TOOLS = {"direct", "react", "check", "get_component_pattern"}
 
 
 async def main():
@@ -48,6 +48,12 @@ async def main():
                 "check": (
                     {"source_code": SAMPLE},
                     lambda body: any(row["rule"] == "generic-cta" for row in body["findings"]),
+                ),
+                "get_component_pattern": (
+                    {"pattern": "image-detail"},
+                    lambda body: body["pattern"] == "image-detail" and body["media_type"] == "text/html"
+                    and "<button" in body["html"] and "aria-controls" in body["html"]
+                    and len(json.dumps(body, ensure_ascii=False).encode()) <= 5200,
                 ),
                 "search_design_patterns": (
                     {"query": "stripe", "page_type": "Dashboard", "fields": ["name", "page_type"], "limit": 1},

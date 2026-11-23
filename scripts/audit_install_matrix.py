@@ -8,7 +8,7 @@ import re
 
 
 PYTHON_MINORS = ("3.10", "3.11", "3.12", "3.13")
-DEFAULT_TOOLS = {"direct", "react", "check"}
+DEFAULT_TOOLS = {"direct", "react", "check", "get_component_pattern"}
 COMPATIBILITY_TOOLS = DEFAULT_TOOLS | {
     "search_design_patterns", "get_design_blueprint", "get_semantic_tokens",
     "get_design_taxonomy", "get_behavioral_pattern", "compare_design_approaches",

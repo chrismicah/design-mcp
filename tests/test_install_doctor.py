@@ -103,7 +103,7 @@ async def test_default_server_lists_tools_and_serves_directions_during_a_cold_lo
     monkeypatch.setattr(corpus, "cache_path", lambda: pytest.fail("Unexpected cache path lookup"))
     api = runpy.run_module("design_mcp.server", run_name="design_mcp._cold_server", alter_sys=True)
     tools = await api["mcp"].list_tools()
-    assert len(tools) == 17 and not calls
+    assert len(tools) == 18 and not calls
     search = asyncio.create_task(api["search_design_patterns"]("dashboard", limit=1))
     other_reader = asyncio.create_task(api["get_design_blueprint"](curated_pattern_data["id"]))
     try:
@@ -139,7 +139,7 @@ async def test_corrupt_cache_reaches_the_client_and_directions_still_work(tmp_pa
 
 
 @pytest.mark.parametrize(("mode", "count", "key"), [
-    ("both", 17, "direction"), ("legacy", 14, "page_types"), ("v2", 3, "direction"),
+    ("both", 18, "direction"), ("legacy", 14, "page_types"), ("v2", 4, "direction"),
 ])
 @pytest.mark.asyncio
 async def test_stdio_discovery_annotations_and_call_from_another_directory(tmp_path, monkeypatch, capfd,
@@ -181,7 +181,7 @@ async def test_curated_default_never_opens_legacy_data(monkeypatch, capsys):
     monkeypatch.setattr(corpus, "read_bundled", lambda: pytest.fail("Default checked bundled corpus"))
     monkeypatch.setattr(corpus, "cache_path", lambda: pytest.fail("Default checked legacy cache"))
     api = runpy.run_module("design_mcp.server", run_name="design_mcp._default_server", alter_sys=True)
-    assert {tool.name for tool in await api["mcp"].list_tools()} == {"direct", "react", "check"}
+    assert {tool.name for tool in await api["mcp"].list_tools()} == {"direct", "react", "check", "get_component_pattern"}
     result = await api["direct"]("Stage manager turnaround board")
     assert result["direction"]["id"] == "stage-call-sheet"
 

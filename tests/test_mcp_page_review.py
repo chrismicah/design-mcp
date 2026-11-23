@@ -23,11 +23,11 @@ def server_client(*args):
 @pytest.mark.asyncio
 async def test_opt_in_and_rejections_over_stdio():
     async with server_client() as client:
-        assert {item.name for item in await client.list_tools()} == {"direct", "react", "check"}
+        assert {item.name for item in await client.list_tools()} == {"direct", "react", "check", "get_component_pattern"}
 
     async with server_client("--review") as client:
         tools = {item.name: item for item in await client.list_tools()}
-        assert set(tools) == {"direct", "react", "check", "review_page"}
+        assert set(tools) == {"direct", "react", "check", "get_component_pattern", "review_page"}
         annotations = tools["review_page"].annotations
         assert annotations.read_only_hint and annotations.open_world_hint and not annotations.destructive_hint
 

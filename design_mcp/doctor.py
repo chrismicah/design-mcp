@@ -9,7 +9,7 @@ import sys
 from . import DEFAULT_SURFACE
 
 
-DIRECTION_TOOLS = {"direct", "react", "check"}
+DIRECTION_TOOLS = {"direct", "react", "check", "get_component_pattern"}
 LEGACY_TOOLS = {
     "search_design_patterns", "get_design_blueprint", "get_semantic_tokens", "get_design_taxonomy",
     "get_behavioral_pattern", "compare_design_approaches", "analyze_and_devibecode", "get_design_system",
@@ -128,7 +128,7 @@ async def _stdio(command, args, mode):
                     if hints.get(key) is not value:
                         raise ValueError(f"{tool.name} has an incorrect {key} annotation.")
         if mode != "legacy":
-            print("PASS direction annotations — direct, react, check")
+            print("PASS direction annotations — direct, react, check, get_component_pattern")
             name, arguments, key = "direct", {"brief": "Mobile train ticket", "surface": "mobile"}, "direction"
         else:
             name, arguments, key = "get_design_taxonomy", {}, "page_types"

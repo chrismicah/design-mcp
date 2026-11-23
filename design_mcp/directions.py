@@ -173,7 +173,8 @@ async def direct(brief: str, surface: Surface | None = None, avoid: list[str] | 
         )
     if choice.id == "artifact-inspection":
         output["handoff"] += (
-            f"Read {DETAIL_RESOURCE_URI} for an executable disclosure. Keep its activation and return behavior, "
+            f"Call get_component_pattern with pattern image-detail, or read {DETAIL_RESOURCE_URI}, to get the working disclosure. "
+            "Keep its activation and return behavior, "
             "fill slots with verified content, and style from the brief. When your client cannot read resources, "
             "use the same whole-to-detail interaction with the explanation in the opening view. "
             "If a verified crop is supplied, display it undistorted. For a normalized source point (x,y) "
