@@ -78,7 +78,8 @@ checks.serviceSelected = await alternateSelected() && await active(nativeSelect 
 checks.reachPreview = await reach(preview);
 if (checks.reachPreview) await page.keyboard.press("Enter");
 checks.emptyNameRecovery = await active(name) && await name.getAttribute("aria-invalid") === "true";
-checks.errorVisible = await page.getByText(/enter your first name/i).isVisible();
+const nameErrors = await page.getByText(/enter your first name/i).all();
+checks.errorVisible = (await Promise.all(nameErrors.map(error => error.isVisible()))).some(Boolean);
 checks.selectionAfterError = await alternateSelected();
 await page.screenshot({path: paths.invalid, animations: "disabled"});
 if (checks.emptyNameRecovery) {
