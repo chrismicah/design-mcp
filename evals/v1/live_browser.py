@@ -3,6 +3,7 @@
 import argparse
 import asyncio
 import base64
+from io import BytesIO
 from ipaddress import ip_address
 import json
 from pathlib import Path
@@ -168,6 +169,24 @@ def loopback_url(url, schemes):
     return urlunsplit((parts.scheme, netloc, parts.path or "/", parts.query, ""))
 
 
+def original_image(png):
+    """Keep a full-resolution frame within the critic client's result limit."""
+    if len(png) <= MAX_ORIGINAL_PNG_BYTES:
+        return "image/png", png
+    try:
+        from PIL import Image
+
+        with Image.open(BytesIO(png)) as raster, BytesIO() as encoded:
+            raster.convert("RGBA").save(encoded, format="WEBP", lossless=True, exact=True, method=3,
+                                        icc_profile=raster.info.get("icc_profile"))
+            webp = encoded.getvalue()
+    except (ImportError, OSError, KeyError, ValueError):
+        return None
+    if len(webp) <= MAX_ORIGINAL_PNG_BYTES:
+        return "image/webp", webp
+    return None
+
+
 class LiveBrowser:
     def __init__(self, config):
         self.cdp = loopback_url(config["cdp"], {"ws", "wss"})
@@ -243,7 +262,8 @@ state.journeyActivated = true;
                 if not png.startswith(b"\x89PNG\r\n\x1a\n"):
                     raise ValueError("Missing screenshot evidence")
                 record.update(path=path.name, sha256=sha256(png))
-                if self.original_capture and len(png) > MAX_ORIGINAL_PNG_BYTES:
+                original = original_image(png) if self.original_capture else None
+                if self.original_capture and original is None:
                     path.with_suffix(".pending").replace(path)
                     self.audit({**record, "status": "error", "reason": "capture-too-large"})
                     return ToolResult(content=[TextContent(
@@ -251,14 +271,19 @@ state.journeyActivated = true;
                         text="The full-size screenshot exceeds the review client's image limit. "
                              "The original was archived. Mark this view unscored.",
                     )], is_error=True)
-                if self.original_capture:
-                    image = ImageContent(type="image", data=base64.b64encode(png).decode("ascii"),
-                                         mimeType="image/png")
+                if original is not None:
+                    mime_type, encoded = original
+                    image = ImageContent(type="image", data=base64.b64encode(encoded).decode("ascii"),
+                                         mimeType=mime_type)
+                    if mime_type != "image/png":
+                        record["transport"] = {"mime_type": mime_type, "sha256": sha256(encoded)}
                 elif len(images) == 1:
                     image = images[0]
                 else:
                     raise ValueError("Missing preview image")
                 metadata = {**output, "path": path.name, "sha256": record["sha256"]}
+                if "transport" in record:
+                    metadata["transport"] = record["transport"]
                 output = ToolResult(content=[TextContent(type="text", text=json.dumps(metadata)), image])
                 path.with_suffix(".pending").replace(path)
             self.audit(record)

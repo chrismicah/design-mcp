@@ -1,4 +1,5 @@
 import base64
+from io import BytesIO
 import struct
 
 import pytest
@@ -33,6 +34,42 @@ def test_capture_must_be_the_same_png_sent_to_the_critic(tmp_path):
     image["data"] = base64.b64encode(prefix + b"other pixels").decode()
     with pytest.raises(AssertionError, match=label):
         screenshot(tmp_path, "A", 390, "before", indexed, [call])
+
+
+def test_large_capture_can_use_lossless_pixel_verified_webp(tmp_path, monkeypatch):
+    image_module = pytest.importorskip("PIL.Image")
+    import live_browser
+
+    raster = image_module.new("RGBA", (390, 844), (52, 56, 61, 255))
+    raster.putpixel((0, 0), (17, 19, 21, 0))
+    buf = BytesIO()
+    raster.save(buf, format="PNG", compress_level=0)
+    original = buf.getvalue()
+    assert len(original) > live_browser.MAX_ORIGINAL_PNG_BYTES
+    mime, encoded = live_browser.original_image(original)
+    assert mime == "image/webp" and len(encoded) <= live_browser.MAX_ORIGINAL_PNG_BYTES
+    label = "A-390-before"
+    filename = f"{label}.png"
+    (tmp_path / "captures").mkdir()
+    (tmp_path / "captures" / filename).write_bytes(original)
+    row = {"page_id": "A", "path": filename, "observation": {"width": 390}, "sha256": sha256(original)}
+    image = {"type": "image", "mimeType": mime}
+    calls = [{"id": "photo", "tool": "capture", "arguments": {"label": label}, "result": {"content": [image]}}]
+    row["transport"] = {"mime_type": mime, "sha256": sha256(encoded)}
+    image["data"] = base64.b64encode(encoded).decode()
+    index, verified = screenshot(tmp_path, "A", 390, "before", {label: (1, row)}, calls)
+    assert index == 1 and verified["transport"] == row["transport"]
+
+    raster.putpixel((385, 840), (60, 60, 61, 255))
+    changed = BytesIO()
+    raster.save(changed, format="WEBP", lossless=True, exact=True)
+    row["transport"]["sha256"] = sha256(changed.getvalue())
+    image["data"] = base64.b64encode(changed.getvalue()).decode()
+    with pytest.raises(AssertionError, match=label):
+        screenshot(tmp_path, "A", 390, "before", {label: (1, row)}, calls)
+
+    monkeypatch.setattr(live_browser, "MAX_ORIGINAL_PNG_BYTES", 32)
+    assert live_browser.original_image(original) is None
 
 
 def test_arrow_key_counts_only_when_it_changes_the_checked_radio():

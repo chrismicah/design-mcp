@@ -23,6 +23,8 @@ The 14 sources below are ranked by priority for Design MCP. The middle column re
 
 **First evaluation.** Hold out entire site and template families from retrieval and tuning. Freeze the generator, assets, and token and tool-call budgets. For original briefs, randomize the order of each output pair, allow ties, and report the preference margin as **100 × (wins − losses) / all pairs**. For reference briefs, score the requested visual properties at desktop and mobile widths. For interactive briefs, check the resulting application state. Report paired differences by brief alongside actual tokens and latency. That gives the project a way to tell whether retrieval improved the design, preserved the reference, or helped a user finish the task.
 
+The November 22 creative comparison links current award winners, maker accounts, Hacker News, and social evidence to concrete tests in the exhibit. [Creative website reviews](CREATIVE-ROUNDS.md)
+
 ## Follow-ups from the recurring source scan
 
 The installed Design Library comparison found matches for 34 of 36 full briefs with hybrid search and zero with keyword search. The hybrid arm also returned three results for a nonsense query. For a Design MCP retrieval experiment, match the requested task mechanism and platform before ranking, then test abstention against unrelated briefs. Record relevance and query latency separately from catalog hit rate. [Paired retrieval and entry sample](../teardown/COMPETITORS.md#design-library-keyword-and-hybrid-on-one-install)

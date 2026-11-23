@@ -4,6 +4,7 @@ import argparse
 import base64
 from decimal import Decimal
 import hashlib
+from io import BytesIO
 import json
 from pathlib import Path
 import re
@@ -40,9 +41,24 @@ def screenshot(run, page, width, suffix, captures, calls):
     assert len(matching) == 1, label
     tool_call = matching[0]
     images = [block for block in tool_call["result"]["content"] if block["type"] == "image"]
-    assert len(images) == 1 and images[0]["mimeType"] == "image/png", label
-    assert base64.b64decode(images[0]["data"], validate=True) == raw, label
-    return index, {"sha256": row["sha256"], "file": row["path"], "tool_call_id": tool_call["id"]}
+    assert len(images) == 1, label
+    image = images[0]
+    payload = base64.b64decode(image["data"], validate=True)
+    evidence = {"sha256": row["sha256"], "file": row["path"], "tool_call_id": tool_call["id"]}
+    transport = row.get("transport")
+    if transport is None:
+        assert image["mimeType"] == "image/png" and payload == raw, label
+    else:
+        assert image["mimeType"] == "image/webp", label
+        assert transport == {"mime_type": "image/webp", "sha256": sha256(payload)}, label
+        from PIL import Image
+
+        with Image.open(BytesIO(raw)) as source, Image.open(BytesIO(payload)) as decoded:
+            assert decoded.format == "WEBP" and decoded.size == source.size, label
+            assert decoded.info.get("icc_profile") == source.info.get("icc_profile"), label
+            assert decoded.convert("RGBA").tobytes() == source.convert("RGBA").tobytes(), label
+        evidence["transport"] = transport
+    return index, evidence
 
 
 def edge_actions(rows, after):

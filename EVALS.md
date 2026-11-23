@@ -268,3 +268,11 @@ The final pricing ballot scored Design MCP **9.00 desktop and 8.90 mobile**, ver
 **Pilot outcome.** Zero of two Design MCP cases met 9.5 across both viewports on the first draft or within two reactions. Retain the final dashboard and pricing drafts as the strongest verified revisions of these two cases. The remaining 22 cases stay sealed pending a qualifying candidate. [Pilot contract](PLAN.md#13-simulated-non-designer-pilot)
 
 The new cold-storage operations queue brief selected the landing direction in the pinned package. An experimental router change selected the dashboard direction and preserved all 36 frozen replies and the landing-page control through stdio. A separate direction change sets the exception ID above the delay in the hierarchy and keeps the reversal action in place. The comparison with the original direction and the same fixed router remains open. [Two-field change and stdio parity](evidence/benchmark-v1/exception-focus-repair-parity.json)
+
+## Fieldglass visual studies
+
+An independent critic exercised a two-specimen exhibit by keyboard at 1440 and 390 CSS px. Mineral-paper scored **8.30 on desktop and mobile**. Projection blue scored **7.70 at both widths**. Both recovered the full specimen and reached the in-page catalog link. The projection reveal briefly showed a narrow strip after the caption had changed. [Audited four-view ballot](evidence/benchmark-v1/fieldglass-single-plate-blind.json)
+
+The next build put both real etched photographs on the opening screen. Playwriter checked 15 originals at 1440, 390 and 320 px, the selected accession, full and etched images, keyboard focus, reload, catalog navigation, and a 240 ms seam change with both images present. Its first live ballot could not deliver the 1,104,534-byte desktop frame and remains unscored. The harness encodes that exact 1440 × 900 raster in 677,658 bytes of lossless WebP and retains the original PNG. The verification compares all decoded RGBA pixels and the color profile. [Transport proof](evidence/benchmark-v1/fieldglass-capture-transport.json) · [Research and art direction](research/CREATIVE-ROUNDS.md)
+
+These studies are prototype comparisons. The package-quality baseline and the 9.5 release requirement remain unchanged.
