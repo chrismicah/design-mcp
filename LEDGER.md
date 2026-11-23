@@ -215,3 +215,4 @@ One bounded Astra 6.2 planning session defined the paired pivot test. One indepe
 ### River access choices
 
 - Two fresh GPT-6.1 Terra low live critics used 29,885 and 41,332 uncached input tokens, plus 2,612 and 2,583 output tokens. The matched gains were 0.45 for explicit captions and 0.35 for the row treatment at both widths. The three exact fixtures passed 24 keyboard and media frames each plus two touch states. [Card trial](evidence/benchmark-v1/river-access-captions-live.json) · [Row trial](evidence/benchmark-v1/river-access-rows-live.json)
+- The diagram-label trial used a separate GPT-6.1 Terra low review with 39,729 uncached input tokens and 2,715 output tokens. It scored 7.40 → 7.95 desktop and 7.40 → 7.75 phone in the matched ballot. The same states survived the keyboard, touch, and monochrome preflights. [Literal figure states and captures](evidence/benchmark-v1/river-access-labels-live.json)
