@@ -1,0 +1,389 @@
+{
+  "calibration": {
+    "coherence": 7,
+    "originality": 4,
+    "craft": 6,
+    "usability": 6,
+    "reason": "The legible intake and clear labels support the task, but the familiar layout is not especially distinctive and misplaced focus after invalid input impairs recovery."
+  },
+  "screens": {
+    "A-1440": {
+      "coherence": 8.5,
+      "originality": 7.5,
+      "craft": 8,
+      "usability": 8,
+      "primary_action": {
+        "input": "Tab and Enter for Full specimen, Etched detail and Locate features; Tab to the specimen radio and ArrowRight to Harriman.",
+        "expected": "Switch both photo views, locate the structures, and select Harriman while preserving both images.",
+        "observed": "Both images changed views and remained visible. Harriman gained the selected treatment. Locate features placed circles over the dark Pitts inclusion and crossing Harriman bands, while dimming the surrounding photos."
+      },
+      "edge_observation": "Activating About the collection caused the review browser operation to fail, so keyboard focus at the destination could not be verified.",
+      "fact_check": "The visible photographs support the inclusion and crossing-band descriptions. The accessibility tree exposed a Harriman-labeled Smithsonian link ending in nmnhmineralsciences_1021031; the destination record itself was not verified.",
+      "strength": "Large side-by-side images and accurately placed feature circles make the comparison direct.",
+      "weakness": "The locator darkens substantial parts of both photographs, and its selected-specimen effect is subtler than the locator effect.",
+      "repair": "Use lighter, less obstructive outlines and verify collection-link navigation and focus.",
+      "captures": [
+        "A-1440-before",
+        "A-1440-after"
+      ],
+      "arm": "aperture",
+      "html_sha256": "12b66ff8f9905d40997b0dd26f509e32c117d6c6414efd81774c1bc19c131b1f",
+      "weighted": 8.0,
+      "before": {
+        "sha256": "dc4cbf6761570e59c6fa331f42dcbb6af5182a1fab066231a3927c2b9569f86b",
+        "file": "A-1440-before.png",
+        "tool_call_id": "item_2",
+        "transport": {
+          "mime_type": "image/webp",
+          "sha256": "24a42ecf1dbb8fb60df83f77041689813c3abca12fbf198abf31ea96ae7d03a6"
+        }
+      },
+      "after": {
+        "sha256": "59a4075123437da580da252ad6cdfde06ca6485b60bf825a2fcd41bc79422bf6",
+        "file": "A-1440-after.png",
+        "tool_call_id": "item_12",
+        "transport": {
+          "mime_type": "image/webp",
+          "sha256": "8df2d83e81bd1ef83ad3f0c00484b7c7a0fc845c4bf6110ec6d7ad31cc371d9a"
+        }
+      },
+      "layout_width": 1425,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        }
+      ]
+    },
+    "A-390": {
+      "coherence": 8,
+      "originality": 7.5,
+      "craft": 7.5,
+      "usability": 7,
+      "primary_action": {
+        "input": "Tab and Enter through Full specimen, Etched detail and Locate features; ArrowRight from Pitts to Harriman.",
+        "expected": "Compare both textures and retain Harriman selection.",
+        "observed": "The controls worked and Harriman became selected. The photos stack at a readable width, but the complete Harriman photo falls below the initial viewport; locating features dims the surrounding images."
+      },
+      "edge_observation": "Activating About the collection caused the review browser operation to fail; destination focus was not verified.",
+      "fact_check": "Pitts's dark inclusion is obvious in the actual image. Harriman's crossing bands are visible in the shown portion, but both complete textures cannot be inspected together in the initial viewport. The museum destination was not independently checked.",
+      "strength": "The large Pitts photo makes its inclusion recognizable without the caption.",
+      "weakness": "The stacked comparison requires scrolling and loses simultaneous full-image context.",
+      "repair": "Offer a compact comparison mode that keeps both actual images legible together, with an optional enlarged view.",
+      "captures": [
+        "A-390-before",
+        "A-390-after"
+      ],
+      "arm": "aperture",
+      "html_sha256": "12b66ff8f9905d40997b0dd26f509e32c117d6c6414efd81774c1bc19c131b1f",
+      "weighted": 7.55,
+      "before": {
+        "sha256": "023aef15c22c5c9732190041293e2d07bfcd9a3f354f0fd3c36b2ee8abde7422",
+        "file": "A-390-before.png",
+        "tool_call_id": "item_21"
+      },
+      "after": {
+        "sha256": "017dd84e5c9cff8462be0e1c180762fbded733dd9a5d6b1e1e1615e80148b623",
+        "file": "A-390-after.png",
+        "tool_call_id": "item_31"
+      },
+      "layout_width": 375,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        }
+      ]
+    },
+    "B-1440": {
+      "coherence": 8.5,
+      "originality": 7,
+      "craft": 8.5,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab to Pitts, ArrowRight to Harriman, then Tab and Enter on Full specimen and Etched detail.",
+        "expected": "Select Harriman and switch the paired photographs through full and detail views.",
+        "observed": "The photo pair changed together; selecting Harriman moved the orange border to its image, updated the explanatory panel and changed the museum-record link. Both detail photos remained visible. No feature-location action was present."
+      },
+      "edge_observation": "About the collection moved focus to its section; the next Tab focused View the Harriman museum record.",
+      "fact_check": "The images visibly support a dark Pitts inclusion and angular crossing bands on Harriman. The focused link is labeled Harriman and points to Smithsonian object nmnhmineralsciences_1021031; the external record was not opened or independently verified.",
+      "strength": "The selected image border, specimen panel and record link change together without hiding either photograph.",
+      "weakness": "There is no visual locator for the specific structures, and the right-hand explanation reduces available image area.",
+      "repair": "Add an optional, non-obscuring feature locator and give the photos more space.",
+      "captures": [
+        "B-1440-before",
+        "B-1440-after"
+      ],
+      "arm": "deeper-plates",
+      "html_sha256": "8eaabf88b38dfcb710d650b1caab496a12f49752f33c2e77b828defd78c1435f",
+      "weighted": 8.05,
+      "before": {
+        "sha256": "7b8e70d72447ce19f81e091a64678e3017145169b3a98db2b72cb6946e609f4f",
+        "file": "B-1440-before.png",
+        "tool_call_id": "item_38"
+      },
+      "after": {
+        "sha256": "1ac80d25672f808293aed15f7954982f78a182047b047e5513bb78557f044b06",
+        "file": "B-1440-after.png",
+        "tool_call_id": "item_46"
+      },
+      "layout_width": 1425,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        }
+      ]
+    },
+    "B-390": {
+      "coherence": 8.5,
+      "originality": 7,
+      "craft": 8,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab to Pitts, ArrowRight to Harriman, then Tab and Enter on Full specimen and Etched detail.",
+        "expected": "Inspect both textures and leave Harriman selected in detail view.",
+        "observed": "Both photo views changed, and the selected border moved to Harriman. Both actual detail photos fit together in the captured viewport at a useful scale; the bottom caption approaches the viewport edge."
+      },
+      "edge_observation": "About the collection focused its section, and the next Tab focused the Harriman museum-record link.",
+      "fact_check": "The dark inclusion is easier to identify without the caption because of its strong contrast. Harriman's intersecting bands are visible but subtler at phone scale. The museum record destination was not independently verified.",
+      "strength": "Both real textures are simultaneously visible and readable, with selection tied to the corresponding photo.",
+      "weakness": "The small specimen metadata and captions are less comfortable to read, and no feature locator is provided.",
+      "repair": "Increase supporting text size while preserving the compact image comparison; add an optional precise locator.",
+      "captures": [
+        "B-390-before",
+        "B-390-after"
+      ],
+      "arm": "deeper-plates",
+      "html_sha256": "8eaabf88b38dfcb710d650b1caab496a12f49752f33c2e77b828defd78c1435f",
+      "weighted": 7.95,
+      "before": {
+        "sha256": "053887606749f90dbf470b73e171ea5348fd9699ad44e3e71358f31aace675c4",
+        "file": "B-390-before.png",
+        "tool_call_id": "item_54"
+      },
+      "after": {
+        "sha256": "7b276690ed7780957bad365bec22cc5263d0fe672ae2df3a5c043d648d1887e9",
+        "file": "B-390-after.png",
+        "tool_call_id": "item_62"
+      },
+      "layout_width": 375,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        }
+      ]
+    }
+  },
+  "preference": {
+    "winner": "B",
+    "reason": "B keeps both actual textures visible together at phone width, clearly connects selection to the corresponding image, and successfully moves keyboard focus from the collection link to the Harriman record link. A's locator is valuable and points to real visible structures, but its mobile layout requires scrolling to compare complete photographs and its collection-link test failed in the review browser."
+  },
+  "case": "specimen-exhibit",
+  "verified_screens": 4,
+  "required_screens": 4,
+  "browser": "Chrome/158.0.8127.36",
+  "evaluator_thread": "01a206bd-c264-7ef1-8155-cf69c089a882",
+  "usage": {
+    "input_tokens": 727321,
+    "cached_input_tokens": 688000,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2768,
+    "reasoning_output_tokens": 0
+  },
+  "trace_sha256": "d9fb368b750f00a8da5b99ae57e50004c5bbd50f298ad53651e4501cba2b665b",
+  "browser_audit_sha256": "e4b0e2fcc347db813eb4a5b39a305fece88fbfb573b32752d5580d1b230bf8ce"
+}

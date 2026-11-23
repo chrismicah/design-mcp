@@ -38,7 +38,7 @@ const page = state.page = await state.view.newPage();
 state.pageError = false;
 page.on('pageerror', () => { state.pageError = true; });
 page.on('framenavigated', frame => {
-  if (frame === page.mainFrame() && frame.url() !== url) state.pageError = true;
+  if (frame === page.mainFrame() && !isFixture(frame.url())) state.pageError = true;
 });
 await state.view.routeWebSocket('**/*', socket => socket.close());
 await state.view.route('**/*', async route => {
@@ -69,7 +69,7 @@ await page.evaluate(() => Promise.race([
 
 GUARD = """
 const guard = () => {
-  if (page.isClosed() || page.url() !== url || state.pageError || state.view.pages().length !== 1)
+  if (page.isClosed() || !isFixture(page.url()) || state.pageError || state.view.pages().length !== 1)
     throw new Error('Unexpected fixture state');
 };
 const readView = () => {
@@ -233,7 +233,10 @@ class LiveBrowser:
 
     async def run(self, row, page_id, code, path=None, command="", activation=False):
         url = self.pages[page_id]
-        inputs = f"const url = {json.dumps(url)}, includeAX = {json.dumps(path is None)};\n"
+        inputs = (
+            f"const url = {json.dumps(url)}, includeAX = {json.dumps(path is None)};\n"
+            "const isFixture = href => href.split('#', 1)[0] === url;\n"
+        )
         self.active = None
         try:
             journey = "\nconst readJourney = null, prior = null;\n"
@@ -252,8 +255,12 @@ state.journeyActivated = true;
             if result.is_error or not receipt:
                 raise ValueError("Missing live observation")
             observation = json.loads(receipt[1])
-            if observation["url"] != url:
+            observed_url, _, fragment = observation["url"].partition("#")
+            if observed_url != url:
                 raise ValueError("Unexpected destination")
+            observation["url"] = observed_url
+            if fragment:
+                observation["fragment"] = fragment
             record = {**row, "page_id": page_id, "observation": observation}
             output = {key: value for key, value in observation.items() if key not in {"journey", "journey_before"}}
             if path is not None:

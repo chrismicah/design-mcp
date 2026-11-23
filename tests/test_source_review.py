@@ -33,8 +33,8 @@ def test_source_review_exposes_a_complete_outage():
     def unavailable(url):
         raise TimeoutError
 
-    sources = collect(date(2026, 11, 21), unavailable, lambda _: None)
-    assert len(sources) == 5
+    sources = collect(date(2026, 11, 21), unavailable, lambda _: None, fetch_award=unavailable)
+    assert len(sources) == 6
     assert all(source["error"] == "TimeoutError" for source in sources)
 
 
@@ -93,13 +93,13 @@ def test_show_hn_ranks_verified_discussions_and_bounds_requests():
             return list(range(1, 101))
         item_id = int(url.rsplit("/", 1)[-1].split(".")[0])
         seen.append(item_id)
-        if item_id == 2:
+        if item_id == 28:
             raise TimeoutError
         return {"id": item_id, "type": "story", "time": when, "score": item_id * 2,
-                "title": "Show HN: Interactive specimen gallery" if item_id != 9 else "Show HN: SQL runner",
-                "deleted": item_id == 10, "url": "javascript:ignored"}
+                "title": "Show HN: Interactive specimen gallery" if item_id != 29 else "Show HN: SQL runner",
+                "deleted": item_id == 30, "url": "javascript:ignored"}
 
     leads = read_show_hn(date(2026, 11, 22), fetch)
-    assert seen == list(range(1, 11))
-    assert [lead["points"] for lead in leads] == [16, 14, 12, 10, 8]
-    assert leads[0]["url"] == "https://news.ycombinator.com/item?id=8"
+    assert sorted(seen) == list(range(1, 31))
+    assert [lead["points"] for lead in leads] == [54, 52, 50, 48, 46]
+    assert leads[0]["url"] == "https://news.ycombinator.com/item?id=27"

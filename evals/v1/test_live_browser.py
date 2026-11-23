@@ -47,8 +47,8 @@ class FakePlaywriter:
             assert "maxRedirects:0" in code and "state.view.route(" in code
             self.viewport = json.JSONDecoder().raw_decode(code.split("const viewport = ", 1)[1])[0]
             self.destination, self.value = url, ""
-        elif self.destination != url:
-            assert "page.url() !== url" in code
+        elif self.destination.partition("#")[0] != url:
+            assert "!isFixture(page.url())" in code
             raise ToolError("Unexpected fixture state")
 
         key = re.search(r"await page\.keyboard\.press\((.*)\);", code)
@@ -134,8 +134,24 @@ async def test_tool_schema_and_observed_operations(connected):
 
 
 @pytest.mark.asyncio
+async def test_same_document_anchor_preserves_evidence_and_view_identity(connected):
+    judge, relay, evidence = connected
+    await judge.call_tool("open_view", {"page_id": "A", "width": 390})
+    relay.destination = URL + "#collection"
+    result = await judge.call_tool("act", {"action": "key", "value": "Tab"})
+    assert result.data["url"] == URL
+    assert result.data["fragment"] == "collection"
+    row = json.loads((evidence / "audit.jsonl").read_text().splitlines()[-1])
+    assert row["observation"]["fragment"] == "collection"
+
+    relay.destination = URL + "?different=fixture#collection"
+    result = await judge.call_tool("act", {"action": "key", "value": "Tab"}, raise_on_error=False)
+    assert result.is_error
+
+
+@pytest.mark.asyncio
 async def test_oversized_original_is_archived_and_ineligible(config, monkeypatch):
-    monkeypatch.setattr(live_browser, "MAX_ORIGINAL_PNG_BYTES", len(PNG) - 1)
+    monkeypatch.setattr(live_browser, "MAX_ORIGINAL_PNG_BYTES", 1)
     browser = LiveBrowser({**config, "original_capture": True})
     playwriter = FakePlaywriter()
     async with Client(playwriter.server) as relay, Client(create_server(browser)) as judge:
