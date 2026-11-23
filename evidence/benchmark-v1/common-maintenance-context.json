@@ -1,0 +1,201 @@
+{
+  "scope": "Three sealed generation outputs. The visual comparison remains pending.",
+  "spec": {
+    "case": "form-maintenance",
+    "arms": [
+      "v2",
+      "shadcn",
+      "uiux-pro-max"
+    ],
+    "brief": "A tenant needs to report a broken common-area light. Collect building, location and a description, and offer Routine and Safety issue as urgency options. Make it usable by keyboard and show that the request was prepared locally after valid submission.",
+    "task": "Use the keyboard to try submitting with the required data empty. Note the actionable message or browser validation and where focus lands. Then enter Oak Court as the building, Second-floor landing as the location, and Common-area light is out as the description. Verify that Routine and Safety issue are available. Select Safety issue and submit. Verify that the visible confirmation says the request was prepared locally and check focus and any available return action. Report any differences from the exact brief. At 390 px, check for horizontal scrolling or obscured feedback. Capture -before on entry, -edge where the invalid submission is visible, and -after once a real valid submission has reached confirmation.",
+    "exploratory_shadcn_examples": [
+      "form-rhf-input",
+      "form-rhf-textarea",
+      "form-rhf-radiogroup"
+    ],
+    "browser": "Chrome/160.0.8178.0"
+  },
+  "shared_prompt": "Build the UI in the brief below. Produce one complete HTML document with inline CSS and JavaScript. Return it in a single html code fence. Keep interactions local and use only the supplied facts. Google Fonts stylesheets are allowed. Use original inline illustrations or CSS for visuals. Do not use other remote assets, imports, or calls. The review runs in Chrome at widths of 1440 and 390 pixels. Before writing HTML, retrieve relevant design context through your connected tool. For direct pass the brief verbatim as brief. For design_guidance pass the brief verbatim as query with design_system=true. For component registries retrieve one relevant component or example with a short component name. Use the returned guidance. If you cannot get a relevant result, stop. Do not write files or call other tools.\n\nBrief:\nA tenant needs to report a broken common-area light. Collect building, location and a description, and offer Routine and Safety issue as urgency options. Make it usable by keyboard and show that the request was prepared locally after valid submission.\n",
+  "source_pins": {
+    "v2_release": "f30e6ffcb7c8fab97580a353ff5b770849162594",
+    "v2_installed_source": "3350fea8beeaca85369b9dd643d8f9d961fbbfd4",
+    "v2_archive_receipt_sha256": "b77c10aa0bcae50c3a90b0b3f2de4e334d840e2d1cadc3c1d24e5a81beeddf09",
+    "v2_installed_files_matched": 50,
+    "shadcn": "shadcn@4.23.0",
+    "uiux-pro-max": "a38d04c3d5c298c851dbe5e6ee1965ee3de42cb5"
+  },
+  "generation": {
+    "v2": {
+      "usage": {
+        "input_tokens": 59265,
+        "cached_input_tokens": 52992,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 4010,
+        "reasoning_output_tokens": 0
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "design-mcp",
+          "tool": "direct",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "treatment_call": true,
+      "direct_call": true,
+      "status": "passed",
+      "case": "form-maintenance",
+      "arm": "v2",
+      "model": "gpt-6.1-terra",
+      "effort": "low",
+      "client": "codex-cli 0.170.0",
+      "prompt_sha256": "12fd372ef8ceb893d6d110b931b0eb5db38508ba800393f4faef5e245d316c14",
+      "shell_tool": false,
+      "elapsed_seconds": 81.26,
+      "exit_code": 0,
+      "trace_sha256": "a260a3781a6d1761bd10be086535eb2ef447aa0f6dfda95031d14e6675c5d210",
+      "html_sha256": "de64536b4a3d8fea9792adbd02f4ef4a5a722d2c7b6e43c0647fd1b28f5b6df0"
+    },
+    "shadcn": {
+      "usage": {
+        "input_tokens": 106859,
+        "cached_input_tokens": 75392,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 4823,
+        "reasoning_output_tokens": 0
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "shadcn",
+          "tool": "get_item_examples_from_registries",
+          "status": "completed"
+        },
+        {
+          "type": "mcp_tool_call",
+          "server": "shadcn",
+          "tool": "get_item_examples_from_registries",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "treatment_call": true,
+      "status": "shadcn-relevant-item-missing",
+      "matched_shadcn_items": [],
+      "case": "form-maintenance",
+      "arm": "shadcn",
+      "model": "gpt-6.1-terra",
+      "effort": "low",
+      "client": "codex-cli 0.170.0",
+      "prompt_sha256": "12fd372ef8ceb893d6d110b931b0eb5db38508ba800393f4faef5e245d316c14",
+      "required_shadcn_items": [
+        "field",
+        "field-demo",
+        "field-input",
+        "field-textarea",
+        "input",
+        "input-demo",
+        "radio-group",
+        "radio-group-demo",
+        "textarea",
+        "textarea-demo"
+      ],
+      "shell_tool": false,
+      "mcp_config_sha256": "899ef0eaf8ab50003d8cc06abd5559f61ff73d80a782aec4b760c85687a87ae4",
+      "elapsed_seconds": 96.21,
+      "exit_code": 0,
+      "trace_sha256": "e999b4286711571076ead67170942ca0c00b44256a212312513457984740cc1c",
+      "html_sha256": "8f9626b059efbeb172a1e89973a3a44ff89deaf3a7b7dda026ee1350638689a9"
+    },
+    "uiux-pro-max": {
+      "usage": {
+        "input_tokens": 58422,
+        "cached_input_tokens": 36736,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 5817,
+        "reasoning_output_tokens": 0
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "uiux-pro-max",
+          "tool": "design_guidance",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "treatment_call": true,
+      "status": "passed",
+      "uiux_guidance_received": true,
+      "case": "form-maintenance",
+      "arm": "uiux-pro-max",
+      "model": "gpt-6.1-terra",
+      "effort": "low",
+      "client": "codex-cli 0.170.0",
+      "prompt_sha256": "12fd372ef8ceb893d6d110b931b0eb5db38508ba800393f4faef5e245d316c14",
+      "shell_tool": false,
+      "mcp_config_sha256": "f85a155dbece9372aa49070e7e3892fea4ad01de4ea165f0bba5624de5365929",
+      "elapsed_seconds": 112.3,
+      "exit_code": 0,
+      "trace_sha256": "eab56e93cf300c84f0b86b94ed543fe7bb351c541cec328c3430418d91386e21",
+      "html_sha256": "ec1fd6c5f99336195b11b16ef82320f086e57684daf6c7faaa2c966a2c47bf8a"
+    }
+  },
+  "primary_three_arm_gate": "not eligible, shadcn missed the exact predeclared names",
+  "shadcn_exploratory_read": {
+    "first_query": {
+      "query": "form"
+    },
+    "second_query": {
+      "query": "form",
+      "registries": [
+        "@shadcn"
+      ]
+    },
+    "observed_usable_examples": {
+      "form-rhf-input": {
+        "section_sha256": "88128eae8ba74e71ef6b2e3999e25fad17759351a01d2679abd61ed8f6b20b3b",
+        "observed": [
+          "FieldLabel",
+          "FieldError",
+          "aria-invalid"
+        ]
+      },
+      "form-rhf-textarea": {
+        "section_sha256": "72ce177f4046ac1b7412a7310fe754ba5cd1841b51f4d18b13daafb4146a851c",
+        "observed": [
+          "FieldLabel",
+          "FieldError",
+          "aria-invalid"
+        ]
+      },
+      "form-rhf-radiogroup": {
+        "section_sha256": "4058f2bfc48dfaaa81b30ae35ac0cd659b654412a295417302acc889704022b3",
+        "observed": [
+          "FieldLabel",
+          "FieldError",
+          "aria-invalid"
+        ]
+      }
+    },
+    "response_sha256": "7b5e7714cc121a0f5ddc5265023e17e5b7b648573dfbc8d12c1f95c0386b6d16"
+  },
+  "registry_gate_replay": {
+    "original_status": "shadcn-relevant-item-missing",
+    "future_rule_status": "passed",
+    "unchanged_html_sha256": "8f9626b059efbeb172a1e89973a3a44ff89deaf3a7b7dda026ee1350638689a9",
+    "official_examples": [
+      "form-rhf-input",
+      "form-rhf-radiogroup",
+      "form-rhf-textarea"
+    ],
+    "missing_registry_reply_has_items": false,
+    "scope": "Post-hoc replay tests the next gate. Historical generation stays rejected under the original gate."
+  },
+  "installed_npm_lock": {
+    "version": "4.23.0",
+    "integrity": "sha512-lKgq7QPFgkV/6EOrMCwvEn7ZAw/YnM/grhxzJmK4cZdw3E4F3Ut2EmWvrn2E+vzJp1y/76mxU185OSkXo9Ff+Q=="
+  }
+}
