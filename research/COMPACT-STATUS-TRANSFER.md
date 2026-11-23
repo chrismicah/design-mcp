@@ -29,3 +29,14 @@ focus, visible local-only wording, blank-name recovery, editable
 preview, a cleared result status after keyboard return, and zero
 post-load requests. Record functional and blind results separately.
 Run a separate blind live review when the generated output passes.
+
+## Exact installed result
+
+The source comparison preserved all 48 complete unrelated replies and
+four explicit form overrides. All 73 direction tests passed. Fresh pipx
+and uv installs on macOS 15 arm64 passed doctor and the stdio matrix for
+both package pins. Both installers reproduced the complete sealed reply
+for Albany and the three earlier practice briefs on both arms. The
+installed reply is ready for paired, unedited generation. [Installed
+receipt](../evidence/benchmark-v1/compact-status-guidance-installed.json)
+[Hosted installs](https://github.com/chrismicah/design-mcp/actions/runs/45290625702)
