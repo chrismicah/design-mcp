@@ -571,3 +571,9 @@ The live comparison froze each installed trial draft as its own control. The man
 | Lift closure and last train | 7.10 → 7.80 | 6.65 → 7.80 | West's two-minute miss and Dock's ten-minute margin stay beside the keyboard switch. The warning still dominates after Groove is selected. |
 
 Each fresh critic preferred the repaired draft and tested recovery in the same visit at both widths. The controls were scored more strictly than in the previous installed comparison. Use the matched scores within these ballots. A future installed comparison must reproduce the gains before promotion. The desktop and phone scores remain below 9.5. [Original installed comparison](#installed-borrowing-and-train-access-transfer)
+
+## Common maintenance form competitor comparison
+
+One independent live reviewer exercised the same maintenance form at 1440 and 390 px for Design MCP, shadcn 4.23.0, and UI UX Pro Max. Design MCP and shadcn each scored **7.85 on both screens**. UI UX Pro Max scored **7.50 desktop / 7.35 phone**. The reviewer preferred Design MCP's grouping and focus behavior, and found its required fields unclear before the first submission.
+
+All six recorded journeys exercised an empty submission, entered the exact values, confirmed Safety issue and local preparation, and returned to the populated form with keyboard input. The archive verifies eighteen named screenshots and the generated HTML hashes. The shadcn comparison is exploratory. The registered retrieval gate missed the official input, textarea and radio-group examples found in the retained response. [Benchmarked form, reviewer ballot, and scope](evidence/benchmark-v1/common-maintenance-competitors.json)

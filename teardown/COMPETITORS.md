@@ -156,4 +156,14 @@ For saved trails, both builders made one verified context call with the original
 
 The release package and two installed competitors generated the same broken-light form with one shared prompt and GPT-6.1 Terra low. Design MCP and UI UX Pro Max used the unchanged brief with their guidance tools. Shadcn first received a missing-registry message. Its second call supplied the official registry and returned 48 examples for `form`. The exact allowlist rejected that generation before grading.
 
-The later source read found three official examples for input, textarea, and radio group in the retained response. Each includes a field label, field error component, and invalid-state hook. The next pinned comparator list includes those three explicit examples. Offline replay verified identical HTML and receipt usage, and the missing-registry response still matches zero items. The original outcome remains recorded under its original gate. Three-way visual results remain pending. [Preflight, model usage, and rule replay](../evidence/benchmark-v1/common-maintenance-context.json) · [Official registry documentation](https://ui.shadcn.com/docs/mcp)
+The later source read found three official examples for input, textarea, and radio group in the retained response. Each includes a field label, field error component, and invalid-state hook. The next pinned comparator list includes those three explicit examples. Offline replay verified identical HTML and receipt usage, and the missing-registry response still matches zero items. The original outcome remains recorded under its original gate. An exploratory visual result follows below. [Preflight, model usage, and rule replay](../evidence/benchmark-v1/common-maintenance-context.json) · [Official registry documentation](https://ui.shadcn.com/docs/mcp)
+
+### Common maintenance form live result
+
+| Arm | Desktop / 10 | Phone / 10 | Observed weakness |
+| --- | ---: | ---: | --- |
+| Design MCP | 7.85 | 7.85 | Required fields became apparent after validation. |
+| shadcn | 7.85 | 7.85 | The confirmation still said all fields were required. |
+| UI UX Pro Max | 7.50 | 7.35 | The illustration and introduction pushed the form down. |
+
+The independent critic preferred Design MCP on the tied score for its sectional hierarchy and focus on the confirmation heading. Each arm accepted the exact test values, confirmed Safety issue and local preparation, and returned to the populated form by keyboard. The browser trace measured no horizontal overflow across the six visits. The shadcn ballot is exploratory because the original response gate rejected the official examples that it retrieved. This comparison covers one brief. [Exact prompts, six live views and validation checks](../evidence/benchmark-v1/common-maintenance-competitors.json)

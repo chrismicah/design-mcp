@@ -288,3 +288,7 @@ One bounded Astra 6.2 planning session defined the paired pivot test. One indepe
 
 - Two fresh GPT‑6.1 Terra critics interacted with anonymous frozen pairs. The cabinet repair kept focus on the replacement across stock withdrawal and selection. The train repair kept West, Dock, and the direct alternative beside the closure switch. All eight repaired journeys passed the scripted browser checks. [Matched scores](EVALS.md#standalone-cabinet-and-train-recovery-repairs)
 - The receipt records each critic's token usage, the installed parent SHAs, 48 scripted captures and the independent live captures. The experiments are standalone HTML. A fresh installed replay remains required for distribution. [Hashes and full ballots](evidence/benchmark-v1/constraint-recovery-repairs.json)
+
+### Three-way common maintenance benchmark
+
+- Three Terra low generation sessions used one matching brief, prompt and client policy. They consumed 59,426 uncached input and 14,650 output tokens in total. One independent Terra low browser reviewer used 34,477 uncached input and 4,243 output tokens and completed six live views. The shadcn gate miss remains in the receipt and its grade is exploratory. [Token and capture receipts](evidence/benchmark-v1/common-maintenance-competitors.json)
