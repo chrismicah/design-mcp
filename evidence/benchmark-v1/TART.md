@@ -1,5 +1,7 @@
 # Fresh Mac verification
 
+The first fresh Tart guest booted **macOS 13.7.4 on Apple Silicon**. Both installers fetched `b868307` directly from Git with Python 3.10, 3.11, 3.12, and 3.13. The transcript audit verified eight source-pinned installs, eight `doctor` results, and 24 stdio runs covering the default and combined surfaces and the opt-in review refusal. The pinned version in the README passed the hosted macOS 15 matrix. Intel Ventura runtime coverage is still open. [Fresh Tart transcript audit](ventura-tart-b868307.json) · [Current macOS 15 matrix](release-ci-a9e1211.json)
+
 The hosted matrix covers both Mac CPU architectures on macOS 15. The shared clean-install script passed all eight hosted jobs. Use that script for each interpreter inside a fresh Tart guest. Record the image digest, guest `sw_vers`, `uname -m`, exact checkout SHA, both installer results, and the 17-tool smoke output. Tart runs on Apple Silicon. The Intel evidence comes from the hosted Intel runner. [Shared-script verification](https://github.com/chrismicah/design-mcp/actions/runs/44988412952) · [Tart documentation](https://tart.run/quick-start/)
 
 The current GitHub-hosted macOS images start at macOS 15. GitHub documents M1 hardware for the standard hosted arm64 runner. Tart 2.42.0 documents nested virtualization for Linux guests on M3 or M4 hosts running macOS 15 or later. Use an Apple Silicon Mac directly for the Ventura guest and a separate Ventura Intel Mac for the Intel runtime check. [Runner images](https://github.com/actions/runner-images#available-images) · [Runner hardware](https://docs.github.com/en/actions/reference/runners/github-hosted-runners) · [Tart 2.42.0 virtualization requirements](https://github.com/openai/tart/blob/2.42.0/docs/faq.md#nested-virtualization-support)
@@ -26,7 +28,7 @@ On the Intel Ventura test machine, use its native uv. The pinned arm64 and x86_6
 set -o pipefail
 bash scripts/verify_install_matrix.sh --check-host 13 x86_64
 bash scripts/verify_install_matrix.sh 13 x86_64 \
-  7bccfc14d4ce5652f81ee85f14bd56ee452a4aae "$(command -v uv)" "$NEW_EVIDENCE_DIRECTORY" \
+  a9e121112d6aa25315471e5c6f1401540f125e8a "$(command -v uv)" "$NEW_EVIDENCE_DIRECTORY" \
   2>&1 | tee "$MATRIX_LOG"
 ```
 
@@ -34,7 +36,7 @@ Use the Tart launcher's `guest-install.log` on arm64 and the saved terminal log 
 
 ```sh
 python3 scripts/audit_install_matrix.py 13 "$EXPECTED_ARCH" \
-  7bccfc14d4ce5652f81ee85f14bd56ee452a4aae "$MATRIX_LOG" > "$MATRIX_RECEIPT"
+  a9e121112d6aa25315471e5c6f1401540f125e8a "$MATRIX_LOG" > "$MATRIX_RECEIPT"
 ```
 
 Verify the guest reports macOS 13 before counting these results toward support on Ventura. Tart 2.42.0 requires macOS 14 or later on the host for `tart exec` and a running guest agent. The base-image template available at the upload date installs the agent through launchd. Verify the agent connection at runtime. If the pinned guest cannot boot or exposes no guest agent, preserve the failure evidence and retry on compatible hardware or a prepared image. [Host requirement](https://github.com/openai/tart/blob/2.42.0/Sources/tart/Commands/Exec.swift) · [Guest template at upload](https://github.com/cirruslabs/macos-image-templates/blob/db71c44bc1aaf11ca0db08522f6fe3c0ff1440cc/templates/base.pkr.hcl#L155-L178)

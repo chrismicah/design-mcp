@@ -1,5 +1,15 @@
 # Design MCP ledger
 
+## Release candidate verification
+
+| Lane | Outcome | Evidence |
+| --- | --- | --- |
+| Native Chrome | GPT Computer Use exercised the installed `a9e1211` active-tab and pasted-URL paths. Captures survived reload. The failure case kept the review folder unchanged and returned focus to the address field. | [Native walkthrough](evidence/benchmark-v1/release-native-chrome-a9e1211.json) |
+| Mac package and desktop CI | Exact Git pin passed 16 fresh installs across both architectures and all four Python versions on macOS 15. Fresh SwiftUI and Electron captures verified their expected state changes. Local source suite passed 543 tests and 120 subtests. | [Exact CI and artifact hashes](evidence/benchmark-v1/release-ci-a9e1211.json) |
+| Fresh Ventura guest | The arm64 Tart guest ran macOS 13.7.4. The older `b868307` candidate passed eight source-pinned installs and 24 stdio runs. | [Transcript audit](evidence/benchmark-v1/ventura-tart-b868307.json) |
+
+## Baseline audit
+
 Baseline and fetched `origin/master` both resolved to `82fe6e3749acccf80aecfd523e531be4302865e3`. The workspace branch is `chrismicah/content-quality-audit`. The first section covers work before the product-code approval gate. The audit used light local reads, local probes and public source retrieval, with no paid service or model API calls.
 
 | Lane | Model and session | Token accounting | Proof paths | Review |

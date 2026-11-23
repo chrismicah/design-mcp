@@ -7,12 +7,12 @@ Turn a brief into one sourced art direction. The response gives the coding agent
 Install the verified development build with either command. Both support an explicit `--python` option to select an installed interpreter.
 
 ```bash
-pipx install 'git+https://github.com/chrismicah/design-mcp.git@6e9a239499d46bdf50f4896dcc70f3b6c0f0b7c8'
+pipx install 'git+https://github.com/chrismicah/design-mcp.git@a9e121112d6aa25315471e5c6f1401540f125e8a'
 # or
-uv tool install 'git+https://github.com/chrismicah/design-mcp.git@6e9a239499d46bdf50f4896dcc70f3b6c0f0b7c8'
+uv tool install 'git+https://github.com/chrismicah/design-mcp.git@a9e121112d6aa25315471e5c6f1401540f125e8a'
 ```
 
-For a local checkout, pass `.` to your installer. [Candidate install matrix](https://github.com/chrismicah/design-mcp/actions/runs/45089158186)
+For a local checkout, pass `.` to your installer. [Candidate install matrix](https://github.com/chrismicah/design-mcp/actions/runs/45094147876)
 
 If Design MCP is already installed, add `--force` after `pipx install` or `uv tool install` in the matching command. Run `design-mcp doctor` and reconnect your MCP client after changing the installed version.
 
@@ -73,19 +73,14 @@ Try “calmer” after the first draft. The result adjusts focal spacing, the si
 
 ## Review an existing interface
 
-- **Critique a website with your agent.** Add `--review` to the installed MCP server's `serve` arguments to enable `review_page`. Reconnect the client and ask it to inspect the masked screenshot and layout facts. Connect Playwriter so the agent can perform a visitor task and compare the resulting screens. [Setup and example prompt](design_mcp/review/README.md#visual-critique-and-a-live-task)
-- **Paste a URL in Chrome.** Open the extension, paste the address and press **Review URL**. The result tab shows the masked capture and its first measured issue, or a summary of the checks that ran. After upgrading, reload the unpacked extension from the installed path and reconnect its local host. [Extension setup](design_mcp/review/README.md#set-up-the-extension) · [Installed Chrome test](evidence/benchmark-v1/chrome-review-url-one-submit.json)
-- **A public website.** With Playwriter 0.12.0 installed, run `design-mcp review https://example.com --playwriter`. The command uses a separate Chrome profile, saves a local preview, and reports any measured finding. [Browser setup](design_mcp/review/README.md)
-- **The active Chrome tab.** Load the extension from the folder printed by `design-mcp review --extension-path`. Open the toolbar popup, choose **Review this page**, and follow its one-time host setup. [Extension setup](design_mcp/review/README.md#set-up-the-extension)
+- **Measure the current Chrome tab or a pasted URL.** Load the folder printed by `design-mcp review --extension-path` as an unpacked extension and connect its local host once. Use **Review this page** for the active tab or **Review URL** for a pasted public address. Both paths save a masked capture. The popup reports measured overflow, covered controls, and contrast on flat backgrounds. After upgrading, reload the extension from the installed path and reconnect the local host. [Extension setup](design_mcp/review/README.md#set-up-the-extension)
+- **Ask a vision-capable MCP client for a design critique.** Add `--review` to the installed server's `serve` arguments. Reconnect and use `review_page` to give the model a masked screenshot and layout facts. Connect Playwriter so the agent can also perform a visitor task and compare the resulting screens. [Setup and example prompt](design_mcp/review/README.md#visual-critique-and-a-live-task)
+- **Capture both widths from the terminal.** With Playwriter 0.12.0 installed, run `design-mcp review https://example.com --playwriter`. The command uses a separate Chrome profile, checks the page at 1440 and 390 CSS px, and saves a local preview. [Browser setup](design_mcp/review/README.md)
 - **Your SwiftUI or Electron app.** Copy the matching exporter from this repository into your UI test project. The Swift exporter needs an XCTest target. The Electron exporter reads a supplied BrowserWindow. Run `design-mcp review-app capture.json` to check recorded clipping and hittability. [Swift exporter](integrations/desktop/SwiftCapture.swift) · [Electron exporter](integrations/desktop/electron.mjs)
 
-GPT Computer Use verified the `f17bd6f` Chrome extension on the reference Mac. It loaded the extension in a disposable profile, recovered from a missing native host, found the seeded contrast issue, switched to After by keyboard, and reopened the same preview with the field masked. Across 30 separate popup opens in the running browser, p95 was **136 ms to Scan** and **100 ms from Scan to the first finding**. These measurements use the visible controls exposed through Accessibility. The `7bccfc1` install passed the hosted public URL check at desktop and mobile widths and refused both owned private fixture targets. [Reference Mac walkthrough](evidence/benchmark-v1/reference-mac-chrome-f17bd6f.json) · [Timing receipt](evidence/benchmark-v1/chrome-reference-latency-f17bd6f.json) · [Public URL receipt](evidence/benchmark-v1/browser-public-network-7bccfc1.json)
+GPT Computer Use tested both Chrome flows with the pinned build. The active-tab scan flagged **2.6:1 contrast** and opened a saved comparison that supports keyboard access. A pasted URL returned a **1440 × 900** capture in **2.48 seconds** with five fields masked. A 404 returned focus to the address field and left the saved reviews untouched. These are single walkthrough timings. [Native Chrome receipt](evidence/benchmark-v1/release-native-chrome-a9e1211.json)
 
-On a hosted Mac, ten fresh Chrome profiles took a median **7.68 seconds** each to review the same public URL at both widths and save the local preview. All ten produced the expected masked images. [Public URL timing](evidence/benchmark-v1/public-url-paired-timing.json)
-
-GPT Computer Use tested the earlier two-step pasted-address flow on `7bccfc1`. It opened the public address form, pressed the toolbar Scan action, and reloaded the locally saved preview. The scan reported four masked fields in 184 ms after the page was already open. The same install separately captured the page with Playwriter at desktop and mobile widths. [Reference Mac proof](evidence/benchmark-v1/reference-mac-pasted-url-7bccfc1.json)
-
-GPT Computer Use also exercised the SwiftUI and Electron fixtures on the reference Mac. SwiftUI exposed a new control after Reveal, and the installed CLI counted five then six controls in the hosted geometry captures. In Electron, Tab and Return revealed the covered button. The installed CLI reviewed the fresh local captures and reported that occlusion cleared while clipping persisted. [SwiftUI evidence](evidence/benchmark-v1/reference-mac-desktop-f17bd6f.json) · [Electron evidence](evidence/benchmark-v1/reference-mac-electron-f17bd6f.json)
+The same commit passed fresh SwiftUI and Electron captures on macOS CI. SwiftUI revealed a sixth control. An Electron action cleared the covered control finding and retained the independent clipping finding. [Desktop proof and past timings](SMOKE-RECEIPTS.md)
 
 ## Compatibility
 
@@ -101,7 +96,7 @@ The new direction library and the historical pattern data have separate roles. H
 
 ## Verified results
 
-All eight macOS 15 clean-install jobs passed on Intel and Apple Silicon with Python 3.10–3.13. These runs installed a GitHub test merge with the same source tree as the pinned revision. Both installers passed `doctor`, exercised all 17 tools in combined mode and checked the opt-in browser tool's error response. An installed local copy of the pin returned masked public-page screenshots through MCP at desktop and mobile widths. Ventura dependency resolution passed on both architectures. Ventura runtime and fresh Tart verification remain open. [Candidate install matrix](https://github.com/chrismicah/design-mcp/actions/runs/45089158186) · [Installed screenshot receipt](evidence/benchmark-v1/release-initial-6e9a239.json) · [Ventura preflight](evidence/benchmark-v1/ventura-wheel-preflight.json)
+All eight macOS 15 clean-install jobs passed on Intel and Apple Silicon with Python 3.10–3.13. Both installers fetched the exact pinned Git commit, passed `doctor`, and exercised the default, historical and combined stdio surfaces with and without the optional review tool. An earlier branch build also passed the full Apple Silicon matrix in a Ventura 13.7.4 Tart guest. Intel Ventura runtime verification remains open. [Exact install and review matrix](evidence/benchmark-v1/release-ci-a9e1211.json) · [Ventura status](evidence/benchmark-v1/TART.md)
 
 All 36 matched design briefs have blinded scores. The plain generator averaged 92.7 and frozen Design MCP v2 averaged 94.1, with 17 wins, 11 ties, and eight losses. The paired 95% interval of −0.46 to +3.13 points leaves the average advantage inconclusive. [Benchmark and receipts](EVALS.md)
 

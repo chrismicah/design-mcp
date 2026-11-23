@@ -1,5 +1,13 @@
 # Design MCP live smoke
 
+## Pinned release candidate, November 22
+
+`a9e1211` passed **543 source tests and 120 subtests**, and **16 clean Git installs** across eight macOS 15 jobs. CI checked Python 3.10–3.13 on Apple Silicon and Intel, with pipx and uv in each job. Both installers ran all three stdio modes with and without `review_page`. The opt-in smoke verifies its structured refusal path. The installed Playwriter CLI reviewed the public address form at 1440 and 390 CSS px. [Exact workflows and artifacts](evidence/benchmark-v1/release-ci-a9e1211.json)
+
+A fresh uv install from the exact Git archive passed `doctor` on the reference Mac. GPT Computer Use ran the byte-verified Chrome extension and its matching local host. **Review this page** found 2.6:1 contrast in 157 ms, saved a masked Retina capture, and opened the keyboard comparison. **Review URL** reported HTTP 404 and restored focus to the URL field without creating a review. A retry with the published address produced a 1440 × 900 capture in 2.48 seconds. It reopened with the five field masks intact. The timings are individual observations. [Walkthrough and original PNG hashes](evidence/benchmark-v1/release-native-chrome-a9e1211.json)
+
+Hosted macOS fixtures produced fresh SwiftUI and Electron pixels and geometry. The SwiftUI control count changed from five to six after Reveal. The Electron action cleared occlusion while retaining the clipping finding. The exact hosted Chrome extension check ran on Linux. [Artifact hashes and linked jobs](evidence/benchmark-v1/release-ci-a9e1211.json)
+
 ## Release candidate on both architectures
 
 All eight macOS 15 jobs passed on Intel and Apple Silicon with Python 3.10–3.13. The installers fetched GitHub's test merge `1ff95a2`, which has the same tree ID as `6e9a239`. Both installers passed `doctor`, exercised the default and combined surfaces, and verified the opt-in `review_page` error response. On the reference Mac, a fresh installation from `6e9a239` returned original 1440 × 900 and 390 × 844 PNGs of the public USWDS address form with five and four masked fields respectively. Playwriter separately exercised the theatre filter and restored the full list at both widths. In a disposable headless Chrome for Testing profile, submitting the URL returned a visual result in 4.14 seconds, preserved the masked preview after reload, and recovered from a missing reviewer host. [Mac install matrix](https://github.com/chrismicah/design-mcp/actions/runs/45089158186) · [Installed browser and MCP receipt](evidence/benchmark-v1/release-initial-6e9a239.json)
