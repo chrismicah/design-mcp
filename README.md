@@ -114,6 +114,8 @@ A standalone recovery comparison scored **8.20 desktop / 7.95 phone** for choosi
 
 All 36 matched design briefs have blinded scores. The plain generator averaged 92.7 and frozen Design MCP v2 averaged 94.1, with 17 wins, 11 ties, and eight losses. The paired 95% interval of −0.46 to +3.13 points leaves the average advantage inconclusive. [Benchmark and receipts](EVALS.md)
 
+On the matched live gallery-label brief, the pinned release scored **7.85 desktop / 7.50 phone** and Storybook 10.6.0 scored **7.55 / 7.45**. Both pages passed the keyboard disclosure test. [One-brief competitor comparison](EVALS.md#storybook-gallery-disclosure)
+
 The creative workflow tests different ways to present and use the same site before refining a candidate. Each scored round requires a fresh critic who uses the live site on desktop and phone. The verifier also keeps builder and critic sessions separate across rounds. [Creative round workflow](DESIGN-HARNESS.md#creative-rounds) · [Bakery study](EVALS.md#bakery-live-comparison) · [Editorial study](EVALS.md#creative-study-verification)
 
 River's strongest fixture scored 8.85 from one critic and 8.75 from a second at both widths. A film-vault study tested five rounds and reached 8.45 at both widths in its strongest ballot. The release target is 9.5 from both critics. The daily source report collects leads from Show HN, research, and dated awards including Japan's MUUUUU.ORG. [Vault study](EVALS.md#vault-contact-strip-study) · [Festival study](EVALS.md#counterweight-festival-live-study) · [Creative research and reviews](research/CREATIVE-ROUNDS.md) · [Source review workflow](DESIGN-HARNESS.md#recurring-improvement)

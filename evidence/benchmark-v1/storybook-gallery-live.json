@@ -1,0 +1,414 @@
+{
+  "scope": "One matched gallery brief, two browser widths and one independent ballot.",
+  "spec": {
+    "case": "mobile-gallery",
+    "arms": [
+      "v2",
+      "storybook"
+    ],
+    "brief": "Build a gallery visitor screen for the room they are standing in. Room 4 displays River Wall, 1972, by Maya Chen. A button shows or hides the material note, which reads Pigment on plaster. The art label should look considered and remain easy to scan.",
+    "browser": "Chrome/160.0.8178.0",
+    "task": "Identify the room, artwork, artist, and year. Capture -before with the material note collapsed. Tab to the disclosure, then press Enter or Space to open it. Verify that Pigment on plaster is visible, the button is expanded, and keyboard focus stays on the button. Capture -after. Press Enter or Space again without changing focus. Verify the note is hidden and capture -edge. Check affordance, visual hierarchy, type, spacing, contrast, originality, and horizontal overflow."
+  },
+  "prompt": "Build the UI in the brief below. Produce one complete HTML document with inline CSS and JavaScript. Return it in a single html code fence. Keep interactions local and use only the supplied facts. Google Fonts stylesheets are allowed. Use original inline illustrations or CSS for visuals. Do not use other remote assets, imports, or calls. The review runs in Chrome at widths of 1440 and 390 pixels. Retrieve relevant context before writing HTML. For direct use the brief verbatim as the sole argument. For a project documentation catalog, get the component or story that shows a disclosure interaction. Apply the interaction with the gallery facts. If retrieval fails, report the failure. Do not write files or call other tools.\n\nBrief:\nBuild a gallery visitor screen for the room they are standing in. Room 4 displays River Wall, 1972, by Maya Chen. A button shows or hides the material note, which reads Pigment on plaster. The art label should look considered and remain easy to scan.\n",
+  "source_pins": {
+    "design_mcp_install": {
+      "release": "f30e6ffcb7c8fab97580a353ff5b770849162594",
+      "pr_head": "18b87522a49c545dd6204c20762d6fd64145d375",
+      "package_files": {
+        "design_mcp/__init__.py": "4b6e7d73f7f2fe01ae460f58c2a2ab586243e68f2528e66ec29fec48defece0d",
+        "design_mcp/cli.py": "e045323969ed6dbc8ad3a62199f7bb0a15a1464adc44875ce8c59db22ce223be",
+        "design_mcp/corpus.py": "be6772f134c2e969f521cdd7043f5729b500f045a426fea16642bcecd8c0b36f",
+        "design_mcp/data/anti_generic_system.json": "32959d994d1294b70374303ea282c347361c1a7d01b0365376e9b66aae1ac37f",
+        "design_mcp/data/anti_pattern_fixes.json": "8818108671dc8761562819a9047adeb7907714e9bfa2d23d5d27ef9c919445b0",
+        "design_mcp/data/behavioral_templates.json": "c3f3f2fbe970fc5ceb3015bc8aad9bec81f90cab7547e6893b2f30fa767e82a9",
+        "design_mcp/data/component_code.json": "1667bba1a48c0dc4df13384ea1334e02aa34614e78d7eac92e9eaa2898f29f1a",
+        "design_mcp/data/decision_trees.json": "ea0061ab858cef42f878c7fba8b2a471150cecde8f50820909222cc6185fc2c7",
+        "design_mcp/data/decision_trees_indexed.json": "a113d248ebd219781b0cf946349fd06a0d9bbcfe63d5755414736a7c81603a14",
+        "design_mcp/data/directions.json": "7e27c9b0c57c947017d80105d5689e6eeae298dfa9ddfb3df1d088489298d0f4",
+        "design_mcp/data/layout_templates.json": "cd9f616aabbd8b7cd8a87c53f363c2a93c96df8e76b1de0f6f2499481685501f",
+        "design_mcp/data/libraries.json": "64f77c98ee11772bd357b6a00892d845f1b93095feb7f6932d8a0a7275749d03",
+        "design_mcp/data/taxonomy.json": "752dd0ec6bf1c7dbdc79b3682964c875e09f47ed959b7fa44d45dcacad3ab99e",
+        "design_mcp/data/tokens/semantic_tokens.json": "36e637664b7896edfde2c6f7084a7782b1f7ad2fd39784abde7067e88cef5d27",
+        "design_mcp/data/tokens/token_sets.json": "4bdd4e0875e71eeb366d2fdc36323ee1d7522896dc87f6a9e15ba01a5c7813ac",
+        "design_mcp/data/visual_recipes.json": "ef2f8876d44e738a1de47dd7f1c8bcf07bcd9e48867e8c407dd5eb7fb753fa4d",
+        "design_mcp/database.py": "d69ab504317920277fd577fc02246eaa944d1e1952f9b2365fe0c1ab6a8c3d6e",
+        "design_mcp/design_checks.py": "556ad3a69ae2874e2aea50ff2db84fa4f9f4fa7ce7396a3e5f1a096dbed416bd",
+        "design_mcp/desktop_review.py": "56268a306ef2bf394222b0c1e1bb61e7f1beed4b049f335c54ae7a36aa66d3c5",
+        "design_mcp/direction_records.py": "ec674083df079ce8ce7579c37c26dc84612a1db76e3f7387badfb66077b5070f",
+        "design_mcp/directions.py": "428bffeb374390e011f10ce4f7026c9e3cdf0dc4760e1e309701356d0e53d8e7",
+        "design_mcp/doctor.py": "ca36aa77fcd90b10426bd3aadc2f928421cd92f7ab00c1c93c3fdf8ffbbe0a75",
+        "design_mcp/enrichment.py": "3b48d6ee002773885a5c913004296c3892d1e1f887843d4bba8577d9f9a6fba4",
+        "design_mcp/models/__init__.py": "1fcfe134b8dd13ae3d7a5ff95cfa16479e2f06cd0860cdbf186fc5bfa6d467b0",
+        "design_mcp/models/analyzer.py": "62e00840547547f25aa34f9e395d8d300c6fe8da563638372c552f3d2efdbfb1",
+        "design_mcp/models/quality_scorer.py": "c5e3ad10486f458260748e17267fae303c37a3ece5f14c30f7470fc13dc7e8de",
+        "design_mcp/models/train_scorer.py": "be6be900cb27743e9110e485211dede5d859eb602eb01aa7dbbb9d2daea83ca8",
+        "design_mcp/models/visual_analyzer.py": "74303881e8c0fae24bffd64a23508409ed07b5ed8f163fa39713b1c3d64ce735",
+        "design_mcp/palettes.py": "d2840e1a3d81ae0d7aadbfda51137eb4988646903e05c55a68d4cb23ae8bdcdf",
+        "design_mcp/resources.py": "c8279e50688eae6db2a9a5b562998347629e4a5eff39578934c1427a9fa269cb",
+        "design_mcp/review/__init__.py": "3eb559a8193dc49c195d527fe8fbdba7ed82772eda8997ee8707b7efc8756b02",
+        "design_mcp/review/address.py": "224ed5b975df8f959d9f3d44b5703193cbbb84d5b3a3b14e36c774bcdb010c22",
+        "design_mcp/review/checks.py": "78fb3eb206e0984a6e1d90ddeb4656dff0983a7957c55e2666852723ff242dee",
+        "design_mcp/review/cli.py": "cdac94a072d7ba5076e1d3e5cfe2d24e1bce65845487a0d5931c158d43260d06",
+        "design_mcp/review/direct_capture.py": "9381fa0926fee06bacc1deed9113a1aef1400ec8bc9719ce5907869abc42bf2f",
+        "design_mcp/review/evidence.py": "1c0f0881799cf80a206f93a5c18a73b07d69c660158229486e7eece84d012966",
+        "design_mcp/review/extension/collector.js": "d137cc99d85f652d5d204a83eb867bffe4e3e58002fb79b055afb71cb117e3c2",
+        "design_mcp/review/extension/manifest.json": "827bc1580d45a4c5cdb5770ce1b0ba9f69c8a1a9a3c87fa4f1120723b3e57941",
+        "design_mcp/review/extension/mask.js": "cd384a9e08104381a4fa2da57bfca445024864978e2064a38efa71ed4ac564a0",
+        "design_mcp/review/extension/popup.css": "e870c8d1351b8b5f2627f1b009e25ab5c469f6a7e48e62528b38e0c5e22a469c",
+        "design_mcp/review/extension/popup.html": "9f444dbfc73c544046a17fcd41fc8d28902a471e4440ffc0319c997744727c51",
+        "design_mcp/review/extension/popup.js": "d79f68a03e805d61740e70405ba5deca0dbcf5b7b8d9378a7f739c20a16c9771",
+        "design_mcp/review/host.py": "2a0afc74bcb75c9dd8f27737af9430c3c2ea10d1f07801a177604558d73b2206",
+        "design_mcp/review/isolated.py": "2ce72bfcd3d4d716135a8516506ccbd4de9c3260a1b00d20592dc79b9b2e60b9",
+        "design_mcp/review/network.py": "f3b2262ea03e8216de039949d9cc0da65ea35092419f3958e5844e9894b3947e",
+        "design_mcp/review/pipeline.py": "979620bc6539c220a60030213ad0fe79703099486f655da245638867abf6ba3b",
+        "design_mcp/review/preview.py": "eeca7ac9f6095c5b1c445964b5b36df9397da9b2ec481f8ec0395a822ac47cf5",
+        "design_mcp/review/tool.py": "813a31ff553a60e2e9a3b3aaffce894f9b27e234e5b553813c43e89d96f8bdc1",
+        "design_mcp/schema.py": "a819d916a43edf6f104b8a9ee99f7e5b389ca3af89d40742a44830fca6e4075c",
+        "design_mcp/server.py": "29e3fb527e3cf00530e82044117f41aedb08ff56e51fa2e15c97e5419403dbd7"
+      }
+    },
+    "storybook": "10.6.0",
+    "storybook_fixture_lock_sha256": "11d1a956efd57b2d6a9c663c5f28f10aa3017702460a8ab2f7506f8daa10bfc2",
+    "storybook_predeclared_config_sha256": "ba93325f93c2ca8003e379d31a19405c5aac798bb00ab7c95ac53ed0eb64d44b",
+    "storybook_response_text_sha256": {
+      "docs-show": "8b6769998605be245ee051b21487997f98686c0982c17501a835a6075f0ea07c",
+      "docs-show-story": "6f52db56a2cee704a977c6f8ae9941d57de1bb67cf1b80eab5507202f86f2753"
+    },
+    "storybook_probe_sha256": "84bf13bbf12a8bf4b1ff13f2986155a3d82f47743da9ac8528b99e5e3437c4eb",
+    "playwriter": "0.12.0"
+  },
+  "generation": {
+    "v2": {
+      "usage": {
+        "input_tokens": 95859,
+        "cached_input_tokens": 77312,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2224,
+        "reasoning_output_tokens": 58
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "design-mcp",
+          "tool": "direct",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "treatment_call": true,
+      "direct_call": true,
+      "status": "passed",
+      "case": "mobile-gallery",
+      "arm": "v2",
+      "model": "gpt-6.1-terra",
+      "effort": "low",
+      "client": "codex-cli 0.170.0",
+      "prompt_sha256": "e27377288e6d5e323d0c7c8574f1fdb7134249a95df25734805146925ccf1079",
+      "shell_tool": false,
+      "elapsed_seconds": 48.59,
+      "exit_code": 0,
+      "trace_sha256": "de487a612e2338c923bbf7c3816358d20ff59c8527564f8ad3e15c286cdbb2cc",
+      "html_sha256": "0ae01b51ebd85a764ad803b8c48e0f677f12156c11933706018f183f395b79d7",
+      "thread_id": "01a20920-3224-7c42-b576-2cfda4375e6d"
+    },
+    "storybook": {
+      "usage": {
+        "input_tokens": 77071,
+        "cached_input_tokens": 65664,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2023,
+        "reasoning_output_tokens": 11
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "storybook",
+          "tool": "docs-list",
+          "status": "completed"
+        },
+        {
+          "type": "mcp_tool_call",
+          "server": "storybook",
+          "tool": "docs-show",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "treatment_call": true,
+      "status": "passed",
+      "matched_response_tools": [
+        "docs-show"
+      ],
+      "case": "mobile-gallery",
+      "arm": "storybook",
+      "model": "gpt-6.1-terra",
+      "effort": "low",
+      "client": "codex-cli 0.170.0",
+      "prompt_sha256": "e27377288e6d5e323d0c7c8574f1fdb7134249a95df25734805146925ccf1079",
+      "required_response_text_sha256": {
+        "docs-show": "8b6769998605be245ee051b21487997f98686c0982c17501a835a6075f0ea07c",
+        "docs-show-story": "6f52db56a2cee704a977c6f8ae9941d57de1bb67cf1b80eab5507202f86f2753"
+      },
+      "shell_tool": false,
+      "mcp_config_sha256": "d5d0b998e3cbffc99bac5066000dda8025ccdd1a90353613d1d16534ee494aab",
+      "elapsed_seconds": 47.61,
+      "exit_code": 0,
+      "trace_sha256": "9cc5c34f0a4f2e9fe224ae0da14ce7fa36cc40d01195b000e445020afb417313",
+      "html_sha256": "9ae5a48a4db8a1c3927dedba1a62d18a9d7b4b640bea105fa50b78cdbcd3ecda",
+      "thread_id": "01a20920-325b-7521-ba14-286db7ee2311"
+    }
+  },
+  "ballot": {
+    "calibration": {
+      "coherence": 7,
+      "originality": 4,
+      "craft": 7,
+      "usability": 5,
+      "reason": "Clear labels and legibility support the task, but the familiar layout offers limited distinction and misplaced focus after invalid input is a material usability weakness."
+    },
+    "screens": {
+      "A-1440": {
+        "coherence": 8,
+        "originality": 6.5,
+        "craft": 7.5,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Tab, then Enter",
+          "expected": "Open the material note, expose expanded state, and retain focus on the disclosure.",
+          "observed": "Pigment on plaster appeared; the accessibility tree reported the button expanded, and focus remained visibly on it."
+        },
+        "edge_observation": "A second Enter hid the note and retained focus. Captures: A-1440-before, A-1440-after, A-1440-edge.",
+        "fact_check": "The view identifies Room 4, River Wall, Maya Chen, 1972. These are displayed claims; their historical accuracy was not independently verified.",
+        "strength": "The oversized title and room numeral establish a clear hierarchy; the plus and minus give the disclosure a recognizable affordance.",
+        "weakness": "The opened note sits immediately against the focus outline, and the restrained typographic treatment feels relatively familiar.",
+        "repair": "Add space between the disclosure button and its revealed text; introduce a more subject-specific visual detail without weakening the hierarchy.",
+        "overflow_and_contrast": "No horizontal overflow was apparent at the tested width; primary text and focus outline appear distinct, though contrast was not numerically measured.",
+        "arm": "storybook",
+        "html_sha256": "9ae5a48a4db8a1c3927dedba1a62d18a9d7b4b640bea105fa50b78cdbcd3ecda",
+        "weighted": 7.55,
+        "before": {
+          "sha256": "b914dd1828a867503a4601bb6432468aa701715af25b884cc98db3997b368fd2",
+          "file": "A-1440-before.png",
+          "tool_call_id": "item_2"
+        },
+        "after": {
+          "sha256": "ad1888e6c823649dbcdc43358d259f8993c5cb8814fc873b4fe3cb961ea865c9",
+          "file": "A-1440-after.png",
+          "tool_call_id": "item_5"
+        },
+        "layout_width": 1440,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge": {
+          "sha256": "e6dd9e4fd025a82a586223d7508046aac95a66d9e37d25cb8af34a00c5e8e87e",
+          "file": "A-1440-edge.png",
+          "tool_call_id": "item_7"
+        }
+      },
+      "A-390": {
+        "coherence": 8,
+        "originality": 6.5,
+        "craft": 7,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Tab, then Enter",
+          "expected": "Open the material note, expose expanded state, and retain focus on the disclosure.",
+          "observed": "Pigment on plaster appeared; the accessibility tree reported the button expanded, and focus remained visibly on it."
+        },
+        "edge_observation": "A second Enter hid the note and retained focus. Captures: A-390-before, A-390-after, A-390-edge.",
+        "fact_check": "The view identifies Room 4, River Wall, Maya Chen, 1972. Historical accuracy was not independently verified.",
+        "strength": "The room, title, artist, and year remain easy to scan in a compact single column.",
+        "weakness": "The revealed line touches the focus outline, making the expanded state look cramped despite the surrounding whitespace.",
+        "repair": "Give the revealed note a clear top inset while preserving the full-width disclosure and focus ring.",
+        "overflow_and_contrast": "The reported layout width was 390 pixels and no horizontal overflow was apparent; primary text and focus appear distinct, without a measured contrast ratio.",
+        "arm": "storybook",
+        "html_sha256": "9ae5a48a4db8a1c3927dedba1a62d18a9d7b4b640bea105fa50b78cdbcd3ecda",
+        "weighted": 7.45,
+        "before": {
+          "sha256": "615ecd6457e1c975d5d0e5f922f07669f208866272d1c0cf11fb5b27be9aa530",
+          "file": "A-390-before.png",
+          "tool_call_id": "item_9"
+        },
+        "after": {
+          "sha256": "205d9ba6e1dc9a41dda3afa786ab78a4ab83bf0162eb9b6f923562d82e57b474",
+          "file": "A-390-after.png",
+          "tool_call_id": "item_12"
+        },
+        "layout_width": 390,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge": {
+          "sha256": "e7787660da3d22da662a931309e6cbd9b0fa88bcccad61c60801d8e36fae5964",
+          "file": "A-390-edge.png",
+          "tool_call_id": "item_14"
+        }
+      },
+      "B-1440": {
+        "coherence": 8,
+        "originality": 7.5,
+        "craft": 7.5,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Tab, then Enter",
+          "expected": "Open the material note, expose expanded state, and retain focus on the disclosure.",
+          "observed": "Pigment on plaster appeared; the accessibility tree reported the button expanded, and focus remained visibly on it. The label changed to Hide material note."
+        },
+        "edge_observation": "A second Enter hid the note, restored Show material note, and retained focus. Captures: B-1440-before, B-1440-after, B-1440-edge.",
+        "fact_check": "The view identifies Room 4, River Wall, Maya Chen, 1972. Historical accuracy was not independently verified; the large numbered graphic is not identified as an image of the artwork.",
+        "strength": "The large serif title and framed room numeral create a distinctive gallery identity, while the changing button label makes the action explicit.",
+        "weakness": "The large framed numeral competes with the artwork information, and the revealed note touches the focus outline.",
+        "repair": "Reduce the graphic's visual dominance and add separation above the revealed note.",
+        "overflow_and_contrast": "No horizontal overflow was apparent at the tested width; primary text and focus appear distinct, though contrast was not numerically measured.",
+        "arm": "v2",
+        "html_sha256": "0ae01b51ebd85a764ad803b8c48e0f677f12156c11933706018f183f395b79d7",
+        "weighted": 7.85,
+        "before": {
+          "sha256": "4639324924b05027f75bc6fcb11ebc1c49f5d83c005f26044b5bb93f299720e5",
+          "file": "B-1440-before.png",
+          "tool_call_id": "item_17"
+        },
+        "after": {
+          "sha256": "4f5f44bbe4ad4dc485a5170087bf4ba75d184da9c6e5b42da4319002aaa22a2f",
+          "file": "B-1440-after.png",
+          "tool_call_id": "item_20"
+        },
+        "layout_width": 1440,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge": {
+          "sha256": "2c23956a2d76e5521c45cdc46fc30a5e054bb4645e523b4b61a6630fa80ccfb7",
+          "file": "B-1440-edge.png",
+          "tool_call_id": "item_22"
+        }
+      },
+      "B-390": {
+        "coherence": 7.5,
+        "originality": 7.5,
+        "craft": 7,
+        "usability": 8,
+        "primary_action": {
+          "input": "Tab, then Enter",
+          "expected": "Open the material note, expose expanded state, and retain focus on the disclosure.",
+          "observed": "Pigment on plaster appeared; the accessibility tree reported the button expanded, and focus remained visibly on it. The label changed to Hide material note."
+        },
+        "edge_observation": "A second Enter hid the note, restored Show material note, and retained focus. Captures: B-390-before, B-390-after, B-390-edge.",
+        "fact_check": "The view identifies Room 4, River Wall, Maya Chen, 1972. Historical accuracy was not independently verified; the numbered graphic is not identified as an image of the artwork.",
+        "strength": "The typography and numbered graphic retain a recognizable identity on mobile, and the disclosure clearly names its action.",
+        "weakness": "The graphic takes substantial vertical space before the artwork details, and the revealed text meets the focus outline.",
+        "repair": "Shorten the graphic on narrow screens and add a top inset to the expanded note.",
+        "overflow_and_contrast": "The reported layout width was 390 pixels and no horizontal overflow was apparent; primary text and focus appear distinct, without a measured contrast ratio.",
+        "arm": "v2",
+        "html_sha256": "0ae01b51ebd85a764ad803b8c48e0f677f12156c11933706018f183f395b79d7",
+        "weighted": 7.5,
+        "before": {
+          "sha256": "e52c980dde66d6d73aa0d64bcbc2594fc54cc594b8aec6956a4b36f9ad7affd5",
+          "file": "B-390-before.png",
+          "tool_call_id": "item_24"
+        },
+        "after": {
+          "sha256": "b73384ebdd234095a202609289179fa1bdb2c6b4dbeb9a125f0a40d01fca6405",
+          "file": "B-390-after.png",
+          "tool_call_id": "item_27"
+        },
+        "layout_width": 390,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge": {
+          "sha256": "269805321294d2cc52d6ed4a080c8250104b5dfcffc2df7db0a4eafdac6a32f4",
+          "file": "B-390-edge.png",
+          "tool_call_id": "item_29"
+        }
+      }
+    },
+    "preference": {
+      "winner": "B",
+      "reason": "Both complete the keyboard task reliably. B has a more distinctive typographic identity and explicitly changes the disclosure label between show and hide, though its graphic takes more space and its expanded-state spacing needs repair."
+    },
+    "case": "mobile-gallery",
+    "verified_screens": 4,
+    "required_screens": 4,
+    "browser": "Chrome/160.0.8178.0",
+    "evaluator_thread": "01a20922-775d-73a2-917d-620340000133",
+    "usage": {
+      "input_tokens": 374756,
+      "cached_input_tokens": 351488,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 2530,
+      "reasoning_output_tokens": 28
+    },
+    "trace_sha256": "956ba5562fd14eb6e8660f830a357cd1c0d7f31f13acd47b4b14a33d3fdfee1e",
+    "browser_audit_sha256": "61a3169f2a64d28d89555416934050cbc945d78e9268149e97438677dc7c9d51"
+  },
+  "score_by_arm": {
+    "v2": {
+      "desktop": 7.85,
+      "phone": 7.5
+    },
+    "storybook": {
+      "desktop": 7.55,
+      "phone": 7.45
+    }
+  },
+  "limitations": [
+    "The component example came from an owned fixture. This run does not measure access to a third-party design system.",
+    "Each client generated plain HTML as required by the benchmark. It did not install or import the returned React component.",
+    "Each arm used one generation session and one critic session shared across the matched pair. Scores do not measure repeatability or full-set coverage."
+  ]
+}

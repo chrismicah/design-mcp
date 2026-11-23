@@ -111,7 +111,7 @@ The installed first pass returned **zero items for all 36 full briefs and all 36
 
 Storybook 10.6.0 exposed seven tools over its local HTTP endpoint. The catalog included the owned maintenance disclosure and its story ID. The component response supplied prop documentation and example JSX. Looking up the indexed story ID returned JSX with the expected variant text. The two missing lookups returned specific protocol errors. In the first run, passing the export identifier `WithEscalation` as `storyName` returned an error that listed the display name and story ID. Catalog, component and story calls took 74, 20 and 16 ms in the successful run. These are single calls against the fixture. [Installed retrieval receipt](../evidence/benchmark-v1/storybook-mcp-probe.json) · [Hosted job](https://github.com/chrismicah/design-mcp/actions/runs/45022932774)
 
-The gallery task uses the fixture's disclosure behavior with the task's own content. A real Codex 0.170.0 catalog request against a replay of the seven recorded schemas exposed the three docs tools. The benchmark accepted the recorded story response and withheld rendering for an unknown story response. The original Astra v2 control, trace and browser captures matched their recorded hashes. Storybook generation and visual scoring remain open. [Gallery preflight](../evidence/benchmark-v1/storybook-gallery-preflight.json)
+The gallery task uses the fixture's disclosure behavior with the task's own content. A real Codex 0.170.0 catalog request against a replay of the seven recorded schemas exposed the three docs tools. The benchmark accepted the recorded story response and withheld rendering for an unknown story response. The original Astra v2 control, trace and browser captures matched their recorded hashes. The later matched live trial exercised the installed Storybook server with the exact returned component text. [Gallery preflight](../evidence/benchmark-v1/storybook-gallery-preflight.json) · [Live browser and generation receipts](../evidence/benchmark-v1/storybook-gallery-live.json)
 
 ## Visual scoreboard
 
@@ -124,6 +124,7 @@ The gallery task uses the fixture's disclosure behavior with the task's own cont
 | Screenshots Design Inspiration | 1 / 36 | 91.7 on the gallery label. Design MCP also scored 91.7 in the matched Astra run. |
 | Design Library MCP, keyword | 1 / 36 | 87.5 on ceramics. Design MCP scored 95.8 in the matched shell-disabled run. |
 | shadcn/ui MCP | 1 / 36 | Separate live rubric. At desktop and mobile, shadcn scored 8.10 and 7.75 out of 10. Design MCP scored 8.30 on both. |
+| Storybook MCP 10.6.0 | 1 / 36 | Separate live rubric. Storybook scored 7.55 desktop and 7.45 phone. Design MCP scored 7.85 and 7.50. |
 | UI UX Pro Max | 3 / 36 | Won the first bike-booking comparison, 100.0 to 91.7, then tied the newer work order at 95.8. On the live rubric, Design MCP won display settings and saved trails. On saved trails, Design MCP scored 8.10 desktop and 7.85 phone, versus 7.65 and 7.10. |
 | Other credential-free competitor configurations above | 0 / 36 each | Pending |
 | Credentialed and hosted configurations above | 0 / 36 each | Access or isolated fixture required |
