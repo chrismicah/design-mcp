@@ -421,25 +421,25 @@
       "accent": "#E7B766"
     },
     "layout": {
-      "skeleton": "Open with one shared dimensional datum, then a ruled choice comparison; keep the current selection and ready time beside the replacement decision.",
-      "focus": "The supplied height limit and swing limit shown as separate measured cues beside each tool's actual fit evidence.",
-      "desktop": "Set the cabinet datum and the two constraint readings across the opening. Below, align each tool's assembled height, required swing, readiness and selection control on consistent rules. Keep a withdrawn selection named until the visitor selects another tool.",
-      "mobile": "At 390px keep the selected tool, withdrawal reason, readiness time and replacement choices in the first view. Show height in mm with its supplied tolerance and swing in degrees as separate cues. Verify at 320px without hiding an action. State that unmeasured hand clearance remains uncertain.",
+      "skeleton": "Open with a labeled section of the actual assembly against its shared fit datum. Show travel against the obstruction in a separate view. Follow with a ruled list of the alternatives.",
+      "focus": "The limiting geometry, with clearly attached labels for the actual parts and the failed comparison.",
+      "desktop": "Place the measured fit and travel evidence beside the assembly that it describes. Align measured size, travel, ready time, and action in each choice row. Use the earliest eligible pickup rather than the inventory ready time when they differ.",
+      "mobile": "Keep labels readable without miniature insets. At 320 and 390 px, after an update, show the original choice, what changed, the replacement's measurements and time, and its action in one visible group. Make visual and tab order agree.",
       "rhythm": "Use a 12px rule grid, compact comparison rows and one generous break after the shared datum. No repeated cards."
     },
     "imagery": {
-      "subject": "A dimension line and small swing arc drawn only from the supplied geometry.",
-      "crop": "Keep the dimensional datum connected to the choice rows; do not imply a product photo or inventory image.",
-      "fallback": "Use type, rules and a simple dimension line. Identify any physical clearance the brief does not measure."
+      "subject": "Two labeled schematic views of the named assembly and obstruction, based on the supplied measurements.",
+      "crop": "Attach the dimensions to the corresponding part or boundary. Keep each view small enough to leave room for the first choices.",
+      "fallback": "Provide textual measurements, tolerance and resulting shortfall. Label schematics and leave physical conditions the brief did not measure uncertain."
     },
     "motion": {
       "trigger": "The visitor chooses a replacement tool.",
-      "effect": "Move the selection marker to the chosen row and update one adjacent selection status.",
+      "effect": "Update the selection marker and adjacent status. Keep focus visible and avoid a delayed scroll to the action.",
       "duration_ms": 220,
-      "reduced": "Change the marker and status immediately."
+      "reduced": "Show the same measurements and state with immediate updates."
     },
     "action": {
-      "instruction": "Keep the withdrawn choice visible with the reason supplied by the brief. Offer only supplied alternatives and let the visitor make the replacement selection.",
+      "instruction": "Keep the old selection and withdrawal reason visible beside the viable replacement and its evidence. Use an explicit replacement action. Preserve focus on a surviving control or move it to that adjacent action before removing the focused control. Keep the confirmed replacement visible after selection.",
       "label": "Choose [tool]"
     },
     "why": "A borrower making a fit decision needs the shared scale and both independent constraints beside the actual alternatives. A shared datum helps visitors reconcile evidence across the alternatives before choosing.",
@@ -477,25 +477,25 @@
       "accent": "#006667"
     },
     "layout": {
-      "skeleton": "Put the route drawing, the changed step-free entrance and the fixed departure on one continuous arrival line, followed by a compact route choice.",
-      "focus": "The actual access change and signed time margin before the specific train cutoff.",
-      "desktop": "Draw the active route from supplied locations and turns. Mark the step-free entrance that changed, then align its arrival time and the specific train departure so the remaining margin can be read directly.",
-      "mobile": "Keep the complete route evidence, changed step-free entrance, arrival time, signed margin and train departure in the immediate view. Keep route selection available there. Distinguish platform access from access to trains; claim neither without evidence.",
+      "skeleton": "Lead with the real route against its fixed deadline. Put the forecast and alternative directly beside the input that changes feasibility; keep the complete route timeline for detail.",
+      "focus": "The changed entrance, the estimated arrival and the margin against the named departure.",
+      "desktop": "Draw the active route from supplied locations and turns. Align estimated arrival and specific departure. Put the late or early margin and the alternate choice in the same area as the changed entrance control.",
+      "mobile": "At 320 and 390 px, keep the input, missed deadline and direct replacement action in view together immediately after the change. Include the alternative route and its margin. Keep the active result beside the action after recovery.",
       "rhythm": "Use a continuous route line, restrained station rules and one clear time break. Keep the evidence beside the route."
     },
     "imagery": {
       "subject": "An original route graphic derived only from supplied stops, entrance changes and times.",
-      "crop": "Keep the changed entrance and deadline within the same visible route segment.",
+      "crop": "Keep the changed entrance and deadline within the same visible route segment. Keep transfer details available without making them compete with the recovery.",
       "fallback": "Use a text route with named steps and times when the brief lacks map geometry. Do not invent transfers, buffers or venue promises."
     },
     "motion": {
       "trigger": "The visitor selects a route or its recovery.",
-      "effect": "Trace only the supplied route segment and update the signed time margin beside the departure.",
+      "effect": "Update the route and its signed margin together. Keep focus on a surviving control so the changed choice remains usable.",
       "duration_ms": 260,
       "reduced": "Show the selected route and margin without animation."
     },
     "action": {
-      "instruction": "Name the route choice and show the exact step-free access evidence and fixed train departure that support it.",
+      "instruction": "Use a stable name and announced state for a route switch. Keep the previous selection until the visitor explicitly chooses the alternative. Then give the winning option and estimated arrival priority and retain the old failure as context. Distinguish step-free route evidence from certainty about travel time.",
       "label": "Choose [route]"
     },
     "why": "Arrival planning depends on access and a real deadline at once. A continuous route and explicit signed margin keep both conditions visible during selection or recovery.",
