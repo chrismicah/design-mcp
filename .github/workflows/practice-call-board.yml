@@ -47,6 +47,8 @@ jobs:
             --playwriter "$RUNNER_TEMP/playwriter/node_modules/.bin/playwriter" \
             --chrome "$RUNNER_TEMP/browser/chrome-linux64/chrome" \
             --scratch "$RUNNER_TEMP/practice-browser"
+      - name: Verify archive and calculate browser eligibility
+        run: python evals/practice_call_board/verify.py "$RUNNER_TEMP/cells"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:

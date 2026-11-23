@@ -1,4 +1,4 @@
-"""Verify the exact four archived practice drafts before rendering."""
+"""Verify the exact archived practice drafts before rendering."""
 
 from hashlib import sha256
 import json
@@ -9,7 +9,7 @@ import sys
 ROOT = Path(__file__).resolve().parent
 cells = ROOT / "cells/tacoma-eye-care"
 previous = "589215a5c7efb1c4c47bc581814a29ad829252d8b5f0b5d45430d15812229e66"
-for arm in ("focus-repair", "call-board", "earlier-draft", "visible-handoff"):
+for arm in ("focus-repair", "call-board", "earlier-draft", "visible-handoff", "unified-composition"):
     cell = cells / arm
     row = json.loads((cell / "receipt.json").read_bytes())
     digest = sha256((cell / "index.html").read_bytes()).hexdigest()
