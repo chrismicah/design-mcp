@@ -106,8 +106,16 @@ try {
     const r = field.getBoundingClientRect();
     return {x:r.x,y:r.y,width:r.width,height:r.height,viewport:[innerWidth,innerHeight]};
   })()`));
-  const windowId = execFileSync("xdotool", ["search", "--onlyvisible", "--name", "Evening shuttle dispatch"],
-    { encoding: "utf8" }).trim().split("\n")[0];
+  // The page can be ready in CDP before the window title is visible to X11.
+  const windowId = await until("visible dispatch fixture window", () => {
+    try {
+      return execFileSync("xdotool", ["search", "--onlyvisible", "--name", "Evening shuttle dispatch"],
+        { encoding: "utf8" }).trim().split("\n")[0];
+    } catch (error) {
+      if (error.status !== 1 || error.signal) throw error;
+      return undefined;
+    }
+  });
   execFileSync("xdotool", ["windowfocus", "--sync", windowId]);
   key("ctrl+shift+y");
   const target = await until("toolbar popup", () => findTarget(item => /^chrome-extension:\/\/[a-p]{32}\/popup\.html$/.test(item.url)));

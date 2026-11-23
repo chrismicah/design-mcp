@@ -1,0 +1,245 @@
+{
+  "calibration": {
+    "coherence": 7,
+    "originality": 4,
+    "craft": 6,
+    "usability": 6,
+    "reason": "The withheld repair intake is legible and familiar, but misplaced focus after invalid input is a material usability flaw."
+  },
+  "screens": {
+    "A-1440": {
+      "coherence": 7,
+      "originality": 6.5,
+      "craft": 6.5,
+      "usability": 7,
+      "primary_action": {
+        "input": "Tab to the selected 4 m radio, then ArrowRight to 6 m.",
+        "expected": "Show the path and footbridge closed and the ferry stopped.",
+        "observed": "All three appear in the result list. The water rises to the bridge and the bridge, ferry and path are yellow. Captures: A-1440-before and A-1440-after."
+      },
+      "edge_observation": "Two ArrowLeft presses selected 2 m. The result lists only the riverside path as closed. In A-1440-edge, the small yellow path runs from the left tip of the bank-side platform to its pointed right tip; both ends are visible, but neither shows a barrier. The bridge and ferry are pale outlines. This distinction depends heavily on color rather than an unmistakable physical closure.",
+      "fact_check": "At 6 m the text reports all three affected crossings. The ferry remains drawn beside its landing; the image alone does not make a stopped service unmistakable. The threshold claims are displayed by the design but were not independently verified.",
+      "strength": "The cross-section connects water height to the three thresholds and the controls have visible keyboard focus.",
+      "weakness": "The ferry and path lack clear physical indicators of closure.",
+      "repair": "Show barriers at both path ends and a plainly docked or interrupted ferry crossing, while retaining the text.",
+      "arm": "current",
+      "html_sha256": "6c865202d697125bf3cc70a0edd4d57dc32d2144423c35a3e653cd7766230339",
+      "weighted": 6.75,
+      "before": {
+        "sha256": "f0b0f429014cc9d04e3f6c5353132fb4759cc61a73f42af3e59f8d6e0c42221c",
+        "file": "A-1440-before.png",
+        "tool_call_id": "item_2"
+      },
+      "after": {
+        "sha256": "b1f1c3e8f68d7e1963ef839c9bd1f22cbb2a596621a552da02850f458d1e61a3",
+        "file": "A-1440-after.png",
+        "tool_call_id": "item_5"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ],
+      "confirmed_levels": [
+        6,
+        2
+      ]
+    },
+    "A-390": {
+      "coherence": 7,
+      "originality": 6,
+      "craft": 6,
+      "usability": 7,
+      "primary_action": {
+        "input": "Tab to 4 m, then ArrowRight to 6 m.",
+        "expected": "Show all three affected crossings.",
+        "observed": "The list shows the path, ferry and footbridge; the controls, answer and illustration fit in the viewport. Captures: A-390-before and A-390-after."
+      },
+      "edge_observation": "Two ArrowLeft presses selected 2 m, and A-390-edge lists only the path. Its two tips are visible on the small yellow platform at the left bank, but the platform is tiny and has no visible barriers. The ferry and bridge are pale outlines; color carries much of the difference.",
+      "fact_check": "The 6 m list reports all three crossings, but the small ferry image does not independently make its stopped state unmistakable. The stated thresholds are not independently verified.",
+      "strength": "The complete control, answer and scene remain visible together.",
+      "weakness": "The reduced illustration makes route geometry and closure cues difficult to read.",
+      "repair": "Enlarge or simplify the scene and add physical closure markers that remain legible at phone size.",
+      "arm": "current",
+      "html_sha256": "6c865202d697125bf3cc70a0edd4d57dc32d2144423c35a3e653cd7766230339",
+      "weighted": 6.5,
+      "before": {
+        "sha256": "8b5c2d0642531944ae6170a03577ae588b5268902eb2070f4a11f4e497d75184",
+        "file": "A-390-before.png",
+        "tool_call_id": "item_11"
+      },
+      "after": {
+        "sha256": "738132f7b7f8435539df5e2951f81f51e3f05e24fb020960435df54a44bcb041",
+        "file": "A-390-after.png",
+        "tool_call_id": "item_14"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ],
+      "confirmed_levels": [
+        6,
+        2
+      ]
+    },
+    "B-1440": {
+      "coherence": 8.5,
+      "originality": 8,
+      "craft": 8.5,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab to the selected 4 m radio, then ArrowRight to 6 m.",
+        "expected": "Show the path and footbridge closed and the ferry stopped.",
+        "observed": "The answer lists all three. The path has barriers, the bridge is visibly interrupted, and the ferry sits at one landing with an X near the opposite landing. Captures: B-1440-before and B-1440-after."
+      },
+      "edge_observation": "Two ArrowLeft presses selected 2 m. B-1440-edge lists only the path and labels the footbridge and ferry open. Both ends of the curved path are visible: one barrier is at its lower-left end and the other at its upper-right end. The open bridge is continuous across the river, and the ferry has a dotted connection between landings. These physical differences supplement the labels and colors.",
+      "fact_check": "The 6 m list reports all three affected crossings. The docked ferry and interrupted connection support the stopped reading, though the small X and label clarify it. The threshold claims are not independently verified.",
+      "strength": "The map shows route geometry and uses distinct physical changes for each crossing.",
+      "weakness": "The stopped ferry cue is smaller and less immediately legible than the bridge and path barriers.",
+      "repair": "Make the interrupted ferry connection and its endpoints more prominent without relying on the status label.",
+      "arm": "proposed",
+      "html_sha256": "6ff3179e1de43f0c5b577803d78c8bb60924d5fcf0c6f1be0f7c404b79f50b4c",
+      "weighted": 8.35,
+      "before": {
+        "sha256": "f6ac19b91d81b1d4da8ebfc6b028599121848c0a0229cfe03df3a61a6cf3de11",
+        "file": "B-1440-before.png",
+        "tool_call_id": "item_19"
+      },
+      "after": {
+        "sha256": "eceb93f36120e6e68bca799adf6065786ae79539b869cec456a3fe4a5535cbf2",
+        "file": "B-1440-after.png",
+        "tool_call_id": "item_22"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ],
+      "confirmed_levels": [
+        6,
+        2
+      ]
+    },
+    "B-390": {
+      "coherence": 8.5,
+      "originality": 8,
+      "craft": 8,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab to 4 m, then ArrowRight to 6 m.",
+        "expected": "Show all three affected crossings with the answer accessible alongside the controls.",
+        "observed": "All three appear in the answer below the scene, with the controls, map and full list visible in the 390 by 844 viewport. Captures: B-390-before and B-390-after."
+      },
+      "edge_observation": "Two ArrowLeft presses selected 2 m. B-390-edge shows only the path in the result. Its lower-left and upper-right barriers are both visible. The bridge is continuous and the ferry connects the two landings with a dotted route; the path is bounded by barriers. The small ferry and dotted route require close attention.",
+      "fact_check": "The 6 m answer reports all three crossings. A ferry at the right landing and an X near the left support the stopped state, but their small size makes the label helpful. The threshold claims are not independently verified.",
+      "strength": "The complete answer and scene fit with the controls, and both path barriers remain visible.",
+      "weakness": "The ferry interruption and map details are small on the phone.",
+      "repair": "Increase the ferry crossing's visual weight and make the break in service clearer at phone scale.",
+      "arm": "proposed",
+      "html_sha256": "6ff3179e1de43f0c5b577803d78c8bb60924d5fcf0c6f1be0f7c404b79f50b4c",
+      "weighted": 8.25,
+      "before": {
+        "sha256": "8baad028735c1efd796f6c3ef55b3a6821393e4c5428ae208d0f6688219862b1",
+        "file": "B-390-before.png",
+        "tool_call_id": "item_28"
+      },
+      "after": {
+        "sha256": "74feab5e66c7c880f10386fdaf0a3482fbaacb495ad3b47cbe87cc578277ec92",
+        "file": "B-390-after.png",
+        "tool_call_id": "item_31"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ],
+      "confirmed_levels": [
+        6,
+        2
+      ]
+    }
+  },
+  "preference": {
+    "winner": "B",
+    "reason": "B makes the route relationships visible: the closed path has two barriers, the open bridge is continuous, and the ferry connection changes. It also keeps the controls, scene and answer together on the phone. A's cross-section explains thresholds well, but relies more on color and text to communicate closure."
+  },
+  "case": "social-river",
+  "verified_screens": 4,
+  "required_screens": 4,
+  "browser": "Chrome/158.0.8127.36",
+  "evaluator_thread": "01a2070d-d1d8-7473-9124-eac1262c4899",
+  "usage": {
+    "input_tokens": 546530,
+    "cached_input_tokens": 510592,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2713,
+    "reasoning_output_tokens": 0
+  },
+  "trace_sha256": "b5cbd1bb9d13a3938e07dbdde0203bcf7d32e9bd2e42c73429e9f400b92ef006",
+  "browser_audit_sha256": "316ca8b94501108702a3b52babd5022b6702f425838ec502840bf62697a6990e"
+}

@@ -16,6 +16,8 @@ On `46e9913`, 11 of 12 hosted checks completed successfully. The Intel Python 3.
 
 All 12 hosted checks then passed on `d27f386`, including all eight clean macOS 15 install cells. The preceding verifier commit `517145c` passed the previously timed-out Intel Python 3.11 cell in 4 minutes and 50 seconds. The pinned Ventura results remain a separate test. [Exact hosted jobs](evidence/benchmark-v1/release-ci-d27f386.json) · [First successful Intel rerun](https://github.com/chrismicah/design-mcp/actions/runs/45119455041/job/137509630188)
 
+The hosted extension smoke on `5c2c058` reached the seeded fixture through CDP. Its first X11 lookup found no visible window with the fixture title and stopped before opening the extension. The harness now waits for that visible window with the existing bounded deadline. The local syntax check and all six popup capture consistency tests passed. [First hosted log](https://github.com/chrismicah/design-mcp/actions/runs/45123082505/job/137521109706)
+
 ## Active-tab capture candidate, November 22
 
 `12e9524` passed all eight macOS 15 install jobs and the hosted Chrome, public URL, SwiftUI, and Electron workflows. The clean-install jobs used pipx and uv on Apple Silicon and Intel across Python 3.10–3.13. The hosted Chrome run verified active-tab masking, missing-host recovery, the Before and After keyboard switch, and opening the capture from a pasted URL. It saved the masked public form after **1.49 seconds** in that run. [Exact jobs and capture hashes](evidence/benchmark-v1/release-ci-12e9524.json)
