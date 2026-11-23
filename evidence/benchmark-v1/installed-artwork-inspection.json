@@ -1,0 +1,2987 @@
+{
+  "scope": "Clean trial wheel and matched generated comparison. Release package excluded from promotion.",
+  "install": {
+    "commit": "5c5d2c935164c00ac4a0299f75e333a89dc42331",
+    "files": {
+      "design_mcp/__init__.py": "4b6e7d73f7f2fe01ae460f58c2a2ab586243e68f2528e66ec29fec48defece0d",
+      "design_mcp/cli.py": "e045323969ed6dbc8ad3a62199f7bb0a15a1464adc44875ce8c59db22ce223be",
+      "design_mcp/corpus.py": "be6772f134c2e969f521cdd7043f5729b500f045a426fea16642bcecd8c0b36f",
+      "design_mcp/data/anti_generic_system.json": "32959d994d1294b70374303ea282c347361c1a7d01b0365376e9b66aae1ac37f",
+      "design_mcp/data/anti_pattern_fixes.json": "8818108671dc8761562819a9047adeb7907714e9bfa2d23d5d27ef9c919445b0",
+      "design_mcp/data/behavioral_templates.json": "c3f3f2fbe970fc5ceb3015bc8aad9bec81f90cab7547e6893b2f30fa767e82a9",
+      "design_mcp/data/component_code.json": "1667bba1a48c0dc4df13384ea1334e02aa34614e78d7eac92e9eaa2898f29f1a",
+      "design_mcp/data/decision_trees.json": "ea0061ab858cef42f878c7fba8b2a471150cecde8f50820909222cc6185fc2c7",
+      "design_mcp/data/decision_trees_indexed.json": "a113d248ebd219781b0cf946349fd06a0d9bbcfe63d5755414736a7c81603a14",
+      "design_mcp/data/directions.json": "6a1f35452ffa626f85e142709950ce7d682e097fad2d3990d598aa925506e613",
+      "design_mcp/data/layout_templates.json": "cd9f616aabbd8b7cd8a87c53f363c2a93c96df8e76b1de0f6f2499481685501f",
+      "design_mcp/data/libraries.json": "64f77c98ee11772bd357b6a00892d845f1b93095feb7f6932d8a0a7275749d03",
+      "design_mcp/data/taxonomy.json": "752dd0ec6bf1c7dbdc79b3682964c875e09f47ed959b7fa44d45dcacad3ab99e",
+      "design_mcp/data/tokens/semantic_tokens.json": "36e637664b7896edfde2c6f7084a7782b1f7ad2fd39784abde7067e88cef5d27",
+      "design_mcp/data/tokens/token_sets.json": "4bdd4e0875e71eeb366d2fdc36323ee1d7522896dc87f6a9e15ba01a5c7813ac",
+      "design_mcp/data/visual_recipes.json": "ef2f8876d44e738a1de47dd7f1c8bcf07bcd9e48867e8c407dd5eb7fb753fa4d",
+      "design_mcp/database.py": "d69ab504317920277fd577fc02246eaa944d1e1952f9b2365fe0c1ab6a8c3d6e",
+      "design_mcp/design_checks.py": "556ad3a69ae2874e2aea50ff2db84fa4f9f4fa7ce7396a3e5f1a096dbed416bd",
+      "design_mcp/desktop_review.py": "56268a306ef2bf394222b0c1e1bb61e7f1beed4b049f335c54ae7a36aa66d3c5",
+      "design_mcp/direction_records.py": "ec674083df079ce8ce7579c37c26dc84612a1db76e3f7387badfb66077b5070f",
+      "design_mcp/directions.py": "ff8a05a5d7160b636b3359ed9749dbb012882e6e8f9f60f789fd2087a951a5ea",
+      "design_mcp/doctor.py": "ca36aa77fcd90b10426bd3aadc2f928421cd92f7ab00c1c93c3fdf8ffbbe0a75",
+      "design_mcp/enrichment.py": "3b48d6ee002773885a5c913004296c3892d1e1f887843d4bba8577d9f9a6fba4",
+      "design_mcp/models/__init__.py": "1fcfe134b8dd13ae3d7a5ff95cfa16479e2f06cd0860cdbf186fc5bfa6d467b0",
+      "design_mcp/models/analyzer.py": "62e00840547547f25aa34f9e395d8d300c6fe8da563638372c552f3d2efdbfb1",
+      "design_mcp/models/quality_scorer.py": "c5e3ad10486f458260748e17267fae303c37a3ece5f14c30f7470fc13dc7e8de",
+      "design_mcp/models/train_scorer.py": "be6be900cb27743e9110e485211dede5d859eb602eb01aa7dbbb9d2daea83ca8",
+      "design_mcp/models/visual_analyzer.py": "74303881e8c0fae24bffd64a23508409ed07b5ed8f163fa39713b1c3d64ce735",
+      "design_mcp/palettes.py": "d2840e1a3d81ae0d7aadbfda51137eb4988646903e05c55a68d4cb23ae8bdcdf",
+      "design_mcp/resources.py": "c8279e50688eae6db2a9a5b562998347629e4a5eff39578934c1427a9fa269cb",
+      "design_mcp/review/__init__.py": "3eb559a8193dc49c195d527fe8fbdba7ed82772eda8997ee8707b7efc8756b02",
+      "design_mcp/review/address.py": "224ed5b975df8f959d9f3d44b5703193cbbb84d5b3a3b14e36c774bcdb010c22",
+      "design_mcp/review/checks.py": "78fb3eb206e0984a6e1d90ddeb4656dff0983a7957c55e2666852723ff242dee",
+      "design_mcp/review/cli.py": "cdac94a072d7ba5076e1d3e5cfe2d24e1bce65845487a0d5931c158d43260d06",
+      "design_mcp/review/direct_capture.py": "9381fa0926fee06bacc1deed9113a1aef1400ec8bc9719ce5907869abc42bf2f",
+      "design_mcp/review/evidence.py": "1c0f0881799cf80a206f93a5c18a73b07d69c660158229486e7eece84d012966",
+      "design_mcp/review/extension/collector.js": "d137cc99d85f652d5d204a83eb867bffe4e3e58002fb79b055afb71cb117e3c2",
+      "design_mcp/review/extension/manifest.json": "827bc1580d45a4c5cdb5770ce1b0ba9f69c8a1a9a3c87fa4f1120723b3e57941",
+      "design_mcp/review/extension/mask.js": "cd384a9e08104381a4fa2da57bfca445024864978e2064a38efa71ed4ac564a0",
+      "design_mcp/review/extension/popup.css": "e870c8d1351b8b5f2627f1b009e25ab5c469f6a7e48e62528b38e0c5e22a469c",
+      "design_mcp/review/extension/popup.html": "9f444dbfc73c544046a17fcd41fc8d28902a471e4440ffc0319c997744727c51",
+      "design_mcp/review/extension/popup.js": "d79f68a03e805d61740e70405ba5deca0dbcf5b7b8d9378a7f739c20a16c9771",
+      "design_mcp/review/host.py": "2a0afc74bcb75c9dd8f27737af9430c3c2ea10d1f07801a177604558d73b2206",
+      "design_mcp/review/isolated.py": "2ce72bfcd3d4d716135a8516506ccbd4de9c3260a1b00d20592dc79b9b2e60b9",
+      "design_mcp/review/network.py": "f3b2262ea03e8216de039949d9cc0da65ea35092419f3958e5844e9894b3947e",
+      "design_mcp/review/pipeline.py": "979620bc6539c220a60030213ad0fe79703099486f655da245638867abf6ba3b",
+      "design_mcp/review/preview.py": "eeca7ac9f6095c5b1c445964b5b36df9397da9b2ec481f8ec0395a822ac47cf5",
+      "design_mcp/review/tool.py": "813a31ff553a60e2e9a3b3aaffce894f9b27e234e5b553813c43e89d96f8bdc1",
+      "design_mcp/schema.py": "a819d916a43edf6f104b8a9ee99f7e5b389ca3af89d40742a44830fca6e4075c",
+      "design_mcp/server.py": "29e3fb527e3cf00530e82044117f41aedb08ff56e51fa2e15c97e5419403dbd7"
+    },
+    "wheel_sha256": "1e5f1c3c60b1647ce7ab99fda1dbdf0376e7b4c51e804a824277662b24f88b04"
+  },
+  "stdio": {
+    "baseline_source": "f30e6ffcb7c8fab97580a353ff5b770849162594",
+    "trial_source": "5c5d2c935164c00ac4a0299f75e333a89dc42331",
+    "cases": 56,
+    "unchanged": 53,
+    "changes": [
+      {
+        "case": "the-threatened-swan",
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "413f281b14b934289fa802ef3125db62ec02d282089bd2f9f38f8238ca32843f",
+        "ids": [
+          "object-hero",
+          "artifact-inspection"
+        ]
+      },
+      {
+        "case": "maker-mark",
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "413f281b14b934289fa802ef3125db62ec02d282089bd2f9f38f8238ca32843f",
+        "ids": [
+          "object-hero",
+          "artifact-inspection"
+        ]
+      },
+      {
+        "case": "loom-label",
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "413f281b14b934289fa802ef3125db62ec02d282089bd2f9f38f8238ca32843f",
+        "ids": [
+          "object-hero",
+          "artifact-inspection"
+        ]
+      }
+    ],
+    "failures": [],
+    "receipts": {
+      "the-threatened-swan": {
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "413f281b14b934289fa802ef3125db62ec02d282089bd2f9f38f8238ca32843f",
+        "ids": [
+          "object-hero",
+          "artifact-inspection"
+        ]
+      },
+      "maker-mark": {
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "413f281b14b934289fa802ef3125db62ec02d282089bd2f9f38f8238ca32843f",
+        "ids": [
+          "object-hero",
+          "artifact-inspection"
+        ]
+      },
+      "loom-label": {
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "413f281b14b934289fa802ef3125db62ec02d282089bd2f9f38f8238ca32843f",
+        "ids": [
+          "object-hero",
+          "artifact-inspection"
+        ]
+      },
+      "primary-purchase": {
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "ids": [
+          "object-hero",
+          "object-hero"
+        ]
+      },
+      "portfolio": {
+        "before_sha256": "e492e135384df3b9f516422d556a2f29369a299a80ca8a7c473cd475d2da21f8",
+        "after_sha256": "e492e135384df3b9f516422d556a2f29369a299a80ca8a7c473cd475d2da21f8",
+        "ids": [
+          "ground-plane",
+          "ground-plane"
+        ]
+      },
+      "primary-ticket": {
+        "before_sha256": "93d0fbb2b8633dbee89c897793eebec30a20855f7d9f6c29317a29126f2107d5",
+        "after_sha256": "93d0fbb2b8633dbee89c897793eebec30a20855f7d9f6c29317a29126f2107d5",
+        "ids": [
+          "platform-sign",
+          "platform-sign"
+        ]
+      },
+      "weekly-feature": {
+        "before_sha256": "d10cb3487491d4a81a80a783ca5ed5b064afd74465df692aea51429614f5400d",
+        "after_sha256": "d10cb3487491d4a81a80a783ca5ed5b064afd74465df692aea51429614f5400d",
+        "ids": [
+          "margin-front",
+          "margin-front"
+        ]
+      },
+      "explicit-surface": {
+        "before_sha256": "e492e135384df3b9f516422d556a2f29369a299a80ca8a7c473cd475d2da21f8",
+        "after_sha256": "e492e135384df3b9f516422d556a2f29369a299a80ca8a7c473cd475d2da21f8",
+        "ids": [
+          "ground-plane",
+          "ground-plane"
+        ]
+      },
+      "evals/v1/tasks.json:landing-ceramics": {
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "ids": [
+          "object-hero",
+          "object-hero"
+        ]
+      },
+      "evals/v1/tasks.json:landing-repair": {
+        "before_sha256": "752d16db2186c3999f2f37e8b0a5652e2be78676a821f4482fc62a1f12c34ece",
+        "after_sha256": "752d16db2186c3999f2f37e8b0a5652e2be78676a821f4482fc62a1f12c34ece",
+        "ids": [
+          "service-work-order",
+          "service-work-order"
+        ]
+      },
+      "evals/v1/tasks.json:landing-radio": {
+        "before_sha256": "8a7990d0d8659495693fd2dd71f8f3a67f6d9025b30aa24e9df01ed2ec5547d2",
+        "after_sha256": "8a7990d0d8659495693fd2dd71f8f3a67f6d9025b30aa24e9df01ed2ec5547d2",
+        "ids": [
+          "broadcast-board",
+          "broadcast-board"
+        ]
+      },
+      "evals/v1/tasks.json:landing-festival": {
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "ids": [
+          "object-hero",
+          "object-hero"
+        ]
+      },
+      "evals/v1/tasks.json:landing-archive": {
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "ids": [
+          "object-hero",
+          "object-hero"
+        ]
+      },
+      "evals/v1/tasks.json:landing-energy": {
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "ids": [
+          "object-hero",
+          "object-hero"
+        ]
+      },
+      "evals/v1/tasks.json:dashboard-coldchain": {
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "ids": [
+          "object-hero",
+          "object-hero"
+        ]
+      },
+      "evals/v1/tasks.json:dashboard-venue": {
+        "before_sha256": "b938a2291dc3c98a930dd3f478ba459158bfaeeb8c1c7443c2f648765dab50c9",
+        "after_sha256": "b938a2291dc3c98a930dd3f478ba459158bfaeeb8c1c7443c2f648765dab50c9",
+        "ids": [
+          "stage-call-sheet",
+          "stage-call-sheet"
+        ]
+      },
+      "evals/v1/tasks.json:dashboard-harvest": {
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "ids": [
+          "object-hero",
+          "object-hero"
+        ]
+      },
+      "evals/v1/tasks.json:dashboard-support": {
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "ids": [
+          "object-hero",
+          "object-hero"
+        ]
+      },
+      "evals/v1/tasks.json:dashboard-energy": {
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "ids": [
+          "object-hero",
+          "object-hero"
+        ]
+      },
+      "evals/v1/tasks.json:dashboard-library": {
+        "before_sha256": "8f160497a3603576f926abd095aefb3ddb8f73a8f56b41d861d1bf05b3d41e5f",
+        "after_sha256": "8f160497a3603576f926abd095aefb3ddb8f73a8f56b41d861d1bf05b3d41e5f",
+        "ids": [
+          "exception-first",
+          "exception-first"
+        ]
+      },
+      "evals/v1/tasks.json:form-venue": {
+        "before_sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "after_sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "ids": [
+          "grouped-fieldsets",
+          "grouped-fieldsets"
+        ]
+      },
+      "evals/v1/tasks.json:form-maintenance": {
+        "before_sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "after_sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "ids": [
+          "grouped-fieldsets",
+          "grouped-fieldsets"
+        ]
+      },
+      "evals/v1/tasks.json:form-label": {
+        "before_sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "after_sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "ids": [
+          "grouped-fieldsets",
+          "grouped-fieldsets"
+        ]
+      },
+      "evals/v1/tasks.json:form-garden": {
+        "before_sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "after_sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "ids": [
+          "grouped-fieldsets",
+          "grouped-fieldsets"
+        ]
+      },
+      "evals/v1/tasks.json:form-exhibition": {
+        "before_sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "after_sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "ids": [
+          "grouped-fieldsets",
+          "grouped-fieldsets"
+        ]
+      },
+      "evals/v1/tasks.json:form-invoice": {
+        "before_sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "after_sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "ids": [
+          "grouped-fieldsets",
+          "grouped-fieldsets"
+        ]
+      },
+      "evals/v1/tasks.json:mobile-train": {
+        "before_sha256": "93d0fbb2b8633dbee89c897793eebec30a20855f7d9f6c29317a29126f2107d5",
+        "after_sha256": "93d0fbb2b8633dbee89c897793eebec30a20855f7d9f6c29317a29126f2107d5",
+        "ids": [
+          "platform-sign",
+          "platform-sign"
+        ]
+      },
+      "evals/v1/tasks.json:mobile-field": {
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "ids": [
+          "object-hero",
+          "object-hero"
+        ]
+      },
+      "evals/v1/tasks.json:mobile-recital": {
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "ids": [
+          "object-hero",
+          "object-hero"
+        ]
+      },
+      "evals/v1/tasks.json:mobile-court": {
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "ids": [
+          "object-hero",
+          "object-hero"
+        ]
+      },
+      "evals/v1/tasks.json:mobile-pantry": {
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "ids": [
+          "object-hero",
+          "object-hero"
+        ]
+      },
+      "evals/v1/tasks.json:mobile-gallery": {
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "ids": [
+          "object-hero",
+          "object-hero"
+        ]
+      },
+      "evals/v1/tasks.json:settings-notifications": {
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "ids": [
+          "object-hero",
+          "object-hero"
+        ]
+      },
+      "evals/v1/tasks.json:settings-reading": {
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "ids": [
+          "object-hero",
+          "object-hero"
+        ]
+      },
+      "evals/v1/tasks.json:settings-team": {
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "ids": [
+          "object-hero",
+          "object-hero"
+        ]
+      },
+      "evals/v1/tasks.json:settings-focus": {
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "ids": [
+          "object-hero",
+          "object-hero"
+        ]
+      },
+      "evals/v1/tasks.json:settings-digest": {
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "ids": [
+          "object-hero",
+          "object-hero"
+        ]
+      },
+      "evals/v1/tasks.json:settings-language": {
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "ids": [
+          "object-hero",
+          "object-hero"
+        ]
+      },
+      "evals/v1/tasks.json:empty-saved": {
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "ids": [
+          "object-hero",
+          "object-hero"
+        ]
+      },
+      "evals/v1/tasks.json:empty-drafts": {
+        "before_sha256": "d10cb3487491d4a81a80a783ca5ed5b064afd74465df692aea51429614f5400d",
+        "after_sha256": "d10cb3487491d4a81a80a783ca5ed5b064afd74465df692aea51429614f5400d",
+        "ids": [
+          "margin-front",
+          "margin-front"
+        ]
+      },
+      "evals/v1/tasks.json:empty-search": {
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "ids": [
+          "object-hero",
+          "object-hero"
+        ]
+      },
+      "evals/v1/tasks.json:empty-handoff": {
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "ids": [
+          "object-hero",
+          "object-hero"
+        ]
+      },
+      "evals/v1/tasks.json:empty-exhibits": {
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "ids": [
+          "object-hero",
+          "object-hero"
+        ]
+      },
+      "evals/v1/tasks.json:empty-shifts": {
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "ids": [
+          "object-hero",
+          "object-hero"
+        ]
+      },
+      "evidence/rebuild/spec/held-out.json:launch-water": {
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "ids": [
+          "object-hero",
+          "object-hero"
+        ]
+      },
+      "evidence/rebuild/spec/held-out.json:dispatch-room": {
+        "before_sha256": "b938a2291dc3c98a930dd3f478ba459158bfaeeb8c1c7443c2f648765dab50c9",
+        "after_sha256": "b938a2291dc3c98a930dd3f478ba459158bfaeeb8c1c7443c2f648765dab50c9",
+        "ids": [
+          "stage-call-sheet",
+          "stage-call-sheet"
+        ]
+      },
+      "evidence/rebuild/spec/held-out.json:museum-entry": {
+        "before_sha256": "93d0fbb2b8633dbee89c897793eebec30a20855f7d9f6c29317a29126f2107d5",
+        "after_sha256": "93d0fbb2b8633dbee89c897793eebec30a20855f7d9f6c29317a29126f2107d5",
+        "ids": [
+          "platform-sign",
+          "platform-sign"
+        ]
+      },
+      "evidence/rebuild/spec/held-out.json:letterforms": {
+        "before_sha256": "e492e135384df3b9f516422d556a2f29369a299a80ca8a7c473cd475d2da21f8",
+        "after_sha256": "e492e135384df3b9f516422d556a2f29369a299a80ca8a7c473cd475d2da21f8",
+        "ids": [
+          "ground-plane",
+          "ground-plane"
+        ]
+      },
+      "evidence/rebuild/spec/held-out.json:photo-pricing": {
+        "before_sha256": "a14efe079cd11f98c7e8bcf527882fa1afd660c36f1ec6265695c154c6891009",
+        "after_sha256": "a14efe079cd11f98c7e8bcf527882fa1afd660c36f1ec6265695c154c6891009",
+        "ids": [
+          "scale-ledger",
+          "scale-ledger"
+        ]
+      },
+      "evidence/rebuild/spec/held-out.json:radio-journal": {
+        "before_sha256": "d10cb3487491d4a81a80a783ca5ed5b064afd74465df692aea51429614f5400d",
+        "after_sha256": "d10cb3487491d4a81a80a783ca5ed5b064afd74465df692aea51429614f5400d",
+        "ids": [
+          "margin-front",
+          "margin-front"
+        ]
+      },
+      "evidence/baseline/briefs.json:landing": {
+        "before_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "after_sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "ids": [
+          "object-hero",
+          "object-hero"
+        ]
+      },
+      "evidence/baseline/briefs.json:dashboard": {
+        "before_sha256": "8f160497a3603576f926abd095aefb3ddb8f73a8f56b41d861d1bf05b3d41e5f",
+        "after_sha256": "8f160497a3603576f926abd095aefb3ddb8f73a8f56b41d861d1bf05b3d41e5f",
+        "ids": [
+          "exception-first",
+          "exception-first"
+        ]
+      },
+      "evidence/baseline/briefs.json:mobile": {
+        "before_sha256": "93d0fbb2b8633dbee89c897793eebec30a20855f7d9f6c29317a29126f2107d5",
+        "after_sha256": "93d0fbb2b8633dbee89c897793eebec30a20855f7d9f6c29317a29126f2107d5",
+        "ids": [
+          "platform-sign",
+          "platform-sign"
+        ]
+      },
+      "evidence/baseline/briefs.json:portfolio": {
+        "before_sha256": "e492e135384df3b9f516422d556a2f29369a299a80ca8a7c473cd475d2da21f8",
+        "after_sha256": "e492e135384df3b9f516422d556a2f29369a299a80ca8a7c473cd475d2da21f8",
+        "ids": [
+          "ground-plane",
+          "ground-plane"
+        ]
+      },
+      "evidence/baseline/briefs.json:pricing": {
+        "before_sha256": "a14efe079cd11f98c7e8bcf527882fa1afd660c36f1ec6265695c154c6891009",
+        "after_sha256": "a14efe079cd11f98c7e8bcf527882fa1afd660c36f1ec6265695c154c6891009",
+        "ids": [
+          "scale-ledger",
+          "scale-ledger"
+        ]
+      },
+      "evidence/baseline/briefs.json:editorial": {
+        "before_sha256": "d10cb3487491d4a81a80a783ca5ed5b064afd74465df692aea51429614f5400d",
+        "after_sha256": "d10cb3487491d4a81a80a783ca5ed5b064afd74465df692aea51429614f5400d",
+        "ids": [
+          "margin-front",
+          "margin-front"
+        ]
+      }
+    },
+    "schema_sha256": "0680ba11ab629be2d8cda40d8647b7db512cde96d9091a968eb97dba022622f0",
+    "schemas_equal": true,
+    "check_unchanged": true,
+    "check": {
+      "finding_count": 1,
+      "findings": [
+        {
+          "rule": "generic-cta",
+          "line": 1,
+          "detail": "An action label uses generic promotional copy."
+        }
+      ],
+      "scope": "Source checks. A zero count needs rendered verification.",
+      "render_checks": [
+        "layout and overflow",
+        "type scale and loaded fonts",
+        "imagery and contrast",
+        "full interaction and reduced motion"
+      ],
+      "truncated": false
+    },
+    "react": {
+      "direction_id": "artifact-inspection",
+      "changes": {
+        "type_ratio": 3.05,
+        "accent_usage": "Restrict the accent to the main control and focal marker.",
+        "spacing": "Increase negative space around the focal block by 20%.",
+        "motion_ms": 300
+      },
+      "why": "Strengthen the breathing room without losing the primary action.",
+      "keep": [
+        "primary task",
+        "project content",
+        "brand constraints",
+        "accessibility"
+      ]
+    },
+    "direction": {
+      "direction": {
+        "id": "artifact-inspection",
+        "surface": "editorial",
+        "title": "Artifact inspection",
+        "summary": "Lead with the whole cited object and its identity. Let the visitor reveal one feature, see where it belongs, and read what it tells us.",
+        "type": {
+          "display": "Gloock",
+          "body": "News Cycle",
+          "ratio": 3.5,
+          "tracking": -0.02,
+          "weight": 400,
+          "license": "OFL-1.1"
+        },
+        "palette": {
+          "ink": "#FFF1D6",
+          "paper": "#173532",
+          "accent": "#F3C77C"
+        },
+        "layout": {
+          "skeleton": "Pair the whole object with its name, supplied maker, date, material and source, and a single inspection control. Keep the detail and its annotation next to the control in reading order.",
+          "focus": "Give the object the largest area. Try a locator visible on disclosure to connect the detail to its place on the whole object.",
+          "desktop": "Use a wide object column and a narrower identity and annotation column. Keep the whole object visible when the detail opens.",
+          "mobile": "Fit the identity, whole object and inspection action in the first phone viewport. Open the readable detail and annotation in flow, with the same control available to close it.",
+          "rhythm": "Use #102623 for the caption surface and #B5C1AA for secondary facts. Adapt the palette to the supplied brand or material and check contrast. Keep annotation at a comfortable reading width."
+        },
+        "imagery": {
+          "subject": "Use the cited reproduction and base the detail on that same asset. Credit the source beside the object.",
+          "crop": "Preserve the original aspect ratio and edges in the opening view. Use a separate close-up for the selected feature while keeping the whole object available.",
+          "fallback": "If the detail pixels cannot support a legible reading, show the verified transcription or description in text and attribute it to the source."
+        },
+        "motion": {
+          "trigger": "The visitor opens or closes the detail by touch or keyboard.",
+          "effect": "Reveal the detail and annotation alongside a highlight at its location. Clear the highlight when closed.",
+          "duration_ms": 240,
+          "reduced": "Show or hide the same detail, locator and annotation immediately. Preserve focus and the expanded state."
+        },
+        "action": {
+          "instruction": "Use one native disclosure control with a visible focus state and an exposed expanded state. Let the same control reverse the action. Keep the annotation readable and distinguish the feature from any later interpretation. Leave out shopping controls and preset menus.",
+          "label": "Inspect [feature] / Close detail"
+        },
+        "why": "The whole object establishes context. A reversible detail connects one piece of evidence to the interpretation while keeping the visitor oriented.",
+        "sources": [
+          {
+            "url": "https://www.rijksmuseum.nl/en/collection/object/The-Threatened-Swan--22040f90565e730131983a44a85b989f",
+            "observation": "The object page leads with the reproduction and identity. Its separate data disclosure records the egg inscription, and its interpretation describes the later political reading.",
+            "strength": "evidence"
+          }
+        ],
+        "credit": "Rijksmuseum collection, The Threatened Swan (SK-A-4)"
+      },
+      "font_stylesheet": "https://fonts.googleapis.com/css2?family=Gloock%3Awght%40400&family=News+Cycle&display=swap",
+      "interaction": {
+        "accent_foreground": "#173532",
+        "easing": "ease-out",
+        "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+        "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+        "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+      },
+      "assumptions": [
+        "Use editorial as the surface.",
+        "Use only the project facts and assets in the brief."
+      ],
+      "questions": [],
+      "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px."
+    }
+  },
+  "source_tests": "607 passed, 1 skipped, 4 warnings, 134 subtests passed in 8.65s",
+  "factory_review": "Read-only independent review identified ambiguous task terms and missed features. Convergence preserved the negatives and required explicit physical context alongside the action.",
+  "generation": {
+    "old": {
+      "usage": {
+        "input_tokens": 59077,
+        "cached_input_tokens": 53120,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2617,
+        "reasoning_output_tokens": 0
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "design-mcp",
+          "tool": "direct",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "treatment_call": true,
+      "direct_call": true,
+      "status": "passed",
+      "observed_directions": [
+        "object-hero"
+      ],
+      "unhinted_direct": true,
+      "arm": "old",
+      "source_commit": "f30e6ffcb7c8fab97580a353ff5b770849162594",
+      "model": "gpt-6.1-terra",
+      "effort": "low",
+      "thread_ids": [
+        "01a2095a-db3f-7b92-ab09-39a6004a7eed"
+      ],
+      "trace_sha256": "b7e587f3ad139849c637c213ce950555cd07aee7c4ca9aff93dab551abb541b8",
+      "prompt_sha256": "27715b76dc6da2bc17b133ae88b6cea160b62e711a0636e0c7a8c37b9ba6deb8",
+      "elapsed_seconds": 54.7,
+      "asset_sha256": "eae45c7bbd43aaccad43dfcdbfaf476ab6489cdca19bf0a128e7441dbce74244",
+      "html_sha256": "508c4339516e95d52af6d61ae65955e9c367ca3150e5eeec7a4566a882299e4c"
+    },
+    "trial": {
+      "usage": {
+        "input_tokens": 59187,
+        "cached_input_tokens": 53248,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2729,
+        "reasoning_output_tokens": 30
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "design-mcp",
+          "tool": "direct",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "treatment_call": true,
+      "direct_call": true,
+      "status": "passed",
+      "observed_directions": [
+        "artifact-inspection"
+      ],
+      "unhinted_direct": true,
+      "arm": "trial",
+      "source_commit": "5c5d2c935164c00ac4a0299f75e333a89dc42331",
+      "model": "gpt-6.1-terra",
+      "effort": "low",
+      "thread_ids": [
+        "01a2095b-b49e-73e0-839a-afd8dfb5c7c9"
+      ],
+      "trace_sha256": "a3f15b991cecf1a329caaf2e8785810209265833da703a2c57434af575fd5813",
+      "prompt_sha256": "27715b76dc6da2bc17b133ae88b6cea160b62e711a0636e0c7a8c37b9ba6deb8",
+      "elapsed_seconds": 57.32,
+      "asset_sha256": "eae45c7bbd43aaccad43dfcdbfaf476ab6489cdca19bf0a128e7441dbce74244",
+      "html_sha256": "10a614c5a57549a188f4df53d287ce20508bf28ab5b06df5dabf030328bba2c0"
+    }
+  },
+  "replay": {
+    "old": {
+      "renderer": "0.12.0",
+      "browser": "Chrome/157.0.8103.79",
+      "input_sha256": "508c4339516e95d52af6d61ae65955e9c367ca3150e5eeec7a4566a882299e4c",
+      "captures": {
+        "320": {
+          "viewport": 320,
+          "width": 320,
+          "height": 700,
+          "title": "The Threatened Swan — Jan Asselijn",
+          "h1": "The Threatened Swan",
+          "loadedFonts": [
+            "Fraunces",
+            "Instrument Sans"
+          ],
+          "language": "en",
+          "reducedMotion": true,
+          "pageErrors": [],
+          "accessibility": "- banner:\n  - paragraph: Close looking\n  - paragraph: From the Rijksmuseum collection\n- main:\n  - region \"The Threatened Swan\":\n    - figure:\n      - img \"The Threatened Swan, a swan defending its nest against a dog.\"\n    - paragraph: A closer look\n    - heading \"The Threatened Swan\" [level=1]\n    - paragraph: Jan Asselijn / c. 1650 / Oil on canvas\n    - button \"Inspect the egg\"\n- contentinfo:\n  - paragraph: The Threatened Swan · Jan Asselijn\n  - paragraph: Rijksmuseum collection",
+          "status": "rendered",
+          "sha256": "e53f786dce0bf685f1ab8b67a3093ce2580886f6db92f52569029585ac6f53b7",
+          "interaction": {
+            "checks": {
+              "loaded": true,
+              "whole": true,
+              "facts": true,
+              "startsClosed": true,
+              "sameAction": true,
+              "reached": true,
+              "open": true,
+              "names": true,
+              "readableNote": true,
+              "keptFocus": true,
+              "closed": true,
+              "touchOpened": true,
+              "firstAction": true,
+              "noOverflow": true,
+              "reduced": true,
+              "noPageErrors": true
+            },
+            "opening": {
+              "top": 451.25,
+              "bottom": 495.25,
+              "width": 143.25,
+              "height": 44,
+              "viewport": 700,
+              "noOverflow": true
+            },
+            "note": {
+              "top": 521.765625,
+              "bottom": 1125.21875,
+              "visible": true
+            },
+            "artworkGeometry": {
+              "width": 1400,
+              "height": 1165,
+              "ratio": 1.2017212152823054,
+              "visibleWidth": 288,
+              "top": 58,
+              "bottom": 297.65625,
+              "fit": "contain"
+            },
+            "tabCount": 1,
+            "frames": {
+              "after": {
+                "filename": "320-after.png",
+                "sha256": "c46761cd8506b25e2f0bfbfc779e9cee083219ee822fd19ad3c8676c7b2518a3"
+              },
+              "edge": {
+                "filename": "320-edge.png",
+                "sha256": "a3c6a5e3bc366cc3af89cd0d712235d245b48b32a265a02d8ced503ca0c35220"
+              },
+              "touch": {
+                "filename": "320-touch.png",
+                "sha256": "b1b6efde2392a61384538fe86f4b2d558078f4e9e849b5c01e1749e8b38f9073"
+              }
+            }
+          }
+        },
+        "390": {
+          "viewport": 390,
+          "width": 390,
+          "height": 844,
+          "title": "The Threatened Swan — Jan Asselijn",
+          "h1": "The Threatened Swan",
+          "loadedFonts": [
+            "Fraunces",
+            "Instrument Sans"
+          ],
+          "language": "en",
+          "reducedMotion": true,
+          "pageErrors": [],
+          "accessibility": "- banner:\n  - paragraph: Close looking\n  - paragraph: From the Rijksmuseum collection\n- main:\n  - region \"The Threatened Swan\":\n    - figure:\n      - img \"The Threatened Swan, a swan defending its nest against a dog.\"\n    - paragraph: A closer look\n    - heading \"The Threatened Swan\" [level=1]\n    - paragraph: Jan Asselijn / c. 1650 / Oil on canvas\n    - button \"Inspect the egg\"\n- contentinfo:\n  - paragraph: The Threatened Swan · Jan Asselijn\n  - paragraph: Rijksmuseum collection",
+          "status": "rendered",
+          "sha256": "5f984fa0c1614680506f75ed28f7bf8a2d9896dc822acafaad7d5602f44a4a19",
+          "interaction": {
+            "checks": {
+              "loaded": true,
+              "whole": true,
+              "facts": true,
+              "startsClosed": true,
+              "sameAction": true,
+              "reached": true,
+              "open": true,
+              "names": true,
+              "readableNote": true,
+              "keptFocus": true,
+              "closed": true,
+              "touchOpened": true,
+              "firstAction": true,
+              "noOverflow": true,
+              "reduced": true,
+              "noPageErrors": true
+            },
+            "opening": {
+              "top": 515.5,
+              "bottom": 559.5,
+              "width": 143.25,
+              "height": 44,
+              "viewport": 844,
+              "noOverflow": true
+            },
+            "note": {
+              "top": 571.015625,
+              "bottom": 1128.4375,
+              "visible": true
+            },
+            "artworkGeometry": {
+              "width": 1400,
+              "height": 1165,
+              "ratio": 1.2017203398720235,
+              "visibleWidth": 358,
+              "top": 58,
+              "bottom": 355.90625,
+              "fit": "contain"
+            },
+            "tabCount": 1,
+            "frames": {
+              "after": {
+                "filename": "390-after.png",
+                "sha256": "acf929eff426cb0829e623d6aa4a510debae305190d973baebcb3f7c50dccbcc"
+              },
+              "edge": {
+                "filename": "390-edge.png",
+                "sha256": "b75ff20ea2f8efdcfd9695e6ad639ccb153571987f661a8f5a4322539f98c46e"
+              },
+              "touch": {
+                "filename": "390-touch.png",
+                "sha256": "e1cd24632747fe0f296d399fd16e855a18c6e5234c9603f92afd22648c03c2d7"
+              }
+            }
+          }
+        },
+        "1440": {
+          "viewport": 1440,
+          "width": 1425,
+          "height": 992,
+          "title": "The Threatened Swan — Jan Asselijn",
+          "h1": "The Threatened Swan",
+          "loadedFonts": [
+            "Fraunces",
+            "Instrument Sans"
+          ],
+          "language": "en",
+          "reducedMotion": true,
+          "pageErrors": [],
+          "accessibility": "- banner:\n  - paragraph: Close looking\n  - paragraph: From the Rijksmuseum collection\n- main:\n  - region \"The Threatened Swan\":\n    - figure:\n      - img \"The Threatened Swan, a swan defending its nest against a dog.\"\n    - paragraph: A closer look\n    - heading \"The Threatened Swan\" [level=1]\n    - paragraph: Jan Asselijn c. 1650 Oil on canvas\n    - button \"Inspect the egg\"\n- contentinfo:\n  - paragraph: The Threatened Swan · Jan Asselijn\n  - paragraph: Rijksmuseum collection",
+          "status": "rendered",
+          "sha256": "9dee09a53b92193ba3dfba2a61e605cf566b0a411f6eafc7e496ed981426ec7f",
+          "interaction": {
+            "checks": {
+              "loaded": true,
+              "whole": true,
+              "facts": true,
+              "startsClosed": true,
+              "sameAction": true,
+              "reached": true,
+              "open": true,
+              "names": true,
+              "readableNote": true,
+              "keptFocus": true,
+              "closed": true,
+              "touchOpened": true,
+              "firstAction": true,
+              "noOverflow": true,
+              "reduced": true,
+              "noPageErrors": true
+            },
+            "opening": {
+              "top": 824.8125,
+              "bottom": 872.8125,
+              "width": 162.953125,
+              "height": 48,
+              "viewport": 900,
+              "noOverflow": true
+            },
+            "note": {
+              "top": 933.40625,
+              "bottom": 1608.421875,
+              "visible": false
+            },
+            "artworkGeometry": {
+              "width": 1400,
+              "height": 1165,
+              "ratio": 1.2017287507717638,
+              "visibleWidth": 912.375,
+              "top": 116.59375,
+              "bottom": 875.8125,
+              "fit": "contain"
+            },
+            "tabCount": 1,
+            "frames": {
+              "after": {
+                "filename": "1440-after.png",
+                "sha256": "ac000cab95152bca755fee4af4d0e2876c4701621fc8c9b44468eab8026c486e"
+              },
+              "edge": {
+                "filename": "1440-edge.png",
+                "sha256": "1f3b0140bdb0c7374eb93f94f41cf6ecf10706677d2c36b286eabcd265dffe31"
+              },
+              "touch": {
+                "filename": "1440-touch.png",
+                "sha256": "78ed07bf1be0225292eae0e974b96dbcd052f6c918674e15a5fdd65bbd4a5b63"
+              }
+            }
+          }
+        }
+      }
+    },
+    "trial": {
+      "renderer": "0.12.0",
+      "browser": "Chrome/157.0.8103.79",
+      "input_sha256": "10a614c5a57549a188f4df53d287ce20508bf28ab5b06df5dabf030328bba2c0",
+      "captures": {
+        "320": {
+          "viewport": 320,
+          "width": 320,
+          "height": 700,
+          "title": "The Threatened Swan — Jan Asselijn",
+          "h1": "The Threatened Swan",
+          "loadedFonts": [
+            "Gloock",
+            "News Cycle"
+          ],
+          "language": "en",
+          "reducedMotion": true,
+          "pageErrors": [],
+          "accessibility": "- main:\n  - text: In the collection\n  - link \"Rijksmuseum\":\n    - /url: https://www.rijksmuseum.nl/en/collection/object/The-Threatened-Swan--22040f90565e730131983a44a85b989f\n  - region \"The Threatened Swan\":\n    - figure \"Rijksmuseum collection\":\n      - img \"The Threatened Swan, a swan defending its nest from a dog.\"\n      - link \"Rijksmuseum collection\":\n        - /url: https://www.rijksmuseum.nl/en/collection/object/The-Threatened-Swan--22040f90565e730131983a44a85b989f\n    - heading \"The Threatened Swan\" [level=1]\n    - paragraph: Jan Asselijn c. 1650 Oil on canvas\n    - button \"Inspect the egg +\"",
+          "status": "rendered",
+          "sha256": "318de74b049aa06582fc9866505d1c7edc7b0985f3717a9ed520397728c3360c",
+          "interaction": {
+            "checks": {
+              "loaded": true,
+              "whole": true,
+              "facts": true,
+              "startsClosed": true,
+              "sameAction": true,
+              "reached": true,
+              "open": true,
+              "names": true,
+              "readableNote": true,
+              "keptFocus": true,
+              "closed": true,
+              "touchOpened": true,
+              "firstAction": true,
+              "noOverflow": true,
+              "reduced": true,
+              "noPageErrors": true
+            },
+            "opening": {
+              "top": 442.921875,
+              "bottom": 490.921875,
+              "width": 176.515625,
+              "height": 48,
+              "viewport": 700,
+              "noOverflow": true
+            },
+            "note": {
+              "top": 502.4375,
+              "bottom": 1083.65625,
+              "visible": true
+            },
+            "artworkGeometry": {
+              "width": 1400,
+              "height": 1165,
+              "ratio": 1.201716738197425,
+              "visibleWidth": 280,
+              "top": 175.734375,
+              "bottom": 408.734375,
+              "fit": "fill"
+            },
+            "tabCount": 3,
+            "frames": {
+              "after": {
+                "filename": "320-after.png",
+                "sha256": "05d997313f45ae681bfb4b083a7b6a9ecf44c2b6ee266eadb727334e8f0315eb"
+              },
+              "edge": {
+                "filename": "320-edge.png",
+                "sha256": "e63adeb0ffb1027f11db548de7de7fc13f90f8039b2aa12211661facde41fa30"
+              },
+              "touch": {
+                "filename": "320-touch.png",
+                "sha256": "2da3e52f54d2de9d18b3d4d80da41e85734ba078e08ac9a43aeab807a33b3906"
+              }
+            }
+          }
+        },
+        "390": {
+          "viewport": 390,
+          "width": 390,
+          "height": 844,
+          "title": "The Threatened Swan — Jan Asselijn",
+          "h1": "The Threatened Swan",
+          "loadedFonts": [
+            "Gloock",
+            "News Cycle"
+          ],
+          "language": "en",
+          "reducedMotion": true,
+          "pageErrors": [],
+          "accessibility": "- main:\n  - text: In the collection\n  - link \"Rijksmuseum\":\n    - /url: https://www.rijksmuseum.nl/en/collection/object/The-Threatened-Swan--22040f90565e730131983a44a85b989f\n  - region \"The Threatened Swan\":\n    - figure \"Rijksmuseum collection\":\n      - img \"The Threatened Swan, a swan defending its nest from a dog.\"\n      - link \"Rijksmuseum collection\":\n        - /url: https://www.rijksmuseum.nl/en/collection/object/The-Threatened-Swan--22040f90565e730131983a44a85b989f\n    - heading \"The Threatened Swan\" [level=1]\n    - paragraph: Jan Asselijn c. 1650 Oil on canvas\n    - button \"Inspect the egg +\"",
+          "status": "rendered",
+          "sha256": "16658967abd9ff9cd38df45d8b6cc42af65940948614f05669f2bcd8a794566d",
+          "interaction": {
+            "checks": {
+              "loaded": true,
+              "whole": true,
+              "facts": true,
+              "startsClosed": true,
+              "sameAction": true,
+              "reached": true,
+              "open": true,
+              "names": true,
+              "readableNote": true,
+              "keptFocus": true,
+              "closed": true,
+              "touchOpened": true,
+              "firstAction": true,
+              "noOverflow": true,
+              "reduced": true,
+              "noPageErrors": true
+            },
+            "opening": {
+              "top": 511.359375,
+              "bottom": 559.359375,
+              "width": 176.515625,
+              "height": 48,
+              "viewport": 844,
+              "noOverflow": true
+            },
+            "note": {
+              "top": 570.875,
+              "bottom": 1090.71875,
+              "visible": true
+            },
+            "artworkGeometry": {
+              "width": 1400,
+              "height": 1165,
+              "ratio": 1.201716738197425,
+              "visibleWidth": 350,
+              "top": 185.921875,
+              "bottom": 477.171875,
+              "fit": "fill"
+            },
+            "tabCount": 3,
+            "frames": {
+              "after": {
+                "filename": "390-after.png",
+                "sha256": "37e8ed3e21e4fe7bcc07a21842bb8bdaeaa08128c6323f44d48282ff46d3f1eb"
+              },
+              "edge": {
+                "filename": "390-edge.png",
+                "sha256": "1905722d2906f055b0978f616ac998092d7adb58ba21d1063f56edca0276b5cc"
+              },
+              "touch": {
+                "filename": "390-touch.png",
+                "sha256": "0b567bd384c0997686d590caee97cbe28516dc6476891527a1ad1f7b1c3eeed8"
+              }
+            }
+          }
+        },
+        "1440": {
+          "viewport": 1440,
+          "width": 1425,
+          "height": 900,
+          "title": "The Threatened Swan — Jan Asselijn",
+          "h1": "The Threatened Swan",
+          "loadedFonts": [
+            "Gloock",
+            "News Cycle"
+          ],
+          "language": "en",
+          "reducedMotion": true,
+          "pageErrors": [],
+          "accessibility": "- main:\n  - text: In the collection\n  - link \"Rijksmuseum\":\n    - /url: https://www.rijksmuseum.nl/en/collection/object/The-Threatened-Swan--22040f90565e730131983a44a85b989f\n  - region \"The Threatened Swan\":\n    - figure \"Rijksmuseum collection\":\n      - img \"The Threatened Swan, a swan defending its nest from a dog.\"\n      - link \"Rijksmuseum collection\":\n        - /url: https://www.rijksmuseum.nl/en/collection/object/The-Threatened-Swan--22040f90565e730131983a44a85b989f\n    - paragraph: A closer look\n    - heading \"The Threatened Swan\" [level=1]\n    - paragraph: Jan Asselijn c. 1650 Oil on canvas\n    - paragraph: Look closely at the nest beneath the swan.\n    - button \"Inspect the egg +\"",
+          "status": "rendered",
+          "sha256": "87aee87c11c4c06314a466fd9d3bdf9bfff744e42866f4143f7b0fa1f9e7b14c",
+          "interaction": {
+            "checks": {
+              "loaded": true,
+              "whole": true,
+              "facts": true,
+              "startsClosed": true,
+              "sameAction": true,
+              "reached": true,
+              "open": true,
+              "names": true,
+              "readableNote": true,
+              "keptFocus": true,
+              "closed": true,
+              "touchOpened": true,
+              "firstAction": true,
+              "noOverflow": true,
+              "reduced": true,
+              "noPageErrors": true
+            },
+            "opening": {
+              "top": 591.359375,
+              "bottom": 639.359375,
+              "width": 176.515625,
+              "height": 48,
+              "viewport": 900,
+              "noOverflow": true
+            },
+            "note": {
+              "top": 669.359375,
+              "bottom": 1194.15625,
+              "visible": true
+            },
+            "artworkGeometry": {
+              "width": 1400,
+              "height": 1165,
+              "ratio": 1.2017355998750725,
+              "visibleWidth": 841.703125,
+              "top": 102,
+              "bottom": 802.40625,
+              "fit": "fill"
+            },
+            "tabCount": 3,
+            "frames": {
+              "after": {
+                "filename": "1440-after.png",
+                "sha256": "20d81a5129a7c6e75d204bb699deece0b3d93991c77188568545a1715eb71289"
+              },
+              "edge": {
+                "filename": "1440-edge.png",
+                "sha256": "758c2e690fbdebe2b410e34878e1a82346936281c233312a85e3a79377ef6700"
+              },
+              "touch": {
+                "filename": "1440-touch.png",
+                "sha256": "7e5111faf35897935838e5b615bc6b7186cbb5fcc45f009204af09610b5b75bf"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "failed_checks": [],
+  "verified_frames": 24,
+  "target_checks": {
+    "old": {
+      "320": {
+        "target": {
+          "x": 0.75,
+          "y": 1.3208938963804118
+        },
+        "checks": {
+          "loaded": true,
+          "whole": true,
+          "facts": true,
+          "startsClosed": true,
+          "sameAction": true,
+          "reached": true,
+          "open": true,
+          "names": true,
+          "readableNote": true,
+          "keptFocus": true,
+          "closed": true,
+          "touchOpened": true,
+          "firstAction": true,
+          "eggInCrop": false,
+          "noOverflow": true,
+          "reduced": true,
+          "noPageErrors": true
+        }
+      },
+      "390": {
+        "target": {
+          "x": 0.75,
+          "y": 1.3208978957774324
+        },
+        "checks": {
+          "loaded": true,
+          "whole": true,
+          "facts": true,
+          "startsClosed": true,
+          "sameAction": true,
+          "reached": true,
+          "open": true,
+          "names": true,
+          "readableNote": true,
+          "keptFocus": true,
+          "closed": true,
+          "touchOpened": true,
+          "firstAction": true,
+          "eggInCrop": false,
+          "noOverflow": true,
+          "reduced": true,
+          "noPageErrors": true
+        }
+      },
+      "1440": {
+        "target": {
+          "x": 0.75,
+          "y": 1.3208083457209598
+        },
+        "checks": {
+          "loaded": true,
+          "whole": true,
+          "facts": true,
+          "startsClosed": true,
+          "sameAction": true,
+          "reached": true,
+          "open": true,
+          "names": true,
+          "readableNote": true,
+          "keptFocus": true,
+          "closed": true,
+          "touchOpened": true,
+          "firstAction": true,
+          "eggInCrop": false,
+          "noOverflow": true,
+          "reduced": true,
+          "noPageErrors": true
+        }
+      }
+    },
+    "trial": {
+      "320": {
+        "target": {
+          "x": 0.5,
+          "y": 1.1769948700410402
+        },
+        "checks": {
+          "loaded": true,
+          "whole": true,
+          "facts": true,
+          "startsClosed": true,
+          "sameAction": true,
+          "reached": true,
+          "open": true,
+          "names": true,
+          "readableNote": true,
+          "keptFocus": true,
+          "closed": true,
+          "touchOpened": true,
+          "firstAction": true,
+          "eggInCrop": false,
+          "noOverflow": true,
+          "reduced": true,
+          "noPageErrors": true
+        }
+      },
+      "390": {
+        "target": {
+          "x": 0.5,
+          "y": 1.1768664953334236
+        },
+        "checks": {
+          "loaded": true,
+          "whole": true,
+          "facts": true,
+          "startsClosed": true,
+          "sameAction": true,
+          "reached": true,
+          "open": true,
+          "names": true,
+          "readableNote": true,
+          "keptFocus": true,
+          "closed": true,
+          "touchOpened": true,
+          "firstAction": true,
+          "eggInCrop": false,
+          "noOverflow": true,
+          "reduced": true,
+          "noPageErrors": true
+        }
+      },
+      "1440": {
+        "target": {
+          "x": 0.4999881661472919,
+          "y": 1.1768734198936113
+        },
+        "checks": {
+          "loaded": true,
+          "whole": true,
+          "facts": true,
+          "startsClosed": true,
+          "sameAction": true,
+          "reached": true,
+          "open": true,
+          "names": true,
+          "readableNote": true,
+          "keptFocus": true,
+          "closed": true,
+          "touchOpened": true,
+          "firstAction": true,
+          "eggInCrop": false,
+          "noOverflow": true,
+          "reduced": true,
+          "noPageErrors": true
+        }
+      }
+    }
+  },
+  "generated_target_ok": false,
+  "critic": {
+    "calibration": {
+      "example": "Legible repair intake with clear labels, familiar layout, and misplaced focus after an invalid number",
+      "coherence": 7,
+      "originality": 4,
+      "craft": 6,
+      "usability": 6
+    },
+    "screens": {
+      "A-1440": {
+        "coherence": 8,
+        "originality": 7,
+        "craft": 6,
+        "usability": 6,
+        "primary_action": {
+          "input": "Tab three times, then Enter",
+          "expected": "Open an enlarged view of the inscribed egg and its note.",
+          "observed": "The button changed to Close detail, a circle marked the egg in the original, and a detail panel appeared below the button. The panel required scrolling to inspect."
+        },
+        "edge_observation": "Enter on Close detail removed the panel and marker, restored the whole composition to view, and retained visible focus on Inspect the egg.",
+        "fact_check": "The original contains an egg at the lower right, but its inscription is not readable at this scale. The purported enlarged egg crop shows vegetation and part of the swan, with no visible egg or legible inscription. The note says the inscription is 'Holland' and describes a later political interpretation; those historical claims were not independently verified.",
+        "strength": "The large painting and expressive serif title form a strong opening, and the marker makes the egg's location immediately apparent.",
+        "weakness": "The crop fails the central inspection task, and the note and crop begin below the initial viewport.",
+        "repair": "Center a sufficiently detailed crop on the egg and inscription; bring the opened detail into view while preserving the original and its location marker.",
+        "arm": "trial",
+        "html_sha256": "10a614c5a57549a188f4df53d287ce20508bf28ab5b06df5dabf030328bba2c0",
+        "weighted": 6.9,
+        "before": {
+          "sha256": "87aee87c11c4c06314a466fd9d3bdf9bfff744e42866f4143f7b0fa1f9e7b14c",
+          "file": "A-1440-before.png",
+          "tool_call_id": "item_2",
+          "transport": {
+            "mime_type": "image/webp",
+            "sha256": "125bdf8b7b426528fbdea72871eeb3db9cba252af0ac1daa3d1657191a46f0eb"
+          }
+        },
+        "after": {
+          "sha256": "20d81a5129a7c6e75d204bb699deece0b3d93991c77188568545a1715eb71289",
+          "file": "A-1440-after.png",
+          "tool_call_id": "item_7",
+          "transport": {
+            "mime_type": "image/webp",
+            "sha256": "8ec4c9d107c1109ac64fe2be13efcc964ed8ffa741c03668bc58b82b8f43fcab"
+          }
+        },
+        "layout_width": 1425,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge": {
+          "sha256": "758c2e690fbdebe2b410e34878e1a82346936281c233312a85e3a79377ef6700",
+          "file": "A-1440-edge.png",
+          "tool_call_id": "item_33",
+          "transport": {
+            "mime_type": "image/webp",
+            "sha256": "171e46a60e64f0e3614a63390459e571396e3778de575c5de6a438c2ea95ce8b"
+          }
+        }
+      },
+      "A-390": {
+        "coherence": 8,
+        "originality": 7,
+        "craft": 6,
+        "usability": 6,
+        "primary_action": {
+          "input": "Tab three times, then Enter",
+          "expected": "Open the egg detail and note.",
+          "observed": "The button became Close detail, a circle marked the egg in the original, and the crop appeared beneath the button. The note was below the viewport."
+        },
+        "edge_observation": "Enter closed the detail, restored the whole painting in the viewport, and retained visible focus on Inspect the egg.",
+        "fact_check": "The small egg can be located at the lower right using the marker, but the inscription cannot be read in the original. The visible crop does not contain the egg. The note's 'Holland' and historical interpretation claims remain unverified independently.",
+        "strength": "The title, attribution, entire painting, and action fit together on opening; the marker connects the detail to the original.",
+        "weakness": "The small original makes the egg difficult to identify unaided, and the incorrect crop occupies mobile space without showing the target.",
+        "repair": "Use a correctly positioned, legible egg crop and place its note immediately alongside or below it.",
+        "arm": "trial",
+        "html_sha256": "10a614c5a57549a188f4df53d287ce20508bf28ab5b06df5dabf030328bba2c0",
+        "weighted": 6.9,
+        "before": {
+          "sha256": "16658967abd9ff9cd38df45d8b6cc42af65940948614f05669f2bcd8a794566d",
+          "file": "A-390-before.png",
+          "tool_call_id": "item_36"
+        },
+        "after": {
+          "sha256": "78c2303ee0900f38a7956753e289b89c2ffdf2edd8a66c54e45e27e913898a0a",
+          "file": "A-390-after.png",
+          "tool_call_id": "item_41"
+        },
+        "layout_width": 375,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge": {
+          "sha256": "1905722d2906f055b0978f616ac998092d7adb58ba21d1063f56edca0276b5cc",
+          "file": "A-390-edge.png",
+          "tool_call_id": "item_43"
+        }
+      },
+      "B-1440": {
+        "coherence": 7.5,
+        "originality": 6,
+        "craft": 5.5,
+        "usability": 5.5,
+        "primary_action": {
+          "input": "Tab once, then Enter",
+          "expected": "Open an enlarged view of the egg and its note.",
+          "observed": "The button changed to Close detail. The detail appeared below the initial viewport; scrolling revealed a large crop of the swan and vegetation, without the egg."
+        },
+        "edge_observation": "Enter on Close detail removed the detail and retained visible focus on Inspect the egg. The full painting was visible again.",
+        "fact_check": "The egg is visible near the lower right of the original, but its inscription is too small to read. The crop does not show the egg or inscription. The note says 'Holland' was added later and describes a political interpretation; those claims were not independently verified.",
+        "strength": "The painting dominates the opening, with a readable serif title and restrained supporting type.",
+        "weakness": "The opened state gives no location marker and initially shows no detail; the large crop then misses the egg, making the connection to the original difficult.",
+        "repair": "Show a correctly framed egg crop immediately on activation and mark its position in the original.",
+        "arm": "old",
+        "html_sha256": "508c4339516e95d52af6d61ae65955e9c367ca3150e5eeec7a4566a882299e4c",
+        "weighted": 6.25,
+        "before": {
+          "sha256": "9dee09a53b92193ba3dfba2a61e605cf566b0a411f6eafc7e496ed981426ec7f",
+          "file": "B-1440-before.png",
+          "tool_call_id": "item_45",
+          "transport": {
+            "mime_type": "image/webp",
+            "sha256": "858eb5a1b48c52014d2b94afb733f0de43ec61b94da3078f81c40ceb66abf7be"
+          }
+        },
+        "after": {
+          "sha256": "ac000cab95152bca755fee4af4d0e2876c4701621fc8c9b44468eab8026c486e",
+          "file": "B-1440-after.png",
+          "tool_call_id": "item_48",
+          "transport": {
+            "mime_type": "image/webp",
+            "sha256": "f6730a7c1a1133fb0a8e8b4519e93a523314d9eac9b494cf1955db530cc81e23"
+          }
+        },
+        "layout_width": 1425,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge": {
+          "sha256": "0868cc65f867b6f14d02b4e6a19e080123900dbd3f14e358d8208acbf8229f8c",
+          "file": "B-1440-edge.png",
+          "tool_call_id": "item_86",
+          "transport": {
+            "mime_type": "image/webp",
+            "sha256": "47cc9c2ed5a8757d149b5f2eaad2cbd471cb2cbfb52bc0c326db352f819be71b"
+          }
+        }
+      },
+      "B-390": {
+        "coherence": 7.5,
+        "originality": 6,
+        "craft": 5.5,
+        "usability": 5.5,
+        "primary_action": {
+          "input": "Tab once, then Enter",
+          "expected": "Open the egg detail and note.",
+          "observed": "The button became Close detail and a crop appeared below it. The crop shows the swan and background rather than the egg; the note was below the viewport."
+        },
+        "edge_observation": "Enter closed the detail, restored the whole composition in view, and retained visible focus on Inspect the egg.",
+        "fact_check": "The egg is small at the lower right of the original and its inscription is not legible. The displayed detail excludes it. The note's inscription and historical claims were not independently verified.",
+        "strength": "The opening leads with the whole painting, followed by a clear title and action; the keyboard path is short.",
+        "weakness": "There is no location cue, and the crop and note are separated from the small original by vertical scrolling.",
+        "repair": "Add a location marker and a correctly framed egg crop, with the explanatory note close to the image.",
+        "arm": "old",
+        "html_sha256": "508c4339516e95d52af6d61ae65955e9c367ca3150e5eeec7a4566a882299e4c",
+        "weighted": 6.25,
+        "before": {
+          "sha256": "5f984fa0c1614680506f75ed28f7bf8a2d9896dc822acafaad7d5602f44a4a19",
+          "file": "B-390-before.png",
+          "tool_call_id": "item_88"
+        },
+        "after": {
+          "sha256": "96502b6348210b5ec591cc8220ea787b02631ee1bc1135b61bd1968f66ca5af1",
+          "file": "B-390-after.png",
+          "tool_call_id": "item_91"
+        },
+        "layout_width": 375,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge": {
+          "sha256": "b75ff20ea2f8efdcfd9695e6ad639ccb153571987f661a8f5a4322539f98c46e",
+          "file": "B-390-edge.png",
+          "tool_call_id": "item_93"
+        }
+      }
+    },
+    "preference": {
+      "winner": "A",
+      "reason": "Both views miss the egg in their enlarged crops, so neither completes the central inspection task. A's location marker makes the egg easier to find in the original, and its desktop source link provides a route to the collection record. Both retain keyboard focus on close."
+    },
+    "case": "installed-artwork",
+    "verified_screens": 4,
+    "required_screens": 4,
+    "browser": "Chrome/157.0.8103.79",
+    "evaluator_thread": "01a2095d-397b-7310-a521-c4eb4a47fa9f",
+    "usage": {
+      "input_tokens": 671948,
+      "cached_input_tokens": 624640,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 2903,
+      "reasoning_output_tokens": 20
+    },
+    "trace_sha256": "c28f87438f30c7b67505e04b1916281acbbb282e9b8ce212b14202d9fc2aec75",
+    "browser_audit_sha256": "8db13cc27003999dddc5b611d1d780070999d10ef26e0866dffcd9c05f91c08d"
+  },
+  "matched_crop_repair": {
+    "edit": {
+      "old": {
+        "before": "508c4339516e95d52af6d61ae65955e9c367ca3150e5eeec7a4566a882299e4c",
+        "after": "f5fb69e000869728878fb1786ed777b648e4b6f7f6c844a9d963667798ab51e4",
+        "normalized_source_point": [
+          0.9,
+          0.667
+        ],
+        "frame_ratio": 1.55,
+        "scale": 2.5,
+        "before_rule": ".detail-image img {\n      position: absolute;\n      width: 250%;\n      max-width: none;\n      height: auto;\n      left: -150%;\n      top: -83%;\n    }",
+        "after_rule": ".detail-image img {\n      position: absolute;\n      width: 250%;\n      max-width: none;\n      height: auto;\n      left: -150.000000%;\n      top: -165.077723%;\n    }"
+      },
+      "trial": {
+        "before": "10a614c5a57549a188f4df53d287ce20508bf28ab5b06df5dabf030328bba2c0",
+        "after": "ce775444387778368c2dd73317adea8d7887defa3758ed83324d906aaf11f4b9",
+        "normalized_source_point": [
+          0.9,
+          0.667
+        ],
+        "frame_ratio": 1.45,
+        "scale": 3.5,
+        "before_rule": ".detail-image img {\n      position: absolute;\n      width: 350%;\n      max-width: none;\n      height: auto;\n      left: -265%;\n      top: -164%;\n    }",
+        "after_rule": ".detail-image img {\n      position: absolute;\n      width: 350%;\n      max-width: none;\n      height: auto;\n      left: -250.000000%;\n      top: -231.682437%;\n    }"
+      }
+    },
+    "replay": {
+      "old": {
+        "renderer": "0.12.0",
+        "browser": "Chrome/157.0.8103.79",
+        "input_sha256": "f5fb69e000869728878fb1786ed777b648e4b6f7f6c844a9d963667798ab51e4",
+        "captures": {
+          "320": {
+            "viewport": 320,
+            "width": 320,
+            "height": 700,
+            "title": "The Threatened Swan — Jan Asselijn",
+            "h1": "The Threatened Swan",
+            "loadedFonts": [
+              "Fraunces",
+              "Instrument Sans"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- banner:\n  - paragraph: Close looking\n  - paragraph: From the Rijksmuseum collection\n- main:\n  - region \"The Threatened Swan\":\n    - figure:\n      - img \"The Threatened Swan, a swan defending its nest against a dog.\"\n    - paragraph: A closer look\n    - heading \"The Threatened Swan\" [level=1]\n    - paragraph: Jan Asselijn / c. 1650 / Oil on canvas\n    - button \"Inspect the egg\"\n- contentinfo:\n  - paragraph: The Threatened Swan · Jan Asselijn\n  - paragraph: Rijksmuseum collection",
+            "status": "rendered",
+            "sha256": "e53f786dce0bf685f1ab8b67a3093ce2580886f6db92f52569029585ac6f53b7",
+            "interaction": {
+              "checks": {
+                "loaded": true,
+                "whole": true,
+                "facts": true,
+                "startsClosed": true,
+                "sameAction": true,
+                "reached": true,
+                "open": true,
+                "names": true,
+                "readableNote": true,
+                "keptFocus": true,
+                "closed": true,
+                "touchOpened": true,
+                "firstAction": true,
+                "eggInCrop": true,
+                "noOverflow": true,
+                "reduced": true,
+                "noPageErrors": true
+              },
+              "opening": {
+                "top": 451.25,
+                "bottom": 495.25,
+                "width": 143.25,
+                "height": 44,
+                "viewport": 700,
+                "noOverflow": true
+              },
+              "note": {
+                "top": 521.765625,
+                "bottom": 1125.21875,
+                "visible": true
+              },
+              "target": {
+                "x": 0.75,
+                "y": 0.500099006387509
+              },
+              "artworkGeometry": {
+                "width": 1400,
+                "height": 1165,
+                "ratio": 1.2017212152823054,
+                "visibleWidth": 288,
+                "top": 58,
+                "bottom": 297.65625,
+                "fit": "contain"
+              },
+              "tabCount": 1,
+              "frames": {
+                "after": {
+                  "filename": "320-after.png",
+                  "sha256": "8840e6769d6c7fd31d3c3d8cd112d09362992a50d31fa914b27c0b6e307bd998"
+                },
+                "edge": {
+                  "filename": "320-edge.png",
+                  "sha256": "a3c6a5e3bc366cc3af89cd0d712235d245b48b32a265a02d8ced503ca0c35220"
+                },
+                "touch": {
+                  "filename": "320-touch.png",
+                  "sha256": "bb3594749f5bc3b0781cf11e5beb5cbc1b4afc1ea2e39d24f2841f4b02090b57"
+                }
+              }
+            }
+          },
+          "390": {
+            "viewport": 390,
+            "width": 390,
+            "height": 844,
+            "title": "The Threatened Swan — Jan Asselijn",
+            "h1": "The Threatened Swan",
+            "loadedFonts": [
+              "Fraunces",
+              "Instrument Sans"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- banner:\n  - paragraph: Close looking\n  - paragraph: From the Rijksmuseum collection\n- main:\n  - region \"The Threatened Swan\":\n    - figure:\n      - img \"The Threatened Swan, a swan defending its nest against a dog.\"\n    - paragraph: A closer look\n    - heading \"The Threatened Swan\" [level=1]\n    - paragraph: Jan Asselijn / c. 1650 / Oil on canvas\n    - button \"Inspect the egg\"\n- contentinfo:\n  - paragraph: The Threatened Swan · Jan Asselijn\n  - paragraph: Rijksmuseum collection",
+            "status": "rendered",
+            "sha256": "5f984fa0c1614680506f75ed28f7bf8a2d9896dc822acafaad7d5602f44a4a19",
+            "interaction": {
+              "checks": {
+                "loaded": true,
+                "whole": true,
+                "facts": true,
+                "startsClosed": true,
+                "sameAction": true,
+                "reached": true,
+                "open": true,
+                "names": true,
+                "readableNote": true,
+                "keptFocus": true,
+                "closed": true,
+                "touchOpened": true,
+                "firstAction": true,
+                "eggInCrop": true,
+                "noOverflow": true,
+                "reduced": true,
+                "noPageErrors": true
+              },
+              "opening": {
+                "top": 515.5,
+                "bottom": 559.5,
+                "width": 143.25,
+                "height": 44,
+                "viewport": 844,
+                "noOverflow": true
+              },
+              "note": {
+                "top": 571.015625,
+                "bottom": 1128.4375,
+                "visible": true
+              },
+              "target": {
+                "x": 0.75,
+                "y": 0.5001098714870779
+              },
+              "artworkGeometry": {
+                "width": 1400,
+                "height": 1165,
+                "ratio": 1.2017203398720235,
+                "visibleWidth": 358,
+                "top": 58,
+                "bottom": 355.90625,
+                "fit": "contain"
+              },
+              "tabCount": 1,
+              "frames": {
+                "after": {
+                  "filename": "390-after.png",
+                  "sha256": "2798412dd72c1f40e82c385e58836be25a7ef3356ad342281d4f6946f6c8c918"
+                },
+                "edge": {
+                  "filename": "390-edge.png",
+                  "sha256": "b75ff20ea2f8efdcfd9695e6ad639ccb153571987f661a8f5a4322539f98c46e"
+                },
+                "touch": {
+                  "filename": "390-touch.png",
+                  "sha256": "722528691d6fd9ae27468d116d885d66da97c3c3d2bb79a443c754ec30439f56"
+                }
+              }
+            }
+          },
+          "1440": {
+            "viewport": 1440,
+            "width": 1425,
+            "height": 992,
+            "title": "The Threatened Swan — Jan Asselijn",
+            "h1": "The Threatened Swan",
+            "loadedFonts": [
+              "Fraunces",
+              "Instrument Sans"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- banner:\n  - paragraph: Close looking\n  - paragraph: From the Rijksmuseum collection\n- main:\n  - region \"The Threatened Swan\":\n    - figure:\n      - img \"The Threatened Swan, a swan defending its nest against a dog.\"\n    - paragraph: A closer look\n    - heading \"The Threatened Swan\" [level=1]\n    - paragraph: Jan Asselijn c. 1650 Oil on canvas\n    - button \"Inspect the egg\"\n- contentinfo:\n  - paragraph: The Threatened Swan · Jan Asselijn\n  - paragraph: Rijksmuseum collection",
+            "status": "rendered",
+            "sha256": "9dee09a53b92193ba3dfba2a61e605cf566b0a411f6eafc7e496ed981426ec7f",
+            "interaction": {
+              "checks": {
+                "loaded": true,
+                "whole": true,
+                "facts": true,
+                "startsClosed": true,
+                "sameAction": true,
+                "reached": true,
+                "open": true,
+                "names": true,
+                "readableNote": true,
+                "keptFocus": true,
+                "closed": true,
+                "touchOpened": true,
+                "firstAction": true,
+                "eggInCrop": true,
+                "noOverflow": true,
+                "reduced": true,
+                "noPageErrors": true
+              },
+              "opening": {
+                "top": 824.8125,
+                "bottom": 872.8125,
+                "width": 162.953125,
+                "height": 48,
+                "viewport": 900,
+                "noOverflow": true
+              },
+              "note": {
+                "top": 933.40625,
+                "bottom": 1608.421875,
+                "visible": false
+              },
+              "target": {
+                "x": 0.75,
+                "y": 0.5000130600976852
+              },
+              "artworkGeometry": {
+                "width": 1400,
+                "height": 1165,
+                "ratio": 1.2017287507717638,
+                "visibleWidth": 912.375,
+                "top": 116.59375,
+                "bottom": 875.8125,
+                "fit": "contain"
+              },
+              "tabCount": 1,
+              "frames": {
+                "after": {
+                  "filename": "1440-after.png",
+                  "sha256": "ac000cab95152bca755fee4af4d0e2876c4701621fc8c9b44468eab8026c486e"
+                },
+                "edge": {
+                  "filename": "1440-edge.png",
+                  "sha256": "1f3b0140bdb0c7374eb93f94f41cf6ecf10706677d2c36b286eabcd265dffe31"
+                },
+                "touch": {
+                  "filename": "1440-touch.png",
+                  "sha256": "78ed07bf1be0225292eae0e974b96dbcd052f6c918674e15a5fdd65bbd4a5b63"
+                }
+              }
+            }
+          }
+        }
+      },
+      "trial": {
+        "renderer": "0.12.0",
+        "browser": "Chrome/157.0.8103.79",
+        "input_sha256": "ce775444387778368c2dd73317adea8d7887defa3758ed83324d906aaf11f4b9",
+        "captures": {
+          "320": {
+            "viewport": 320,
+            "width": 320,
+            "height": 700,
+            "title": "The Threatened Swan — Jan Asselijn",
+            "h1": "The Threatened Swan",
+            "loadedFonts": [
+              "Gloock",
+              "News Cycle"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- main:\n  - text: In the collection\n  - link \"Rijksmuseum\":\n    - /url: https://www.rijksmuseum.nl/en/collection/object/The-Threatened-Swan--22040f90565e730131983a44a85b989f\n  - region \"The Threatened Swan\":\n    - figure \"Rijksmuseum collection\":\n      - img \"The Threatened Swan, a swan defending its nest from a dog.\"\n      - link \"Rijksmuseum collection\":\n        - /url: https://www.rijksmuseum.nl/en/collection/object/The-Threatened-Swan--22040f90565e730131983a44a85b989f\n    - heading \"The Threatened Swan\" [level=1]\n    - paragraph: Jan Asselijn c. 1650 Oil on canvas\n    - button \"Inspect the egg +\"",
+            "status": "rendered",
+            "sha256": "318de74b049aa06582fc9866505d1c7edc7b0985f3717a9ed520397728c3360c",
+            "interaction": {
+              "checks": {
+                "loaded": true,
+                "whole": true,
+                "facts": true,
+                "startsClosed": true,
+                "sameAction": true,
+                "reached": true,
+                "open": true,
+                "names": true,
+                "readableNote": true,
+                "keptFocus": true,
+                "closed": true,
+                "touchOpened": true,
+                "firstAction": true,
+                "eggInCrop": true,
+                "noOverflow": true,
+                "reduced": true,
+                "noPageErrors": true
+              },
+              "opening": {
+                "top": 442.921875,
+                "bottom": 490.921875,
+                "width": 176.515625,
+                "height": 48,
+                "viewport": 700,
+                "noOverflow": true
+              },
+              "note": {
+                "top": 502.4375,
+                "bottom": 1083.65625,
+                "visible": true
+              },
+              "target": {
+                "x": 0.65,
+                "y": 0.5001822845417241
+              },
+              "artworkGeometry": {
+                "width": 1400,
+                "height": 1165,
+                "ratio": 1.201716738197425,
+                "visibleWidth": 280,
+                "top": 175.734375,
+                "bottom": 408.734375,
+                "fit": "fill"
+              },
+              "tabCount": 3,
+              "frames": {
+                "after": {
+                  "filename": "320-after.png",
+                  "sha256": "59fe6da2fa335495ebf75193edcf4cd07db14ea1761ca8791d95b1616101ef93"
+                },
+                "edge": {
+                  "filename": "320-edge.png",
+                  "sha256": "e63adeb0ffb1027f11db548de7de7fc13f90f8039b2aa12211661facde41fa30"
+                },
+                "touch": {
+                  "filename": "320-touch.png",
+                  "sha256": "b9de1c3fbe2f790d2f77bb782f49a335ad29007c48150fe00d9631121bc9b3c2"
+                }
+              }
+            }
+          },
+          "390": {
+            "viewport": 390,
+            "width": 390,
+            "height": 844,
+            "title": "The Threatened Swan — Jan Asselijn",
+            "h1": "The Threatened Swan",
+            "loadedFonts": [
+              "Gloock",
+              "News Cycle"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- main:\n  - text: In the collection\n  - link \"Rijksmuseum\":\n    - /url: https://www.rijksmuseum.nl/en/collection/object/The-Threatened-Swan--22040f90565e730131983a44a85b989f\n  - region \"The Threatened Swan\":\n    - figure \"Rijksmuseum collection\":\n      - img \"The Threatened Swan, a swan defending its nest from a dog.\"\n      - link \"Rijksmuseum collection\":\n        - /url: https://www.rijksmuseum.nl/en/collection/object/The-Threatened-Swan--22040f90565e730131983a44a85b989f\n    - heading \"The Threatened Swan\" [level=1]\n    - paragraph: Jan Asselijn c. 1650 Oil on canvas\n    - button \"Inspect the egg +\"",
+            "status": "rendered",
+            "sha256": "16658967abd9ff9cd38df45d8b6cc42af65940948614f05669f2bcd8a794566d",
+            "interaction": {
+              "checks": {
+                "loaded": true,
+                "whole": true,
+                "facts": true,
+                "startsClosed": true,
+                "sameAction": true,
+                "reached": true,
+                "open": true,
+                "names": true,
+                "readableNote": true,
+                "keptFocus": true,
+                "closed": true,
+                "touchOpened": true,
+                "firstAction": true,
+                "eggInCrop": true,
+                "noOverflow": true,
+                "reduced": true,
+                "noPageErrors": true
+              },
+              "opening": {
+                "top": 511.359375,
+                "bottom": 559.359375,
+                "width": 176.515625,
+                "height": 48,
+                "viewport": 844,
+                "noOverflow": true
+              },
+              "note": {
+                "top": 570.875,
+                "bottom": 1090.71875,
+                "visible": true
+              },
+              "target": {
+                "x": 0.65,
+                "y": 0.500077641011768
+              },
+              "artworkGeometry": {
+                "width": 1400,
+                "height": 1165,
+                "ratio": 1.201716738197425,
+                "visibleWidth": 350,
+                "top": 185.921875,
+                "bottom": 477.171875,
+                "fit": "fill"
+              },
+              "tabCount": 3,
+              "frames": {
+                "after": {
+                  "filename": "390-after.png",
+                  "sha256": "6cd201c285c107f5685508e2956a5a86ee2f1be0e0a40642d5b0da2aab8993d0"
+                },
+                "edge": {
+                  "filename": "390-edge.png",
+                  "sha256": "1905722d2906f055b0978f616ac998092d7adb58ba21d1063f56edca0276b5cc"
+                },
+                "touch": {
+                  "filename": "390-touch.png",
+                  "sha256": "f0db79492e7245fa3ff5e3945a89e3aad98a8b8520c7e729c32b825106e5efd8"
+                }
+              }
+            }
+          },
+          "1440": {
+            "viewport": 1440,
+            "width": 1425,
+            "height": 900,
+            "title": "The Threatened Swan — Jan Asselijn",
+            "h1": "The Threatened Swan",
+            "loadedFonts": [
+              "Gloock",
+              "News Cycle"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- main:\n  - text: In the collection\n  - link \"Rijksmuseum\":\n    - /url: https://www.rijksmuseum.nl/en/collection/object/The-Threatened-Swan--22040f90565e730131983a44a85b989f\n  - region \"The Threatened Swan\":\n    - figure \"Rijksmuseum collection\":\n      - img \"The Threatened Swan, a swan defending its nest from a dog.\"\n      - link \"Rijksmuseum collection\":\n        - /url: https://www.rijksmuseum.nl/en/collection/object/The-Threatened-Swan--22040f90565e730131983a44a85b989f\n    - paragraph: A closer look\n    - heading \"The Threatened Swan\" [level=1]\n    - paragraph: Jan Asselijn c. 1650 Oil on canvas\n    - paragraph: Look closely at the nest beneath the swan.\n    - button \"Inspect the egg +\"",
+            "status": "rendered",
+            "sha256": "87aee87c11c4c06314a466fd9d3bdf9bfff744e42866f4143f7b0fa1f9e7b14c",
+            "interaction": {
+              "checks": {
+                "loaded": true,
+                "whole": true,
+                "facts": true,
+                "startsClosed": true,
+                "sameAction": true,
+                "reached": true,
+                "open": true,
+                "names": true,
+                "readableNote": true,
+                "keptFocus": true,
+                "closed": true,
+                "touchOpened": true,
+                "firstAction": true,
+                "eggInCrop": true,
+                "noOverflow": true,
+                "reduced": true,
+                "noPageErrors": true
+              },
+              "opening": {
+                "top": 591.359375,
+                "bottom": 639.359375,
+                "width": 176.515625,
+                "height": 48,
+                "viewport": 900,
+                "noOverflow": true
+              },
+              "note": {
+                "top": 669.359375,
+                "bottom": 1194.15625,
+                "visible": true
+              },
+              "target": {
+                "x": 0.6500019723087845,
+                "y": 0.50004450037179
+              },
+              "artworkGeometry": {
+                "width": 1400,
+                "height": 1165,
+                "ratio": 1.2017355998750725,
+                "visibleWidth": 841.703125,
+                "top": 102,
+                "bottom": 802.40625,
+                "fit": "fill"
+              },
+              "tabCount": 3,
+              "frames": {
+                "after": {
+                  "filename": "1440-after.png",
+                  "sha256": "bca59312ce18a917e410c68abb482f380f806f4d885e53e00e866eeaf8a3eee7"
+                },
+                "edge": {
+                  "filename": "1440-edge.png",
+                  "sha256": "758c2e690fbdebe2b410e34878e1a82346936281c233312a85e3a79377ef6700"
+                },
+                "touch": {
+                  "filename": "1440-touch.png",
+                  "sha256": "ce3a6e6674dac1ddd04a821d64ac80d327af352a6509ee573a5da069760b9143"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "verified_frames": 24,
+    "critic": {
+      "calibration": {
+        "example": "Legible repair intake with clear labels, familiar layout, and misplaced focus after an invalid number",
+        "coherence": 7,
+        "originality": 4,
+        "craft": 6,
+        "usability": 6
+      },
+      "screens": {
+        "A-1440": {
+          "coherence": 8,
+          "originality": 6.5,
+          "craft": 7.5,
+          "usability": 7,
+          "primary_action": {
+            "input": "Tab once, then Enter",
+            "expected": "Open the egg detail and its explanatory note",
+            "observed": "The button changed to Close detail and the detail was added below the initial viewport. Scrolling revealed the crop and note."
+          },
+          "edge_observation": "Enter on Close detail removed the detail, restored the whole composition to view, and retained visible focus on Inspect the egg.",
+          "fact_check": "The crop shows an egg in the nest at the lower right. Its dark inscription is difficult to read independently; the note identifies it as Holland and says it was added later. The historical claim was not independently verified using the review tools.",
+          "strength": "The large painting is the opening focal point, paired with a readable, restrained serif title and generous space.",
+          "weakness": "Opening the detail leaves it entirely below the viewport, with no location marker on the original; the visitor must scroll and visually match the crop.",
+          "repair": "Bring the opened detail into view and mark its position on the original while preserving the full composition.",
+          "arm": "old",
+          "html_sha256": "f5fb69e000869728878fb1786ed777b648e4b6f7f6c844a9d963667798ab51e4",
+          "weighted": 7.25,
+          "before": {
+            "sha256": "9dee09a53b92193ba3dfba2a61e605cf566b0a411f6eafc7e496ed981426ec7f",
+            "file": "A-1440-before.png",
+            "tool_call_id": "item_2",
+            "transport": {
+              "mime_type": "image/webp",
+              "sha256": "858eb5a1b48c52014d2b94afb733f0de43ec61b94da3078f81c40ceb66abf7be"
+            }
+          },
+          "after": {
+            "sha256": "ac000cab95152bca755fee4af4d0e2876c4701621fc8c9b44468eab8026c486e",
+            "file": "A-1440-after.png",
+            "tool_call_id": "item_5",
+            "transport": {
+              "mime_type": "image/webp",
+              "sha256": "f6730a7c1a1133fb0a8e8b4519e93a523314d9eac9b494cf1955db530cc81e23"
+            }
+          },
+          "layout_width": 1425,
+          "input_sequence": [
+            {
+              "action": "key",
+              "value": "Tab"
+            },
+            {
+              "action": "key",
+              "value": "Enter"
+            }
+          ],
+          "edge_inputs": [
+            {
+              "action": "key",
+              "value": "Tab"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "Tab"
+            },
+            {
+              "action": "key",
+              "value": "Enter"
+            }
+          ],
+          "edge": {
+            "sha256": "0868cc65f867b6f14d02b4e6a19e080123900dbd3f14e358d8208acbf8229f8c",
+            "file": "A-1440-edge.png",
+            "tool_call_id": "item_54",
+            "transport": {
+              "mime_type": "image/webp",
+              "sha256": "47cc9c2ed5a8757d149b5f2eaad2cbd471cb2cbfb52bc0c326db352f819be71b"
+            }
+          }
+        },
+        "A-390": {
+          "coherence": 8,
+          "originality": 6.5,
+          "craft": 7.5,
+          "usability": 7.5,
+          "primary_action": {
+            "input": "Tab once, then Enter",
+            "expected": "Open the egg detail and its explanatory note",
+            "observed": "The button changed to Close detail and the crop appeared immediately below it; the note required scrolling."
+          },
+          "edge_observation": "Enter closed the detail, restored the full painting in the viewport, and retained visible focus on Inspect the egg.",
+          "fact_check": "The egg is visible at the right of the crop, but its lettering is too dark and small to read confidently. The note supplies Holland; its historical explanation was not independently verified.",
+          "strength": "The painting, title, metadata, and action fit in the opening screen, with a clear reading order.",
+          "weakness": "The small original makes the egg hard to locate, and the crop has no explicit visual link back to it. The inscription remains faint at mobile size.",
+          "repair": "Add a location marker and provide a clearer, larger detail or an accessible transcription alongside it.",
+          "arm": "old",
+          "html_sha256": "f5fb69e000869728878fb1786ed777b648e4b6f7f6c844a9d963667798ab51e4",
+          "weighted": 7.35,
+          "before": {
+            "sha256": "5f984fa0c1614680506f75ed28f7bf8a2d9896dc822acafaad7d5602f44a4a19",
+            "file": "A-390-before.png",
+            "tool_call_id": "item_57"
+          },
+          "after": {
+            "sha256": "f5cfe174f136c59b5991b5c941de47f13e6995bb23fe09150175bc6982a73c6f",
+            "file": "A-390-after.png",
+            "tool_call_id": "item_60"
+          },
+          "layout_width": 375,
+          "input_sequence": [
+            {
+              "action": "key",
+              "value": "Tab"
+            },
+            {
+              "action": "key",
+              "value": "Enter"
+            }
+          ],
+          "edge_inputs": [
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "Enter"
+            }
+          ],
+          "edge": {
+            "sha256": "b75ff20ea2f8efdcfd9695e6ad639ccb153571987f661a8f5a4322539f98c46e",
+            "file": "A-390-edge.png",
+            "tool_call_id": "item_80"
+          }
+        },
+        "B-1440": {
+          "coherence": 8.5,
+          "originality": 7.5,
+          "craft": 8,
+          "usability": 8.5,
+          "primary_action": {
+            "input": "Tab three times, then Enter",
+            "expected": "Open the egg detail and identify its position in the painting",
+            "observed": "The button changed to Close detail, a circle marked the egg in the original, and the crop appeared beneath the action. Scrolling revealed the caption and note."
+          },
+          "edge_observation": "Enter closed the detail and removed the marker; the whole painting was visible again and focus remained visibly on Inspect the egg.",
+          "fact_check": "The circle points to the egg in the lower-right nest and matches the crop. The inscription is visible as dark marks but is not confidently legible from the image. The note identifies Holland and describes a later Johan de Witt interpretation; that historical claim was not independently verified.",
+          "strength": "The marker directly connects detail to original, while the high-contrast display serif and condensed supporting type create a distinctive editorial hierarchy.",
+          "weakness": "The crop and full note extend below the initial viewport, and the relatively narrow crop makes the inscription difficult to decipher.",
+          "repair": "Give the detail more image area and ensure the note is readily visible when it opens.",
+          "arm": "trial",
+          "html_sha256": "ce775444387778368c2dd73317adea8d7887defa3758ed83324d906aaf11f4b9",
+          "weighted": 8.1,
+          "before": {
+            "sha256": "87aee87c11c4c06314a466fd9d3bdf9bfff744e42866f4143f7b0fa1f9e7b14c",
+            "file": "B-1440-before.png",
+            "tool_call_id": "item_82",
+            "transport": {
+              "mime_type": "image/webp",
+              "sha256": "125bdf8b7b426528fbdea72871eeb3db9cba252af0ac1daa3d1657191a46f0eb"
+            }
+          },
+          "after": {
+            "sha256": "bca59312ce18a917e410c68abb482f380f806f4d885e53e00e866eeaf8a3eee7",
+            "file": "B-1440-after.png",
+            "tool_call_id": "item_87",
+            "transport": {
+              "mime_type": "image/webp",
+              "sha256": "52622b62f12da7058fe8f5f2310ced7888b9ec56a56d0c4997696e95ce2e2b7f"
+            }
+          },
+          "layout_width": 1425,
+          "input_sequence": [
+            {
+              "action": "key",
+              "value": "Tab"
+            },
+            {
+              "action": "key",
+              "value": "Tab"
+            },
+            {
+              "action": "key",
+              "value": "Tab"
+            },
+            {
+              "action": "key",
+              "value": "Enter"
+            }
+          ],
+          "edge_inputs": [
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "Enter"
+            }
+          ],
+          "edge": {
+            "sha256": "758c2e690fbdebe2b410e34878e1a82346936281c233312a85e3a79377ef6700",
+            "file": "B-1440-edge.png",
+            "tool_call_id": "item_108",
+            "transport": {
+              "mime_type": "image/webp",
+              "sha256": "171e46a60e64f0e3614a63390459e571396e3778de575c5de6a438c2ea95ce8b"
+            }
+          }
+        },
+        "B-390": {
+          "coherence": 8.5,
+          "originality": 7.5,
+          "craft": 8,
+          "usability": 8,
+          "primary_action": {
+            "input": "Tab three times, then Enter",
+            "expected": "Open the egg detail and identify its position in the painting",
+            "observed": "The button changed to Close detail; a circle appeared over the egg and the crop appeared immediately below the button. The note required scrolling."
+          },
+          "edge_observation": "Enter closed the detail and removed the marker; the full painting returned to the viewport and focus remained visibly on Inspect the egg.",
+          "fact_check": "The marker locates the egg on the original and corresponds to the crop. The inscription remains too faint to read confidently without the supplied Holland transcription. The later political interpretation was not independently verified.",
+          "strength": "The title, painting, and action fit on the opening screen; the marker makes the relationship between original and crop immediate.",
+          "weakness": "The mobile layout omits the desktop instruction to look at the nest, and the small, dark crop limits independent reading of the inscription.",
+          "repair": "Retain a concise location cue on mobile and offer a larger or clearer detail with its transcription.",
+          "arm": "trial",
+          "html_sha256": "ce775444387778368c2dd73317adea8d7887defa3758ed83324d906aaf11f4b9",
+          "weighted": 8.0,
+          "before": {
+            "sha256": "16658967abd9ff9cd38df45d8b6cc42af65940948614f05669f2bcd8a794566d",
+            "file": "B-390-before.png",
+            "tool_call_id": "item_111"
+          },
+          "after": {
+            "sha256": "a62c99787dc95ee9d4131f04b630b632cf5ae010358e2a92b4142fb5cda35b3c",
+            "file": "B-390-after.png",
+            "tool_call_id": "item_116"
+          },
+          "layout_width": 375,
+          "input_sequence": [
+            {
+              "action": "key",
+              "value": "Tab"
+            },
+            {
+              "action": "key",
+              "value": "Tab"
+            },
+            {
+              "action": "key",
+              "value": "Tab"
+            },
+            {
+              "action": "key",
+              "value": "Enter"
+            }
+          ],
+          "edge_inputs": [
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "ArrowDown"
+            },
+            {
+              "action": "key",
+              "value": "Enter"
+            }
+          ],
+          "edge": {
+            "sha256": "1905722d2906f055b0978f616ac998092d7adb58ba21d1063f56edca0276b5cc",
+            "file": "B-390-edge.png",
+            "tool_call_id": "item_134"
+          }
+        }
+      },
+      "preference": {
+        "winner": "B",
+        "reason": "Both versions identify the painting and retain keyboard focus on close, but B's marker makes the egg's location substantially easier to connect to the original. Its typography also gives the page a more distinctive editorial character. Neither crop makes the inscription comfortably legible."
+      },
+      "case": "installed-artwork",
+      "verified_screens": 4,
+      "required_screens": 4,
+      "browser": "Chrome/157.0.8103.79",
+      "evaluator_thread": "01a20960-8d7d-76c2-9163-1ec072bb0865",
+      "usage": {
+        "input_tokens": 881547,
+        "cached_input_tokens": 837248,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3181,
+        "reasoning_output_tokens": 0
+      },
+      "trace_sha256": "1dc4ba41bf3bc749627055100974c3b07c762676b26b155048bcdeec51e0e38a",
+      "browser_audit_sha256": "33d2a81432fb88e3335374e74763a12acd541b98150c1b64424c177e005edd54"
+    }
+  },
+  "promotion": "Held. Both unmodified generations missed the target; a repair study does not certify installed transfer."
+}

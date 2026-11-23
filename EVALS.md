@@ -669,3 +669,18 @@ Both study arms used the Rijksmuseum reproduction of *The Threatened Swan*, the 
 The independent reviewer opened and closed the detail with the keyboard in all four views. It favored the lens marker and larger crop, but found the inscription faint and missed the whole-image context after zooming. The comparison changes both the locator and the presentation, so it cannot isolate the contribution of either. The deterministic replay verified 18 original PNGs across six journeys, including touch, keyboard, reduced motion, the original painting's aspect and the crop target. The blind ballot verified another 12 original frames. Its first attempt could not send the large desktop PNGs to the critic. The completed attempt used lossless WebP when needed and preserved the source PNGs, dimensions and pixels. [Exact receipts and blind scores](evidence/benchmark-v1/artwork-detail-live.json)
 
 The separately installed `f30e6ff` package returned `object-hero`, a retail direction, to the same artwork inspection brief. Its phone crop discards part of the required composition and its action assumes a purchase. Treat this as a reproduced retrieval failure. The standalone lens earns no package score. The 9.5 release gate remains open.
+
+## Installed artwork-inspection direction and crop replay
+
+The isolated `5c5d2c9` trial wheel passed doctor and the three installed default tools. All shipped package files in the wheel matched the source archive. The swan, brass compass and wooden shuttle briefs moved from the retail fallback to `artifact-inspection`. The other 53 replies, including retail, portfolio, ticket and explicit override controls, matched the installed `f30e6ff`. Independent source review identified ambiguous language and missed physical features. The final source requires both physical context and a specific inspection action. The source suite passed 607 tests and 134 subtests, with one skipped test.
+
+Two fresh builders received an identical artwork brief and retrieved guidance from their respective installations. Both produced the actual painting and reversible disclosure, and the trial added a location marker. The first blind review found that both enlarged images missed the egg. A subsequent Playwriter geometry replay verified both crop misses at every width. The text, paint and focus checks alone had allowed the wrong crop through.
+
+| Variant | Desktop 1440 px | Phone 390 px |
+| --- | ---: | ---: |
+| Generated baseline | 6.25 | 6.25 |
+| Generated trial | 6.90 | 6.90 |
+| Baseline with crop offsets corrected | 7.25 | 7.35 |
+| Trial with the same crop correction | 8.10 | 8.00 |
+
+The same two-offset repair centered the supplied artwork coordinate vertically and clamped the offsets to keep the image inside each crop. All six repaired journeys passed with the egg in frame, focus retained and reduced-motion touch working. A fresh blind reviewer preferred the trial marker and typography. The note still sits low and both crops leave the inscription faint. Compare weights within each ballot because the raw and repaired rounds used different blind reviewers. The hand repair produced no new installed generation, so the trial stays isolated below the visual release floor. [Exact wheel, installed cases, original capture hashes, and ballots](evidence/benchmark-v1/installed-artwork-inspection.json)
