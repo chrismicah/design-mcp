@@ -527,3 +527,23 @@ The optional program branch tested clearer placement and recovery alongside a re
 | Counterweight | 8.30 → 7.85 | 7.85 → 7.85 | Both choices, times, and fares appeared in the first phone view. The lower arrival still required scrolling, and the judge found the new desktop hero and result panel less distinctive. |
 
 At 390 CSS px, the first Counterweight choice moved from 815.6 to 542.8 px from the top. Both choice rectangles fit in the revised 844 px viewport. Both revised designs retained the provided blue and yellow as key colors and Barlow Condensed and Atkinson Hyperlegible as the type pairing. The flexible wording produced clearer recovery on one brief and little art-direction range across the two. Retain the functional evidence and the frozen controls. The combined refined guidance remains below the promotion bar. [Trial branch](https://github.com/chrismicah/design-mcp/tree/design-mcp/program-choice-trial) · [Measured layouts and 26 original review frame hashes](evidence/benchmark-v1/program-choice-replay.json)
+
+## Tool library clearance study
+
+A first-time borrower needs a PH2 tool that fits the available height and swing and can be picked up that evening. The fictional fixture sets a 42 ±1 mm opening, 12° of available swing, and a 17:56 withdrawal of the Pocket ratchet. The Flat ratchet enters at 28 mm and requires 15° to reset. The recovery keeps Pocket's withdrawal visible and lets the visitor choose Fine at 18:25.
+
+The first generated markup added a tool head to an already assembled 28 mm measurement. It also overflowed at 320 px. Both errors were repaired before the first blind ballot. All subsequent comparisons exercised the same inspection, Pocket selection, stock change, and explicit Fine selection. At 320 px, the scripted run used pointer input and reduced motion. At 390 and 1440 px it used keyboard input. [Concept and fixture criticism](research/CREATIVE-ROUNDS.md#two-strokes-in-the-cupboard)
+
+| Blind round | Desktop, control → proposed | Phone, control → proposed | Observed trade-off |
+| --- | ---: | ---: | --- |
+| 1. Cutaway versus text | 6.85 → 8.15 | 6.85 → 7.80 | A two-view cutaway made the height and swing easier to distinguish. The diagram relied on nearby text and the withdrawn control still said “Choose Pocket.” |
+| 2. Label the dimensions in place | 7.60 → 8.20 | 7.25 → 7.85 | Direct labels and “Unavailable” clarified the relationship and the stock state. The 390 px confirmation could still fall below the viewport. |
+| 3. Follow the selected tool | 7.25 → 8.10 | 6.75 → 7.50 | The drawing followed Pocket and Fine and retained the withdrawn tool until a replacement was chosen. The phone drawings shrank and the absolute score fell below round two. |
+| 4. Confirm in the focused row | 7.70 → 7.86 | 7.40 → 7.66 | The confirmation appeared with the focused Fine action. The Fine action still needed scrolling from the earlier conflict on phone. |
+| 5. Compare all four heights at once | 7.75 → 8.25 | 7.50 → 7.90 | The shared datum showed all four maximum heights before any choice. The critic still found small swing annotations and a below-fold substitute during the conflict. |
+
+Round five has the highest lower-screen score so far. At 390 px its four opening controls fit above 781 px in the 844 px viewport. The scripted selection exposed Fine's 32 mm maximum, 6° reset, and 18:25 time in the focused row at all three widths. Across the five rounds, the deterministic suite verified 30 journeys and 150 frames, and the blind reviewers captured another 60 frames. These scores measure standalone rendered fixtures. [Build hashes, live ballots and capture receipts](evidence/benchmark-v1/cupboard-clearance-live.json)
+
+A fresh critic matched the exact round-five build against the frozen round-two cutaway. The four-tool bench won at **8.10 desktop and 7.75 phone** against **7.50 and 7.15**. The critic confirmed the comparison before input and the later selection changes at both widths. The Fine control still requires a Tab or scroll to become fully visible during the phone conflict. The six ballots include 72 original capture hashes. The 9.5 gate remains open.
+
+On a separate stdio call, the installed release package selected `object-hero` for the full borrowing brief and asked for size, price, and a purchase control. The installation was pinned to `3350fea` and its package Git files match the release branch. This reproduces a routing and guidance gap. The five visual comparisons above isolate the design mechanism. They do not measure the effect of any MCP routing change.
