@@ -137,6 +137,11 @@ async def test_reactions_have_visible_deltas_with_bounded_responses():
             assert direction.layout.focus in calmer["keep"] and "primary action and its current label" in calmer["keep"]
         else:
             assert calmer["changes"]["type_ratio"] <= direction.type.ratio
+            if direction.id == "service-work-order":
+                assert "320 × 700" in calmer["changes"]["spacing"]
+                assert "both stay visible after selection" in calmer["changes"]["spacing"]
+            else:
+                assert "320 × 700" not in calmer["changes"]["spacing"]
         assert bolder["changes"]["type_ratio"] >= direction.type.ratio
         assert "spacing" in calmer["changes"] and "composition" in bolder["changes"]
         assert direction.layout.focus in generic["changes"]["composition"]
