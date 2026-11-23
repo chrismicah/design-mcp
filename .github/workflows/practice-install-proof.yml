@@ -12,11 +12,20 @@ permissions:
 
 jobs:
   clean-install:
-    runs-on: macos-15
+    name: Practice install / ${{ matrix.arch }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: macos-15
+            arch: arm64
+          - runner: macos-15-intel
+            arch: x86_64
+    runs-on: ${{ matrix.runner }}
     timeout-minutes: 10
     env:
-      CANDIDATE: 392e1cdd2d0774f32a9ddc770a23c5f48d781738
-      EXPECTED_ARCH: arm64
+      CANDIDATE: d2ad7395b3da632151025581a811f3ba5091d828
+      EXPECTED_ARCH: ${{ matrix.arch }}
       EXPECTED_PYTHON: '3.13'
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
@@ -39,7 +48,7 @@ jobs:
           bash candidate/scripts/verify_install_matrix.sh --check-host 15 "$EXPECTED_ARCH"
           bash candidate/scripts/verify_clean_install.sh candidate "$PYTHON_EXECUTABLE" \
             "$RUNNER_TEMP/design-install" "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY.git"
-      - name: Replay the signed-off brief against both installed executables
+      - name: Replay both synthetic briefs through both installed executables
         run: |
           install="$RUNNER_TEMP/design-install"
           receipts="$RUNNER_TEMP/receipts"
@@ -52,6 +61,6 @@ jobs:
           cat "$receipts/pipx.json" "$receipts/uv.json"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: installed-practice-routing
+          name: installed-practice-layout-${{ matrix.arch }}
           path: ${{ runner.temp }}/receipts
           retention-days: 14
