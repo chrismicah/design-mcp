@@ -102,7 +102,7 @@ The optional historical maintenance scripts write to `data/`. Run `python3 scrip
 
 ## Verified results
 
-All eight macOS 15 clean-install jobs passed at `f30e6ff` on Intel and Apple Silicon with Python 3.10–3.13. Pipx and uv both ran `doctor` and exercised the default, historical and combined stdio surfaces with and without the optional review tool. The earlier `0978712` package passed **eight clean installs and 48 stdio checks** on Apple Silicon Ventura 13.7.4. Current-package Ventura checks and Intel Ventura runtime verification remain open. [macOS 15 matrix](evidence/benchmark-v1/release-ci-f30e6ff.json) · [Earlier Ventura matrix](evidence/benchmark-v1/ventura-tart-0978712.json)
+All eight macOS 15 clean-install jobs passed at `f30e6ff` on Intel and Apple Silicon with Python 3.10–3.13. Pipx and uv both ran `doctor` and exercised the default, historical and combined stdio surfaces with and without the optional review tool. The earlier `0978712` package passed **eight clean installs and 48 stdio checks** on Apple Silicon Ventura 13.7.4. The exact package resolved Ventura-compatible wheels for all eight targets. The current Ventura runtime matrix remains open on both architectures. [Ventura dependency and staged guest input receipt](evidence/benchmark-v1/ventura-f30e6ff-preflight.json) [macOS 15 matrix](evidence/benchmark-v1/release-ci-f30e6ff.json) · [Earlier Ventura matrix](evidence/benchmark-v1/ventura-tart-0978712.json)
 
 The PR branch's work-order booking study kept the selected date and price visible at 320, 390, and 1440 px through the first draft and a one-word revision. Blind comparisons favored the revised guidance at both widths. Its package passed all 14 hosted checks at `a700f82`, including 16 macOS 15 clean installs, 96 stdio runs, both Chrome review flows, SwiftUI and Electron fixtures. [Booking comparison](evidence/benchmark-v1/booking-work-order-first.json) · [Hosted receipt](evidence/benchmark-v1/release-ci-a700f82.json) · [Exact follow-up CI at `559aee8`](evidence/benchmark-v1/release-ci-559aee8.json)
 
@@ -113,6 +113,8 @@ The installed `review_page` tool returned original masked PNGs at 1440 × 900 an
 A standalone recovery comparison scored **8.20 desktop / 7.95 phone** for choosing a replacement tool and **7.80 at both widths** for recovering from a lift closure. Both prototypes passed scripted keyboard and touch checks. The installed MCP has a separate benchmark. [Prototype ballots and scope](EVALS.md#standalone-cabinet-and-train-recovery-repairs)
 
 All 36 matched design briefs have blinded scores. The plain generator averaged 92.7 and frozen Design MCP v2 averaged 94.1, with 17 wins, 11 ties, and eight losses. The paired 95% interval of −0.46 to +3.13 points leaves the average advantage inconclusive. [Benchmark and receipts](EVALS.md)
+
+The strict maintenance benchmark scored Design MCP **7.95 desktop / 7.65 phone**, shadcn **7.80 / 7.65**, and UI UX Pro Max **7.90 / 7.50**. All six keyboard journeys passed. The critic preferred shadcn for its form defaults and recovery. [One-brief live comparison](EVALS.md#confirmatory-maintenance-form-comparison)
 
 On the matched live gallery-label brief, the pinned release scored **7.85 desktop / 7.50 phone** and Storybook 10.6.0 scored **7.55 / 7.45**. Both pages passed the keyboard disclosure test. [One-brief competitor comparison](EVALS.md#storybook-gallery-disclosure)
 

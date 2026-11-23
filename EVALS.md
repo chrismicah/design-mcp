@@ -618,3 +618,15 @@ The pinned Design MCP install at `f30e6ff` scored **7.85 desktop / 7.50 phone** 
 One independent critic opened both drafts in Playwriter at 1440 × 900 and 390 × 844. All four views exposed Room 4, River Wall, Maya Chen, and 1972. Keyboard input revealed and collapsed “Pigment on plaster,” kept focus on the disclosure, and produced no horizontal overflow. The audit matched twelve original PNGs to the critic's tool responses. Design MCP's type and explicit show/hide label led the ballot. Its oversized room numeral crowded the art label on mobile. The revealed note touched the focus outline in both drafts.
 
 Design MCP used 95,859 input tokens (77,312 reported cached) and 2,224 output tokens. Storybook used 77,071 input (65,664 reported cached) and 2,023 output. This comparison covers one brief against an owned Storybook fixture. The matched advantage was 0.30 desktop and 0.05 phone. Both remain below 9.5. [Prompt, source and generation pins, live ballot, and original frame hashes](evidence/benchmark-v1/storybook-gallery-live.json)
+
+## Confirmatory maintenance form comparison
+
+The fresh shadcn 4.23.0 generator retrieved the registered `radio-group-demo` before returning HTML. Its two controls used the frozen Design MCP and UI UX Pro Max drafts under the same prompt, model, tool policy, and browser. The previous exploratory response remains in the record. [Retrieval rules and control pins committed before generation](evals/v1/shadcn-maintenance-confirmatory.json)
+
+| Arm | Desktop | Phone |
+| --- | ---: | ---: |
+| Design MCP | 7.95 | 7.65 |
+| shadcn 4.23.0 | 7.80 | 7.65 |
+| UI UX Pro Max | 7.90 | 7.50 |
+
+One independent critic opened all six views in Playwriter. Each replay attempted an empty submission, filled the exact values, selected Safety issue, confirmed local preparation, and returned to the populated form. The original 18 PNGs matched the critic's tool results. The critic's overall preference went to shadcn for its clear task hierarchy, default urgency and concise recovery. Design MCP led the weighted desktop result and tied shadcn on phone. Its form hides required status until validation and the intro pushes more of the form below the opening phone viewport. This comparison covers one brief and all scores are below 9.5. [Retrieval, screen grades and keyboard receipts](evidence/benchmark-v1/strict-maintenance-live.json)

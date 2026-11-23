@@ -129,6 +129,8 @@ The gallery task uses the fixture's disclosure behavior with the task's own cont
 | Other credential-free competitor configurations above | 0 / 36 each | Pending |
 | Credentialed and hosted configurations above | 0 / 36 each | Access or isolated fixture required |
 
+The confirmatory maintenance ballot puts Design MCP at **7.95 desktop / 7.65 phone**, shadcn at **7.80 / 7.65**, and UI UX Pro Max at **7.90 / 7.50**. The critic preferred shadcn overall. The six live replays completed the same task. [Strict shared prompt, retrieval rule, and browser evidence](../evidence/benchmark-v1/strict-maintenance-live.json)
+
 The retrieval probe is a separate test of tool behavior. A visual score requires generation and blinded browser captures on the same 36 briefs. The earlier market inventory covers additional products and publisher examples, including PyModel Designer Skill, Refero, Better Design and Claude Design. [Eval status](../EVALS.md) · [Earlier market inventory](../research/RESEARCH-COMPETITORS.md)
 
 In the maintenance rematch, both generators received the same wording requiring a successful context result. Shadcn retrieved `radio-group-demo` from the installed official registry. Design MCP called `direct`. The blind critic ran invalid submission, valid preparation, and edit by keyboard at both widths. Design MCP showed all three actionable validation messages together and used less vertical space on mobile. Shadcn used the browser's first-error message. The run covers one brief and uses the live 0–10 rubric. [Ballot, prompts, tool calls, and token receipts](../evidence/benchmark-v1/shadcn-maintenance-live-ballot.json)

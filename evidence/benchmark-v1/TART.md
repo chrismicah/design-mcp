@@ -8,6 +8,8 @@ A new binary-only check resolved the exact README pin for all eight Ventura arch
 
 An earlier fresh Tart guest verified eight installs and 24 stdio runs against `b868307`, using an earlier set of smoke commands. [First Ventura transcript audit](ventura-tart-b868307.json)
 
+The README pin `f30e6ff` passed eight binary-only dependency resolutions at macOS 13 deployment targets. Independent PyPI metadata matched all **604 wheel selections** and all eight managed interpreter URLs returned HTTP 200 to HEAD. Tart input preflight verified the Git archive and runner hashes. The staged input is ready for a fresh arm64 guest when there is capacity. The host had 58.81 GiB free and held no owned Ventura VM. Current arm64 and Intel runtime checks remain open. [Exact dependency and staged input receipt](ventura-f30e6ff-preflight.json)
+
 ## Earlier attempts
 
 The hosted matrix covers both Mac CPU architectures on macOS 15. The shared clean-install script passed all eight hosted jobs. Use that script for each interpreter inside a fresh Tart guest. Record the image digest, guest `sw_vers`, `uname -m`, exact checkout SHA, both installer results, and the 17-tool smoke output. Tart runs on Apple Silicon. The Intel evidence comes from the hosted Intel runner. [Shared-script verification](https://github.com/chrismicah/design-mcp/actions/runs/44988412952) · [Tart documentation](https://tart.run/quick-start/)

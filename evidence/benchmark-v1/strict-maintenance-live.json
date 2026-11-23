@@ -1,0 +1,1161 @@
+{
+  "scope": "Confirmatory retrieval gate and one strict common live form comparison.",
+  "preregistration": {
+    "spec": {
+      "case": "form-maintenance",
+      "arms": [
+        "v2",
+        "shadcn",
+        "uiux-pro-max"
+      ],
+      "brief": "A tenant needs to report a broken common-area light. Collect building, location and a description, and offer Routine and Safety issue as urgency options. Make it usable by keyboard and show that the request was prepared locally after valid submission.",
+      "task": "Use the keyboard to try submitting with the required data empty. Note the actionable message or browser validation and where focus lands. Then enter Oak Court as the building, Second-floor landing as the location, and Common-area light is out as the description. Verify that Routine and Safety issue are available. Select Safety issue and submit. Verify that the visible confirmation says the request was prepared locally and check focus and any available return action. Report any differences from the exact brief. At 390 px, check for horizontal scrolling or obscured feedback. Capture -before on entry, -edge where the invalid submission is visible, and -after once a real valid submission has reached confirmation. After the confirmation capture, return to the form with the keyboard and check that Oak Court, the landing, the description, and Safety issue are retained.",
+      "browser": "Chrome/160.0.8178.0",
+      "pinned_controls": {
+        "v2": {
+          "model": "gpt-6.1-terra",
+          "effort": "low",
+          "client": "codex-cli 0.170.0",
+          "shell_tool": false,
+          "prompt_sha256": "12fd372ef8ceb893d6d110b931b0eb5db38508ba800393f4faef5e245d316c14",
+          "html_sha256": "de64536b4a3d8fea9792adbd02f4ef4a5a722d2c7b6e43c0647fd1b28f5b6df0",
+          "trace_sha256": "a260a3781a6d1761bd10be086535eb2ef447aa0f6dfda95031d14e6675c5d210"
+        },
+        "uiux-pro-max": {
+          "model": "gpt-6.1-terra",
+          "effort": "low",
+          "client": "codex-cli 0.170.0",
+          "shell_tool": false,
+          "prompt_sha256": "12fd372ef8ceb893d6d110b931b0eb5db38508ba800393f4faef5e245d316c14",
+          "html_sha256": "ec1fd6c5f99336195b11b16ef82320f086e57684daf6c7faaa2c966a2c47bf8a",
+          "trace_sha256": "eab56e93cf300c84f0b86b94ed543fe7bb351c541cec328c3430418d91386e21"
+        }
+      }
+    },
+    "shadcn": {
+      "config": {
+        "name": "shadcn",
+        "args": [],
+        "env": {},
+        "expected_tools": [
+          "search_items_in_registries",
+          "view_items_in_registries",
+          "get_item_examples_from_registries"
+        ],
+        "verified_read_only_tools": [
+          "search_items_in_registries",
+          "view_items_in_registries",
+          "get_item_examples_from_registries"
+        ],
+        "required_shadcn_items": [
+          "field",
+          "field-demo",
+          "field-input",
+          "field-textarea",
+          "form-rhf-input",
+          "form-rhf-radiogroup",
+          "form-rhf-textarea",
+          "input",
+          "input-demo",
+          "radio-group",
+          "radio-group-demo",
+          "textarea",
+          "textarea-demo"
+        ]
+      },
+      "package": "shadcn@4.23.0",
+      "fixture_files": {
+        "components.json": "2b136097e4c41bb1a09b333908c06fffbb90c73ff0eb51e47720fb20459c6369",
+        "package-lock.json": "dee6c0f5747f942c0b68bf6fd1bdfd1170d0603dd8bcc6d691f5419787279cec",
+        "launch": "4fa06409929c536b4cc8f155b1335f6f10b87d01723cabcb32a2348f7507b8ce"
+      },
+      "evidence_rule": "A successful read-only call must actually return an exact registered official name before the HTML reply. Query echoes and empty code examples do not qualify.",
+      "source": "https://ui.shadcn.com/docs/forms/react-hook-form"
+    },
+    "comparison_scope": "Frozen Design MCP and UI UX Pro Max controls against a fresh shadcn generation with the same sealed prompt.",
+    "release_pin": "f30e6ffcb7c8fab97580a353ff5b770849162594",
+    "uiux_pro_max_pin": "a38d04c3d5c298c851dbe5e6ee1965ee3de42cb5",
+    "visual_gate": "Anonymous 1440 and 390 pixel views, 3 captures each, real keyboard and exact task facts."
+  },
+  "preregistered_git_commit": "013f7864e3caef971071fb18ac1a1dc77abe0b5c",
+  "preregistration_sha256": "caa4e39a59df7b63789293d521c975d983df6cb13f81752c6d52a742ef9dec9a",
+  "earlier_ineligible_generation": {
+    "status": "shadcn-relevant-item-missing",
+    "receipt_sha256": "879dcb28690eb1d72456e4c78ae75a3941202ce6b303342c6cf159cd2fc91555"
+  },
+  "pinned_package_file_count": 50,
+  "pinned_local_install_receipt_sha256": "b77c10aa0bcae50c3a90b0b3f2de4e334d840e2d1cadc3c1d24e5a81beeddf09",
+  "exact_release_ci_receipt_sha256": "b1a3b512f2e39c149306833a0711d9786445f5aea4bd4e9e26df06019c6f760e",
+  "prompt": "Build the UI in the brief below. Produce one complete HTML document with inline CSS and JavaScript. Return it in a single html code fence. Keep interactions local and use only the supplied facts. Google Fonts stylesheets are allowed. Use original inline illustrations or CSS for visuals. Do not use other remote assets, imports, or calls. The review runs in Chrome at widths of 1440 and 390 pixels. Before writing HTML, retrieve relevant design context through your connected tool. For direct pass the brief verbatim as brief. For design_guidance pass the brief verbatim as query with design_system=true. For component registries retrieve one relevant component or example with a short component name. Use the returned guidance. If you cannot get a relevant result, stop. Do not write files or call other tools.\n\nBrief:\nA tenant needs to report a broken common-area light. Collect building, location and a description, and offer Routine and Safety issue as urgency options. Make it usable by keyboard and show that the request was prepared locally after valid submission.\n",
+  "generation": {
+    "v2": {
+      "usage": {
+        "input_tokens": 59265,
+        "cached_input_tokens": 52992,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 4010,
+        "reasoning_output_tokens": 0
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "design-mcp",
+          "tool": "direct",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "treatment_call": true,
+      "direct_call": true,
+      "status": "passed",
+      "case": "form-maintenance",
+      "arm": "v2",
+      "model": "gpt-6.1-terra",
+      "effort": "low",
+      "client": "codex-cli 0.170.0",
+      "prompt_sha256": "12fd372ef8ceb893d6d110b931b0eb5db38508ba800393f4faef5e245d316c14",
+      "shell_tool": false,
+      "elapsed_seconds": 81.26,
+      "exit_code": 0,
+      "trace_sha256": "a260a3781a6d1761bd10be086535eb2ef447aa0f6dfda95031d14e6675c5d210",
+      "html_sha256": "de64536b4a3d8fea9792adbd02f4ef4a5a722d2c7b6e43c0647fd1b28f5b6df0",
+      "thread_id": "01a208ce-2b2d-7f33-96a3-a8bf44a1160c"
+    },
+    "uiux-pro-max": {
+      "usage": {
+        "input_tokens": 58422,
+        "cached_input_tokens": 36736,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 5817,
+        "reasoning_output_tokens": 0
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "uiux-pro-max",
+          "tool": "design_guidance",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "treatment_call": true,
+      "status": "passed",
+      "uiux_guidance_received": true,
+      "case": "form-maintenance",
+      "arm": "uiux-pro-max",
+      "model": "gpt-6.1-terra",
+      "effort": "low",
+      "client": "codex-cli 0.170.0",
+      "prompt_sha256": "12fd372ef8ceb893d6d110b931b0eb5db38508ba800393f4faef5e245d316c14",
+      "shell_tool": false,
+      "mcp_config_sha256": "f85a155dbece9372aa49070e7e3892fea4ad01de4ea165f0bba5624de5365929",
+      "elapsed_seconds": 112.3,
+      "exit_code": 0,
+      "trace_sha256": "eab56e93cf300c84f0b86b94ed543fe7bb351c541cec328c3430418d91386e21",
+      "html_sha256": "ec1fd6c5f99336195b11b16ef82320f086e57684daf6c7faaa2c966a2c47bf8a",
+      "thread_id": "01a208cf-a60f-7991-9d06-80fb54aa4480"
+    },
+    "shadcn": {
+      "usage": {
+        "input_tokens": 76244,
+        "cached_input_tokens": 65152,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 4679,
+        "reasoning_output_tokens": 0
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "shadcn",
+          "tool": "get_item_examples_from_registries",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "treatment_call": true,
+      "status": "passed",
+      "matched_shadcn_items": [
+        "radio-group-demo"
+      ],
+      "case": "form-maintenance",
+      "arm": "shadcn",
+      "model": "gpt-6.1-terra",
+      "effort": "low",
+      "client": "codex-cli 0.170.0",
+      "prompt_sha256": "12fd372ef8ceb893d6d110b931b0eb5db38508ba800393f4faef5e245d316c14",
+      "required_shadcn_items": [
+        "field",
+        "field-demo",
+        "field-input",
+        "field-textarea",
+        "form-rhf-input",
+        "form-rhf-radiogroup",
+        "form-rhf-textarea",
+        "input",
+        "input-demo",
+        "radio-group",
+        "radio-group-demo",
+        "textarea",
+        "textarea-demo"
+      ],
+      "shell_tool": false,
+      "mcp_config_sha256": "899ef0eaf8ab50003d8cc06abd5559f61ff73d80a782aec4b760c85687a87ae4",
+      "elapsed_seconds": 94.93,
+      "exit_code": 0,
+      "trace_sha256": "933a9aae30d769d693164d26eb8bd0aef0a8626dccb95a714cec594d5986a35f",
+      "html_sha256": "81b5485eeeaa24abc96ef7a2a8826e0ea8af1ace62dcd44c633687e384b61928",
+      "thread_id": "01a20926-ae77-7de0-9ef5-faab1c8341fe"
+    }
+  },
+  "ballot": {
+    "calibration": {
+      "coherence": 7,
+      "originality": 4,
+      "craft": 6.5,
+      "usability": 6,
+      "reason": "Clear labels and legibility support the task, but the familiar layout is not distinctive and misplaced focus impedes error recovery."
+    },
+    "screens": {
+      "A-1440": {
+        "coherence": 8.5,
+        "originality": 6.5,
+        "craft": 8,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Keyboard: enter Oak Court, Second-floor landing and Common-area light is out; select Safety issue with the arrow key; submit.",
+          "expected": "A locally prepared confirmation with the entered details and a return action.",
+          "observed": "Confirmation says the request was prepared locally and not sent; all four values appear. Focus moves to the confirmation heading. Tab and Enter on Edit request return to the form with all values retained."
+        },
+        "edge_observation": "Empty submission shows actionable messages for all three text fields and moves focus to Building. Routine is initially selected; Safety issue is available.",
+        "fact_check": "The visible confirmation meets the local-preparation wording. The claim that data stays local was not independently verified.",
+        "strength": "Clear two-column hierarchy, helpful location guidance and a readable confirmation summary.",
+        "weakness": "The illustration and rounded form treatment are pleasant but familiar.",
+        "repair": "Give the lighting illustration a more distinctive relationship to the task.",
+        "arm": "shadcn",
+        "html_sha256": "81b5485eeeaa24abc96ef7a2a8826e0ea8af1ace62dcd44c633687e384b61928",
+        "weighted": 7.8,
+        "before": {
+          "sha256": "b5573df74c7a654736a7b4cf9931c53ed0d95033117664cf1331adc4419f6bb7",
+          "file": "A-1440-before.png",
+          "tool_call_id": "item_2"
+        },
+        "after": {
+          "sha256": "b25a20c8da4d4523d8f8e7b878a9027a819a70aef5a11f65a7f4b9fe54616eba",
+          "file": "A-1440-after.png",
+          "tool_call_id": "item_19"
+        },
+        "layout_width": 1440,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          },
+          {
+            "action": "text",
+            "value": "Oak Court"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "text",
+            "value": "Second-floor landing"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "text",
+            "value": "Common-area light is out"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge": {
+          "sha256": "587a680f06b00aae20c59e27cda6dddf18f453db04c7b9c49ba5dbceaa2315e1",
+          "file": "A-1440-edge.png",
+          "tool_call_id": "item_9"
+        },
+        "journey": {
+          "invalid_submission_exercised_empty": true,
+          "invalid_focus": {
+            "tag": "input",
+            "type": "text",
+            "label": "Building",
+            "visible": true,
+            "embedded": false,
+            "document_focused": true
+          },
+          "valid_input_exact": true,
+          "selected_safety_trace": true,
+          "local_confirmation_trace": true,
+          "confirmation_contains_suite_values": true,
+          "confirmation_urgency_is_safety": true,
+          "confirmation_ax": "- banner: Building care\n- main:\n  - region \"Let\u2019s get the light working.\":\n    - paragraph: Common-area maintenance\n    - heading \"Let\u2019s get the light working.\" [level=1]\n    - paragraph: Tell us where the broken light is and what you\u2019ve noticed. We\u2019ll help you prepare a maintenance request.\n  - region \"Light issue request\":\n    - heading \"Request prepared\" [level=2]\n    - paragraph: Your request has been prepared locally. It has not been sent.\n    - term: Building\n    - definition: Oak Court\n    - term: Location\n    - definition: Second-floor landing\n    - term: Description\n    - definition: Common-area light is out\n    - term: Urgency\n    - definition: Safety issue\n    - button \"Edit request\"",
+          "confirmation_focus": {
+            "tag": "h2",
+            "type": null,
+            "label": "Request prepared",
+            "visible": true,
+            "embedded": false,
+            "document_focused": true
+          },
+          "no_horizontal_overflow": true,
+          "captured": {
+            "before": "b5573df74c7a654736a7b4cf9931c53ed0d95033117664cf1331adc4419f6bb7",
+            "edge": "587a680f06b00aae20c59e27cda6dddf18f453db04c7b9c49ba5dbceaa2315e1",
+            "after": "b25a20c8da4d4523d8f8e7b878a9027a819a70aef5a11f65a7f4b9fe54616eba"
+          },
+          "keyboard_activation_after_confirmation": true,
+          "returned_form_retains_values_and_safety": true,
+          "returned_form_focus": {
+            "tag": "input",
+            "type": "text",
+            "label": "Building",
+            "visible": true,
+            "embedded": false,
+            "document_focused": true
+          },
+          "returned_form_ax": "- banner: Building care\n- main:\n  - region \"Let\u2019s get the light working.\":\n    - paragraph: Common-area maintenance\n    - heading \"Let\u2019s get the light working.\" [level=1]\n    - paragraph: Tell us where the broken light is and what you\u2019ve noticed. We\u2019ll help you prepare a maintenance request.\n  - region \"Light issue request\":\n    - heading \"Request details\" [level=2]\n    - paragraph: All fields are required.\n    - text: Building\n    - textbox \"Building\":\n      - /placeholder: Enter your building\n      - text: Oak Court\n    - text: Location\n    - textbox \"Location\":\n      - /placeholder: For example, second-floor hallway\n      - text: Second-floor landing\n    - paragraph: Include enough detail to find the light.\n    - text: Description\n    - textbox \"Description\":\n      - /placeholder: Describe what\u2019s happening with the light\n      - text: Common-area light is out\n    - group \"Urgency\":\n      - text: Urgency\n      - radio \"Routine A standard maintenance issue\"\n      - strong: Routine\n      - text: A standard maintenance issue\n      - radio \"Safety issue The issue affects safety\" [checked]\n      - strong: Safety issue\n      - text: The issue affects safety\n    - button \"Prepare request\"\n    - paragraph: Your request is prepared locally on this device.",
+          "observed_validation_before_entry": true
+        }
+      },
+      "A-390": {
+        "coherence": 8.5,
+        "originality": 6,
+        "craft": 8,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Keyboard: enter the specified three values, select Safety issue and submit.",
+          "expected": "Visible local confirmation and a keyboard return that retains the values.",
+          "observed": "Confirmation and all values are visible; focus lands on its heading. Edit request returns focus to Building and retains the three values and Safety issue."
+        },
+        "edge_observation": "Empty submission focuses Building and shows the three inline errors. The captured feedback fits the viewport without being obscured.",
+        "fact_check": "No horizontal overflow was apparent in the captured states; horizontal scrolling was not directly measured. Local-only processing was not independently verified.",
+        "strength": "The stacked form and urgency choices remain legible, and confirmation fits comfortably.",
+        "weakness": "The introductory content delays access to the form on a narrow screen.",
+        "repair": "Compact the mobile introduction while preserving the clear title and context.",
+        "arm": "shadcn",
+        "html_sha256": "81b5485eeeaa24abc96ef7a2a8826e0ea8af1ace62dcd44c633687e384b61928",
+        "weighted": 7.65,
+        "before": {
+          "sha256": "4577e28b99456cdff24a80a8509c380c3929d55121e8a39d50fd9759ecc5620c",
+          "file": "A-390-before.png",
+          "tool_call_id": "item_24"
+        },
+        "after": {
+          "sha256": "2284f4a80becc4d2ccc0481a8df9ecbc552ff2687fc23e1d275430d9a7016530",
+          "file": "A-390-after.png",
+          "tool_call_id": "item_41"
+        },
+        "layout_width": 375,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          },
+          {
+            "action": "text",
+            "value": "Oak Court"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "text",
+            "value": "Second-floor landing"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "text",
+            "value": "Common-area light is out"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge": {
+          "sha256": "9a6218e188ce30d9278dd524483fb158a4ba3568a4a9957543e276c1756b1d15",
+          "file": "A-390-edge.png",
+          "tool_call_id": "item_31"
+        },
+        "journey": {
+          "invalid_submission_exercised_empty": true,
+          "invalid_focus": {
+            "tag": "input",
+            "type": "text",
+            "label": "Building",
+            "visible": true,
+            "embedded": false,
+            "document_focused": true
+          },
+          "valid_input_exact": true,
+          "selected_safety_trace": true,
+          "local_confirmation_trace": true,
+          "confirmation_contains_suite_values": true,
+          "confirmation_urgency_is_safety": true,
+          "confirmation_ax": "- banner: Building care\n- main:\n  - region \"Let\u2019s get the light working.\":\n    - paragraph: Common-area maintenance\n    - heading \"Let\u2019s get the light working.\" [level=1]\n    - paragraph: Tell us where the broken light is and what you\u2019ve noticed. We\u2019ll help you prepare a maintenance request.\n  - region \"Light issue request\":\n    - heading \"Request prepared\" [level=2]\n    - paragraph: Your request has been prepared locally. It has not been sent.\n    - term: Building\n    - definition: Oak Court\n    - term: Location\n    - definition: Second-floor landing\n    - term: Description\n    - definition: Common-area light is out\n    - term: Urgency\n    - definition: Safety issue\n    - button \"Edit request\"",
+          "confirmation_focus": {
+            "tag": "h2",
+            "type": null,
+            "label": "Request prepared",
+            "visible": true,
+            "embedded": false,
+            "document_focused": true
+          },
+          "no_horizontal_overflow": true,
+          "captured": {
+            "before": "4577e28b99456cdff24a80a8509c380c3929d55121e8a39d50fd9759ecc5620c",
+            "edge": "9a6218e188ce30d9278dd524483fb158a4ba3568a4a9957543e276c1756b1d15",
+            "after": "2284f4a80becc4d2ccc0481a8df9ecbc552ff2687fc23e1d275430d9a7016530"
+          },
+          "keyboard_activation_after_confirmation": true,
+          "returned_form_retains_values_and_safety": true,
+          "returned_form_focus": {
+            "tag": "input",
+            "type": "text",
+            "label": "Building",
+            "visible": true,
+            "embedded": false,
+            "document_focused": true
+          },
+          "returned_form_ax": "- banner: Building care\n- main:\n  - region \"Let\u2019s get the light working.\":\n    - paragraph: Common-area maintenance\n    - heading \"Let\u2019s get the light working.\" [level=1]\n    - paragraph: Tell us where the broken light is and what you\u2019ve noticed. We\u2019ll help you prepare a maintenance request.\n  - region \"Light issue request\":\n    - heading \"Request details\" [level=2]\n    - paragraph: All fields are required.\n    - text: Building\n    - textbox \"Building\":\n      - /placeholder: Enter your building\n      - text: Oak Court\n    - text: Location\n    - textbox \"Location\":\n      - /placeholder: For example, second-floor hallway\n      - text: Second-floor landing\n    - paragraph: Include enough detail to find the light.\n    - text: Description\n    - textbox \"Description\":\n      - /placeholder: Describe what\u2019s happening with the light\n      - text: Common-area light is out\n    - group \"Urgency\":\n      - text: Urgency\n      - radio \"Routine A standard maintenance issue\"\n      - strong: Routine\n      - text: A standard maintenance issue\n      - radio \"Safety issue The issue affects safety\" [checked]\n      - strong: Safety issue\n      - text: The issue affects safety\n    - button \"Prepare request\"\n    - paragraph: Your request is prepared locally on this device.",
+          "observed_validation_before_entry": true
+        }
+      },
+      "B-1440": {
+        "coherence": 8.5,
+        "originality": 7,
+        "craft": 8,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Keyboard: enter the specified three values, select Safety issue with the arrow key and submit.",
+          "expected": "A locally prepared confirmation with a keyboard return action.",
+          "observed": "The heading says Request prepared locally and the text says it has not been sent. Focus lands on the heading. Edit request returns focus to Building and retains all four values."
+        },
+        "edge_observation": "Empty submission focuses Building and displays specific errors for building, location, description and urgency. Both urgency options start unselected.",
+        "fact_check": "The visible confirmation matches the requested outcome. The browser-local data claim was not independently verified.",
+        "strength": "The restrained editorial layout, section dividers and condensed headings create a clear structure.",
+        "weakness": "Required status is not apparent before attempting submission.",
+        "repair": "Mark required fields and the urgency choice before validation.",
+        "arm": "v2",
+        "html_sha256": "de64536b4a3d8fea9792adbd02f4ef4a5a722d2c7b6e43c0647fd1b28f5b6df0",
+        "weighted": 7.95,
+        "before": {
+          "sha256": "12c59361d757b22be6fd9f64b73025c55dc03209fa050727096dad13f93a3a4a",
+          "file": "B-1440-before.png",
+          "tool_call_id": "item_45"
+        },
+        "after": {
+          "sha256": "fe7c4141e20ab29db110997dc16f9c1294b0ba727b42a1955f6cf82997a8eaaf",
+          "file": "B-1440-after.png",
+          "tool_call_id": "item_62"
+        },
+        "layout_width": 1440,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          },
+          {
+            "action": "text",
+            "value": "Oak Court"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "text",
+            "value": "Second-floor landing"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "text",
+            "value": "Common-area light is out"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge": {
+          "sha256": "2770383548d4ca72e05a8120d047006572c99fa7773f0216067a50f2956fcf59",
+          "file": "B-1440-edge.png",
+          "tool_call_id": "item_52"
+        },
+        "journey": {
+          "invalid_submission_exercised_empty": true,
+          "invalid_focus": {
+            "tag": "input",
+            "type": "text",
+            "label": "Building",
+            "visible": true,
+            "embedded": false,
+            "document_focused": true
+          },
+          "valid_input_exact": true,
+          "selected_safety_trace": true,
+          "local_confirmation_trace": true,
+          "confirmation_contains_suite_values": true,
+          "confirmation_urgency_is_safety": true,
+          "confirmation_ax": "- main:\n  - text: Common-area maintenance\n  - paragraph: Maintenance request\n  - heading \"Report a broken light\" [level=1]\n  - paragraph: Share where the light is and what\u2019s wrong so the request can be prepared.\n  - region \"Request prepared locally\":\n    - heading \"Request prepared locally\" [level=2]\n    - paragraph: Your request is ready to review. It has not been sent.\n    - term: Building\n    - definition: Oak Court\n    - term: Location\n    - definition: Second-floor landing\n    - term: Description\n    - definition: Common-area light is out\n    - term: Urgency\n    - definition: Safety issue\n    - button \"Edit request\"",
+          "confirmation_focus": {
+            "tag": "h2",
+            "type": null,
+            "label": "Request prepared locally",
+            "visible": true,
+            "embedded": false,
+            "document_focused": true
+          },
+          "no_horizontal_overflow": true,
+          "captured": {
+            "before": "12c59361d757b22be6fd9f64b73025c55dc03209fa050727096dad13f93a3a4a",
+            "edge": "2770383548d4ca72e05a8120d047006572c99fa7773f0216067a50f2956fcf59",
+            "after": "fe7c4141e20ab29db110997dc16f9c1294b0ba727b42a1955f6cf82997a8eaaf"
+          },
+          "keyboard_activation_after_confirmation": true,
+          "returned_form_retains_values_and_safety": true,
+          "returned_form_focus": {
+            "tag": "input",
+            "type": "text",
+            "label": "Building",
+            "visible": true,
+            "embedded": false,
+            "document_focused": true
+          },
+          "returned_form_ax": "- main:\n  - text: Common-area maintenance\n  - paragraph: Maintenance request\n  - heading \"Report a broken light\" [level=1]\n  - paragraph: Share where the light is and what\u2019s wrong so the request can be prepared.\n  - region \"Where is it?\":\n    - heading \"Where is it?\" [level=2]\n    - text: Building\n    - textbox \"Building\": Oak Court\n    - text: Location\n    - paragraph: For example, a hallway, stairwell, or lobby.\n    - textbox \"Location\": Second-floor landing\n  - region \"What\u2019s happening?\":\n    - heading \"What\u2019s happening?\" [level=2]\n    - text: Description\n    - paragraph: Describe the problem with the light.\n    - textbox \"Description\": Common-area light is out\n    - group \"Urgency\":\n      - text: Urgency\n      - radio \"Routine\"\n      - text: Routine\n      - radio \"Safety issue\" [checked]\n      - text: Safety issue\n  - button \"Prepare request\"\n  - paragraph: Your details stay in this browser.",
+          "observed_validation_before_entry": true
+        }
+      },
+      "B-390": {
+        "coherence": 8,
+        "originality": 6.5,
+        "craft": 8,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Keyboard: enter the specified three values, choose Safety issue and submit.",
+          "expected": "Visible local confirmation and retained values after keyboard return.",
+          "observed": "The local confirmation, all four values and Edit request are visible. Focus lands on the confirmation heading; returning retains all values and focuses Building."
+        },
+        "edge_observation": "Empty submission focuses Building and shows four specific inline errors. The captured errors remain visible without an overlay.",
+        "fact_check": "No horizontal overflow was apparent in the captured states; horizontal scrolling was not directly measured. Local-only processing was not independently verified.",
+        "strength": "The sectioned layout and strong focus ring remain clear at mobile width.",
+        "weakness": "The large introductory heading and vertical spacing push more of the task below the fold.",
+        "repair": "Reduce introductory vertical space and indicate required fields before submission.",
+        "arm": "v2",
+        "html_sha256": "de64536b4a3d8fea9792adbd02f4ef4a5a722d2c7b6e43c0647fd1b28f5b6df0",
+        "weighted": 7.65,
+        "before": {
+          "sha256": "8d8f15bb4fd281955628a67f134249c69c31b6585d1d6c7b1145e68613b949ae",
+          "file": "B-390-before.png",
+          "tool_call_id": "item_67"
+        },
+        "after": {
+          "sha256": "11e72e05b2da955c4cd05e69ce698183ca0f94caf0312f73b9384904e0858194",
+          "file": "B-390-after.png",
+          "tool_call_id": "item_84"
+        },
+        "layout_width": 375,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          },
+          {
+            "action": "text",
+            "value": "Oak Court"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "text",
+            "value": "Second-floor landing"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "text",
+            "value": "Common-area light is out"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge": {
+          "sha256": "342c135f398ca0cf32a5f02eca5195fa8fc0b337e96c100c7448ab5e3990070f",
+          "file": "B-390-edge.png",
+          "tool_call_id": "item_74"
+        },
+        "journey": {
+          "invalid_submission_exercised_empty": true,
+          "invalid_focus": {
+            "tag": "input",
+            "type": "text",
+            "label": "Building",
+            "visible": true,
+            "embedded": false,
+            "document_focused": true
+          },
+          "valid_input_exact": true,
+          "selected_safety_trace": true,
+          "local_confirmation_trace": true,
+          "confirmation_contains_suite_values": true,
+          "confirmation_urgency_is_safety": true,
+          "confirmation_ax": "- main:\n  - text: Common-area maintenance\n  - paragraph: Maintenance request\n  - heading \"Report a broken light\" [level=1]\n  - paragraph: Share where the light is and what\u2019s wrong so the request can be prepared.\n  - region \"Request prepared locally\":\n    - heading \"Request prepared locally\" [level=2]\n    - paragraph: Your request is ready to review. It has not been sent.\n    - term: Building\n    - definition: Oak Court\n    - term: Location\n    - definition: Second-floor landing\n    - term: Description\n    - definition: Common-area light is out\n    - term: Urgency\n    - definition: Safety issue\n    - button \"Edit request\"",
+          "confirmation_focus": {
+            "tag": "h2",
+            "type": null,
+            "label": "Request prepared locally",
+            "visible": true,
+            "embedded": false,
+            "document_focused": true
+          },
+          "no_horizontal_overflow": true,
+          "captured": {
+            "before": "8d8f15bb4fd281955628a67f134249c69c31b6585d1d6c7b1145e68613b949ae",
+            "edge": "342c135f398ca0cf32a5f02eca5195fa8fc0b337e96c100c7448ab5e3990070f",
+            "after": "11e72e05b2da955c4cd05e69ce698183ca0f94caf0312f73b9384904e0858194"
+          },
+          "keyboard_activation_after_confirmation": true,
+          "returned_form_retains_values_and_safety": true,
+          "returned_form_focus": {
+            "tag": "input",
+            "type": "text",
+            "label": "Building",
+            "visible": true,
+            "embedded": false,
+            "document_focused": true
+          },
+          "returned_form_ax": "- main:\n  - text: Common-area maintenance\n  - paragraph: Maintenance request\n  - heading \"Report a broken light\" [level=1]\n  - paragraph: Share where the light is and what\u2019s wrong so the request can be prepared.\n  - region \"Where is it?\":\n    - heading \"Where is it?\" [level=2]\n    - text: Building\n    - textbox \"Building\": Oak Court\n    - text: Location\n    - paragraph: For example, a hallway, stairwell, or lobby.\n    - textbox \"Location\": Second-floor landing\n  - region \"What\u2019s happening?\":\n    - heading \"What\u2019s happening?\" [level=2]\n    - text: Description\n    - paragraph: Describe the problem with the light.\n    - textbox \"Description\": Common-area light is out\n    - group \"Urgency\":\n      - text: Urgency\n      - radio \"Routine\"\n      - text: Routine\n      - radio \"Safety issue\" [checked]\n      - text: Safety issue\n  - button \"Prepare request\"\n  - paragraph: Your details stay in this browser.",
+          "observed_validation_before_entry": true
+        }
+      },
+      "C-1440": {
+        "coherence": 8.5,
+        "originality": 6.5,
+        "craft": 8.5,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Keyboard: enter the specified three values, choose Safety issue and submit.",
+          "expected": "A locally prepared confirmation with an accessible return action.",
+          "observed": "The confirmation says it was prepared locally in this browser and not sent. Focus moves to the confirmation container. Tab and Enter activate Edit request, returning focus to Building with all values retained."
+        },
+        "edge_observation": "Empty submission shows specific errors for all fields and urgency, and focuses Building with a prominent focus ring. Both urgency options start unselected.",
+        "fact_check": "The visible confirmation meets the brief. The local-only claim was not independently verified.",
+        "strength": "Required markers, a skip link, clear focus and an explicit not-sent notice support the flow.",
+        "weakness": "The focused confirmation container draws a large outline around the entire summary.",
+        "repair": "Focus the confirmation heading with a more contained visible focus treatment.",
+        "arm": "uiux-pro-max",
+        "html_sha256": "ec1fd6c5f99336195b11b16ef82320f086e57684daf6c7faaa2c966a2c47bf8a",
+        "weighted": 7.9,
+        "before": {
+          "sha256": "633431e7758a2d1b0138a919e498ecf0cea984e1c33633333929a3f51c0300c9",
+          "file": "C-1440-before.png",
+          "tool_call_id": "item_88"
+        },
+        "after": {
+          "sha256": "27d2652fcafb85800d2fd66abddd4b5eac03ae7897e87b95a1b4463dfe1c19a4",
+          "file": "C-1440-after.png",
+          "tool_call_id": "item_106"
+        },
+        "layout_width": 1425,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          },
+          {
+            "action": "text",
+            "value": "Oak Court"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "text",
+            "value": "Second-floor landing"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "text",
+            "value": "Common-area light is out"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge": {
+          "sha256": "cfb7b0285849637c50f4aed2a64f83acbecd9504d799f27cac0dca389caac977",
+          "file": "C-1440-edge.png",
+          "tool_call_id": "item_96"
+        },
+        "journey": {
+          "invalid_submission_exercised_empty": true,
+          "invalid_focus": {
+            "tag": "input",
+            "type": "text",
+            "label": "Building *",
+            "visible": true,
+            "embedded": false,
+            "document_focused": true
+          },
+          "valid_input_exact": true,
+          "selected_safety_trace": true,
+          "local_confirmation_trace": true,
+          "confirmation_contains_suite_values": true,
+          "confirmation_urgency_is_safety": true,
+          "confirmation_ax": "- link \"Skip to main content\":\n  - /url: \"#main\"\n- banner: Common spaces Maintenance request\n- main:\n  - text: Common-area maintenance\n  - region \"Let\u2019s get that light working.\":\n    - text: Lighting\n    - heading \"Let\u2019s get that light working.\" [level=1]\n    - paragraph: Tell us where the broken light is and what you\u2019ve noticed. A few details will help prepare your request.\n    - text: Your details stay in this browser. Preparing a request does not send it.\n  - region \"Light repair request\":\n    - heading \"Request prepared\" [level=2]\n    - paragraph: Your request has been prepared locally in this browser. It has not been sent.\n    - term: Building\n    - definition: Oak Court\n    - term: Location\n    - definition: Second-floor landing\n    - term: Description\n    - definition: Common-area light is out\n    - term: Urgency\n    - definition: Safety issue\n    - button \"Edit request\"",
+          "confirmation_focus": {
+            "tag": "div",
+            "type": null,
+            "label": "Request prepared\n\nYour request has been prepared locally in this browser. It has not been sent.\n\nBuilding\nOak Court\nLocation\nSecond-floor landing\nDescription\nCo",
+            "visible": true,
+            "embedded": false,
+            "document_focused": true
+          },
+          "no_horizontal_overflow": true,
+          "captured": {
+            "before": "633431e7758a2d1b0138a919e498ecf0cea984e1c33633333929a3f51c0300c9",
+            "edge": "cfb7b0285849637c50f4aed2a64f83acbecd9504d799f27cac0dca389caac977",
+            "after": "27d2652fcafb85800d2fd66abddd4b5eac03ae7897e87b95a1b4463dfe1c19a4"
+          },
+          "keyboard_activation_after_confirmation": true,
+          "returned_form_retains_values_and_safety": true,
+          "returned_form_focus": {
+            "tag": "input",
+            "type": "text",
+            "label": "Building *",
+            "visible": true,
+            "embedded": false,
+            "document_focused": true
+          },
+          "returned_form_ax": "- link \"Skip to main content\":\n  - /url: \"#main\"\n- banner: Common spaces Maintenance request\n- main:\n  - text: Common-area maintenance\n  - region \"Let\u2019s get that light working.\":\n    - text: Lighting\n    - heading \"Let\u2019s get that light working.\" [level=1]\n    - paragraph: Tell us where the broken light is and what you\u2019ve noticed. A few details will help prepare your request.\n    - text: Your details stay in this browser. Preparing a request does not send it.\n  - region \"Light repair request\":\n    - heading \"Light repair request\" [level=2]\n    - paragraph: Share the details of the light that needs attention.\n    - paragraph: Required fields\n    - text: Building\n    - textbox \"Building\":\n      - /placeholder: Enter the building name or address\n      - text: Oak Court\n    - text: Location Include the floor or nearby landmark, if helpful.\n    - textbox \"Location\":\n      - /placeholder: For example, second-floor hallway\n      - text: Second-floor landing\n    - text: Description\n    - textbox \"Description\":\n      - /placeholder: What\u2019s happening with the light?\n      - text: Common-area light is out\n    - group \"Urgency\":\n      - text: Urgency Choose the option that best describes the issue.\n      - radio \"Routine A light needs attention.\"\n      - text: Routine A light needs attention.\n      - radio \"Safety issue The issue affects safety.\" [checked]\n      - text: Safety issue The issue affects safety.\n    - button \"Prepare request\"\n    - paragraph: Prepared locally in your browser; not sent.",
+          "observed_validation_before_entry": true
+        }
+      },
+      "C-390": {
+        "coherence": 8,
+        "originality": 6,
+        "craft": 8,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Keyboard: enter the specified three values, choose Safety issue and submit.",
+          "expected": "Visible local confirmation and retained values after keyboard return.",
+          "observed": "Confirmation, values and Edit request are visible. Focus lands on the confirmation container; keyboard return retains all four values and focuses Building."
+        },
+        "edge_observation": "Empty submission focuses Building and shows actionable inline errors, including the urgency error. The captured feedback is not obscured.",
+        "fact_check": "No horizontal overflow was apparent in the captured states; horizontal scrolling was not directly measured. Local-only processing was not independently verified.",
+        "strength": "Required indicators, stacked urgency choices and a strong focus ring remain clear on mobile.",
+        "weakness": "The confirmation focus outline encloses all content and visually crosses close to the summary text.",
+        "repair": "Use a contained heading focus treatment and slightly tighten the mobile introduction.",
+        "arm": "uiux-pro-max",
+        "html_sha256": "ec1fd6c5f99336195b11b16ef82320f086e57684daf6c7faaa2c966a2c47bf8a",
+        "weighted": 7.5,
+        "before": {
+          "sha256": "b2bd9c787ac7857760febbf0d30fe0ae54a7aa5477989231211233fdd0f8078f",
+          "file": "C-390-before.png",
+          "tool_call_id": "item_111"
+        },
+        "after": {
+          "sha256": "8c60443e7f1113389b89d91dcd24e0aec69bb17e6fbcf90a34405e83735c6a19",
+          "file": "C-390-after.png",
+          "tool_call_id": "item_129"
+        },
+        "layout_width": 375,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          },
+          {
+            "action": "text",
+            "value": "Oak Court"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "text",
+            "value": "Second-floor landing"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "text",
+            "value": "Common-area light is out"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge": {
+          "sha256": "20a98cb6fa82cb0a8a00630f43b5675bc52e3ecc9e39cceb61eda005a9d58ed4",
+          "file": "C-390-edge.png",
+          "tool_call_id": "item_119"
+        },
+        "journey": {
+          "invalid_submission_exercised_empty": true,
+          "invalid_focus": {
+            "tag": "input",
+            "type": "text",
+            "label": "Building *",
+            "visible": true,
+            "embedded": false,
+            "document_focused": true
+          },
+          "valid_input_exact": true,
+          "selected_safety_trace": true,
+          "local_confirmation_trace": true,
+          "confirmation_contains_suite_values": true,
+          "confirmation_urgency_is_safety": true,
+          "confirmation_ax": "- link \"Skip to main content\":\n  - /url: \"#main\"\n- banner: Common spaces Maintenance request\n- main:\n  - text: Common-area maintenance\n  - region \"Let\u2019s get that light working.\":\n    - text: Lighting\n    - heading \"Let\u2019s get that light working.\" [level=1]\n    - paragraph: Tell us where the broken light is and what you\u2019ve noticed. A few details will help prepare your request.\n  - region \"Light repair request\":\n    - heading \"Request prepared\" [level=2]\n    - paragraph: Your request has been prepared locally in this browser. It has not been sent.\n    - term: Building\n    - definition: Oak Court\n    - term: Location\n    - definition: Second-floor landing\n    - term: Description\n    - definition: Common-area light is out\n    - term: Urgency\n    - definition: Safety issue\n    - button \"Edit request\"",
+          "confirmation_focus": {
+            "tag": "div",
+            "type": null,
+            "label": "Request prepared\n\nYour request has been prepared locally in this browser. It has not been sent.\n\nBuilding\nOak Court\nLocation\nSecond-floor landing\nDescription\nCo",
+            "visible": true,
+            "embedded": false,
+            "document_focused": true
+          },
+          "no_horizontal_overflow": true,
+          "captured": {
+            "before": "b2bd9c787ac7857760febbf0d30fe0ae54a7aa5477989231211233fdd0f8078f",
+            "edge": "20a98cb6fa82cb0a8a00630f43b5675bc52e3ecc9e39cceb61eda005a9d58ed4",
+            "after": "8c60443e7f1113389b89d91dcd24e0aec69bb17e6fbcf90a34405e83735c6a19"
+          },
+          "keyboard_activation_after_confirmation": true,
+          "returned_form_retains_values_and_safety": true,
+          "returned_form_focus": {
+            "tag": "input",
+            "type": "text",
+            "label": "Building *",
+            "visible": true,
+            "embedded": false,
+            "document_focused": true
+          },
+          "returned_form_ax": "- link \"Skip to main content\":\n  - /url: \"#main\"\n- banner: Common spaces Maintenance request\n- main:\n  - text: Common-area maintenance\n  - region \"Let\u2019s get that light working.\":\n    - text: Lighting\n    - heading \"Let\u2019s get that light working.\" [level=1]\n    - paragraph: Tell us where the broken light is and what you\u2019ve noticed. A few details will help prepare your request.\n  - region \"Light repair request\":\n    - heading \"Light repair request\" [level=2]\n    - paragraph: Share the details of the light that needs attention.\n    - paragraph: Required fields\n    - text: Building\n    - textbox \"Building\":\n      - /placeholder: Enter the building name or address\n      - text: Oak Court\n    - text: Location Include the floor or nearby landmark, if helpful.\n    - textbox \"Location\":\n      - /placeholder: For example, second-floor hallway\n      - text: Second-floor landing\n    - text: Description\n    - textbox \"Description\":\n      - /placeholder: What\u2019s happening with the light?\n      - text: Common-area light is out\n    - group \"Urgency\":\n      - text: Urgency Choose the option that best describes the issue.\n      - radio \"Routine A light needs attention.\"\n      - text: Routine A light needs attention.\n      - radio \"Safety issue The issue affects safety.\" [checked]\n      - text: Safety issue The issue affects safety.\n    - button \"Prepare request\"\n    - paragraph: Prepared locally in your browser; not sent.",
+          "observed_validation_before_entry": true
+        }
+      }
+    },
+    "preference": {
+      "winner": "A",
+      "reason": "A combines a clear task hierarchy and concise recovery flow with a readable confirmation at both widths. Its default Routine choice avoids an extra required decision, while Safety issue remains readily available. B and C also completed the requested keyboard flow; all three use fairly familiar visual treatments."
+    },
+    "case": "form-maintenance",
+    "verified_screens": 6,
+    "required_screens": 6,
+    "browser": "Chrome/160.0.8178.0",
+    "evaluator_thread": "01a20928-7270-77f1-b8c7-177996917c09",
+    "usage": {
+      "input_tokens": 810011,
+      "cached_input_tokens": 773760,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 3975,
+      "reasoning_output_tokens": 0
+    },
+    "trace_sha256": "e0a0b21609172feee8b37f57f1d806a83ac3c3fdeb46de1caf6cea0f8a1f6b04",
+    "browser_audit_sha256": "b3ea9ccd4944468fe58c99c57f1ccf6262242edf6c65d0686ca08f181c974862"
+  },
+  "score_by_arm": {
+    "shadcn": {
+      "desktop": 7.8,
+      "phone": 7.65
+    },
+    "v2": {
+      "desktop": 7.95,
+      "phone": 7.65
+    },
+    "uiux-pro-max": {
+      "desktop": 7.9,
+      "phone": 7.5
+    }
+  }
+}
