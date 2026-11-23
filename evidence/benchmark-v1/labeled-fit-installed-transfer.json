@@ -1,0 +1,1380 @@
+{
+  "scope": "Unhinted installed transfer to two held-out borrowing briefs. No live visual ballot qualified.",
+  "package": {
+    "control_commit": "ca8fc6bacf07a53e7e1681a10ecb0b6262c6515c",
+    "trial_commit": "84735b41b8ce039a9943295123eaa70a3b17dc60",
+    "control_wheel_sha256": "0a270921953b81e17ad141233b310394e6857e0bdac2dec3d9b7ecfbe643d74f",
+    "trial_wheel_sha256": "c6a5f3e644204a7cd5f5fcd80e1ba186489d145ad1842d86e721cdf300582310",
+    "changed_wheel_files": [
+      "design_mcp-0.1.0.dist-info/RECORD",
+      "design_mcp/data/directions.json"
+    ],
+    "matching_installed_package_files": {
+      "control": 50,
+      "trial": 50
+    },
+    "schemas_match": true,
+    "calls_per_arm": 42,
+    "changed_cases": [
+      "bike-coop-clearance",
+      "press-guide-tool",
+      "scenic-track-tool"
+    ],
+    "unrelated_exact_matches": 39,
+    "matched_cases": [
+      "avoid-fit",
+      "bike-coop-clearance",
+      "dashboard-coldchain",
+      "dashboard-energy",
+      "dashboard-harvest",
+      "dashboard-library",
+      "dashboard-support",
+      "dashboard-venue",
+      "empty-drafts",
+      "empty-exhibits",
+      "empty-handoff",
+      "empty-saved",
+      "empty-search",
+      "empty-shifts",
+      "explicit-form",
+      "form-exhibition",
+      "form-garden",
+      "form-invoice",
+      "form-label",
+      "form-maintenance",
+      "form-venue",
+      "landing-archive",
+      "landing-ceramics",
+      "landing-energy",
+      "landing-festival",
+      "landing-radio",
+      "landing-repair",
+      "mobile-court",
+      "mobile-field",
+      "mobile-gallery",
+      "mobile-pantry",
+      "mobile-recital",
+      "mobile-train",
+      "poetry-last-train",
+      "press-guide-tool",
+      "scenic-track-tool",
+      "settings-digest",
+      "settings-focus",
+      "settings-language",
+      "settings-notifications",
+      "settings-reading",
+      "settings-team"
+    ],
+    "example": {
+      "control": {
+        "direction": {
+          "id": "constraint-comparison",
+          "surface": "landing",
+          "title": "Constraint comparison",
+          "summary": "Put the two measured fit limits beside the available choices and keep a withdrawn selection visible until the visitor chooses a replacement.",
+          "type": {
+            "display": "IBM Plex Sans Condensed",
+            "body": "Barlow",
+            "ratio": 3.2,
+            "tracking": -0.025,
+            "weight": 700,
+            "license": "OFL-1.1"
+          },
+          "palette": {
+            "ink": "#18352E",
+            "paper": "#E4EAE5",
+            "accent": "#E7B766"
+          },
+          "layout": {
+            "skeleton": "Open with one shared dimensional datum, then a ruled choice comparison; keep the current selection and ready time beside the replacement decision.",
+            "focus": "The supplied height limit and swing limit shown as separate measured cues beside each tool's actual fit evidence.",
+            "desktop": "Set the cabinet datum and the two constraint readings across the opening. Below, align each tool's assembled height, required swing, readiness and selection control on consistent rules. Keep a withdrawn selection named until the visitor selects another tool.",
+            "mobile": "At 390px keep the selected tool, withdrawal reason, readiness time and replacement choices in the first view. Show height in mm with its supplied tolerance and swing in degrees as separate cues. Verify at 320px without hiding an action. State that unmeasured hand clearance remains uncertain.",
+            "rhythm": "Use a 12px rule grid, compact comparison rows and one generous break after the shared datum. No repeated cards."
+          },
+          "imagery": {
+            "subject": "A dimension line and small swing arc drawn only from the supplied geometry.",
+            "crop": "Keep the dimensional datum connected to the choice rows; do not imply a product photo or inventory image.",
+            "fallback": "Use type, rules and a simple dimension line. Identify any physical clearance the brief does not measure."
+          },
+          "motion": {
+            "trigger": "The visitor chooses a replacement tool.",
+            "effect": "Move the selection marker to the chosen row and update one adjacent selection status.",
+            "duration_ms": 220,
+            "reduced": "Change the marker and status immediately."
+          },
+          "action": {
+            "instruction": "Keep the withdrawn choice visible with the reason supplied by the brief. Offer only supplied alternatives and let the visitor make the replacement selection.",
+            "label": "Choose [tool]"
+          },
+          "why": "A borrower making a fit decision needs the shared scale and both independent constraints beside the actual alternatives. A shared datum helps visitors reconcile evidence across the alternatives before choosing.",
+          "sources": [
+            {
+              "url": "https://www.vessel.co.jp/english/product/screwdriver/251428",
+              "observation": "Vessel distinguishes assembled screwdriver geometry and states a 6-degree ratchet swing. This is a reference for presenting two measured properties; it does not identify any item in the fixture as Vessel inventory.",
+              "strength": "evidence"
+            },
+            {
+              "url": "https://www.watched.earth/place/eiffel-tower",
+              "observation": "The observed page separates its globe visualization from the evidence explaining the outcome. Adapted here as a principle: show the comparison and its supporting measurements together.",
+              "strength": "evidence"
+            }
+          ],
+          "credit": "Original workshop comparison informed by observed measurement and evidence presentation."
+        },
+        "font_stylesheet": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed%3Awght%40700&family=Barlow&display=swap",
+        "interaction": {
+          "accent_foreground": "#18352E",
+          "easing": "ease-out",
+          "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+          "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+          "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+        },
+        "assumptions": [
+          "Use landing as the surface.",
+          "Use only the project facts and assets in the brief."
+        ],
+        "questions": [],
+        "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px. Replay by keyboard at 320 and 390 px. 1. Choose a fitting option and verify its initial pickup. 2. If the brief supplies a stock update, apply it separately. Keep the old choice selected. Show the reason, replacement measurements, pickup and an explicit replacement button together. 3. Choose the replacement. Verify that the new choice and old reason remain visible. Keep focus on a surviving control or move it directly to the visible recovery button."
+      },
+      "trial": {
+        "direction": {
+          "id": "constraint-comparison",
+          "surface": "landing",
+          "title": "Constraint comparison",
+          "summary": "Put the two measured fit limits beside the available choices and keep a withdrawn selection visible until the visitor chooses a replacement.",
+          "type": {
+            "display": "IBM Plex Sans Condensed",
+            "body": "Barlow",
+            "ratio": 3.2,
+            "tracking": -0.025,
+            "weight": 700,
+            "license": "OFL-1.1"
+          },
+          "palette": {
+            "ink": "#18352E",
+            "paper": "#E4EAE5",
+            "accent": "#E7B766"
+          },
+          "layout": {
+            "skeleton": "Open with one shared dimensional datum, then a ruled choice comparison; keep the current selection and ready time beside the replacement decision.",
+            "focus": "The supplied height limit and swing limit shown as separate measured cues beside each tool's actual fit evidence.",
+            "desktop": "Set the cabinet datum and the two constraint readings across the opening. Below, align each tool's assembled height, required swing, readiness and selection control on consistent rules. Keep a withdrawn selection named until the visitor selects another tool.",
+            "mobile": "At 390px label the height and swing limits beside their measurements. Put each supplied pickup time on its choice button, with both limits and choices visible on opening. After withdrawal show the old pickup as history beside the reason and replacement evidence and action. Verify at 320px. Flag unmeasured hand clearance.",
+            "rhythm": "Use a 12px rule grid, compact comparison rows and one generous break after the shared datum. No repeated cards."
+          },
+          "imagery": {
+            "subject": "A dimension line and small swing arc drawn only from the supplied geometry.",
+            "crop": "Keep the dimensional datum connected to the choice rows; do not imply a product photo or inventory image.",
+            "fallback": "Use type, rules and a simple dimension line. Identify any physical clearance the brief does not measure."
+          },
+          "motion": {
+            "trigger": "The visitor chooses a replacement tool.",
+            "effect": "Move the selection marker to the chosen row and update one adjacent selection status.",
+            "duration_ms": 220,
+            "reduced": "Change the marker and status immediately."
+          },
+          "action": {
+            "instruction": "Keep the withdrawn choice visible with the reason supplied by the brief. Offer only supplied alternatives and let the visitor make the replacement selection.",
+            "label": "Choose [tool]"
+          },
+          "why": "A borrower making a fit decision needs the shared scale and both independent constraints beside the actual alternatives. A shared datum helps visitors reconcile evidence across the alternatives before choosing.",
+          "sources": [
+            {
+              "url": "https://www.vessel.co.jp/english/product/screwdriver/251428",
+              "observation": "Vessel distinguishes assembled screwdriver geometry and states a 6-degree ratchet swing. This is a reference for presenting two measured properties; it does not identify any item in the fixture as Vessel inventory.",
+              "strength": "evidence"
+            },
+            {
+              "url": "https://www.watched.earth/place/eiffel-tower",
+              "observation": "The observed page separates its globe visualization from the evidence explaining the outcome. Adapted here as a principle: show the comparison and its supporting measurements together.",
+              "strength": "evidence"
+            }
+          ],
+          "credit": "Original workshop comparison informed by observed measurement and evidence presentation."
+        },
+        "font_stylesheet": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed%3Awght%40700&family=Barlow&display=swap",
+        "interaction": {
+          "accent_foreground": "#18352E",
+          "easing": "ease-out",
+          "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+          "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+          "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+        },
+        "assumptions": [
+          "Use landing as the surface.",
+          "Use only the project facts and assets in the brief."
+        ],
+        "questions": [],
+        "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px. Replay by keyboard at 320 and 390 px. 1. Choose a fitting option and verify its initial pickup. 2. If the brief supplies a stock update, apply it separately. Keep the old choice selected. Show the reason, replacement measurements, pickup and an explicit replacement button together. 3. Choose the replacement. Verify that the new choice and old reason remain visible. Keep focus on a surviving control or move it directly to the visible recovery button."
+      }
+    }
+  },
+  "generation": {
+    "scenic-track-tool": {
+      "control": {
+        "usage": {
+          "input_tokens": 59323,
+          "cached_input_tokens": 53120,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5049,
+          "reasoning_output_tokens": 0
+        },
+        "tool_calls": [
+          {
+            "type": "mcp_tool_call",
+            "server": "design-mcp",
+            "tool": "direct",
+            "status": "completed"
+          }
+        ],
+        "client_errors": [],
+        "treatment_call": true,
+        "direct_call": true,
+        "status": "passed",
+        "observed_directions": [
+          "constraint-comparison"
+        ],
+        "unhinted_direct": true,
+        "case": "scenic-track-tool",
+        "arm": "control",
+        "model": "gpt-6.1-terra",
+        "effort": "low",
+        "client": "codex-cli 0.170.0",
+        "prompt_sha256": "5e2b710b5ba6f964068fd27938ea11d0ea8a04dbbda498301ce583934f3bdb4d",
+        "expected_direction": "constraint-comparison",
+        "require_unhinted_direct": true,
+        "shell_tool": false,
+        "mcp_config_sha256": "6403bcbc803c1bb3a2d4ebf43bab55b841231967e9a8593d725fb7b7fc60294f",
+        "elapsed_seconds": 98.46,
+        "exit_code": 0,
+        "trace_sha256": "7757e914fe5eff19de08d91055a756cb07e5a5dba9e3ae77cd87a53d9d50005f",
+        "html_sha256": "e96090ac76686734a3717f6cb5e967d4e50dfc204f64baa75a8fdace51806628"
+      },
+      "labeled-fit": {
+        "usage": {
+          "input_tokens": 59323,
+          "cached_input_tokens": 49152,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5888,
+          "reasoning_output_tokens": 35
+        },
+        "tool_calls": [
+          {
+            "type": "mcp_tool_call",
+            "server": "design-mcp",
+            "tool": "direct",
+            "status": "completed"
+          }
+        ],
+        "client_errors": [],
+        "treatment_call": true,
+        "direct_call": true,
+        "status": "passed",
+        "observed_directions": [
+          "constraint-comparison"
+        ],
+        "unhinted_direct": true,
+        "case": "scenic-track-tool",
+        "arm": "labeled-fit",
+        "model": "gpt-6.1-terra",
+        "effort": "low",
+        "client": "codex-cli 0.170.0",
+        "prompt_sha256": "5e2b710b5ba6f964068fd27938ea11d0ea8a04dbbda498301ce583934f3bdb4d",
+        "expected_direction": "constraint-comparison",
+        "require_unhinted_direct": true,
+        "shell_tool": false,
+        "mcp_config_sha256": "22738de1fb71bdc52785ed94a588e8976cbc768a0d7520a1a7e434898c875e56",
+        "elapsed_seconds": 113.55,
+        "exit_code": 0,
+        "trace_sha256": "7599974571435e31fef1fc92145a171b0b80bbca63f0c70ced614a590807a14d",
+        "html_sha256": "74132968994c37cdbcbb0c4384d1decdf4222b488a1dbbded255240ef35b5929"
+      }
+    },
+    "press-guide-tool": {
+      "control": {
+        "usage": {
+          "input_tokens": 59291,
+          "cached_input_tokens": 43392,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5473,
+          "reasoning_output_tokens": 0
+        },
+        "tool_calls": [
+          {
+            "type": "mcp_tool_call",
+            "server": "design-mcp",
+            "tool": "direct",
+            "status": "completed"
+          }
+        ],
+        "client_errors": [],
+        "treatment_call": true,
+        "direct_call": true,
+        "status": "passed",
+        "observed_directions": [
+          "constraint-comparison"
+        ],
+        "unhinted_direct": true,
+        "case": "press-guide-tool",
+        "arm": "control",
+        "model": "gpt-6.1-terra",
+        "effort": "low",
+        "client": "codex-cli 0.170.0",
+        "prompt_sha256": "41b6fe87a53684a0193df66639c52d75a25426c9827112e448d15d0cd965876e",
+        "expected_direction": "constraint-comparison",
+        "require_unhinted_direct": true,
+        "shell_tool": false,
+        "mcp_config_sha256": "6403bcbc803c1bb3a2d4ebf43bab55b841231967e9a8593d725fb7b7fc60294f",
+        "elapsed_seconds": 106.94,
+        "exit_code": 0,
+        "trace_sha256": "cb9b79b58c9038d1c581ee2d1f889bee1af6bb52c8a650c507825f8406aa88d6",
+        "html_sha256": "7ba0969afdab6d703297f0a476fc59e241846485dd3cfd9ab530bf8688544cc8"
+      },
+      "labeled-fit": {
+        "usage": {
+          "input_tokens": 59865,
+          "cached_input_tokens": 49152,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5790,
+          "reasoning_output_tokens": 12
+        },
+        "tool_calls": [
+          {
+            "type": "mcp_tool_call",
+            "server": "design-mcp",
+            "tool": "direct",
+            "status": "completed"
+          }
+        ],
+        "client_errors": [],
+        "treatment_call": true,
+        "direct_call": true,
+        "status": "passed",
+        "observed_directions": [
+          "constraint-comparison"
+        ],
+        "unhinted_direct": true,
+        "case": "press-guide-tool",
+        "arm": "labeled-fit",
+        "model": "gpt-6.1-terra",
+        "effort": "low",
+        "client": "codex-cli 0.170.0",
+        "prompt_sha256": "41b6fe87a53684a0193df66639c52d75a25426c9827112e448d15d0cd965876e",
+        "expected_direction": "constraint-comparison",
+        "require_unhinted_direct": true,
+        "shell_tool": false,
+        "mcp_config_sha256": "22738de1fb71bdc52785ed94a588e8976cbc768a0d7520a1a7e434898c875e56",
+        "elapsed_seconds": 111.33,
+        "exit_code": 0,
+        "trace_sha256": "686b5ccd7c866eea2f033666b96a00efd37acb2799f6ba1431e2286a3aa2c3a7",
+        "html_sha256": "dd931c9be999d4dc5df82fb4f1db0699e7d854d85ed94ab849672366648caa61"
+      }
+    }
+  },
+  "fixture": {
+    "scenic-track-tool": {
+      "allowance": [
+        33,
+        11
+      ],
+      "rejected": [
+        "Slimline",
+        14,
+        3
+      ],
+      "initial": [
+        "Sidewinder",
+        "16:25"
+      ],
+      "withdrawal": [
+        "16:20",
+        "damaged bit holder"
+      ],
+      "replacement": [
+        "Index",
+        "16:50",
+        "26–27 mm",
+        "5°"
+      ]
+    },
+    "press-guide-tool": {
+      "allowance": [
+        47,
+        15
+      ],
+      "rejected": [
+        "Short head",
+        18,
+        3
+      ],
+      "initial": [
+        "Low head",
+        "10:30"
+      ],
+      "withdrawal": [
+        "10:25",
+        "failed direction switch"
+      ],
+      "replacement": [
+        "Fine pawl",
+        "11:00",
+        "36–37 mm",
+        "7°"
+      ]
+    }
+  },
+  "browser": "Chrome/160.0.8178.0",
+  "journeys": {
+    "scenic-track-tool-control-320": {
+      "html_sha256": "e96090ac76686734a3717f6cb5e967d4e50dfc204f64baa75a8fdace51806628",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": false,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": false,
+        "withdrawal_reason_in_view": false,
+        "replacement_measurements_in_view": true,
+        "replacement_call_to_action_in_view": false,
+        "replacement_and_history_in_view": false,
+        "focus_visible": false,
+        "no_page_failures": true
+      },
+      "first_choice_on_opening": {
+        "top": 1678.34375,
+        "left": 36,
+        "width": 233,
+        "height": 47.1875,
+        "text": "Choose Sidewinder",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "second_choice_on_opening": {
+        "top": 1978.765625,
+        "left": 36,
+        "width": 233,
+        "height": 47.1875,
+        "text": "Choose Index",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "selected_result": {
+        "top": 775.609375,
+        "left": 18,
+        "width": 269,
+        "height": 217.0625,
+        "text": "Your selection Sidewinder selected Ready at 16:15, before your earliest arrival at 16:25. Choice history Sidewinder selected",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "control hidden",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": []
+      },
+      "frames": {
+        "before": {
+          "file": "scenic-track-tool-control-320-before.png",
+          "sha256": "f85fd03651a889f9acc070137d27b8433279ee31fc8febbebe5963cfda7b1821"
+        },
+        "chosen": {
+          "file": "scenic-track-tool-control-320-chosen.png",
+          "sha256": "7f34ca61de53cba49a79609cd6a5f198b573f6d71fc7cb52a9924499a3d965ca"
+        },
+        "after": {
+          "file": "scenic-track-tool-control-320-after.png",
+          "sha256": "7f34ca61de53cba49a79609cd6a5f198b573f6d71fc7cb52a9924499a3d965ca"
+        },
+        "edge": {
+          "file": "scenic-track-tool-control-320-edge.png",
+          "sha256": "c7ab47375dc274ef45e1c60de8ded8959214f805def80a88582520fe2e2c1e4f"
+        }
+      },
+      "qualified": false
+    },
+    "scenic-track-tool-control-390": {
+      "html_sha256": "e96090ac76686734a3717f6cb5e967d4e50dfc204f64baa75a8fdace51806628",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": false,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": false,
+        "withdrawal_reason_in_view": false,
+        "replacement_measurements_in_view": true,
+        "replacement_call_to_action_in_view": false,
+        "replacement_and_history_in_view": false,
+        "focus_visible": false,
+        "no_page_failures": true,
+        "opening_height_limit_in_view": false,
+        "opening_swing_limit_in_view": true,
+        "opening_pickups_within_both_actions": false
+      },
+      "first_choice_on_opening": {
+        "top": 1408.453125,
+        "left": 36,
+        "width": 303,
+        "height": 47.1875,
+        "text": "Choose Sidewinder",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "second_choice_on_opening": {
+        "top": 1650.90625,
+        "left": 36,
+        "width": 303,
+        "height": 47.1875,
+        "text": "Choose Index",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "selected_result": {
+        "top": 789.640625,
+        "left": 18,
+        "width": 339,
+        "height": 217.0625,
+        "text": "Your selection Sidewinder selected Ready at 16:15, before your earliest arrival at 16:25. Choice history Sidewinder selected",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "control hidden",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": []
+      },
+      "frames": {
+        "before": {
+          "file": "scenic-track-tool-control-390-before.png",
+          "sha256": "76efbc841ee8f3a0056b8caae4345a78944e525483c7f65983b5c5674d93d3c0"
+        },
+        "chosen": {
+          "file": "scenic-track-tool-control-390-chosen.png",
+          "sha256": "ea652ce2885021aa6b227b7bbfa4e1c2c3619ff33ef1a21c59c14246ce397345"
+        },
+        "after": {
+          "file": "scenic-track-tool-control-390-after.png",
+          "sha256": "ea652ce2885021aa6b227b7bbfa4e1c2c3619ff33ef1a21c59c14246ce397345"
+        },
+        "edge": {
+          "file": "scenic-track-tool-control-390-edge.png",
+          "sha256": "1a67c1b848ac12ffef477cdd6e2e1620a56c7e83d9f7e05d387a08b18e99b9fb"
+        }
+      },
+      "qualified": false
+    },
+    "scenic-track-tool-control-1440": {
+      "html_sha256": "e96090ac76686734a3717f6cb5e967d4e50dfc204f64baa75a8fdace51806628",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": false,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": false,
+        "withdrawal_reason_in_view": false,
+        "replacement_measurements_in_view": false,
+        "replacement_call_to_action_in_view": false,
+        "replacement_and_history_in_view": false,
+        "focus_visible": false,
+        "no_page_failures": true,
+        "opening_height_limit_in_view": false,
+        "opening_swing_limit_in_view": true,
+        "opening_pickups_within_both_actions": false
+      },
+      "first_choice_on_opening": {
+        "top": 829.890625,
+        "left": 1178.484375,
+        "width": 170,
+        "height": 70.375,
+        "text": "Choose Sidewinder",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "second_choice_on_opening": {
+        "top": 953.171875,
+        "left": 1178.484375,
+        "width": 170,
+        "height": 47.1875,
+        "text": "Choose Index",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "selected_result": {
+        "top": 1087.921875,
+        "left": 52.5,
+        "width": 645,
+        "height": 193.875,
+        "text": "Your selection Sidewinder selected Ready at 16:15, before your earliest arrival at 16:25. Choice history Sidewinder selected",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "control hidden",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": []
+      },
+      "frames": {
+        "before": {
+          "file": "scenic-track-tool-control-1440-before.png",
+          "sha256": "a8dcc899b84100efa3ac874f8c037ebc2f0a014738ef00d593cec7fc048b4c45"
+        },
+        "chosen": {
+          "file": "scenic-track-tool-control-1440-chosen.png",
+          "sha256": "252ea228d3329b1ec07d5672d70edf9bfea7d4e7f7f365de62d6d5140b62ab94"
+        },
+        "after": {
+          "file": "scenic-track-tool-control-1440-after.png",
+          "sha256": "252ea228d3329b1ec07d5672d70edf9bfea7d4e7f7f365de62d6d5140b62ab94"
+        },
+        "edge": {
+          "file": "scenic-track-tool-control-1440-edge.png",
+          "sha256": "5a27358981de4e983dd379222772928a0a8358a4beac102e613edf623c3cbb4d"
+        }
+      },
+      "qualified": false
+    },
+    "scenic-track-tool-labeled-fit-320": {
+      "html_sha256": "74132968994c37cdbcbb0c4384d1decdf4222b488a1dbbded255240ef35b5929",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": false,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": false,
+        "replacement_call_to_action_in_view": true,
+        "replacement_and_history_in_view": true,
+        "focus_visible": true,
+        "no_page_failures": true
+      },
+      "first_choice_on_opening": {
+        "top": 1531.140625,
+        "left": 158.5,
+        "width": 120.5,
+        "height": 89.171875,
+        "text": "Choose Sidewinder · 16:15",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "second_choice_on_opening": {
+        "top": 1798.171875,
+        "left": 158.5,
+        "width": 120.5,
+        "height": 66.78125,
+        "text": "Choose Index · 16:50",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "selected_result": {
+        "top": 685.84375,
+        "left": 46,
+        "width": 217,
+        "height": 100.46875,
+        "text": "Your selection Sidewinder selected Ready at 16:15, before your earliest arrival at 16:25.",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": []
+      },
+      "frames": {
+        "before": {
+          "file": "scenic-track-tool-labeled-fit-320-before.png",
+          "sha256": "3c766465a26001c50749485f68b5aa51ccc51cb746ce5127fcd07fa1b98663cd"
+        },
+        "chosen": {
+          "file": "scenic-track-tool-labeled-fit-320-chosen.png",
+          "sha256": "de1a2d15a12c1750bb037de537fceecdab0f8c18917a695c0eb9bb9e139b0e8f"
+        },
+        "after": {
+          "file": "scenic-track-tool-labeled-fit-320-after.png",
+          "sha256": "84e79479612441bb40416b7ff380fae67e6b567fd71eb1888d5cbf703a921bf8"
+        },
+        "edge": {
+          "file": "scenic-track-tool-labeled-fit-320-edge.png",
+          "sha256": "1dfb35353128056607a16f9ba3cafcae021ee5653b718aaa74e6fa1a4db5c901"
+        }
+      },
+      "qualified": false
+    },
+    "scenic-track-tool-labeled-fit-390": {
+      "html_sha256": "74132968994c37cdbcbb0c4384d1decdf4222b488a1dbbded255240ef35b5929",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": false,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": true,
+        "replacement_call_to_action_in_view": true,
+        "replacement_and_history_in_view": true,
+        "focus_visible": true,
+        "no_page_failures": true,
+        "opening_height_limit_in_view": false,
+        "opening_swing_limit_in_view": true,
+        "opening_pickups_within_both_actions": false
+      },
+      "first_choice_on_opening": {
+        "top": 1423.625,
+        "left": 193.5,
+        "width": 155.5,
+        "height": 66.78125,
+        "text": "Choose Sidewinder · 16:15",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "second_choice_on_opening": {
+        "top": 1668.265625,
+        "left": 193.5,
+        "width": 155.5,
+        "height": 66.78125,
+        "text": "Choose Index · 16:50",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "selected_result": {
+        "top": 748.25,
+        "left": 46,
+        "width": 287,
+        "height": 100.46875,
+        "text": "Your selection Sidewinder selected Ready at 16:15, before your earliest arrival at 16:25.",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": []
+      },
+      "frames": {
+        "before": {
+          "file": "scenic-track-tool-labeled-fit-390-before.png",
+          "sha256": "c23b04ded5f08bea9db1fa14a421f3f0f478b7c09967911ba5bc09a192ed66e4"
+        },
+        "chosen": {
+          "file": "scenic-track-tool-labeled-fit-390-chosen.png",
+          "sha256": "d08561f8ec38b0f208d42a3731776a2d40e9c1eb0ccfcb5b35a479bdf8d77f3e"
+        },
+        "after": {
+          "file": "scenic-track-tool-labeled-fit-390-after.png",
+          "sha256": "8579dc2d79bb07c5aa505f7091e98a585726734a5e448bbc617606173353e3f6"
+        },
+        "edge": {
+          "file": "scenic-track-tool-labeled-fit-390-edge.png",
+          "sha256": "ebfa7e4f7ca669b44b40a75b7a78165d9f875c41d8a9079885aa619c032d5292"
+        }
+      },
+      "qualified": false
+    },
+    "scenic-track-tool-labeled-fit-1440": {
+      "html_sha256": "74132968994c37cdbcbb0c4384d1decdf4222b488a1dbbded255240ef35b5929",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": false,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": true,
+        "replacement_call_to_action_in_view": false,
+        "replacement_and_history_in_view": true,
+        "focus_visible": true,
+        "no_page_failures": true,
+        "opening_height_limit_in_view": false,
+        "opening_swing_limit_in_view": true,
+        "opening_pickups_within_both_actions": false
+      },
+      "first_choice_on_opening": {
+        "top": 882.578125,
+        "left": 1146.5,
+        "width": 190,
+        "height": 46,
+        "text": "Choose Sidewinder",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "second_choice_on_opening": {
+        "top": 984.578125,
+        "left": 1146.5,
+        "width": 190,
+        "height": 46,
+        "text": "Choose Index",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "selected_result": {
+        "top": 1082.5,
+        "left": 100.5,
+        "width": 1018,
+        "height": 78.078125,
+        "text": "Your selection Sidewinder selected Ready at 16:15, before your earliest arrival at 16:25.",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": []
+      },
+      "frames": {
+        "before": {
+          "file": "scenic-track-tool-labeled-fit-1440-before.png",
+          "sha256": "1550b2b6ff00c5eea8f9dad655307eeab6a605eb079194016d0360d1b7132290"
+        },
+        "chosen": {
+          "file": "scenic-track-tool-labeled-fit-1440-chosen.png",
+          "sha256": "7bb0a3b71cd6a1c20b68dbc2d66a32ad4736eb19946622e978e2636f83dfcb3c"
+        },
+        "after": {
+          "file": "scenic-track-tool-labeled-fit-1440-after.png",
+          "sha256": "e689b036548e98d54a00ccd67dbee6876811ce3cf7d810a0837a298adce25a3f"
+        },
+        "edge": {
+          "file": "scenic-track-tool-labeled-fit-1440-edge.png",
+          "sha256": "3698d23d9c30ffb6ed16e0ab2b67d22e744ec8b24bed2f1215912fe51fa01261"
+        }
+      },
+      "qualified": false
+    },
+    "press-guide-tool-control-320": {
+      "html_sha256": "7ba0969afdab6d703297f0a476fc59e241846485dd3cfd9ab530bf8688544cc8",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": false,
+        "withdrawal_reason_in_view": false,
+        "replacement_measurements_in_view": true,
+        "replacement_call_to_action_in_view": false,
+        "replacement_and_history_in_view": false,
+        "focus_visible": false,
+        "no_page_failures": true
+      },
+      "first_choice_on_opening": {
+        "top": 1612.1875,
+        "left": 18,
+        "width": 269,
+        "height": 44,
+        "text": "Choose Low head",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "second_choice_on_opening": {
+        "top": 1820.9375,
+        "left": 18,
+        "width": 269,
+        "height": 44,
+        "text": "Choose Fine pawl",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "selected_result": {
+        "top": -709.8125,
+        "left": 37,
+        "width": 231,
+        "height": 185.359375,
+        "text": "Low head Your choice Assembled height 41–42 mm Reset 12° Ready 10:20",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": []
+      },
+      "frames": {
+        "before": {
+          "file": "press-guide-tool-control-320-before.png",
+          "sha256": "187b5311040fbed70f104effae9d1e1d01839a79a24d70746e68d150f733cf96"
+        },
+        "chosen": {
+          "file": "press-guide-tool-control-320-chosen.png",
+          "sha256": "4d863c956aab1e3edec66e23c955febdf5afe9377ff41f5cad125ac215a5bb4c"
+        },
+        "after": {
+          "file": "press-guide-tool-control-320-after.png",
+          "sha256": "d10906c111b23fcafa7fd4a7c4a4cba2623d7fff14f538439231ee829890bad0"
+        },
+        "edge": {
+          "file": "press-guide-tool-control-320-edge.png",
+          "sha256": "e96c711e0d102a66d0dfd21857994403b06a677c8e406c21468ff111893e813e"
+        }
+      },
+      "qualified": false
+    },
+    "press-guide-tool-control-390": {
+      "html_sha256": "7ba0969afdab6d703297f0a476fc59e241846485dd3cfd9ab530bf8688544cc8",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": false,
+        "withdrawal_reason_in_view": false,
+        "replacement_measurements_in_view": true,
+        "replacement_call_to_action_in_view": false,
+        "replacement_and_history_in_view": false,
+        "focus_visible": false,
+        "no_page_failures": true,
+        "opening_height_limit_in_view": false,
+        "opening_swing_limit_in_view": true,
+        "opening_pickups_within_both_actions": false
+      },
+      "first_choice_on_opening": {
+        "top": 1539.21875,
+        "left": 18,
+        "width": 338.984375,
+        "height": 44,
+        "text": "Choose Low head",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "second_choice_on_opening": {
+        "top": 1747.96875,
+        "left": 18,
+        "width": 338.984375,
+        "height": 44,
+        "text": "Choose Fine pawl",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "selected_result": {
+        "top": -600.625,
+        "left": 37,
+        "width": 301,
+        "height": 185.359375,
+        "text": "Low head Your choice Assembled height 41–42 mm Reset 12° Ready 10:20",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": []
+      },
+      "frames": {
+        "before": {
+          "file": "press-guide-tool-control-390-before.png",
+          "sha256": "e4841ff849a57c257bd737943a4e51d699c33c83224b1eab5c3c6f9468cbb0db"
+        },
+        "chosen": {
+          "file": "press-guide-tool-control-390-chosen.png",
+          "sha256": "461b97153cadfaef41768abc9f3907297922c297d92adc59dc9df5b3d2812ae0"
+        },
+        "after": {
+          "file": "press-guide-tool-control-390-after.png",
+          "sha256": "62e7da525223ba6653b8897a073f6f082e279c3b113a98788d4e6dd4c7c1d09d"
+        },
+        "edge": {
+          "file": "press-guide-tool-control-390-edge.png",
+          "sha256": "138521fdb1008bffd6549f4f6c04ef060cc9d85fdc93a332c74f142f615418a6"
+        }
+      },
+      "qualified": false
+    },
+    "press-guide-tool-control-1440": {
+      "html_sha256": "7ba0969afdab6d703297f0a476fc59e241846485dd3cfd9ab530bf8688544cc8",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": false,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": true,
+        "replacement_call_to_action_in_view": false,
+        "replacement_and_history_in_view": true,
+        "focus_visible": false,
+        "no_page_failures": true,
+        "opening_height_limit_in_view": false,
+        "opening_swing_limit_in_view": true,
+        "opening_pickups_within_both_actions": false
+      },
+      "first_choice_on_opening": {
+        "top": 844.90625,
+        "left": 874.484375,
+        "width": 140,
+        "height": 64.78125,
+        "text": "Choose Low head",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "second_choice_on_opening": {
+        "top": 947.90625,
+        "left": 874.484375,
+        "width": 140,
+        "height": 64.78125,
+        "text": "Choose Fine pawl",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "selected_result": {
+        "top": 584.421875,
+        "left": 1075.5,
+        "width": 254,
+        "height": 185.359375,
+        "text": "Low head Your choice Assembled height 41–42 mm Reset 12° Ready 10:20",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": []
+      },
+      "frames": {
+        "before": {
+          "file": "press-guide-tool-control-1440-before.png",
+          "sha256": "2d5dc6940ad36228c412d6f7de3a49c7650028b023a179fddca61a112e54cf4c"
+        },
+        "chosen": {
+          "file": "press-guide-tool-control-1440-chosen.png",
+          "sha256": "1200c593fe60222618ac3809bf3a17d4ec0ddd053d78cbadaea33a86695fab1d"
+        },
+        "after": {
+          "file": "press-guide-tool-control-1440-after.png",
+          "sha256": "99fa922c85f3242d72a18da12cc37c5a270f3a8603eaf6ffb8434f8103d610e8"
+        },
+        "edge": {
+          "file": "press-guide-tool-control-1440-edge.png",
+          "sha256": "d10310799c29fd8787940b76e745f7aff3af465afd20239478026a5cf5279379"
+        }
+      },
+      "qualified": false
+    },
+    "press-guide-tool-labeled-fit-320": {
+      "html_sha256": "dd931c9be999d4dc5df82fb4f1db0699e7d854d85ed94ab849672366648caa61",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": false,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": false,
+        "replacement_call_to_action_in_view": false,
+        "replacement_and_history_in_view": true,
+        "focus_visible": false,
+        "no_page_failures": false
+      },
+      "first_choice_on_opening": {
+        "top": 1339.171875,
+        "left": 161.5,
+        "width": 123.5,
+        "height": 44,
+        "text": "Choose · 10:20",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "second_choice_on_opening": {
+        "top": 1567.90625,
+        "left": 161.5,
+        "width": 123.5,
+        "height": 44,
+        "text": "Choose · 11:00",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "selected_result": {
+        "top": 721.078125,
+        "left": 42,
+        "width": 221,
+        "height": 181.265625,
+        "text": "Low head 41–42 mm assembled height · 12° reset Ready for pickup 10:20",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": []
+      },
+      "frames": {
+        "before": {
+          "file": "press-guide-tool-labeled-fit-320-before.png",
+          "sha256": "c1e4ea17aa62263f66cd5a882e4406b2867214eaf5d0af7a3a51debb99da4693"
+        },
+        "chosen": {
+          "file": "press-guide-tool-labeled-fit-320-chosen.png",
+          "sha256": "e20fa714293b881ba34fcc41665c2fc0d745b5c34d88eaefbe2a3219a0cdeb62"
+        },
+        "after": {
+          "file": "press-guide-tool-labeled-fit-320-after.png",
+          "sha256": "52f8501a9f2556392ecbe665f76b15e0ee4273f0ef8e6e1feba1a83b33a57d95"
+        },
+        "edge": {
+          "file": "press-guide-tool-labeled-fit-320-edge.png",
+          "sha256": "10ef48c900d1e4748e8a0fab053d4aeb51dded7a54ed74c9d067c423eddb94f0"
+        }
+      },
+      "qualified": false
+    },
+    "press-guide-tool-labeled-fit-390": {
+      "html_sha256": "dd931c9be999d4dc5df82fb4f1db0699e7d854d85ed94ab849672366648caa61",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": false,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": false,
+        "replacement_call_to_action_in_view": true,
+        "replacement_and_history_in_view": true,
+        "focus_visible": true,
+        "no_page_failures": true,
+        "opening_height_limit_in_view": true,
+        "opening_swing_limit_in_view": true,
+        "opening_pickups_within_both_actions": false
+      },
+      "first_choice_on_opening": {
+        "top": 1339.171875,
+        "left": 196.5,
+        "width": 158.5,
+        "height": 44,
+        "text": "Choose · 10:20",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "second_choice_on_opening": {
+        "top": 1567.90625,
+        "left": 196.5,
+        "width": 158.5,
+        "height": 44,
+        "text": "Choose · 11:00",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "selected_result": {
+        "top": 800.578125,
+        "left": 42,
+        "width": 291,
+        "height": 158.078125,
+        "text": "Low head 41–42 mm assembled height · 12° reset Ready for pickup 10:20",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": []
+      },
+      "frames": {
+        "before": {
+          "file": "press-guide-tool-labeled-fit-390-before.png",
+          "sha256": "6123629ba3c0b2fabd1a46936fc13e30efdbc28654e9f40a0e80d5b2c074a407"
+        },
+        "chosen": {
+          "file": "press-guide-tool-labeled-fit-390-chosen.png",
+          "sha256": "f95add7d7889a625d52a5668051da0dad7ccaaf4a735e6aad59acf1e3abf4e8a"
+        },
+        "after": {
+          "file": "press-guide-tool-labeled-fit-390-after.png",
+          "sha256": "fb77cdfd383c18c6650428467f3ee82d6212e322c93a5ffe607fcdd5db335dc4"
+        },
+        "edge": {
+          "file": "press-guide-tool-labeled-fit-390-edge.png",
+          "sha256": "cc2b66165ea24260a70ca2fea83ea2a26274cff7d36c13bf58d932248e2e8bf0"
+        }
+      },
+      "qualified": false
+    },
+    "press-guide-tool-labeled-fit-1440": {
+      "html_sha256": "dd931c9be999d4dc5df82fb4f1db0699e7d854d85ed94ab849672366648caa61",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": false,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": true,
+        "replacement_call_to_action_in_view": true,
+        "replacement_and_history_in_view": true,
+        "focus_visible": true,
+        "no_page_failures": true,
+        "opening_height_limit_in_view": true,
+        "opening_swing_limit_in_view": true,
+        "opening_pickups_within_both_actions": false
+      },
+      "first_choice_on_opening": {
+        "top": 837.625,
+        "left": 839.609375,
+        "width": 145,
+        "height": 44,
+        "text": "Choose · 10:20",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "second_choice_on_opening": {
+        "top": 942.625,
+        "left": 839.609375,
+        "width": 145,
+        "height": 44,
+        "text": "Choose · 11:00",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "selected_result": {
+        "top": 577.765625,
+        "left": 1050.625,
+        "width": 272,
+        "height": 158.078125,
+        "text": "Low head 41–42 mm assembled height · 12° reset Ready for pickup 10:20",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": null
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": []
+      },
+      "frames": {
+        "before": {
+          "file": "press-guide-tool-labeled-fit-1440-before.png",
+          "sha256": "ab5d803ab72a0ab06c7e9bcc01a629bb903399d0e246a10fd7729bafc11a68ab"
+        },
+        "chosen": {
+          "file": "press-guide-tool-labeled-fit-1440-chosen.png",
+          "sha256": "3ab16d2933c4c5c5e31828f89fa5b916d66c365e907165c32411af8a370dca53"
+        },
+        "after": {
+          "file": "press-guide-tool-labeled-fit-1440-after.png",
+          "sha256": "46cc692c2b2bd3307e1041f413f1d2ab33e0727099843ee579c63dee906be9d2"
+        },
+        "edge": {
+          "file": "press-guide-tool-labeled-fit-1440-edge.png",
+          "sha256": "2185571c2b420e8d0140ac7af9a3060f89cc6e4818d42e5bf40acec4e20412bc"
+        }
+      },
+      "qualified": false
+    }
+  },
+  "finding": "Both trial drafts used stock-ready times as visitor pickup times and placed eligible actions below the opening phone viewport.",
+  "next_test": "Validate pickup as the latest of arrival, desk opening and stock readiness, and check that the chosen fit and both useful actions are visible before decorative material."
+}
