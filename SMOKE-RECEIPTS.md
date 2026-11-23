@@ -44,6 +44,8 @@ The installed reference-Mac catalog returned in 547 ms. The first ordinary-langu
 
 ## Release candidate on both architectures
 
+The work-order guidance release candidate at `a700f82` passed all 14 hosted checks. The matrix recorded 16 clean pipx and uv installs on macOS 15 and 96 stdio runs. The hosted Chrome fixture completed both review flows and verified the pasted-URL mask. New SwiftUI and Electron fixture captures and the installed public URL review passed. [Exact workflows and capture hashes](evidence/benchmark-v1/release-ci-a700f82.json)
+
 All eight macOS 15 jobs passed on Intel and Apple Silicon with Python 3.10–3.13. The installers fetched GitHub's test merge `1ff95a2`, which has the same tree ID as `6e9a239`. Both installers passed `doctor`, exercised the default and combined surfaces, and verified the opt-in `review_page` error response. On the reference Mac, a fresh installation from `6e9a239` returned original 1440 × 900 and 390 × 844 PNGs of the public USWDS address form with five and four masked fields respectively. Playwriter separately exercised the theatre filter and restored the full list at both widths. In a disposable headless Chrome for Testing profile, submitting the URL returned a visual result in 4.14 seconds, preserved the masked preview after reload, and recovered from a missing reviewer host. [Mac install matrix](https://github.com/chrismicah/design-mcp/actions/runs/45089158186) · [Installed browser and MCP receipt](evidence/benchmark-v1/release-initial-6e9a239.json)
 
 ## Direct Git install on both architectures, November 22

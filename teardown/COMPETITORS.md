@@ -124,7 +124,7 @@ The gallery task uses the fixture's disclosure behavior with the task's own cont
 | Screenshots Design Inspiration | 1 / 36 | 91.7 on the gallery label. Design MCP also scored 91.7 in the matched Astra run. |
 | Design Library MCP, keyword | 1 / 36 | 87.5 on ceramics. Design MCP scored 95.8 in the matched shell-disabled run. |
 | shadcn/ui MCP | 1 / 36 | Separate live rubric. At desktop and mobile, shadcn scored 8.10 and 7.75 out of 10. Design MCP scored 8.30 on both. |
-| UI UX Pro Max | 1 / 36 | Beat frozen v2 on bike booking, 100.0 to 91.7. Tied the newer service-work-order direction at 95.8 in a direct rematch. |
+| UI UX Pro Max | 2 / 36 | Won the first bike-booking comparison, 100.0 to 91.7, then tied the newer work order at 95.8. On display settings, the live rubric scored Design MCP 8.25 desktop and 7.20 phone, versus 7.35 and 6.55. |
 | Other credential-free competitor configurations above | 0 / 36 each | Pending |
 | Credentialed and hosted configurations above | 0 / 36 each | Access or isolated fixture required |
 
@@ -147,3 +147,5 @@ The two exact gallery pages both revealed “Pigment on plaster” on Enter and 
 The pinned UI UX Pro Max release returned relevant guidance through the benchmark adapter on bike booking. The blinded ballot scored it 100.0 versus 91.7 for frozen Design MCP under the same prompt, model, effort, browser and asset policy. The critic saw earlier price placement and a clear selection status. UI UX Pro Max used 64,427 input and 24,443 output tokens. Frozen v2 used 62,552 input and 21,876 output tokens. [Audited ballot and token receipts](../evidence/benchmark-v1/uiux-pro-max-bike-booking.json) · [Capture run](https://github.com/chrismicah/design-mcp/actions/runs/45003880052)
 
 The direct rematch reused both eligible original outputs and the same browser and asset policy. Both scored 95.8. The critic found competing booking headings in the service-work-order layout and tight mobile letter spacing in UI UX Pro Max. Each score belongs to its matched ballot. [Direct rematch and receipts](../evidence/benchmark-v1/service-vs-uiux-bike-booking.json)
+
+For visitor-center display settings, both builders made one verified context call before returning HTML. The blind critic used keyboard input at both widths and confirmed that the date and temperature changed independently and reset correctly. Design MCP led on hierarchy and visual identity. On phones, both live previews fell below the captured viewport. The two earlier setup and unused-tool attempts remain excluded. [Live ballot and generation receipts](../evidence/benchmark-v1/uiux-pro-max-settings-live.json)

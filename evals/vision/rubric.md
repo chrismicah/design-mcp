@@ -42,7 +42,7 @@ Exit 0 means the submitted ballot and browser checks passed for those capture fi
 
 ## Verify a creative series
 
-Use `python3 evals/vision/score_series.py series.json` before promoting an expressive web design. It verifies the underlying files for 5–15 distinct revision builds, and the fresh evaluator's confirmation of the exact finalist. Each round needs a fresh evaluator and a distinct set of captures across the two widths. Keep below-threshold rounds in the series. Record the main criticism in each round and the visible response in the following round. A concept-only discussion belongs in the research log.
+Use `python3 evals/vision/score_series.py series.json` before promoting an expressive web design. It verifies the underlying files for 5–15 distinct revision builds, and the fresh evaluator's confirmation of the exact finalist. Each round needs a fresh evaluator and a distinct set of captures across the two widths. Keep builder and evaluator sessions separate throughout the series. Keep below-threshold rounds in the series. Record the main criticism in each round and the visible response in the following round. A concept-only discussion belongs in the research log.
 
 Keep the evidence files inside the manifest's directory. The `build` file contains the exact served standalone HTML, or a frozen bundle when the browser receipt identifies it as the build. Use both `desktop` and `mobile` captures. For example, a round entry has this shape.
 

@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+- Reject a creative review series if any session grades one revision and builds another. [Series verifier](evals/vision/rubric.md#verify-a-creative-series)
+
 - Lead with the service work order and keep its price, day choices, and live result together. Both fresh drafts passed the 320 px booking task, and two independent live comparisons favored the guidance. [Benchmark](evidence/benchmark-v1/booking-work-order-first.json)
 
 - Require a paired browser test before an expressive design series can continue after two non-improving rounds. The same fresh critic must observe the intended result fail on the previous build and pass on the candidate at both widths. [Series verifier](evals/vision/rubric.md#verify-a-creative-series)

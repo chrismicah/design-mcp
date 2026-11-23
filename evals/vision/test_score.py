@@ -169,7 +169,7 @@ class CreativeSeriesTests(unittest.TestCase):
             "confirmation": self.review("final", 4, "fresh-critic", 9.5),
         }
 
-    def review(self, label, build, critic, rating, capture_label=None, pivot_passed=None):
+    def review(self, label, build, critic, rating, capture_label=None, pivot_passed=None, *, builder="builder"):
         folder = self.folder / label
         folder.mkdir()
         before, after, observations = {}, {}, {}
@@ -191,7 +191,7 @@ class CreativeSeriesTests(unittest.TestCase):
         build_bytes = f"<main>Candidate {build}</main>".encode()
         (folder / "index.html").write_bytes(build_bytes)
         build_sha = digest(build_bytes)
-        evidence = json.dumps({"build_sha256": build_sha, "builder_session": "builder",
+        evidence = json.dumps({"build_sha256": build_sha, "builder_session": builder,
                                "evaluator_session": critic, "screens": observations}).encode()
         (folder / "observations.json").write_bytes(evidence)
         captures = {name: data["after_sha256"] for name, data in observations.items()}
@@ -266,6 +266,14 @@ class CreativeSeriesTests(unittest.TestCase):
         self.series["rounds"][1]["review"] = self.review("same-critic", 2, "critic-1", 8)
         with self.assertRaisesRegex(ValueError, "needs a fresh evaluator"):
             evaluate_series(self.series, self.folder)
+
+    def test_builder_and_critic_must_stay_separate_across_rounds(self):
+        for builder, critic in (("second-builder", " Builder "), (" CRITIC-1 ", "second-critic")):
+            with self.subTest(builder=builder, critic=critic):
+                self.series["rounds"][1]["review"] = self.review(
+                    f"mixed-role-{critic.strip()}", 2, critic, 8.5, builder=builder)
+                with self.assertRaisesRegex(ValueError, "mixes builder and evaluator roles"):
+                    evaluate_series(self.series, self.folder)
 
     def prepare_stalled_rounds(self):
         for number in (2, 3):

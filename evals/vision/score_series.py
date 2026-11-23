@@ -57,6 +57,7 @@ def evaluate_series(series, root):
     history = []
     builds = set()
     captures = set()
+    builders = set()
     evaluators = set()
     best_score = -1
     stalled_rounds = 0
@@ -94,11 +95,15 @@ def evaluate_series(series, root):
             raise ValueError(f"Round {number} repeats a previously reviewed build")
         if result["capture_set"] in captures:
             raise ValueError(f"Round {number} reuses the same before and after captures")
+        builder = session_key(result["builder_session"])
         evaluator = session_key(result["evaluator_session"])
         if evaluator in evaluators:
             raise ValueError(f"Round {number} needs a fresh evaluator session")
+        if evaluator in builders or builder in evaluators:
+            raise ValueError(f"Round {number} mixes builder and evaluator roles in the series")
         builds.add(result["build_sha256"])
         captures.add(result["capture_set"])
+        builders.add(builder)
         evaluators.add(evaluator)
         history.append({"round": number, **result})
         score = min(result["scores"].values())
@@ -109,8 +114,7 @@ def evaluate_series(series, root):
     confirmation = verify_packet(series["confirmation"], root)
     if any(confirmation[field] != chosen[field] for field in ("build_sha256", "builder_session")):
         raise ValueError("Confirm the same finalist build and builder")
-    participants = {session_key(row[role]) for row in history for role in ("builder_session", "evaluator_session")}
-    if session_key(confirmation["evaluator_session"]) in participants:
+    if session_key(confirmation["evaluator_session"]) in builders | evaluators:
         raise ValueError("Confirmation needs a fresh evaluator outside the review history")
 
     return {"accepted": chosen["accepted"] and confirmation["accepted"],

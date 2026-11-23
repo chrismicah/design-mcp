@@ -10,6 +10,8 @@ on:
       - '.github/workflows/design-source-review.yml'
       - 'scripts/watch_design_sources.py'
       - 'scripts/test_watch_design_sources.py'
+      - 'evals/vision/score*.py'
+      - 'evals/vision/test_score.py'
   push:
     branches:
       - design-mcp/source-review-ci
@@ -17,6 +19,8 @@ on:
       - '.github/workflows/design-source-review.yml'
       - 'scripts/watch_design_sources.py'
       - 'scripts/test_watch_design_sources.py'
+      - 'evals/vision/score*.py'
+      - 'evals/vision/test_score.py'
 
 permissions:
   contents: read
@@ -28,9 +32,12 @@ jobs:
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
         with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
       - name: Test source parsing
         run: python3 -m unittest discover -s scripts -p 'test_watch_design_sources.py'
+      - name: Test live critique verification
+        run: python3 -m unittest discover -s evals/vision -p 'test_score.py'
       - name: Collect public leads for review
         shell: bash
         run: python3 scripts/watch_design_sources.py | tee -a "$GITHUB_STEP_SUMMARY"
