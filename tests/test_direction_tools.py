@@ -178,6 +178,65 @@ async def test_landing_uses_the_primary_task_for_art_direction(brief, expected):
 
 
 @pytest.mark.asyncio
+@pytest.mark.parametrize(("brief", "expected_id", "expected_surface"), [
+    (
+        "Build an exhibition page for The Threatened Swan by Jan Asselijn, c. 1650, oil on canvas. Let "
+        "the Rijksmuseum reproduction carry the opening, preserve its aspect ratio, and keep the "
+        "painting's identity and the Inspect the egg action in the first phone viewport. Reveal the egg "
+        "inscribed Holland and explain the later interpretation. The visitor should be able to open and "
+        "close the detail by touch or keyboard. Respect reduced motion.",
+        "artifact-inspection", "editorial",
+    ),
+    ("Inspect the carved handle on this antique chair and reveal a close detail on demand.",
+     "artifact-inspection", "editorial"),
+    ("Let visitors take a closer look at the inscription on this bronze bowl.",
+     "artifact-inspection", "editorial"),
+    ("Inspect the carved, gilded handle on this antique chair and reveal a close detail on demand.",
+     "artifact-inspection", "editorial"),
+    ("Make a workshop reference that lets an apprentice view the full wooden shuttle and zoom in on the scratched inventory number. Preserve its provenance and return to the whole view.",
+     "artifact-inspection", "editorial"),
+    ("Trust page: reveal how we handle customer data.", "object-hero", "landing"),
+    ("Let users examine the signature before sending the contract.", "object-hero", "landing"),
+    ("Reveal our grain-free recipe.", "margin-front", "editorial"),
+    ("Write the trust page for this app. Reveal how we handle customer data.", "object-hero", "landing"),
+    ("Show a stamped brass compass and let the reader inspect the maker’s mark.",
+     "artifact-inspection", "editorial"),
+    ("Browse a photographer's portfolio gallery of ceramic pieces.", "ground-plane", "portfolio"),
+    ("Show a handmade vase with its price and an add to bag button.", "object-hero", "landing"),
+    ("Product page for an antique chair. Inspect the carved handle and add to bag.", "object-hero", "landing"),
+    ("Review my timed entry ticket for the Swan exhibition.", "platform-sign", "mobile"),
+    ("Review my timed entry ticket and inspect the printed signature.", "platform-sign", "mobile"),
+    ("Build an exhibition page with a reproduction and zoom.", "object-hero", "landing"),
+])
+async def test_artifact_inspection_is_distinct_from_gallery_purchase_and_ticket(
+    brief, expected_id, expected_surface,
+):
+    result = await direct(brief)
+    assert result["direction"]["id"] == expected_id
+    assert result["direction"]["surface"] == expected_surface
+    if brief.startswith("Trust page:"):
+        assert result["questions"] == [{
+            "question": "What will people use this screen for?",
+            "options": ["Explore an offering", "Work with information", "Read a story"],
+            "default": "Explore an offering",
+        }]
+    else:
+        assert result["questions"] == []
+    assert len(json.dumps(result, ensure_ascii=False)) <= 6000
+
+
+@pytest.mark.asyncio
+async def test_artifact_inspection_respects_explicit_surface_and_avoid():
+    brief = "Inspect the engraved clasp on this historic locket and reveal a detail on demand."
+    editorial = await direct(brief, surface="editorial")
+    assert editorial["direction"]["id"] == "artifact-inspection"
+    landing = await direct(brief, surface="landing")
+    assert landing["direction"]["id"] == "object-hero"
+    avoided = await direct(brief, avoid=["artifact-inspection"])
+    assert avoided["direction"]["id"] == "margin-front"
+
+
+@pytest.mark.asyncio
 @pytest.mark.parametrize("reaction", ["calmer", "Quieter!", "more calm", "less loud"])
 async def test_calmer_keeps_the_operational_exception_as_the_focal_point(reaction):
     result = await react("exception-first", reaction)

@@ -402,6 +402,57 @@
     "credit": "Butterick's Practical Typography (Matthew Butterick)"
   },
   {
+    "id": "artifact-inspection",
+    "surface": "editorial",
+    "title": "Artifact inspection",
+    "summary": "Lead with the whole cited object and its identity. Let the visitor reveal one feature, see where it belongs, and read what it tells us.",
+    "tags": ["artifact inspection"],
+    "type": {
+      "display": "Gloock",
+      "body": "News Cycle",
+      "ratio": 3.5,
+      "tracking": -0.02,
+      "weight": 400,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#FFF1D6",
+      "paper": "#173532",
+      "accent": "#F3C77C"
+    },
+    "layout": {
+      "skeleton": "Pair the whole object with its name, supplied maker, date, material and source, and a single inspection control. Keep the detail and its annotation next to the control in reading order.",
+      "focus": "Give the object the largest area. Try a locator visible on disclosure to connect the detail to its place on the whole object.",
+      "desktop": "Use a wide object column and a narrower identity and annotation column. Keep the whole object visible when the detail opens.",
+      "mobile": "Fit the identity, whole object and inspection action in the first phone viewport. Open the readable detail and annotation in flow, with the same control available to close it.",
+      "rhythm": "Use #102623 for the caption surface and #B5C1AA for secondary facts. Adapt the palette to the supplied brand or material and check contrast. Keep annotation at a comfortable reading width."
+    },
+    "imagery": {
+      "subject": "Use the cited reproduction and base the detail on that same asset. Credit the source beside the object.",
+      "crop": "Preserve the original aspect ratio and edges in the opening view. Use a separate close-up for the selected feature while keeping the whole object available.",
+      "fallback": "If the detail pixels cannot support a legible reading, show the verified transcription or description in text and attribute it to the source."
+    },
+    "motion": {
+      "trigger": "The visitor opens or closes the detail by touch or keyboard.",
+      "effect": "Reveal the detail and annotation alongside a highlight at its location. Clear the highlight when closed.",
+      "duration_ms": 240,
+      "reduced": "Show or hide the same detail, locator and annotation immediately. Preserve focus and the expanded state."
+    },
+    "action": {
+      "instruction": "Use one native disclosure control with a visible focus state and an exposed expanded state. Let the same control reverse the action. Keep the annotation readable and distinguish the feature from any later interpretation. Leave out shopping controls and preset menus.",
+      "label": "Inspect [feature] / Close detail"
+    },
+    "why": "The whole object establishes context. A reversible detail connects one piece of evidence to the interpretation while keeping the visitor oriented.",
+    "sources": [
+      {
+        "url": "https://www.rijksmuseum.nl/en/collection/object/The-Threatened-Swan--22040f90565e730131983a44a85b989f",
+        "observation": "The object page leads with the reproduction and identity. Its separate data disclosure records the egg inscription, and its interpretation describes the later political reading.",
+        "strength": "evidence"
+      }
+    ],
+    "credit": "Rijksmuseum collection, The Threatened Swan (SK-A-4)"
+  },
+  {
     "id": "broadcast-board",
     "surface": "landing",
     "title": "Broadcast board",

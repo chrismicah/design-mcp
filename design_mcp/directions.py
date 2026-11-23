@@ -58,6 +58,21 @@ _CLAUSE_BREAK = re.compile(
 )
 _FIELD_COLLECTION = re.compile(r"\b(?:collect|ask for|enter|provide|record)\b")
 _ENTRY_OUTCOME = re.compile(r"\b(?:confirmation|submission|invalid|validat\w*|submitted)\b")
+_ARTIFACT_INSPECTION = re.compile(
+    r"\b(?:inspect|examine|reveal|look closely at|(?:take )?a closer look at|zoom in on|"
+    r"(?:open|show) a close[- ]up of)\s+"
+    r"(?:[\w’'-]+\s+){0,5}"
+    r"(?:eggs?|handles?|clasps?|inscriptions?|engravings?|signatures?|seams?|stitching|"
+    r"brushwork|carvings?|grain|hallmarks?|hinges?|watermarks?|glaze crackle|"
+    r"(?:inventory|serial) numbers?|(?:maker(?:[’']s)?|tool) marks?|stamps?)\b"
+)
+# Require physical context as well as an inspection phrase. Common words such
+# as "handle", "grain" and "signature" otherwise match unrelated tasks.
+_VISIBLE_ARTIFACT = re.compile(
+    r"\b(?:artifacts?|artefacts?|reproductions?|paintings?|sculptures?|specimens?|objects?|"
+    r"ceramics?|pottery|manuscripts?|banknotes?|canvases?|photographs?|bowls?|vases?|chairs?|"
+    r"lockets?|compass(?:es)?|shuttles?|trunks?)\b"
+)
 
 
 def _length(value) -> int:
@@ -109,12 +124,21 @@ async def direct(brief: str, surface: Surface | None = None, avoid: list[str] | 
     if not text or len(text) > 12000:
         return {"error": "Enter a brief of 1 to 12,000 characters."}
     matched = surface or _infer_surface(text)
+    inspection_text = text.replace(",", " ")
+    inspection = (matched in (None, "editorial")
+                  and bool(_ARTIFACT_INSPECTION.search(inspection_text))
+                  and bool(_VISIBLE_ARTIFACT.search(text)))
+    if inspection:
+        matched = "editorial"
     kind = matched or "landing"
-    candidates = [row for row in library().values() if row.surface == kind and row.id not in (avoid or [])]
+    candidates = [row for row in library().values()
+                  if row.surface == kind and row.id not in (avoid or [])
+                  and (inspection or row.id != "artifact-inspection")]
     if not candidates:
         return {"error": f"No reviewed direction remains for {kind}.", "surface": kind}
     tag_text = text.translate(_FORM_SEPARATORS) if kind == "form" else text
-    choice = max(candidates, key=lambda row: sum(_match(term, tag_text) for term in row.tags))
+    choice = max(candidates, key=lambda row: (row.id == "artifact-inspection",
+                                             sum(_match(term, tag_text) for term in row.tags)))
     questions = []
     if matched is None and len(text.split()) <= 8:
         questions = [{"question": "What will people use this screen for?",
