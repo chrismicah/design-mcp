@@ -580,7 +580,7 @@ All six recorded journeys exercised an empty submission, entered the exact value
 
 ## Cupboard pickup-window comparison
 
-Four independent live rounds compared the same tool-lending interaction. Each matched comparison used the same four tools, fit and reset limits, inventory states, preview times, and recovery behavior. At **18:24** Fine was unavailable. At **18:25** it became available while Pocket remained selected. The separate withdrawal action kept Pocket's jam reason and moved focus to the explicit Fine action.
+Five independent live rounds compared the same tool-lending interaction. Each matched comparison used the same four tools, fit and reset limits, inventory states, preview times, and recovery behavior. At **18:24** Fine was unavailable. At **18:25** it became available while Pocket remained selected. The separate withdrawal action kept Pocket's jam reason and moved focus to the explicit Fine action.
 
 | Round | Timetable desktop / phone | Plain table desktop / phone | Finding |
 | --- | ---: | ---: | --- |
@@ -591,4 +591,6 @@ Round three tested the same discrete schedule with two measurement layouts. Both
 
 Round four moved compact measurement tracks into the table and put the two panels beside each other on desktop. Both arms preserved the explicit 18:10 choice, timestamp, and jam reason after confirming Fine. The new layout scored **8.10 desktop / 7.75 phone** versus **7.75 / 7.75** for the tabular control. The critic preferred the desktop comparison and identified a missing legend and cramped measurement columns at 390 px.
 
-An intermediate geometry replay separately verified the stacked recovery layout. Across five builds, Playwriter checked **30 journeys and 180 original frames**, with keyboard at 390 and 1440 px and touch with reduced motion at 320 px. The third and fourth critics contributed 24 additional verified original frames. The scores describe standalone prototypes and remain below 9.5. [Replays and individual live grades](evidence/benchmark-v1/cupboard-pickup-window.json)
+Round five froze the exact bench panel as its control. Putting the two limits above their tracks and the pickup time on its action scored **7.95 desktop / 7.60 phone** versus **7.50 / 7.15** in the same ballot. Both eligible times and the labels appeared in the opening viewport. The critic preferred the labeled version and found the mobile numbers small and the equal-width snapshots potentially misleading. The bench panel retains the highest prior score at **8.10 / 7.75**. Across-ballot scores can vary even for the same bytes.
+
+An intermediate geometry replay separately verified the stacked recovery layout. Across six builds, Playwriter checked **36 journeys and 222 original frames**, with keyboard at 390 and 1440 px and touch with reduced motion at 320 px. The last three critics contributed 36 additional verified original frames. The scores describe standalone prototypes and remain below 9.5. [Replays and individual live grades](evidence/benchmark-v1/cupboard-pickup-window.json)
