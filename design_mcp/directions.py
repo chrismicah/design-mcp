@@ -76,6 +76,16 @@ _VISIBLE_ARTIFACT = re.compile(
     r"(?:complete|entire|full|historic|original|woodblock) prints?)\b"
 )
 
+_INSPECT_WHOLE = re.compile(
+    rf"\b(?:inspect(?:ing)?|examin(?:e|ing)|look closely at|zoom in on)\s+"
+    rf"(?:(?:a|an|the|this|that)\s+)?{_VISIBLE_ARTIFACT.pattern}"
+)
+_INSPECTION_CONTROL = re.compile(r"\b(?:button|toggle|control)\b")
+_INSPECTION_VIEW = re.compile(
+    rf"\b(?:close[- ]up|detail(?:ed)? view|opens? the detail|return to (?:the )?"
+    rf"(?:whole\b|{_VISIBLE_ARTIFACT.pattern}))"
+)
+
 
 def _length(value) -> int:
     return len(json.dumps(value, ensure_ascii=False))
@@ -127,9 +137,13 @@ async def direct(brief: str, surface: Surface | None = None, avoid: list[str] | 
         return {"error": "Enter a brief of 1 to 12,000 characters."}
     matched = surface or _infer_surface(text)
     inspection_text = text.replace(",", " ")
-    inspection = (matched in (None, "editorial")
-                  and bool(_ARTIFACT_INSPECTION.search(inspection_text))
-                  and bool(_VISIBLE_ARTIFACT.search(text)))
+    named_detail = _ARTIFACT_INSPECTION.search(inspection_text) and _VISIBLE_ARTIFACT.search(text)
+    interactive_view = (
+        _INSPECT_WHOLE.search(inspection_text)
+        and _INSPECTION_CONTROL.search(text)
+        and _INSPECTION_VIEW.search(text)
+    )
+    inspection = matched in (None, "editorial") and bool(named_detail or interactive_view)
     if inspection:
         matched = "editorial"
     kind = matched or "landing"
