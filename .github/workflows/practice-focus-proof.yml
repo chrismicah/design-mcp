@@ -1,0 +1,64 @@
+name: Installed practice result-focus comparison
+
+on:
+  push:
+    branches: [design-mcp/practice-install-proof]
+    paths:
+      - 'evals/practice_focus/**'
+      - '.github/workflows/practice-focus-proof.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  install:
+    name: Fresh result-focus install / ${{ matrix.arm }}
+    runs-on: macos-15
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arm: control
+            revision: d2ad7395b3da632151025581a811f3ba5091d828
+          - arm: treatment
+            revision: 9976ef1339f29f28d4c7c0526ed511db01219baf
+    env:
+      CANDIDATE: ${{ matrix.revision }}
+      ARM: ${{ matrix.arm }}
+      EXPECTED_ARCH: arm64
+      EXPECTED_PYTHON: '3.13'
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: ${{ env.CANDIDATE }}
+          path: candidate
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        id: python
+        with:
+          python-version: '3.13'
+      - name: Install and smoke-test the exact pinned package
+        env:
+          PYTHON_EXECUTABLE: ${{ steps.python.outputs.python-path }}
+        run: |
+          test "$(git -C candidate rev-parse HEAD)" = "$CANDIDATE"
+          bash candidate/scripts/verify_install_matrix.sh --check-host 15 "$EXPECTED_ARCH"
+          bash candidate/scripts/verify_clean_install.sh candidate "$PYTHON_EXECUTABLE"             "$RUNNER_TEMP/design-install" "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY.git"
+      - name: Verify the three sealed replies from both fresh installs
+        run: |
+          install="$RUNNER_TEMP/design-install"
+          receipts="$RUNNER_TEMP/receipts"
+          mkdir "$receipts"
+          for method in pipx uv; do
+            "$install/uv-tools/design-mcp/bin/python" -I evals/practice_focus/replay.py               "$install/$method-bin/design-mcp" "$CANDIDATE" "$method" "$ARM" > "$receipts/$method.json"
+          done
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: practice-focus-${{ matrix.arm }}
+          path: ${{ runner.temp }}/receipts
+          retention-days: 14
