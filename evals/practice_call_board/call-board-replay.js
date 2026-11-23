@@ -169,4 +169,8 @@ const receipt = {checks, viewport, finalFocus, requests, firstFrame, initialForm
 if (practice.recordEditorFocus) {
   receipt.statusAfterReturn = (await page.getByRole("status").allTextContents()).map(text => text.trim());
 }
+if (practice.requireClearedStatus) {
+  checks.statusClearedAfterReturn = checks.returnToOriginal &&
+    receipt.statusAfterReturn?.length === 1 && receipt.statusAfterReturn[0] === "";
+}
 console.log("PRACTICE_REPLAY " + JSON.stringify(receipt));

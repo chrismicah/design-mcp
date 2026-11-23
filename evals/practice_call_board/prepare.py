@@ -68,17 +68,16 @@ if dayton.is_dir():
         assert parent.count(old) == 1 and new not in parent and fixed == parent.replace(old, new)
         print(repair_receipt["case"], repair_receipt["arm"], repair_receipt["html_sha256"])
 
-madison = ROOT / "cells/madison-counseling"
-if madison.is_dir():
-    proof = ROOT.parents[1] / "evidence/benchmark-v1/focus-guidance-installed.json"
+def verify_installed_pair(case, prefix, proof_name):
+    proof = ROOT.parents[1] / "evidence" / "benchmark-v1" / proof_name
     installed_focus = json.loads(proof.read_bytes())
     assert installed_focus["kind"] == "installed" and len(installed_focus["installs"]) == 4
-    expected = installed_focus["practices"][madison.name]
+    expected = installed_focus["practices"][case.name]
     pair = {}
     for arm in ("control", "treatment"):
-        draft = madison / f"focus-{arm}"
+        draft = case / f"{prefix}-{arm}"
         stamp = json.loads((draft / "receipt.json").read_bytes())
-        assert stamp["status"] == "passed" and stamp["case"] == madison.name and stamp["arm"] == draft.name
+        assert stamp["status"] == "passed" and stamp["case"] == case.name and stamp["arm"] == draft.name
         assert stamp["commit"] == installed_focus["commits"][arm]
         assert stamp["reply_sha256"] == expected["reply_sha256"][arm]
         assert stamp["html_sha256"] == sha256((draft / "index.html").read_bytes()).hexdigest()
@@ -87,7 +86,12 @@ if madison.is_dir():
     for key in ("model", "effort", "shell_tool", "prompt_prefix_sha256"):
         assert pair["control"][key] == pair["treatment"][key], key
     assert pair["control"]["thread_id"] != pair["treatment"]["thread_id"]
+    return pair
 
+
+madison = ROOT / "cells/madison-counseling"
+if madison.is_dir():
+    pair = verify_installed_pair(madison, "focus", "focus-guidance-installed.json")
     compact = madison / "authored-compact-status"
     if compact.is_dir():
         original = (madison / "focus-treatment/index.html").read_text()
@@ -99,5 +103,9 @@ if madison.is_dir():
         assert stamp["html_sha256"] == sha256(revised.encode()).hexdigest()
         assert stamp["unified_diff_sha256"] == sha256(diff.encode()).hexdigest()
         print(stamp["case"], stamp["arm"], stamp["html_sha256"])
+
+albany = ROOT / "cells/albany-physiotherapy"
+if albany.is_dir():
+    verify_installed_pair(albany, "compact-status", "compact-status-guidance-installed.json")
 
 shutil.copytree(ROOT / "cells", sys.argv[1])

@@ -67,7 +67,7 @@ def verify(source, staged):
             checks = interaction["checks"]
             assert REQUIRED <= checks.keys()
             assert all(type(passed) is bool for passed in checks.values())
-            if source.name == "madison-counseling":
+            if source.name in {"madison-counseling", "albany-physiotherapy"}:
                 frame = interaction["firstFrame"] or {}
                 assert "editorFocusedInFirstFrame" in checks
                 assert checks["disclosureVisibleInFirstFrame"] is (frame.get("localDisclosureVisible") is True)
@@ -75,6 +75,10 @@ def verify(source, staged):
                     assert frame["focusIsEditable"] is True and frame["focusTag"] == "TEXTAREA"
                 if arm == "authored-compact-status" and checks["returnToOriginal"]:
                     assert interaction["statusAfterReturn"] == [""]
+                if source.name == "albany-physiotherapy":
+                    assert checks["statusClearedAfterReturn"] is (
+                        checks["returnToOriginal"] and interaction["statusAfterReturn"] == [""]
+                    )
             verify_frames(cell, view, width, height)
             sizes[width] = {"failed": sorted(key for key, ok in checks.items() if not ok),
                             "request_count": len(interaction["requests"]),
