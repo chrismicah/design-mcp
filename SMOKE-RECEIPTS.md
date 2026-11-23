@@ -242,4 +242,13 @@ warnings. [Exact checks](https://github.com/chrismicah/design-mcp/commit/8440d96
 
 ## Install pin `f30e6ff`
 
-All 13 hosted checks passed at the current README install pin. Both macOS 15 installers covered Python 3.10–3.13 on Apple Silicon and Intel. The exact SwiftUI test revealed a fifth button. Electron cleared the covered-control finding and preserved its separate clipping finding. The hosted Chrome fixture captured both toolbar flows and the public URL run returned verified desktop and phone PNGs. Current Ventura and the BenQ-only local check stay separate. [Exact jobs, output hashes, and recovery](evidence/benchmark-v1/release-ci-f30e6ff.json)
+All 13 hosted checks passed at this earlier install pin. Both macOS 15 installers covered Python 3.10–3.13 on Apple Silicon and Intel. The exact SwiftUI test revealed a fifth button. Electron cleared the covered-control finding and preserved its separate clipping finding. The hosted Chrome fixture captured both toolbar flows and the public URL run returned verified desktop and phone PNGs. Current Ventura and the BenQ-only local check stay separate. [Exact jobs, output hashes, and recovery](evidence/benchmark-v1/release-ci-f30e6ff.json)
+
+
+## Install pin `18b87522`
+
+All 13 hosted checks passed. Eight macOS 15 jobs verified 16 clean Git installs, 16 doctor calls, and 96 stdio smoke runs on Apple Silicon and Intel across Python 3.10–3.13. Each installer checked package metadata against the exact commit and verified that the bundle excludes the legacy corpus, offline queues, and archived prompts. The local offline installation matched 50 package files byte for byte against Git.
+
+The SwiftUI fixture exported four hittable buttons before Reveal and five after. Electron retained its clipping finding after the separately covered button became hittable. The local installed CLI returned the same results from the hosted geometry exports. The audit verified four original desktop PNGs and their dimensions and hashes.
+
+The hosted extension reached both saved previews from Chrome's toolbar. It recovered from a missing native host and selected After by keyboard. The pasted address took 2,361 ms from submission to capture and had five masks. The installed MCP returned original masked images at 1440 × 900 and 390 × 844 and recovered after an HTTP 404 and an unsupported URL. The public capture test attempted zero connections to its private fixture. BenQ-only Computer Use and the current Ventura runtime checks remain open. [Exact hosted checks, installer logs, and capture hashes](evidence/benchmark-v1/release-ci-18b87522.json)

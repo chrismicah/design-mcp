@@ -7,12 +7,12 @@ Turn a brief into one sourced art direction. The response gives the coding agent
 Install the verified development build with either command. Both support an explicit `--python` option to select an installed interpreter.
 
 ```bash
-pipx install 'git+https://github.com/chrismicah/design-mcp.git@f30e6ffcb7c8fab97580a353ff5b770849162594'
+pipx install 'git+https://github.com/chrismicah/design-mcp.git@18b87522a49c545dd6204c20762d6fd64145d375'
 # or
-uv tool install 'git+https://github.com/chrismicah/design-mcp.git@f30e6ffcb7c8fab97580a353ff5b770849162594'
+uv tool install 'git+https://github.com/chrismicah/design-mcp.git@18b87522a49c545dd6204c20762d6fd64145d375'
 ```
 
-For a local checkout, pass `.` to your installer. [Candidate install matrix](https://github.com/chrismicah/design-mcp/actions/runs/45187656342)
+For a local checkout, pass `.` to your installer. [Candidate install matrix](https://github.com/chrismicah/design-mcp/actions/runs/45196397946)
 
 If Design MCP is already installed, add `--force` after `pipx install` or `uv tool install` in the matching command. Run `design-mcp doctor` and reconnect your MCP client after changing the installed version.
 
@@ -76,11 +76,11 @@ Try “calmer” after the first draft. The advice depends on the selected direc
 - **Measure the current Chrome tab or a pasted URL.** Load the folder printed by `design-mcp review --extension-path` as an unpacked extension and connect its local host once. Use **Review this page** for the active tab or **Review URL** for a pasted public address. Both paths save a masked capture. The popup reports measured overflow, covered controls, and contrast on flat backgrounds. After upgrading, reload the extension from the installed path and reconnect the local host. [Extension setup](design_mcp/review/README.md#set-up-the-extension)
 - **Ask a vision-capable MCP client for a design critique.** Add `--review` to the installed server's `serve` arguments. Reconnect and use `review_page` to give the model a masked screenshot and layout facts. Connect Playwriter so the agent can also perform a visitor task and compare the resulting screens. [Setup and example prompt](design_mcp/review/README.md#visual-critique-and-a-live-task)
 - **Capture both widths from the terminal.** With Playwriter 0.12.0 installed, run `design-mcp review https://example.com --playwriter`. The command uses a separate Chrome profile, checks the page at 1440 and 390 CSS px, and saves a local preview. [Browser setup](design_mcp/review/README.md)
-- **Your SwiftUI or Electron app.** Copy the matching exporter from this repository into your UI test project. The Swift exporter needs an XCTest target. The Electron exporter reads a supplied BrowserWindow. Run `design-mcp review-app capture.json` to check recorded clipping and hittability. [Swift exporter](integrations/desktop/SwiftCapture.swift) · [Electron exporter](integrations/desktop/electron.mjs)
+- **Your SwiftUI or Electron app.** Copy the matching exporter from this repository into your UI test project. The Swift exporter needs an XCTest target. The Electron exporter reads a supplied BrowserWindow. Run `design-mcp review-app capture.json` to check recorded clipping and hittability. Keep raw desktop screenshots local, or redact visible input values before sharing. [Swift exporter](integrations/desktop/SwiftCapture.swift) · [Electron exporter](integrations/desktop/electron.mjs)
 
 GPT Computer Use tested both Chrome flows on the earlier `0978712` build. The active-tab scan flagged **2.6:1 contrast** and opened a saved comparison that supports keyboard access. A pasted URL returned a **1440 × 900** capture in **6.37 seconds** with five fields masked. A 404 returned focus to the address field and left the saved reviews untouched. These are single walkthrough timings. [Native Chrome receipt](evidence/benchmark-v1/release-native-chrome-0978712.json)
 
-The same commit passed fresh SwiftUI and Electron captures on macOS CI. SwiftUI revealed a sixth control. An Electron action cleared the covered control finding and retained the independent clipping finding. [Desktop proof and past timings](SMOKE-RECEIPTS.md)
+At the install pin, macOS CI captured SwiftUI and Electron before and after a reveal action. SwiftUI went from four to five hittable buttons. Electron cleared the covered control finding and retained the clipping finding. The installed CLI reproduced both results from the exported geometry. [Desktop capture receipts](evidence/benchmark-v1/release-ci-18b87522.json)
 
 ## Compatibility
 
@@ -102,11 +102,11 @@ The optional historical maintenance scripts write to `data/`. Run `python3 scrip
 
 ## Verified results
 
-All eight macOS 15 clean-install jobs passed at `f30e6ff` on Intel and Apple Silicon with Python 3.10–3.13. Pipx and uv both ran `doctor` and exercised the default, historical and combined stdio surfaces with and without the optional review tool. The earlier `0978712` package passed **eight clean installs and 48 stdio checks** on Apple Silicon Ventura 13.7.4. Current-package Ventura checks and Intel Ventura runtime verification remain open. [macOS 15 matrix](evidence/benchmark-v1/release-ci-f30e6ff.json) · [Earlier Ventura matrix](evidence/benchmark-v1/ventura-tart-0978712.json)
+At `18b87522`, all eight macOS 15 cells passed on Intel and Apple Silicon with Python 3.10–3.13. The logs verify **16 pinned Git installs, 16 doctor calls, and 96 stdio smoke runs**. The earlier `0978712` package passed **eight clean installs and 48 stdio checks** on Apple Silicon Ventura 13.7.4. Current-package Ventura runtime remains unverified on both architectures. [Exact macOS 15 matrix](evidence/benchmark-v1/release-ci-18b87522.json) · [Earlier Ventura matrix](evidence/benchmark-v1/ventura-tart-0978712.json)
 
 The PR branch's work-order booking study kept the selected date and price visible at 320, 390, and 1440 px through the first draft and a one-word revision. Blind comparisons favored the revised guidance at both widths. Its package passed all 14 hosted checks at `a700f82`, including 16 macOS 15 clean installs, 96 stdio runs, both Chrome review flows, SwiftUI and Electron fixtures. [Booking comparison](evidence/benchmark-v1/booking-work-order-first.json) · [Hosted receipt](evidence/benchmark-v1/release-ci-a700f82.json) · [Exact follow-up CI at `559aee8`](evidence/benchmark-v1/release-ci-559aee8.json)
 
-All 13 hosted checks passed at `f30e6ff`, including SwiftUI, Electron and both Chrome toolbar flows. The pasted URL reached a masked capture in **1.86 seconds** on that hosted run. The exact BenQ-only local replay is open. [Hosted checks and capture hashes](evidence/benchmark-v1/release-ci-f30e6ff.json) · [Earlier native Chrome walkthrough](evidence/benchmark-v1/release-native-chrome-0978712.json)
+All 13 hosted checks passed at the install pin. The hosted Chrome extension reached a masked capture **2.36 seconds** after URL submission in that run. The active-tab preview switched to After by keyboard. The local BenQ replay remains open. [Hosted Chrome and capture hashes](evidence/benchmark-v1/release-ci-18b87522.json) · [Earlier native Chrome walkthrough](evidence/benchmark-v1/release-native-chrome-0978712.json)
 
 The installed `review_page` tool returned original masked PNGs at 1440 × 900 and 390 × 844. The same stdio session returned a structured error for an HTTP 404. [Installed review receipt](evidence/benchmark-v1/release-mcp-images-0978712.json)
 
