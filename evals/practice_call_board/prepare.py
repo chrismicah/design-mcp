@@ -54,4 +54,17 @@ if dayton.is_dir():
     assert len(dayton_install["install_receipts"]) == 4
     print(row["case"], row["arm"], row["html_sha256"])
 
+    repair = dayton.with_name("focus-editable-note")
+    if repair.is_dir():
+        parent = (dayton / "index.html").read_bytes()
+        fixed = (repair / "index.html").read_bytes()
+        repair_receipt = json.loads((repair / "receipt.json").read_bytes())
+        old = b"draft.focus({ preventScroll: true });"
+        new = b"draftText.focus({ preventScroll: true });"
+        assert repair_receipt["case"] == dayton.parent.name and repair_receipt["arm"] == repair.name
+        assert repair_receipt["parent_html_sha256"] == row["html_sha256"]
+        assert sha256(fixed).hexdigest() == repair_receipt["html_sha256"]
+        assert parent.count(old) == 1 and new not in parent and fixed == parent.replace(old, new)
+        print(repair_receipt["case"], repair_receipt["arm"], repair_receipt["html_sha256"])
+
 shutil.copytree(ROOT / "cells", sys.argv[1])
