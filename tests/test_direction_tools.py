@@ -236,3 +236,15 @@ async def test_calmer_keeps_the_operational_exception_as_the_focal_point(reactio
 async def test_explicit_omissions_are_not_surface_requests(brief, surface):
     result = await direct(brief)
     assert result["direction"]["surface"] == surface
+
+
+@pytest.mark.asyncio
+async def test_consultation_handoff_checks_visible_draft_on_activation():
+    reply = await direct("Build a homepage for an optometrist in Tacoma. Include a phone number "
+                         "and an editable call reminder below the first section.")
+    direction = reply["direction"]
+    assert direction["id"] == "direct-consultation"
+    instruction = direction["action"]["instruction"]
+    assert "If the form previews a draft" in instruction
+    assert "fully visible on activation" in instruction
+    assert "without waiting for a scroll animation" in instruction
