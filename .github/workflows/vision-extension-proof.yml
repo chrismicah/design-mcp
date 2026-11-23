@@ -13,6 +13,7 @@ on:
       - 'design_mcp/review/**'
       - 'design_mcp/cli.py'
       - 'evals/vision/extension_smoke.mjs'
+      - 'evals/vision/chrome_x11.sh'
       - 'evals/vision/popup_capture.test.cjs'
       - 'pyproject.toml'
       - '.github/workflows/vision-extension-proof.yml'
@@ -39,7 +40,7 @@ jobs:
         shell: bash
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq --no-install-recommends xvfb xauth xdotool
+          sudo apt-get install -y -qq --no-install-recommends xvfb xauth xdotool openbox x11-utils
           python -m venv "$RUNNER_TEMP/design-review"
           "$RUNNER_TEMP/design-review/bin/python" -m pip install . 'pillow>=11,<13'
           curl -fsSL https://storage.googleapis.com/chrome-for-testing-public/158.0.8127.36/linux64/chrome-linux64.zip -o "$RUNNER_TEMP/chrome.zip"
@@ -66,8 +67,8 @@ jobs:
           export PATH="$RUNNER_TEMP/browser-bin:$PATH"
           node --version
           CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox \
-            xvfb-run -a -s '-screen 0 1600x1040x24' node --experimental-websocket \
-            evals/vision/extension_smoke.mjs "$chrome" "$cli" "$extension" "$proof" "" --pasted-url-e2e
+            xvfb-run -a -s '-screen 0 1600x1040x24' bash evals/vision/chrome_x11.sh \
+            "$chrome" "$cli" "$extension" "$proof" "" --pasted-url-e2e
           "$RUNNER_TEMP/design-review/bin/python" - "$proof" <<'PY'
           from pathlib import Path
           from PIL import Image
@@ -79,7 +80,7 @@ jobs:
           assert proof['profileHistoryVerified'], proof
           activations = proof['toolbarActivations']
           assert [item['flow'] for item in activations] == ['active tab', 'pasted URL'], activations
-          assert all(1 <= len(item['attempts']) <= 3 for item in activations), activations
+          assert all(1 <= len(item['attempts']) <= 2 for item in activations), activations
           assert len({item['windowId'] for item in activations}) == 1, activations
           assert len({item['targetId'] for item in activations}) == 2, activations
           preview = Path(proof['previewFolder'])
@@ -128,8 +129,8 @@ jobs:
           Path(sys.argv[1]).write_text(original.replace(old, '.muted {color:#aaa; font-size:26px}'))
           PY
           CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox \
-            xvfb-run -a -s '-screen 0 1600x1040x24' node --experimental-websocket \
-              evals/vision/extension_smoke.mjs "$RUNNER_TEMP/browser/chrome-linux64/chrome" \
+            xvfb-run -a -s '-screen 0 1600x1040x24' bash evals/vision/chrome_x11.sh \
+              "$RUNNER_TEMP/browser/chrome-linux64/chrome" \
               "$RUNNER_TEMP/design-review/bin/design-mcp" "$RUNNER_TEMP/review-extension" "$proof" "$fixture"
           python - "$proof" <<'PY'
           from pathlib import Path
@@ -153,6 +154,7 @@ jobs:
           path: |
             ${{ runner.temp }}/extension-proof/extension-review.json
             ${{ runner.temp }}/extension-proof/browser.log
+            ${{ runner.temp }}/extension-proof/window-manager.log
             ${{ runner.temp }}/extension-proof/*.png
             ${{ runner.temp }}/large-contrast-proof/*.json
             ${{ runner.temp }}/large-contrast-proof/*.png

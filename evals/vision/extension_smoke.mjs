@@ -125,33 +125,49 @@ try {
       }
     });
 
-    const activation = { flow, windowId, attempts: [] };
+    const activation = { flow, windowId, attempts: [], disappearedTargets: [] };
     proof.toolbarActivations.push(activation);
     let lastAttempt = -Infinity;
+    let opening;
     return until(`toolbar popup for ${flow}`, async () => {
       const popupTarget = await findTarget(isPopup);
       if (popupTarget) {
         assert.ok(activation.attempts.length, "The journey must open a new popup using the shortcut");
-        activation.targetId = popupTarget.targetId;
-        return popupTarget;
+        try {
+          if (opening?.targetId !== popupTarget.targetId) {
+            opening = { targetId: popupTarget.targetId, session: await attach(popupTarget) };
+          }
+          const ready = await inspect(opening.session,
+            "document.body?.dataset?.state === 'idle' && document.activeElement?.id === 'scan'");
+          if (ready) {
+            activation.targetId = popupTarget.targetId;
+            return { target: popupTarget, session: opening.session };
+          }
+        } catch (error) {
+          if (!/^(Session with given id not found|No target with given id found)\.?$/.test(error.message)) {
+            throw error;
+          }
+          activation.disappearedTargets.push(popupTarget.targetId);
+          opening = undefined;
+        }
+        return null;
       }
-      // Retry the real shortcut only while there is still no popup to inspect.
-      if (activation.attempts.length < 3 && performance.now() - lastAttempt >= 2500) {
-        execFileSync("xdotool", ["windowfocus", "--sync", windowId], { timeout: 2000 });
-        const focused = execFileSync("xdotool", ["getwindowfocus"], { encoding: "utf8" }).trim();
-        assert.equal(focused, windowId, "Shortcut would go to a different X11 window");
+      // Give a pending shortcut time to open without a second key toggling it shut.
+      if (activation.attempts.length < 2 && performance.now() - lastAttempt >= 6000) {
+        execFileSync("xdotool", ["windowactivate", "--sync", windowId], { timeout: 2000 });
+        const active = execFileSync("xdotool", ["getactivewindow"], { encoding: "utf8" }).trim();
+        assert.equal(active, windowId, "Shortcut would go to a different X11 window");
         const pageFocused = await inspect(fixtureSession, "document.hasFocus()");
         activation.attempts.push({ pageFocused });
         key("ctrl+shift+y");
         lastAttempt = performance.now();
       }
       return null;
-    });
+    }, 15000);
   }
-  const target = await openToolbarPopup("active tab");
+  const { target, session: popup } = await openToolbarPopup("active tab");
   const extensionId = new URL(target.url).hostname;
   proof.extensionId = extensionId;
-  const popup = await attach(target);
   const observePopup = () => inspect(popup, `(() => {
     if (!document.body?.dataset.state) return null;
     return {
@@ -218,10 +234,9 @@ try {
   if (pastedUrlProof) {
     // Exercise URL validation in the actual toolbar popup before entering the URL flow.
     await until("the active-tab toolbar popup to close", async () => !await findTarget(isPopup));
-    const urlPopupTarget = await openToolbarPopup("pasted URL");
+    const { target: urlPopupTarget, session: urlPopup } = await openToolbarPopup("pasted URL");
     assert.equal(new URL(urlPopupTarget.url).hostname, extensionId);
     assert.notEqual(urlPopupTarget.targetId, target.targetId);
-    const urlPopup = await attach(urlPopupTarget);
     const urlState = () => inspect(urlPopup, `(() => ({
       state: document.body?.dataset.state,
       focus: document.activeElement?.id,
