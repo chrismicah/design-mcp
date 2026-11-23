@@ -636,3 +636,14 @@ One independent critic opened all six views in Playwriter. Each replay attempted
 A standalone repair of the exact installed Design MCP maintenance draft moved the first input from **456 to 237 CSS px** at 390 px. It also exposed the four required labels, the local-draft explanation, both urgency choices, and the action in the initial viewport. The prototype and frozen draft use the same JavaScript for validation, local confirmation, and retained answers. The test preserved an initial preflight that found concatenated accessible label text. The final capture verified whitespace and a separate name for each field.
 
 Playwriter verified six deterministic keyboard journeys and 24 images across desktop and 390 and 320 px phones. One separate blind critic then completed all four desktop and phone views and produced 12 more verified frames. The prototype scored **7.50 desktop / 7.40 phone**, versus **7.20 / 6.85** for the original in the same ballot. The critic preferred the early requirements and complete form. A narrow desktop group label wraps, and the focused confirmation heading is cramped on phone. The exact installed `check` tool reported zero source findings on both drafts. This is a measured visual repair outside the package. The blind scores remain below 9.5. [Source, keyboard and screenshot receipts](evidence/benchmark-v1/form-first-view-round1.json)
+
+### Installed first-view transfer
+
+The isolated wheel at `21d75d6` changes the opening instructions for grouped forms. Doctor passed. All 50 installed files matched the wheel and Git source, with a change in the directions file alone. Installed stdio returned identical tool schemas and 30 of 36 identical brief responses. Six grouped forms received the two revised layout instructions.
+
+| Held-out journey at 390 px | Frozen first input, top to bottom | Trial first input, top to bottom | Required cues in trial |
+| --- | ---: | ---: | --- |
+| Common-area lighting form | 456–504 px | 300–348 px | Present |
+| Community garden shift | 680–728 px | 361–409 px | Missing |
+
+Both installed treatment builders called `direct` with their frozen briefs and received the exact trial direction. The audit covered 12 keyboard journeys and 48 original captures at 320, 390 and 1440 px. Each form supported actionable errors, the exact confirmation and a retained edit state. Both trial forms fell short of the requirement to show the entire first input within 330 px on phone. The garden also moved its first desktop input from 321 to 401 px. The package stays on its trial branch. The standalone prototype retains its separate blind result. [Exact installed transfer](evidence/benchmark-v1/form-first-view-installed-transfer.json)
