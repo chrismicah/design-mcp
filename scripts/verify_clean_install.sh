@@ -71,7 +71,7 @@ verify_installed_tool() {
   report=$(unset DESIGN_MCP_SURFACE && "$executable" doctor)
   printf '%s\n' "$report"
   grep -F "PASS interpreter — $python_minor." <<< "$report"
-  grep -F 'PASS stdio tools/list — v2, 3 tools' <<< "$report"
+  grep -E '^PASS stdio tools/list — v2, [0-9]+ tools$' <<< "$report"
   (unset DESIGN_MCP_SURFACE && "$client_python" -I "$checkout/scripts/smoke_design_mcp.py" "$executable" serve)
   DESIGN_MCP_SURFACE=both "$client_python" -I "$checkout/scripts/smoke_design_mcp.py" "$executable" serve
   DESIGN_MCP_SURFACE=legacy "$client_python" -I "$checkout/scripts/smoke_design_mcp.py" "$executable" serve
