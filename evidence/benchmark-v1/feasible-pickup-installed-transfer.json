@@ -1,0 +1,1820 @@
+{
+  "scope": "Installed constraint guidance on the exact press brief and an unseen mending brief. The mending pair also tests routing.",
+  "package": {
+    "control_commit": "84735b41b8ce039a9943295123eaa70a3b17dc60",
+    "trial_commit": "b100a35870f333cc5aab989c06652f60b5bc2c74",
+    "control_wheel_sha256": "c6a5f3e644204a7cd5f5fcd80e1ba186489d145ad1842d86e721cdf300582310",
+    "trial_wheel_sha256": "2c8edf6d21ce200b0b05b75f7f10ea22c92fdccaae0bd9f72b42f2cf737c2470",
+    "changed_wheel_files": [
+      "design_mcp-0.1.0.dist-info/RECORD",
+      "design_mcp/data/directions.json",
+      "design_mcp/directions.py"
+    ],
+    "matching_installed_package_files": {
+      "control": 50,
+      "trial": 50
+    },
+    "schemas_match": true,
+    "calls_per_arm": 45,
+    "changed_cases": [
+      "bike-coop-clearance",
+      "mending-guide-tool",
+      "press-guide-tool",
+      "scenic-track-tool"
+    ],
+    "unrelated_exact_matches": 41,
+    "matched_cases": [
+      "allowance-only",
+      "avoid-fit",
+      "bike-coop-clearance",
+      "dashboard-coldchain",
+      "dashboard-energy",
+      "dashboard-harvest",
+      "dashboard-library",
+      "dashboard-support",
+      "dashboard-venue",
+      "empty-drafts",
+      "empty-exhibits",
+      "empty-handoff",
+      "empty-saved",
+      "empty-search",
+      "empty-shifts",
+      "explicit-form",
+      "form-exhibition",
+      "form-garden",
+      "form-invoice",
+      "form-label",
+      "form-maintenance",
+      "form-venue",
+      "landing-archive",
+      "landing-ceramics",
+      "landing-energy",
+      "landing-festival",
+      "landing-radio",
+      "landing-repair",
+      "mending-guide-tool",
+      "mobile-court",
+      "mobile-field",
+      "mobile-gallery",
+      "mobile-pantry",
+      "mobile-recital",
+      "mobile-train",
+      "poetry-last-train",
+      "press-guide-tool",
+      "recessed-only",
+      "scenic-track-tool",
+      "settings-digest",
+      "settings-focus",
+      "settings-language",
+      "settings-notifications",
+      "settings-reading",
+      "settings-team"
+    ],
+    "example": {
+      "control": {
+        "direction": {
+          "id": "object-hero",
+          "surface": "landing",
+          "title": "Object hero: the product is the page",
+          "summary": "One featured product presented as a specimen, with the details and buy control in a single purchase block.",
+          "type": {
+            "display": "Fraunces",
+            "body": "Instrument Sans",
+            "ratio": 4.0,
+            "tracking": -0.03,
+            "weight": 600,
+            "license": "OFL-1.1"
+          },
+          "palette": {
+            "ink": "#2a1610",
+            "paper": "#f3ebe0",
+            "accent": "#6b2148"
+          },
+          "layout": {
+            "skeleton": "7/5 split; the product image sits left, offset 1 column, and overlaps into a facts band",
+            "focus": "the featured product and one supplied detail that helps a buyer choose it, such as a tasting note, material, or finish",
+            "desktop": "Put the product name at the image edge. Give the deciding detail its own line. Keep the remaining facts and the add control together on the same column edges.",
+            "mobile": "At 390 px, use a shallow product crop up to 35% of the visible height. Keep the product name, deciding detail, size, price, supplied purchase facts, and add control together in reading order. Put the action in flow so it cannot cover a fact.",
+            "rhythm": "96px between bands; the ledger uses a 24px baseline"
+          },
+          "imagery": {
+            "subject": "the product on a plain surface. If it has a label, make the product name and supplied variant or size the strongest lettering.",
+            "crop": "tight, with the product cut by the right edge",
+            "fallback": "Use the product name and its deciding detail as specimen typography when product imagery is unavailable."
+          },
+          "motion": {
+            "trigger": "add to bag",
+            "effect": "bag count ticks and the pill settles 4px",
+            "duration_ms": 240,
+            "reduced": "instant count change"
+          },
+          "action": {
+            "instruction": "One primary action attached to the product. Fill it from the brief's product, size and price, and never repeat it in a hero band",
+            "label": "Add [product], [size] — [price]"
+          },
+          "why": "A first-time buyer needs one choice, not a catalogue. Making the object the hero and stating the brief's exact facts reads warm and exact.",
+          "sources": [
+            {
+              "url": "https://assets.awwwards.com/awards/submissions/2026/09/6aacf2ed22405670949235.jpg",
+              "observation": "Agrumea Farm hero: the product jars are the hero on cream paper with an oxblood shape and type set on a curve; the only CTA is a small pill on the featured jar ('Scopri il prodotto').",
+              "strength": "evidence"
+            },
+            {
+              "url": "https://www.apple.com/v/macbook-air/z/built/styles/main.built.css",
+              "observation": ".typography-hero-headline is 64px; .typography-body is 17px (a ratio of about 3.8).",
+              "strength": "evidence"
+            }
+          ],
+          "credit": "Agrumea Farm site (Awwwards submission; designer not verified)"
+        },
+        "font_stylesheet": "https://fonts.googleapis.com/css2?family=Fraunces%3Awght%40600&family=Instrument+Sans&display=swap",
+        "interaction": {
+          "accent_foreground": "#f3ebe0",
+          "easing": "ease-out",
+          "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+          "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+          "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+        },
+        "assumptions": [
+          "Use landing as the surface.",
+          "Use only the project facts and assets in the brief."
+        ],
+        "questions": [],
+        "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px."
+      },
+      "trial": {
+        "direction": {
+          "id": "constraint-comparison",
+          "surface": "landing",
+          "title": "Constraint comparison",
+          "summary": "Put the two measured fit limits beside the available choices and keep a withdrawn selection visible until the visitor chooses a replacement.",
+          "type": {
+            "display": "IBM Plex Sans Condensed",
+            "body": "Barlow",
+            "ratio": 3.2,
+            "tracking": -0.025,
+            "weight": 700,
+            "license": "OFL-1.1"
+          },
+          "palette": {
+            "ink": "#18352E",
+            "paper": "#E4EAE5",
+            "accent": "#E7B766"
+          },
+          "layout": {
+            "skeleton": "Open with a compact fit-and-pickup comparison under one short title. Put both measured limits above the options, with current choice and recovery directly after the list.",
+            "focus": "The supplied height limit and swing limit shown as separate measured cues beside each tool's actual fit evidence.",
+            "desktop": "Align assembled height, required swing, and the feasible pickup action for each option against the same limits. Place the recovery panel beside the list. Use a section drawing only if it clarifies an otherwise ambiguous constraint.",
+            "mobile": "At 390px show both limits and viable actions from the first view. Use one row per option, with the two measures and a labeled pickup action. Put illustrations after the interaction. After withdrawal keep the old choice and timestamped reason beside the replacement measurements and action. Verify at 320px. Flag unmeasured hand clearance.",
+            "rhythm": "Use a 12px rule grid, compact comparison rows and one generous break after the shared datum. No repeated cards."
+          },
+          "imagery": {
+            "subject": "A dimension line and small swing arc drawn only from the supplied geometry.",
+            "crop": "Keep the dimensional datum connected to the choice rows; do not imply a product photo or inventory image.",
+            "fallback": "Use type, rules and a simple dimension line. Identify any physical clearance the brief does not measure."
+          },
+          "motion": {
+            "trigger": "The visitor chooses a replacement tool.",
+            "effect": "Move the selection marker to the chosen row and update one adjacent selection status.",
+            "duration_ms": 220,
+            "reduced": "Change the marker and status immediately."
+          },
+          "action": {
+            "instruction": "Before labeling an action, compute earliest pickup as the latest of stock readiness, desk opening and visitor arrival. A pickup at or after closing is unavailable. Keep stock-ready times distinct. Show the tool and feasible pickup on its action. Keep the withdrawn choice and its reason until the visitor explicitly chooses a replacement.",
+            "label": "Choose [tool] at [earliest feasible pickup]"
+          },
+          "why": "A borrower making a fit decision needs the shared scale and both independent constraints beside the actual alternatives. A shared datum helps visitors reconcile evidence across the alternatives before choosing.",
+          "sources": [
+            {
+              "url": "https://www.vessel.co.jp/english/product/screwdriver/251428",
+              "observation": "Vessel distinguishes assembled screwdriver geometry and states a 6-degree ratchet swing. This is a reference for presenting two measured properties; it does not identify any item in the fixture as Vessel inventory.",
+              "strength": "evidence"
+            },
+            {
+              "url": "https://www.watched.earth/place/eiffel-tower",
+              "observation": "The observed page separates its globe visualization from the evidence explaining the outcome. Adapted here as a principle: show the comparison and its supporting measurements together.",
+              "strength": "evidence"
+            }
+          ],
+          "credit": "Original workshop comparison informed by observed measurement and evidence presentation."
+        },
+        "font_stylesheet": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed%3Awght%40700&family=Barlow&display=swap",
+        "interaction": {
+          "accent_foreground": "#18352E",
+          "easing": "ease-out",
+          "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+          "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+          "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+        },
+        "assumptions": [
+          "Use landing as the surface.",
+          "Use only the project facts and assets in the brief."
+        ],
+        "questions": [],
+        "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px. Replay by keyboard at 320 and 390 px. 1. Choose a fitting option and verify its initial pickup. 2. If the brief supplies a stock update, apply it separately. Keep the old choice selected. Show the reason, replacement measurements, pickup and an explicit replacement button together. 3. Choose the replacement. Verify that the new choice and old reason remain visible. Keep focus on a surviving control or move it directly to the visible recovery button."
+      }
+    }
+  },
+  "generation": {
+    "press-guide-tool": {
+      "labeled-fit": {
+        "usage": {
+          "input_tokens": 59865,
+          "cached_input_tokens": 49152,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5790,
+          "reasoning_output_tokens": 12
+        },
+        "tool_calls": [
+          {
+            "type": "mcp_tool_call",
+            "server": "design-mcp",
+            "tool": "direct",
+            "status": "completed"
+          }
+        ],
+        "client_errors": [],
+        "treatment_call": true,
+        "direct_call": true,
+        "status": "passed",
+        "observed_directions": [
+          "constraint-comparison"
+        ],
+        "unhinted_direct": true,
+        "case": "press-guide-tool",
+        "arm": "labeled-fit",
+        "model": "gpt-6.1-terra",
+        "effort": "low",
+        "client": "codex-cli 0.170.0",
+        "prompt_sha256": "41b6fe87a53684a0193df66639c52d75a25426c9827112e448d15d0cd965876e",
+        "expected_direction": "constraint-comparison",
+        "require_unhinted_direct": true,
+        "shell_tool": false,
+        "mcp_config_sha256": "22738de1fb71bdc52785ed94a588e8976cbc768a0d7520a1a7e434898c875e56",
+        "elapsed_seconds": 111.33,
+        "exit_code": 0,
+        "trace_sha256": "686b5ccd7c866eea2f033666b96a00efd37acb2799f6ba1431e2286a3aa2c3a7",
+        "html_sha256": "dd931c9be999d4dc5df82fb4f1db0699e7d854d85ed94ab849672366648caa61"
+      },
+      "feasible-pickup": {
+        "usage": {
+          "input_tokens": 59457,
+          "cached_input_tokens": 53120,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5940,
+          "reasoning_output_tokens": 53
+        },
+        "tool_calls": [
+          {
+            "type": "mcp_tool_call",
+            "server": "design-mcp",
+            "tool": "direct",
+            "status": "completed"
+          }
+        ],
+        "client_errors": [],
+        "treatment_call": true,
+        "direct_call": true,
+        "status": "passed",
+        "observed_directions": [
+          "constraint-comparison"
+        ],
+        "unhinted_direct": true,
+        "case": "press-guide-tool",
+        "arm": "feasible-pickup",
+        "model": "gpt-6.1-terra",
+        "effort": "low",
+        "client": "codex-cli 0.170.0",
+        "prompt_sha256": "41b6fe87a53684a0193df66639c52d75a25426c9827112e448d15d0cd965876e",
+        "expected_direction": "constraint-comparison",
+        "require_unhinted_direct": true,
+        "shell_tool": false,
+        "mcp_config_sha256": "d46d3b036b33f60baa1de1800fc58ea912ec25ab9e54d8f1371add957420f623",
+        "elapsed_seconds": 117.94,
+        "exit_code": 0,
+        "trace_sha256": "651d58c0a799c29296a46bd15322d02930f9762061912315e49296bf8840d439",
+        "html_sha256": "a806a4631236adcc10ac68e8574d9fbe2204032aa33bb481699808abda0b2c4d"
+      }
+    },
+    "mending-guide-tool": {
+      "labeled-fit": {
+        "usage": {
+          "input_tokens": 59211,
+          "cached_input_tokens": 49280,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 7570,
+          "reasoning_output_tokens": 51
+        },
+        "tool_calls": [
+          {
+            "type": "mcp_tool_call",
+            "server": "design-mcp",
+            "tool": "direct",
+            "status": "completed"
+          }
+        ],
+        "client_errors": [],
+        "treatment_call": true,
+        "direct_call": true,
+        "status": "passed",
+        "observed_directions": [
+          "object-hero"
+        ],
+        "unhinted_direct": true,
+        "case": "mending-guide-tool",
+        "arm": "labeled-fit",
+        "model": "gpt-6.1-terra",
+        "effort": "low",
+        "client": "codex-cli 0.170.0",
+        "prompt_sha256": "313ed3d9dde86735c7dc8744ef977d987190cb3c756e0880c7e67f3196184d1f",
+        "expected_direction": "object-hero",
+        "require_unhinted_direct": true,
+        "shell_tool": false,
+        "mcp_config_sha256": "22738de1fb71bdc52785ed94a588e8976cbc768a0d7520a1a7e434898c875e56",
+        "elapsed_seconds": 146.46,
+        "exit_code": 0,
+        "trace_sha256": "2c5246e6d4da5a0321ceba8a570ba5ff93124f205c1decb60847990398b37bdf",
+        "html_sha256": "94abb4f2ba6d692f4d33ed8420755ca78ee9b7deaefdb8f4f5531e0baa7e7822"
+      },
+      "feasible-pickup": {
+        "usage": {
+          "input_tokens": 59435,
+          "cached_input_tokens": 53120,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 7565,
+          "reasoning_output_tokens": 0
+        },
+        "tool_calls": [
+          {
+            "type": "mcp_tool_call",
+            "server": "design-mcp",
+            "tool": "direct",
+            "status": "completed"
+          }
+        ],
+        "client_errors": [],
+        "treatment_call": true,
+        "direct_call": true,
+        "status": "passed",
+        "observed_directions": [
+          "constraint-comparison"
+        ],
+        "unhinted_direct": true,
+        "case": "mending-guide-tool",
+        "arm": "feasible-pickup",
+        "model": "gpt-6.1-terra",
+        "effort": "low",
+        "client": "codex-cli 0.170.0",
+        "prompt_sha256": "313ed3d9dde86735c7dc8744ef977d987190cb3c756e0880c7e67f3196184d1f",
+        "expected_direction": "constraint-comparison",
+        "require_unhinted_direct": true,
+        "shell_tool": false,
+        "mcp_config_sha256": "d46d3b036b33f60baa1de1800fc58ea912ec25ab9e54d8f1371add957420f623",
+        "elapsed_seconds": 145.26,
+        "exit_code": 0,
+        "trace_sha256": "e3675b68979626f7893470beeebbb730a5bc71bf02e5e73468ac7362e6cf698c",
+        "html_sha256": "e299477ac774873807303276ea232423d45361d723532d868b17c756a99141fb"
+      }
+    }
+  },
+  "fixture": {
+    "press-guide-tool": {
+      "allowance": [
+        47,
+        15
+      ],
+      "initial": [
+        "Low head",
+        "10:30"
+      ],
+      "withdrawal": [
+        "10:25",
+        "failed direction switch"
+      ],
+      "replacement": [
+        "Fine pawl",
+        "11:00",
+        "36–37 mm",
+        "7°"
+      ]
+    },
+    "mending-guide-tool": {
+      "allowance": [
+        44,
+        13
+      ],
+      "initial": [
+        "Drift",
+        "12:20"
+      ],
+      "withdrawal": [
+        "12:18",
+        "spindle slips"
+      ],
+      "replacement": [
+        "Pinion",
+        "12:45",
+        "35–36 mm",
+        "7°"
+      ],
+      "closes": "13:00"
+    }
+  },
+  "browser": "Chrome/160.0.8178.0",
+  "journeys": {
+    "press-guide-tool-labeled-fit-320": {
+      "html_sha256": "dd931c9be999d4dc5df82fb4f1db0699e7d854d85ed94ab849672366648caa61",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": false,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": false,
+        "replacement_call_to_action_in_view": false,
+        "replacement_and_history_in_view": true,
+        "focus_visible": false,
+        "approved_fonts_loaded": true,
+        "no_page_failures": false
+      },
+      "first_choice_on_opening": {
+        "top": 1339.171875,
+        "left": 161.5,
+        "width": 123.5,
+        "height": 44,
+        "text": "Choose · 10:20",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": true
+      },
+      "second_choice_on_opening": {
+        "top": 1567.90625,
+        "left": 161.5,
+        "width": 123.5,
+        "height": 44,
+        "text": "Choose · 11:00",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": true
+      },
+      "late_option_on_opening": null,
+      "selected_result": {
+        "top": 721.078125,
+        "left": 42,
+        "width": 221,
+        "height": 181.265625,
+        "text": "Low head 41–42 mm assembled height · 12° reset Ready for pickup 10:20",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "withdrawal": {
+        "top": 315.015625,
+        "left": 42,
+        "width": 221,
+        "height": 98.78125,
+        "text": "Withdrawn at 10:25 The direction switch failed. Choose another driver below.",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "recovered_selection": {
+        "top": 121.75,
+        "left": 42,
+        "width": 221,
+        "height": 284.15625,
+        "text": "Fine pawl 36–37 mm assembled height · 7° reset Ready for pickup 11:00 Previous choice: Low head Ready at 10:20; withdrawn at 10:25 because its direction switch failed.",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": [],
+        "missingFonts": []
+      },
+      "frames": {
+        "before": {
+          "file": "press-guide-tool-labeled-fit-320-before.png",
+          "sha256": "c1e4ea17aa62263f66cd5a882e4406b2867214eaf5d0af7a3a51debb99da4693"
+        },
+        "chosen": {
+          "file": "press-guide-tool-labeled-fit-320-chosen.png",
+          "sha256": "e20fa714293b881ba34fcc41665c2fc0d745b5c34d88eaefbe2a3219a0cdeb62"
+        },
+        "after": {
+          "file": "press-guide-tool-labeled-fit-320-after.png",
+          "sha256": "52f8501a9f2556392ecbe665f76b15e0ee4273f0ef8e6e1feba1a83b33a57d95"
+        },
+        "edge": {
+          "file": "press-guide-tool-labeled-fit-320-edge.png",
+          "sha256": "10ef48c900d1e4748e8a0fab053d4aeb51dded7a54ed74c9d067c423eddb94f0"
+        }
+      },
+      "qualified": false
+    },
+    "press-guide-tool-labeled-fit-390": {
+      "html_sha256": "dd931c9be999d4dc5df82fb4f1db0699e7d854d85ed94ab849672366648caa61",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": false,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": false,
+        "replacement_call_to_action_in_view": true,
+        "replacement_and_history_in_view": true,
+        "focus_visible": true,
+        "approved_fonts_loaded": true,
+        "no_page_failures": true,
+        "opening_height_limit_in_view": true,
+        "opening_swing_limit_in_view": true,
+        "opening_pickups_within_both_actions": false
+      },
+      "first_choice_on_opening": {
+        "top": 1339.171875,
+        "left": 196.5,
+        "width": 158.5,
+        "height": 44,
+        "text": "Choose · 10:20",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": true
+      },
+      "second_choice_on_opening": {
+        "top": 1567.90625,
+        "left": 196.5,
+        "width": 158.5,
+        "height": 44,
+        "text": "Choose · 11:00",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": true
+      },
+      "late_option_on_opening": null,
+      "selected_result": {
+        "top": 800.578125,
+        "left": 42,
+        "width": 291,
+        "height": 158.078125,
+        "text": "Low head 41–42 mm assembled height · 12° reset Ready for pickup 10:20",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "withdrawal": {
+        "top": 492.828125,
+        "left": 42,
+        "width": 291,
+        "height": 98.78125,
+        "text": "Withdrawn at 10:25 The direction switch failed. Choose another driver below.",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "recovered_selection": {
+        "top": 314.75,
+        "left": 42,
+        "width": 291,
+        "height": 260.96875,
+        "text": "Fine pawl 36–37 mm assembled height · 7° reset Ready for pickup 11:00 Previous choice: Low head Ready at 10:20; withdrawn at 10:25 because its direction switch failed.",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": [],
+        "missingFonts": []
+      },
+      "frames": {
+        "before": {
+          "file": "press-guide-tool-labeled-fit-390-before.png",
+          "sha256": "6123629ba3c0b2fabd1a46936fc13e30efdbc28654e9f40a0e80d5b2c074a407"
+        },
+        "chosen": {
+          "file": "press-guide-tool-labeled-fit-390-chosen.png",
+          "sha256": "f95add7d7889a625d52a5668051da0dad7ccaaf4a735e6aad59acf1e3abf4e8a"
+        },
+        "after": {
+          "file": "press-guide-tool-labeled-fit-390-after.png",
+          "sha256": "fb77cdfd383c18c6650428467f3ee82d6212e322c93a5ffe607fcdd5db335dc4"
+        },
+        "edge": {
+          "file": "press-guide-tool-labeled-fit-390-edge.png",
+          "sha256": "cc2b66165ea24260a70ca2fea83ea2a26274cff7d36c13bf58d932248e2e8bf0"
+        }
+      },
+      "qualified": false
+    },
+    "press-guide-tool-labeled-fit-1440": {
+      "html_sha256": "dd931c9be999d4dc5df82fb4f1db0699e7d854d85ed94ab849672366648caa61",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": false,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": true,
+        "replacement_call_to_action_in_view": true,
+        "replacement_and_history_in_view": true,
+        "focus_visible": true,
+        "approved_fonts_loaded": true,
+        "no_page_failures": true,
+        "opening_height_limit_in_view": true,
+        "opening_swing_limit_in_view": true,
+        "opening_pickups_within_both_actions": false
+      },
+      "first_choice_on_opening": {
+        "top": 837.625,
+        "left": 839.609375,
+        "width": 145,
+        "height": 44,
+        "text": "Choose · 10:20",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": true
+      },
+      "second_choice_on_opening": {
+        "top": 942.625,
+        "left": 839.609375,
+        "width": 145,
+        "height": 44,
+        "text": "Choose · 11:00",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": true
+      },
+      "late_option_on_opening": null,
+      "selected_result": {
+        "top": 577.765625,
+        "left": 1050.625,
+        "width": 272,
+        "height": 158.078125,
+        "text": "Low head 41–42 mm assembled height · 12° reset Ready for pickup 10:20",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "withdrawal": {
+        "top": 480.84375,
+        "left": 1050.625,
+        "width": 272,
+        "height": 98.78125,
+        "text": "Withdrawn at 10:25 The direction switch failed. Choose another driver below.",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "recovered_selection": {
+        "top": 302.765625,
+        "left": 1050.625,
+        "width": 272,
+        "height": 260.96875,
+        "text": "Fine pawl 36–37 mm assembled height · 7° reset Ready for pickup 11:00 Previous choice: Low head Ready at 10:20; withdrawn at 10:25 because its direction switch failed.",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": [],
+        "missingFonts": []
+      },
+      "frames": {
+        "before": {
+          "file": "press-guide-tool-labeled-fit-1440-before.png",
+          "sha256": "ab5d803ab72a0ab06c7e9bcc01a629bb903399d0e246a10fd7729bafc11a68ab"
+        },
+        "chosen": {
+          "file": "press-guide-tool-labeled-fit-1440-chosen.png",
+          "sha256": "3ab16d2933c4c5c5e31828f89fa5b916d66c365e907165c32411af8a370dca53"
+        },
+        "after": {
+          "file": "press-guide-tool-labeled-fit-1440-after.png",
+          "sha256": "46cc692c2b2bd3307e1041f413f1d2ab33e0727099843ee579c63dee906be9d2"
+        },
+        "edge": {
+          "file": "press-guide-tool-labeled-fit-1440-edge.png",
+          "sha256": "2185571c2b420e8d0140ac7af9a3060f89cc6e4818d42e5bf40acec4e20412bc"
+        }
+      },
+      "qualified": false
+    },
+    "press-guide-tool-feasible-pickup-320": {
+      "html_sha256": "a806a4631236adcc10ac68e8574d9fbe2204032aa33bb481699808abda0b2c4d",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": true,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": true,
+        "replacement_call_to_action_in_view": true,
+        "replacement_and_history_in_view": false,
+        "focus_visible": true,
+        "approved_fonts_loaded": true,
+        "no_page_failures": true
+      },
+      "first_choice_on_opening": {
+        "top": 1501.671875,
+        "left": 72.515625,
+        "width": 204.484375,
+        "height": 58.375,
+        "text": "Choose Low head at 10:30",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": true
+      },
+      "second_choice_on_opening": {
+        "top": 1742.359375,
+        "left": 72.515625,
+        "width": 204.484375,
+        "height": 58.375,
+        "text": "Choose Fine pawl at 11:00",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": true
+      },
+      "late_option_on_opening": null,
+      "selected_result": {
+        "top": 921.4375,
+        "left": 38,
+        "width": 229,
+        "height": 100.734375,
+        "text": "Selected for pickup Low head Pickup from 10:30 41–42 mm assembled · 12° reset",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "withdrawal": {
+        "top": 367.03125,
+        "left": 38,
+        "width": 229,
+        "height": 299.375,
+        "text": "Low head withdrawn · 10:25 Its direction switch failed. Please choose another fitting driver. Fine pawl: 36–37 mm assembled, 7° reset. Ready and available for pickup at 11:00. Choose Fine pawl at 11:00",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "recovered_selection": {
+        "top": 690.34375,
+        "left": 38,
+        "width": 229,
+        "height": 100.734375,
+        "text": "Selected for pickup Fine pawl Pickup from 11:00 36–37 mm assembled · 7° reset",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": [],
+        "missingFonts": []
+      },
+      "frames": {
+        "before": {
+          "file": "press-guide-tool-feasible-pickup-320-before.png",
+          "sha256": "fe0eb1e789d95c99b1779304abd27fb06635312d70c1c37357c452f293f6d3d5"
+        },
+        "chosen": {
+          "file": "press-guide-tool-feasible-pickup-320-chosen.png",
+          "sha256": "6df0d6a4db93a2e3fb3d500f5d833513bebde7ff71a1c1d669d0e0ee34949493"
+        },
+        "after": {
+          "file": "press-guide-tool-feasible-pickup-320-after.png",
+          "sha256": "cf3415e7553cd906e7924f802568a86732f0c3509cddb684a6fd89885e19e38f"
+        },
+        "edge": {
+          "file": "press-guide-tool-feasible-pickup-320-edge.png",
+          "sha256": "1bd27f915c190cb98f7d82719c4c5a40b44632c7cc5103db7b93b65351b58ba8"
+        }
+      },
+      "qualified": false
+    },
+    "press-guide-tool-feasible-pickup-390": {
+      "html_sha256": "a806a4631236adcc10ac68e8574d9fbe2204032aa33bb481699808abda0b2c4d",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": true,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": true,
+        "replacement_call_to_action_in_view": true,
+        "replacement_and_history_in_view": true,
+        "focus_visible": true,
+        "approved_fonts_loaded": true,
+        "no_page_failures": true,
+        "opening_height_limit_in_view": false,
+        "opening_swing_limit_in_view": true,
+        "opening_pickups_within_both_actions": false
+      },
+      "first_choice_on_opening": {
+        "top": 1429.984375,
+        "left": 137.4375,
+        "width": 209.5625,
+        "height": 39.1875,
+        "text": "Choose Low head at 10:30",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": true
+      },
+      "second_choice_on_opening": {
+        "top": 1651.484375,
+        "left": 141.078125,
+        "width": 205.921875,
+        "height": 39.1875,
+        "text": "Choose Fine pawl at 11:00",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": true
+      },
+      "late_option_on_opening": null,
+      "selected_result": {
+        "top": 908.46875,
+        "left": 38,
+        "width": 299,
+        "height": 100.734375,
+        "text": "Selected for pickup Low head Pickup from 10:30 41–42 mm assembled · 12° reset",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "withdrawal": {
+        "top": 511.78125,
+        "left": 38,
+        "width": 299,
+        "height": 236.6875,
+        "text": "Low head withdrawn · 10:25 Its direction switch failed. Please choose another fitting driver. Fine pawl: 36–37 mm assembled, 7° reset. Ready and available for pickup at 11:00. Choose Fine pawl at 11:00",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "recovered_selection": {
+        "top": 431.046875,
+        "left": 38,
+        "width": 299,
+        "height": 100.734375,
+        "text": "Selected for pickup Fine pawl Pickup from 11:00 36–37 mm assembled · 7° reset",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": [],
+        "missingFonts": []
+      },
+      "frames": {
+        "before": {
+          "file": "press-guide-tool-feasible-pickup-390-before.png",
+          "sha256": "b420a62ebc641ed07978d349d9b2c11bca4e3705ec078bac49b0a8dd88b5d928"
+        },
+        "chosen": {
+          "file": "press-guide-tool-feasible-pickup-390-chosen.png",
+          "sha256": "4a42b85021d8eb63605821be7f6f18bf26bec835697e8b47f75896871006ad00"
+        },
+        "after": {
+          "file": "press-guide-tool-feasible-pickup-390-after.png",
+          "sha256": "6842267238cfbe0cfaaf9dc4443f3e964e3e776444bbf746bb0b4465acc1fbf4"
+        },
+        "edge": {
+          "file": "press-guide-tool-feasible-pickup-390-edge.png",
+          "sha256": "41b3941673fa68d549ab0cd81ee978e4f0d558774a4af7968e0520db0a68d289"
+        }
+      },
+      "qualified": false
+    },
+    "press-guide-tool-feasible-pickup-1440": {
+      "html_sha256": "a806a4631236adcc10ac68e8574d9fbe2204032aa33bb481699808abda0b2c4d",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": true,
+        "original_choice_visible_during_conflict": true,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": true,
+        "replacement_call_to_action_in_view": true,
+        "replacement_and_history_in_view": true,
+        "focus_visible": true,
+        "approved_fonts_loaded": true,
+        "no_page_failures": true,
+        "opening_height_limit_in_view": false,
+        "opening_swing_limit_in_view": true,
+        "opening_pickups_within_both_actions": false
+      },
+      "first_choice_on_opening": {
+        "top": 871.171875,
+        "left": 782.84375,
+        "width": 238.65625,
+        "height": 39.1875,
+        "text": "Choose Low head at 10:30",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": true
+      },
+      "second_choice_on_opening": {
+        "top": 978.203125,
+        "left": 782.84375,
+        "width": 238.65625,
+        "height": 39.1875,
+        "text": "Choose Fine pawl at 11:00",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": true
+      },
+      "late_option_on_opening": null,
+      "selected_result": {
+        "top": 557.765625,
+        "left": 1095.5,
+        "width": 254,
+        "height": 100.734375,
+        "text": "Selected for pickup Low head Pickup from 10:30 41–42 mm assembled · 12° reset",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "withdrawal": {
+        "top": 288.859375,
+        "left": 1095.5,
+        "width": 254,
+        "height": 236.6875,
+        "text": "Low head withdrawn · 10:25 Its direction switch failed. Please choose another fitting driver. Fine pawl: 36–37 mm assembled, 7° reset. Ready and available for pickup at 11:00. Choose Fine pawl at 11:00",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "recovered_selection": {
+        "top": 171.125,
+        "left": 1095.5,
+        "width": 254,
+        "height": 100.734375,
+        "text": "Selected for pickup Fine pawl Pickup from 11:00 36–37 mm assembled · 7° reset",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": [],
+        "missingFonts": []
+      },
+      "frames": {
+        "before": {
+          "file": "press-guide-tool-feasible-pickup-1440-before.png",
+          "sha256": "abe140c0be20b5610c90f9bbe500146464a1f09b5bef0629668d1e972db53479"
+        },
+        "chosen": {
+          "file": "press-guide-tool-feasible-pickup-1440-chosen.png",
+          "sha256": "6c05a6be05e6f7a5e359a1b0c4f1df819ca4e896119826a1062fd52d19c7c047"
+        },
+        "after": {
+          "file": "press-guide-tool-feasible-pickup-1440-after.png",
+          "sha256": "6b0a528530cd9bdebc1029de2a1a11e012069bf0c0341bb9814c0de77b313fac"
+        },
+        "edge": {
+          "file": "press-guide-tool-feasible-pickup-1440-edge.png",
+          "sha256": "a1ce77415b98137c75d18fb23d915a046da2195e4f64cf0ca3850c3b7e7f3c39"
+        }
+      },
+      "qualified": false
+    },
+    "mending-guide-tool-labeled-fit-320": {
+      "html_sha256": "94abb4f2ba6d692f4d33ed8420755ca78ee9b7deaefdb8f4f5531e0baa7e7822",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": false,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": false,
+        "replacement_call_to_action_in_view": false,
+        "replacement_and_history_in_view": false,
+        "focus_visible": false,
+        "approved_fonts_loaded": true,
+        "no_page_failures": true,
+        "fitting_tool_at_closing_cannot_be_chosen": true
+      },
+      "first_choice_on_opening": {
+        "top": 1904.1875,
+        "left": 41,
+        "width": 223,
+        "height": 45,
+        "text": "Choose Drift",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": true
+      },
+      "second_choice_on_opening": {
+        "top": 2344.453125,
+        "left": 41,
+        "width": 223,
+        "height": 45,
+        "text": "Choose Pinion",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": true
+      },
+      "late_option_on_opening": {
+        "top": 2453.046875,
+        "left": 21,
+        "width": 263,
+        "height": 467.0625,
+        "text": "Ready at closing Crown Fits, but becomes ready as the desk closes. Height 35–38 mm Reset angle 6° Stock-ready 13:00 Ready at closing No pickup window before 13:00.",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "selected_result": {
+        "top": 1765.390625,
+        "left": 20,
+        "width": 265,
+        "height": 278.0625,
+        "text": "Your worktop Choice history 1 choice recorded ✓ Drift Current choice · stock-ready at 12:05 Drift is your current choice. This demo does not reserve a tool.",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "Choice history",
+        "acceptsChoice": false
+      },
+      "withdrawal": {
+        "top": 45.28125,
+        "left": 20,
+        "width": 265,
+        "height": 381.0625,
+        "text": "Stock note · recorded 12:18 A note from the bench Stock update Drift was withdrawn because its spindle slips. Apply this update to reflect the latest stock information in your choice. Stock update applied Update applied. Drift is withdrawn; choose another ratchet if you wish.",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "A note from the bench",
+        "acceptsChoice": false
+      },
+      "recovered_selection": {
+        "top": 1333.21875,
+        "left": 20,
+        "width": 265,
+        "height": 363.59375,
+        "text": "Your worktop Choice history 2 choices recorded ! Drift Previously chosen · withdrawn in the 12:18 stock update ✓ Pinion Current choice · stock-ready at 12:45 Pinion is your current choice. The desk closes at 13:00.",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "Choice history",
+        "acceptsChoice": false
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": [],
+        "missingFonts": []
+      },
+      "frames": {
+        "before": {
+          "file": "mending-guide-tool-labeled-fit-320-before.png",
+          "sha256": "b034ec602b41dc12d2c7e42b3a53d4472a331028e5fddb7d2405bed8e007cbaf"
+        },
+        "chosen": {
+          "file": "mending-guide-tool-labeled-fit-320-chosen.png",
+          "sha256": "681437b366bc05434a3be76aa234caecfedb9763cebc7365404d9aab70721610"
+        },
+        "after": {
+          "file": "mending-guide-tool-labeled-fit-320-after.png",
+          "sha256": "4f412702da4ff868574cfbc8598dfa3c2848d5c0a9ed8e63631a85191db64ec2"
+        },
+        "edge": {
+          "file": "mending-guide-tool-labeled-fit-320-edge.png",
+          "sha256": "0b97831b319251ed142a23470542aa44d0e20a27a5d90faec9267c9304e38480"
+        }
+      },
+      "qualified": false
+    },
+    "mending-guide-tool-labeled-fit-390": {
+      "html_sha256": "94abb4f2ba6d692f4d33ed8420755ca78ee9b7deaefdb8f4f5531e0baa7e7822",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": false,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": false,
+        "replacement_call_to_action_in_view": false,
+        "replacement_and_history_in_view": false,
+        "focus_visible": false,
+        "approved_fonts_loaded": true,
+        "no_page_failures": true,
+        "opening_height_limit_in_view": false,
+        "opening_swing_limit_in_view": true,
+        "opening_pickups_within_both_actions": false,
+        "fitting_tool_at_closing_cannot_be_chosen": true
+      },
+      "first_choice_on_opening": {
+        "top": 1689.3125,
+        "left": 41,
+        "width": 293,
+        "height": 45,
+        "text": "Choose Drift",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": true
+      },
+      "second_choice_on_opening": {
+        "top": 2110.734375,
+        "left": 41,
+        "width": 293,
+        "height": 45,
+        "text": "Choose Pinion",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": true
+      },
+      "late_option_on_opening": {
+        "top": 2202.53125,
+        "left": 21,
+        "width": 333,
+        "height": 448.21875,
+        "text": "Ready at closing Crown Fits, but becomes ready as the desk closes. Height 35–38 mm Reset angle 6° Stock-ready 13:00 Ready at closing No pickup window before 13:00.",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "selected_result": {
+        "top": 1716.265625,
+        "left": 20,
+        "width": 335,
+        "height": 233.171875,
+        "text": "Your worktop Choice history 1 choice recorded ✓ Drift Current choice · stock-ready at 12:05 Drift is your current choice. This demo does not reserve a tool.",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "Choice history",
+        "acceptsChoice": false
+      },
+      "withdrawal": {
+        "top": 202.765625,
+        "left": 20,
+        "width": 335,
+        "height": 314.421875,
+        "text": "Stock note · recorded 12:18 A note from the bench Stock update Drift was withdrawn because its spindle slips. Apply this update to reflect the latest stock information in your choice. Stock update applied Update applied. Drift is withdrawn; choose another ratchet if you wish.",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "A note from the bench",
+        "acceptsChoice": false
+      },
+      "recovered_selection": {
+        "top": 1302.9375,
+        "left": 20,
+        "width": 335,
+        "height": 346.203125,
+        "text": "Your worktop Choice history 2 choices recorded ! Drift Previously chosen · withdrawn in the 12:18 stock update ✓ Pinion Current choice · stock-ready at 12:45 Pinion is your current choice. The desk closes at 13:00.",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "Choice history",
+        "acceptsChoice": false
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": [],
+        "missingFonts": []
+      },
+      "frames": {
+        "before": {
+          "file": "mending-guide-tool-labeled-fit-390-before.png",
+          "sha256": "f064ccc1a407f90a70025ae9e27fc82b6fd27db5a2d7d16921965f507043d20a"
+        },
+        "chosen": {
+          "file": "mending-guide-tool-labeled-fit-390-chosen.png",
+          "sha256": "2321bf6304e9fa596ef2862565e66f519dc90963fbeedae9293a45c3b6aa1ca7"
+        },
+        "after": {
+          "file": "mending-guide-tool-labeled-fit-390-after.png",
+          "sha256": "366b9e76eb6f8ab69b7c3312a5f3973a283a3b00384a2d6c0f376516e97ed0e5"
+        },
+        "edge": {
+          "file": "mending-guide-tool-labeled-fit-390-edge.png",
+          "sha256": "e8dc0d082424f6d945906fa7ccf970a2292b66ed8cb4da15638f109b696f945b"
+        }
+      },
+      "qualified": false
+    },
+    "mending-guide-tool-labeled-fit-1440": {
+      "html_sha256": "94abb4f2ba6d692f4d33ed8420755ca78ee9b7deaefdb8f4f5531e0baa7e7822",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": false,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": false,
+        "replacement_call_to_action_in_view": false,
+        "replacement_and_history_in_view": true,
+        "focus_visible": false,
+        "approved_fonts_loaded": true,
+        "no_page_failures": true,
+        "opening_height_limit_in_view": true,
+        "opening_swing_limit_in_view": true,
+        "opening_pickups_within_both_actions": false,
+        "fitting_tool_at_closing_cannot_be_chosen": true
+      },
+      "first_choice_on_opening": {
+        "top": 1117.859375,
+        "left": 418.9375,
+        "width": 271.5625,
+        "height": 45,
+        "text": "Choose Drift",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": true
+      },
+      "second_choice_on_opening": {
+        "top": 1091.0625,
+        "left": 735.5,
+        "width": 271.5625,
+        "height": 45,
+        "text": "Choose Pinion",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": true
+      },
+      "late_option_on_opening": {
+        "top": 678.484375,
+        "left": 1029.0625,
+        "width": 316.5625,
+        "height": 506.375,
+        "text": "Ready at closing Crown Fits, but becomes ready as the desk closes. Height 35–38 mm Reset angle 6° Stock-ready 13:00 Ready at closing No pickup window before 13:00.",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "selected_result": {
+        "top": 523.5,
+        "left": 722.5,
+        "width": 624.125,
+        "height": 222.328125,
+        "text": "Your worktop Choice history 1 choice recorded ✓ Drift Current choice · stock-ready at 12:05 Drift is your current choice. This demo does not reserve a tool.",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "Choice history",
+        "acceptsChoice": false
+      },
+      "withdrawal": {
+        "top": 523.5,
+        "left": 78.375,
+        "width": 624.125,
+        "height": 255.78125,
+        "text": "Stock note · recorded 12:18 A note from the bench Stock update Drift was withdrawn because its spindle slips. Apply this update to reflect the latest stock information in your choice. Stock update applied Update applied. Drift is withdrawn; choose another ratchet if you wish.",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "A note from the bench",
+        "acceptsChoice": false
+      },
+      "recovered_selection": {
+        "top": 523.5,
+        "left": 722.5,
+        "width": 624.125,
+        "height": 290.46875,
+        "text": "Your worktop Choice history 2 choices recorded ! Drift Previously chosen · withdrawn in the 12:18 stock update ✓ Pinion Current choice · stock-ready at 12:45 Pinion is your current choice. The desk closes at 13:00.",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "Choice history",
+        "acceptsChoice": false
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": [],
+        "missingFonts": []
+      },
+      "frames": {
+        "before": {
+          "file": "mending-guide-tool-labeled-fit-1440-before.png",
+          "sha256": "93d6ff8235cfc56df60193512a10e9390d762a3a8d5b12f28b78235d81754ee3"
+        },
+        "chosen": {
+          "file": "mending-guide-tool-labeled-fit-1440-chosen.png",
+          "sha256": "891bacdaff751063ac7a191996c271f4d84690472ee95fa65620652965f10292"
+        },
+        "after": {
+          "file": "mending-guide-tool-labeled-fit-1440-after.png",
+          "sha256": "4ae2d13e57e7cc17962deee9b1f6e86a85cf7f7ae2f952e94d07f65cd33d9dcf"
+        },
+        "edge": {
+          "file": "mending-guide-tool-labeled-fit-1440-edge.png",
+          "sha256": "290e93971679e18549c99a8950399452f1043c5be20bdfcbaeb00911780a4dfa"
+        }
+      },
+      "qualified": false
+    },
+    "mending-guide-tool-feasible-pickup-320": {
+      "html_sha256": "e299477ac774873807303276ea232423d45361d723532d868b17c756a99141fb",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": false,
+        "withdrawal_reason_in_view": false,
+        "replacement_measurements_in_view": true,
+        "replacement_call_to_action_in_view": true,
+        "replacement_and_history_in_view": false,
+        "focus_visible": false,
+        "approved_fonts_loaded": true,
+        "no_page_failures": false,
+        "fitting_tool_at_closing_cannot_be_chosen": true
+      },
+      "first_choice_on_opening": {
+        "top": 893.890625,
+        "left": 39,
+        "width": 227,
+        "height": 42,
+        "text": "Choose Drift at 12:20",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": true
+      },
+      "second_choice_on_opening": {
+        "top": 1097.671875,
+        "left": 39,
+        "width": 227,
+        "height": 42,
+        "text": "Choose Pinion at 12:45",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": true
+      },
+      "late_option_on_opening": {
+        "top": 1176.46875,
+        "left": 31,
+        "width": 243,
+        "height": 204.78125,
+        "text": "CrownFits, but too late Height 35–38 mm Within allowance Reset swing 6° Within 13° Desk closed at 13:00 Stock-ready 13:00",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "selected_result": {
+        "top": 992,
+        "left": 31,
+        "width": 243,
+        "height": 64.59375,
+        "text": "Drift Earliest pickup: 12:20",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "withdrawal": {
+        "top": 866.8125,
+        "left": 31,
+        "width": 243,
+        "height": 102.375,
+        "text": "Drift was withdrawn Recorded at 12:18: its spindle slips. Choose another ratchet to replace it.",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "recovered_selection": {
+        "top": 788.21875,
+        "left": 31,
+        "width": 243,
+        "height": 64.59375,
+        "text": "Pinion Earliest pickup: 12:45",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": [],
+        "missingFonts": []
+      },
+      "frames": {
+        "before": {
+          "file": "mending-guide-tool-feasible-pickup-320-before.png",
+          "sha256": "a418af853404028055eeb94c6f8452351e81738a8230c54d644fe99da8815d7a"
+        },
+        "chosen": {
+          "file": "mending-guide-tool-feasible-pickup-320-chosen.png",
+          "sha256": "6b863e85da79026752970b0670f167b37621eee3cccbbe854b13f8e925c423fa"
+        },
+        "after": {
+          "file": "mending-guide-tool-feasible-pickup-320-after.png",
+          "sha256": "be0a6761ef8336cf40e84ea107775a87c65816de0219810df97aebbc10608225"
+        },
+        "edge": {
+          "file": "mending-guide-tool-feasible-pickup-320-edge.png",
+          "sha256": "63347180551d7ae11e93fe2571bd96cc2cadf849c9a32b293014a1aa47bff845"
+        }
+      },
+      "qualified": false
+    },
+    "mending-guide-tool-feasible-pickup-390": {
+      "html_sha256": "e299477ac774873807303276ea232423d45361d723532d868b17c756a99141fb",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": false,
+        "original_choice_visible_during_conflict": true,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": false,
+        "replacement_call_to_action_in_view": true,
+        "replacement_and_history_in_view": true,
+        "focus_visible": false,
+        "approved_fonts_loaded": true,
+        "no_page_failures": true,
+        "opening_height_limit_in_view": true,
+        "opening_swing_limit_in_view": true,
+        "opening_pickups_within_both_actions": false,
+        "fitting_tool_at_closing_cannot_be_chosen": true
+      },
+      "first_choice_on_opening": {
+        "top": 872.890625,
+        "left": 39,
+        "width": 297,
+        "height": 42,
+        "text": "Choose Drift at 12:20",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": true
+      },
+      "second_choice_on_opening": {
+        "top": 1076.671875,
+        "left": 39,
+        "width": 297,
+        "height": 42,
+        "text": "Choose Pinion at 12:45",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": true
+      },
+      "late_option_on_opening": {
+        "top": 1155.46875,
+        "left": 31,
+        "width": 313,
+        "height": 204.78125,
+        "text": "CrownFits, but too late Height 35–38 mm Within allowance Reset swing 6° Within 13° Desk closed at 13:00 Stock-ready 13:00",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "selected_result": {
+        "top": 1053.3125,
+        "left": 31,
+        "width": 313,
+        "height": 64.59375,
+        "text": "Drift Earliest pickup: 12:20",
+        "visible": false,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "withdrawal": {
+        "top": 527.125,
+        "left": 31,
+        "width": 313,
+        "height": 82.78125,
+        "text": "Drift was withdrawn Recorded at 12:18: its spindle slips. Choose another ratchet to replace it.",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "recovered_selection": {
+        "top": 448.53125,
+        "left": 31,
+        "width": 313,
+        "height": 64.59375,
+        "text": "Pinion Earliest pickup: 12:45",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": [],
+        "missingFonts": []
+      },
+      "frames": {
+        "before": {
+          "file": "mending-guide-tool-feasible-pickup-390-before.png",
+          "sha256": "2f179c5c6ffc24b715a3ac3919297ad554903cf1bfa2b97e57a14df42ed963e6"
+        },
+        "chosen": {
+          "file": "mending-guide-tool-feasible-pickup-390-chosen.png",
+          "sha256": "d3087b50fd8dba8cb0fdd9b0553d189084eff48bacc90d07d1a6665b4cbcf576"
+        },
+        "after": {
+          "file": "mending-guide-tool-feasible-pickup-390-after.png",
+          "sha256": "1715dbc73fd39d743fa861211e2bf65fab9af3663d4ff87448291faa33cea1f0"
+        },
+        "edge": {
+          "file": "mending-guide-tool-feasible-pickup-390-edge.png",
+          "sha256": "01115d0964a6046aea27f891c87d1e42abd6f27429437bbebbab60ece4d4f388"
+        }
+      },
+      "qualified": false
+    },
+    "mending-guide-tool-feasible-pickup-1440": {
+      "html_sha256": "e299477ac774873807303276ea232423d45361d723532d868b17c756a99141fb",
+      "checks": {
+        "initial_action_by_keyboard": true,
+        "separate_change_by_keyboard": true,
+        "replacement_by_keyboard": true,
+        "original_choice_visible_before_withdrawal": true,
+        "original_choice_visible_during_conflict": true,
+        "withdrawal_reason_in_view": true,
+        "replacement_measurements_in_view": true,
+        "replacement_call_to_action_in_view": true,
+        "replacement_and_history_in_view": true,
+        "focus_visible": false,
+        "approved_fonts_loaded": true,
+        "no_page_failures": true,
+        "opening_height_limit_in_view": true,
+        "opening_swing_limit_in_view": true,
+        "opening_pickups_within_both_actions": true,
+        "fitting_tool_at_closing_cannot_be_chosen": true
+      },
+      "first_choice_on_opening": {
+        "top": 599.796875,
+        "left": 736.5,
+        "width": 269,
+        "height": 42,
+        "text": "Choose Drift at 12:20",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": true
+      },
+      "second_choice_on_opening": {
+        "top": 690.59375,
+        "left": 736.5,
+        "width": 269,
+        "height": 42,
+        "text": "Choose Pinion at 12:45",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": true
+      },
+      "late_option_on_opening": {
+        "top": 767.390625,
+        "left": 107.5,
+        "width": 910,
+        "height": 91.796875,
+        "text": "Crown Fits, but too late 35–38 mm Within allowance 6° Within 13° Desk closed at 13:00 Stock-ready 13:00",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "selected_result": {
+        "top": 494.59375,
+        "left": 1070.5,
+        "width": 247,
+        "height": 64.59375,
+        "text": "Drift Earliest pickup: 12:20",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "withdrawal": {
+        "top": 573.1875,
+        "left": 1070.5,
+        "width": 247,
+        "height": 102.375,
+        "text": "Drift was withdrawn Recorded at 12:18: its spindle slips. Choose another ratchet to replace it.",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "recovered_selection": {
+        "top": 494.59375,
+        "left": 1070.5,
+        "width": 247,
+        "height": 64.59375,
+        "text": "Pinion Earliest pickup: 12:45",
+        "visible": true,
+        "pressed": null,
+        "focused": false,
+        "accessibleLabel": "",
+        "acceptsChoice": false
+      },
+      "actual_inputs": {
+        "actions": [
+          "Enter"
+        ],
+        "conflictInput": "Enter",
+        "recoveryInput": "Enter",
+        "errors": [],
+        "blocked": [],
+        "missingFonts": []
+      },
+      "frames": {
+        "before": {
+          "file": "mending-guide-tool-feasible-pickup-1440-before.png",
+          "sha256": "ff3697ec543589ed2846618b9f0131ae1cac25666707262c9f7c38b6adbba135"
+        },
+        "chosen": {
+          "file": "mending-guide-tool-feasible-pickup-1440-chosen.png",
+          "sha256": "0f6070e1c3f8608f8c57562cf6239829828a28c8fe62facf00c1341fcfd7d8d1"
+        },
+        "after": {
+          "file": "mending-guide-tool-feasible-pickup-1440-after.png",
+          "sha256": "025d42f1ff059b393fefd7a2da9055988018c9ffd103db54a21fd804a47c1f47"
+        },
+        "edge": {
+          "file": "mending-guide-tool-feasible-pickup-1440-edge.png",
+          "sha256": "eb7f8223ccde50aa38bd57d189c3d575a9b503a207b534f24444167d9fef3fef"
+        }
+      },
+      "qualified": false
+    }
+  },
+  "failed_views": [
+    "press-guide-tool-labeled-fit-320",
+    "press-guide-tool-labeled-fit-390",
+    "press-guide-tool-labeled-fit-1440",
+    "press-guide-tool-feasible-pickup-320",
+    "press-guide-tool-feasible-pickup-390",
+    "press-guide-tool-feasible-pickup-1440",
+    "mending-guide-tool-labeled-fit-320",
+    "mending-guide-tool-labeled-fit-390",
+    "mending-guide-tool-labeled-fit-1440",
+    "mending-guide-tool-feasible-pickup-320",
+    "mending-guide-tool-feasible-pickup-390",
+    "mending-guide-tool-feasible-pickup-1440"
+  ]
+}
