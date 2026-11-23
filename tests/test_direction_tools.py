@@ -188,6 +188,24 @@ async def test_landing_uses_the_primary_task_for_art_direction(brief, expected):
 
 
 @pytest.mark.asyncio
+@pytest.mark.parametrize(("brief", "expected"), [
+    ("Revamp the homepage for a personal injury practice. Introduce the attorney and how to call. "
+     "Put a consultation form below the practice areas.", "direct-consultation"),
+    ("Make a mobile-friendly home page for a physiotherapy clinic. Introduce Maya and let visitors call her "
+     "to discuss an injury. The photo is already supplied.", "direct-consultation"),
+    ("A consultation form for a dental practice. Collect contact details and request a callback.",
+     "grouped-fieldsets"),
+    ("Product page for a single product used by a law firm. Let a shopper add it to the bag.", "object-hero"),
+    ("Build a portfolio for an architecture studio with a building case study and a contact form.", "ground-plane"),
+])
+async def test_practice_contact_direction_is_specific_to_the_visitor_task(brief, expected):
+    reply = await direct(brief)
+    assert reply["direction"]["id"] == expected
+    assert not reply["questions"]
+    assert len(json.dumps(reply, ensure_ascii=False).encode("utf-8")) <= 6000
+
+
+@pytest.mark.asyncio
 @pytest.mark.parametrize("reaction", ["calmer", "Quieter!", "more calm", "less loud"])
 async def test_calmer_keeps_the_operational_exception_as_the_focal_point(reaction):
     result = await react("exception-first", reaction)
