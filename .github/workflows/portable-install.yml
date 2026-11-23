@@ -28,6 +28,7 @@ jobs:
       - name: Check out the portability candidate
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
         with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
       - name: Select the exact Python interpreter
         id: python
@@ -40,8 +41,10 @@ jobs:
           EXPECTED_PYTHON: ${{ matrix.python }}
           EXPECTED_ARCH: ${{ matrix.host.arch }}
           PYTHON_EXECUTABLE: ${{ steps.python.outputs.python-path }}
+          EXPECTED_REVISION: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           bash scripts/verify_install_matrix.sh --check-host 15 "$EXPECTED_ARCH"
+          test "$(git rev-parse HEAD)" = "$EXPECTED_REVISION"
           test "$("$PYTHON_EXECUTABLE" -I -c 'import platform; print(platform.machine())')" = "$EXPECTED_ARCH"
           echo "Architecture: $(uname -m), $(sw_vers -productVersion), $("$PYTHON_EXECUTABLE" -V)" >> "$GITHUB_STEP_SUMMARY"
           bash scripts/verify_clean_install.sh "$GITHUB_WORKSPACE" "$PYTHON_EXECUTABLE" \

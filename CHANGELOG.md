@@ -4,6 +4,10 @@
 
 ## Unreleased
 
+- Removed duplicate offline vision queues from the package source and an obsolete failed transcript from the checkout. The offline scripts continue to use the canonical root queues. The wheel excludes both queues and the legacy pattern snapshot. [Corpus audit](CONTENT-AUDIT.md)
+
+- Run the install, browser, and desktop checks against the pull request head. Align both README installers and the Chrome and MCP review instructions with one verified source tree. [Release candidate proof](SMOKE-RECEIPTS.md#release-candidate-on-both-architectures)
+
 - Added `design-mcp serve --review` for image-capable MCP clients. `review_page` returns a masked screenshot and layout facts at desktop or mobile width. The default catalog stays at three tools. [Review workflow](design_mcp/review/README.md#visual-critique-and-a-live-task) · [Protocol proof](evidence/benchmark-v1/mcp-page-review.json)
 
 - **Review URL** in Chrome now starts a local scan and opens a result tab with a masked capture and measured findings. It uses a disposable Chrome profile and works without Playwriter. The popup distinguishes a completed check with no findings from a failed scan.
