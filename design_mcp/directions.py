@@ -7,6 +7,7 @@ from urllib.parse import urlencode
 from .design_checks import inspect_design
 from .direction_records import Surface, library
 from .models.visual_analyzer import contrast_ratio
+from .opening_view import OpeningView, revise_opening_view
 
 
 _CAPS = {"direct": 6000, "react": 3200, "check": 2400}
@@ -180,10 +181,18 @@ async def direct(brief: str, surface: Surface | None = None, avoid: list[str] | 
     return _bounded("direct", output)
 
 
-async def react(direction_id: str, reaction: str, comparison_id: str | None = None) -> dict:
+async def react(
+    direction_id: str,
+    reaction: str,
+    comparison_id: str | None = None,
+    opening_view: OpeningView | None = None,
+) -> dict:
     """Give a targeted design revision. Accept calmer, bolder, too generic, or more like A.
 
     For more like A, provide comparison_id if A names another returned direction.
+    For fit the opening view, supply opening_view from a browser capture at the
+    top of the page. Use CSS pixel bounds and include only the controls the
+    brief requires in that opening view. Geometry is independent of occlusion.
     Apply the delta to the current design while retaining its primary task and content.
     """
     records = library()
@@ -192,6 +201,12 @@ async def react(direction_id: str, reaction: str, comparison_id: str | None = No
         return {"error": "Unknown direction ID. Call direct for a reviewed direction."}
     normalized = " ".join(reaction.casefold().split()).strip(".!")
     keep = ["primary task", "project content", "brand constraints", "accessibility"]
+    if normalized == "fit the opening view":
+        if opening_view is None:
+            return {"error": "Capture the opening viewport and supply the required controls' CSS pixel bounds."}
+        return _bounded("react", {
+            "direction_id": row.id, "keep": keep, **revise_opening_view(opening_view),
+        })
     if normalized in {"calmer", "quieter", "more calm", "less loud"}:
         if row.surface == "form":
             delta = {"spacing": "Increase the gap before the primary button from 24px to 32px."}
