@@ -8,6 +8,8 @@ On the reference Mac, GPT Computer Use verified both native Chrome flows with th
 
 The cleanup pin also passed **eight clean installs, eight `doctor` calls, and 48 stdio runs** on Apple Silicon Ventura 13.7.4. The repeat used a disposable copy of the existing benchmark VM and new interpreter, tool, package, and evidence directories. The optional review calls checked its URL refusal path. The clone was stopped and deleted, and the scoped OCI cache remained empty. The earlier `a9e1211` run booted from a freshly pulled image. Intel Ventura remains unverified. [Exact Ventura transcript audit](evidence/benchmark-v1/ventura-tart-0978712.json)
 
+A separate reference-Mac replay of the pinned installed `review_page` over stdio returned a 1440 × 900 PNG with five masked fields and a 390 × 844 PNG with four. The original PNG hashes matched the earlier public-form captures. Calls took 2.14 s and 0.79 s in that session, and the 404 returned a structured capture error. These are individual timings from an initial-view capture. [Installed PNG and error receipt](evidence/benchmark-v1/release-mcp-images-0978712.json)
+
 ## Portable CI smoke client
 
 On `46e9913`, 11 of 12 hosted checks completed successfully. The Intel Python 3.11 job reached both installed entry points, then hit its 12-minute limit during the uv smoke commands. Its installer bootstrap spent five minutes compiling `cryptography` for the additional FastMCP client. The verifier now uses the client from each pipx and uv installation. A local replay with both existing environments passed all 12 stdio checks from an empty directory. The new hosted run will verify clean installs and timing. [Timed-out Intel job](https://github.com/chrismicah/design-mcp/actions/runs/45117704881/job/137504215007)

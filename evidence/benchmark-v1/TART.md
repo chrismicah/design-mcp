@@ -4,6 +4,8 @@ The README pin `0978712` passed on **macOS 13.7.4 arm64** in a disposable copy o
 
 The earlier `a9e1211` pin passed the same eight installs and 48 stdio checks in a guest cloned from the freshly pulled image. The current pin was verified with fresh installs on the existing OS image. [Earlier Ventura transcript audit](ventura-tart-a9e1211.json)
 
+A new binary-only check resolved the exact README pin for all eight Ventura architecture and Python targets. PyPI metadata matched all 604 wheel selections, including the pin’s WebSocket dependency. All eight managed interpreter URLs returned HTTP 200 to HEAD. This checks dependency availability. Intel Ventura still needs the native runtime matrix below. [Exact-pin dependency receipt](ventura-wheel-pin-0978712.json)
+
 An earlier fresh Tart guest verified eight installs and 24 stdio runs against `b868307`, using an earlier set of smoke commands. [First Ventura transcript audit](ventura-tart-b868307.json)
 
 ## Earlier attempts

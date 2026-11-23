@@ -1,0 +1,277 @@
+{
+  "calibration": {
+    "example": "Legible repair intake with clear labels, familiar layout, and misplaced focus after an invalid number",
+    "coherence": 7,
+    "originality": 4,
+    "craft": 6,
+    "usability": 5
+  },
+  "screens": {
+    "A-1440": {
+      "coherence": 8.5,
+      "originality": 7.5,
+      "craft": 8,
+      "usability": 9,
+      "primary_action": {
+        "input": "Tab, then ArrowRight three times",
+        "expected": "Select Friday and update the booking summary.",
+        "observed": "Friday received focus and became checked; the summary changed to Friday. The selected control, day, $85, and 48 hours were visible together without scrolling.",
+        "captures": [
+          "A-1440-before.png",
+          "A-1440-after.png"
+        ]
+      },
+      "edge_observation": "Two ArrowLeft presses selected Wednesday, unchecked Friday, and changed the summary through Thursday to Wednesday. Selection followed focus.",
+      "fact_check": "The page displays $85, 48 hours, and 41 Elm Street. Their real-world accuracy is not independently verified.",
+      "strength": "The large, direct 'Book a tune-up' title and prominent selected day make the task easy to scan. Dark text on pale blue and the yellow selected control have strong apparent contrast.",
+      "weakness": "The oversized condensed type makes the title and summary feel heavy; the large wheel and empty sidebar take substantial space.",
+      "repair": "Reduce the display type slightly and use the sidebar space to make the location more prominent.",
+      "arm": "proposed",
+      "html_sha256": "589e5f69d63727d45011f25a3cda04c9b3a6375ea4ea1958848b7a737e79c56b",
+      "weighted": 8.2,
+      "before": {
+        "sha256": "0d78ba61c231ccb3fd3a9fdc21f8a4755e27c677bc90d74020ca4a7e5a932e86",
+        "file": "A-1440-before.png",
+        "tool_call_id": "item_2"
+      },
+      "after": {
+        "sha256": "dd2647f88edca9889b19b5cb0cbae7e74e9d9b57d16f6ca6854387ef744e35dc",
+        "file": "A-1440-after.png",
+        "tool_call_id": "item_7"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ]
+    },
+    "A-390": {
+      "coherence": 8,
+      "originality": 7.5,
+      "craft": 8,
+      "usability": 9,
+      "primary_action": {
+        "input": "Tab, then ArrowRight three times",
+        "expected": "Select Friday and update the booking summary.",
+        "observed": "Friday received focus and became checked; the summary changed to Friday. The selected control, day, $85, and 48 hours were visible together without scrolling.",
+        "captures": [
+          "A-390-before.png",
+          "A-390-after.png"
+        ]
+      },
+      "edge_observation": "Two ArrowLeft presses selected Wednesday and replaced Friday in the summary; selection followed focus.",
+      "fact_check": "The page displays $85, 48 hours, and 41 Elm Street. Their real-world accuracy is not independently verified.",
+      "strength": "The compact layout keeps the task, summary, and location on one screen, with a conspicuous focus and selected state.",
+      "weakness": "The summary places the day at the lower left and stacks price and turnaround at the right, leaving an awkward gap and making the facts less immediately scannable.",
+      "repair": "Arrange the summary facts in a compact, aligned row or labeled stack while retaining the visible day and controls.",
+      "arm": "proposed",
+      "html_sha256": "589e5f69d63727d45011f25a3cda04c9b3a6375ea4ea1958848b7a737e79c56b",
+      "weighted": 8.05,
+      "before": {
+        "sha256": "3acb98e3a13741d6ce94ff7aef73159d61089a0b8de2c6351a8da6d2a270a2df",
+        "file": "A-390-before.png",
+        "tool_call_id": "item_11"
+      },
+      "after": {
+        "sha256": "c36ece38d5fabdcb03f94eaa44eae1474fe7553435b7454c05d405c657eab81e",
+        "file": "A-390-after.png",
+        "tool_call_id": "item_16"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ]
+    },
+    "B-1440": {
+      "coherence": 7.5,
+      "originality": 6,
+      "craft": 7.5,
+      "usability": 8,
+      "primary_action": {
+        "input": "Tab, then ArrowRight three times",
+        "expected": "Select Friday and update the booking summary.",
+        "observed": "Friday received focus and became checked; the dedicated summary displayed 'Booking day: Friday'. The selected control, day, $85, and 48 hours were visible together without scrolling.",
+        "captures": [
+          "B-1440-before.png",
+          "B-1440-after.png"
+        ]
+      },
+      "edge_observation": "Two ArrowLeft presses selected Wednesday, unchecked Friday, and updated the summary through Thursday to Wednesday. Selection followed focus.",
+      "fact_check": "The page displays $85, 48 hours, and 41 Elm Street. Their real-world accuracy is not independently verified.",
+      "strength": "The form has clear section divisions and readable dark-on-light text; the selected teal control is distinct.",
+      "weakness": "The generic 'A better ride starts here' headline competes with the task heading. Price and turnaround repeat in separate sections, while the selected day is small at the bottom of the summary.",
+      "repair": "Make the booking task the primary title and bring the selected day into the summary's main fact rows.",
+      "arm": "current",
+      "html_sha256": "0b87be6d7ff6358c4984f20e452f76c8148b3fda793a1c187b7ea0cb51c08f2c",
+      "weighted": 7.15,
+      "before": {
+        "sha256": "8b0c5dff80fdce1f30b8561cd2e2530ba970146534e47dfd3122753da49d55e9",
+        "file": "B-1440-before.png",
+        "tool_call_id": "item_21"
+      },
+      "after": {
+        "sha256": "ebcca7e7aee31fb08bc2bbee9c21baab65faf21b73a49b647056edf2fd43bd2c",
+        "file": "B-1440-after.png",
+        "tool_call_id": "item_26"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ]
+    },
+    "B-390": {
+      "coherence": 7,
+      "originality": 6,
+      "craft": 7,
+      "usability": 7,
+      "primary_action": {
+        "input": "Tab, then ArrowRight three times",
+        "expected": "Select Friday and update the booking summary.",
+        "observed": "Friday received focus and became checked. The control, $85, and 48 hours were visible without extra scrolling, but the dedicated summary and its full selected-day text were below the viewport. The accessibility snapshot reported 'Booking day: Friday'.",
+        "captures": [
+          "B-390-before.png",
+          "B-390-after.png"
+        ]
+      },
+      "edge_observation": "Two ArrowLeft presses selected Wednesday and unchecked Friday; the accessibility snapshot reported 'Booking day: Wednesday' in the summary. Selection followed focus. The updated summary was not visually inspected after scrolling.",
+      "fact_check": "The page displays $85, 48 hours, and 41 Elm Street. Their real-world accuracy is not independently verified. The requested viewport was 390 CSS pixels; the review tool reported a 375-pixel layout width.",
+      "strength": "The day controls remain legible and the selected control has clear contrast.",
+      "weakness": "The tall promotional hero pushes the booking summary below the screen, so the full selected day cannot be read alongside the control and service facts immediately after selection.",
+      "repair": "Compress the mobile hero and place the selected day beside the service facts or immediately below the day controls.",
+      "arm": "current",
+      "html_sha256": "0b87be6d7ff6358c4984f20e452f76c8148b3fda793a1c187b7ea0cb51c08f2c",
+      "weighted": 6.7,
+      "before": {
+        "sha256": "dd1ec6ef10f847bc7b3157f2cc01cb5ee3e72dc6803d84a340fc5435994866cd",
+        "file": "B-390-before.png",
+        "tool_call_id": "item_30"
+      },
+      "after": {
+        "sha256": "4bed839295633fbca1126b3959e09df266350f2c2844da316c98445de61b3049",
+        "file": "B-390-after.png",
+        "tool_call_id": "item_35"
+      },
+      "layout_width": 375,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ]
+    }
+  },
+  "preference": {
+    "winner": "A",
+    "reason": "A makes the task and selected day more prominent and keeps the full summary visible with the controls at both tested widths. Both views supported the tested keyboard sequence and updated their summaries."
+  },
+  "case": "booking-one-work-order",
+  "verified_screens": 4,
+  "required_screens": 4,
+  "browser": "Chrome/158.0.8127.36",
+  "evaluator_thread": "01a206ed-1580-7203-8709-b6f8f4dd05b6",
+  "usage": {
+    "input_tokens": 656076,
+    "cached_input_tokens": 610944,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2517,
+    "reasoning_output_tokens": 0
+  },
+  "trace_sha256": "7a824e183c6684eaf0f7bf5ddfb6dee7cdf14f81b3ea4c1c7fee799cb2edadac",
+  "browser_audit_sha256": "8c828cb1a37a48a368a3e1a944a8a1af274d9c991d1180e08ee2a22c1f4553c4"
+}

@@ -104,6 +104,8 @@ The optional historical maintenance scripts write to `data/`. Run `python3 scrip
 
 All eight macOS 15 clean-install jobs passed on Intel and Apple Silicon with Python 3.10–3.13. Both installers fetched the exact pinned Git commit, passed `doctor`, and exercised the default, historical and combined stdio surfaces with and without the optional review tool. The same pin passed **eight clean installs and 48 stdio checks** on Ventura 13.7.4 arm64 in a disposable Tart clone of the existing benchmark guest. Intel Ventura runtime verification remains open. [macOS 15 matrix](evidence/benchmark-v1/release-ci-0978712.json) · [Ventura matrix](evidence/benchmark-v1/ventura-tart-0978712.json)
 
+The installed `review_page` tool returned original masked PNGs at 1440 × 900 and 390 × 844. The same stdio session returned a structured error for an HTTP 404. [Installed review receipt](evidence/benchmark-v1/release-mcp-images-0978712.json)
+
 All 36 matched design briefs have blinded scores. The plain generator averaged 92.7 and frozen Design MCP v2 averaged 94.1, with 17 wins, 11 ties, and eight losses. The paired 95% interval of −0.46 to +3.13 points leaves the average advantage inconclusive. [Benchmark and receipts](EVALS.md)
 
 The pinned install routed **15 of 36** briefs to the matching surface with only a brief supplied, up from **9 of 36** in frozen v2. All six forms routed correctly. Settings and empty states remain uncovered as exact surfaces. [Current installed routing](evidence/benchmark-v1/release-initial-6e9a239.json) · [Earlier comparison](evidence/benchmark-v1/current-direct-routing.json)
