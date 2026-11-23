@@ -40,3 +40,22 @@ Both the control and treatment reproduced their sealed replies on fresh
 pipx and uv installs on Apple Silicon macOS 15. The four installs passed
 doctor and the supported stdio smoke configurations. The matched render
 still needs both generated Madison drafts. [Complete source replies](../evals/practice_focus/source-replies.json) · [Four install receipts](../evidence/benchmark-v1/focus-guidance-installed.json) · [Hosted workflow](https://github.com/chrismicah/design-mcp/actions/runs/45285480523)
+
+## Madison browser result
+
+The unedited treatment moved focus from the result heading to the named
+textarea in the first frame at 320, 390 and 1440 CSS px. Both drafts kept the
+editable note and nearby privacy wording in view. Both supported recovery,
+editing and keyboard return with zero post-load requests. The treatment moved
+the 320 px name field from 830 to 613 CSS px, but its preview button ended at
+724 px in a 700 px viewport. The treatment also omitted the required result
+status announcement on all three widths. The pair passed 77 and 80 of 84
+checks. All 702 comparative Tacoma check outcomes stayed identical.
+
+Keep this guidance on the experiment branch. The control missed the opening
+preview on both phones. Each draft still has a failing acceptance check, so
+this pair does not advance to blind design scoring. A later design test should
+keep editing, focus and result feedback together while bringing the full
+preview action into the smallest opening viewport. [Browser receipt with
+capture hashes](../evidence/benchmark-v1/madison-installed-focus-browser.json)
+[Exact workflow](https://github.com/chrismicah/design-mcp/actions/runs/45289329564)
