@@ -45,6 +45,28 @@ async def test_stage_turnaround_and_dispatch_get_distinct_directions():
 
 
 @pytest.mark.parametrize(("brief", "expected"), [
+    ("Give the kiln operator a worklist of readings out of tolerance. Let them acknowledge the current alert.", "exception-first"),
+    ("List permit review queues and sort by overdue cases.", "exception-first"),
+    ("Let a plant operator show only incidents past the limit on the power board.", "exception-first"),
+    ("Make a landing page about an alert board with threshold filters for farmers.", "object-hero"),
+    ("Write an article about threshold filters and monitoring boards.", "margin-front"),
+    ("Create a registration form with guidance on the board's limits and filters.", "grouped-fieldsets"),
+    ("Describe what happens to alert queues that pass a threshold.", "object-hero"),
+    ("Show a pinboard with artist names and let visitors sort by collection.", "object-hero"),
+])
+@pytest.mark.asyncio
+async def test_operational_triage_requires_a_worklist_exception_and_action(brief, expected):
+    result = await direct(brief)
+    assert result["direction"]["id"] == expected
+
+
+@pytest.mark.asyncio
+async def test_operational_triage_keeps_an_explicit_surface():
+    brief = "Show an overdue queue and sort it by days past SLA."
+    assert (await direct(brief, surface="landing"))["direction"]["id"] == "object-hero"
+
+
+@pytest.mark.parametrize(("brief", "expected"), [
     ("A form.", "grouped-fieldsets"),
     ("A form a volunteer can finish after work.", "grouped-fieldsets"),
     ("A mobile signup for a ceramics class. Collect name and email.", "grouped-fieldsets"),

@@ -59,6 +59,10 @@ _CLAUSE_BREAK = re.compile(
 _FIELD_COLLECTION = re.compile(r"\b(?:collect|ask for|enter|provide|record)\b")
 _ENTRY_OUTCOME = re.compile(r"\b(?:confirmation|submission|invalid|validat\w*|submitted)\b")
 
+_WORKLIST = re.compile(r"\b(?:board|queues?|readings?|alerts?|worklist|incidents?)\b")
+_EXCEPTION = re.compile(r"\b(?:limits?|thresholds?|overdue|past sla|out of range|out of tolerance|breached)\b")
+_TRIAGE = re.compile(r"\b(?:acknowledg(?:e|ing)|filters?|sorting|sort|switch between|show only|focus on)\b")
+
 
 def _length(value) -> int:
     return len(json.dumps(value, ensure_ascii=False))
@@ -96,7 +100,11 @@ def _infer_surface(text: str) -> str | None:
     explicit = [name for name in _TERMS if _match(name, text)]
     if len(explicit) == 1:
         return explicit[0]
-    return max(scores, key=scores.get) if any(scores.values()) else None
+    if any(scores.values()):
+        return max(scores, key=scores.get)
+    if all(pattern.search(text) for pattern in (_WORKLIST, _EXCEPTION, _TRIAGE)):
+        return "dashboard"
+    return None
 
 
 async def direct(brief: str, surface: Surface | None = None, avoid: list[str] | None = None) -> dict:
