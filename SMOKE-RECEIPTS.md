@@ -1,5 +1,11 @@
 # Design MCP live smoke
 
+## Active-tab capture candidate, November 22
+
+`12e9524` passed all eight macOS 15 install jobs and the hosted Chrome, public URL, SwiftUI, and Electron workflows. The clean-install jobs used pipx and uv on Apple Silicon and Intel across Python 3.10–3.13. The hosted Chrome run verified active-tab masking, missing-host recovery, the Before and After keyboard switch, and opening the capture from a pasted URL. It saved the masked public form after **1.49 seconds** in that run. [Exact jobs and capture hashes](evidence/benchmark-v1/release-ci-12e9524.json)
+
+The active-tab fix compares the mask geometry around capture. Six focused tests exercised stable capture, a moving or newly visible field, scroll, a changed tab, and successful retry. The changed cases returned focus to the scan action without handing off a capture. A fresh GPT Computer Use toolbar replay on macOS remains open for this commit. The Ventura and native walkthrough receipts below apply to `a9e1211`.
+
 ## Pinned release candidate, November 22
 
 `a9e1211` passed **543 source tests and 120 subtests**, and **16 clean Git installs** across eight macOS 15 jobs. CI checked Python 3.10–3.13 on Apple Silicon and Intel, with pipx and uv in each job. Both installers ran all three stdio modes with and without `review_page`. The opt-in smoke verifies its structured refusal path. The installed Playwriter CLI reviewed the public address form at 1440 and 390 CSS px. [Exact workflows and artifacts](evidence/benchmark-v1/release-ci-a9e1211.json)

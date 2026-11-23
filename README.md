@@ -61,7 +61,7 @@ Add this entry to Claude Desktop’s `claude_desktop_config.json` or Cursor’s 
 
 > I need a site for a local bike repair shop. Second Spin does 48-hour tune-ups for $85. We are at 41 Elm Street and take bookings Tuesday to Saturday. Make booking easy to find and let a visitor pick a day to see the booking summary.
 
-The agent calls `direct` first. Pass the audience, task, real content, and any existing brand constraints as ordinary language. A very short brief can produce one optional question with a default. Apply the direction to the project's data, load its licensed typefaces, and test the main action.
+The agent calls `direct` first. Give the audience, task, real content, and any existing brand constraints in the brief. Start with the brief alone so the tool can infer the surface. Use the optional surface argument when the project explicitly calls for one. A very short brief can produce one optional question with a default. Apply the direction to the project's data, load its licensed typefaces, and test the main action.
 
 | Tool | Arguments | Result |
 | --- | --- | --- |
