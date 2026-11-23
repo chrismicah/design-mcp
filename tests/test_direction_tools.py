@@ -193,9 +193,16 @@ async def test_landing_uses_the_primary_task_for_art_direction(brief, expected):
      "Put a consultation form below the practice areas.", "direct-consultation"),
     ("Make a mobile-friendly home page for a physiotherapy clinic. Introduce Maya and let visitors call her "
      "to discuss an injury. The photo is already supplied.", "direct-consultation"),
+    ("Make a homepage for a Tacoma optometrist. Put the current public phone number before the callback form.",
+     "direct-consultation"),
+    ("Build a homepage for a counsellor who answers her phone herself. Identify the office and how to call.",
+     "direct-consultation"),
+    ("Make a homepage for a dentist. Show the name and phone number before a small registration form.",
+     "direct-consultation"),
     ("A consultation form for a dental practice. Collect contact details and request a callback.",
      "grouped-fieldsets"),
     ("Product page for a single product used by a law firm. Let a shopper add it to the bag.", "object-hero"),
+    ("Product page for one lamp for a dentist. Add it to the bag and show the phone number for help.", "object-hero"),
     ("Build a portfolio for an architecture studio with a building case study and a contact form.", "ground-plane"),
 ])
 async def test_practice_contact_direction_is_specific_to_the_visitor_task(brief, expected):
