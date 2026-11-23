@@ -164,12 +164,12 @@ class CreativeSeriesTests(unittest.TestCase):
                         "critique": "The source time is easy to mistake for the broadcast time",
                         "revision": "Move the active edition name beside its clock",
                         "review": self.review(f"round-{number}", number, f"critic-{number}",
-                                              9.5 if number == 4 else 8)}
-                       for number in range(1, 6)],
+                                              rating)}
+                       for number, rating in enumerate((8, 8.5, 9, 9.5, 8), 1)],
             "confirmation": self.review("final", 4, "fresh-critic", 9.5),
         }
 
-    def review(self, label, build, critic, rating, capture_label=None):
+    def review(self, label, build, critic, rating, capture_label=None, pivot_passed=None):
         folder = self.folder / label
         folder.mkdir()
         before, after, observations = {}, {}, {}
@@ -181,9 +181,12 @@ class CreativeSeriesTests(unittest.TestCase):
                 path.write_bytes(content)
                 files[name] = str(path.relative_to(self.folder))
                 changes[f"{stage}_sha256"] = digest(content)
-            observations[name] = {**changes, "opened": "Transcript",
-                                  "actions": [{"input": "Open source", "expected": "Interview time",
-                                               "observed": "14:28"}]}
+            actions = [{"input": "Open source", "expected": "Interview time", "observed": "14:28"}]
+            if pivot_passed is not None:
+                passed = pivot_passed if isinstance(pivot_passed, bool) else pivot_passed[name]
+                actions.append({"input": "Select the omitted words", "expected": "Selection switches the citation clock",
+                                "observed": "14:28" if passed else "Clock stayed at 01:06", "passed": passed})
+            observations[name] = {**changes, "opened": "Transcript", "actions": actions}
 
         build_bytes = f"<main>Candidate {build}</main>".encode()
         (folder / "index.html").write_bytes(build_bytes)
@@ -262,6 +265,48 @@ class CreativeSeriesTests(unittest.TestCase):
     def test_each_round_needs_a_fresh_critic(self):
         self.series["rounds"][1]["review"] = self.review("same-critic", 2, "critic-1", 8)
         with self.assertRaisesRegex(ValueError, "needs a fresh evaluator"):
+            evaluate_series(self.series, self.folder)
+
+    def prepare_stalled_rounds(self):
+        for number in (2, 3):
+            self.series["rounds"][number - 1]["review"] = self.review(
+                f"stalled-{number}", number, f"critic-{number}", 8)
+
+    def prepare_pivot(self, *, parent=3, control_critic="critic-4", control_outcome=False, candidate_outcome=True):
+        self.prepare_stalled_rounds()
+        entry = self.series["rounds"][3]
+        entry["review"] = self.review("pivot-candidate", 4, "critic-4", 9.5, pivot_passed=candidate_outcome)
+        entry["pivot"] = {"assertion": "Selection switches the citation clock",
+                          "control": self.review("pivot-control", parent, control_critic, 8,
+                                                 pivot_passed=control_outcome)}
+
+    def test_two_stalled_rounds_require_a_pivot_to_continue(self):
+        self.prepare_stalled_rounds()
+        with self.assertRaisesRegex(ValueError, "Round 4 needs a tested pivot"):
+            evaluate_series(self.series, self.folder)
+
+    def test_paired_pivot_can_continue_a_stalled_series(self):
+        self.prepare_pivot()
+        self.assertTrue(evaluate_series(self.series, self.folder)["accepted"])
+
+    def test_cosmetic_revision_cannot_claim_a_pivot_when_both_builds_pass(self):
+        self.prepare_pivot(control_outcome=True)
+        with self.assertRaisesRegex(ValueError, "Pivot assertion must fail"):
+            evaluate_series(self.series, self.folder)
+
+    def test_pivot_must_work_on_phone(self):
+        self.prepare_pivot(candidate_outcome={"desktop": True, "mobile": False})
+        with self.assertRaisesRegex(ValueError, "Pivot assertion must pass on mobile"):
+            evaluate_series(self.series, self.folder)
+
+    def test_pivot_compares_the_exact_previous_build(self):
+        self.prepare_pivot(parent=2)
+        with self.assertRaisesRegex(ValueError, "exact previous build"):
+            evaluate_series(self.series, self.folder)
+
+    def test_pivot_uses_the_same_independent_evaluator(self):
+        self.prepare_pivot(control_critic="another-critic")
+        with self.assertRaisesRegex(ValueError, "same independent evaluator"):
             evaluate_series(self.series, self.folder)
 
 

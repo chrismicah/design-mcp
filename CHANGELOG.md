@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+- Require a paired browser test before an expressive design series can continue after two non-improving rounds. The same fresh critic must observe the intended result fail on the previous build and pass on the candidate at both widths. [Series verifier](evals/vision/rubric.md#verify-a-creative-series)
+
 - Added verification for a full creative review series, including distinct builds and captures, a fresh critic per round, and two live passing ballots for the finalist. The daily source review now scans research on design originality. [Series verifier](evals/vision/rubric.md#verify-a-creative-series) · [Editorial tests](EVALS.md#creative-study-verification)
 
 - Added a separate concept challenge before building expressive directions. Live critics record the objection each revision addresses. The daily source report now links all eight supplied X searches. [Workflow](DESIGN-HARNESS.md#creative-rounds) · [Workshop and reference replay](research/CREATIVE-ROUNDS.md#november-23-concept-workshop)

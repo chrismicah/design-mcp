@@ -11,7 +11,7 @@ from score import session_key, verify_files
 SCREENS = ("desktop", "mobile")
 
 
-def verify_packet(packet, root):
+def verify_packet(packet, root, *, assertion=None, expected_outcome=None):
     def local_file(value):
         relative = Path(value)
         path = (root / relative).resolve()
@@ -25,16 +25,23 @@ def verify_packet(packet, root):
             raise ValueError(f"The {field} file differs from its frozen digest")
         return path
 
+    observations = local_file(packet["observations"])
     result = verify_files(
         pinned_file("ballot"),
         pinned_file("browser"),
-        local_file(packet["observations"]),
+        observations,
         SCREENS,
         {name: local_file(path) for name, path in packet["before"].items()},
         {name: local_file(path) for name, path in packet["after"].items()},
     )
     if sha256(local_file(packet["build"]).read_bytes()).hexdigest() != result["build_sha256"]:
         raise ValueError("The archived build differs from the reviewed build digest")
+    if assertion is not None:
+        screens = json.loads(observations.read_bytes())["screens"]
+        for name in SCREENS:
+            matches = [action for action in screens[name]["actions"] if action["expected"] == assertion]
+            if len(matches) != 1 or matches[0].get("passed") is not expected_outcome:
+                raise ValueError(f"Pivot assertion must {'pass' if expected_outcome else 'fail'} on {name}")
     return result
 
 
@@ -51,6 +58,8 @@ def evaluate_series(series, root):
     builds = set()
     captures = set()
     evaluators = set()
+    best_score = -1
+    stalled_rounds = 0
     for number, entry in enumerate(rounds, 1):
         fields = ["premise", "critique"]
         if number > 1:
@@ -59,7 +68,28 @@ def evaluate_series(series, root):
             value = entry.get(field)
             if not isinstance(value, str) or not value.strip():
                 raise ValueError(f"Round {number} needs a concrete {field}")
-        result = verify_packet(entry["review"], root)
+        pivot = entry.get("pivot")
+        if stalled_rounds >= 2 and pivot is None:
+            raise ValueError(f"Round {number} needs a tested pivot after two non-improving rounds")
+        if pivot is None:
+            result = verify_packet(entry["review"], root)
+        else:
+            if not history:
+                raise ValueError("A pivot needs a previously reviewed control")
+            assertion = pivot["assertion"]
+            if not isinstance(assertion, str) or not assertion.strip():
+                raise ValueError(f"Round {number} needs a testable pivot assertion")
+            control = verify_packet(pivot["control"], root, assertion=assertion, expected_outcome=False)
+            result = verify_packet(entry["review"], root, assertion=assertion, expected_outcome=True)
+            parent = history[-1]
+            if any(control[field] != parent[field] for field in ("build_sha256", "builder_session")):
+                raise ValueError("Test the pivot against the exact previous build and builder")
+            if control["evaluator_session"] != result["evaluator_session"]:
+                raise ValueError("The same independent evaluator must test both sides of the pivot")
+            if control["capture_set"] in captures or control["capture_set"] == result["capture_set"]:
+                raise ValueError("A pivot needs fresh control and candidate captures")
+            captures.add(control["capture_set"])
+            stalled_rounds = 0
         if result["build_sha256"] in builds:
             raise ValueError(f"Round {number} repeats a previously reviewed build")
         if result["capture_set"] in captures:
@@ -71,6 +101,9 @@ def evaluate_series(series, root):
         captures.add(result["capture_set"])
         evaluators.add(evaluator)
         history.append({"round": number, **result})
+        score = min(result["scores"].values())
+        stalled_rounds = 0 if score > best_score else stalled_rounds + 1
+        best_score = max(best_score, score)
 
     chosen = history[finalist - 1]
     confirmation = verify_packet(series["confirmation"], root)
