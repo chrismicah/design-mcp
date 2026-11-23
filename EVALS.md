@@ -561,3 +561,11 @@ Both handoffs remain experimental. The keyboard replay found a functional failur
 ## Hosted release retry
 
 All 13 hosted jobs passed at release commit `f30e6ff`. The SwiftUI retry ran on the same commit, and the archive digest and both geometry and PNG hash pairs matched. The fresh native test revealed a fifth button. [Job and artifact receipt](evidence/benchmark-v1/release-ci-f30e6ff.json)
+
+## One revision with browser feedback
+
+Astra proposed a single revision from each frozen `ca8fc6b` draft. All four builders received the same acceptance task. Two also received the failure as witnessed in the browser. The four isolated generations used matching client settings and the exact original HTML. Both arms passed **6/6** keyboard journeys at 320, 390 and 1440 CSS px. The borrowing sequence selected Offset at 17:45 before a separate stock update and recovered to Mini at 18:10. The train sequence kept the four-minute miss and alternate action visible and confirmed the 22:04 replacement after activation. The two arms tied functionally.
+
+A fresh blind critic completed all four borrowing views. The instructions-only draft scored **7.35 desktop / 7.05 phone**. The browser-feedback draft scored **7.15 / 6.45**. The critic preferred the first draft because it kept all four options visible on opening and retained the comparison during recovery. The feedback draft introduced an obstructive panel and a missing space in its phone headline. Both still used generic tool illustrations. The train control omitted its font stylesheet, so its visual comparison was withheld. The observed browser feedback step did not earn promotion. [Matched inputs, Playwriter captures and audited ballot](evidence/benchmark-v1/browser-feedback-repair.json)
+
+The exact hosted Electron artifact showed the covered-control finding clearing after input while the separate clipping finding remained. Both real Chrome toolbar paths passed, with 1.860 s from paste submission to capture in this run. The installed URL review used verified 1440 × 900 and 390 × 844 masks and recovered after both negative URL cases. [Artifact digests and capture checks](evidence/benchmark-v1/release-ci-f30e6ff.json)

@@ -283,3 +283,7 @@ One bounded Astra 6.2 planning session defined the paired pivot test. One indepe
 
 - Four fresh Terra low generations compared the two prompt changes with identical sealed controls. The replay checked 24 keyboard journeys and 96 PNG signatures, hashes and dimensions across both trial comparisons, including reruns of the parent journeys. No new visual ballot ran. The package receipts include per-generation tokens and elapsed time. [Recovery receipt](evidence/benchmark-v1/installed-recovery-handoff-trials.json)
 - The SwiftUI retry succeeded on the pinned release revision. Verified the before and after PNG and geometry hashes against the hosted receipt. Thirteen hosted checks passed. [Release retry](evidence/benchmark-v1/release-ci-f30e6ff.json)
+
+### Browser feedback repair comparison
+
+- GPT-6.2 Astra wrote the bounded decision. Four Terra low builders made one revision each. Together they used 47,783 uncached input tokens and 22,514 output tokens. One separate Terra low critic verified four borrowing views and used 40,331 uncached input and 3,219 output tokens. The 12 deterministic journeys passed. The exact matched drafts and screenshot hashes support the decision to keep the cheaper flow. [Trial and visual ballot](evidence/benchmark-v1/browser-feedback-repair.json)
