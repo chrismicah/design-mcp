@@ -146,6 +146,15 @@ async def direct(brief: str, surface: Surface | None = None, avoid: list[str] | 
             keyboard="Use native controls in reading order. On invalid submission, preserve entries and focus the first "
                      "invalid input. Mark each invalid field aria-invalid and link its correction text with aria-describedby.",
         )
+    if choice.id == "service-work-order":
+        output["interaction"].update(
+            keyboard="Announce the selection through the one visible status. Keep it next to the chooser on desktop "
+                     "and immediately after the choices on phones.",
+        )
+        output["handoff"] += (
+            " At 320 × 700, check the complete short choice group and its result line from the top "
+            "after keyboard and pointer selection."
+        )
     return _bounded("direct", output)
 
 
@@ -171,6 +180,12 @@ async def react(direction_id: str, reaction: str, comparison_id: str | None = No
                      "accent_usage": "Restrict the accent to the main control and focal marker.",
                      "spacing": "Increase negative space around the focal block by 20%.",
                      "motion_ms": min(400, row.motion.duration_ms + 60)}
+            if row.id == "service-work-order":
+                delta["spacing"] = (
+                    "At 360 px and below preserve the existing order and spacing of the choice area. "
+                    "Quiet the title with a smaller type size or tighter padding. Put extra whitespace beside the work order on desktop."
+                )
+                keep.append("a short choice list and its single live result visible at 320 × 700 without overflow")
             why = "Strengthen the breathing room without losing the primary action."
     elif normalized in {"bolder", "more bold", "make it pop"}:
         delta = {"type_ratio": min(5, round(row.type.ratio + .45, 2)),

@@ -475,24 +475,24 @@
       "bookings"
     ],
     "type": {
-      "display": "Instrument Serif",
+      "display": "Barlow Condensed",
       "body": "IBM Plex Sans",
-      "ratio": 3.3,
+      "ratio": 2.8,
       "tracking": -0.025,
-      "weight": 400,
+      "weight": 700,
       "license": "OFL-1.1"
     },
     "palette": {
-      "ink": "#152B34",
-      "paper": "#F3F2E7",
-      "accent": "#E88C46"
+      "ink": "#153247",
+      "paper": "#E8EFF4",
+      "accent": "#F3B644"
     },
     "layout": {
-      "skeleton": "Open with a narrow edge-to-edge title band. Place a wide work order below it with the choice and its result in a single table-like composition, using a ruled margin for one labeled sketch or service fact.",
-      "focus": "The chosen booking summary alongside the short selection group. Keep the exact price and turnaround attached to that summary.",
-      "desktop": "Use one shared border across the chooser and summary in the center of the page. Give the summary the widest column. Put the smaller workshop reference below the work order edge.",
-      "mobile": "Service title and price, one selection group, then the summary with the selected day and supplied terms. Let choices wrap without horizontal scroll. Drop the decorative margin before shrinking controls.",
-      "rhythm": "Separate title and work order with a clear vertical break; group summary rows on a consistent 28 px rhythm."
+      "skeleton": "Lead with the work order. Set the service name and price on its first rule. Put the choice next to the result. Start the work order directly below the site header.",
+      "focus": "The actual booking controls and the selected value in the same work order.",
+      "desktop": "Use side-by-side choice and result columns under the service name. Fit the price, choice group and its live result within a 900 px viewport. Put supporting imagery and details below the work order.",
+      "mobile": "Keep the service title and price above a short native radio group and its result. At 360 px and below use two equal minmax(0,1fr) columns, 44 px targets and labels that wrap. At 320 × 700, fit the short group and its result with no scroll. With longer lists prioritize the selected option and its result.",
+      "rhythm": "Give the work order a short heading and comfortable control spacing. Let any decorative details follow the action."
     },
     "imagery": {
       "subject": "A small repair detail, drawn from the actual service in the brief.",
@@ -506,7 +506,7 @@
       "reduced": "Update the summary and accessible status immediately."
     },
     "action": {
-      "instruction": "Use one labeled, keyboard-accessible group for a single selection and echo the selected value in the visible work order. Only show a confirmed booking when that state is part of the brief.",
+      "instruction": "Use one labeled native group for a single selection. Update one visible polite status in the work order, and leave the service price and terms in place. Describe the actual selection state; show confirmation only when required by the brief.",
       "label": "Choose [day or option]"
     },
     "why": "A work order has useful visual structure before it has branding. Putting the choice and its consequences in one composition keeps the service and task recognizable at a glance.",
