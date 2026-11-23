@@ -171,13 +171,6 @@ async def react(direction_id: str, reaction: str, comparison_id: str | None = No
                      "accent_usage": "Restrict the accent to the main control and focal marker.",
                      "spacing": "Increase negative space around the focal block by 20%.",
                      "motion_ms": min(400, row.motion.duration_ms + 60)}
-            if row.id == "service-work-order":
-                delta["spacing"] = (
-                    "Add breathing room beside the work order on wide screens. "
-                    "On phones, reduce the size and vertical padding of the supporting introduction. "
-                    "Keep the existing spacing and tap target sizes inside the work order. "
-                    "At 320 × 700, the changed day and its selection control must both stay visible after selection."
-                )
             why = "Strengthen the breathing room without losing the primary action."
     elif normalized in {"bolder", "more bold", "make it pop"}:
         delta = {"type_ratio": min(5, round(row.type.ratio + .45, 2)),
