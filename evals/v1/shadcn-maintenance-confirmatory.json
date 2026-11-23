@@ -1,0 +1,77 @@
+{
+  "spec": {
+    "case": "form-maintenance",
+    "arms": [
+      "v2",
+      "shadcn",
+      "uiux-pro-max"
+    ],
+    "brief": "A tenant needs to report a broken common-area light. Collect building, location and a description, and offer Routine and Safety issue as urgency options. Make it usable by keyboard and show that the request was prepared locally after valid submission.",
+    "task": "Use the keyboard to try submitting with the required data empty. Note the actionable message or browser validation and where focus lands. Then enter Oak Court as the building, Second-floor landing as the location, and Common-area light is out as the description. Verify that Routine and Safety issue are available. Select Safety issue and submit. Verify that the visible confirmation says the request was prepared locally and check focus and any available return action. Report any differences from the exact brief. At 390 px, check for horizontal scrolling or obscured feedback. Capture -before on entry, -edge where the invalid submission is visible, and -after once a real valid submission has reached confirmation. After the confirmation capture, return to the form with the keyboard and check that Oak Court, the landing, the description, and Safety issue are retained.",
+    "browser": "Chrome/160.0.8178.0",
+    "pinned_controls": {
+      "v2": {
+        "model": "gpt-6.1-terra",
+        "effort": "low",
+        "client": "codex-cli 0.170.0",
+        "shell_tool": false,
+        "prompt_sha256": "12fd372ef8ceb893d6d110b931b0eb5db38508ba800393f4faef5e245d316c14",
+        "html_sha256": "de64536b4a3d8fea9792adbd02f4ef4a5a722d2c7b6e43c0647fd1b28f5b6df0",
+        "trace_sha256": "a260a3781a6d1761bd10be086535eb2ef447aa0f6dfda95031d14e6675c5d210"
+      },
+      "uiux-pro-max": {
+        "model": "gpt-6.1-terra",
+        "effort": "low",
+        "client": "codex-cli 0.170.0",
+        "shell_tool": false,
+        "prompt_sha256": "12fd372ef8ceb893d6d110b931b0eb5db38508ba800393f4faef5e245d316c14",
+        "html_sha256": "ec1fd6c5f99336195b11b16ef82320f086e57684daf6c7faaa2c966a2c47bf8a",
+        "trace_sha256": "eab56e93cf300c84f0b86b94ed543fe7bb351c541cec328c3430418d91386e21"
+      }
+    }
+  },
+  "shadcn": {
+    "config": {
+      "name": "shadcn",
+      "args": [],
+      "env": {},
+      "expected_tools": [
+        "search_items_in_registries",
+        "view_items_in_registries",
+        "get_item_examples_from_registries"
+      ],
+      "verified_read_only_tools": [
+        "search_items_in_registries",
+        "view_items_in_registries",
+        "get_item_examples_from_registries"
+      ],
+      "required_shadcn_items": [
+        "field",
+        "field-demo",
+        "field-input",
+        "field-textarea",
+        "form-rhf-input",
+        "form-rhf-radiogroup",
+        "form-rhf-textarea",
+        "input",
+        "input-demo",
+        "radio-group",
+        "radio-group-demo",
+        "textarea",
+        "textarea-demo"
+      ]
+    },
+    "package": "shadcn@4.23.0",
+    "fixture_files": {
+      "components.json": "2b136097e4c41bb1a09b333908c06fffbb90c73ff0eb51e47720fb20459c6369",
+      "package-lock.json": "dee6c0f5747f942c0b68bf6fd1bdfd1170d0603dd8bcc6d691f5419787279cec",
+      "launch": "4fa06409929c536b4cc8f155b1335f6f10b87d01723cabcb32a2348f7507b8ce"
+    },
+    "evidence_rule": "A successful read-only call must actually return an exact registered official name before the HTML reply. Query echoes and empty code examples do not qualify.",
+    "source": "https://ui.shadcn.com/docs/forms/react-hook-form"
+  },
+  "comparison_scope": "Frozen Design MCP and UI UX Pro Max controls against a fresh shadcn generation with the same sealed prompt.",
+  "release_pin": "f30e6ffcb7c8fab97580a353ff5b770849162594",
+  "uiux_pro_max_pin": "a38d04c3d5c298c851dbe5e6ee1965ee3de42cb5",
+  "visual_gate": "Anonymous 1440 and 390 pixel views, 3 captures each, real keyboard and exact task facts."
+}
