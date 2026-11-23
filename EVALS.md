@@ -610,3 +610,6 @@ The next isolated candidate, `d2ad739`, passed four pinned macOS 15 installs acr
 
 
 An authored repair of the exact unified-composition draft removed the repeated service list and put the 320 px preview button’s lower edge at **713 CSS px**, down from **868 px**. Shortening one redundant sentence moved it to **689 px** inside the 700 px screen. The final variant passed all three browser widths, including keyboard recovery, editable result and zero post-load requests. It remains an authored repair. Installed generation and independent visual scoring stay separate. [Two browser runs and capture hashes](evidence/benchmark-v1/consultation-single-service-diagnostic.json)
+
+
+The isolated `877660c` trial adds an optional captured viewport to `react`. Replaying the exact 320 px browser capture produced **103 px** of bottom overflow for First name and **168 px** for Preview reminder. The healthy 390 px capture returned an empty delta. Six existing replies matched, and 80 focused tests passed. An exact hosted install replay and a paired generation repair will establish whether the tool improves generated output. [Source evidence and pending install run](evidence/benchmark-v1/opening-view-reaction-source.json)
