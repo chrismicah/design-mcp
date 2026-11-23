@@ -246,5 +246,8 @@ async def test_consultation_handoff_checks_visible_draft_on_activation():
     assert direction["id"] == "direct-consultation"
     instruction = direction["action"]["instruction"]
     assert "If the form previews a draft" in instruction
+    assert "persistent role=status node" in instruction
+    assert "clear it on return" in instruction
     assert "fully visible on activation" in instruction
     assert "without waiting for a scroll animation" in instruction
+    assert "compress gaps between groups" in direction["layout"]["desktop"]
