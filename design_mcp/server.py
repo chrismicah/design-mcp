@@ -6,6 +6,7 @@ from .schema import DesignPattern, Platform, LayoutType
 from .database import DesignDatabase
 from .resources import ResourceError, read_json
 from .directions import check, direct, react
+from .detail_resource import DETAIL_RESOURCE_URI, image_detail_source
 from .palettes import generate_accessible_palette
 from .models.analyzer import analyze_code, infer_component_type
 from .models.visual_analyzer import (
@@ -34,6 +35,7 @@ if SURFACE != "legacy":
     mcp.tool(direct, annotations=local_read)
     mcp.tool(react, annotations=local_read)
     mcp.tool(check, annotations=local_read)
+    mcp.resource(DETAIL_RESOURCE_URI, mime_type="text/plain")(image_detail_source)
 
 
 def enable_browser_review():

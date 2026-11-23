@@ -1,0 +1,81 @@
+<!-- Replace the slots with escaped text, source URLs, and a document-unique panel ID.
+     Use a verified whole image and a separate, undistorted detail of that same source.
+     Style the component through inherited type, the CSS variables, and the classes. -->
+<style>
+.dm-inspect { display:grid; gap:var(--dm-gap,clamp(16px,4vw,52px)); align-items:start; }
+.dm-inspect figure,.dm-inspect h1,.dm-inspect figcaption { margin:0; }
+.dm-inspect [hidden] { display:none !important; }
+.dm-inspect__media { display:block; width:100%; height:auto; max-height:var(--dm-media-height,58vh); object-fit:contain; background:var(--dm-stage,transparent); }
+.dm-inspect__whole { position:relative; width:min(100%,calc(var(--dm-media-height,58vh) * var(--dm-whole-ratio))); justify-self:center; }
+.dm-inspect__marker { position:absolute; left:var(--dm-point-x); top:var(--dm-point-y); width:clamp(13px,7%,42px);
+  aspect-ratio:1; border:1.5px solid var(--dm-focus,currentColor); border-radius:50%; transform:translate(-50%,-50%); pointer-events:none; }
+.dm-inspect__detail figcaption { line-height:1.45; margin-top:12px; max-width:52ch; }
+.dm-inspect__toggle { min-height:48px; max-width:100%; cursor:pointer; font:inherit; font-weight:700; }
+.dm-inspect__toggle:focus-visible { outline:2px solid var(--dm-focus,currentColor); outline-offset:4px; }
+.dm-inspect__credit { margin:0; }
+.dm-inspect[data-detail-state="open"] .dm-inspect__detail { animation:dm-detail-reveal 220ms ease-out both; }
+@keyframes dm-detail-reveal { from { opacity:.6; } to { opacity:1; } }
+@media (prefers-reduced-motion:reduce) {
+  .dm-inspect[data-detail-state="open"] .dm-inspect__detail { animation:none; }
+}
+@media (min-width:761px) {
+  .dm-inspect { grid-template-columns:minmax(0,1.7fr) minmax(250px,.8fr); }
+  .dm-inspect__heading { grid-area:1/2; }
+  .dm-inspect__whole { grid-area:1/1; }
+  .dm-inspect__detail { grid-area:2/1; }
+  .dm-inspect__credit { grid-column:1/-1; }
+  .dm-inspect[data-detail-state="open"] .dm-inspect__detail { grid-area:1/1/3; }
+  .dm-inspect[data-detail-state="open"] .dm-inspect__whole { grid-area:2/2; }
+}
+@media (max-width:760px) {
+  .dm-inspect { gap:var(--dm-phone-gap,14px); }
+  .dm-inspect__media { max-height:var(--dm-phone-media-height,48vh); }
+  .dm-inspect__whole { width:min(100%,calc(var(--dm-phone-media-height,48vh) * var(--dm-whole-ratio))); }
+}
+.dm-inspect[data-detail-state="open"] .dm-inspect__whole { width:min(100%,var(--dm-overview-width,128px)); justify-self:start; }
+.dm-inspect[data-detail-state="open"] .dm-inspect__whole img { max-height:none; }
+</style>
+<section class="dm-inspect" data-detail-disclosure
+  style="--dm-whole-ratio:{{whole_width}} / {{whole_height}};--dm-point-x:{{focus_x}}%;--dm-point-y:{{focus_y}}%">
+  <header class="dm-inspect__heading">
+    <h1>{{title}}</h1>
+    <p>{{metadata}}</p>
+    <button type="button" class="dm-inspect__toggle" data-detail-toggle
+      data-close-label="{{close_label}}" aria-controls="{{panel_id}}" aria-expanded="false" hidden>{{open_label}}</button>
+  </header>
+  <figure class="dm-inspect__whole" data-detail-whole>
+    <img class="dm-inspect__media" src="{{whole_src}}" width="{{whole_width}}" height="{{whole_height}}" alt="{{whole_alt}}">
+    <span class="dm-inspect__marker" aria-hidden="true"></span>
+  </figure>
+  <figure id="{{panel_id}}" class="dm-inspect__detail" data-detail-panel>
+    <img class="dm-inspect__media" src="{{detail_src}}" width="{{detail_width}}" height="{{detail_height}}" alt="{{detail_alt}}">
+    <figcaption>{{annotation}}</figcaption>
+  </figure>
+
+  <p class="dm-inspect__credit">{{credit}}</p>
+</section>
+<script>
+(() => {
+  for (const root of document.querySelectorAll("[data-detail-disclosure]")) {
+    if (root.dataset.detailState) continue;
+    const button = root.querySelector("[data-detail-toggle]");
+    const panel = root.querySelector("[data-detail-panel]");
+    const whole = root.querySelector("[data-detail-whole]");
+    if (!button || !whole || !panel || !panel.id || button.getAttribute("aria-controls") !== panel.id ||
+        document.getElementById(panel.id) !== panel) continue;
+    const openLabel = button.textContent.trim();
+    const closeLabel = button.dataset.closeLabel;
+    if (!openLabel || !closeLabel) continue;
+    const update = open => {
+      panel.hidden = !open;
+      root.insertBefore(open ? panel : whole, open ? whole : panel);
+      root.dataset.detailState = open ? "open" : "closed";
+      button.setAttribute("aria-expanded", String(open));
+      button.textContent = open ? closeLabel : openLabel;
+    };
+    button.addEventListener("click", () => update(button.getAttribute("aria-expanded") !== "true"));
+    update(false);
+    button.hidden = false;
+  }
+})();
+</script>

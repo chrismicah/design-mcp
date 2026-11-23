@@ -5,6 +5,7 @@ import re
 from urllib.parse import urlencode
 
 from .design_checks import inspect_design
+from .detail_resource import DETAIL_RESOURCE_URI
 from .direction_records import Surface, library
 from .models.visual_analyzer import contrast_ratio
 
@@ -172,6 +173,9 @@ async def direct(brief: str, surface: Surface | None = None, avoid: list[str] | 
         )
     if choice.id == "artifact-inspection":
         output["handoff"] += (
+            f"Read {DETAIL_RESOURCE_URI} for an executable disclosure. Keep its activation and return behavior, "
+            "fill slots with verified content, and style from the brief. When your client cannot read resources, "
+            "use the same whole-to-detail interaction with the explanation in the opening view. "
             " If a verified crop is supplied, display it undistorted. For a normalized source point (x,y) "
             "in a full image, measure the opened crop frame (W,H) and decoded image (Nw,Nh). "
             "Use scale s above max(W/Nw,H/Nh) for magnification. Set image width w=Nw*s and height h=Nh*s. "
