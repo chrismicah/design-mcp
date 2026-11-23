@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lena Ortiz | Optometrist in Tacoma</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+  <style>
+    :root {
+      --paper: #fbfaf7;
+      --ink: #15171c;
+      --accent: #1f6f5c;
+      --soft: #e2eee9;
+      --border: #9baba4;
+    }
+    * { box-sizing: border-box; }
+    html { color-scheme: light; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Atkinson Hyperlegible", sans-serif;
+      font-size: 1.125rem;
+      line-height: 1.5;
+    }
+    a { color: inherit; }
+    button, input, textarea { font: inherit; }
+    :focus-visible {
+      outline: 2px solid var(--paper);
+      box-shadow: 0 0 0 4px var(--ink);
+    }
+    .wrap { width: min(100% - 2rem, 70rem); margin-inline: auto; }
+    header {
+      padding-block: 1.25rem;
+      border-bottom: 1px solid var(--border);
+      font-weight: 700;
+    }
+    main { padding-block: 2.5rem 5rem; }
+    h1, h2 {
+      font-family: "Bricolage Grotesque", sans-serif;
+      line-height: 1.05;
+      letter-spacing: -.03em;
+    }
+    h1 { font-size: clamp(2.5rem, 7vw, 5.5rem); margin: 0 0 1rem; max-width: 13ch; }
+    h2 { font-size: clamp(2rem, 4vw, 3rem); margin: 0 0 1rem; }
+    p { max-width: 65ch; }
+    .intro { max-width: 48rem; }
+    .lead { font-size: clamp(1.2rem, 2vw, 1.5rem); margin: 0 0 1.5rem; }
+    .call {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--paper);
+      border: 2px solid var(--accent);
+      padding: .75rem 1.1rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .call:hover, button:hover { background: #174f42; }
+    .hours { margin: .75rem 0 0; }
+    address { font-style: normal; margin-top: 1rem; }
+    .services {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      max-width: 38rem;
+      margin: 3rem 0 4rem;
+      border-top: 3px solid var(--accent);
+    }
+    .service { position: relative; padding-top: 1rem; font-weight: 700; }
+    .service::before {
+      content: "";
+      position: absolute;
+      top: -.5rem;
+      left: 0;
+      width: .75rem;
+      height: .75rem;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+    .reminder {
+      background: var(--soft);
+      padding: clamp(1.25rem, 4vw, 3rem);
+      max-width: 50rem;
+    }
+    .reminder > p { margin-top: 0; }
+    fieldset { border: 0; padding: 0; margin: 1.5rem 0; }
+    legend, label[for="name"], label[for="preview"] {
+      font-weight: 700;
+      display: block;
+      margin-bottom: .5rem;
+    }
+    .choices { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; }
+    .choice { display: inline-flex; align-items: center; gap: .5rem; }
+    input[type="radio"] { width: 1.25rem; height: 1.25rem; accent-color: var(--accent); }
+    input[type="text"], textarea {
+      display: block;
+      width: 100%;
+      max-width: 32rem;
+      border: 2px solid var(--ink);
+      border-radius: 0;
+      background: white;
+      color: var(--ink);
+      padding: .7rem;
+    }
+    textarea { min-height: 9rem; resize: vertical; }
+    .error { color: #8a1c17; font-weight: 700; margin: .5rem 0 0; }
+    [hidden] { display: none !important; }
+    button {
+      margin-top: 1.25rem;
+      padding: .75rem 1.1rem;
+      border: 2px solid var(--accent);
+      background: var(--accent);
+      color: var(--paper);
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .result { border-top: 1px solid var(--border); margin-top: 2rem; padding-top: 1.5rem; }
+    .result p { margin: 0 0 1rem; }
+    @media (max-width: 360px) {
+      main { padding-top: 1.75rem; }
+      .services { margin-block: 2.5rem 3rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">Lena Ortiz · Optometrist</div>
+  </header>
+
+  <main class="wrap">
+    <section class="intro" aria-labelledby="intro-title">
+      <h1 id="intro-title">Eye care with Lena Ortiz</h1>
+      <p class="lead">Lena is an independent optometrist in Tacoma, seeing new patients for routine eye exams and glasses fittings.</p>
+      <a class="call" href="tel:2535550143">Call 253-555-0143</a>
+      <p class="hours">9 am to 4 pm, Tuesday through Saturday</p>
+      <address>42 Example Way, Suite 2<br>Tacoma</address>
+    </section>
+
+    <div class="services" aria-label="Services">
+      <div class="service">Routine eye exams</div>
+      <div class="service">Glasses fittings</div>
+    </div>
+
+    <section class="reminder" aria-labelledby="reminder-title">
+      <h2 id="reminder-title">Get ready to call</h2>
+      <p>Make a short reminder to have ready when you call. You can edit it here. Nothing is booked and no information leaves this page.</p>
+
+      <form id="reminder-form" novalidate>
+        <fieldset>
+          <legend>What would you like to call about?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="service" value="an eye exam" checked> Eye exam</label>
+            <label class="choice"><input type="radio" name="service" value="a glasses fitting"> Glasses fitting</label>
+          </div>
+        </fieldset>
+
+        <label for="name">First name</label>
+        <input id="name" name="name" type="text" autocomplete="given-name" aria-describedby="name-error">
+        <p id="name-error" class="error" hidden>Enter your first name to make your reminder.</p>
+        <button type="submit">Preview reminder</button>
+      </form>
+
+      <div id="result" class="result" hidden>
+        <label for="preview">Your reminder</label>
+        <p>Edit this text however you like before you call.</p>
+        <textarea id="preview"></textarea>
+      </div>
+      <p id="status" role="status" class="status"></p>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById("reminder-form");
+    const nameInput = document.getElementById("name");
+    const error = document.getElementById("name-error");
+    const result = document.getElementById("result");
+    const preview = document.getElementById("preview");
+    const status = document.getElementById("status");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      const firstName = nameInput.value.trim();
+      if (!firstName) {
+        error.hidden = false;
+        nameInput.setAttribute("aria-invalid", "true");
+        status.textContent = "";
+        nameInput.focus();
+        return;
+      }
+      error.hidden = true;
+      nameInput.removeAttribute("aria-invalid");
+      const service = form.elements.service.value;
+      preview.value = "Hi, my name is " + firstName + ". I’m a new patient and I’d like to ask about " + service + ".";
+      result.hidden = false;
+      status.textContent = "Your editable reminder is ready.";
+      preview.focus();
+    });
+
+    nameInput.addEventListener("input", function () {
+      if (nameInput.value.trim()) {
+        error.hidden = true;
+        nameInput.removeAttribute("aria-invalid");
+      }
+    });
+  </script>
+</body>
+</html>
