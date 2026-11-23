@@ -165,4 +165,8 @@ checks.noNetworkSubmission = !requests.some(method => method !== "GET");
 checks.noPageErrors = state.pageErrors.length === 0;
 checks.finalWidth = await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth);
 const finalFocus = await page.evaluate(() => (document.activeElement?.labels?.[0]?.textContent || "").trim());
-console.log("PRACTICE_REPLAY " + JSON.stringify({checks, viewport, finalFocus, requests, firstFrame, initialForm}));
+const receipt = {checks, viewport, finalFocus, requests, firstFrame, initialForm};
+if (practice.recordEditorFocus) {
+  receipt.statusAfterReturn = (await page.getByRole("status").allTextContents()).map(text => text.trim());
+}
+console.log("PRACTICE_REPLAY " + JSON.stringify(receipt));

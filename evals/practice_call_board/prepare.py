@@ -1,5 +1,6 @@
 """Verify the exact archived practice drafts before rendering."""
 
+from difflib import unified_diff
 from hashlib import sha256
 import json
 from pathlib import Path
@@ -86,5 +87,17 @@ if madison.is_dir():
     for key in ("model", "effort", "shell_tool", "prompt_prefix_sha256"):
         assert pair["control"][key] == pair["treatment"][key], key
     assert pair["control"]["thread_id"] != pair["treatment"]["thread_id"]
+
+    compact = madison / "authored-compact-status"
+    if compact.is_dir():
+        original = (madison / "focus-treatment/index.html").read_text()
+        revised = (compact / "index.html").read_text()
+        stamp = json.loads((compact / "receipt.json").read_bytes())
+        diff = "".join(unified_diff(original.splitlines(keepends=True), revised.splitlines(keepends=True)))
+        assert stamp["case"] == madison.name and stamp["arm"] == compact.name
+        assert stamp["parent_html_sha256"] == pair["treatment"]["html_sha256"]
+        assert stamp["html_sha256"] == sha256(revised.encode()).hexdigest()
+        assert stamp["unified_diff_sha256"] == sha256(diff.encode()).hexdigest()
+        print(stamp["case"], stamp["arm"], stamp["html_sha256"])
 
 shutil.copytree(ROOT / "cells", sys.argv[1])

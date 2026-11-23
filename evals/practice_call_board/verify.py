@@ -73,6 +73,8 @@ def verify(source, staged):
                 assert checks["disclosureVisibleInFirstFrame"] is (frame.get("localDisclosureVisible") is True)
                 if checks["editorFocusedInFirstFrame"]:
                     assert frame["focusIsEditable"] is True and frame["focusTag"] == "TEXTAREA"
+                if arm == "authored-compact-status" and checks["returnToOriginal"]:
+                    assert interaction["statusAfterReturn"] == [""]
             verify_frames(cell, view, width, height)
             sizes[width] = {"failed": sorted(key for key, ok in checks.items() if not ok),
                             "request_count": len(interaction["requests"]),

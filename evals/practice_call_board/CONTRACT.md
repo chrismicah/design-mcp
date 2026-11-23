@@ -24,3 +24,19 @@ local. It verifies keyboard editing separately and uses the page's own return
 button when present. A visible native service picker with both named options
 can satisfy the opening service check. Tacoma and Dayton retain their existing
 checks. [Matched brief and install evidence](../../research/FOCUS-TRANSFER.md)
+
+The Madison repair keeps the contact-first reading order for adults who want
+to call a counselor and optionally prepare a private note. The tone stays
+calm. Deep blue #172747 holds the call panel, pale blue #D7E1FA supports the
+contact details, ink #18243A carries copy, paper #F0F3FA holds the form, and
+periwinkle #BFCFFF marks the direct call. Bodoni Moda remains the nameplate
+and Instrument Sans handles the details and controls. The call window beside
+Taylor's number and the visitor's own editable first line are the focal
+details. Skip all new content and visuals.
+
+The authored repair must keep the exact treatment as its parent and pass
+all 84 browser checks. On the shortest phone, reduce vertical gaps around
+the existing groups until Preview note fits. Preserve the control sizes and
+reading order. Announce that the note is ready while keeping keyboard focus
+on the named editor. Clear that status on return. Keep post-load requests
+at zero. Score any future visual test independently.
