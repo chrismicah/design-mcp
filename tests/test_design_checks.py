@@ -36,7 +36,7 @@ def test_source_checks_have_locations_and_ignore_comments_and_fallbacks():
 
 
 def test_trackr_is_a_negative_fixture():
-    fixture = Path(__file__).resolve().parents[1] / "test_trackr_v3.html"
+    fixture = Path(__file__).resolve().parent / "fixtures" / "trackr-before.html"
     assert "brand-font" in rules(fixture.read_text(encoding="utf-8-sig"))
 
 

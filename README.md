@@ -94,6 +94,12 @@ Plain `design-mcp doctor` works offline and checks the selected tool surface. In
 
 The new direction library and the historical pattern data have separate roles. Historical metadata may be templated, incomplete, or missing its original screenshot. Treat source records as review inputs. The directions carry observable source evidence or clearly labelled hypotheses. The direction and results can be checked separately.
 
+### Existing source-checkout configurations
+
+`python /path/to/design-mcp/server.py` still launches the 14-tool compatibility server. It uses the same implementation as the installed command. To move an existing configuration to the package, set `DESIGN_MCP_SURFACE=legacy` and use `design-mcp serve`. Use `both` to add the three direction tools. Old root-level `models` imports move to `design_mcp.models`.
+
+The optional historical maintenance scripts write to `data/`. Run `python3 scripts/stage_legacy_data.py` from a source checkout before running those scripts. It seeds missing files from the verified snapshot and preserves any existing work. The MCP and review tools read their package resources independently.
+
 ## Verified results
 
 All eight macOS 15 clean-install jobs passed on Intel and Apple Silicon with Python 3.10–3.13. Both installers fetched the exact pinned Git commit, passed `doctor`, and exercised the default, historical and combined stdio surfaces with and without the optional review tool. The same pin also passed all eight installs in a fresh Apple Silicon Ventura 13.7.4 Tart guest. Intel Ventura runtime verification remains open. [macOS 15 matrix](evidence/benchmark-v1/release-ci-a9e1211.json) · [Ventura matrix](evidence/benchmark-v1/ventura-tart-a9e1211.json)

@@ -22,7 +22,7 @@ DATA_DIR = BASE_DIR / "data"
 
 # Add parent to path for imports
 sys.path.insert(0, str(BASE_DIR))
-from models.visual_analyzer import (
+from design_mcp.models.visual_analyzer import (
     hex_to_rgb, rgb_to_hsl, relative_luminance, contrast_ratio,
     generate_color_palette, FONT_PAIRINGS, TYPE_SCALE, SPACING_SYSTEM
 )

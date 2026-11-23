@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+- Consolidated the checkout and installed server on one implementation. `server.py` still launches the legacy surface for historical client configs. Source tests exercise the installed implementation. Removed 14 duplicate tracked data files. Historical maintenance scripts can stage writable copies without overwriting existing work. [Migration](README.md#existing-source-checkout-configurations)
+
 - Retry active-tab review if fields move or appear between the two layout readings. Chrome sends the capture to the local reviewer only after its field positions and viewport agree.
 
 - Show the page-load error and recovery when Chrome cannot capture a pasted URL. The local reviewer saves a preview only after a successful capture.

@@ -5,8 +5,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from server import search_design_patterns, get_design_blueprint, compare_design_approaches
-from database import DesignDatabase
+from design_mcp.server import search_design_patterns, get_design_blueprint, compare_design_approaches
+from design_mcp.database import DesignDatabase
 
 async def main():
     db = DesignDatabase(str(Path(__file__).parent.parent / "data" / "patterns.json"))

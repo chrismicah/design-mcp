@@ -63,7 +63,7 @@ def test_distribution_data_selection_and_canonical_source_bytes():
     assert not (selected & (pipeline_paths | {"data/patterns.json", "data/vision_results.json"}))
     assert {"data/directions.json", "data/tokens/token_sets.json", "review/extension/manifest.json"} <= selected
     assert not any(path.startswith("prompts/") for path in selected)
-    assert corpus.read_bundled() == (ROOT / "data" / "patterns.json").read_bytes()
+    assert corpus.read_bundled() == (ROOT / "design_mcp" / "data" / "patterns.json").read_bytes()
 
 
 @pytest.mark.asyncio

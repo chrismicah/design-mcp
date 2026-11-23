@@ -3,8 +3,8 @@ import json
 import pytest
 from pathlib import Path
 
-from database import DesignDatabase
-from schema import DesignPattern
+from design_mcp.database import DesignDatabase
+from design_mcp.schema import DesignPattern
 
 
 class TestDatabaseLoadSave:

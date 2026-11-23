@@ -17,6 +17,8 @@ The rollout starts the three curated tools without reading legacy data. With `DE
 - **Junk is labelled as design.** 2,038 crawled rows are error, blocked or directory pages: 1,375 are named "404 Not Found", 208 are "您未被授权查看该页" ("you are not authorized to view this page"), and there are Cloudflare challenge pages and "Index of /…" listings. 6,036 rows are typed "Landing Page".
 - **The assets are absent from the current checkout.** 742 rows reference `screenshots/**`. At `5f2f990` the tree held 742 LFS pointers (`git lfs ls-files 5f2f990` lists 742). Commit `0526905` ("Make screenshots optional") deleted them, so HEAD holds only `screenshots/README.md`, whose `git lfs pull` instruction no longer works there. Whether the remote LFS store still has the blobs is **unverified**: fetching them would be a ~600 MB bulk download, which this audit didn't run. 31 rows carry a remote image URL and two assets were confirmed viewable in this audit.
 
+The checkout cleanup retained one canonical copy of the historical input and removed 14 byte-identical tracked mirrors. The scorer and the action-list paths refer to the original audit commit. Restore writable working copies for the historical offline scripts through the documented staging command. [Migration](README.md#existing-source-checkout-configurations)
+
 ## 1. Scope and inputs (every record was read programmatically)
 
 | File (runtime `design_mcp/data/` = mirror `data/`, SHA-256 identical) | Records | Scored as |

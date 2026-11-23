@@ -9,7 +9,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 import httpx
-from schema import DesignPattern, Platform, LayoutType
+from design_mcp.schema import DesignPattern, Platform, LayoutType
 
 SCREENSHOTS_DIR = Path(__file__).parent.parent / "screenshots" / "awwwards"
 DATA_PATH = Path(__file__).parent.parent / "data" / "patterns.json"

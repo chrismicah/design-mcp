@@ -5,7 +5,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from models.analyzer import (
+from design_mcp.models.analyzer import (
     analyze_code,
     infer_component_type,
     detect_magic_hex_colors,

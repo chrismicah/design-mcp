@@ -50,7 +50,7 @@ def legacy_tool(function):
     return function
 
 
-db = DesignDatabase() if SURFACE != "v2" else None
+db = DesignDatabase()
 
 
 async def _search_patterns(**filters) -> list[DesignPattern]:

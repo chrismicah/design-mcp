@@ -2,8 +2,8 @@
 import sys, os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from schema import DesignPattern, Platform
-from database import DesignDatabase
+from design_mcp.schema import DesignPattern, Platform
+from design_mcp.database import DesignDatabase
 
 AWWWARDS_SITES = [
     {

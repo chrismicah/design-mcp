@@ -14,8 +14,8 @@ from collections import Counter
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from schema import DesignPattern, Platform, LayoutType
-from database import DesignDatabase
+from design_mcp.schema import DesignPattern, Platform, LayoutType
+from design_mcp.database import DesignDatabase
 
 DATASET_DIR = Path(__file__).parent.parent / "data" / "webui-7kbal" / "balanced_7k"
 

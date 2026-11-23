@@ -5,7 +5,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from server import get_library_recommendations, get_library_details
+from design_mcp.server import get_library_recommendations, get_library_details
 
 
 class TestGetLibraryRecommendations:
@@ -122,7 +122,7 @@ class TestGetLibraryDetails:
     async def test_all_libraries_have_required_fields(self):
         """Verify data integrity of the libraries database."""
         import json
-        libs_path = Path(__file__).parent.parent / "data" / "libraries.json"
+        libs_path = Path(__file__).parent.parent / "design_mcp" / "data" / "libraries.json"
         with open(libs_path) as f:
             data = json.load(f)
         
@@ -141,7 +141,7 @@ class TestAnalyzeWithLibraries:
     
     @pytest.mark.asyncio
     async def test_vibecoded_button_recommends_shadcn(self):
-        from server import analyze_and_devibecode
+        from design_mcp.server import analyze_and_devibecode
         code = """
         export default function SubmitButton({ onSubmit }) {
             return (
@@ -160,7 +160,7 @@ class TestAnalyzeWithLibraries:
 
     @pytest.mark.asyncio
     async def test_vibecoded_dropdown_recommends_libraries(self):
-        from server import analyze_and_devibecode
+        from design_mcp.server import analyze_and_devibecode
         code = """
         export default function VibeDropdown({ options }) {
             const [open, setOpen] = useState(false);

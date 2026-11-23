@@ -9,9 +9,9 @@ from pathlib import Path
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from schema import DesignPattern, Platform, LayoutType
-from database import DesignDatabase
-from server import (
+from design_mcp.schema import DesignPattern, Platform, LayoutType
+from design_mcp.database import DesignDatabase
+from design_mcp.server import (
     search_design_patterns,
     get_design_blueprint,
     get_semantic_tokens,
@@ -346,7 +346,7 @@ class TestServerTools:
 class TestDataQuality:
     @pytest.fixture(scope="class")
     def patterns(self):
-        with open(BASE_DIR / "data" / "patterns.json") as f:
+        with open(BASE_DIR / "design_mcp" / "data" / "patterns.json") as f:
             return json.load(f)
 
     def test_patterns_not_empty(self, patterns):

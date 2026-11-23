@@ -15,7 +15,7 @@ data/webui-7kbal/
 *.egg
 
 # Screenshots are optional (742 files, 600MB) — stored in Git LFS
-# The MCP runs off data/patterns.json, not screenshots
+# The reviewed catalog and compatibility resources live in design_mcp/data
 # To download: git lfs pull
 screenshots/awwwards/
 screenshots/dribbble/
@@ -25,3 +25,19 @@ screenshots/landbook/
 
 test_output.json
 .forgeindex/
+
+# Writable copies for optional historical maintenance scripts
+/data/anti_generic_system.json
+/data/anti_pattern_fixes.json
+/data/behavioral_templates.json
+/data/component_code.json
+/data/decision_trees.json
+/data/decision_trees_indexed.json
+/data/layout_templates.json
+/data/libraries.json
+/data/patterns.json
+/data/taxonomy.json
+/data/tokens/semantic_tokens.json
+/data/tokens/token_sets.json
+/data/vision_results.json
+/data/visual_recipes.json

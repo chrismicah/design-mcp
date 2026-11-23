@@ -10,7 +10,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-DATA_DIR = Path(__file__).parent.parent / "data"
+DATA_DIR = Path(__file__).parent.parent / "design_mcp" / "data"
 
 
 @pytest.fixture(scope="module")
@@ -116,7 +116,7 @@ class TestRecipeIntegration:
 
     @pytest.mark.asyncio
     async def test_get_visual_recipe_returns_all(self):
-        from server import get_visual_recipe
+        from design_mcp.server import get_visual_recipe
         result = await get_visual_recipe()
         assert "color_restraint" in result
         assert "depth_system" in result
@@ -124,14 +124,14 @@ class TestRecipeIntegration:
 
     @pytest.mark.asyncio
     async def test_get_visual_recipe_by_name(self):
-        from server import get_visual_recipe
+        from design_mcp.server import get_visual_recipe
         result = await get_visual_recipe(recipe="color_restraint")
         assert "palettes" in result
         assert "rules" in result
 
     @pytest.mark.asyncio
     async def test_get_visual_recipe_by_page_type(self):
-        from server import get_visual_recipe
+        from design_mcp.server import get_visual_recipe
         result = await get_visual_recipe(page_type="Dashboard")
         assert "color_restraint" in result
         assert "component_design" in result
@@ -139,7 +139,7 @@ class TestRecipeIntegration:
 
     @pytest.mark.asyncio
     async def test_blueprint_includes_visual_recipes(self):
-        from server import search_design_patterns, get_design_blueprint
+        from design_mcp.server import search_design_patterns, get_design_blueprint
         results = await search_design_patterns("dashboard", page_type="Dashboard", limit=1)
         if results:
             bp = await get_design_blueprint(results[0]["id"])
@@ -149,15 +149,18 @@ class TestRecipeIntegration:
             assert len(vr) > 0, "visual_recipes is empty"
 
     @pytest.mark.asyncio
-    async def test_search_results_include_visual_recipes(self):
-        from server import search_design_patterns
-        results = await search_design_patterns("dashboard", limit=1)
-        if results:
-            assert "visual_recipes" in results[0], "Search result missing visual_recipes"
+    async def test_search_visual_recipes_are_opt_in(self):
+        from design_mcp.server import search_design_patterns
+
+        condensed = await search_design_patterns("dashboard", limit=1)
+        with_guidance = await search_design_patterns("dashboard", limit=1, fields=["visual_recipes"])
+        assert condensed[0]["id"] == with_guidance[0]["id"]
+        assert "visual_recipes" not in condensed[0]
+        assert with_guidance[0]["visual_recipes"]
 
     @pytest.mark.asyncio
     async def test_analyze_includes_visual_recipes(self):
-        from server import analyze_and_devibecode
+        from design_mcp.server import analyze_and_devibecode
         code = '<div style="background: #333; color: #fff; padding: 20px">Hello</div>'
         result = await analyze_and_devibecode(code)
         assert "visual_recipes" in result, "analyze_and_devibecode missing visual_recipes"
@@ -166,7 +169,7 @@ class TestRecipeIntegration:
 
     @pytest.mark.asyncio
     async def test_generate_refactored_includes_visual_recipes(self):
-        from server import generate_refactored_code
+        from design_mcp.server import generate_refactored_code
         code = '<div style="background: red"><button>Click</button></div>'
         result = await generate_refactored_code(code)
         assert "visual_recipes" in result, "generate_refactored_code missing visual_recipes"
