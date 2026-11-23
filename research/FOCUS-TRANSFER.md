@@ -36,6 +36,7 @@ and frozen Madison briefs. All 48 complete unrelated responses and three
 explicit form overrides matched. The 73 direction tests passed. The source
 proof contains the entire matched replies and their hashes.
 
-The control reproduced those replies on fresh pipx and uv installs on
-Apple Silicon macOS 15. Treatment remains queued in the same workflow.
-The matched render is pending both generated arms. [Source proof](../evals/practice_focus/source-replies.json) · [Verified control installs](../evidence/benchmark-v1/focus-guidance-install-checkpoint.json) · [Hosted workflow](https://github.com/chrismicah/design-mcp/actions/runs/45285480523)
+Both the control and treatment reproduced their sealed replies on fresh
+pipx and uv installs on Apple Silicon macOS 15. The four installs passed
+doctor and the supported stdio smoke configurations. The matched render
+still needs both generated Madison drafts. [Complete source replies](../evals/practice_focus/source-replies.json) · [Four install receipts](../evidence/benchmark-v1/focus-guidance-installed.json) · [Hosted workflow](https://github.com/chrismicah/design-mcp/actions/runs/45285480523)
