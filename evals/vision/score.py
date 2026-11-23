@@ -136,7 +136,8 @@ def verify_files(ballot_path, browser_path, evidence_path, screens, before_paths
             raise ValueError(f"Before capture differs from the tested receipt for {screen}")
 
     return {**result, "build_sha256": ballot["build_sha256"], "evaluator_session": ballot["evaluator_session"],
-            "builder_session": observations["builder_session"]}
+            "builder_session": observations["builder_session"],
+            "capture_set": tuple(browser[phase][name] for phase in ("before_captures", "captures") for name in screens)}
 
 
 def main():
@@ -162,7 +163,8 @@ def main():
         )
     except (KeyError, OSError, TypeError, ValueError) as error:
         parser.error(str(error))
-    del result["build_sha256"], result["evaluator_session"], result["builder_session"]
+    for field in ("build_sha256", "evaluator_session", "builder_session", "capture_set"):
+        del result[field]
     print(json.dumps(result, indent=2))
     raise SystemExit(0 if result["accepted"] else 2)
 

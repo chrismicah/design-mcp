@@ -163,13 +163,13 @@ class CreativeSeriesTests(unittest.TestCase):
             "rounds": [{"premise": "The transcript marks the seam between two editions",
                         "critique": "The source time is easy to mistake for the broadcast time",
                         "revision": "Move the active edition name beside its clock",
-                        "review": self.review(f"round-{number}", number, "round-critic",
+                        "review": self.review(f"round-{number}", number, f"critic-{number}",
                                               9.5 if number == 4 else 8)}
                        for number in range(1, 6)],
             "confirmation": self.review("final", 4, "fresh-critic", 9.5),
         }
 
-    def review(self, label, build, critic, rating):
+    def review(self, label, build, critic, rating, capture_label=None):
         folder = self.folder / label
         folder.mkdir()
         before, after, observations = {}, {}, {}
@@ -177,7 +177,7 @@ class CreativeSeriesTests(unittest.TestCase):
             changes = {}
             for stage, files in (("before", before), ("after", after)):
                 path = folder / f"{name}-{stage}.png"
-                content = f"{label} {name} {stage}".encode()
+                content = f"{capture_label or label} {name} {stage}".encode()
                 path.write_bytes(content)
                 files[name] = str(path.relative_to(self.folder))
                 changes[f"{stage}_sha256"] = digest(content)
@@ -226,7 +226,7 @@ class CreativeSeriesTests(unittest.TestCase):
             evaluate_series(self.series, self.folder)
 
     def test_confirmation_requires_a_different_evaluator(self):
-        self.series["confirmation"] = self.review("old-critic", 4, " ROUND-critic ", 9.5)
+        self.series["confirmation"] = self.review("old-critic", 4, " CRITIC-4 ", 9.5)
         with self.assertRaisesRegex(ValueError, "fresh evaluator"):
             evaluate_series(self.series, self.folder)
 
@@ -252,6 +252,16 @@ class CreativeSeriesTests(unittest.TestCase):
     def test_requires_relative_evidence_paths(self):
         self.series["confirmation"]["build"] = str(self.folder / "final/index.html")
         with self.assertRaisesRegex(ValueError, "inside the series directory"):
+            evaluate_series(self.series, self.folder)
+
+    def test_rejects_duplicate_captures_for_a_new_build(self):
+        self.series["rounds"][1]["review"] = self.review("same-captures", 2, "critic-2", 8, "round-1")
+        with self.assertRaisesRegex(ValueError, "reuses the same before and after captures"):
+            evaluate_series(self.series, self.folder)
+
+    def test_each_round_needs_a_fresh_critic(self):
+        self.series["rounds"][1]["review"] = self.review("same-critic", 2, "critic-1", 8)
+        with self.assertRaisesRegex(ValueError, "needs a fresh evaluator"):
             evaluate_series(self.series, self.folder)
 
 

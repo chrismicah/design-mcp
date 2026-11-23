@@ -49,6 +49,8 @@ def evaluate_series(series, root):
 
     history = []
     builds = set()
+    captures = set()
+    evaluators = set()
     for number, entry in enumerate(rounds, 1):
         fields = ["premise", "critique"]
         if number > 1:
@@ -60,7 +62,14 @@ def evaluate_series(series, root):
         result = verify_packet(entry["review"], root)
         if result["build_sha256"] in builds:
             raise ValueError(f"Round {number} repeats a previously reviewed build")
+        if result["capture_set"] in captures:
+            raise ValueError(f"Round {number} reuses the same before and after captures")
+        evaluator = session_key(result["evaluator_session"])
+        if evaluator in evaluators:
+            raise ValueError(f"Round {number} needs a fresh evaluator session")
         builds.add(result["build_sha256"])
+        captures.add(result["capture_set"])
+        evaluators.add(evaluator)
         history.append({"round": number, **result})
 
     chosen = history[finalist - 1]
