@@ -89,3 +89,9 @@ The direction now has witnessed improvements to finding the first useful answer.
 The exact `559aee8` PR checkpoint passed all 13 hosted checks. The pinned macOS 15 matrix passed pipx and uv on Intel and Apple Silicon for Python 3.10–3.13. Both Chrome journeys, public URL review, native SwiftUI, Electron, and the daily source report passed. The work-order package evidence still supports the measured 320 px booking journey. Full first-run transfer across the other brief types, current-package Ventura coverage, the visual gate, and full competitor coverage remain open. [Exact job steps](evidence/benchmark-v1/release-ci-559aee8.json) · [Booking receipt](evidence/benchmark-v1/booking-work-order-first.json)
 
 The third River trial placed literal crossing states inside the figure. A fresh critic confirmed the 6→2 m changes, with matched ratings of 7.40 → 7.95 desktop and 7.40 → 7.75 phone. The phone labels need a larger reading size. [Matched label trial](evidence/benchmark-v1/river-access-labels-live.json)
+
+### November 23 first-run and creative review checkpoint
+
+The routine signup and contradictory shift queue both ran from a fresh uv install of `ff38284`. They asked zero and one questions, respectively. Both preserved task behavior after a literal calmer response. The signup tied at 7.20 desktop / 7.30 phone. The queue fell from 7.95 / 8.05 to 7.55 / 7.55. The matched repair recovered the delayed bay as the focal point and improved from 7.50 to 7.70 at both widths. [Connected replay](EVALS.md#connected-first-run-transfer)
+
+The creative verifier enforces the five-round stopping rule and requires the highest-ranked eligible candidate for independent confirmation. The new checks test the process. The best confirmed River score remains 8.85 and 8.75 across two live ballots. The 9.5 release gate stays open. [Verifier](evals/vision/rubric.md#verify-a-creative-series) · [River decisions](EVALS.md#candidate-decisions)

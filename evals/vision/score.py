@@ -111,10 +111,11 @@ def evaluate(ballot, browser, expected_screens, observations):
                 raise ValueError(f"Incomplete finding on {name}")
             if finding["severity"] == "material":
                 blockers.append(f"{name}: {finding['region']}")
-        if scores[name] < MINIMUM:
-            blockers.append(f"{name}: below {MINIMUM}")
+    eligible = not blockers
+    blockers.extend(f"{name}: below {MINIMUM}" for name in ids if scores[name] < MINIMUM)
 
-    return {"accepted": not blockers, "scores": {name: float(score) for name, score in scores.items()},
+    return {"accepted": not blockers, "eligible_for_finalist": eligible,
+            "scores": {name: float(score) for name, score in scores.items()},
             "minimum": float(MINIMUM), "blockers": blockers}
 
 

@@ -4,6 +4,10 @@
 
 ## Unreleased
 
+- Keep the delayed item visually prominent when a user asks to make an exception-first dashboard calmer. The matched live comparison improved from 7.50 to 7.70 at both widths. [Installed replay](EVALS.md#calmer-shift-queue-matched-repair)
+
+- Enforced the creative critique stopping rule and strongest-finalist selection. The verifier resolves equal phone or desktop minimums by mean score and ranks rounds with working interactions ahead of rounds with release blockers. [Series verifier](evals/vision/rubric.md#verify-a-creative-series)
+
 - Reject a creative review series if any session grades one revision and builds another. [Series verifier](evals/vision/rubric.md#verify-a-creative-series)
 
 - Lead with the service work order and keep its price, day choices, and live result together. Both fresh drafts passed the 320 px booking task, and two independent live comparisons favored the guidance. [Benchmark](evidence/benchmark-v1/booking-work-order-first.json)

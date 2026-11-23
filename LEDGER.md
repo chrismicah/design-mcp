@@ -1,5 +1,14 @@
 # Design MCP ledger
 
+## November 23 creative verification and first-run transfer
+
+| Lane | Outcome | Evidence |
+| --- | --- | --- |
+| Finalist selection | The verifier now ranks candidates with passing browser checks and zero material findings first, then compares the lower viewport score and the mean. It rejects extra rounds after two consecutive misses once five rounds have run. | All 35 visual verifier tests passed, including the tiebreaker, broken-action and stopping regressions. [Rules](evals/vision/rubric.md#verify-a-creative-series) |
+| Connected signup and shift queue | Both literal calmer revisions preserved the interaction. The signup score tied. The queue dropped 0.40 desktop and 0.50 phone when the timing button took visual priority. | [Exact install, user turns, live traces and blind ballots](evidence/benchmark-v1/connected-first-run-transfer-ff38284.json) |
+| Matched shift queue repair | The revised installed reaction restored the delayed bay as the focal point. A fresh blind session rated it 7.70 at both widths against 7.50 for the control. | 48 installed tests, 88 compared replies, and 30 browser states. [Matched receipt](evidence/benchmark-v1/exception-first-calmer-matched.json) |
+| Current creative research | A low-cost scout and separate concept critics examined recent design leads and challenged two new briefs. The portfolio and product replays distinguish loader, settled artwork, navigation and sign-in. | 46 dimension- and hash-checked frames. [Research and concept rounds](research/CREATIVE-ROUNDS.md#november-23-reference-replay-and-stronger-review-gate) |
+
 ## Release candidate verification
 
 | Lane | Outcome | Evidence |

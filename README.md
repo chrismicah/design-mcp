@@ -61,7 +61,7 @@ Add this entry to Claude Desktop’s `claude_desktop_config.json` or Cursor’s 
 
 > I need a site for a local bike repair shop. Second Spin does 48-hour tune-ups for $85. We are at 41 Elm Street and take bookings Tuesday to Saturday. Make booking easy to find and let a visitor pick a day to see the booking summary.
 
-The agent calls `direct` first. Give the audience, task, real content, and any existing brand constraints in the brief. Start with the brief alone so the tool can infer the surface. Use the optional surface argument when the project explicitly calls for one. A very short brief can produce one optional question with a default. Apply the direction to the project's data, load its licensed typefaces, and test the main action.
+The agent calls `direct` first. Give the audience, task, real content, and any existing brand constraints in the brief. Start with the brief alone so the tool can infer the surface. Use the optional surface argument when the project explicitly calls for one. A very short brief can produce one optional question with a default. If the brief asks for incompatible outcomes, have the agent ask which outcome to build. Apply the direction to the project's data, load its licensed typefaces, and test the main action.
 
 | Tool | Arguments | Result |
 | --- | --- | --- |
@@ -69,7 +69,7 @@ The agent calls `direct` first. Give the audience, task, real content, and any e
 | `react` | `direction_id`, `reaction`, optional `comparison_id` | Concrete changes for “calmer”, “bolder”, “too generic”, or “more like A”. For a compared direction, pass its ID. |
 | `check` | `source_code` | Located source findings for recognized font, copy, surface, and composition patterns. Use a rendered browser to check geometry, imagery, active fonts, motion, and usability. |
 
-Try “calmer” after the first draft. The advice depends on the selected direction. On a form it suggests more space before a primary button. Other directions can adjust the type scale, accent, spacing, and motion. For the booking example, check that the chosen day appears beside the controls after selection on a phone. [Booking walkthrough and open checks](EVALS.md#candidate-decisions)
+Try “calmer” after the first draft. The advice depends on the selected direction. On a form it suggests more space before a primary button. Other directions can adjust the type scale, accent, spacing, and motion. For the booking example, check that the chosen day appears beside the controls after selection on a phone. [Booking walkthrough and open checks](EVALS.md#candidate-decisions) · [Connected signup and dashboard tests](EVALS.md#connected-first-run-transfer)
 
 ## Review an existing interface
 

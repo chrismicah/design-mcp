@@ -389,3 +389,22 @@ The live keyboard journey covered empty validation, Elm confirmation and editing
 A resident deciding when both ferry and footbridge are available can now read “2 m” and both crossings together on entry. Two independent Playwriter ballots scored the caption cards **7.65 → 8.10** against frozen River round 5, then the full-width rows **8.00 → 8.35** against the cards. Each score pair held at desktop and phone widths. The 6→2 m keyboard and touch checks preserved all three closure thresholds. The rows still leave ochre highlights unexplained. These local fixtures test presentation and task clarity. The prior River finalist remains the strongest independently confirmed design. [Caption ballot](evidence/benchmark-v1/river-access-captions-live.json) · [Row ballot](evidence/benchmark-v1/river-access-rows-live.json)
 
 In a third blind comparison, literal state labels beside each threshold raised the matching rows from **7.40 to 7.95 desktop and 7.75 phone**. The fresh critic could read the three operational states from the illustration on its own at 6 m and after the keyboard return to 2 m. Review found the small labels harder to scan on mobile. The candidate kept all controls and closure text in view at 320 px. Two grayscale captures and the live accessibility text confirm that distinguishing the colored highlights is unnecessary to read the states. The 9.5 gate remains open. [Label trial](evidence/benchmark-v1/river-access-labels-live.json)
+
+### Connected first-run transfer
+
+A fresh uv install of exact PR checkpoint `ff38284` ran two connected Codex sessions with the same routine and contradictory briefs used in the earlier first-turn probe. The client sent each brief as the only `direct` argument. Each session later sent the literal `calmer` reaction with the returned direction ID. Chrome and Playwriter replayed the actual generated HTML at 320, 390 and 1440 CSS px.
+
+| Brief | Questions | Client time | Observed outcome |
+| --- | ---: | --- | --- |
+| Mobile ceramics signup | 0 | 42.3 s for first HTML, 41.8 s for revision | Both drafts reached visible confirmation after an empty attempt and invalid-email repair by keyboard. The pointer flow passed at 390 px. No submit attempted an outbound request or wrote browser storage. The revision moved the button down 8 CSS px. |
+| Conflicting shift queue | 1 | 11.5 s to the question, then 35.4 s for first HTML and 39.1 s for revision | The client offered hide or show and recommended hide. After the chosen answer, both times started hidden and restored to hidden after reload. The keyboard and pointer revealed 09:10 and 09:25. The revision muted the delayed panel and highlighted the timing button. |
+
+The question was asked by the client while applying the retrieved direction. The signup confirms only the local preview. The observed timings are single runs. [Exact install, tool traces and 56 functional captures](evidence/benchmark-v1/connected-first-run-transfer-ff38284.json)
+
+The independent live critic scored the ceramics signup **7.20 desktop / 7.30 phone** for both drafts. The queue fell from **7.95 / 8.05** to **7.55 / 7.55**. The calmer revision made the secondary timing control more prominent than the delayed bay. An isolated change to the exception-first reaction passed 48 installed direction tests. [Blind ballots and observed interactions](evidence/benchmark-v1/connected-first-run-transfer-ff38284.json)
+
+### Calmer shift queue matched repair
+
+The same frozen dashboard fed two fresh installed-client sessions. Both revised pages passed all 30 Chrome and Playwriter states across 320, 390, and 1440 px. Both preserve the keyboard focus, reveal 09:10 and 09:25, hide the details on reload, and keep the two queue statuses. The candidate puts the strongest fill on Bay B and echoes it on the delayed status. The control gives the timing button the strongest fill.
+
+The independently audited live comparison rose from **7.50 to 7.70** on desktop and phone. The critic preferred the candidate’s focus on the delayed bay and identified the lower-contrast timing button as its biggest weakness. The installed reply comparison covered 88 direction and reaction pairs. Only the four calm aliases for the exception-first direction changed. [Browser states, frozen inputs and independent ballot](evidence/benchmark-v1/exception-first-calmer-matched.json)

@@ -1,6 +1,7 @@
 """Verify a creative website's live critique history and finalist confirmation."""
 
 import argparse
+from decimal import Decimal
 from hashlib import sha256
 import json
 from pathlib import Path
@@ -9,6 +10,11 @@ from score import session_key, verify_files
 
 
 SCREENS = ("desktop", "mobile")
+
+
+def finalist_rank(result):
+    scores = [Decimal(str(result["scores"][screen])) for screen in SCREENS]
+    return result["eligible_for_finalist"], min(scores), sum(scores)
 
 
 def verify_packet(packet, root, *, assertion=None, expected_outcome=None):
@@ -59,7 +65,7 @@ def evaluate_series(series, root):
     captures = set()
     builders = set()
     evaluators = set()
-    best_score = -1
+    best_rank = None
     stalled_rounds = 0
     for number, entry in enumerate(rounds, 1):
         fields = ["premise", "critique"]
@@ -70,6 +76,8 @@ def evaluate_series(series, root):
             if not isinstance(value, str) or not value.strip():
                 raise ValueError(f"Round {number} needs a concrete {field}")
         pivot = entry.get("pivot")
+        if number > 5 and stalled_rounds >= 2:
+            raise ValueError(f"Round {number} exceeds the stop rule after two non-improving rounds")
         if stalled_rounds >= 2 and pivot is None:
             raise ValueError(f"Round {number} needs a tested pivot after two non-improving rounds")
         if pivot is None:
@@ -106,11 +114,17 @@ def evaluate_series(series, root):
         builders.add(builder)
         evaluators.add(evaluator)
         history.append({"round": number, **result})
-        score = min(result["scores"].values())
-        stalled_rounds = 0 if score > best_score else stalled_rounds + 1
-        best_score = max(best_score, score)
+        rank = finalist_rank(result)
+        if best_rank is None or rank > best_rank:
+            best_rank = rank
+            stalled_rounds = 0
+        else:
+            stalled_rounds += 1
 
     chosen = history[finalist - 1]
+    if finalist_rank(chosen) != best_rank:
+        strongest = next(entry["round"] for entry in history if finalist_rank(entry) == best_rank)
+        raise ValueError(f"Round {strongest} ranks higher than the selected finalist")
     confirmation = verify_packet(series["confirmation"], root)
     if any(confirmation[field] != chosen[field] for field in ("build_sha256", "builder_session")):
         raise ValueError("Confirm the same finalist build and builder")

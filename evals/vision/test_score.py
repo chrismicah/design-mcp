@@ -169,7 +169,8 @@ class CreativeSeriesTests(unittest.TestCase):
             "confirmation": self.review("final", 4, "fresh-critic", 9.5),
         }
 
-    def review(self, label, build, critic, rating, capture_label=None, pivot_passed=None, *, builder="builder"):
+    def review(self, label, build, critic, rating, capture_label=None, pivot_passed=None, *,
+               builder="builder", primary_action=True):
         folder = self.folder / label
         folder.mkdir()
         before, after, observations = {}, {}, {}
@@ -198,8 +199,10 @@ class CreativeSeriesTests(unittest.TestCase):
         browser = {"build_sha256": build_sha, "evidence_sha256": digest(evidence),
                    "checks": dict.fromkeys(HARD_GATES, True), "captures": captures,
                    "before_captures": {name: data["before_sha256"] for name, data in observations.items()}}
+        browser["checks"]["primary_action"] = primary_action
         ballot = {"build_sha256": build_sha, "live_review_sha256": digest(evidence),
-                  "evaluator_session": critic, "screens": [screen(name, capture, rating)
+                  "evaluator_session": critic, "screens": [screen(name, capture,
+                                                         rating[name] if isinstance(rating, dict) else rating)
                                                          for name, capture in captures.items()]}
         (folder / "browser.json").write_text(json.dumps(browser))
         (folder / "ballot.json").write_text(json.dumps(ballot))
@@ -212,6 +215,26 @@ class CreativeSeriesTests(unittest.TestCase):
         result = evaluate_series(self.series, self.folder)
         self.assertTrue(result["accepted"])
         self.assertEqual([row["accepted"] for row in result["rounds"]], [False, False, False, True, False])
+
+    def test_finalist_prefers_the_higher_mean_when_the_weaker_screen_ties(self):
+        self.series["rounds"][4]["review"] = self.review(
+            "stronger-round", 5, "critic-5", {"desktop": 9.8, "mobile": 9.5})
+        with self.assertRaisesRegex(ValueError, "Round 5 ranks higher"):
+            evaluate_series(self.series, self.folder)
+
+    def test_finalist_keeps_a_working_build_over_a_higher_scoring_broken_one(self):
+        self.series["rounds"][4]["review"] = self.review(
+            "broken-round", 5, "critic-5", 10, primary_action=False)
+        self.assertTrue(evaluate_series(self.series, self.folder)["accepted"])
+
+    def test_two_misses_at_round_five_end_the_series(self):
+        self.series["rounds"][3]["review"] = self.review("miss-4", 4, "critic-4", 8)
+        self.series["rounds"].append({
+            **self.series["rounds"][4],
+            "review": self.review("extra-round", 6, "critic-6", 10),
+        })
+        with self.assertRaisesRegex(ValueError, "Round 6 exceeds the stop rule"):
+            evaluate_series(self.series, self.folder)
 
     def test_short_history_cannot_release(self):
         self.series["rounds"].pop()
