@@ -699,3 +699,16 @@ The two swan designs use the same official region at 1200 pixels across and the 
 | Wider crop with nearby note | 7.95 | 7.95 |
 
 The first critic preferred the focus stage but found the phone overview competed with the detail and the screen reader repeated the transcription. The refinement widened the phone crop, moved the note beside the overview, and separated metadata in accessibility order. A fresh critic preferred the refinement at both widths and still found the overview small. Compare the scores within each ballot. These were manual gallery prototypes, with 60 scripted original frames and two complete live ballots. They remain below the visual release floor. [Exact assets, browser receipts and critiques](evidence/benchmark-v1/gallery-sharp-detail-framing.json)
+
+## Installed crop handoff and bounded repair
+
+The clean `4211d85` wheel passed doctor and 608 tests plus 134 subtests, with one skipped test. All 18 methods passed the combined smoke. The opted-in review returned original 1440 × 900 and 390 × 844 PNGs of the public address form, masked fields, and recovered after a 404 and an unsupported URL. Under installed stdio, 53 of 57 replies matched `5c5d2c9` exactly. Only the handoff text changed on the four physical inspection briefs. All schemas, reaction output and source checks were identical.
+
+| Untouched model build | Point inside crop at 320, 390, 1440 | Annotation initially visible |
+| --- | ---: | ---: |
+| Swan, frozen baseline | 0/3 | 0/3 |
+| Swan, framing handoff | 0/3 | 0/3 |
+| Milkmaid, baseline | 0/3 | 0/3 |
+| Milkmaid, framing handoff | 3/3 | 0/3 |
+
+The image-only repair consumed the verified source point and live frame and asset dimensions. It used the same clamped placement for each observed miss. It corrected all nine missed crops and preserved the three already passing views. The point appeared in the initial open viewport in 11 of 12 replays. The annotations still required scrolling in all 12. An exploratory unguarded repair regressed the already working Milkmaid crop, so the final guard keeps its original bytes. Both untouched pairs failed the visual qualification, and no fresh taste score was assigned. [Exact wheel, matched tool calls, browser evidence, and 96 original frame hashes](evidence/benchmark-v1/artwork-framing-handoff.json)
