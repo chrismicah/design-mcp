@@ -1,0 +1,55 @@
+name: Practice call board replay
+
+on:
+  push:
+    branches: [design-mcp/practice-install-proof]
+    paths:
+      - 'evals/practice_call_board/**'
+      - '.github/workflows/practice-visual-replay.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: 712a54a5e5694198b528dc916b5cb387db616bbf
+          path: browser-harness
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.13'
+      - name: Stage the frozen drafts and isolated browser
+        run: |
+          python evals/practice_call_board/prepare.py "$RUNNER_TEMP/cells"
+          python -m venv "$RUNNER_TEMP/design-review"
+          "$RUNNER_TEMP/design-review/bin/python" -m pip install .
+          npm install --ignore-scripts --prefix "$RUNNER_TEMP/playwriter" playwriter@0.12.0
+          curl --fail --silent --show-error --location --max-time 60 \
+            https://storage.googleapis.com/chrome-for-testing-public/157.0.8103.79/linux64/chrome-linux64.zip \
+            -o "$RUNNER_TEMP/chrome.zip"
+          unzip -q "$RUNNER_TEMP/chrome.zip" -d "$RUNNER_TEMP/browser"
+          sudo install -o root -g root -m 4755 \
+            "$RUNNER_TEMP/browser/chrome-linux64/chrome_sandbox" /usr/local/sbin/chrome-devel-sandbox
+      - name: Replay the consultation journey in Playwriter
+        run: |
+          PRACTICE_RENDER_HARNESS="$GITHUB_WORKSPACE/browser-harness/evals/wellcome_replay" \
+          CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox \
+          "$RUNNER_TEMP/design-review/bin/python" evals/practice_call_board/playback.py \
+            --cells "$RUNNER_TEMP/cells" --case tacoma-eye-care \
+            --playwriter "$RUNNER_TEMP/playwriter/node_modules/.bin/playwriter" \
+            --chrome "$RUNNER_TEMP/browser/chrome-linux64/chrome" \
+            --scratch "$RUNNER_TEMP/practice-browser"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: call-board-browser-receipts
+          path: ${{ runner.temp }}/cells
+          retention-days: 14
