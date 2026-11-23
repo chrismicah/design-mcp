@@ -27,3 +27,15 @@ The existing Reddit clinic critique motivates accurate action wording and
 stable contact details. X’s replay report motivates retaining exact
 artifact identities and measuring the outcome independently.
 [W3C focus order](https://www.w3.org/WAI/WCAG22/Understanding/focus-order) · [Reddit clinic critique](https://www.reddit.com/r/UXDesign/comments/1lsrqk8/) · [X engineering](https://blog.x.com/en/engineering/rebuilding-the-global-town-square-from-scratch)
+
+## Source and initial install results
+
+The tested direction uses the existing 420-character instruction bound.
+Source stdio verified the new action instruction on the Tacoma, Dayton,
+and frozen Madison briefs. All 48 complete unrelated responses and three
+explicit form overrides matched. The 73 direction tests passed. The source
+proof contains the entire matched replies and their hashes.
+
+The control reproduced those replies on fresh pipx and uv installs on
+Apple Silicon macOS 15. Treatment remains queued in the same workflow.
+The matched render is pending both generated arms. [Source proof](../evals/practice_focus/source-replies.json) · [Verified control installs](../evidence/benchmark-v1/focus-guidance-install-checkpoint.json) · [Hosted workflow](https://github.com/chrismicah/design-mcp/actions/runs/45285480523)
