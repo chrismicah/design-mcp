@@ -655,3 +655,17 @@ Each repair session received the same original HTML, a verified original 390 px 
 Both gallery repairs passed task and opening checks at 320, 390 and 1440 px. The original focus ring extended 6 px into the note. The screenshot-only arm left 10 px between the ring and the note and the measured arm left 8 px. At 390 px the measured arm brought the disclosure bottom to y=465 versus y=525 for its counterpart and y=659 for the baseline. The separate blind critic gave both arms **7.70 desktop**, with **7.80 phone** for screenshot-only and **7.30 phone** for measured. The critic preferred the taller mobile art panel and found the room mark generic in both.
 
 The form repairs preserved the exact keyboard journeys. Both brought the 390 px field within 330 px. At 320 px their first fields still ended at y=347 and y=339. The local-draft message in each stayed outside the opening view at every width. The two form drafts therefore remain unscored. The earlier geometric feedback to the builder included the location of the field and recovery focus, plus a textual requirement for the locally prepared status. It gave no measured location for the status. The observations cover two tasks and one revision. Use a rendered gate to find failures and check the repair. The gallery comparison favors a balance between the functional limit and the space the artwork needs. [Matched traces, 63 verified frames, and 12 live critic images](evidence/benchmark-v1/paired-render-repair.json)
+
+
+## Artwork detail in place
+
+Both study arms used the Rijksmuseum reproduction of *The Threatened Swan*, the same opening facts and interaction label. The crop arm kept the whole painting visible and revealed a second image under the action. The lens moved the original into the detail view, marked the target in the whole view and kept the action anchored. Both used the same 1400 × 1165 source. [Museum object record](https://www.rijksmuseum.nl/en/collection/object/The-Threatened-Swan--22040f90565e730131983a44a85b989f)
+
+| Standalone viewer | Desktop 1440 px | Phone 390 px |
+| --- | ---: | ---: |
+| Separate crop | 7.65 | 7.30 |
+| Detail in place | 8.00 | 7.75 |
+
+The independent reviewer opened and closed the detail with the keyboard in all four views. It favored the lens marker and larger crop, but found the inscription faint and missed the whole-image context after zooming. The comparison changes both the locator and the presentation, so it cannot isolate the contribution of either. The deterministic replay verified 18 original PNGs across six journeys, including touch, keyboard, reduced motion, the original painting's aspect and the crop target. The blind ballot verified another 12 original frames. Its first attempt could not send the large desktop PNGs to the critic. The completed attempt used lossless WebP when needed and preserved the source PNGs, dimensions and pixels. [Exact receipts and blind scores](evidence/benchmark-v1/artwork-detail-live.json)
+
+The separately installed `f30e6ff` package returned `object-hero`, a retail direction, to the same artwork inspection brief. Its phone crop discards part of the required composition and its action assumes a purchase. Treat this as a reproduced retrieval failure. The standalone lens earns no package score. The 9.5 release gate remains open.
