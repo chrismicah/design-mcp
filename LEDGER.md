@@ -1,5 +1,14 @@
 # Design MCP ledger
 
+## November 23 ticket concept workshop
+
+| Lane | Outcome | Evidence |
+| --- | --- | --- |
+| Bounded design planning | Astra proposed three physical interactions. A separate Terra session challenged visual scale and physical accuracy. Astra revised the ticket concept before the build. Conductor did not report per-turn token counts. The Codex weekly window showed 33% used before dispatch. | [Concept history](research/CREATIVE-ROUNDS.md#ticket-window-concept-and-adversarial-revision) |
+| Dated research | Playwriter captured two widths for four projects. The live frames distinguish evidence of interaction from loading screens. The HN front-page replay recovers both November 22 discussions. | [32 original PNG hashes and source record](evidence/benchmark-v1/nov22-current-design-references.json) |
+| Independent browser critique | Platen beat the earlier arrangement at both widths. The all-at-once ticket comparison improved cold identification, then the wording and larger marks won a second ticket ballot. | The ticket critics reported 54,254 and 18,852 input tokens outside cache and 3,090 and 2,509 output tokens. [Print comparisons](EVALS.md#letterpress-proof-comparison) · [Ticket ballots and token counters](evidence/benchmark-v1/ticket-window-live-comparisons.json) |
+| Release branch | All 13 jobs passed on `8758e2a`. Its package and Chrome integration match `3ef13cd`. The source-report and prototype work stays outside the package. | [GitHub checks](https://github.com/chrismicah/design-mcp/commit/8758e2a196015b30deeda6fafcfe17709d6ec183/checks) · [Hosted package evidence](evidence/benchmark-v1/release-ci-3ef13cd.json) |
+
 ## November 23 creative verification and first-run transfer
 
 | Lane | Outcome | Evidence |

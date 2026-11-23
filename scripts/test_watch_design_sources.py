@@ -5,7 +5,8 @@ import unittest
 from urllib.parse import parse_qs, urlsplit
 
 from watch_design_sources import (
-    AWWWARDS, CSSDA, HN_API, print_report, read_awwwards, read_css_award, read_show_hn, source_result,
+    AWWWARDS, CSSDA, HN_API, print_report, read_awwwards, read_css_award, read_show_hn,
+    read_top_hn, source_result,
 )
 
 
@@ -126,3 +127,31 @@ class SocialLeadTest(unittest.TestCase):
         self.assertEqual(queries[0]["q"], ["UI design filter:images min_faves:200"])
         self.assertEqual(queries[-2]["q"], ["product design breakdown filter:images min_faves:150"])
         self.assertEqual(queries[-1]["t"], ["week"])
+        self.assertIn("https://muuuuu.org/en/", output.getvalue())
+
+
+class FrontPageHNTest(unittest.TestCase):
+    def test_recovers_visual_projects_without_double_counting_show_hn(self):
+        timestamp = int(datetime(2026, 11, 22, tzinfo=timezone.utc).timestamp())
+        titles = {
+            2: ("A miniature San Francisco with live buses, planes and boats", "https://smallsf.com/"),
+            5: ("Sandwich Simulator", "https://stulle.app/"),
+            9: ("Show HN: Flight simulator", "https://example.test/"),
+            13: ("Notes on the discrete Fourier transform", "https://example.test/"),
+            15: ("Interactive map", "http://example.test/"),
+            21: ("Miniature city simulator", "https://example.test/"),
+        }
+
+        def fetch(url):
+            if url == f"{HN_API}/topstories.json":
+                return list(range(1, 25))
+            item_id = int(url.rsplit("/", 1)[-1].removesuffix(".json"))
+            self.assertLessEqual(item_id, 20)
+            title, target = titles.get(item_id, ("Unrelated article", "https://example.test/"))
+            return {"id": item_id, "type": "story", "time": timestamp, "title": title,
+                    "url": target, "score": 100 + item_id, "descendants": 2}
+
+        self.assertEqual(
+            [item["url"] for item in read_top_hn(TODAY, fetch)],
+            ["https://news.ycombinator.com/item?id=5", "https://news.ycombinator.com/item?id=2"],
+        )

@@ -411,7 +411,7 @@ The independently audited live comparison rose from **7.50 to 7.70** on desktop 
 
 ### Letterpress proof comparison
 
-Five local builds use the same print task. Find the sheet where both inks align. One wrong option translates the red layer. The deceptive option rotates around the left mark, which still appears aligned. Four fresh critics used each matched pair at 1440 and 390 px. Each tested a wrong proof and recovered to the ready-to-print result. Scores use the live rubric and stay paired by critic.
+Six local builds use the same print task. Find the sheet where both inks align. One wrong option translates the red layer. The deceptive option rotates around the left mark, which still appears aligned. Five fresh critics each tested a wrong proof and recovered to the ready-to-print result at 1440 and 390 px. Scores use the live rubric and stay paired by critic.
 
 | Change | Desktop | Phone | Finding |
 | --- | ---: | ---: | --- |
@@ -419,5 +419,17 @@ Five local builds use the same print task. Find the sheet where both inks align.
 | Intersect the ink fields and give the caption space | 7.60 → 8.25 | 7.50 → 8.15 | The new sheet reads as a single composition. The fine offsets remain small. |
 | Enlarge the paired marks and label each corner | 8.15 → 8.45 | 8.05 → 8.25 | The diagnostic marks are easier to compare. The sheet labels compete slightly with the poster, and the workshop has little editorial context. |
 | Add a control that lifts the red impression and puts it back | 7.70 → 7.80 | 7.70 → 7.60 | The interaction works. The extra toolbar pushes the lower sheet out of the phone view. Retained the larger marked proof without the toolbar. |
+| Put the plate control inside the print trim | 7.70 → 8.25 | 7.45 → 8.15 | The poster and controls read as one exhibit. The critic lifted and restored the red ink across the sheet and both details. The desktop headline competes with the print and the phone's printed marks remain small. |
 
-The separate Playwriter runs captured **153 checked browser states**. They verified keyboard, touch emulation, reduced motion, correct outcomes, local operation, and fit at 320, 390 and 1440 px. The proof history remains below the two-critic 9.5 gate. The next comparison should give the artwork a curatorial context and allow close inspection inside the existing sheet area. [Frozen HTML hashes and four live ballots](evidence/benchmark-v1/letterpress-live-comparisons.json)
+The separate Playwriter runs captured **195 checked browser states**. They verified keyboard, touch emulation, reduced motion, correct outcomes, local operation, and fit at 320, 390 and 1440 px. The proof history remains below the two-critic 9.5 gate. The best recorded absolute proof score is 8.45 / 8.25. Platen beat that exact build in a fresh matched ballot. [Frozen HTML hashes and five live ballots](evidence/benchmark-v1/letterpress-live-comparisons.json)
+
+### Ticket window holdout
+
+Two new critics exercised the same print-readiness task and recovery. Each recorded a prediction from the opening frame before interacting.
+
+| Matched live round | Desktop | Phone | Finding |
+| --- | ---: | ---: | --- |
+| Platen to the first ticket strip | 8.80 → 8.00 | 8.45 → 8.00 | The ticket exposed all six marks. The critic correctly chose C before input in both ticket views and marked the equivalent Platen decision unclear. Platen still won for artwork and readability. Release proof sounded consequential. |
+| First strip to larger overprinted marks and Check proof | 7.55 → 8.15 | 7.30 → 8.15 | The critic read all three choices correctly on entry and understood the check. The stronger event lettering gave the strip more identity. The coincident inks still need a clear key or larger detail. |
+
+Both ticket builds passed all 30 preflight states across 320, 390 and 1440 px. The test verified the selected action, keyboard focus, touch recovery after the rotated proof, reduced motion, loaded fonts, fit and zero external requests. The comparisons use two independent sessions and cover different candidate pairs. Ticket remains experimental. [Live ballots, token usage and original PNG hashes](evidence/benchmark-v1/ticket-window-live-comparisons.json)

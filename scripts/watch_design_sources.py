@@ -40,12 +40,15 @@ AWWWARDS_DATE = re.compile(
 )
 AWWWARDS_TITLE = re.compile(r'<h1\b[^>]*>([^<]+)$', re.I)
 SHOW_HN_LOOKUP_LIMIT = 30
+TOP_HN_LOOKUP_LIMIT = 20
 SHOW_HN_WORKERS = 4
 VISUAL_DEMO = re.compile(
     r"\b(?:interactive|design system|visuali[sz]ation|typography|gallery|portfolio|"
     r"webgl|webgpu|(?:3d|star) map|exhibit|simulator|calculator|animate your code)\b",
     re.I,
 )
+FRONT_PAGE_PROJECT = re.compile(r"\b(?:simulator|(?:illustrated|interactive|live)\s+map|"
+                                 r"miniature\s+.+?\s+with\s+live)\b", re.I)
 HTML_TAG = re.compile(r"<[^>]*>")
 
 
@@ -159,12 +162,20 @@ def read_crossref(query, since, fetch):
 
 
 def read_show_hn(today, fetch):
-    ids = fetch(f"{HN_API}/showstories.json")
+    return read_hn_projects(today, fetch, "showstories", SHOW_HN_LOOKUP_LIMIT, show_only=True)
+
+
+def read_top_hn(today, fetch):
+    return read_hn_projects(today, fetch, "topstories", TOP_HN_LOOKUP_LIMIT, show_only=False)
+
+
+def read_hn_projects(today, fetch, feed, limit, *, show_only):
+    ids = fetch(f"{HN_API}/{feed}.json")
     if not isinstance(ids, list):
-        raise ValueError("Unexpected Show HN feed")
+        raise ValueError(f"Unexpected {feed} feed")
     relevant = []
     failures = []
-    ids = tuple(dict.fromkeys(i for i in ids[:SHOW_HN_LOOKUP_LIMIT] if type(i) is int and i > 0))
+    ids = tuple(dict.fromkeys(i for i in ids[:limit] if type(i) is int and i > 0))
     def fetch_item(item_id):
         try:
             return fetch(f"{HN_API}/item/{item_id}.json")
@@ -182,11 +193,21 @@ def read_show_hn(today, fetch):
         if item.get("dead") or item.get("deleted"):
             continue
         title, timestamp, score = item.get("title"), item.get("time"), item.get("score")
-        if not isinstance(title, str) or not re.match(r"^Show HN\s*:", title, re.I):
+        if not isinstance(title, str):
             continue
-        description = item.get("text")
-        description = unescape(HTML_TAG.sub(" ", description[:4000])) if isinstance(description, str) else ""
-        if not (VISUAL_DEMO.search(title) or VISUAL_DEMO.search(description)):
+        show = bool(re.match(r"^Show HN\s*:", title, re.I))
+        if show != show_only:
+            continue
+        if show_only:
+            description = item.get("text")
+            description = unescape(HTML_TAG.sub(" ", description[:4000])) if isinstance(description, str) else ""
+            relevant_title = VISUAL_DEMO.search(title) or VISUAL_DEMO.search(description)
+        else:
+            target = item.get("url")
+            if not isinstance(target, str) or not target.startswith("https://"):
+                continue
+            relevant_title = FRONT_PAGE_PROJECT.search(title)
+        if not relevant_title:
             continue
         if type(timestamp) is not int or type(score) is not int or not 0 < timestamp < 4_102_444_800:
             continue
@@ -217,6 +238,7 @@ def collect(today, fetch=fetch_json, pause=sleep, fetch_award=fetch_award_page):
     since = today - timedelta(days=90)
     sources = [source_result(repo, read_release, repo, fetch) for repo in RELEASES]
     sources.append(source_result("Show HN visual demos", read_show_hn, today, fetch))
+    sources.append(source_result("Hacker News front-page visual projects", read_top_hn, today, fetch))
     sources.append(source_result("CSS Design Awards Website of the Day", read_css_award, today, fetch_award))
     sources.append(source_result("Awwwards Site of the Day", read_awwwards, today, fetch_award))
     primary_error = None
@@ -241,6 +263,7 @@ def print_report(sources):
     print("Review these public leads before proposing a design or harness change.\n")
     print("- [Awwwards current winner and nominees](https://www.awwwards.com/)")
     print("- [CSS Design Awards current winners](https://www.cssdesignawards.com/)")
+    print("- [MUUUUU.ORG Japanese web design gallery](https://muuuuu.org/en/)")
     print("- [FWA launches from award winners](https://www.thefwa.net/label/launch)")
     print("- [Codrops Creative Hub demos](https://tympanus.net/codrops/hub/all/)\n")
     print("## Social leads to check in the browser\n")

@@ -10,7 +10,7 @@ def unavailable(_url):
 
 def test_source_review_survives_rate_limiting_and_escapes_source_text(capsys):
     def fetch(url):
-        if "showstories.json" in url:
+        if url.endswith(("showstories.json", "topstories.json")):
             return []
         if "USWDS" in url:
             raise HTTPError(url, 429, "limited", {}, None)
@@ -37,7 +37,8 @@ def test_source_review_survives_rate_limiting_and_escapes_source_text(capsys):
 def test_source_review_exposes_a_complete_outage():
     sources = collect(date(2026, 11, 21), unavailable, lambda _: None, fetch_award=unavailable)
     assert [source["source"] for source in sources] == [
-        *RELEASES, "Show HN visual demos", "CSS Design Awards Website of the Day",
+        *RELEASES, "Show HN visual demos", "Hacker News front-page visual projects",
+        "CSS Design Awards Website of the Day",
         "Awwwards Site of the Day", *RESEARCH,
     ]
     assert all(source["error"] == "TimeoutError" for source in sources)
@@ -55,7 +56,7 @@ def test_paper_search_falls_back_once_per_query_and_keeps_verified_doi_links(cap
 
     def fetch(url):
         requests.append(url)
-        if "showstories.json" in url:
+        if url.endswith(("showstories.json", "topstories.json")):
             return []
         if "api.github.com" in url:
             raise TimeoutError
