@@ -219,6 +219,10 @@
       .address { font-size: 14px; }
       .booking-area { padding: 34px 20px 48px; }
       .lead { margin-bottom: 23px; }
+      .booking > fieldset { padding-block: 14px; }
+      .booking > .result-field { padding-block: 12px 0; }
+      .result-field legend { margin-bottom: 10px; }
+      .result-field .summary { padding: 12px 16px; }
     }
     @media (max-width: 380px) {
       .day-list { gap: 5px; }
@@ -309,14 +313,13 @@
           <p class="hint">Bookings are available Tuesday to Saturday.</p>
         </fieldset>
 
-        <fieldset aria-live="polite" aria-atomic="true">
+        <fieldset class="result-field">
           <legend>Booking summary</legend>
           <div class="summary" id="summary">
-            <p class="summary-title">Your selection</p>
+            <p class="summary-title" role="status" id="summary-day">Choose a booking day to add it to your summary.</p>
             <div class="summary-line"><span>Service</span><strong>Tune-up</strong></div>
             <div class="summary-line"><span>Time</span><strong>48 hours</strong></div>
             <div class="summary-line"><span>Price</span><strong>$85</strong></div>
-            <p class="summary-note" id="summary-day">Choose a booking day to add it to your summary.</p>
           </div>
         </fieldset>
       </form>

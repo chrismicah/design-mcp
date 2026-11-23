@@ -50,6 +50,7 @@ async def verify(playwriter, env, pages, endpoint, out):
                     selected: selected?.value || null, active: active?.value || null,
                     visibleFocus: Boolean(active?.matches(':focus-visible')),
                     summary: summary?.textContent || null,
+                    scrollY, summaryTop: summaryBounds?.top, summaryBottom: summaryBounds?.bottom,
                     summaryInView: Boolean(summaryBounds && summaryBounds.top >= 0 && summaryBounds.bottom <= innerHeight),
                     font:styles?.fontFamily, size:styles?.fontSize, color:styles?.color,
                     loadedFonts:[...document.fonts].filter(f => f.status==='loaded').map(f=>f.family),

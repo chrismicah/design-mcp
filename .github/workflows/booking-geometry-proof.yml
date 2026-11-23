@@ -51,7 +51,7 @@ jobs:
           for arm, page in report["pages"].items():
               for screen in page["screens"]:
                   frames = [{key: frame[key] for key in (
-                      "phase", "sha256", "pixel_dimensions", "summaryInView", "size"
+                      "phase", "sha256", "pixel_dimensions", "summaryInView", "size", "scrollY", "summaryTop", "summaryBottom"
                   )} for frame in screen["evidence"]]
                   print("BOOKING_EVIDENCE", json.dumps({
                       "arm": arm, "width": screen["width"], "html_sha256": page["html_sha256"],
