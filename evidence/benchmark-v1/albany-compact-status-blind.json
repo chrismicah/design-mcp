@@ -1,0 +1,357 @@
+{
+  "calibration": {
+    "example": "Legible repair intake with clear labels, familiar layout and misplaced focus after an invalid number",
+    "coherence": 6.5,
+    "originality": 4,
+    "craft": 6,
+    "usability": 6
+  },
+  "screens": {
+    "A-1440": {
+      "coherence": 7.5,
+      "originality": 5.5,
+      "craft": 7.5,
+      "usability": 8,
+      "primary_action": {
+        "input": "Keyboard-select Follow-up visit, enter Avery, and activate Preview note.",
+        "expected": "An editable note reflecting the name and visit, with focus ready for editing.",
+        "observed": "The note named Avery and a follow-up visit; focus moved visibly to the textarea. I appended morning availability. Back to details retained Avery and Follow-up visit and focused First name."
+      },
+      "edge_observation": "Blank preview marked First name invalid, showed an instruction and status, and focused the field. The initial viewport contained the contact details and all form controls. The page says at preview that the note stays on the page and sends and books nothing.",
+      "fact_check": "The page displays independent physical therapist Rowan Chen, 518-555-0142, 15 Example Lane, Albany, Tuesday–Friday, 8 am–2 pm. These are page claims, not independently verified facts. The number was not dialed; no independent verification of sending or booking behavior was performed.",
+      "strength": "The large serif name, restrained navy and pale blue, and straightforward contact block convey a calm, personal independent practice. The single-column form is easy to scan.",
+      "weakness": "The generous empty desktop space feels underused, and the no-send limitation arrives only after preview. The visual language is polished but not especially specific to physical therapy.",
+      "repair": "State the no-send and no-booking limitation before preview, and use the desktop space to give the form and contact information a more deliberate relationship.",
+      "arm": "compact-status-treatment",
+      "html_sha256": "59545d95ab419877da444d0c304d53c500935e28bcfb27db549d01a9df0269a1",
+      "weighted": 7.0,
+      "before": {
+        "sha256": "08e5efa75d185311869b6614454f4185a9b79a45281186660175f845139f33df",
+        "file": "A-1440-before.png",
+        "tool_call_id": "item_2"
+      },
+      "after": {
+        "sha256": "2c666ecf50cb8b2946c89ea66591419ed46fdd0a92be1d3a8bb3f1edf226aabc",
+        "file": "A-1440-after.png",
+        "tool_call_id": "item_6"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "text",
+          "value": "Avery"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "text",
+          "value": " I am available in the morning."
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ]
+    },
+    "A-390": {
+      "coherence": 7.5,
+      "originality": 5.5,
+      "craft": 7.5,
+      "usability": 8,
+      "primary_action": {
+        "input": "Keyboard-select Follow-up visit, enter Avery, and activate Preview note.",
+        "expected": "An editable note reflecting the name and visit, with focus ready for editing.",
+        "observed": "The editable note appeared with Avery and the follow-up visit, and the textarea gained visible focus. Morning availability was appended. Back to details preserved the name and visit and focused First name."
+      },
+      "edge_observation": "Blank preview produced an inline instruction and status and focused the invalid name field. All initial contact information and controls fit within the 390 by 844 viewport. Preview says the note stays on the page and sends and books nothing.",
+      "fact_check": "The page displays Rowan Chen, 518-555-0142, 15 Example Lane, Albany, and Tuesday–Friday, 8 am–2 pm. Those details were not independently verified, and the number was not dialed.",
+      "strength": "The compact stack keeps the call action, hours and form visible without scrolling. The serif name and cool palette remain calm and legible.",
+      "weakness": "The two radio options sit close together on one line, while the practical limitation is disclosed only after preview.",
+      "repair": "Give the visit choices more separation at narrow widths and explain the note's limits before the user begins.",
+      "arm": "compact-status-treatment",
+      "html_sha256": "59545d95ab419877da444d0c304d53c500935e28bcfb27db549d01a9df0269a1",
+      "weighted": 7.0,
+      "before": {
+        "sha256": "e44c7a2b96114420e80b1071111182b54b1dc3a9d3675a29424200337d753863",
+        "file": "A-390-before.png",
+        "tool_call_id": "item_12"
+      },
+      "after": {
+        "sha256": "7a82b638f4997afbcd8dfe706429375fa344861354f92e58b4ca0a3031247d10",
+        "file": "A-390-after.png",
+        "tool_call_id": "item_16"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "text",
+          "value": "Avery"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "text",
+          "value": " I am available in the morning."
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ]
+    },
+    "B-1440": {
+      "coherence": 8,
+      "originality": 6,
+      "craft": 8,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Keyboard-select Follow-up visit, enter Avery, and activate Preview note.",
+        "expected": "An editable note reflecting the name and visit, with focus ready for editing.",
+        "observed": "The textarea contained Avery and a follow-up visit and received visible focus. I appended morning availability. Back to details retained Avery and Follow-up visit and focused First name."
+      },
+      "edge_observation": "Blank preview marked the name invalid, displayed an instruction and focused the field; the returned status was empty. All initial controls fit in the viewport. The introductory copy says the note stays on the page and sends or books nothing.",
+      "fact_check": "The page displays independent physical therapist Rowan Chen, 518-555-0142, 15 Example Lane, Albany, Tuesday through Friday, 8 am–2 pm. These claims were not independently verified. The call link was not activated, and sending or booking behavior was not independently verified.",
+      "strength": "The divided contact header and two-column preparation area create a more considered composition. The prominent serif name feels personal, while the navy and pale blue accents suggest a measured clinical tone. The limitation is clear before entry.",
+      "weakness": "The form occupies a relatively narrow part of a large empty canvas, and the visual treatment offers little that identifies the practice beyond its name and role.",
+      "repair": "Use the available width more deliberately and add a restrained, practice-specific detail without reducing the contact information's prominence.",
+      "arm": "compact-status-control",
+      "html_sha256": "cb26d1909f6e5cd02604b71ef8d92226c23633b5a900bd376e117292d4b6a6cf",
+      "weighted": 7.5,
+      "before": {
+        "sha256": "75cefdbd1927e6ce2322806d79f1e747db33e9da2de50067227828fa952bc4c6",
+        "file": "B-1440-before.png",
+        "tool_call_id": "item_20"
+      },
+      "after": {
+        "sha256": "7c5777c91fda20a5b5c36733c4e5cb1fb52cd8bd9b7dedbb4fda41a56a50b063",
+        "file": "B-1440-after.png",
+        "tool_call_id": "item_24"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "text",
+          "value": "Avery"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "text",
+          "value": " I am available in the morning."
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ]
+    },
+    "B-390": {
+      "coherence": 8,
+      "originality": 6,
+      "craft": 8,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Keyboard-select Follow-up visit, enter Avery, and activate Preview note.",
+        "expected": "An editable note reflecting the name and visit, with focus ready for editing.",
+        "observed": "The generated note included Avery and the follow-up visit, and focus moved visibly to the textarea. I appended morning availability; Back to details preserved both inputs and focused First name."
+      },
+      "edge_observation": "Blank preview showed an inline instruction and focused the invalid field; the returned status was empty. Contact information, vertically stacked visit choices, name field and preview button all fit in the initial 390 by 844 viewport. The no-send, no-booking statement was visible before entry.",
+      "fact_check": "The page displays Rowan Chen, 518-555-0142, 15 Example Lane, Albany, and Tuesday through Friday, 8 am–2 pm. These details were not independently verified; the number was not dialed.",
+      "strength": "The stacked visit choices have clear separation, and the full contact and preparation flow fits comfortably on the initial screen. The name, navy header and pale blue call action keep the independent practitioner prominent.",
+      "weakness": "The page remains visually generic for a physical therapy practice, and the blank-name error had no text in the returned status region.",
+      "repair": "Add a restrained detail grounded in the practice and ensure the validation message is announced reliably as well as displayed inline.",
+      "arm": "compact-status-control",
+      "html_sha256": "cb26d1909f6e5cd02604b71ef8d92226c23633b5a900bd376e117292d4b6a6cf",
+      "weighted": 7.5,
+      "before": {
+        "sha256": "30c11b1470558baec284ebc99162b5b4d458f49524df91238c3692ec36187d0e",
+        "file": "B-390-before.png",
+        "tool_call_id": "item_29"
+      },
+      "after": {
+        "sha256": "c82158a84f3bc0344f696103cff658e7c41f2844fd9a9057a23391b56744c0d5",
+        "file": "B-390-after.png",
+        "tool_call_id": "item_33"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowDown"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "text",
+          "value": "Avery"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "text",
+          "value": " I am available in the morning."
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ]
+    }
+  },
+  "preference": {
+    "winner": "B",
+    "reason": "B gives the contact and form areas a more intentional desktop composition, separates the mobile visit choices, and explains before entry that the note sends and books nothing. Both completed the tested keyboard flow and preserved the requested details on return."
+  },
+  "case": "albany-physiotherapy",
+  "verified_screens": 4,
+  "required_screens": 4,
+  "browser": "Chrome/158.0.8127.37",
+  "evaluator_thread": "01a20ad3-8751-7362-898c-736aee0bee47",
+  "usage": {
+    "input_tokens": 979109,
+    "cached_input_tokens": 949504,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 3161,
+    "reasoning_output_tokens": 0
+  },
+  "trace_sha256": "5a7a9b163b3662eb7ffae3831f51cea315edf57ff4241b151bacd06c05707ba4",
+  "browser_audit_sha256": "a8a719f7980eab977560420d4d972a802363ff874750d853e67e074ece3ed44a"
+}

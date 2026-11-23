@@ -58,3 +58,20 @@ matched. The browser evidence is separate from screen-reader speech
 and the independent visual review. [Exact browser
 receipt](../evidence/benchmark-v1/albany-installed-compact-status-browser.json)
 [Hosted run](https://github.com/chrismicah/design-mcp/actions/runs/45292150417)
+
+## Blind live result
+
+A separate reviewer opened the anonymous pages at 1440 and 390 CSS px,
+selected the follow-up visit, recovered from a blank name, edited the
+preview and returned with the original details intact. The revised
+guidance scored 7.00 at both widths. The control scored 7.50 at both.
+The reviewer preferred the control's desktop split, stacked phone
+choices, and privacy disclosure before entry. Both variants still looked
+generic for the specific practice. [Verified live ballot and capture
+hashes](../evidence/benchmark-v1/albany-compact-status-blind.json)
+
+The compact-status change stays on its trial branch. The measured phone
+gain did not improve the matched design score. The next practice
+comparison should preserve the control's privacy copy and readable
+choices and change the composition around a useful detail drawn from
+how a first phone conversation works. The 9.5 design gate remains open.
