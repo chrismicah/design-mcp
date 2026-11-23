@@ -72,7 +72,8 @@ _ARTIFACT_INSPECTION = re.compile(
 _VISIBLE_ARTIFACT = re.compile(
     r"\b(?:artifacts?|artefacts?|reproductions?|paintings?|sculptures?|specimens?|objects?|"
     r"ceramics?|pottery|manuscripts?|banknotes?|canvases?|photographs?|bowls?|vases?|chairs?|"
-    r"lockets?|compass(?:es)?|shuttles?|trunks?)\b"
+    r"lockets?|compass(?:es)?|shuttles?|trunks?|woodblocks?|etchings?|lithographs?|"
+    r"(?:complete|entire|full|historic|original|woodblock) prints?)\b"
 )
 
 
