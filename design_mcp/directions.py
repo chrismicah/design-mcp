@@ -11,6 +11,12 @@ from .models.visual_analyzer import contrast_ratio
 
 _CAPS = {"direct": 6000, "react": 3200, "check": 2400}
 _HOMEPAGE_TERMS = ("homepage", "home page", "home-page")
+
+# Explicit omission clauses describe exclusions rather than the requested surface.
+_OMISSION_CLAUSE = re.compile(
+    r"(?:^|(?<=[.!?;\n]))[ \t]*(?:avoid|omit|exclude|skip|(?:do not|don['’]t) include)\s+"
+    r"[^.!?;\n]*?(?=\bbut\b|[.!?;\n]|$)"
+)
 _TERMS = {
     "pricing": ("pricing", "price plan", "subscription tiers", "compare plans", "tier", "month"),
     "dashboard": ("dashboard", "dispatcher", "analytics", "metrics", "admin panel", "table", "reporting",
@@ -120,15 +126,16 @@ async def direct(brief: str, surface: Surface | None = None, avoid: list[str] | 
     text = brief.strip().casefold()
     if not text or len(text) > 12000:
         return {"error": "Enter a brief of 1 to 12,000 characters."}
-    matched = surface or _infer_surface(text)
+    intent = _OMISSION_CLAUSE.sub(" ", text)
+    matched = surface or _infer_surface(intent)
     kind = matched or "landing"
-    consultation = kind == "landing" and _CONTACT_INTENT.search(text) and not _SHOPPING_INTENT.search(text)
+    consultation = kind == "landing" and _CONTACT_INTENT.search(intent) and not _SHOPPING_INTENT.search(intent)
     candidates = [row for row in library().values()
                   if row.surface == kind and row.id not in (avoid or [])
                   and (consultation or row.id != "direct-consultation")]
     if not candidates:
         return {"error": f"No reviewed direction remains for {kind}.", "surface": kind}
-    tag_text = text.translate(_FORM_SEPARATORS) if kind == "form" else text
+    tag_text = intent.translate(_FORM_SEPARATORS) if kind == "form" else intent
     choice = max(candidates, key=lambda row: sum(_match(term, tag_text) for term in row.tags))
     questions = []
     if matched is None and len(text.split()) <= 8:

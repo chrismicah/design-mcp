@@ -221,3 +221,18 @@ async def test_calmer_keeps_the_operational_exception_as_the_focal_point(reactio
     assert "its status in the queue" in accent
     assert "secondary controls" in accent
     assert "status labeled in words" in accent
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(("brief", "surface"), [
+    ("Build a homepage for a Tacoma optometrist. Put the phone number first. "
+     "Avoid photos, insurance claims, reviews, pricing or extra destinations.", "landing"),
+    ("Build an article about runway inspections. Omit the dashboard and metrics.", "editorial"),
+    ("Build an intake form. Skip the pricing table and tier comparison.", "form"),
+    ("Build a dashboard. Do not include pricing.", "dashboard"),
+    ("Omit the splash page, but show pricing for two subscription tiers.", "pricing"),
+    ("Build a pricing page comparing three plans. Avoid a dashboard or mobile ticket.", "pricing"),
+])
+async def test_explicit_omissions_are_not_surface_requests(brief, surface):
+    result = await direct(brief)
+    assert result["direction"]["surface"] == surface
