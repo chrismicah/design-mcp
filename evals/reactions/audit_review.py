@@ -23,6 +23,16 @@ def sha256(raw):
     return hashlib.sha256(raw).hexdigest()
 
 
+def verify_webp_pixels(source, payload, label, box=None):
+    from PIL import Image
+
+    with Image.open(BytesIO(payload)) as decoded:
+        original = source if box is None else source.crop(box)
+        assert decoded.format == "WEBP" and decoded.size == original.size, label
+        assert decoded.info.get("icc_profile") == source.info.get("icc_profile"), label
+        assert decoded.convert("RGBA").tobytes() == original.convert("RGBA").tobytes(), label
+
+
 def read_jsonl(raw):
     return [json.loads(line) for line in raw.splitlines() if line.strip()]
 
@@ -37,15 +47,40 @@ def screenshot(run, page, width, suffix, captures, calls):
     assert raw.startswith(b"\x89PNG\r\n\x1a\n"), label
     assert struct.unpack(">II", raw[16:24]) == (width, HEIGHTS[width]), label
     assert sha256(raw) == row["sha256"], label
-    matching = [call for call in calls if call["tool"] == "capture" and call["arguments"]["label"] == label]
+    matching = [call for call in calls if call["tool"] == "capture" and call["arguments"]["label"] == label
+                and call["arguments"].get("band") is None]
     assert len(matching) == 1, label
     tool_call = matching[0]
     images = [block for block in tool_call["result"]["content"] if block["type"] == "image"]
+    evidence = {"sha256": row["sha256"], "file": row["path"], "tool_call_id": tool_call["id"]}
+    transport = row.get("transport")
+    if transport and "bands" in transport:
+        from PIL import Image
+
+        next_call = calls.index(tool_call) + 1
+        assert next_call < len(calls), label
+        following = calls[next_call]
+        assert following["tool"] == "capture" and following["arguments"] == {"label": label, "band": "bottom"}, label
+        bottom = [block for block in following["result"]["content"] if block["type"] == "image"]
+        assert len(images) == len(bottom) == 1, label
+        images.extend(bottom)
+        assert set(transport) == {"mime_type", "bands"} and transport["mime_type"] == "image/webp", label
+        bands = transport["bands"]
+        height = HEIGHTS[width]
+        coordinates = ((0, height // 2), (height // 2, height))
+        assert len(images) == len(bands) == len(coordinates), label
+        with Image.open(BytesIO(raw)) as source:
+            for image, band, (top, bottom) in zip(images, bands, coordinates, strict=True):
+                payload = base64.b64decode(image["data"], validate=True)
+                assert image["mimeType"] == "image/webp", label
+                assert band == {"top": top, "bottom": bottom, "sha256": sha256(payload)}, label
+                verify_webp_pixels(source, payload, label, (0, top, width, bottom))
+        evidence["transport"] = transport
+        evidence["bottom_tool_call_id"] = following["id"]
+        return index, evidence
     assert len(images) == 1, label
     image = images[0]
     payload = base64.b64decode(image["data"], validate=True)
-    evidence = {"sha256": row["sha256"], "file": row["path"], "tool_call_id": tool_call["id"]}
-    transport = row.get("transport")
     if transport is None:
         assert image["mimeType"] == "image/png" and payload == raw, label
     else:
@@ -53,10 +88,8 @@ def screenshot(run, page, width, suffix, captures, calls):
         assert transport == {"mime_type": "image/webp", "sha256": sha256(payload)}, label
         from PIL import Image
 
-        with Image.open(BytesIO(raw)) as source, Image.open(BytesIO(payload)) as decoded:
-            assert decoded.format == "WEBP" and decoded.size == source.size, label
-            assert decoded.info.get("icc_profile") == source.info.get("icc_profile"), label
-            assert decoded.convert("RGBA").tobytes() == source.convert("RGBA").tobytes(), label
+        with Image.open(BytesIO(raw)) as source:
+            verify_webp_pixels(source, payload, label)
         evidence["transport"] = transport
     return index, evidence
 

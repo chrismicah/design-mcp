@@ -167,6 +167,36 @@ async def test_oversized_original_is_archived_and_ineligible(config, monkeypatch
     assert row["sha256"] == hashlib.sha256(PNG).hexdigest()
 
 
+@pytest.mark.asyncio
+async def test_large_capture_sends_each_band_separately(config, monkeypatch):
+    monkeypatch.setattr(live_browser, "original_image", lambda _: None)
+    monkeypatch.setattr(live_browser, "original_bands", lambda _: [(0, 450, b"top"), (450, 900, b"bottom")])
+    browser = LiveBrowser({**config, "original_capture": True})
+    playwriter = FakePlaywriter()
+    async with Client(playwriter.server) as relay, Client(create_server(browser)) as judge:
+        await browser.connect(relay)
+        await judge.call_tool("open_view", {"page_id": "A", "width": 1440})
+        label = {"label": "A-1440-before"}
+        captured = await judge.call_tool("capture", label)
+        assert [block.type for block in captured.content] == ["text", "image"]
+        assert base64.b64decode(captured.content[1].data) == b"top"
+        call_count = len(playwriter.calls)
+        bottom = await judge.call_tool("capture", {**label, "band": "bottom"})
+        assert [block.type for block in bottom.content] == ["text", "image"]
+        assert base64.b64decode(bottom.content[1].data) == b"bottom"
+        assert len(playwriter.calls) == call_count
+        expired = await judge.call_tool("capture", {**label, "band": "bottom"}, raise_on_error=False)
+        assert expired.is_error
+        await judge.call_tool("capture", {"label": "later"})
+        await judge.call_tool("act", {"action": "key", "value": "Tab"})
+        stale = await judge.call_tool("capture", {"label": "later", "band": "bottom"}, raise_on_error=False)
+        assert stale.is_error
+    assert (browser.evidence / "A-1440-before.png").read_bytes() == PNG
+    rows = [json.loads(line) for line in (browser.evidence / "audit.jsonl").read_text().splitlines()]
+    assert [row["op"] for row in rows] == ["open_view", "capture", "capture_band", "capture", "act"]
+    assert rows[1]["sha256"] == rows[2]["sha256"]
+
+
 @pytest.mark.parametrize("url", [
     "https://example.org/view", "http://localhost@example.org/view", "http://localhost:81/#other",
     "http://127.0.0.1\\@example.org/view", "//127.0.0.1:81/view", "file:///tmp/view.html",

@@ -195,6 +195,35 @@ def original_image(png):
     return None
 
 
+def original_bands(png):
+    """Encode two full-width bands from one frame without resampling."""
+    try:
+        from PIL import Image
+
+        with Image.open(BytesIO(png)) as source:
+            if source.height < 2:
+                return None
+            profile = source.info.get("icc_profile")
+            middle = source.height // 2
+            bands = []
+            for top, bottom in ((0, middle), (middle, source.height)):
+                with BytesIO() as encoded:
+                    band = source.crop((0, top, source.width, bottom)).convert("RGBA")
+                    band.save(encoded, format="WEBP", lossless=True, exact=True, method=3,
+                              icc_profile=profile)
+                    payload = encoded.getvalue()
+                if len(payload) > MAX_ORIGINAL_PNG_BYTES:
+                    return None
+                bands.append((top, bottom, payload))
+            return bands
+    except (ImportError, OSError, KeyError, ValueError):
+        return None
+
+
+def image_block(mime_type, payload):
+    return ImageContent(type="image", data=base64.b64encode(payload).decode("ascii"), mimeType=mime_type)
+
+
 class LiveBrowser:
     def __init__(self, config):
         self.cdp = loopback_url(config["cdp"], {"ws", "wss"})
@@ -225,6 +254,7 @@ class LiveBrowser:
         if any(self.evidence.iterdir()):
             raise ValueError("Evidence directory must be empty")
         self.active = None
+        self.pending_band = None
         self.lock = asyncio.Lock()
 
     async def connect(self, client):
@@ -246,6 +276,7 @@ class LiveBrowser:
             "const isFixture = href => href.split('#', 1)[0] === url;\n"
         )
         self.active = None
+        self.pending_band = None
         try:
             journey = "\nconst readJourney = null, prior = null;\n"
             if self.observe_journey and (activation or path is not None):
@@ -278,7 +309,8 @@ state.journeyActivated = true;
                     raise ValueError("Missing screenshot evidence")
                 record.update(path=path.name, sha256=sha256(png))
                 original = original_image(png) if self.original_capture else None
-                if self.original_capture and original is None:
+                bands = original_bands(png) if self.original_capture and original is None else None
+                if self.original_capture and original is None and bands is None:
                     path.with_suffix(".pending").replace(path)
                     self.audit({**record, "status": "error", "reason": "capture-too-large"})
                     return ToolResult(content=[TextContent(
@@ -288,19 +320,26 @@ state.journeyActivated = true;
                     )], is_error=True)
                 if original is not None:
                     mime_type, encoded = original
-                    image = ImageContent(type="image", data=base64.b64encode(encoded).decode("ascii"),
-                                         mimeType=mime_type)
+                    images = [image_block(mime_type, encoded)]
                     if mime_type != "image/png":
                         record["transport"] = {"mime_type": mime_type, "sha256": sha256(encoded)}
-                elif len(images) == 1:
-                    image = images[0]
-                else:
+                elif bands is not None:
+                    images = [image_block("image/webp", bands[0][2])]
+                    record["transport"] = {"mime_type": "image/webp", "bands": [
+                        {"top": top, "bottom": bottom, "sha256": sha256(payload)}
+                        for top, bottom, payload in bands
+                    ]}
+                elif len(images) != 1:
                     raise ValueError("Missing preview image")
                 metadata = {**output, "path": path.name, "sha256": record["sha256"]}
                 if "transport" in record:
                     metadata["transport"] = record["transport"]
-                output = ToolResult(content=[TextContent(type="text", text=json.dumps(metadata)), image])
+                if bands is not None:
+                    metadata["remaining_band"] = "Call capture with the same label and band='bottom' before any other operation."
+                output = ToolResult(content=[TextContent(type="text", text=json.dumps(metadata)), *images])
                 path.with_suffix(".pending").replace(path)
+                if bands is not None:
+                    self.pending_band = (record, bands[1][2])
             self.audit(record)
             if self.river_journey:
                 if row["op"] == "capture" and row["label"] == f"{page_id}-{observation['width']}-after":
@@ -308,6 +347,7 @@ state.journeyActivated = true;
                 elif row["op"] == "act" and row["action"] == "key" and row["value"] in RIVER_EDGE_KEYS:
                     self.edge_pending = False
         except Exception:
+            self.pending_band = None
             if path is not None:
                 path.with_suffix(".pending").unlink(missing_ok=True)
             self.audit({**row, "page_id": page_id, "status": "error"})
@@ -346,12 +386,21 @@ state.journeyActivated = true;
                                   "const page = state.page;\n" + GUARD, command=command,
                                   activation=action == "key" and value in {"Enter", "Space"})
 
-    async def capture(self, label: str) -> ToolResult:
-        """Save a PNG and return a screenshot with live metadata."""
+    async def capture(self, label: str, band: Literal["bottom"] | None = None) -> ToolResult:
+        """Save a PNG. If a bottom band is requested in the result, fetch it with the same label before continuing."""
         if not IDENTIFIER.fullmatch(label):
             raise ToolError("Use a short alphanumeric capture label, with optional hyphens or underscores")
         path = self.evidence / f"{label}.png"
         async with self.lock:
+            if band is not None:
+                if self.pending_band is None or self.pending_band[0]["label"] != label:
+                    raise ToolError("Open a capture that requests a bottom band")
+                record, payload = self.pending_band
+                self.pending_band = None
+                self.audit({**record, "op": "capture_band", "band": "bottom"})
+                metadata = {"label": label, "band": "bottom", "sha256": record["sha256"]}
+                return ToolResult(content=[TextContent(type="text", text=json.dumps(metadata)),
+                                           image_block("image/webp", payload)])
             if path.exists() or path.is_symlink():
                 raise ToolError("Capture label already used")
             if self.active is None:
