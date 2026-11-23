@@ -205,3 +205,8 @@ One bounded Astra 6.2 planning session defined the paired pivot test. One indepe
 ### Compact display settings
 
 - One fresh Terra low generation used the frozen settings prompt, made a verified context call, and reported 58,464 input tokens, including 49,024 cached, and 2,522 output tokens. A separate live Terra low critic used 733,508 input tokens, including 706,432 cached, and 2,591 output tokens. Independent keyboard review scored the compact draft 7.80 / 7.90 versus 7.75 / 6.70. All three geometry widths passed. The correction to preserve unrelated form routing passed 58 focused tests and a clean-install stdio comparison on 39 briefs. The design stays isolated below the promotion threshold. [Settings trial](evidence/benchmark-v1/settings-compact-visual-trial.json)
+
+### November 23 source and concept panel
+
+- Astra 6.2 made two short planning passes around an independent Luna challenge. A separate Luna session researched Awwwards, creator work, Reddit and Show HN. Conductor receipts identify the sessions. Per-turn tokens were unavailable. [Concept and research history](research/CREATIVE-ROUNDS.md#november-23-source-and-concept-panel)
+- Playwriter verified 34 PNG sizes and hashes across four public projects and kept the unsuccessful actions and still-loading views in the receipt. Eight source watcher tests and 32 live-review verifier tests passed. The live watcher reported La boite à slides as the dated Awwwards winner. [Replay and source receipt](evidence/benchmark-v1/creative-workshop-references-2026-11-23.json)

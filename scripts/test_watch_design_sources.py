@@ -4,7 +4,9 @@ from io import StringIO
 import unittest
 from urllib.parse import parse_qs, urlsplit
 
-from watch_design_sources import CSSDA, HN_API, print_report, read_css_award, read_show_hn, source_result
+from watch_design_sources import (
+    AWWWARDS, CSSDA, HN_API, print_report, read_awwwards, read_css_award, read_show_hn, source_result,
+)
 
 
 TODAY = date(2026, 11, 22)
@@ -39,6 +41,34 @@ class CSSDesignAwardsTest(unittest.TestCase):
         pages = {f"{CSSDA}/": HOME.replace(WINNER, "https://example.test/")}
         with self.assertRaisesRegex(ValueError, "link was not found"):
             read_css_award(TODAY, pages.__getitem__)
+
+
+class AwwwardsTest(unittest.TestCase):
+    HEADER = (
+        '<a href="/sites/unrelated">Unrelated</a><div class="anchor-section" id="sotd">'
+        '<a class="item-link" href="/sites/ink-in-motion" aria-label="Ink &amp; Motion"></a>'
+        '<h2><span>Site of the Day</span>\n<strong class="budget-tag">Nov 22, 2026</strong></h2>'
+        '<h1 class="heading-1">Ink &amp; Motion</h1></div>'
+    )
+
+    def test_reads_the_winner_from_its_dated_header(self):
+        self.assertEqual(read_awwwards(TODAY, {f"{AWWWARDS}/": self.HEADER}.__getitem__), [
+            {"title": "Ink & Motion", "date": "2026-11-22", "url": f"{AWWWARDS}/sites/ink-in-motion"},
+        ])
+
+    def test_rejects_undated_stale_future_and_offsite_candidates(self):
+        for page in (
+            self.HEADER.replace('id="sotd"', 'id="nominees"'),
+            self.HEADER.replace("Nov 22, 2026", ""),
+            self.HEADER.replace("Nov 22, 2026", "Nov 14, 2026"),
+            self.HEADER.replace("Nov 22, 2026", "Nov 23, 2026"),
+            self.HEADER.replace("/sites/ink-in-motion", "//example.test/sites/ink-in-motion"),
+        ):
+            with self.subTest(page=page):
+                self.assertEqual(
+                    source_result("Awwwards", read_awwwards, TODAY, lambda _: page),
+                    {"source": "Awwwards", "error": "ValueError"},
+                )
 
 
 class ShowHNTest(unittest.TestCase):

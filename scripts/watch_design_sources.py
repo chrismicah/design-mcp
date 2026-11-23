@@ -18,15 +18,27 @@ RESEARCH = (
     "creative range originality LLM generated user interface design",
 )
 MAX_BYTES = 256_000
+AWWWARDS_MAX_BYTES = 512_000
 CROSSREF_TYPES = {"journal-article", "proceedings-article", "posted-content"}
 CROSSREF_INTERVAL_SECONDS = 1.25
 HN_API = "https://hacker-news.firebaseio.com/v0"
 CSSDA = "https://www.cssdesignawards.com"
+AWWWARDS = "https://www.awwwards.com"
 AWARD_LINK = re.compile(
     r'<h3\s+class="home-wotd__title">\s*<a\s+href="(/sites/[a-z0-9-]+/[0-9]+/)">([^<]+)</a>',
     re.I,
 )
 AWARD_DATE = re.compile(r'<h1\s+class="single-website__date">Website Of The Day (\d{4} [A-Za-z]{3} \d{1,2})</h1>')
+AWWWARDS_HEADER = re.compile(
+    r'<div\b[^>]*\sid="sotd"[^>]*>(.{1,4096}?)</h1>',
+    re.I | re.S,
+)
+AWWWARDS_LINK = re.compile(r'<a\b[^>]*\shref="(/sites/[a-z0-9-]+/?)"', re.I)
+AWWWARDS_DATE = re.compile(
+    r'<span>Site of the Day</span>\s*<strong\b[^>]*>([A-Za-z]{3} \d{1,2}, \d{4})</strong>',
+    re.I,
+)
+AWWWARDS_TITLE = re.compile(r'<h1\b[^>]*>([^<]+)$', re.I)
 SHOW_HN_LOOKUP_LIMIT = 30
 SHOW_HN_WORKERS = 4
 VISUAL_DEMO = re.compile(
@@ -37,11 +49,11 @@ VISUAL_DEMO = re.compile(
 HTML_TAG = re.compile(r"<[^>]*>")
 
 
-def fetch_bytes(url, accept):
+def fetch_bytes(url, accept, max_bytes=MAX_BYTES):
     request = Request(url, headers={"User-Agent": "Design-MCP-source-review", "Accept": accept})
     with urlopen(request, timeout=10) as response:
-        body = response.read(MAX_BYTES + 1)
-    if len(body) > MAX_BYTES:
+        body = response.read(max_bytes + 1)
+    if len(body) > max_bytes:
         raise ValueError("Response exceeded the source review byte limit")
     return body
 
@@ -51,7 +63,8 @@ def fetch_json(url):
 
 
 def fetch_award_page(url):
-    return fetch_bytes(url, "text/html").decode("utf-8")
+    max_bytes = AWWWARDS_MAX_BYTES if url == f"{AWWWARDS}/" else MAX_BYTES
+    return fetch_bytes(url, "text/html", max_bytes).decode("utf-8")
 
 
 def lead(title, published, url):
@@ -71,6 +84,21 @@ def read_css_award(today, fetch):
     if not today - timedelta(days=7) <= published <= today:
         raise ValueError("Website of the Day date is outside the review window")
     return [lead(unescape(title), published.isoformat(), url)]
+
+
+def read_awwwards(today, fetch):
+    header = AWWWARDS_HEADER.search(fetch(f"{AWWWARDS}/"))
+    if not header:
+        raise ValueError("Site of the Day header was not found")
+    link = AWWWARDS_LINK.search(header[1])
+    award_date = AWWWARDS_DATE.search(header[1])
+    title = AWWWARDS_TITLE.search(header[1])
+    if not (link and award_date and title and title[1].strip()):
+        raise ValueError("Site of the Day header is missing its link, date or title")
+    published = datetime.strptime(award_date[1], "%b %d, %Y").date()
+    if not today - timedelta(days=7) <= published <= today:
+        raise ValueError("Site of the Day date is outside the review window")
+    return [lead(unescape(title[1]), published.isoformat(), AWWWARDS + link[1])]
 
 
 def read_release(repo, fetch):
@@ -190,6 +218,7 @@ def collect(today, fetch=fetch_json, pause=sleep, fetch_award=fetch_award_page):
     sources = [source_result(repo, read_release, repo, fetch) for repo in RELEASES]
     sources.append(source_result("Show HN visual demos", read_show_hn, today, fetch))
     sources.append(source_result("CSS Design Awards Website of the Day", read_css_award, today, fetch_award))
+    sources.append(source_result("Awwwards Site of the Day", read_awwwards, today, fetch_award))
     primary_error = None
     crossref_used = False
     for query in RESEARCH:
