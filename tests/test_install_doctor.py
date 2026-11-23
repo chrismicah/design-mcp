@@ -47,12 +47,20 @@ def test_interpreter_selects_one_supported_fastmcp(python, version):
 
 def test_distribution_data_selection_and_canonical_source_bytes():
     config = project_metadata()["tool"]["setuptools"]
+    pipeline_stubs = {"batch_list.json", "remaining_vision.json"}
+    pipeline_paths = {f"data/{name}" for name in pipeline_stubs}
+    exclusions = config["exclude-package-data"]
+    assert pipeline_paths <= set(exclusions["design_mcp"])
+    assert pipeline_stubs <= set(exclusions["design_mcp.data"])
+    for path in sorted(pipeline_paths):
+        assert (ROOT / path).is_file()
+        assert not (ROOT / "design_mcp" / path).exists(), path
+
     selected = {path.relative_to(ROOT / "design_mcp").as_posix()
                 for pattern in config["package-data"]["design_mcp"]
                 for path in (ROOT / "design_mcp").glob(pattern)}
-    selected.difference_update(config["exclude-package-data"]["design_mcp"])
-    assert not (selected & {"data/patterns.json", "data/batch_list.json", "data/remaining_vision.json",
-                            "data/vision_results.json"})
+    selected.difference_update(exclusions["design_mcp"])
+    assert not (selected & (pipeline_paths | {"data/patterns.json", "data/vision_results.json"}))
     assert {"data/directions.json", "data/tokens/token_sets.json", "prompts/analyze_screen.md"} <= selected
     assert corpus.read_bundled() == (ROOT / "data" / "patterns.json").read_bytes()
 

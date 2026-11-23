@@ -116,7 +116,15 @@ Supplemental (271 records): rewrite 240, **keep-as-reference 29** (18 libraries 
 
 ## 8. Reproduce
 
+For the archived audit, copy the manifest-pinned scorer into a detached checkout of the
+data baseline listed in `evidence/content/MANIFEST.md`, at the same relative path.
+Run it inside that checkout.
+
 ```bash
 python3 -I evidence/content/score_content.py          # writes CSVs, distribution.json/.svg (deterministic: two runs, identical SHA-256)
 ```
-File list and hashes: `evidence/content/MANIFEST.md`.
+
+The scorer inventories package JSON with `rglob("*.json")` for the mirror hash
+check and loads specific files for scoring. In future audits, record the counts
+and SHA-256 hashes of `data/batch_list.json` and `data/remaining_vision.json` as
+unscored, root-only pipeline inputs outside the package mirror check.
