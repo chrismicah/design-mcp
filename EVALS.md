@@ -425,11 +425,18 @@ The separate Playwriter runs captured **195 checked browser states**. They verif
 
 ### Ticket window holdout
 
-Two new critics exercised the same print-readiness task and recovery. Each recorded a prediction from the opening frame before interacting.
+Three fresh critics exercised the same print-readiness task and recovery. Each recorded a prediction from the opening frame before interacting.
 
 | Matched live round | Desktop | Phone | Finding |
 | --- | ---: | ---: | --- |
 | Platen to the first ticket strip | 8.80 → 8.00 | 8.45 → 8.00 | The ticket exposed all six marks. The critic correctly chose C before input in both ticket views and marked the equivalent Platen decision unclear. Platen still won for artwork and readability. Release proof sounded consequential. |
 | First strip to larger overprinted marks and Check proof | 7.55 → 8.15 | 7.30 → 8.15 | The critic read all three choices correctly on entry and understood the check. The stronger event lettering gave the strip more identity. The coincident inks still need a clear key or larger detail. |
+| Identical overprinted crosses to a cross in a hollow diamond | 7.50 → 8.10 | 7.40 → 8.00 | The critic identified two separate marks on the aligned ticket at both widths. In the control, the aligned inks merge into one dark cross. The critic still found the marks small and the preselected wrong proof potentially misleading. |
 
-Both ticket builds passed all 30 preflight states across 320, 390 and 1440 px. The test verified the selected action, keyboard focus, touch recovery after the rotated proof, reduced motion, loaded fonts, fit and zero external requests. The comparisons use two independent sessions and cover different candidate pairs. Ticket remains experimental. [Live ballots, token usage and original PNG hashes](evidence/benchmark-v1/ticket-window-live-comparisons.json)
+The three ticket builds passed all 45 preflight states across 320, 390 and 1440 px. The test verified the selected action, keyboard focus, touch recovery after the rotated proof, reduced motion, loaded fonts, fit and zero external requests. The third build also completed the task with 200% text sizing simulated at 320 px. Keep the matched scores paired by critic. Ticket remains experimental. [Live ballots, token usage and original PNG hashes](evidence/benchmark-v1/ticket-window-live-comparisons.json)
+
+### Saved-trails competitor comparison
+
+The tested candidate `c7fd37e` and pinned UI UX Pro Max used the same archived brief and one verified tool reply before generating. Design MCP chose Object Hero. Both pages passed all 18 keyboard entry, save and remove frames across 320, 390 and 1440 px. The initial view, saved view and restored empty state stayed on the same URL. Both pages brought focus back to Save after removal.
+
+The independent blind critic scored Design MCP **8.10 desktop / 7.85 phone** and UI UX Pro Max **7.65 / 7.10**. The route name, distance and named save action were visible at 390 px in the Design MCP frame, while the UI UX Pro Max frame required scrolling. The Design MCP illustration still competes with the route details. This is one additional matched brief. Product-wide competitor coverage and the 9.5 floor remain open. [Browser ballot, artifact hashes and token receipts](evidence/benchmark-v1/uiux-pro-max-empty-saved-live.json) · [Competitor scoreboard](teardown/COMPETITORS.md#visual-scoreboard)

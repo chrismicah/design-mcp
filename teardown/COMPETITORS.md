@@ -124,7 +124,7 @@ The gallery task uses the fixture's disclosure behavior with the task's own cont
 | Screenshots Design Inspiration | 1 / 36 | 91.7 on the gallery label. Design MCP also scored 91.7 in the matched Astra run. |
 | Design Library MCP, keyword | 1 / 36 | 87.5 on ceramics. Design MCP scored 95.8 in the matched shell-disabled run. |
 | shadcn/ui MCP | 1 / 36 | Separate live rubric. At desktop and mobile, shadcn scored 8.10 and 7.75 out of 10. Design MCP scored 8.30 on both. |
-| UI UX Pro Max | 2 / 36 | Won the first bike-booking comparison, 100.0 to 91.7, then tied the newer work order at 95.8. On display settings, the live rubric scored Design MCP 8.25 desktop and 7.20 phone, versus 7.35 and 6.55. |
+| UI UX Pro Max | 3 / 36 | Won the first bike-booking comparison, 100.0 to 91.7, then tied the newer work order at 95.8. On the live rubric, Design MCP won display settings and saved trails. On saved trails, Design MCP scored 8.10 desktop and 7.85 phone, versus 7.65 and 7.10. |
 | Other credential-free competitor configurations above | 0 / 36 each | Pending |
 | Credentialed and hosted configurations above | 0 / 36 each | Access or isolated fixture required |
 
@@ -149,3 +149,5 @@ The pinned UI UX Pro Max release returned relevant guidance through the benchmar
 The direct rematch reused both eligible original outputs and the same browser and asset policy. Both scored 95.8. The critic found competing booking headings in the service-work-order layout and tight mobile letter spacing in UI UX Pro Max. Each score belongs to its matched ballot. [Direct rematch and receipts](../evidence/benchmark-v1/service-vs-uiux-bike-booking.json)
 
 For visitor-center display settings, both builders made one verified context call before returning HTML. The blind critic used keyboard input at both widths and confirmed that the date and temperature changed independently and reset correctly. Design MCP led on hierarchy and visual identity. On phones, both live previews fell below the captured viewport. The two earlier setup and unused-tool attempts remain excluded. [Live ballot and generation receipts](../evidence/benchmark-v1/uiux-pro-max-settings-live.json)
+
+For saved trails, both builders made one verified context call with the original brief. The Design MCP arm used a clean offline install of `c7fd37e`. Both pages showed Cedar Bend at 2.4 miles and supported saving, removing and returning keyboard focus to Save. At 390 px the Design MCP page kept the named route, distance and action in the opening viewport. The UI UX Pro Max page required scrolling. Both used scenic illustrations. The critic found that the Design MCP artwork still takes space from the route and action. The generation calls took 76.91 and 94.79 seconds respectively. [Three-width replays, live ballot and token receipts](../evidence/benchmark-v1/uiux-pro-max-empty-saved-live.json)
