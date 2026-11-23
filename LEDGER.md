@@ -292,3 +292,7 @@ One bounded Astra 6.2 planning session defined the paired pivot test. One indepe
 ### Three-way common maintenance benchmark
 
 - Three Terra low generation sessions used one matching brief, prompt and client policy. They consumed 59,426 uncached input and 14,650 output tokens in total. One independent Terra low browser reviewer used 34,477 uncached input and 4,243 output tokens and completed six live views. The shadcn gate miss remains in the receipt and its grade is exploratory. [Token and capture receipts](evidence/benchmark-v1/common-maintenance-competitors.json)
+
+### Pickup-window creative comparison
+
+- Two independent Terra low sessions reviewed anonymous timetable and table drafts. They used 34,298 and 73,344 uncached input tokens and 3,169 and 3,059 output tokens. Playwriter exercised 18 deterministic journeys across the opening, mobile recovery, and discrete-time builds. The second timetable scored 7.85 desktop and 7.60 phone. The next critique concerns how the prior wait payoff is presented after withdrawal and the density of the phone measurement table. [Exact visual and interaction receipts](evidence/benchmark-v1/cupboard-pickup-window.json)

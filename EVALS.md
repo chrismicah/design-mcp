@@ -577,3 +577,14 @@ Each fresh critic preferred the repaired draft and tested recovery in the same v
 One independent live reviewer exercised the same maintenance form at 1440 and 390 px for Design MCP, shadcn 4.23.0, and UI UX Pro Max. Design MCP and shadcn each scored **7.85 on both screens**. UI UX Pro Max scored **7.50 desktop / 7.35 phone**. The reviewer preferred Design MCP's grouping and focus behavior, and found its required fields unclear before the first submission.
 
 All six recorded journeys exercised an empty submission, entered the exact values, confirmed Safety issue and local preparation, and returned to the populated form with keyboard input. The archive verifies eighteen named screenshots and the generated HTML hashes. The shadcn comparison is exploratory. The registered retrieval gate missed the official input, textarea and radio-group examples found in the retained response. [Benchmarked form, reviewer ballot, and scope](evidence/benchmark-v1/common-maintenance-competitors.json)
+
+## Cupboard pickup-window comparison
+
+Two independent live rounds compared the same tool-lending interaction as a timetable and a plain table. Both arms used the same four tools, fit and reset limits, inventory states, preview times, and recovery behavior. At **18:24** Fine was unavailable. At **18:25** it became available while Pocket remained selected. The separate withdrawal action kept Pocket's jam reason and moved focus to the explicit Fine action.
+
+| Round | Timetable desktop / phone | Plain table desktop / phone | Finding |
+| --- | ---: | ---: | --- |
+| Opening layout | 7.85 / 6.60 | 7.60 / 6.60 | Clear timing change. Equal spacing falsely suggested a scale and the phone recovery text wrapped into a narrow column. |
+| Discrete times and stacked recovery | 7.85 / 7.60 | 7.60 / 7.35 | Availability appeared earlier in the timetable. The critic still found the narrow table dense and the previous payoff confusing after withdrawal. |
+
+An intermediate geometry replay separately verified the stacked recovery layout before the discrete-time revision. Across the three builds, Playwriter checked **18 journeys and 108 original frame dimensions and hashes**, with keyboard at 390 and 1440 px and touch with reduced motion at 320 px. The exact 390 px revised recovery text used 313 CSS px. Neither ballot reached the 9.5 gate. The scores describe the standalone prototype. [Replays and individual live grades](evidence/benchmark-v1/cupboard-pickup-window.json)
