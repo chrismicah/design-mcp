@@ -88,24 +88,27 @@ async def public_proxy(host, address, resolve):
     """Serve the browser's TCP requests using only validated numeric destinations."""
     if not is_public_ip(ipaddress.ip_address(address)):
         raise ValueError("The browser needs a public initial address")
-    active = set()
+    active = {}
+    closing = False
     pinned_host = canonical_host(host)
 
     def accept(reader, writer):
-        if len(active) >= _MAX_CONNECTIONS:
+        if closing or len(active) >= _MAX_CONNECTIONS:
             writer.close()
             return
         task = asyncio.create_task(_forward(reader, writer, pinned_host, address, resolve))
-        active.add(task)
-        task.add_done_callback(active.discard)
+        active[task] = writer
+        task.add_done_callback(active.pop)
 
     server = await asyncio.start_server(accept, "127.0.0.1", 0)
     try:
         yield server.sockets[0].getsockname()[1]
     finally:
+        closing = True
         server.close()
-        await server.wait_closed()
-        tasks = tuple(active)
-        for task in tasks:
+        # A disposed browser may stop reading with bytes still buffered.
+        for task, writer in active.items():
+            writer.transport.abort()
             task.cancel()
-        await asyncio.gather(*tasks, return_exceptions=True)
+        await asyncio.gather(*active, return_exceptions=True)
+        await server.wait_closed()

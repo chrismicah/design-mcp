@@ -29,6 +29,55 @@ async def connect(proxy_port, host, port):
 
 
 class ProxyTests(unittest.IsolatedAsyncioTestCase):
+    async def test_context_shutdown_closes_client_waiting_after_socks_greeting(self):
+        writer = None
+
+        async def finish_review():
+            nonlocal writer
+            async with network.public_proxy("example.com", "93.184.216.34", None) as proxy:
+                reader, writer = await asyncio.open_connection("127.0.0.1", proxy)
+                writer.write(b"\x05\x01\x00")
+                await writer.drain()
+                self.assertEqual(await reader.readexactly(2), b"\x05\x00")
+            return reader
+
+        try:
+            # Leave the socket open through context exit.
+            reader = await asyncio.wait_for(finish_review(), 1)
+            self.assertEqual(await asyncio.wait_for(reader.read(), 1), b"")
+        finally:
+            if writer is not None:
+                writer.close()
+                await writer.wait_closed()
+
+    async def test_shutdown_aborts_output_to_a_client_that_stops_reading(self):
+        owned = asyncio.get_running_loop().create_future()
+        client = None
+
+        async def queue_output(reader, writer, *_):
+            peer_socket = writer.get_extra_info("socket")
+            peer_socket.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, 4096)
+            writer.write(b"x" * 1_048_576)
+            owned.set_result(writer)
+            await writer.drain()
+
+        async def finish_review():
+            nonlocal client
+            async with network.public_proxy("example.com", "93.184.216.34", None) as proxy:
+                _, client = await asyncio.open_connection("127.0.0.1", proxy)
+                client.transport.pause_reading()
+                peer = await owned
+                self.assertGreater(peer.transport.get_write_buffer_size(), 0)
+            self.assertEqual(peer.transport.get_write_buffer_size(), 0)
+
+        with patch.object(network, "_forward", side_effect=queue_output):
+            try:
+                await asyncio.wait_for(finish_review(), 1)
+            finally:
+                if client is not None:
+                    client.transport.abort()
+                    await client.wait_closed()
+
     async def test_refuses_private_and_mixed_dns_destinations_before_connecting(self):
         lookups = []
 
