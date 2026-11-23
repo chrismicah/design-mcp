@@ -601,3 +601,6 @@ The isolated `04d7320` trial turns the opening-view study into conditional layou
 
 
 The unedited `04d7320` Tacoma draft moved the 390 px name input from **1,067 to 883 CSS px**. The name and preview button fit together only on desktop. Both drafts made zero post-load requests and passed blank-name recovery. The candidate focused its result heading. The scripted check expected textarea focus, so edit behavior there remains unverified. The weekday check also flagged the equivalent “Tuesday–Saturday” as a mismatch. The phone layout still missed the measured requirement, so the change stays out of the release. [Matched generation and browser evidence](evidence/benchmark-v1/consultation-opening-view-generation.json)
+
+
+A hosted diagnostic replay exercised all four frozen drafts at the same three widths. It accepts equivalent weekday ranges and checks that the editable result is visible and keyboard reachable when the heading receives focus. The earlier draft now verifies hours, first-frame result visibility, keyboard editing and retained selections at **3/3 widths**. Its first field and preview still miss the initial view at 320 and 390 px. The authored call board passed every check at all three widths. [Revised replay and image hashes](evidence/benchmark-v1/consultation-opening-view-semantic-replay.json)

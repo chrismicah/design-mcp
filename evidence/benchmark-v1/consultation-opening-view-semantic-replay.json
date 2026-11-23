@@ -1,0 +1,567 @@
+{
+  "scope": "Hosted Playwriter retest on the same four frozen drafts, 320, 390 and 1440 CSS px",
+  "browser_run": "https://github.com/chrismicah/design-mcp/actions/runs/45277560927",
+  "workflow_head": "87de8a8e383d29dd78cc6e4df84039f7e39a8b26",
+  "artifact": {
+    "id": 14867816653,
+    "name": "call-board-browser-receipts",
+    "digest": "sha256:4afbc74a66e24b59372a995a4c64f14248f2a6b5ecd223731f52123dda6835f1"
+  },
+  "check_changes": [
+    "Accept equivalent weekday ranges.",
+    "Measure the result textarea at the first animation frame independently of focus.",
+    "Accept focus in the result heading followed by keyboard access to the editable draft.",
+    "Accept a visible local-only explanation within 300 CSS px of the result."
+  ],
+  "observations": [
+    "Earlier draft passes hours, first-frame focus and draft placement, keyboard editing and retention at all three widths.",
+    "First name and preview still fall outside the initial 320 and 390 CSS px viewports.",
+    "The authored call board passes every check at all three widths."
+  ],
+  "all_post_load_requests_zero": true,
+  "verified_browser_artifact_receipt_sha256": "2a41c55c59ccdaa2f237faa76ecbea56495c2f54cc602cfaca729222bdf883d9",
+  "arms": {
+    "call-board": {
+      "html_sha256": "df8c6018c08a38b2137a6fbda5fb5f2aa92698076291a41986a239fa73b31217",
+      "browser": "Chrome/157.0.8103.79",
+      "views": {
+        "320": {
+          "failed": [],
+          "initial_form": {
+            "name": {
+              "x": 16,
+              "y": 537.546875,
+              "width": 288,
+              "height": 44
+            },
+            "preview": {
+              "x": 16,
+              "y": 591.9375,
+              "width": 161.9375,
+              "height": 44
+            }
+          },
+          "first_frame": {
+            "focusTag": "TEXTAREA",
+            "focusLabel": "",
+            "editable": {
+              "x": 16,
+              "y": 569.4375,
+              "width": 273,
+              "height": 110
+            }
+          },
+          "frames": {
+            "before": {
+              "sha256": "b7b4f8cb8f3219c13499fccfd680d79ffb822195d26cbf5df845489ceefd2a07",
+              "file": "320.png"
+            },
+            "invalid": {
+              "sha256": "f42b43854606968d4f05917f0ad1734f84fcc6031162d52c2c4db05ed9f1b825",
+              "file": "320-invalid.png"
+            },
+            "preview": {
+              "sha256": "cd2b8ce583ff37e8452ebe458ababa8e68b669bf04a51f29e77701fdff9b6588",
+              "file": "320-preview.png"
+            }
+          }
+        },
+        "390": {
+          "failed": [],
+          "initial_form": {
+            "name": {
+              "x": 16,
+              "y": 497.984375,
+              "width": 358,
+              "height": 44
+            },
+            "preview": {
+              "x": 16,
+              "y": 552.375,
+              "width": 161.9375,
+              "height": 44
+            }
+          },
+          "first_frame": {
+            "focusTag": "TEXTAREA",
+            "focusLabel": "",
+            "editable": {
+              "x": 16,
+              "y": 707.6875,
+              "width": 343,
+              "height": 110
+            }
+          },
+          "frames": {
+            "before": {
+              "sha256": "2d15c770a84839dba10ee93de96e1beeb1d939a50492073819c94945e8de24d0",
+              "file": "390.png"
+            },
+            "invalid": {
+              "sha256": "035a0799dd95f0fe0fca15bbd2960f88210f2d7ad0693db7089a345d06112c2d",
+              "file": "390-invalid.png"
+            },
+            "preview": {
+              "sha256": "eade6d66acd04a94f28e78753f4eaf803c42002221653f0ba716060cc492746a",
+              "file": "390-preview.png"
+            }
+          }
+        },
+        "1440": {
+          "failed": [],
+          "initial_form": {
+            "name": {
+              "x": 588.328125,
+              "y": 450.46875,
+              "width": 368,
+              "height": 44
+            },
+            "preview": {
+              "x": 588.328125,
+              "y": 504.859375,
+              "width": 161.9375,
+              "height": 44
+            }
+          },
+          "first_frame": {
+            "focusTag": "TEXTAREA",
+            "focusLabel": "",
+            "editable": {
+              "x": 588.328125,
+              "y": 636.984375,
+              "width": 707.671875,
+              "height": 110
+            }
+          },
+          "frames": {
+            "before": {
+              "sha256": "fa6008aa67ad0fe9581f015fb0956f81d5313b92c34e16168721872a9325a764",
+              "file": "1440.png"
+            },
+            "invalid": {
+              "sha256": "88a8e5bdbe482b518a310d21e2ae760e351e223f5f5f25a4356f0c58bf0bb43e",
+              "file": "1440-invalid.png"
+            },
+            "preview": {
+              "sha256": "1d7f2ee70e30ac46911f47565060860af4356308c5d64f8117c30d3e231697f6",
+              "file": "1440-preview.png"
+            }
+          }
+        }
+      }
+    },
+    "focus-repair": {
+      "html_sha256": "589215a5c7efb1c4c47bc581814a29ad829252d8b5f0b5d45430d15812229e66",
+      "browser": "Chrome/157.0.8103.79",
+      "views": {
+        "320": {
+          "failed": [
+            "nameInitiallyVisible",
+            "previewInitiallyVisible",
+            "honestResultVisible"
+          ],
+          "initial_form": {
+            "name": {
+              "x": 20,
+              "y": 1289.609375,
+              "width": 265,
+              "height": 49.171875
+            },
+            "preview": {
+              "x": 20,
+              "y": 1358.78125,
+              "width": 173.375,
+              "height": 49.578125
+            }
+          },
+          "first_frame": {
+            "focusTag": "TEXTAREA",
+            "focusLabel": "",
+            "editable": {
+              "x": 20,
+              "y": 443.953125,
+              "width": 265,
+              "height": 128
+            }
+          },
+          "frames": {
+            "before": {
+              "sha256": "c25605d0d88d064ae6dd318d7ed21ed4ea479643eaa384567014df51da7742f2",
+              "file": "320.png"
+            },
+            "invalid": {
+              "sha256": "05df0722558557b640fc7b32a52009427f25c46c15626d868c4c6cb4ec9228d3",
+              "file": "320-invalid.png"
+            },
+            "preview": {
+              "sha256": "e88c51a7ec62e1b386a6a9e2f5cc96675cae7d8b67994746fa0a7fdc43a82947",
+              "file": "320-preview.png"
+            }
+          }
+        },
+        "390": {
+          "failed": [
+            "nameInitiallyVisible",
+            "previewInitiallyVisible",
+            "honestResultVisible"
+          ],
+          "initial_form": {
+            "name": {
+              "x": 20,
+              "y": 1120.15625,
+              "width": 335,
+              "height": 49.171875
+            },
+            "preview": {
+              "x": 20,
+              "y": 1189.328125,
+              "width": 173.375,
+              "height": 49.578125
+            }
+          },
+          "first_frame": {
+            "focusTag": "TEXTAREA",
+            "focusLabel": "",
+            "editable": {
+              "x": 20,
+              "y": 587.5,
+              "width": 335,
+              "height": 128
+            }
+          },
+          "frames": {
+            "before": {
+              "sha256": "3b4efad8e538a7f6880c66e65026b616003258ab805ee644178b363b1e45123b",
+              "file": "390.png"
+            },
+            "invalid": {
+              "sha256": "5ff6e2e3d013fa3d7b367b70d27f6a3bfd2eceee67b7c2cf18ab98a62ffc5cef",
+              "file": "390-invalid.png"
+            },
+            "preview": {
+              "sha256": "ce932a7ac5fd5e16c8f75d10991e5202399faff389750e305f67e79b9b2d9c07",
+              "file": "390-preview.png"
+            }
+          }
+        },
+        "1440": {
+          "failed": [
+            "nameInitiallyVisible",
+            "previewInitiallyVisible",
+            "honestResultVisible"
+          ],
+          "initial_form": {
+            "name": {
+              "x": 686.1875,
+              "y": 997.546875,
+              "width": 384,
+              "height": 49.171875
+            },
+            "preview": {
+              "x": 686.1875,
+              "y": 1066.71875,
+              "width": 173.375,
+              "height": 49.578125
+            }
+          },
+          "first_frame": {
+            "focusTag": "TEXTAREA",
+            "focusLabel": "",
+            "editable": {
+              "x": 686.1875,
+              "y": 643.890625,
+              "width": 602.3125,
+              "height": 128
+            }
+          },
+          "frames": {
+            "before": {
+              "sha256": "c1ab66f0adc33f00b47dc3abb5c275988cfcf192835e20ce74170ea059a0a9c8",
+              "file": "1440.png"
+            },
+            "invalid": {
+              "sha256": "579c599a1aa883a3f88306f4491144b97327c5e1229210f0fd7069aae0476a29",
+              "file": "1440-invalid.png"
+            },
+            "preview": {
+              "sha256": "03b337f32fd6eb1945c999aae61ee6584da9da3c97912a21b57be7d1f2429cc1",
+              "file": "1440-preview.png"
+            }
+          }
+        }
+      }
+    },
+    "earlier-draft": {
+      "html_sha256": "311c51347880b7f87fe68abe16084a008eedc4ff01b5f9ae3a3bef1592e00a90",
+      "browser": "Chrome/157.0.8103.79",
+      "views": {
+        "320": {
+          "failed": [
+            "nameInitiallyVisible",
+            "previewInitiallyVisible"
+          ],
+          "initial_form": {
+            "name": {
+              "x": 20,
+              "y": 943.234375,
+              "width": 265,
+              "height": 48
+            },
+            "preview": {
+              "x": 20,
+              "y": 1007.234375,
+              "width": 168.1875,
+              "height": 48.375
+            }
+          },
+          "first_frame": {
+            "focusTag": "H3",
+            "focusLabel": "Your reminder draft",
+            "editable": {
+              "x": 20,
+              "y": 508,
+              "width": 265,
+              "height": 128
+            }
+          },
+          "frames": {
+            "before": {
+              "sha256": "616ebb1d41d02870c8bd88c4de6345b5212d93b7cb033472eadc144b59458727",
+              "file": "320.png"
+            },
+            "invalid": {
+              "sha256": "c8e8792a059113d823df281ed5b9ade568248a1f2c7ec14d4f2adf954ecb28e8",
+              "file": "320-invalid.png"
+            },
+            "preview": {
+              "sha256": "e19ef4adb58d028d4c0b228d68404268bcb647e6b34a7734bb1d8070f6352245",
+              "file": "320-preview.png"
+            }
+          }
+        },
+        "390": {
+          "failed": [
+            "nameInitiallyVisible",
+            "previewInitiallyVisible"
+          ],
+          "initial_form": {
+            "name": {
+              "x": 20,
+              "y": 883.40625,
+              "width": 335,
+              "height": 48
+            },
+            "preview": {
+              "x": 20,
+              "y": 947.40625,
+              "width": 168.1875,
+              "height": 48.375
+            }
+          },
+          "first_frame": {
+            "focusTag": "H3",
+            "focusLabel": "Your reminder draft",
+            "editable": {
+              "x": 20,
+              "y": 652.171875,
+              "width": 335,
+              "height": 128
+            }
+          },
+          "frames": {
+            "before": {
+              "sha256": "dc143f5ea61d96122717b0bb6210c83f46c920a46ef106da8ffd7fe70d17e029",
+              "file": "390.png"
+            },
+            "invalid": {
+              "sha256": "eae981c37266cbd08ea54b451837f41feb385e812ac85426f2cec577e6588d11",
+              "file": "390-invalid.png"
+            },
+            "preview": {
+              "sha256": "ef80ebf626a9d1192a469aa1fd5d1c51e84ead40632b953f0e29459db538c6fa",
+              "file": "390-preview.png"
+            }
+          }
+        },
+        "1440": {
+          "failed": [],
+          "initial_form": {
+            "name": {
+              "x": 744,
+              "y": 579.734375,
+              "width": 552,
+              "height": 48
+            },
+            "preview": {
+              "x": 744,
+              "y": 643.734375,
+              "width": 168.1875,
+              "height": 48.375
+            }
+          },
+          "first_frame": {
+            "focusTag": "H3",
+            "focusLabel": "Your reminder draft",
+            "editable": {
+              "x": 736.5,
+              "y": 691.5,
+              "width": 552,
+              "height": 128
+            }
+          },
+          "frames": {
+            "before": {
+              "sha256": "4cc1e9684ba4f2418d69a409a608484c9f92a6f2e178df93ea5f1a5edeee8a4b",
+              "file": "1440.png"
+            },
+            "invalid": {
+              "sha256": "47d61483e10d3761874e5b8265a7337c995bc88017df4c43e1ff2594f05b4723",
+              "file": "1440-invalid.png"
+            },
+            "preview": {
+              "sha256": "7ed6412e904a8d767fc0a96de025870b6b31d471c0ba487bd45aafca29acdb23",
+              "file": "1440-preview.png"
+            }
+          }
+        }
+      }
+    },
+    "visible-handoff": {
+      "html_sha256": "d82f6c1051b15f5191ebe6c6e14bf03b294db4ff95ce70bedda72c28161c28c5",
+      "browser": "Chrome/157.0.8103.79",
+      "views": {
+        "320": {
+          "failed": [
+            "nameInitiallyVisible",
+            "previewInitiallyVisible"
+          ],
+          "initial_form": {
+            "name": {
+              "x": 16,
+              "y": 1089.28125,
+              "width": 273,
+              "height": 48
+            },
+            "preview": {
+              "x": 16,
+              "y": 1157.28125,
+              "width": 173.375,
+              "height": 52
+            }
+          },
+          "first_frame": {
+            "focusTag": "TEXTAREA",
+            "focusLabel": "",
+            "editable": {
+              "x": 16,
+              "y": 564.8125,
+              "width": 273,
+              "height": 128
+            }
+          },
+          "frames": {
+            "before": {
+              "sha256": "f005b6dfcc2dab31ab90735cbb22c9accda8cbe3f7ab3fb23360fecda8e7440c",
+              "file": "320.png"
+            },
+            "invalid": {
+              "sha256": "060ead4778d29430f6e26262456ca314b1c83aec69e73bb7626877ea85555d34",
+              "file": "320-invalid.png"
+            },
+            "preview": {
+              "sha256": "37f7947f4d9e823c5f0f02a61cca5fe1d90f14679c304e557570379118fee6f1",
+              "file": "320-preview.png"
+            }
+          }
+        },
+        "390": {
+          "failed": [
+            "nameInitiallyVisible",
+            "previewInitiallyVisible"
+          ],
+          "initial_form": {
+            "name": {
+              "x": 16,
+              "y": 1066.71875,
+              "width": 343,
+              "height": 48
+            },
+            "preview": {
+              "x": 16,
+              "y": 1134.71875,
+              "width": 173.375,
+              "height": 52
+            }
+          },
+          "first_frame": {
+            "focusTag": "TEXTAREA",
+            "focusLabel": "",
+            "editable": {
+              "x": 16,
+              "y": 709.25,
+              "width": 343,
+              "height": 128
+            }
+          },
+          "frames": {
+            "before": {
+              "sha256": "7d5320752fdb917b0e03e351cd07ef4ca8f85dd065bde0a074130afa56948a65",
+              "file": "390.png"
+            },
+            "invalid": {
+              "sha256": "dde79aec1b5ac3ee76fd28cc25515d63386b6a7cbd0559192a823c8414660b8b",
+              "file": "390-invalid.png"
+            },
+            "preview": {
+              "sha256": "53c7ea001d0a7ffa86d247b923480af936b278f2c6b7546c2ab6567770e2b35b",
+              "file": "390-preview.png"
+            }
+          }
+        },
+        "1440": {
+          "failed": [
+            "previewInitiallyVisible"
+          ],
+          "initial_form": {
+            "name": {
+              "x": 720.484375,
+              "y": 846.984375,
+              "width": 568.015625,
+              "height": 48
+            },
+            "preview": {
+              "x": 720.484375,
+              "y": 914.984375,
+              "width": 173.375,
+              "height": 52
+            }
+          },
+          "first_frame": {
+            "focusTag": "TEXTAREA",
+            "focusLabel": "",
+            "editable": {
+              "x": 720.484375,
+              "y": 764.71875,
+              "width": 568.015625,
+              "height": 128
+            }
+          },
+          "frames": {
+            "before": {
+              "sha256": "cb56f5c6a3744b5608ec118cf9a63b92180746725d831af23b2f9ea1f7905421",
+              "file": "1440.png"
+            },
+            "invalid": {
+              "sha256": "4b12047523c029b4f8884aa2ac94cd849df0c49b4d72f16abd0d6533b2587f25",
+              "file": "1440-invalid.png"
+            },
+            "preview": {
+              "sha256": "eed800335c2d13a4899e678e08823e6de0cb0367405c2f69c21b809981c17b0d",
+              "file": "1440-preview.png"
+            }
+          }
+        }
+      }
+    }
+  }
+}
