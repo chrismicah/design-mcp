@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { execFileSync, spawn } from "node:child_process";
 import { once } from "node:events";
 import { mkdir, readFile, realpath, writeFile } from "node:fs/promises";
@@ -8,7 +9,9 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { setTimeout as delay } from "node:timers/promises";
 
-const [chrome, cli, extension, output, fixturePath] = process.argv.slice(2);
+const [chrome, cli, extension, output, fixturePath, ...flags] = process.argv.slice(2);
+const pastedUrlProof = flags.includes("--pasted-url-e2e");
+const publicFixtureUrl = "https://designsystem.digital.gov/templates/form-templates/address-form/";
 await mkdir(output, { recursive: true });
 const fixture = await readFile(fixturePath || new URL("fixtures/shuttle-dispatch.html", import.meta.url));
 const host = createServer((request, response) => {
@@ -41,7 +44,9 @@ async function until(description, check, milliseconds = 10000) {
     }
     await delay(120);
   }
-  throw new Error(`Timed out waiting for ${description}`);
+  const reason = `Timed out waiting for ${description}`;
+  proof.failureReason = reason;
+  throw new Error(reason);
 }
 
 try {
@@ -171,6 +176,89 @@ try {
   const scopedHistory = await realpath(join(profile, "Design MCP", "reviews"));
   assert.equal(dirname(await realpath(proof.previewFolder)), scopedHistory);
   proof.profileHistoryVerified = true;
+
+  if (pastedUrlProof) {
+    // Exercise URL validation in the actual toolbar popup before entering the URL flow.
+    await send("Target.activateTarget", { targetId: fixturePage.targetId });
+    key("ctrl+shift+y");
+    const urlPopupTarget = await until("toolbar popup for pasted URL proof", () => findTarget(item =>
+      /^chrome-extension:\/\/[a-p]{32}\/popup\.html$/.test(item.url)));
+    const urlPopup = await attach(urlPopupTarget);
+    const urlState = () => inspect(urlPopup, `(() => ({
+      state: document.body?.dataset.state,
+      focus: document.activeElement?.id,
+      hint: document.querySelector('#url-hint')?.textContent,
+      resultHidden: document.querySelector('#result')?.hidden
+    }))()`);
+    await until("URL entry field in toolbar popup", () => inspect(urlPopup, "Boolean(document.querySelector('#url'))"));
+    await inspect(urlPopup, "document.querySelector('#url').focus()");
+    execFileSync("xdotool", ["type", "--clearmodifiers", "localhost:3000"]);
+    key("Return");
+    proof.localhostRejected = await until("inline localhost rejection", async () => {
+      const value = await urlState();
+      return /public web address/i.test(value.hint) && value.resultHidden && value.focus === "url" ? value : null;
+    });
+    assert.equal(proof.localhostRejected.state, "idle");
+    assert.equal(await findTarget(item => item.url.includes("popup.html?view=url")), undefined);
+    key("ctrl+a");
+    execFileSync("xdotool", ["type", "--clearmodifiers", publicFixtureUrl]);
+    const pasteStarted = performance.now();
+    key("Return");
+    const pastedTarget = await until("new extension review view", () => findTarget(item =>
+      /^chrome-extension:\/\/[a-p]{32}\/popup\.html\?view=url$/.test(item.url)), 25000);
+    const pastedView = await attach(pastedTarget);
+    const pastedState = () => inspect(pastedView, `(() => document.querySelector('#where') ? ({
+      state: document.body.dataset.state,
+      focus: document.activeElement?.id,
+      finding: document.querySelector('#finding').textContent,
+      status: document.querySelector('#status').textContent,
+      path: document.querySelector('#path').textContent,
+      previewUrl: document.querySelector('#open').dataset.url || null,
+      previewVisible: !document.querySelector('#where').hidden
+    }) : null)()`);
+    proof.pastedResult = await until("pasted URL result and inline capture", async () => {
+      const value = await pastedState();
+      if (value?.state === "problem") throw new Error(value.status);
+      return value?.state === "result" && value.previewVisible && value.previewUrl ? value : null;
+    }, 30000);
+    assert.equal(proof.pastedResult.focus, "open");
+    assert.match(proof.pastedResult.path, /preview\.html$/);
+    assert.ok(proof.pastedResult.finding);
+    proof.pastedSubmitToCaptureMs = Math.round(performance.now() - pasteStarted);
+    assert.equal(await findTarget(item => item.url === publicFixtureUrl), undefined);
+    await image(pastedView, "pasted-url-result.png");
+    key("Return");
+    const pastedPreviewTarget = await until("saved pasted result", () => findTarget(item => item.url === proof.pastedResult.previewUrl));
+    const pastedPreview = await attach(pastedPreviewTarget);
+    const observeSaved = () => inspect(pastedPreview, `(() => {
+      const capture = document.querySelector('svg.shot');
+      return capture && document.readyState === 'complete' ? {
+        title: document.title, label: capture.getAttribute('aria-label'), width: capture.getAttribute('width')
+      } : null;
+    })()`);
+    proof.pastedPreview = await until("saved capture in the preview", observeSaved);
+    assert.match(proof.pastedPreview.title, /^Review of /);
+    assert.equal(proof.pastedPreview.width, "1440");
+    await send("Page.reload", {}, pastedPreview);
+    assert.deepEqual(await until("capture after reopening the preview", observeSaved), proof.pastedPreview);
+    const pastedPreviewPath = fileURLToPath(proof.pastedResult.previewUrl);
+    const savedReviewDir = dirname(await realpath(pastedPreviewPath));
+    assert.equal(dirname(savedReviewDir), scopedHistory);
+    const savedEvidence = JSON.parse(await readFile(join(savedReviewDir, "evidence.json"), "utf8"));
+    assert.equal(savedEvidence.capture.source, "pasted-url");
+    assert.equal(savedEvidence.capture.url, publicFixtureUrl);
+    const [frame] = savedEvidence.frames;
+    assert.equal(frame.viewport.width, 1440);
+    assert.ok(frame.masks.applied && frame.masks.counts.field > 0);
+    proof.pastedMaskCount = frame.masks.counts.field;
+    proof.pastedEvidencePath = join(savedReviewDir, "evidence.json");
+    const previewHtml = await readFile(pastedPreviewPath, "utf8");
+    const [, captureData] = previewHtml.match(/data:image\/png;base64,([A-Za-z0-9+/=]+)/);
+    proof.pastedScreenshotSha256 = createHash("sha256").update(Buffer.from(captureData, "base64")).digest("hex");
+    assert.equal(proof.pastedScreenshotSha256, frame.screenshot.sha256);
+    await image(pastedPreview, "pasted-url-preview.png");
+    proof.pastedUrlE2e = true;
+  }
   proof.passed = true;
 } finally {
   await writeFile(join(output, "extension-review.json"), JSON.stringify(proof, null, 2) + "\n");

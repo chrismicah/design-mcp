@@ -42,7 +42,7 @@ jobs:
           curl -fsSL https://storage.googleapis.com/chrome-for-testing-public/158.0.8127.36/linux64/chrome-linux64.zip -o "$RUNNER_TEMP/chrome.zip"
           unzip -q "$RUNNER_TEMP/chrome.zip" -d "$RUNNER_TEMP/browser"
           sudo install -o root -g root -m 4755 "$RUNNER_TEMP/browser/chrome-linux64/chrome_sandbox" /usr/local/sbin/chrome-devel-sandbox
-      - name: Open the real toolbar action and submit a masked capture
+      - name: Verify the active-tab and pasted URL review journeys
         shell: bash
         run: |
           cli="$RUNNER_TEMP/design-review/bin/design-mcp"
@@ -58,10 +58,13 @@ jobs:
           manifest['commands'] = {'_execute_action': {'suggested_key': {'default': 'Ctrl+Shift+Y'}}}
           path.write_text(json.dumps(manifest))
           PY
+          mkdir -p "$RUNNER_TEMP/browser-bin"
+          ln -s "$chrome" "$RUNNER_TEMP/browser-bin/google-chrome"
+          export PATH="$RUNNER_TEMP/browser-bin:$PATH"
           node --version
           CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox \
             xvfb-run -a -s '-screen 0 1600x1040x24' node --experimental-websocket \
-            evals/vision/extension_smoke.mjs "$chrome" "$cli" "$extension" "$proof"
+            evals/vision/extension_smoke.mjs "$chrome" "$cli" "$extension" "$proof" "" --pasted-url-e2e
           "$RUNNER_TEMP/design-review/bin/python" - "$proof" <<'PY'
           from pathlib import Path
           from PIL import Image
@@ -89,8 +92,18 @@ jobs:
               assert set(checked.getdata()) == {(138, 143, 152)}
           proof['verifiedMaskInterior'] = True
           proof['privateValueAbsentFromArtifacts'] = True
+          assert proof.get('pastedUrlE2e'), proof
+          pasted = json.loads(Path(proof['pastedEvidencePath']).read_text())
+          assert pasted['capture']['source'] == 'pasted-url', pasted
+          assert pasted['capture']['url'] == 'https://designsystem.digital.gov/templates/form-templates/address-form/', pasted
+          assert pasted['frames'][0]['masks']['counts']['field'] > 0, pasted
+          assert proof['pastedScreenshotSha256'] == pasted['frames'][0]['screenshot']['sha256'], proof
+          assert proof['pastedResult']['focus'] == 'open', proof
+          assert proof['pastedSubmitToCaptureMs'] > 0, proof
+          assert proof['localhostRejected']['resultHidden'], proof
+          assert proof['pastedResult']['previewVisible'], proof
           proof_path.write_text(json.dumps(proof, indent=2)+'\n')
-          print('Verified native messaging, private field masking, and the preview switch.')
+          print('Verified active-tab and pasted-URL capture, masking, saved evidence, and keyboard preview.')
           PY
       - name: Verify the 3 to 1 contrast result from the installed browser path
         if: github.ref_name == 'design-mcp/large-text-contrast'
