@@ -12,7 +12,11 @@ from urllib.request import Request, urlopen
 
 
 RELEASES = ("USWDS/uswds", "remorses/playwriter")
-RESEARCH = ("screenshot to code UI generation", "visual critique user interface design")
+RESEARCH = (
+    "screenshot to code UI generation",
+    "visual critique user interface design",
+    "creative range originality LLM generated user interface design",
+)
 MAX_BYTES = 256_000
 CROSSREF_TYPES = {"journal-article", "proceedings-article", "posted-content"}
 CROSSREF_INTERVAL_SECONDS = 1.25

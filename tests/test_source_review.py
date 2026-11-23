@@ -1,7 +1,7 @@
 from datetime import date, datetime, timezone
 from urllib.error import HTTPError
 
-from scripts.watch_design_sources import CROSSREF_INTERVAL_SECONDS, collect, print_report, read_show_hn
+from scripts.watch_design_sources import CROSSREF_INTERVAL_SECONDS, RESEARCH, collect, print_report, read_show_hn
 
 
 def test_source_review_survives_rate_limiting_and_escapes_source_text(capsys):
@@ -27,6 +27,7 @@ def test_source_review_survives_rate_limiting_and_escapes_source_text(capsys):
     assert "&lt;script&gt; &amp; test" in report and "<script>" not in report
     assert "https://openalex.org/W123" in report and "javascript:" not in report
     assert "No results in the current search." in report
+    assert "## creative range originality LLM generated user interface design" in report
 
 
 def test_source_review_exposes_a_complete_outage():
@@ -34,7 +35,7 @@ def test_source_review_exposes_a_complete_outage():
         raise TimeoutError
 
     sources = collect(date(2026, 11, 21), unavailable, lambda _: None, fetch_award=unavailable)
-    assert len(sources) == 6
+    assert len(sources) == 4 + len(RESEARCH)
     assert all(source["error"] == "TimeoutError" for source in sources)
 
 
@@ -71,9 +72,9 @@ def test_paper_search_falls_back_once_per_query_and_keeps_verified_doi_links(cap
 
     sources = collect(date(2026, 11, 21), fetch, waits.append)
     assert sum("api.openalex.org" in url for url in requests) == 1
-    assert sum("api.crossref.org" in url for url in requests) == 2
-    assert waits == [CROSSREF_INTERVAL_SECONDS]
-    for source in sources[-2:]:
+    assert sum("api.crossref.org" in url for url in requests) == len(RESEARCH)
+    assert waits == [CROSSREF_INTERVAL_SECONDS] * (len(RESEARCH) - 1)
+    for source in sources[-len(RESEARCH):]:
         assert source["provider"] == "Crossref"
         assert source["openalex_error"] == "HTTP 429"
         assert source["leads"] == [{

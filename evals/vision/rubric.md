@@ -39,3 +39,29 @@ python3 evals/vision/score.py --ballot ballot.json --browser browser.json \
 ```
 
 Exit 0 means the submitted ballot and browser checks passed for those capture files. Exit 2 means a criterion failed or the records and files disagree.
+
+## Verify a creative series
+
+Use `python3 evals/vision/score_series.py series.json` before promoting an expressive web design. It verifies the underlying files for 5–15 distinct revision builds, and the fresh evaluator's confirmation of the exact finalist. Keep below-threshold rounds in the series. Record the main criticism in each round and the visible response in the following round. A concept-only discussion belongs in the research log.
+
+Keep the evidence files inside the manifest's directory. The `build` file contains the exact served standalone HTML, or a frozen bundle when the browser receipt identifies it as the build. Use both `desktop` and `mobile` captures. For example, a round entry has this shape.
+
+```json
+{
+  "premise": "Open the cut inside the sentence",
+  "critique": "The source clock reads like the player position",
+  "revision": "Place the edition name beside its clock",
+  "review": {
+    "build": "round-2/index.html",
+    "ballot": "round-2/ballot.json",
+    "ballot_sha256": "<SHA-256 of ballot.json>",
+    "browser": "round-2/browser.json",
+    "browser_sha256": "<SHA-256 of browser.json>",
+    "observations": "round-2/observations.json",
+    "before": {"desktop": "round-2/desktop-before.png", "mobile": "round-2/mobile-before.png"},
+    "after": {"desktop": "round-2/desktop-after.png", "mobile": "round-2/mobile-after.png"}
+  }
+}
+```
+
+Put entries in the `rounds` array. Set `finalist_round` to its one-based position. Set `confirmation` to the second evaluator's review object, with their own receipt and captures. The first round may omit `revision`. Verify that the trace supports the blinded review and shows the archived build serving those captures. Confirm that changes respond to the critiques and the finalist wins its matched comparison. The verifier checks file identity, recorded sessions and score requirements.

@@ -23,6 +23,10 @@ def is_digest(value):
     return isinstance(value, str) and SHA256.fullmatch(value) is not None
 
 
+def session_key(value):
+    return value.strip().casefold()
+
+
 def screen_score(screen):
     ratings = screen["ratings"]
     if set(ratings) != set(WEIGHTS):
@@ -53,7 +57,7 @@ def verify_live_review(ballot, browser, observations, expected):
     builder = observations.get("builder_session")
     if not all(isinstance(session, str) and session.strip() for session in (reviewer, builder)):
         raise ValueError("Identify the builder and evaluator sessions")
-    if reviewer == builder or reviewer != ballot.get("evaluator_session"):
+    if session_key(reviewer) == session_key(builder) or reviewer != ballot.get("evaluator_session"):
         raise ValueError("The ballot must come from the independent evaluator session")
     screens = observations.get("screens")
     if not isinstance(screens, dict) or set(screens) != expected:
@@ -114,6 +118,27 @@ def evaluate(ballot, browser, expected_screens, observations):
             "minimum": float(MINIMUM), "blockers": blockers}
 
 
+def verify_files(ballot_path, browser_path, evidence_path, screens, before_paths, paths):
+    if set(paths) != set(screens) or set(before_paths) != set(screens):
+        raise ValueError("Pass exactly one before and after capture file for each required screen")
+
+    browser = json.loads(browser_path.read_text())
+    evidence = evidence_path.read_bytes()
+    if hashlib.sha256(evidence).hexdigest() != browser.get("evidence_sha256"):
+        raise ValueError("Browser evidence differs from the tested receipt")
+    ballot = json.loads(ballot_path.read_text())
+    observations = json.loads(evidence)
+    result = evaluate(ballot, browser, screens, observations)
+    for screen in screens:
+        if hashlib.sha256(paths[screen].read_bytes()).hexdigest() != browser["captures"][screen]:
+            raise ValueError(f"Capture file differs from the tested receipt for {screen}")
+        if hashlib.sha256(before_paths[screen].read_bytes()).hexdigest() != browser["before_captures"][screen]:
+            raise ValueError(f"Before capture differs from the tested receipt for {screen}")
+
+    return {**result, "build_sha256": ballot["build_sha256"], "evaluator_session": ballot["evaluator_session"],
+            "builder_session": observations["builder_session"]}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--ballot", type=Path, required=True)
@@ -130,18 +155,14 @@ def main():
     if len(before_paths) != len(args.before_capture) or set(before_paths) != set(args.screen):
         parser.error("Pass exactly one before capture file for each required screen")
     try:
-        browser = json.loads(args.browser.read_text())
-        evidence = args.browser_evidence.read_bytes()
-        if hashlib.sha256(evidence).hexdigest() != browser.get("evidence_sha256"):
-            raise ValueError("Browser evidence differs from the tested receipt")
-        result = evaluate(json.loads(args.ballot.read_text()), browser, args.screen, json.loads(evidence))
-        for screen, path in paths.items():
-            if hashlib.sha256(Path(path).read_bytes()).hexdigest() != browser["captures"][screen]:
-                raise ValueError(f"Capture file differs from the tested receipt for {screen}")
-            if hashlib.sha256(Path(before_paths[screen]).read_bytes()).hexdigest() != browser["before_captures"][screen]:
-                raise ValueError(f"Before capture differs from the tested receipt for {screen}")
+        result = verify_files(
+            args.ballot, args.browser, args.browser_evidence, args.screen,
+            {name: Path(path) for name, path in before_paths.items()},
+            {name: Path(path) for name, path in paths.items()},
+        )
     except (KeyError, OSError, TypeError, ValueError) as error:
         parser.error(str(error))
+    del result["build_sha256"], result["evaluator_session"], result["builder_session"]
     print(json.dumps(result, indent=2))
     raise SystemExit(0 if result["accepted"] else 2)
 
