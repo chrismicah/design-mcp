@@ -571,3 +571,9 @@ The live comparison froze each installed trial draft as its own control. The man
 | Lift closure and last train | 7.10 → 7.80 | 6.65 → 7.80 | West's two-minute miss and Dock's ten-minute margin stay beside the keyboard switch. The warning still dominates after Groove is selected. |
 
 Each fresh critic preferred the repaired draft and tested recovery in the same visit at both widths. The controls were scored more strictly than in the previous installed comparison. Use the matched scores within these ballots. A future installed comparison must reproduce the gains before promotion. The desktop and phone scores remain below 9.5. [Original installed comparison](#installed-borrowing-and-train-access-transfer)
+
+## Installed consultation routing holdout
+
+The frozen Tacoma practice brief asks visitors to call about one of two services and says to avoid pricing. The documented release pin and the first consultation trial both selected the pricing direction. The omission trial at `392e1cd` selected direct consultation without a follow-up question. The exact commit was installed from Git with pipx and uv on Apple Silicon macOS 15.8.2 and Python 3.13.17. Each install passed doctor, the six stdio configurations, and the new held-out call. The complete returned direction matched the source run across both installs. An explicit form request and an affirmative pricing request also passed. [Exact hosted receipt](evidence/benchmark-v1/installed-practice-routing.json)
+
+This verifies routing and package behavior for one Mac cell. Matched generation, blind visual comparison, and promotion remain open.
