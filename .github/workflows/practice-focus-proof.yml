@@ -1,4 +1,4 @@
-name: Installed practice result-focus comparison
+name: Installed practice opening and status comparison
 
 on:
   push:
@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   install:
-    name: Fresh result-focus install / ${{ matrix.arm }}
+    name: Fresh compact-status install / ${{ matrix.arm }}
     runs-on: macos-15
     timeout-minutes: 10
     strategy:
@@ -20,9 +20,9 @@ jobs:
       matrix:
         include:
           - arm: control
-            revision: d2ad7395b3da632151025581a811f3ba5091d828
-          - arm: treatment
             revision: 9976ef1339f29f28d4c7c0526ed511db01219baf
+          - arm: treatment
+            revision: eea0d747ec401c79d194de46195f2c0c30902734
     env:
       CANDIDATE: ${{ matrix.revision }}
       ARM: ${{ matrix.arm }}
@@ -48,7 +48,7 @@ jobs:
           test "$(git -C candidate rev-parse HEAD)" = "$CANDIDATE"
           bash candidate/scripts/verify_install_matrix.sh --check-host 15 "$EXPECTED_ARCH"
           bash candidate/scripts/verify_clean_install.sh candidate "$PYTHON_EXECUTABLE"             "$RUNNER_TEMP/design-install" "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY.git"
-      - name: Verify the three sealed replies from both fresh installs
+      - name: Verify the four sealed replies from both fresh installs
         run: |
           install="$RUNNER_TEMP/design-install"
           receipts="$RUNNER_TEMP/receipts"
