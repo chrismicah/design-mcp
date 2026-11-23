@@ -178,6 +178,66 @@ async def test_landing_uses_the_primary_task_for_art_direction(brief, expected):
 
 
 @pytest.mark.asyncio
+async def test_constraint_comparison_requires_alternatives_height_and_swing():
+    brief = (
+        "Make the town tool library site for a first-time borrower who needs a PH2 tool tonight. "
+        "The cabinet has 42 ±1 mm between the screw and the face rail, and a cleat limits swing to 12°. "
+        "The desk is open 18:00–19:00. The borrower can arrive from 18:10. "
+        "Stubby is 45–46 mm with direct drive and ready 18:00. Flat is 27–28 mm, needs 15° to reset "
+        "and is ready 18:00. Pocket is 37–38 mm, needs 10° and is ready 18:00. Fine is 31–32 mm, "
+        "needs 6° and is ready 18:25. A selected Pocket is withdrawn at 17:56 because the ratchet jams; "
+        "let the visitor choose the replacement."
+    )
+    assert (await direct(brief))["direction"]["id"] == "constraint-comparison"
+    assert (await direct(brief, surface="landing"))["direction"]["id"] == "constraint-comparison"
+    assert (await direct(brief, surface="dashboard"))["direction"]["surface"] == "dashboard"
+    assert (await direct(brief, avoid=["constraint-comparison"]))["direction"]["id"] != "constraint-comparison"
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("brief", [
+    "Compare tool height against 42 mm of clearance and choose a tool.",
+    "Replace the ratchet tool; it needs 10 degrees of swing.",
+    "Choose a 42 mm tool from the library.",
+    "Launch a landing page. Choose a finish for a 41 mm radio with a tilting stand that adjusts to 12 degrees.",
+])
+async def test_constraint_comparison_rejects_missing_orthogonal_cues(brief):
+    assert (await direct(brief))["direction"]["id"] != "constraint-comparison"
+
+
+@pytest.mark.asyncio
+async def test_access_window_requires_step_free_route_and_train_cutoff():
+    brief = (
+        "Help me choose a recovery route after the step-free entrance changed so I can catch the 18:42 train. "
+        "Show the route, clock time and signed minutes remaining before departure."
+    )
+    assert (await direct(brief))["direction"]["id"] == "access-window"
+    assert (await direct(brief, surface="landing"))["direction"]["id"] == "access-window"
+    assert (await direct(brief, surface="mobile"))["direction"]["surface"] == "mobile"
+    assert (await direct(brief, avoid=["access-window"]))["direction"]["id"] != "access-window"
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("brief", [
+    "Plan a step-free route to a recital with no deadline.",
+    "Show live train departure boards and platform times.",
+    "Help me catch the 18:42 train by choosing a route.",
+    "Choose a step-free route to the venue without a train cutoff.",
+    "Build a board to choose a step-free station and display the 18:42 train for information.",
+])
+async def test_access_window_rejects_attendance_or_unrelated_departure_claims(brief):
+    assert (await direct(brief))["direction"]["id"] != "access-window"
+
+
+@pytest.mark.asyncio
+async def test_experimental_records_stay_out_of_ordinary_landing_scoring():
+    ordinary = await direct("A landing page for a small-batch soap shop.")
+    assert ordinary["direction"]["id"] not in {"constraint-comparison", "access-window"}
+    for record_id in ("constraint-comparison", "access-window"):
+        assert library()[record_id].surface == "landing"
+
+
+@pytest.mark.asyncio
 @pytest.mark.parametrize("reaction", ["calmer", "Quieter!", "more calm", "less loud"])
 async def test_calmer_keeps_the_operational_exception_as_the_focal_point(reaction):
     result = await react("exception-first", reaction)

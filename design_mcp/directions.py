@@ -99,6 +99,24 @@ def _infer_surface(text: str) -> str | None:
     return max(scores, key=scores.get) if any(scores.values()) else None
 
 
+def _constraint_comparison(text: str) -> bool:
+    """Narrowly recognize an alternatives decision constrained by height and swing."""
+    choice = re.search(r"\b(?:choose|select|compare|borrow|replacement|alternative|withdrawn)\b", text)
+    fit = re.search(r"\b(?:fit|fits|clearance|recess|opening|limit|limits)\b", text)
+    height = re.search(r"\d+(?:[.,]\d+)?\s*(?:mm|cm|millimet(?:er|re)s?|centimet(?:er|re)s?)\b", text)
+    swing = re.search(r"\b(?:swing|reset)\b", text) and re.search(r"\d+\s*(?:°|degrees?\b)", text)
+    return bool(choice and fit and height and swing)
+
+
+def _access_window(text: str) -> bool:
+    """Recognize route selection/recovery that must satisfy access and a departure cutoff."""
+    step_free = re.search(r"\b(?:step[ -]free|wheelchair accessible)\b", text)
+    departure = re.search(r"\b(?:catch|last train|train departs|train leaves|train cutoff)\b", text)
+    time = re.search(r"\b(?:[01]?\d|2[0-3]):[0-5]\d\b", text)
+    route_choice = re.search(r"\b(?:choose|select|switch|alternative|instead|recovery|reroute|replacement)\b", text)
+    return bool(step_free and _match("train", text) and departure and time and route_choice)
+
+
 async def direct(brief: str, surface: Surface | None = None, avoid: list[str] | None = None) -> dict:
     """Choose one sourced art direction for a brief. Call first for new interface work.
 
@@ -110,11 +128,23 @@ async def direct(brief: str, surface: Surface | None = None, avoid: list[str] | 
         return {"error": "Enter a brief of 1 to 12,000 characters."}
     matched = surface or _infer_surface(text)
     kind = matched or "landing"
-    candidates = [row for row in library().values() if row.surface == kind and row.id not in (avoid or [])]
-    if not candidates:
-        return {"error": f"No reviewed direction remains for {kind}.", "surface": kind}
-    tag_text = text.translate(_FORM_SEPARATORS) if kind == "form" else text
-    choice = max(candidates, key=lambda row: sum(_match(term, tag_text) for term in row.tags))
+    records = library()
+    experimental = None
+    if kind == "landing":
+        if _constraint_comparison(text):
+            experimental = "constraint-comparison"
+        elif _access_window(text):
+            experimental = "access-window"
+    if experimental and experimental not in (avoid or []):
+        choice = records[experimental]
+    else:
+        excluded = {"constraint-comparison", "access-window"}
+        candidates = [row for row in records.values()
+                      if row.surface == kind and row.id not in (avoid or []) and row.id not in excluded]
+        if not candidates:
+            return {"error": f"No reviewed direction remains for {kind}.", "surface": kind}
+        tag_text = text.translate(_FORM_SEPARATORS) if kind == "form" else text
+        choice = max(candidates, key=lambda row: sum(_match(term, tag_text) for term in row.tags))
     questions = []
     if matched is None and len(text.split()) <= 8:
         questions = [{"question": "What will people use this screen for?",

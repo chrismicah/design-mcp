@@ -402,6 +402,113 @@
     "credit": "Butterick's Practical Typography (Matthew Butterick)"
   },
   {
+    "id": "constraint-comparison",
+    "surface": "landing",
+    "title": "Constraint comparison",
+    "summary": "Put the two measured fit limits beside the available choices and keep a withdrawn selection visible until the visitor chooses a replacement.",
+    "tags": ["EXPERIMENTAL", "tool library", "replacement choice"],
+    "type": {
+      "display": "IBM Plex Sans Condensed",
+      "body": "Barlow",
+      "ratio": 3.2,
+      "tracking": -0.025,
+      "weight": 700,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#18352E",
+      "paper": "#E4EAE5",
+      "accent": "#E7B766"
+    },
+    "layout": {
+      "skeleton": "Open with one shared dimensional datum, then a ruled choice comparison; keep the current selection and ready time beside the replacement decision.",
+      "focus": "The supplied height limit and swing limit shown as separate measured cues beside each tool's actual fit evidence.",
+      "desktop": "Set the cabinet datum and the two constraint readings across the opening. Below, align each tool's assembled height, required swing, readiness and selection control on consistent rules. Keep a withdrawn selection named until the visitor selects another tool.",
+      "mobile": "At 390px keep the selected tool, withdrawal reason, readiness time and replacement choices in the first view. Show height in mm with its supplied tolerance and swing in degrees as separate cues. Verify at 320px without hiding an action. State that unmeasured hand clearance remains uncertain.",
+      "rhythm": "Use a 12px rule grid, compact comparison rows and one generous break after the shared datum. No repeated cards."
+    },
+    "imagery": {
+      "subject": "A dimension line and small swing arc drawn only from the supplied geometry.",
+      "crop": "Keep the dimensional datum connected to the choice rows; do not imply a product photo or inventory image.",
+      "fallback": "Use type, rules and a simple dimension line. Identify any physical clearance the brief does not measure."
+    },
+    "motion": {
+      "trigger": "The visitor chooses a replacement tool.",
+      "effect": "Move the selection marker to the chosen row and update one adjacent selection status.",
+      "duration_ms": 220,
+      "reduced": "Change the marker and status immediately."
+    },
+    "action": {
+      "instruction": "Keep the withdrawn choice visible with the reason supplied by the brief. Offer only supplied alternatives and let the visitor make the replacement selection.",
+      "label": "Choose [tool]"
+    },
+    "why": "A borrower making a fit decision needs the shared scale and both independent constraints beside the actual alternatives. A shared datum helps visitors reconcile evidence across the alternatives before choosing.",
+    "sources": [
+      {
+        "url": "https://www.vessel.co.jp/english/product/screwdriver/251428",
+        "observation": "Vessel distinguishes assembled screwdriver geometry and states a 6-degree ratchet swing. This is a reference for presenting two measured properties; it does not identify any item in the fixture as Vessel inventory.",
+        "strength": "evidence"
+      },
+      {
+        "url": "https://www.watched.earth/place/eiffel-tower",
+        "observation": "The observed page separates its globe visualization from the evidence explaining the outcome. Adapted here as a principle: show the comparison and its supporting measurements together.",
+        "strength": "evidence"
+      }
+    ],
+    "credit": "Original workshop comparison informed by observed measurement and evidence presentation."
+  },
+  {
+    "id": "access-window",
+    "surface": "landing",
+    "title": "Access window",
+    "summary": "Show a route choice against its step-free access condition and a fixed train departure, with the remaining time margin visible.",
+    "tags": ["EXPERIMENTAL", "step-free route", "train deadline"],
+    "type": {
+      "display": "Archivo Narrow",
+      "body": "News Cycle",
+      "ratio": 3.4,
+      "tracking": -0.024,
+      "weight": 700,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#301D42",
+      "paper": "#F0EFF7",
+      "accent": "#006667"
+    },
+    "layout": {
+      "skeleton": "Put the route drawing, the changed step-free entrance and the fixed departure on one continuous arrival line, followed by a compact route choice.",
+      "focus": "The actual access change and signed time margin before the specific train cutoff.",
+      "desktop": "Draw the active route from supplied locations and turns. Mark the step-free entrance that changed, then align its arrival time and the specific train departure so the remaining margin can be read directly.",
+      "mobile": "Keep the complete route evidence, changed step-free entrance, arrival time, signed margin and train departure in the immediate view. Keep route selection available there. Distinguish platform access from access to trains; claim neither without evidence.",
+      "rhythm": "Use a continuous route line, restrained station rules and one clear time break. Keep the evidence beside the route."
+    },
+    "imagery": {
+      "subject": "An original route graphic derived only from supplied stops, entrance changes and times.",
+      "crop": "Keep the changed entrance and deadline within the same visible route segment.",
+      "fallback": "Use a text route with named steps and times when the brief lacks map geometry. Do not invent transfers, buffers or venue promises."
+    },
+    "motion": {
+      "trigger": "The visitor selects a route or its recovery.",
+      "effect": "Trace only the supplied route segment and update the signed time margin beside the departure.",
+      "duration_ms": 260,
+      "reduced": "Show the selected route and margin without animation."
+    },
+    "action": {
+      "instruction": "Name the route choice and show the exact step-free access evidence and fixed train departure that support it.",
+      "label": "Choose [route]"
+    },
+    "why": "Arrival planning depends on access and a real deadline at once. A continuous route and explicit signed margin keep both conditions visible during selection or recovery.",
+    "sources": [
+      {
+        "url": "https://content.tfl.gov.uk/step-free-tube-guide-map.pdf",
+        "observation": "Transport for London's step-free guide distinguishes step-free access to the platform from access to trains. The route drawing should preserve that distinction and state only the evidence supplied for the actual journey.",
+        "strength": "evidence"
+      }
+    ],
+    "credit": "Transport for London step-free route distinctions; original access-and-time composition."
+  },
+  {
     "id": "broadcast-board",
     "surface": "landing",
     "title": "Broadcast board",
