@@ -106,6 +106,14 @@ if madison.is_dir():
 
 albany = ROOT / "cells/albany-physiotherapy"
 if albany.is_dir():
-    verify_installed_pair(albany, "compact-status", "compact-status-guidance-installed.json")
+    pair = verify_installed_pair(albany, "compact-status", "compact-status-guidance-installed.json")
+    slip = albany / "call-slip-authored"
+    if slip.is_dir():
+        stamp = json.loads((slip / "receipt.json").read_bytes())
+        assert stamp["case"] == albany.name and stamp["arm"] == slip.name
+        assert stamp["scope"] == "Authored composition"
+        assert stamp["control_html_sha256"] == pair["control"]["html_sha256"]
+        assert stamp["html_sha256"] == sha256((slip / "index.html").read_bytes()).hexdigest()
+        print(stamp["case"], stamp["arm"], stamp["html_sha256"])
 
 shutil.copytree(ROOT / "cells", sys.argv[1])
