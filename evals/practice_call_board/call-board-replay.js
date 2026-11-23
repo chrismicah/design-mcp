@@ -21,6 +21,7 @@ const requests = [];
 page.on("request", request => requests.push(request.method()));
 const active = async control => await control.evaluate(node => node === document.activeElement);
 async function reach(control, key = "Tab") {
+  if (await control.count() !== 1) return false;
   for (let tabs = 0; tabs < 10; tabs++) {
     if (await active(control)) return true;
     await page.keyboard.press(key);
@@ -51,12 +52,18 @@ const opening = await page.evaluate(phone => {
 const inView = box => !!box && box.x >= 0 && box.y >= 0 &&
   box.x + box.width <= viewport.width + 1 && box.y + box.height <= viewport.height + 1;
 const initialForm = {name: await name.boundingBox(), preview: await preview.boundingBox()};
+const visibleServiceChoices = practice.allowVisibleServicePicker && nativeSelect &&
+  inView(await service.boundingBox()) &&
+  await service.evaluate((node, labels) => {
+    const options = [...node.options].map(option => option.label.trim());
+    return labels.every(label => options.includes(label));
+  }, [practice.firstService, practice.alternateService]);
 const checks = {
   nameInitiallyVisible: inView(initialForm.name),
   previewInitiallyVisible: inView(initialForm.preview),
   openingIdentity: practice.identity.every(pattern => match(pattern).test(opening.text)),
   openingHours: practice.hours.every(pattern => match(pattern).test(opening.text)),
-  openingServices: practice.services.every(pattern => match(pattern).test(opening.text)),
+  openingServices: Boolean(visibleServiceChoices) || practice.services.every(pattern => match(pattern).test(opening.text)),
   openingPhone: opening.dial,
   openingWidth: await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
   normalMotion: await page.evaluate(() => matchMedia("(prefers-reduced-motion: no-preference)").matches),
@@ -75,7 +82,7 @@ checks.errorVisible = await page.getByText(/enter your first name/i).isVisible()
 checks.selectionAfterError = await alternateSelected();
 await page.screenshot({path: paths.invalid, animations: "disabled"});
 if (checks.emptyNameRecovery) {
-  await page.evaluate(() => {
+  await page.evaluate(disclosurePattern => {
     const form = document.querySelector("form");
     form.addEventListener("submit", () => {
       requestAnimationFrame(() => {
@@ -87,9 +94,28 @@ if (checks.emptyNameRecovery) {
           focusLabel: (focus?.innerText || "").trim().slice(0, 120),
           editable: box && {x: box.x, y: box.y, width: box.width, height: box.height}
         };
+        if (disclosurePattern) {
+          window.qaOpeningFrame.focusIsEditable = textAreas.length === 1 && focus === textAreas[0];
+          const disclosure = new RegExp(disclosurePattern, "i");
+          const text = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+          window.qaOpeningFrame.localDisclosureVisible = false;
+          for (let node = text.nextNode(); box && node; node = text.nextNode()) {
+            if (!disclosure.test(node.textContent) ||
+                !node.parentElement.checkVisibility({checkOpacity: true, checkVisibilityCSS: true})) continue;
+            const range = document.createRange();
+            range.selectNodeContents(node);
+            const rect = range.getBoundingClientRect();
+            if (rect.width && rect.height && rect.x >= 0 && rect.y >= 0 &&
+                rect.right <= innerWidth + 1 && rect.bottom <= innerHeight + 1 &&
+                Math.abs(rect.y - box.y) <= Math.min(300, innerHeight / 2)) {
+              window.qaOpeningFrame.localDisclosureVisible = true;
+              break;
+            }
+          }
+        }
       });
     }, {once: true});
-  });
+  }, practice.recordEditorFocus ? practice.localDisclosure : null);
   await page.keyboard.type(practice.visitorName);
   if (await reach(preview)) await page.keyboard.press("Enter");
 }
@@ -102,6 +128,10 @@ if (checks.previewReady) {
   await page.waitForFunction(() => Boolean(window.qaOpeningFrame), undefined, {timeout: 1500});
 }
 const firstFrame = await page.evaluate(() => window.qaOpeningFrame || null);
+if (practice.recordEditorFocus) {
+  checks.editorFocusedInFirstFrame = firstFrame?.focusIsEditable === true && await draft.count() === 1;
+  checks.disclosureVisibleInFirstFrame = firstFrame?.localDisclosureVisible === true;
+}
 checks.previewInFirstViewport = inView(firstFrame?.editable) &&
   firstFrame.editable.width > 0 && firstFrame.editable.height > 0;
 checks.statusAnnouncement = await page.getByRole("status").count() === 1 &&
@@ -121,7 +151,15 @@ if (checks.reachEditableDraft) {
   await page.keyboard.type(" I can call Thursday.");
 }
 checks.editableDraft = checks.reachEditableDraft && /I can call Thursday\./.test(await draft.inputValue());
-checks.returnToOriginal = checks.previewReady && await reach(name, "Shift+Tab") &&
+let reachedOriginal = false;
+if (checks.previewReady) {
+  const back = practice.returnLabel && page.getByRole("button", {name: match(practice.returnLabel)});
+  if (back && await back.count() === 1 && await back.isVisible() && await reach(back)) {
+    await page.keyboard.press("Enter");
+  }
+  reachedOriginal = await reach(name, "Shift+Tab");
+}
+checks.returnToOriginal = reachedOriginal &&
   await name.inputValue() === practice.visitorName && await alternateSelected();
 checks.noNetworkSubmission = !requests.some(method => method !== "GET");
 checks.noPageErrors = state.pageErrors.length === 0;

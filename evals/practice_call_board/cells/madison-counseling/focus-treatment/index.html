@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Taylor Ibarra | Counseling in Madison</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@600&family=Instrument+Sans:wght@400;600;700&display=swap">
+  <style>
+    :root {
+      --deep: #172747;
+      --support: #d7e1fa;
+      --ink: #18243a;
+      --paper: #f0f3fa;
+      --accent: #bfcfff;
+    }
+
+    * { box-sizing: border-box; }
+    html { color-scheme: light; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Instrument Sans", sans-serif;
+      line-height: 1.5;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 4px;
+      box-shadow: 0 0 0 2px var(--paper);
+    }
+
+    .intro :focus-visible {
+      outline-color: var(--paper);
+      box-shadow: 0 0 0 2px var(--deep);
+    }
+
+    .wrap {
+      width: min(100% - 2rem, 68rem);
+      margin-inline: auto;
+    }
+
+    .intro {
+      background: var(--deep);
+      color: var(--paper);
+      padding-block: 1.35rem 1.6rem;
+    }
+
+    .identity {
+      margin: 0 0 .25rem;
+      color: var(--support);
+      font-size: .95rem;
+      font-weight: 600;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Bodoni Moda", Georgia, serif;
+      font-size: clamp(2.5rem, 8vw, 5.5rem);
+      font-weight: 600;
+      letter-spacing: -.034em;
+      line-height: 1.08;
+    }
+
+    .role {
+      margin: .35rem 0 1rem;
+      color: var(--support);
+      font-size: 1.05rem;
+    }
+
+    .call {
+      display: inline-flex;
+      min-height: 3rem;
+      align-items: center;
+      justify-content: center;
+      padding: .65rem 1rem;
+      border: 2px solid var(--accent);
+      border-radius: .2rem;
+      background: var(--accent);
+      color: var(--ink);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .call:hover { background: var(--paper); }
+
+    .details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .35rem 2rem;
+      margin: 1.15rem 0 0;
+      padding: .9rem 0 0;
+      border-top: 1px solid #8392b0;
+      color: var(--support);
+    }
+
+    .details p { margin: 0; }
+    .details strong { color: var(--paper); }
+
+    main { padding-block: 1.5rem 3rem; }
+    .prepare { max-width: 44rem; }
+    h2 {
+      margin: 0 0 .3rem;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      line-height: 1.2;
+    }
+
+    .lead { margin: 0 0 1rem; max-width: 65ch; }
+    fieldset {
+      margin: 0 0 .9rem;
+      padding: 0;
+      border: 0;
+    }
+
+    legend, label {
+      font-weight: 700;
+    }
+
+    legend { margin-bottom: .35rem; }
+    .choices {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem 1.5rem;
+    }
+
+    .choice {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      min-height: 2rem;
+      font-weight: 400;
+    }
+
+    input[type="radio"] {
+      width: 1.15rem;
+      height: 1.15rem;
+      margin: 0;
+      accent-color: var(--deep);
+    }
+
+    .field-label { display: block; margin-bottom: .3rem; }
+    input[type="text"], textarea {
+      display: block;
+      width: 100%;
+      border: 1px solid #52637e;
+      border-radius: .2rem;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      padding: .65rem .75rem;
+    }
+
+    input[type="text"] { max-width: 22rem; min-height: 2.85rem; }
+    textarea { min-height: 10rem; resize: vertical; }
+
+    .error {
+      margin: .35rem 0 0;
+      color: #8a1c24;
+      font-weight: 700;
+    }
+
+    button {
+      min-height: 3rem;
+      margin-top: 1rem;
+      padding: .65rem 1rem;
+      border: 2px solid var(--deep);
+      border-radius: .2rem;
+      background: var(--deep);
+      color: #fff;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button:hover { background: #30466f; }
+    .secondary {
+      background: transparent;
+      color: var(--deep);
+    }
+
+    .secondary:hover { background: var(--support); }
+    .note-info { margin: .45rem 0 1rem; }
+    [hidden] { display: none !important; }
+
+    @media (min-width: 48rem) {
+      .intro { padding-block: 3rem 2.25rem; }
+      .intro-grid {
+        display: grid;
+        grid-template-columns: 1.3fr 1fr;
+        align-items: end;
+        gap: 3rem;
+      }
+      .details {
+        display: block;
+        margin: 0;
+        padding: 0 0 0 1.5rem;
+        border-top: 0;
+        border-left: 1px solid #8392b0;
+      }
+      .details p + p { margin-top: .75rem; }
+      main { padding-block: 2.5rem 4rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="intro">
+    <div class="wrap intro-grid">
+      <div>
+        <p class="identity">Independent counseling in Madison</p>
+        <h1>Taylor Ibarra</h1>
+        <p class="role">Counselor</p>
+        <a class="call" href="tel:+16085550134">Call 608-555-0134</a>
+      </div>
+      <div class="details">
+        <p><strong>Call hours</strong><br>10 am–5 pm, Monday–Thursday</p>
+        <p><strong>Location</strong><br>37 Example Street, Madison</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="prepare" aria-labelledby="prepare-heading">
+      <h2 id="prepare-heading">Prepare for your call</h2>
+      <p class="lead">If you like, make a short note to have on hand when you call Taylor.</p>
+
+      <form id="prepare-form" novalidate>
+        <fieldset>
+          <legend>What would you like to discuss?</legend>
+          <div class="choices">
+            <label class="choice">
+              <input type="radio" name="counseling" value="Individual counseling" checked>
+              Individual counseling
+            </label>
+            <label class="choice">
+              <input type="radio" name="counseling" value="Couples counseling">
+              Couples counseling
+            </label>
+          </div>
+        </fieldset>
+
+        <label class="field-label" for="first-name">First name</label>
+        <input id="first-name" name="firstName" type="text"
+          autocomplete="given-name" aria-describedby="name-error">
+        <p id="name-error" class="error" role="alert" hidden>
+          Enter your first name to preview your note.
+        </p>
+
+        <button type="submit">Preview note</button>
+      </form>
+
+      <div id="preview" hidden>
+        <label class="field-label" for="note">Your editable note</label>
+        <p class="note-info">This note stays on this page. It sends nothing and books nothing.</p>
+        <textarea id="note"></textarea>
+        <button class="secondary" id="back" type="button">Back to details</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById("prepare-form");
+    const nameField = document.getElementById("first-name");
+    const error = document.getElementById("name-error");
+    const preview = document.getElementById("preview");
+    const note = document.getElementById("note");
+    const back = document.getElementById("back");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const firstName = nameField.value.trim();
+
+      if (!firstName) {
+        error.hidden = false;
+        nameField.setAttribute("aria-invalid", "true");
+        nameField.focus();
+        return;
+      }
+
+      error.hidden = true;
+      nameField.removeAttribute("aria-invalid");
+      const counseling = form.elements.counseling.value;
+      note.value = `Hi Taylor, my name is ${firstName}. I would like to talk about ${counseling.toLowerCase()}.`;
+      form.hidden = true;
+      preview.hidden = false;
+      note.focus();
+    });
+
+    nameField.addEventListener("input", () => {
+      if (nameField.value.trim()) {
+        error.hidden = true;
+        nameField.removeAttribute("aria-invalid");
+      }
+    });
+
+    back.addEventListener("click", () => {
+      preview.hidden = true;
+      form.hidden = false;
+      nameField.focus();
+    });
+  </script>
+</body>
+</html>

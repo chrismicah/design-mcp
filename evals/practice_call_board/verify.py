@@ -67,6 +67,12 @@ def verify(source, staged):
             checks = interaction["checks"]
             assert REQUIRED <= checks.keys()
             assert all(type(passed) is bool for passed in checks.values())
+            if source.name == "madison-counseling":
+                frame = interaction["firstFrame"] or {}
+                assert "editorFocusedInFirstFrame" in checks
+                assert checks["disclosureVisibleInFirstFrame"] is (frame.get("localDisclosureVisible") is True)
+                if checks["editorFocusedInFirstFrame"]:
+                    assert frame["focusIsEditable"] is True and frame["focusTag"] == "TEXTAREA"
             verify_frames(cell, view, width, height)
             sizes[width] = {"failed": sorted(key for key, ok in checks.items() if not ok),
                             "request_count": len(interaction["requests"]),

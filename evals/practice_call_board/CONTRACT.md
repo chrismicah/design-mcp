@@ -16,3 +16,11 @@ Result focus, first-frame containment and keyboard editing are measured
 independently. A draft that appears after submission is still eligible for the
 keyboard editing check when it starts with focus on an unsupported target.
 The focus check keeps its requirement for the heading or editable control.
+
+Madison compares two unedited drafts produced from sealed installed replies.
+The replay records whether the named editor receives focus in the first frame,
+whether its bounds fit, and whether nearby text already says the note stays
+local. It verifies keyboard editing separately and uses the page's own return
+button when present. A visible native service picker with both named options
+can satisfy the opening service check. Tacoma and Dayton retain their existing
+checks. [Matched brief and install evidence](../../research/FOCUS-TRANSFER.md)

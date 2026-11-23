@@ -67,4 +67,24 @@ if dayton.is_dir():
         assert parent.count(old) == 1 and new not in parent and fixed == parent.replace(old, new)
         print(repair_receipt["case"], repair_receipt["arm"], repair_receipt["html_sha256"])
 
+madison = ROOT / "cells/madison-counseling"
+if madison.is_dir():
+    proof = ROOT.parents[1] / "evidence/benchmark-v1/focus-guidance-installed.json"
+    installed_focus = json.loads(proof.read_bytes())
+    assert installed_focus["kind"] == "installed" and len(installed_focus["installs"]) == 4
+    expected = installed_focus["practices"][madison.name]
+    pair = {}
+    for arm in ("control", "treatment"):
+        draft = madison / f"focus-{arm}"
+        stamp = json.loads((draft / "receipt.json").read_bytes())
+        assert stamp["status"] == "passed" and stamp["case"] == madison.name and stamp["arm"] == draft.name
+        assert stamp["commit"] == installed_focus["commits"][arm]
+        assert stamp["reply_sha256"] == expected["reply_sha256"][arm]
+        assert stamp["html_sha256"] == sha256((draft / "index.html").read_bytes()).hexdigest()
+        pair[arm] = stamp
+        print(stamp["case"], stamp["arm"], stamp["html_sha256"])
+    for key in ("model", "effort", "shell_tool", "prompt_prefix_sha256"):
+        assert pair["control"][key] == pair["treatment"][key], key
+    assert pair["control"]["thread_id"] != pair["treatment"]["thread_id"]
+
 shutil.copytree(ROOT / "cells", sys.argv[1])
