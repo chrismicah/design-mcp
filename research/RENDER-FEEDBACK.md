@@ -13,3 +13,8 @@ LiveWorkspace uses a shared representation of the target and current render, the
 Anthropic's evaluator interacts with running applications and checks the negotiated acceptance contract. Use deterministic measurements for geometry, actual input for functionality, and a fresh skeptical critic for taste. Have the critic identify what would be harder to do in one version and what makes its visual treatment specific to the subject. Budget one measured revision before spending a vision pass on a candidate with known failing interactions. [Anthropic's harness report](https://www.anthropic.com/research/harness-design-long-running-apps)
 
 320 CSS pixels is a reflow test width for horizontally written content. W3C describes vertical scrolling as an ordinary way to read reflowed content. The 700 px opening height and visible preview button are specific to the short-call preparation benchmark. Record reflow and initial task placement independently. Require task-specific evidence before recommending that any controls move above the fold. [W3C Understanding Reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow)
+
+
+## Measured overhead
+
+With a warm stdio connection on the shared arm64 Mac, the trial's 30 measured replies had **2.91 ms p95** and 893 bytes of structured JSON. The same process returned the ordinary reaction at **2.68 ms p95** and 394 bytes over 30 calls. Browser work, startup and model use are outside these measurements. This records the cost of requesting the feedback. The matched repair test will establish its effect on the rendered result. [Timing samples](../evidence/benchmark-v1/opening-view-reaction-overhead.json)
