@@ -64,3 +64,13 @@ candidate’s eligibility. The next diagnostic changes only the target of the
 successful focus call to the editable note. Keep the frozen layout, motion and
 data handling. Restore the named result on all widths before awarding a pass.
 [Installed and browser evidence](../evidence/benchmark-v1/dayton-initial-browser.json) · [Independent browser checks](https://github.com/chrismicah/design-mcp/actions/runs/45284349587)
+
+The exact same Chrome run tested both drafts at all three widths. The
+one-line authored repair moved focus from the surrounding section to the
+named Call note textarea. The generated draft passed 75 of 78 checks and the
+repair passed 78 of 78, with no requests after page load. The opening action
+and note geometry matched the parent at every width. The textarea finishes
+within 2 px of the bottom at both phone sizes, so a future layout comparison
+should leave room for its focus outline. Keep this as a verified authored
+repair until an installed MCP response reproduces the behavior on a separate
+brief. [Matched focus receipt](../evidence/benchmark-v1/dayton-focus-repair.json) · [Original browser artifact](https://github.com/chrismicah/design-mcp/actions/runs/45284643293)

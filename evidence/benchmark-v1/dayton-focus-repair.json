@@ -1,0 +1,195 @@
+{
+  "run": "https://github.com/chrismicah/design-mcp/actions/runs/45284643293",
+  "workflow_head": "9d50a98ab459eb2b5ec2692f2af255ad330db9f1",
+  "arms": {
+    "unified-composition": {
+      "source": {
+        "case": "dayton-physiotherapy",
+        "arm": "unified-composition",
+        "status": "passed",
+        "receipt_scope": "Matched generation from a previously captured installed MCP response",
+        "commit": "d2ad7395b3da632151025581a811f3ba5091d828",
+        "model": "gpt-6.1-terra",
+        "effort": "low",
+        "shell_tool": false,
+        "thread_id": "01a20a9c-b5ff-7e82-94ba-126112a46665",
+        "usage": {
+          "input_tokens": 17933,
+          "cached_input_tokens": 13312,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2314,
+          "reasoning_output_tokens": 0
+        },
+        "elapsed_seconds": 45.74,
+        "prompt_prefix_sha256": "e6a6c21b35ba1a55806fd620b5bfb242539789172758a20dca0036f5c97301e0",
+        "prompt_sha256": "98ac1d3a3d9f3688fc820fe2745443f1510d4349569c741f6ed8eced27beafe6",
+        "reply_sha256": "bfb561f4a359a7915a5a4a7f8599d44403614ce19e0f3051cc09faf9c9f6f1c7",
+        "trace_sha256": "620d63e4bb55d45c44828d20d9c4d37322e58739857b133207a67f8b0217044d",
+        "html_sha256": "ce5886e4322cfba4f4e2823e26a1224d526d288f117ee7c5078e8837e2aa4091"
+      },
+      "eligible": false,
+      "viewports": {
+        "320": {
+          "failed": [
+            "previewFocused"
+          ],
+          "tests": 26,
+          "requests": [],
+          "focus_tag": "SECTION",
+          "note_bottom": 698.265625,
+          "preview_bottom": 600.078125,
+          "screenshots": {
+            "before": {
+              "sha256": "8b0c47e68fbf122b75e65c9d0dd1be73a63f4c20877817c30b403337c9b32fc3",
+              "file": "320.png"
+            },
+            "invalid": {
+              "sha256": "8e1041f50f97c08459ea639922f60a7b0219adbf3dd4238abac0858c3b234f2a",
+              "file": "320-invalid.png"
+            },
+            "preview": {
+              "sha256": "1dc8b2e89e57eec1d36e79c9591cff05d11faab0a1a6cbd89146fcc4f2259c6f",
+              "file": "320-preview.png"
+            }
+          }
+        },
+        "390": {
+          "failed": [
+            "previewFocused"
+          ],
+          "tests": 26,
+          "requests": [],
+          "focus_tag": "SECTION",
+          "note_bottom": 842.46875,
+          "preview_bottom": 600.078125,
+          "screenshots": {
+            "before": {
+              "sha256": "e300fd4a87b556b03938e41d329a1c9dd9d862eb421dbf232a610579a1a6bb7c",
+              "file": "390.png"
+            },
+            "invalid": {
+              "sha256": "c15c787148cee0910f23f61898fc4fa1eb0ff72f9c53ac41548afb440e48ae82",
+              "file": "390-invalid.png"
+            },
+            "preview": {
+              "sha256": "caf2e8db183c8ea2f053c980c0f20ac137dbfadea762b76672b9c6dbed19efb8",
+              "file": "390-preview.png"
+            }
+          }
+        },
+        "1440": {
+          "failed": [
+            "previewFocused"
+          ],
+          "tests": 26,
+          "requests": [],
+          "focus_tag": "SECTION",
+          "note_bottom": 698.984375,
+          "preview_bottom": 462.59375,
+          "screenshots": {
+            "before": {
+              "sha256": "b313f56a02a6e8403af44f05cbd4bc1cd928dd8e586316521c98d5e00b305180",
+              "file": "1440.png"
+            },
+            "invalid": {
+              "sha256": "975b8e99e5ace1f6c51f5cb70e62463bfe4fda7af69691589e72fde19509e95f",
+              "file": "1440-invalid.png"
+            },
+            "preview": {
+              "sha256": "361a94c6bba955a36a6005aa6317687b0f8259e07b4fad73f33f81926205dd46",
+              "file": "1440-preview.png"
+            }
+          }
+        }
+      }
+    },
+    "focus-editable-note": {
+      "source": {
+        "case": "dayton-physiotherapy",
+        "arm": "focus-editable-note",
+        "status": "passed",
+        "receipt_scope": "Authored change of the focused target after successful preview",
+        "parent_html_sha256": "ce5886e4322cfba4f4e2823e26a1224d526d288f117ee7c5078e8837e2aa4091",
+        "html_sha256": "6095d7918146357f8a3bd9121ba23fefeb650eb84fd76c1212c7f0933cb4a155",
+        "isolated_edit": {
+          "from": "draft.focus({ preventScroll: true });",
+          "to": "draftText.focus({ preventScroll: true });"
+        }
+      },
+      "eligible": true,
+      "viewports": {
+        "320": {
+          "failed": [],
+          "tests": 26,
+          "requests": [],
+          "focus_tag": "TEXTAREA",
+          "note_bottom": 698.265625,
+          "preview_bottom": 600.078125,
+          "screenshots": {
+            "before": {
+              "sha256": "8b0c47e68fbf122b75e65c9d0dd1be73a63f4c20877817c30b403337c9b32fc3",
+              "file": "320.png"
+            },
+            "invalid": {
+              "sha256": "8e1041f50f97c08459ea639922f60a7b0219adbf3dd4238abac0858c3b234f2a",
+              "file": "320-invalid.png"
+            },
+            "preview": {
+              "sha256": "14b02307ae8c69e70234cdf0cc8bd61a5343f00b7d51306517717f07441060d5",
+              "file": "320-preview.png"
+            }
+          }
+        },
+        "390": {
+          "failed": [],
+          "tests": 26,
+          "requests": [],
+          "focus_tag": "TEXTAREA",
+          "note_bottom": 842.46875,
+          "preview_bottom": 600.078125,
+          "screenshots": {
+            "before": {
+              "sha256": "e300fd4a87b556b03938e41d329a1c9dd9d862eb421dbf232a610579a1a6bb7c",
+              "file": "390.png"
+            },
+            "invalid": {
+              "sha256": "c15c787148cee0910f23f61898fc4fa1eb0ff72f9c53ac41548afb440e48ae82",
+              "file": "390-invalid.png"
+            },
+            "preview": {
+              "sha256": "12a0f62d95db1461c6472e2b061f0395343d97c35988258cf3935579eb679eaf",
+              "file": "390-preview.png"
+            }
+          }
+        },
+        "1440": {
+          "failed": [],
+          "tests": 26,
+          "requests": [],
+          "focus_tag": "TEXTAREA",
+          "note_bottom": 698.984375,
+          "preview_bottom": 462.59375,
+          "screenshots": {
+            "before": {
+              "sha256": "b313f56a02a6e8403af44f05cbd4bc1cd928dd8e586316521c98d5e00b305180",
+              "file": "1440.png"
+            },
+            "invalid": {
+              "sha256": "975b8e99e5ace1f6c51f5cb70e62463bfe4fda7af69691589e72fde19509e95f",
+              "file": "1440-invalid.png"
+            },
+            "preview": {
+              "sha256": "d8ce0aa168e5b56ed518b419d82bd8211d04043a06a1aac4a9f2cb63424f450d",
+              "file": "1440-preview.png"
+            }
+          }
+        }
+      }
+    }
+  },
+  "tacoma_eligible_arms": [
+    "call-board",
+    "reaction-control",
+    "single-service-trimmed"
+  ]
+}
