@@ -40,6 +40,21 @@ async def main():
             pricing_brief = "Omit the splash page, but show pricing for two subscription tiers."
             pricing = (await client.call_tool("direct", {"brief": pricing_brief})).structured_content
             assert pricing["direction"]["id"] == "scale-ledger"
+            measured = json.loads(Path(__file__).with_name("opening-feedback.json").read_bytes())
+
+            async def react(phrase, **kwargs):
+                reply = await client.call_tool(
+                    "react", {"direction_id": "direct-consultation", "reaction": phrase, **kwargs}
+                )
+                return reply.structured_content
+
+            for phrase, expected in measured["old_reaction_parity"].items():
+                body = json.dumps(await react(phrase), sort_keys=True).encode()
+                assert sha256(body).hexdigest() == expected, phrase
+            test = "fit the opening view"
+            assert await react(test, opening_view=measured["failed_view"]) == measured["measured_reaction"]
+            assert await react(test, opening_view=measured["healthy_view"]) == measured["healthy_reaction"]
+            assert await react(test) == measured["missing_measurements"]
     print(json.dumps({
         "candidate": revision,
         "installer": installer,
@@ -48,6 +63,8 @@ async def main():
         "tools": sorted(tools),
         "explicit_form_override": True,
         "affirmative_pricing_clause": True,
+        "measured_reaction": measured["measured_reaction"],
+        "opening_reaction_parity_cases": len(measured["old_reaction_parity"]),
     }, indent=2, ensure_ascii=False))
 
 

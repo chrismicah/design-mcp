@@ -24,7 +24,7 @@ jobs:
     runs-on: ${{ matrix.runner }}
     timeout-minutes: 10
     env:
-      CANDIDATE: d2ad7395b3da632151025581a811f3ba5091d828
+      CANDIDATE: 877660c7bf464a762b6d4ef1c14c65b6fda58019
       EXPECTED_ARCH: ${{ matrix.arch }}
       EXPECTED_PYTHON: '3.13'
     steps:
