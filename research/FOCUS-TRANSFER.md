@@ -59,3 +59,19 @@ keep editing, focus and result feedback together while bringing the full
 preview action into the smallest opening viewport. [Browser receipt with
 capture hashes](../evidence/benchmark-v1/madison-installed-focus-browser.json)
 [Exact workflow](https://github.com/chrismicah/design-mcp/actions/runs/45289329564)
+
+## Authored compact repair
+
+The exact repair passed 84 of 84 checks alongside the original 77 and 80.
+At 320 × 700 the preview button ends at 688 CSS px, down from 724 in the
+generated treatment. The named editor still receives first-frame focus.
+A live-region status is populated on preview and clears on keyboard return
+at all three widths. The 390 and 1440 px browser PNGs match the parent
+byte for byte before input, after blank-name recovery and at preview.
+All 1,026 earlier browser check outcomes repeat.
+
+This is an authored repair. A fresh installed-guidance holdout must
+reproduce it. The replay verified the status element's behavior. Actual
+assistive-technology speech and independent visual scores remain
+unverified. [Repair evidence](../evidence/benchmark-v1/madison-authored-compact-status.json)
+[Exact workflow](https://github.com/chrismicah/design-mcp/actions/runs/45289924052)
