@@ -571,3 +571,11 @@ The live comparison froze each installed trial draft as its own control. The man
 | Lift closure and last train | 7.10 → 7.80 | 6.65 → 7.80 | West's two-minute miss and Dock's ten-minute margin stay beside the keyboard switch. The warning still dominates after Groove is selected. |
 
 Each fresh critic preferred the repaired draft and tested recovery in the same visit at both widths. The controls were scored more strictly than in the previous installed comparison. Use the matched scores within these ballots. A future installed comparison must reproduce the gains before promotion. The desktop and phone scores remain below 9.5. [Original installed comparison](#installed-borrowing-and-train-access-transfer)
+
+## Matched print inspection
+
+The two shell-disabled clients received identical prompts and source images. The control `fcc7b5b` called `direct`, got the artifact-inspection direction, and generated its own markup. It made no resource reads. The typed trial `ec86443` called `direct`, received a different route, then retrieved the 4,954-byte image-detail component. Neither used the supplied fragment's identifiable markup. Both untouched results passed keyboard, touch, and reduced-motion replay at 320, 390, and 1440 CSS px.
+
+The fresh blind critic scored the resource-only build **7.50 desktop / 7.70 phone** and the typed build **7.85 / 7.25**. It preferred the typed build’s closer desktop text and the resource-only build’s compact phone layout and larger locator. Both left the visitor to infer where each translation belongs. A single mixed result with different direction replies supports discovery of the typed component. Its incremental visual benefit remains unverified and the typed tool stays experimental.
+
+The first ballot hit the full-size desktop image limit. A retry sent two images in one result, which the client reported as JSON text. Separate lossless top and bottom requests delivered both pixel bands to the critic while preserving the native 1440 × 900 PNG. The auditor proved each decoded band had the same color profile and pixels as its original region. This run verified four live views, 12 critic captures and 24 separate replay captures. [Matched prompts, failed runs, ballot and hashes](evidence/benchmark-v1/typed-image-component-matched-live.json)
