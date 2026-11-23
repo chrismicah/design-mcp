@@ -175,3 +175,14 @@ async def test_landing_uses_the_primary_task_for_art_direction(brief, expected):
     assert not result["questions"]
     if expected != "object-hero":
         assert (await direct(brief, surface="landing", avoid=[expected]))["direction"]["id"] == "object-hero"
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("reaction", ["calmer", "Quieter!", "more calm", "less loud"])
+async def test_calmer_keeps_the_operational_exception_as_the_focal_point(reaction):
+    result = await react("exception-first", reaction)
+    accent = result["changes"]["accent_usage"]
+    assert "urgent exception as the strongest accent" in accent
+    assert "its status in the queue" in accent
+    assert "secondary controls" in accent
+    assert "status labeled in words" in accent

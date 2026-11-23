@@ -187,6 +187,12 @@ async def react(direction_id: str, reaction: str, comparison_id: str | None = No
                 )
                 keep.append("a short choice list and its single live result visible at 320 × 700 without overflow")
             why = "Strengthen the breathing room without losing the primary action."
+            if row.id == "exception-first":
+                delta["accent_usage"] = (
+                    "Keep the urgent exception as the strongest accent and echo that accent on its status in the queue. "
+                    "Quiet routine rows and secondary controls. Keep the exception status labeled in words."
+                )
+                why = "Reduce competing accents while keeping the urgent exception easy to find."
     elif normalized in {"bolder", "more bold", "make it pop"}:
         delta = {"type_ratio": min(5, round(row.type.ratio + .45, 2)),
                  "composition": "Increase the focal block's horizontal span by one desktop grid column.",
