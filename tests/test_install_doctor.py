@@ -61,7 +61,8 @@ def test_distribution_data_selection_and_canonical_source_bytes():
                 for path in (ROOT / "design_mcp").glob(pattern)}
     selected.difference_update(exclusions["design_mcp"])
     assert not (selected & (pipeline_paths | {"data/patterns.json", "data/vision_results.json"}))
-    assert {"data/directions.json", "data/tokens/token_sets.json", "prompts/analyze_screen.md"} <= selected
+    assert {"data/directions.json", "data/tokens/token_sets.json", "review/extension/manifest.json"} <= selected
+    assert not any(path.startswith("prompts/") for path in selected)
     assert corpus.read_bundled() == (ROOT / "data" / "patterns.json").read_bytes()
 
 

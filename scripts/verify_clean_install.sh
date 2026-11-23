@@ -46,11 +46,19 @@ from importlib.metadata import distribution
 import json
 import sys
 
-provenance = json.loads(distribution("design-mcp").read_text("direct_url.json"))
+package = distribution("design-mcp")
+provenance = json.loads(package.read_text("direct_url.json"))
 vcs = provenance["vcs_info"]
 if vcs["vcs"] != "git" or vcs["commit_id"] != sys.argv[1]:
     raise SystemExit(f"The install did not resolve the requested Git commit: {vcs}")
 print(f"PASS pinned Git install — {vcs['commit_id']}")
+files = {path.as_posix() for path in package.files}
+for obsolete in ("patterns.json", "vision_results.json", "batch_list.json", "remaining_vision.json"):
+    if f"design_mcp/data/{obsolete}" in files:
+        raise SystemExit(f"The distribution still contains {obsolete}")
+if any(path.startswith("design_mcp/prompts/") for path in files):
+    raise SystemExit("The distribution still contains the archived prompt templates")
+print("PASS package boundary — excludes legacy corpus, offline queues and archived prompts")
 PY
   done
 fi
