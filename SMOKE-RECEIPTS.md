@@ -1,5 +1,9 @@
 # Design MCP live smoke
 
+## Creative verifier branch checkpoint
+
+All 13 hosted checks passed on `bb0a124`, including 16 clean installs and 96 stdio sessions on macOS 15. The hosted Chrome replay exercised active-tab and pasted-URL review, five-field masking, and the saved keyboard preview. The pasted result opened in 2.49 seconds in this run. Fresh macOS SwiftUI captures showed five reviewed controls before Reveal and six after. In Electron, Reveal cleared the occlusion finding and the seeded clipping finding remained. The installed public URL review completed at 1440 and 390 CSS px. The package source matches the README install pin. [Exact jobs and captures](evidence/benchmark-v1/release-ci-bb0a124.json)
+
 ## Checkout cleanup and exact Chrome replay
 
 `0978712149674ad7fd5738c53d4b7966ba163b43` is the README install pin. The migration staged 14 writable copies from a fresh Git archive, then wrote zero on repeat. The canonical legacy corpus retained its SHA-256. The root script exposed and called the historical surface from another working directory. The candidate passed **545 source tests and 120 subtests**. All eight hosted macOS 15 architecture/Python cells passed, with 16 fresh installs and 96 stdio sessions across the three surfaces with and without `review_page`. The exact hosted extension, public URL, SwiftUI, and Electron workflows passed. [Exact jobs and migration](evidence/benchmark-v1/release-ci-0978712.json)
