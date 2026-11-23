@@ -1,0 +1,541 @@
+{
+  "calibration": {
+    "example": "Legible repair intake with clear labels, familiar layout and misplaced focus after an invalid number",
+    "coherence": 7,
+    "originality": 4,
+    "craft": 6,
+    "usability": 6
+  },
+  "screens": {
+    "A-1440": {
+      "coherence": 8.5,
+      "originality": 8,
+      "craft": 8,
+      "usability": 7.5,
+      "primary_action": {
+        "input": "Tab to the specimen radio group, ArrowRight to Harriman, then use Tab and Enter to select Full specimen, Etched detail and Trace the bands.",
+        "expected": "Compare both photographs, show Harriman's etched detail and identify its bands.",
+        "observed": "Both photographs remain visible. Selection updates the heading, description and record link; the view buttons update both photographs, captions and accessible image labels. The trace draws two roughly parallel orange diagonal lines over Harriman."
+      },
+      "edge_observation": "Returning to Full specimen changes the images and resets the trace. About the collection focuses the explanatory section; the Harriman record link is back in the comparison panel, before that section in keyboard order. No clipping was visible in the captured states.",
+      "fact_check": "The images support describing Pitts as angular silver bands interrupted by dark inclusions and Harriman as broad crossing bands. A's trace text says two bands cross, but the orange guides themselves appear parallel. The Smithsonian destination and scientific explanation were not independently verified.",
+      "strength": "The side-by-side images and short captions make the texture difference easy to name.",
+      "weakness": "The trace does not clearly show the crossing described, and the record link is not in the collection section.",
+      "repair": "Align the guides with intersecting bands and place or repeat the selected record link in the collection section.",
+      "arm": "tracing-desk",
+      "html_sha256": "0bac329873a848df37df70a45456e975f3bb5db28ce34901b4e185ccc9329f29",
+      "weighted": 8.05,
+      "before": {
+        "sha256": "46c2c5ca3524b2dbdb183fe0cd58960dac9b82275d086d3cfa03c7d7aee3dd2d",
+        "file": "A-1440-before.png",
+        "tool_call_id": "item_2"
+      },
+      "after": {
+        "sha256": "f4ac82a92066b896241833faefcdea5931d24924efd31c197d0048dc76422e40",
+        "file": "A-1440-after.png",
+        "tool_call_id": "item_14"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        }
+      ]
+    },
+    "A-390": {
+      "coherence": 8,
+      "originality": 7.5,
+      "craft": 7.5,
+      "usability": 7,
+      "primary_action": {
+        "input": "Tab to the radio group, ArrowRight to Harriman, then use Tab and Enter for Full specimen, Etched detail and Trace the bands.",
+        "expected": "Inspect Harriman's etched photograph with a useful comparison to Pitts.",
+        "observed": "The selected photo, caption, accessible image label and record link update to Harriman. The trace draws two parallel-looking orange diagonal lines. The other specimen has a text selector but no photo preview."
+      },
+      "edge_observation": "Full specimen restores the false-color Harriman image and its matching accessible label. About the collection focuses the explanatory section; Shift+Tab reaches the selected record link above it. No horizontal clipping was visible; content continues below the viewport.",
+      "fact_check": "The visible photographs support dark inclusions amid fine angular bands for Pitts and broader crossing bands for Harriman. The record destination and scientific claims were not independently verified.",
+      "strength": "The selected photograph is large and its caption stays close to it.",
+      "weakness": "Comparing textures requires switching specimens because the other photograph is not previewed.",
+      "repair": "Add a recognizable thumbnail of the other specimen and make the trace mark an actual crossing.",
+      "arm": "tracing-desk",
+      "html_sha256": "0bac329873a848df37df70a45456e975f3bb5db28ce34901b4e185ccc9329f29",
+      "weighted": 7.55,
+      "before": {
+        "sha256": "9008fb2afc8eb7ceb893d8ba5424cfcd7f131fdeb632677f796c40967bba4498",
+        "file": "A-390-before.png",
+        "tool_call_id": "item_35"
+      },
+      "after": {
+        "sha256": "d3a113633652469ecf5ee7118cb209b77e0bc0317bd787dd084526897f90aba5",
+        "file": "A-390-after.png",
+        "tool_call_id": "item_47"
+      },
+      "layout_width": 375,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        }
+      ]
+    },
+    "B-1440": {
+      "coherence": 8.5,
+      "originality": 8,
+      "craft": 8.5,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab to the specimen radio group, ArrowRight to Harriman, then use Tab and Enter for Full specimen, Etched detail and Trace the bands.",
+        "expected": "Compare both photographs and highlight the crossing in Harriman's etched detail.",
+        "observed": "Both photographs remain visible. The selected heading, description, record link, view state, captions and accessible image labels follow the keyboard input. The trace draws two crossing orange lines over Harriman."
+      },
+      "edge_observation": "Returning to Full specimen resets the trace and updates the photographs and labels. About the collection focuses the explanatory section; the next Tab reaches the Harriman record link within that section. No clipping was visible in the captured states.",
+      "fact_check": "The crossing guide matches its explanation more closely than A's parallel-looking guide. The photographs support the stated visual texture difference. The Smithsonian destination and scientific explanation were not independently verified.",
+      "strength": "The crossed guide makes the relevant feature legible, and the collection link leads directly to the selected record.",
+      "weakness": "The guide is schematic and covers part of the texture it explains.",
+      "repair": "Make the guide lighter or offer an easily discoverable way to hide it after inspection.",
+      "arm": "comparison-selectors",
+      "html_sha256": "ccd9b18bcbd9d387cc0bd8f0cfa8c61b143fe57df15a3e722987b7ff9e7a3283",
+      "weighted": 8.35,
+      "before": {
+        "sha256": "9c8a90d73a111c5bcc37767f273eda21981f3d3a3e1bd104d7d0e084c9824b3f",
+        "file": "B-1440-before.png",
+        "tool_call_id": "item_67"
+      },
+      "after": {
+        "sha256": "14710efa005ed514dd9a80db2af5917b1e66b2c7de907a5837394fcc51481d77",
+        "file": "B-1440-after.png",
+        "tool_call_id": "item_79"
+      },
+      "layout_width": 1425,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        }
+      ]
+    },
+    "B-390": {
+      "coherence": 8.5,
+      "originality": 8,
+      "craft": 8.5,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab to the radio group, ArrowRight to Harriman, then use Tab and Enter for Full specimen, Etched detail and Trace the bands.",
+        "expected": "Inspect Harriman while retaining a visual reminder of Pitts.",
+        "observed": "The large photograph, caption, accessible image label and selected record update to Harriman. Both selectors include thumbnails, so Pitts remains previewed. The trace draws crossing orange lines on Harriman."
+      },
+      "edge_observation": "Full specimen restores the false-color image and matching accessible label. About the collection focuses its section, and the next Tab reaches the Harriman record link within it. No horizontal clipping was visible; lower content extends below the viewport.",
+      "fact_check": "The photos and captions make the textures reasonably easy to name, although the small other-specimen thumbnail is only a preview. The record destination and scientific claims were not independently verified.",
+      "strength": "The other specimen remains visually available without sacrificing the large selected image.",
+      "weakness": "The preview is small, so a detailed comparison still requires switching.",
+      "repair": "Offer an optional larger comparison view while retaining the compact thumbnails.",
+      "arm": "comparison-selectors",
+      "html_sha256": "ccd9b18bcbd9d387cc0bd8f0cfa8c61b143fe57df15a3e722987b7ff9e7a3283",
+      "weighted": 8.35,
+      "before": {
+        "sha256": "928f30f2f9f40bee4a7c5e05d65b5bdb5ada2374428998ef53b85da1b4f00d6c",
+        "file": "B-390-before.png",
+        "tool_call_id": "item_88"
+      },
+      "after": {
+        "sha256": "fe862285e60d85c3cf228549b91ae6a4052e6a09b33b1edcfc15acb028698e21",
+        "file": "B-390-after.png",
+        "tool_call_id": "item_100"
+      },
+      "layout_width": 375,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        }
+      ]
+    }
+  },
+  "preference": {
+    "winner": "B",
+    "reason": "B retains a visual preview of the other specimen on phone, its trace visibly marks a crossing, and the selected museum record is directly reachable inside the collection section. Both views support the main keyboard flow and have clear desktop comparisons."
+  },
+  "case": "specimen-exhibit",
+  "verified_screens": 4,
+  "required_screens": 4,
+  "browser": "Chrome/158.0.8127.36",
+  "evaluator_thread": "01a20695-8c97-7970-afd9-e631a212d01a",
+  "usage": {
+    "input_tokens": 690467,
+    "cached_input_tokens": 655104,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2866,
+    "reasoning_output_tokens": 9
+  },
+  "trace_sha256": "410d25efeda2ecd9bab84f57ff516699e12ed09e85ae092a2cbbec088f9bb015",
+  "browser_audit_sha256": "84706dfd3a46ba72e702b3af6fd568d93e7765eb11abb3d53be67d99f2bf5a3d"
+}
