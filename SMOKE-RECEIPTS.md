@@ -24,7 +24,7 @@ All 13 hosted checks passed on `bb0a124`, including 16 clean installs and 96 std
 
 ## Checkout cleanup and exact Chrome replay
 
-`0978712149674ad7fd5738c53d4b7966ba163b43` is the README install pin. The migration staged 14 writable copies from a fresh Git archive, then wrote zero on repeat. The canonical legacy corpus retained its SHA-256. The root script exposed and called the historical surface from another working directory. The candidate passed **545 source tests and 120 subtests**. All eight hosted macOS 15 architecture/Python cells passed, with 16 fresh installs and 96 stdio sessions across the three surfaces with and without `review_page`. The exact hosted extension, public URL, SwiftUI, and Electron workflows passed. [Exact jobs and migration](evidence/benchmark-v1/release-ci-0978712.json)
+`0978712149674ad7fd5738c53d4b7966ba163b43` is the earlier compatibility and Ventura install pin. The migration staged 14 writable copies from a fresh Git archive, then wrote zero on repeat. The canonical legacy corpus retained its SHA-256. The root script exposed and called the historical surface from another working directory. The candidate passed **545 source tests and 120 subtests**. All eight hosted macOS 15 architecture/Python cells passed, with 16 fresh installs and 96 stdio sessions across the three surfaces with and without `review_page`. The exact hosted extension, public URL, SwiftUI, and Electron workflows passed. [Exact jobs and migration](evidence/benchmark-v1/release-ci-0978712.json)
 
 On the reference Mac, GPT Computer Use verified both native Chrome flows with the updated extension files and a newly installed exact host. The active tab measured the seeded 2.64:1 contrast in 141 ms and saved a masked preview. Keyboard input opened the After view and the fixture changed from three routes to one and back to three. The pasted 404 restored focus and saved nothing. A retry created a 1440 × 900 capture with five masks in 6.37 seconds. Both saved previews reopened after reload. The current pasted-URL sample is slower than the earlier reference-Mac run. [Exact native Chrome receipt](evidence/benchmark-v1/release-native-chrome-0978712.json)
 
@@ -238,3 +238,8 @@ popup, public URL review, SwiftUI and Electron jobs completed successfully.
 The documentation checkpoint at `b148b6d` has identical package and
 extension sources and passed 580 local tests and 122 subtests with four
 warnings. [Exact checks](https://github.com/chrismicah/design-mcp/commit/8440d969c3563d5f490f84c52ed9c88dfec6fe26/checks) · [Portable install workflow](https://github.com/chrismicah/design-mcp/actions/runs/45176436210)
+
+
+## Install pin `f30e6ff`
+
+All 13 hosted checks passed at the current README install pin. Both macOS 15 installers covered Python 3.10–3.13 on Apple Silicon and Intel. The exact SwiftUI test revealed a fifth button. Electron cleared the covered-control finding and preserved its separate clipping finding. The hosted Chrome fixture captured both toolbar flows and the public URL run returned verified desktop and phone PNGs. Current Ventura and the BenQ-only local check stay separate. [Exact jobs, output hashes, and recovery](evidence/benchmark-v1/release-ci-f30e6ff.json)

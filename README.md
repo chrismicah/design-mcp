@@ -7,12 +7,12 @@ Turn a brief into one sourced art direction. The response gives the coding agent
 Install the verified development build with either command. Both support an explicit `--python` option to select an installed interpreter.
 
 ```bash
-pipx install 'git+https://github.com/chrismicah/design-mcp.git@0978712149674ad7fd5738c53d4b7966ba163b43'
+pipx install 'git+https://github.com/chrismicah/design-mcp.git@f30e6ffcb7c8fab97580a353ff5b770849162594'
 # or
-uv tool install 'git+https://github.com/chrismicah/design-mcp.git@0978712149674ad7fd5738c53d4b7966ba163b43'
+uv tool install 'git+https://github.com/chrismicah/design-mcp.git@f30e6ffcb7c8fab97580a353ff5b770849162594'
 ```
 
-For a local checkout, pass `.` to your installer. [Candidate install matrix](https://github.com/chrismicah/design-mcp/actions/runs/45102389694)
+For a local checkout, pass `.` to your installer. [Candidate install matrix](https://github.com/chrismicah/design-mcp/actions/runs/45187656342)
 
 If Design MCP is already installed, add `--force` after `pipx install` or `uv tool install` in the matching command. Run `design-mcp doctor` and reconnect your MCP client after changing the installed version.
 
@@ -78,7 +78,7 @@ Try “calmer” after the first draft. The advice depends on the selected direc
 - **Capture both widths from the terminal.** With Playwriter 0.12.0 installed, run `design-mcp review https://example.com --playwriter`. The command uses a separate Chrome profile, checks the page at 1440 and 390 CSS px, and saves a local preview. [Browser setup](design_mcp/review/README.md)
 - **Your SwiftUI or Electron app.** Copy the matching exporter from this repository into your UI test project. The Swift exporter needs an XCTest target. The Electron exporter reads a supplied BrowserWindow. Run `design-mcp review-app capture.json` to check recorded clipping and hittability. [Swift exporter](integrations/desktop/SwiftCapture.swift) · [Electron exporter](integrations/desktop/electron.mjs)
 
-GPT Computer Use tested both Chrome flows with the pinned build. The active-tab scan flagged **2.6:1 contrast** and opened a saved comparison that supports keyboard access. A pasted URL returned a **1440 × 900** capture in **6.37 seconds** with five fields masked. A 404 returned focus to the address field and left the saved reviews untouched. These are single walkthrough timings. [Native Chrome receipt](evidence/benchmark-v1/release-native-chrome-0978712.json)
+GPT Computer Use tested both Chrome flows on the earlier `0978712` build. The active-tab scan flagged **2.6:1 contrast** and opened a saved comparison that supports keyboard access. A pasted URL returned a **1440 × 900** capture in **6.37 seconds** with five fields masked. A 404 returned focus to the address field and left the saved reviews untouched. These are single walkthrough timings. [Native Chrome receipt](evidence/benchmark-v1/release-native-chrome-0978712.json)
 
 The same commit passed fresh SwiftUI and Electron captures on macOS CI. SwiftUI revealed a sixth control. An Electron action cleared the covered control finding and retained the independent clipping finding. [Desktop proof and past timings](SMOKE-RECEIPTS.md)
 
@@ -102,11 +102,11 @@ The optional historical maintenance scripts write to `data/`. Run `python3 scrip
 
 ## Verified results
 
-All eight macOS 15 clean-install jobs passed on Intel and Apple Silicon with Python 3.10–3.13. Both installers fetched the exact pinned Git commit, passed `doctor`, and exercised the default, historical and combined stdio surfaces with and without the optional review tool. The same pin passed **eight clean installs and 48 stdio checks** on Ventura 13.7.4 arm64 in a disposable Tart clone of the existing benchmark guest. Intel Ventura runtime verification remains open. [macOS 15 matrix](evidence/benchmark-v1/release-ci-0978712.json) · [Ventura matrix](evidence/benchmark-v1/ventura-tart-0978712.json)
+All eight macOS 15 clean-install jobs passed at `f30e6ff` on Intel and Apple Silicon with Python 3.10–3.13. Pipx and uv both ran `doctor` and exercised the default, historical and combined stdio surfaces with and without the optional review tool. The earlier `0978712` package passed **eight clean installs and 48 stdio checks** on Apple Silicon Ventura 13.7.4. Current-package Ventura checks and Intel Ventura runtime verification remain open. [macOS 15 matrix](evidence/benchmark-v1/release-ci-f30e6ff.json) · [Earlier Ventura matrix](evidence/benchmark-v1/ventura-tart-0978712.json)
 
 The PR branch's work-order booking study kept the selected date and price visible at 320, 390, and 1440 px through the first draft and a one-word revision. Blind comparisons favored the revised guidance at both widths. Its package passed all 14 hosted checks at `a700f82`, including 16 macOS 15 clean installs, 96 stdio runs, both Chrome review flows, SwiftUI and Electron fixtures. [Booking comparison](evidence/benchmark-v1/booking-work-order-first.json) · [Hosted receipt](evidence/benchmark-v1/release-ci-a700f82.json) · [Exact follow-up CI at `559aee8`](evidence/benchmark-v1/release-ci-559aee8.json)
 
-The release branch passed all 13 hosted checks at `e7c600e`, including the macOS 15 install matrix and fresh SwiftUI and Electron captures. Two Chrome replays on `39f483a` exercised the real toolbar action and reopened the saved active-tab and pasted-URL reviews. The pasted URL reached a masked capture in **2.23** and **2.27 seconds** on those hosted runs. [Release checks](https://github.com/chrismicah/design-mcp/commit/e7c600e6bc33bb0bbc6416598f5c91d14e090b09/checks) · [Chrome captures](evidence/benchmark-v1/chrome-x11-software-compositor.json) · [Earlier native Chrome walkthrough](evidence/benchmark-v1/release-native-chrome-0978712.json)
+All 13 hosted checks passed at `f30e6ff`, including SwiftUI, Electron and both Chrome toolbar flows. The pasted URL reached a masked capture in **1.86 seconds** on that hosted run. The exact BenQ-only local replay is open. [Hosted checks and capture hashes](evidence/benchmark-v1/release-ci-f30e6ff.json) · [Earlier native Chrome walkthrough](evidence/benchmark-v1/release-native-chrome-0978712.json)
 
 The installed `review_page` tool returned original masked PNGs at 1440 × 900 and 390 × 844. The same stdio session returned a structured error for an HTTP 404. [Installed review receipt](evidence/benchmark-v1/release-mcp-images-0978712.json)
 
@@ -118,7 +118,7 @@ The creative workflow tests different ways to present and use the same site befo
 
 River's strongest fixture scored 8.85 from one critic and 8.75 from a second at both widths. A film-vault study tested five rounds and reached 8.45 at both widths in its strongest ballot. The release target is 9.5 from both critics. The daily source report collects leads from Show HN, research, and dated awards including Japan's MUUUUU.ORG. [Vault study](EVALS.md#vault-contact-strip-study) · [Festival study](EVALS.md#counterweight-festival-live-study) · [Creative research and reviews](research/CREATIVE-ROUNDS.md) · [Source review workflow](DESIGN-HARNESS.md#recurring-improvement)
 
-The pinned install routed **15 of 36** briefs to the matching surface with only a brief supplied, up from **9 of 36** in frozen v2. All six forms routed correctly. Settings and empty states remain uncovered as exact surfaces. [Current installed routing](evidence/benchmark-v1/release-initial-6e9a239.json) · [Earlier comparison](evidence/benchmark-v1/current-direct-routing.json)
+The installed `6e9a239` benchmark routed **15 of 36** briefs to the matching surface with only a brief supplied, up from **9 of 36** in frozen v2. All six forms routed correctly. Settings and empty states remain uncovered as exact surfaces. [Current installed routing](evidence/benchmark-v1/release-initial-6e9a239.json) · [Earlier comparison](evidence/benchmark-v1/current-direct-routing.json)
 
 In a targeted two-brief comparison, the radio and repair-shop directions averaged 97.9 versus 89.6 for frozen v2. The listening demo and booking summary passed keyboard checks at 1440 and 390 CSS px. [Matched visual results](evidence/benchmark-v1/specific-landing-visual.json) · [Browser actions](evidence/benchmark-v1/specific-landing-actions.json)
 
