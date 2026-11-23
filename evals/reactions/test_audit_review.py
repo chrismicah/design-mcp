@@ -82,3 +82,23 @@ def test_arrow_key_counts_only_when_it_changes_the_checked_radio():
     assert not keyboard_activation([before, after])
     unrelated = action("ArrowRight", "6 m", '- radio "4 m" [checked]\n- radio "6 m"')
     assert not keyboard_activation([before, unrelated], allow_radio=True)
+
+
+def test_radio_audit_uses_the_accessible_name_when_visible_label_is_abbreviated():
+    before = {
+        "action": "key", "value": "Tab",
+        "observation": {
+            "focus": {"label": "Tue", "radio": '- radio "Tuesday" [checked]'},
+            "ax": '- radio "Tuesday" [checked]\n- radio "Wednesday"',
+        },
+    }
+    after = {
+        "action": "key", "value": "ArrowRight",
+        "observation": {
+            "focus": {"label": "Wed", "radio": '- radio "Wednesday" [checked]'},
+            "ax": '- radio "Tuesday"\n- radio "Wednesday" [checked]',
+        },
+    }
+    assert keyboard_activation([before, after], allow_radio=True)
+    after["observation"]["focus"]["radio"] = '- button "Wednesday"'
+    assert not keyboard_activation([before, after], allow_radio=True)

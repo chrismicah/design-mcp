@@ -80,6 +80,7 @@ const readView = () => {
     layout_width: document.documentElement.scrollWidth,
     focus: {
       tag: el?.localName ?? null,
+      type: el?.localName === 'input' ? el.type : null,
       label: (el?.getAttribute('aria-label') || el?.labels?.[0]?.innerText ||
               (el !== document.body ? el?.innerText : '') || '').trim().slice(0,160),
       visible: el?.matches(':focus-visible') ?? false,
@@ -97,6 +98,13 @@ if (includeAX) {
   const ax = await page.locator('body').ariaSnapshot({timeout:2500});
   const marker = '\n[AX truncated]';
   observation.ax = ax.length > 1800 ? ax.slice(0, 1800 - marker.length) + marker : ax;
+  if (observation.focus.type === 'radio') {
+    const focused = page.locator('input[type="radio"]:focus');
+    if (await focused.count() === 1) {
+      const radio = await focused.ariaSnapshot({timeout:2500});
+      observation.focus.radio = radio.split('\n', 1)[0].trim().slice(0, 250);
+    }
+  }
 }
 if (readJourney !== null) observation.journey = await readJourney();
 if (prior !== null) observation.journey_before = prior;

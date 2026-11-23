@@ -1,0 +1,277 @@
+{
+  "calibration": {
+    "coherence": 7,
+    "originality": 5,
+    "craft": 6.5,
+    "usability": 6,
+    "basis": "A legible, clearly labeled intake is coherent and usable, but a familiar layout is moderately original and misplaced focus after an invalid number materially weakens recovery."
+  },
+  "screens": {
+    "A-1440": {
+      "coherence": 8,
+      "originality": 6.5,
+      "craft": 8,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab, Space, ArrowRight three times",
+        "expected": "Select Friday and show the selected control and live value without further scrolling.",
+        "observed": "Friday was focused and checked; the control and 'Booking day: Friday' in the summary were both visible."
+      },
+      "edge_observation": "Two ArrowLeft presses focused and checked Wednesday, and the summary changed to Wednesday. The day choices follow weekday order and the focus outline tracks the selected choice.",
+      "fact_check": "The page displays $85, 48 hours and 41 Elm Street. It labels 48 hours as time; an independent turnaround guarantee was not verified.",
+      "strength": "The split layout gives the shop identity and booking form distinct, readable areas; the day appears with the other summary details.",
+      "weakness": "The live day is separated from the choices by the availability text and summary section.",
+      "repair": "Keep an immediate selection label beside the day choices while retaining the day in the summary.",
+      "arm": "current",
+      "html_sha256": "aa210df4361269b89b509f6a0a4f619829ed1d17d82a01a5c857ea8443f41e28",
+      "weighted": 7.65,
+      "before": {
+        "sha256": "8b0c5dff80fdce1f30b8561cd2e2530ba970146534e47dfd3122753da49d55e9",
+        "file": "A-1440-before.png",
+        "tool_call_id": "item_2"
+      },
+      "after": {
+        "sha256": "ebcca7e7aee31fb08bc2bbee9c21baab65faf21b73a49b647056edf2fd43bd2c",
+        "file": "A-1440-after.png",
+        "tool_call_id": "item_8"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Space"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ]
+    },
+    "A-390": {
+      "coherence": 7.5,
+      "originality": 6.5,
+      "craft": 7.5,
+      "usability": 7,
+      "primary_action": {
+        "input": "Tab, Space, ArrowRight three times",
+        "expected": "Select Friday and show the selected control and live value without further scrolling.",
+        "observed": "Friday was focused and visibly selected, but the summary's 'Booking day: Friday' was below the viewport. No additional scroll was performed before the after capture."
+      },
+      "edge_observation": "Two ArrowLeft presses focused and checked Wednesday; the accessibility tree reported 'Booking day: Wednesday' and Friday unchecked. The live summary text was not visible at the captured scroll position.",
+      "fact_check": "The page displays $85, 48 hours and 41 Elm Street. The independent turnaround claim was not verified. The review tool reported a 390-pixel viewport and 375-pixel layout width.",
+      "strength": "The day controls fit in one chronological row and the focused selection is conspicuous.",
+      "weakness": "The live value is out of view when the choice is made, weakening the connection between control and summary.",
+      "repair": "Place the live day adjacent to the controls so both remain visible on a narrow screen.",
+      "arm": "current",
+      "html_sha256": "aa210df4361269b89b509f6a0a4f619829ed1d17d82a01a5c857ea8443f41e28",
+      "weighted": 7.1,
+      "before": {
+        "sha256": "dd1ec6ef10f847bc7b3157f2cc01cb5ee3e72dc6803d84a340fc5435994866cd",
+        "file": "A-390-before.png",
+        "tool_call_id": "item_13"
+      },
+      "after": {
+        "sha256": "4bed839295633fbca1126b3959e09df266350f2c2844da316c98445de61b3049",
+        "file": "A-390-after.png",
+        "tool_call_id": "item_19"
+      },
+      "layout_width": 375,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Space"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ]
+    },
+    "B-1440": {
+      "coherence": 8,
+      "originality": 6.5,
+      "craft": 8,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab, Space, ArrowRight three times",
+        "expected": "Select Friday and show the selected control and live value without further scrolling.",
+        "observed": "Friday was focused and checked, with 'Booking day: Friday' immediately below the choices; both were visible."
+      },
+      "edge_observation": "Two ArrowLeft presses focused and checked Wednesday, and the live text changed to Wednesday. The chronological row and focus outline connect the selected choice to the nearby value.",
+      "fact_check": "The page displays $85, 48 hours and 41 Elm Street. It labels 48 hours as time; an independent turnaround guarantee was not verified.",
+      "strength": "The live value is close to the control, and the page hierarchy makes the booking task easy to scan.",
+      "weakness": "The booking summary says 'Your selection' but does not itself include the selected day, despite the introductory copy promising a booking summary.",
+      "repair": "Also include the day in the summary while preserving the immediate feedback beside the choices.",
+      "arm": "proposed",
+      "html_sha256": "22d830fd18b5ee5e0c02bcb9ebbd64ec5e1603e5ec0c224519a632e6f14b99e3",
+      "weighted": 7.65,
+      "before": {
+        "sha256": "d5aa4ec0c767e899e45c4611bd20b07412f47cb97c8b546f51a3c6d1d4200941",
+        "file": "B-1440-before.png",
+        "tool_call_id": "item_23"
+      },
+      "after": {
+        "sha256": "8c905a96a4b7bec3ba4d54cc13b53e76f38413eabbd2b2a9619aa678764fb1dd",
+        "file": "B-1440-after.png",
+        "tool_call_id": "item_29"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Space"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ]
+    },
+    "B-390": {
+      "coherence": 8,
+      "originality": 6.5,
+      "craft": 7.5,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab, Space, ArrowRight three times",
+        "expected": "Select Friday and show the selected control and live value without further scrolling.",
+        "observed": "Friday was focused and visibly selected, and 'Booking day: Friday' was visible directly above the row without further scrolling."
+      },
+      "edge_observation": "Two ArrowLeft presses focused and checked Wednesday; the accessibility tree reported 'Booking day: Wednesday' and Friday unchecked. The mobile visual order places the live text above the controls, while the accessibility tree lists it after them.",
+      "fact_check": "The page displays $85, 48 hours and 41 Elm Street. The independent turnaround claim was not verified. The review tool reported a 390-pixel viewport and 375-pixel layout width.",
+      "strength": "The selected control and full day value remain visible together, making the change easy to confirm.",
+      "weakness": "The mobile visual order differs from the accessibility-tree order, and the lower booking summary omits the selected day.",
+      "repair": "Align visual and reading order where practical, and include the day in the summary as well.",
+      "arm": "proposed",
+      "html_sha256": "22d830fd18b5ee5e0c02bcb9ebbd64ec5e1603e5ec0c224519a632e6f14b99e3",
+      "weighted": 7.55,
+      "before": {
+        "sha256": "bc5d67f9a8f4af5dbd998eef377ffb78f6600b6a949b59ad49e18863cd7d4703",
+        "file": "B-390-before.png",
+        "tool_call_id": "item_34"
+      },
+      "after": {
+        "sha256": "b742b360837d54d3e3a6758468650acde671679b3a703e9c019276282ad0bc63",
+        "file": "B-390-after.png",
+        "tool_call_id": "item_40"
+      },
+      "layout_width": 375,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Space"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ]
+    }
+  },
+  "preference": {
+    "winner": "B",
+    "reason": "Both views support the keyboard sequence and recovery, but B keeps the live day next to the focused control at both widths. A's mobile summary value is below the viewport after selection. B should also include the day in its booking summary."
+  },
+  "case": "booking-live-value-repair",
+  "verified_screens": 4,
+  "required_screens": 4,
+  "browser": "Chrome/158.0.8127.36",
+  "evaluator_thread": "01a206d2-444f-7270-9111-38da7b12ed17",
+  "usage": {
+    "input_tokens": 710514,
+    "cached_input_tokens": 683008,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2572,
+    "reasoning_output_tokens": 0
+  },
+  "trace_sha256": "2d5534fbd8c8712054951d89fb7e313c13603f7912c6ca3533c81c5e97c996f3",
+  "browser_audit_sha256": "766530164f14a0eeca2e5a1008334b8d4f9000d840578ffe2a76b1f48aa70aae"
+}

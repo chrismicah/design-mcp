@@ -81,16 +81,28 @@ def keyboard_activation(actions, *, allow_radio=False):
             continue
         before, after = previous["observation"], current["observation"]
         old, new = before["focus"], after["focus"]
-        if not old["label"] or not new["label"] or old["label"] == new["label"]:
+        old_radio = focused_radio(old)
+        new_radio = focused_radio(new)
+        if not old_radio or not new_radio or old_radio == new_radio:
             continue
-        old_radio = f'- radio "{old["label"]}"'
-        new_radio = f'- radio "{new["label"]}"'
         before_ax = {line.strip() for line in before.get("ax", "").splitlines()}
         after_ax = {line.strip() for line in after.get("ax", "").splitlines()}
         if ({old_radio + " [checked]", new_radio} <= before_ax and
                 {new_radio + " [checked]", old_radio} <= after_ax):
             return True
     return False
+
+
+def focused_radio(focus):
+    if "radio" in focus:
+        snapshot = focus["radio"]
+        if not isinstance(snapshot, str):
+            return None
+        match = re.fullmatch(r'(- radio "(?:[^"\\]|\\.)+")(?: \[checked\])?', snapshot)
+        return match[1] if match else None
+    # Old receipts only recorded the associated label as plain text.
+    label = focus.get("label")
+    return f"- radio {json.dumps(label, ensure_ascii=False)}" if label else None
 
 
 def keyboard_slider_change(actions):

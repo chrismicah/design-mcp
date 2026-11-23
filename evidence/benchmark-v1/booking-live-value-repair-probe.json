@@ -1,0 +1,505 @@
+{
+  "browser": "Chrome/158.0.8127.36",
+  "fixtures": {
+    "reparented": {
+      "source_sha256": "eb55e302890ce896eab84458f27dab46044ef773270557a05f289cd57621fd13",
+      "candidate_sha256": "e99b2e7c0064d3ec40a91d47702996abce07a69231bba4fdc29fecc21e2caeab",
+      "original": {
+        "case": "repair",
+        "reason": "preflight-failure",
+        "binding_id": "summary-day",
+        "binding": {
+          "text": "Choose a booking day to add it to your summary.",
+          "value": {
+            "tag": "p",
+            "match": {
+              "id": "summary-day"
+            }
+          },
+          "owner": {
+            "tag": "div",
+            "match": {
+              "id": "summary"
+            }
+          },
+          "atomic": true,
+          "visible": true
+        },
+        "group": {
+          "tag": "div",
+          "match": {
+            "role": "radiogroup"
+          }
+        },
+        "checks": {
+          "1440-keyboard": {
+            "choice_and_value_visible": true,
+            "keyboard_focus": true,
+            "targets": true,
+            "width": true,
+            "value_text": "Booking day: Friday"
+          },
+          "1440-pointer": {
+            "choice_and_value_visible": true,
+            "keyboard_focus": true,
+            "targets": true,
+            "width": true,
+            "value_text": "Booking day: Tuesday"
+          },
+          "390-keyboard": {
+            "choice_and_value_visible": false,
+            "keyboard_focus": true,
+            "targets": true,
+            "width": true,
+            "value_text": "Booking day: Friday"
+          },
+          "390-pointer": {
+            "choice_and_value_visible": false,
+            "keyboard_focus": true,
+            "targets": true,
+            "width": true,
+            "value_text": "Booking day: Tuesday"
+          },
+          "320-keyboard": {
+            "choice_and_value_visible": false,
+            "keyboard_focus": true,
+            "targets": true,
+            "width": true,
+            "value_text": "Booking day: Friday"
+          },
+          "320-pointer": {
+            "choice_and_value_visible": false,
+            "keyboard_focus": true,
+            "targets": true,
+            "width": true,
+            "value_text": "Booking day: Tuesday"
+          }
+        }
+      },
+      "candidate": {
+        "case": "repair",
+        "reason": "preflight-failure",
+        "binding_id": "summary-day",
+        "binding": {
+          "text": "Choose a booking day to add it to your summary.",
+          "value": {
+            "tag": "p",
+            "match": {
+              "id": "summary-day"
+            }
+          },
+          "owner": {
+            "tag": "p",
+            "match": {
+              "id": "summary-day"
+            }
+          },
+          "atomic": true,
+          "visible": true
+        },
+        "group": {
+          "tag": "div",
+          "match": {
+            "role": "radiogroup"
+          }
+        },
+        "checks": {
+          "1440-keyboard": {
+            "choice_and_value_visible": true,
+            "keyboard_focus": true,
+            "targets": true,
+            "width": true,
+            "value_text": "Booking day: Friday"
+          },
+          "1440-pointer": {
+            "choice_and_value_visible": true,
+            "keyboard_focus": true,
+            "targets": true,
+            "width": true,
+            "value_text": "Booking day: Tuesday"
+          },
+          "390-keyboard": {
+            "choice_and_value_visible": true,
+            "keyboard_focus": true,
+            "targets": true,
+            "width": true,
+            "value_text": "Booking day: Friday"
+          },
+          "390-pointer": {
+            "choice_and_value_visible": true,
+            "keyboard_focus": true,
+            "targets": true,
+            "width": true,
+            "value_text": "Booking day: Tuesday"
+          },
+          "320-keyboard": {
+            "choice_and_value_visible": false,
+            "keyboard_focus": true,
+            "targets": true,
+            "width": true,
+            "value_text": "Booking day: Friday"
+          },
+          "320-pointer": {
+            "choice_and_value_visible": false,
+            "keyboard_focus": true,
+            "targets": true,
+            "width": true,
+            "value_text": "Booking day: Tuesday"
+          }
+        }
+      },
+      "eligible": false,
+      "facts_and_choices_unchanged": true,
+      "captures": {
+        "control": {
+          "1440": {
+            "before": {
+              "capture": "reparented-control-1440-before.png",
+              "sha256": "e9659368d9c21d280aaf5614539457acfbcfee7f826207bd9e637954f0839198"
+            },
+            "keyboard": {
+              "capture": "reparented-control-1440-keyboard.png",
+              "sha256": "a4345b17e5e6d1c3167aa002f0ee32b16ff361d3b268d13390413687daf6089b"
+            },
+            "pointer": {
+              "capture": "reparented-control-1440-pointer.png",
+              "sha256": "73a98af2c0be45cbc35887836c3d495ebf37d233b2ab786838942edc43f5f6e7"
+            }
+          },
+          "390": {
+            "before": {
+              "capture": "reparented-control-390-before.png",
+              "sha256": "fa082c58e820550853adbf15a3e539c92649198068ce48d4cf1469b920d9d45a"
+            },
+            "keyboard": {
+              "capture": "reparented-control-390-keyboard.png",
+              "sha256": "ff1d6dfdadf6ec8a3ef862162989109e4360bb10b81baa5df3e9258c7b5594dd"
+            },
+            "pointer": {
+              "capture": "reparented-control-390-pointer.png",
+              "sha256": "effdd13a8b5b4af4a7da632119c3dc1599c71dd1c36d1326aab09e78f1edc22e"
+            }
+          },
+          "320": {
+            "before": {
+              "capture": "reparented-control-320-before.png",
+              "sha256": "7f079f171d771bc1ecc5d556a2e64dfbaec4010d48dab5976f07f9af1e057230"
+            },
+            "keyboard": {
+              "capture": "reparented-control-320-keyboard.png",
+              "sha256": "8410805a6bfac8cec9259a23253c26ee2ee87de475f537a778a596b43a819a09"
+            },
+            "pointer": {
+              "capture": "reparented-control-320-pointer.png",
+              "sha256": "632c933d9d9b4080105bf6947f3ba6a003e1c003cf91bfad185ff93b45f35584"
+            }
+          }
+        },
+        "candidate": {
+          "1440": {
+            "before": {
+              "capture": "reparented-candidate-1440-before.png",
+              "sha256": "aff51e052c183ea81cf05831e68b76ea3c967b01ba149351f0804ddbe5a5884f"
+            },
+            "keyboard": {
+              "capture": "reparented-candidate-1440-keyboard.png",
+              "sha256": "5a2b44692695f54ba586a5d4c50612b493f685c48036429aebb28eab5f3f347a"
+            },
+            "pointer": {
+              "capture": "reparented-candidate-1440-pointer.png",
+              "sha256": "ca0d9a29576f5234329305983f2df6858414f4f5069f135f0da11d2f7c2e6432"
+            }
+          },
+          "390": {
+            "before": {
+              "capture": "reparented-candidate-390-before.png",
+              "sha256": "598c6a21f7d4155d4382af3599621048c437f5ae1407a21885e9c5c1cc5d559f"
+            },
+            "keyboard": {
+              "capture": "reparented-candidate-390-keyboard.png",
+              "sha256": "cd15225382cae394cdfbcde50b4713d3a616dea73478d9a35721cd3a98465761"
+            },
+            "pointer": {
+              "capture": "reparented-candidate-390-pointer.png",
+              "sha256": "c7e3e345bc617cf60542ee3968c9562bc026b93b7ae7f82e35e7afcca0bf0820"
+            }
+          },
+          "320": {
+            "before": {
+              "capture": "reparented-candidate-320-before.png",
+              "sha256": "fa46a59ddcfa375f02556a1e40a1462dd19fa074f54498429254869aa90cb45d"
+            },
+            "keyboard": {
+              "capture": "reparented-candidate-320-keyboard.png",
+              "sha256": "cfb9f0bbd372fd542038fbb53cc7ffc07a976cf7329139858ab850dee9df196a"
+            },
+            "pointer": {
+              "capture": "reparented-candidate-320-pointer.png",
+              "sha256": "d6eb86ab69813ff7de79821219d7beede6369cee8c904e6626b1dbb8f29ad4e2"
+            }
+          }
+        }
+      }
+    },
+    "renamed": {
+      "source_sha256": "aa210df4361269b89b509f6a0a4f619829ed1d17d82a01a5c857ea8443f41e28",
+      "candidate_sha256": "22d830fd18b5ee5e0c02bcb9ebbd64ec5e1603e5ec0c224519a632e6f14b99e3",
+      "original": {
+        "case": "repair",
+        "reason": "preflight-failure",
+        "binding_id": "chosen-value",
+        "binding": {
+          "text": "Choose a booking day to add it to your summary.",
+          "value": {
+            "tag": "p",
+            "match": {
+              "id": "chosen-value"
+            }
+          },
+          "owner": {
+            "tag": "fieldset",
+            "match": {
+              "class": "summary-group"
+            }
+          },
+          "atomic": true,
+          "visible": true
+        },
+        "group": {
+          "tag": "div",
+          "match": {
+            "id": "selectable-grid"
+          }
+        },
+        "checks": {
+          "1440-keyboard": {
+            "choice_and_value_visible": true,
+            "keyboard_focus": true,
+            "targets": true,
+            "width": true,
+            "value_text": "Booking day: Friday"
+          },
+          "1440-pointer": {
+            "choice_and_value_visible": true,
+            "keyboard_focus": true,
+            "targets": true,
+            "width": true,
+            "value_text": "Booking day: Tuesday"
+          },
+          "390-keyboard": {
+            "choice_and_value_visible": false,
+            "keyboard_focus": true,
+            "targets": true,
+            "width": true,
+            "value_text": "Booking day: Friday"
+          },
+          "390-pointer": {
+            "choice_and_value_visible": false,
+            "keyboard_focus": true,
+            "targets": true,
+            "width": true,
+            "value_text": "Booking day: Tuesday"
+          },
+          "320-keyboard": {
+            "choice_and_value_visible": false,
+            "keyboard_focus": true,
+            "targets": true,
+            "width": true,
+            "value_text": "Booking day: Friday"
+          },
+          "320-pointer": {
+            "choice_and_value_visible": false,
+            "keyboard_focus": true,
+            "targets": true,
+            "width": true,
+            "value_text": "Booking day: Tuesday"
+          }
+        }
+      },
+      "candidate": {
+        "case": "no-op",
+        "reason": "already-visible",
+        "binding_id": "chosen-value",
+        "binding": {
+          "text": "Choose a booking day to add it to your summary.",
+          "value": {
+            "tag": "p",
+            "match": {
+              "id": "chosen-value"
+            }
+          },
+          "owner": {
+            "tag": "p",
+            "match": {
+              "id": "chosen-value"
+            }
+          },
+          "atomic": true,
+          "visible": true
+        },
+        "group": {
+          "tag": "div",
+          "match": {
+            "id": "selectable-grid"
+          }
+        },
+        "checks": {
+          "1440-keyboard": {
+            "choice_and_value_visible": true,
+            "keyboard_focus": true,
+            "targets": true,
+            "width": true,
+            "value_text": "Booking day: Friday"
+          },
+          "1440-pointer": {
+            "choice_and_value_visible": true,
+            "keyboard_focus": true,
+            "targets": true,
+            "width": true,
+            "value_text": "Booking day: Tuesday"
+          },
+          "390-keyboard": {
+            "choice_and_value_visible": true,
+            "keyboard_focus": true,
+            "targets": true,
+            "width": true,
+            "value_text": "Booking day: Friday"
+          },
+          "390-pointer": {
+            "choice_and_value_visible": true,
+            "keyboard_focus": true,
+            "targets": true,
+            "width": true,
+            "value_text": "Booking day: Tuesday"
+          },
+          "320-keyboard": {
+            "choice_and_value_visible": true,
+            "keyboard_focus": true,
+            "targets": true,
+            "width": true,
+            "value_text": "Booking day: Friday"
+          },
+          "320-pointer": {
+            "choice_and_value_visible": true,
+            "keyboard_focus": true,
+            "targets": true,
+            "width": true,
+            "value_text": "Booking day: Tuesday"
+          }
+        }
+      },
+      "eligible": true,
+      "facts_and_choices_unchanged": true,
+      "captures": {
+        "control": {
+          "1440": {
+            "before": {
+              "capture": "renamed-control-1440-before.png",
+              "sha256": "8b0c5dff80fdce1f30b8561cd2e2530ba970146534e47dfd3122753da49d55e9"
+            },
+            "keyboard": {
+              "capture": "renamed-control-1440-keyboard.png",
+              "sha256": "ebcca7e7aee31fb08bc2bbee9c21baab65faf21b73a49b647056edf2fd43bd2c"
+            },
+            "pointer": {
+              "capture": "renamed-control-1440-pointer.png",
+              "sha256": "a3cfe06618a8b11c93194aabe3ecc129824a9a4f3f568913948e9bd4052d35f9"
+            }
+          },
+          "390": {
+            "before": {
+              "capture": "renamed-control-390-before.png",
+              "sha256": "fb9188e8293f91155ce0d85038cc3e8dce5447ba5bee03cf851714788c219e1b"
+            },
+            "keyboard": {
+              "capture": "renamed-control-390-keyboard.png",
+              "sha256": "56f4896c0fbf6b27ec95eaabfd298f83b402702756f16e05a2de20efb566fe1b"
+            },
+            "pointer": {
+              "capture": "renamed-control-390-pointer.png",
+              "sha256": "0a2f00c5e6386cda4c176fa26aefd5ceab7ad04caba6881aaa5b87c6c2d59ccc"
+            }
+          },
+          "320": {
+            "before": {
+              "capture": "renamed-control-320-before.png",
+              "sha256": "103788b78297782ead52081b84959cc9cfa44c82c0d7720399ba45a9fbbf5528"
+            },
+            "keyboard": {
+              "capture": "renamed-control-320-keyboard.png",
+              "sha256": "1b6e85808908beedc473effbd2449d4666a1ecd5990989c7f2cdd96de09e1f2c"
+            },
+            "pointer": {
+              "capture": "renamed-control-320-pointer.png",
+              "sha256": "00c5b2bebccfaca40572104f7b7ca5921d67d6ed8cbc0e17e8c8dd12c152b7cb"
+            }
+          }
+        },
+        "candidate": {
+          "1440": {
+            "before": {
+              "capture": "renamed-candidate-1440-before.png",
+              "sha256": "554b6493eb3f21150f848ec2869b1ee24f922587d4171a4bb2b08818a9c8091c"
+            },
+            "keyboard": {
+              "capture": "renamed-candidate-1440-keyboard.png",
+              "sha256": "b12886f30170630af0b1a75f9bcfdc2f118cb79921e6a5cf6356d7b1a4bc6fb0"
+            },
+            "pointer": {
+              "capture": "renamed-candidate-1440-pointer.png",
+              "sha256": "2b7c10b97faa52fb7a3b1ed146840803d694d6eae0a9614577efcfc69e83822d"
+            }
+          },
+          "390": {
+            "before": {
+              "capture": "renamed-candidate-390-before.png",
+              "sha256": "bc5d67f9a8f4af5dbd998eef377ffb78f6600b6a949b59ad49e18863cd7d4703"
+            },
+            "keyboard": {
+              "capture": "renamed-candidate-390-keyboard.png",
+              "sha256": "b742b360837d54d3e3a6758468650acde671679b3a703e9c019276282ad0bc63"
+            },
+            "pointer": {
+              "capture": "renamed-candidate-390-pointer.png",
+              "sha256": "2b656a2ae9217bef18e21882f2e0726423b0763b5360fa5930cdfc3e07bf3c29"
+            }
+          },
+          "320": {
+            "before": {
+              "capture": "renamed-candidate-320-before.png",
+              "sha256": "534b6aa34ed50270450dcf11f94d4c9d69da6a65dccb2612f884da7b6c6cccbd"
+            },
+            "keyboard": {
+              "capture": "renamed-candidate-320-keyboard.png",
+              "sha256": "651ef6c93abadbb519df9f69df8e6ce9c2a29fbf6e8c626644a52a5c903b5b5c"
+            },
+            "pointer": {
+              "capture": "renamed-candidate-320-pointer.png",
+              "sha256": "14e2b80f7332325b787d0e9a3bbbf7a596d6ea2da484875a454543b6fb066c57"
+            }
+          }
+        }
+      }
+    },
+    "unrelated": {
+      "before": "8296986de6e8deee9bab8c5fcbd97c02282e3538e16c66d454ce4599a0fa6594",
+      "after": "8296986de6e8deee9bab8c5fcbd97c02282e3538e16c66d454ce4599a0fa6594",
+      "case": "no-op",
+      "reason": "no-single-radio-group"
+    },
+    "ambiguous": {
+      "before": "d91727678636a64b639d712f6f3d943983f91921d9a20bfa285ac02d109b085d",
+      "after": "d91727678636a64b639d712f6f3d943983f91921d9a20bfa285ac02d109b085d",
+      "case": "no-op",
+      "reason": "ambiguous-live-binding",
+      "candidate_count": 2
+    }
+  },
+  "classification": "Development fixture experiment. The portable rule passes one of two generated inputs and is not in the MCP.",
+  "raw_evidence_directory": ".context/creative-research-2026-11-22/booking-live-result-probe/check-2",
+  "probe_sha256": {
+    "repair.py": "89e4a5f51c9dbc514df12c360e5b6cac3cc8fde98d019dc99df283cf10e14be7",
+    "observe.js": "e776bbff5ca8e69ffd0d95c5b1f9313d2460f0bec1a07c60847cbf166faca68e",
+    "run.py": "77596316762a9b6545626bd0cdaac454c94f2171e1e158388f0d1da1121e2b1d"
+  }
+}
