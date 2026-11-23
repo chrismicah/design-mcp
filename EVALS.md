@@ -580,11 +580,13 @@ All six recorded journeys exercised an empty submission, entered the exact value
 
 ## Cupboard pickup-window comparison
 
-Two independent live rounds compared the same tool-lending interaction as a timetable and a plain table. Both arms used the same four tools, fit and reset limits, inventory states, preview times, and recovery behavior. At **18:24** Fine was unavailable. At **18:25** it became available while Pocket remained selected. The separate withdrawal action kept Pocket's jam reason and moved focus to the explicit Fine action.
+Three independent live rounds compared the same tool-lending interaction. Each matched comparison used the same four tools, fit and reset limits, inventory states, preview times, and recovery behavior. At **18:24** Fine was unavailable. At **18:25** it became available while Pocket remained selected. The separate withdrawal action kept Pocket's jam reason and moved focus to the explicit Fine action.
 
 | Round | Timetable desktop / phone | Plain table desktop / phone | Finding |
 | --- | ---: | ---: | --- |
 | Opening layout | 7.85 / 6.60 | 7.60 / 6.60 | Clear timing change. Equal spacing falsely suggested a scale and the phone recovery text wrapped into a narrow column. |
 | Discrete times and stacked recovery | 7.85 / 7.60 | 7.60 / 7.35 | Availability appeared earlier in the timetable. The critic still found the narrow table dense and the previous payoff confusing after withdrawal. |
 
-An intermediate geometry replay separately verified the stacked recovery layout before the discrete-time revision. Across the three builds, Playwriter checked **18 journeys and 108 original frame dimensions and hashes**, with keyboard at 390 and 1440 px and touch with reduced motion at 320 px. The exact 390 px revised recovery text used 313 CSS px. Neither ballot reached the 9.5 gate. The scores describe the standalone prototype. [Replays and individual live grades](evidence/benchmark-v1/cupboard-pickup-window.json)
+Round three tested the same discrete schedule with two measurement layouts. Both layouts replaced the wait comparison after withdrawal with the next available time, 9 mm of guaranteed room, and the 6° reset. The compact table scored **7.95 desktop / 7.75 phone** versus **7.75 / 7.40** for the expanded gauge rows. The critic preferred the table because it showed all four tools and both choice controls on opening. Both omitted the explicit prior 18:10 choice after recovery. The jam reason persisted.
+
+An intermediate geometry replay separately verified the stacked recovery layout. Across four builds, Playwriter checked **24 journeys and 144 original frames**, with keyboard at 390 and 1440 px and touch with reduced motion at 320 px. The round-three critic contributed 12 additional verified original frames. The scores describe standalone prototypes and remain below 9.5. [Replays and individual live grades](evidence/benchmark-v1/cupboard-pickup-window.json)
