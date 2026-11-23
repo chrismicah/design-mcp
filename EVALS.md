@@ -684,3 +684,18 @@ Two fresh builders received an identical artwork brief and retrieved guidance fr
 | Trial with the same crop correction | 8.10 | 8.00 |
 
 The same two-offset repair centered the supplied artwork coordinate vertically and clamped the offsets to keep the image inside each crop. All six repaired journeys passed with the egg in frame, focus retained and reduced-motion touch working. A fresh blind reviewer preferred the trial marker and typography. The note still sits low and both crops leave the inscription faint. Compare weights within each ballot because the raw and repaired rounds used different blind reviewers. The hand repair produced no new installed generation, so the trial stays isolated below the visual release floor. [Exact wheel, installed cases, original capture hashes, and ballots](evidence/benchmark-v1/installed-artwork-inspection.json)
+
+## Verifying the feature inside a crop
+
+The new browser check maps a curator-supplied point on the master image through the decoded derivative, CSS fit and rectangular clipping bounds. It reports clipping or unsupported geometry separately and records whether the point is initially within the viewport. Playwriter rejected both earlier uncorrected gallery crops at 320, 390 and 1440 px and accepted both corrected versions. Across 15 journeys, it also rejected each of 60 injected offset, region, rotation or dimension faults. This is a geometry check. Confirm source identity and feature readability with matched asset hashes and original pixels. [Measurement and use](evals/vision/rubric.md#measured-image-detail)
+
+The two swan designs use the same official region at 1200 pixels across and the same art direction and marker. The append layout requires scrolling to the result. The focus stage puts the detail, explanation and marked overview together in the open view. The held-out Milkmaid uses the stream of milk, a taller painting and a different location. Its keyboard, touch, whole-image aspect and reduced-motion checks passed at all three widths. The two source records identify the works as public domain. [The Threatened Swan](https://www.rijksmuseum.nl/en/collection/object/The-Threatened-Swan--22040f90565e730131983a44a85b989f) · [The Milkmaid](https://www.rijksmuseum.nl/en/collection/object/The-Milkmaid--42dd0e658c2979aec8e144d2357c55c0?tab=data)
+
+| Anonymous live pairing | Desktop 1440 px | Phone 390 px |
+| --- | ---: | ---: |
+| Append the sharp crop | 6.10 | 6.30 |
+| Focus stage with side overview | 7.80 | 7.60 |
+| Frozen side overview | 7.60 | 7.40 |
+| Wider crop with nearby note | 7.95 | 7.95 |
+
+The first critic preferred the focus stage but found the phone overview competed with the detail and the screen reader repeated the transcription. The refinement widened the phone crop, moved the note beside the overview, and separated metadata in accessibility order. A fresh critic preferred the refinement at both widths and still found the overview small. Compare the scores within each ballot. These were manual gallery prototypes, with 60 scripted original frames and two complete live ballots. They remain below the visual release floor. [Exact assets, browser receipts and critiques](evidence/benchmark-v1/gallery-sharp-detail-framing.json)
