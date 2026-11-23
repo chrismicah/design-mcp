@@ -1,0 +1,1581 @@
+{
+  "scope": "Controlled visual guidance trial from two actual installed MCP responses. Preview gate failed, so no blind score.",
+  "brief": "Make one museum reading page for the original print of John Snow's 1855 map of London’s 1854 Soho outbreak. I want to inspect the engravings on the original print and understand two things: what the circle beside PUMP marks and what the nearby stack of black bars records.\n\nOpen on the whole print, its title, its source and one button called Read the Broad Street detail. I need to see the whole map and button on opening. On activation show the enlarged Broad Street and Cambridge Street crop, an immediately legible reading of both marks, and a small overview showing where the crop is. Keep as much of the crop visible as possible. Let the same button Return to the map. Preserve keyboard focus, touch and reduced motion. Skip site navigation and promotional copy.\n\nUse the whole image /fixture/soho.jpg (1601 × 1486) and the museum crop /fixture/broad-street.jpg (720 × 628). Keep their proportions. In the crop the pump circle is about 46% across and 37% down, adjacent to PUMP. The nearby bars are about 46% across and 55% down. Each printed bar represents one recorded death. The circle identifies a public water pump. Leave out a causal claim based on the picture alone. The crop is about 50% from the left and 40% from the top of the full print and extends approximately 16% across and 15% down. Credit John Snow, Wellcome Collection, Public Domain Mark. Link to https://wellcomecollection.org/works/uxgfjt62.\n",
+  "source_asset": {
+    "record": "https://wellcomecollection.org/works/uxgfjt62/images?id=d4gnqhwy",
+    "rights": "Public Domain Mark",
+    "source": [
+      4757,
+      4418
+    ],
+    "full": {
+      "name": "wellcome-L0072917-1600.jpg",
+      "width": 1601,
+      "height": 1486,
+      "sha256": "0ecf74a0b6d0fd3df1ae22b8ba7c04db95ad3e1e8a6c344e618d02ff9faf08e9"
+    },
+    "detail": {
+      "name": "wellcome-L0072917-broad-street.jpg",
+      "width": 720,
+      "height": 628,
+      "sha256": "2fd3f1b89862d440d61d248f0a483f515afc480e6009ce04b54081a5a7665a25"
+    },
+    "iiif_box": [
+      2360,
+      1784,
+      750,
+      655
+    ],
+    "detail_landmarks": {
+      "pump_circle": [
+        333,
+        234
+      ],
+      "nearby_tallies": [
+        333,
+        345
+      ]
+    },
+    "scope": "Human read of the museum-hosted crop. Center points are approximate. Original-map pixels are unmodified."
+  },
+  "installed": {
+    "request_sha256": "6deb6ceb9c2a556dbd234f9c8b55ffdada503045dedcd0807bb910731d427033",
+    "changed_field": "direction.layout.focus",
+    "control": {
+      "direction": {
+        "id": "artifact-inspection",
+        "surface": "editorial",
+        "title": "Artifact inspection",
+        "summary": "Lead with the whole cited object and its identity. Let the visitor reveal one feature, see where it belongs, and read what it tells us.",
+        "type": {
+          "display": "Gloock",
+          "body": "News Cycle",
+          "ratio": 3.5,
+          "tracking": -0.02,
+          "weight": 400,
+          "license": "OFL-1.1"
+        },
+        "palette": {
+          "ink": "#FFF1D6",
+          "paper": "#173532",
+          "accent": "#F3C77C"
+        },
+        "layout": {
+          "skeleton": "Pair the whole object with its name, supplied maker, date, material and source, and a single inspection control. Keep the detail and its annotation next to the control in reading order.",
+          "focus": "Give the object the largest area. Try a locator visible on disclosure to connect the detail to its place on the whole object.",
+          "desktop": "Use a wide object column and a narrower identity and annotation column. Keep the whole object visible when the detail opens.",
+          "mobile": "Fit the identity, whole object and inspection action in the first phone viewport. Open the readable detail and annotation in flow, with the same control available to close it.",
+          "rhythm": "Use #102623 for the caption surface and #B5C1AA for secondary facts. Adapt the palette to the supplied brand or material and check contrast. Keep annotation at a comfortable reading width."
+        },
+        "imagery": {
+          "subject": "Use the cited reproduction and base the detail on that same asset. Credit the source beside the object.",
+          "crop": "Preserve the original aspect ratio and edges in the opening view. Use a separate close-up for the selected feature while keeping the whole object available.",
+          "fallback": "If the detail pixels cannot support a legible reading, show the verified transcription or description in text and attribute it to the source."
+        },
+        "motion": {
+          "trigger": "The visitor opens or closes the detail by touch or keyboard.",
+          "effect": "Reveal the detail and annotation alongside a highlight at its location. Clear the highlight when closed.",
+          "duration_ms": 240,
+          "reduced": "Show or hide the same detail, locator and annotation immediately. Preserve focus and the expanded state."
+        },
+        "action": {
+          "instruction": "Use one native disclosure control with a visible focus state and an exposed expanded state. Let the same control reverse the action. Keep the annotation readable and distinguish the feature from any later interpretation. Leave out shopping controls and preset menus.",
+          "label": "Inspect [feature] / Close detail"
+        },
+        "why": "The whole object establishes context. A reversible detail connects one piece of evidence to the interpretation while keeping the visitor oriented.",
+        "sources": [
+          {
+            "url": "https://www.rijksmuseum.nl/en/collection/object/The-Threatened-Swan--22040f90565e730131983a44a85b989f",
+            "observation": "The object page leads with the reproduction and identity. Its separate data disclosure records the egg inscription, and its interpretation describes the later political reading.",
+            "strength": "evidence"
+          }
+        ],
+        "credit": "Rijksmuseum collection, The Threatened Swan (SK-A-4)"
+      },
+      "font_stylesheet": "https://fonts.googleapis.com/css2?family=Gloock%3Awght%40400&family=News+Cycle&display=swap",
+      "interaction": {
+        "accent_foreground": "#173532",
+        "easing": "ease-out",
+        "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+        "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+        "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+      },
+      "assumptions": [
+        "Use editorial as the surface.",
+        "Use only the project facts and assets in the brief."
+      ],
+      "questions": [],
+      "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px.Read design://patterns/image-detail for an executable disclosure. Keep its activation and return behavior, fill slots with verified content, and style from the brief. When your client cannot read resources, use the same whole-to-detail interaction with the explanation in the opening view. If a verified crop is supplied, display it undistorted. For a normalized source point (x,y) in a full image, measure the opened crop frame (W,H) and decoded image (Nw,Nh). Use scale s above max(W/Nw,H/Nh) for magnification. Set image width w=Nw*s and height h=Nh*s. In an overflow-hidden relative frame place the absolute image at left=max(W-w,min(0,W/2-x*w)) and top=max(H-h,min(0,H/2-y*h)). Use CSS pixel units and recalculate on open and resize. Check the actual target inside the crop and its annotation in view at phone and desktop widths. If no location is verified, keep the whole image and a sourced description."
+    },
+    "candidate": {
+      "direction": {
+        "id": "artifact-inspection",
+        "surface": "editorial",
+        "title": "Artifact inspection",
+        "summary": "Lead with the whole cited object and its identity. Let the visitor reveal one feature, see where it belongs, and read what it tells us.",
+        "type": {
+          "display": "Gloock",
+          "body": "News Cycle",
+          "ratio": 3.5,
+          "tracking": -0.02,
+          "weight": 400,
+          "license": "OFL-1.1"
+        },
+        "palette": {
+          "ink": "#FFF1D6",
+          "paper": "#173532",
+          "accent": "#F3C77C"
+        },
+        "layout": {
+          "skeleton": "Pair the whole object with its name, supplied maker, date, material and source, and a single inspection control. Keep the detail and its annotation next to the control in reading order.",
+          "focus": "Give the object the largest area. Try a locator visible on disclosure to connect the detail to its place on the whole object. For multiple verified marks, repeat a short named key beside each reading and at the corresponding edge of the crop. Keep the keys outside the reproduced image, close to the actual marks. Group readings and crop together, and keep both readings and the locator in the first opened view.",
+          "desktop": "Use a wide object column and a narrower identity and annotation column. Keep the whole object visible when the detail opens.",
+          "mobile": "Fit the identity, whole object and inspection action in the first phone viewport. Open the readable detail and annotation in flow, with the same control available to close it.",
+          "rhythm": "Use #102623 for the caption surface and #B5C1AA for secondary facts. Adapt the palette to the supplied brand or material and check contrast. Keep annotation at a comfortable reading width."
+        },
+        "imagery": {
+          "subject": "Use the cited reproduction and base the detail on that same asset. Credit the source beside the object.",
+          "crop": "Preserve the original aspect ratio and edges in the opening view. Use a separate close-up for the selected feature while keeping the whole object available.",
+          "fallback": "If the detail pixels cannot support a legible reading, show the verified transcription or description in text and attribute it to the source."
+        },
+        "motion": {
+          "trigger": "The visitor opens or closes the detail by touch or keyboard.",
+          "effect": "Reveal the detail and annotation alongside a highlight at its location. Clear the highlight when closed.",
+          "duration_ms": 240,
+          "reduced": "Show or hide the same detail, locator and annotation immediately. Preserve focus and the expanded state."
+        },
+        "action": {
+          "instruction": "Use one native disclosure control with a visible focus state and an exposed expanded state. Let the same control reverse the action. Keep the annotation readable and distinguish the feature from any later interpretation. Leave out shopping controls and preset menus.",
+          "label": "Inspect [feature] / Close detail"
+        },
+        "why": "The whole object establishes context. A reversible detail connects one piece of evidence to the interpretation while keeping the visitor oriented.",
+        "sources": [
+          {
+            "url": "https://www.rijksmuseum.nl/en/collection/object/The-Threatened-Swan--22040f90565e730131983a44a85b989f",
+            "observation": "The object page leads with the reproduction and identity. Its separate data disclosure records the egg inscription, and its interpretation describes the later political reading.",
+            "strength": "evidence"
+          }
+        ],
+        "credit": "Rijksmuseum collection, The Threatened Swan (SK-A-4)"
+      },
+      "font_stylesheet": "https://fonts.googleapis.com/css2?family=Gloock%3Awght%40400&family=News+Cycle&display=swap",
+      "interaction": {
+        "accent_foreground": "#173532",
+        "easing": "ease-out",
+        "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+        "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+        "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+      },
+      "assumptions": [
+        "Use editorial as the surface.",
+        "Use only the project facts and assets in the brief."
+      ],
+      "questions": [],
+      "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px.Read design://patterns/image-detail for an executable disclosure. Keep its activation and return behavior, fill slots with verified content, and style from the brief. When your client cannot read resources, use the same whole-to-detail interaction with the explanation in the opening view. If a verified crop is supplied, display it undistorted. For a normalized source point (x,y) in a full image, measure the opened crop frame (W,H) and decoded image (Nw,Nh). Use scale s above max(W/Nw,H/Nh) for magnification. Set image width w=Nw*s and height h=Nh*s. In an overflow-hidden relative frame place the absolute image at left=max(W-w,min(0,W/2-x*w)) and top=max(H-h,min(0,H/2-y*h)). Use CSS pixel units and recalculate on open and resize. Check the actual target inside the crop and its annotation in view at phone and desktop widths. If no location is verified, keep the whole image and a sourced description."
+    },
+    "release_direction": "object-hero"
+  },
+  "arms": {
+    "control": {
+      "generation": {
+        "arm": "control",
+        "commit": "fcc7b5b5bae73b17b701bae1d4ca4c88e81d10b8",
+        "elapsed_seconds": 53.69,
+        "empty_discoveries": [],
+        "model": "gpt-6.1-terra",
+        "effort": "low",
+        "thread_id": "01a209e9-524a-7052-a36b-da2ce844e102",
+        "usage": {
+          "input_tokens": 18136,
+          "cached_input_tokens": 13312,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2777,
+          "reasoning_output_tokens": 38
+        },
+        "brief_sha256": "6deb6ceb9c2a556dbd234f9c8b55ffdada503045dedcd0807bb910731d427033",
+        "prompt_sha256": "07dcc4cf52a42f9c46bb8c05a991a2e88a83d422cd70fe568539c1ed013f0f4d",
+        "reply_sha256": "33fa38d01ff0e31701a46acfb1fc2c060480b5af81e19d2462c440ecd8880161",
+        "trace_sha256": "304034cd4f4a460f9ec010bb4ecee75a67cc5fa9d7bcccd03f4729f6dae78005",
+        "html_sha256": "d96feee1f81c7d911ca6d929c04afafe2fe1181aa1f249bf9c6da3c2163fc5d9",
+        "assets": {
+          "full": true,
+          "detail": true
+        }
+      },
+      "renders": {
+        "renderer": "0.12.0",
+        "browser": "Chrome/157.0.8103.79",
+        "input_sha256": "d96feee1f81c7d911ca6d929c04afafe2fe1181aa1f249bf9c6da3c2163fc5d9",
+        "captures": {
+          "320": {
+            "viewport": 320,
+            "width": 320,
+            "height": 700,
+            "title": "John Snow’s map of the 1854 Soho outbreak",
+            "h1": "John Snow’s map of the Soho outbreak",
+            "loadedFonts": [
+              "Gloock",
+              "News Cycle"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- main:\n  - region \"John Snow’s map of the Soho outbreak\":\n    - figure:\n      - img \"The whole original print of John Snow’s map of the Soho outbreak.\"\n    - heading \"John Snow’s map of the Soho outbreak\" [level=1]\n    - paragraph: London, 1854 · Original print, 1855\n    - paragraph:\n      - text: John Snow.\n      - link \"Wellcome Collection\":\n        - /url: https://wellcomecollection.org/works/uxgfjt62\n      - text: \", Public Domain Mark.\"\n    - button \"Read the Broad Street detail\"\n    - status",
+            "status": "rendered",
+            "sha256": "93f20fd3c85490666ea0c445c74b9eb40191edd6c13dce3977cc2cf32d4f62e6",
+            "interaction": {
+              "checks": {
+                "uniqueAction": true,
+                "openingAction": true,
+                "openingArt": true,
+                "closedInitially": true,
+                "credits": true,
+                "keyFocus": true,
+                "boundedReveal": true,
+                "detailReached": false,
+                "noteImmediatelyVisible": false,
+                "overview": true,
+                "sameFocusedReturn": true,
+                "noOverflow": true,
+                "restored": true,
+                "touch": false,
+                "reduced": true,
+                "pageErrors": true,
+                "fullJourney": false
+              },
+              "opening": {
+                "source": [
+                  {
+                    "x": 16,
+                    "y": 16,
+                    "width": 288,
+                    "height": 267.3125,
+                    "fit": "contain"
+                  }
+                ],
+                "details": [],
+                "notes": [],
+                "scrollY": 0,
+                "overflow": false,
+                "credit": true,
+                "facts": true
+              },
+              "firstSample": {
+                "source": [
+                  {
+                    "x": 16,
+                    "y": 16,
+                    "width": 288,
+                    "height": 267.3125,
+                    "fit": "contain"
+                  },
+                  {
+                    "x": 36,
+                    "y": 1144.171875,
+                    "width": 160,
+                    "height": 148.5,
+                    "fit": "contain"
+                  }
+                ],
+                "details": [
+                  {
+                    "x": 16,
+                    "y": 639.828125,
+                    "width": 288,
+                    "height": 251.1875,
+                    "fit": "fill"
+                  }
+                ],
+                "notes": [
+                  {
+                    "text": "The circle identifies a public water pump.",
+                    "x": 36,
+                    "y": 964.609375,
+                    "width": 248,
+                    "height": 52.1875
+                  },
+                  {
+                    "text": "Each printed bar represents one recorded death.",
+                    "x": 36,
+                    "y": 1067.984375,
+                    "width": 248,
+                    "height": 52.1875
+                  }
+                ],
+                "scrollY": 0,
+                "overflow": false,
+                "credit": true,
+                "facts": true
+              },
+              "open": {
+                "source": [
+                  {
+                    "x": 16,
+                    "y": 16,
+                    "width": 288,
+                    "height": 267.3125,
+                    "fit": "contain"
+                  },
+                  {
+                    "x": 36,
+                    "y": 1144.171875,
+                    "width": 160,
+                    "height": 148.5,
+                    "fit": "contain"
+                  }
+                ],
+                "details": [
+                  {
+                    "x": 16,
+                    "y": 639.828125,
+                    "width": 288,
+                    "height": 251.1875,
+                    "fit": "fill"
+                  }
+                ],
+                "notes": [
+                  {
+                    "text": "The circle identifies a public water pump.",
+                    "x": 36,
+                    "y": 964.609375,
+                    "width": 248,
+                    "height": 52.1875
+                  },
+                  {
+                    "text": "Each printed bar represents one recorded death.",
+                    "x": 36,
+                    "y": 1067.984375,
+                    "width": 248,
+                    "height": 52.1875
+                  }
+                ],
+                "scrollY": 0,
+                "overflow": false,
+                "credit": true,
+                "facts": true
+              },
+              "projection": {
+                "pump_circle": {
+                  "status": "pass",
+                  "x": 149.2,
+                  "y": 733.4234673566879,
+                  "clearance": 93.59534235668787,
+                  "inViewport": false,
+                  "limits": {
+                    "left": 16,
+                    "right": 304,
+                    "top": 639.828125,
+                    "bottom": 891.015625
+                  }
+                },
+                "nearby_tallies": {
+                  "status": "pass",
+                  "x": 149.2,
+                  "y": 777.8212579617834,
+                  "clearance": 113.19436703821657,
+                  "inViewport": false,
+                  "limits": {
+                    "left": 16,
+                    "right": 304,
+                    "top": 639.828125,
+                    "bottom": 891.015625
+                  }
+                }
+              },
+              "frames": {
+                "before": {
+                  "file": "320.png",
+                  "sha256": "93f20fd3c85490666ea0c445c74b9eb40191edd6c13dce3977cc2cf32d4f62e6"
+                },
+                "open": {
+                  "file": "320-open.png",
+                  "sha256": "b2002031991d69d8aa8d62b26190a01e5494ead4295c3b65002c271a16ee39b1"
+                },
+                "closed": {
+                  "file": "320-closed.png",
+                  "sha256": "1d2ab32aae3ca7400f093474f7ba9fd5a585411ec5ee6ff63064bb57a44a302e"
+                },
+                "touch": {
+                  "file": "320-touch.png",
+                  "sha256": "d1d679291de09efc5d9fab1f90f7f19b4caa6d7bb5b10d58a371acd4de23b550"
+                }
+              }
+            }
+          },
+          "390": {
+            "viewport": 390,
+            "width": 390,
+            "height": 844,
+            "title": "John Snow’s map of the 1854 Soho outbreak",
+            "h1": "John Snow’s map of the Soho outbreak",
+            "loadedFonts": [
+              "Gloock",
+              "News Cycle"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- main:\n  - region \"John Snow’s map of the Soho outbreak\":\n    - figure:\n      - img \"The whole original print of John Snow’s map of the Soho outbreak.\"\n    - heading \"John Snow’s map of the Soho outbreak\" [level=1]\n    - paragraph: London, 1854 · Original print, 1855\n    - paragraph:\n      - text: John Snow.\n      - link \"Wellcome Collection\":\n        - /url: https://wellcomecollection.org/works/uxgfjt62\n      - text: \", Public Domain Mark.\"\n    - button \"Read the Broad Street detail\"\n    - status",
+            "status": "rendered",
+            "sha256": "b502f096667b9d550cf3d951c335e5d7114b85ecff444c3616c577b98c7d4751",
+            "interaction": {
+              "checks": {
+                "uniqueAction": true,
+                "openingAction": true,
+                "openingArt": true,
+                "closedInitially": true,
+                "credits": true,
+                "keyFocus": true,
+                "boundedReveal": true,
+                "detailReached": false,
+                "noteImmediatelyVisible": false,
+                "overview": true,
+                "sameFocusedReturn": true,
+                "noOverflow": true,
+                "restored": true,
+                "touch": false,
+                "reduced": true,
+                "pageErrors": true,
+                "fullJourney": false
+              },
+              "opening": {
+                "source": [
+                  {
+                    "x": 16,
+                    "y": 16,
+                    "width": 358,
+                    "height": 332.28125,
+                    "fit": "contain"
+                  }
+                ],
+                "details": [],
+                "notes": [],
+                "scrollY": 0,
+                "overflow": false,
+                "credit": true,
+                "facts": true
+              },
+              "firstSample": {
+                "source": [
+                  {
+                    "x": 16,
+                    "y": 16,
+                    "width": 358,
+                    "height": 332.28125,
+                    "fit": "contain"
+                  },
+                  {
+                    "x": 36,
+                    "y": 1244.109375,
+                    "width": 160,
+                    "height": 148.5,
+                    "fit": "contain"
+                  }
+                ],
+                "details": [
+                  {
+                    "x": 16,
+                    "y": 704.796875,
+                    "width": 358,
+                    "height": 312.25,
+                    "fit": "fill"
+                  }
+                ],
+                "notes": [
+                  {
+                    "text": "The circle identifies a public water pump.",
+                    "x": 36,
+                    "y": 1090.640625,
+                    "width": 318,
+                    "height": 26.09375
+                  },
+                  {
+                    "text": "Each printed bar represents one recorded death.",
+                    "x": 36,
+                    "y": 1167.921875,
+                    "width": 318,
+                    "height": 52.1875
+                  }
+                ],
+                "scrollY": 0,
+                "overflow": false,
+                "credit": true,
+                "facts": true
+              },
+              "open": {
+                "source": [
+                  {
+                    "x": 16,
+                    "y": 16,
+                    "width": 358,
+                    "height": 332.28125,
+                    "fit": "contain"
+                  },
+                  {
+                    "x": 36,
+                    "y": 1244.109375,
+                    "width": 160,
+                    "height": 148.5,
+                    "fit": "contain"
+                  }
+                ],
+                "details": [
+                  {
+                    "x": 16,
+                    "y": 704.796875,
+                    "width": 358,
+                    "height": 312.25,
+                    "fit": "fill"
+                  }
+                ],
+                "notes": [
+                  {
+                    "text": "The circle identifies a public water pump.",
+                    "x": 36,
+                    "y": 1090.640625,
+                    "width": 318,
+                    "height": 26.09375
+                  },
+                  {
+                    "text": "Each printed bar represents one recorded death.",
+                    "x": 36,
+                    "y": 1167.921875,
+                    "width": 318,
+                    "height": 52.1875
+                  }
+                ],
+                "scrollY": 0,
+                "overflow": false,
+                "credit": true,
+                "facts": true
+              },
+              "projection": {
+                "pump_circle": {
+                  "status": "pass",
+                  "x": 181.57499999999996,
+                  "y": 821.1448049363057,
+                  "clearance": 116.34792993630572,
+                  "inViewport": true,
+                  "limits": {
+                    "left": 16,
+                    "right": 374,
+                    "top": 704.796875,
+                    "bottom": 1017.046875
+                  }
+                },
+                "nearby_tallies": {
+                  "status": "pass",
+                  "x": 181.57499999999996,
+                  "y": 876.3354896496816,
+                  "clearance": 140.71138535031844,
+                  "inViewport": false,
+                  "limits": {
+                    "left": 16,
+                    "right": 374,
+                    "top": 704.796875,
+                    "bottom": 1017.046875
+                  }
+                }
+              },
+              "frames": {
+                "before": {
+                  "file": "390.png",
+                  "sha256": "b502f096667b9d550cf3d951c335e5d7114b85ecff444c3616c577b98c7d4751"
+                },
+                "open": {
+                  "file": "390-open.png",
+                  "sha256": "2447583d745fab51e92ea0ef5505adc7ce2395b36677850008ded9cc5bc6321c"
+                },
+                "closed": {
+                  "file": "390-closed.png",
+                  "sha256": "3daabbabe8954a3056d541d4586a441e8b72a23e7baa80bf595f0c5ff8decbe7"
+                },
+                "touch": {
+                  "file": "390-touch.png",
+                  "sha256": "8baebc191c109fa0b6dae7d7dade82c29783bb415171272c8f3d272fb2caac51"
+                }
+              }
+            }
+          },
+          "1440": {
+            "viewport": 1440,
+            "width": 1440,
+            "height": 900,
+            "title": "John Snow’s map of the 1854 Soho outbreak",
+            "h1": "John Snow’s map of the Soho outbreak",
+            "loadedFonts": [
+              "Gloock",
+              "News Cycle"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- main:\n  - region \"John Snow’s map of the Soho outbreak\":\n    - figure:\n      - img \"The whole original print of John Snow’s map of the Soho outbreak.\"\n    - heading \"John Snow’s map of the Soho outbreak\" [level=1]\n    - paragraph: London, 1854 · Original print, 1855\n    - paragraph:\n      - text: John Snow.\n      - link \"Wellcome Collection\":\n        - /url: https://wellcomecollection.org/works/uxgfjt62\n      - text: \", Public Domain Mark.\"\n    - button \"Read the Broad Street detail\"\n    - status",
+            "status": "rendered",
+            "sha256": "362e91df861308061197284add7ae83549b45b056d7a207b432902446927d237",
+            "interaction": {
+              "checks": {
+                "uniqueAction": true,
+                "openingAction": true,
+                "openingArt": true,
+                "closedInitially": true,
+                "credits": true,
+                "keyFocus": true,
+                "boundedReveal": true,
+                "detailReached": false,
+                "noteImmediatelyVisible": false,
+                "overview": true,
+                "sameFocusedReturn": true,
+                "noOverflow": true,
+                "restored": true,
+                "touch": false,
+                "reduced": true,
+                "pageErrors": true,
+                "fullJourney": false
+              },
+              "opening": {
+                "source": [
+                  {
+                    "x": 49.46875,
+                    "y": 40,
+                    "width": 883.4375,
+                    "height": 819.984375,
+                    "fit": "contain"
+                  }
+                ],
+                "details": [],
+                "notes": [],
+                "scrollY": 0,
+                "overflow": false,
+                "credit": true,
+                "facts": true
+              },
+              "firstSample": {
+                "source": [
+                  {
+                    "x": 49.46875,
+                    "y": 40,
+                    "width": 883.4375,
+                    "height": 819.984375,
+                    "fit": "contain"
+                  },
+                  {
+                    "x": 1064,
+                    "y": 1255.578125,
+                    "width": 208,
+                    "height": 193.046875,
+                    "fit": "contain"
+                  }
+                ],
+                "details": [
+                  {
+                    "x": 40,
+                    "y": 1040.515625,
+                    "width": 948.8125,
+                    "height": 827.5625,
+                    "fit": "fill"
+                  }
+                ],
+                "notes": [
+                  {
+                    "text": "The circle identifies a public water pump.",
+                    "x": 1064,
+                    "y": 1102.109375,
+                    "width": 304,
+                    "height": 26.09375
+                  },
+                  {
+                    "text": "Each printed bar represents one recorded death.",
+                    "x": 1064,
+                    "y": 1179.390625,
+                    "width": 304,
+                    "height": 52.1875
+                  }
+                ],
+                "scrollY": 0,
+                "overflow": false,
+                "credit": true,
+                "facts": true
+              },
+              "open": {
+                "source": [
+                  {
+                    "x": 49.46875,
+                    "y": 40,
+                    "width": 883.4375,
+                    "height": 819.984375,
+                    "fit": "contain"
+                  },
+                  {
+                    "x": 1064,
+                    "y": 1255.578125,
+                    "width": 208,
+                    "height": 193.046875,
+                    "fit": "contain"
+                  }
+                ],
+                "details": [
+                  {
+                    "x": 40,
+                    "y": 1040.515625,
+                    "width": 948.8125,
+                    "height": 827.5625,
+                    "fit": "fill"
+                  }
+                ],
+                "notes": [
+                  {
+                    "text": "The circle identifies a public water pump.",
+                    "x": 1064,
+                    "y": 1102.109375,
+                    "width": 304,
+                    "height": 26.09375
+                  },
+                  {
+                    "text": "Each printed bar represents one recorded death.",
+                    "x": 1064,
+                    "y": 1179.390625,
+                    "width": 304,
+                    "height": 52.1875
+                  }
+                ],
+                "scrollY": 0,
+                "overflow": false,
+                "credit": true,
+                "facts": true
+              },
+              "projection": {
+                "pump_circle": {
+                  "status": "pass",
+                  "x": 478.8257812499999,
+                  "y": 1348.874900477707,
+                  "clearance": 308.3592754777069,
+                  "inViewport": false,
+                  "limits": {
+                    "left": 40,
+                    "right": 988.8125,
+                    "top": 1040.515625,
+                    "bottom": 1868.078125
+                  }
+                },
+                "nearby_tallies": {
+                  "status": "pass",
+                  "x": 478.8257812499999,
+                  "y": 1495.1478901273886,
+                  "clearance": 372.93023487261144,
+                  "inViewport": false,
+                  "limits": {
+                    "left": 40,
+                    "right": 988.8125,
+                    "top": 1040.515625,
+                    "bottom": 1868.078125
+                  }
+                }
+              },
+              "frames": {
+                "before": {
+                  "file": "1440.png",
+                  "sha256": "362e91df861308061197284add7ae83549b45b056d7a207b432902446927d237"
+                },
+                "open": {
+                  "file": "1440-open.png",
+                  "sha256": "d186120309af63af1e4a2e8fd9601e9e8f1c5558db4a67ec91ac8d31a78eb10b"
+                },
+                "closed": {
+                  "file": "1440-closed.png",
+                  "sha256": "be089894d2b04a27ddae2593a4bdfdeb5f3f86dcc2b0f4622b759b9a41e3fe40"
+                },
+                "touch": {
+                  "file": "1440-touch.png",
+                  "sha256": "a1455a1e7f9731b22268ce9de8d7b4ed1136fbf8edf0b946745a592608a24a4d"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "candidate": {
+      "generation": {
+        "arm": "candidate",
+        "commit": "ddaa34592a70660ffa77d541727ddde9cf46a40b",
+        "elapsed_seconds": null,
+        "empty_discoveries": [
+          "list_mcp_resource_templates",
+          "list_mcp_resources"
+        ],
+        "model": "gpt-6.1-terra",
+        "effort": "low",
+        "thread_id": "01a209e9-524a-7b80-84ee-3bdfb1274d8e",
+        "usage": {
+          "input_tokens": 55055,
+          "cached_input_tokens": 45184,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3435,
+          "reasoning_output_tokens": 92
+        },
+        "brief_sha256": "6deb6ceb9c2a556dbd234f9c8b55ffdada503045dedcd0807bb910731d427033",
+        "prompt_sha256": "2040340199134ceb0c4fbf048fd223a4c99d777a41bf2f11781996343af7c022",
+        "reply_sha256": "b1666a93bbd64d447877929406c35857c145c87b4891ca208232cdc848c29fbb",
+        "trace_sha256": "118985f7bf70ee89b30abba4df71d7f1ee130d0956ee53b44ce389c29b3a154f",
+        "html_sha256": "4ba6bd84f5cae66292d38e00462e5e74396490724e9404725b3137728ee916aa",
+        "assets": {
+          "full": true,
+          "detail": true
+        }
+      },
+      "renders": {
+        "renderer": "0.12.0",
+        "browser": "Chrome/157.0.8103.79",
+        "input_sha256": "4ba6bd84f5cae66292d38e00462e5e74396490724e9404725b3137728ee916aa",
+        "captures": {
+          "320": {
+            "viewport": 320,
+            "width": 320,
+            "height": 700,
+            "title": "John Snow’s Soho map | Wellcome Collection",
+            "h1": "John Snow’s Soho map",
+            "loadedFonts": [
+              "Gloock",
+              "News Cycle"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- main:\n  - figure \"John Snow, 1855 Wellcome Collection · Public Domain Mark\":\n    - img \"The whole original print of John Snow’s map of the 1854 Soho outbreak.\"\n    - text: John Snow, 1855\n    - link \"Wellcome Collection\":\n      - /url: https://wellcomecollection.org/works/uxgfjt62\n    - text: · Public Domain Mark\n  - paragraph: Wellcome Collection\n  - heading \"John Snow’s Soho map\" [level=1]\n  - paragraph: The 1854 outbreak · Original print, 1855\n  - button \"Read the Broad Street detail\"\n  - paragraph:\n    - text: The circle beside\n    - strong: PUMP\n    - text: identifies a public water pump.\n  - paragraph: Each black bar records one death.\n  - status",
+            "status": "rendered",
+            "sha256": "b9d33c498740a727479d031fd0526726a1ece12d73cb2ad1f13c91e785314f0b",
+            "interaction": {
+              "checks": {
+                "uniqueAction": true,
+                "openingAction": true,
+                "openingArt": true,
+                "closedInitially": true,
+                "credits": true,
+                "keyFocus": true,
+                "boundedReveal": true,
+                "detailReached": false,
+                "noteImmediatelyVisible": true,
+                "overview": true,
+                "sameFocusedReturn": true,
+                "noOverflow": true,
+                "restored": true,
+                "touch": true,
+                "reduced": true,
+                "pageErrors": true,
+                "fullJourney": false
+              },
+              "opening": {
+                "source": [
+                  {
+                    "x": 16,
+                    "y": 105.46875,
+                    "width": 288,
+                    "height": 301,
+                    "fit": "contain"
+                  }
+                ],
+                "details": [],
+                "notes": [
+                  {
+                    "text": "The circle beside PUMP identifies a public water pump.",
+                    "x": 16,
+                    "y": 548.203125,
+                    "width": 288,
+                    "height": 49.25
+                  },
+                  {
+                    "text": "Each black bar records one death.",
+                    "x": 16,
+                    "y": 608.640625,
+                    "width": 288,
+                    "height": 24.625
+                  }
+                ],
+                "scrollY": 0,
+                "overflow": false,
+                "credit": true,
+                "facts": true
+              },
+              "firstSample": {
+                "source": [
+                  {
+                    "x": 16,
+                    "y": 105.46875,
+                    "width": 288,
+                    "height": 301,
+                    "fit": "contain"
+                  }
+                ],
+                "details": [],
+                "notes": [
+                  {
+                    "text": "The circle beside PUMP identifies a public water pump.",
+                    "x": 16,
+                    "y": 548.203125,
+                    "width": 288,
+                    "height": 49.25
+                  },
+                  {
+                    "text": "Each black bar records one death.",
+                    "x": 16,
+                    "y": 608.640625,
+                    "width": 288,
+                    "height": 24.625
+                  }
+                ],
+                "scrollY": 0,
+                "overflow": false,
+                "credit": true,
+                "facts": true
+              },
+              "open": {
+                "source": [
+                  {
+                    "x": 16,
+                    "y": 105.46875,
+                    "width": 288,
+                    "height": 301,
+                    "fit": "contain"
+                  },
+                  {
+                    "x": 35.1875,
+                    "y": 1200.0625,
+                    "width": 160,
+                    "height": 1486,
+                    "fit": "contain"
+                  }
+                ],
+                "details": [
+                  {
+                    "x": 32,
+                    "y": 674.25,
+                    "width": 272,
+                    "height": 237.234375,
+                    "fit": "fill"
+                  }
+                ],
+                "notes": [
+                  {
+                    "text": "The circle beside PUMP identifies a public water pump.",
+                    "x": 16,
+                    "y": 548.203125,
+                    "width": 288,
+                    "height": 49.25
+                  },
+                  {
+                    "text": "Each black bar records one death.",
+                    "x": 16,
+                    "y": 608.640625,
+                    "width": 288,
+                    "height": 24.625
+                  },
+                  {
+                    "text": "Circle beside PUMPA public water pump.",
+                    "x": 79.1875,
+                    "y": 1007.984375,
+                    "width": 205.625,
+                    "height": 51.640625
+                  },
+                  {
+                    "text": "Black barsEach printed bar represents one recorded death.",
+                    "x": 79.1875,
+                    "y": 1089.40625,
+                    "width": 205.625,
+                    "height": 76.265625
+                  }
+                ],
+                "scrollY": 0,
+                "overflow": false,
+                "credit": true,
+                "facts": true
+              },
+              "projection": {
+                "pump_circle": {
+                  "status": "pass",
+                  "x": 157.79999999999998,
+                  "y": 762.6462480095541,
+                  "clearance": 88.39624800955414,
+                  "inViewport": false,
+                  "limits": {
+                    "left": 32,
+                    "right": 304,
+                    "top": 674.25,
+                    "bottom": 911.484375
+                  }
+                },
+                "nearby_tallies": {
+                  "status": "pass",
+                  "x": 157.79999999999998,
+                  "y": 804.5778015525478,
+                  "clearance": 106.90657344745216,
+                  "inViewport": false,
+                  "limits": {
+                    "left": 32,
+                    "right": 304,
+                    "top": 674.25,
+                    "bottom": 911.484375
+                  }
+                }
+              },
+              "frames": {
+                "before": {
+                  "file": "320.png",
+                  "sha256": "b9d33c498740a727479d031fd0526726a1ece12d73cb2ad1f13c91e785314f0b"
+                },
+                "open": {
+                  "file": "320-open.png",
+                  "sha256": "c4fa4be13ee80ee5bef5d6f22d71c256376a9b220a14088f07788041ac732d23"
+                },
+                "closed": {
+                  "file": "320-closed.png",
+                  "sha256": "0ed62fea1d818885b2f671067082dfc0b1ccddde0b79ddbe7b0949083233f364"
+                },
+                "touch": {
+                  "file": "320-touch.png",
+                  "sha256": "3ff9c04120eb7f5e3fb8f1b751bb5bc66d311ba17572670d4e4ffa3dc195a41f"
+                }
+              }
+            }
+          },
+          "390": {
+            "viewport": 390,
+            "width": 390,
+            "height": 844,
+            "title": "John Snow’s Soho map | Wellcome Collection",
+            "h1": "John Snow’s Soho map",
+            "loadedFonts": [
+              "Gloock",
+              "News Cycle"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- main:\n  - figure \"John Snow, 1855 Wellcome Collection · Public Domain Mark\":\n    - img \"The whole original print of John Snow’s map of the 1854 Soho outbreak.\"\n    - text: John Snow, 1855\n    - link \"Wellcome Collection\":\n      - /url: https://wellcomecollection.org/works/uxgfjt62\n    - text: · Public Domain Mark\n  - paragraph: Wellcome Collection\n  - heading \"John Snow’s Soho map\" [level=1]\n  - paragraph: The 1854 outbreak · Original print, 1855\n  - button \"Read the Broad Street detail\"\n  - paragraph:\n    - text: The circle beside\n    - strong: PUMP\n    - text: identifies a public water pump.\n  - paragraph: Each black bar records one death.\n  - status",
+            "status": "rendered",
+            "sha256": "a1d3c595fe6dff501844cfd1cd2c671db66ae0ad3612606716c8437126c7f3b3",
+            "interaction": {
+              "checks": {
+                "uniqueAction": true,
+                "openingAction": true,
+                "openingArt": true,
+                "closedInitially": true,
+                "credits": true,
+                "keyFocus": true,
+                "boundedReveal": true,
+                "detailReached": false,
+                "noteImmediatelyVisible": true,
+                "overview": true,
+                "sameFocusedReturn": true,
+                "noOverflow": true,
+                "restored": true,
+                "touch": true,
+                "reduced": true,
+                "pageErrors": true,
+                "fullJourney": false
+              },
+              "opening": {
+                "source": [
+                  {
+                    "x": 16,
+                    "y": 107.9375,
+                    "width": 358,
+                    "height": 362.90625,
+                    "fit": "contain"
+                  }
+                ],
+                "details": [],
+                "notes": [
+                  {
+                    "text": "The circle beside PUMP identifies a public water pump.",
+                    "x": 16,
+                    "y": 591.015625,
+                    "width": 331.625,
+                    "height": 49.25
+                  },
+                  {
+                    "text": "Each black bar records one death.",
+                    "x": 16,
+                    "y": 651.453125,
+                    "width": 331.625,
+                    "height": 24.625
+                  }
+                ],
+                "scrollY": 0,
+                "overflow": false,
+                "credit": true,
+                "facts": true
+              },
+              "firstSample": {
+                "source": [
+                  {
+                    "x": 16,
+                    "y": 107.9375,
+                    "width": 358,
+                    "height": 362.90625,
+                    "fit": "contain"
+                  }
+                ],
+                "details": [],
+                "notes": [
+                  {
+                    "text": "The circle beside PUMP identifies a public water pump.",
+                    "x": 16,
+                    "y": 591.015625,
+                    "width": 331.625,
+                    "height": 49.25
+                  },
+                  {
+                    "text": "Each black bar records one death.",
+                    "x": 16,
+                    "y": 651.453125,
+                    "width": 331.625,
+                    "height": 24.625
+                  }
+                ],
+                "scrollY": 0,
+                "overflow": false,
+                "credit": true,
+                "facts": true
+              },
+              "open": {
+                "source": [
+                  {
+                    "x": 16,
+                    "y": 107.9375,
+                    "width": 358,
+                    "height": 362.90625,
+                    "fit": "contain"
+                  },
+                  {
+                    "x": 35.1875,
+                    "y": 1303.9375,
+                    "width": 160,
+                    "height": 1486,
+                    "fit": "contain"
+                  }
+                ],
+                "details": [
+                  {
+                    "x": 32,
+                    "y": 717.0625,
+                    "width": 342,
+                    "height": 298.296875,
+                    "fit": "fill"
+                  }
+                ],
+                "notes": [
+                  {
+                    "text": "The circle beside PUMP identifies a public water pump.",
+                    "x": 16,
+                    "y": 591.015625,
+                    "width": 331.625,
+                    "height": 49.25
+                  },
+                  {
+                    "text": "Each black bar records one death.",
+                    "x": 16,
+                    "y": 651.453125,
+                    "width": 331.625,
+                    "height": 24.625
+                  },
+                  {
+                    "text": "Circle beside PUMPA public water pump.",
+                    "x": 79.1875,
+                    "y": 1111.859375,
+                    "width": 275.625,
+                    "height": 51.640625
+                  },
+                  {
+                    "text": "Black barsEach printed bar represents one recorded death.",
+                    "x": 79.1875,
+                    "y": 1193.28125,
+                    "width": 275.625,
+                    "height": 76.265625
+                  }
+                ],
+                "scrollY": 0,
+                "overflow": false,
+                "credit": true,
+                "facts": true
+              },
+              "projection": {
+                "pump_circle": {
+                  "status": "pass",
+                  "x": 190.17499999999998,
+                  "y": 828.211335589172,
+                  "clearance": 111.148835589172,
+                  "inViewport": true,
+                  "limits": {
+                    "left": 32,
+                    "right": 374,
+                    "top": 717.0625,
+                    "bottom": 1015.359375
+                  }
+                },
+                "nearby_tallies": {
+                  "status": "pass",
+                  "x": 190.17499999999998,
+                  "y": 880.935783240446,
+                  "clearance": 134.42359175955403,
+                  "inViewport": false,
+                  "limits": {
+                    "left": 32,
+                    "right": 374,
+                    "top": 717.0625,
+                    "bottom": 1015.359375
+                  }
+                }
+              },
+              "frames": {
+                "before": {
+                  "file": "390.png",
+                  "sha256": "a1d3c595fe6dff501844cfd1cd2c671db66ae0ad3612606716c8437126c7f3b3"
+                },
+                "open": {
+                  "file": "390-open.png",
+                  "sha256": "ba2722d3954355cdd7df19c757032cf940322f8790876102f50014b0968a2a68"
+                },
+                "closed": {
+                  "file": "390-closed.png",
+                  "sha256": "51e25cfc1c10e142800ff67cf5cdc22d873f6aab7ac7924f6b95907bdb6ec173"
+                },
+                "touch": {
+                  "file": "390-touch.png",
+                  "sha256": "3b1d41266e256eb3aeb16e328742a3d350d79179c2910f7e61cc6a79565ed566"
+                }
+              }
+            }
+          },
+          "1440": {
+            "viewport": 1440,
+            "width": 1440,
+            "height": 906,
+            "title": "John Snow’s Soho map | Wellcome Collection",
+            "h1": "John Snow’s Soho map",
+            "loadedFonts": [
+              "Gloock",
+              "News Cycle"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- main:\n  - figure \"John Snow, 1855 Wellcome Collection · Public Domain Mark\":\n    - img \"The whole original print of John Snow’s map of the 1854 Soho outbreak.\"\n    - text: John Snow, 1855\n    - link \"Wellcome Collection\":\n      - /url: https://wellcomecollection.org/works/uxgfjt62\n    - text: · Public Domain Mark\n  - paragraph: Wellcome Collection\n  - heading \"John Snow’s Soho map\" [level=1]\n  - paragraph: The 1854 outbreak · Original print, 1855\n  - button \"Read the Broad Street detail\"\n  - paragraph:\n    - text: The circle beside\n    - strong: PUMP\n    - text: identifies a public water pump.\n  - paragraph: Each black bar records one death.\n  - status",
+            "status": "rendered",
+            "sha256": "7a28dba842700dd58269f0ea8378fdc2a051f26c643a3ed20348835e6419e80d",
+            "interaction": {
+              "checks": {
+                "uniqueAction": true,
+                "openingAction": true,
+                "openingArt": true,
+                "closedInitially": true,
+                "credits": true,
+                "keyFocus": true,
+                "boundedReveal": true,
+                "detailReached": false,
+                "noteImmediatelyVisible": true,
+                "overview": true,
+                "sameFocusedReturn": true,
+                "noOverflow": true,
+                "restored": true,
+                "touch": true,
+                "reduced": true,
+                "pageErrors": true,
+                "fullJourney": false
+              },
+              "opening": {
+                "source": [
+                  {
+                    "x": 70.46875,
+                    "y": 36,
+                    "width": 866.21875,
+                    "height": 804,
+                    "fit": "contain"
+                  }
+                ],
+                "details": [],
+                "notes": [
+                  {
+                    "text": "The circle beside PUMP identifies a public water pump.",
+                    "x": 1014.34375,
+                    "y": 377.828125,
+                    "width": 331.625,
+                    "height": 49.25
+                  },
+                  {
+                    "text": "Each black bar records one death.",
+                    "x": 1014.34375,
+                    "y": 438.265625,
+                    "width": 331.625,
+                    "height": 24.625
+                  }
+                ],
+                "scrollY": 0,
+                "overflow": false,
+                "credit": true,
+                "facts": true
+              },
+              "firstSample": {
+                "source": [
+                  {
+                    "x": 70.46875,
+                    "y": 36,
+                    "width": 866.21875,
+                    "height": 804,
+                    "fit": "contain"
+                  }
+                ],
+                "details": [],
+                "notes": [
+                  {
+                    "text": "The circle beside PUMP identifies a public water pump.",
+                    "x": 1014.34375,
+                    "y": 377.828125,
+                    "width": 331.625,
+                    "height": 49.25
+                  },
+                  {
+                    "text": "Each black bar records one death.",
+                    "x": 1014.34375,
+                    "y": 438.265625,
+                    "width": 331.625,
+                    "height": 24.625
+                  }
+                ],
+                "scrollY": 0,
+                "overflow": false,
+                "credit": true,
+                "facts": true
+              },
+              "open": {
+                "source": [
+                  {
+                    "x": 70.46875,
+                    "y": 36,
+                    "width": 866.21875,
+                    "height": 804,
+                    "fit": "contain"
+                  },
+                  {
+                    "x": 1033.515625,
+                    "y": 1218.609375,
+                    "width": 208,
+                    "height": 1486,
+                    "fit": "contain"
+                  }
+                ],
+                "details": [
+                  {
+                    "x": 36,
+                    "y": 937.9375,
+                    "width": 900,
+                    "height": 785,
+                    "fit": "fill"
+                  }
+                ],
+                "notes": [
+                  {
+                    "text": "The circle beside PUMP identifies a public water pump.",
+                    "x": 1014.34375,
+                    "y": 377.828125,
+                    "width": 331.625,
+                    "height": 49.25
+                  },
+                  {
+                    "text": "Each black bar records one death.",
+                    "x": 1014.34375,
+                    "y": 438.265625,
+                    "width": 331.625,
+                    "height": 24.625
+                  },
+                  {
+                    "text": "Circle beside PUMPA public water pump.",
+                    "x": 1077.515625,
+                    "y": 1026.53125,
+                    "width": 307.28125,
+                    "height": 51.640625
+                  },
+                  {
+                    "text": "Black barsEach printed bar represents one recorded death.",
+                    "x": 1077.515625,
+                    "y": 1107.953125,
+                    "width": 307.28125,
+                    "height": 76.265625
+                  }
+                ],
+                "scrollY": 0,
+                "overflow": false,
+                "credit": true,
+                "facts": true
+              },
+              "projection": {
+                "pump_circle": {
+                  "status": "pass",
+                  "x": 452.24999999999994,
+                  "y": 1230.4375,
+                  "clearance": 292.5,
+                  "inViewport": false,
+                  "limits": {
+                    "left": 36,
+                    "right": 936,
+                    "top": 937.9375,
+                    "bottom": 1722.9375
+                  }
+                },
+                "nearby_tallies": {
+                  "status": "pass",
+                  "x": 452.24999999999994,
+                  "y": 1369.1875,
+                  "clearance": 353.75,
+                  "inViewport": false,
+                  "limits": {
+                    "left": 36,
+                    "right": 936,
+                    "top": 937.9375,
+                    "bottom": 1722.9375
+                  }
+                }
+              },
+              "frames": {
+                "before": {
+                  "file": "1440.png",
+                  "sha256": "7a28dba842700dd58269f0ea8378fdc2a051f26c643a3ed20348835e6419e80d"
+                },
+                "open": {
+                  "file": "1440-open.png",
+                  "sha256": "d3392908be5e4966ffe361696e1503593178c6ff55cddc6f4948262a3d6a2ccf"
+                },
+                "closed": {
+                  "file": "1440-closed.png",
+                  "sha256": "f775cb4af8c9a5e6b480e4d3bbc4666b636f11c5d4374af73c73be0d92664d2c"
+                },
+                "touch": {
+                  "file": "1440-touch.png",
+                  "sha256": "bd4aa95b231947d160d39d3c73543702ad251e58bdea787fe204df97cc5e083b"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "rejected_generation_attempts": [
+    {
+      "cell": "control-plugin-inventory-attempt",
+      "trace_sha256": "c7857cf551ac7c806afedb6b289508fdbeee00266c65e69eddea20d1da8d7edc",
+      "tool_calls": [
+        "list_mcp_resource_templates",
+        "list_mcp_resources"
+      ],
+      "usage": [
+        {
+          "input_tokens": 50578,
+          "cached_input_tokens": 28800,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3427,
+          "reasoning_output_tokens": 17
+        }
+      ]
+    },
+    {
+      "cell": "cells-before-plugin-isolation/wellcome/control",
+      "trace_sha256": "8f19515d5d6fa448c84ccb54bf3d7635ae28f04bb94bd6eb5ad724a2ab8275d2",
+      "tool_calls": [
+        "list_mcp_resource_templates",
+        "list_mcp_resources"
+      ],
+      "usage": [
+        {
+          "input_tokens": 72397,
+          "cached_input_tokens": 49536,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3010,
+          "reasoning_output_tokens": 35
+        }
+      ]
+    },
+    {
+      "cell": "cells-before-plugin-isolation/wellcome/candidate",
+      "trace_sha256": "1f3b4176b7a70e04a441e0790aa9959c340346e237d3babbd57ac71be4a5f946",
+      "tool_calls": [],
+      "usage": [
+        {
+          "input_tokens": 19090,
+          "cached_input_tokens": 8960,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3003,
+          "reasoning_output_tokens": 28
+        }
+      ]
+    }
+  ],
+  "tests": "75 passed in the experimental source direction suite",
+  "candidate_wheel": {
+    "commit": "ddaa34592a70660ffa77d541727ddde9cf46a40b",
+    "files": {
+      "design_mcp/__init__.py": "4b6e7d73f7f2fe01ae460f58c2a2ab586243e68f2528e66ec29fec48defece0d",
+      "design_mcp/cli.py": "e045323969ed6dbc8ad3a62199f7bb0a15a1464adc44875ce8c59db22ce223be",
+      "design_mcp/corpus.py": "be6772f134c2e969f521cdd7043f5729b500f045a426fea16642bcecd8c0b36f",
+      "design_mcp/data/anti_generic_system.json": "32959d994d1294b70374303ea282c347361c1a7d01b0365376e9b66aae1ac37f",
+      "design_mcp/data/anti_pattern_fixes.json": "8818108671dc8761562819a9047adeb7907714e9bfa2d23d5d27ef9c919445b0",
+      "design_mcp/data/behavioral_templates.json": "c3f3f2fbe970fc5ceb3015bc8aad9bec81f90cab7547e6893b2f30fa767e82a9",
+      "design_mcp/data/component_code.json": "1667bba1a48c0dc4df13384ea1334e02aa34614e78d7eac92e9eaa2898f29f1a",
+      "design_mcp/data/decision_trees.json": "ea0061ab858cef42f878c7fba8b2a471150cecde8f50820909222cc6185fc2c7",
+      "design_mcp/data/decision_trees_indexed.json": "a113d248ebd219781b0cf946349fd06a0d9bbcfe63d5755414736a7c81603a14",
+      "design_mcp/data/detail-disclosure.html": "d66d9ef6c06b98bd7579a64f25a38002a6913dfd58cea2b0dec133cd189a3ab7",
+      "design_mcp/data/directions.json": "7199ae58df7a5482195cfa391282ca9b6cf0a57b0f6dbe95d236a1714ee37ef2",
+      "design_mcp/data/layout_templates.json": "cd9f616aabbd8b7cd8a87c53f363c2a93c96df8e76b1de0f6f2499481685501f",
+      "design_mcp/data/libraries.json": "64f77c98ee11772bd357b6a00892d845f1b93095feb7f6932d8a0a7275749d03",
+      "design_mcp/data/taxonomy.json": "752dd0ec6bf1c7dbdc79b3682964c875e09f47ed959b7fa44d45dcacad3ab99e",
+      "design_mcp/data/tokens/semantic_tokens.json": "36e637664b7896edfde2c6f7084a7782b1f7ad2fd39784abde7067e88cef5d27",
+      "design_mcp/data/tokens/token_sets.json": "4bdd4e0875e71eeb366d2fdc36323ee1d7522896dc87f6a9e15ba01a5c7813ac",
+      "design_mcp/data/visual_recipes.json": "ef2f8876d44e738a1de47dd7f1c8bcf07bcd9e48867e8c407dd5eb7fb753fa4d",
+      "design_mcp/database.py": "d69ab504317920277fd577fc02246eaa944d1e1952f9b2365fe0c1ab6a8c3d6e",
+      "design_mcp/design_checks.py": "556ad3a69ae2874e2aea50ff2db84fa4f9f4fa7ce7396a3e5f1a096dbed416bd",
+      "design_mcp/desktop_review.py": "56268a306ef2bf394222b0c1e1bb61e7f1beed4b049f335c54ae7a36aa66d3c5",
+      "design_mcp/detail_resource.py": "bd260b77788a82247a938e3c8a8dd980fc6b264b2245df2da79dec4bb90f4d27",
+      "design_mcp/direction_records.py": "ec674083df079ce8ce7579c37c26dc84612a1db76e3f7387badfb66077b5070f",
+      "design_mcp/directions.py": "40dddcc2f1d506bc5440221d8a2e550127cc8640f25195048e112263991ca695",
+      "design_mcp/doctor.py": "ca36aa77fcd90b10426bd3aadc2f928421cd92f7ab00c1c93c3fdf8ffbbe0a75",
+      "design_mcp/enrichment.py": "3b48d6ee002773885a5c913004296c3892d1e1f887843d4bba8577d9f9a6fba4",
+      "design_mcp/models/__init__.py": "1fcfe134b8dd13ae3d7a5ff95cfa16479e2f06cd0860cdbf186fc5bfa6d467b0",
+      "design_mcp/models/analyzer.py": "62e00840547547f25aa34f9e395d8d300c6fe8da563638372c552f3d2efdbfb1",
+      "design_mcp/models/quality_scorer.py": "c5e3ad10486f458260748e17267fae303c37a3ece5f14c30f7470fc13dc7e8de",
+      "design_mcp/models/train_scorer.py": "be6be900cb27743e9110e485211dede5d859eb602eb01aa7dbbb9d2daea83ca8",
+      "design_mcp/models/visual_analyzer.py": "74303881e8c0fae24bffd64a23508409ed07b5ed8f163fa39713b1c3d64ce735",
+      "design_mcp/palettes.py": "d2840e1a3d81ae0d7aadbfda51137eb4988646903e05c55a68d4cb23ae8bdcdf",
+      "design_mcp/resources.py": "c8279e50688eae6db2a9a5b562998347629e4a5eff39578934c1427a9fa269cb",
+      "design_mcp/review/__init__.py": "3eb559a8193dc49c195d527fe8fbdba7ed82772eda8997ee8707b7efc8756b02",
+      "design_mcp/review/address.py": "224ed5b975df8f959d9f3d44b5703193cbbb84d5b3a3b14e36c774bcdb010c22",
+      "design_mcp/review/checks.py": "78fb3eb206e0984a6e1d90ddeb4656dff0983a7957c55e2666852723ff242dee",
+      "design_mcp/review/cli.py": "cdac94a072d7ba5076e1d3e5cfe2d24e1bce65845487a0d5931c158d43260d06",
+      "design_mcp/review/direct_capture.py": "9381fa0926fee06bacc1deed9113a1aef1400ec8bc9719ce5907869abc42bf2f",
+      "design_mcp/review/evidence.py": "1c0f0881799cf80a206f93a5c18a73b07d69c660158229486e7eece84d012966",
+      "design_mcp/review/extension/collector.js": "d137cc99d85f652d5d204a83eb867bffe4e3e58002fb79b055afb71cb117e3c2",
+      "design_mcp/review/extension/manifest.json": "827bc1580d45a4c5cdb5770ce1b0ba9f69c8a1a9a3c87fa4f1120723b3e57941",
+      "design_mcp/review/extension/mask.js": "cd384a9e08104381a4fa2da57bfca445024864978e2064a38efa71ed4ac564a0",
+      "design_mcp/review/extension/popup.css": "e870c8d1351b8b5f2627f1b009e25ab5c469f6a7e48e62528b38e0c5e22a469c",
+      "design_mcp/review/extension/popup.html": "9f444dbfc73c544046a17fcd41fc8d28902a471e4440ffc0319c997744727c51",
+      "design_mcp/review/extension/popup.js": "d79f68a03e805d61740e70405ba5deca0dbcf5b7b8d9378a7f739c20a16c9771",
+      "design_mcp/review/host.py": "2a0afc74bcb75c9dd8f27737af9430c3c2ea10d1f07801a177604558d73b2206",
+      "design_mcp/review/isolated.py": "2ce72bfcd3d4d716135a8516506ccbd4de9c3260a1b00d20592dc79b9b2e60b9",
+      "design_mcp/review/network.py": "f3b2262ea03e8216de039949d9cc0da65ea35092419f3958e5844e9894b3947e",
+      "design_mcp/review/pipeline.py": "979620bc6539c220a60030213ad0fe79703099486f655da245638867abf6ba3b",
+      "design_mcp/review/preview.py": "eeca7ac9f6095c5b1c445964b5b36df9397da9b2ec481f8ec0395a822ac47cf5",
+      "design_mcp/review/tool.py": "813a31ff553a60e2e9a3b3aaffce894f9b27e234e5b553813c43e89d96f8bdc1",
+      "design_mcp/schema.py": "a819d916a43edf6f104b8a9ee99f7e5b389ca3af89d40742a44830fca6e4075c",
+      "design_mcp/server.py": "f2307139d34542afba76ceddc6d978eac8a5642ec23bf91347eb6d97b74ed5c6"
+    },
+    "wheel_sha256": "32afa36ad15cbed1cd7a976d8105994cd6d60538729eecda273e0c84fc645ad0"
+  },
+  "standard_flags": [
+    "shell_tool=false",
+    "apps=false",
+    "plugins=false",
+    "remote_plugin=false",
+    "web_search=disabled"
+  ],
+  "drafts_qualified": 0,
+  "blind_scored": false
+}
