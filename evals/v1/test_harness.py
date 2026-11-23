@@ -12,6 +12,25 @@ from probe_competitors import decode_results, ranked_identifiers
 
 
 class BenchmarkTests(unittest.TestCase):
+    def test_uiux_comparator_requires_a_nonempty_upstream_result(self):
+        message = {"type": "item.completed", "item": {"type": "agent_message",
+                   "text": "```html\n<body>Settings</body>\n```"}}
+        turn = {"type": "turn.completed", "usage": {"input_tokens": 10}}
+
+        def parse(body, **flags):
+            call = {"type": "item.completed", "item": {"type": "mcp_tool_call", "server": "uiux-pro-max",
+                    "tool": "design_guidance", "status": "completed",
+                    "result": {"content": [{"type": "text", "text": body}], **flags}}}
+            return parse_cell([call, message, turn], True, "uiux-pro-max", "design_guidance")[0]["status"]
+
+        design_system = "## Design System: VISITOR SETTINGS\n\n### Pattern\n- **Name:** Compact workspace"
+        search = "## UI Pro Max Search Results\n**Found:** 1 results\n\n### Result 1\n- **Name:** Locale selector"
+        empty = "## UI Pro Max Search Results\n**Found:** 0 results\n\nNo matches."
+        self.assertEqual(parse(design_system), "passed")
+        self.assertEqual(parse(search), "passed")
+        self.assertEqual(parse(empty), "uiux-guidance-missing")
+        self.assertEqual(parse(design_system, isError=True), "uiux-guidance-missing")
+
     def test_competitor_probes_distinguish_ranked_rows_from_empty_results(self):
         def text_reply(*blocks):
             return SimpleNamespace(structured_content=None,

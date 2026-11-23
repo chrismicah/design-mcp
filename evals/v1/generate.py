@@ -194,6 +194,27 @@ def library_retrieval(calls, mode):
     return sorted(read), "passed" if read else "design-library-result-unread"
 
 
+def uiux_guidance_received(calls):
+    for call in calls:
+        reply = call.get("result")
+        if not isinstance(reply, dict) or reply.get("is_error") or reply.get("isError"):
+            continue
+        blocks = reply.get("content")
+        if not isinstance(blocks, list):
+            continue
+        for block in blocks:
+            if not isinstance(block, dict) or block.get("type") != "text" or not isinstance(block.get("text"), str):
+                continue
+            body = block["text"].strip()
+            if (body.startswith("## Design System: ") and re.search(r"^### Pattern\n- \*\*Name:\*\* \S", body, re.M)):
+                return True
+            if (body.startswith("## UI Pro Max Search Results\n")
+                    and re.search(r"\*\*Found:\*\* [1-9][0-9]* results?\b", body)
+                    and re.search(r"^### Result 1\n- \*\*", body, re.M)):
+                return True
+    return False
+
+
 def parse_cell(events, expect_mcp, server_name="design-mcp", expected_tool="direct", expected_direction=None,
                required_shadcn_items=(), required_response_text_sha256=None, expected_direct_brief=None,
                design_library_mode=None):
@@ -256,6 +277,10 @@ def parse_cell(events, expect_mcp, server_name="design-mcp", expected_tool="dire
         result["read_design_library_ids"] = read
         if result["status"] == "passed":
             result["status"] = status
+    if expect_mcp and server_name == "uiux-pro-max":
+        result["uiux_guidance_received"] = uiux_guidance_received(eligible_calls)
+        if result["status"] == "passed" and not result["uiux_guidance_received"]:
+            result["status"] = "uiux-guidance-missing"
     match = re.fullmatch(r"\s*```html\s*\n(.*)\n```\s*", messages[-1], re.S | re.I) if messages else None
     html = match.group(1) + "\n" if match else None
     if not html or not re.search(r"<body(?:\s[^>]*)?>", html, re.I):

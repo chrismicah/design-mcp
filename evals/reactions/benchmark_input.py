@@ -9,6 +9,7 @@ from pilot import generate
 HASH_FIELDS = ("prompt_sha256", "html_sha256", "trace_sha256")
 GENERATOR_FIELDS = ("client", "model", "effort", "shell_tool")
 LIBRARY_MODES = {"design-library-keyword": "keyword", "design-library-hybrid": "hybrid"}
+NON_DESIGN_ARMS = {"none", "shadcn", "uiux-pro-max", *LIBRARY_MODES}
 
 
 def control_conditions(receipt):
@@ -29,7 +30,7 @@ def load_spec(path):
     if not all(isinstance(spec[field], str) and spec[field].strip() for field in ("brief", "task")):
         raise ValueError("The benchmark needs a generation brief and a critic task")
     directions = spec.get("directions", {})
-    design_arms = set(arms) - {"none", "shadcn", *LIBRARY_MODES}
+    design_arms = set(arms) - NON_DESIGN_ARMS
     if (not isinstance(directions, dict) or not directions.keys() <= design_arms
             or not all(isinstance(value, str) and re.fullmatch(slug, value) for value in directions.values())):
         raise ValueError("Expected direction IDs must refer to Design MCP arms")
@@ -100,6 +101,8 @@ def benchmark_cells(cells, spec, *, pinned_only=False):
         if arm == "shadcn":
             config = json.loads((generate.BASE_DIR / "shadcn-maintenance.json").read_bytes())
             server, tools, items = config["name"], config["expected_tools"], config["required_shadcn_items"]
+        elif arm == "uiux-pro-max":
+            server, tools = "uiux-pro-max", "design_guidance"
         elif mode:
             config = json.loads((generate.BASE_DIR / "design-library-visual.json").read_bytes())
             server, tools = config["name"], config["expected_tools"]
