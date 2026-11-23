@@ -40,3 +40,21 @@ for Albany and the three earlier practice briefs on both arms. The
 installed reply is ready for paired, unedited generation. [Installed
 receipt](../evidence/benchmark-v1/compact-status-guidance-installed.json)
 [Hosted installs](https://github.com/chrismicah/design-mcp/actions/runs/45290625702)
+
+## Albany browser comparison
+
+Both unedited drafts passed 87 of 87 Playwriter checks at 320, 390 and
+1440 CSS px. Both exposed their status message on preview, cleared it
+on return, and focused the named editable note in the first frame.
+Neither made a post-load request. The treatment's preview button ends
+37 px higher at 320, 33 px higher at 390 and 105 px lower at 1440.
+On desktop it is still fully inside the opening view. Both versions
+pass the measured usability floor.
+
+The first replay stopped because the validation locator matched the
+treatment's inline message and status node. The locator was corrected
+and the exact HTML was replayed. All 1,110 earlier check outcomes
+matched. The browser evidence is separate from screen-reader speech
+and the independent visual review. [Exact browser
+receipt](../evidence/benchmark-v1/albany-installed-compact-status-browser.json)
+[Hosted run](https://github.com/chrismicah/design-mcp/actions/runs/45292150417)
