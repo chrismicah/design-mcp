@@ -43,7 +43,7 @@ jobs:
           PRACTICE_RENDER_HARNESS="$GITHUB_WORKSPACE/browser-harness/evals/wellcome_replay" \
           CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox \
           "$RUNNER_TEMP/design-review/bin/python" evals/practice_call_board/playback.py \
-            --cells "$RUNNER_TEMP/cells" --case tacoma-eye-care \
+            --cells "$RUNNER_TEMP/cells" \
             --playwriter "$RUNNER_TEMP/playwriter/node_modules/.bin/playwriter" \
             --chrome "$RUNNER_TEMP/browser/chrome-linux64/chrome" \
             --scratch "$RUNNER_TEMP/practice-browser"

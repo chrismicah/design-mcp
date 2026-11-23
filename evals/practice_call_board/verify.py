@@ -73,13 +73,17 @@ def verify(source, staged):
                             "form": interaction["initialForm"], "first_frame": interaction["firstFrame"]}
         rows[arm] = {"html_sha256": meta["html_sha256"], "screens": sizes,
                      "eligible": all(not size["failed"] and not size["request_count"] for size in sizes.values())}
-    assert rows["call-board"]["eligible"], "The authored healthy control no longer passes."
+    if source.name == "tacoma-eye-care":
+        assert rows["call-board"]["eligible"], "The authored healthy control no longer passes."
     return rows
 
 
 if __name__ == "__main__":
-    root = Path(__file__).resolve().parent / "cells/tacoma-eye-care"
+    root = Path(__file__).resolve().parent / "cells"
     cells = Path(sys.argv[1])
-    result = verify(root, cells / "tacoma-eye-care")
-    (cells / "verified-summary.json").write_text(json.dumps(result, indent=2) + "\n")
-    print("Verified trace identities and capture hashes:", {arm: row["eligible"] for arm, row in result.items()})
+    for case in sorted(p for p in root.iterdir() if p.is_dir()):
+        result = verify(case, cells / case.name)
+        suffix = "" if case.name == "tacoma-eye-care" else f"-{case.name}"
+        (cells / f"verified-summary{suffix}.json").write_text(json.dumps(result, indent=2) + "\n")
+        print(case.name, "Verified trace identities and capture hashes:",
+              {arm: row["eligible"] for arm, row in result.items()})
