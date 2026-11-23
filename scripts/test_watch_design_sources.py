@@ -1,7 +1,7 @@
-from datetime import date
+from datetime import date, datetime, timezone
 import unittest
 
-from watch_design_sources import CSSDA, read_css_award, source_result
+from watch_design_sources import CSSDA, HN_API, read_css_award, read_show_hn, source_result
 
 
 TODAY = date(2026, 11, 22)
@@ -36,3 +36,27 @@ class CSSDesignAwardsTest(unittest.TestCase):
         pages = {f"{CSSDA}/": HOME.replace(WINNER, "https://example.test/")}
         with self.assertRaisesRegex(ValueError, "link was not found"):
             read_css_award(TODAY, pages.__getitem__)
+
+
+class ShowHNTest(unittest.TestCase):
+    def test_reads_past_the_top_ten_and_searches_the_creator_description(self):
+        timestamp = int(datetime(2026, 11, 22, tzinfo=timezone.utc).timestamp())
+
+        def fetch(url):
+            if url == f"{HN_API}/showstories.json":
+                return list(range(1, 40))
+            item_id = int(url.rsplit("/", 1)[-1].removesuffix(".json"))
+            self.assertLessEqual(item_id, 30)
+            if item_id == 1:
+                raise OSError("temporary fetch failure")
+            return {
+                "id": item_id, "type": "story", "time": timestamp,
+                "title": "Show HN: You Are Hilbert" if item_id == 16 else "Show HN: Other",
+                "text": "A <em>star map</em> of the internet." if item_id == 16 else "",
+                "score": 8, "descendants": 3,
+            }
+
+        self.assertEqual(read_show_hn(TODAY, fetch), [{
+            "title": "Show HN: You Are Hilbert", "date": "2026-11-22",
+            "url": "https://news.ycombinator.com/item?id=16", "points": 8, "comments": 3,
+        }])

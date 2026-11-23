@@ -1,5 +1,6 @@
 """Collect public design and browser source leads for review."""
 
+from concurrent.futures import ThreadPoolExecutor
 from datetime import date, datetime, timedelta, timezone
 from html import escape, unescape
 import json
@@ -22,10 +23,14 @@ AWARD_LINK = re.compile(
     re.I,
 )
 AWARD_DATE = re.compile(r'<h1\s+class="single-website__date">Website Of The Day (\d{4} [A-Za-z]{3} \d{1,2})</h1>')
-SHOW_HN_LOOKUP_LIMIT = 10
+SHOW_HN_LOOKUP_LIMIT = 30
+SHOW_HN_WORKERS = 4
 VISUAL_DEMO = re.compile(
-    r"\b(?:interactive|design system|visuali[sz]ation|typography|gallery|portfolio|webgl|3d map|exhibit)\b", re.I
+    r"\b(?:interactive|design system|visuali[sz]ation|typography|gallery|portfolio|"
+    r"webgl|webgpu|(?:3d|star) map|exhibit|simulator|animate your code)\b",
+    re.I,
 )
+HTML_TAG = re.compile(r"<[^>]*>")
 
 
 def fetch_bytes(url, accept):
@@ -128,18 +133,28 @@ def read_show_hn(today, fetch):
     relevant = []
     failures = []
     ids = tuple(dict.fromkeys(i for i in ids[:SHOW_HN_LOOKUP_LIMIT] if type(i) is int and i > 0))
-    for item_id in ids:
+    def fetch_item(item_id):
         try:
-            item = fetch(f"{HN_API}/item/{item_id}.json")
-        except OSError as error:
-            failures.append(error)
+            return fetch(f"{HN_API}/item/{item_id}.json")
+        except (OSError, ValueError) as error:
+            return error
+
+    with ThreadPoolExecutor(max_workers=SHOW_HN_WORKERS) as pool:
+        items = list(pool.map(fetch_item, ids))
+    for item_id, item in zip(ids, items):
+        if isinstance(item, Exception):
+            failures.append(item)
             continue
         if not isinstance(item, dict) or item.get("id") != item_id or item.get("type") != "story":
             continue
         if item.get("dead") or item.get("deleted"):
             continue
         title, timestamp, score = item.get("title"), item.get("time"), item.get("score")
-        if not isinstance(title, str) or not VISUAL_DEMO.search(title):
+        if not isinstance(title, str) or not re.match(r"^Show HN\s*:", title, re.I):
+            continue
+        description = item.get("text")
+        description = unescape(HTML_TAG.sub(" ", description[:4000])) if isinstance(description, str) else ""
+        if not (VISUAL_DEMO.search(title) or VISUAL_DEMO.search(description)):
             continue
         if type(timestamp) is not int or type(score) is not int or not 0 < timestamp < 4_102_444_800:
             continue
@@ -147,10 +162,14 @@ def read_show_hn(today, fetch):
         if not today - timedelta(days=14) <= published <= today:
             continue
         url = f"https://news.ycombinator.com/item?id={item_id}"
-        relevant.append({**lead(title, published.isoformat(), url), "points": score})
+        record = {**lead(title, published.isoformat(), url), "points": score}
+        descendants = item.get("descendants")
+        if type(descendants) is int and descendants >= 0:
+            record["comments"] = descendants
+        relevant.append(record)
     if ids and len(failures) == len(ids):
         raise failures[0]
-    return sorted(relevant, key=lambda item: (-item["points"], item["date"], item["url"]))[:5]
+    return sorted(relevant, key=lambda item: (-item["points"], -item.get("comments", 0), item["url"]))[:5]
 
 
 def source_result(name, read, *arguments):
@@ -189,7 +208,8 @@ def print_report(sources):
     print("Review these public leads before proposing a design or harness change.\n")
     print("- [Awwwards current winner and nominees](https://www.awwwards.com/)")
     print("- [CSS Design Awards current winners](https://www.cssdesignawards.com/)")
-    print("- [FWA launches from award winners](https://www.thefwa.net/label/launch)\n")
+    print("- [FWA launches from award winners](https://www.thefwa.net/label/launch)")
+    print("- [Codrops Creative Hub demos](https://tympanus.net/codrops/hub/all/)\n")
     for source in sources:
         print(f"## {source['source']}\n")
         if "openalex_error" in source:
@@ -201,8 +221,12 @@ def print_report(sources):
             print("No results in the current search.\n")
         for lead in source["leads"]:
             url = escape(lead["url"], quote=True)
-            points = f" ({lead['points']} points at capture)" if "points" in lead else ""
-            print(f'- {lead["date"]} · <a href="{url}">{escape(lead["title"])}</a>{points}')
+            signals = [f"{lead['points']} points"] if "points" in lead else []
+            if "comments" in lead:
+                count = lead["comments"]
+                signals.append(f"{count} {'comment' if count == 1 else 'comments'}")
+            engagement = f" ({', '.join(signals)} at capture)" if signals else ""
+            print(f'- {lead["date"]} · <a href="{url}">{escape(lead["title"])}</a>{engagement}')
         print()
 
 
