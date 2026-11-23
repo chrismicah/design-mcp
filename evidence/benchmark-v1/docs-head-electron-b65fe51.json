@@ -1,0 +1,111 @@
+{
+  "head_sha": "b65fe5171eb4a808891787474e3668f1391e4d46",
+  "install_pin": "18b87522a49c545dd6204c20762d6fd64145d375",
+  "run_url": "https://github.com/chrismicah/design-mcp/actions/runs/45244808388/attempts/2",
+  "job_url": "https://github.com/chrismicah/design-mcp/actions/runs/45244808388/job/137953990162",
+  "artifact_id": 14856511368,
+  "artifact_sha256": "985c115103f9386dc8f013fb10b17a8cfc48fbbeb61ff849c6dfd6977092d0a0",
+  "hosted_receipt": {
+    "electron": "43.4.0",
+    "platform": "darwin",
+    "input": "focused Electron webContents",
+    "initial": {
+      "focus": "reveal",
+      "status": "Control covered"
+    },
+    "screenshot_sizes": {
+      "before": {
+        "width": 880,
+        "height": 640,
+        "display_scale": 1
+      },
+      "after": {
+        "width": 880,
+        "height": 640,
+        "display_scale": 1
+      }
+    },
+    "before": [
+      [
+        "control-not-hittable",
+        "r2"
+      ],
+      [
+        "control-clipped",
+        "r4"
+      ]
+    ],
+    "updated": {
+      "focus": "reveal",
+      "status": "Control revealed"
+    },
+    "after": [
+      [
+        "control-clipped",
+        "r4"
+      ]
+    ],
+    "originalEvidencePreserved": true,
+    "unsupportedSourceRefused": true,
+    "passed": true
+  },
+  "fresh_capture_replay": {
+    "before": {
+      "png_dimensions": [
+        880,
+        640
+      ],
+      "png_sha256": "cdb59b3074cdef69685e484da7eaa613c77e98d58443f11cbbf146821b4611fd",
+      "geometry_sha256": "869824de58b77a49c56b58f0137802b984f6bca7974dca1609e279dd79d77ed5",
+      "local_installed_review": {
+        "platform": "electron",
+        "viewport": [
+          880.0,
+          640.0
+        ],
+        "controls_reviewed": 4,
+        "findings": [
+          {
+            "code": "control-not-hittable",
+            "region": "r2",
+            "role": "button",
+            "change": "Check hit testing and remove the overlapping surface if present."
+          },
+          {
+            "code": "control-clipped",
+            "region": "r4",
+            "role": "button",
+            "change": "Reveal the complete control in the visible window."
+          }
+        ],
+        "scope": "Visible control geometry and hit testing in the supplied capture"
+      }
+    },
+    "after": {
+      "png_dimensions": [
+        880,
+        640
+      ],
+      "png_sha256": "0de5c1e611ebb75a952b9a1d2dbaf24cea93457195acf725995f16a95bd6fa92",
+      "geometry_sha256": "fae84cd474028280bea60a9eedfccdd0b4910467574161d04b58a17ca46bc2b9",
+      "local_installed_review": {
+        "platform": "electron",
+        "viewport": [
+          880.0,
+          640.0
+        ],
+        "controls_reviewed": 4,
+        "findings": [
+          {
+            "code": "control-clipped",
+            "region": "r4",
+            "role": "button",
+            "change": "Reveal the complete control in the visible window."
+          }
+        ],
+        "scope": "Visible control geometry and hit testing in the supplied capture"
+      }
+    }
+  },
+  "scope": "Hosted synthetic fixture with native Electron input. Fresh artwork images reviewed separately and original geometry independently replayed with the installed CLI."
+}

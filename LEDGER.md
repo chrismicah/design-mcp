@@ -295,3 +295,5 @@ One bounded Astra 6.2 planning session defined the paired pivot test. One indepe
 
 - **Off-art inscription cues.** A fresh GPT‑6.1 Terra low critic used 648,796 input tokens (624,256 cached) and 2,658 output. The margin variant improved by 0.35 desktop and 0.10 phone in the live pair. The original crop remained unobstructed. No installed route changed. [Ballot](evidence/benchmark-v1/great-wave-edge-key-live.json)
 - **Documentation-head SwiftUI retry.** GitHub reported that the first attempt never acquired a runner. Attempt 2 on b65fe51 passed. Verified 4 → 5 buttons, the artifact and screenshot hashes, and offline replay through the installed release CLI. [Receipt](evidence/benchmark-v1/docs-head-swift-b65fe51.json)
+
+- **Documentation-head Electron retry.** GitHub acquired a runner on attempt 2 for b65fe51. The archived 880 × 640 captures show the revealed control, and the installed release CLI independently cleared the occlusion finding while retaining clipping. [Exact run, artifact hash and replay](evidence/benchmark-v1/docs-head-electron-b65fe51.json)
