@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+- Added verification for a full creative review series, including distinct builds and captures, a fresh critic per round, and two live passing ballots for the finalist. The daily source review now scans research on design originality. [Series verifier](evals/vision/rubric.md#verify-a-creative-series) · [Editorial tests](EVALS.md#creative-study-verification)
+
 - Added a separate concept challenge before building expressive directions. Live critics record the objection each revision addresses. The daily source report now links all eight supplied X searches. [Workflow](DESIGN-HARNESS.md#creative-rounds) · [Workshop and reference replay](research/CREATIVE-ROUNDS.md#november-23-concept-workshop)
 
 - Rejected a calmer booking spacing trial after a fresh installed client left the 320 px result below the fold. [Matched and fresh receipts](evidence/benchmark-v1/booking-work-order-spacing-trial.json)

@@ -1,0 +1,67 @@
+{
+  "model": "gpt-6-luna",
+  "install_sha": "0978712149674ad7fd5738c53d4b7966ba163b43",
+  "cases": {
+    "vague": {
+      "brief": "Make it feel premium.",
+      "direction": "object-hero",
+      "questions": [
+        {
+          "question": "What will people use this screen for?",
+          "options": [
+            "Explore an offering",
+            "Work with information",
+            "Read a story"
+          ],
+          "default": "Explore an offering"
+        }
+      ],
+      "reply": "Use a warm, editorial product landing page: make one featured object the visual anchor, with its key choosing detail and a single action beside it. Pair Fraunces with Instrument Sans, using deep brown, paper cream, and a restrained berry accent.",
+      "thread": "01a2073f-5e40-73b3-9dbb-162fd347e8fa",
+      "seconds": 11.346,
+      "usage": {
+        "input_tokens": 55570,
+        "cached_input_tokens": 43648,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 148,
+        "reasoning_output_tokens": 0
+      },
+      "trace_sha256": "e4b3d9a44d610fe7c0b36406cd20214986355ff097365e91a9b6bbe72dd96d7c",
+      "prompt_sha256": "7a623b9429902debb555cdc62cd29263622f8d77c819d05006e86331b3821dcd"
+    },
+    "contradictory": {
+      "brief": "Make a dashboard for a shift lead. Hide every nonessential timing detail at first load and show every nonessential timing detail in full at first load.",
+      "direction": "exception-first",
+      "questions": [],
+      "reply": "The brief gives contradictory first-load instructions: hide every nonessential timing detail and show all of it. Which should the dashboard do?\n\n- Hide nonessential timing details **(Recommended)**\n- Show nonessential timing details in full",
+      "thread": "01a2073f-5e40-73b0-950a-1a0cec5ce9d8",
+      "seconds": 10.281,
+      "usage": {
+        "input_tokens": 54920,
+        "cached_input_tokens": 18048,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 172,
+        "reasoning_output_tokens": 0
+      },
+      "trace_sha256": "3b0f612d2019b162018098680a453bc333420e569dde5dce2d5b62d7860c2061",
+      "prompt_sha256": "22421dabc34a31bcb0b515e26d89c31760910cbb29e264795d65e45c0e54e832"
+    },
+    "routine": {
+      "brief": "A mobile signup for a ceramics class. Collect name and email.",
+      "direction": "grouped-fieldsets",
+      "questions": [],
+      "reply": "Use a compact, mobile-first worksheet titled “Sign up for ceramics,” with one grouped set of persistently labeled Name and Email fields. Use Barlow Semi Condensed for the heading, Source Sans 3 for the form, a soft paper background, dark ink text, and a deep green signup button.",
+      "thread": "01a2073f-8660-7893-b14a-2617897c3d19",
+      "seconds": 8.98,
+      "usage": {
+        "input_tokens": 55333,
+        "cached_input_tokens": 35584,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 170,
+        "reasoning_output_tokens": 0
+      },
+      "trace_sha256": "83011617ea385b559ea141c71c994e5e4de01a24c76864725e6460027e4ebfb2",
+      "prompt_sha256": "58106bd2abc373081ad65b35d805e1661424f90b35278c90bfcd4485c355d6e6"
+    }
+  }
+}
