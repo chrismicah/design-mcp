@@ -5,6 +5,7 @@ on:
     branches: [design-mcp/practice-install-proof]
     paths:
       - 'evals/practice_call_board/**'
+      - 'evals/practice_startup/**'
       - '.github/workflows/practice-visual-replay.yml'
 
 permissions:
@@ -29,6 +30,7 @@ jobs:
       - name: Stage the frozen drafts and isolated browser
         run: |
           python evals/practice_call_board/prepare.py "$RUNNER_TEMP/cells"
+          python evals/practice_startup/prepare.py "$RUNNER_TEMP/startup-cells"
           python -m venv "$RUNNER_TEMP/design-review"
           "$RUNNER_TEMP/design-review/bin/python" -m pip install .
           npm install --ignore-scripts --prefix "$RUNNER_TEMP/playwriter" playwriter@0.12.0
@@ -49,9 +51,25 @@ jobs:
             --scratch "$RUNNER_TEMP/practice-browser"
       - name: Verify archive and calculate browser eligibility
         run: python evals/practice_call_board/verify.py "$RUNNER_TEMP/cells"
+      - name: Measure phone access while the font stylesheet is pending
+        run: |
+          PRACTICE_RENDER_HARNESS="$GITHUB_WORKSPACE/browser-harness/evals/wellcome_replay" \
+          CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox \
+          "$RUNNER_TEMP/design-review/bin/python" evals/practice_startup/playback.py \
+            --cells "$RUNNER_TEMP/startup-cells" \
+            --playwriter "$RUNNER_TEMP/playwriter/node_modules/.bin/playwriter" \
+            --chrome "$RUNNER_TEMP/browser/chrome-linux64/chrome" \
+            --scratch "$RUNNER_TEMP/startup-browser"
+          python evals/practice_startup/verify.py "$RUNNER_TEMP/startup-cells"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
           name: call-board-browser-receipts
           path: ${{ runner.temp }}/cells
+          retention-days: 14
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: practice-font-startup-receipts
+          path: ${{ runner.temp }}/startup-cells
           retention-days: 14
