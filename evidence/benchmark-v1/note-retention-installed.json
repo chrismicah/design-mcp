@@ -1,0 +1,1803 @@
+{
+  "kind": "installed",
+  "genuine_booking_control_unchanged": true,
+  "held_out_routing_repair": {
+    "case": "fairhill-dental",
+    "before": "service-work-order",
+    "after": "direct-consultation"
+  },
+  "commits": {
+    "control": "9976ef1339f29f28d4c7c0526ed511db01219baf",
+    "treatment": "fdcec48df5319739bc61d3f2ec26c57f9a744af1"
+  },
+  "preserved_full_replies": 48,
+  "unchanged_explicit_form_overrides": 6,
+  "changed_fields": [
+    "direction.action.instruction"
+  ],
+  "practices": {
+    "tacoma-eye-care": {
+      "brief": "Build a homepage for Lena Ortiz, an independent optometrist in Tacoma. Lena sees new patients for routine eye exams and glasses fittings at 42 Example Way, Suite 2. Visitors can call 253-555-0143 between 9 am and 4 pm, Tuesday through Saturday. Make the right person, the two services and the call link easy to find. There is no portrait. Below the introduction, offer a short reminder people can prepare to have ready when they call. Let people choose Eye exam or Glasses fitting, enter a first name and preview their own editable reminder in the browser. No information leaves the page and nothing is booked. Show how to fix a blank name and retain the service choice when the user edits. Avoid photos, insurance claims, reviews, pricing or extra destinations.",
+      "brief_sha256": "1f9c70dafdb189c2286f99756547d0658757e089ed1eae2d8a04de05ced34826",
+      "control": {
+        "direction": {
+          "id": "direct-consultation",
+          "surface": "landing",
+          "title": "Direct consultation",
+          "summary": "Pair the named practice and person with the one verified way to start a conversation.",
+          "type": {
+            "display": "Bodoni Moda",
+            "body": "Instrument Sans",
+            "ratio": 4.3,
+            "tracking": -0.034,
+            "weight": 600,
+            "license": "OFL-1.1"
+          },
+          "palette": {
+            "ink": "#18243A",
+            "paper": "#F0F3FA",
+            "accent": "#BFCFFF"
+          },
+          "layout": {
+            "skeleton": "Lead with the named practitioner and the supplied contact action. If the visitor can prepare a short note for the call, make that form part of the same opening composition. Use the labeled visit choices as the service list. Keep extra headings, repeated descriptions and purely decorative elements below the controls.",
+            "focus": "The actual professional and how to reach them. Give their name and the primary contact path a clear position beside the portrait or its text alternative.",
+            "desktop": "Keep the supplied phone, hours and place together. On phones, put short call preparation immediately after those details with the first field and preview visible at 320 px in a 700 px viewport. Preserve explicit ordering and supplied portraits. Keep longer intake in its own section.",
+            "mobile": "At 390 px show the practice, location, named person and first contact action before a large portrait. Preserve section access with a compact keyboard menu if needed. At 320 px drop duplicated contact links before shrinking targets.",
+            "rhythm": "Use #172747 for a full-width introduction, #D7E1FA for supporting text in it and #52637E on the light reading area. Use thin rules and asymmetric spacing to separate service links from the intake area."
+          },
+          "imagery": {
+            "subject": "The practitioner shown in a supplied portrait, with their name and supplied role.",
+            "crop": "Crop for a readable face and clear space over the head. Verify the smallest width. Keep the portrait separate from text and use the image at its natural proportions.",
+            "fallback": "Set the supplied name and practice as the signature. Use no stock stand-in for a real person and no invented license, result or testimonial."
+          },
+          "motion": {
+            "trigger": "A visitor expands one service in the practice list.",
+            "effect": "Reveal the relevant text below the named control. Keep the control and its description in view after keyboard activation.",
+            "duration_ms": 230,
+            "reduced": "Show the description without motion and retain focus at the same control."
+          },
+          "action": {
+            "instruction": "If calling is the task, link the supplied number. Give any requested form a section action and announce its result. If the form previews a draft, label it and preserve entries. Focus the labeled editor for an editable draft or the heading for a read-only result. Keep the result and focus outline fully visible on activation, without waiting for a scroll animation. Confirm sending only if data is sent.",
+            "label": "Call or request a consultation"
+          },
+          "why": "A visitor choosing a professional service needs to know who can help and how to reach them. Putting the supplied identity and contact path together makes that decision possible before secondary details.",
+          "sources": [
+            {
+              "url": "https://kieferandkiefer.com/contact/",
+              "observation": "The firm identifies distinct phone numbers for prospective and existing clients. Each label tells the caller which path applies.",
+              "strength": "evidence"
+            },
+            {
+              "url": "https://designsystem.digital.gov/components/link/",
+              "observation": "USWDS recommends including the country code in click-to-call destinations.",
+              "strength": "evidence"
+            }
+          ],
+          "credit": "Kiefer & Kiefer contact page and U.S. Web Design System link guidance. Original composition."
+        },
+        "font_stylesheet": "https://fonts.googleapis.com/css2?family=Bodoni+Moda%3Awght%40600&family=Instrument+Sans&display=swap",
+        "interaction": {
+          "accent_foreground": "#18243A",
+          "easing": "ease-out",
+          "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+          "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+          "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+        },
+        "assumptions": [
+          "Use landing as the surface.",
+          "Use only the project facts and assets in the brief."
+        ],
+        "questions": [],
+        "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px."
+      },
+      "treatment": {
+        "direction": {
+          "id": "direct-consultation",
+          "surface": "landing",
+          "title": "Direct consultation",
+          "summary": "Pair the named practice and person with the one verified way to start a conversation.",
+          "type": {
+            "display": "Bodoni Moda",
+            "body": "Instrument Sans",
+            "ratio": 4.3,
+            "tracking": -0.034,
+            "weight": 600,
+            "license": "OFL-1.1"
+          },
+          "palette": {
+            "ink": "#18243A",
+            "paper": "#F0F3FA",
+            "accent": "#BFCFFF"
+          },
+          "layout": {
+            "skeleton": "Lead with the named practitioner and the supplied contact action. If the visitor can prepare a short note for the call, make that form part of the same opening composition. Use the labeled visit choices as the service list. Keep extra headings, repeated descriptions and purely decorative elements below the controls.",
+            "focus": "The actual professional and how to reach them. Give their name and the primary contact path a clear position beside the portrait or its text alternative.",
+            "desktop": "Keep the supplied phone, hours and place together. On phones, put short call preparation immediately after those details with the first field and preview visible at 320 px in a 700 px viewport. Preserve explicit ordering and supplied portraits. Keep longer intake in its own section.",
+            "mobile": "At 390 px show the practice, location, named person and first contact action before a large portrait. Preserve section access with a compact keyboard menu if needed. At 320 px drop duplicated contact links before shrinking targets.",
+            "rhythm": "Use #172747 for a full-width introduction, #D7E1FA for supporting text in it and #52637E on the light reading area. Use thin rules and asymmetric spacing to separate service links from the intake area."
+          },
+          "imagery": {
+            "subject": "The practitioner shown in a supplied portrait, with their name and supplied role.",
+            "crop": "Crop for a readable face and clear space over the head. Verify the smallest width. Keep the portrait separate from text and use the image at its natural proportions.",
+            "fallback": "Set the supplied name and practice as the signature. Use no stock stand-in for a real person and no invented license, result or testimonial."
+          },
+          "motion": {
+            "trigger": "A visitor expands one service in the practice list.",
+            "effect": "Reveal the relevant text below the named control. Keep the control and its description in view after keyboard activation.",
+            "duration_ms": 230,
+            "reduced": "Show the description without motion and retain focus at the same control."
+          },
+          "action": {
+            "instruction": "Link the supplied number for calls. If the form previews a draft, keep inputs on return, announce the result and focus the labeled editor or result heading. Keep it fully visible on activation without waiting for a scroll animation. On repeat preview restore exact edits for unchanged inputs and generate a matching draft for changed inputs. Confirm sending only if data was sent.",
+            "label": "Call or request a consultation"
+          },
+          "why": "A visitor choosing a professional service needs to know who can help and how to reach them. Putting the supplied identity and contact path together makes that decision possible before secondary details.",
+          "sources": [
+            {
+              "url": "https://kieferandkiefer.com/contact/",
+              "observation": "The firm identifies distinct phone numbers for prospective and existing clients. Each label tells the caller which path applies.",
+              "strength": "evidence"
+            },
+            {
+              "url": "https://designsystem.digital.gov/components/link/",
+              "observation": "USWDS recommends including the country code in click-to-call destinations.",
+              "strength": "evidence"
+            }
+          ],
+          "credit": "Kiefer & Kiefer contact page and U.S. Web Design System link guidance. Original composition."
+        },
+        "font_stylesheet": "https://fonts.googleapis.com/css2?family=Bodoni+Moda%3Awght%40600&family=Instrument+Sans&display=swap",
+        "interaction": {
+          "accent_foreground": "#18243A",
+          "easing": "ease-out",
+          "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+          "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+          "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+        },
+        "assumptions": [
+          "Use landing as the surface.",
+          "Use only the project facts and assets in the brief."
+        ],
+        "questions": [],
+        "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px."
+      },
+      "reply_sha256": {
+        "control": "a82a561c009a9652dbff48c08cbc14c7b140523daf1e3d545c5cb344400b924e",
+        "treatment": "4a5c5915faca5bed870ea25f001cafaa63c5ac35869807a26610a14c217ac55f"
+      }
+    },
+    "dayton-physiotherapy": {
+      "brief": "Make a homepage for Morgan Reyes, an independent physical therapist in Dayton. Morgan handles post-surgery and running-injury rehabilitation at 25 Example Lane. The office answers 937-555-0127 from 8 am to 3 pm on weekdays. Show who answers, the phone and the hours first. Visitors can prepare a short, editable note for the call. Let them choose Knee rehabilitation or Running assessment, enter a first name and preview. Show a recovery for a missing name. Keep the draft on the page and send nothing. Avoid photos, outcome guarantees and pricing.",
+      "brief_sha256": "f29bdcf735df70ebcf3ab0e596ede1383cd79060cee8eff4c4c952f1b5c92182",
+      "control": {
+        "direction": {
+          "id": "direct-consultation",
+          "surface": "landing",
+          "title": "Direct consultation",
+          "summary": "Pair the named practice and person with the one verified way to start a conversation.",
+          "type": {
+            "display": "Bodoni Moda",
+            "body": "Instrument Sans",
+            "ratio": 4.3,
+            "tracking": -0.034,
+            "weight": 600,
+            "license": "OFL-1.1"
+          },
+          "palette": {
+            "ink": "#18243A",
+            "paper": "#F0F3FA",
+            "accent": "#BFCFFF"
+          },
+          "layout": {
+            "skeleton": "Lead with the named practitioner and the supplied contact action. If the visitor can prepare a short note for the call, make that form part of the same opening composition. Use the labeled visit choices as the service list. Keep extra headings, repeated descriptions and purely decorative elements below the controls.",
+            "focus": "The actual professional and how to reach them. Give their name and the primary contact path a clear position beside the portrait or its text alternative.",
+            "desktop": "Keep the supplied phone, hours and place together. On phones, put short call preparation immediately after those details with the first field and preview visible at 320 px in a 700 px viewport. Preserve explicit ordering and supplied portraits. Keep longer intake in its own section.",
+            "mobile": "At 390 px show the practice, location, named person and first contact action before a large portrait. Preserve section access with a compact keyboard menu if needed. At 320 px drop duplicated contact links before shrinking targets.",
+            "rhythm": "Use #172747 for a full-width introduction, #D7E1FA for supporting text in it and #52637E on the light reading area. Use thin rules and asymmetric spacing to separate service links from the intake area."
+          },
+          "imagery": {
+            "subject": "The practitioner shown in a supplied portrait, with their name and supplied role.",
+            "crop": "Crop for a readable face and clear space over the head. Verify the smallest width. Keep the portrait separate from text and use the image at its natural proportions.",
+            "fallback": "Set the supplied name and practice as the signature. Use no stock stand-in for a real person and no invented license, result or testimonial."
+          },
+          "motion": {
+            "trigger": "A visitor expands one service in the practice list.",
+            "effect": "Reveal the relevant text below the named control. Keep the control and its description in view after keyboard activation.",
+            "duration_ms": 230,
+            "reduced": "Show the description without motion and retain focus at the same control."
+          },
+          "action": {
+            "instruction": "If calling is the task, link the supplied number. Give any requested form a section action and announce its result. If the form previews a draft, label it and preserve entries. Focus the labeled editor for an editable draft or the heading for a read-only result. Keep the result and focus outline fully visible on activation, without waiting for a scroll animation. Confirm sending only if data is sent.",
+            "label": "Call or request a consultation"
+          },
+          "why": "A visitor choosing a professional service needs to know who can help and how to reach them. Putting the supplied identity and contact path together makes that decision possible before secondary details.",
+          "sources": [
+            {
+              "url": "https://kieferandkiefer.com/contact/",
+              "observation": "The firm identifies distinct phone numbers for prospective and existing clients. Each label tells the caller which path applies.",
+              "strength": "evidence"
+            },
+            {
+              "url": "https://designsystem.digital.gov/components/link/",
+              "observation": "USWDS recommends including the country code in click-to-call destinations.",
+              "strength": "evidence"
+            }
+          ],
+          "credit": "Kiefer & Kiefer contact page and U.S. Web Design System link guidance. Original composition."
+        },
+        "font_stylesheet": "https://fonts.googleapis.com/css2?family=Bodoni+Moda%3Awght%40600&family=Instrument+Sans&display=swap",
+        "interaction": {
+          "accent_foreground": "#18243A",
+          "easing": "ease-out",
+          "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+          "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+          "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+        },
+        "assumptions": [
+          "Use landing as the surface.",
+          "Use only the project facts and assets in the brief."
+        ],
+        "questions": [],
+        "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px."
+      },
+      "treatment": {
+        "direction": {
+          "id": "direct-consultation",
+          "surface": "landing",
+          "title": "Direct consultation",
+          "summary": "Pair the named practice and person with the one verified way to start a conversation.",
+          "type": {
+            "display": "Bodoni Moda",
+            "body": "Instrument Sans",
+            "ratio": 4.3,
+            "tracking": -0.034,
+            "weight": 600,
+            "license": "OFL-1.1"
+          },
+          "palette": {
+            "ink": "#18243A",
+            "paper": "#F0F3FA",
+            "accent": "#BFCFFF"
+          },
+          "layout": {
+            "skeleton": "Lead with the named practitioner and the supplied contact action. If the visitor can prepare a short note for the call, make that form part of the same opening composition. Use the labeled visit choices as the service list. Keep extra headings, repeated descriptions and purely decorative elements below the controls.",
+            "focus": "The actual professional and how to reach them. Give their name and the primary contact path a clear position beside the portrait or its text alternative.",
+            "desktop": "Keep the supplied phone, hours and place together. On phones, put short call preparation immediately after those details with the first field and preview visible at 320 px in a 700 px viewport. Preserve explicit ordering and supplied portraits. Keep longer intake in its own section.",
+            "mobile": "At 390 px show the practice, location, named person and first contact action before a large portrait. Preserve section access with a compact keyboard menu if needed. At 320 px drop duplicated contact links before shrinking targets.",
+            "rhythm": "Use #172747 for a full-width introduction, #D7E1FA for supporting text in it and #52637E on the light reading area. Use thin rules and asymmetric spacing to separate service links from the intake area."
+          },
+          "imagery": {
+            "subject": "The practitioner shown in a supplied portrait, with their name and supplied role.",
+            "crop": "Crop for a readable face and clear space over the head. Verify the smallest width. Keep the portrait separate from text and use the image at its natural proportions.",
+            "fallback": "Set the supplied name and practice as the signature. Use no stock stand-in for a real person and no invented license, result or testimonial."
+          },
+          "motion": {
+            "trigger": "A visitor expands one service in the practice list.",
+            "effect": "Reveal the relevant text below the named control. Keep the control and its description in view after keyboard activation.",
+            "duration_ms": 230,
+            "reduced": "Show the description without motion and retain focus at the same control."
+          },
+          "action": {
+            "instruction": "Link the supplied number for calls. If the form previews a draft, keep inputs on return, announce the result and focus the labeled editor or result heading. Keep it fully visible on activation without waiting for a scroll animation. On repeat preview restore exact edits for unchanged inputs and generate a matching draft for changed inputs. Confirm sending only if data was sent.",
+            "label": "Call or request a consultation"
+          },
+          "why": "A visitor choosing a professional service needs to know who can help and how to reach them. Putting the supplied identity and contact path together makes that decision possible before secondary details.",
+          "sources": [
+            {
+              "url": "https://kieferandkiefer.com/contact/",
+              "observation": "The firm identifies distinct phone numbers for prospective and existing clients. Each label tells the caller which path applies.",
+              "strength": "evidence"
+            },
+            {
+              "url": "https://designsystem.digital.gov/components/link/",
+              "observation": "USWDS recommends including the country code in click-to-call destinations.",
+              "strength": "evidence"
+            }
+          ],
+          "credit": "Kiefer & Kiefer contact page and U.S. Web Design System link guidance. Original composition."
+        },
+        "font_stylesheet": "https://fonts.googleapis.com/css2?family=Bodoni+Moda%3Awght%40600&family=Instrument+Sans&display=swap",
+        "interaction": {
+          "accent_foreground": "#18243A",
+          "easing": "ease-out",
+          "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+          "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+          "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+        },
+        "assumptions": [
+          "Use landing as the surface.",
+          "Use only the project facts and assets in the brief."
+        ],
+        "questions": [],
+        "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px."
+      },
+      "reply_sha256": {
+        "control": "a82a561c009a9652dbff48c08cbc14c7b140523daf1e3d545c5cb344400b924e",
+        "treatment": "4a5c5915faca5bed870ea25f001cafaa63c5ac35869807a26610a14c217ac55f"
+      }
+    },
+    "madison-counseling": {
+      "brief": "Build a homepage for Taylor Ibarra, an independent counselor in Madison. Adults can call Taylor at 608-555-0134 from 10 am to 5 pm, Monday through Thursday, at 37 Example Street. Show who answers, the call link, hours and location. Offer an optional short note to prepare for the call. Let visitors choose Individual counseling or Couples counseling, enter a first name and preview an editable note. Help a visitor recover when the first name is blank, and keep their choice and name when they go back. The note stays on the page. It sends nothing and books nothing. Avoid photos, prices, testimonials and treatment guarantees.",
+      "brief_sha256": "aabedb7bd428700c3feb5d08b0a6caf9c759516bc43cf5fce684e3bb895f827c",
+      "control": {
+        "direction": {
+          "id": "direct-consultation",
+          "surface": "landing",
+          "title": "Direct consultation",
+          "summary": "Pair the named practice and person with the one verified way to start a conversation.",
+          "type": {
+            "display": "Bodoni Moda",
+            "body": "Instrument Sans",
+            "ratio": 4.3,
+            "tracking": -0.034,
+            "weight": 600,
+            "license": "OFL-1.1"
+          },
+          "palette": {
+            "ink": "#18243A",
+            "paper": "#F0F3FA",
+            "accent": "#BFCFFF"
+          },
+          "layout": {
+            "skeleton": "Lead with the named practitioner and the supplied contact action. If the visitor can prepare a short note for the call, make that form part of the same opening composition. Use the labeled visit choices as the service list. Keep extra headings, repeated descriptions and purely decorative elements below the controls.",
+            "focus": "The actual professional and how to reach them. Give their name and the primary contact path a clear position beside the portrait or its text alternative.",
+            "desktop": "Keep the supplied phone, hours and place together. On phones, put short call preparation immediately after those details with the first field and preview visible at 320 px in a 700 px viewport. Preserve explicit ordering and supplied portraits. Keep longer intake in its own section.",
+            "mobile": "At 390 px show the practice, location, named person and first contact action before a large portrait. Preserve section access with a compact keyboard menu if needed. At 320 px drop duplicated contact links before shrinking targets.",
+            "rhythm": "Use #172747 for a full-width introduction, #D7E1FA for supporting text in it and #52637E on the light reading area. Use thin rules and asymmetric spacing to separate service links from the intake area."
+          },
+          "imagery": {
+            "subject": "The practitioner shown in a supplied portrait, with their name and supplied role.",
+            "crop": "Crop for a readable face and clear space over the head. Verify the smallest width. Keep the portrait separate from text and use the image at its natural proportions.",
+            "fallback": "Set the supplied name and practice as the signature. Use no stock stand-in for a real person and no invented license, result or testimonial."
+          },
+          "motion": {
+            "trigger": "A visitor expands one service in the practice list.",
+            "effect": "Reveal the relevant text below the named control. Keep the control and its description in view after keyboard activation.",
+            "duration_ms": 230,
+            "reduced": "Show the description without motion and retain focus at the same control."
+          },
+          "action": {
+            "instruction": "If calling is the task, link the supplied number. Give any requested form a section action and announce its result. If the form previews a draft, label it and preserve entries. Focus the labeled editor for an editable draft or the heading for a read-only result. Keep the result and focus outline fully visible on activation, without waiting for a scroll animation. Confirm sending only if data is sent.",
+            "label": "Call or request a consultation"
+          },
+          "why": "A visitor choosing a professional service needs to know who can help and how to reach them. Putting the supplied identity and contact path together makes that decision possible before secondary details.",
+          "sources": [
+            {
+              "url": "https://kieferandkiefer.com/contact/",
+              "observation": "The firm identifies distinct phone numbers for prospective and existing clients. Each label tells the caller which path applies.",
+              "strength": "evidence"
+            },
+            {
+              "url": "https://designsystem.digital.gov/components/link/",
+              "observation": "USWDS recommends including the country code in click-to-call destinations.",
+              "strength": "evidence"
+            }
+          ],
+          "credit": "Kiefer & Kiefer contact page and U.S. Web Design System link guidance. Original composition."
+        },
+        "font_stylesheet": "https://fonts.googleapis.com/css2?family=Bodoni+Moda%3Awght%40600&family=Instrument+Sans&display=swap",
+        "interaction": {
+          "accent_foreground": "#18243A",
+          "easing": "ease-out",
+          "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+          "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+          "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+        },
+        "assumptions": [
+          "Use landing as the surface.",
+          "Use only the project facts and assets in the brief."
+        ],
+        "questions": [],
+        "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px."
+      },
+      "treatment": {
+        "direction": {
+          "id": "direct-consultation",
+          "surface": "landing",
+          "title": "Direct consultation",
+          "summary": "Pair the named practice and person with the one verified way to start a conversation.",
+          "type": {
+            "display": "Bodoni Moda",
+            "body": "Instrument Sans",
+            "ratio": 4.3,
+            "tracking": -0.034,
+            "weight": 600,
+            "license": "OFL-1.1"
+          },
+          "palette": {
+            "ink": "#18243A",
+            "paper": "#F0F3FA",
+            "accent": "#BFCFFF"
+          },
+          "layout": {
+            "skeleton": "Lead with the named practitioner and the supplied contact action. If the visitor can prepare a short note for the call, make that form part of the same opening composition. Use the labeled visit choices as the service list. Keep extra headings, repeated descriptions and purely decorative elements below the controls.",
+            "focus": "The actual professional and how to reach them. Give their name and the primary contact path a clear position beside the portrait or its text alternative.",
+            "desktop": "Keep the supplied phone, hours and place together. On phones, put short call preparation immediately after those details with the first field and preview visible at 320 px in a 700 px viewport. Preserve explicit ordering and supplied portraits. Keep longer intake in its own section.",
+            "mobile": "At 390 px show the practice, location, named person and first contact action before a large portrait. Preserve section access with a compact keyboard menu if needed. At 320 px drop duplicated contact links before shrinking targets.",
+            "rhythm": "Use #172747 for a full-width introduction, #D7E1FA for supporting text in it and #52637E on the light reading area. Use thin rules and asymmetric spacing to separate service links from the intake area."
+          },
+          "imagery": {
+            "subject": "The practitioner shown in a supplied portrait, with their name and supplied role.",
+            "crop": "Crop for a readable face and clear space over the head. Verify the smallest width. Keep the portrait separate from text and use the image at its natural proportions.",
+            "fallback": "Set the supplied name and practice as the signature. Use no stock stand-in for a real person and no invented license, result or testimonial."
+          },
+          "motion": {
+            "trigger": "A visitor expands one service in the practice list.",
+            "effect": "Reveal the relevant text below the named control. Keep the control and its description in view after keyboard activation.",
+            "duration_ms": 230,
+            "reduced": "Show the description without motion and retain focus at the same control."
+          },
+          "action": {
+            "instruction": "Link the supplied number for calls. If the form previews a draft, keep inputs on return, announce the result and focus the labeled editor or result heading. Keep it fully visible on activation without waiting for a scroll animation. On repeat preview restore exact edits for unchanged inputs and generate a matching draft for changed inputs. Confirm sending only if data was sent.",
+            "label": "Call or request a consultation"
+          },
+          "why": "A visitor choosing a professional service needs to know who can help and how to reach them. Putting the supplied identity and contact path together makes that decision possible before secondary details.",
+          "sources": [
+            {
+              "url": "https://kieferandkiefer.com/contact/",
+              "observation": "The firm identifies distinct phone numbers for prospective and existing clients. Each label tells the caller which path applies.",
+              "strength": "evidence"
+            },
+            {
+              "url": "https://designsystem.digital.gov/components/link/",
+              "observation": "USWDS recommends including the country code in click-to-call destinations.",
+              "strength": "evidence"
+            }
+          ],
+          "credit": "Kiefer & Kiefer contact page and U.S. Web Design System link guidance. Original composition."
+        },
+        "font_stylesheet": "https://fonts.googleapis.com/css2?family=Bodoni+Moda%3Awght%40600&family=Instrument+Sans&display=swap",
+        "interaction": {
+          "accent_foreground": "#18243A",
+          "easing": "ease-out",
+          "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+          "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+          "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+        },
+        "assumptions": [
+          "Use landing as the surface.",
+          "Use only the project facts and assets in the brief."
+        ],
+        "questions": [],
+        "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px."
+      },
+      "reply_sha256": {
+        "control": "a82a561c009a9652dbff48c08cbc14c7b140523daf1e3d545c5cb344400b924e",
+        "treatment": "4a5c5915faca5bed870ea25f001cafaa63c5ac35869807a26610a14c217ac55f"
+      }
+    },
+    "albany-physiotherapy": {
+      "brief": "Build a homepage for Rowan Chen, an independent physical therapist in Albany. New visitors can call 518-555-0142 between 8 am and 2 pm, Tuesday through Friday, at 15 Example Lane. Show who answers, the call link, hours and location. Include an optional short note to have ready when calling. Let visitors choose a Movement assessment or a Follow-up visit, enter a first name and preview an editable note. Help them recover if the name is blank, and keep their choice and name when they go back. The note stays on the page. It sends and books nothing. Avoid photos, prices, testimonials and treatment guarantees.",
+      "brief_sha256": "c3e1425710d485a9f0ccb26f88753d39f7e9d32a2add9efd598b24f804d0bde5",
+      "control": {
+        "direction": {
+          "id": "direct-consultation",
+          "surface": "landing",
+          "title": "Direct consultation",
+          "summary": "Pair the named practice and person with the one verified way to start a conversation.",
+          "type": {
+            "display": "Bodoni Moda",
+            "body": "Instrument Sans",
+            "ratio": 4.3,
+            "tracking": -0.034,
+            "weight": 600,
+            "license": "OFL-1.1"
+          },
+          "palette": {
+            "ink": "#18243A",
+            "paper": "#F0F3FA",
+            "accent": "#BFCFFF"
+          },
+          "layout": {
+            "skeleton": "Lead with the named practitioner and the supplied contact action. If the visitor can prepare a short note for the call, make that form part of the same opening composition. Use the labeled visit choices as the service list. Keep extra headings, repeated descriptions and purely decorative elements below the controls.",
+            "focus": "The actual professional and how to reach them. Give their name and the primary contact path a clear position beside the portrait or its text alternative.",
+            "desktop": "Keep the supplied phone, hours and place together. On phones, put short call preparation immediately after those details with the first field and preview visible at 320 px in a 700 px viewport. Preserve explicit ordering and supplied portraits. Keep longer intake in its own section.",
+            "mobile": "At 390 px show the practice, location, named person and first contact action before a large portrait. Preserve section access with a compact keyboard menu if needed. At 320 px drop duplicated contact links before shrinking targets.",
+            "rhythm": "Use #172747 for a full-width introduction, #D7E1FA for supporting text in it and #52637E on the light reading area. Use thin rules and asymmetric spacing to separate service links from the intake area."
+          },
+          "imagery": {
+            "subject": "The practitioner shown in a supplied portrait, with their name and supplied role.",
+            "crop": "Crop for a readable face and clear space over the head. Verify the smallest width. Keep the portrait separate from text and use the image at its natural proportions.",
+            "fallback": "Set the supplied name and practice as the signature. Use no stock stand-in for a real person and no invented license, result or testimonial."
+          },
+          "motion": {
+            "trigger": "A visitor expands one service in the practice list.",
+            "effect": "Reveal the relevant text below the named control. Keep the control and its description in view after keyboard activation.",
+            "duration_ms": 230,
+            "reduced": "Show the description without motion and retain focus at the same control."
+          },
+          "action": {
+            "instruction": "If calling is the task, link the supplied number. Give any requested form a section action and announce its result. If the form previews a draft, label it and preserve entries. Focus the labeled editor for an editable draft or the heading for a read-only result. Keep the result and focus outline fully visible on activation, without waiting for a scroll animation. Confirm sending only if data is sent.",
+            "label": "Call or request a consultation"
+          },
+          "why": "A visitor choosing a professional service needs to know who can help and how to reach them. Putting the supplied identity and contact path together makes that decision possible before secondary details.",
+          "sources": [
+            {
+              "url": "https://kieferandkiefer.com/contact/",
+              "observation": "The firm identifies distinct phone numbers for prospective and existing clients. Each label tells the caller which path applies.",
+              "strength": "evidence"
+            },
+            {
+              "url": "https://designsystem.digital.gov/components/link/",
+              "observation": "USWDS recommends including the country code in click-to-call destinations.",
+              "strength": "evidence"
+            }
+          ],
+          "credit": "Kiefer & Kiefer contact page and U.S. Web Design System link guidance. Original composition."
+        },
+        "font_stylesheet": "https://fonts.googleapis.com/css2?family=Bodoni+Moda%3Awght%40600&family=Instrument+Sans&display=swap",
+        "interaction": {
+          "accent_foreground": "#18243A",
+          "easing": "ease-out",
+          "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+          "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+          "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+        },
+        "assumptions": [
+          "Use landing as the surface.",
+          "Use only the project facts and assets in the brief."
+        ],
+        "questions": [],
+        "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px."
+      },
+      "treatment": {
+        "direction": {
+          "id": "direct-consultation",
+          "surface": "landing",
+          "title": "Direct consultation",
+          "summary": "Pair the named practice and person with the one verified way to start a conversation.",
+          "type": {
+            "display": "Bodoni Moda",
+            "body": "Instrument Sans",
+            "ratio": 4.3,
+            "tracking": -0.034,
+            "weight": 600,
+            "license": "OFL-1.1"
+          },
+          "palette": {
+            "ink": "#18243A",
+            "paper": "#F0F3FA",
+            "accent": "#BFCFFF"
+          },
+          "layout": {
+            "skeleton": "Lead with the named practitioner and the supplied contact action. If the visitor can prepare a short note for the call, make that form part of the same opening composition. Use the labeled visit choices as the service list. Keep extra headings, repeated descriptions and purely decorative elements below the controls.",
+            "focus": "The actual professional and how to reach them. Give their name and the primary contact path a clear position beside the portrait or its text alternative.",
+            "desktop": "Keep the supplied phone, hours and place together. On phones, put short call preparation immediately after those details with the first field and preview visible at 320 px in a 700 px viewport. Preserve explicit ordering and supplied portraits. Keep longer intake in its own section.",
+            "mobile": "At 390 px show the practice, location, named person and first contact action before a large portrait. Preserve section access with a compact keyboard menu if needed. At 320 px drop duplicated contact links before shrinking targets.",
+            "rhythm": "Use #172747 for a full-width introduction, #D7E1FA for supporting text in it and #52637E on the light reading area. Use thin rules and asymmetric spacing to separate service links from the intake area."
+          },
+          "imagery": {
+            "subject": "The practitioner shown in a supplied portrait, with their name and supplied role.",
+            "crop": "Crop for a readable face and clear space over the head. Verify the smallest width. Keep the portrait separate from text and use the image at its natural proportions.",
+            "fallback": "Set the supplied name and practice as the signature. Use no stock stand-in for a real person and no invented license, result or testimonial."
+          },
+          "motion": {
+            "trigger": "A visitor expands one service in the practice list.",
+            "effect": "Reveal the relevant text below the named control. Keep the control and its description in view after keyboard activation.",
+            "duration_ms": 230,
+            "reduced": "Show the description without motion and retain focus at the same control."
+          },
+          "action": {
+            "instruction": "Link the supplied number for calls. If the form previews a draft, keep inputs on return, announce the result and focus the labeled editor or result heading. Keep it fully visible on activation without waiting for a scroll animation. On repeat preview restore exact edits for unchanged inputs and generate a matching draft for changed inputs. Confirm sending only if data was sent.",
+            "label": "Call or request a consultation"
+          },
+          "why": "A visitor choosing a professional service needs to know who can help and how to reach them. Putting the supplied identity and contact path together makes that decision possible before secondary details.",
+          "sources": [
+            {
+              "url": "https://kieferandkiefer.com/contact/",
+              "observation": "The firm identifies distinct phone numbers for prospective and existing clients. Each label tells the caller which path applies.",
+              "strength": "evidence"
+            },
+            {
+              "url": "https://designsystem.digital.gov/components/link/",
+              "observation": "USWDS recommends including the country code in click-to-call destinations.",
+              "strength": "evidence"
+            }
+          ],
+          "credit": "Kiefer & Kiefer contact page and U.S. Web Design System link guidance. Original composition."
+        },
+        "font_stylesheet": "https://fonts.googleapis.com/css2?family=Bodoni+Moda%3Awght%40600&family=Instrument+Sans&display=swap",
+        "interaction": {
+          "accent_foreground": "#18243A",
+          "easing": "ease-out",
+          "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+          "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+          "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+        },
+        "assumptions": [
+          "Use landing as the surface.",
+          "Use only the project facts and assets in the brief."
+        ],
+        "questions": [],
+        "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px."
+      },
+      "reply_sha256": {
+        "control": "a82a561c009a9652dbff48c08cbc14c7b140523daf1e3d545c5cb344400b924e",
+        "treatment": "4a5c5915faca5bed870ea25f001cafaa63c5ac35869807a26610a14c217ac55f"
+      }
+    },
+    "fairhill-dental": {
+      "brief": "Create the homepage for Ellis Shah, an independent dentist in Fairhill. Call 415-555-0138 between 9 am and 1 pm Monday through Thursday. The address is 71 Example Avenue, Fairhill. Put the contact details first. Offer an optional editable call note on the same page. Let visitors choose a First visit or a Follow-up visit, enter their first name, preview a note, edit it and return to the details. Show a clear correction when the name is blank. The note stays in the tab. It sends nothing and does not book an appointment. Use only the supplied facts, without photos, testimonials, fees or promises.",
+      "brief_sha256": "081f0abe57ca92c8734e4abc99bb1c07ef47ce4971c778183ab16347d407d357",
+      "control": {
+        "direction": {
+          "id": "service-work-order",
+          "surface": "landing",
+          "title": "Service work order",
+          "summary": "Make selection and the updating work order the page's visual focus. Integrate the price, current choice and turnaround in one receipt.",
+          "type": {
+            "display": "Barlow Condensed",
+            "body": "IBM Plex Sans",
+            "ratio": 2.8,
+            "tracking": -0.025,
+            "weight": 700,
+            "license": "OFL-1.1"
+          },
+          "palette": {
+            "ink": "#153247",
+            "paper": "#E8EFF4",
+            "accent": "#F3B644"
+          },
+          "layout": {
+            "skeleton": "Lead with the work order. Set the service name and price on its first rule. Put the choice next to the result. Start the work order directly below the site header.",
+            "focus": "The actual booking controls and the selected value in the same work order.",
+            "desktop": "Use side-by-side choice and result columns under the service name. Fit the price, choice group and its live result within a 900 px viewport. Put supporting imagery and details below the work order.",
+            "mobile": "Keep the service title and price above a short native radio group and its result. At 360 px and below use two equal minmax(0,1fr) columns, 44 px targets and labels that wrap. At 320 × 700, fit the short group and its result with no scroll. With longer lists prioritize the selected option and its result.",
+            "rhythm": "Give the work order a short heading and comfortable control spacing. Let any decorative details follow the action."
+          },
+          "imagery": {
+            "subject": "A small repair detail, drawn from the actual service in the brief.",
+            "crop": "Crop to a functional detail and place it outside the choice and summary area.",
+            "fallback": "A bordered label in the margin can carry one useful service fact from the brief. Omit it when the work order already contains the same fact."
+          },
+          "motion": {
+            "trigger": "a booking choice changes",
+            "effect": "Briefly emphasize the changed summary row and update the accessible status.",
+            "duration_ms": 260,
+            "reduced": "Update the summary and accessible status immediately."
+          },
+          "action": {
+            "instruction": "Use one labeled native group for a single selection. Update one visible polite status in the work order, and leave the service price and terms in place. Describe the actual selection state; show confirmation only when required by the brief.",
+            "label": "Choose [day or option]"
+          },
+          "why": "A work order has useful visual structure before it has branding. Putting the choice and its consequences in one composition keeps the service and task recognizable at a glance.",
+          "sources": [
+            {
+              "url": "https://design-system.service.gov.uk/components/radios/",
+              "observation": "GOV.UK specifies radios when users can select only one option from a list.",
+              "strength": "evidence"
+            },
+            {
+              "url": "https://design-system.service.gov.uk/patterns/check-answers/",
+              "observation": "The check-answers pattern uses a summary list with labels and values so users can verify what they entered.",
+              "strength": "evidence"
+            }
+          ],
+          "credit": "GOV.UK Design System radio and check-answers patterns. Original work-order layout and color direction."
+        },
+        "font_stylesheet": "https://fonts.googleapis.com/css2?family=Barlow+Condensed%3Awght%40700&family=IBM+Plex+Sans&display=swap",
+        "interaction": {
+          "accent_foreground": "#153247",
+          "easing": "ease-out",
+          "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+          "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+          "keyboard": "Announce the selection through the one visible status. Keep it next to the chooser on desktop and immediately after the choices on phones."
+        },
+        "assumptions": [
+          "Use landing as the surface.",
+          "Use only the project facts and assets in the brief."
+        ],
+        "questions": [],
+        "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px. At 320 × 700, check the complete short choice group and its result line from the top after keyboard and pointer selection."
+      },
+      "treatment": {
+        "direction": {
+          "id": "direct-consultation",
+          "surface": "landing",
+          "title": "Direct consultation",
+          "summary": "Pair the named practice and person with the one verified way to start a conversation.",
+          "type": {
+            "display": "Bodoni Moda",
+            "body": "Instrument Sans",
+            "ratio": 4.3,
+            "tracking": -0.034,
+            "weight": 600,
+            "license": "OFL-1.1"
+          },
+          "palette": {
+            "ink": "#18243A",
+            "paper": "#F0F3FA",
+            "accent": "#BFCFFF"
+          },
+          "layout": {
+            "skeleton": "Lead with the named practitioner and the supplied contact action. If the visitor can prepare a short note for the call, make that form part of the same opening composition. Use the labeled visit choices as the service list. Keep extra headings, repeated descriptions and purely decorative elements below the controls.",
+            "focus": "The actual professional and how to reach them. Give their name and the primary contact path a clear position beside the portrait or its text alternative.",
+            "desktop": "Keep the supplied phone, hours and place together. On phones, put short call preparation immediately after those details with the first field and preview visible at 320 px in a 700 px viewport. Preserve explicit ordering and supplied portraits. Keep longer intake in its own section.",
+            "mobile": "At 390 px show the practice, location, named person and first contact action before a large portrait. Preserve section access with a compact keyboard menu if needed. At 320 px drop duplicated contact links before shrinking targets.",
+            "rhythm": "Use #172747 for a full-width introduction, #D7E1FA for supporting text in it and #52637E on the light reading area. Use thin rules and asymmetric spacing to separate service links from the intake area."
+          },
+          "imagery": {
+            "subject": "The practitioner shown in a supplied portrait, with their name and supplied role.",
+            "crop": "Crop for a readable face and clear space over the head. Verify the smallest width. Keep the portrait separate from text and use the image at its natural proportions.",
+            "fallback": "Set the supplied name and practice as the signature. Use no stock stand-in for a real person and no invented license, result or testimonial."
+          },
+          "motion": {
+            "trigger": "A visitor expands one service in the practice list.",
+            "effect": "Reveal the relevant text below the named control. Keep the control and its description in view after keyboard activation.",
+            "duration_ms": 230,
+            "reduced": "Show the description without motion and retain focus at the same control."
+          },
+          "action": {
+            "instruction": "Link the supplied number for calls. If the form previews a draft, keep inputs on return, announce the result and focus the labeled editor or result heading. Keep it fully visible on activation without waiting for a scroll animation. On repeat preview restore exact edits for unchanged inputs and generate a matching draft for changed inputs. Confirm sending only if data was sent.",
+            "label": "Call or request a consultation"
+          },
+          "why": "A visitor choosing a professional service needs to know who can help and how to reach them. Putting the supplied identity and contact path together makes that decision possible before secondary details.",
+          "sources": [
+            {
+              "url": "https://kieferandkiefer.com/contact/",
+              "observation": "The firm identifies distinct phone numbers for prospective and existing clients. Each label tells the caller which path applies.",
+              "strength": "evidence"
+            },
+            {
+              "url": "https://designsystem.digital.gov/components/link/",
+              "observation": "USWDS recommends including the country code in click-to-call destinations.",
+              "strength": "evidence"
+            }
+          ],
+          "credit": "Kiefer & Kiefer contact page and U.S. Web Design System link guidance. Original composition."
+        },
+        "font_stylesheet": "https://fonts.googleapis.com/css2?family=Bodoni+Moda%3Awght%40600&family=Instrument+Sans&display=swap",
+        "interaction": {
+          "accent_foreground": "#18243A",
+          "easing": "ease-out",
+          "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+          "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+          "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+        },
+        "assumptions": [
+          "Use landing as the surface.",
+          "Use only the project facts and assets in the brief."
+        ],
+        "questions": [],
+        "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px."
+      },
+      "reply_sha256": {
+        "control": "752d16db2186c3999f2f37e8b0a5652e2be78676a821f4482fc62a1f12c34ece",
+        "treatment": "4a5c5915faca5bed870ea25f001cafaa63c5ac35869807a26610a14c217ac55f"
+      }
+    },
+    "harbor-estate-law": {
+      "brief": "Build the homepage for Harbor Estate Law, where attorney Mira Vale answers new client calls. Lead with the office number 206-555-0146, Monday to Thursday from 10 am to 3 pm, and 80 Example Street. Put advance directives and estate administration below the introduction. Add an optional call note for someone preparing to speak to Mira. Let them select Advance directives or Estate administration, enter a first name and preview a short editable note. Add a Back to details action. The note stays in the browser and sends nothing. Use the supplied facts. Omit photography, testimonials and outcomes.",
+      "brief_sha256": "b6ee4de50edf1e9dd07dabb4c45d1383a4d3a65315a211a364a66dcc8a891748",
+      "control": {
+        "direction": {
+          "id": "direct-consultation",
+          "surface": "landing",
+          "title": "Direct consultation",
+          "summary": "Pair the named practice and person with the one verified way to start a conversation.",
+          "type": {
+            "display": "Bodoni Moda",
+            "body": "Instrument Sans",
+            "ratio": 4.3,
+            "tracking": -0.034,
+            "weight": 600,
+            "license": "OFL-1.1"
+          },
+          "palette": {
+            "ink": "#18243A",
+            "paper": "#F0F3FA",
+            "accent": "#BFCFFF"
+          },
+          "layout": {
+            "skeleton": "Lead with the named practitioner and the supplied contact action. If the visitor can prepare a short note for the call, make that form part of the same opening composition. Use the labeled visit choices as the service list. Keep extra headings, repeated descriptions and purely decorative elements below the controls.",
+            "focus": "The actual professional and how to reach them. Give their name and the primary contact path a clear position beside the portrait or its text alternative.",
+            "desktop": "Keep the supplied phone, hours and place together. On phones, put short call preparation immediately after those details with the first field and preview visible at 320 px in a 700 px viewport. Preserve explicit ordering and supplied portraits. Keep longer intake in its own section.",
+            "mobile": "At 390 px show the practice, location, named person and first contact action before a large portrait. Preserve section access with a compact keyboard menu if needed. At 320 px drop duplicated contact links before shrinking targets.",
+            "rhythm": "Use #172747 for a full-width introduction, #D7E1FA for supporting text in it and #52637E on the light reading area. Use thin rules and asymmetric spacing to separate service links from the intake area."
+          },
+          "imagery": {
+            "subject": "The practitioner shown in a supplied portrait, with their name and supplied role.",
+            "crop": "Crop for a readable face and clear space over the head. Verify the smallest width. Keep the portrait separate from text and use the image at its natural proportions.",
+            "fallback": "Set the supplied name and practice as the signature. Use no stock stand-in for a real person and no invented license, result or testimonial."
+          },
+          "motion": {
+            "trigger": "A visitor expands one service in the practice list.",
+            "effect": "Reveal the relevant text below the named control. Keep the control and its description in view after keyboard activation.",
+            "duration_ms": 230,
+            "reduced": "Show the description without motion and retain focus at the same control."
+          },
+          "action": {
+            "instruction": "If calling is the task, link the supplied number. Give any requested form a section action and announce its result. If the form previews a draft, label it and preserve entries. Focus the labeled editor for an editable draft or the heading for a read-only result. Keep the result and focus outline fully visible on activation, without waiting for a scroll animation. Confirm sending only if data is sent.",
+            "label": "Call or request a consultation"
+          },
+          "why": "A visitor choosing a professional service needs to know who can help and how to reach them. Putting the supplied identity and contact path together makes that decision possible before secondary details.",
+          "sources": [
+            {
+              "url": "https://kieferandkiefer.com/contact/",
+              "observation": "The firm identifies distinct phone numbers for prospective and existing clients. Each label tells the caller which path applies.",
+              "strength": "evidence"
+            },
+            {
+              "url": "https://designsystem.digital.gov/components/link/",
+              "observation": "USWDS recommends including the country code in click-to-call destinations.",
+              "strength": "evidence"
+            }
+          ],
+          "credit": "Kiefer & Kiefer contact page and U.S. Web Design System link guidance. Original composition."
+        },
+        "font_stylesheet": "https://fonts.googleapis.com/css2?family=Bodoni+Moda%3Awght%40600&family=Instrument+Sans&display=swap",
+        "interaction": {
+          "accent_foreground": "#18243A",
+          "easing": "ease-out",
+          "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+          "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+          "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+        },
+        "assumptions": [
+          "Use landing as the surface.",
+          "Use only the project facts and assets in the brief."
+        ],
+        "questions": [],
+        "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px."
+      },
+      "treatment": {
+        "direction": {
+          "id": "direct-consultation",
+          "surface": "landing",
+          "title": "Direct consultation",
+          "summary": "Pair the named practice and person with the one verified way to start a conversation.",
+          "type": {
+            "display": "Bodoni Moda",
+            "body": "Instrument Sans",
+            "ratio": 4.3,
+            "tracking": -0.034,
+            "weight": 600,
+            "license": "OFL-1.1"
+          },
+          "palette": {
+            "ink": "#18243A",
+            "paper": "#F0F3FA",
+            "accent": "#BFCFFF"
+          },
+          "layout": {
+            "skeleton": "Lead with the named practitioner and the supplied contact action. If the visitor can prepare a short note for the call, make that form part of the same opening composition. Use the labeled visit choices as the service list. Keep extra headings, repeated descriptions and purely decorative elements below the controls.",
+            "focus": "The actual professional and how to reach them. Give their name and the primary contact path a clear position beside the portrait or its text alternative.",
+            "desktop": "Keep the supplied phone, hours and place together. On phones, put short call preparation immediately after those details with the first field and preview visible at 320 px in a 700 px viewport. Preserve explicit ordering and supplied portraits. Keep longer intake in its own section.",
+            "mobile": "At 390 px show the practice, location, named person and first contact action before a large portrait. Preserve section access with a compact keyboard menu if needed. At 320 px drop duplicated contact links before shrinking targets.",
+            "rhythm": "Use #172747 for a full-width introduction, #D7E1FA for supporting text in it and #52637E on the light reading area. Use thin rules and asymmetric spacing to separate service links from the intake area."
+          },
+          "imagery": {
+            "subject": "The practitioner shown in a supplied portrait, with their name and supplied role.",
+            "crop": "Crop for a readable face and clear space over the head. Verify the smallest width. Keep the portrait separate from text and use the image at its natural proportions.",
+            "fallback": "Set the supplied name and practice as the signature. Use no stock stand-in for a real person and no invented license, result or testimonial."
+          },
+          "motion": {
+            "trigger": "A visitor expands one service in the practice list.",
+            "effect": "Reveal the relevant text below the named control. Keep the control and its description in view after keyboard activation.",
+            "duration_ms": 230,
+            "reduced": "Show the description without motion and retain focus at the same control."
+          },
+          "action": {
+            "instruction": "Link the supplied number for calls. If the form previews a draft, keep inputs on return, announce the result and focus the labeled editor or result heading. Keep it fully visible on activation without waiting for a scroll animation. On repeat preview restore exact edits for unchanged inputs and generate a matching draft for changed inputs. Confirm sending only if data was sent.",
+            "label": "Call or request a consultation"
+          },
+          "why": "A visitor choosing a professional service needs to know who can help and how to reach them. Putting the supplied identity and contact path together makes that decision possible before secondary details.",
+          "sources": [
+            {
+              "url": "https://kieferandkiefer.com/contact/",
+              "observation": "The firm identifies distinct phone numbers for prospective and existing clients. Each label tells the caller which path applies.",
+              "strength": "evidence"
+            },
+            {
+              "url": "https://designsystem.digital.gov/components/link/",
+              "observation": "USWDS recommends including the country code in click-to-call destinations.",
+              "strength": "evidence"
+            }
+          ],
+          "credit": "Kiefer & Kiefer contact page and U.S. Web Design System link guidance. Original composition."
+        },
+        "font_stylesheet": "https://fonts.googleapis.com/css2?family=Bodoni+Moda%3Awght%40600&family=Instrument+Sans&display=swap",
+        "interaction": {
+          "accent_foreground": "#18243A",
+          "easing": "ease-out",
+          "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+          "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+          "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+        },
+        "assumptions": [
+          "Use landing as the surface.",
+          "Use only the project facts and assets in the brief."
+        ],
+        "questions": [],
+        "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px."
+      },
+      "reply_sha256": {
+        "control": "a82a561c009a9652dbff48c08cbc14c7b140523daf1e3d545c5cb344400b924e",
+        "treatment": "4a5c5915faca5bed870ea25f001cafaa63c5ac35869807a26610a14c217ac55f"
+      }
+    }
+  },
+  "scope": "Fresh local wheel installs of exact Git archives",
+  "installs": {
+    "control/uv": {
+      "arm": "control",
+      "installer": "uv",
+      "commit": "9976ef1339f29f28d4c7c0526ed511db01219baf",
+      "dependencies": {
+        "markdown-it-py": "4.3.0",
+        "uvicorn": "0.54.0",
+        "watchfiles": "1.3.0",
+        "httpcore2": "2.16.2",
+        "starlette": "1.10.0",
+        "platformdirs": "4.14.8",
+        "packaging": "26.3",
+        "uncalled-for": "0.6.2",
+        "fastmcp": "4.2.5",
+        "websockets": "17.4",
+        "pygments": "2.21.0",
+        "httpx2": "2.16.2",
+        "jsonschema-specifications": "2025.9.1",
+        "pydantic_core": "2.50.5",
+        "pydantic": "2.14.4",
+        "joserfc": "1.8.0",
+        "rich": "15.0.0",
+        "rich-rst": "2.2.0",
+        "pydantic-settings": "2.16.3",
+        "jsonschema": "4.26.0",
+        "pyjwt": "2.15.1",
+        "dnspython": "2.9.2",
+        "sse-starlette": "3.7.1",
+        "click": "8.5.1",
+        "docstring_parser": "0.18.0",
+        "aiofile": "3.12.3",
+        "httpcore": "1.0.9",
+        "cryptography": "50.0.2",
+        "pycparser": "3.12",
+        "mcp-types": "2.3.0",
+        "opentelemetry-api": "1.45.2",
+        "typing-inspection": "0.4.5",
+        "cachetools": "8.0.2",
+        "h11": "0.16.0",
+        "mdurl": "0.1.2",
+        "griffelib": "2.4.1",
+        "jsonref": "1.1.0",
+        "email-validator": "2.4.0",
+        "jsonschema-path": "0.5.0",
+        "truststore": "0.10.5",
+        "authlib": "1.9.10",
+        "python-dotenv": "1.2.4",
+        "cyclopts": "5.5.2",
+        "cffi": "2.1.1",
+        "certifi": "2026.11.20",
+        "annotated-types": "0.8.0",
+        "referencing": "0.37.0",
+        "pyperclip": "1.11.0",
+        "python-multipart": "0.0.34",
+        "rpds-py": "2026.9.1",
+        "openapi-pydantic": "0.6.0",
+        "anyio": "4.16.0",
+        "attrs": "26.1.0",
+        "httpx": "0.28.1",
+        "typing_extensions": "4.16.0",
+        "exceptiongroup": "1.3.2",
+        "mcp": "2.3.0",
+        "caio": "0.12.10",
+        "pathable": "0.6.0",
+        "py-key-value-aio": "0.5.0",
+        "fastmcp-slim": "4.2.5",
+        "beartype": "0.23.1",
+        "pyyaml": "6.0.4",
+        "idna": "3.20"
+      },
+      "host": {
+        "macos": "26.5.2",
+        "arch": "arm64",
+        "python": "3.13.3"
+      },
+      "file_hashes": {
+        "design_mcp/__init__.py": "4b6e7d73f7f2fe01ae460f58c2a2ab586243e68f2528e66ec29fec48defece0d",
+        "design_mcp/cli.py": "e045323969ed6dbc8ad3a62199f7bb0a15a1464adc44875ce8c59db22ce223be",
+        "design_mcp/corpus.py": "be6772f134c2e969f521cdd7043f5729b500f045a426fea16642bcecd8c0b36f",
+        "design_mcp/data/anti_generic_system.json": "32959d994d1294b70374303ea282c347361c1a7d01b0365376e9b66aae1ac37f",
+        "design_mcp/data/anti_pattern_fixes.json": "8818108671dc8761562819a9047adeb7907714e9bfa2d23d5d27ef9c919445b0",
+        "design_mcp/data/behavioral_templates.json": "c3f3f2fbe970fc5ceb3015bc8aad9bec81f90cab7547e6893b2f30fa767e82a9",
+        "design_mcp/data/component_code.json": "1667bba1a48c0dc4df13384ea1334e02aa34614e78d7eac92e9eaa2898f29f1a",
+        "design_mcp/data/decision_trees.json": "ea0061ab858cef42f878c7fba8b2a471150cecde8f50820909222cc6185fc2c7",
+        "design_mcp/data/decision_trees_indexed.json": "a113d248ebd219781b0cf946349fd06a0d9bbcfe63d5755414736a7c81603a14",
+        "design_mcp/data/directions.json": "2ba3244c2f9e96f4c8ecf1b18b87b34e884586ad58fdf4ffb60a105ba11ce713",
+        "design_mcp/data/layout_templates.json": "cd9f616aabbd8b7cd8a87c53f363c2a93c96df8e76b1de0f6f2499481685501f",
+        "design_mcp/data/libraries.json": "64f77c98ee11772bd357b6a00892d845f1b93095feb7f6932d8a0a7275749d03",
+        "design_mcp/data/taxonomy.json": "752dd0ec6bf1c7dbdc79b3682964c875e09f47ed959b7fa44d45dcacad3ab99e",
+        "design_mcp/data/tokens/semantic_tokens.json": "36e637664b7896edfde2c6f7084a7782b1f7ad2fd39784abde7067e88cef5d27",
+        "design_mcp/data/tokens/token_sets.json": "4bdd4e0875e71eeb366d2fdc36323ee1d7522896dc87f6a9e15ba01a5c7813ac",
+        "design_mcp/data/visual_recipes.json": "ef2f8876d44e738a1de47dd7f1c8bcf07bcd9e48867e8c407dd5eb7fb753fa4d",
+        "design_mcp/database.py": "d69ab504317920277fd577fc02246eaa944d1e1952f9b2365fe0c1ab6a8c3d6e",
+        "design_mcp/design_checks.py": "556ad3a69ae2874e2aea50ff2db84fa4f9f4fa7ce7396a3e5f1a096dbed416bd",
+        "design_mcp/desktop_review.py": "56268a306ef2bf394222b0c1e1bb61e7f1beed4b049f335c54ae7a36aa66d3c5",
+        "design_mcp/direction_records.py": "ec674083df079ce8ce7579c37c26dc84612a1db76e3f7387badfb66077b5070f",
+        "design_mcp/directions.py": "aef52429ef42cb3417e062806fb232ece026b7aa0f56ec1bdc74c04adf6bee7b",
+        "design_mcp/doctor.py": "ca36aa77fcd90b10426bd3aadc2f928421cd92f7ab00c1c93c3fdf8ffbbe0a75",
+        "design_mcp/enrichment.py": "3b48d6ee002773885a5c913004296c3892d1e1f887843d4bba8577d9f9a6fba4",
+        "design_mcp/models/__init__.py": "1fcfe134b8dd13ae3d7a5ff95cfa16479e2f06cd0860cdbf186fc5bfa6d467b0",
+        "design_mcp/models/analyzer.py": "62e00840547547f25aa34f9e395d8d300c6fe8da563638372c552f3d2efdbfb1",
+        "design_mcp/models/quality_scorer.py": "c5e3ad10486f458260748e17267fae303c37a3ece5f14c30f7470fc13dc7e8de",
+        "design_mcp/models/train_scorer.py": "be6be900cb27743e9110e485211dede5d859eb602eb01aa7dbbb9d2daea83ca8",
+        "design_mcp/models/visual_analyzer.py": "74303881e8c0fae24bffd64a23508409ed07b5ed8f163fa39713b1c3d64ce735",
+        "design_mcp/palettes.py": "d2840e1a3d81ae0d7aadbfda51137eb4988646903e05c55a68d4cb23ae8bdcdf",
+        "design_mcp/resources.py": "c8279e50688eae6db2a9a5b562998347629e4a5eff39578934c1427a9fa269cb",
+        "design_mcp/review/__init__.py": "3eb559a8193dc49c195d527fe8fbdba7ed82772eda8997ee8707b7efc8756b02",
+        "design_mcp/review/address.py": "224ed5b975df8f959d9f3d44b5703193cbbb84d5b3a3b14e36c774bcdb010c22",
+        "design_mcp/review/checks.py": "78fb3eb206e0984a6e1d90ddeb4656dff0983a7957c55e2666852723ff242dee",
+        "design_mcp/review/cli.py": "cdac94a072d7ba5076e1d3e5cfe2d24e1bce65845487a0d5931c158d43260d06",
+        "design_mcp/review/direct_capture.py": "9381fa0926fee06bacc1deed9113a1aef1400ec8bc9719ce5907869abc42bf2f",
+        "design_mcp/review/evidence.py": "1c0f0881799cf80a206f93a5c18a73b07d69c660158229486e7eece84d012966",
+        "design_mcp/review/extension/collector.js": "d137cc99d85f652d5d204a83eb867bffe4e3e58002fb79b055afb71cb117e3c2",
+        "design_mcp/review/extension/manifest.json": "827bc1580d45a4c5cdb5770ce1b0ba9f69c8a1a9a3c87fa4f1120723b3e57941",
+        "design_mcp/review/extension/mask.js": "cd384a9e08104381a4fa2da57bfca445024864978e2064a38efa71ed4ac564a0",
+        "design_mcp/review/extension/popup.css": "e870c8d1351b8b5f2627f1b009e25ab5c469f6a7e48e62528b38e0c5e22a469c",
+        "design_mcp/review/extension/popup.html": "9f444dbfc73c544046a17fcd41fc8d28902a471e4440ffc0319c997744727c51",
+        "design_mcp/review/extension/popup.js": "d79f68a03e805d61740e70405ba5deca0dbcf5b7b8d9378a7f739c20a16c9771",
+        "design_mcp/review/host.py": "2a0afc74bcb75c9dd8f27737af9430c3c2ea10d1f07801a177604558d73b2206",
+        "design_mcp/review/isolated.py": "2ce72bfcd3d4d716135a8516506ccbd4de9c3260a1b00d20592dc79b9b2e60b9",
+        "design_mcp/review/network.py": "f3b2262ea03e8216de039949d9cc0da65ea35092419f3958e5844e9894b3947e",
+        "design_mcp/review/pipeline.py": "979620bc6539c220a60030213ad0fe79703099486f655da245638867abf6ba3b",
+        "design_mcp/review/preview.py": "eeca7ac9f6095c5b1c445964b5b36df9397da9b2ec481f8ec0395a822ac47cf5",
+        "design_mcp/review/tool.py": "813a31ff553a60e2e9a3b3aaffce894f9b27e234e5b553813c43e89d96f8bdc1",
+        "design_mcp/schema.py": "a819d916a43edf6f104b8a9ee99f7e5b389ca3af89d40742a44830fca6e4075c",
+        "design_mcp/server.py": "29e3fb527e3cf00530e82044117f41aedb08ff56e51fa2e15c97e5419403dbd7"
+      },
+      "wheel_sha256": "33831347e9877cc38bcf390da0b515fbfd6d034eb24044dab5e2637d3fbf54f7",
+      "tools": [
+        "check",
+        "direct",
+        "react"
+      ],
+      "cases": {
+        "tacoma-eye-care": {
+          "reply_sha256": "a82a561c009a9652dbff48c08cbc14c7b140523daf1e3d545c5cb344400b924e",
+          "direction": "direct-consultation"
+        },
+        "dayton-physiotherapy": {
+          "reply_sha256": "a82a561c009a9652dbff48c08cbc14c7b140523daf1e3d545c5cb344400b924e",
+          "direction": "direct-consultation"
+        },
+        "madison-counseling": {
+          "reply_sha256": "a82a561c009a9652dbff48c08cbc14c7b140523daf1e3d545c5cb344400b924e",
+          "direction": "direct-consultation"
+        },
+        "albany-physiotherapy": {
+          "reply_sha256": "a82a561c009a9652dbff48c08cbc14c7b140523daf1e3d545c5cb344400b924e",
+          "direction": "direct-consultation"
+        },
+        "fairhill-dental": {
+          "reply_sha256": "752d16db2186c3999f2f37e8b0a5652e2be78676a821f4482fc62a1f12c34ece",
+          "direction": "service-work-order"
+        },
+        "harbor-estate-law": {
+          "reply_sha256": "a82a561c009a9652dbff48c08cbc14c7b140523daf1e3d545c5cb344400b924e",
+          "direction": "direct-consultation"
+        }
+      },
+      "frozen": [
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "752d16db2186c3999f2f37e8b0a5652e2be78676a821f4482fc62a1f12c34ece",
+        "8a7990d0d8659495693fd2dd71f8f3a67f6d9025b30aa24e9df01ed2ec5547d2",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "b938a2291dc3c98a930dd3f478ba459158bfaeeb8c1c7443c2f648765dab50c9",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "8f160497a3603576f926abd095aefb3ddb8f73a8f56b41d861d1bf05b3d41e5f",
+        "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "93d0fbb2b8633dbee89c897793eebec30a20855f7d9f6c29317a29126f2107d5",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "d10cb3487491d4a81a80a783ca5ed5b064afd74465df692aea51429614f5400d",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "8f160497a3603576f926abd095aefb3ddb8f73a8f56b41d861d1bf05b3d41e5f",
+        "93d0fbb2b8633dbee89c897793eebec30a20855f7d9f6c29317a29126f2107d5",
+        "e492e135384df3b9f516422d556a2f29369a299a80ca8a7c473cd475d2da21f8",
+        "a14efe079cd11f98c7e8bcf527882fa1afd660c36f1ec6265695c154c6891009",
+        "d10cb3487491d4a81a80a783ca5ed5b064afd74465df692aea51429614f5400d",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "b938a2291dc3c98a930dd3f478ba459158bfaeeb8c1c7443c2f648765dab50c9",
+        "93d0fbb2b8633dbee89c897793eebec30a20855f7d9f6c29317a29126f2107d5",
+        "e492e135384df3b9f516422d556a2f29369a299a80ca8a7c473cd475d2da21f8",
+        "a14efe079cd11f98c7e8bcf527882fa1afd660c36f1ec6265695c154c6891009",
+        "d10cb3487491d4a81a80a783ca5ed5b064afd74465df692aea51429614f5400d"
+      ],
+      "forms": {
+        "tacoma-eye-care": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "dayton-physiotherapy": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "madison-counseling": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "albany-physiotherapy": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "fairhill-dental": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "harbor-estate-law": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7"
+      },
+      "booking": "752d16db2186c3999f2f37e8b0a5652e2be78676a821f4482fc62a1f12c34ece",
+      "receipt_sha256": "a58da4cdcbb97dd35d395687fb59f80f4257f179a6c0b4b3b67ca95eb17d319d"
+    },
+    "treatment/uv": {
+      "arm": "treatment",
+      "installer": "uv",
+      "commit": "fdcec48df5319739bc61d3f2ec26c57f9a744af1",
+      "dependencies": {
+        "markdown-it-py": "4.3.0",
+        "uvicorn": "0.54.0",
+        "watchfiles": "1.3.0",
+        "httpcore2": "2.16.2",
+        "starlette": "1.10.0",
+        "platformdirs": "4.14.8",
+        "packaging": "26.3",
+        "uncalled-for": "0.6.2",
+        "fastmcp": "4.2.5",
+        "websockets": "17.4",
+        "pygments": "2.21.0",
+        "httpx2": "2.16.2",
+        "jsonschema-specifications": "2025.9.1",
+        "pydantic_core": "2.50.5",
+        "pydantic": "2.14.4",
+        "joserfc": "1.8.0",
+        "rich": "15.0.0",
+        "rich-rst": "2.2.0",
+        "pydantic-settings": "2.16.3",
+        "jsonschema": "4.26.0",
+        "pyjwt": "2.15.1",
+        "dnspython": "2.9.2",
+        "sse-starlette": "3.7.1",
+        "click": "8.5.1",
+        "docstring_parser": "0.18.0",
+        "aiofile": "3.12.3",
+        "httpcore": "1.0.9",
+        "cryptography": "50.0.2",
+        "pycparser": "3.12",
+        "mcp-types": "2.3.0",
+        "opentelemetry-api": "1.45.2",
+        "typing-inspection": "0.4.5",
+        "cachetools": "8.0.2",
+        "h11": "0.16.0",
+        "mdurl": "0.1.2",
+        "griffelib": "2.4.1",
+        "jsonref": "1.1.0",
+        "email-validator": "2.4.0",
+        "jsonschema-path": "0.5.0",
+        "truststore": "0.10.5",
+        "authlib": "1.9.10",
+        "python-dotenv": "1.2.4",
+        "cyclopts": "5.5.2",
+        "cffi": "2.1.1",
+        "certifi": "2026.11.20",
+        "annotated-types": "0.8.0",
+        "referencing": "0.37.0",
+        "pyperclip": "1.11.0",
+        "python-multipart": "0.0.34",
+        "rpds-py": "2026.9.1",
+        "openapi-pydantic": "0.6.0",
+        "anyio": "4.16.0",
+        "attrs": "26.1.0",
+        "httpx": "0.28.1",
+        "typing_extensions": "4.16.0",
+        "exceptiongroup": "1.3.2",
+        "mcp": "2.3.0",
+        "caio": "0.12.10",
+        "pathable": "0.6.0",
+        "py-key-value-aio": "0.5.0",
+        "fastmcp-slim": "4.2.5",
+        "beartype": "0.23.1",
+        "pyyaml": "6.0.4",
+        "idna": "3.20"
+      },
+      "host": {
+        "macos": "26.5.2",
+        "arch": "arm64",
+        "python": "3.13.3"
+      },
+      "file_hashes": {
+        "design_mcp/__init__.py": "4b6e7d73f7f2fe01ae460f58c2a2ab586243e68f2528e66ec29fec48defece0d",
+        "design_mcp/cli.py": "e045323969ed6dbc8ad3a62199f7bb0a15a1464adc44875ce8c59db22ce223be",
+        "design_mcp/corpus.py": "be6772f134c2e969f521cdd7043f5729b500f045a426fea16642bcecd8c0b36f",
+        "design_mcp/data/anti_generic_system.json": "32959d994d1294b70374303ea282c347361c1a7d01b0365376e9b66aae1ac37f",
+        "design_mcp/data/anti_pattern_fixes.json": "8818108671dc8761562819a9047adeb7907714e9bfa2d23d5d27ef9c919445b0",
+        "design_mcp/data/behavioral_templates.json": "c3f3f2fbe970fc5ceb3015bc8aad9bec81f90cab7547e6893b2f30fa767e82a9",
+        "design_mcp/data/component_code.json": "1667bba1a48c0dc4df13384ea1334e02aa34614e78d7eac92e9eaa2898f29f1a",
+        "design_mcp/data/decision_trees.json": "ea0061ab858cef42f878c7fba8b2a471150cecde8f50820909222cc6185fc2c7",
+        "design_mcp/data/decision_trees_indexed.json": "a113d248ebd219781b0cf946349fd06a0d9bbcfe63d5755414736a7c81603a14",
+        "design_mcp/data/directions.json": "e158a2fa81f038e6cd6299ad5a2f9ecb8d2ca25aa2122e831c4cb911bb818965",
+        "design_mcp/data/layout_templates.json": "cd9f616aabbd8b7cd8a87c53f363c2a93c96df8e76b1de0f6f2499481685501f",
+        "design_mcp/data/libraries.json": "64f77c98ee11772bd357b6a00892d845f1b93095feb7f6932d8a0a7275749d03",
+        "design_mcp/data/taxonomy.json": "752dd0ec6bf1c7dbdc79b3682964c875e09f47ed959b7fa44d45dcacad3ab99e",
+        "design_mcp/data/tokens/semantic_tokens.json": "36e637664b7896edfde2c6f7084a7782b1f7ad2fd39784abde7067e88cef5d27",
+        "design_mcp/data/tokens/token_sets.json": "4bdd4e0875e71eeb366d2fdc36323ee1d7522896dc87f6a9e15ba01a5c7813ac",
+        "design_mcp/data/visual_recipes.json": "ef2f8876d44e738a1de47dd7f1c8bcf07bcd9e48867e8c407dd5eb7fb753fa4d",
+        "design_mcp/database.py": "d69ab504317920277fd577fc02246eaa944d1e1952f9b2365fe0c1ab6a8c3d6e",
+        "design_mcp/design_checks.py": "556ad3a69ae2874e2aea50ff2db84fa4f9f4fa7ce7396a3e5f1a096dbed416bd",
+        "design_mcp/desktop_review.py": "56268a306ef2bf394222b0c1e1bb61e7f1beed4b049f335c54ae7a36aa66d3c5",
+        "design_mcp/direction_records.py": "ec674083df079ce8ce7579c37c26dc84612a1db76e3f7387badfb66077b5070f",
+        "design_mcp/directions.py": "b66907c790d29412d2caa129ac2c536c88479a2fee1b14a33676df26f9d0c6f9",
+        "design_mcp/doctor.py": "ca36aa77fcd90b10426bd3aadc2f928421cd92f7ab00c1c93c3fdf8ffbbe0a75",
+        "design_mcp/enrichment.py": "3b48d6ee002773885a5c913004296c3892d1e1f887843d4bba8577d9f9a6fba4",
+        "design_mcp/models/__init__.py": "1fcfe134b8dd13ae3d7a5ff95cfa16479e2f06cd0860cdbf186fc5bfa6d467b0",
+        "design_mcp/models/analyzer.py": "62e00840547547f25aa34f9e395d8d300c6fe8da563638372c552f3d2efdbfb1",
+        "design_mcp/models/quality_scorer.py": "c5e3ad10486f458260748e17267fae303c37a3ece5f14c30f7470fc13dc7e8de",
+        "design_mcp/models/train_scorer.py": "be6be900cb27743e9110e485211dede5d859eb602eb01aa7dbbb9d2daea83ca8",
+        "design_mcp/models/visual_analyzer.py": "74303881e8c0fae24bffd64a23508409ed07b5ed8f163fa39713b1c3d64ce735",
+        "design_mcp/palettes.py": "d2840e1a3d81ae0d7aadbfda51137eb4988646903e05c55a68d4cb23ae8bdcdf",
+        "design_mcp/resources.py": "c8279e50688eae6db2a9a5b562998347629e4a5eff39578934c1427a9fa269cb",
+        "design_mcp/review/__init__.py": "3eb559a8193dc49c195d527fe8fbdba7ed82772eda8997ee8707b7efc8756b02",
+        "design_mcp/review/address.py": "224ed5b975df8f959d9f3d44b5703193cbbb84d5b3a3b14e36c774bcdb010c22",
+        "design_mcp/review/checks.py": "78fb3eb206e0984a6e1d90ddeb4656dff0983a7957c55e2666852723ff242dee",
+        "design_mcp/review/cli.py": "cdac94a072d7ba5076e1d3e5cfe2d24e1bce65845487a0d5931c158d43260d06",
+        "design_mcp/review/direct_capture.py": "9381fa0926fee06bacc1deed9113a1aef1400ec8bc9719ce5907869abc42bf2f",
+        "design_mcp/review/evidence.py": "1c0f0881799cf80a206f93a5c18a73b07d69c660158229486e7eece84d012966",
+        "design_mcp/review/extension/collector.js": "d137cc99d85f652d5d204a83eb867bffe4e3e58002fb79b055afb71cb117e3c2",
+        "design_mcp/review/extension/manifest.json": "827bc1580d45a4c5cdb5770ce1b0ba9f69c8a1a9a3c87fa4f1120723b3e57941",
+        "design_mcp/review/extension/mask.js": "cd384a9e08104381a4fa2da57bfca445024864978e2064a38efa71ed4ac564a0",
+        "design_mcp/review/extension/popup.css": "e870c8d1351b8b5f2627f1b009e25ab5c469f6a7e48e62528b38e0c5e22a469c",
+        "design_mcp/review/extension/popup.html": "9f444dbfc73c544046a17fcd41fc8d28902a471e4440ffc0319c997744727c51",
+        "design_mcp/review/extension/popup.js": "d79f68a03e805d61740e70405ba5deca0dbcf5b7b8d9378a7f739c20a16c9771",
+        "design_mcp/review/host.py": "2a0afc74bcb75c9dd8f27737af9430c3c2ea10d1f07801a177604558d73b2206",
+        "design_mcp/review/isolated.py": "2ce72bfcd3d4d716135a8516506ccbd4de9c3260a1b00d20592dc79b9b2e60b9",
+        "design_mcp/review/network.py": "f3b2262ea03e8216de039949d9cc0da65ea35092419f3958e5844e9894b3947e",
+        "design_mcp/review/pipeline.py": "979620bc6539c220a60030213ad0fe79703099486f655da245638867abf6ba3b",
+        "design_mcp/review/preview.py": "eeca7ac9f6095c5b1c445964b5b36df9397da9b2ec481f8ec0395a822ac47cf5",
+        "design_mcp/review/tool.py": "813a31ff553a60e2e9a3b3aaffce894f9b27e234e5b553813c43e89d96f8bdc1",
+        "design_mcp/schema.py": "a819d916a43edf6f104b8a9ee99f7e5b389ca3af89d40742a44830fca6e4075c",
+        "design_mcp/server.py": "29e3fb527e3cf00530e82044117f41aedb08ff56e51fa2e15c97e5419403dbd7"
+      },
+      "wheel_sha256": "85fc5b8824afda5b7938777b29655cdbacae3c04c9a7ed77890e56a67c44e2ad",
+      "tools": [
+        "check",
+        "direct",
+        "react"
+      ],
+      "cases": {
+        "tacoma-eye-care": {
+          "reply_sha256": "4a5c5915faca5bed870ea25f001cafaa63c5ac35869807a26610a14c217ac55f",
+          "direction": "direct-consultation"
+        },
+        "dayton-physiotherapy": {
+          "reply_sha256": "4a5c5915faca5bed870ea25f001cafaa63c5ac35869807a26610a14c217ac55f",
+          "direction": "direct-consultation"
+        },
+        "madison-counseling": {
+          "reply_sha256": "4a5c5915faca5bed870ea25f001cafaa63c5ac35869807a26610a14c217ac55f",
+          "direction": "direct-consultation"
+        },
+        "albany-physiotherapy": {
+          "reply_sha256": "4a5c5915faca5bed870ea25f001cafaa63c5ac35869807a26610a14c217ac55f",
+          "direction": "direct-consultation"
+        },
+        "fairhill-dental": {
+          "reply_sha256": "4a5c5915faca5bed870ea25f001cafaa63c5ac35869807a26610a14c217ac55f",
+          "direction": "direct-consultation"
+        },
+        "harbor-estate-law": {
+          "reply_sha256": "4a5c5915faca5bed870ea25f001cafaa63c5ac35869807a26610a14c217ac55f",
+          "direction": "direct-consultation"
+        }
+      },
+      "frozen": [
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "752d16db2186c3999f2f37e8b0a5652e2be78676a821f4482fc62a1f12c34ece",
+        "8a7990d0d8659495693fd2dd71f8f3a67f6d9025b30aa24e9df01ed2ec5547d2",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "b938a2291dc3c98a930dd3f478ba459158bfaeeb8c1c7443c2f648765dab50c9",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "8f160497a3603576f926abd095aefb3ddb8f73a8f56b41d861d1bf05b3d41e5f",
+        "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "93d0fbb2b8633dbee89c897793eebec30a20855f7d9f6c29317a29126f2107d5",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "d10cb3487491d4a81a80a783ca5ed5b064afd74465df692aea51429614f5400d",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "8f160497a3603576f926abd095aefb3ddb8f73a8f56b41d861d1bf05b3d41e5f",
+        "93d0fbb2b8633dbee89c897793eebec30a20855f7d9f6c29317a29126f2107d5",
+        "e492e135384df3b9f516422d556a2f29369a299a80ca8a7c473cd475d2da21f8",
+        "a14efe079cd11f98c7e8bcf527882fa1afd660c36f1ec6265695c154c6891009",
+        "d10cb3487491d4a81a80a783ca5ed5b064afd74465df692aea51429614f5400d",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "b938a2291dc3c98a930dd3f478ba459158bfaeeb8c1c7443c2f648765dab50c9",
+        "93d0fbb2b8633dbee89c897793eebec30a20855f7d9f6c29317a29126f2107d5",
+        "e492e135384df3b9f516422d556a2f29369a299a80ca8a7c473cd475d2da21f8",
+        "a14efe079cd11f98c7e8bcf527882fa1afd660c36f1ec6265695c154c6891009",
+        "d10cb3487491d4a81a80a783ca5ed5b064afd74465df692aea51429614f5400d"
+      ],
+      "forms": {
+        "tacoma-eye-care": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "dayton-physiotherapy": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "madison-counseling": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "albany-physiotherapy": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "fairhill-dental": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "harbor-estate-law": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7"
+      },
+      "booking": "752d16db2186c3999f2f37e8b0a5652e2be78676a821f4482fc62a1f12c34ece",
+      "receipt_sha256": "18494b24646409386959939051e7f614d7ad68a95d0b642b17c61b73c63dc5f2"
+    },
+    "control/pipx": {
+      "arm": "control",
+      "installer": "pipx",
+      "commit": "9976ef1339f29f28d4c7c0526ed511db01219baf",
+      "dependencies": {
+        "markdown-it-py": "4.3.0",
+        "uvicorn": "0.54.0",
+        "watchfiles": "1.3.0",
+        "httpcore2": "2.16.2",
+        "starlette": "1.10.0",
+        "platformdirs": "4.14.8",
+        "uncalled-for": "0.6.2",
+        "fastmcp": "4.2.5",
+        "websockets": "17.4",
+        "pygments": "2.21.0",
+        "httpx2": "2.16.2",
+        "jsonschema-specifications": "2025.9.1",
+        "pydantic_core": "2.50.5",
+        "pydantic": "2.14.4",
+        "joserfc": "1.8.0",
+        "rich": "15.0.0",
+        "rich-rst": "2.2.0",
+        "pydantic-settings": "2.16.3",
+        "jsonschema": "4.26.0",
+        "pyjwt": "2.15.1",
+        "dnspython": "2.9.2",
+        "sse-starlette": "3.7.1",
+        "click": "8.5.1",
+        "docstring_parser": "0.18.0",
+        "aiofile": "3.12.3",
+        "httpcore": "1.0.9",
+        "packaging": "26.4",
+        "cryptography": "50.0.2",
+        "pycparser": "3.12",
+        "mcp-types": "2.3.0",
+        "opentelemetry-api": "1.45.2",
+        "typing-inspection": "0.4.5",
+        "cachetools": "8.0.2",
+        "h11": "0.16.0",
+        "mdurl": "0.1.2",
+        "griffelib": "2.4.1",
+        "jsonref": "1.1.0",
+        "email-validator": "2.4.0",
+        "jsonschema-path": "0.5.0",
+        "truststore": "0.10.5",
+        "authlib": "1.9.10",
+        "python-dotenv": "1.2.4",
+        "cyclopts": "5.5.2",
+        "cffi": "2.1.1",
+        "certifi": "2026.11.20",
+        "annotated-types": "0.8.0",
+        "referencing": "0.37.0",
+        "pyperclip": "1.11.0",
+        "python-multipart": "0.0.34",
+        "rpds-py": "2026.9.1",
+        "openapi-pydantic": "0.6.0",
+        "anyio": "4.16.0",
+        "attrs": "26.1.0",
+        "httpx": "0.28.1",
+        "typing_extensions": "4.16.0",
+        "exceptiongroup": "1.3.2",
+        "mcp": "2.3.0",
+        "caio": "0.12.10",
+        "pathable": "0.6.0",
+        "py-key-value-aio": "0.5.0",
+        "fastmcp-slim": "4.2.5",
+        "beartype": "0.23.1",
+        "pyyaml": "6.0.4",
+        "idna": "3.20"
+      },
+      "host": {
+        "macos": "26.5.2",
+        "arch": "arm64",
+        "python": "3.13.3"
+      },
+      "file_hashes": {
+        "design_mcp/__init__.py": "4b6e7d73f7f2fe01ae460f58c2a2ab586243e68f2528e66ec29fec48defece0d",
+        "design_mcp/cli.py": "e045323969ed6dbc8ad3a62199f7bb0a15a1464adc44875ce8c59db22ce223be",
+        "design_mcp/corpus.py": "be6772f134c2e969f521cdd7043f5729b500f045a426fea16642bcecd8c0b36f",
+        "design_mcp/data/anti_generic_system.json": "32959d994d1294b70374303ea282c347361c1a7d01b0365376e9b66aae1ac37f",
+        "design_mcp/data/anti_pattern_fixes.json": "8818108671dc8761562819a9047adeb7907714e9bfa2d23d5d27ef9c919445b0",
+        "design_mcp/data/behavioral_templates.json": "c3f3f2fbe970fc5ceb3015bc8aad9bec81f90cab7547e6893b2f30fa767e82a9",
+        "design_mcp/data/component_code.json": "1667bba1a48c0dc4df13384ea1334e02aa34614e78d7eac92e9eaa2898f29f1a",
+        "design_mcp/data/decision_trees.json": "ea0061ab858cef42f878c7fba8b2a471150cecde8f50820909222cc6185fc2c7",
+        "design_mcp/data/decision_trees_indexed.json": "a113d248ebd219781b0cf946349fd06a0d9bbcfe63d5755414736a7c81603a14",
+        "design_mcp/data/directions.json": "2ba3244c2f9e96f4c8ecf1b18b87b34e884586ad58fdf4ffb60a105ba11ce713",
+        "design_mcp/data/layout_templates.json": "cd9f616aabbd8b7cd8a87c53f363c2a93c96df8e76b1de0f6f2499481685501f",
+        "design_mcp/data/libraries.json": "64f77c98ee11772bd357b6a00892d845f1b93095feb7f6932d8a0a7275749d03",
+        "design_mcp/data/taxonomy.json": "752dd0ec6bf1c7dbdc79b3682964c875e09f47ed959b7fa44d45dcacad3ab99e",
+        "design_mcp/data/tokens/semantic_tokens.json": "36e637664b7896edfde2c6f7084a7782b1f7ad2fd39784abde7067e88cef5d27",
+        "design_mcp/data/tokens/token_sets.json": "4bdd4e0875e71eeb366d2fdc36323ee1d7522896dc87f6a9e15ba01a5c7813ac",
+        "design_mcp/data/visual_recipes.json": "ef2f8876d44e738a1de47dd7f1c8bcf07bcd9e48867e8c407dd5eb7fb753fa4d",
+        "design_mcp/database.py": "d69ab504317920277fd577fc02246eaa944d1e1952f9b2365fe0c1ab6a8c3d6e",
+        "design_mcp/design_checks.py": "556ad3a69ae2874e2aea50ff2db84fa4f9f4fa7ce7396a3e5f1a096dbed416bd",
+        "design_mcp/desktop_review.py": "56268a306ef2bf394222b0c1e1bb61e7f1beed4b049f335c54ae7a36aa66d3c5",
+        "design_mcp/direction_records.py": "ec674083df079ce8ce7579c37c26dc84612a1db76e3f7387badfb66077b5070f",
+        "design_mcp/directions.py": "aef52429ef42cb3417e062806fb232ece026b7aa0f56ec1bdc74c04adf6bee7b",
+        "design_mcp/doctor.py": "ca36aa77fcd90b10426bd3aadc2f928421cd92f7ab00c1c93c3fdf8ffbbe0a75",
+        "design_mcp/enrichment.py": "3b48d6ee002773885a5c913004296c3892d1e1f887843d4bba8577d9f9a6fba4",
+        "design_mcp/models/__init__.py": "1fcfe134b8dd13ae3d7a5ff95cfa16479e2f06cd0860cdbf186fc5bfa6d467b0",
+        "design_mcp/models/analyzer.py": "62e00840547547f25aa34f9e395d8d300c6fe8da563638372c552f3d2efdbfb1",
+        "design_mcp/models/quality_scorer.py": "c5e3ad10486f458260748e17267fae303c37a3ece5f14c30f7470fc13dc7e8de",
+        "design_mcp/models/train_scorer.py": "be6be900cb27743e9110e485211dede5d859eb602eb01aa7dbbb9d2daea83ca8",
+        "design_mcp/models/visual_analyzer.py": "74303881e8c0fae24bffd64a23508409ed07b5ed8f163fa39713b1c3d64ce735",
+        "design_mcp/palettes.py": "d2840e1a3d81ae0d7aadbfda51137eb4988646903e05c55a68d4cb23ae8bdcdf",
+        "design_mcp/resources.py": "c8279e50688eae6db2a9a5b562998347629e4a5eff39578934c1427a9fa269cb",
+        "design_mcp/review/__init__.py": "3eb559a8193dc49c195d527fe8fbdba7ed82772eda8997ee8707b7efc8756b02",
+        "design_mcp/review/address.py": "224ed5b975df8f959d9f3d44b5703193cbbb84d5b3a3b14e36c774bcdb010c22",
+        "design_mcp/review/checks.py": "78fb3eb206e0984a6e1d90ddeb4656dff0983a7957c55e2666852723ff242dee",
+        "design_mcp/review/cli.py": "cdac94a072d7ba5076e1d3e5cfe2d24e1bce65845487a0d5931c158d43260d06",
+        "design_mcp/review/direct_capture.py": "9381fa0926fee06bacc1deed9113a1aef1400ec8bc9719ce5907869abc42bf2f",
+        "design_mcp/review/evidence.py": "1c0f0881799cf80a206f93a5c18a73b07d69c660158229486e7eece84d012966",
+        "design_mcp/review/extension/collector.js": "d137cc99d85f652d5d204a83eb867bffe4e3e58002fb79b055afb71cb117e3c2",
+        "design_mcp/review/extension/manifest.json": "827bc1580d45a4c5cdb5770ce1b0ba9f69c8a1a9a3c87fa4f1120723b3e57941",
+        "design_mcp/review/extension/mask.js": "cd384a9e08104381a4fa2da57bfca445024864978e2064a38efa71ed4ac564a0",
+        "design_mcp/review/extension/popup.css": "e870c8d1351b8b5f2627f1b009e25ab5c469f6a7e48e62528b38e0c5e22a469c",
+        "design_mcp/review/extension/popup.html": "9f444dbfc73c544046a17fcd41fc8d28902a471e4440ffc0319c997744727c51",
+        "design_mcp/review/extension/popup.js": "d79f68a03e805d61740e70405ba5deca0dbcf5b7b8d9378a7f739c20a16c9771",
+        "design_mcp/review/host.py": "2a0afc74bcb75c9dd8f27737af9430c3c2ea10d1f07801a177604558d73b2206",
+        "design_mcp/review/isolated.py": "2ce72bfcd3d4d716135a8516506ccbd4de9c3260a1b00d20592dc79b9b2e60b9",
+        "design_mcp/review/network.py": "f3b2262ea03e8216de039949d9cc0da65ea35092419f3958e5844e9894b3947e",
+        "design_mcp/review/pipeline.py": "979620bc6539c220a60030213ad0fe79703099486f655da245638867abf6ba3b",
+        "design_mcp/review/preview.py": "eeca7ac9f6095c5b1c445964b5b36df9397da9b2ec481f8ec0395a822ac47cf5",
+        "design_mcp/review/tool.py": "813a31ff553a60e2e9a3b3aaffce894f9b27e234e5b553813c43e89d96f8bdc1",
+        "design_mcp/schema.py": "a819d916a43edf6f104b8a9ee99f7e5b389ca3af89d40742a44830fca6e4075c",
+        "design_mcp/server.py": "29e3fb527e3cf00530e82044117f41aedb08ff56e51fa2e15c97e5419403dbd7"
+      },
+      "wheel_sha256": "b6fcd6aafda50bb328e806ecfba2e17a6947e8bdb6d5cc1b49845f1e1a600389",
+      "tools": [
+        "check",
+        "direct",
+        "react"
+      ],
+      "cases": {
+        "tacoma-eye-care": {
+          "reply_sha256": "a82a561c009a9652dbff48c08cbc14c7b140523daf1e3d545c5cb344400b924e",
+          "direction": "direct-consultation"
+        },
+        "dayton-physiotherapy": {
+          "reply_sha256": "a82a561c009a9652dbff48c08cbc14c7b140523daf1e3d545c5cb344400b924e",
+          "direction": "direct-consultation"
+        },
+        "madison-counseling": {
+          "reply_sha256": "a82a561c009a9652dbff48c08cbc14c7b140523daf1e3d545c5cb344400b924e",
+          "direction": "direct-consultation"
+        },
+        "albany-physiotherapy": {
+          "reply_sha256": "a82a561c009a9652dbff48c08cbc14c7b140523daf1e3d545c5cb344400b924e",
+          "direction": "direct-consultation"
+        },
+        "fairhill-dental": {
+          "reply_sha256": "752d16db2186c3999f2f37e8b0a5652e2be78676a821f4482fc62a1f12c34ece",
+          "direction": "service-work-order"
+        },
+        "harbor-estate-law": {
+          "reply_sha256": "a82a561c009a9652dbff48c08cbc14c7b140523daf1e3d545c5cb344400b924e",
+          "direction": "direct-consultation"
+        }
+      },
+      "frozen": [
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "752d16db2186c3999f2f37e8b0a5652e2be78676a821f4482fc62a1f12c34ece",
+        "8a7990d0d8659495693fd2dd71f8f3a67f6d9025b30aa24e9df01ed2ec5547d2",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "b938a2291dc3c98a930dd3f478ba459158bfaeeb8c1c7443c2f648765dab50c9",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "8f160497a3603576f926abd095aefb3ddb8f73a8f56b41d861d1bf05b3d41e5f",
+        "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "93d0fbb2b8633dbee89c897793eebec30a20855f7d9f6c29317a29126f2107d5",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "d10cb3487491d4a81a80a783ca5ed5b064afd74465df692aea51429614f5400d",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "8f160497a3603576f926abd095aefb3ddb8f73a8f56b41d861d1bf05b3d41e5f",
+        "93d0fbb2b8633dbee89c897793eebec30a20855f7d9f6c29317a29126f2107d5",
+        "e492e135384df3b9f516422d556a2f29369a299a80ca8a7c473cd475d2da21f8",
+        "a14efe079cd11f98c7e8bcf527882fa1afd660c36f1ec6265695c154c6891009",
+        "d10cb3487491d4a81a80a783ca5ed5b064afd74465df692aea51429614f5400d",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "b938a2291dc3c98a930dd3f478ba459158bfaeeb8c1c7443c2f648765dab50c9",
+        "93d0fbb2b8633dbee89c897793eebec30a20855f7d9f6c29317a29126f2107d5",
+        "e492e135384df3b9f516422d556a2f29369a299a80ca8a7c473cd475d2da21f8",
+        "a14efe079cd11f98c7e8bcf527882fa1afd660c36f1ec6265695c154c6891009",
+        "d10cb3487491d4a81a80a783ca5ed5b064afd74465df692aea51429614f5400d"
+      ],
+      "forms": {
+        "tacoma-eye-care": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "dayton-physiotherapy": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "madison-counseling": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "albany-physiotherapy": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "fairhill-dental": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "harbor-estate-law": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7"
+      },
+      "booking": "752d16db2186c3999f2f37e8b0a5652e2be78676a821f4482fc62a1f12c34ece",
+      "receipt_sha256": "61564e6e20f07883ff52e219b693a706ef38918c5a29446cd31e6f1ba1897ccc"
+    },
+    "treatment/pipx": {
+      "arm": "treatment",
+      "installer": "pipx",
+      "commit": "fdcec48df5319739bc61d3f2ec26c57f9a744af1",
+      "dependencies": {
+        "markdown-it-py": "4.3.0",
+        "uvicorn": "0.54.0",
+        "watchfiles": "1.3.0",
+        "httpcore2": "2.16.2",
+        "starlette": "1.10.0",
+        "platformdirs": "4.14.8",
+        "uncalled-for": "0.6.2",
+        "fastmcp": "4.2.5",
+        "websockets": "17.4",
+        "pygments": "2.21.0",
+        "httpx2": "2.16.2",
+        "jsonschema-specifications": "2025.9.1",
+        "pydantic_core": "2.50.5",
+        "pydantic": "2.14.4",
+        "joserfc": "1.8.0",
+        "rich": "15.0.0",
+        "rich-rst": "2.2.0",
+        "pydantic-settings": "2.16.3",
+        "jsonschema": "4.26.0",
+        "pyjwt": "2.15.1",
+        "dnspython": "2.9.2",
+        "sse-starlette": "3.7.1",
+        "click": "8.5.1",
+        "docstring_parser": "0.18.0",
+        "aiofile": "3.12.3",
+        "httpcore": "1.0.9",
+        "packaging": "26.4",
+        "cryptography": "50.0.2",
+        "pycparser": "3.12",
+        "mcp-types": "2.3.0",
+        "opentelemetry-api": "1.45.2",
+        "typing-inspection": "0.4.5",
+        "cachetools": "8.0.2",
+        "h11": "0.16.0",
+        "mdurl": "0.1.2",
+        "griffelib": "2.4.1",
+        "jsonref": "1.1.0",
+        "email-validator": "2.4.0",
+        "jsonschema-path": "0.5.0",
+        "truststore": "0.10.5",
+        "authlib": "1.9.10",
+        "python-dotenv": "1.2.4",
+        "cyclopts": "5.5.2",
+        "cffi": "2.1.1",
+        "certifi": "2026.11.20",
+        "annotated-types": "0.8.0",
+        "referencing": "0.37.0",
+        "pyperclip": "1.11.0",
+        "python-multipart": "0.0.34",
+        "rpds-py": "2026.9.1",
+        "openapi-pydantic": "0.6.0",
+        "anyio": "4.16.0",
+        "attrs": "26.1.0",
+        "httpx": "0.28.1",
+        "typing_extensions": "4.16.0",
+        "exceptiongroup": "1.3.2",
+        "mcp": "2.3.0",
+        "caio": "0.12.10",
+        "pathable": "0.6.0",
+        "py-key-value-aio": "0.5.0",
+        "fastmcp-slim": "4.2.5",
+        "beartype": "0.23.1",
+        "pyyaml": "6.0.4",
+        "idna": "3.20"
+      },
+      "host": {
+        "macos": "26.5.2",
+        "arch": "arm64",
+        "python": "3.13.3"
+      },
+      "file_hashes": {
+        "design_mcp/__init__.py": "4b6e7d73f7f2fe01ae460f58c2a2ab586243e68f2528e66ec29fec48defece0d",
+        "design_mcp/cli.py": "e045323969ed6dbc8ad3a62199f7bb0a15a1464adc44875ce8c59db22ce223be",
+        "design_mcp/corpus.py": "be6772f134c2e969f521cdd7043f5729b500f045a426fea16642bcecd8c0b36f",
+        "design_mcp/data/anti_generic_system.json": "32959d994d1294b70374303ea282c347361c1a7d01b0365376e9b66aae1ac37f",
+        "design_mcp/data/anti_pattern_fixes.json": "8818108671dc8761562819a9047adeb7907714e9bfa2d23d5d27ef9c919445b0",
+        "design_mcp/data/behavioral_templates.json": "c3f3f2fbe970fc5ceb3015bc8aad9bec81f90cab7547e6893b2f30fa767e82a9",
+        "design_mcp/data/component_code.json": "1667bba1a48c0dc4df13384ea1334e02aa34614e78d7eac92e9eaa2898f29f1a",
+        "design_mcp/data/decision_trees.json": "ea0061ab858cef42f878c7fba8b2a471150cecde8f50820909222cc6185fc2c7",
+        "design_mcp/data/decision_trees_indexed.json": "a113d248ebd219781b0cf946349fd06a0d9bbcfe63d5755414736a7c81603a14",
+        "design_mcp/data/directions.json": "e158a2fa81f038e6cd6299ad5a2f9ecb8d2ca25aa2122e831c4cb911bb818965",
+        "design_mcp/data/layout_templates.json": "cd9f616aabbd8b7cd8a87c53f363c2a93c96df8e76b1de0f6f2499481685501f",
+        "design_mcp/data/libraries.json": "64f77c98ee11772bd357b6a00892d845f1b93095feb7f6932d8a0a7275749d03",
+        "design_mcp/data/taxonomy.json": "752dd0ec6bf1c7dbdc79b3682964c875e09f47ed959b7fa44d45dcacad3ab99e",
+        "design_mcp/data/tokens/semantic_tokens.json": "36e637664b7896edfde2c6f7084a7782b1f7ad2fd39784abde7067e88cef5d27",
+        "design_mcp/data/tokens/token_sets.json": "4bdd4e0875e71eeb366d2fdc36323ee1d7522896dc87f6a9e15ba01a5c7813ac",
+        "design_mcp/data/visual_recipes.json": "ef2f8876d44e738a1de47dd7f1c8bcf07bcd9e48867e8c407dd5eb7fb753fa4d",
+        "design_mcp/database.py": "d69ab504317920277fd577fc02246eaa944d1e1952f9b2365fe0c1ab6a8c3d6e",
+        "design_mcp/design_checks.py": "556ad3a69ae2874e2aea50ff2db84fa4f9f4fa7ce7396a3e5f1a096dbed416bd",
+        "design_mcp/desktop_review.py": "56268a306ef2bf394222b0c1e1bb61e7f1beed4b049f335c54ae7a36aa66d3c5",
+        "design_mcp/direction_records.py": "ec674083df079ce8ce7579c37c26dc84612a1db76e3f7387badfb66077b5070f",
+        "design_mcp/directions.py": "b66907c790d29412d2caa129ac2c536c88479a2fee1b14a33676df26f9d0c6f9",
+        "design_mcp/doctor.py": "ca36aa77fcd90b10426bd3aadc2f928421cd92f7ab00c1c93c3fdf8ffbbe0a75",
+        "design_mcp/enrichment.py": "3b48d6ee002773885a5c913004296c3892d1e1f887843d4bba8577d9f9a6fba4",
+        "design_mcp/models/__init__.py": "1fcfe134b8dd13ae3d7a5ff95cfa16479e2f06cd0860cdbf186fc5bfa6d467b0",
+        "design_mcp/models/analyzer.py": "62e00840547547f25aa34f9e395d8d300c6fe8da563638372c552f3d2efdbfb1",
+        "design_mcp/models/quality_scorer.py": "c5e3ad10486f458260748e17267fae303c37a3ece5f14c30f7470fc13dc7e8de",
+        "design_mcp/models/train_scorer.py": "be6be900cb27743e9110e485211dede5d859eb602eb01aa7dbbb9d2daea83ca8",
+        "design_mcp/models/visual_analyzer.py": "74303881e8c0fae24bffd64a23508409ed07b5ed8f163fa39713b1c3d64ce735",
+        "design_mcp/palettes.py": "d2840e1a3d81ae0d7aadbfda51137eb4988646903e05c55a68d4cb23ae8bdcdf",
+        "design_mcp/resources.py": "c8279e50688eae6db2a9a5b562998347629e4a5eff39578934c1427a9fa269cb",
+        "design_mcp/review/__init__.py": "3eb559a8193dc49c195d527fe8fbdba7ed82772eda8997ee8707b7efc8756b02",
+        "design_mcp/review/address.py": "224ed5b975df8f959d9f3d44b5703193cbbb84d5b3a3b14e36c774bcdb010c22",
+        "design_mcp/review/checks.py": "78fb3eb206e0984a6e1d90ddeb4656dff0983a7957c55e2666852723ff242dee",
+        "design_mcp/review/cli.py": "cdac94a072d7ba5076e1d3e5cfe2d24e1bce65845487a0d5931c158d43260d06",
+        "design_mcp/review/direct_capture.py": "9381fa0926fee06bacc1deed9113a1aef1400ec8bc9719ce5907869abc42bf2f",
+        "design_mcp/review/evidence.py": "1c0f0881799cf80a206f93a5c18a73b07d69c660158229486e7eece84d012966",
+        "design_mcp/review/extension/collector.js": "d137cc99d85f652d5d204a83eb867bffe4e3e58002fb79b055afb71cb117e3c2",
+        "design_mcp/review/extension/manifest.json": "827bc1580d45a4c5cdb5770ce1b0ba9f69c8a1a9a3c87fa4f1120723b3e57941",
+        "design_mcp/review/extension/mask.js": "cd384a9e08104381a4fa2da57bfca445024864978e2064a38efa71ed4ac564a0",
+        "design_mcp/review/extension/popup.css": "e870c8d1351b8b5f2627f1b009e25ab5c469f6a7e48e62528b38e0c5e22a469c",
+        "design_mcp/review/extension/popup.html": "9f444dbfc73c544046a17fcd41fc8d28902a471e4440ffc0319c997744727c51",
+        "design_mcp/review/extension/popup.js": "d79f68a03e805d61740e70405ba5deca0dbcf5b7b8d9378a7f739c20a16c9771",
+        "design_mcp/review/host.py": "2a0afc74bcb75c9dd8f27737af9430c3c2ea10d1f07801a177604558d73b2206",
+        "design_mcp/review/isolated.py": "2ce72bfcd3d4d716135a8516506ccbd4de9c3260a1b00d20592dc79b9b2e60b9",
+        "design_mcp/review/network.py": "f3b2262ea03e8216de039949d9cc0da65ea35092419f3958e5844e9894b3947e",
+        "design_mcp/review/pipeline.py": "979620bc6539c220a60030213ad0fe79703099486f655da245638867abf6ba3b",
+        "design_mcp/review/preview.py": "eeca7ac9f6095c5b1c445964b5b36df9397da9b2ec481f8ec0395a822ac47cf5",
+        "design_mcp/review/tool.py": "813a31ff553a60e2e9a3b3aaffce894f9b27e234e5b553813c43e89d96f8bdc1",
+        "design_mcp/schema.py": "a819d916a43edf6f104b8a9ee99f7e5b389ca3af89d40742a44830fca6e4075c",
+        "design_mcp/server.py": "29e3fb527e3cf00530e82044117f41aedb08ff56e51fa2e15c97e5419403dbd7"
+      },
+      "wheel_sha256": "781c6030d1086e1cd01d644666080e5c6924cccdcc3e764f33062d7442a44ec6",
+      "tools": [
+        "check",
+        "direct",
+        "react"
+      ],
+      "cases": {
+        "tacoma-eye-care": {
+          "reply_sha256": "4a5c5915faca5bed870ea25f001cafaa63c5ac35869807a26610a14c217ac55f",
+          "direction": "direct-consultation"
+        },
+        "dayton-physiotherapy": {
+          "reply_sha256": "4a5c5915faca5bed870ea25f001cafaa63c5ac35869807a26610a14c217ac55f",
+          "direction": "direct-consultation"
+        },
+        "madison-counseling": {
+          "reply_sha256": "4a5c5915faca5bed870ea25f001cafaa63c5ac35869807a26610a14c217ac55f",
+          "direction": "direct-consultation"
+        },
+        "albany-physiotherapy": {
+          "reply_sha256": "4a5c5915faca5bed870ea25f001cafaa63c5ac35869807a26610a14c217ac55f",
+          "direction": "direct-consultation"
+        },
+        "fairhill-dental": {
+          "reply_sha256": "4a5c5915faca5bed870ea25f001cafaa63c5ac35869807a26610a14c217ac55f",
+          "direction": "direct-consultation"
+        },
+        "harbor-estate-law": {
+          "reply_sha256": "4a5c5915faca5bed870ea25f001cafaa63c5ac35869807a26610a14c217ac55f",
+          "direction": "direct-consultation"
+        }
+      },
+      "frozen": [
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "752d16db2186c3999f2f37e8b0a5652e2be78676a821f4482fc62a1f12c34ece",
+        "8a7990d0d8659495693fd2dd71f8f3a67f6d9025b30aa24e9df01ed2ec5547d2",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "b938a2291dc3c98a930dd3f478ba459158bfaeeb8c1c7443c2f648765dab50c9",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "8f160497a3603576f926abd095aefb3ddb8f73a8f56b41d861d1bf05b3d41e5f",
+        "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "93d0fbb2b8633dbee89c897793eebec30a20855f7d9f6c29317a29126f2107d5",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "d10cb3487491d4a81a80a783ca5ed5b064afd74465df692aea51429614f5400d",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "8f160497a3603576f926abd095aefb3ddb8f73a8f56b41d861d1bf05b3d41e5f",
+        "93d0fbb2b8633dbee89c897793eebec30a20855f7d9f6c29317a29126f2107d5",
+        "e492e135384df3b9f516422d556a2f29369a299a80ca8a7c473cd475d2da21f8",
+        "a14efe079cd11f98c7e8bcf527882fa1afd660c36f1ec6265695c154c6891009",
+        "d10cb3487491d4a81a80a783ca5ed5b064afd74465df692aea51429614f5400d",
+        "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1",
+        "b938a2291dc3c98a930dd3f478ba459158bfaeeb8c1c7443c2f648765dab50c9",
+        "93d0fbb2b8633dbee89c897793eebec30a20855f7d9f6c29317a29126f2107d5",
+        "e492e135384df3b9f516422d556a2f29369a299a80ca8a7c473cd475d2da21f8",
+        "a14efe079cd11f98c7e8bcf527882fa1afd660c36f1ec6265695c154c6891009",
+        "d10cb3487491d4a81a80a783ca5ed5b064afd74465df692aea51429614f5400d"
+      ],
+      "forms": {
+        "tacoma-eye-care": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "dayton-physiotherapy": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "madison-counseling": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "albany-physiotherapy": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "fairhill-dental": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7",
+        "harbor-estate-law": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7"
+      },
+      "booking": "752d16db2186c3999f2f37e8b0a5652e2be78676a821f4482fc62a1f12c34ece",
+      "receipt_sha256": "d3e9aa0e7d27334e011a984a04f00051fae05b77b537d317f33e0540abc40dc7"
+    }
+  }
+}

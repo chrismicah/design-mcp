@@ -51,3 +51,16 @@ full replies and six explicit form overrides match. Five contact-led
 replies differ in only the draft action field. Fairhill is kept as
 the separate routing holdout because the directions differ there.
 [Matched generation contract](NOTE-RETENTION-GENERATION.md)
+
+## Clean install replay
+
+On Apple Silicon macOS 26.5.2 with Python 3.13.3, both pipx and uv
+installed fresh wheels built from exact Git archives of the two
+commits. Each install matched 50 tracked package files byte for
+byte, passed doctor, and replayed the six sealed practice replies
+from an empty working directory. All 48 frozen replies, six form
+overrides and the genuine booking control matched between arms and
+installers. Dependency versions matched between arms for each
+installer. The two changed package files contain the routing and
+guidance edits. Generation and live scoring remain separate.
+[Exact installed comparison](../evidence/benchmark-v1/note-retention-installed.json)
