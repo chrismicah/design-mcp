@@ -67,11 +67,11 @@ _SITE_TASK = re.compile(
     rf"{_SITE_NAME}\b"
     r"(?![’']s\b|\s+(?:already|currently|exists?|has|is|works?)\b)"
 )
-_NEGATED_SITE_ACTION = re.compile(r"\b(?:do\s+not|don['’]t|never|avoid|without)\s+(?:\w+\s+){0,2}$")
+_NEGATED_ACTION = re.compile(r"\b(?:do\s+not|don['’]t|never|avoid|without|no)\s+(?:\w+\s+){0,2}$")
 _SITE_ADDITION = re.compile(r"\band (?:add|include|put|show)\b")
 _EDITORIAL_SITE = re.compile(rf"\beditorial {_SITE_NAME}\b")
 _CONTACT_INTENT = re.compile(r"\b(?:call(?:ing|ers?)?|phone|callback|consultation|"
-                             r"contact (?:the |our |their )?(?:practice|office)|"
+                             r"(?:contact|text|email) (?:the |our |their )?(?:practice|office|clinic|firm)|"
                              r"speak (?:directly )?(?:with|to))\b")
 _SHOPPING_INTENT = re.compile(r"\b(?:product page|checkout|add (?:\S+ ){0,3}to (?:the )?(?:bag|basket|cart))\b")
 
@@ -90,9 +90,9 @@ def _match(token: str, brief: str) -> bool:
     return re.search(rf"(?<!\w){re.escape(token.casefold())}(?!\w)", brief) is not None
 
 
-def _site_task(text: str) -> re.Match[str] | None:
-    for match in _SITE_TASK.finditer(text):
-        if not _NEGATED_SITE_ACTION.search(text[:match.start()]):
+def _affirmative_match(pattern: re.Pattern[str], text: str) -> re.Match[str] | None:
+    for match in pattern.finditer(text):
+        if not _NEGATED_ACTION.search(text[:match.start()]):
             return match
     return None
 
@@ -109,7 +109,7 @@ def _is_form_task(text: str) -> bool:
     preceding_clauses = _CLAUSE_BREAK.split(text[:entry.end()])[:-1]
     parent = " ".join(preceding_clauses)
     before_entry = text[:entry.start()]
-    site = _site_task(before_entry)
+    site = _affirmative_match(_SITE_TASK, before_entry)
     if site and (_CLAUSE_BREAK.search(before_entry, site.end()) or _SITE_ADDITION.search(before_entry, site.end())):
         return False
     tail = _CLAUSE_BREAK.split(text[entry.end():], maxsplit=1)[0].rstrip()
@@ -122,7 +122,7 @@ def _infer_surface(text: str) -> str | None:
         return "form"
     scores = {name: sum(_match(term, text) for term in terms) for name, terms in _TERMS.items()}
     site_text = text.translate(_FORM_SEPARATORS)
-    if _site_task(site_text):
+    if _affirmative_match(_SITE_TASK, site_text):
         scores["landing"] += 1
         # A public site can be mobile-friendly or editorial in tone.
         if scores["mobile"] == 1 and _match("mobile", text):
@@ -146,7 +146,11 @@ async def direct(brief: str, surface: Surface | None = None, avoid: list[str] | 
         return {"error": "Enter a brief of 1 to 12,000 characters."}
     matched = surface or _infer_surface(text)
     kind = matched or "landing"
-    consultation = kind == "landing" and _CONTACT_INTENT.search(text) and not _SHOPPING_INTENT.search(text)
+    consultation = (
+        kind == "landing"
+        and _affirmative_match(_CONTACT_INTENT, text)
+        and not _affirmative_match(_SHOPPING_INTENT, text)
+    )
     candidates = [row for row in library().values()
                   if row.surface == kind and row.id not in (avoid or [])
                   and (consultation or row.id != "direct-consultation")]

@@ -167,6 +167,14 @@ async def test_contact_retail_comparison_transfers_scale_and_keeps_the_current_t
      "object-hero"),
     ("Make a homepage for a Tacoma optometrist. Put the current public phone number before the callback form.",
      "direct-consultation"),
+    ("Build a homepage for an attorney. Lead with the public phone number without an online checkout.",
+     "direct-consultation"),
+    ("Design a homepage for a law firm so new clients can text the office.",
+     "direct-consultation"),
+    ("Create a homepage for a dentist so new patients can email the clinic.",
+     "direct-consultation"),
+    ("Build a homepage for an attorney. No phone or consultation action. Help journalists find firm announcements.",
+     "object-hero"),
 ])
 async def test_consultation_direction_respects_the_relevant_surface(brief, expected):
     assert (await direct(brief))["direction"]["id"] == expected
