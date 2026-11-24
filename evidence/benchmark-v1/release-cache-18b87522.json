@@ -1,0 +1,106 @@
+{
+  "observed_at": "2026-11-24T05:49:30.864479+00:00",
+  "pin": "18b87522a49c545dd6204c20762d6fd64145d375",
+  "verified_package_files": 50,
+  "os": "26.5.2",
+  "arch": "arm64",
+  "python": "3.13.3",
+  "checks": {
+    "default-empty": {
+      "exit": 0,
+      "network_outbound_denied": true,
+      "tool_discovery": "PASS stdio tools/list — v2, 3 tools"
+    },
+    "legacy-empty": {
+      "exit": 0,
+      "network_outbound_denied": true,
+      "tool_discovery": "PASS stdio tools/list — legacy, 14 tools"
+    },
+    "legacy-corrupt": {
+      "exit": 1,
+      "network_outbound_denied": true,
+      "tool_discovery": "PASS stdio tools/list — legacy, 14 tools"
+    },
+    "legacy-repair": {
+      "exit": 0,
+      "network_outbound_denied": false,
+      "tool_discovery": "PASS stdio tools/list — legacy, 14 tools"
+    },
+    "legacy-repaired-offline": {
+      "exit": 0,
+      "network_outbound_denied": true,
+      "tool_discovery": "PASS stdio tools/list — legacy, 14 tools"
+    }
+  },
+  "network_deny_canary": "PermissionError",
+  "repair_source": "real pinned public download",
+  "cache_sha256": "dd51bf8db34f9295253b846ee8719cfd9b76b775ff029f591e49d9e7d16806a5",
+  "cache_bytes": 10092399,
+  "sibling_preserved": true,
+  "offline_lookup": {
+    "tool": "get_design_blueprint",
+    "id": "seed-stripe-dashboard",
+    "layout_type": "sidebar_main",
+    "network_outbound_denied": true
+  },
+  "default_latency": {
+    "samples": [
+      {
+        "startup_to_catalog_ms": 601.28,
+        "startup_to_first_result_ms": 640.91,
+        "warm_direct_ms": [
+          1.9,
+          1.52,
+          1.66
+        ]
+      },
+      {
+        "startup_to_catalog_ms": 567.75,
+        "startup_to_first_result_ms": 573.26,
+        "warm_direct_ms": [
+          1.65,
+          1.39,
+          1.3
+        ]
+      },
+      {
+        "startup_to_catalog_ms": 619.09,
+        "startup_to_first_result_ms": 624.05,
+        "warm_direct_ms": [
+          1.82,
+          1.77,
+          1.62
+        ]
+      },
+      {
+        "startup_to_catalog_ms": 521.96,
+        "startup_to_first_result_ms": 527.09,
+        "warm_direct_ms": [
+          1.69,
+          1.34,
+          1.17
+        ]
+      },
+      {
+        "startup_to_catalog_ms": 632.8,
+        "startup_to_first_result_ms": 640.32,
+        "warm_direct_ms": [
+          1.93,
+          1.42,
+          1.85
+        ]
+      }
+    ],
+    "median_catalog_ms": 601.28,
+    "median_first_result_ms": 624.05,
+    "median_warm_direct_ms": 1.65,
+    "scope": "Five new local stdio processes, three repeats each, same brief, no outbound network. Shared Mac under load."
+  },
+  "doctor_log_sha256": {
+    "default-empty.txt": "b289309beb300c1cb000760c5f21010a7ff757c005289abb096a6e8e312acf3a",
+    "legacy-corrupt.txt": "a5e5a0a50350478d5f8d79895aa3071032fcf500f5286c636bff6ca8e3ff47dc",
+    "legacy-empty.txt": "360a1ec521d12f2f8382d13f57dfbb250f928b83dcda8a623210d17e6997d5de",
+    "legacy-repair.txt": "1fa9053f1a521dfd2438a45ddf8e10708027408759d954a5d7c87b9f77bb5b05",
+    "legacy-repaired-offline.txt": "09afb70ca7743aae028aba47df798e383ba0c729dc190bd58fbaa9ccfcfb6956"
+  }
+}
