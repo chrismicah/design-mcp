@@ -81,10 +81,16 @@ def verify(source, staged):
                     )
                 if arm.startswith("call-slip-"):
                     assert {"exampleVisibleAtOpening", "exampleReplacedByPreview", "exampleRestoredOnReturn"} <= checks.keys()
-                if arm in {"call-slip-live-example", "call-slip-form-balance"}:
+                if arm in {"call-slip-live-example", "call-slip-form-balance", "call-slip-integrated"}:
                     assert "exampleMatchesSelection" in checks
-                if arm == "call-slip-form-balance":
+                if arm in {"call-slip-form-balance", "call-slip-integrated"}:
                     assert {"visitRowsHave44pxTargets", "editorHasRoomAndFits"} <= checks.keys()
+                if arm in {"call-slip-live-example", "call-slip-integrated"}:
+                    assert {"repeatPreviewMatchesFrozenBehavior", "changedVisitStartsMatchingNote",
+                            "contactRemainsVisible"} <= checks.keys()
+                    assert interaction["draftContinuity"]["secondPreviewRetainedManualEdit"] is (
+                        arm == "call-slip-integrated"
+                    )
             verify_frames(cell, view, width, height)
             sizes[width] = {"failed": sorted(key for key, ok in checks.items() if not ok),
                             "request_count": len(interaction["requests"]),

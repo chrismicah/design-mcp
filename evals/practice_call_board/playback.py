@@ -24,7 +24,9 @@ async def interact(client, cell, width):
     if example and cell.name in example["arms"]:
         practice["exampleNoteLabel"] = example["label"]
         practice["exampleUpdatesForSelection"] = cell.name in example["updatesForSelection"]
-        practice["checksFormBalance"] = cell.name == example["checksFormBalance"]
+        practice["checksFormBalance"] = cell.name in example["checksFormBalance"]
+        if cell.name in example["draftContinuity"]:
+            practice["expectEditRetention"] = example["draftContinuity"][cell.name]
     code = "const practice = " + json.dumps(practice) + ";\n"
     code += "const paths = " + json.dumps({key: str(value) for key, value in paths.items()}) + ";\n"
     answer = await render.execute(client, code + (HERE / "call-board-replay.js").read_text())

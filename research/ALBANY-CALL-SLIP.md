@@ -148,3 +148,42 @@ The selected-visit parent holds the highest score recorded in this series,
 matched preference. Both remain below the 9.5 target, and the authored
 visual gains still need an installed MCP transfer test.
 [Blind rematch and capture hashes](../evidence/benchmark-v1/albany-call-slip-form-balance-blind.json)
+
+## Integrated call slip contract
+
+An Albany visitor who is unsure how to start a call needs the clinician,
+number, hours and address first. The optional note should feel like one
+calm preparation step. Omit photographs, service claims and decorative
+paper effects. Petroleum #102A2E anchors the contact panel, mineral
+#DDF3EA surrounds the slip and highlights the current choice, white mint
+#F5FAF8 carries the slip, sea glass #80D2B3 marks the contact rule,
+slate teal #365F5E sets the secondary text, and daylight #F1E472 marks
+the phone action. Baskervville sets the name, heading and note. Atkinson
+Hyperlegible Next sets labels, body copy and controls.
+
+At wide sizes, put the contact panel beside one ruled slip. Inside the
+slip, set the inputs first and the short example below the rule.
+At narrow sizes, stack contact and slip in that order. The first
+sentence occupies the same slip before and after preview. It changes
+from an example to an editable first-person note after the visitor acts.
+The contact information stays readable throughout, following the clinic
+discussion's feedback about animated contact information. The reviewer
+should be able to point to what changed inside the slip. Preserve the
+reader's own edits through Back to details and a repeat preview with the
+same name and visit. A changed name or visit must start a matching note.
+Keep the current draft in memory for this page. An empty edit is still an
+edit. There is no form destination. This follows the NHS pattern of
+using what a person already entered when they return.
+[Clinic discussion](https://www.reddit.com/r/UXDesign/comments/1lsrqk8/)
+[NHS check answers](https://service-manual.nhs.uk/design-system/patterns/check-answers/)
+[Stageshow](https://benji.org/stageshow)
+
+Freeze the selected-visit build, the series high scorer. Run the existing
+validation, example, focus, content and zero-request checks at 320, 390
+and 1440 px. At each width add same-details edit retention, new-visit
+personalization and contact visibility. The original selected-visit build
+should regenerate the note during the same-details check. The independent
+live evaluator exercises this difference before rating both builds on
+the same task. The current clinic URL returned 502 and X returned 403
+on recheck. The Reddit discussion is research evidence. An engagement
+count or new live reference capture is unavailable for this pass.

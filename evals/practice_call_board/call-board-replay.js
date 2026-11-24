@@ -188,9 +188,6 @@ if (example) {
   checks.exampleRestoredOnReturn = checks.returnToOriginal && await example.count() === 1 &&
     await example.isVisible() && (await example.innerText()).trim() === expectedExampleOnReturn;
 }
-checks.noNetworkSubmission = !requests.some(method => method !== "GET");
-checks.noPageErrors = state.pageErrors.length === 0;
-checks.finalWidth = await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth);
 const finalFocus = await page.evaluate(() => (document.activeElement?.labels?.[0]?.textContent || "").trim());
 const receipt = {checks, viewport, finalFocus, requests, firstFrame, initialForm};
 if (practice.recordEditorFocus) {
@@ -200,4 +197,29 @@ if (practice.requireClearedStatus) {
   checks.statusClearedAfterReturn = checks.returnToOriginal &&
     receipt.statusAfterReturn?.length === 1 && receipt.statusAfterReturn[0] === "";
 }
+if (typeof practice.expectEditRetention === "boolean" && checks.returnToOriginal) {
+  const back = page.getByRole("button", {name: match(practice.returnLabel)});
+  const submitAgain = async () => {
+    if (await reach(preview)) await page.keyboard.press("Enter");
+    return await draft.isVisible() && await active(draft) ? await draft.inputValue() : null;
+  };
+  const secondNote = await submitAgain();
+  const retained = secondNote?.includes("I can call Thursday.") ?? false;
+  checks.repeatPreviewMatchesFrozenBehavior = secondNote !== null &&
+    retained === practice.expectEditRetention;
+  if (await reach(back)) await page.keyboard.press("Enter");
+  const reachedVisit = await reach(alternate, "Shift+Tab");
+  if (reachedVisit) await page.keyboard.press("ArrowLeft");
+  const changedVisit = reachedVisit && await firstService.isChecked();
+  const newNote = changedVisit ? await submitAgain() : null;
+  checks.changedVisitStartsMatchingNote = newNote !== null &&
+    newNote.toLowerCase().includes(practice.firstService.toLowerCase()) &&
+    !newNote.includes("I can call Thursday.");
+  checks.contactRemainsVisible = inView(await contact.boundingBox());
+  receipt.draftContinuity = {secondPreviewRetainedManualEdit: retained, changedVisit};
+  if (await reach(back)) await page.keyboard.press("Enter");
+}
+checks.noNetworkSubmission = !requests.some(method => method !== "GET");
+checks.noPageErrors = state.pageErrors.length === 0;
+checks.finalWidth = await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth);
 console.log("PRACTICE_REPLAY " + JSON.stringify(receipt));

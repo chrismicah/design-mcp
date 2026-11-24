@@ -108,10 +108,11 @@
     "recordEditorFocus": true,
     "requireClearedStatus": true,
     "exampleNote": {
-      "arms": ["call-slip-authored", "call-slip-live-example", "call-slip-form-balance"],
+      "arms": ["call-slip-authored", "call-slip-live-example", "call-slip-form-balance", "call-slip-integrated"],
       "label": "Example call note",
-      "updatesForSelection": ["call-slip-live-example", "call-slip-form-balance"],
-      "checksFormBalance": "call-slip-form-balance"
+      "updatesForSelection": ["call-slip-live-example", "call-slip-form-balance", "call-slip-integrated"],
+      "checksFormBalance": ["call-slip-form-balance", "call-slip-integrated"],
+      "draftContinuity": {"call-slip-live-example": false, "call-slip-integrated": true}
     }
   }
 }

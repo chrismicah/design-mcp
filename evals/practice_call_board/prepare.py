@@ -131,4 +131,14 @@ if albany.is_dir():
             print(repaired["case"], repaired["arm"], repaired["html_sha256"])
             parent = repaired
 
+        integrated = albany / "call-slip-integrated"
+        if integrated.is_dir():
+            stamp = json.loads((integrated / "receipt.json").read_bytes())
+            selected = json.loads((albany / "call-slip-live-example/receipt.json").read_bytes())
+            assert stamp["case"] == albany.name and stamp["arm"] == integrated.name
+            assert stamp["scope"] == "Authored integrated call slip"
+            assert stamp["parent_html_sha256"] == selected["html_sha256"]
+            assert stamp["html_sha256"] == sha256((integrated / "index.html").read_bytes()).hexdigest()
+            print(stamp["case"], stamp["arm"], stamp["html_sha256"])
+
 shutil.copytree(ROOT / "cells", sys.argv[1])
