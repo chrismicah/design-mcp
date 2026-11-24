@@ -90,9 +90,23 @@ def _match(token: str, brief: str) -> bool:
     return re.search(rf"(?<!\w){re.escape(token.casefold())}(?!\w)", brief) is not None
 
 
+def _negates_action(text: str, end: int) -> bool:
+    # "Do not" plus the two optional words is the longest negation prefix.
+    start = end
+    for _ in range(4):
+        while start and text[start - 1].isspace():
+            start -= 1
+        word_end = start
+        while start and (text[start - 1].isalnum() or text[start - 1] in "_'’"):
+            start -= 1
+        if start == word_end:
+            break
+    return _NEGATED_ACTION.search(text, start, end) is not None
+
+
 def _affirmative_match(pattern: re.Pattern[str], text: str) -> re.Match[str] | None:
     for match in pattern.finditer(text):
-        if not _NEGATED_ACTION.search(text[:match.start()]):
+        if not _negates_action(text, match.start()):
             return match
     return None
 

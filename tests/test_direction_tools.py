@@ -148,6 +148,15 @@ async def test_call_first_site_reaction_keeps_its_subject():
 
 
 @pytest.mark.asyncio
+async def test_contact_intent_after_many_negated_actions():
+    brief = "Build a homepage for a law firm. " + "Avoid calling. " * 780
+    no_contact = await direct(brief)
+    assert no_contact["direction"]["id"] == "object-hero"
+    with_contact = await direct(brief + "Email the office for a first visit.")
+    assert with_contact["direction"]["id"] == "direct-consultation"
+
+
+@pytest.mark.asyncio
 @pytest.mark.parametrize(("direction_id", "comparison_id"), [
     ("direct-consultation", "object-hero"),
     ("object-hero", "direct-consultation"),
