@@ -98,3 +98,15 @@ Both phone opening captures matched byte for byte. Desktop hashes are
 recorded separately. The independent visual rematch is still pending.
 [Selected-visit browser receipt](../evidence/benchmark-v1/albany-call-slip-live-example.json)
 [Exact replay](https://github.com/chrismicah/design-mcp/actions/runs/45294829199)
+
+## Blind selected-visit rematch
+
+A separate reviewer completed four anonymous live journeys. The
+selected-visit repair scored **8.20 on both desktop and phone**.
+Its original parent scored **7.65 on both** in this ballot. At both
+sizes, the reviewer observed the follow-up sentence before preview
+and after return. Re-selecting assessment brought back the assessment
+sentence. The reviewer still found the desktop form cramped relative
+to the sample and wanted a more visible mobile selection and more
+room to edit. The 9.5 target stays open. [Blind ballot and capture
+hashes](../evidence/benchmark-v1/albany-call-slip-live-example-blind.json)
