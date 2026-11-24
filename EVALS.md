@@ -759,3 +759,16 @@ The resource-only control `fcc7b5b` was subsequently installed and verified agai
 The component trial's clean-install verifier expected three default tools even when the trial advertised four. The corrected `734cec9` verifier uses doctor's mode result and the existing fixture validation of every advertised tool. Fresh local pipx and uv installs each completed all six stdio configurations. Both installed packages matched 52 source files. [Exact installer and component proof](evidence/benchmark-v1/typed-image-component-discovery.json)
 
 The release pin `18b87522` also passed a fresh source-export migration. The stage command copied thirteen missing files, preserved a pre-existing edit, and copied zero files the second time. The original `server.py` invocation exposed all 14 legacy tools from an empty directory and returned a real dashboard pattern. [Stage, hashes and tool receipt](evidence/benchmark-v1/legacy-migration-18b87522.json)
+
+### Saved trails against shadcn
+
+The installed release pin and shadcn 4.23.0 generated untouched HTML
+from the same brief and model. Both passed the four hosted keyboard
+journeys. The independent live critic verified the same task and
+scored Design MCP **8.20 desktop / 7.95 phone** and shadcn
+**7.65 / 7.20**. The Design MCP phone draft showed Cedar Bend, the
+2.4-mile distance, and Save in the first viewport. The shadcn draft
+placed those details below its empty-state panel. The Design MCP
+desktop recovery frame recorded a 1.55:1 label contrast during the
+background transition. The 9.5 release threshold remains open.
+[Hosted browser evidence](evidence/benchmark-v1/saved-trails-shadcn-browser.json) · [Live ballot and pixel samples](evidence/benchmark-v1/saved-trails-shadcn-live.json)

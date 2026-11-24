@@ -1,0 +1,449 @@
+{
+  "scope": "One shared generated saved-trails brief and one independent live ballot. Context retrieval, hosted keyboard replay, scores and pixel diagnosis are distinct measures.",
+  "release_pin": "18b87522a49c545dd6204c20762d6fd64145d375",
+  "generation_commit": "f009b852759f7427356cf08c307c68d904cb094b",
+  "hosted_keyboard_run": "https://github.com/chrismicah/design-mcp/actions/runs/45307155248",
+  "browser_live_operations": {
+    "open_view": 4,
+    "capture": 13,
+    "act": 12
+  },
+  "audited_scores": {
+    "v2": {
+      "1440": 8.2,
+      "390": 7.95
+    },
+    "shadcn": {
+      "1440": 7.65,
+      "390": 7.2
+    }
+  },
+  "original_pngs": {
+    "A-1440-before.png": {
+      "dimensions": [
+        1440,
+        900
+      ],
+      "sha256": "e6944c4ffdd9b0bb6550a408080c0d5ea527497ce52c27775cfa2eee83638528"
+    },
+    "A-1440-after.png": {
+      "dimensions": [
+        1440,
+        900
+      ],
+      "sha256": "6b62f6788b042b9bd713241d3ae74fb7671a159399af327dbe1c3b339eb72dfa"
+    },
+    "A-1440-edge.png": {
+      "dimensions": [
+        1440,
+        900
+      ],
+      "sha256": "9d9746e6a3bb8e2e020464d0c8f95d12c3c4a45e5581e8481c79b0bd28671a89"
+    },
+    "A-390-before.png": {
+      "dimensions": [
+        390,
+        844
+      ],
+      "sha256": "e39594895ae989ece94db82f5b8961da238a6a536da11c3ff8cdb5b21eff3a27"
+    },
+    "A-390-after.png": {
+      "dimensions": [
+        390,
+        844
+      ],
+      "sha256": "2b8921c7219ac7f0b26aa21e050e3100b754beb8fd3bc14815166c3f0411aa91"
+    },
+    "A-390-edge.png": {
+      "dimensions": [
+        390,
+        844
+      ],
+      "sha256": "a1ffd11d7f86b6a64d2af8f5000309dee16a1334cdca2e8022f7552037b0802d"
+    },
+    "B-1440-before.png": {
+      "dimensions": [
+        1440,
+        900
+      ],
+      "sha256": "8ed5c9b533dffbc1a6adc9060e1a2100f001d561c854d393e42c9b499ef9372f"
+    },
+    "B-1440-after.png": {
+      "dimensions": [
+        1440,
+        900
+      ],
+      "sha256": "42118c8b5071a841295d17d25e387612b16814c633e5950e91808e7f4457e712"
+    },
+    "B-1440-edge.png": {
+      "dimensions": [
+        1440,
+        900
+      ],
+      "sha256": "6d36a591db207070da0b9bd69c8f2278a0b7271eb232240a78c11755e1d5dc3d"
+    },
+    "B-390-before.png": {
+      "dimensions": [
+        390,
+        844
+      ],
+      "sha256": "29770e9118c037b7592e70cf2ec49ca4925e1cc4b5f53ae9390edc0aee3ad50f"
+    },
+    "B-390-focused.png": {
+      "dimensions": [
+        390,
+        844
+      ],
+      "sha256": "ad9f4db6e8fe01ea2dedb1241e913d2d37d88d593769cb3ebe18b8f6820c4dc6"
+    },
+    "B-390-after.png": {
+      "dimensions": [
+        390,
+        844
+      ],
+      "sha256": "542d12fcd1f5160a38d7c09b86d5b1ebe3c209112c30db680b4d2e01c464c2ed"
+    },
+    "B-390-edge.png": {
+      "dimensions": [
+        390,
+        844
+      ],
+      "sha256": "ad9f4db6e8fe01ea2dedb1241e913d2d37d88d593769cb3ebe18b8f6820c4dc6"
+    }
+  },
+  "button_contrast_samples": {
+    "before": {
+      "file": "A-1440-before.png",
+      "region_css_pixels": [
+        847,
+        700,
+        1018,
+        736
+      ],
+      "background_rgb": [
+        107,
+        33,
+        72
+      ],
+      "brightest_text_rgb": [
+        255,
+        250,
+        245
+      ],
+      "measured_ratio": 10.46
+    },
+    "edge": {
+      "file": "A-1440-edge.png",
+      "region_css_pixels": [
+        847,
+        700,
+        1018,
+        736
+      ],
+      "background_rgb": [
+        219,
+        200,
+        191
+      ],
+      "brightest_text_rgb": [
+        255,
+        250,
+        245
+      ],
+      "measured_ratio": 1.55
+    }
+  },
+  "contrast_note": "After removal, text changes immediately while the background follows a 150 ms transition. The edge frame catches the low-contrast interval. The pixel sample measures the brightest text against the modal local background.",
+  "decision": "Design MCP won this matched brief at both widths. Neither page met the release threshold. Preserve the exact frozen pair.",
+  "ballot": {
+    "calibration": {
+      "example": "Legible repair intake with clear labels, familiar layout, and misplaced focus after an invalid number.",
+      "coherence": 7,
+      "originality": 4,
+      "craft": 6,
+      "usability": 6,
+      "basis": "Clear labels and a familiar layout support the task; misplaced error focus is a material usability weakness. These scores are estimates from the supplied description, not a live review."
+    },
+    "screens": {
+      "A-1440": {
+        "coherence": 8.5,
+        "originality": 7.5,
+        "craft": 8,
+        "usability": 9,
+        "primary_action": {
+          "input": "Tab, then Enter",
+          "expected": "Reach the Cedar Bend suggestion and save it.",
+          "observed": "The first Tab reached Save Cedar Bend. Enter produced one saved Cedar Bend and a count of 1; focus moved to Remove Cedar Bend."
+        },
+        "edge_observation": "Enter on Remove restored the empty state, 0 count, and actionable suggestion at the same URL, with focus on Save Cedar Bend.",
+        "fact_check": "Cedar Bend and 2.4 miles were visible in the initial viewport before action. The task required no guessing.",
+        "strength": "The large trail illustration and adjacent suggestion make the empty collection feel purposeful while keeping the action prominent.",
+        "weakness": "The illustration takes more space than the route information, and the post-removal button appeared temporarily low contrast in the edge capture.",
+        "repair": "Give the route details more emphasis and ensure the focused save button remains legible throughout state changes.",
+        "captures": [
+          "A-1440-before.png",
+          "A-1440-after.png",
+          "A-1440-edge.png"
+        ],
+        "arm": "v2",
+        "html_sha256": "2d99327097b9ee2c157700debe5d62270c0badc60e106f87234215d2c6946789",
+        "weighted": 8.2,
+        "before": {
+          "sha256": "e6944c4ffdd9b0bb6550a408080c0d5ea527497ce52c27775cfa2eee83638528",
+          "file": "A-1440-before.png",
+          "tool_call_id": "item_2"
+        },
+        "after": {
+          "sha256": "6b62f6788b042b9bd713241d3ae74fb7671a159399af327dbe1c3b339eb72dfa",
+          "file": "A-1440-after.png",
+          "tool_call_id": "item_5"
+        },
+        "layout_width": 1425,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge": {
+          "sha256": "9d9746e6a3bb8e2e020464d0c8f95d12c3c4a45e5581e8481c79b0bd28671a89",
+          "file": "A-1440-edge.png",
+          "tool_call_id": "item_7"
+        },
+        "save_keyboard_transition": [
+          "Save Cedar Bend",
+          "Remove Cedar Bend"
+        ],
+        "remove_keyboard_transition": [
+          "Remove Cedar Bend",
+          "Save Cedar Bend"
+        ]
+      },
+      "A-390": {
+        "coherence": 8,
+        "originality": 7.5,
+        "craft": 8,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Tab, then Enter",
+          "expected": "Reach the Cedar Bend suggestion and save it.",
+          "observed": "The first Tab reached Save Cedar Bend. Enter produced one saved Cedar Bend and a count of 1, with focus on Remove Cedar Bend."
+        },
+        "edge_observation": "Enter on Remove restored the empty state and actionable suggestion at the same URL, retaining focus on Save Cedar Bend.",
+        "fact_check": "Cedar Bend and 2.4 miles were visible in the initial viewport before action. The task required no guessing.",
+        "strength": "The stacked layout keeps the route and named action visible together on the initial screen.",
+        "weakness": "The tall illustration and introductory copy leave the save button close to the bottom of the initial viewport.",
+        "repair": "Reduce the height of the introductory area on narrow screens so the suggestion has more breathing room.",
+        "captures": [
+          "A-390-before.png",
+          "A-390-after.png",
+          "A-390-edge.png"
+        ],
+        "arm": "v2",
+        "html_sha256": "2d99327097b9ee2c157700debe5d62270c0badc60e106f87234215d2c6946789",
+        "weighted": 7.95,
+        "before": {
+          "sha256": "e39594895ae989ece94db82f5b8961da238a6a536da11c3ff8cdb5b21eff3a27",
+          "file": "A-390-before.png",
+          "tool_call_id": "item_10"
+        },
+        "after": {
+          "sha256": "2b8921c7219ac7f0b26aa21e050e3100b754beb8fd3bc14815166c3f0411aa91",
+          "file": "A-390-after.png",
+          "tool_call_id": "item_13"
+        },
+        "layout_width": 375,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge": {
+          "sha256": "a1ffd11d7f86b6a64d2af8f5000309dee16a1334cdca2e8022f7552037b0802d",
+          "file": "A-390-edge.png",
+          "tool_call_id": "item_15"
+        },
+        "save_keyboard_transition": [
+          "Save Cedar Bend",
+          "Remove Cedar Bend"
+        ],
+        "remove_keyboard_transition": [
+          "Remove Cedar Bend",
+          "Save Cedar Bend"
+        ]
+      },
+      "B-1440": {
+        "coherence": 8,
+        "originality": 6.5,
+        "craft": 8,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Tab, then Enter",
+          "expected": "Reach the Cedar Bend suggestion and save it.",
+          "observed": "The first Tab reached Save trail. Enter produced one saved Cedar Bend and a count of 1; focus moved to Remove."
+        },
+        "edge_observation": "Enter on Remove restored the empty panel and actionable suggestion at the same URL, with focus returned to Save trail.",
+        "fact_check": "Cedar Bend and 2.4 miles were visible in the initial viewport before action. The task required no guessing in the visible card context.",
+        "strength": "The distinct empty and suggested panels clearly separate the collection from the proposed trail, and the focus indicator is conspicuous.",
+        "weakness": "The generic Save trail label is less descriptive when encountered outside its visual card context.",
+        "repair": "Give the save control an accessible name that includes Cedar Bend.",
+        "captures": [
+          "B-1440-before.png",
+          "B-1440-after.png",
+          "B-1440-edge.png"
+        ],
+        "arm": "shadcn",
+        "html_sha256": "5d015ac26e59017292bf89817826b9f5b5e7a98fb546bfca858c42ec9c0a3563",
+        "weighted": 7.65,
+        "before": {
+          "sha256": "8ed5c9b533dffbc1a6adc9060e1a2100f001d561c854d393e42c9b499ef9372f",
+          "file": "B-1440-before.png",
+          "tool_call_id": "item_17"
+        },
+        "after": {
+          "sha256": "42118c8b5071a841295d17d25e387612b16814c633e5950e91808e7f4457e712",
+          "file": "B-1440-after.png",
+          "tool_call_id": "item_20"
+        },
+        "layout_width": 1440,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge": {
+          "sha256": "6d36a591db207070da0b9bd69c8f2278a0b7271eb232240a78c11755e1d5dc3d",
+          "file": "B-1440-edge.png",
+          "tool_call_id": "item_22"
+        },
+        "save_keyboard_transition": [
+          "Save trail",
+          "Remove Cedar Bend from saved trails"
+        ],
+        "remove_keyboard_transition": [
+          "Remove Cedar Bend from saved trails",
+          "Save trail"
+        ]
+      },
+      "B-390": {
+        "coherence": 7.5,
+        "originality": 6.5,
+        "craft": 7.5,
+        "usability": 7.5,
+        "primary_action": {
+          "input": "Tab, then Enter",
+          "expected": "Find the suggestion, verify its distance, and save it.",
+          "observed": "The first Tab reached Save trail and scrolled its card into view, revealing Cedar Bend and 2.4 miles. Enter produced one saved Cedar Bend and a count of 1."
+        },
+        "edge_observation": "Enter on the focused Remove control restored the empty state and suggestion at the same URL; focus returned to Save trail and the page scrolled to it.",
+        "fact_check": "The route name and distance were below the initial viewport, but both were visible after Tab and before activation. The task was possible without guessing.",
+        "strength": "Keyboard focus brings the complete suggestion into view, and the saved card is compact and clear.",
+        "weakness": "The large empty-state panel pushes the route name, distance, and action below the initial viewport.",
+        "repair": "Shorten the empty-state panel or bring the suggestion details higher on narrow screens.",
+        "captures": [
+          "B-390-before.png",
+          "B-390-focused.png",
+          "B-390-after.png",
+          "B-390-edge.png"
+        ],
+        "arm": "shadcn",
+        "html_sha256": "5d015ac26e59017292bf89817826b9f5b5e7a98fb546bfca858c42ec9c0a3563",
+        "weighted": 7.2,
+        "before": {
+          "sha256": "29770e9118c037b7592e70cf2ec49ca4925e1cc4b5f53ae9390edc0aee3ad50f",
+          "file": "B-390-before.png",
+          "tool_call_id": "item_25"
+        },
+        "after": {
+          "sha256": "542d12fcd1f5160a38d7c09b86d5b1ebe3c209112c30db680b4d2e01c464c2ed",
+          "file": "B-390-after.png",
+          "tool_call_id": "item_29"
+        },
+        "layout_width": 390,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge": {
+          "sha256": "ad9f4db6e8fe01ea2dedb1241e913d2d37d88d593769cb3ebe18b8f6820c4dc6",
+          "file": "B-390-edge.png",
+          "tool_call_id": "item_31"
+        },
+        "save_keyboard_transition": [
+          "Save trail",
+          "Remove Cedar Bend from saved trails"
+        ],
+        "remove_keyboard_transition": [
+          "Remove Cedar Bend from saved trails",
+          "Save trail"
+        ]
+      }
+    },
+    "preference": {
+      "winner": "A",
+      "reason": "Both designs completed the tested keyboard cycle and restored the suggestion without changing URL. A makes the named route and distance visible immediately at both widths, and its save control names the route. B requires scrolling or focus navigation to reveal those details on the phone."
+    },
+    "unsupported_claims": [
+      "The displayed 2.4-mile distance was confirmed in the interface; its real-world accuracy was not independently verified.",
+      "Persistence across reloads and behavior beyond the tested save and removal cycle were not tested."
+    ],
+    "case": "empty-saved",
+    "verified_screens": 4,
+    "required_screens": 4,
+    "browser": "Chrome/158.0.8127.36",
+    "evaluator_thread": "01a20b3b-bc35-72f3-a9d8-3742fae160b5",
+    "usage": {
+      "input_tokens": 366761,
+      "cached_input_tokens": 336640,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 2627,
+      "reasoning_output_tokens": 0
+    },
+    "trace_sha256": "2d6da09c03f4fcf1c2a2b44a8d408b0f540634b754bd63a39e45b14b5d8ccd49",
+    "browser_audit_sha256": "1c077cc8d7a3052b1dd14eb56153359782316415e114e229caa79ba1a5866b01"
+  }
+}

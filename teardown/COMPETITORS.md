@@ -123,7 +123,7 @@ The gallery task uses the fixture's disclosure behavior with the task's own cont
 | Offline Designer MCP | 1 / 36 | 91.7 on ceramics. Design MCP also scored 91.7. |
 | Screenshots Design Inspiration | 1 / 36 | 91.7 on the gallery label. Design MCP also scored 91.7 in the matched Astra run. |
 | Design Library MCP, keyword | 1 / 36 | 87.5 on ceramics. Design MCP scored 95.8 in the matched shell-disabled run. |
-| shadcn/ui MCP | 1 / 36 | Separate live rubric. At desktop and mobile, shadcn scored 8.10 and 7.75 out of 10. Design MCP scored 8.30 on both. |
+| shadcn/ui MCP | 2 / 36 | Separate live rubric. At desktop and mobile, shadcn scored 8.10 and 7.75 out of 10. Design MCP scored 8.30 on both. |
 | Storybook MCP 10.6.0 | 1 / 36 | Separate live rubric. Storybook scored 7.55 desktop and 7.45 phone. Design MCP scored 7.85 and 7.50. |
 | UI UX Pro Max | 3 / 36 | Won the first bike-booking comparison, 100.0 to 91.7, then tied the newer work order at 95.8. On the live rubric, Design MCP won display settings and saved trails. On saved trails, Design MCP scored 8.10 desktop and 7.85 phone, versus 7.65 and 7.10. |
 | Other credential-free competitor configurations above | 0 / 36 each | Pending |
@@ -136,7 +136,12 @@ brief and model. Hosted Chrome ran four keyboard journeys at 1440 and
 390 CSS pixels. Both pages saved Cedar Bend at 2.4 miles, removed it,
 and returned focus to Save in the original empty state. Design MCP used
 59,021 input and 4,075 output tokens. Shadcn used 79,956 input and 5,592
-output tokens. The blind visual score is pending. [Frozen drafts](../evals/v1/fixtures/saved-trails-shadcn) · [Keyboard evidence](../evidence/benchmark-v1/saved-trails-shadcn-browser.json)
+output tokens. The blind critic scored Design MCP **8.20 desktop and
+7.95 phone**, and shadcn **7.65 and 7.20**. Both completed the task.
+The Design MCP version kept the route and distance visible on phones
+and named the route in Save. Its desktop removal capture briefly
+dropped button-label contrast to 1.55:1. The shadcn version required
+scrolling on phones to see the named suggestion. [Blind ballot and original capture hashes](../evidence/benchmark-v1/saved-trails-shadcn-live.json) [Frozen drafts](../evals/v1/fixtures/saved-trails-shadcn) · [Keyboard evidence](../evidence/benchmark-v1/saved-trails-shadcn-browser.json)
 
 The retrieval probe is a separate test of tool behavior. A visual score requires generation and blinded browser captures on the same 36 briefs. The earlier market inventory covers additional products and publisher examples, including PyModel Designer Skill, Refero, Better Design and Claude Design. [Eval status](../EVALS.md) · [Earlier market inventory](../research/RESEARCH-COMPETITORS.md)
 
