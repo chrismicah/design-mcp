@@ -61,3 +61,20 @@ repeat. The HTML and opening control geometry match. All six phone PNGs
 match byte for byte. The three desktop PNGs differ by 798 to 1,489 RGB
 pixels out of 1,296,000 each. Both sets are stored as their own captures.
 [Mechanism replay evidence](../evidence/benchmark-v1/albany-call-slip-example-swap.json)
+
+## Independent live review
+
+The same blind model session rated all four live screens and completed
+blank-name recovery, note generation, editing and keyboard return.
+The call slip scored **8.15 desktop and 8.15 mobile**. In the same ballot,
+the frozen control scored **7.10 desktop and 7.20 mobile**. The reviewer
+preferred the call slip's editorial hierarchy and distinct identity.
+It found a concrete problem at both widths. Selecting Follow-up visit
+left the large example describing a movement assessment.
+
+Keep the existing candidate as the strongest Albany design so far.
+The next round should bind the example to the chosen visit without
+adding extra interaction or changing the form geometry. A second result
+can test draft persistence separately. This is an authored design win.
+The 9.5 gate and transfer into installed guidance remain open.
+[Verified live ballot and capture hashes](../evidence/benchmark-v1/albany-call-slip-blind.json)

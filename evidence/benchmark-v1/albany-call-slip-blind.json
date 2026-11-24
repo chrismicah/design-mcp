@@ -1,0 +1,357 @@
+{
+  "calibration": {
+    "coherence": 6.5,
+    "originality": 4,
+    "craft": 6,
+    "usability": 6,
+    "reason": "The withheld repair intake is legible and clearly labeled, but its familiar layout offers limited distinction and misplaced focus impairs error recovery."
+  },
+  "screens": {
+    "A-1440": {
+      "coherence": 7.5,
+      "originality": 5.5,
+      "craft": 7.5,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Keyboard: select Follow-up visit, submit blank name, enter Avery, preview, append morning availability, and activate Back to details.",
+        "expected": "Explain the missing name, produce an editable follow-up note, and retain the form choices on return.",
+        "observed": "The blank submission marked First name invalid and focused it. Avery produced the correct editable note and focused its textarea. Morning availability was appended. Back to details retained Avery and Follow-up visit and focused First name."
+      },
+      "edge_observation": "The validation message says 'Enter your first name to preview your note.' No example note was visible. Retention of the edited note after a second preview was not tested.",
+      "fact_check": "The page displays independent physical therapist Rowan Chen, 518-555-0142, 15 Example Lane, Albany, and Tuesday–Friday, 8 am–2 pm. It says the optional note stays on the page and sends or books nothing. These are page claims; their real-world accuracy and network behavior were not independently verified. The number was not dialed.",
+      "strength": "The navy banner, restrained pale blue field, large serif name and straightforward form communicate a calm, individual practice. All initial controls fit within the 1440 × 900 view, and focus is clear in the preview.",
+      "weakness": "The broad empty lower area and conventional form make the experience feel more generic than specific to physical therapy.",
+      "repair": "Give the call-preparation area a more practice-specific visual or editorial cue while preserving its compact, clear form.",
+      "arm": "compact-status-control",
+      "html_sha256": "cb26d1909f6e5cd02604b71ef8d92226c23633b5a900bd376e117292d4b6a6cf",
+      "weighted": 7.1,
+      "before": {
+        "sha256": "75cefdbd1927e6ce2322806d79f1e747db33e9da2de50067227828fa952bc4c6",
+        "file": "A-1440-before.png",
+        "tool_call_id": "item_2"
+      },
+      "after": {
+        "sha256": "7c5777c91fda20a5b5c36733c4e5cb1fb52cd8bd9b7dedbb4fda41a56a50b063",
+        "file": "A-1440-after.png",
+        "tool_call_id": "item_6"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "text",
+          "value": "Avery"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "text",
+          "value": " I am available in the morning."
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ]
+    },
+    "A-390": {
+      "coherence": 7.5,
+      "originality": 5.5,
+      "craft": 8,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Keyboard: select Follow-up visit, submit blank name, enter Avery, preview, append morning availability, and activate Back to details.",
+        "expected": "Recover from the blank name and preserve the form details after editing.",
+        "observed": "Validation focused the invalid name field; the preview focused the editable note and contained Avery and the follow-up visit. The added morning sentence appeared. Returning retained Avery and Follow-up visit and focused First name."
+      },
+      "edge_observation": "The blank-name message appeared and cleared when Avery was entered. No example note was visible. Persistence of the added sentence after another preview was not tested.",
+      "fact_check": "The displayed clinician, number, address and hours match A-1440. The page says the note stays on the page and sends or books nothing; real-world details and network behavior were not independently verified. No call was placed.",
+      "strength": "The stacked layout keeps the call link, both visit choices, name field and preview button on the initial 390 × 844 screen. The serif identity and blue palette remain calm and legible.",
+      "weakness": "The visual language is competent but gives little particular character to this independent physical therapy practice.",
+      "repair": "Add a restrained, relevant detail that makes the practice recognizable without displacing the complete first-screen form.",
+      "arm": "compact-status-control",
+      "html_sha256": "cb26d1909f6e5cd02604b71ef8d92226c23633b5a900bd376e117292d4b6a6cf",
+      "weighted": 7.2,
+      "before": {
+        "sha256": "30c11b1470558baec284ebc99162b5b4d458f49524df91238c3692ec36187d0e",
+        "file": "A-390-before.png",
+        "tool_call_id": "item_12"
+      },
+      "after": {
+        "sha256": "c82158a84f3bc0344f696103cff658e7c41f2844fd9a9057a23391b56744c0d5",
+        "file": "A-390-after.png",
+        "tool_call_id": "item_16"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowDown"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "text",
+          "value": "Avery"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "text",
+          "value": " I am available in the morning."
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ]
+    },
+    "B-1440": {
+      "coherence": 8.5,
+      "originality": 8,
+      "craft": 8,
+      "usability": 8,
+      "primary_action": {
+        "input": "Keyboard: select Follow-up visit, submit blank name, enter Avery, preview, append morning availability, and activate Back to details.",
+        "expected": "Recover from the error, edit a personalized follow-up note, and return to the retained details.",
+        "observed": "The blank submission focused the invalid name field. Preview focused an editable note naming Avery and the follow-up visit; the morning sentence was appended. Back to details retained Avery and Follow-up visit and focused First name."
+      },
+      "edge_observation": "The large example note was replaced by the editable preview and returned on going back. It continued to say 'movement assessment' even when Follow-up visit was selected, creating a visible mismatch. Retention of the edited note after another preview was not tested.",
+      "fact_check": "The page displays independent physical therapist Rowan Chen, 518-555-0142, 15 Example Lane, Albany, and Tuesday–Friday, 8 am–2 pm. It says the note stays on the page and nothing is sent or booked. These are page claims; real-world accuracy and network behavior were not independently verified. The number was not dialed.",
+      "strength": "The oversized serif name and call-slip example, deep green banner, mint rules and yellow call link give the individual practice an editorial, approachable identity. All initial controls and the example fit in the 1440 × 900 view.",
+      "weakness": "The visually dominant example contradicts the selected follow-up visit and may be mistaken for the user's current note.",
+      "repair": "Update the example to match the selected visit or label it unmistakably as a fixed example.",
+      "arm": "call-slip-authored",
+      "html_sha256": "14ff09e6bef4a358e3d0e96723c85108e3916f7ac355d2ed48f163bc23d643b9",
+      "weighted": 8.15,
+      "before": {
+        "sha256": "b26e1961c2caf454a364c6c49d0b13f4b05501c1622b800de67c281457b64327",
+        "file": "B-1440-before.png",
+        "tool_call_id": "item_20"
+      },
+      "after": {
+        "sha256": "5b496e5a29b3ce17fe62bf8432d8022cfc5afa179bcceeb333d41b595976c1fd",
+        "file": "B-1440-after.png",
+        "tool_call_id": "item_24"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowDown"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "text",
+          "value": "Avery"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "text",
+          "value": " I am available in the morning."
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ]
+    },
+    "B-390": {
+      "coherence": 8.5,
+      "originality": 8,
+      "craft": 8,
+      "usability": 8,
+      "primary_action": {
+        "input": "Keyboard: select Follow-up visit, submit blank name, enter Avery, preview, append morning availability, and activate Back to details.",
+        "expected": "Complete the same recovery and editable-note flow at mobile width.",
+        "observed": "The blank submission focused First name and showed the error. Avery produced the follow-up note with focus in the textarea; the morning sentence was appended. Back to details retained Avery and Follow-up visit and focused First name."
+      },
+      "edge_observation": "The example was replaced by the preview and returned after going back, still describing a movement assessment despite the selected follow-up. A second preview was not tested.",
+      "fact_check": "The displayed clinician, number, address and hours match B-1440. The page says nothing is sent or booked and the note stays on the page; real-world details and network behavior were not independently verified. No call was placed.",
+      "strength": "The stacked composition keeps the call link, visit choices, name field, preview button and example visible in the initial 390 × 844 view. The mint slip and serif type retain the distinctive call-preparation concept.",
+      "weakness": "The example's assessment text conflicts with the selected follow-up, and the large note type occupies much of the editable field.",
+      "repair": "Make the example reflect the visit selection and give the editable note more room for added text.",
+      "arm": "call-slip-authored",
+      "html_sha256": "14ff09e6bef4a358e3d0e96723c85108e3916f7ac355d2ed48f163bc23d643b9",
+      "weighted": 8.15,
+      "before": {
+        "sha256": "2a9a657ea50cc5a4e704aacee47aaa19a79c0e5e9b088aed4385e433b94e5e39",
+        "file": "B-390-before.png",
+        "tool_call_id": "item_29"
+      },
+      "after": {
+        "sha256": "02d51e161cb799d4bcdfeafdd45121c1e8b6c73638c4a3f7a78e0e8c90b858f2",
+        "file": "B-390-after.png",
+        "tool_call_id": "item_33"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowDown"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "text",
+          "value": "Avery"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "text",
+          "value": " I am available in the morning."
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ]
+    }
+  },
+  "preference": {
+    "winner": "B",
+    "reason": "B gives the independent clinician a more distinctive identity through the prominent call-slip composition, editorial typography and purposeful color accents while completing the same keyboard recovery flow. Its stale example is a material but specific repair."
+  },
+  "case": "albany-physiotherapy",
+  "verified_screens": 4,
+  "required_screens": 4,
+  "browser": "Chrome/158.0.8127.37",
+  "evaluator_thread": "01a20ae0-1332-7123-8977-dc9469cf81b8",
+  "usage": {
+    "input_tokens": 1016978,
+    "cached_input_tokens": 985472,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 3016,
+    "reasoning_output_tokens": 0
+  },
+  "trace_sha256": "fc753f91213511d30e5d3d4493b0ce6ddf6c7b8a8367fc608fdf01a64c84b0f5",
+  "browser_audit_sha256": "221073cb30040a3c0900a637da649fe4d14c816aff59799a0c046d1ac3684670"
+}
