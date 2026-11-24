@@ -53,3 +53,11 @@ to 14.30:1 in a static palette calculation. The new design is an
 authored result and independent visual scoring is still pending.
 [Exact browser receipt](../evidence/benchmark-v1/albany-call-slip-browser.json)
 [Hosted replay](https://github.com/chrismicah/design-mcp/actions/runs/45293187605)
+
+The mechanism replay checked the example at rest, its removal on preview,
+and its unchanged return after keyboard navigation. All nine new checks
+passed. The candidate now passes 96 checks and all 1,371 prior check outcomes
+repeat. The HTML and opening control geometry match. All six phone PNGs
+match byte for byte. The three desktop PNGs differ by 798 to 1,489 RGB
+pixels out of 1,296,000 each. Both sets are stored as their own captures.
+[Mechanism replay evidence](../evidence/benchmark-v1/albany-call-slip-example-swap.json)
