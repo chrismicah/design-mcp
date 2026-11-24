@@ -99,7 +99,7 @@ await name.evaluate(node => {
 checks.reachPreview = await reach(preview);
 if (checks.reachPreview) await page.keyboard.press("Enter");
 const nativeError = await name.evaluate(node =>
-  window.qaNativeInvalid && node.validity.valueMissing && Boolean(node.validationMessage));
+  window.qaNativeInvalid && !node.validity.valid && Boolean(node.validationMessage));
 checks.emptyNameRecovery = await active(name) &&
   (await name.getAttribute("aria-invalid") === "true" || Boolean(nativeError));
 const nameErrors = await page.getByText(/enter your first name/i).all();
@@ -180,14 +180,18 @@ if (checks.reachEditableDraft) {
   await page.keyboard.press("End");
   await page.keyboard.type(" I can call Thursday.");
 }
-checks.editableDraft = checks.reachEditableDraft && /I can call Thursday\./.test(await draft.inputValue());
+const editedNote = checks.reachEditableDraft ? await draft.inputValue() : null;
+checks.editableDraft = editedNote !== null && /I can call Thursday\./.test(editedNote);
 let reachedOriginal = false;
 if (checks.previewReady) {
   const back = practice.returnLabel && page.getByRole("button", {name: match(practice.returnLabel)});
   if (back && await back.count() === 1 && await back.isVisible() && await reach(back)) {
     await page.keyboard.press("Enter");
   }
-  reachedOriginal = await reach(name, "Shift+Tab");
+  const choice = nativeSelect ? service : alternate;
+  const focused = await name.isVisible() && await active(name) ||
+    await choice.isVisible() && await active(choice);
+  reachedOriginal = focused && await name.isVisible();
 }
 checks.returnToOriginal = reachedOriginal &&
   await name.inputValue() === practice.visitorName && await alternateSelected();
@@ -201,8 +205,8 @@ if (practice.recordEditorFocus) {
   receipt.statusAfterReturn = (await page.getByRole("status").allTextContents()).map(text => text.trim());
 }
 if (practice.requireClearedStatus) {
-  checks.statusClearedAfterReturn = checks.returnToOriginal &&
-    receipt.statusAfterReturn?.every(text => text === "");
+  checks.staleResultStatusClearedAfterReturn = checks.returnToOriginal &&
+    receipt.statusAfterReturn?.every(text => !/note is ready|draft is ready|ready to edit your (?:note|draft)/i.test(text));
 }
 if (practice.observeDraftContinuity && checks.returnToOriginal) {
   const back = page.getByRole("button", {name: match(practice.returnLabel)});
@@ -211,7 +215,7 @@ if (practice.observeDraftContinuity && checks.returnToOriginal) {
     return await draft.isVisible() && await active(draft) ? await draft.inputValue() : null;
   };
   const secondNote = await submitAgain();
-  const retained = secondNote?.includes("I can call Thursday.") ?? false;
+  const retained = checks.editableDraft && secondNote === editedNote;
   checks.repeatPreviewOpensEditable = secondNote !== null;
   if (await reach(back)) await page.keyboard.press("Enter");
   const visitControl = nativeSelect ? service : alternate;

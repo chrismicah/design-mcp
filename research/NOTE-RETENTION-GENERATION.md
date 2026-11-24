@@ -32,3 +32,16 @@ with their source hashes. The retention result has to come from the
 browser replay.
 [Generation receipts](../evidence/benchmark-v1/note-retention-harbor-generation.json)
 [Exact drafts](../evals/practice_note_retention/cells/harbor-estate-law)
+
+The replay passed 92 of 99 checks in the control and 95 of 99 in the
+treatment. Both preserved the exact edited note through a second preview
+at 320, 390 and 1440 px. Both generated a fresh note when the topic
+changed and made zero post-load requests. The treatment moved the form
+higher, but the 320 px opening still puts Preview note below the
+viewport, and both phone sizes lose the contact link from view during
+preview. The control also starts below the fold at 390 and 1440 px.
+Those measurements do not isolate which advice produced the layout
+difference on a single generated pair. The specific retention
+hypothesis tied. A blind visual score was not assigned to these
+functionally incomplete candidates.
+[Browser comparison](../evidence/benchmark-v1/note-retention-harbor-browser.json)
