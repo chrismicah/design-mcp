@@ -60,11 +60,12 @@ _FIELD_COLLECTION = re.compile(r"\b(?:collect|ask for|enter|provide|record)\b")
 _ENTRY_OUTCOME = re.compile(r"\b(?:confirmation|submission|invalid|validat\w*|submitted)\b")
 _SITE_NAME = r"(?:home ?page|web ?site)"
 _SITE_TASK = re.compile(
-    r"(?:\b(?:build|create|design|make|redo|redesign|refresh|revamp)\s+"
+    r"(?:\b(?:build|create|design|make|need|redo|redesign|refresh|revamp|want)\s+"
     rf"|(?:^|[.!?]\s+)(?:an?\s+|(?={_SITE_NAME}\b)))"
     rf"(?:[\w’']+\s+){{0,5}}?{_SITE_NAME}\b"
-    r"(?![’']s\b|\s+(?:already|currently|exists?|works?)\b)"
+    r"(?![’']s\b|\s+(?:already|currently|exists?|has|is|works?)\b)"
 )
+_SITE_ADDITION = re.compile(r"\band (?:add|include|put|show)\b")
 _EDITORIAL_SITE = re.compile(rf"\beditorial {_SITE_NAME}\b")
 
 
@@ -95,7 +96,7 @@ def _is_form_task(text: str) -> bool:
     parent = " ".join(preceding_clauses)
     before_entry = text[:entry.start()]
     site = _SITE_TASK.search(before_entry)
-    if site and _CLAUSE_BREAK.search(before_entry, site.end()):
+    if site and (_CLAUSE_BREAK.search(before_entry, site.end()) or _SITE_ADDITION.search(before_entry, site.end())):
         return False
     tail = _CLAUSE_BREAK.split(text[entry.end():], maxsplit=1)[0].rstrip()
     site_tail = re.fullmatch(rf"\s*{_SITE_NAME}", tail)
