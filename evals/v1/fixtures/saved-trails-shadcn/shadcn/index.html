@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Saved trails</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #243b32;
+      --muted: #66776d;
+      --pine: #345d49;
+      --moss: #dce8d7;
+      --paper: #f7f8f3;
+      --white: #ffffff;
+      --line: #dce4dc;
+      --sun: #e8bb6c;
+      --font-sans: "DM Sans", sans-serif;
+      --font-serif: "DM Serif Display", Georgia, serif;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+    }
+    button { font: inherit; }
+    button:focus-visible {
+      outline: 3px solid #d19235;
+      outline-offset: 4px;
+    }
+    .site-header {
+      height: 82px;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+    }
+    .header-inner {
+      width: min(100% - 96px, 1296px);
+      height: 100%;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-serif);
+      font-size: 25px;
+      letter-spacing: -.5px;
+      white-space: nowrap;
+    }
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: var(--pine);
+      border-radius: 50%;
+    }
+    .header-label {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--pine);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .header-label svg { width: 18px; height: 18px; }
+    main {
+      width: min(100% - 96px, 1120px);
+      margin: 0 auto;
+      padding: 62px 0 76px;
+    }
+    .page-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      padding-bottom: 31px;
+      border-bottom: 1px solid var(--line);
+    }
+    .overline {
+      margin: 0 0 13px;
+      color: var(--pine);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      margin-bottom: 9px;
+      font-family: var(--font-serif);
+      font-size: clamp(42px, 4.5vw, 58px);
+      font-weight: 400;
+      letter-spacing: -1.8px;
+      line-height: 1;
+    }
+    .intro {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .count {
+      margin: 0 0 4px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .content {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, .85fr);
+      gap: 32px;
+      align-items: stretch;
+      margin-top: 32px;
+    }
+    .empty-panel {
+      min-height: 466px;
+      padding: 44px 32px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .illustration {
+      width: 205px;
+      height: 160px;
+      margin-bottom: 22px;
+    }
+    .empty-panel h2 {
+      margin-bottom: 9px;
+      font-family: var(--font-serif);
+      font-size: 30px;
+      font-weight: 400;
+      letter-spacing: -.5px;
+    }
+    .empty-panel p {
+      max-width: 310px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .suggestion {
+      display: flex;
+      flex-direction: column;
+    }
+    .section-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 22px;
+      margin-bottom: 15px;
+    }
+    .section-top h2 {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .section-top span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .trail-card {
+      overflow: hidden;
+      flex: 1;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+    .trail-art {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+      background: #d7e4d1;
+    }
+    .trail-art svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .badge {
+      position: absolute;
+      top: 17px;
+      left: 17px;
+      padding: 7px 11px;
+      border-radius: 5px;
+      color: var(--ink);
+      background: rgba(255,255,255,.93);
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .card-body { padding: 24px; }
+    .card-body h3 {
+      margin-bottom: 7px;
+      font-family: var(--font-serif);
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -.4px;
+    }
+    .distance {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .distance svg { width: 16px; height: 16px; }
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid #edf1eb;
+    }
+    .card-note {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    .action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 0 17px;
+      border: 1px solid var(--pine);
+      border-radius: 6px;
+      color: white;
+      background: var(--pine);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .action:hover { background: #284c3a; }
+    .action svg { width: 16px; height: 16px; }
+    .saved-content { margin-top: 32px; }
+    .saved-heading {
+      margin: 0 0 15px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .saved-card {
+      display: grid;
+      grid-template-columns: 220px 1fr auto;
+      align-items: center;
+      gap: 28px;
+      overflow: hidden;
+      padding-right: 25px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+    .saved-card .trail-art { height: 150px; }
+    .saved-card h3 {
+      margin-bottom: 8px;
+      font-family: var(--font-serif);
+      font-size: 27px;
+      font-weight: 400;
+    }
+    .remove {
+      min-height: 44px;
+      padding: 0 15px;
+      border: 1px solid #cbd8cc;
+      border-radius: 6px;
+      color: var(--pine);
+      background: white;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .remove:hover { background: #f0f5ee; }
+    [hidden] { display: none !important; }
+    .footer {
+      margin-top: 34px;
+      color: #849187;
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 700px) {
+      .site-header { height: 70px; }
+      .header-inner, main { width: calc(100% - 40px); }
+      .brand { font-size: 23px; }
+      main { padding-top: 42px; }
+      .page-heading { padding-bottom: 25px; }
+      h1 { font-size: 43px; }
+      .intro { font-size: 14px; }
+      .content { grid-template-columns: 1fr; gap: 28px; margin-top: 24px; }
+      .empty-panel { min-height: 330px; padding: 29px 20px; }
+      .illustration { width: 164px; height: 128px; margin-bottom: 15px; }
+      .empty-panel h2 { font-size: 27px; }
+      .trail-art { height: 190px; }
+      .card-body { padding: 21px; }
+      .saved-card {
+        grid-template-columns: 1fr auto;
+        gap: 18px;
+        padding: 0 18px 18px;
+      }
+      .saved-card .trail-art {
+        grid-column: 1 / -1;
+        height: 160px;
+        margin: 0 -18px;
+      }
+      .saved-card h3 { font-size: 25px; }
+      .footer { margin-top: 28px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M3 17.5 9 7l3.4 5.6 2.1-3.3L21 17.5H3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="m8 17.5 3.3-5.4" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </span>
+        Trailkeep
+      </div>
+      <div class="header-label">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6.5 4.5h11v15l-5.5-3.4-5.5 3.4v-15Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+        </svg>
+        Saved trails
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-heading">
+      <div>
+        <p class="overline">Your collection</p>
+        <h1>Saved trails</h1>
+        <p class="intro">A little space for the trails you want to remember.</p>
+      </div>
+      <p class="count" id="count">0 saved</p>
+    </div>
+
+    <div id="empty-view" class="content">
+      <section class="empty-panel" aria-labelledby="empty-title">
+        <svg class="illustration" viewBox="0 0 205 160" fill="none" aria-hidden="true">
+          <path d="M23 123c-7-20-2-54 18-75 19-20 50-31 80-24 31 6 57 30 62 58 3 17-1 31-11 42H23Z" fill="#EDF3E9"/>
+          <circle cx="143" cy="49" r="13" fill="#E8BB6C"/>
+          <path d="m29 115 39-52 26 31 19-22 45 43H29Z" fill="#B7CDB4"/>
+          <path d="m59 115 39-45 45 45H59Z" fill="#8EAF93"/>
+          <path d="M21 119c25-11 47-10 68-3 17 6 29 3 45-2 19-7 36-6 51 3v15H21v-13Z" fill="#668E70"/>
+          <path d="M88 132c4-10 18-14 18-20 0-5-8-7-6-12 1-3 5-5 9-7" stroke="#F7F8F3" stroke-width="3" stroke-linecap="round" stroke-dasharray="3 5"/>
+          <path d="M44 121V91m-10 15 10-18 10 18H34Zm3-9 7-13 7 13H37Z" fill="#345D49" stroke="#345D49" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M158 123v-26m-9 13 9-16 9 16h-18Zm3-8 6-12 6 12h-12Z" fill="#345D49" stroke="#345D49" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M20 133h165" stroke="#345D49" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M75 32c3-3 7-3 10 0m4-3c3-3 7-3 10 0" stroke="#8EAF93" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <h2 id="empty-title">No saved trails yet</h2>
+        <p>When a trail catches your eye, save it here for another day.</p>
+      </section>
+
+      <section class="suggestion" aria-labelledby="suggestion-title">
+        <div class="section-top">
+          <h2 id="suggestion-title">A place to start</h2>
+          <span>Suggested for you</span>
+        </div>
+        <article class="trail-card">
+          <div class="trail-art">
+            <span class="badge">Nearby</span>
+            <svg viewBox="0 0 480 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="480" height="240" fill="#DCE9D8"/>
+              <circle cx="361" cy="62" r="25" fill="#E9C883"/>
+              <path d="M0 155 104 63l82 78 69-67 105 94 65-57 55 49v80H0Z" fill="#B4CBB2"/>
+              <path d="M0 192 97 110l88 75 73-71 105 82 66-55 51 40v59H0Z" fill="#8DAF92"/>
+              <path d="M0 198c91-29 160-17 218 5 70 26 149-33 262-7v44H0Z" fill="#5F8669"/>
+              <path d="M179 240c20-28 78-27 76-43-2-12-23-14-13-24 7-7 24-9 34-15" stroke="#E8EFE1" stroke-width="5" stroke-linecap="round" stroke-dasharray="4 9"/>
+              <g fill="#355D49">
+                <path d="M40 203V131l-19 36h9l-16 27h20v9Zm0-72 19 36h-9l16 27H46v9h-6Z"/>
+                <path d="M430 209v-89l-23 44h11l-20 34h25v11Zm0-89 23 44h-11l20 34h-25v11h-7Z"/>
+                <path d="M386 203v-54l-14 27h7l-12 20h15v7Zm0-54 14 27h-7l12 20h-15v7h-4Z"/>
+              </g>
+              <path d="M92 58c5-4 10-4 15 0m5-5c5-4 10-4 15 0" stroke="#8DAF92" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>Cedar Bend</h3>
+            <p class="distance">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 18c3-5 5-3 7-7s4-3 9-5M5 6h.01M19 18h.01" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="5" cy="6" r="2" stroke="currentColor" stroke-width="1.5"/><circle cx="19" cy="18" r="2" stroke="currentColor" stroke-width="1.5"/></svg>
+              2.4 miles
+            </p>
+            <div class="card-footer">
+              <span class="card-note">Keep it close for later.</span>
+              <button class="action" id="save-button" type="button">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 4.5h12v15l-6-3.6-6 3.6v-15Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+                Save trail
+              </button>
+            </div>
+          </div>
+        </article>
+      </section>
+    </div>
+
+    <section id="saved-view" class="saved-content" aria-labelledby="saved-heading" hidden>
+      <h2 id="saved-heading" class="saved-heading">Your saved trail</h2>
+      <article class="saved-card">
+        <div class="trail-art">
+          <svg viewBox="0 0 480 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect width="480" height="240" fill="#DCE9D8"/>
+            <circle cx="361" cy="62" r="25" fill="#E9C883"/>
+            <path d="M0 155 104 63l82 78 69-67 105 94 65-57 55 49v80H0Z" fill="#B4CBB2"/>
+            <path d="M0 192 97 110l88 75 73-71 105 82 66-55 51 40v59H0Z" fill="#8DAF92"/>
+            <path d="M0 198c91-29 160-17 218 5 70 26 149-33 262-7v44H0Z" fill="#5F8669"/>
+            <path d="M179 240c20-28 78-27 76-43-2-12-23-14-13-24 7-7 24-9 34-15" stroke="#E8EFE1" stroke-width="5" stroke-linecap="round" stroke-dasharray="4 9"/>
+            <g fill="#355D49">
+              <path d="M40 203V131l-19 36h9l-16 27h20v9Zm0-72 19 36h-9l16 27H46v9h-6Z"/>
+              <path d="M430 209v-89l-23 44h11l-20 34h25v11Zm0-89 23 44h-11l20 34h-25v11h-7Z"/>
+            </g>
+          </svg>
+        </div>
+        <div>
+          <h3>Cedar Bend</h3>
+          <p class="distance">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 18c3-5 5-3 7-7s4-3 9-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="5" cy="6" r="2" stroke="currentColor" stroke-width="1.5"/><circle cx="19" cy="18" r="2" stroke="currentColor" stroke-width="1.5"/></svg>
+            2.4 miles
+          </p>
+        </div>
+        <button class="remove" id="remove-button" type="button" aria-label="Remove Cedar Bend from saved trails">Remove</button>
+      </article>
+    </section>
+
+    <p class="footer">A little more outside, whenever you’re ready.</p>
+    <div id="announcement" role="status" class="sr-only"></div>
+  </main>
+
+  <style>
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+  <script>
+    const emptyView = document.getElementById("empty-view");
+    const savedView = document.getElementById("saved-view");
+    const count = document.getElementById("count");
+    const announcement = document.getElementById("announcement");
+    const saveButton = document.getElementById("save-button");
+    const removeButton = document.getElementById("remove-button");
+
+    saveButton.addEventListener("click", () => {
+      emptyView.hidden = true;
+      savedView.hidden = false;
+      count.textContent = "1 saved";
+      announcement.textContent = "Cedar Bend saved.";
+      removeButton.focus();
+    });
+
+    removeButton.addEventListener("click", () => {
+      savedView.hidden = true;
+      emptyView.hidden = false;
+      count.textContent = "0 saved";
+      announcement.textContent = "Cedar Bend removed from saved trails.";
+      saveButton.focus();
+    });
+  </script>
+</body>
+</html>

@@ -52,6 +52,15 @@ The same probe on the verified install at `2fcd312` reduced `object-hero` assign
 
 An in-process replay of the installed package reproduced all 36 recorded surfaces, direction IDs and clarification counts. Twelve of the 21 misses asked for a surface absent from the catalog, six settings and six empty states. Eight briefs for supported surfaces found no classifier match. One mobile brief inferred landing. The catalog and classifier gaps need separate trials. [Routing diagnosis](evidence/benchmark-v1/current-direct-routing-diagnostic.json)
 
+The installed README pin `18b87522` repeated the full study against the
+same task file. All 36 `direct` calls returned. The surface totals were
+unchanged at **15/36**, with six of six forms and landing pages and zero
+of six settings and empty states. Twenty-four briefs still received
+`object-hero`. The saved-trails brief received that direction from the
+ordinary brief-only call. The local shadcn comparison retrieved its
+official Empty component with a short name. Its full-brief query
+returned zero items. These are retrieval results. [Exact routing receipt](evidence/benchmark-v1/release-direct-routing-18b87522.json) · [Registry and MCP retrieval receipt](evidence/benchmark-v1/saved-trails-shadcn-context.json)
+
 ## Installation at the baseline revision
 
 Clean detached checkout on macOS 26.5.2, Apple Silicon. The smoke tests send real MCP requests from an isolated client to the installed executable. The pinned source suite passed 308 tests on Python 3.12.13.
