@@ -1,0 +1,38 @@
+name: Saved-trails browser comparison
+
+on:
+  push:
+    branches: [design-mcp/saved-trails-browser-proof]
+    paths:
+      - 'evals/v1/**'
+      - '.github/workflows/saved-trails-browser-proof.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  keyboard-replay:
+    runs-on: macos-15
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.13'
+      - name: Install pinned browser tools
+        shell: bash
+        run: |
+          python -m pip install 'fastmcp==4.2.4'
+          npm install --prefix "$RUNNER_TEMP/playwriter" --ignore-scripts --no-fund --no-audit 'playwriter@0.12.0'
+          curl -fsSL https://storage.googleapis.com/chrome-for-testing-public/158.0.8127.36/mac-arm64/chrome-mac-arm64.zip -o "$RUNNER_TEMP/chrome.zip"
+          unzip -q "$RUNNER_TEMP/chrome.zip" -d "$RUNNER_TEMP/browser"
+      - name: Check save and removal by keyboard in both frozen pages
+        shell: bash
+        run: |
+          chrome="$RUNNER_TEMP/browser/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
+          python -B evals/v1/verify_saved_trails.py \
+            --chrome "$chrome" \
+            --playwriter "$RUNNER_TEMP/playwriter/node_modules/.bin/playwriter" \
+            --out .context/saved-trails-hosted
