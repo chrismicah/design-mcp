@@ -1,0 +1,41 @@
+name: Build the pinned site scope trial wheel
+
+on:
+  push:
+    branches: [design-mcp/site-scope-wheel-proof]
+
+permissions:
+  contents: read
+
+jobs:
+  wheel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    env:
+      SOURCE_REVISION: daa3b7295927be60911399bda1366213dcc2e59a
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: ${{ env.SOURCE_REVISION }}
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Build the wheel from the tested revision
+        shell: bash
+        run: |
+          test "$(git rev-parse HEAD)" = "$SOURCE_REVISION"
+          wheel_dir="$RUNNER_TEMP/pinned-wheel"
+          python -m pip wheel --no-deps --wheel-dir "$wheel_dir" .
+          cd "$wheel_dir"
+          wheels=(*-py3-none-any.whl)
+          test "${#wheels[@]}" -eq 1
+          test -f "${wheels[0]}"
+          git -C "$GITHUB_WORKSPACE" rev-parse HEAD > source-revision.txt
+          sha256sum "${wheels[0]}" > SHA256SUMS
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: pinned-site-scope-wheel
+          path: ${{ runner.temp }}/pinned-wheel/
+          if-no-files-found: error
+          retention-days: 1
