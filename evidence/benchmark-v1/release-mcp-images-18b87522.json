@@ -1,0 +1,120 @@
+{
+  "scope": "Installed opt-in MCP tool over stdio in an isolated Chrome profile. Initial-view captures.",
+  "commit": "18b87522a49c545dd6204c20762d6fd64145d375",
+  "host": {
+    "macos": "26.5.2",
+    "architecture": "arm64",
+    "python": "3.13.3",
+    "chrome": "158.0.8127.37"
+  },
+  "install": "Workspace-local uv tool install from an archive of the exact Git pin.",
+  "matched_package_files": 50,
+  "package_hashes": {
+    "design_mcp/__init__.py": "4b6e7d73f7f2fe01ae460f58c2a2ab586243e68f2528e66ec29fec48defece0d",
+    "design_mcp/cli.py": "e045323969ed6dbc8ad3a62199f7bb0a15a1464adc44875ce8c59db22ce223be",
+    "design_mcp/corpus.py": "be6772f134c2e969f521cdd7043f5729b500f045a426fea16642bcecd8c0b36f",
+    "design_mcp/data/anti_generic_system.json": "32959d994d1294b70374303ea282c347361c1a7d01b0365376e9b66aae1ac37f",
+    "design_mcp/data/anti_pattern_fixes.json": "8818108671dc8761562819a9047adeb7907714e9bfa2d23d5d27ef9c919445b0",
+    "design_mcp/data/behavioral_templates.json": "c3f3f2fbe970fc5ceb3015bc8aad9bec81f90cab7547e6893b2f30fa767e82a9",
+    "design_mcp/data/component_code.json": "1667bba1a48c0dc4df13384ea1334e02aa34614e78d7eac92e9eaa2898f29f1a",
+    "design_mcp/data/decision_trees.json": "ea0061ab858cef42f878c7fba8b2a471150cecde8f50820909222cc6185fc2c7",
+    "design_mcp/data/decision_trees_indexed.json": "a113d248ebd219781b0cf946349fd06a0d9bbcfe63d5755414736a7c81603a14",
+    "design_mcp/data/directions.json": "7e27c9b0c57c947017d80105d5689e6eeae298dfa9ddfb3df1d088489298d0f4",
+    "design_mcp/data/layout_templates.json": "cd9f616aabbd8b7cd8a87c53f363c2a93c96df8e76b1de0f6f2499481685501f",
+    "design_mcp/data/libraries.json": "64f77c98ee11772bd357b6a00892d845f1b93095feb7f6932d8a0a7275749d03",
+    "design_mcp/data/taxonomy.json": "752dd0ec6bf1c7dbdc79b3682964c875e09f47ed959b7fa44d45dcacad3ab99e",
+    "design_mcp/data/tokens/semantic_tokens.json": "36e637664b7896edfde2c6f7084a7782b1f7ad2fd39784abde7067e88cef5d27",
+    "design_mcp/data/tokens/token_sets.json": "4bdd4e0875e71eeb366d2fdc36323ee1d7522896dc87f6a9e15ba01a5c7813ac",
+    "design_mcp/data/visual_recipes.json": "ef2f8876d44e738a1de47dd7f1c8bcf07bcd9e48867e8c407dd5eb7fb753fa4d",
+    "design_mcp/database.py": "d69ab504317920277fd577fc02246eaa944d1e1952f9b2365fe0c1ab6a8c3d6e",
+    "design_mcp/design_checks.py": "556ad3a69ae2874e2aea50ff2db84fa4f9f4fa7ce7396a3e5f1a096dbed416bd",
+    "design_mcp/desktop_review.py": "56268a306ef2bf394222b0c1e1bb61e7f1beed4b049f335c54ae7a36aa66d3c5",
+    "design_mcp/direction_records.py": "ec674083df079ce8ce7579c37c26dc84612a1db76e3f7387badfb66077b5070f",
+    "design_mcp/directions.py": "428bffeb374390e011f10ce4f7026c9e3cdf0dc4760e1e309701356d0e53d8e7",
+    "design_mcp/doctor.py": "ca36aa77fcd90b10426bd3aadc2f928421cd92f7ab00c1c93c3fdf8ffbbe0a75",
+    "design_mcp/enrichment.py": "3b48d6ee002773885a5c913004296c3892d1e1f887843d4bba8577d9f9a6fba4",
+    "design_mcp/models/__init__.py": "1fcfe134b8dd13ae3d7a5ff95cfa16479e2f06cd0860cdbf186fc5bfa6d467b0",
+    "design_mcp/models/analyzer.py": "62e00840547547f25aa34f9e395d8d300c6fe8da563638372c552f3d2efdbfb1",
+    "design_mcp/models/quality_scorer.py": "c5e3ad10486f458260748e17267fae303c37a3ece5f14c30f7470fc13dc7e8de",
+    "design_mcp/models/train_scorer.py": "be6be900cb27743e9110e485211dede5d859eb602eb01aa7dbbb9d2daea83ca8",
+    "design_mcp/models/visual_analyzer.py": "74303881e8c0fae24bffd64a23508409ed07b5ed8f163fa39713b1c3d64ce735",
+    "design_mcp/palettes.py": "d2840e1a3d81ae0d7aadbfda51137eb4988646903e05c55a68d4cb23ae8bdcdf",
+    "design_mcp/resources.py": "c8279e50688eae6db2a9a5b562998347629e4a5eff39578934c1427a9fa269cb",
+    "design_mcp/review/__init__.py": "3eb559a8193dc49c195d527fe8fbdba7ed82772eda8997ee8707b7efc8756b02",
+    "design_mcp/review/address.py": "224ed5b975df8f959d9f3d44b5703193cbbb84d5b3a3b14e36c774bcdb010c22",
+    "design_mcp/review/checks.py": "78fb3eb206e0984a6e1d90ddeb4656dff0983a7957c55e2666852723ff242dee",
+    "design_mcp/review/cli.py": "cdac94a072d7ba5076e1d3e5cfe2d24e1bce65845487a0d5931c158d43260d06",
+    "design_mcp/review/direct_capture.py": "9381fa0926fee06bacc1deed9113a1aef1400ec8bc9719ce5907869abc42bf2f",
+    "design_mcp/review/evidence.py": "1c0f0881799cf80a206f93a5c18a73b07d69c660158229486e7eece84d012966",
+    "design_mcp/review/extension/collector.js": "d137cc99d85f652d5d204a83eb867bffe4e3e58002fb79b055afb71cb117e3c2",
+    "design_mcp/review/extension/manifest.json": "827bc1580d45a4c5cdb5770ce1b0ba9f69c8a1a9a3c87fa4f1120723b3e57941",
+    "design_mcp/review/extension/mask.js": "cd384a9e08104381a4fa2da57bfca445024864978e2064a38efa71ed4ac564a0",
+    "design_mcp/review/extension/popup.css": "e870c8d1351b8b5f2627f1b009e25ab5c469f6a7e48e62528b38e0c5e22a469c",
+    "design_mcp/review/extension/popup.html": "9f444dbfc73c544046a17fcd41fc8d28902a471e4440ffc0319c997744727c51",
+    "design_mcp/review/extension/popup.js": "d79f68a03e805d61740e70405ba5deca0dbcf5b7b8d9378a7f739c20a16c9771",
+    "design_mcp/review/host.py": "2a0afc74bcb75c9dd8f27737af9430c3c2ea10d1f07801a177604558d73b2206",
+    "design_mcp/review/isolated.py": "2ce72bfcd3d4d716135a8516506ccbd4de9c3260a1b00d20592dc79b9b2e60b9",
+    "design_mcp/review/network.py": "f3b2262ea03e8216de039949d9cc0da65ea35092419f3958e5844e9894b3947e",
+    "design_mcp/review/pipeline.py": "979620bc6539c220a60030213ad0fe79703099486f655da245638867abf6ba3b",
+    "design_mcp/review/preview.py": "eeca7ac9f6095c5b1c445964b5b36df9397da9b2ec481f8ec0395a822ac47cf5",
+    "design_mcp/review/tool.py": "813a31ff553a60e2e9a3b3aaffce894f9b27e234e5b553813c43e89d96f8bdc1",
+    "design_mcp/schema.py": "a819d916a43edf6f104b8a9ee99f7e5b389ca3af89d40742a44830fca6e4075c",
+    "design_mcp/server.py": "29e3fb527e3cf00530e82044117f41aedb08ff56e51fa2e15c97e5419403dbd7"
+  },
+  "verifier": {
+    "path": "evals/vision/verify_mcp_review.py",
+    "sha256": "9013e93489f0eb057dc4127f184164036bb2375c726663f8f252995c27ecc954"
+  },
+  "manual_screenshot_check": "Address form labels rendered at both sizes. Visible form fields had gray masks.",
+  "tools": [
+    "check",
+    "direct",
+    "react",
+    "review_page"
+  ],
+  "cold_list_ms": 467,
+  "url": "https://designsystem.digital.gov/templates/form-templates/address-form/",
+  "captures": {
+    "desktop": {
+      "file": "mcp-desktop.png",
+      "sha256": "784e3471c47cee528493e280637454bc06c3395ace7e84a02647cc85ffb6f73b",
+      "size": [
+        1440,
+        900
+      ],
+      "milliseconds": 2360,
+      "masked": {
+        "field": 5,
+        "editable": 0,
+        "frame": 0
+      }
+    },
+    "mobile": {
+      "file": "mcp-mobile.png",
+      "sha256": "28202794f213578ca3862995a8f1174f76d598e6bbfaf0814dededf49742baaa",
+      "size": [
+        390,
+        844
+      ],
+      "milliseconds": 964,
+      "masked": {
+        "field": 4,
+        "editable": 0,
+        "frame": 0
+      }
+    }
+  },
+  "failures": {
+    "missing_page": {
+      "ok": false,
+      "code": "capture-failed",
+      "message": "The site returned HTTP 404. Check that the page is public and try again."
+    },
+    "unsupported": {
+      "ok": false,
+      "code": "unsupported-url",
+      "message": "Only http and https pages can be reviewed."
+    }
+  },
+  "recovered": true
+}
