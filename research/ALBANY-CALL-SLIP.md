@@ -88,3 +88,13 @@ Returning keeps the selected example, visit and name together. Do not
 add motion, inputs or a new preview step. Compare the parent and repair
 at 320 × 700, 390 × 844 and 1440 × 900. Require the same opening
 geometry and recovery, plus the example matching the selected visit.
+
+The exact repair passed 99 of 99 checks. One additional check at each
+width verifies that selecting Follow-up visit changes the sample text.
+The return check also verifies the selected sample stays in sync. The
+parent passed its original 96 checks, and all 1,380 previous check
+outcomes matched. Opening form geometry was identical at all widths.
+Both phone opening captures matched byte for byte. Desktop hashes are
+recorded separately. The independent visual rematch is still pending.
+[Selected-visit browser receipt](../evidence/benchmark-v1/albany-call-slip-live-example.json)
+[Exact replay](https://github.com/chrismicah/design-mcp/actions/runs/45294829199)
