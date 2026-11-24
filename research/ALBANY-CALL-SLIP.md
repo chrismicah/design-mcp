@@ -121,3 +121,12 @@ reduce the sample's type scale. On phone, mark the full selected row and
 increase the note's visible editing area. Preserve the 44 px row and
 button targets, all text and keyboard routes, and the 99 existing browser
 checks. No new control, content, asset or animation is part of this pass.
+
+The browser ran the form-balance variant at all three widths. The
+opening preview stayed at the same height on both phones and moved
+52 px higher on desktop. The visible phone editor grew from 107 to
+136 px and stayed entirely inside the viewport. Every visit label had
+a 44 px tall clickable row. The parent passed 99 checks, the variant
+passed 105, and all 1,479 earlier outcomes repeated.
+[Form-balance browser receipt](../evidence/benchmark-v1/albany-call-slip-form-balance-browser.json)
+[Exact hosted run](https://github.com/chrismicah/design-mcp/actions/runs/45296615972)
