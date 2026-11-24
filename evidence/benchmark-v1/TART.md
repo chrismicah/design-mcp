@@ -1,10 +1,12 @@
 # Fresh Mac verification
 
-The README pin `0978712` passed on **macOS 13.7.4 arm64** in a disposable copy of the existing Tart benchmark guest. Both installers fetched the exact commit on Python 3.10 through 3.13 with new installation directories. The transcript audit verified eight pinned installs, eight passing `doctor` calls and 48 stdio runs, including the opt-in URL refusal path. The clone was stopped and deleted. The scoped OCI cache remained empty. Intel Ventura runtime remains open. [Exact Ventura transcript audit](ventura-tart-0978712.json) · [Exact macOS 15 matrix](release-ci-0978712.json)
+The current README pin is `18b87522`. Both installers passed on macOS 15 for Intel and Apple Silicon across Python 3.10–3.13. Ventura runtime for this pin is still open on both architectures. [Current macOS 15 matrix](release-ci-18b87522.json)
 
-The earlier `a9e1211` pin passed the same eight installs and 48 stdio checks in a guest cloned from the freshly pulled image. The current pin was verified with fresh installs on the existing OS image. [Earlier Ventura transcript audit](ventura-tart-a9e1211.json)
+The previous `0978712` pin passed on **macOS 13.7.4 arm64** in a disposable copy of the existing Tart benchmark guest. Both installers fetched the exact commit on Python 3.10–3.13 with new installation directories. The transcript audit verified eight pinned installs, eight passing `doctor` calls, and 48 stdio runs, including the opt-in URL refusal path. The clone was stopped and deleted. The scoped OCI cache remained empty. [Ventura transcript audit](ventura-tart-0978712.json)
 
-A new binary-only check resolved the exact README pin for all eight Ventura architecture and Python targets. PyPI metadata matched all 604 wheel selections, including the pin’s WebSocket dependency. All eight managed interpreter URLs returned HTTP 200 to HEAD. This checks dependency availability. Intel Ventura still needs the native runtime matrix below. [Exact-pin dependency receipt](ventura-wheel-pin-0978712.json)
+The earlier `a9e1211` pin passed the same eight installs and 48 stdio checks in a guest cloned from the freshly pulled image. [Earlier Ventura transcript audit](ventura-tart-a9e1211.json)
+
+A binary-only check resolved the dependencies at `0978712` for all eight Ventura architecture and Python targets. PyPI metadata matched all 604 wheel selections. All eight managed interpreter URLs returned HTTP 200 to HEAD. The current README pin has identical `pyproject.toml` bytes. Run the runtime matrix below to verify its installed server on Ventura. [Dependency receipt at `0978712`](ventura-wheel-pin-0978712.json)
 
 An earlier fresh Tart guest verified eight installs and 24 stdio runs against `b868307`, using an earlier set of smoke commands. [First Ventura transcript audit](ventura-tart-b868307.json)
 
@@ -36,7 +38,7 @@ Use native uv on the Intel Ventura machine. The pinned x86_64 uv archive has SHA
 
 ```sh
 set -o pipefail
-VENTURA_PIN=0978712149674ad7fd5738c53d4b7966ba163b43
+VENTURA_PIN=18b87522a49c545dd6204c20762d6fd64145d375
 bash scripts/verify_install_matrix.sh --check-host 13 x86_64
 bash scripts/verify_install_matrix.sh 13 x86_64 \
   "$VENTURA_PIN" "$(command -v uv)" "$NEW_EVIDENCE_DIRECTORY" \
