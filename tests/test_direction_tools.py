@@ -148,6 +148,19 @@ async def test_call_first_site_reaction_keeps_its_subject():
 
 
 @pytest.mark.asyncio
+@pytest.mark.parametrize(("direction_id", "comparison_id"), [
+    ("direct-consultation", "object-hero"),
+    ("object-hero", "direct-consultation"),
+])
+async def test_contact_retail_comparison_transfers_scale_and_keeps_the_current_task(direction_id, comparison_id):
+    catalog = library()
+    reply = await react(direction_id, "more like A", comparison_id)
+    layout = catalog[direction_id].layout
+    assert reply["changes"] == {"composition": layout.skeleton, "focus": layout.focus,
+                                 "mobile_order": layout.mobile, "type_ratio": catalog[comparison_id].type.ratio}
+
+
+@pytest.mark.asyncio
 @pytest.mark.parametrize(("brief", "expected"), [
     ("Don't redesign the homepage for a law firm. Replace its consultation form.", "grouped-fieldsets"),
     ("A product page for a desk lamp marketed to an attorney. Show the phone number for help with checkout.",

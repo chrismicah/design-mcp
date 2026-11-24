@@ -252,6 +252,9 @@ async def react(direction_id: str, reaction: str, comparison_id: str | None = No
         delta = {"composition": alternate.layout.skeleton, "focus": alternate.layout.focus,
                  "mobile_order": alternate.layout.mobile, "type_ratio": alternate.type.ratio}
         why = "Apply the chosen variant's hierarchy to the current project."
+        if row.id != alternate.id and "direct-consultation" in {row.id, alternate.id}:
+            delta.update(composition=row.layout.skeleton, focus=row.layout.focus, mobile_order=row.layout.mobile)
+            why = "Apply the comparison's headline scale while keeping the current subject and action together."
     else:
         return {"error": "Try calmer, bolder, too generic, or more like A."}
     return _bounded("react", {"direction_id": row.id, "changes": delta, "why": why, "keep": keep})
