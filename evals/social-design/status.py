@@ -1,16 +1,18 @@
 """Report the strongest verified trial and require a second live release ballot."""
 
 import argparse
-from decimal import Decimal
 import json
 from pathlib import Path
+import sys
 
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
+from evals.vision.score import MINIMUM, WEIGHTS, is_digest, session_key, weighted_score
+
 RECEIPTS = ROOT / "evidence" / "benchmark-v1"
 WIDTHS = (1440, 390)
 ARMS = ("v2", "social")
-THRESHOLD = Decimal("9.5")
 MIN_ROUNDS = 5
 MAX_ROUNDS = 15
 
@@ -22,7 +24,11 @@ def scores(ballot):
         key = (observation["arm"], width)
         if key in pair:
             raise ValueError("Duplicate arm and width in browser ballot")
-        pair[key] = observation
+        score = weighted_score({metric: observation.get(metric) for metric in WEIGHTS})
+        reported = observation.get("weighted")
+        if type(reported) not in (int, float) or reported != float(score):
+            raise ValueError(f"Weighted score differs from the rubric on {screen}")
+        pair[key] = {**observation, "verified_score": score}
     expected = {(arm, width) for arm in ARMS for width in WIDTHS}
     if (pair.keys() != expected or
             ballot["verified_screens"] != ballot["required_screens"] or
@@ -47,12 +53,10 @@ def capture_signature(pair, arm):
 
 
 def gates(pair):
-    candidate = viewport_scores(pair, "social")
-    control = viewport_scores(pair, "v2")
     return {
-        "minimum_score_met": all(Decimal(str(score)) >= THRESHOLD
-                                 for score in candidate.values()),
-        "beats_control_at_both_widths": all(candidate[width] > control[width] for width in WIDTHS),
+        "minimum_score_met": all(pair["social", width]["verified_score"] >= MINIMUM for width in WIDTHS),
+        "beats_control_at_both_widths": all(pair["social", width]["verified_score"] > pair["v2", width]["verified_score"]
+                                            for width in WIDTHS),
         "originality_improves_at_both_widths": all(
             pair[("social", width)]["originality"] > pair[("v2", width)]["originality"] for width in WIDTHS),
         "usability_preserved_at_both_widths": all(
@@ -62,6 +66,19 @@ def gates(pair):
 
 def series_closed(rounds, misses):
     return rounds >= MAX_ROUNDS or (rounds >= MIN_ROUNDS and misses >= 2)
+
+
+def record_live_session(ballot, critic_threads, critic_traces, browser_traces, error):
+    reviewer = ballot.get("evaluator_thread")
+    thread = session_key(reviewer) if isinstance(reviewer, str) else ""
+    critic = ballot.get("trace_sha256")
+    browser = ballot.get("browser_audit_sha256")
+    if (not thread or thread in critic_threads or
+            not is_digest(critic) or critic in critic_traces or not is_digest(browser) or browser in browser_traces):
+        raise ValueError(error)
+    critic_threads.add(thread)
+    critic_traces.add(critic)
+    browser_traces.add(browser)
 
 
 def result(case, receipts=RECEIPTS, confirmation=None):
@@ -78,6 +95,8 @@ def result(case, receipts=RECEIPTS, confirmation=None):
     series_best = None
     misses = 0
     critic_threads = set()
+    critic_traces = set()
+    browser_traces = set()
     candidate_hashes = set()
     candidate_captures = set()
     control_hash = candidates[0]["generation"]["v2"]["html_sha256"]
@@ -87,10 +106,8 @@ def result(case, receipts=RECEIPTS, confirmation=None):
                 receipt["generation"]["v2"]["html_sha256"] != control_hash):
             raise ValueError("Expected consecutive rounds with the same archived control")
         ballot = receipt["ballot"]
-        thread = ballot["evaluator_thread"]
-        if not thread or thread in critic_threads:
-            raise ValueError("Each round requires a fresh critic session")
-        critic_threads.add(thread)
+        record_live_session(ballot, critic_threads, critic_traces, browser_traces,
+                            "Each round requires a fresh critic session and distinct live traces")
         pair = scores(ballot)
         verify_builds(pair, receipt["generation"])
         candidate_hash = receipt["generation"]["social"]["html_sha256"]
@@ -101,7 +118,7 @@ def result(case, receipts=RECEIPTS, confirmation=None):
         if signature == capture_signature(pair, "v2") or signature in candidate_captures:
             raise ValueError("Identical live captures cannot count as a new creative round")
         candidate_captures.add(signature)
-        values = [Decimal(str(score)) for score in viewport_scores(pair, "social").values()]
+        values = [pair["social", width]["verified_score"] for width in WIDTHS]
         rank = (min(values), sum(values) / len(values))
         if strongest is None or rank > strongest["rank"]:
             strongest = {"round": expected_round, "rank": rank, "receipt": receipt, "pair": pair}
@@ -128,12 +145,11 @@ def result(case, receipts=RECEIPTS, confirmation=None):
         if archived.is_file():
             confirmation = json.loads(archived.read_text(encoding="utf-8"))
     if confirmation is not None:
-        thread = confirmation["evaluator_thread"]
         primary = strongest["receipt"]["ballot"]
-        if (not thread or thread in critic_threads or confirmation["case"] != primary["case"] or
-                confirmation["trace_sha256"] == primary["trace_sha256"] or
-                confirmation["browser_audit_sha256"] == primary["browser_audit_sha256"]):
-            raise ValueError("Confirmation requires a separate audited live session on this case")
+        error = "Confirmation requires a separate audited live session on this case"
+        if confirmation["case"] != primary["case"]:
+            raise ValueError(error)
+        record_live_session(confirmation, critic_threads, critic_traces, browser_traces, error)
         second = scores(confirmation)
         verify_builds(second, strongest["receipt"]["generation"])
         confirmation_report = {

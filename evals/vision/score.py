@@ -27,22 +27,28 @@ def session_key(value):
     return value.strip().casefold()
 
 
-def screen_score(screen):
-    ratings = screen["ratings"]
+def weighted_score(ratings):
     if set(ratings) != set(WEIGHTS):
         raise ValueError("Each screen needs exactly the four rubric ratings")
     score = Decimal(0)
     for name, weight in WEIGHTS.items():
-        rating = ratings[name]
-        value = rating["score"]
-        evidence = rating["evidence"]
-        if type(value) not in (int, float) or not isinstance(evidence, str) or not evidence.strip():
-            raise ValueError(f"Missing score or grounded evidence for {name}")
+        value = ratings[name]
+        if type(value) not in (int, float):
+            raise ValueError(f"Missing numeric score for {name}")
         amount = Decimal(str(value))
         if not amount.is_finite() or not Decimal(0) <= amount <= Decimal(10):
             raise ValueError(f"Score for {name} is outside 0–10")
         score += amount * weight
     return score
+
+
+def screen_score(screen):
+    ratings = screen["ratings"]
+    for name, rating in ratings.items():
+        evidence = rating["evidence"]
+        if type(rating["score"]) not in (int, float) or not isinstance(evidence, str) or not evidence.strip():
+            raise ValueError(f"Missing score or grounded evidence for {name}")
+    return weighted_score({name: rating["score"] for name, rating in ratings.items()})
 
 
 def verify_live_review(ballot, browser, observations, expected):

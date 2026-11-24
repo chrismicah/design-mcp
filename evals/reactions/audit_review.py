@@ -9,11 +9,14 @@ import json
 from pathlib import Path
 import re
 import struct
+import sys
 
 from cold_storage import OPTION, audit_journey
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from evals.vision.score import WEIGHTS, weighted_score
+
 HEIGHTS = {1440: 900, 390: 844}
-WEIGHTS = {"coherence": "0.30", "originality": "0.30", "craft": "0.20", "usability": "0.20"}
 ACTIVATION = {"Enter", "Space"}
 RADIO_KEYS = {"ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"}
 SLIDER_KEYS = RADIO_KEYS | {"Home", "End", "PageUp", "PageDown"}
@@ -233,13 +236,11 @@ def audit(run, cells, case, spec=None):
             checked["passed"] = all(checked["checks"].values())
             verdict["journey"] = checked
             verdict["focused"] = focus_image
-        for metric in WEIGHTS:
-            assert type(verdict[metric]) in (int, float) and 0 <= verdict[metric] <= 10, label
         for field in ("input", "expected", "observed"):
             assert verdict["primary_action"][field].strip(), label
         for field in ("edge_observation", "strength", "weakness", "repair"):
             assert verdict[field], label
-        score = sum(Decimal(str(verdict[k])) * Decimal(w) for k, w in WEIGHTS.items())
+        score = weighted_score({metric: verdict[metric] for metric in WEIGHTS})
         verdict.update(
             arm=key[page]["arm"], html_sha256=key[page]["html_sha256"], weighted=float(score),
             before=first, after=last, layout_width=rows[after]["observation"]["layout_width"],

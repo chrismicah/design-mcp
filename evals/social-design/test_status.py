@@ -5,7 +5,11 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from status import RECEIPTS, result
+from status import RECEIPTS, WEIGHTS, result
+
+
+def set_score(view, score):
+    view.update(dict.fromkeys(WEIGHTS, score), weighted=score)
 
 
 class ConfirmationTest(unittest.TestCase):
@@ -14,25 +18,28 @@ class ConfirmationTest(unittest.TestCase):
         self.primary["source"]["round"] = 1
         for view in self.primary["ballot"]["screens"].values():
             if view["arm"] == "social":
-                view["weighted"] = 9.5
+                set_score(view, 9.5)
         folder = tempfile.TemporaryDirectory()
         self.addCleanup(folder.cleanup)
         self.receipts = Path(folder.name)
         (self.receipts / "social-river-live-r1.json").write_text(json.dumps(self.primary), encoding="utf-8")
         self.second = copy.deepcopy(self.primary["ballot"])
-        self.second.update(evaluator_thread="fresh", trace_sha256="new-trace", browser_audit_sha256="new-visit")
+        self.second.update(evaluator_thread="fresh", trace_sha256=hashlib.sha256(b"new-trace").hexdigest(),
+                           browser_audit_sha256=hashlib.sha256(b"new-visit").hexdigest())
 
     def add_round(self, number, score=9.3, *, build=None, series=None, same_captures=False):
         receipt = copy.deepcopy(self.primary)
         receipt["source"]["round"] = number
         if series is not None:
             receipt["source"]["series"] = series
-        receipt["ballot"]["evaluator_thread"] = f"critic-{number}"
+        receipt["ballot"].update(evaluator_thread=f"critic-{number}",
+                                 trace_sha256=hashlib.sha256(f"trace-{number}".encode()).hexdigest(),
+                                 browser_audit_sha256=hashlib.sha256(f"browser-{number}".encode()).hexdigest())
         candidate = build or f"candidate-{number}"
         receipt["generation"]["social"]["html_sha256"] = candidate
         for label, view in receipt["ballot"]["screens"].items():
             if view["arm"] == "social":
-                view["weighted"] = score
+                set_score(view, score)
                 view["html_sha256"] = candidate
                 if not same_captures:
                     for state in ("before", "after"):
@@ -50,8 +57,25 @@ class ConfirmationTest(unittest.TestCase):
         self.assertTrue(result("river", self.receipts, self.second)["confirmed_score_gate"])
         for key, view in self.second["screens"].items():
             if view["arm"] == "social" and key.endswith("-390"):
-                view["weighted"] = 9.49
+                set_score(view, 9.49)
         self.assertFalse(result("river", self.receipts, self.second)["confirmed_score_gate"])
+
+    def test_editing_the_reported_score_cannot_pass_the_gate(self):
+        for number in range(2, 6):
+            self.add_round(number)
+        for label, view in self.second["screens"].items():
+            if view["arm"] == "social" and label.endswith("-390"):
+                set_score(view, 9.49)
+                view["weighted"] = 9.5
+        with self.assertRaisesRegex(ValueError, "Weighted score differs from the rubric"):
+            result("river", self.receipts, self.second)
+
+    def test_confirmation_cannot_relabel_browser_trace_from_another_round(self):
+        self.add_round(2)
+        earlier = json.loads((self.receipts / "social-river-live-r2.json").read_text())["ballot"]
+        self.second["browser_audit_sha256"] = earlier["browser_audit_sha256"]
+        with self.assertRaisesRegex(ValueError, "separate audited live session"):
+            result("river", self.receipts, self.second)
 
     def test_rejects_reused_critic_or_different_build(self):
         with self.assertRaisesRegex(ValueError, "separate audited live session"):
