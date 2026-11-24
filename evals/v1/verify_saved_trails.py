@@ -70,7 +70,7 @@ def main():
     specs = Path(__file__).parent
     fixture_dir = specs / "fixtures" / "saved-trails-shadcn"
     expected = json.loads((specs / "shadcn-saved-trails.json").read_bytes())
-    args.out.mkdir()
+    args.out.mkdir(parents=True)
     portable_chrome = [
         str(args.chrome), "--headless", "--disable-extensions", "--disable-sync", "--no-first-run",
         "--no-default-browser-check", "--disable-background-networking", "--disable-component-update",
