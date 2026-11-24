@@ -199,6 +199,10 @@ async def test_landing_uses_the_primary_task_for_art_direction(brief, expected):
      "direct-consultation"),
     ("Make a homepage for a dentist. Show the name and phone number before a small registration form.",
      "direct-consultation"),
+    ("Build a dentist homepage with a phone link. Let visitors prepare a call note. "
+     "It does not book an appointment.", "direct-consultation"),
+    ("Build a dentist homepage with a phone link and service booking. "
+     "Let visitors book an appointment and show a booking summary.", "service-work-order"),
     ("A consultation form for a dental practice. Collect contact details and request a callback.",
      "grouped-fieldsets"),
     ("Product page for a single product used by a law firm. Let a shopper add it to the bag.", "object-hero"),
