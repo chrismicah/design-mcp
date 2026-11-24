@@ -1,0 +1,65 @@
+name: Pinned consultation routing install proof
+
+on:
+  push:
+    branches: [design-mcp/contact-scope-install-proof]
+
+permissions:
+  contents: read
+
+env:
+  SOURCE_REVISION: 62b35001944277ffef881e26e4255bbb43f33c97
+
+jobs:
+  clean-install:
+    name: ${{ matrix.host.arch }} / Python ${{ matrix.python }}
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.10', '3.11', '3.12', '3.13']
+        host:
+          - runner: macos-15
+            arch: arm64
+          - runner: macos-15-intel
+            arch: x86_64
+    runs-on: ${{ matrix.host.runner }}
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - name: Check out the exact candidate
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: ${{ env.SOURCE_REVISION }}
+          path: candidate
+          persist-credentials: false
+      - name: Select the exact Python interpreter
+        id: python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Run clean installs and smoke the supported surfaces
+        shell: bash
+        env:
+          EXPECTED_PYTHON: ${{ matrix.python }}
+          EXPECTED_ARCH: ${{ matrix.host.arch }}
+          PYTHON_EXECUTABLE: ${{ steps.python.outputs.python-path }}
+        run: |
+          set -euo pipefail
+          cd "$GITHUB_WORKSPACE/candidate"
+          test "$(git rev-parse HEAD)" = "$SOURCE_REVISION"
+          bash scripts/verify_install_matrix.sh --check-host 15 "$EXPECTED_ARCH"
+          test "$("$PYTHON_EXECUTABLE" -I -c 'import platform; print(platform.machine())')" = "$EXPECTED_ARCH"
+          bash scripts/verify_clean_install.sh "$PWD" "$PYTHON_EXECUTABLE" \
+            "$RUNNER_TEMP/contact-install" "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY.git"
+      - name: Replay contact routing using both installed executables
+        shell: bash
+        run: |
+          set -euo pipefail
+          scratch="$RUNNER_TEMP/contact-install"
+          for installed_python in "$scratch/pipx-home/venvs/design-mcp/bin/python" \
+            "$scratch/uv-tools/design-mcp/bin/python"; do
+            "$installed_python" -I "$GITHUB_WORKSPACE/evals/contact-scope/verify_install.py" \
+              "$GITHUB_WORKSPACE/candidate" "$scratch" "$SOURCE_REVISION"
+          done
