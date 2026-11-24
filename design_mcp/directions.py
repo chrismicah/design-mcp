@@ -10,7 +10,6 @@ from .models.visual_analyzer import contrast_ratio
 
 
 _CAPS = {"direct": 6000, "react": 3200, "check": 2400}
-_HOMEPAGE_TERMS = ("homepage", "home page", "home-page")
 _TERMS = {
     "pricing": ("pricing", "price plan", "subscription tiers", "compare plans", "tier", "month"),
     "dashboard": ("dashboard", "dispatcher", "analytics", "metrics", "admin panel", "table", "reporting",
@@ -19,7 +18,7 @@ _TERMS = {
     "mobile": ("mobile", "ticket", "platform", "boarding pass", "commuter", "onboarding", "qr"),
     "portfolio": ("portfolio", "case study", "work index", "studio project", "landscape", "architecture"),
     "editorial": ("editorial", "magazine", "article", "journal", "recipe", "field report"),
-    "landing": ("landing", "launch", "product page", "bag", "shop", "roaster", "retail", *_HOMEPAGE_TERMS),
+    "landing": ("landing", "launch", "product page", "bag", "shop", "roaster", "retail"),
 }
 
 _FORM_SEPARATORS = str.maketrans("-\u2010\u2011", "   ")
@@ -52,14 +51,21 @@ _FORM_TASK = re.compile(
 _PARENT_TASKS = (
     "landing", "landing page", "product page", "launch", "dashboard", "work queue", "operations board", "dispatch board",
     "portfolio", "case study", "work index", "pricing", "compare plans", "editorial", "magazine",
-    "article", "mobile ticket", "boarding pass", *_HOMEPAGE_TERMS,
+    "article", "mobile ticket", "boarding pass",
 )
 _CLAUSE_BREAK = re.compile(
     r"\b(?:with|includes?|including|about|of|for|to|where|featuring|showing|that|alongside|plus)\b|[.,;:!?]"
 )
 _FIELD_COLLECTION = re.compile(r"\b(?:collect|ask for|enter|provide|record)\b")
 _ENTRY_OUTCOME = re.compile(r"\b(?:confirmation|submission|invalid|validat\w*|submitted)\b")
-_EDITORIAL_HOMEPAGE = re.compile(r"\beditorial (?:homepage|home[ -]page)\b")
+_SITE_NAME = r"(?:home ?page|web ?site)"
+_SITE_TASK = re.compile(
+    r"(?:\b(?:build|create|design|make|redo|redesign|refresh|revamp)\s+"
+    rf"|(?:^|[.!?]\s+)(?:an?\s+|(?={_SITE_NAME}\b)))"
+    rf"(?:[\w’']+\s+){{0,5}}?{_SITE_NAME}\b"
+    r"(?![’']s\b|\s+(?:already|currently|exists?|works?)\b)"
+)
+_EDITORIAL_SITE = re.compile(rf"\beditorial {_SITE_NAME}\b")
 
 
 def _length(value) -> int:
@@ -87,19 +93,26 @@ def _is_form_task(text: str) -> bool:
     # finish its noun phrase ("signup landing page"). "Mobile" alone is a size.
     preceding_clauses = _CLAUSE_BREAK.split(text[:entry.end()])[:-1]
     parent = " ".join(preceding_clauses)
+    before_entry = text[:entry.start()]
+    site = _SITE_TASK.search(before_entry)
+    if site and _CLAUSE_BREAK.search(before_entry, site.end()):
+        return False
     tail = _CLAUSE_BREAK.split(text[entry.end():], maxsplit=1)[0].rstrip()
-    return not any(_match(term, parent) or tail.endswith(" " + term) for term in _PARENT_TASKS)
+    site_tail = re.fullmatch(rf"\s*{_SITE_NAME}", tail)
+    return not site_tail and not any(_match(term, parent) or tail.endswith(" " + term) for term in _PARENT_TASKS)
 
 
 def _infer_surface(text: str) -> str | None:
     if _is_form_task(text):
         return "form"
     scores = {name: sum(_match(term, text) for term in terms) for name, terms in _TERMS.items()}
-    if any(_match(term, text) for term in _HOMEPAGE_TERMS):
-        # A homepage can be mobile-friendly or editorial in tone.
+    site_text = text.translate(_FORM_SEPARATORS)
+    if _SITE_TASK.search(site_text):
+        scores["landing"] += 1
+        # A public site can be mobile-friendly or editorial in tone.
         if scores["mobile"] == 1 and _match("mobile", text):
             scores["mobile"] = 0
-        if scores["editorial"] == 1 and _match("editorial", text) and not _EDITORIAL_HOMEPAGE.search(text):
+        if scores["editorial"] == 1 and _match("editorial", text) and not _EDITORIAL_SITE.search(site_text):
             scores["editorial"] = 0
     explicit = [name for name, score in scores.items() if score and _match(name, text)]
     if len(explicit) == 1:

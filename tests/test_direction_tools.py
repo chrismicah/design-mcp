@@ -105,6 +105,25 @@ async def test_forms_as_secondary_content_or_compounds_keep_existing_route(brief
     assert (await direct(brief))["direction"]["surface"] == expected
 
 
+@pytest.mark.parametrize(("brief", "expected"), [
+    ("Revamp the website for a neighborhood legal practice. Include a brief consultation form below the practice areas.",
+     "landing"),
+    ("A website for an independent speech therapist, with a callback form at the end.", "landing"),
+    ("Homepage with an intake form below services.", "landing"),
+    ("The homepage already works. Redesign only the consultation form so visitors can leave a callback number.",
+     "form"),
+    ("Replace our homepage’s contact form so visitors can leave their name and number.", "form"),
+    ("Rework the website's signup form to collect only an email address.", "form"),
+    ("For our website, make a registration form. Collect name, email and session preference.", "form"),
+    ("Build the appointment form for the website. Ask for a name and a callback number.", "form"),
+])
+@pytest.mark.asyncio
+async def test_inferred_site_scope_distinguishes_embedded_forms_from_form_redesigns(brief, expected):
+    result = await direct(brief)
+    assert result["direction"]["surface"] == expected
+    assert result["questions"] == []
+
+
 @pytest.mark.asyncio
 async def test_explicit_surfaces_and_form_controls():
     brief = "A mobile form to choose a callback time."
