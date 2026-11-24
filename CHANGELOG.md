@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+- Require distinct entry and changed-state images and passing responsive geometry in both social design ballots. Run the regression checks and archive replay in CI. [Release gate](evals/social-design/README.md#run-the-comparison)
+
 - Documented how to identify an older launcher and connect the verified executable. The two tested launchers both reported `0.1.0`, while only the candidate passed `doctor` and exposed the three direction tools. [Launcher recovery test](evidence/benchmark-v1/stale-launcher-recovery.json)
 
 - Verified standalone repairs for focus after a tool is withdrawn and access to the alternate route after a lift is closed. Both won their matched live comparisons. [Recovery proof](EVALS.md#standalone-cabinet-and-train-recovery-repairs)

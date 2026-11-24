@@ -19,11 +19,21 @@ MAX_ROUNDS = 15
 
 def scores(ballot):
     pair = {}
+    captures = set()
     for screen, observation in ballot["screens"].items():
         width = int(screen.split("-")[1])
         key = (observation["arm"], width)
         if key in pair:
             raise ValueError("Duplicate arm and width in browser ballot")
+        layout_width = observation.get("layout_width")
+        if type(layout_width) is not int or layout_width <= 0:
+            raise ValueError(f"Missing measured layout width on {screen}")
+        for state in ("before", "after"):
+            frame = observation.get(state)
+            digest = frame.get("sha256") if isinstance(frame, dict) else None
+            if not is_digest(digest) or digest in captures:
+                raise ValueError(f"Expected a distinct {state} capture on {screen}")
+            captures.add(digest)
         score = weighted_score({metric: observation.get(metric) for metric in WEIGHTS})
         reported = observation.get("weighted")
         if type(reported) not in (int, float) or reported != float(score):
@@ -61,6 +71,8 @@ def gates(pair):
             pair[("social", width)]["originality"] > pair[("v2", width)]["originality"] for width in WIDTHS),
         "usability_preserved_at_both_widths": all(
             pair[("social", width)]["usability"] >= pair[("v2", width)]["usability"] for width in WIDTHS),
+        "responsive_geometry_at_both_widths": all(
+            pair["social", width]["layout_width"] <= width for width in WIDTHS),
     }
 
 
@@ -115,7 +127,7 @@ def result(case, receipts=RECEIPTS, confirmation=None):
             raise ValueError("Each round requires a distinct candidate build")
         candidate_hashes.add(candidate_hash)
         signature = capture_signature(pair, "social")
-        if signature == capture_signature(pair, "v2") or signature in candidate_captures:
+        if signature in candidate_captures:
             raise ValueError("Identical live captures cannot count as a new creative round")
         candidate_captures.add(signature)
         values = [pair["social", width]["verified_score"] for width in WIDTHS]

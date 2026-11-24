@@ -70,6 +70,29 @@ class ConfirmationTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Weighted score differs from the rubric"):
             result("river", self.receipts, self.second)
 
+    def test_qualifying_scores_cannot_override_phone_overflow(self):
+        for number in range(2, 6):
+            self.add_round(number)
+        view = next(view for label, view in self.second["screens"].items()
+                    if view["arm"] == "social" and label.endswith("-390"))
+        view["layout_width"] = 460
+        report = result("river", self.receipts, self.second)
+        self.assertTrue(report["confirmation"]["minimum_score_met"])
+        self.assertFalse(report["confirmation"]["responsive_geometry_at_both_widths"])
+        self.assertFalse(report["confirmed_score_gate"])
+
+    def test_confirmation_requires_distinct_before_and_after_captures(self):
+        view = next(iter(self.second["screens"].values()))
+        view["after"]["sha256"] = view["before"]["sha256"]
+        with self.assertRaisesRegex(ValueError, "distinct after capture"):
+            result("river", self.receipts, self.second)
+
+    def test_capture_digest_must_have_sha256_format(self):
+        view = next(iter(self.second["screens"].values()))
+        view["before"]["sha256"] = "no-original"
+        with self.assertRaisesRegex(ValueError, "distinct before capture"):
+            result("river", self.receipts, self.second)
+
     def test_confirmation_cannot_relabel_browser_trace_from_another_round(self):
         self.add_round(2)
         earlier = json.loads((self.receipts / "social-river-live-r2.json").read_text())["ballot"]

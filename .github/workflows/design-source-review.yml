@@ -12,6 +12,10 @@ on:
       - 'scripts/test_watch_design_sources.py'
       - 'evals/vision/score*.py'
       - 'evals/vision/test_score.py'
+      - 'evals/social-design/status.py'
+      - 'evals/social-design/test_status.py'
+      - 'evidence/benchmark-v1/social-*-live-r*.json'
+      - 'evidence/benchmark-v1/social-*-confirmation-r*.json'
   push:
     branches:
       - design-mcp/source-review-ci
@@ -21,6 +25,10 @@ on:
       - 'scripts/test_watch_design_sources.py'
       - 'evals/vision/score*.py'
       - 'evals/vision/test_score.py'
+      - 'evals/social-design/status.py'
+      - 'evals/social-design/test_status.py'
+      - 'evidence/benchmark-v1/social-*-live-r*.json'
+      - 'evidence/benchmark-v1/social-*-confirmation-r*.json'
 
 permissions:
   contents: read
@@ -38,6 +46,10 @@ jobs:
         run: python3 -m unittest discover -s scripts -p 'test_watch_design_sources.py'
       - name: Test live critique verification
         run: python3 -m unittest discover -s evals/vision -p 'test_score.py'
+      - name: Test social design release gates and replay the archive
+        run: |
+          python3 -m unittest discover -s evals/social-design -p 'test_status.py'
+          python3 evals/social-design/status.py
       - name: Collect public leads for review
         shell: bash
         run: python3 scripts/watch_design_sources.py | tee -a "$GITHUB_STEP_SUMMARY"
