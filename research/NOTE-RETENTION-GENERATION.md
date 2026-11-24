@@ -58,3 +58,25 @@ pixels higher at 320 px. Both fit it in the first viewport. The
 behavior hypothesis tied in both Albany and Harbor. Visual judging
 of the functionally eligible Albany pair is separate.
 [Exact Albany browser comparison](../evidence/benchmark-v1/note-retention-albany-browser.json)
+
+
+## Albany blind live result
+
+The independent critic exercised the four anonymous desktop and phone
+views by keyboard. It recovered from an empty name, changed the visit,
+edited the draft, returned to details, and reopened the edited note.
+All four views kept the exact edit. Eight original screenshots and
+the full interaction trace matched their recorded hashes.
+
+The rubric scored the control **7.70 desktop and 7.70 phone** and the
+treatment **7.20 desktop and 7.00 phone**. The control kept the opening
+hours and address grouped with the call action and used a rule to mark
+the editor's start. The treatment's phone editor introduced a visible
+scrollbar and narrowed the available layout by 15 CSS pixels. Both
+designs had conventional visual identities. The test used sample
+data and left the phone links inactive.
+
+The retention trial is closed without promotion. Both drafts kept the
+edit on both briefs. The treatment's earlier opening action on Albany
+did not produce a gain in the separate live review.
+[Blind ballot, keyboard trace hashes and original capture hashes](../evidence/benchmark-v1/note-retention-albany-live.json)

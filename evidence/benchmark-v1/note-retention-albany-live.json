@@ -1,0 +1,499 @@
+{
+  "case": "Albany Physiotherapy, a fictional landing-page holdout",
+  "tested_branch_checkpoint": "a59f8d7c9cbd103f34faef63d2a6a22191bc93f8",
+  "review_installed_pair": "note-retention-installed.json",
+  "browser_replay": "note-retention-albany-browser.json",
+  "weights": {
+    "coherence": 0.3,
+    "originality": 0.3,
+    "craft": 0.2,
+    "usability": 0.2
+  },
+  "audited_scores": {
+    "note-retention-treatment": {
+      "1440": 7.2,
+      "390": 7.0
+    },
+    "note-retention-control": {
+      "1440": 7.7,
+      "390": 7.7
+    }
+  },
+  "live_browser_operations": {
+    "open_view": 4,
+    "capture": 8,
+    "act": 56
+  },
+  "original_capture_directory": ".context/the-ap-firm-local/contact-visual-transfer/blind-albany-installed-retention/captures",
+  "verified_originals": {
+    "A-1440-before.png": {
+      "dimensions": [
+        1440,
+        900
+      ],
+      "sha256": "3da6bc415a33f514f147d8d7f1650e0bb0dcf3fc807ac0088fbd43b9076cff83"
+    },
+    "A-1440-after.png": {
+      "dimensions": [
+        1440,
+        900
+      ],
+      "sha256": "56261cc69c83f9ecc9504129720484f7a107fca4a6079f93dbc271403abc0ff0"
+    },
+    "A-390-before.png": {
+      "dimensions": [
+        390,
+        844
+      ],
+      "sha256": "dd02c595dfccabf12003a46c0f7fd30f9ab2ef3981baa5b16462916ad8cb04a7"
+    },
+    "A-390-after.png": {
+      "dimensions": [
+        390,
+        844
+      ],
+      "sha256": "e646ac6a32b273c50213da09f75bd9341a0c413ec40b8b5c44b16f225437c1c2"
+    },
+    "B-1440-before.png": {
+      "dimensions": [
+        1440,
+        900
+      ],
+      "sha256": "eeca3a10d020beff154bf7cd7fc45c65d724cc14c8da74f1f340c096b4b6d873"
+    },
+    "B-1440-after.png": {
+      "dimensions": [
+        1440,
+        900
+      ],
+      "sha256": "579eda424c5c634b3f1acf7552466ee257e1d1c95af3b4f5c663bea38d5725ab"
+    },
+    "B-390-before.png": {
+      "dimensions": [
+        390,
+        844
+      ],
+      "sha256": "805709e610c2996746c055a94485d6912d3345336242b68f8a807ee0640659e1"
+    },
+    "B-390-after.png": {
+      "dimensions": [
+        390,
+        844
+      ],
+      "sha256": "92e95c903a87ec4dc0bacbfca3d64412883b60595a4eb81361eefec3381e4aa8"
+    }
+  },
+  "decision": "Close the retention trial without promotion. The tested behavior tied on both briefs. On the eligible Albany pair, the control won both widths. The visual release gate remains open.",
+  "ballot": {
+    "calibration": {
+      "example": "Legible repair intake with clear labels, familiar layout, and misplaced focus after an invalid number",
+      "coherence": 7,
+      "originality": 4,
+      "craft": 6,
+      "usability": 6
+    },
+    "screens": {
+      "A-1440": {
+        "coherence": 8,
+        "originality": 5,
+        "craft": 8,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Keyboard: select Follow-up visit, submit a blank name, enter Avery, preview, edit the note, return to details, and preview again.",
+          "expected": "Guide recovery from the blank name and retain the visit, name, and note edit.",
+          "observed": "The blank submission focused the invalid name field with an instruction. Follow-up was checked, the preview focused the editable note, and the exact added phrase survived reopening. The call button remained visible in both captures; it was not activated."
+        },
+        "edge_observation": "Back to details retained Avery and the checked Follow-up radio. The reopened note included “ I can call before noon.”",
+        "fact_check": "The page displays independent physical therapist Rowan Chen, 518-555-0142, 15 Example Lane, Albany, and Tuesday–Friday, 8 am–2 pm. These are page claims, not independently verified facts.",
+        "strength": "The large clinician name, prominent call button, and optional call preparation form establish a clear task hierarchy. The selected visit appears both as a checked radio and in the generated note.",
+        "weakness": "The visual language is restrained but fairly generic; the empty space beside the form contributes little to the specific task.",
+        "repair": "Give the call preparation area a more distinctive, task-specific treatment while keeping its direct labels and keyboard behavior.",
+        "arm": "note-retention-treatment",
+        "html_sha256": "110c88a9fe333f0fb640ddb610f28fa2857582943831db46fbe88aba655cf783",
+        "weighted": 7.2,
+        "before": {
+          "sha256": "3da6bc415a33f514f147d8d7f1650e0bb0dcf3fc807ac0088fbd43b9076cff83",
+          "file": "A-1440-before.png",
+          "tool_call_id": "item_2"
+        },
+        "after": {
+          "sha256": "56261cc69c83f9ecc9504129720484f7a107fca4a6079f93dbc271403abc0ff0",
+          "file": "A-1440-after.png",
+          "tool_call_id": "item_6"
+        },
+        "layout_width": 1440,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          },
+          {
+            "action": "text",
+            "value": "Avery"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "text",
+            "value": " I can call before noon."
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "repeat_preview": {
+          "retained_manual_edit": true,
+          "observed_note": "- textbox \"Editable note\": Hi, my name is Avery. I’d like to discuss a follow-up visit. I can call before noon."
+        }
+      },
+      "A-390": {
+        "coherence": 8,
+        "originality": 5,
+        "craft": 7.5,
+        "usability": 8,
+        "primary_action": {
+          "input": "Keyboard: select Follow-up visit, submit a blank name, enter Avery, preview, edit the note, return to details, and preview again.",
+          "expected": "Complete the same flow at mobile width and preserve the edit.",
+          "observed": "Validation focused the name field; the radio choice, Avery, and the exact added phrase survived the return and re-preview. The editor was clearly labeled and focused. The call button was visible in both captures; it was not activated."
+        },
+        "edge_observation": "The review tool reported a 375 CSS-pixel layout width in the editor despite the 390-pixel viewport; the capture showed a scrollbar. The selected visit was checked in details and named in the note.",
+        "fact_check": "The same clinician, phone, address, and hours were displayed as on A-1440; their real-world accuracy was not verified.",
+        "strength": "The stacked contact details and form fit the initial screen, and the optional note is easy to find below the call action.",
+        "weakness": "The editor state narrows the reported layout width and uses a substantial vertical area, leaving less room for future content.",
+        "repair": "Avoid layout width shifts when the editor opens and check the mobile editor with longer content.",
+        "arm": "note-retention-treatment",
+        "html_sha256": "110c88a9fe333f0fb640ddb610f28fa2857582943831db46fbe88aba655cf783",
+        "weighted": 7.0,
+        "before": {
+          "sha256": "dd02c595dfccabf12003a46c0f7fd30f9ab2ef3981baa5b16462916ad8cb04a7",
+          "file": "A-390-before.png",
+          "tool_call_id": "item_12"
+        },
+        "after": {
+          "sha256": "e646ac6a32b273c50213da09f75bd9341a0c413ec40b8b5c44b16f225437c1c2",
+          "file": "A-390-after.png",
+          "tool_call_id": "item_16"
+        },
+        "layout_width": 375,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          },
+          {
+            "action": "text",
+            "value": "Avery"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "text",
+            "value": " I can call before noon."
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "repeat_preview": {
+          "retained_manual_edit": true,
+          "observed_note": "- textbox \"Editable note\": Hi, my name is Avery. I’d like to discuss a follow-up visit. I can call before noon."
+        }
+      },
+      "B-1440": {
+        "coherence": 8.5,
+        "originality": 5.5,
+        "craft": 8.5,
+        "usability": 9,
+        "primary_action": {
+          "input": "Keyboard: select Follow-up visit, submit a blank name, enter Avery, preview, edit the note, return to details, and preview again.",
+          "expected": "Provide actionable validation and preserve the details and edited note.",
+          "observed": "The invalid submission focused First name with an instruction. The preview focused the editor, and the exact added phrase survived reopening. Returning also announced that the visit choice and name were still present. The call button stayed visible in both captures and was not activated."
+        },
+        "edge_observation": "Avery and the checked Follow-up radio remained on return; the reopened note retained “ I can call before noon.”",
+        "fact_check": "The page displays independent physical therapist Rowan Chen, 518-555-0142, 15 Example Lane, Albany, and Tuesday–Friday, 8 am–2 pm. These are page claims, not independently verified facts.",
+        "strength": "Hours and address sit directly beside the phone action, and the note is explicitly framed as something to have beside the caller. The checked radio and generated sentence both communicate the visit.",
+        "weakness": "The navy contact block, standard controls, and broad empty field area remain visually familiar rather than especially distinctive.",
+        "repair": "Develop a more specific visual identity around an independent clinician’s call preparation without weakening the concise contact grouping.",
+        "arm": "note-retention-control",
+        "html_sha256": "38a3825c6b9347d9f4fc32d3cea251196dc3d545522e078d41d994111cd2862f",
+        "weighted": 7.7,
+        "before": {
+          "sha256": "eeca3a10d020beff154bf7cd7fc45c65d724cc14c8da74f1f340c096b4b6d873",
+          "file": "B-1440-before.png",
+          "tool_call_id": "item_21"
+        },
+        "after": {
+          "sha256": "579eda424c5c634b3f1acf7552466ee257e1d1c95af3b4f5c663bea38d5725ab",
+          "file": "B-1440-after.png",
+          "tool_call_id": "item_25"
+        },
+        "layout_width": 1440,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          },
+          {
+            "action": "text",
+            "value": "Avery"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "text",
+            "value": " I can call before noon."
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "repeat_preview": {
+          "retained_manual_edit": true,
+          "observed_note": "- textbox \"Editable note\": Hi, my name is Avery. I’m calling about a follow-up visit. I can call before noon."
+        }
+      },
+      "B-390": {
+        "coherence": 8.5,
+        "originality": 5.5,
+        "craft": 8.5,
+        "usability": 9,
+        "primary_action": {
+          "input": "Keyboard: select Follow-up visit, submit a blank name, enter Avery, preview, edit the note, return to details, and preview again.",
+          "expected": "Recover from validation and retain the visit, name, and edit at mobile width.",
+          "observed": "The blank-name error focused the field; the generated note opened focused and retained the added phrase after Back to details and a second preview. The call button was visible in both captures and was not activated."
+        },
+        "edge_observation": "The returned details showed Avery and Follow-up checked, with a status confirming both. The editor reopened with “ I can call before noon.”",
+        "fact_check": "The same clinician, phone, address, and hours were displayed as on B-1440; their real-world accuracy was not verified.",
+        "strength": "The call action and bold hours remain easy to scan above the optional editor. The rule above the editor separates the resulting note clearly, and the focused field is conspicuous.",
+        "weakness": "The compact, conventional layout communicates efficiently but offers limited visual character specific to physical therapy.",
+        "repair": "Add a restrained, subject-specific detail that reinforces the clinician and visit context without displacing the contact information.",
+        "arm": "note-retention-control",
+        "html_sha256": "38a3825c6b9347d9f4fc32d3cea251196dc3d545522e078d41d994111cd2862f",
+        "weighted": 7.7,
+        "before": {
+          "sha256": "805709e610c2996746c055a94485d6912d3345336242b68f8a807ee0640659e1",
+          "file": "B-390-before.png",
+          "tool_call_id": "item_31"
+        },
+        "after": {
+          "sha256": "92e95c903a87ec4dc0bacbfca3d64412883b60595a4eb81361eefec3381e4aa8",
+          "file": "B-390-after.png",
+          "tool_call_id": "item_35"
+        },
+        "layout_width": 390,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          },
+          {
+            "action": "text",
+            "value": "Avery"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "text",
+            "value": " I can call before noon."
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "repeat_preview": {
+          "retained_manual_edit": true,
+          "observed_note": "- textbox \"Editable note\": Hi, my name is Avery. I’m calling about a follow-up visit. I can call before noon."
+        }
+      }
+    },
+    "preference": {
+      "winner": "B",
+      "reason": "Both designs completed the tested keyboard and recovery flow and preserved the edit. B groups hours and address more tightly with the call action, separates the editor clearly, and confirms retained details on return. Its advantage is modest: both remain visually conventional.",
+      "weighted_scores": {
+        "A-1440": 7.15,
+        "A-390": 6.95,
+        "B-1440": 7.55,
+        "B-390": 7.55
+      },
+      "limitations": "Phone links were deliberately not activated. Captures show the call action in the observed initial and preview states; they do not establish that it remains visible during every possible scroll position. No independent verification of the displayed contact details was performed."
+    },
+    "case": "albany-physiotherapy",
+    "verified_screens": 4,
+    "required_screens": 4,
+    "browser": "Chrome/158.0.8127.37",
+    "evaluator_thread": "01a20b22-0c6b-75c2-80e7-93a132723f3a",
+    "usage": {
+      "input_tokens": 1167174,
+      "cached_input_tokens": 1124736,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 3044,
+      "reasoning_output_tokens": 0
+    },
+    "trace_sha256": "d1220a01d4dd62474bb53c01e5371df0b8e40cceefae891f133ad57cf85ba69f",
+    "browser_audit_sha256": "ce1b66e9bd990a216eab05b1e95566c38a68188d98b6badd1616b28e03224941"
+  }
+}
