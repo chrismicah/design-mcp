@@ -1,5 +1,9 @@
 # Design MCP ledger
 
+## November 24 launcher recovery
+
+Compared the existing pipx launcher and the verified development executable with a local stdio client. Both reported `0.1.0`. The existing pipx launcher exposed 14 historical tools. The verified executable passed `doctor`, produced a booking direction and four reaction changes, and flagged an Inter heading while clearing the Asul control. The test used no model calls. [Exact pin and result counts](evidence/benchmark-v1/stale-launcher-recovery.json)
+
 ## November 23 ticket concept workshop
 
 | Lane | Outcome | Evidence |

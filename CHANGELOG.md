@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+- Documented how to identify an older launcher and connect the verified executable. The two tested launchers both reported `0.1.0`, while only the candidate passed `doctor` and exposed the three direction tools. [Launcher recovery test](evidence/benchmark-v1/stale-launcher-recovery.json)
+
 - Verified standalone repairs for focus after a tool is withdrawn and access to the alternate route after a lift is closed. Both won their matched live comparisons. [Recovery proof](EVALS.md#standalone-cabinet-and-train-recovery-repairs)
 
 - Measured separate borrowing and train-access directions on an isolated branch. The train draft won its blind comparison. The borrowing control still showed the cabinet geometry better. [Installed transfer](EVALS.md#installed-borrowing-and-train-access-transfer)

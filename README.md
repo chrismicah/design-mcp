@@ -18,6 +18,8 @@ If Design MCP is already installed, add `--force` after `pipx install` or `uv to
 
 Run `design-mcp doctor` in the installed environment. It reports the interpreter and executable, validates bundled resources, and uses a local stdio client to discover the selected tools and call one. Each check reports pass, fail, or skip. A failed check gives a nonzero exit status.
 
+If you see `Unknown command: doctor` or your client lists only the historical tools, run `command -v design-mcp` to see which launcher your shell found. Re-run the pinned install above with `--force` using the installer that owns that launcher. If you keep both installs, run `doctor` using the full path of the verified executable and use that same path as the MCP client's command. Reconnect and confirm that `direct`, `react`, and `check` appear. The old and new launchers can both report version `0.1.0`. [Launcher recovery test](evidence/benchmark-v1/stale-launcher-recovery.json)
+
 ### Claude Code
 
 ```bash
