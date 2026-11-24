@@ -1,0 +1,410 @@
+{
+  "calibration": {
+    "coherence": 7,
+    "originality": 4,
+    "craft": 6,
+    "usability": 6,
+    "basis": "A legible, familiar repair intake has a coherent structure and clear labels, but misplaced focus after invalid input weakens recovery. Originality cannot be established beyond the supplied description."
+  },
+  "screens": {
+    "A-1440": {
+      "coherence": 8.5,
+      "originality": 8,
+      "craft": 8,
+      "usability": 6,
+      "weighted_score": 7.8,
+      "primary_action": {
+        "input": "Keyboard-select Follow-up visit; submit a blank name; enter Avery; preview; append “ I can call before noon.”; return to details and preview again.",
+        "expected": "A focused, editable follow-up note retains the added sentence when reopened.",
+        "observed": "Blank submission focused the invalid name field with an instruction. Preview focused an Avery follow-up note. Back retained Avery and the selected visit, but reopening removed the added sentence."
+      },
+      "edge_observation": "The checked radio and example both reflected Follow-up visit. The example and editor used the same large mint panel. The yellow phone action remained visible in both captured states.",
+      "fact_check": "The page displayed Rowan Chen, 518-555-0142, 15 Example Lane, Albany, and Tuesday–Friday, 8 am–2 pm. The phone link was not activated. These details were not independently verified.",
+      "strength": "The oversized first-sentence panel makes preparing for a personal call the focal task, while the clinician and contact details remain prominent.",
+      "weakness": "Returning to details silently loses edits even when the name and visit do not change.",
+      "repair": "Preserve the edited note across the return-and-preview cycle, including when details remain unchanged.",
+      "arm": "call-slip-live-example",
+      "html_sha256": "a6c286fd1c25f60c08e2e5f8e0ca91f212e33e7fd72cf67cd97106dbd0197ad3",
+      "weighted": 7.75,
+      "before": {
+        "sha256": "b26e1961c2caf454a364c6c49d0b13f4b05501c1622b800de67c281457b64327",
+        "file": "A-1440-before.png",
+        "tool_call_id": "item_2"
+      },
+      "after": {
+        "sha256": "5b496e5a29b3ce17fe62bf8432d8022cfc5afa179bcceeb333d41b595976c1fd",
+        "file": "A-1440-after.png",
+        "tool_call_id": "item_6"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowDown"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "text",
+          "value": "Avery"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "text",
+          "value": " I can call before noon."
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "repeat_preview": {
+        "retained_manual_edit": false,
+        "observed_note": "- textbox \"Your editable note\": Hi Rowan. My name is Avery, and I’d like to ask about a follow-up visit."
+      }
+    },
+    "A-390": {
+      "coherence": 8.5,
+      "originality": 7.5,
+      "craft": 8,
+      "usability": 6,
+      "weighted_score": 7.65,
+      "primary_action": {
+        "input": "Keyboard-select Follow-up visit; submit a blank name; enter Avery; preview; append “ I can call before noon.”; return to details and preview again.",
+        "expected": "The editable note retains the added sentence after returning and reopening.",
+        "observed": "The blank-name error focused the name field. Avery and Follow-up visit remained on return, but the reopened note omitted the added sentence."
+      },
+      "edge_observation": "The selected radio and example reflected Follow-up visit. The mint example and editor occupied the same panel area. The phone action was visible in both captures at this viewport.",
+      "fact_check": "The same clinician, phone, address and hours were displayed. The phone was not dialed; the facts were not independently verified.",
+      "strength": "The compact stack keeps the call details, visit choice and note within a clear reading sequence.",
+      "weakness": "The quiet loss of an edited sentence undermines the page's promise that the note stays on the page.",
+      "repair": "Retain the draft when returning to details and reopening it.",
+      "arm": "call-slip-live-example",
+      "html_sha256": "a6c286fd1c25f60c08e2e5f8e0ca91f212e33e7fd72cf67cd97106dbd0197ad3",
+      "weighted": 7.6,
+      "before": {
+        "sha256": "2a9a657ea50cc5a4e704aacee47aaa19a79c0e5e9b088aed4385e433b94e5e39",
+        "file": "A-390-before.png",
+        "tool_call_id": "item_12"
+      },
+      "after": {
+        "sha256": "02d51e161cb799d4bcdfeafdd45121c1e8b6c73638c4a3f7a78e0e8c90b858f2",
+        "file": "A-390-after.png",
+        "tool_call_id": "item_16"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowDown"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "text",
+          "value": "Avery"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "text",
+          "value": " I can call before noon."
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "repeat_preview": {
+        "retained_manual_edit": false,
+        "observed_note": "- textbox \"Your editable note\": Hi Rowan. My name is Avery, and I’d like to ask about a follow-up visit."
+      }
+    },
+    "B-1440": {
+      "coherence": 8.5,
+      "originality": 7.5,
+      "craft": 8.5,
+      "usability": 8.5,
+      "weighted_score": 8.2,
+      "primary_action": {
+        "input": "Keyboard-select Follow-up visit; submit a blank name; enter Avery; preview; append “ I can call before noon.”; return to details and preview again.",
+        "expected": "The focused editable note retains the added sentence after returning and reopening.",
+        "observed": "The blank-name error focused the invalid field. Preview focused the Avery follow-up note. Back retained Avery and the selected visit; the reopened editor retained the exact added sentence."
+      },
+      "edge_observation": "The selected visit had a checked radio and highlighted row, and the example named the follow-up. The example and editor shared the right-hand content region, though the editor began higher after the form disappeared. The phone action remained visible in both captured states.",
+      "fact_check": "The page displayed Rowan Chen, 518-555-0142, 15 Example Lane, Albany, and Tuesday–Friday, 8 am–2 pm. The phone link was not activated. These details were not independently verified.",
+      "strength": "The clinician's dark contact column stays alongside the call-preparation workspace, connecting the note directly to the person being called.",
+      "weakness": "The example's lower position shifts upward when it becomes the editor, making the transition less spatially consistent.",
+      "repair": "Keep the example and editor anchored in a more consistent position while retaining the draft.",
+      "arm": "call-slip-integrated",
+      "html_sha256": "09ef2b2bd780de248d34894c56cecbbaeb820dec79f8c7b8ee31a440bd0d9f39",
+      "weighted": 8.2,
+      "before": {
+        "sha256": "ebc0c0d60d2c3d8e63206ee1bf995be07f813e447fee2804df2538e555b763d0",
+        "file": "B-1440-before.png",
+        "tool_call_id": "item_21"
+      },
+      "after": {
+        "sha256": "c1b99038f9d83127aaa5c09c36d5716320e35a33076a280fa9d080090e8ec0e5",
+        "file": "B-1440-after.png",
+        "tool_call_id": "item_25"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowDown"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "text",
+          "value": "Avery"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "text",
+          "value": " I can call before noon."
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "repeat_preview": {
+        "retained_manual_edit": true,
+        "observed_note": "- textbox \"Your editable note\": Hi Rowan. My name is Avery, and I’d like to ask about a follow-up visit. I can call before noon."
+      }
+    },
+    "B-390": {
+      "coherence": 8,
+      "originality": 7,
+      "craft": 8,
+      "usability": 8.5,
+      "weighted_score": 7.8,
+      "primary_action": {
+        "input": "Keyboard-select Follow-up visit; submit a blank name; enter Avery; preview; append “ I can call before noon.”; return to details and preview again.",
+        "expected": "The editable note retains the added sentence after returning and reopening.",
+        "observed": "The error focused the name field. Avery and Follow-up visit remained on return, and the reopened editor retained the exact added sentence."
+      },
+      "edge_observation": "The selected visit had a checked radio and highlighted row; the example reflected the selection. Example and editor occupied the same light content panel, with the editor higher after the form disappeared. The phone action was visible in both captures.",
+      "fact_check": "The same clinician, phone, address and hours were displayed. The phone was not dialed; the facts were not independently verified.",
+      "strength": "The highlighted visit row makes the choice easy to scan, and the editable call script remains readable on the narrow screen.",
+      "weakness": "The editor replaces the form higher in the panel, so its location differs from the example's initial position.",
+      "repair": "Improve continuity between the example and editor positions without pushing the call action out of reach.",
+      "arm": "call-slip-integrated",
+      "html_sha256": "09ef2b2bd780de248d34894c56cecbbaeb820dec79f8c7b8ee31a440bd0d9f39",
+      "weighted": 7.8,
+      "before": {
+        "sha256": "74d0cf772a3ca62f3e957530c6cb0e46f991600761234d1ec096fad870770436",
+        "file": "B-390-before.png",
+        "tool_call_id": "item_31"
+      },
+      "after": {
+        "sha256": "20311e3b63c710c14ce8b204941e721bd0c2400bbe59346a21104a86b228e06c",
+        "file": "B-390-after.png",
+        "tool_call_id": "item_35"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowDown"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "text",
+          "value": "Avery"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "text",
+          "value": " I can call before noon."
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "repeat_preview": {
+        "retained_manual_edit": true,
+        "observed_note": "- textbox \"Your editable note\": Hi Rowan. My name is Avery, and I’d like to ask about a follow-up visit. I can call before noon."
+      }
+    }
+  },
+  "preference": {
+    "winner": "B",
+    "reason": "Both designs make the clinician and call preparation clear, and both recover well from a blank name. B wins because it preserves the user's added sentence at both widths; A silently removes it. B's highlighted selected row also reinforces the visit choice."
+  },
+  "unsupported_claims": "The displayed contact details and the claim that nothing is sent or booked were not independently verified. No claim is made about behavior after reload, changes to visit details, or actual phone calls.",
+  "case": "albany-physiotherapy",
+  "verified_screens": 4,
+  "required_screens": 4,
+  "browser": "Chrome/158.0.8127.37",
+  "evaluator_thread": "01a20afa-c9bb-7462-bd80-c679c5682c51",
+  "usage": {
+    "input_tokens": 1172172,
+    "cached_input_tokens": 1138432,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2968,
+    "reasoning_output_tokens": 0
+  },
+  "trace_sha256": "df8df4936960ed7a0eb4b71a8a404dd470da2b72aa6a7506a2a053123683867d",
+  "browser_audit_sha256": "05c79b31530e44145ba37eab4045ecdbd5feae443b44d0ae77ec4295a3658359"
+}

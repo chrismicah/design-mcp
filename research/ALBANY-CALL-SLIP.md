@@ -198,3 +198,21 @@ request. All 1,584 prior check outcomes repeated. A separate live
 ballot is still required for the visual decision.
 [Verified browser receipt](../evidence/benchmark-v1/albany-call-slip-integrated-browser.json)
 [Hosted replay](https://github.com/chrismicah/design-mcp/actions/runs/45298074572)
+
+## Integrated-slip live result
+
+The blind reviewer completed four live keyboard journeys. The integrated
+slip scored **8.20 desktop and 7.80 phone**, against **7.75 desktop and
+7.60 phone** for the selected-visit build in the same ballot. The
+browser accessibility observations confirm that the typed sentence
+survived a second preview at both widths only in the integrated slip.
+The reviewer found that the editor reopened higher in the panel than
+the example, weakening the visual continuity on both widths.
+[Blind ballot and repeat-preview observations](../evidence/benchmark-v1/albany-call-slip-integrated-blind.json)
+
+The series ranks by the weaker screen. Rounds four and five won their
+matched ballots and finished below the round-three high of **8.20 at
+both widths**. That is two consecutive misses against the series high
+at round five, so this direction closes with the selected-visit build
+as the visual reference. Carry the tested note retention into the
+next installed comparison. The release's dual 9.5 gate remains open.
