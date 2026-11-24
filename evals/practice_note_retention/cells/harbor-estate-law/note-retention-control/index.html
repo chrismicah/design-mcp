@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Harbor Estate Law</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@600&family=Instrument+Sans:wght@400;600;700&display=swap">
+  <style>
+    :root {
+      --navy: #172747;
+      --pale: #d7e1fa;
+      --ink: #18243a;
+      --paper: #f0f3fa;
+      --accent: #bfcfff;
+      --muted: #43546f;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: auto; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Instrument Sans", sans-serif;
+      line-height: 1.5;
+    }
+
+    a { color: inherit; }
+
+    :focus-visible {
+      outline: 2px solid var(--paper);
+      outline-offset: 2px;
+      box-shadow: 0 0 0 4px var(--ink);
+    }
+
+    .wrap {
+      width: min(100% - 2.5rem, 72rem);
+      margin-inline: auto;
+    }
+
+    .intro {
+      background: var(--navy);
+      color: white;
+      padding: 1.35rem 0 2.5rem;
+    }
+
+    .brand {
+      margin: 0;
+      font-family: "Bodoni Moda", serif;
+      font-size: 1.12rem;
+      font-weight: 600;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(15rem, .8fr);
+      gap: clamp(2rem, 7vw, 7rem);
+      align-items: end;
+      padding-top: clamp(2.5rem, 7vw, 6rem);
+    }
+
+    h1, h2 {
+      font-family: "Bodoni Moda", serif;
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -.025em;
+    }
+
+    h1 {
+      max-width: 13ch;
+      margin: 0 0 1rem;
+      font-size: clamp(2.35rem, 5.5vw, 4.7rem);
+    }
+
+    .intro p { max-width: 40rem; }
+
+    .lead {
+      margin: 0 0 1.4rem;
+      color: var(--pale);
+      font-size: 1.1rem;
+    }
+
+    .call {
+      display: inline-flex;
+      align-items: center;
+      min-height: 3.25rem;
+      padding: .7rem 1.1rem;
+      background: var(--accent);
+      color: var(--ink);
+      font-weight: 700;
+      text-decoration-thickness: 1px;
+      text-underline-offset: .2em;
+    }
+
+    .call:focus-visible {
+      outline-color: var(--paper);
+      box-shadow: 0 0 0 4px var(--navy);
+    }
+
+    address {
+      border-top: 1px solid #7182a1;
+      padding-top: 1rem;
+      color: var(--pale);
+      font-style: normal;
+    }
+
+    address p { margin: 0 0 .7rem; }
+    address strong { color: white; }
+
+    main { padding: 2.5rem 0 4rem; }
+
+    .content {
+      display: grid;
+      grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+      gap: clamp(2.5rem, 7vw, 7rem);
+    }
+
+    h2 {
+      margin: 0 0 1.2rem;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+    }
+
+    .services ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid #aebbd0;
+    }
+
+    .services li {
+      padding: .9rem 0;
+      border-bottom: 1px solid #aebbd0;
+      font-size: 1.1rem;
+    }
+
+    .note {
+      border-top: 4px solid var(--navy);
+      padding-top: 1.1rem;
+    }
+
+    .note > p {
+      max-width: 55ch;
+      margin: 0 0 1.5rem;
+      color: var(--muted);
+    }
+
+    fieldset {
+      margin: 0 0 1.3rem;
+      padding: 0;
+      border: 0;
+    }
+
+    legend, .field-label {
+      display: block;
+      margin-bottom: .6rem;
+      font-weight: 700;
+    }
+
+    .choice {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      min-height: 2.5rem;
+      width: fit-content;
+    }
+
+    input[type="radio"] {
+      width: 1.15rem;
+      height: 1.15rem;
+      margin: 0;
+      accent-color: var(--navy);
+    }
+
+    input[type="text"], textarea {
+      display: block;
+      width: 100%;
+      border: 1px solid var(--muted);
+      border-radius: 0;
+      background: white;
+      color: var(--ink);
+      font: inherit;
+      padding: .7rem;
+    }
+
+    input[type="text"] { max-width: 24rem; }
+    textarea { min-height: 10rem; resize: vertical; }
+
+    .field { margin-bottom: 1.3rem; }
+
+    button {
+      min-height: 3rem;
+      border: 2px solid var(--navy);
+      border-radius: 0;
+      padding: .65rem 1rem;
+      background: var(--navy);
+      color: white;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .back {
+      margin-top: 1rem;
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .hint {
+      margin: .6rem 0 0;
+      color: var(--muted);
+      font-size: .94rem;
+    }
+
+    [hidden] { display: none !important; }
+
+    @media (max-width: 40rem) {
+      .intro { padding-bottom: 1.6rem; }
+      .hero { grid-template-columns: 1fr; gap: 1.5rem; padding-top: 2rem; }
+      h1 { font-size: clamp(2.2rem, 10vw, 3rem); }
+      .content { grid-template-columns: 1fr; }
+      main { padding-top: 2rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="intro">
+    <div class="wrap">
+      <p class="brand">Harbor Estate Law</p>
+      <div class="hero">
+        <div>
+          <h1>Speak with Mira Vale</h1>
+          <p class="lead">Attorney Mira Vale answers new client calls.</p>
+          <a class="call" href="tel:+12065550146">Call 206-555-0146</a>
+        </div>
+        <address>
+          <p><strong>Call hours</strong><br>Monday to Thursday, 10 am to 3 pm</p>
+          <p><strong>Office</strong><br>80 Example Street</p>
+        </address>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="content">
+      <section class="services" aria-labelledby="services-title">
+        <h2 id="services-title">How we can help</h2>
+        <ul>
+          <li>Advance directives</li>
+          <li>Estate administration</li>
+        </ul>
+      </section>
+
+      <section class="note" aria-labelledby="note-title">
+        <h2 id="note-title">Prepare a call note</h2>
+        <p>Optional: make a short note to have with you when you call Mira. It stays in this browser and sends nothing.</p>
+
+        <form id="note-form">
+          <div id="details">
+            <fieldset>
+              <legend>What would you like to discuss?</legend>
+              <label class="choice">
+                <input type="radio" name="topic" value="advance directives" required>
+                <span>Advance directives</span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="topic" value="estate administration">
+                <span>Estate administration</span>
+              </label>
+            </fieldset>
+
+            <div class="field">
+              <label class="field-label" for="first-name">First name</label>
+              <input id="first-name" name="firstName" type="text" autocomplete="given-name" required>
+            </div>
+
+            <button type="submit">Preview note</button>
+          </div>
+
+          <div id="preview" hidden>
+            <label class="field-label" for="draft">Your editable call note</label>
+            <textarea id="draft"></textarea>
+            <p class="hint" id="preview-status" role="status">Your note is ready to edit. It stays in this browser and sends nothing.</p>
+            <button class="back" id="back" type="button">Back to details</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const form = document.getElementById("note-form");
+    const details = document.getElementById("details");
+    const preview = document.getElementById("preview");
+    const draft = document.getElementById("draft");
+    const back = document.getElementById("back");
+    let lastDetails = "";
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      const name = document.getElementById("first-name").value.trim();
+      const topic = form.elements.topic.value;
+      if (!name) {
+        document.getElementById("first-name").focus();
+        return;
+      }
+
+      const currentDetails = JSON.stringify([name, topic]);
+      if (currentDetails !== lastDetails) {
+        draft.value = "Hello Mira, my name is " + name +
+          ". I’m calling about " + topic + ".";
+        lastDetails = currentDetails;
+      }
+
+      details.hidden = true;
+      preview.hidden = false;
+      draft.focus();
+      draft.scrollIntoView({ block: "nearest", behavior: "instant" });
+    });
+
+    back.addEventListener("click", function () {
+      preview.hidden = true;
+      details.hidden = false;
+      document.getElementById("first-name").focus();
+    });
+  </script>
+</body>
+</html>

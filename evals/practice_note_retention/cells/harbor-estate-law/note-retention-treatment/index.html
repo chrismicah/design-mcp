@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harbor Estate Law</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda%3Awght%40600&family=Instrument+Sans&display=swap">
+<style>
+  :root {
+    --navy: #172747;
+    --blue: #d7e1fa;
+    --ink: #18243a;
+    --paper: #f0f3fa;
+    --accent: #bfcfff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 1rem/1.5 "Instrument Sans", sans-serif;
+  }
+  a { color: inherit; }
+  button, input, select, textarea { font: inherit; }
+  :focus-visible {
+    outline: 2px solid var(--paper);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px var(--ink);
+  }
+  .intro :focus-visible {
+    outline-color: var(--navy);
+    box-shadow: 0 0 0 4px var(--paper);
+  }
+  .wrap { width: min(100% - 2rem, 70rem); margin-inline: auto; }
+  .intro { background: var(--navy); color: white; }
+  .intro-inner { padding-block: 1.25rem 2rem; }
+  .brand {
+    margin: 0 0 1.25rem;
+    font: 600 1.35rem/1.15 "Bodoni Moda", Georgia, serif;
+  }
+  .contact { display: grid; gap: .35rem; align-content: start; }
+  .call {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3rem;
+    width: fit-content;
+    padding: .65rem 1rem;
+    background: var(--accent);
+    color: var(--ink);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .call:hover { background: white; }
+  .contact p { margin: 0; color: var(--blue); }
+  h1, h2 { font-family: "Bodoni Moda", Georgia, serif; }
+  h1 {
+    max-width: 15ch;
+    margin: 1.65rem 0 .65rem;
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    line-height: 1.12;
+    letter-spacing: -.025em;
+  }
+  .lede { max-width: 38rem; margin: 0; color: var(--blue); }
+  main { padding-block: 2rem 4rem; }
+  .layout { display: grid; gap: 2.5rem; }
+  h2 { margin: 0 0 .65rem; font-size: 1.65rem; line-height: 1.2; }
+  .section-copy { margin: 0 0 1.25rem; max-width: 45ch; }
+  .note {
+    padding: 1.25rem;
+    background: white;
+    border-top: 4px solid var(--navy);
+  }
+  .field { margin-bottom: 1rem; }
+  label { display: block; margin-bottom: .35rem; font-weight: 700; }
+  input, select, textarea {
+    display: block;
+    width: 100%;
+    min-height: 3rem;
+    padding: .65rem;
+    color: var(--ink);
+    background: white;
+    border: 1px solid #52637e;
+    border-radius: 0;
+  }
+  textarea { min-height: 10rem; resize: vertical; }
+  .hint { margin: 0 0 1rem; font-size: .9rem; }
+  button {
+    min-height: 3rem;
+    padding: .65rem 1rem;
+    border: 1px solid var(--navy);
+    border-radius: 0;
+    background: var(--navy);
+    color: white;
+    cursor: pointer;
+    font-weight: 700;
+  }
+  button:hover { background: #30446a; }
+  .back { background: transparent; color: var(--ink); }
+  .back:hover { background: var(--blue); }
+  .services { border-top: 1px solid #52637e; padding-top: 1.25rem; }
+  .services ul { list-style: none; padding: 0; margin: 1rem 0 0; }
+  .services li { padding: .85rem 0; border-bottom: 1px solid #aab7cb; }
+  [hidden] { display: none !important; }
+  @media (min-width: 48rem) {
+    .intro-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      column-gap: 4rem;
+      padding-block: 2rem 3.5rem;
+    }
+    .brand { grid-column: 1 / -1; margin-bottom: 2rem; }
+    .contact { grid-column: 2; grid-row: 2 / span 2; min-width: 15rem; }
+    h1 { grid-column: 1; grid-row: 2; margin-top: 0; }
+    .lede { grid-column: 1; grid-row: 3; }
+    main { padding-block: 3rem 5rem; }
+    .layout { grid-template-columns: minmax(0, 1.2fr) minmax(14rem, .8fr); gap: 5rem; }
+    .note { padding: 1.75rem; }
+  }
+</style>
+</head>
+<body>
+<header class="intro">
+  <div class="wrap intro-inner">
+    <p class="brand">Harbor Estate Law</p>
+    <div class="contact">
+      <a class="call" href="tel:+12065550146">Call 206-555-0146</a>
+      <p>Monday to Thursday, 10 am to 3 pm</p>
+      <p>80 Example Street</p>
+    </div>
+    <h1>Speak with Mira Vale.</h1>
+    <p class="lede">Attorney Mira Vale answers new client calls at Harbor Estate Law.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="layout">
+    <section class="note" aria-labelledby="note-title">
+      <h2 id="note-title">Prepare a call note</h2>
+      <p class="section-copy">Optional. Make a short note to use when you speak with Mira.</p>
+
+      <form id="details">
+        <div class="field">
+          <label for="topic">What would you like to discuss?</label>
+          <select id="topic" required>
+            <option value="">Select a topic</option>
+            <option>Advance directives</option>
+            <option>Estate administration</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="first-name">First name</label>
+          <input id="first-name" autocomplete="given-name" required>
+        </div>
+        <p class="hint">Your note stays in this browser. Nothing is sent.</p>
+        <button type="submit">Preview note</button>
+      </form>
+
+      <div id="preview" hidden>
+        <div class="field">
+          <label for="draft">Your call note</label>
+          <textarea id="draft"></textarea>
+        </div>
+        <p class="hint">Edit this note for your call. Nothing is sent.</p>
+        <button class="back" id="back" type="button">Back to details</button>
+      </div>
+      <p id="announcement" role="status" class="hint"></p>
+    </section>
+
+    <section class="services" aria-labelledby="services-title">
+      <h2 id="services-title">Practice areas</h2>
+      <ul>
+        <li>Advance directives</li>
+        <li>Estate administration</li>
+      </ul>
+    </section>
+  </div>
+</main>
+
+<script>
+  const form = document.getElementById("details");
+  const preview = document.getElementById("preview");
+  const topic = document.getElementById("topic");
+  const nameField = document.getElementById("first-name");
+  const draft = document.getElementById("draft");
+  const back = document.getElementById("back");
+  const announcement = document.getElementById("announcement");
+  let lastDetails = "";
+  let savedDraft = "";
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const name = nameField.value.trim();
+    if (!name) {
+      nameField.setCustomValidity("Enter your first name.");
+      nameField.reportValidity();
+      return;
+    }
+    nameField.setCustomValidity("");
+    const details = JSON.stringify([topic.value, nameField.value]);
+    draft.value = details === lastDetails
+      ? savedDraft
+      : "Hello Mira, my name is " + name +
+        ". I would like to discuss " + topic.value.toLowerCase() + ".";
+    lastDetails = details;
+    form.hidden = true;
+    preview.hidden = false;
+    announcement.textContent = "Your note is ready to edit.";
+    draft.focus();
+    draft.scrollIntoView({ block: "nearest", behavior: "instant" });
+  });
+
+  nameField.addEventListener("input", function () {
+    nameField.setCustomValidity("");
+  });
+
+  back.addEventListener("click", function () {
+    savedDraft = draft.value;
+    preview.hidden = true;
+    form.hidden = false;
+    announcement.textContent = "Your details are ready to edit.";
+    topic.focus();
+  });
+</script>
+</body>
+</html>
