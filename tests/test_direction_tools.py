@@ -184,6 +184,14 @@ async def test_contact_retail_comparison_transfers_scale_and_keeps_the_current_t
      "direct-consultation"),
     ("Build a homepage for an attorney. No phone or consultation action. Help journalists find firm announcements.",
      "object-hero"),
+    ("Build a homepage for a law firm. Make the attorney profiles easy to read on a phone.", "object-hero"),
+    ("Create a website for a dentist. Put the office hours and procedures on the opening phone screen.",
+     "object-hero"),
+    ("Create a homepage for a physiotherapy clinic. Ask the visitor to phone the clinic.", "direct-consultation"),
+    ("Build a homepage for a law firm. Lead with the public phone number for a first appointment.",
+     "direct-consultation"),
+    ("Make a homepage selling a single product: a printed guide for a dentist. Let visitors buy a copy. "
+     "List a phone number for wholesale requests in the footer.", "object-hero"),
 ])
 async def test_consultation_direction_respects_the_relevant_surface(brief, expected):
     assert (await direct(brief))["direction"]["id"] == expected

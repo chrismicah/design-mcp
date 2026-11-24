@@ -70,9 +70,13 @@ _SITE_TASK = re.compile(
 _NEGATED_ACTION = re.compile(r"\b(?:do\s+not|don['’]t|never|avoid|without|no)\s+(?:\w+\s+){0,2}$")
 _SITE_ADDITION = re.compile(r"\band (?:add|include|put|show)\b")
 _EDITORIAL_SITE = re.compile(rf"\beditorial {_SITE_NAME}\b")
-_CONTACT_INTENT = re.compile(r"\b(?:call(?:ing|ers?)?|phone|callback|consultation|"
-                             r"(?:contact|text|email) (?:the |our |their )?(?:practice|office|clinic|firm)|"
-                             r"speak (?:directly )?(?:with|to))\b")
+_PRACTICE_CONTACT = r"(?:practice|office|clinic|firm)"
+_CONTACT_INTENT = re.compile(
+    r"\b(?:call(?:ing|ers?)?|callback|consultation|(?:public|office|clinic|firm) phone|"
+    r"phone (?:number|link|button|line)|"
+    rf"(?:contact|text|email|phone) (?:the |our |their )?{_PRACTICE_CONTACT}|"
+    r"speak (?:directly )?(?:with|to))\b"
+)
 _SHOPPING_INTENT = re.compile(r"\b(?:product page|checkout|add (?:\S+ ){0,3}to (?:the )?(?:bag|basket|cart))\b")
 
 
@@ -171,7 +175,13 @@ async def direct(brief: str, surface: Surface | None = None, avoid: list[str] | 
     if not candidates:
         return {"error": f"No reviewed direction remains for {kind}.", "surface": kind}
     tag_text = text.translate(_FORM_SEPARATORS) if kind == "form" else text
-    choice = max(candidates, key=lambda row: sum(_match(term, tag_text) for term in row.tags))
+
+    def relevance(row):
+        matches = [term for term in row.tags if _match(term, tag_text)]
+        # A generic appointment is weaker evidence than a named practice or another concrete match.
+        return len(matches), matches != ["appointment"] or row.id != "service-work-order"
+
+    choice = max(candidates, key=relevance)
     questions = []
     if matched is None and len(text.split()) <= 8:
         questions = [{"question": "What will people use this screen for?",
