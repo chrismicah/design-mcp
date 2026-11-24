@@ -772,3 +772,10 @@ placed those details below its empty-state panel. The Design MCP
 desktop recovery frame recorded a 1.55:1 label contrast during the
 background transition. The 9.5 release threshold remains open.
 [Hosted browser evidence](evidence/benchmark-v1/saved-trails-shadcn-browser.json) · [Live ballot and pixel samples](evidence/benchmark-v1/saved-trails-shadcn-live.json)
+
+The isolated contrast replay removed only the background-color
+transition. The minimum observed ratio in the first 190 ms after
+Remove rose from **1.29:1 to 10.46:1** at both widths. All four keyboard
+replays kept focus on the action and restored the zero count. The
+original generated HTML and its blind scores remain frozen. This is
+a controlled fixture repair. [Frame-by-frame computed colors](evidence/benchmark-v1/saved-trails-button-contrast.json)
