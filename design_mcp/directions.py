@@ -60,11 +60,14 @@ _FIELD_COLLECTION = re.compile(r"\b(?:collect|ask for|enter|provide|record)\b")
 _ENTRY_OUTCOME = re.compile(r"\b(?:confirmation|submission|invalid|validat\w*|submitted)\b")
 _SITE_NAME = r"(?:home ?page|web ?site)"
 _SITE_TASK = re.compile(
-    r"(?:\b(?:build|create|design|make|need|redo|redesign|refresh|revamp|want)\s+"
+    r"(?:(?:\b(?:build|create|design|make|need|redo|redesign|refresh|revamp|want)\s+"
     rf"|(?:^|[.!?]\s+)(?:an?\s+|(?={_SITE_NAME}\b)))"
-    rf"(?:[\w’']+\s+){{0,5}}?{_SITE_NAME}\b"
+    rf"(?:[\w’']+\s+){{0,5}}?"
+    r"|\b(?:give|provide)\s+(?:[\w’']+\s+){0,8}?a\s+(?:complete|full|new)\s+)"
+    rf"{_SITE_NAME}\b"
     r"(?![’']s\b|\s+(?:already|currently|exists?|has|is|works?)\b)"
 )
+_NEGATED_SITE_ACTION = re.compile(r"\b(?:do\s+not|don['’]t|never|avoid|without)\s+(?:\w+\s+){0,2}$")
 _SITE_ADDITION = re.compile(r"\band (?:add|include|put|show)\b")
 _EDITORIAL_SITE = re.compile(rf"\beditorial {_SITE_NAME}\b")
 
@@ -83,6 +86,13 @@ def _match(token: str, brief: str) -> bool:
     return re.search(rf"(?<!\w){re.escape(token.casefold())}(?!\w)", brief) is not None
 
 
+def _site_task(text: str) -> re.Match[str] | None:
+    for match in _SITE_TASK.finditer(text):
+        if not _NEGATED_SITE_ACTION.search(text[:match.start()]):
+            return match
+    return None
+
+
 def _is_form_task(text: str) -> bool:
     text = _NON_ENTRY.sub(" ", text.translate(_FORM_SEPARATORS))
     entry = _FORM_TASK.search(text)
@@ -95,7 +105,7 @@ def _is_form_task(text: str) -> bool:
     preceding_clauses = _CLAUSE_BREAK.split(text[:entry.end()])[:-1]
     parent = " ".join(preceding_clauses)
     before_entry = text[:entry.start()]
-    site = _SITE_TASK.search(before_entry)
+    site = _site_task(before_entry)
     if site and (_CLAUSE_BREAK.search(before_entry, site.end()) or _SITE_ADDITION.search(before_entry, site.end())):
         return False
     tail = _CLAUSE_BREAK.split(text[entry.end():], maxsplit=1)[0].rstrip()
@@ -108,7 +118,7 @@ def _infer_surface(text: str) -> str | None:
         return "form"
     scores = {name: sum(_match(term, text) for term in terms) for name, terms in _TERMS.items()}
     site_text = text.translate(_FORM_SEPARATORS)
-    if _SITE_TASK.search(site_text):
+    if _site_task(site_text):
         scores["landing"] += 1
         # A public site can be mobile-friendly or editorial in tone.
         if scores["mobile"] == 1 and _match("mobile", text):
