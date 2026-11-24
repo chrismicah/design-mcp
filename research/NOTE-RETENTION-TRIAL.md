@@ -44,3 +44,10 @@ service-work-order to direct-consultation. This source comparison
 awaits clean-install parity and a test that the guidance
 transfers through generation.
 [Exact source stdio replies](../evidence/benchmark-v1/note-retention-source-stdio.json)
+
+Harbor Estate Law is a fresh comparison where both replies select
+direct-consultation. Across the enlarged practice set, all 48 frozen
+full replies and six explicit form overrides match. Five contact-led
+replies differ in only the draft action field. Fairhill is kept as
+the separate routing holdout because the directions differ there.
+[Matched generation contract](NOTE-RETENTION-GENERATION.md)
