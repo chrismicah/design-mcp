@@ -1,14 +1,22 @@
 # Fresh Mac verification
 
-The README pin `0978712` passed on **macOS 13.7.4 arm64** in a disposable copy of the existing Tart benchmark guest. Both installers fetched the exact commit on Python 3.10 through 3.13 with new installation directories. The transcript audit verified eight pinned installs, eight passing `doctor` calls and 48 stdio runs, including the opt-in URL refusal path. The clone was stopped and deleted. The scoped OCI cache remained empty. Intel Ventura runtime remains open. [Exact Ventura transcript audit](ventura-tart-0978712.json) · [Exact macOS 15 matrix](release-ci-0978712.json)
+The earlier install pin `0978712` passed on **macOS 13.7.4 arm64** in a disposable copy of the existing Tart benchmark guest. Both installers fetched the exact commit on Python 3.10 through 3.13 with new installation directories. The transcript audit verified eight pinned installs, eight passing `doctor` calls and 48 stdio runs, including the opt-in URL refusal path. The clone was stopped and deleted. The scoped OCI cache remained empty. Intel Ventura runtime remains open. [Exact Ventura transcript audit](ventura-tart-0978712.json) · [Exact macOS 15 matrix](release-ci-0978712.json)
 
-The earlier `a9e1211` pin passed the same eight installs and 48 stdio checks in a guest cloned from the freshly pulled image. The current pin was verified with fresh installs on the existing OS image. [Earlier Ventura transcript audit](ventura-tart-a9e1211.json)
+The earlier `a9e1211` pin passed the same eight installs and 48 stdio checks in a guest cloned from the freshly pulled image. The later `0978712` pin was verified with fresh installs on the existing OS image. [Earlier Ventura transcript audit](ventura-tart-a9e1211.json)
 
-A new binary-only check resolved the exact README pin for all eight Ventura architecture and Python targets. PyPI metadata matched all 604 wheel selections, including the pin’s WebSocket dependency. All eight managed interpreter URLs returned HTTP 200 to HEAD. This checks dependency availability. Intel Ventura still needs the native runtime matrix below. [Exact-pin dependency receipt](ventura-wheel-pin-0978712.json)
+The binary-only check resolved `0978712` for all eight Ventura architecture and Python targets. PyPI metadata matched all 604 wheel selections, including the pin’s WebSocket dependency. All eight managed interpreter URLs returned HTTP 200 to HEAD. This checks dependency availability. Intel Ventura still needs the native runtime matrix below. [Exact-pin dependency receipt](ventura-wheel-pin-0978712.json)
 
 An earlier fresh Tart guest verified eight installs and 24 stdio runs against `b868307`, using an earlier set of smoke commands. [First Ventura transcript audit](ventura-tart-b868307.json)
 
-The README pin `f30e6ff` passed eight binary-only dependency resolutions at macOS 13 deployment targets. Independent PyPI metadata matched all **604 wheel selections** and all eight managed interpreter URLs returned HTTP 200 to HEAD. Tart input preflight verified the Git archive and runner hashes. The staged input is ready for a fresh arm64 guest when there is capacity. The host had 58.81 GiB free and held no owned Ventura VM. Current arm64 and Intel runtime checks remain open. [Exact dependency and staged input receipt](ventura-f30e6ff-preflight.json)
+The prior install pin `f30e6ff` passed eight binary-only dependency resolutions at macOS 13 deployment targets. Independent PyPI metadata matched all **604 wheel selections** and all eight managed interpreter URLs returned HTTP 200 to HEAD. Tart input preflight verified the Git archive and runner hashes. The staged input is ready for a fresh arm64 guest when there is capacity. The host had 58.81 GiB free and held no owned Ventura VM. Current arm64 and Intel runtime checks remain open. [Exact dependency and staged input receipt](ventura-f30e6ff-preflight.json)
+
+The current README pin `18b87522` has the same package and matrix verifier
+inputs as `f30e6ff`. The host checked the current archive's embedded Git
+SHA and all four staged files. The local Mac reported macOS 26.5.2 on
+arm64, 23.83 GiB available, and an empty Tart VM directory. The native Intel
+preflight refused the host, and a cold arm64 VM build did not fit the
+30 GiB headroom floor. Both current-pin Ventura runtime cells still need
+a qualified host. [Current archive and host receipt](ventura-18b87522-stage.json)
 
 ## Earlier attempts
 
@@ -38,7 +46,7 @@ Use native uv on the Intel Ventura machine. The pinned x86_64 uv archive has SHA
 
 ```sh
 set -o pipefail
-VENTURA_PIN=0978712149674ad7fd5738c53d4b7966ba163b43
+VENTURA_PIN=18b87522a49c545dd6204c20762d6fd64145d375
 bash scripts/verify_install_matrix.sh --check-host 13 x86_64
 bash scripts/verify_install_matrix.sh 13 x86_64 \
   "$VENTURA_PIN" "$(command -v uv)" "$NEW_EVIDENCE_DIRECTORY" \
