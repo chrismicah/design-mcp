@@ -130,3 +130,21 @@ a 44 px tall clickable row. The parent passed 99 checks, the variant
 passed 105, and all 1,479 earlier outcomes repeated.
 [Form-balance browser receipt](../evidence/benchmark-v1/albany-call-slip-form-balance-browser.json)
 [Exact hosted run](https://github.com/chrismicah/design-mcp/actions/runs/45296615972)
+
+
+## Blind form-balance rematch
+
+The independent live critic completed both journeys at desktop and phone
+widths for both builds, including validation, preview, editing and keyboard
+return. Form balance scored **7.95 at both widths**. The selected-visit
+parent scored **7.35 desktop and 7.60 phone** in that same ballot. The
+critic preferred form balance for the clearer visit selection and bigger
+editor. The large example still competes with the form. This ballot
+confirmed that the original inputs survive a return. It did not confirm
+that a custom note edit survives a second preview.
+
+The selected-visit parent holds the highest score recorded in this series,
+**8.20 at both widths** in round three. Form balance earned the latest
+matched preference. Both remain below the 9.5 target, and the authored
+visual gains still need an installed MCP transfer test.
+[Blind rematch and capture hashes](../evidence/benchmark-v1/albany-call-slip-form-balance-blind.json)

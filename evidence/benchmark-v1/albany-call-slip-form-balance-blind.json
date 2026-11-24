@@ -1,0 +1,389 @@
+{
+  "calibration": {
+    "coherence": 6.5,
+    "originality": 4,
+    "craft": 6.5,
+    "usability": 6,
+    "basis": "Provisional scores from the supplied description: clear and legible, but familiar, with a consequential focus error."
+  },
+  "screens": {
+    "A-1440": {
+      "coherence": 7.5,
+      "originality": 7,
+      "craft": 7,
+      "usability": 8,
+      "primary_action": {
+        "input": "Keyboard-select Follow-up visit, submit a blank name, enter Avery, preview, append morning availability, then use Back to details.",
+        "expected": "Explain the missing name, produce an editable follow-up note, and preserve the details on return.",
+        "observed": "The blank submission marked First name invalid, displayed 'Enter your first name to preview your note.' and focused the field. Avery produced the editable follow-up note and focused its textarea. The added sentence appeared. Back to details restored Avery and Follow-up visit and focused First name."
+      },
+      "edge_observation": "The example read 'Hi Rowan. I’d like to ask about a follow-up visit.' before preview. Preview replaced it with the editor; the matching example returned on going back. Keyboard-reselecting Movement assessment changed it to 'Hi Rowan. I’d like to ask about a movement assessment.' Persistence of the added sentence after another preview was not tested.",
+      "fact_check": "The page identifies Rowan Chen as an independent physical therapist in Albany, lists 518-555-0142, 15 Example Lane, Albany, and Tuesday–Friday, 8 am–2 pm. It says the note stays on the page and nothing is sent or booked. These are page claims; their real-world accuracy was not independently verified. The phone link was not activated.",
+      "strength": "The dark teal masthead, prominent serif name, mint note paper and yellow call link give a personal, calm practice a clear identity. Contact details and every form control fit in the initial viewport.",
+      "weakness": "The oversized example dominates a narrow form column; the wrapped heading and large gap make the form and example compete somewhat, despite the live relationship between them.",
+      "repair": "Give the form more width and temper the example typography so the choices and generated sentence read as one task.",
+      "arm": "call-slip-live-example",
+      "html_sha256": "a6c286fd1c25f60c08e2e5f8e0ca91f212e33e7fd72cf67cd97106dbd0197ad3",
+      "weighted": 7.35,
+      "before": {
+        "sha256": "b26e1961c2caf454a364c6c49d0b13f4b05501c1622b800de67c281457b64327",
+        "file": "A-1440-before.png",
+        "tool_call_id": "item_2"
+      },
+      "after": {
+        "sha256": "5b496e5a29b3ce17fe62bf8432d8022cfc5afa179bcceeb333d41b595976c1fd",
+        "file": "A-1440-after.png",
+        "tool_call_id": "item_7"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowDown"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "text",
+          "value": "Avery"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "text",
+          "value": " I am available in the morning."
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowUp"
+        }
+      ]
+    },
+    "A-390": {
+      "coherence": 8,
+      "originality": 7,
+      "craft": 7.5,
+      "usability": 8,
+      "primary_action": {
+        "input": "Keyboard-select Follow-up visit, submit blank, enter Avery, preview, add morning availability, and return using Back to details.",
+        "expected": "Recover from the missing name and retain the entered details.",
+        "observed": "The name error focused First name; the preview focused the editable note. The appended sentence appeared, and Back to details retained Avery and Follow-up visit and returned focus to First name."
+      },
+      "edge_observation": "The checked radio indicates the current visit. The example matched Follow-up before preview, was replaced by the editor, and returned matching Follow-up after going back. Reselecting Movement assessment changed the example to the matching movement sentence. The full generated note and Back to details were visible in the initial preview viewport.",
+      "fact_check": "The same displayed clinician, phone, address, hours and no-sending/no-booking statement were visible. Their real-world accuracy was not independently verified; no call was made.",
+      "strength": "The contact details, both visit choices, name field, preview button and example all fit in the initial 390-by-844 viewport. The stacked note-paper treatment feels continuous with the form.",
+      "weakness": "The selected visit relies mainly on a small radio indicator, and the relatively shallow editor leaves less room for a longer note.",
+      "repair": "Give the selected row a clear additional visual treatment and allow more visible editing space.",
+      "arm": "call-slip-live-example",
+      "html_sha256": "a6c286fd1c25f60c08e2e5f8e0ca91f212e33e7fd72cf67cd97106dbd0197ad3",
+      "weighted": 7.6,
+      "before": {
+        "sha256": "2a9a657ea50cc5a4e704aacee47aaa19a79c0e5e9b088aed4385e433b94e5e39",
+        "file": "A-390-before.png",
+        "tool_call_id": "item_14"
+      },
+      "after": {
+        "sha256": "02d51e161cb799d4bcdfeafdd45121c1e8b6c73638c4a3f7a78e0e8c90b858f2",
+        "file": "A-390-after.png",
+        "tool_call_id": "item_19"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowDown"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "text",
+          "value": "Avery"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "text",
+          "value": " I am available in the morning."
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowUp"
+        }
+      ]
+    },
+    "B-1440": {
+      "coherence": 8.5,
+      "originality": 7,
+      "craft": 8,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Keyboard-select Follow-up visit, submit blank, enter Avery, preview, add morning availability, and use Back to details.",
+        "expected": "Show a recoverable error, then an editable note and retained details.",
+        "observed": "Blank submission displayed the first-name instruction and focused the invalid field. Preview focused the editable textarea containing Avery and Follow-up visit. The morning sentence appeared; returning retained Avery and Follow-up visit and focused First name."
+      },
+      "edge_observation": "The example matched Follow-up before preview, was replaced by the editor, and returned with the matching follow-up sentence after going back. Reselecting Movement assessment changed the example to 'Hi Rowan. I’d like to ask about a movement assessment.' Persistence of the added sentence after another preview was not tested.",
+      "fact_check": "The page displays Rowan Chen, independent physical therapist; 518-555-0142; 15 Example Lane, Albany; and Tuesday–Friday, 8 am–2 pm. It says the note stays on the page and nothing is sent or booked. These details were not independently verified, and the phone link was not activated.",
+      "strength": "The wider form, single-line heading and highlighted selected row balance the example better. Serif display type and mint paper suggest a personal practice, while the yellow call link makes the actual contact action easy to find. All controls fit initially.",
+      "weakness": "The large example still attracts more attention than the inputs, and the note is a preparation aid without a tested way to preserve edits across another preview.",
+      "repair": "Reduce the example’s visual scale slightly and make any edit-retention behavior explicit.",
+      "arm": "call-slip-form-balance",
+      "html_sha256": "def544974b730a58d34ff21f1d0dc4f4bd51c6d077ce7fd811a1183b3797cd44",
+      "weighted": 7.95,
+      "before": {
+        "sha256": "bba22ee3d0c1757d655a956629696c6da911add265a6fd8c250a646508e7739c",
+        "file": "B-1440-before.png",
+        "tool_call_id": "item_24"
+      },
+      "after": {
+        "sha256": "4d72f7b1b4346775562331c0b87013046e068dcb5f357a22deabe9929f817d44",
+        "file": "B-1440-after.png",
+        "tool_call_id": "item_29"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowDown"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "text",
+          "value": "Avery"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "text",
+          "value": " I am available in the morning."
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowUp"
+        }
+      ]
+    },
+    "B-390": {
+      "coherence": 8.5,
+      "originality": 7,
+      "craft": 8,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Keyboard-select Follow-up visit, submit blank, enter Avery, preview, add morning availability, and return with Back to details.",
+        "expected": "Recover, show an editable note and retain the selected visit and name.",
+        "observed": "The invalid name received focus and an explanatory message. Preview focused the editor; the morning sentence appeared. Back to details restored Avery and Follow-up visit and focused First name."
+      },
+      "edge_observation": "The selected visit has both a checked radio and a mint row. The follow-up example matched before preview and after returning; preview replaced it. Reselecting Movement assessment updated the example accordingly. The full generated note and Back to details were visible in the initial preview viewport, with more editor height than A.",
+      "fact_check": "The page displays the same clinician, phone, address, hours and statement that nothing is sent or booked. The real-world details and any persistence beyond this flow were not independently verified; no call was made.",
+      "strength": "Contact details, form controls and example fit in the initial viewport. The highlighted selected row makes the current visit easier to scan, and the taller editor leaves room to work.",
+      "weakness": "The decorative serif and mint panel are distinctive, but the example still consumes a substantial share of the screen and the editor’s behavior after revisiting preview remains unverified.",
+      "repair": "Keep the clear selected-row treatment and clarify whether changes to the note survive returning to details.",
+      "arm": "call-slip-form-balance",
+      "html_sha256": "def544974b730a58d34ff21f1d0dc4f4bd51c6d077ce7fd811a1183b3797cd44",
+      "weighted": 7.95,
+      "before": {
+        "sha256": "edada48dcf2af415de48a58fd0aed544f6924cff30b79a2456ed157e39b52e63",
+        "file": "B-390-before.png",
+        "tool_call_id": "item_34"
+      },
+      "after": {
+        "sha256": "84d9967a9d2941c62fd0fe77093e41f8af551f6daa489aee0ee28788e348c676",
+        "file": "B-390-after.png",
+        "tool_call_id": "item_39"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowDown"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "text",
+          "value": "Avery"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "text",
+          "value": " I am available in the morning."
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowUp"
+        }
+      ]
+    }
+  },
+  "preference": {
+    "winner": "B",
+    "reason": "B balances the desktop form and example more successfully, gives the selected visit a stronger visual cue, and provides a taller phone editor. Both completed the tested keyboard flow with helpful focus and matching examples."
+  },
+  "case": "albany-physiotherapy",
+  "verified_screens": 4,
+  "required_screens": 4,
+  "browser": "Chrome/158.0.8127.37",
+  "evaluator_thread": "01a20af0-df95-77c2-9aa5-a261fbfd5b4f",
+  "usage": {
+    "input_tokens": 1399704,
+    "cached_input_tokens": 1360640,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 3229,
+    "reasoning_output_tokens": 0
+  },
+  "trace_sha256": "199f553142bd8e8d086b21a9dd18e3513ea03371a019a9503dec627f9a7445e7",
+  "browser_audit_sha256": "3e888ab7e812383504537b8040ffb514ec79a0c8492e75ae6361bbb15cc24a84"
+}
