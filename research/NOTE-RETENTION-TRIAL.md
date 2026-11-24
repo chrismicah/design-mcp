@@ -23,3 +23,15 @@ A new visit must produce the new visit's text and keep the recognized
 name. Zero post-load requests and no URL changes are required. A
 different behavior or visual drift in retained controls warrants
 another inspection before promoting the field.
+
+## Held-out routing defect
+
+The frozen first dental call says it does not book an appointment.
+Both control and the guidance-only trial selected service-work-order.
+The dentist and appointment tags tied and the work-order record came
+first. Adding a second dentistry tag changed the result during a
+diagnostic probe, but the held-out brief remains verbatim. A separate
+commit excludes a negated appointment phrase from consultation
+ranking. That exclusion applies only when landing and contact intent
+are both present. Genuine appointment requests and explicit form
+overrides are controls. Keep the previous routing miss in the receipt.

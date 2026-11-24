@@ -70,6 +70,10 @@ _CONTACT_INTENT = re.compile(r"\b(?:call(?:ing|ers?)?|phone|callback|consultatio
                              r"contact (?:the |our |their )?(?:practice|office)|"
                              r"speak (?:directly )?(?:with|to))\b")
 _SHOPPING_INTENT = re.compile(r"\b(?:product page|checkout|add (?:\S+ ){0,3}to (?:the )?(?:bag|basket|cart))\b")
+_NEGATED_APPOINTMENT = re.compile(
+    r"\b(?:does not|do not|doesn['’]t|don['’]t|will not|won['’]t|never) "
+    r"(?:book|reserve|schedule) (?:an? |the )?appointments?\b"
+)
 
 
 def _length(value) -> int:
@@ -136,6 +140,8 @@ async def direct(brief: str, surface: Surface | None = None, avoid: list[str] | 
     if not candidates:
         return {"error": f"No reviewed direction remains for {kind}.", "surface": kind}
     tag_text = intent.translate(_FORM_SEPARATORS) if kind == "form" else intent
+    if consultation:
+        tag_text = _NEGATED_APPOINTMENT.sub(" ", tag_text)
     choice = max(candidates, key=lambda row: sum(_match(term, tag_text) for term in row.tags))
     questions = []
     if matched is None and len(text.split()) <= 8:
