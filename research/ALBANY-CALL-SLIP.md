@@ -36,3 +36,20 @@ requests. The pre-input note illustrates what the visitor will see. A
 successful preview replaces it with the visitor's exact editable note.
 Protect the earlier practice check outcomes. A blind critic must use both
 anonymous pages before any claim of visual improvement.
+
+## Browser replay
+
+The frozen call slip and control each passed 87 of 87 checks at the
+three widths. The authored preview button ends at 611, 589 and 686 CSS
+px respectively. The note takes focus in the first frame at all three
+widths. The ready status clears on return, and neither arm makes a
+post-load request. The check outcomes of all 1,284 prior assertions
+match the previous run. Nine full-size PNG hashes are stored per arm.
+
+Author inspection confirmed the example is visible before input and
+the personalized editable note occupies its place after preview.
+The six principal text and background combinations range from 6.12:1
+to 14.30:1 in a static palette calculation. The new design is an
+authored result and independent visual scoring is still pending.
+[Exact browser receipt](../evidence/benchmark-v1/albany-call-slip-browser.json)
+[Hosted replay](https://github.com/chrismicah/design-mcp/actions/runs/45293187605)
