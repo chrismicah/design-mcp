@@ -108,7 +108,7 @@ The PR branch's work-order booking study kept the selected date and price visibl
 
 All 13 hosted checks passed at the install pin. The hosted Chrome extension reached a masked capture **2.36 seconds** after URL submission in that run. On the BenQ, the exact installed build saved and reopened both captures, switched to After by keyboard, and recovered in the same URL field after a 404. The native popup reported **0.74 seconds** for active-tab review and **1.37 seconds** for pasted URL review, one sample each. [Hosted checks](evidence/benchmark-v1/release-ci-18b87522.json) · [Native BenQ replay](evidence/benchmark-v1/release-native-benq-18b87522.json)
 
-The installed `review_page` tool returned original masked PNGs at 1440 × 900 and 390 × 844. The same stdio session returned a structured error for an HTTP 404. [Installed review receipt](evidence/benchmark-v1/release-mcp-images-0978712.json)
+At the `18b87522` pin, `review_page` returned original masked PNGs at 1440 × 900 and 390 × 844. The stdio session recovered after an HTTP 404 and an unsupported URL. [Installed review receipt](evidence/benchmark-v1/release-ci-18b87522.json)
 
 A standalone recovery comparison scored **8.20 desktop / 7.95 phone** for choosing a replacement tool and **7.80 at both widths** for recovering from a lift closure. Both prototypes passed scripted keyboard and touch checks. The installed MCP has a separate benchmark. [Prototype ballots and scope](EVALS.md#standalone-cabinet-and-train-recovery-repairs)
 
@@ -118,7 +118,7 @@ The creative workflow tests different ways to present and use the same site befo
 
 River's strongest fixture scored 8.85 from one critic and 8.75 from a second at both widths. A film-vault study tested five rounds and reached 8.45 at both widths in its strongest ballot. The release target is 9.5 from both critics. The daily source report collects leads from Show HN, research, and dated awards including Japan's MUUUUU.ORG. [Vault study](EVALS.md#vault-contact-strip-study) · [Festival study](EVALS.md#counterweight-festival-live-study) · [Creative research and reviews](research/CREATIVE-ROUNDS.md) · [Source review workflow](DESIGN-HARNESS.md#recurring-improvement)
 
-The installed `6e9a239` benchmark routed **15 of 36** briefs to the matching surface with only a brief supplied, up from **9 of 36** in frozen v2. All six forms routed correctly. Settings and empty states remain uncovered as exact surfaces. [Current installed routing](evidence/benchmark-v1/release-initial-6e9a239.json) · [Earlier comparison](evidence/benchmark-v1/current-direct-routing.json)
+The installed `18b87522` benchmark routed **15 of 36** briefs to the intended surface with only a brief supplied. It matched all six forms and six landing pages. Settings and empty states remain uncovered as exact surfaces. [Exact installed routing](https://github.com/chrismicah/design-mcp/blob/f009b852759f7427356cf08c307c68d904cb094b/evidence/benchmark-v1/release-direct-routing-18b87522.json) · [Earlier comparison](evidence/benchmark-v1/current-direct-routing.json)
 
 In a targeted two-brief comparison, the radio and repair-shop directions averaged 97.9 versus 89.6 for frozen v2. The listening demo and booking summary passed keyboard checks at 1440 and 390 CSS px. [Matched visual results](evidence/benchmark-v1/specific-landing-visual.json) · [Browser actions](evidence/benchmark-v1/specific-landing-actions.json)
 
@@ -134,4 +134,4 @@ python scripts/smoke_design_mcp.py design-mcp serve
 
 The smoke script exercises every tool in the selected mode. Set `DESIGN_MCP_SURFACE` to verify each mode. [Live smoke](SMOKE-RECEIPTS.md) · [Baseline](evidence/baseline/README.md) · [Comparison](evidence/rebuild/comparison/README.md) · [Corpus audit](CONTENT-AUDIT.md)
 
-The development harness covers visual review, Playwriter setup, GPT Computer Use acceptance, and recurring public source discovery. [Development harness](DESIGN-HARNESS.md) · [Connect Playwriter](evals/v1/README.md#connect-playwriter)
+The development harness covers visual review, Playwriter setup, GPT Computer Use acceptance, and recurring public source discovery. [Development harness](DESIGN-HARNESS.md) · [Connect Playwriter](evals/v1/README.md#connect-playwriter) · [Release gates](RELEASE-GOAL.md#current-install-candidate)
