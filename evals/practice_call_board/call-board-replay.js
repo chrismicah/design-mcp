@@ -81,6 +81,12 @@ if (checks.reachService) {
   await page.keyboard.press(nativeSelect ? practice.alternateService[0].toLowerCase() : "ArrowRight");
 }
 checks.serviceSelected = await alternateSelected() && await active(nativeSelect ? service : alternate);
+let expectedExampleOnReturn = noteExample;
+if (example && practice.exampleUpdatesForSelection) {
+  expectedExampleOnReturn = await example.count() === 1 ? (await example.innerText()).trim() : "";
+  checks.exampleMatchesSelection = checks.serviceSelected &&
+    expectedExampleOnReturn.toLowerCase().includes(practice.alternateService.toLowerCase());
+}
 checks.reachPreview = await reach(preview);
 if (checks.reachPreview) await page.keyboard.press("Enter");
 checks.emptyNameRecovery = await active(name) && await name.getAttribute("aria-invalid") === "true";
@@ -171,7 +177,7 @@ checks.returnToOriginal = reachedOriginal &&
   await name.inputValue() === practice.visitorName && await alternateSelected();
 if (example) {
   checks.exampleRestoredOnReturn = checks.returnToOriginal && await example.count() === 1 &&
-    await example.isVisible() && (await example.innerText()).trim() === noteExample;
+    await example.isVisible() && (await example.innerText()).trim() === expectedExampleOnReturn;
 }
 checks.noNetworkSubmission = !requests.some(method => method !== "GET");
 checks.noPageErrors = state.pageErrors.length === 0;

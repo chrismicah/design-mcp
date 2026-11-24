@@ -78,3 +78,13 @@ adding extra interaction or changing the form geometry. A second result
 can test draft persistence separately. This is an authored design win.
 The 9.5 gate and transfer into installed guidance remain open.
 [Verified live ballot and capture hashes](../evidence/benchmark-v1/albany-call-slip-blind.json)
+
+## Selected-visit repair contract
+
+Hold the strongest call-slip composition, type and colors fixed. The
+one interaction change is that choosing either visit updates the sample
+sentence immediately. Preview still swaps in the person's editable note.
+Returning keeps the selected example, visit and name together. Do not
+add motion, inputs or a new preview step. Compare the parent and repair
+at 320 × 700, 390 × 844 and 1440 × 900. Require the same opening
+geometry and recovery, plus the example matching the selected visit.

@@ -115,5 +115,13 @@ if albany.is_dir():
         assert stamp["control_html_sha256"] == pair["control"]["html_sha256"]
         assert stamp["html_sha256"] == sha256((slip / "index.html").read_bytes()).hexdigest()
         print(stamp["case"], stamp["arm"], stamp["html_sha256"])
+        live = albany / "call-slip-live-example"
+        if live.is_dir():
+            repaired = json.loads((live / "receipt.json").read_bytes())
+            assert repaired["case"] == albany.name and repaired["arm"] == live.name
+            assert repaired["scope"] == "Authored selected-visit repair"
+            assert repaired["parent_html_sha256"] == stamp["html_sha256"]
+            assert repaired["html_sha256"] == sha256((live / "index.html").read_bytes()).hexdigest()
+            print(repaired["case"], repaired["arm"], repaired["html_sha256"])
 
 shutil.copytree(ROOT / "cells", sys.argv[1])

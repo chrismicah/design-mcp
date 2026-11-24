@@ -21,8 +21,9 @@ async def interact(client, cell, width):
     paths = {name: cell / f"{width}-{name}.png" for name in ("invalid", "preview")}
     practice = PRACTICES[cell.parent.name].copy()
     example = practice.pop("exampleNote", None)
-    if example and cell.name == example["arm"]:
+    if example and cell.name in example["arms"]:
         practice["exampleNoteLabel"] = example["label"]
+        practice["exampleUpdatesForSelection"] = cell.name == example["updatesForSelection"]
     code = "const practice = " + json.dumps(practice) + ";\n"
     code += "const paths = " + json.dumps({key: str(value) for key, value in paths.items()}) + ";\n"
     answer = await render.execute(client, code + (HERE / "call-board-replay.js").read_text())
