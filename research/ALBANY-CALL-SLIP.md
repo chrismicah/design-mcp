@@ -187,3 +187,14 @@ live evaluator exercises this difference before rating both builds on
 the same task. The current clinic URL returned 502 and X returned 403
 on recheck. The Reddit discussion is research evidence. An engagement
 count or new live reference capture is unavailable for this pass.
+
+The selected-visit build passed 108 checks and the integrated slip
+passed 114 across 320, 390, and 1440 px. On every width the selected-visit build lost
+a manually entered sentence after Back to details and a second
+Preview note with the same inputs. The integrated slip preserved it.
+Both builds generated a fresh note when the visit changed and kept
+the call link visible through preview. Neither made a post-load
+request. All 1,584 prior check outcomes repeated. A separate live
+ballot is still required for the visual decision.
+[Verified browser receipt](../evidence/benchmark-v1/albany-call-slip-integrated-browser.json)
+[Hosted replay](https://github.com/chrismicah/design-mcp/actions/runs/45298074572)
