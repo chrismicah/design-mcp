@@ -136,6 +136,30 @@ async def test_inferred_site_scope_distinguishes_embedded_forms_from_form_redesi
 
 
 @pytest.mark.asyncio
+async def test_call_first_site_reaction_keeps_its_subject():
+    brief = ("Give our personal injury practice a complete website. Introduce the attorney, show the phone "
+             "number for a consultation, and put the callback form under the practice areas.")
+    direction = (await direct(brief))["direction"]
+    assert direction["id"] == "direct-consultation"
+    feedback = await react(direction["id"], "too generic")
+    assert "practitioner" in feedback["changes"]["imagery"]
+    assert "contact action" in feedback["changes"]["mobile_order"]
+    assert "primary task" in feedback["keep"]
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(("brief", "expected"), [
+    ("Don't redesign the homepage for a law firm. Replace its consultation form.", "grouped-fieldsets"),
+    ("A product page for a desk lamp marketed to an attorney. Show the phone number for help with checkout.",
+     "object-hero"),
+    ("Make a homepage for a Tacoma optometrist. Put the current public phone number before the callback form.",
+     "direct-consultation"),
+])
+async def test_consultation_direction_respects_the_relevant_surface(brief, expected):
+    assert (await direct(brief))["direction"]["id"] == expected
+
+
+@pytest.mark.asyncio
 async def test_explicit_surfaces_and_form_controls():
     brief = "A mobile form to choose a callback time."
     records = library()

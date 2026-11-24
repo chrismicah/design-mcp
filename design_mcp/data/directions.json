@@ -630,5 +630,74 @@
       }
     ],
     "credit": "GOV.UK Design System, Question pages. The offset column, serif scale and plum palette are original."
+  },
+  {
+    "id": "direct-consultation",
+    "surface": "landing",
+    "title": "Direct consultation",
+    "summary": "Pair the named practice and person with the one verified way to start a conversation.",
+    "tags": [
+      "personal injury practice",
+      "law firm",
+      "law practice",
+      "attorney",
+      "dental practice",
+      "dentist",
+      "optometry practice",
+      "optometrist",
+      "physiotherapy clinic",
+      "physical therapist",
+      "counsellor",
+      "counselor"
+    ],
+    "type": {
+      "display": "Bodoni Moda",
+      "body": "Instrument Sans",
+      "ratio": 4.3,
+      "tracking": -0.034,
+      "weight": 600,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#18243A",
+      "paper": "#F0F3FA",
+      "accent": "#BFCFFF"
+    },
+    "layout": {
+      "skeleton": "Give the introduction one deliberate split. Put the person, scope and primary contact action on the reading side. Put the supplied portrait beside that action. Follow with a ruled service list and one contact section.",
+      "focus": "The actual professional and how to reach them. Give their name and the primary contact path a clear position beside the portrait or its text alternative.",
+      "desktop": "Keep the supplied place and practice visible near the headline. Group the contact action with the deciding fact about who responds. Keep any secondary consultation form below the first view unless the brief makes it the primary task.",
+      "mobile": "At 390 px show the practice, location, named person and first contact action before a large portrait. Preserve section access with a compact keyboard menu if needed. At 320 px drop duplicated contact links before shrinking targets.",
+      "rhythm": "Use #172747 for a full-width introduction, #D7E1FA for supporting text in it and #52637E on the light reading area. Use thin rules and asymmetric spacing to separate service links from the intake area."
+    },
+    "imagery": {
+      "subject": "The practitioner shown in a supplied portrait, with their name and supplied role.",
+      "crop": "Crop for a readable face and clear space over the head. Verify the smallest width. Keep the portrait separate from text and use the image at its natural proportions.",
+      "fallback": "Set the supplied name and practice as the signature. Use no stock stand-in for a real person and no invented license, result or testimonial."
+    },
+    "motion": {
+      "trigger": "A visitor expands one service in the practice list.",
+      "effect": "Reveal the relevant text below the named control. Keep the control and its description in view after keyboard activation.",
+      "duration_ms": 230,
+      "reduced": "Show the description without motion and retain focus at the same control."
+    },
+    "action": {
+      "instruction": "Use a readable call link with the supplied number when calling is the task. When the brief asks for a form, keep a section-level action and announce its real result. Describe a local preview as a draft. Never imply that the visitor reached a person or sent a request when the interface only prepares it.",
+      "label": "Call or request a consultation"
+    },
+    "why": "A visitor choosing a professional service needs to know who can help and how to reach them. Putting the supplied identity and contact path together makes that decision possible before secondary details.",
+    "sources": [
+      {
+        "url": "https://kieferandkiefer.com/contact/",
+        "observation": "The firm identifies distinct phone numbers for prospective and existing clients. Each label tells the caller which path applies.",
+        "strength": "evidence"
+      },
+      {
+        "url": "https://designsystem.digital.gov/components/link/",
+        "observation": "USWDS recommends including the country code in click-to-call destinations.",
+        "strength": "evidence"
+      }
+    ],
+    "credit": "Kiefer & Kiefer contact page and U.S. Web Design System link guidance. Original composition."
   }
 ]

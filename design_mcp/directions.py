@@ -70,6 +70,10 @@ _SITE_TASK = re.compile(
 _NEGATED_SITE_ACTION = re.compile(r"\b(?:do\s+not|don['’]t|never|avoid|without)\s+(?:\w+\s+){0,2}$")
 _SITE_ADDITION = re.compile(r"\band (?:add|include|put|show)\b")
 _EDITORIAL_SITE = re.compile(rf"\beditorial {_SITE_NAME}\b")
+_CONTACT_INTENT = re.compile(r"\b(?:call(?:ing|ers?)?|phone|callback|consultation|"
+                             r"contact (?:the |our |their )?(?:practice|office)|"
+                             r"speak (?:directly )?(?:with|to))\b")
+_SHOPPING_INTENT = re.compile(r"\b(?:product page|checkout|add (?:\S+ ){0,3}to (?:the )?(?:bag|basket|cart))\b")
 
 
 def _length(value) -> int:
@@ -142,7 +146,10 @@ async def direct(brief: str, surface: Surface | None = None, avoid: list[str] | 
         return {"error": "Enter a brief of 1 to 12,000 characters."}
     matched = surface or _infer_surface(text)
     kind = matched or "landing"
-    candidates = [row for row in library().values() if row.surface == kind and row.id not in (avoid or [])]
+    consultation = kind == "landing" and _CONTACT_INTENT.search(text) and not _SHOPPING_INTENT.search(text)
+    candidates = [row for row in library().values()
+                  if row.surface == kind and row.id not in (avoid or [])
+                  and (consultation or row.id != "direct-consultation")]
     if not candidates:
         return {"error": f"No reviewed direction remains for {kind}.", "surface": kind}
     tag_text = text.translate(_FORM_SEPARATORS) if kind == "form" else text
