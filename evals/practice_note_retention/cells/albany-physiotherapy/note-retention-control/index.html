@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rowan Chen | Physical therapist in Albany</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@600&family=Instrument+Sans:wght@400;600;700&display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --navy: #172747;
+      --pale: #d7e1fa;
+      --ink: #18243a;
+      --paper: #f0f3fa;
+      --accent: #bfcfff;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-padding: 1rem; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Instrument Sans", sans-serif;
+      line-height: 1.5;
+    }
+    .wrap { width: min(100% - 2rem, 70rem); margin-inline: auto; }
+    .intro { background: var(--navy); color: white; }
+    .intro .wrap { padding-block: 1.5rem 1.75rem; }
+    .identity { margin: 0 0 .35rem; color: var(--pale); font-size: .95rem; }
+    h1 {
+      margin: 0;
+      font-family: "Bodoni Moda", Georgia, serif;
+      font-size: clamp(2.35rem, 7vw, 5rem);
+      font-weight: 600;
+      letter-spacing: -.034em;
+      line-height: 1.05;
+    }
+    .intro-copy { margin: .45rem 0 1rem; color: var(--pale); }
+    .contact { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2rem; }
+    .call, button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 2.875rem;
+      padding: .65rem 1rem;
+      border: 2px solid transparent;
+      border-radius: .25rem;
+      background: var(--accent);
+      color: var(--ink);
+      font: inherit;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .call:hover, button:hover { background: white; }
+    :focus-visible {
+      outline: 2px solid var(--paper);
+      outline-offset: 2px;
+      box-shadow: 0 0 0 6px var(--ink);
+    }
+    .intro :focus-visible { box-shadow: 0 0 0 6px var(--pale); }
+    .details { margin: 0; color: var(--pale); }
+    .details strong { color: white; }
+    main .wrap { padding-block: 1.5rem 3rem; }
+    .prep { max-width: 42rem; }
+    h2 { margin: 0 0 .3rem; font-size: 1.45rem; line-height: 1.2; }
+    .lead { margin: 0 0 1rem; }
+    fieldset { border: 0; margin: 0 0 1rem; padding: 0; }
+    legend, label { font-weight: 700; }
+    legend { margin-bottom: .4rem; }
+    .choices { display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; }
+    .choice { display: inline-flex; align-items: center; gap: .45rem; min-height: 2rem; font-weight: 400; }
+    input[type="radio"] { width: 1.1rem; height: 1.1rem; accent-color: var(--navy); }
+    .field-label { display: block; margin-bottom: .35rem; }
+    input[type="text"], textarea {
+      width: 100%;
+      border: 1.5px solid var(--ink);
+      border-radius: .2rem;
+      background: white;
+      color: var(--ink);
+      font: inherit;
+      padding: .65rem;
+    }
+    input[type="text"] { max-width: 24rem; min-height: 2.875rem; }
+    textarea { min-height: 9rem; resize: vertical; }
+    .error { margin: .4rem 0 0; color: #8a1c20; font-weight: 700; }
+    .actions { margin-top: 1rem; }
+    main button { background: var(--navy); color: white; }
+    main button:hover { background: #30466e; }
+    .secondary { background: transparent; color: var(--ink); border-color: var(--ink); }
+    .secondary:hover { background: var(--pale); }
+    .result { border-top: 1px solid #9aa9c1; padding-top: 1.25rem; }
+    .result p { margin: 0 0 .75rem; }
+    .result .actions { display: flex; gap: .75rem; flex-wrap: wrap; }
+    [hidden] { display: none !important; }
+    @media (min-width: 760px) {
+      .intro .wrap { padding-block: 3rem; }
+      .contact { margin-top: 1.5rem; }
+      main .wrap { padding-block: 2.5rem 4rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="intro">
+    <div class="wrap">
+      <p class="identity">Independent physical therapist · Albany</p>
+      <h1>Rowan Chen</h1>
+      <p class="intro-copy">Call Rowan to get in touch.</p>
+      <div class="contact">
+        <a class="call" href="tel:+15185550142">Call 518-555-0142</a>
+        <p class="details">
+          <strong>Tuesday–Friday, 8 am–2 pm</strong><br>
+          15 Example Lane, Albany
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <section class="prep" aria-labelledby="prep-title">
+        <h2 id="prep-title">Prepare for your call</h2>
+        <p class="lead">Optional: make a short note to have beside you when you call.</p>
+
+        <form id="note-form" novalidate>
+          <fieldset>
+            <legend>What kind of visit?</legend>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="visit" value="Movement assessment" checked> Movement assessment</label>
+              <label class="choice"><input type="radio" name="visit" value="Follow-up visit"> Follow-up visit</label>
+            </div>
+          </fieldset>
+          <label class="field-label" for="first-name">First name</label>
+          <input id="first-name" name="firstName" type="text" autocomplete="given-name" aria-describedby="name-error">
+          <p class="error" id="name-error" hidden>Enter your first name to preview your note.</p>
+          <div class="actions"><button type="submit">Preview note</button></div>
+        </form>
+
+        <section id="result" class="result" aria-labelledby="result-title" hidden>
+          <h2 id="result-title">Your call note</h2>
+          <p id="note-help">Edit this note as you like. It stays on this page and does not send or book anything.</p>
+          <label class="field-label" for="note">Editable note</label>
+          <textarea id="note" aria-describedby="note-help"></textarea>
+          <div class="actions">
+            <button class="secondary" id="back" type="button">Back to details</button>
+          </div>
+        </section>
+        <p id="announcement" role="status" class="sr-only"></p>
+      </section>
+    </div>
+  </main>
+
+  <style>
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+  <script>
+    const form = document.getElementById("note-form");
+    const nameInput = document.getElementById("first-name");
+    const error = document.getElementById("name-error");
+    const result = document.getElementById("result");
+    const note = document.getElementById("note");
+    const announcement = document.getElementById("announcement");
+    let lastDetails = "";
+    let savedDraft = "";
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const name = nameInput.value.trim();
+      if (!name) {
+        error.hidden = false;
+        nameInput.setAttribute("aria-invalid", "true");
+        nameInput.focus();
+        return;
+      }
+      error.hidden = true;
+      nameInput.removeAttribute("aria-invalid");
+      const visit = form.elements.visit.value;
+      const details = JSON.stringify([name, visit]);
+      note.value = details === lastDetails && savedDraft
+        ? savedDraft
+        : `Hi, my name is ${name}. I’m calling about a ${visit.toLowerCase()}.`;
+      lastDetails = details;
+      form.hidden = true;
+      result.hidden = false;
+      announcement.textContent = "Your editable call note is ready.";
+      note.focus({ preventScroll: true });
+      note.scrollIntoView({ block: "nearest", behavior: "instant" });
+    });
+
+    nameInput.addEventListener("input", () => {
+      if (nameInput.value.trim()) {
+        error.hidden = true;
+        nameInput.removeAttribute("aria-invalid");
+      }
+    });
+
+    document.getElementById("back").addEventListener("click", () => {
+      savedDraft = note.value;
+      result.hidden = true;
+      form.hidden = false;
+      announcement.textContent = "Your visit choice and name are still here.";
+      nameInput.focus({ preventScroll: true });
+      nameInput.scrollIntoView({ block: "nearest", behavior: "instant" });
+    });
+  </script>
+</body>
+</html>

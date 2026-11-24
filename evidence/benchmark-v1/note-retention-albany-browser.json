@@ -1,0 +1,227 @@
+{
+  "scope": "Local browser replay of two unedited matched generations from clean-installed MCP replies.",
+  "case": "albany-physiotherapy",
+  "installed_receipt_sha256": "ec0759e6577432d346f4d3c3d114958ad483f8e137ffdeb82bb76cbe3c08e58f",
+  "replay_script_sha256": "b157a55a7ccdcc728a957d4f376d4a28f63091377c60753b05ec5afb48cbe431",
+  "retention_result": "Both arms preserved the exact edited note and regenerated it after the visit changed at all widths.",
+  "arms": {
+    "control": {
+      "generation": {
+        "case": "albany-physiotherapy",
+        "arm": "note-retention-control",
+        "status": "passed",
+        "receipt_scope": "Matched generation from a previously captured installed MCP response",
+        "commit": "9976ef1339f29f28d4c7c0526ed511db01219baf",
+        "model": "gpt-6.1-terra",
+        "effort": "low",
+        "shell_tool": false,
+        "thread_id": "01a20b10-86f1-7fb2-87fb-ad47065472ac",
+        "usage": {
+          "input_tokens": 17958,
+          "cached_input_tokens": 13312,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2553,
+          "reasoning_output_tokens": 29
+        },
+        "elapsed_seconds": 51.25,
+        "prompt_prefix_sha256": "e3ea842afa5589ae7e083da8c2dcf44ecf5d274a5f7d9ce1cdef347bb00e5cb1",
+        "prompt_sha256": "e6cc7b22afe34b4004f2e69f2b3a2a0b9b1c7b14cafe7365324a10a254bf3859",
+        "reply_sha256": "a82a561c009a9652dbff48c08cbc14c7b140523daf1e3d545c5cb344400b924e",
+        "trace_sha256": "3dc18726786206fc4def59911edca42041eb93e297ea942a400d8346dfd38085",
+        "html_sha256": "38a3825c6b9347d9f4fc32d3cea251196dc3d545522e078d41d994111cd2862f"
+      },
+      "browser": "Chrome/158.0.8127.37",
+      "playwriter": "0.12.0",
+      "render_receipt_sha256": "014785a01a6bb5d8e32b28591201713084feeed10f395b149051f254f338534e",
+      "screens": {
+        "320": {
+          "status": "passed",
+          "failed": [],
+          "draft_continuity": {
+            "secondPreviewRetainedManualEdit": true,
+            "changedVisit": true
+          },
+          "post_load_requests": [],
+          "captures": {
+            "before": {
+              "sha256": "92c32aacf84bb6f5026b447fbb50f6a61fc2717691b002f758908a8d97cf98d0",
+              "file": "320.png"
+            },
+            "invalid": {
+              "sha256": "19814e9fa5303b920f6bea26b4e40d2593687966e261a071fd71f4706e17d285",
+              "file": "320-invalid.png"
+            },
+            "preview": {
+              "sha256": "9a14baa87551c7d0107b77e70dfb5391f1e2ee0e7ea627c8332ed45cabdcebbf",
+              "file": "320-preview.png"
+            }
+          },
+          "checks_passed": 33,
+          "checks_total": 33,
+          "opening_preview_bottom_css_px": 658.41
+        },
+        "390": {
+          "status": "passed",
+          "failed": [],
+          "draft_continuity": {
+            "secondPreviewRetainedManualEdit": true,
+            "changedVisit": true
+          },
+          "post_load_requests": [],
+          "captures": {
+            "before": {
+              "sha256": "805709e610c2996746c055a94485d6912d3345336242b68f8a807ee0640659e1",
+              "file": "390.png"
+            },
+            "invalid": {
+              "sha256": "9fe6bee11937764af155d425dbf86babec4fd8a6a3ee25b06ab62f705fb0eb81",
+              "file": "390-invalid.png"
+            },
+            "preview": {
+              "sha256": "92e95c903a87ec4dc0bacbfca3d64412883b60595a4eb81361eefec3381e4aa8",
+              "file": "390-preview.png"
+            }
+          },
+          "checks_passed": 33,
+          "checks_total": 33,
+          "opening_preview_bottom_css_px": 658.41
+        },
+        "1440": {
+          "status": "passed",
+          "failed": [],
+          "draft_continuity": {
+            "secondPreviewRetainedManualEdit": true,
+            "changedVisit": true
+          },
+          "post_load_requests": [],
+          "captures": {
+            "before": {
+              "sha256": "eeca3a10d020beff154bf7cd7fc45c65d724cc14c8da74f1f340c096b4b6d873",
+              "file": "1440.png"
+            },
+            "invalid": {
+              "sha256": "c9ee0c6ec4c5563a5a005d47ccb58afc5eb7d391432bea324cdfdbfabcedc7df",
+              "file": "1440-invalid.png"
+            },
+            "preview": {
+              "sha256": "579eda424c5c634b3f1acf7552466ee257e1d1c95af3b4f5c663bea38d5725ab",
+              "file": "1440-preview.png"
+            }
+          },
+          "checks_passed": 33,
+          "checks_total": 33,
+          "opening_preview_bottom_css_px": 644.55
+        }
+      }
+    },
+    "treatment": {
+      "generation": {
+        "case": "albany-physiotherapy",
+        "arm": "note-retention-treatment",
+        "status": "passed",
+        "receipt_scope": "Matched generation from a previously captured installed MCP response",
+        "commit": "fdcec48df5319739bc61d3f2ec26c57f9a744af1",
+        "model": "gpt-6.1-terra",
+        "effort": "low",
+        "shell_tool": false,
+        "thread_id": "01a20b11-f3f5-7ae1-89e9-ebc96dfa566c",
+        "usage": {
+          "input_tokens": 17949,
+          "cached_input_tokens": 13312,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2493,
+          "reasoning_output_tokens": 77
+        },
+        "elapsed_seconds": 49.1,
+        "prompt_prefix_sha256": "e3ea842afa5589ae7e083da8c2dcf44ecf5d274a5f7d9ce1cdef347bb00e5cb1",
+        "prompt_sha256": "dfd9946ed2ff72e3841ac2529cdee5da9b8c3f9e8b440e716c03c22e86e8427c",
+        "reply_sha256": "4a5c5915faca5bed870ea25f001cafaa63c5ac35869807a26610a14c217ac55f",
+        "trace_sha256": "d9b278e0dc211b31c03f188608058451a306968caa8a29f198188018bbf08533",
+        "html_sha256": "110c88a9fe333f0fb640ddb610f28fa2857582943831db46fbe88aba655cf783"
+      },
+      "browser": "Chrome/158.0.8127.37",
+      "playwriter": "0.12.0",
+      "render_receipt_sha256": "2cea0aee8f4862ab05ba18e8f3df19bf5612cf903168f67ab967ace1c1c37c09",
+      "screens": {
+        "320": {
+          "status": "passed",
+          "failed": [],
+          "draft_continuity": {
+            "secondPreviewRetainedManualEdit": true,
+            "changedVisit": true
+          },
+          "post_load_requests": [],
+          "captures": {
+            "before": {
+              "sha256": "3e4090ffe58640c9a8961c0c415ccc6db1c49b32a7af93691154270bbfbc1668",
+              "file": "320.png"
+            },
+            "invalid": {
+              "sha256": "0312efdae6195c9fbd800b89af1258b677a3aa569d5eef02e2d8c45e775ce121",
+              "file": "320-invalid.png"
+            },
+            "preview": {
+              "sha256": "7afeba64d0695e0ed705f05c8d7393a39835c5cda360b27f812ad492307a8561",
+              "file": "320-preview.png"
+            }
+          },
+          "checks_passed": 33,
+          "checks_total": 33,
+          "opening_preview_bottom_css_px": 596.22
+        },
+        "390": {
+          "status": "passed",
+          "failed": [],
+          "draft_continuity": {
+            "secondPreviewRetainedManualEdit": true,
+            "changedVisit": true
+          },
+          "post_load_requests": [],
+          "captures": {
+            "before": {
+              "sha256": "dd02c595dfccabf12003a46c0f7fd30f9ab2ef3981baa5b16462916ad8cb04a7",
+              "file": "390.png"
+            },
+            "invalid": {
+              "sha256": "bc4ea6a131a9d204cbb77c795fe3ccb693dffe276987014e1a31daff514c8c86",
+              "file": "390-invalid.png"
+            },
+            "preview": {
+              "sha256": "e646ac6a32b273c50213da09f75bd9341a0c413ec40b8b5c44b16f225437c1c2",
+              "file": "390-preview.png"
+            }
+          },
+          "checks_passed": 33,
+          "checks_total": 33,
+          "opening_preview_bottom_css_px": 657.17
+        },
+        "1440": {
+          "status": "passed",
+          "failed": [],
+          "draft_continuity": {
+            "secondPreviewRetainedManualEdit": true,
+            "changedVisit": true
+          },
+          "post_load_requests": [],
+          "captures": {
+            "before": {
+              "sha256": "3da6bc415a33f514f147d8d7f1650e0bb0dcf3fc807ac0088fbd43b9076cff83",
+              "file": "1440.png"
+            },
+            "invalid": {
+              "sha256": "84e83e4fec72c0c0b3ad14c1923209f54dc739f34b9c43d3a87f1677de3e06cb",
+              "file": "1440-invalid.png"
+            },
+            "preview": {
+              "sha256": "56261cc69c83f9ecc9504129720484f7a107fca4a6079f93dbc271403abc0ff0",
+              "file": "1440-preview.png"
+            }
+          },
+          "checks_passed": 33,
+          "checks_total": 33,
+          "opening_preview_bottom_css_px": 664.58
+        }
+      }
+    }
+  }
+}

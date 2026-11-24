@@ -45,3 +45,16 @@ difference on a single generated pair. The specific retention
 hypothesis tied. A blind visual score was not assigned to these
 functionally incomplete candidates.
 [Browser comparison](../evidence/benchmark-v1/note-retention-harbor-browser.json)
+
+## Albany first drafts
+
+The independent generators used the sealed Albany replies under the
+same prompt prefix and GPT-6.1 Terra at low effort. Control generated
+in 51.25 seconds and treatment in 49.10 seconds. Each passed **99 of
+99** browser checks. Both kept the exact edited draft when reopening it
+at all three widths, updated the text after a visit change, and made
+zero post-load requests. The treatment moved Preview note 62.2 CSS
+pixels higher at 320 px. Both fit it in the first viewport. The
+behavior hypothesis tied in both Albany and Harbor. Visual judging
+of the functionally eligible Albany pair is separate.
+[Exact Albany browser comparison](../evidence/benchmark-v1/note-retention-albany-browser.json)

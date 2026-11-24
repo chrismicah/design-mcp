@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rowan Chen | Physical therapist in Albany</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@600&family=Instrument+Sans:wght@400;600;700&display=swap">
+  <style>
+    :root {
+      --navy: #172747;
+      --blue: #d7e1fa;
+      --paper: #f0f3fa;
+      --ink: #18243a;
+      --accent: #bfcfff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 1rem/1.5 "Instrument Sans", sans-serif;
+    }
+    .intro { background: var(--navy); color: white; }
+    .wrap { width: min(100% - 2rem, 68rem); margin: auto; }
+    .intro .wrap { padding: 1.5rem 0 1.75rem; }
+    .role { margin: 0 0 .3rem; color: var(--blue); }
+    h1 {
+      margin: 0;
+      font: 600 clamp(2.5rem, 6vw, 4.75rem)/1.05 "Bodoni Moda", serif;
+      letter-spacing: -.034em;
+    }
+    .lead { margin: .65rem 0 1rem; color: var(--blue); }
+    .call, button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.85rem;
+      padding: .65rem 1.1rem;
+      border: 2px solid transparent;
+      border-radius: .25rem;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .call { background: var(--accent); color: var(--ink); text-decoration: none; }
+    .call:hover { background: white; }
+    .details { margin: 1rem 0 0; color: var(--blue); }
+    .details span { display: block; }
+    main .wrap { padding: 1.5rem 0 3rem; }
+    h2 { margin: 0 0 .3rem; font-size: 1.4rem; line-height: 1.2; }
+    p { max-width: 65ch; }
+    .hint { margin: 0 0 1rem; }
+    .form-area { max-width: 38rem; }
+    fieldset { margin: 0 0 .85rem; padding: 0; border: 0; }
+    legend, label { font-weight: 700; }
+    legend { margin-bottom: .35rem; }
+    .choices { display: flex; flex-wrap: wrap; gap: .4rem 1.25rem; }
+    .choice { display: inline-flex; align-items: center; gap: .45rem; min-height: 2rem; font-weight: 400; }
+    input[type="radio"] { width: 1.15rem; height: 1.15rem; accent-color: var(--navy); }
+    .name-label { display: block; margin-bottom: .3rem; }
+    input[type="text"], textarea {
+      display: block;
+      width: 100%;
+      border: 1.5px solid var(--ink);
+      border-radius: .2rem;
+      background: white;
+      color: var(--ink);
+      font: inherit;
+      padding: .65rem;
+    }
+    input[type="text"] { max-width: 22rem; min-height: 2.85rem; }
+    textarea { min-height: 10rem; resize: vertical; }
+    .error { color: #8b1c1c; font-weight: 700; margin: .35rem 0 0; }
+    .actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .85rem; }
+    button { background: var(--navy); color: white; }
+    button:hover { background: #30476d; }
+    .secondary { background: transparent; color: var(--ink); border-color: var(--ink); }
+    .secondary:hover { background: var(--blue); }
+    :focus-visible { outline: 2px solid var(--paper); outline-offset: 2px; box-shadow: 0 0 0 6px var(--ink); }
+    .intro :focus-visible { outline-color: var(--navy); box-shadow: 0 0 0 6px white; }
+    [hidden] { display: none !important; }
+    .note-help { margin: .4rem 0 .75rem; }
+    @media (min-width: 48rem) {
+      .intro .wrap { padding: 3rem 0; }
+      main .wrap { padding-top: 2.25rem; }
+      .details { display: flex; gap: 2.5rem; }
+    }
+    @media (max-width: 23rem) {
+      .intro .wrap { padding: 1rem 0 1.1rem; }
+      h1 { font-size: 2.35rem; }
+      .lead { margin: .35rem 0 .65rem; }
+      .details { margin-top: .65rem; }
+      main .wrap { padding-top: 1rem; }
+      .hint { margin-bottom: .6rem; }
+      fieldset { margin-bottom: .5rem; }
+      .actions { margin-top: .6rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="intro">
+    <div class="wrap">
+      <p class="role">Independent physical therapist · Albany</p>
+      <h1>Rowan Chen</h1>
+      <p class="lead">Call Rowan to discuss a visit.</p>
+      <a class="call" href="tel:+15185550142">Call 518-555-0142</a>
+      <p class="details">
+        <span>Tuesday–Friday, 8 am–2 pm</span>
+        <span>15 Example Lane, Albany</span>
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <section class="form-area" aria-labelledby="prepare-heading">
+        <h2 id="prepare-heading">Prepare for your call</h2>
+        <p class="hint">Optional: make a short note to have ready when you call.</p>
+
+        <form id="note-form" novalidate>
+          <fieldset>
+            <legend>Choose a visit</legend>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="visit" value="Movement assessment" checked> Movement assessment</label>
+              <label class="choice"><input type="radio" name="visit" value="Follow-up visit"> Follow-up visit</label>
+            </div>
+          </fieldset>
+          <label class="name-label" for="first-name">First name</label>
+          <input id="first-name" name="firstName" type="text" autocomplete="given-name" aria-describedby="name-error">
+          <p id="name-error" class="error" hidden>Please enter your first name to preview your note.</p>
+          <div class="actions">
+            <button type="submit">Preview note</button>
+          </div>
+        </form>
+
+        <section id="preview" aria-labelledby="preview-heading" hidden>
+          <h3 id="preview-heading">Your call note</h3>
+          <p class="note-help">Edit this note as you like. It stays on this page; nothing is sent or booked.</p>
+          <label for="note">Editable note</label>
+          <textarea id="note"></textarea>
+          <div class="actions">
+            <button class="secondary" id="back" type="button">Back to details</button>
+          </div>
+        </section>
+        <p id="status" role="status" class="note-help"></p>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const form = document.getElementById('note-form');
+    const nameInput = document.getElementById('first-name');
+    const error = document.getElementById('name-error');
+    const preview = document.getElementById('preview');
+    const note = document.getElementById('note');
+    const status = document.getElementById('status');
+    const back = document.getElementById('back');
+    let lastKey = null;
+    let lastNote = '';
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const firstName = nameInput.value.trim();
+      if (!firstName) {
+        error.hidden = false;
+        nameInput.setAttribute('aria-invalid', 'true');
+        nameInput.focus();
+        return;
+      }
+      error.hidden = true;
+      nameInput.removeAttribute('aria-invalid');
+      const visit = form.elements.visit.value;
+      const key = JSON.stringify([firstName, visit]);
+      note.value = key === lastKey
+        ? lastNote
+        : 'Hi, my name is ' + firstName + '. I’d like to discuss a ' +
+          visit.toLowerCase() + '.';
+      lastKey = key;
+      form.hidden = true;
+      preview.hidden = false;
+      status.textContent = 'Your editable note is ready.';
+      note.focus();
+    });
+
+    nameInput.addEventListener('input', function () {
+      if (nameInput.value.trim()) {
+        error.hidden = true;
+        nameInput.removeAttribute('aria-invalid');
+      }
+    });
+
+    back.addEventListener('click', function () {
+      lastNote = note.value;
+      preview.hidden = true;
+      form.hidden = false;
+      status.textContent = '';
+      nameInput.focus();
+    });
+  </script>
+</body>
+</html>
