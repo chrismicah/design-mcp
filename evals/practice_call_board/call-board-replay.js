@@ -74,6 +74,12 @@ const checks = {
   normalMotion: await page.evaluate(() => matchMedia("(prefers-reduced-motion: no-preference)").matches),
 };
 if (example) checks.exampleVisibleAtOpening = Boolean(noteExample);
+if (practice.checksFormBalance) {
+  const labels = [radio(practice.firstService), alternate];
+  const heights = await Promise.all(labels.map(radio => radio.evaluate(input =>
+    Array.from(input.labels, label => label.getBoundingClientRect().height))));
+  checks.visitRowsHave44pxTargets = heights.every(row => row.some(height => height >= 44));
+}
 
 checks.contactFocus = await contact.count() === 1 && await reach(contact);
 checks.reachService = await reach(firstService);
@@ -148,6 +154,9 @@ if (practice.recordEditorFocus) {
 }
 checks.previewInFirstViewport = inView(firstFrame?.editable) &&
   firstFrame.editable.width > 0 && firstFrame.editable.height > 0;
+if (practice.checksFormBalance) {
+  checks.editorHasRoomAndFits = checks.previewInFirstViewport && firstFrame.editable.height >= 136;
+}
 checks.statusAnnouncement = await page.getByRole("status").count() === 1 &&
   /reminder|draft|note/i.test(await page.getByRole("status").innerText());
 // Visible text near the draft must say that the result stays local or sends nothing.

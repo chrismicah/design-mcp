@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rowan Chen · Albany physiotherapy</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700&family=Baskervville:ital@0;1&display=swap">
+  <style>
+    :root {
+      --petroleum: #102a2e;
+      --mineral: #ddf3ea;
+      --white-mint: #f5faf8;
+      --sea-glass: #80d2b3;
+      --slate-teal: #365f5e;
+      --daylight: #f1e472;
+      --error: #861c27;
+      --display: "Baskervville", Georgia, serif;
+      --body: "Atkinson Hyperlegible Next", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--white-mint);
+      color: var(--petroleum);
+      font: 1rem/1.4 var(--body);
+    }
+    .wrap { width: min(70rem, 100% - 2rem); margin-inline: auto; }
+    .contact {
+      background: var(--petroleum);
+      color: var(--white-mint);
+      padding-block: 1.25rem;
+    }
+    .contact p { margin: 0; }
+    .role { color: var(--sea-glass); font-weight: 600; }
+    h1 {
+      margin: .08em 0 .24em;
+      font: 400 clamp(2.65rem, 9vw, 7.2rem)/.97 var(--display);
+      letter-spacing: -.055em;
+    }
+    .contact-details {
+      display: grid;
+      justify-items: start;
+      gap: .35rem;
+    }
+    .contact-details p {
+      font-variant-numeric: tabular-nums;
+      color: var(--mineral);
+    }
+    a, button { -webkit-tap-highlight-color: transparent; }
+    .call, button {
+      display: inline-flex;
+      min-height: 2.75rem;
+      width: fit-content;
+      align-items: center;
+      justify-content: center;
+      padding: .52rem .86rem;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .call {
+      margin-block-end: .28rem;
+      background: var(--daylight);
+      color: var(--petroleum);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+    :focus-visible { outline: 2px solid var(--slate-teal); outline-offset: 3px; }
+    .contact :focus-visible { outline-color: var(--daylight); }
+    main { padding-block: 1.4rem 2.5rem; }
+    .composition {
+      display: grid;
+      align-items: start;
+      gap: 1.1rem;
+    }
+    h2 {
+      margin: 0 0 .35rem;
+      font: 400 clamp(2rem, 5vw, 3.25rem)/1 var(--display);
+      letter-spacing: -.04em;
+    }
+    .privacy {
+      max-width: 31ch;
+      margin: 0 0 .95rem;
+      color: var(--slate-teal);
+    }
+    fieldset { padding: 0; margin: 0 0 .7rem; border: 0; }
+    label, legend { font-weight: 700; }
+    legend { padding: 0; }
+    .visit {
+      min-height: 2.75rem;
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      padding-inline: .45rem;
+      border-bottom: 1px solid var(--sea-glass);
+      cursor: pointer;
+    }
+    .visit:has(input:checked) { background: var(--mineral); }
+    .visit input {
+      accent-color: var(--petroleum);
+      width: 1.2rem;
+      height: 1.2rem;
+      margin: 0;
+    }
+    .visit:has(input:focus-visible) { outline: 2px solid var(--slate-teal); outline-offset: 2px; }
+    .field-label { display: block; margin-block-end: .2rem; }
+    #first-name, textarea {
+      color: inherit;
+      border: 1px solid var(--slate-teal);
+      width: 100%;
+      border-radius: 0;
+    }
+    #first-name {
+      padding: .55rem .7rem;
+      background: var(--white-mint);
+      font: inherit;
+      min-height: 2.75rem;
+    }
+    .error { color: var(--error); font-weight: 600; margin: .4rem 0 0; }
+    button {
+      margin-block-start: .75rem;
+      background: var(--petroleum);
+      color: var(--white-mint);
+      border: 1px solid var(--petroleum);
+      cursor: pointer;
+    }
+    button:hover { background: var(--slate-teal); }
+    .slip {
+      position: relative;
+      background-color: var(--mineral);
+      padding: .85rem 1rem 1rem;
+      border-top: .3rem solid var(--sea-glass);
+      box-shadow: 4px 4px 0 var(--sea-glass);
+    }
+    .slip::after {
+      position: absolute;
+      inset: .7rem .65rem auto auto;
+      width: .52rem;
+      height: .52rem;
+      border-radius: 50%;
+      background: var(--white-mint);
+      box-shadow: inset 0 0 0 1px var(--sea-glass);
+      content: "";
+    }
+    .slip-kicker {
+      margin: 0 1rem .4rem 0;
+      color: var(--slate-teal);
+      font-weight: 700;
+    }
+    .example-text {
+      max-width: 29ch;
+      margin: 0;
+      padding-block: .35rem;
+      border-block: 1px dashed var(--slate-teal);
+      font: 400 clamp(1.36rem, 3.8vw, 3rem)/1.12 var(--display);
+      letter-spacing: -.018em;
+    }
+    .result .privacy { margin-block: .35rem .5rem; }
+    textarea {
+      display: block;
+      background: transparent;
+      padding: .45rem .5rem;
+      font: 400 clamp(1.24rem, 3vw, 2.1rem)/1.3 var(--display);
+      min-height: 8.5rem;
+      resize: vertical;
+    }
+    [hidden] { display: none !important; }
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+    .result:not([hidden]) { animation: expose 220ms ease-out; }
+    @keyframes expose { from { background-color: var(--white-mint); } }
+    @media (prefers-reduced-motion: reduce) {
+      .result:not([hidden]) { animation: none; }
+    }
+    @media (min-width: 48rem) {
+      .contact { padding-block: 2.5rem; }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 3fr) minmax(15rem, 2fr);
+        gap: 3.5rem;
+        align-items: end;
+      }
+      h1 { margin-block-end: 0; }
+      .contact-details {
+        padding-inline-start: 1.2rem;
+        border-inline-start: 1px solid var(--sea-glass);
+      }
+      main { padding-block: 2.9rem 4rem; }
+      .composition {
+        grid-template-columns: minmax(18rem, 25rem) minmax(0, 1fr);
+        column-gap: clamp(1.5rem, 5vw, 4.5rem);
+      }
+      .slip { padding: 1.5rem 2rem 2rem; }
+      .slip::after { inset: 1rem 1rem auto auto; width: .8rem; height: .8rem; }
+      .slip-kicker { margin-block-end: 1rem; }
+      .example-text {
+        font-size: clamp(1.7rem, 3.1vw, 2.625rem);
+        padding-block: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <p class="role">Independent physical therapist in Albany</p>
+        <h1>Rowan Chen</h1>
+      </div>
+      <div class="contact-details">
+        <a class="call" href="tel:+15185550142">Call 518-555-0142</a>
+        <p>Tuesday–Friday, 8 am–2 pm</p>
+        <p>15 Example Lane, Albany</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="composition" aria-labelledby="prepare-heading">
+      <div>
+        <h2 id="prepare-heading">Before you call</h2>
+        <p class="privacy">Make a note if it helps. It stays on this page. Nothing is sent or booked.</p>
+        <form id="note-form" novalidate>
+          <fieldset>
+            <legend>Choose a visit</legend>
+            <label class="visit"><input type="radio" name="visit" value="Movement assessment" checked> Movement assessment</label>
+            <label class="visit"><input type="radio" name="visit" value="Follow-up visit"> Follow-up visit</label>
+          </fieldset>
+          <label class="field-label" for="first-name">First name</label>
+          <input id="first-name" name="first-name" type="text" autocomplete="given-name" aria-describedby="name-error">
+          <p class="error" id="name-error" hidden>Enter your first name to preview your note.</p>
+          <button type="submit">Preview note</button>
+        </form>
+      </div>
+
+      <aside id="example" class="slip" aria-label="Example call note">
+        <p class="slip-kicker">Your first sentence</p>
+        <p id="example-text" class="example-text">Hi Rowan. I’d like to ask about a movement assessment.</p>
+      </aside>
+
+      <div id="result" class="slip result" hidden>
+        <label class="field-label" for="note">Your editable note</label>
+        <p id="note-help" class="privacy">This note stays on this page.</p>
+        <textarea id="note" aria-describedby="note-help" rows="3"></textarea>
+        <button type="button" id="back">Back to details</button>
+      </div>
+      <p class="visually-hidden" id="status" role="status"></p>
+    </section>
+  </main>
+
+  <script>
+    const form = document.querySelector("#note-form");
+    const firstName = document.querySelector("#first-name");
+    const error = document.querySelector("#name-error");
+    const status = document.querySelector("#status");
+    const example = document.querySelector("#example");
+    const exampleText = document.querySelector("#example-text");
+    const result = document.querySelector("#result");
+    const note = document.querySelector("#note");
+    const back = document.querySelector("#back");
+
+    form.addEventListener("change", event => {
+      if (event.target.name !== "visit") return;
+      const visit = form.elements.visit.value.toLowerCase();
+      exampleText.textContent = `Hi Rowan. I’d like to ask about a ${visit}.`;
+    });
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      const name = firstName.value.trim();
+      if (!name) {
+        error.hidden = false;
+        firstName.setAttribute("aria-invalid", "true");
+        firstName.focus();
+        return;
+      }
+
+      const visit = form.elements.visit.value.toLowerCase();
+      note.value = `Hi Rowan. My name is ${name}, and I’d like to ask about a ${visit}.`;
+      form.hidden = true;
+      example.hidden = true;
+      result.hidden = false;
+      status.textContent = "Your note is ready to edit.";
+      note.focus({preventScroll: true});
+      result.scrollIntoView({block: "nearest", behavior: "instant"});
+    });
+
+    firstName.addEventListener("input", () => {
+      if (firstName.value.trim()) {
+        error.hidden = true;
+        firstName.removeAttribute("aria-invalid");
+      }
+    });
+
+    back.addEventListener("click", () => {
+      result.hidden = true;
+      example.hidden = false;
+      form.hidden = false;
+      status.textContent = "";
+      firstName.focus({preventScroll: true});
+      firstName.scrollIntoView({block: "nearest", behavior: "instant"});
+    });
+  </script>
+</body>
+</html>

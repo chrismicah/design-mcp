@@ -110,3 +110,14 @@ sentence. The reviewer still found the desktop form cramped relative
 to the sample and wanted a more visible mobile selection and more
 room to edit. The 9.5 target stays open. [Blind ballot and capture
 hashes](../evidence/benchmark-v1/albany-call-slip-live-example-blind.json)
+
+## Form balance contract
+
+Keep Rowan's call information and the selected-visit slip as the focal
+mechanism. The existing petroleum, mineral, mint, sea glass, slate teal
+and daylight palette stays fixed with Baskervville and Atkinson
+Hyperlegible Next. Give the desktop form enough width for its heading and
+reduce the sample's type scale. On phone, mark the full selected row and
+increase the note's visible editing area. Preserve the 44 px row and
+button targets, all text and keyboard routes, and the 99 existing browser
+checks. No new control, content, asset or animation is part of this pass.

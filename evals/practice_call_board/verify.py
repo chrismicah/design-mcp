@@ -79,10 +79,12 @@ def verify(source, staged):
                     assert checks["statusClearedAfterReturn"] is (
                         checks["returnToOriginal"] and interaction["statusAfterReturn"] == [""]
                     )
-                if arm in {"call-slip-authored", "call-slip-live-example"}:
+                if arm.startswith("call-slip-"):
                     assert {"exampleVisibleAtOpening", "exampleReplacedByPreview", "exampleRestoredOnReturn"} <= checks.keys()
-                if arm == "call-slip-live-example":
+                if arm in {"call-slip-live-example", "call-slip-form-balance"}:
                     assert "exampleMatchesSelection" in checks
+                if arm == "call-slip-form-balance":
+                    assert {"visitRowsHave44pxTargets", "editorHasRoomAndFits"} <= checks.keys()
             verify_frames(cell, view, width, height)
             sizes[width] = {"failed": sorted(key for key, ok in checks.items() if not ok),
                             "request_count": len(interaction["requests"]),
