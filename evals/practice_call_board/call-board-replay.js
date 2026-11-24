@@ -10,6 +10,11 @@ const preview = page.getByRole("button", {name: match(practice.previewLabel)});
 const draft = page.getByRole("textbox", {name: match(practice.resultLabel)});
 const resultHeading = page.getByRole("heading", {name: match(practice.resultLabel)});
 const contact = page.getByRole("link", {name: match(practice.contactLabel)});
+const exampleLabel = practice.exampleNoteLabel;
+const example = exampleLabel && page.getByRole("complementary", {name: exampleLabel, exact: true});
+const noteExample = example && await example.count() === 1 && await example.isVisible()
+  ? (await example.innerText()).trim()
+  : "";
 const nativeSelect = await service.count() === 1;
 const firstService = nativeSelect ? service : radio(practice.firstService);
 async function alternateSelected() {
@@ -68,6 +73,7 @@ const checks = {
   openingWidth: await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
   normalMotion: await page.evaluate(() => matchMedia("(prefers-reduced-motion: no-preference)").matches),
 };
+if (example) checks.exampleVisibleAtOpening = Boolean(noteExample);
 
 checks.contactFocus = await contact.count() === 1 && await reach(contact);
 checks.reachService = await reach(firstService);
@@ -125,6 +131,7 @@ checks.previewFocused = await draft.isVisible() && (await active(draft) || headi
 const draftText = await draft.isVisible() ? (await draft.inputValue()).toLowerCase() : "";
 checks.previewReady = draftText.includes(practice.visitorName.toLowerCase()) &&
   draftText.includes(practice.alternateService.toLowerCase());
+if (example) checks.exampleReplacedByPreview = checks.previewReady && await example.count() === 0;
 if (checks.previewReady) {
   await page.waitForFunction(() => Boolean(window.qaOpeningFrame), undefined, {timeout: 1500});
 }
@@ -162,6 +169,10 @@ if (checks.previewReady) {
 }
 checks.returnToOriginal = reachedOriginal &&
   await name.inputValue() === practice.visitorName && await alternateSelected();
+if (example) {
+  checks.exampleRestoredOnReturn = checks.returnToOriginal && await example.count() === 1 &&
+    await example.isVisible() && (await example.innerText()).trim() === noteExample;
+}
 checks.noNetworkSubmission = !requests.some(method => method !== "GET");
 checks.noPageErrors = state.pageErrors.length === 0;
 checks.finalWidth = await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth);

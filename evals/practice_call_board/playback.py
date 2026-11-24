@@ -19,7 +19,11 @@ PRACTICES = json.loads((HERE / "practice-fixtures.json").read_bytes())
 
 async def interact(client, cell, width):
     paths = {name: cell / f"{width}-{name}.png" for name in ("invalid", "preview")}
-    code = "const practice = " + json.dumps(PRACTICES[cell.parent.name]) + ";\n"
+    practice = PRACTICES[cell.parent.name].copy()
+    example = practice.pop("exampleNote", None)
+    if example and cell.name == example["arm"]:
+        practice["exampleNoteLabel"] = example["label"]
+    code = "const practice = " + json.dumps(practice) + ";\n"
     code += "const paths = " + json.dumps({key: str(value) for key, value in paths.items()}) + ";\n"
     answer = await render.execute(client, code + (HERE / "call-board-replay.js").read_text())
     line = next((line for line in answer.splitlines() if "PRACTICE_REPLAY " in line), None)
