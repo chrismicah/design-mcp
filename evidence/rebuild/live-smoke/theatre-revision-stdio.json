@@ -1,0 +1,156 @@
+{
+  "theatre": {
+    "arguments": {
+      "brief": "Make this feel premium. Build a theatre turnaround board so a stage manager can find the room that's running late. Studio B is six minutes late and Hall A is ready. They need to filter to delayed rooms and switch back to all rooms."
+    },
+    "response": {
+      "direction": {
+        "id": "stage-call-sheet",
+        "surface": "dashboard",
+        "title": "Stage call sheet",
+        "summary": "A working stage document. Put the room list on warm paper and mark the delayed room directly in its row. The list is the main composition.",
+        "type": {
+          "display": "Newsreader",
+          "body": "Instrument Sans",
+          "ratio": 3.25,
+          "tracking": -0.035,
+          "weight": 500,
+          "license": "OFL-1.1"
+        },
+        "palette": {
+          "ink": "#27201D",
+          "paper": "#F5EFE2",
+          "accent": "#842E3D"
+        },
+        "layout": {
+          "skeleton": "Print-like masthead, then a single ruled cue ledger. Pair the room name and the actual status across the rule. Apply the accent to the delayed row's status cell and keep the ready row quiet.",
+          "focus": "A large room name beside a compact burgundy status cell showing the actual delay. No copy of the exception above the list and no secondary rail repeating room status.",
+          "desktop": "Align the masthead and ledger on one edge. Give the room name three quarters of the row with a narrow, consistently aligned status column. Place the filter above the ledger.",
+          "mobile": "Masthead, filter, then the same two-column ledger in document order. Wrap the status before squeezing the room name. Each room appears once.",
+          "rhythm": "Wide gap after the masthead. Thin rules and square edges mark the ledger. Use compact control text and generous row height."
+        },
+        "imagery": {
+          "subject": "The room names and cue marks carry the visual identity.",
+          "crop": "No image slot for the operations view.",
+          "fallback": "Use real room names and thin typographic rules."
+        },
+        "motion": {
+          "trigger": "The stage manager changes the room filter.",
+          "effect": "Fade the newly updated row list in from .78 opacity. Focus stays on the filter and the live status announces the new room count.",
+          "duration_ms": 220,
+          "reduced": "Apply filter and status immediately with the same focus behavior."
+        },
+        "action": {
+          "instruction": "Use two pressed-state buttons above the rows to choose the full room list or delays only. The same control switches the list back. Retain each room's exact supplied status.",
+          "label": "Delayed only"
+        },
+        "why": "Stage management reads a cue against its corresponding information. Aligning each delay with its room reduces scanning while the paper, rules, and cue color relate the tool to that work.",
+        "sources": [
+          {
+            "url": "https://www.theatrecrafts.com/pages/home/topics/stage-management/the-prompt-book/",
+            "observation": "The Prompt Book explains that the deputy stage manager uses the book to run rehearsals. It describes cues set opposite the corresponding script lines with lines connecting each cue to its trigger. The color palette and filter treatment are original adaptations.",
+            "strength": "evidence"
+          }
+        ],
+        "credit": "Theatrecrafts, The Prompt Book"
+      },
+      "font_stylesheet": "https://fonts.googleapis.com/css2?family=Newsreader%3Awght%40500&family=Instrument+Sans&display=swap",
+      "interaction": {
+        "accent_foreground": "#F5EFE2",
+        "easing": "ease-out",
+        "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+        "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+        "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+      },
+      "assumptions": [
+        "Use dashboard as the surface.",
+        "Use only the project facts and assets in the brief."
+      ],
+      "questions": [],
+      "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px."
+    }
+  },
+  "dispatch": {
+    "arguments": {
+      "brief": "Make this feel premium. A dispatch board for a dispatcher tracking a late load."
+    },
+    "response": {
+      "direction": {
+        "id": "exception-first",
+        "surface": "dashboard",
+        "title": "Exception first: the problem owns the screen",
+        "summary": "The most urgent item is promoted out of the list into a full-width strip, with its position in the queue; every other row stays quiet. Use for time-pressured operations queues.",
+        "type": {
+          "display": "IBM Plex Sans Condensed",
+          "body": "IBM Plex Sans",
+          "ratio": 2.5,
+          "tracking": -0.02,
+          "weight": 600,
+          "license": "OFL-1.1"
+        },
+        "palette": {
+          "ink": "#EEF0EC",
+          "paper": "#14181B",
+          "accent": "#FFAA72"
+        },
+        "layout": {
+          "skeleton": "exception strip on top (item ID, location, deviation), the full queue table below, a due-next rail on the right",
+          "focus": "the deviation value at 40px tabular figures, with an 'n / total' position label",
+          "desktop": "12-col; strip spans 12, table 8, rail 4 holding the next item due",
+          "mobile": "strip, then rail, then table as stacked rows",
+          "rhythm": "8px base; 40px rows; no cards"
+        },
+        "imagery": {
+          "subject": "none; location codes act as the visuals",
+          "crop": "n/a",
+          "fallback": "location code set at 24px tabular figures"
+        },
+        "motion": {
+          "trigger": "deviation changes",
+          "effect": "the value cross-fades; the strip edge pulses once",
+          "duration_ms": 240,
+          "reduced": "value swaps, no pulse"
+        },
+        "action": {
+          "instruction": "Focus jumps the table filter to the exception. Fill it from the brief's most urgent item",
+          "label": "Focus [item ID] at [location]"
+        },
+        "why": "An operator on the clock should see the one problem before the list. Calm comes from making everything except the exception quiet.",
+        "sources": [
+          {
+            "url": "https://linear.app/",
+            "observation": "Linear's home page product mock (server HTML) shows one focused issue 'DRV-8852' with a '1 / 84' queue position, a sidebar of 'Inbox | My issues | Reviews', and a properties rail ('In Progress | Medium | Karri'): one item in focus, its place in the queue, and its state beside it.",
+            "strength": "evidence"
+          }
+        ],
+        "credit": "Linear (Linear Orbit), home page product mock"
+      },
+      "font_stylesheet": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed%3Awght%40600&family=IBM+Plex+Sans&display=swap",
+      "interaction": {
+        "accent_foreground": "#14181B",
+        "easing": "ease-out",
+        "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+        "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+        "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+      },
+      "assumptions": [
+        "Use dashboard as the surface.",
+        "Use only the project facts and assets in the brief."
+      ],
+      "questions": [],
+      "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Omit support regions that would only repeat facts. Keep visual and document order aligned. Load the named fonts. Test the action, reading order and legibility at 390 px."
+    }
+  },
+  "source_check": {
+    "finding_count": 0,
+    "findings": [],
+    "scope": "Source checks. A zero count needs rendered verification.",
+    "render_checks": [
+      "layout and overflow",
+      "type scale and loaded fonts",
+      "imagery and contrast",
+      "full interaction and reduced motion"
+    ],
+    "truncated": false
+  }
+}

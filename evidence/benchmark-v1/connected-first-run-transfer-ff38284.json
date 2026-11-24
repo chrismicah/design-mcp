@@ -1,0 +1,1959 @@
+{
+  "install_commit": "ff38284ab21ff42153938545aa34df8db5f0cdcf",
+  "scope": "Clean uv tool install and two connected Codex sessions isolated from project and user configuration. All interactions used local browser fixtures with fictional data.",
+  "doctor_sha256": "f2144fd8ca97eb15fbf085fef1119d5f6fad0ba3ca825f9a2216d9c7fa55765d",
+  "cases": {
+    "routine": {
+      "contract": "Routine signup fixture from the installed first-turn probe, with local validation, confirmation and one-word revision.",
+      "protocol": {
+        "install": "ff38284ab21ff42153938545aa34df8db5f0cdcf",
+        "model": "gpt-6.1-terra",
+        "reasoning": "low",
+        "brief": "A mobile signup for a ceramics class. Collect name and email.",
+        "direction": "grouped-fieldsets",
+        "user_messages": 2,
+        "clarification_turns": 0,
+        "initial": {
+          "usage": {
+            "input_tokens": 58642,
+            "cached_input_tokens": 46336,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 1982,
+            "reasoning_output_tokens": 0
+          },
+          "tool_calls": [
+            {
+              "type": "mcp_tool_call",
+              "server": "design-mcp",
+              "tool": "direct",
+              "status": "completed"
+            }
+          ],
+          "client_errors": [],
+          "treatment_call": true,
+          "direct_call": true,
+          "status": "passed",
+          "milliseconds": 42320,
+          "exit_code": 0,
+          "sessions": [
+            "01a207b5-1eee-71e1-b56a-4c3c73215c75"
+          ],
+          "prompt_sha256": "5c708535be29cdf7fb125543571a3154207fb568ca1beef693063aa24c309dc8",
+          "trace_sha256": "4a31d1ef842ce14456020811b5026e207e7169dcc5b2900af1c551eb44a75f1e",
+          "html_sha256": "984fdd87414cde9de95225b3cc0563ec3daf1fb34f6f06d1debb0f71140b2fbf"
+        },
+        "calmer": {
+          "usage": {
+            "input_tokens": 128067,
+            "cached_input_tokens": 114944,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 3928,
+            "reasoning_output_tokens": 0
+          },
+          "tool_calls": [
+            {
+              "type": "mcp_tool_call",
+              "server": "design-mcp",
+              "tool": "react",
+              "status": "completed"
+            }
+          ],
+          "client_errors": [],
+          "treatment_call": true,
+          "status": "passed",
+          "milliseconds": 41837,
+          "exit_code": 0,
+          "sessions": [
+            "01a207b5-1eee-71e1-b56a-4c3c73215c75"
+          ],
+          "prompt_sha256": "4418427c2a96f454039784b52e0ae9cc18d066a8457579e09056060f72879c18",
+          "trace_sha256": "f60afed6531d4af46a8b1f293c6474cd561c9d28cbc75176aa2b10b946aeb637",
+          "html_sha256": "6b524245c2029f8abd5c05d4775d1dad08155d851104ba2b5368d059ff648492"
+        }
+      },
+      "viewport_replay": {
+        "browser": "Chrome/158.0.8127.36",
+        "pixel_and_layout_change": {
+          "320": {
+            "action_top_delta_css_px": 8.0,
+            "before_action_bottom_css_px": 571.22,
+            "after_action_bottom_css_px": 579.22,
+            "title_size": "56px",
+            "before_action_fill": "rgb(23, 95, 85)",
+            "after_action_fill": "rgb(23, 95, 85)"
+          },
+          "390": {
+            "action_top_delta_css_px": 8.0,
+            "before_action_bottom_css_px": 571.22,
+            "after_action_bottom_css_px": 579.22,
+            "title_size": "56px",
+            "before_action_fill": "rgb(23, 95, 85)",
+            "after_action_fill": "rgb(23, 95, 85)"
+          },
+          "1440": {
+            "action_top_delta_css_px": 8.0,
+            "before_action_bottom_css_px": 627.53,
+            "after_action_bottom_css_px": 635.53,
+            "title_size": "96px",
+            "before_action_fill": "rgb(23, 95, 85)",
+            "after_action_fill": "rgb(23, 95, 85)"
+          }
+        },
+        "rows": [
+          {
+            "phase": "initial",
+            "step": "entry",
+            "viewport": [
+              320,
+              700
+            ],
+            "focus": [
+              "BODY",
+              "",
+              false
+            ],
+            "sha256": "db4dedc130c284c98b4be95bfceb2f8d3ceb3cdbe4c65369c4c501d03eb772a7",
+            "file": ".context/first-run-transfer/browser-routine/initial-320-entry.png"
+          },
+          {
+            "phase": "initial",
+            "step": "empty",
+            "viewport": [
+              320,
+              700
+            ],
+            "focus": [
+              "INPUT",
+              "name",
+              true
+            ],
+            "sha256": "5ec6738266d6f3abb191a87993bcad12dc3198f810d9418263bbe90e7c7fb49e",
+            "file": ".context/first-run-transfer/browser-routine/initial-320-empty.png"
+          },
+          {
+            "phase": "initial",
+            "step": "invalid-email",
+            "viewport": [
+              320,
+              700
+            ],
+            "focus": [
+              "INPUT",
+              "email",
+              true
+            ],
+            "sha256": "8e978e14356729d16006bb927524e08fbb029ad54ebf2e145fa122a5efb1b884",
+            "file": ".context/first-run-transfer/browser-routine/initial-320-invalid-email.png"
+          },
+          {
+            "phase": "initial",
+            "step": "success",
+            "viewport": [
+              320,
+              700
+            ],
+            "focus": [
+              "H2",
+              "confirmation-title",
+              true
+            ],
+            "sha256": "80f4b112ec2f0df16452096682b5a47616637450eebf2f3f54ca4a300d723d52",
+            "file": ".context/first-run-transfer/browser-routine/initial-320-success.png"
+          },
+          {
+            "phase": "initial",
+            "step": "entry",
+            "viewport": [
+              390,
+              844
+            ],
+            "focus": [
+              "BODY",
+              "",
+              false
+            ],
+            "sha256": "1bc5ad1b3b30eca505091b6ba34558d347e509409b5880b4eb44cceb497745e7",
+            "file": ".context/first-run-transfer/browser-routine/initial-390-entry.png"
+          },
+          {
+            "phase": "initial",
+            "step": "empty",
+            "viewport": [
+              390,
+              844
+            ],
+            "focus": [
+              "INPUT",
+              "name",
+              true
+            ],
+            "sha256": "4036dc04dae4465cba80b4aa5c858b522280857d4bcf8f8d5cbe8f5b53a390dc",
+            "file": ".context/first-run-transfer/browser-routine/initial-390-empty.png"
+          },
+          {
+            "phase": "initial",
+            "step": "invalid-email",
+            "viewport": [
+              390,
+              844
+            ],
+            "focus": [
+              "INPUT",
+              "email",
+              true
+            ],
+            "sha256": "d9cc6524be28d96279d9f74426d817f0fa5ac2d5281ee0cecc795938995e9014",
+            "file": ".context/first-run-transfer/browser-routine/initial-390-invalid-email.png"
+          },
+          {
+            "phase": "initial",
+            "step": "success",
+            "viewport": [
+              390,
+              844
+            ],
+            "focus": [
+              "H2",
+              "confirmation-title",
+              true
+            ],
+            "sha256": "b8db9cc55edcb4451d05db17507b25e2ef5ee0707a7630f5fdd42a04e1c1a512",
+            "file": ".context/first-run-transfer/browser-routine/initial-390-success.png"
+          },
+          {
+            "phase": "initial",
+            "step": "pointer-success",
+            "viewport": [
+              390,
+              844
+            ],
+            "focus": [
+              "H2",
+              "confirmation-title",
+              false
+            ],
+            "sha256": "df83ee5b587ab69a46614bd41f83189c2f88774a9d00a29c3567e015caa91603",
+            "file": ".context/first-run-transfer/browser-routine/initial-390-pointer-success.png"
+          },
+          {
+            "phase": "initial",
+            "step": "entry",
+            "viewport": [
+              1440,
+              900
+            ],
+            "focus": [
+              "BODY",
+              "",
+              false
+            ],
+            "sha256": "837925561b527dfd8fa4ca694472d72ef942270a650f90aae434870c38576517",
+            "file": ".context/first-run-transfer/browser-routine/initial-1440-entry.png"
+          },
+          {
+            "phase": "initial",
+            "step": "empty",
+            "viewport": [
+              1440,
+              900
+            ],
+            "focus": [
+              "INPUT",
+              "name",
+              true
+            ],
+            "sha256": "82435c922fd29578a5eb4886863f9cc126789d996053c057b4647852c87d4cb6",
+            "file": ".context/first-run-transfer/browser-routine/initial-1440-empty.png"
+          },
+          {
+            "phase": "initial",
+            "step": "invalid-email",
+            "viewport": [
+              1440,
+              900
+            ],
+            "focus": [
+              "INPUT",
+              "email",
+              true
+            ],
+            "sha256": "f09f6234ad1e91894ae24f17937893ee88c13ddfd731c7c72f40dce50a25a915",
+            "file": ".context/first-run-transfer/browser-routine/initial-1440-invalid-email.png"
+          },
+          {
+            "phase": "initial",
+            "step": "success",
+            "viewport": [
+              1440,
+              900
+            ],
+            "focus": [
+              "H2",
+              "confirmation-title",
+              true
+            ],
+            "sha256": "5b92291d8fad4c3fef0e9e44a899b9d0232e5a7d88bf594f93e6f69b31e8e604",
+            "file": ".context/first-run-transfer/browser-routine/initial-1440-success.png"
+          },
+          {
+            "phase": "calmer",
+            "step": "entry",
+            "viewport": [
+              320,
+              700
+            ],
+            "focus": [
+              "BODY",
+              "",
+              false
+            ],
+            "sha256": "cfab94b272292232e87d861c2e4ee32e2a78b3bce404490b3b7a8d3ae31d798b",
+            "file": ".context/first-run-transfer/browser-routine/calmer-320-entry.png"
+          },
+          {
+            "phase": "calmer",
+            "step": "empty",
+            "viewport": [
+              320,
+              700
+            ],
+            "focus": [
+              "INPUT",
+              "name",
+              true
+            ],
+            "sha256": "7f6034c902ac01f48804f09b704b364376fda00b16568aca58a45014690b89d5",
+            "file": ".context/first-run-transfer/browser-routine/calmer-320-empty.png"
+          },
+          {
+            "phase": "calmer",
+            "step": "invalid-email",
+            "viewport": [
+              320,
+              700
+            ],
+            "focus": [
+              "INPUT",
+              "email",
+              true
+            ],
+            "sha256": "c06cc08416988bcc34eb43d6fe182429460b8f0bda96bef933f8eb634ccad689",
+            "file": ".context/first-run-transfer/browser-routine/calmer-320-invalid-email.png"
+          },
+          {
+            "phase": "calmer",
+            "step": "success",
+            "viewport": [
+              320,
+              700
+            ],
+            "focus": [
+              "H2",
+              "confirmation-title",
+              true
+            ],
+            "sha256": "80f4b112ec2f0df16452096682b5a47616637450eebf2f3f54ca4a300d723d52",
+            "file": ".context/first-run-transfer/browser-routine/calmer-320-success.png"
+          },
+          {
+            "phase": "calmer",
+            "step": "entry",
+            "viewport": [
+              390,
+              844
+            ],
+            "focus": [
+              "BODY",
+              "",
+              false
+            ],
+            "sha256": "5fb9b069d4e53be729605cfa6b6149174318c551c93a92bb9fc5374949347c92",
+            "file": ".context/first-run-transfer/browser-routine/calmer-390-entry.png"
+          },
+          {
+            "phase": "calmer",
+            "step": "empty",
+            "viewport": [
+              390,
+              844
+            ],
+            "focus": [
+              "INPUT",
+              "name",
+              true
+            ],
+            "sha256": "8b90ee5ca977d1b473f50bce71cd2cca89021e7b9950df8a9f2973be3df21ab1",
+            "file": ".context/first-run-transfer/browser-routine/calmer-390-empty.png"
+          },
+          {
+            "phase": "calmer",
+            "step": "invalid-email",
+            "viewport": [
+              390,
+              844
+            ],
+            "focus": [
+              "INPUT",
+              "email",
+              true
+            ],
+            "sha256": "ee7ef337634942475395195d42567fcbd3177641e16a1a81a466a07ede0598f3",
+            "file": ".context/first-run-transfer/browser-routine/calmer-390-invalid-email.png"
+          },
+          {
+            "phase": "calmer",
+            "step": "success",
+            "viewport": [
+              390,
+              844
+            ],
+            "focus": [
+              "H2",
+              "confirmation-title",
+              true
+            ],
+            "sha256": "b8db9cc55edcb4451d05db17507b25e2ef5ee0707a7630f5fdd42a04e1c1a512",
+            "file": ".context/first-run-transfer/browser-routine/calmer-390-success.png"
+          },
+          {
+            "phase": "calmer",
+            "step": "pointer-success",
+            "viewport": [
+              390,
+              844
+            ],
+            "focus": [
+              "H2",
+              "confirmation-title",
+              false
+            ],
+            "sha256": "f2c83e9b404f5f259db0d2a322015485e98412898ae9257154905be444d0db10",
+            "file": ".context/first-run-transfer/browser-routine/calmer-390-pointer-success.png"
+          },
+          {
+            "phase": "calmer",
+            "step": "entry",
+            "viewport": [
+              1440,
+              900
+            ],
+            "focus": [
+              "BODY",
+              "",
+              false
+            ],
+            "sha256": "f931b6eef8166856d9e1e3f3f385ae227d8e12b10594b19fa44da5aa0af0fc83",
+            "file": ".context/first-run-transfer/browser-routine/calmer-1440-entry.png"
+          },
+          {
+            "phase": "calmer",
+            "step": "empty",
+            "viewport": [
+              1440,
+              900
+            ],
+            "focus": [
+              "INPUT",
+              "name",
+              true
+            ],
+            "sha256": "735e8f170feeb8c35404ec765193220de89a1dd6e122526d5b7a40a9853904b4",
+            "file": ".context/first-run-transfer/browser-routine/calmer-1440-empty.png"
+          },
+          {
+            "phase": "calmer",
+            "step": "invalid-email",
+            "viewport": [
+              1440,
+              900
+            ],
+            "focus": [
+              "INPUT",
+              "email",
+              true
+            ],
+            "sha256": "8e9abed600d886e5d83c4f122415d437f55cededa1841b30c178833f0d7f5439",
+            "file": ".context/first-run-transfer/browser-routine/calmer-1440-invalid-email.png"
+          },
+          {
+            "phase": "calmer",
+            "step": "success",
+            "viewport": [
+              1440,
+              900
+            ],
+            "focus": [
+              "H2",
+              "confirmation-title",
+              true
+            ],
+            "sha256": "5b92291d8fad4c3fef0e9e44a899b9d0232e5a7d88bf594f93e6f69b31e8e604",
+            "file": ".context/first-run-transfer/browser-routine/calmer-1440-success.png"
+          }
+        ]
+      },
+      "blind_ballot": {
+        "calibration": {
+          "example": "Legible repair intake with clear labels, familiar layout, and misplaced focus after an invalid number",
+          "coherence": 7,
+          "originality": 4,
+          "craft": 6,
+          "usability": 5
+        },
+        "screens": {
+          "A-1440": {
+            "coherence": 8,
+            "originality": 5,
+            "craft": 8,
+            "usability": 8.5,
+            "primary_action": {
+              "input": "Tab to Confirm details and press Enter with both fields empty",
+              "expected": "Show actionable errors and focus the first invalid field",
+              "observed": "Both fields show inline errors and focus moves visibly to Name."
+            },
+            "edge_observation": "Jamie with invalid email was blocked and focus moved to Email. After a reload, Jamie and jamie@example.test reached Details confirmed, with focus on the heading. The requested direct correction was not completed in this view; a select-all key was rejected by the review tool. Edit details returned focus to Name and retained the entered values.",
+            "fact_check": "The confirmation explicitly says no signup occurred and nothing was sent or saved. A remote transaction was not tested or credited.",
+            "strength": "The two-column form is orderly, with clear errors and a distinct action.",
+            "weakness": "The large heading and broad empty area dominate a very small form; the subject is expressed mainly by a small vessel icon.",
+            "repair": "Introduce a more substantive ceramics-specific visual detail while retaining the clear form hierarchy.",
+            "captures": [
+              "A-1440-before",
+              "A-1440-after",
+              "A-1440-edge"
+            ],
+            "arm": "current",
+            "html_sha256": "984fdd87414cde9de95225b3cc0563ec3daf1fb34f6f06d1debb0f71140b2fbf",
+            "weighted": 7.2,
+            "before": {
+              "sha256": "837925561b527dfd8fa4ca694472d72ef942270a650f90aae434870c38576517",
+              "file": "A-1440-before.png",
+              "tool_call_id": "item_2"
+            },
+            "after": {
+              "sha256": "82435c922fd29578a5eb4886863f9cc126789d996053c057b4647852c87d4cb6",
+              "file": "A-1440-after.png",
+              "tool_call_id": "item_7"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "text",
+                "value": "Jamie"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "text",
+                "value": "invalid"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "text",
+                "value": "jamie@example.test"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "reload",
+                "value": null
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "text",
+                "value": "Jamie"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "text",
+                "value": "jamie@example.test"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "A-390": {
+            "coherence": 8,
+            "originality": 5,
+            "craft": 8,
+            "usability": 9,
+            "primary_action": {
+              "input": "Tab to Confirm details and press Enter with both fields empty",
+              "expected": "Show actionable errors and focus the first invalid field",
+              "observed": "Both inline errors appear, with visible focus on Name."
+            },
+            "edge_observation": "Jamie and invalid were blocked with focus on Email. Replacing the email with jamie@example.test and submitting opened Details confirmed and moved focus to its heading. The confirmation and Edit details action fit comfortably within the viewport.",
+            "fact_check": "The confirmation states that no signup occurred and nothing was sent or saved; no remote transaction was verified.",
+            "strength": "The full-width action and well-spaced stacked fields make the mobile flow easy to scan.",
+            "weakness": "The visual language is restrained enough that the ceramics subject has little presence beyond the icon.",
+            "repair": "Add a distinctive subject-specific element without crowding the fields or action.",
+            "captures": [
+              "A-390-before",
+              "A-390-after",
+              "A-390-edge"
+            ],
+            "arm": "current",
+            "html_sha256": "984fdd87414cde9de95225b3cc0563ec3daf1fb34f6f06d1debb0f71140b2fbf",
+            "weighted": 7.3,
+            "before": {
+              "sha256": "1bc5ad1b3b30eca505091b6ba34558d347e509409b5880b4eb44cceb497745e7",
+              "file": "A-390-before.png",
+              "tool_call_id": "item_40"
+            },
+            "after": {
+              "sha256": "4036dc04dae4465cba80b4aa5c858b522280857d4bcf8f8d5cbe8f5b53a390dc",
+              "file": "A-390-after.png",
+              "tool_call_id": "item_45"
+            },
+            "layout_width": 390,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "text",
+                "value": "Jamie"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "text",
+                "value": "invalid"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Backspace"
+              },
+              {
+                "action": "key",
+                "value": "Backspace"
+              },
+              {
+                "action": "key",
+                "value": "Backspace"
+              },
+              {
+                "action": "key",
+                "value": "Backspace"
+              },
+              {
+                "action": "key",
+                "value": "Backspace"
+              },
+              {
+                "action": "key",
+                "value": "Backspace"
+              },
+              {
+                "action": "key",
+                "value": "Backspace"
+              },
+              {
+                "action": "text",
+                "value": "jamie@example.test"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-1440": {
+            "coherence": 8,
+            "originality": 5,
+            "craft": 8,
+            "usability": 8.5,
+            "primary_action": {
+              "input": "Tab to Confirm details and press Enter with both fields empty",
+              "expected": "Show actionable errors and focus the first invalid field",
+              "observed": "Both inline errors appear and focus moves visibly to Name."
+            },
+            "edge_observation": "Jamie and invalid were blocked with focus on Email. Correcting the email to jamie@example.test opened Details confirmed, with focus on its heading. Confirmation spacing matches the observed A desktop confirmation.",
+            "fact_check": "The page says this is a local preview and that no signup occurred or details were sent or saved. No remote transaction was verified.",
+            "strength": "Labels, errors and controls form a clear, consistent column.",
+            "weakness": "The subject-specific identity is limited, and the oversized title outweighs the form.",
+            "repair": "Give the ceramics context a stronger visual role while preserving the accessible error and focus behavior.",
+            "captures": [
+              "B-1440-before",
+              "B-1440-after",
+              "B-1440-edge"
+            ],
+            "arm": "proposed",
+            "html_sha256": "6b524245c2029f8abd5c05d4775d1dad08155d851104ba2b5368d059ff648492",
+            "weighted": 7.2,
+            "before": {
+              "sha256": "f931b6eef8166856d9e1e3f3f385ae227d8e12b10594b19fa44da5aa0af0fc83",
+              "file": "B-1440-before.png",
+              "tool_call_id": "item_63"
+            },
+            "after": {
+              "sha256": "735e8f170feeb8c35404ec765193220de89a1dd6e122526d5b7a40a9853904b4",
+              "file": "B-1440-after.png",
+              "tool_call_id": "item_68"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "text",
+                "value": "Jamie"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "text",
+                "value": "invalid"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Backspace"
+              },
+              {
+                "action": "key",
+                "value": "Backspace"
+              },
+              {
+                "action": "key",
+                "value": "Backspace"
+              },
+              {
+                "action": "key",
+                "value": "Backspace"
+              },
+              {
+                "action": "key",
+                "value": "Backspace"
+              },
+              {
+                "action": "key",
+                "value": "Backspace"
+              },
+              {
+                "action": "key",
+                "value": "Backspace"
+              },
+              {
+                "action": "text",
+                "value": "jamie@example.test"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-390": {
+            "coherence": 8,
+            "originality": 5,
+            "craft": 8,
+            "usability": 9,
+            "primary_action": {
+              "input": "Tab to Confirm details and press Enter with both fields empty",
+              "expected": "Show actionable errors and focus the first invalid field",
+              "observed": "Both inline errors appear and focus moves visibly to Name."
+            },
+            "edge_observation": "Jamie and invalid were blocked with focus on Email. Correcting the email to jamie@example.test opened Details confirmed and focused its heading. The confirmation is legible and the edit action is easy to find.",
+            "fact_check": "The confirmation explicitly rules out a completed signup and says nothing was sent or saved. No remote transaction was verified.",
+            "strength": "The action has comfortable separation from the email field and errors, and the mobile form stays readable.",
+            "weakness": "The extra gap above the action has little effect on clarity, while the page remains visually generic.",
+            "repair": "Develop a more ceramics-specific visual detail and keep the compact, clear mobile flow.",
+            "captures": [
+              "B-390-before",
+              "B-390-after",
+              "B-390-edge"
+            ],
+            "arm": "proposed",
+            "html_sha256": "6b524245c2029f8abd5c05d4775d1dad08155d851104ba2b5368d059ff648492",
+            "weighted": 7.3,
+            "before": {
+              "sha256": "5fb9b069d4e53be729605cfa6b6149174318c551c93a92bb9fc5374949347c92",
+              "file": "B-390-before.png",
+              "tool_call_id": "item_86"
+            },
+            "after": {
+              "sha256": "8b90ee5ca977d1b473f50bce71cd2cca89021e7b9950df8a9f2973be3df21ab1",
+              "file": "B-390-after.png",
+              "tool_call_id": "item_91"
+            },
+            "layout_width": 390,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "text",
+                "value": "Jamie"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "text",
+                "value": "invalid"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Backspace"
+              },
+              {
+                "action": "key",
+                "value": "Backspace"
+              },
+              {
+                "action": "key",
+                "value": "Backspace"
+              },
+              {
+                "action": "key",
+                "value": "Backspace"
+              },
+              {
+                "action": "key",
+                "value": "Backspace"
+              },
+              {
+                "action": "key",
+                "value": "Backspace"
+              },
+              {
+                "action": "key",
+                "value": "Backspace"
+              },
+              {
+                "action": "text",
+                "value": "jamie@example.test"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          }
+        },
+        "preference": {
+          "winner": "tie",
+          "reason": "Both views completed the tested validation flow with clear focus and equivalent confirmation states. B places the action slightly farther below the email field and its error; both spacings are clear, so the difference does not establish a meaningful overall advantage."
+        },
+        "case": "routine-signup-reaction",
+        "verified_screens": 4,
+        "required_screens": 4,
+        "browser": "Chrome/158.0.8127.36",
+        "evaluator_thread": "01a207b9-049a-7d02-8455-47ba1279fddf",
+        "usage": {
+          "input_tokens": 726278,
+          "cached_input_tokens": 665216,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2965,
+          "reasoning_output_tokens": 31
+        },
+        "trace_sha256": "6ac9c6db683626663ff455401f5c52323844af6ef70cef3ededd6fbccfaf464d",
+        "browser_audit_sha256": "009b59856635ce6edcc698916f2dd2d535a10f8611aa7c6d08e0f8856d575f85"
+      },
+      "blind_frames": [
+        {
+          "file": ".context/first-run-transfer/routine-blind/captures/A-1440-after.png",
+          "width": 1440,
+          "height": 900,
+          "sha256": "82435c922fd29578a5eb4886863f9cc126789d996053c057b4647852c87d4cb6"
+        },
+        {
+          "file": ".context/first-run-transfer/routine-blind/captures/A-1440-before.png",
+          "width": 1440,
+          "height": 900,
+          "sha256": "837925561b527dfd8fa4ca694472d72ef942270a650f90aae434870c38576517"
+        },
+        {
+          "file": ".context/first-run-transfer/routine-blind/captures/A-1440-edge.png",
+          "width": 1440,
+          "height": 900,
+          "sha256": "5b92291d8fad4c3fef0e9e44a899b9d0232e5a7d88bf594f93e6f69b31e8e604"
+        },
+        {
+          "file": ".context/first-run-transfer/routine-blind/captures/A-390-after.png",
+          "width": 390,
+          "height": 844,
+          "sha256": "4036dc04dae4465cba80b4aa5c858b522280857d4bcf8f8d5cbe8f5b53a390dc"
+        },
+        {
+          "file": ".context/first-run-transfer/routine-blind/captures/A-390-before.png",
+          "width": 390,
+          "height": 844,
+          "sha256": "1bc5ad1b3b30eca505091b6ba34558d347e509409b5880b4eb44cceb497745e7"
+        },
+        {
+          "file": ".context/first-run-transfer/routine-blind/captures/A-390-edge.png",
+          "width": 390,
+          "height": 844,
+          "sha256": "b8db9cc55edcb4451d05db17507b25e2ef5ee0707a7630f5fdd42a04e1c1a512"
+        },
+        {
+          "file": ".context/first-run-transfer/routine-blind/captures/B-1440-after.png",
+          "width": 1440,
+          "height": 900,
+          "sha256": "735e8f170feeb8c35404ec765193220de89a1dd6e122526d5b7a40a9853904b4"
+        },
+        {
+          "file": ".context/first-run-transfer/routine-blind/captures/B-1440-before.png",
+          "width": 1440,
+          "height": 900,
+          "sha256": "f931b6eef8166856d9e1e3f3f385ae227d8e12b10594b19fa44da5aa0af0fc83"
+        },
+        {
+          "file": ".context/first-run-transfer/routine-blind/captures/B-1440-edge.png",
+          "width": 1440,
+          "height": 900,
+          "sha256": "5b92291d8fad4c3fef0e9e44a899b9d0232e5a7d88bf594f93e6f69b31e8e604"
+        },
+        {
+          "file": ".context/first-run-transfer/routine-blind/captures/B-390-after.png",
+          "width": 390,
+          "height": 844,
+          "sha256": "8b90ee5ca977d1b473f50bce71cd2cca89021e7b9950df8a9f2973be3df21ab1"
+        },
+        {
+          "file": ".context/first-run-transfer/routine-blind/captures/B-390-before.png",
+          "width": 390,
+          "height": 844,
+          "sha256": "5fb9b069d4e53be729605cfa6b6149174318c551c93a92bb9fc5374949347c92"
+        },
+        {
+          "file": ".context/first-run-transfer/routine-blind/captures/B-390-edge.png",
+          "width": 390,
+          "height": 844,
+          "sha256": "b8db9cc55edcb4451d05db17507b25e2ef5ee0707a7630f5fdd42a04e1c1a512"
+        }
+      ]
+    },
+    "contradiction": {
+      "contract": "Exact contradictory brief, a real clarification, and a one-word reaction on the same installed client session.",
+      "protocol": {
+        "install": "ff38284ab21ff42153938545aa34df8db5f0cdcf",
+        "model": "gpt-6.1-terra",
+        "brief": "Make a dashboard for a shift lead. Hide every nonessential timing detail at first load and show every nonessential timing detail in full at first load.",
+        "direction": "exception-first",
+        "clarification_turns": 1,
+        "turns": [
+          {
+            "name": "question",
+            "thread": "01a207b7-340b-7af0-91d7-500eb7403f12",
+            "milliseconds": 11495,
+            "trace_sha256": "b006f1c855c8a22ad50f40ab810b5b2ed0c9d9649160d4fe1769d5656a4f04fb",
+            "prompt_sha256": "877355c7c5aa8222b61f23e465178b6bab64e8b800544f19a489e04bbf4696e2",
+            "usage": {
+              "input_tokens": 58273,
+              "cached_input_tokens": 46464,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 155,
+              "reasoning_output_tokens": 0
+            },
+            "calls": [
+              {
+                "server": "design-mcp",
+                "tool": "direct",
+                "arguments": {
+                  "brief": "Make a dashboard for a shift lead. Hide every nonessential timing detail at first load and show every nonessential timing detail in full at first load."
+                },
+                "status": "completed"
+              }
+            ],
+            "clarification": "Which initial state should the dashboard use?\n\n1. **Hide both times** (recommended).\n2. **Show both times**."
+          },
+          {
+            "name": "initial",
+            "thread": "01a207b7-340b-7af0-91d7-500eb7403f12",
+            "milliseconds": 35351,
+            "trace_sha256": "9e4e1a2030b8529bc4ca4314056e1b2381bc58991945242156e0bccf7b8e4bba",
+            "prompt_sha256": "12babf5708757fb44d58b19554cd611c92260686f6ae460a17396a335b7b146b",
+            "usage": {
+              "input_tokens": 78848,
+              "cached_input_tokens": 66816,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 1907,
+              "reasoning_output_tokens": 0
+            },
+            "calls": [],
+            "html_sha256": "e405e4de0b090945c7be5d3f182dbf806f6c28a7fe7264db344fa58a3508496a"
+          },
+          {
+            "name": "calmer",
+            "thread": "01a207b7-340b-7af0-91d7-500eb7403f12",
+            "milliseconds": 39051,
+            "trace_sha256": "894ef413abbc141e527b138ce90d221dd94f957d80cd49f94871ffbec641702c",
+            "prompt_sha256": "4418427c2a96f454039784b52e0ae9cc18d066a8457579e09056060f72879c18",
+            "usage": {
+              "input_tokens": 146555,
+              "cached_input_tokens": 120320,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 3670,
+              "reasoning_output_tokens": 0
+            },
+            "calls": [
+              {
+                "server": "design-mcp",
+                "tool": "react",
+                "arguments": {
+                  "direction_id": "exception-first",
+                  "reaction": "calmer"
+                },
+                "status": "completed"
+              }
+            ],
+            "html_sha256": "2f030f3001e25b1161a0a21a48e4c1745e109e693840b43c405f391c0ccc8bc9"
+          }
+        ]
+      },
+      "viewport_replay": {
+        "browser": "Chrome/158.0.8127.36",
+        "changes": {
+          "320": {
+            "initial_toggle_fill": "rgba(0, 0, 0, 0)",
+            "calmer_toggle_fill": "rgb(239, 189, 155)",
+            "initial_exception_fill": "rgb(255, 170, 114)",
+            "calmer_exception_fill": "rgb(32, 39, 41)"
+          },
+          "390": {
+            "initial_toggle_fill": "rgba(0, 0, 0, 0)",
+            "calmer_toggle_fill": "rgb(239, 189, 155)",
+            "initial_exception_fill": "rgb(255, 170, 114)",
+            "calmer_exception_fill": "rgb(32, 39, 41)"
+          },
+          "1440": {
+            "initial_toggle_fill": "rgba(0, 0, 0, 0)",
+            "calmer_toggle_fill": "rgb(239, 189, 155)",
+            "initial_exception_fill": "rgb(255, 170, 114)",
+            "calmer_exception_fill": "rgb(32, 39, 41)"
+          }
+        },
+        "rows": [
+          {
+            "phase": "initial",
+            "step": "entry",
+            "viewport": [
+              320,
+              700
+            ],
+            "focus": [
+              "",
+              false
+            ],
+            "visibleTimes": [],
+            "sha256": "53bb1d117e749dcd5ca35039e008962b46db64e7f257fbff767d2103c242e590",
+            "file": ".context/first-run-transfer/browser-contradiction/initial-320-entry.png"
+          },
+          {
+            "phase": "initial",
+            "step": "keyboard-show",
+            "viewport": [
+              320,
+              700
+            ],
+            "focus": [
+              "timing-toggle",
+              true
+            ],
+            "visibleTimes": [
+              "09:10",
+              "09:25"
+            ],
+            "sha256": "d05270b33a3d5d68690a79d7c4ba95a3368b385e22213eff3716294b215436eb",
+            "file": ".context/first-run-transfer/browser-contradiction/initial-320-keyboard-show.png"
+          },
+          {
+            "phase": "initial",
+            "step": "keyboard-hide",
+            "viewport": [
+              320,
+              700
+            ],
+            "focus": [
+              "timing-toggle",
+              true
+            ],
+            "visibleTimes": [],
+            "sha256": "02c9fef9ccb7f4c3cd7fd8bc41418852c2ae9de65d5cb6b9fe5317d7f837dc71",
+            "file": ".context/first-run-transfer/browser-contradiction/initial-320-keyboard-hide.png"
+          },
+          {
+            "phase": "initial",
+            "step": "pointer-show",
+            "viewport": [
+              320,
+              700
+            ],
+            "focus": [
+              "timing-toggle",
+              true
+            ],
+            "visibleTimes": [
+              "09:10",
+              "09:25"
+            ],
+            "sha256": "07362f6e968b0a7549f90a81c9ef09f92b33ace9c039c7ca76b1b66cc18b2a8d",
+            "file": ".context/first-run-transfer/browser-contradiction/initial-320-pointer-show.png"
+          },
+          {
+            "phase": "initial",
+            "step": "reload",
+            "viewport": [
+              320,
+              700
+            ],
+            "focus": [
+              "",
+              false
+            ],
+            "visibleTimes": [],
+            "sha256": "53bb1d117e749dcd5ca35039e008962b46db64e7f257fbff767d2103c242e590",
+            "file": ".context/first-run-transfer/browser-contradiction/initial-320-reload.png"
+          },
+          {
+            "phase": "initial",
+            "step": "entry",
+            "viewport": [
+              390,
+              844
+            ],
+            "focus": [
+              "",
+              false
+            ],
+            "visibleTimes": [],
+            "sha256": "0171f27ae750f506adf6eb0c3d01f86e13fd19fceb2a511f72688594d2b1fa41",
+            "file": ".context/first-run-transfer/browser-contradiction/initial-390-entry.png"
+          },
+          {
+            "phase": "initial",
+            "step": "keyboard-show",
+            "viewport": [
+              390,
+              844
+            ],
+            "focus": [
+              "timing-toggle",
+              true
+            ],
+            "visibleTimes": [
+              "09:10",
+              "09:25"
+            ],
+            "sha256": "2da647bc6ddd58e7d644149de90263fa105444a943faa4919cee28cf7d85cbe6",
+            "file": ".context/first-run-transfer/browser-contradiction/initial-390-keyboard-show.png"
+          },
+          {
+            "phase": "initial",
+            "step": "keyboard-hide",
+            "viewport": [
+              390,
+              844
+            ],
+            "focus": [
+              "timing-toggle",
+              true
+            ],
+            "visibleTimes": [],
+            "sha256": "580af5902585b5ed7155d871490dfee404be3011f65f99f62a9c6e0903555631",
+            "file": ".context/first-run-transfer/browser-contradiction/initial-390-keyboard-hide.png"
+          },
+          {
+            "phase": "initial",
+            "step": "pointer-show",
+            "viewport": [
+              390,
+              844
+            ],
+            "focus": [
+              "timing-toggle",
+              true
+            ],
+            "visibleTimes": [
+              "09:10",
+              "09:25"
+            ],
+            "sha256": "954f5fecaea26fc6b6654bcc89292902e554d76abda013aca5a5e5982d490108",
+            "file": ".context/first-run-transfer/browser-contradiction/initial-390-pointer-show.png"
+          },
+          {
+            "phase": "initial",
+            "step": "reload",
+            "viewport": [
+              390,
+              844
+            ],
+            "focus": [
+              "",
+              false
+            ],
+            "visibleTimes": [],
+            "sha256": "0171f27ae750f506adf6eb0c3d01f86e13fd19fceb2a511f72688594d2b1fa41",
+            "file": ".context/first-run-transfer/browser-contradiction/initial-390-reload.png"
+          },
+          {
+            "phase": "initial",
+            "step": "entry",
+            "viewport": [
+              1440,
+              900
+            ],
+            "focus": [
+              "",
+              false
+            ],
+            "visibleTimes": [],
+            "sha256": "7458e53660789af77b4894452c97913e079269b2f4f9e046cb0d85943dd255b6",
+            "file": ".context/first-run-transfer/browser-contradiction/initial-1440-entry.png"
+          },
+          {
+            "phase": "initial",
+            "step": "keyboard-show",
+            "viewport": [
+              1440,
+              900
+            ],
+            "focus": [
+              "timing-toggle",
+              true
+            ],
+            "visibleTimes": [
+              "09:10",
+              "09:25"
+            ],
+            "sha256": "59acd2b0456bf8f7685c552c87a7509579d265ba355f5e7a3052ea6514d6c2e1",
+            "file": ".context/first-run-transfer/browser-contradiction/initial-1440-keyboard-show.png"
+          },
+          {
+            "phase": "initial",
+            "step": "keyboard-hide",
+            "viewport": [
+              1440,
+              900
+            ],
+            "focus": [
+              "timing-toggle",
+              true
+            ],
+            "visibleTimes": [],
+            "sha256": "11762a054c42255b3c34257d7924f4e92fb6e7e5bad86528712c7b121bb15eb1",
+            "file": ".context/first-run-transfer/browser-contradiction/initial-1440-keyboard-hide.png"
+          },
+          {
+            "phase": "initial",
+            "step": "pointer-show",
+            "viewport": [
+              1440,
+              900
+            ],
+            "focus": [
+              "timing-toggle",
+              true
+            ],
+            "visibleTimes": [
+              "09:10",
+              "09:25"
+            ],
+            "sha256": "abd9033945160ae9752e14f9b3af5e522d9bf3cb5f23a0f1905dfeac065ff858",
+            "file": ".context/first-run-transfer/browser-contradiction/initial-1440-pointer-show.png"
+          },
+          {
+            "phase": "initial",
+            "step": "reload",
+            "viewport": [
+              1440,
+              900
+            ],
+            "focus": [
+              "",
+              false
+            ],
+            "visibleTimes": [],
+            "sha256": "7458e53660789af77b4894452c97913e079269b2f4f9e046cb0d85943dd255b6",
+            "file": ".context/first-run-transfer/browser-contradiction/initial-1440-reload.png"
+          },
+          {
+            "phase": "calmer",
+            "step": "entry",
+            "viewport": [
+              320,
+              700
+            ],
+            "focus": [
+              "",
+              false
+            ],
+            "visibleTimes": [],
+            "sha256": "27ae8a922d27417b1f05aa8a7445e30f2313eafbf754d89d8b237b0fe5eba306",
+            "file": ".context/first-run-transfer/browser-contradiction/calmer-320-entry.png"
+          },
+          {
+            "phase": "calmer",
+            "step": "keyboard-show",
+            "viewport": [
+              320,
+              700
+            ],
+            "focus": [
+              "timing-toggle",
+              true
+            ],
+            "visibleTimes": [
+              "09:10",
+              "09:25"
+            ],
+            "sha256": "7fbbc28d74a17c36910465a8f02a3be06f6e775afa01428473ba31bd5f6fd051",
+            "file": ".context/first-run-transfer/browser-contradiction/calmer-320-keyboard-show.png"
+          },
+          {
+            "phase": "calmer",
+            "step": "keyboard-hide",
+            "viewport": [
+              320,
+              700
+            ],
+            "focus": [
+              "timing-toggle",
+              true
+            ],
+            "visibleTimes": [],
+            "sha256": "5c1ea0eb754adc6c5fc99dbc64d432bba654afe3a7d5d2a5cb44d7ea59902af7",
+            "file": ".context/first-run-transfer/browser-contradiction/calmer-320-keyboard-hide.png"
+          },
+          {
+            "phase": "calmer",
+            "step": "pointer-show",
+            "viewport": [
+              320,
+              700
+            ],
+            "focus": [
+              "timing-toggle",
+              true
+            ],
+            "visibleTimes": [
+              "09:10",
+              "09:25"
+            ],
+            "sha256": "411d549ecf1296a77c14b2c89a5e4526608a2209f883b11b2c9b5a76b7e7e7b1",
+            "file": ".context/first-run-transfer/browser-contradiction/calmer-320-pointer-show.png"
+          },
+          {
+            "phase": "calmer",
+            "step": "reload",
+            "viewport": [
+              320,
+              700
+            ],
+            "focus": [
+              "",
+              false
+            ],
+            "visibleTimes": [],
+            "sha256": "27ae8a922d27417b1f05aa8a7445e30f2313eafbf754d89d8b237b0fe5eba306",
+            "file": ".context/first-run-transfer/browser-contradiction/calmer-320-reload.png"
+          },
+          {
+            "phase": "calmer",
+            "step": "entry",
+            "viewport": [
+              390,
+              844
+            ],
+            "focus": [
+              "",
+              false
+            ],
+            "visibleTimes": [],
+            "sha256": "7d763049053f6a3a486fe85e76d5e616c19026eb72751cce2582fe72d80afbd3",
+            "file": ".context/first-run-transfer/browser-contradiction/calmer-390-entry.png"
+          },
+          {
+            "phase": "calmer",
+            "step": "keyboard-show",
+            "viewport": [
+              390,
+              844
+            ],
+            "focus": [
+              "timing-toggle",
+              true
+            ],
+            "visibleTimes": [
+              "09:10",
+              "09:25"
+            ],
+            "sha256": "f161b52cdd27cddf85b94141d68fe87d4733127b2411d76395fb6a0bcf62fd14",
+            "file": ".context/first-run-transfer/browser-contradiction/calmer-390-keyboard-show.png"
+          },
+          {
+            "phase": "calmer",
+            "step": "keyboard-hide",
+            "viewport": [
+              390,
+              844
+            ],
+            "focus": [
+              "timing-toggle",
+              true
+            ],
+            "visibleTimes": [],
+            "sha256": "7242b5817431ad502eae7f1a9d80d68e7aff974872117453b65275923809c47e",
+            "file": ".context/first-run-transfer/browser-contradiction/calmer-390-keyboard-hide.png"
+          },
+          {
+            "phase": "calmer",
+            "step": "pointer-show",
+            "viewport": [
+              390,
+              844
+            ],
+            "focus": [
+              "timing-toggle",
+              true
+            ],
+            "visibleTimes": [
+              "09:10",
+              "09:25"
+            ],
+            "sha256": "fe8a90043498ee8384e726ee2955eba9f8c8c9cd3a34edaccb7a5b22b57acfda",
+            "file": ".context/first-run-transfer/browser-contradiction/calmer-390-pointer-show.png"
+          },
+          {
+            "phase": "calmer",
+            "step": "reload",
+            "viewport": [
+              390,
+              844
+            ],
+            "focus": [
+              "",
+              false
+            ],
+            "visibleTimes": [],
+            "sha256": "7d763049053f6a3a486fe85e76d5e616c19026eb72751cce2582fe72d80afbd3",
+            "file": ".context/first-run-transfer/browser-contradiction/calmer-390-reload.png"
+          },
+          {
+            "phase": "calmer",
+            "step": "entry",
+            "viewport": [
+              1440,
+              900
+            ],
+            "focus": [
+              "",
+              false
+            ],
+            "visibleTimes": [],
+            "sha256": "bc7fb78e6ff43c63bc10798e7ec20989218d091ffea276a029cd5d1253930f2c",
+            "file": ".context/first-run-transfer/browser-contradiction/calmer-1440-entry.png"
+          },
+          {
+            "phase": "calmer",
+            "step": "keyboard-show",
+            "viewport": [
+              1440,
+              900
+            ],
+            "focus": [
+              "timing-toggle",
+              true
+            ],
+            "visibleTimes": [
+              "09:10",
+              "09:25"
+            ],
+            "sha256": "6da171b8347b991f5b5b296e90c4a3329b4b5739a7cb19343781ff976737a567",
+            "file": ".context/first-run-transfer/browser-contradiction/calmer-1440-keyboard-show.png"
+          },
+          {
+            "phase": "calmer",
+            "step": "keyboard-hide",
+            "viewport": [
+              1440,
+              900
+            ],
+            "focus": [
+              "timing-toggle",
+              true
+            ],
+            "visibleTimes": [],
+            "sha256": "e97640b1167dbf8d8aee9f0e7f54d3a07859d567b14800863c2c42c7b69996e2",
+            "file": ".context/first-run-transfer/browser-contradiction/calmer-1440-keyboard-hide.png"
+          },
+          {
+            "phase": "calmer",
+            "step": "pointer-show",
+            "viewport": [
+              1440,
+              900
+            ],
+            "focus": [
+              "timing-toggle",
+              true
+            ],
+            "visibleTimes": [
+              "09:10",
+              "09:25"
+            ],
+            "sha256": "59dea3b313f256a803ea1f42ce6df384ce5a52f3cdf125f58f6385c2dc7d3012",
+            "file": ".context/first-run-transfer/browser-contradiction/calmer-1440-pointer-show.png"
+          },
+          {
+            "phase": "calmer",
+            "step": "reload",
+            "viewport": [
+              1440,
+              900
+            ],
+            "focus": [
+              "",
+              false
+            ],
+            "visibleTimes": [],
+            "sha256": "bc7fb78e6ff43c63bc10798e7ec20989218d091ffea276a029cd5d1253930f2c",
+            "file": ".context/first-run-transfer/browser-contradiction/calmer-1440-reload.png"
+          }
+        ]
+      },
+      "blind_ballot": {
+        "calibration": {
+          "example": "Legible repair intake with clear labels, familiar layout, and misplaced focus after an invalid number",
+          "coherence": 7,
+          "originality": 4,
+          "craft": 6,
+          "usability": 5.5,
+          "basis": "Estimated from the supplied description; the example was not viewed or tested."
+        },
+        "screens": {
+          "A-1440": {
+            "coherence": 8.5,
+            "originality": 7,
+            "craft": 8,
+            "usability": 8.5,
+            "primary_action": {
+              "input": "Tab, then Enter",
+              "expected": "Show both times and change the action to Hide times.",
+              "observed": "Bay A showed 09:10 and Bay B showed 09:25. The focused button changed to Hide times."
+            },
+            "edge_observation": "A second Enter hid both times, restored Show times, and retained both names and statuses. Focus remained visible on the button.",
+            "fact_check": "Initially Bay A was On time, Bay B was Delayed, and neither time was visible. All requested states were captured.",
+            "strength": "The large orange Bay B panel and matching delayed status make the exception immediately prominent.",
+            "weakness": "The outlined show-times control is comparatively subdued and distant from the list on the wide layout.",
+            "repair": "Give the control slightly stronger contrast or place it closer to the bay list while retaining the delayed panel as the focal point.",
+            "arm": "current",
+            "html_sha256": "e405e4de0b090945c7be5d3f182dbf806f6c28a7fe7264db344fa58a3508496a",
+            "weighted": 7.95,
+            "before": {
+              "sha256": "7458e53660789af77b4894452c97913e079269b2f4f9e046cb0d85943dd255b6",
+              "file": "A-1440-before.png",
+              "tool_call_id": "item_2"
+            },
+            "after": {
+              "sha256": "59acd2b0456bf8f7685c552c87a7509579d265ba355f5e7a3052ea6514d6c2e1",
+              "file": "A-1440-after.png",
+              "tool_call_id": "item_5"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "A-390": {
+            "coherence": 8.5,
+            "originality": 7,
+            "craft": 8.5,
+            "usability": 8.5,
+            "primary_action": {
+              "input": "Tab, then Enter",
+              "expected": "Show both times and change the action to Hide times.",
+              "observed": "Bay A showed 09:10 and Bay B showed 09:25. The focused button changed to Hide times."
+            },
+            "edge_observation": "A second Enter hid both times; both row names and statuses remained visible, and focus stayed on Show times.",
+            "fact_check": "Initially Bay A was On time, Bay B was Delayed, and both times were hidden. All requested states were captured.",
+            "strength": "The orange delayed panel remains the strongest visual element, and the control and both rows fit clearly in the viewport.",
+            "weakness": "The outlined control is less visually prominent than the alert, although its action label is clear.",
+            "repair": "Increase the button's visual weight modestly without competing with the delayed bay.",
+            "arm": "current",
+            "html_sha256": "e405e4de0b090945c7be5d3f182dbf806f6c28a7fe7264db344fa58a3508496a",
+            "weighted": 8.05,
+            "before": {
+              "sha256": "0171f27ae750f506adf6eb0c3d01f86e13fd19fceb2a511f72688594d2b1fa41",
+              "file": "A-390-before.png",
+              "tool_call_id": "item_9"
+            },
+            "after": {
+              "sha256": "2da647bc6ddd58e7d644149de90263fa105444a943faa4919cee28cf7d85cbe6",
+              "file": "A-390-after.png",
+              "tool_call_id": "item_12"
+            },
+            "layout_width": 390,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-1440": {
+            "coherence": 8,
+            "originality": 6.5,
+            "craft": 8,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab, then Enter",
+              "expected": "Show both times and change the action to Hide times.",
+              "observed": "Bay A showed 09:10 and Bay B showed 09:25. The focused button changed to Hide times."
+            },
+            "edge_observation": "A second Enter hid both times, retained the names and statuses, and left visible focus on Show times.",
+            "fact_check": "Initially Bay A was On time, Bay B was Delayed, and both times were hidden. All requested states were captured.",
+            "strength": "The filled Show times button is easy to find, and the large Bay B heading identifies the exception.",
+            "weakness": "The delayed panel is restrained, and the two row statuses have equal visual treatment; the filled button attracts more color attention.",
+            "repair": "Add a stronger, consistent delayed-state accent to the panel and Bay B row while keeping the action legible.",
+            "arm": "proposed",
+            "html_sha256": "2f030f3001e25b1161a0a21a48e4c1745e109e693840b43c405f391c0ccc8bc9",
+            "weighted": 7.55,
+            "before": {
+              "sha256": "bc7fb78e6ff43c63bc10798e7ec20989218d091ffea276a029cd5d1253930f2c",
+              "file": "B-1440-before.png",
+              "tool_call_id": "item_17"
+            },
+            "after": {
+              "sha256": "6da171b8347b991f5b5b296e90c4a3329b4b5739a7cb19343781ff976737a567",
+              "file": "B-1440-after.png",
+              "tool_call_id": "item_20"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-390": {
+            "coherence": 8,
+            "originality": 6.5,
+            "craft": 8,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab, then Enter",
+              "expected": "Show both times and change the action to Hide times.",
+              "observed": "Bay A showed 09:10 and Bay B showed 09:25. The focused button changed to Hide times."
+            },
+            "edge_observation": "A second Enter hid both times; the names and statuses remained visible and focus stayed on Show times.",
+            "fact_check": "Initially Bay A was On time, Bay B was Delayed, and both times were hidden. All requested states were captured.",
+            "strength": "The filled action is clear and the compact layout keeps the alert and both rows visible.",
+            "weakness": "The delayed status in the list looks much like On time, and the alert's narrow accent is less attention-grabbing than the button.",
+            "repair": "Strengthen the delayed-state treatment in both the alert and its list row.",
+            "arm": "proposed",
+            "html_sha256": "2f030f3001e25b1161a0a21a48e4c1745e109e693840b43c405f391c0ccc8bc9",
+            "weighted": 7.55,
+            "before": {
+              "sha256": "7d763049053f6a3a486fe85e76d5e616c19026eb72751cce2582fe72d80afbd3",
+              "file": "B-390-before.png",
+              "tool_call_id": "item_24"
+            },
+            "after": {
+              "sha256": "f161b52cdd27cddf85b94141d68fe87d4733127b2411d76395fb6a0bcf62fd14",
+              "file": "B-390-after.png",
+              "tool_call_id": "item_27"
+            },
+            "layout_width": 390,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          }
+        },
+        "preference": {
+          "winner": "A",
+          "reason": "Both designs completed the keyboard flow at both widths. A more clearly draws attention to the delayed bay through its prominent alert panel and matching row status, while its show-or-hide label and focus remain clear. B makes the action more visually prominent but gives the delay less emphasis."
+        },
+        "unsupported_claims": "No claims are made about revision history, generator identity, or behavior beyond the tested flow.",
+        "case": "clarified-shift-queue",
+        "verified_screens": 4,
+        "required_screens": 4,
+        "browser": "Chrome/158.0.8127.36",
+        "evaluator_thread": "01a207ba-c5bd-7a31-ae3f-dbe25e385b32",
+        "usage": {
+          "input_tokens": 415582,
+          "cached_input_tokens": 378368,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2339,
+          "reasoning_output_tokens": 0
+        },
+        "trace_sha256": "94ceda0bf077d31dead07f7cb937055433335e99224662a0895600f88416793b",
+        "browser_audit_sha256": "bdd825f339e0ce635074253778fbc9ae62f8bea1134560159177fbda151be9a4"
+      },
+      "blind_frames": [
+        {
+          "file": ".context/first-run-transfer/contradiction-blind/captures/A-1440-after.png",
+          "width": 1440,
+          "height": 900,
+          "sha256": "59acd2b0456bf8f7685c552c87a7509579d265ba355f5e7a3052ea6514d6c2e1"
+        },
+        {
+          "file": ".context/first-run-transfer/contradiction-blind/captures/A-1440-before.png",
+          "width": 1440,
+          "height": 900,
+          "sha256": "7458e53660789af77b4894452c97913e079269b2f4f9e046cb0d85943dd255b6"
+        },
+        {
+          "file": ".context/first-run-transfer/contradiction-blind/captures/A-1440-edge.png",
+          "width": 1440,
+          "height": 900,
+          "sha256": "11762a054c42255b3c34257d7924f4e92fb6e7e5bad86528712c7b121bb15eb1"
+        },
+        {
+          "file": ".context/first-run-transfer/contradiction-blind/captures/A-390-after.png",
+          "width": 390,
+          "height": 844,
+          "sha256": "2da647bc6ddd58e7d644149de90263fa105444a943faa4919cee28cf7d85cbe6"
+        },
+        {
+          "file": ".context/first-run-transfer/contradiction-blind/captures/A-390-before.png",
+          "width": 390,
+          "height": 844,
+          "sha256": "0171f27ae750f506adf6eb0c3d01f86e13fd19fceb2a511f72688594d2b1fa41"
+        },
+        {
+          "file": ".context/first-run-transfer/contradiction-blind/captures/A-390-edge.png",
+          "width": 390,
+          "height": 844,
+          "sha256": "580af5902585b5ed7155d871490dfee404be3011f65f99f62a9c6e0903555631"
+        },
+        {
+          "file": ".context/first-run-transfer/contradiction-blind/captures/B-1440-after.png",
+          "width": 1440,
+          "height": 900,
+          "sha256": "6da171b8347b991f5b5b296e90c4a3329b4b5739a7cb19343781ff976737a567"
+        },
+        {
+          "file": ".context/first-run-transfer/contradiction-blind/captures/B-1440-before.png",
+          "width": 1440,
+          "height": 900,
+          "sha256": "bc7fb78e6ff43c63bc10798e7ec20989218d091ffea276a029cd5d1253930f2c"
+        },
+        {
+          "file": ".context/first-run-transfer/contradiction-blind/captures/B-1440-edge.png",
+          "width": 1440,
+          "height": 900,
+          "sha256": "e97640b1167dbf8d8aee9f0e7f54d3a07859d567b14800863c2c42c7b69996e2"
+        },
+        {
+          "file": ".context/first-run-transfer/contradiction-blind/captures/B-390-after.png",
+          "width": 390,
+          "height": 844,
+          "sha256": "f161b52cdd27cddf85b94141d68fe87d4733127b2411d76395fb6a0bcf62fd14"
+        },
+        {
+          "file": ".context/first-run-transfer/contradiction-blind/captures/B-390-before.png",
+          "width": 390,
+          "height": 844,
+          "sha256": "7d763049053f6a3a486fe85e76d5e616c19026eb72751cce2582fe72d80afbd3"
+        },
+        {
+          "file": ".context/first-run-transfer/contradiction-blind/captures/B-390-edge.png",
+          "width": 390,
+          "height": 844,
+          "sha256": "7242b5817431ad502eae7f1a9d80d68e7aff974872117453b65275923809c47e"
+        }
+      ]
+    }
+  }
+}

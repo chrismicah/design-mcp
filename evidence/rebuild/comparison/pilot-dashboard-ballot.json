@@ -1,0 +1,134 @@
+{
+  "case": "dashboard",
+  "model": "gpt-6.2-astra",
+  "effort": "max",
+  "prompt_sha256": "3219fbc7b604574a13dcac04c6eb90c9e83824a662190f10f230d1916b011584",
+  "image_sha256": {
+    "A-1440.png": "89993a6980a3e90d35230c8a4066dd24eb01c6fe387bab1c77afac6217e85838",
+    "A-1440-blur.png": "7e96feac00f56b0f5b04ec1bdd8a5f1e7b89857b2e29f9053cedc24f3f18779f",
+    "A-390.png": "472ec79f5aa2db79bdf7ddfb6bccf87e5b5ac409c0fc0ef65a1c439bbeb50ec5",
+    "A-390-blur.png": "010e340ce940ceefca9361559226a6078dcbf14250a43fb71c99144abbabea39",
+    "B-1440.png": "e1a66d574254a8324af4ccb5fcd70433600d858fcf80c6e993a584fb347c7b5c",
+    "B-1440-blur.png": "94d455a57e1821f9ea3c88dbcaf5924971fba2f39f1174415936037be0c0cf9f",
+    "B-390.png": "89b219435eaea1d55a813e020d691f95cadbace69225173d444095ae3345bcdc",
+    "B-390-blur.png": "72e52344fb976ee217296dd06e784ab4c90f97c1a5226b3b9771874ce6812ca4",
+    "C-1440.png": "eacff5995254e67455f5515c9da53c861e77e7807c8f3c176b71f86f5b1aff86",
+    "C-1440-blur.png": "b06ab01698681e09d4be5290c07f8273cbec1f6827b890fc2981f0c541f45101",
+    "C-390.png": "3396e05e18bde0913c5f217d565b94094eaccf0f57b51f464dd5a9d1abfc5128",
+    "C-390-blur.png": "397c2aaa92fe6512903b663fe9dfd901d3ef3a84b7a339afee1c3903b02b617c",
+    "D-1440.png": "7d114bc6dce0b00a42e5549e759d10839394548bdbb00bb5bcda600ab72ccfbf",
+    "D-1440-blur.png": "413e412f0143b12ac857d18e08308bc7e49b15099b293f7c276eb5b5563859a2",
+    "D-390.png": "d8f7baef197d014b9c04d97efebe9be894a69d47e916e82e6a3ecac9aa69beb8",
+    "D-390-blur.png": "75b07d719b28f703f11eb10c09ba31fda509c16f6e5d20d8700648d3333af796"
+  },
+  "blind_key": {
+    "A": "D",
+    "B": "N",
+    "C": "C",
+    "D": "L"
+  },
+  "usage": {
+    "input_tokens": 38357,
+    "cached_input_tokens": 0,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 6456,
+    "reasoning_output_tokens": 5336
+  },
+  "scores": {
+    "D": 10,
+    "N": 9,
+    "C": 10,
+    "L": 5
+  },
+  "verdict": {
+    "A": {
+      "task_focus": {
+        "score": 2,
+        "evidence": "The first band puts \u201c+19 min\u201d beside LS-057 and Bay 4. Its bright button names the exact action, \u201cFocus LS-057 at Bay 4.\u201d"
+      },
+      "distinctiveness": {
+        "score": 2,
+        "evidence": "Under blur, the wide delay band, five-row queue and isolated due-next block remain distinct. The layout separates the current exception from the next arrival."
+      },
+      "craft": {
+        "score": 2,
+        "evidence": "The delay rivals the shift title in size. Peach repeats on its status in the first row, making the load easy to trace from alert to queue."
+      },
+      "mobile": {
+        "score": 2,
+        "evidence": "At 390 px the alert stacks above a full-width focus button. \u201cDue next\u201d moves ahead of the queue, and all five rows remain legible."
+      },
+      "evidence_in_use": {
+        "score": 2,
+        "evidence": "LS-057\u2019s 19-minute delay puts it first in the five-load queue and supplies the alert. LS-061\u2019s nine-minute arrival gets a separate callout."
+      }
+    },
+    "B": {
+      "task_focus": {
+        "score": 2,
+        "evidence": "The dark band immediately pairs LS-057 at Bay 4 and \u201c19 minutes delayed\u201d with the adjacent \u201cFocus delay\u201d button."
+      },
+      "distinctiveness": {
+        "score": 1,
+        "evidence": "The delay gets a dedicated band that stands out under blur. The large heading and full-width table below follow a familiar dashboard layout."
+      },
+      "craft": {
+        "score": 2,
+        "evidence": "Amber links the delay text and button against dark teal. Bold load IDs, generous row spacing and fine rules make the table easy to scan."
+      },
+      "mobile": {
+        "score": 2,
+        "evidence": "The load and delay occupy two short lines beside the visible focus button. All five rows fit below, including the full \u201cDelayed 19 min\u201d status."
+      },
+      "evidence_in_use": {
+        "score": 2,
+        "evidence": "LS-057, Bay 4 and the 19-minute delay supply the focal message. \u201cLoads (5)\u201d gives the total, and the second row pairs LS-061 with its nine-minute ETA."
+      }
+    },
+    "C": {
+      "task_focus": {
+        "score": 2,
+        "evidence": "The top strip reads left to right from LS-057 at Bay 4, through the large \u201c+19 min,\u201d to a focus button naming the same load and bay."
+      },
+      "distinctiveness": {
+        "score": 2,
+        "evidence": "The three parts of the delay strip survive the desktop blur. Below it, one upcoming arrival stands apart from the queue, giving each dispatch priority a recognizable place."
+      },
+      "craft": {
+        "score": 2,
+        "evidence": "Peach carries through the alert\u2019s edge, duration, button and corresponding queue row. Highlighting all three cells lets the eye follow LS-057 across to its bay and status."
+      },
+      "mobile": {
+        "score": 2,
+        "evidence": "The alert stacks in reading order and ends with a wide, fully labeled button. LS-061 and \u201cIn 9 minutes\u201d share one line above the queue."
+      },
+      "evidence_in_use": {
+        "score": 2,
+        "evidence": "The alert\u2019s \u201c2 / 5\u201d matches LS-057\u2019s highlighted second row, where Bay 4 and the 19-minute delay recur. LS-061\u2019s nine-minute deadline anchors \u201cDue next.\u201d"
+      }
+    },
+    "D": {
+      "task_focus": {
+        "score": 1,
+        "evidence": "\u201cFocus delay\u201d is visible in the board header. To identify its target, the dispatcher must connect the \u201c1 Delayed load\u201d tile to LS-057 in the tinted second row."
+      },
+      "distinctiveness": {
+        "score": 0,
+        "evidence": "Under blur, the masthead, three equal tiles and bordered table dominate. That arrangement could summarize many kinds of records."
+      },
+      "craft": {
+        "score": 1,
+        "evidence": "Aligned columns and a pale row tint keep the board readable. The three equally large figures spread attention across the summary while the 19-minute delay stays in body text."
+      },
+      "mobile": {
+        "score": 2,
+        "evidence": "At 390 px all three tile labels fit, the focus button has room beside the board title, and the highlighted row shows its load, bay and full status."
+      },
+      "evidence_in_use": {
+        "score": 1,
+        "evidence": "The summary shows five active loads and nine minutes to arrival. The table supplies the two identities behind the timing information, including LS-057\u2019s bay and 19-minute delay."
+      }
+    }
+  },
+  "trace_sha256": "8845bf9d8697196db8324e0dbdf89abf673a51f202ab5e686d3d660b870062d1"
+}

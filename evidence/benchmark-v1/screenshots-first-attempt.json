@@ -1,0 +1,69 @@
+{
+  "scope": "Frozen ceramics generation. No qualifying MCP call, so the HTML is ineligible for a visual ballot.",
+  "installed_catalog": {
+    "mcp_config_sha256": "116a2e0cf7dc2044a17b077cf8c880a48c8cd5140e18ca20e8608e5dbdc89d53",
+    "tools": [
+      "browse_by_platform",
+      "get_product_screenshots",
+      "get_random_inspiration",
+      "list_tags",
+      "search_by_tags",
+      "search_inspiration",
+      "search_screenshots_by_tags"
+    ]
+  },
+  "generator": {
+    "usage": {
+      "input_tokens": 20577,
+      "cached_input_tokens": 11136,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 25560,
+      "reasoning_output_tokens": 16506
+    },
+    "tool_calls": [],
+    "client_errors": [],
+    "treatment_call": false,
+    "status": "mcp-unused-or-failed",
+    "case": "landing-ceramics",
+    "arm": "screenshots",
+    "model": "gpt-6.2-sol",
+    "effort": "max",
+    "client": "codex-cli 0.170.0",
+    "prompt_sha256": "1b7e4408d51fd57e448b6c6af2541f70db8a3a9291f546c5217d05b4bda1950f",
+    "mcp_config_sha256": "116a2e0cf7dc2044a17b077cf8c880a48c8cd5140e18ca20e8608e5dbdc89d53",
+    "elapsed_seconds": 515.25,
+    "exit_code": 0,
+    "trace_sha256": "184f122c6086c68d57c64ef777cb82a736daa7e5d26dbc4200ec5bceb67b87c4",
+    "html_sha256": "350ab3f11e68811b99b338ab6480f1d999c571114d91cafbffb44642839c9db3"
+  },
+  "package": {
+    "observed_utc": "2026-11-22T06:10:39.561473+00:00",
+    "config": {
+      "name": "screenshots",
+      "expected_tools": [
+        "search_inspiration",
+        "search_by_tags",
+        "search_screenshots_by_tags",
+        "get_product_screenshots"
+      ],
+      "verified_read_only_tools": [
+        "search_inspiration",
+        "search_by_tags",
+        "search_screenshots_by_tags",
+        "get_product_screenshots",
+        "browse_by_platform",
+        "list_tags",
+        "get_random_inspiration"
+      ]
+    },
+    "version": "1.1.1",
+    "integrity": "sha512-PgswJ7U8xzOl9rMwM6IY8kqHc47Ll62fqFdY4Gq9BsGNvIOZdS58nbYyvsqCgRwscqirZjwxdcVcDPQzdd+FHQ==",
+    "lock_sha256": "59c2e7d0255b6459438ae5dbf78cff8ad3bb39d07591271c0c55f9e39d194196",
+    "index": {
+      "url": "https://screenshots.designknowledgebase.com/api/products.json",
+      "bytes": 1283301,
+      "sha256": "a813bec929f2e7e386613c2da472bc9a0b9940a144d42d91d756b8f9a1bf7786",
+      "products": 435
+    }
+  }
+}

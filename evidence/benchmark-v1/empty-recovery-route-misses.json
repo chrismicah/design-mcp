@@ -1,0 +1,90 @@
+{
+  "candidate_commit": "bc2e2bd",
+  "cases": {
+    "empty-search": {
+      "expected_direction": "search-recovery",
+      "observed_directions": [
+        "object-hero"
+      ],
+      "eligibility": "unexpected-design-direction",
+      "arguments": {
+        "brief": "Design an empty search result for patrons of a public tool library who want to find equipment they can borrow. The submitted query is “chain saw” and has zero matches. Make the absence of matches explicit and make the single recovery action, selecting “pruning saw,” immediately apparent. That action changes the search to “pruning saw” and shows one available item named Folding Pruning Saw. The page should feel clear, practical and welcoming. There is no existing branding and no supplied facts beyond those search states. Use a grounded public-library or workshop visual identity and one original, subject-specific illustration. Deliverable is one self-contained HTML document for Chrome at 1440 and 390 pixels. Interactions are local, with no remote assets except optional Google Fonts stylesheets."
+      },
+      "generation": {
+        "usage": {
+          "input_tokens": 64992,
+          "cached_input_tokens": 41984,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 22706,
+          "reasoning_output_tokens": 17267
+        },
+        "tool_calls": [
+          {
+            "type": "mcp_tool_call",
+            "server": "design-mcp",
+            "tool": "direct",
+            "status": "completed"
+          }
+        ],
+        "client_errors": [],
+        "treatment_call": true,
+        "direct_call": true,
+        "status": "passed",
+        "case": "empty-search",
+        "arm": "empty-recovery",
+        "model": "gpt-6.2-sol",
+        "effort": "max",
+        "client": "codex-cli 0.170.0",
+        "prompt_sha256": "ec1fc5defc9fb73906e9e6c71b5dfb4a090de213e27cd3188a7866a74ab0c4ed",
+        "mcp_config_sha256": "4af43afc2f55fc6371cfb78a842b6358400ac2b400fdb54cf5b7b534359aeee9",
+        "elapsed_seconds": 461.76,
+        "exit_code": 0,
+        "trace_sha256": "6d51a8be5e0f4d72c7c1c22b5d4e8ff2a5ac607a1c2e36cf804223be6f7f7869",
+        "html_sha256": "a10cdf5490375e77c5c29022391832ee2271a8b9e3280305279f15e8921341b7"
+      }
+    },
+    "empty-shifts": {
+      "expected_direction": "first-available-shift",
+      "observed_directions": [
+        "exception-first"
+      ],
+      "eligibility": "unexpected-design-direction",
+      "arguments": {
+        "surface": "dashboard",
+        "brief": "Design one responsive view for a food-bank volunteer whose upcoming shifts are empty. The primary job is to reserve the single available Packing shift, Wednesday 4–6 pm, and see it appear under Upcoming shifts in place. The screen should feel grounded, neighborly and clear, with an editorial hierarchy scaled to an everyday scheduling task. There is no supplied brand, logo, location, date, roster, or other shift. Use only these facts. The implementation is one HTML document with original inline illustration or CSS as needed, optional Google Fonts, and no other remote assets or calls. Chrome review at 1440 and 390 px. Seek a direction that can create a subject-specific focal detail with these constraints and that keeps the action visible on a phone."
+      },
+      "generation": {
+        "usage": {
+          "input_tokens": 65257,
+          "cached_input_tokens": 41984,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 18213,
+          "reasoning_output_tokens": 14306
+        },
+        "tool_calls": [
+          {
+            "type": "mcp_tool_call",
+            "server": "design-mcp",
+            "tool": "direct",
+            "status": "completed"
+          }
+        ],
+        "client_errors": [],
+        "treatment_call": true,
+        "direct_call": true,
+        "status": "passed",
+        "case": "empty-shifts",
+        "arm": "empty-recovery",
+        "model": "gpt-6.2-sol",
+        "effort": "max",
+        "client": "codex-cli 0.170.0",
+        "prompt_sha256": "d813e2c43660b30daeb38821dd13a3f61ae8f01355d23ec2fd4471e9f6bf4eee",
+        "mcp_config_sha256": "4af43afc2f55fc6371cfb78a842b6358400ac2b400fdb54cf5b7b534359aeee9",
+        "elapsed_seconds": 376.63,
+        "exit_code": 0,
+        "trace_sha256": "e6e5ae63a9c4cc0a66a266c9b03aefbd29caff85c6bebfdaa0825be5bad2b58f",
+        "html_sha256": "0fced2a50e6618fd772ea753db35eedeb4adf0d8429fdcaf58fb609e7451b496"
+      }
+    }
+  }
+}

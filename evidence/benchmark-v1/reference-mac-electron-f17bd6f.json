@@ -1,0 +1,211 @@
+{
+  "scope": "Local signed Electron fixture driven by GPT Computer Use, followed by installed CLI replay",
+  "package_commit": "f17bd6f79fff62d1ec3e051b29d930ccb32b3a46",
+  "harness_commit": "dc9cd98ce9f4afdc380b660f2a95e4d72e79d641",
+  "platform": {
+    "version": "26.5.2",
+    "build": "25F84",
+    "arch": "arm64"
+  },
+  "fixture": {
+    "bundle_id": "org.designmcp.electronreviewfixture",
+    "pid": 36280,
+    "window": "Desk review fixture",
+    "packaged_main_sha256": "761df4f15118f64f04baf346ddc5b705778b6cf35b3ce6a68c99924085e61c02",
+    "bundle_verification": [
+      "valid on disk",
+      "satisfies its Designated Requirement",
+      "explicit requirement satisfied"
+    ],
+    "codesign_log_sha256": "be08cc6159b8e7bd7e2f743c6625286a1d727f30cb404a1c59cd323d149cdc13"
+  },
+  "first_attempt": {
+    "outcome": "stopped before input",
+    "viewport_css_px": [
+      880,
+      640
+    ],
+    "png_backing_px": [
+      1760,
+      1280
+    ],
+    "reason": "screenshot assertion assumed 1\u00d7 backing pixels",
+    "receipt_sha256": "e22b703a209e0498805edfca5915cb434730d85d9641005abfc96a4674c58987"
+  },
+  "gpt_computer_use": [
+    {
+      "action": "observe",
+      "result": "Owned Electron fixture window active, HTML content focused, Control covered"
+    },
+    {
+      "action": "Tab",
+      "result": "Keyboard focus moved to Reveal control"
+    },
+    {
+      "action": "Return",
+      "result": "Control revealed, revealed button visible, keyboard focus retained on Reveal control"
+    }
+  ],
+  "separate_capture_audit": {
+    "review": {
+      "electron": "43.4.0",
+      "platform": "darwin",
+      "input": "external keyboard",
+      "initial": {
+        "focus": "",
+        "status": "Control covered"
+      },
+      "screenshot_sizes": {
+        "before": {
+          "width": 1760,
+          "height": 1280,
+          "display_scale": 2
+        },
+        "after": {
+          "width": 1760,
+          "height": 1280,
+          "display_scale": 2
+        }
+      },
+      "before": [
+        [
+          "control-not-hittable",
+          "r2"
+        ],
+        [
+          "control-clipped",
+          "r4"
+        ]
+      ],
+      "updated": {
+        "focus": "reveal",
+        "status": "Control revealed"
+      },
+      "after": [
+        [
+          "control-clipped",
+          "r4"
+        ]
+      ],
+      "originalEvidencePreserved": true,
+      "passed": true
+    },
+    "occlusion_pixels": {
+      "before": {
+        "dimensions": [
+          1760,
+          1280
+        ],
+        "point": [
+          108,
+          405
+        ],
+        "rgb": [
+          51,
+          51,
+          51
+        ]
+      },
+      "after": {
+        "dimensions": [
+          1760,
+          1280
+        ],
+        "point": [
+          108,
+          405
+        ],
+        "rgb": [
+          239,
+          239,
+          239
+        ]
+      }
+    },
+    "sha256": {
+      "before.json": "ec8c68e81c3be3228bf8778866d3d7147e1150e6a1fed9c9c7a1cf934e5b7834",
+      "before.png": "dffbe8c166f6ba012cacd161c0b2ba3316344226dbd2cab09ee9ef5429c7a4c8",
+      "after.json": "076286fd36a781b10a21f60cd400e023041b4cbe726b7190edb5e1d35e345533",
+      "after.png": "0819ad5e078b1c293ed6adc27447caba132ca0170f70bfa3e9bc92c54b43db73",
+      "receipt.json": "482fe37717ba6c24da1437fceac777bf4971b9919b6bc2c46a1237145e838c57"
+    }
+  },
+  "after_screenshot_local": ".context/host-isolation-test/electron-reference-cua/capture-retina/after.png",
+  "observed_at_utc": "2026-11-22T14:02:46.936520+00:00",
+  "hosted_1x_regressions": {
+    "linux": {
+      "run": "https://github.com/chrismicah/design-mcp/actions/runs/45030642616",
+      "results": {
+        "electron-external": {
+          "sha256": "dd3a7a28f2738d8066b560e5c79f3faf192a81695d93c817fc0c57638c6e282f",
+          "input": "external keyboard",
+          "sizes": {
+            "before": {
+              "width": 880,
+              "height": 640,
+              "display_scale": 1
+            },
+            "after": {
+              "width": 880,
+              "height": 640,
+              "display_scale": 1
+            }
+          }
+        },
+        "electron-proof": {
+          "sha256": "a8e1af8af149bc8ac3251537fbc337447deab409661bb90a07e1a20e16f0379d",
+          "input": "X11 keyboard",
+          "sizes": {
+            "before": {
+              "width": 880,
+              "height": 640,
+              "display_scale": 1
+            },
+            "after": {
+              "width": 880,
+              "height": 640,
+              "display_scale": 1
+            }
+          }
+        }
+      }
+    },
+    "mac": {
+      "run": "https://github.com/chrismicah/design-mcp/actions/runs/45030642666",
+      "results": {
+        "electron-packaged-proof": {
+          "sha256": "19e30878c0f0e02ba95c504ebea649bbe3c40e8ea659062e615265c91f76cf53",
+          "input": "focused Electron webContents",
+          "sizes": {
+            "before": {
+              "width": 880,
+              "height": 640,
+              "display_scale": 1
+            },
+            "after": {
+              "width": 880,
+              "height": 640,
+              "display_scale": 1
+            }
+          }
+        },
+        "electron-proof": {
+          "sha256": "19e30878c0f0e02ba95c504ebea649bbe3c40e8ea659062e615265c91f76cf53",
+          "input": "focused Electron webContents",
+          "sizes": {
+            "before": {
+              "width": 880,
+              "height": 640,
+              "display_scale": 1
+            },
+            "after": {
+              "width": 880,
+              "height": 640,
+              "display_scale": 1
+            }
+          }
+        }
+      }
+    }
+  }
+}

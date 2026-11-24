@@ -1,0 +1,2029 @@
+{
+  "task": "Identify Vault B at 58% against the 50% threshold, isolate its reading, and restore the comparison.",
+  "fixture": "Controlled HTML trial",
+  "raw_first_comparison": {
+    "path": ".context/vault-contact-strip/blind",
+    "trace_sha256": "ecbf51af0be1d13935cfac34ecc6a8aff63ac6e1b13a60906aefdf193e30c719",
+    "browser_audit_sha256": "c3b762f27c11bb21fcf8aea8818f4d8ad3c24d54516658aa8c9fab6f169bda8e",
+    "identity": {
+      "A": {
+        "arm": "contact-strip",
+        "html_sha256": "6776632f69307cbd18c46c0a59a8f6b613ddeaf68f74def5342b1bbd7138b642",
+        "thread_id": "01a1fb16-16fa-7930-90f3-ec04887ec962"
+      },
+      "B": {
+        "arm": "worklist",
+        "html_sha256": "13721c9765657b991d0bba85ea25c418084c5b56544f7686c1c379bbe5e7bbf6",
+        "thread_id": "01a2080c-082a-7c20-a060-edc31ab98712"
+      }
+    },
+    "ballot": {
+      "calibration": {
+        "example": "Legible repair intake with clear labels, familiar layout, and misplaced focus after an invalid number",
+        "coherence": 7,
+        "originality": 4,
+        "craft": 6,
+        "usability": 5.5
+      },
+      "screens": {
+        "A-1440": {
+          "coherence": 8.5,
+          "originality": 8.5,
+          "craft": 8,
+          "usability": 8.5,
+          "primary_action": {
+            "input": "Tab, Tab, Enter",
+            "expected": "Show only vaults above the limit.",
+            "observed": "Only Vault B remains, at 58%, with the 50% limit visible. Over limit is pressed and visibly focused."
+          },
+          "edge_observation": "Shift+Tab, Enter restores all three readings. All vaults is pressed and visibly focused.",
+          "fact_check": "The initial screenshot shows Vault A 44%, Vault B 58%, Vault C 46%, and the 50% upper limit. Vault B needs attention; its orange value, bar, and Over limit label distinguish it. The dashed line is explained by the 50% limit legend.",
+          "strength": "The perforated film-strip frame gives the compact comparison a recognizable archive identity.",
+          "weakness": "The large empty space around the filtered single column makes the result feel less intentional.",
+          "repair": "Rebalance the filtered panel while retaining the threshold line and legend."
+        },
+        "A-390": {
+          "coherence": 8,
+          "originality": 8.5,
+          "craft": 5.5,
+          "usability": 5.5,
+          "primary_action": {
+            "input": "Tab, Tab, Enter",
+            "expected": "Show only vaults above the limit with the reading legible.",
+            "observed": "The filter selects Vault B, but the resulting screenshot clips the left edge of its label, 58% reading, and status. The 50% limit remains visible; the full reading is available in the accessibility tree, not fully readable in the screenshot. Over limit is pressed and visibly focused."
+          },
+          "edge_observation": "Shift+Tab, Enter restores all three readings. All vaults is pressed and visibly focused; all three values are readable again.",
+          "fact_check": "Before interaction the screenshot shows Vault A 44%, Vault B 58%, Vault C 46%, and the 50% upper limit. Orange text and a bar above the dashed line identify Vault B. The legend explains the dashed line.",
+          "strength": "The complete initial comparison fits within the 390 px viewport and retains the film-strip identity.",
+          "weakness": "The filtered result clips the most important text, undermining the primary task.",
+          "repair": "Correct the single-result layout and overflow at narrow widths, then verify the whole label, reading, and status remain visible."
+        },
+        "B-1440": {
+          "coherence": 8,
+          "originality": 6,
+          "craft": 8,
+          "usability": 7.5,
+          "primary_action": {
+            "input": "Tab, Tab, Enter",
+            "expected": "Show only vaults above the limit.",
+            "observed": "Only Vault B remains in the readings list at 58%; the 50% limit remains visible. Over limit is pressed and visibly focused."
+          },
+          "edge_observation": "Shift+Tab, Enter restores all three readings in the accessibility tree. All vaults is pressed and visibly focused; Vault C remains below the initial viewport.",
+          "fact_check": "The initial screenshot shows Vault B at 58%, Vault A at 44%, and the 50% limit. Vault C's 46% is not visible without scrolling, though it is present in the accessibility tree. The large orange alert names Vault B and states it is 8 percentage points over. The bar's threshold marker is explained by the legend lower in the page.",
+          "strength": "The prominent alert states the exception and its distance above the limit directly.",
+          "weakness": "The large heading and alert push the third reading below the initial desktop viewport; the film archive identity relies mostly on the words Film vault.",
+          "repair": "Reduce vertical overhead so all three readings can be compared at a glance, and introduce a more subject-specific visual detail."
+        },
+        "B-390": {
+          "coherence": 8,
+          "originality": 6,
+          "craft": 7.5,
+          "usability": 7,
+          "primary_action": {
+            "input": "Tab, Tab, Enter",
+            "expected": "Show only vaults above the limit.",
+            "observed": "The list shows Vault B at 58%, with the 50% limit visible in the header and legend. Over limit is pressed and visibly focused."
+          },
+          "edge_observation": "Shift+Tab, Enter restores all three readings in the accessibility tree. All vaults is pressed and visibly focused; the lower readings extend below the viewport.",
+          "fact_check": "The initial screenshot shows Vault B at 58%, Vault A at 44%, and the 50% limit. Vault C at 46% is not visible in the screenshot; its value is present in the accessibility tree. The orange alert and explicit over-limit text identify Vault B. The threshold marker's legend is below the initial viewport.",
+          "strength": "The alert, controls, and rows adapt into a legible single-column layout, and the filtered result stays readable.",
+          "weakness": "The tall alert and heading delay comparison of all three readings. The visual identity is a general monitoring dashboard with a film-vault label.",
+          "repair": "Condense the mobile header and alert, and keep the threshold explanation close enough to the first visible bar to be understood without scrolling."
+        }
+      },
+      "preference": {
+        "winner": "A",
+        "reason": "A has the more distinctive film-archive identity and makes all three readings and the limit visible immediately at both widths. Its most consequential remaining issue is the clipped mobile filtered result; B handles that state correctly but requires scrolling to see all readings even on the tested desktop viewport."
+      },
+      "unsupported_claims": "No claim is made about behavior beyond the tested keyboard sequences or about readings hidden below the initial viewport being visible in the screenshots."
+    },
+    "verification": "Builder-count configuration rejected by the original verifier."
+  },
+  "verified_comparisons": [
+    {
+      "path": ".context/vault-contact-strip/blind-r2-exact",
+      "ballot_sha256": "cc93c2ba054caa55867f85e62f31397874c3c76161efe2d205c82d79a79b34f9",
+      "screenshots": {
+        "A-1440-before": {
+          "path": "A-1440-before.png",
+          "sha256": "3a0e1c003bffe6949e102b80cce9024573dc405530faaf0281fef0f8f62e2c70"
+        },
+        "A-1440-after": {
+          "path": "A-1440-after.png",
+          "sha256": "f116d5bf24ec2525c276ab3b657d5f90150ef10feb3be5ced735e0e023485fa2"
+        },
+        "A-1440-edge": {
+          "path": "A-1440-edge.png",
+          "sha256": "0951dcf169f1b505af56b3bb43209d191f0e39a1d01473f8dd523fe60563bcfc"
+        },
+        "A-390-before": {
+          "path": "A-390-before.png",
+          "sha256": "4239ad3045c22f0e147201705812d21d79793d98d417ca09332b698e5f4c2e7b"
+        },
+        "A-390-after": {
+          "path": "A-390-after.png",
+          "sha256": "c68641ab0896d4cbaf9e4908f28890129dadc5236048600046a3a0e0f5b05112"
+        },
+        "A-390-edge": {
+          "path": "A-390-edge.png",
+          "sha256": "749bdb6e79043d7016191784616eca9ff7afd4ff36f24f31288f1e4b45425bc1"
+        },
+        "B-1440-before": {
+          "path": "B-1440-before.png",
+          "sha256": "3a0e1c003bffe6949e102b80cce9024573dc405530faaf0281fef0f8f62e2c70"
+        },
+        "B-1440-after": {
+          "path": "B-1440-after.png",
+          "sha256": "3404a8c61b6fd80a196a278186f93d1bef28fb98b5842e961621510d91572849"
+        },
+        "B-1440-edge": {
+          "path": "B-1440-edge.png",
+          "sha256": "0951dcf169f1b505af56b3bb43209d191f0e39a1d01473f8dd523fe60563bcfc"
+        },
+        "B-390-before": {
+          "path": "B-390-before.png",
+          "sha256": "4239ad3045c22f0e147201705812d21d79793d98d417ca09332b698e5f4c2e7b"
+        },
+        "B-390-after": {
+          "path": "B-390-after.png",
+          "sha256": "c76293c6948330f2741b30ec1d7d7eda9a8f87a552055ef1afbd4feb56186bc5"
+        },
+        "B-390-edge": {
+          "path": "B-390-edge.png",
+          "sha256": "749bdb6e79043d7016191784616eca9ff7afd4ff36f24f31288f1e4b45425bc1"
+        }
+      },
+      "ballot": {
+        "calibration": {
+          "example": "Legible repair intake with clear labels, familiar layout, and misplaced focus after an invalid number",
+          "coherence": 7,
+          "originality": 4,
+          "craft": 6,
+          "usability": 6
+        },
+        "screens": {
+          "A-1440": {
+            "coherence": 8.5,
+            "originality": 8,
+            "craft": 8,
+            "usability": 9,
+            "primary_action": {
+              "input": "Tab twice, then Enter on Over limit",
+              "expected": "Show only vaults above the limit",
+              "observed": "Vault B alone remained, with 58% and the 50% limit visible. Over limit was pressed and visibly focused."
+            },
+            "edge_observation": "Shift+Tab and Enter restored all three readings. All vaults was pressed and visibly focused.",
+            "fact_check": "The initial screenshot shows Vault A at 44%, Vault B at 58%, Vault C at 46%, and a 50% upper humidity limit. B requires attention: its orange bar crosses the dashed limit, and its orange reading and Over limit label reinforce the exception.",
+            "strength": "The filmstrip frame gives the chart a film-archive cue while keeping the readings and threshold prominent.",
+            "weakness": "The unlabeled faint horizontal grid lines invite interpretation; the film context rests mainly on the perforated frame.",
+            "repair": "Label the grid scale or remove the unused grid lines, and add a concise archive-specific context label.",
+            "arm": "contact-strip-r2",
+            "html_sha256": "3d4551dfc9af123e52b1af3f8ed9bfe9b551d2b46f056378c924c940532f0467",
+            "weighted": 8.35,
+            "before": {
+              "sha256": "3a0e1c003bffe6949e102b80cce9024573dc405530faaf0281fef0f8f62e2c70",
+              "file": "A-1440-before.png",
+              "tool_call_id": "item_2"
+            },
+            "after": {
+              "sha256": "f116d5bf24ec2525c276ab3b657d5f90150ef10feb3be5ced735e0e023485fa2",
+              "file": "A-1440-after.png",
+              "tool_call_id": "item_6"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Shift+Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "A-390": {
+            "coherence": 8,
+            "originality": 8,
+            "craft": 8,
+            "usability": 9,
+            "primary_action": {
+              "input": "Tab twice, then Enter on Over limit",
+              "expected": "Show only vaults above the limit",
+              "observed": "Vault B alone remained at 58%, with the 50% limit visible. Over limit was visibly focused."
+            },
+            "edge_observation": "Shift+Tab and Enter restored all three readings. All vaults was pressed and visibly focused.",
+            "fact_check": "Without scrolling, the screenshot shows A 44%, B 58%, C 46%, and the 50% limit. B's orange bar extends above the dashed line and its orange value and status identify the exception.",
+            "strength": "The heading, controls, all three readings, and legend fit within the initial mobile viewport.",
+            "weakness": "The three narrow columns make labels and readings substantially smaller; the faint grid lines have no individual values.",
+            "repair": "Increase mobile reading size while preserving the side-by-side comparison, and label or remove the unexplained grid lines.",
+            "arm": "contact-strip-r2",
+            "html_sha256": "3d4551dfc9af123e52b1af3f8ed9bfe9b551d2b46f056378c924c940532f0467",
+            "weighted": 8.2,
+            "before": {
+              "sha256": "4239ad3045c22f0e147201705812d21d79793d98d417ca09332b698e5f4c2e7b",
+              "file": "A-390-before.png",
+              "tool_call_id": "item_11"
+            },
+            "after": {
+              "sha256": "c68641ab0896d4cbaf9e4908f28890129dadc5236048600046a3a0e0f5b05112",
+              "file": "A-390-after.png",
+              "tool_call_id": "item_15"
+            },
+            "layout_width": 390,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Shift+Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-1440": {
+            "coherence": 8.5,
+            "originality": 8,
+            "craft": 7.5,
+            "usability": 9,
+            "primary_action": {
+              "input": "Tab twice, then Enter on Over limit",
+              "expected": "Show only vaults above the limit",
+              "observed": "Vault B alone remained, with 58% and the 50% limit visible. Over limit was pressed and visibly focused."
+            },
+            "edge_observation": "Shift+Tab and Enter restored all three readings. All vaults was pressed and visibly focused.",
+            "fact_check": "The initial screenshot shows Vault A at 44%, Vault B at 58%, Vault C at 46%, and a 50% upper humidity limit. B is orange, labeled Over limit, and its bar crosses the dashed threshold.",
+            "strength": "The filmstrip frame and large, contrasting readings make the archive theme and exception immediately recognizable.",
+            "weakness": "In the filtered state the dashed threshold extends beyond the centered chart panel, making the line's boundary less deliberate. Faint grid lines are unlabeled.",
+            "repair": "Align the threshold line with the chart panel and label or remove the unused grid lines.",
+            "arm": "contact-strip",
+            "html_sha256": "6776632f69307cbd18c46c0a59a8f6b613ddeaf68f74def5342b1bbd7138b642",
+            "weighted": 8.25,
+            "before": {
+              "sha256": "3a0e1c003bffe6949e102b80cce9024573dc405530faaf0281fef0f8f62e2c70",
+              "file": "B-1440-before.png",
+              "tool_call_id": "item_21"
+            },
+            "after": {
+              "sha256": "3404a8c61b6fd80a196a278186f93d1bef28fb98b5842e961621510d91572849",
+              "file": "B-1440-after.png",
+              "tool_call_id": "item_25"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Shift+Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-390": {
+            "coherence": 8,
+            "originality": 8,
+            "craft": 7.5,
+            "usability": 9,
+            "primary_action": {
+              "input": "Tab twice, then Enter on Over limit",
+              "expected": "Show only vaults above the limit",
+              "observed": "Vault B alone remained at 58%, with the 50% limit visible. Over limit was visibly focused."
+            },
+            "edge_observation": "Shift+Tab and Enter restored all three readings. All vaults was pressed and visibly focused.",
+            "fact_check": "Without scrolling, the screenshot shows A 44%, B 58%, C 46%, and the 50% limit. The orange B reading, status, and bar above the dashed line signal the exception.",
+            "strength": "The complete comparison and controls fit on the mobile screen without horizontal scrolling in the captured viewport.",
+            "weakness": "The filtered chart's dashed line extends beyond its panel; the unfiltered readings are small and the faint grid lines are unlabeled.",
+            "repair": "Align the threshold with the filtered chart panel, increase mobile reading size, and label or remove the unused grid lines.",
+            "arm": "contact-strip",
+            "html_sha256": "6776632f69307cbd18c46c0a59a8f6b613ddeaf68f74def5342b1bbd7138b642",
+            "weighted": 8.1,
+            "before": {
+              "sha256": "4239ad3045c22f0e147201705812d21d79793d98d417ca09332b698e5f4c2e7b",
+              "file": "B-390-before.png",
+              "tool_call_id": "item_30"
+            },
+            "after": {
+              "sha256": "c76293c6948330f2741b30ec1d7d7eda9a8f87a552055ef1afbd4feb56186bc5",
+              "file": "B-390-after.png",
+              "tool_call_id": "item_34"
+            },
+            "layout_width": 390,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Shift+Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          }
+        },
+        "preference": {
+          "winner": "A",
+          "reason": "The initial and restored screenshots are visually identical across A and B, and both complete the keyboard task. A's filtered chart keeps the dashed threshold aligned with its panel, while B's line extends beyond it. The most consequential remaining issue in both is the small size of the three mobile readings.",
+          "unsupported_claims": "The perforated border suggests film, but the page does not explicitly identify a film archive. No claim about underlying implementation, revision history, or behavior beyond the tested states is supported."
+        },
+        "case": "vault-humidity",
+        "verified_screens": 4,
+        "required_screens": 4,
+        "browser": "Chrome/158.0.8127.36",
+        "evaluator_thread": "01a20817-0611-71b2-8f85-2034d95ac6ff",
+        "usage": {
+          "input_tokens": 302078,
+          "cached_input_tokens": 280832,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2402,
+          "reasoning_output_tokens": 0
+        },
+        "trace_sha256": "c8bf1e1ee9bddb6f384cf2eb88d9a36e1aea01d689e93a2d739a3558f44fadfa",
+        "browser_audit_sha256": "f58074416e20602051998289d8fcb9278f94abe791b745153be32a317355dd44"
+      }
+    },
+    {
+      "path": ".context/vault-contact-strip/blind-r3",
+      "ballot_sha256": "00c50f7b0f6e5436311a674f3a472e2211dab907ef5ea320cc199160f10bb9ea",
+      "screenshots": {
+        "A-1440-before": {
+          "path": "A-1440-before.png",
+          "sha256": "fff0235a2e377dc4eaf2b920b78aeaf6e8295914b5f93701c33ee6b5209c5fc3"
+        },
+        "A-1440-after": {
+          "path": "A-1440-after.png",
+          "sha256": "4c9158ba3b59969d5f61a05b75d3dbd231c8e7c0420158d6cac14f4f1b58ecdd"
+        },
+        "A-1440-edge": {
+          "path": "A-1440-edge.png",
+          "sha256": "8abec186b61d66f249d547e802a85e1cc180322307af818f594dfbd0cb456c9f"
+        },
+        "A-390-before": {
+          "path": "A-390-before.png",
+          "sha256": "3f7216d5977d37a6696d56675f5965cc2687ddaf93ac9e7d646007f918ca2447"
+        },
+        "A-390-after": {
+          "path": "A-390-after.png",
+          "sha256": "77ee8c4e5e9c2e891ef05d0a4b2f6ee84b9b02b2bb9f4b2089e3253b52e7ebc9"
+        },
+        "A-390-edge": {
+          "path": "A-390-edge.png",
+          "sha256": "e4eb55aa730803ecf6deba27af2a38d66d985dbcb4a6ad8d64b9484e7ac19f3b"
+        },
+        "B-1440-before": {
+          "path": "B-1440-before.png",
+          "sha256": "3a0e1c003bffe6949e102b80cce9024573dc405530faaf0281fef0f8f62e2c70"
+        },
+        "B-1440-after": {
+          "path": "B-1440-after.png",
+          "sha256": "f116d5bf24ec2525c276ab3b657d5f90150ef10feb3be5ced735e0e023485fa2"
+        },
+        "B-1440-edge": {
+          "path": "B-1440-edge.png",
+          "sha256": "0951dcf169f1b505af56b3bb43209d191f0e39a1d01473f8dd523fe60563bcfc"
+        },
+        "B-390-before": {
+          "path": "B-390-before.png",
+          "sha256": "4239ad3045c22f0e147201705812d21d79793d98d417ca09332b698e5f4c2e7b"
+        },
+        "B-390-after": {
+          "path": "B-390-after.png",
+          "sha256": "c68641ab0896d4cbaf9e4908f28890129dadc5236048600046a3a0e0f5b05112"
+        },
+        "B-390-edge": {
+          "path": "B-390-edge.png",
+          "sha256": "749bdb6e79043d7016191784616eca9ff7afd4ff36f24f31288f1e4b45425bc1"
+        }
+      },
+      "ballot": {
+        "calibration": {
+          "example": "Legible repair intake with clear labels, familiar layout and misplaced focus after an invalid number",
+          "coherence": 7,
+          "originality": 4,
+          "craft": 6,
+          "usability": 6,
+          "basis": "Clear labels support the task, but the familiar layout limits originality and misplaced focus weakens error recovery."
+        },
+        "screens": {
+          "A-1440": {
+            "coherence": 8.5,
+            "originality": 8,
+            "craft": 8.5,
+            "usability": 9,
+            "primary_action": {
+              "input": "Tab, Tab, Enter",
+              "expected": "Show only vaults above the limit.",
+              "observed": "Over limit became pressed and focused; only Vault B remained, at 58%, with the 50% limit still visible."
+            },
+            "edge_observation": "Shift+Tab, Enter restored all three readings. All vaults was pressed and had a visible focus outline.",
+            "fact_check": "Before interaction, the screenshot visibly showed Vault A 44%, Vault B 58%, Vault C 46%, and the 50% upper limit. Vault B requires attention: its orange reading and bar cross the dashed limit line, and its status says Over limit.",
+            "strength": "The filmstrip frame gives the humidity chart an archive-specific cue, while the labeled dashed line explains the threshold.",
+            "weakness": "The film reference is mostly confined to the frame; the page does not otherwise identify the collection or operational context.",
+            "repair": "Add concise archive context, such as the collection or monitoring location, if that information is available.",
+            "captures": [
+              "A-1440-before",
+              "A-1440-after",
+              "A-1440-edge"
+            ],
+            "arm": "contact-strip-r3",
+            "html_sha256": "00a145fea3db8508e65e08926aced9ec2c8ba50c37b7658e20ed27be574b57fb",
+            "weighted": 8.45,
+            "before": {
+              "sha256": "fff0235a2e377dc4eaf2b920b78aeaf6e8295914b5f93701c33ee6b5209c5fc3",
+              "file": "A-1440-before.png",
+              "tool_call_id": "item_2"
+            },
+            "after": {
+              "sha256": "4c9158ba3b59969d5f61a05b75d3dbd231c8e7c0420158d6cac14f4f1b58ecdd",
+              "file": "A-1440-after.png",
+              "tool_call_id": "item_6"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Shift+Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "A-390": {
+            "coherence": 8.5,
+            "originality": 8,
+            "craft": 8.5,
+            "usability": 9,
+            "primary_action": {
+              "input": "Tab, Tab, Enter",
+              "expected": "Show only vaults above the limit.",
+              "observed": "Only Vault B remained, at 58%; the 50% limit and its dashed-line legend remained visible. Over limit was pressed and visibly focused."
+            },
+            "edge_observation": "Shift+Tab, Enter restored all three readings. All vaults was pressed and visibly focused.",
+            "fact_check": "Before interaction, Vault A 44%, Vault B 58%, Vault C 46%, and the 50% limit were all visible without scrolling. Vault B stands out in orange, with its bar above the dashed line and an Over limit label.",
+            "strength": "The three readings, controls and threshold fit together in the initial mobile viewport; the larger numbers remain easy to scan.",
+            "weakness": "Three narrow columns leave limited space for longer vault names or status text; those cases were not tested.",
+            "repair": "Test longer labels at this width and provide a responsive alternative if they wrap or clip.",
+            "captures": [
+              "A-390-before",
+              "A-390-after",
+              "A-390-edge"
+            ],
+            "arm": "contact-strip-r3",
+            "html_sha256": "00a145fea3db8508e65e08926aced9ec2c8ba50c37b7658e20ed27be574b57fb",
+            "weighted": 8.45,
+            "before": {
+              "sha256": "3f7216d5977d37a6696d56675f5965cc2687ddaf93ac9e7d646007f918ca2447",
+              "file": "A-390-before.png",
+              "tool_call_id": "item_11"
+            },
+            "after": {
+              "sha256": "77ee8c4e5e9c2e891ef05d0a4b2f6ee84b9b02b2bb9f4b2089e3253b52e7ebc9",
+              "file": "A-390-after.png",
+              "tool_call_id": "item_15"
+            },
+            "layout_width": 390,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Shift+Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-1440": {
+            "coherence": 8,
+            "originality": 8,
+            "craft": 8,
+            "usability": 8.5,
+            "primary_action": {
+              "input": "Tab, Tab, Enter",
+              "expected": "Show only vaults above the limit.",
+              "observed": "Over limit became pressed and focused; only Vault B remained, at 58%, with the 50% limit still visible."
+            },
+            "edge_observation": "Shift+Tab, Enter restored all three readings. All vaults was pressed and had a visible focus outline.",
+            "fact_check": "Before interaction, the screenshot visibly showed Vault A 44%, Vault B 58%, Vault C 46%, and the 50% upper limit. Vault B stands out in orange, rises above the dashed threshold and is labeled Over limit.",
+            "strength": "The filmstrip frame connects the chart to film, and the exception has both color and text cues.",
+            "weakness": "Two faint solid horizontal lines appear in the chart without labels, while the dashed threshold has a legend.",
+            "repair": "Label the solid lines if they represent scale values, or remove them if they are decorative.",
+            "captures": [
+              "B-1440-before",
+              "B-1440-after",
+              "B-1440-edge"
+            ],
+            "arm": "contact-strip-r2",
+            "html_sha256": "3d4551dfc9af123e52b1af3f8ed9bfe9b551d2b46f056378c924c940532f0467",
+            "weighted": 8.1,
+            "before": {
+              "sha256": "3a0e1c003bffe6949e102b80cce9024573dc405530faaf0281fef0f8f62e2c70",
+              "file": "B-1440-before.png",
+              "tool_call_id": "item_21"
+            },
+            "after": {
+              "sha256": "f116d5bf24ec2525c276ab3b657d5f90150ef10feb3be5ced735e0e023485fa2",
+              "file": "B-1440-after.png",
+              "tool_call_id": "item_25"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Shift+Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-390": {
+            "coherence": 8,
+            "originality": 8,
+            "craft": 7.5,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab, Tab, Enter",
+              "expected": "Show only vaults above the limit.",
+              "observed": "Only Vault B remained, at 58%; the 50% limit and dashed-line legend remained visible. Over limit was pressed and visibly focused."
+            },
+            "edge_observation": "Shift+Tab, Enter restored all three readings. All vaults was pressed and visibly focused.",
+            "fact_check": "Before interaction, Vault A 44%, Vault B 58%, Vault C 46%, and the 50% limit were all visible without scrolling. Vault B is orange, crosses the dashed threshold and is labeled Over limit.",
+            "strength": "The full task fits in the initial mobile viewport, and the filmstrip frame remains recognizable.",
+            "weakness": "The readings are noticeably smaller than in A at this width, and the extra solid chart lines are unexplained.",
+            "repair": "Increase reading size where space permits and label or remove the solid lines.",
+            "captures": [
+              "B-390-before",
+              "B-390-after",
+              "B-390-edge"
+            ],
+            "arm": "contact-strip-r2",
+            "html_sha256": "3d4551dfc9af123e52b1af3f8ed9bfe9b551d2b46f056378c924c940532f0467",
+            "weighted": 7.9,
+            "before": {
+              "sha256": "4239ad3045c22f0e147201705812d21d79793d98d417ca09332b698e5f4c2e7b",
+              "file": "B-390-before.png",
+              "tool_call_id": "item_30"
+            },
+            "after": {
+              "sha256": "c68641ab0896d4cbaf9e4908f28890129dadc5236048600046a3a0e0f5b05112",
+              "file": "B-390-after.png",
+              "tool_call_id": "item_34"
+            },
+            "layout_width": 390,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Shift+Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          }
+        },
+        "preference": {
+          "winner": "A",
+          "reason": "Both designs complete the keyboard task and restoration with clear focus. A presents larger mobile readings and keeps the labeled threshold line visually distinct without B's unexplained extra lines.",
+          "most_consequential_issue_left": "The mobile layout relies on three narrow columns; longer real vault names and statuses need testing before its resilience can be established."
+        },
+        "unsupported_claims": [
+          "The meaning of B's solid horizontal lines is not established by the rendered page.",
+          "Behavior with longer names or statuses was not tested.",
+          "The screenshots establish a filmstrip visual cue, but do not establish the identity of a particular film archive."
+        ],
+        "case": "vault-humidity",
+        "verified_screens": 4,
+        "required_screens": 4,
+        "browser": "Chrome/158.0.8127.36",
+        "evaluator_thread": "01a20818-c9e9-74c2-bff9-b1c50df2a3a2",
+        "usage": {
+          "input_tokens": 281788,
+          "cached_input_tokens": 247808,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2529,
+          "reasoning_output_tokens": 0
+        },
+        "trace_sha256": "f0012dc6d762f2b2465be7098cd334e330b37cf5f80bbeebb1d2ce5fcc16c485",
+        "browser_audit_sha256": "b8d9eba2f08fabd48417a1dcdc2face35b9c24e51fe94536572043deee859b0f"
+      }
+    },
+    {
+      "path": ".context/vault-contact-strip/blind-r4",
+      "ballot_sha256": "a2af46b3f16c6ca48cde5f1acc83434455049c42b6f3ffacbf0cce04b4bbc5af",
+      "screenshots": {
+        "A-1440-before": {
+          "path": "A-1440-before.png",
+          "sha256": "fff0235a2e377dc4eaf2b920b78aeaf6e8295914b5f93701c33ee6b5209c5fc3"
+        },
+        "A-1440-after": {
+          "path": "A-1440-after.png",
+          "sha256": "5c2d9f9ecaaeaaa97f66c4daa40809ba14ef44c5ce9b7232e39961711a39e5a5"
+        },
+        "A-1440-edge": {
+          "path": "A-1440-edge.png",
+          "sha256": "8abec186b61d66f249d547e802a85e1cc180322307af818f594dfbd0cb456c9f"
+        },
+        "A-390-before": {
+          "path": "A-390-before.png",
+          "sha256": "3f7216d5977d37a6696d56675f5965cc2687ddaf93ac9e7d646007f918ca2447"
+        },
+        "A-390-after": {
+          "path": "A-390-after.png",
+          "sha256": "77ee8c4e5e9c2e891ef05d0a4b2f6ee84b9b02b2bb9f4b2089e3253b52e7ebc9"
+        },
+        "A-390-edge": {
+          "path": "A-390-edge.png",
+          "sha256": "e4eb55aa730803ecf6deba27af2a38d66d985dbcb4a6ad8d64b9484e7ac19f3b"
+        },
+        "B-1440-before": {
+          "path": "B-1440-before.png",
+          "sha256": "1df4b5b801ba35b58751391836275dd0c11df269390ed035d76a58bd30258c72"
+        },
+        "B-1440-after": {
+          "path": "B-1440-after.png",
+          "sha256": "e8652a5b1fbfbe4c072e0c4ebf6391d4ae184651b458221a7a5771a6c72dc052"
+        },
+        "B-1440-edge": {
+          "path": "B-1440-edge.png",
+          "sha256": "1b18db77fd012c4712d681c8cea01f2f1d86043d476f92973a4c07950a5790c3"
+        },
+        "B-390-before": {
+          "path": "B-390-before.png",
+          "sha256": "e4a0f98ee3ca2c61e29319f5fe77fbe9221b6ce3e097ae87f0997f229866f246"
+        },
+        "B-390-after": {
+          "path": "B-390-after.png",
+          "sha256": "b16ddc8cb13d6e5f8d174adc062dc5f7214eed837c925b3492ca0e37bd2bc0c6"
+        },
+        "B-390-edge": {
+          "path": "B-390-edge.png",
+          "sha256": "f21a1cedd143faf5fe2f275d7f2f926aa9eeab8fc45a389a63ab3fa55ce5dddb"
+        }
+      },
+      "ballot": {
+        "calibration": {
+          "example": "Legible repair intake with clear labels, a familiar layout, and misplaced focus after an invalid number",
+          "coherence": 6,
+          "originality": 4,
+          "craft": 5,
+          "usability": 5
+        },
+        "screens": {
+          "A-1440": {
+            "coherence": 8,
+            "originality": 7,
+            "craft": 8,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab twice, then Enter on Over limit",
+              "expected": "Show only vaults above 50%",
+              "observed": "Only Vault B remained, showing 58% and Over limit. The 50% limit and dashed comparison line remained visible. Over limit was active and visibly focused."
+            },
+            "edge_observation": "Shift+Tab, Enter restored all three readings. All vaults was active and visibly focused.",
+            "fact_check": {
+              "before": "Without scrolling, Vault A 44%, Vault B 58%, Vault C 46%, and the 50% upper limit were all visible. Vault B required attention: its orange reading and bar crossed the dashed limit line.",
+              "isolated_distance": "No numerical distance from the limit appeared directly in the pixels. The values imply 8 percentage points above 50%.",
+              "comparison_mark": "The dashed line still showed that the bar exceeded the limit, but the chart had no labeled increments to verify the exact distance visually.",
+              "vault_b_position": "Vault B stayed in the central horizontal region, although its isolated panel widened."
+            },
+            "strength": "The filmstrip border gives the chart a recognizable archive cue, and the exception is easy to find.",
+            "weakness": "The isolated view leaves the technician to calculate the size of the breach; the chart's bar and baseline also need interpretation.",
+            "repair": "Show the difference in percentage points and briefly explain that the bar height represents relative humidity.",
+            "arm": "contact-strip-r3",
+            "html_sha256": "00a145fea3db8508e65e08926aced9ec2c8ba50c37b7658e20ed27be574b57fb",
+            "weighted": 7.7,
+            "before": {
+              "sha256": "fff0235a2e377dc4eaf2b920b78aeaf6e8295914b5f93701c33ee6b5209c5fc3",
+              "file": "A-1440-before.png",
+              "tool_call_id": "item_2"
+            },
+            "after": {
+              "sha256": "5c2d9f9ecaaeaaa97f66c4daa40809ba14ef44c5ce9b7232e39961711a39e5a5",
+              "file": "A-1440-after.png",
+              "tool_call_id": "item_6"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Shift+Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "A-390": {
+            "coherence": 8,
+            "originality": 7,
+            "craft": 7.5,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab twice, then Enter on Over limit",
+              "expected": "Show only vaults above 50%",
+              "observed": "Only Vault B remained, with 58%, Over limit, the 50% limit, and the comparison line visible. Over limit was active and visibly focused."
+            },
+            "edge_observation": "Shift+Tab, Enter restored all three readings. All vaults was active and visibly focused.",
+            "fact_check": {
+              "before": "Without scrolling, all three readings—44%, 58%, and 46%—and the 50% limit were visible. Vault B stood out in orange, with its bar above the dashed line.",
+              "isolated_distance": "No numerical distance from the limit appeared directly in the pixels; 58% minus 50% is 8 percentage points.",
+              "comparison_mark": "The dashed mark showed the direction of the exception, but its small separation from the bar top could not establish the exact difference without calculation.",
+              "vault_b_position": "Vault B remained centered, but expanded from the middle third to nearly the full panel width."
+            },
+            "strength": "The entire task fits in the initial mobile viewport, including the legend.",
+            "weakness": "The three narrow columns make the chart compact, and the isolated state still omits the numerical breach.",
+            "repair": "Add the percentage-point difference and clarify the chart's scale while preserving the compact overview.",
+            "arm": "contact-strip-r3",
+            "html_sha256": "00a145fea3db8508e65e08926aced9ec2c8ba50c37b7658e20ed27be574b57fb",
+            "weighted": 7.6,
+            "before": {
+              "sha256": "3f7216d5977d37a6696d56675f5965cc2687ddaf93ac9e7d646007f918ca2447",
+              "file": "A-390-before.png",
+              "tool_call_id": "item_11"
+            },
+            "after": {
+              "sha256": "77ee8c4e5e9c2e891ef05d0a4b2f6ee84b9b02b2bb9f4b2089e3253b52e7ebc9",
+              "file": "A-390-after.png",
+              "tool_call_id": "item_15"
+            },
+            "layout_width": 390,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Shift+Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-1440": {
+            "coherence": 8,
+            "originality": 7,
+            "craft": 8.5,
+            "usability": 9,
+            "primary_action": {
+              "input": "Tab twice, then Enter on Over limit",
+              "expected": "Show only vaults above 50%",
+              "observed": "Only Vault B remained, showing 58%, Over limit, and 8 percentage points above 50%. The limit and dashed comparison line remained visible. Over limit was active and visibly focused."
+            },
+            "edge_observation": "Shift+Tab, Enter restored all three readings. All vaults was active and visibly focused.",
+            "fact_check": {
+              "before": "Without scrolling, Vault A 44%, Vault B 58%, Vault C 46%, and the 50% upper limit were visible. The orange Vault B reading and bar crossing the dashed line identified the exception.",
+              "isolated_distance": "The pixels explicitly stated 8 percentage points above 50%, consistent with 58% minus 50%.",
+              "comparison_mark": "The dashed line remained across the isolated bar and confirmed it was above the limit; the text supplied the exact distance that the ungraduated chart could not verify by itself.",
+              "vault_b_position": "Vault B stayed in the central horizontal region, with a wider isolated panel."
+            },
+            "strength": "The isolated state gives the technician both the reading and the correctly expressed breach.",
+            "weakness": "The large dark filmstrip panel and chart baseline still require some interpretation.",
+            "repair": "Add a concise chart explanation or scale labels so the visual comparison is independently legible.",
+            "arm": "contact-strip-r4",
+            "html_sha256": "1d41867463fc3a2c586d245a7c2215e1e7cbd735d9df21a23d95da58be67ac70",
+            "weighted": 8.0,
+            "before": {
+              "sha256": "1df4b5b801ba35b58751391836275dd0c11df269390ed035d76a58bd30258c72",
+              "file": "B-1440-before.png",
+              "tool_call_id": "item_21"
+            },
+            "after": {
+              "sha256": "e8652a5b1fbfbe4c072e0c4ebf6391d4ae184651b458221a7a5771a6c72dc052",
+              "file": "B-1440-after.png",
+              "tool_call_id": "item_25"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Shift+Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-390": {
+            "coherence": 8,
+            "originality": 7,
+            "craft": 8,
+            "usability": 8.5,
+            "primary_action": {
+              "input": "Tab twice, then Enter on Over limit",
+              "expected": "Show only vaults above 50%",
+              "observed": "Only Vault B remained, with 58%, Over limit, and 8 percentage points above 50% visible alongside the limit and comparison line. Over limit was active and visibly focused."
+            },
+            "edge_observation": "Shift+Tab, Enter restored all three readings. All vaults was active and visibly focused.",
+            "fact_check": {
+              "before": "Without scrolling, all three readings—44%, 58%, and 46%—and the 50% limit were visible. Vault B's orange value and bar above the dashed line identified it as the exception.",
+              "isolated_distance": "The pixels explicitly stated 8 percentage points above 50%; the arithmetic agrees.",
+              "comparison_mark": "The dashed line still crossed the bar below its top, showing the breach. The text, rather than chart graduations, established its exact size.",
+              "vault_b_position": "Vault B stayed in the central horizontal region; the isolated panel widened around that center."
+            },
+            "strength": "The full overview and the isolated breach fit within the initial viewport, and the centered result preserves the vault's position.",
+            "weakness": "The isolated panel uses a narrow center column and wraps the breach text despite available horizontal space; the bar scale remains implicit.",
+            "repair": "Give the isolated content enough width for the breach label and explain the bar scale.",
+            "arm": "contact-strip-r4",
+            "html_sha256": "1d41867463fc3a2c586d245a7c2215e1e7cbd735d9df21a23d95da58be67ac70",
+            "weighted": 7.8,
+            "before": {
+              "sha256": "e4a0f98ee3ca2c61e29319f5fe77fbe9221b6ce3e097ae87f0997f229866f246",
+              "file": "B-390-before.png",
+              "tool_call_id": "item_30"
+            },
+            "after": {
+              "sha256": "b16ddc8cb13d6e5f8d174adc062dc5f7214eed837c925b3492ca0e37bd2bc0c6",
+              "file": "B-390-after.png",
+              "tool_call_id": "item_34"
+            },
+            "layout_width": 390,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Shift+Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          }
+        },
+        "preference": {
+          "winner": "B",
+          "reason": "Both designs have a filmstrip cue that makes them feel connected to film, though the humidity display itself could serve other kinds of vault. Both fit the initial 390 px viewport and support the tested keyboard flow. B makes the consequential difference explicit: Vault B is 8 percentage points above the limit, while keeping the comparison line and its central position.",
+          "most_consequential_issue_left": "The chart has no labeled intermediate scale, so the dashed line confirms that the reading is above the limit but cannot independently verify the exact distance. Explain the bar scale or add useful graduations.",
+          "unsupported_claims": "No claim is made about live sensor accuracy, behavior with other data, assistive technology beyond the exposed initial accessibility tree, or revision history."
+        },
+        "case": "vault-humidity",
+        "verified_screens": 4,
+        "required_screens": 4,
+        "browser": "Chrome/158.0.8127.36",
+        "evaluator_thread": "01a2081a-2d89-7502-9a79-59f64c1cfdfb",
+        "usage": {
+          "input_tokens": 443409,
+          "cached_input_tokens": 406528,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2958,
+          "reasoning_output_tokens": 10
+        },
+        "trace_sha256": "29a734a0d4411efafdba00140c71d1ac1e77bffdc730890b52953ea6b79d19bb",
+        "browser_audit_sha256": "e4bd081b76d32778e8baeb29be0013119e1906dca195269bfdb150bb41d3de7b"
+      }
+    },
+    {
+      "path": ".context/vault-contact-strip/blind-r5",
+      "ballot_sha256": "738c3c864fc1b87969027a028e1891321b42f19340aa61d2fc0260917a803bfb",
+      "screenshots": {
+        "A-1440-before": {
+          "path": "A-1440-before.png",
+          "sha256": "1df4b5b801ba35b58751391836275dd0c11df269390ed035d76a58bd30258c72"
+        },
+        "A-1440-after": {
+          "path": "A-1440-after.png",
+          "sha256": "e8652a5b1fbfbe4c072e0c4ebf6391d4ae184651b458221a7a5771a6c72dc052"
+        },
+        "A-1440-edge": {
+          "path": "A-1440-edge.png",
+          "sha256": "1b18db77fd012c4712d681c8cea01f2f1d86043d476f92973a4c07950a5790c3"
+        },
+        "A-390-before": {
+          "path": "A-390-before.png",
+          "sha256": "e4a0f98ee3ca2c61e29319f5fe77fbe9221b6ce3e097ae87f0997f229866f246"
+        },
+        "A-390-after": {
+          "path": "A-390-after.png",
+          "sha256": "b379cf8b745e9acfccb9405eeb803ba637524b38db4cfaacb4908226577d8013"
+        },
+        "A-390-edge": {
+          "path": "A-390-edge.png",
+          "sha256": "f21a1cedd143faf5fe2f275d7f2f926aa9eeab8fc45a389a63ab3fa55ce5dddb"
+        },
+        "B-1440-before": {
+          "path": "B-1440-before.png",
+          "sha256": "0ac1c5db9ae61c0015837c0a01e800be39bd54a0652472d495389fbc02f30b63"
+        },
+        "B-1440-after": {
+          "path": "B-1440-after.png",
+          "sha256": "b9e18a7958274ab558da391d2e75fdf9280f2fdce201ae9ce28fa0eba8b607bf"
+        },
+        "B-1440-edge": {
+          "path": "B-1440-edge.png",
+          "sha256": "36447fd22beddc4b4cb7398013d2eaf93b20b13d88a17e1fb8bf85402c719bfa"
+        },
+        "B-390-before": {
+          "path": "B-390-before.png",
+          "sha256": "ab1cb54a1a3a66746cf3dc006bd3de07a94ed2572514fc575daca13d5ec944ff"
+        },
+        "B-390-after": {
+          "path": "B-390-after.png",
+          "sha256": "420ae638790531728dad1dcb793a9c22046e76aa93a150c9c93bda4ae764ea71"
+        },
+        "B-390-edge": {
+          "path": "B-390-edge.png",
+          "sha256": "d2ca063867bcc04b0760c621513118c470e56258fdeb834b2b5c5318cd1a0741"
+        }
+      },
+      "ballot": {
+        "calibration": {
+          "example": "Legible repair intake with clear labels, familiar layout, and misplaced focus after an invalid number",
+          "coherence": 7,
+          "originality": 4,
+          "craft": 6,
+          "usability": 6,
+          "basis": "Clear labels support the task, but the familiar layout limits originality and misplaced error focus impairs recovery."
+        },
+        "screens": {
+          "A-1440": {
+            "coherence": 8.5,
+            "originality": 8,
+            "craft": 8.5,
+            "usability": 9,
+            "primary_action": {
+              "input": "Tab twice, then Enter on Over limit",
+              "expected": "Show only vaults above the limit.",
+              "observed": "Only Vault B remains; Over limit is pressed and retains visible keyboard focus.",
+              "captures": [
+                "A-1440-before",
+                "A-1440-after",
+                "A-1440-edge"
+              ]
+            },
+            "edge_observation": "Shift+Tab and Enter restore all three readings. All vaults is pressed and visibly focused.",
+            "fact_check": {
+              "initial_pixels": "Vault A 44%, Vault B 58%, Vault C 46%, and the 50% upper humidity limit are all visible without scrolling. Vault B needs attention.",
+              "exception_clue": "The orange reading and bar extend above the dashed limit line, with an Over limit label.",
+              "isolated_pixels": "Vault B 58%, the 50% limit, and '8 percentage points above 50%' are visible.",
+              "comparison_mark": "The dashed line remains across the bar and shows that the reading exceeds the limit; the text supplies the exact distance.",
+              "position_and_identity": "Vault B stays in the central horizontal region and is named on its panel. The status says one vault is over the limit rather than explicitly saying 'Viewing Vault B'.",
+              "physical_movement": "The filmstrip styling evokes film, but the screenshots do not establish that a physical reel moved."
+            },
+            "strength": "The filmstrip and threshold chart connect the archive identity to a useful comparison.",
+            "weakness": "The chart's 0–100% scale and dashed line depend on the small legend for interpretation.",
+            "repair": "Place a concise 50% label directly beside the dashed line.",
+            "arm": "contact-strip-r4",
+            "html_sha256": "1d41867463fc3a2c586d245a7c2215e1e7cbd735d9df21a23d95da58be67ac70",
+            "weighted": 8.45,
+            "before": {
+              "sha256": "1df4b5b801ba35b58751391836275dd0c11df269390ed035d76a58bd30258c72",
+              "file": "A-1440-before.png",
+              "tool_call_id": "item_2"
+            },
+            "after": {
+              "sha256": "e8652a5b1fbfbe4c072e0c4ebf6391d4ae184651b458221a7a5771a6c72dc052",
+              "file": "A-1440-after.png",
+              "tool_call_id": "item_6"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Shift+Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "A-390": {
+            "coherence": 8.5,
+            "originality": 8,
+            "craft": 8,
+            "usability": 8.5,
+            "primary_action": {
+              "input": "Tab twice, then Enter on Over limit",
+              "expected": "Show only vaults above the limit.",
+              "observed": "Only Vault B remains; Over limit is pressed and visibly focused.",
+              "captures": [
+                "A-390-before",
+                "A-390-after",
+                "A-390-edge"
+              ]
+            },
+            "edge_observation": "Shift+Tab and Enter restore all three readings. All vaults is pressed and visibly focused.",
+            "fact_check": {
+              "initial_pixels": "Vault A 44%, Vault B 58%, Vault C 46%, and the 50% limit are all visible without scrolling. Vault B needs attention.",
+              "exception_clue": "Orange type and a bar crossing the dashed threshold distinguish Vault B.",
+              "isolated_pixels": "Vault B 58%, the 50% limit, and '8 percentage points above 50%' remain visible.",
+              "comparison_mark": "The dashed line still crosses the bar; the exact eight-point difference is written below it.",
+              "position_and_identity": "Vault B remains centered horizontally, widening in the isolated state. Its panel names it; the status gives a count rather than explicitly naming the viewed vault.",
+              "physical_movement": "The perforated strip suggests film stock; it does not prove a physical reel moved."
+            },
+            "strength": "All readings and the threshold fit in the initial mobile viewport, with a recognizable filmstrip.",
+            "weakness": "Three narrow columns make the chart and its legend small, and the isolated panel has considerable empty space around it.",
+            "repair": "Label the threshold at the line and use the available isolated-panel width more effectively.",
+            "arm": "contact-strip-r4",
+            "html_sha256": "1d41867463fc3a2c586d245a7c2215e1e7cbd735d9df21a23d95da58be67ac70",
+            "weighted": 8.25,
+            "before": {
+              "sha256": "e4a0f98ee3ca2c61e29319f5fe77fbe9221b6ce3e097ae87f0997f229866f246",
+              "file": "A-390-before.png",
+              "tool_call_id": "item_11"
+            },
+            "after": {
+              "sha256": "b379cf8b745e9acfccb9405eeb803ba637524b38db4cfaacb4908226577d8013",
+              "file": "A-390-after.png",
+              "tool_call_id": "item_15"
+            },
+            "layout_width": 390,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Shift+Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-1440": {
+            "coherence": 7.5,
+            "originality": 5.5,
+            "craft": 8,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab twice, then Enter on Over limit",
+              "expected": "Show only vaults above the limit.",
+              "observed": "Only Vault B remains; Over limit is pressed and retains visible keyboard focus.",
+              "captures": [
+                "B-1440-before",
+                "B-1440-after",
+                "B-1440-edge"
+              ]
+            },
+            "edge_observation": "Shift+Tab and Enter restore all three readings. All vaults is pressed and visibly focused.",
+            "fact_check": {
+              "initial_pixels": "Vault A 44%, Vault B 58%, Vault C 46%, and the 50% upper humidity limit are all visible without scrolling. Vault B needs attention.",
+              "exception_clue": "Vault B's burgundy reading, top stripe, and Over limit label distinguish it from the other panels.",
+              "isolated_pixels": "Vault B 58%, the 50% limit, and '8 percentage points over' are visible.",
+              "comparison_mark": "No visible threshold comparison mark remains; the difference is stated numerically rather than shown against a scale.",
+              "position_and_identity": "Vault B stays in the middle horizontal region. The status explicitly says 'Viewing Vault B', and the urgent reading stays in the center panel.",
+              "physical_movement": "No visible evidence establishes that a physical reel moved."
+            },
+            "strength": "The selected vault is explicitly named and retains its position, with a clear numerical difference.",
+            "weakness": "The film archive identity relies mainly on the heading; the dark surrounding panel and horizontal stripes have no explained measurement meaning.",
+            "repair": "Introduce a labeled threshold comparison while preserving the explicit viewing status and stable position.",
+            "arm": "contact-strip-r5",
+            "html_sha256": "c95c024e0ae47bfab5de05116e73ff17e62ed8c16b7a760c200563fd65819d60",
+            "weighted": 7.1,
+            "before": {
+              "sha256": "0ac1c5db9ae61c0015837c0a01e800be39bd54a0652472d495389fbc02f30b63",
+              "file": "B-1440-before.png",
+              "tool_call_id": "item_21"
+            },
+            "after": {
+              "sha256": "b9e18a7958274ab558da391d2e75fdf9280f2fdce201ae9ce28fa0eba8b607bf",
+              "file": "B-1440-after.png",
+              "tool_call_id": "item_25"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Shift+Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-390": {
+            "coherence": 7.5,
+            "originality": 5.5,
+            "craft": 7.5,
+            "usability": 7.5,
+            "primary_action": {
+              "input": "Tab twice, then Enter on Over limit",
+              "expected": "Show only vaults above the limit.",
+              "observed": "Only Vault B remains; Over limit is pressed and visibly focused.",
+              "captures": [
+                "B-390-before",
+                "B-390-after",
+                "B-390-edge"
+              ]
+            },
+            "edge_observation": "Shift+Tab and Enter restore all three readings. All vaults is pressed and visibly focused.",
+            "fact_check": {
+              "initial_pixels": "Vault A 44%, Vault B 58%, Vault C 46%, and the 50% limit are all visible without scrolling. Vault B needs attention.",
+              "exception_clue": "The burgundy value and stripe, plus the Over limit label, identify the exception.",
+              "isolated_pixels": "Vault B 58%, the 50% limit, and '8 percentage points over' remain visible.",
+              "comparison_mark": "There is no visible threshold scale or comparison mark; the numeric statement gives the difference.",
+              "position_and_identity": "Vault B remains in the center column and the status explicitly says 'Viewing Vault B'.",
+              "physical_movement": "No visible evidence establishes that a physical reel moved."
+            },
+            "strength": "The initial readings fit on screen and the selected vault retains its position and name.",
+            "weakness": "The isolated reading remains confined to a narrow center column, leaving large empty side panels and wrapping the difference over two lines.",
+            "repair": "Use more of the mobile width for the isolated reading while keeping it centered, and add a clear threshold comparison.",
+            "arm": "contact-strip-r5",
+            "html_sha256": "c95c024e0ae47bfab5de05116e73ff17e62ed8c16b7a760c200563fd65819d60",
+            "weighted": 6.9,
+            "before": {
+              "sha256": "ab1cb54a1a3a66746cf3dc006bd3de07a94ed2572514fc575daca13d5ec944ff",
+              "file": "B-390-before.png",
+              "tool_call_id": "item_30"
+            },
+            "after": {
+              "sha256": "420ae638790531728dad1dcb793a9c22046e76aa93a150c9c93bda4ae764ea71",
+              "file": "B-390-after.png",
+              "tool_call_id": "item_34"
+            },
+            "layout_width": 390,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Shift+Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          }
+        },
+        "preference": {
+          "winner": "A",
+          "reason": "A combines a more specific filmstrip identity with a visible threshold line and exact eight-point difference at both widths. Its most consequential remaining issue is that the threshold line relies on a separate small legend; labeling it directly would make the comparison faster to interpret.",
+          "unsupported_claims": "Neither design's screenshots establish that a physical reel was moved. No revision history or generator identity was inferred."
+        },
+        "case": "vault-humidity",
+        "verified_screens": 4,
+        "required_screens": 4,
+        "browser": "Chrome/158.0.8127.36",
+        "evaluator_thread": "01a2081c-33dc-7810-8541-fb40d43582d8",
+        "usage": {
+          "input_tokens": 430284,
+          "cached_input_tokens": 393472,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2938,
+          "reasoning_output_tokens": 11
+        },
+        "trace_sha256": "177d204b70897fc526961d8d24d56cb01ee691b357f588ff08edb8c70656c288",
+        "browser_audit_sha256": "40301f938a9630670bb3ff160b359e195de1d9bf51c07a38500650c70b43c856"
+      }
+    }
+  ],
+  "fresh_finalist_comparison": {
+    "path": ".context/vault-contact-strip/finalist-confirmation",
+    "ballot_sha256": "17cf137be739360acb4260e2f07b0abc439a9d74b9a9c0451bd8e5b10f4beaf7",
+    "screenshots": {
+      "A-1440-before": {
+        "path": "A-1440-before.png",
+        "sha256": "fff0235a2e377dc4eaf2b920b78aeaf6e8295914b5f93701c33ee6b5209c5fc3"
+      },
+      "A-1440-after": {
+        "path": "A-1440-after.png",
+        "sha256": "4c9158ba3b59969d5f61a05b75d3dbd231c8e7c0420158d6cac14f4f1b58ecdd"
+      },
+      "A-1440-edge": {
+        "path": "A-1440-edge.png",
+        "sha256": "8abec186b61d66f249d547e802a85e1cc180322307af818f594dfbd0cb456c9f"
+      },
+      "A-390-before": {
+        "path": "A-390-before.png",
+        "sha256": "3f7216d5977d37a6696d56675f5965cc2687ddaf93ac9e7d646007f918ca2447"
+      },
+      "A-390-after": {
+        "path": "A-390-after.png",
+        "sha256": "77ee8c4e5e9c2e891ef05d0a4b2f6ee84b9b02b2bb9f4b2089e3253b52e7ebc9"
+      },
+      "A-390-edge": {
+        "path": "A-390-edge.png",
+        "sha256": "e4eb55aa730803ecf6deba27af2a38d66d985dbcb4a6ad8d64b9484e7ac19f3b"
+      },
+      "B-1440-before": {
+        "path": "B-1440-before.png",
+        "sha256": "1df4b5b801ba35b58751391836275dd0c11df269390ed035d76a58bd30258c72"
+      },
+      "B-1440-after": {
+        "path": "B-1440-after.png",
+        "sha256": "e8652a5b1fbfbe4c072e0c4ebf6391d4ae184651b458221a7a5771a6c72dc052"
+      },
+      "B-1440-edge": {
+        "path": "B-1440-edge.png",
+        "sha256": "1b18db77fd012c4712d681c8cea01f2f1d86043d476f92973a4c07950a5790c3"
+      },
+      "B-390-before": {
+        "path": "B-390-before.png",
+        "sha256": "e4a0f98ee3ca2c61e29319f5fe77fbe9221b6ce3e097ae87f0997f229866f246"
+      },
+      "B-390-after": {
+        "path": "B-390-after.png",
+        "sha256": "b379cf8b745e9acfccb9405eeb803ba637524b38db4cfaacb4908226577d8013"
+      },
+      "B-390-edge": {
+        "path": "B-390-edge.png",
+        "sha256": "f21a1cedd143faf5fe2f275d7f2f926aa9eeab8fc45a389a63ab3fa55ce5dddb"
+      }
+    },
+    "ballot": {
+      "calibration": {
+        "example": "Legible repair intake with clear labels, familiar layout, and misplaced focus after an invalid number.",
+        "coherence": 7,
+        "originality": 4,
+        "craft": 6,
+        "usability": 5,
+        "basis": "The focus error materially weakens recovery; the familiar layout limits originality. These scores are estimates from the supplied description, not a live inspection."
+      },
+      "screens": {
+        "A-1440": {
+          "coherence": 8,
+          "originality": 7.5,
+          "craft": 8,
+          "usability": 8.5,
+          "primary_action": {
+            "input": "Tab twice, then Enter on Over limit.",
+            "expected": "Show only vaults above the limit while retaining the reading and limit.",
+            "observed": "Only Vault B remained, at 58%; the 50% limit remained visible. Over limit was pressed and visibly focused.",
+            "captures": [
+              "A-1440-before.png",
+              "A-1440-after.png"
+            ]
+          },
+          "edge_observation": "Shift+Tab and Enter restored all three readings. All vaults was pressed and visibly focused. Captured as A-1440-edge.png.",
+          "fact_check": "The initial screenshot shows Vault A 44%, Vault B 58%, Vault C 46%, and the 50% upper humidity limit. Vault B needs attention: its orange reading and bar exceed the dashed limit line, and it is labeled Over limit.",
+          "strength": "The filmstrip frame gives the comparison a film-archive cue, and the exception is easy to identify.",
+          "weakness": "The bar panel has no visible axis ticks; the dashed-line legend explains the threshold, but the bar scale takes interpretation.",
+          "repair": "Label the scale endpoints or otherwise make the bar-height encoding explicit.",
+          "arm": "contact-strip-r3",
+          "html_sha256": "00a145fea3db8508e65e08926aced9ec2c8ba50c37b7658e20ed27be574b57fb",
+          "weighted": 7.95,
+          "before": {
+            "sha256": "fff0235a2e377dc4eaf2b920b78aeaf6e8295914b5f93701c33ee6b5209c5fc3",
+            "file": "A-1440-before.png",
+            "tool_call_id": "item_2"
+          },
+          "after": {
+            "sha256": "4c9158ba3b59969d5f61a05b75d3dbd231c8e7c0420158d6cac14f4f1b58ecdd",
+            "file": "A-1440-after.png",
+            "tool_call_id": "item_6"
+          },
+          "layout_width": 1440,
+          "input_sequence": [
+            {
+              "action": "key",
+              "value": "Tab"
+            },
+            {
+              "action": "key",
+              "value": "Tab"
+            },
+            {
+              "action": "key",
+              "value": "Enter"
+            }
+          ],
+          "edge_inputs": [
+            {
+              "action": "key",
+              "value": "Shift+Tab"
+            },
+            {
+              "action": "key",
+              "value": "Enter"
+            }
+          ]
+        },
+        "A-390": {
+          "coherence": 8,
+          "originality": 7.5,
+          "craft": 8,
+          "usability": 8.5,
+          "primary_action": {
+            "input": "Tab twice, then Enter on Over limit.",
+            "expected": "Show only vaults above the limit while retaining the reading and limit.",
+            "observed": "Only Vault B remained at 58%, with the 50% limit visible. Over limit was pressed and visibly focused.",
+            "captures": [
+              "A-390-before.png",
+              "A-390-after.png"
+            ]
+          },
+          "edge_observation": "Shift+Tab and Enter restored all three readings. All vaults was pressed and visibly focused. Captured as A-390-edge.png.",
+          "fact_check": "The initial screenshot shows Vault A 44%, Vault B 58%, Vault C 46%, and the 50% upper humidity limit without scrolling. Orange text and a bar crossing the dashed line distinguish Vault B.",
+          "strength": "The three readings, controls and threshold fit in the initial viewport; the compact filmstrip remains legible.",
+          "weakness": "The three narrow columns feel compressed, and the bar scale requires the legend to interpret.",
+          "repair": "Clarify the scale while preserving the compact side-by-side comparison.",
+          "arm": "contact-strip-r3",
+          "html_sha256": "00a145fea3db8508e65e08926aced9ec2c8ba50c37b7658e20ed27be574b57fb",
+          "weighted": 7.95,
+          "before": {
+            "sha256": "3f7216d5977d37a6696d56675f5965cc2687ddaf93ac9e7d646007f918ca2447",
+            "file": "A-390-before.png",
+            "tool_call_id": "item_11"
+          },
+          "after": {
+            "sha256": "77ee8c4e5e9c2e891ef05d0a4b2f6ee84b9b02b2bb9f4b2089e3253b52e7ebc9",
+            "file": "A-390-after.png",
+            "tool_call_id": "item_15"
+          },
+          "layout_width": 390,
+          "input_sequence": [
+            {
+              "action": "key",
+              "value": "Tab"
+            },
+            {
+              "action": "key",
+              "value": "Tab"
+            },
+            {
+              "action": "key",
+              "value": "Enter"
+            }
+          ],
+          "edge_inputs": [
+            {
+              "action": "key",
+              "value": "Shift+Tab"
+            },
+            {
+              "action": "key",
+              "value": "Enter"
+            }
+          ]
+        },
+        "B-1440": {
+          "coherence": 8,
+          "originality": 7.5,
+          "craft": 8.2,
+          "usability": 9,
+          "primary_action": {
+            "input": "Tab twice, then Enter on Over limit.",
+            "expected": "Show only vaults above the limit while retaining the reading and limit.",
+            "observed": "Only Vault B remained at 58%, with the 50% limit and '8 percentage points above 50%' visible. Over limit was pressed and visibly focused.",
+            "captures": [
+              "B-1440-before.png",
+              "B-1440-after.png"
+            ]
+          },
+          "edge_observation": "Shift+Tab and Enter restored all three readings. All vaults was pressed and visibly focused. Captured as B-1440-edge.png.",
+          "fact_check": "The initial screenshot shows Vault A 44%, Vault B 58%, Vault C 46%, and the 50% upper humidity limit. Vault B stands out in orange, with its bar above the dashed threshold and an Over limit label.",
+          "strength": "The filmstrip suggests a film archive, and the filtered state explicitly quantifies the exception.",
+          "weakness": "The chart's dashed threshold is explained, but its scale has no visible endpoint labels.",
+          "repair": "Label the bar scale endpoints so the height encoding is immediately clear.",
+          "arm": "contact-strip-r4",
+          "html_sha256": "1d41867463fc3a2c586d245a7c2215e1e7cbd735d9df21a23d95da58be67ac70",
+          "weighted": 8.09,
+          "before": {
+            "sha256": "1df4b5b801ba35b58751391836275dd0c11df269390ed035d76a58bd30258c72",
+            "file": "B-1440-before.png",
+            "tool_call_id": "item_21"
+          },
+          "after": {
+            "sha256": "e8652a5b1fbfbe4c072e0c4ebf6391d4ae184651b458221a7a5771a6c72dc052",
+            "file": "B-1440-after.png",
+            "tool_call_id": "item_25"
+          },
+          "layout_width": 1440,
+          "input_sequence": [
+            {
+              "action": "key",
+              "value": "Tab"
+            },
+            {
+              "action": "key",
+              "value": "Tab"
+            },
+            {
+              "action": "key",
+              "value": "Enter"
+            }
+          ],
+          "edge_inputs": [
+            {
+              "action": "key",
+              "value": "Shift+Tab"
+            },
+            {
+              "action": "key",
+              "value": "Enter"
+            }
+          ]
+        },
+        "B-390": {
+          "coherence": 8,
+          "originality": 7.5,
+          "craft": 7.8,
+          "usability": 8.8,
+          "primary_action": {
+            "input": "Tab twice, then Enter on Over limit.",
+            "expected": "Show only vaults above the limit while retaining the reading and limit.",
+            "observed": "Only Vault B remained at 58%, with the 50% limit and '8 percentage points above 50%' visible. Over limit was pressed and visibly focused.",
+            "captures": [
+              "B-390-before.png",
+              "B-390-after.png"
+            ]
+          },
+          "edge_observation": "Shift+Tab and Enter restored all three readings. All vaults was pressed and visibly focused. Captured as B-390-edge.png.",
+          "fact_check": "The initial screenshot shows Vault A 44%, Vault B 58%, Vault C 46%, and the 50% upper humidity limit without scrolling. Vault B's orange bar crosses the dashed threshold and its reading and status are orange.",
+          "strength": "The initial comparison fits the screen, and the filtered result states the amount above the limit.",
+          "weakness": "The filtered card is narrow within a wide dark panel, causing the explanatory sentence to wrap and leaving substantial unused space.",
+          "repair": "Give the single filtered card more mobile width while retaining the explanatory sentence and visible threshold.",
+          "arm": "contact-strip-r4",
+          "html_sha256": "1d41867463fc3a2c586d245a7c2215e1e7cbd735d9df21a23d95da58be67ac70",
+          "weighted": 7.97,
+          "before": {
+            "sha256": "e4a0f98ee3ca2c61e29319f5fe77fbe9221b6ce3e097ae87f0997f229866f246",
+            "file": "B-390-before.png",
+            "tool_call_id": "item_30"
+          },
+          "after": {
+            "sha256": "b379cf8b745e9acfccb9405eeb803ba637524b38db4cfaacb4908226577d8013",
+            "file": "B-390-after.png",
+            "tool_call_id": "item_34"
+          },
+          "layout_width": 390,
+          "input_sequence": [
+            {
+              "action": "key",
+              "value": "Tab"
+            },
+            {
+              "action": "key",
+              "value": "Tab"
+            },
+            {
+              "action": "key",
+              "value": "Enter"
+            }
+          ],
+          "edge_inputs": [
+            {
+              "action": "key",
+              "value": "Shift+Tab"
+            },
+            {
+              "action": "key",
+              "value": "Enter"
+            }
+          ]
+        }
+      },
+      "preference": {
+        "winner": "B",
+        "reason": "Both designs complete the keyboard task and recovery, but B adds the actionable magnitude of the exception: 8 percentage points above the limit. Its most consequential remaining issue is the narrow filtered card at 390 px; the shared chart scale could also be clearer."
+      },
+      "unsupported_claims": [
+        "The visual filmstrip suggests a film archive, but the screen does not explicitly identify the collection as film.",
+        "No claim is made about the operational correctness of the 50% threshold or the readings beyond what the interface displays."
+      ],
+      "case": "vault-humidity",
+      "verified_screens": 4,
+      "required_screens": 4,
+      "browser": "Chrome/158.0.8127.36",
+      "evaluator_thread": "01a2081e-435d-7b80-bba0-477ae3ef82ba",
+      "usage": {
+        "input_tokens": 440687,
+        "cached_input_tokens": 416768,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2601,
+        "reasoning_output_tokens": 0
+      },
+      "trace_sha256": "67f5914326ab2b97efba8ff8d944eebca46c826ef8c3cdf3c6ad37507ed471e6",
+      "browser_audit_sha256": "ed8639471f2cb7740373ba750402ff6e42f7bbdf9bd7088e9587062722720810"
+    }
+  },
+  "finalist": "contact-strip-r3",
+  "motion_check": {
+    "path": ".context/vault-contact-strip/finalist-motion",
+    "browser": "Chrome/158.0.8127.36",
+    "build_sha256": "00a145fea3db8508e65e08926aced9ec2c8ba50c37b7658e20ed27be574b57fb",
+    "frames": [
+      {
+        "words": [
+          {
+            "value": "Vault B",
+            "fits": true
+          },
+          {
+            "value": "58%",
+            "fits": true
+          },
+          {
+            "value": "Over limit",
+            "fits": true
+          }
+        ],
+        "animationCount": 1,
+        "focus": "Over limit",
+        "width": 320,
+        "readingCount": 1,
+        "scrollWidth": 320,
+        "preference": "no-preference",
+        "ms": 0,
+        "file": "320-no-preference-0.png",
+        "sha256": "7458ae1b5b616eff15fa8e633f0127568acbf21a2f40a9e5d3bc4c8741ff5608"
+      },
+      {
+        "words": [
+          {
+            "value": "Vault B",
+            "fits": true
+          },
+          {
+            "value": "58%",
+            "fits": true
+          },
+          {
+            "value": "Over limit",
+            "fits": true
+          }
+        ],
+        "animationCount": 1,
+        "focus": "Over limit",
+        "width": 320,
+        "readingCount": 1,
+        "scrollWidth": 320,
+        "preference": "no-preference",
+        "ms": 80,
+        "file": "320-no-preference-80.png",
+        "sha256": "c4c2dfae23dbc0d271336fe7bfb3a529c93494267b344f27e5ca0de4af150230"
+      },
+      {
+        "words": [
+          {
+            "value": "Vault B",
+            "fits": true
+          },
+          {
+            "value": "58%",
+            "fits": true
+          },
+          {
+            "value": "Over limit",
+            "fits": true
+          }
+        ],
+        "animationCount": 1,
+        "focus": "Over limit",
+        "width": 320,
+        "readingCount": 1,
+        "scrollWidth": 320,
+        "preference": "no-preference",
+        "ms": 250,
+        "file": "320-no-preference-250.png",
+        "sha256": "7458ae1b5b616eff15fa8e633f0127568acbf21a2f40a9e5d3bc4c8741ff5608"
+      },
+      {
+        "words": [
+          {
+            "value": "Vault B",
+            "fits": true
+          },
+          {
+            "value": "58%",
+            "fits": true
+          },
+          {
+            "value": "Over limit",
+            "fits": true
+          }
+        ],
+        "animationCount": 0,
+        "focus": "Over limit",
+        "width": 320,
+        "readingCount": 1,
+        "scrollWidth": 320,
+        "preference": "reduce",
+        "ms": 0,
+        "file": "320-reduce-0.png",
+        "sha256": "c1297886391b1c5b580009442a0815652037bc2291c4f896e91bb193fd3d7a40"
+      },
+      {
+        "words": [
+          {
+            "value": "Vault B",
+            "fits": true
+          },
+          {
+            "value": "58%",
+            "fits": true
+          },
+          {
+            "value": "Over limit",
+            "fits": true
+          }
+        ],
+        "animationCount": 1,
+        "focus": "Over limit",
+        "width": 390,
+        "readingCount": 1,
+        "scrollWidth": 390,
+        "preference": "no-preference",
+        "ms": 0,
+        "file": "390-no-preference-0.png",
+        "sha256": "1313b222649764308ff705f39842444e83ff412790fa1ef20e3033ea20368338"
+      },
+      {
+        "words": [
+          {
+            "value": "Vault B",
+            "fits": true
+          },
+          {
+            "value": "58%",
+            "fits": true
+          },
+          {
+            "value": "Over limit",
+            "fits": true
+          }
+        ],
+        "animationCount": 1,
+        "focus": "Over limit",
+        "width": 390,
+        "readingCount": 1,
+        "scrollWidth": 390,
+        "preference": "no-preference",
+        "ms": 80,
+        "file": "390-no-preference-80.png",
+        "sha256": "aa1f3cac74f34afd0497ff1e39fe67c913c91d9704cb77630d4d01caf891a975"
+      },
+      {
+        "words": [
+          {
+            "value": "Vault B",
+            "fits": true
+          },
+          {
+            "value": "58%",
+            "fits": true
+          },
+          {
+            "value": "Over limit",
+            "fits": true
+          }
+        ],
+        "animationCount": 1,
+        "focus": "Over limit",
+        "width": 390,
+        "readingCount": 1,
+        "scrollWidth": 390,
+        "preference": "no-preference",
+        "ms": 250,
+        "file": "390-no-preference-250.png",
+        "sha256": "1313b222649764308ff705f39842444e83ff412790fa1ef20e3033ea20368338"
+      },
+      {
+        "words": [
+          {
+            "value": "Vault B",
+            "fits": true
+          },
+          {
+            "value": "58%",
+            "fits": true
+          },
+          {
+            "value": "Over limit",
+            "fits": true
+          }
+        ],
+        "animationCount": 0,
+        "focus": "Over limit",
+        "width": 390,
+        "readingCount": 1,
+        "scrollWidth": 390,
+        "preference": "reduce",
+        "ms": 0,
+        "file": "390-reduce-0.png",
+        "sha256": "0f05124b7a67946c1912829f2d8a39bdbb0e81bc6a184a632462d7accf14e85b"
+      },
+      {
+        "words": [
+          {
+            "value": "Vault B",
+            "fits": true
+          },
+          {
+            "value": "58%",
+            "fits": true
+          },
+          {
+            "value": "Over limit",
+            "fits": true
+          }
+        ],
+        "animationCount": 1,
+        "focus": "Over limit",
+        "width": 1440,
+        "readingCount": 1,
+        "scrollWidth": 1440,
+        "preference": "no-preference",
+        "ms": 0,
+        "file": "1440-no-preference-0.png",
+        "sha256": "5cdb2f278ef1334eac78e5d37aa60354d2d03f067e2b1e95abfcaf7cff9fb6e1"
+      },
+      {
+        "words": [
+          {
+            "value": "Vault B",
+            "fits": true
+          },
+          {
+            "value": "58%",
+            "fits": true
+          },
+          {
+            "value": "Over limit",
+            "fits": true
+          }
+        ],
+        "animationCount": 1,
+        "focus": "Over limit",
+        "width": 1440,
+        "readingCount": 1,
+        "scrollWidth": 1440,
+        "preference": "no-preference",
+        "ms": 80,
+        "file": "1440-no-preference-80.png",
+        "sha256": "6116ceb3130644d6238e40838b29195bf261db22f884e7f2459be285fd5c08b7"
+      },
+      {
+        "words": [
+          {
+            "value": "Vault B",
+            "fits": true
+          },
+          {
+            "value": "58%",
+            "fits": true
+          },
+          {
+            "value": "Over limit",
+            "fits": true
+          }
+        ],
+        "animationCount": 1,
+        "focus": "Over limit",
+        "width": 1440,
+        "readingCount": 1,
+        "scrollWidth": 1440,
+        "preference": "no-preference",
+        "ms": 250,
+        "file": "1440-no-preference-250.png",
+        "sha256": "5cdb2f278ef1334eac78e5d37aa60354d2d03f067e2b1e95abfcaf7cff9fb6e1"
+      },
+      {
+        "words": [
+          {
+            "value": "Vault B",
+            "fits": true
+          },
+          {
+            "value": "58%",
+            "fits": true
+          },
+          {
+            "value": "Over limit",
+            "fits": true
+          }
+        ],
+        "animationCount": 0,
+        "focus": "Over limit",
+        "width": 1440,
+        "readingCount": 1,
+        "scrollWidth": 1440,
+        "preference": "reduce",
+        "ms": 0,
+        "file": "1440-reduce-0.png",
+        "sha256": "82f0727ccb0cdce3464791470801e4398af284469181c9e851ccdfbd6e5aa750"
+      }
+    ]
+  },
+  "promotion": "The 9.5 release threshold remains open."
+}

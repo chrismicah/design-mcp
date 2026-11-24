@@ -1,0 +1,306 @@
+{
+ "patterns": 7080,
+ "platform": {
+  "web": 7080
+ },
+ "source": {
+  "webui-7kbal": 6134,
+  "dribbble": 435,
+  "awwwards": 331,
+  "curated": 90,
+  "landbook": 90
+ },
+ "quality_score": {
+  "1.9": 1863,
+  "1.7": 918,
+  "2.2": 709,
+  "2.7": 454,
+  "8.0": 324,
+  "2.6": 262,
+  "2.5": 254,
+  "9.0": 236,
+  "2.4": 191,
+  "2.3": 159,
+  "3.2": 149,
+  "7.0": 148
+ },
+ "page_type_top": {
+  "Landing Page": 6036,
+  "Blog Post": 139,
+  "Dashboard": 126,
+  "Portfolio": 107,
+  "Agency": 106,
+  "SaaS": 82,
+  "E-commerce": 68,
+  "Corporate": 47,
+  "Admin Panel": 45,
+  "Pricing": 35,
+  "Checkout": 35,
+  "Documentation": 31
+ },
+ "page_type_distinct": 33,
+ "color_mode": {
+  "null": 6199,
+  "light": 457,
+  "dark": 424
+ },
+ "semantic_tokens_type": {
+  "int": 7080
+ },
+ "has_behavior": 7080,
+ "distinct_behavior": 14,
+ "distinct_layout_notes": 25,
+ "distinct_a11y": 35,
+ "has_image_url": 773,
+ "field_union": [
+  "accessibility_notes",
+  "behavioral_description",
+  "color_mode",
+  "component_hints",
+  "data_quality_score",
+  "decision_tree",
+  "id",
+  "image_url",
+  "industry",
+  "layout_notes",
+  "layout_type",
+  "name",
+  "page_type",
+  "platform",
+  "primary_colors",
+  "quality_score",
+  "semantic_tokens",
+  "source",
+  "source_url",
+  "tags",
+  "ui_elements",
+  "ux_patterns",
+  "visual_style"
+ ],
+ "taxonomy_page_types_with_zero_patterns": [
+  "Invoice",
+  "Email Template"
+ ],
+ "pattern_page_types_not_in_taxonomy": {
+  "Portfolio": 107,
+  "Agency": 106,
+  "SaaS": 82,
+  "E-commerce": 68,
+  "Corporate": 47,
+  "Chat": 3,
+  "Media Player": 3,
+  "Other": 2,
+  "CRM": 2,
+  "Auth": 2
+ },
+ "search_result0_field_bytes": {
+  "id": 23,
+  "name": 67,
+  "page_type": 14,
+  "layout_notes": 1081,
+  "ui_elements": 32,
+  "visual_style": 18,
+  "behavioral_description": 520,
+  "accessibility_notes": 407,
+  "semantic_tokens": 974,
+  "component_hints": 71,
+  "decision_tree": 685,
+  "visual_recipes": 7640,
+  "design_system": 8203,
+  "source_url": 54
+ },
+ "search_shared_boilerplate": {
+  "design_system": false,
+  "visual_recipes": true,
+  "decision_tree": true,
+  "accessibility_notes": true,
+  "semantic_tokens": false
+ },
+ "design_system_keys": [
+  "font_system",
+  "spacing_system",
+  "global_anti_patterns",
+  "delta_colors",
+  "component_classes"
+ ],
+ "design_system_font_mentions": {
+  "Inter": 2,
+  "Geist": 2,
+  "system-ui": 1
+ },
+ "devibecode_keys": [
+  "anti_patterns_found",
+  "recommended_layout",
+  "semantic_tokens_to_apply",
+  "suggested_component_structure",
+  "severity_summary",
+  "refactoring_suggestions",
+  "code_fixes",
+  "visual_recipes",
+  "recommended_libraries",
+  "detected_component_type"
+ ],
+ "devibecode_findings": [
+  "[WARNING] React inline style object detected (line 4)",
+  "[INFO] Container <div> with multiple children lacks explicit layout (line 4)",
+  "[WARNING] Modal/dialog pattern detected without aria-modal or role=\"dialog\"",
+  "NavigationBar",
+  "HeroSection",
+  "Button",
+  "NavigationBar",
+  "HeroSection",
+  "Button",
+  "NavigationBar",
+  "Sidebar",
+  "Card",
+  "DataTable",
+  "Badge",
+  "Button",
+  "Tabs",
+  "Replace style={{}} with Tailwind utility classes or CSS modules for media query ",
+  "Add 'flex' or 'grid' class, or use a semantic element (<section>, <article>) for",
+  "Add role=\"dialog\" aria-modal=\"true\" for proper focus trapping and screen reader ",
+  "{'issue_type': 'inline_style_abuse', 'fix': \"Replace inline styles with Tailwind",
+  "{'issue_type': 'missing_flex_grid', 'fix': \"Add flex or grid layout to container",
+  "{'issue_type': 'missing_aria', 'fix': 'Add ARIA attributes to interactive elemen",
+  "shadcn/ui",
+  "Mantine",
+  "Chakra UI"
+ ],
+ "devibecode_scores": {
+  "detected_component_type": "Navigation Bar"
+ },
+ "visual_suggestions_keys": [
+  "visual_analysis",
+  "structural_analysis",
+  "color_palette",
+  "typography",
+  "spacing",
+  "implementation",
+  "quick_wins"
+ ],
+ "visual_suggestions_fonts": {},
+ "visual_suggestions_quick_wins": [
+  {
+   "priority": 1,
+   "issue": "Hardcoded light-mode colors without dark: variants \u2014 no dark mode support",
+   "fix": "Add dark: variants (dark:bg-gray-900 dark:text-white) or use semantic tokens (bg-background text-foreground) that auto-adapt.",
+   "impact": "Add dark mode \u2014 expected by most users today"
+  },
+  {
+   "priority": 2,
+   "issue": "Only using font-bold \u2014 no weight variation for visual hierarchy",
+   "fix": "Use font-bold/semibold for headings, font-medium for labels, font-normal for body text to create clear visual hierarchy.",
+   "impact": "Vary font weights \u2014 bold headings + normal body = instant hierarchy"
+  }
+ ],
+ "refactor_keys": [
+  "detected_component_type",
+  "total_issues",
+  "severity_summary",
+  "target_library",
+  "imports_needed",
+  "transformations",
+  "component_suggestion",
+  "design_reference",
+  "semantic_tokens",
+  "code_fixes",
+  "visual_recipes"
+ ],
+ "refactor_code_head": "",
+ "scan_keys": [
+  "project_health_score",
+  "files_scanned",
+  "files_with_issues",
+  "total_issues",
+  "severity_summary",
+  "top_issues",
+  "priority_fixes",
+  "recommended_libraries",
+  "file_reports",
+  "component_types_found",
+  "visual_issues"
+ ],
+ "blueprint_detailed_keys": [
+  "id",
+  "name",
+  "source",
+  "source_url",
+  "page_type",
+  "ux_patterns",
+  "ui_elements",
+  "industry",
+  "layout_type",
+  "layout_notes",
+  "platform",
+  "color_mode",
+  "visual_style",
+  "primary_colors",
+  "behavioral_description",
+  "component_hints",
+  "accessibility_notes",
+  "semantic_tokens",
+  "decision_tree",
+  "data_quality_score",
+  "quality_score",
+  "tags"
+ ],
+ "blueprint_condensed_keys": [
+  "id",
+  "name",
+  "page_type",
+  "layout_type",
+  "layout_notes",
+  "ux_patterns",
+  "ui_elements",
+  "primary_colors",
+  "color_mode",
+  "visual_style",
+  "behavioral_description",
+  "accessibility_notes",
+  "semantic_tokens",
+  "component_hints",
+  "decision_tree",
+  "visual_recipes",
+  "design_system",
+  "source_url"
+ ],
+ "compare_lowercase_plural": {
+  "page_type": "pricing pages",
+  "examples": [],
+  "summary": "No patterns found for comparison."
+ },
+ "behavior_hero": {
+  "error": "Unknown pattern 'hero'",
+  "available": [
+   "dashboard",
+   "modal_dialog",
+   "toast_notification",
+   "data_table",
+   "search",
+   "empty_state",
+   "skeleton_loading",
+   "error_handling",
+   "onboarding_flow",
+   "form_validation",
+   "infinite_scroll",
+   "command_palette"
+  ]
+ },
+ "recipe_list_keys": [
+  "_philosophy",
+  "color_restraint",
+  "depth_system",
+  "typography_is_design",
+  "whitespace_as_design",
+  "component_design",
+  "motion_restraint",
+  "surface_treatment",
+  "layout_hierarchy"
+ ],
+ "libs_default_names": [
+  "shadcn/ui",
+  "Tailwind CSS",
+  "Framer Motion"
+ ]
+}

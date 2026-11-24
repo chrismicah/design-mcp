@@ -1,0 +1,1676 @@
+{
+  "source_commit": "2fcd31221671590152401d958b904141e438e453",
+  "harness_commit": "e287fdace31a025c8de0c6be523a1a56c5558904",
+  "browser": "Chrome/158.0.8127.36",
+  "run": "https://github.com/chrismicah/design-mcp/actions/runs/45024717080",
+  "runner": [
+    "ProductName:\t\tmacOS",
+    "ProductVersion:\t\t15.8.2",
+    "BuildVersion:\t\t24H232",
+    "arm64"
+  ],
+  "summary_sha256": "f096bfe795e4ed0fa4df0797cb249c8888dcfd2b0bc47a1ba9906249018f3fd1",
+  "variant_assets_sha256": {
+    "eager": {
+      "collector.js": "d137cc99d85f652d5d204a83eb867bffe4e3e58002fb79b055afb71cb117e3c2",
+      "manifest.json": "bb8ab23167d14043c3c2c2ff0f58b67b6a47385f63c6ca5047bb57f3a1377882",
+      "popup.css": "19ffbe9f5038e44ac99b2128bc1482cc7130cc74c6af31bc2b7b327097800801",
+      "popup.html": "b641da1f7198d3a1de6e5933d8803f01563e4bca151811027f2f2ecf17120794",
+      "popup.js": "68e4308a6549011b09f1328b0af8f07ac649818068e8a25859e75d303313e8d0"
+    },
+    "on-demand": {
+      "collector.js": "d137cc99d85f652d5d204a83eb867bffe4e3e58002fb79b055afb71cb117e3c2",
+      "manifest.json": "bb8ab23167d14043c3c2c2ff0f58b67b6a47385f63c6ca5047bb57f3a1377882",
+      "popup.css": "19ffbe9f5038e44ac99b2128bc1482cc7130cc74c6af31bc2b7b327097800801",
+      "popup.html": "50897cb7a25805f4fb8082d4bd7c8921ec3eeb37875df1d9c1c80e15dd495b6e",
+      "popup.js": "d9ea44a512ca6d69e81bf4929bd001ca113b4b1f26c890dd5e16c41fc388e2dd"
+    }
+  },
+  "mask_receipt_sha256": {
+    "eager": {
+      "preview.html": "78e1bb7b2112a6a5ec6c952d77fc896d3df258d1e944a871566c897b51f26ea6",
+      "evidence.json": "f2d9434de8306e53134a600cc34a359780f841854bd2dcd119c6a6b3e9821591",
+      "extension-review.json": "b3334e64c002d31c0dfb4a71791c9b560c6e5b8c5655519bc988376de5ee37a0"
+    },
+    "on-demand": {
+      "preview.html": "1047e4e6a0e3aadb42a763780da2b95aa1d8531955218b85076d6ddda317d893",
+      "evidence.json": "20e8fc7fb03ce044de1408804c7e8100df9727730940e887fcd30659af36a102",
+      "extension-review.json": "64ae96a41c0a44a201b4af57c3f7ae06429fbe56f714f8fb826b2641f7dcd7ad"
+    }
+  },
+  "document_timings_ms": {
+    "eager": {
+      "pressToDocumentMs": {
+        "median": 46.5450439453125,
+        "p95": 128.783935546875
+      },
+      "interactiveMs": {
+        "median": 92.85000000000582,
+        "p95": 135.39999999999418
+      },
+      "loadCompleteMs": {
+        "median": 101.09999999997672,
+        "p95": 165.5
+      }
+    },
+    "on-demand": {
+      "pressToDocumentMs": {
+        "median": 49.4161376953125,
+        "p95": 173.968017578125
+      },
+      "interactiveMs": {
+        "median": 92.90000000002328,
+        "p95": 193.80000000001746
+      },
+      "loadCompleteMs": {
+        "median": 99.60000000003492,
+        "p95": 199.70000000001164
+      }
+    }
+  },
+  "promotion_rule": {
+    "min_open_p95_improvement_ms": 20,
+    "paired_interval_lower_bound_above_zero": true,
+    "max_p95_scan_regression_ms": 20,
+    "max_p95_scan_ms": 1000
+  },
+  "local_missing_script_replay": {
+    "collectorDeferred": true,
+    "failedLoadRetried": true,
+    "subsequentLoadReusesCollector": true
+  },
+  "scope": "Alternating eager and on-demand collector variants on the same hosted macOS runner.",
+  "expected_pairs": 30,
+  "distinct_profiles": 60,
+  "passed_by_arm": {
+    "eager": 30,
+    "on-demand": 30
+  },
+  "trials": [
+    {
+      "pair": 1,
+      "arm": "eager",
+      "passed": true,
+      "timings": {
+        "openMs": 749.162958,
+        "popupTargetObservedMs": 75.179,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 193.0233330000001,
+        "scanMs": 145.98054200000024
+      },
+      "navigation": {
+        "epochMs": 1795352129835.9,
+        "interactiveMs": 128.60000000000582,
+        "loadCompleteMs": 148.40000000000873,
+        "collectorPresent": true,
+        "pressToDocumentMs": 58.03466796875
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "a33739fb0f24e78e9b96b68bb1913f1ee56c13c67c8b33053e9562ea274d3e3d"
+    },
+    {
+      "pair": 1,
+      "arm": "on-demand",
+      "passed": true,
+      "timings": {
+        "openMs": 282.7395,
+        "popupTargetObservedMs": 150.293542,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 130.86341700000003,
+        "scanMs": 134.26179100000013
+      },
+      "navigation": {
+        "epochMs": 1795352134867.6,
+        "interactiveMs": 87.19999999999709,
+        "loadCompleteMs": 94.80000000000291,
+        "collectorPresent": false,
+        "pressToDocumentMs": 133.500244140625
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "528ed7447bb1c3ac1b7c81204f356d41a45f3ba019389cee2ca4cda578856871"
+    },
+    {
+      "pair": 2,
+      "arm": "eager",
+      "passed": true,
+      "timings": {
+        "openMs": 198.395083,
+        "popupTargetObservedMs": 148.032083,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 140.3339579999997,
+        "scanMs": 199.2222499999998
+      },
+      "navigation": {
+        "epochMs": 1795352150753,
+        "interactiveMs": 93.10000000000582,
+        "loadCompleteMs": 98.70000000001164,
+        "collectorPresent": true,
+        "pressToDocumentMs": 71.349609375
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "ec38b1152f015bee2f4117ee9dd2ff70a20018bd55da09676b5809dae3e97a7b"
+    },
+    {
+      "pair": 2,
+      "arm": "on-demand",
+      "passed": true,
+      "timings": {
+        "openMs": 256.258125,
+        "popupTargetObservedMs": 100.42625,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 131.44350000000009,
+        "scanMs": 162.34845799999994
+      },
+      "navigation": {
+        "epochMs": 1795352142280.3,
+        "interactiveMs": 144.59999999999127,
+        "loadCompleteMs": 152.39999999999418,
+        "collectorPresent": false,
+        "pressToDocumentMs": 64.3203125
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "327e2d096187fd008bca497f2c623f52a34d558c23ee1c21a0cc7351fd3a432f"
+    },
+    {
+      "pair": 3,
+      "arm": "eager",
+      "passed": true,
+      "timings": {
+        "openMs": 175.866167,
+        "popupTargetObservedMs": 118.282292,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 130.34825,
+        "scanMs": 103.0696660000001
+      },
+      "navigation": {
+        "epochMs": 1795352158243.8,
+        "interactiveMs": 94.5,
+        "loadCompleteMs": 106.70000000001164,
+        "collectorPresent": true,
+        "pressToDocumentMs": 41.73681640625
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "a53906cc1b61c81d91d04291a4b7850ed3cf26604214449a8287bb5a0b9f7c71"
+    },
+    {
+      "pair": 3,
+      "arm": "on-demand",
+      "passed": true,
+      "timings": {
+        "openMs": 242.016125,
+        "popupTargetObservedMs": 134.680875,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 129.9402090000001,
+        "scanMs": 103.01633300000003
+      },
+      "navigation": {
+        "epochMs": 1795352165333.5,
+        "interactiveMs": 115.20000000001164,
+        "loadCompleteMs": 125.39999999999418,
+        "collectorPresent": false,
+        "pressToDocumentMs": 58.76708984375
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "ebed05f6fe04866ebad31f2dcb32e8050ba37b710b2c9af25f8adabcfc89c08f"
+    },
+    {
+      "pair": 4,
+      "arm": "eager",
+      "passed": true,
+      "timings": {
+        "openMs": 290.095875,
+        "popupTargetObservedMs": 92.50575,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 145.59233299999983,
+        "scanMs": 152.91779199999974
+      },
+      "navigation": {
+        "epochMs": 1795352180878.8,
+        "interactiveMs": 135.39999999999418,
+        "loadCompleteMs": 155.5,
+        "collectorPresent": true,
+        "pressToDocumentMs": 70.732177734375
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "0ae0eaeb644276882fa85b5818111dd2651c46b5e7ea89921356aa113d77ae71"
+    },
+    {
+      "pair": 4,
+      "arm": "on-demand",
+      "passed": true,
+      "timings": {
+        "openMs": 368.848625,
+        "popupTargetObservedMs": 150.224417,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 145.15366700000004,
+        "scanMs": 151.23900000000003
+      },
+      "navigation": {
+        "epochMs": 1795352173077.6,
+        "interactiveMs": 196.10000000000582,
+        "loadCompleteMs": 199.70000000001164,
+        "collectorPresent": false,
+        "pressToDocumentMs": 113.5517578125
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "44cbd3ecdf8fa8aafe80b2c0b14e6af62ad76ffd6d2e825142762ef8a108e1c1"
+    },
+    {
+      "pair": 5,
+      "arm": "eager",
+      "passed": true,
+      "timings": {
+        "openMs": 218.40575,
+        "popupTargetObservedMs": 75.46625,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 131.7990830000001,
+        "scanMs": 138.39425000000006
+      },
+      "navigation": {
+        "epochMs": 1795352183937.6,
+        "interactiveMs": 107.40000000002328,
+        "loadCompleteMs": 132.30000000001746,
+        "collectorPresent": true,
+        "pressToDocumentMs": 46.1025390625
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "f5c36ea1537dc3f5e51b572a8dd81beaab9db0f82b47aef4b44eeae8ec66620b"
+    },
+    {
+      "pair": 5,
+      "arm": "on-demand",
+      "passed": true,
+      "timings": {
+        "openMs": 308.591834,
+        "popupTargetObservedMs": 201.105834,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 131.30279199999995,
+        "scanMs": 122.65512499999977
+      },
+      "navigation": {
+        "epochMs": 1795352191875.6,
+        "interactiveMs": 82.30000000001746,
+        "loadCompleteMs": 86.80000000001746,
+        "collectorPresent": false,
+        "pressToDocumentMs": 173.968017578125
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "ab54aaf8b69a29862188a98b4418e213034e66c9f16d005c22a5254f22d2c3e6"
+    },
+    {
+      "pair": 6,
+      "arm": "eager",
+      "passed": true,
+      "timings": {
+        "openMs": 264.356167,
+        "popupTargetObservedMs": 106.933584,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 141.8157080000001,
+        "scanMs": 98.00954199999978
+      },
+      "navigation": {
+        "epochMs": 1795352207411.5,
+        "interactiveMs": 97.60000000000582,
+        "loadCompleteMs": 104.60000000000582,
+        "collectorPresent": true,
+        "pressToDocumentMs": 87.021240234375
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "746170e0d8f021f69d31b1196a52c90844d57c60fd618d55cf23068bdf0830d6"
+    },
+    {
+      "pair": 6,
+      "arm": "on-demand",
+      "passed": true,
+      "timings": {
+        "openMs": 277.27925,
+        "popupTargetObservedMs": 153.917417,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 131.70074999999997,
+        "scanMs": 133.51079200000004
+      },
+      "navigation": {
+        "epochMs": 1795352199506.2,
+        "interactiveMs": 113.19999999998254,
+        "loadCompleteMs": 131.29999999998836,
+        "collectorPresent": false,
+        "pressToDocumentMs": 80.614990234375
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "20cc7fa3b21248d7869d441e43ff19541aba1ee0f29867302f861364e561073c"
+    },
+    {
+      "pair": 7,
+      "arm": "eager",
+      "passed": true,
+      "timings": {
+        "openMs": 349.339667,
+        "popupTargetObservedMs": 188.610208,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 137.16754200000014,
+        "scanMs": 163.06379200000015
+      },
+      "navigation": {
+        "epochMs": 1795352215053.7,
+        "interactiveMs": 141.20000000001164,
+        "loadCompleteMs": 165.5,
+        "collectorPresent": true,
+        "pressToDocumentMs": 143.232177734375
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "9e5bd0f7d431c1b32b2c5b26131b54ded142498a18c522be6010713ad1b50ec8"
+    },
+    {
+      "pair": 7,
+      "arm": "on-demand",
+      "passed": true,
+      "timings": {
+        "openMs": 382.757833,
+        "popupTargetObservedMs": 248.271291,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 138.46883300000013,
+        "scanMs": 148.52133400000002
+      },
+      "navigation": {
+        "epochMs": 1795352223240.2,
+        "interactiveMs": 105.80000000001746,
+        "loadCompleteMs": 118.90000000002328,
+        "collectorPresent": false,
+        "pressToDocumentMs": 220.44873046875
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "29744183d47ece333a4c01192518831bd86453d2a9f3429759a884e7c369e9ae"
+    },
+    {
+      "pair": 8,
+      "arm": "eager",
+      "passed": true,
+      "timings": {
+        "openMs": 294.505,
+        "popupTargetObservedMs": 158.334708,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 140.98483399999986,
+        "scanMs": 128.28383299999996
+      },
+      "navigation": {
+        "epochMs": 1795352228877.6,
+        "interactiveMs": 97,
+        "loadCompleteMs": 110.80000000001746,
+        "collectorPresent": true,
+        "pressToDocumentMs": 128.783935546875
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "8cb19ac3d6b2350be2daf107d3219377d6d4d18af1decb0772aa386131c1c13e"
+    },
+    {
+      "pair": 8,
+      "arm": "on-demand",
+      "passed": true,
+      "timings": {
+        "openMs": 417.0405,
+        "popupTargetObservedMs": 69.036708,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 138.04016699999988,
+        "scanMs": 150.32154200000014
+      },
+      "navigation": {
+        "epochMs": 1795352225835.2,
+        "interactiveMs": 120.89999999999418,
+        "loadCompleteMs": 153.39999999999418,
+        "collectorPresent": false,
+        "pressToDocumentMs": 35.3515625
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "9971b2098d8f39ecfad6894f09b03d90a2fddf335d74e3cd7b2ff06a85d0be8e"
+    },
+    {
+      "pair": 9,
+      "arm": "eager",
+      "passed": true,
+      "timings": {
+        "openMs": 199.348833,
+        "popupTargetObservedMs": 102.487833,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 145.61341599999992,
+        "scanMs": 144.18000000000006
+      },
+      "navigation": {
+        "epochMs": 1795352231541.8,
+        "interactiveMs": 87.79999999998836,
+        "loadCompleteMs": 99.89999999999418,
+        "collectorPresent": true,
+        "pressToDocumentMs": 40.948974609375
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "af60cdec1eb7f3ac8838ee1efbfa2eefbffa5247344c818b344f9d5513ce886a"
+    },
+    {
+      "pair": 9,
+      "arm": "on-demand",
+      "passed": true,
+      "timings": {
+        "openMs": 315.47875,
+        "popupTargetObservedMs": 174.318917,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 137.91529200000014,
+        "scanMs": 146.37495799999988
+      },
+      "navigation": {
+        "epochMs": 1795352239476,
+        "interactiveMs": 95.89999999999418,
+        "loadCompleteMs": 109.89999999999418,
+        "collectorPresent": false,
+        "pressToDocumentMs": 140.729736328125
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "efafc60e313796f76500e4d7d86f62705f955fab113e39d9a9a2d393e07e13c7"
+    },
+    {
+      "pair": 10,
+      "arm": "eager",
+      "passed": true,
+      "timings": {
+        "openMs": 277.788125,
+        "popupTargetObservedMs": 93.614833,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 136.63820799999985,
+        "scanMs": 121.63429200000019
+      },
+      "navigation": {
+        "epochMs": 1795352250550.2,
+        "interactiveMs": 127.29999999998836,
+        "loadCompleteMs": 131.70000000001164,
+        "collectorPresent": true,
+        "pressToDocumentMs": 66.5244140625
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "f5aa20c33bdf3394ccb13cb3fac9befef3d70b4646aff02c3a16dc1148d89400"
+    },
+    {
+      "pair": 10,
+      "arm": "on-demand",
+      "passed": true,
+      "timings": {
+        "openMs": 392.172667,
+        "popupTargetObservedMs": 206.49875,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 133.34924999999976,
+        "scanMs": 160.66954099999975
+      },
+      "navigation": {
+        "epochMs": 1795352247466.3,
+        "interactiveMs": 193.80000000001746,
+        "loadCompleteMs": 203.20000000001164,
+        "collectorPresent": false,
+        "pressToDocumentMs": 85.4296875
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "053186631e2a78aff80c40d79e9f0b48b228c5b841a983eefb5521a75a46cb95"
+    },
+    {
+      "pair": 11,
+      "arm": "eager",
+      "passed": true,
+      "timings": {
+        "openMs": 267.957625,
+        "popupTargetObservedMs": 80.674875,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 133.53979200000003,
+        "scanMs": 120.25091700000007
+      },
+      "navigation": {
+        "epochMs": 1795352258292.3,
+        "interactiveMs": 129.20000000001164,
+        "loadCompleteMs": 135.5,
+        "collectorPresent": true,
+        "pressToDocumentMs": 46.987548828125
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "c6dbd7a711fdf42bf4c705991d24acefcc7cb135076fec393f3177a2e270850d"
+    },
+    {
+      "pair": 11,
+      "arm": "on-demand",
+      "passed": true,
+      "timings": {
+        "openMs": 222.681083,
+        "popupTargetObservedMs": 99.684125,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 131.49208399999998,
+        "scanMs": 113.8799590000001
+      },
+      "navigation": {
+        "epochMs": 1795352266075.6,
+        "interactiveMs": 92.5,
+        "loadCompleteMs": 97.59999999997672,
+        "collectorPresent": false,
+        "pressToDocumentMs": 80.709716796875
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "198aa6914c3560a9dbe73c50228afc74a6734148f98c4a741ee2555d9251a5de"
+    },
+    {
+      "pair": 12,
+      "arm": "eager",
+      "passed": true,
+      "timings": {
+        "openMs": 289.151666,
+        "popupTargetObservedMs": 158.913333,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 140.2403750000003,
+        "scanMs": 110.51454199999989
+      },
+      "navigation": {
+        "epochMs": 1795352281985.2,
+        "interactiveMs": 92.5,
+        "loadCompleteMs": 113.19999999995343,
+        "collectorPresent": true,
+        "pressToDocumentMs": 102.300048828125
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "68085865b38052d70c3a9de9d11297b77e9ba3f90c0a1fe85de17606f93d0252"
+    },
+    {
+      "pair": 12,
+      "arm": "on-demand",
+      "passed": true,
+      "timings": {
+        "openMs": 252.964041,
+        "popupTargetObservedMs": 98.572,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 134.046292,
+        "scanMs": 131.81175000000007
+      },
+      "navigation": {
+        "epochMs": 1795352273967,
+        "interactiveMs": 119.5,
+        "loadCompleteMs": 129,
+        "collectorPresent": false,
+        "pressToDocumentMs": 52.143798828125
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "a092c5f55983673806a02a0a300ba96fdd883c07069a7abd09e1a31113e0a853"
+    },
+    {
+      "pair": 13,
+      "arm": "eager",
+      "passed": true,
+      "timings": {
+        "openMs": 262.26875,
+        "popupTargetObservedMs": 63.091417,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 130.20624999999995,
+        "scanMs": 124.25549999999998
+      },
+      "navigation": {
+        "epochMs": 1795352289320.2,
+        "interactiveMs": 102.39999999996508,
+        "loadCompleteMs": 113.5,
+        "collectorPresent": true,
+        "pressToDocumentMs": 37.4013671875
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "63e727bb1515a40220c136e27e1e9ff5a20729d36db5d23650181585de1087fc"
+    },
+    {
+      "pair": 13,
+      "arm": "on-demand",
+      "passed": true,
+      "timings": {
+        "openMs": 167.11,
+        "popupTargetObservedMs": 44.783542,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 129.21054200000003,
+        "scanMs": 90.637291
+      },
+      "navigation": {
+        "epochMs": 1795352296407,
+        "interactiveMs": 98,
+        "loadCompleteMs": 108.5,
+        "collectorPresent": false,
+        "pressToDocumentMs": 25.646240234375
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "f20e5e82c299ee35e57b3174151774ee3837c0558b738a598105504e5a19434a"
+    },
+    {
+      "pair": 14,
+      "arm": "eager",
+      "passed": true,
+      "timings": {
+        "openMs": 339.5725,
+        "popupTargetObservedMs": 48.585375,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 129.7729999999999,
+        "scanMs": 105.13404200000014
+      },
+      "navigation": {
+        "epochMs": 1795352310224.8,
+        "interactiveMs": 79.59999999997672,
+        "loadCompleteMs": 85.59999999997672,
+        "collectorPresent": true,
+        "pressToDocumentMs": 31.2763671875
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "531f07efd4d0ec3120025f9ce9b0f6501913762766c20180499320466bd95a5b"
+    },
+    {
+      "pair": 14,
+      "arm": "on-demand",
+      "passed": true,
+      "timings": {
+        "openMs": 200.005875,
+        "popupTargetObservedMs": 57.692542,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 129.05237499999998,
+        "scanMs": 94.61075000000005
+      },
+      "navigation": {
+        "epochMs": 1795352303412.8,
+        "interactiveMs": 94.20000000001164,
+        "loadCompleteMs": 96.39999999996508,
+        "collectorPresent": false,
+        "pressToDocumentMs": 28.847412109375
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "bab8516e96d4ace19f44b0dc095f956b3acb3ffcc4d81dc4a5cf2f64555a34a3"
+    },
+    {
+      "pair": 15,
+      "arm": "eager",
+      "passed": true,
+      "timings": {
+        "openMs": 146.481459,
+        "popupTargetObservedMs": 81.946,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 128.71745800000008,
+        "scanMs": 131.51383299999998
+      },
+      "navigation": {
+        "epochMs": 1795352318081.1,
+        "interactiveMs": 63.29999999998836,
+        "loadCompleteMs": 67.60000000003492,
+        "collectorPresent": true,
+        "pressToDocumentMs": 32.60400390625
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "4522312962971892ac29bfaa3b7ebbcb1c9ece92cb8167691a8bf5a09f131e4f"
+    },
+    {
+      "pair": 15,
+      "arm": "on-demand",
+      "passed": true,
+      "timings": {
+        "openMs": 169.858,
+        "popupTargetObservedMs": 80.415875,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 128.33854199999996,
+        "scanMs": 100.78437499999995
+      },
+      "navigation": {
+        "epochMs": 1795352325816.5,
+        "interactiveMs": 83.89999999996508,
+        "loadCompleteMs": 91.59999999997672,
+        "collectorPresent": false,
+        "pressToDocumentMs": 53.983154296875
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "858eac0155338a25a1347685157bacd243b2d4842c7da8064b3a86734db7d1c9"
+    },
+    {
+      "pair": 16,
+      "arm": "eager",
+      "passed": true,
+      "timings": {
+        "openMs": 181.0435,
+        "popupTargetObservedMs": 63.579375,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 131.31795899999997,
+        "scanMs": 102.89249999999993
+      },
+      "navigation": {
+        "epochMs": 1795352340446.6,
+        "interactiveMs": 101.70000000001164,
+        "loadCompleteMs": 107,
+        "collectorPresent": true,
+        "pressToDocumentMs": 35.526611328125
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "c8acff597db1c324dbd2c96c8f3575acdf6e11f10adb70d6b0ad264e7d99dc51"
+    },
+    {
+      "pair": 16,
+      "arm": "on-demand",
+      "passed": true,
+      "timings": {
+        "openMs": 209.4635,
+        "popupTargetObservedMs": 55.660917,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 130.17487499999993,
+        "scanMs": 102.44433400000003
+      },
+      "navigation": {
+        "epochMs": 1795352332982.7,
+        "interactiveMs": 74.59999999997672,
+        "loadCompleteMs": 81.39999999996508,
+        "collectorPresent": false,
+        "pressToDocumentMs": 39.373779296875
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "cb1f1159ee4a260fdd645c92310fce7261a7a579f2d91b40d19588afbbefba2f"
+    },
+    {
+      "pair": 17,
+      "arm": "eager",
+      "passed": true,
+      "timings": {
+        "openMs": 248.637916,
+        "popupTargetObservedMs": 154.401791,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 130.36108400000012,
+        "scanMs": 116.79124999999999
+      },
+      "navigation": {
+        "epochMs": 1795352347821.4,
+        "interactiveMs": 70.79999999998836,
+        "loadCompleteMs": 77.70000000001164,
+        "collectorPresent": true,
+        "pressToDocumentMs": 125.62890625
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "bb3a4b616fa87d6ab09014609b94b2cfe0a4e71a1e70671f43233f63e1021803"
+    },
+    {
+      "pair": 17,
+      "arm": "on-demand",
+      "passed": true,
+      "timings": {
+        "openMs": 145.293625,
+        "popupTargetObservedMs": 50.115375,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 127.5324169999999,
+        "scanMs": 92.15895799999998
+      },
+      "navigation": {
+        "epochMs": 1795352354534.5,
+        "interactiveMs": 82.40000000002328,
+        "loadCompleteMs": 87.80000000004657,
+        "collectorPresent": false,
+        "pressToDocumentMs": 17.55419921875
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "c54803015c2bd69687ed97d8397d28a6deeaa17626dcc014690a9a003711ff47"
+    },
+    {
+      "pair": 18,
+      "arm": "eager",
+      "passed": true,
+      "timings": {
+        "openMs": 202.104042,
+        "popupTargetObservedMs": 107.889583,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 131.6750830000001,
+        "scanMs": 121.59070800000018
+      },
+      "navigation": {
+        "epochMs": 1795352368335.1,
+        "interactiveMs": 95.39999999996508,
+        "loadCompleteMs": 104.89999999996508,
+        "collectorPresent": true,
+        "pressToDocumentMs": 53.111328125
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "79fb931355250f29c96ac81c3907e813594e8e99bf0edeff68e4866caea0caf8"
+    },
+    {
+      "pair": 18,
+      "arm": "on-demand",
+      "passed": true,
+      "timings": {
+        "openMs": 166.042541,
+        "popupTargetObservedMs": 65.949208,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 130.50633399999992,
+        "scanMs": 101.91741700000011
+      },
+      "navigation": {
+        "epochMs": 1795352361244.5,
+        "interactiveMs": 92.60000000003492,
+        "loadCompleteMs": 98.10000000003492,
+        "collectorPresent": false,
+        "pressToDocumentMs": 28.3232421875
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "b727fef5f1470e5cbb6ff61a54cf8ea2e352d7f35903aaeb0addb18213ed99da"
+    },
+    {
+      "pair": 19,
+      "arm": "eager",
+      "passed": true,
+      "timings": {
+        "openMs": 161.105208,
+        "popupTargetObservedMs": 75.552958,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 133.717625,
+        "scanMs": 118.42895799999997
+      },
+      "navigation": {
+        "epochMs": 1795352370670.8,
+        "interactiveMs": 89.39999999996508,
+        "loadCompleteMs": 93.5,
+        "collectorPresent": true,
+        "pressToDocumentMs": 42.8125
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "9d147827afa4899b8f028c2c7c9ad613a8535e04bc99013c4f92ba2ab07be436"
+    },
+    {
+      "pair": 19,
+      "arm": "on-demand",
+      "passed": true,
+      "timings": {
+        "openMs": 218.702958,
+        "popupTargetObservedMs": 66.285167,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 129.24370799999997,
+        "scanMs": 108.57708400000001
+      },
+      "navigation": {
+        "epochMs": 1795352372763.8,
+        "interactiveMs": 107.09999999997672,
+        "loadCompleteMs": 111.20000000001164,
+        "collectorPresent": false,
+        "pressToDocumentMs": 42.76806640625
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "c90b22406ca19cf98cdf4db43d6ec35c1e4f06d56504410c6460f446c738ea64"
+    },
+    {
+      "pair": 20,
+      "arm": "eager",
+      "passed": true,
+      "timings": {
+        "openMs": 196.194125,
+        "popupTargetObservedMs": 116.106709,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 132.05650000000014,
+        "scanMs": 98.44391700000006
+      },
+      "navigation": {
+        "epochMs": 1795352386640.5,
+        "interactiveMs": 72.20000000001164,
+        "loadCompleteMs": 86.29999999998836,
+        "collectorPresent": true,
+        "pressToDocumentMs": 58.707275390625
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "7f5b6c6d3929bc161d71eac0129d4cb699159750fcad5efa47f1255bf49c9f93"
+    },
+    {
+      "pair": 20,
+      "arm": "on-demand",
+      "passed": true,
+      "timings": {
+        "openMs": 284.674791,
+        "popupTargetObservedMs": 56.698916,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 129.21845800000006,
+        "scanMs": 103.40808399999992
+      },
+      "navigation": {
+        "epochMs": 1795352379609.1,
+        "interactiveMs": 81,
+        "loadCompleteMs": 87.90000000002328,
+        "collectorPresent": false,
+        "pressToDocumentMs": 36.833251953125
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "a1973daa8050aedae3f32cc1618e395d5c8c80a1cb135512f108d2b428c16c43"
+    },
+    {
+      "pair": 21,
+      "arm": "eager",
+      "passed": true,
+      "timings": {
+        "openMs": 167.512916,
+        "popupTargetObservedMs": 88.011958,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 129.86854200000005,
+        "scanMs": 105.66883299999995
+      },
+      "navigation": {
+        "epochMs": 1795352393336.4,
+        "interactiveMs": 65.89999999996508,
+        "loadCompleteMs": 73.19999999995343,
+        "collectorPresent": true,
+        "pressToDocumentMs": 56.948974609375
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "976c6fe2fc67e0c6ea1c5fdf34a900705d5d265f219c640882be398a03c04dca"
+    },
+    {
+      "pair": 21,
+      "arm": "on-demand",
+      "passed": true,
+      "timings": {
+        "openMs": 207.384333,
+        "popupTargetObservedMs": 82.453833,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 128.30408300000022,
+        "scanMs": 150.215917
+      },
+      "navigation": {
+        "epochMs": 1795352400497.7,
+        "interactiveMs": 115.5,
+        "loadCompleteMs": 122.29999999998836,
+        "collectorPresent": false,
+        "pressToDocumentMs": 57.419921875
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "d5c387afc51357f16441feacdd113f432f76206d234132109c37ec1761cb92e8"
+    },
+    {
+      "pair": 22,
+      "arm": "eager",
+      "passed": true,
+      "timings": {
+        "openMs": 166.515708,
+        "popupTargetObservedMs": 75.711708,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 129.217083,
+        "scanMs": 105.1512909999999
+      },
+      "navigation": {
+        "epochMs": 1795352414259.9,
+        "interactiveMs": 85,
+        "loadCompleteMs": 101.29999999998836,
+        "collectorPresent": true,
+        "pressToDocumentMs": 38.303955078125
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "69f956de1865c142423dc85d0bd64e4e9f55fde7c0ec63ffe21e8aec4a5b61a0"
+    },
+    {
+      "pair": 22,
+      "arm": "on-demand",
+      "passed": true,
+      "timings": {
+        "openMs": 211.337042,
+        "popupTargetObservedMs": 49.3515,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 129.1529579999999,
+        "scanMs": 90.12737500000003
+      },
+      "navigation": {
+        "epochMs": 1795352407426.9,
+        "interactiveMs": 79.19999999995343,
+        "loadCompleteMs": 85.29999999998836,
+        "collectorPresent": false,
+        "pressToDocumentMs": 28.092041015625
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "27f1f59ba84dbc7dceb9109e3c41159be1bebf60e868fd414dd196ffbd7982d6"
+    },
+    {
+      "pair": 23,
+      "arm": "eager",
+      "passed": true,
+      "timings": {
+        "openMs": 172.786583,
+        "popupTargetObservedMs": 63.480667,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 127.769,
+        "scanMs": 110.1416670000001
+      },
+      "navigation": {
+        "epochMs": 1795352421295.4,
+        "interactiveMs": 92.59999999997672,
+        "loadCompleteMs": 99.5,
+        "collectorPresent": true,
+        "pressToDocumentMs": 41.860595703125
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "d6f2ece2a61f5e218e5ac16cfd29f2880bcf52038a1eb14787677b5835b450dd"
+    },
+    {
+      "pair": 23,
+      "arm": "on-demand",
+      "passed": true,
+      "timings": {
+        "openMs": 171.012125,
+        "popupTargetObservedMs": 84.187833,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 130.72325,
+        "scanMs": 90.63462500000014
+      },
+      "navigation": {
+        "epochMs": 1795352428104.5,
+        "interactiveMs": 75.10000000003492,
+        "loadCompleteMs": 87.90000000002328,
+        "collectorPresent": false,
+        "pressToDocumentMs": 27.5390625
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "3d41a0f422c426f0339a5b98f7e9072526951aad62095feaa7f5902631e922c2"
+    },
+    {
+      "pair": 24,
+      "arm": "eager",
+      "passed": true,
+      "timings": {
+        "openMs": 244.290125,
+        "popupTargetObservedMs": 79.729666,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 132.23520799999983,
+        "scanMs": 115.17870799999992
+      },
+      "navigation": {
+        "epochMs": 1795352432157.3,
+        "interactiveMs": 134.5,
+        "loadCompleteMs": 173.5,
+        "collectorPresent": true,
+        "pressToDocumentMs": 24.2265625
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "c4e8a7aff80c1f82d7d6dcc1bfd36dc75ec69e53dcbbff35e81bbbd17a864dcd"
+    },
+    {
+      "pair": 24,
+      "arm": "on-demand",
+      "passed": true,
+      "timings": {
+        "openMs": 149.221708,
+        "popupTargetObservedMs": 86.986,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 129.68983300000014,
+        "scanMs": 102.64479099999994
+      },
+      "navigation": {
+        "epochMs": 1795352430192.6,
+        "interactiveMs": 66.89999999996508,
+        "loadCompleteMs": 73.70000000001164,
+        "collectorPresent": false,
+        "pressToDocumentMs": 43.242431640625
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "65c193c0cd658124b1d3f866b53e132dff7f27c7a9fc4a3936fbbda10b944467"
+    },
+    {
+      "pair": 25,
+      "arm": "eager",
+      "passed": true,
+      "timings": {
+        "openMs": 174.562625,
+        "popupTargetObservedMs": 93.521875,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 132.1602499999999,
+        "scanMs": 99.55012499999998
+      },
+      "navigation": {
+        "epochMs": 1795352439115,
+        "interactiveMs": 81,
+        "loadCompleteMs": 89.10000000003492,
+        "collectorPresent": true,
+        "pressToDocumentMs": 33.498779296875
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "d62d5ff7706d8e23fda597a2c2ffd14406c262be76cdbd3d8f6941efbb86057b"
+    },
+    {
+      "pair": 25,
+      "arm": "on-demand",
+      "passed": true,
+      "timings": {
+        "openMs": 195.935416,
+        "popupTargetObservedMs": 77.015208,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 131.17325000000005,
+        "scanMs": 94.59845900000005
+      },
+      "navigation": {
+        "epochMs": 1795352446058.2,
+        "interactiveMs": 98.5,
+        "loadCompleteMs": 103.29999999998836,
+        "collectorPresent": false,
+        "pressToDocumentMs": 46.6884765625
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "066a7103a312ce69910aef4a0c9800757824692ae06e8c7e7e43a917c099f779"
+    },
+    {
+      "pair": 26,
+      "arm": "eager",
+      "passed": true,
+      "timings": {
+        "openMs": 218.724167,
+        "popupTargetObservedMs": 73.436417,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 130.89095799999996,
+        "scanMs": 126.05108300000006
+      },
+      "navigation": {
+        "epochMs": 1795352459890.1,
+        "interactiveMs": 92.89999999996508,
+        "loadCompleteMs": 100.89999999996508,
+        "collectorPresent": true,
+        "pressToDocumentMs": 55.521728515625
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "22621432655780b7138664e47c48e0bcb71fe812ba26332d1569a45edc3aac1b"
+    },
+    {
+      "pair": 26,
+      "arm": "on-demand",
+      "passed": true,
+      "timings": {
+        "openMs": 166.75125,
+        "popupTargetObservedMs": 99.092,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 128.1947500000001,
+        "scanMs": 99.11945800000012
+      },
+      "navigation": {
+        "epochMs": 1795352452888,
+        "interactiveMs": 69.90000000002328,
+        "loadCompleteMs": 77.29999999998836,
+        "collectorPresent": false,
+        "pressToDocumentMs": 42.386962890625
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "4e9600def85f89364587f6e3bc47c1adb275b905a67eca8d3ba7182af184fabf"
+    },
+    {
+      "pair": 27,
+      "arm": "eager",
+      "passed": true,
+      "timings": {
+        "openMs": 169.245333,
+        "popupTargetObservedMs": 67.291416,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 129.25516700000003,
+        "scanMs": 97.67595800000004
+      },
+      "navigation": {
+        "epochMs": 1795352467227.6,
+        "interactiveMs": 77.70000000001164,
+        "loadCompleteMs": 82.59999999997672,
+        "collectorPresent": true,
+        "pressToDocumentMs": 45.401123046875
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "a1f5216fd6779aac0d6706fd943a3663c1074f3c3f53ed030e086d7315e2d5ea"
+    },
+    {
+      "pair": 27,
+      "arm": "on-demand",
+      "passed": true,
+      "timings": {
+        "openMs": 204.388875,
+        "popupTargetObservedMs": 68.025583,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 130.78904199999988,
+        "scanMs": 93.41808400000014
+      },
+      "navigation": {
+        "epochMs": 1795352469524.6,
+        "interactiveMs": 93.20000000001164,
+        "loadCompleteMs": 101.10000000003492,
+        "collectorPresent": false,
+        "pressToDocumentMs": 45.918701171875
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "6084bb4ef9b36155e1176cc375f77f500d10138a93afb87ef1a955fcf3c04d9c"
+    },
+    {
+      "pair": 28,
+      "arm": "eager",
+      "passed": true,
+      "timings": {
+        "openMs": 180.954416,
+        "popupTargetObservedMs": 110.212708,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 131.375,
+        "scanMs": 107.79649999999992
+      },
+      "navigation": {
+        "epochMs": 1795352483441,
+        "interactiveMs": 73.40000000002328,
+        "loadCompleteMs": 83.70000000001164,
+        "collectorPresent": true,
+        "pressToDocumentMs": 42.221435546875
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "caa787f7ab24e7224a39d8aad7e0f1c0fbd3d1273554a03c76747c3a401b25c0"
+    },
+    {
+      "pair": 28,
+      "arm": "on-demand",
+      "passed": true,
+      "timings": {
+        "openMs": 207.762959,
+        "popupTargetObservedMs": 87.276959,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 128.415125,
+        "scanMs": 139.155125
+      },
+      "navigation": {
+        "epochMs": 1795352476556,
+        "interactiveMs": 89.5,
+        "loadCompleteMs": 96.70000000001164,
+        "collectorPresent": false,
+        "pressToDocumentMs": 66.545654296875
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "bc53d6a4ca3f02cea4695156ca994e5b866f2e8f27b22af457e091b3dad7dc0b"
+    },
+    {
+      "pair": 29,
+      "arm": "eager",
+      "passed": true,
+      "timings": {
+        "openMs": 168.509666,
+        "popupTargetObservedMs": 47.876583,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 132.12566600000002,
+        "scanMs": 103.2349999999999
+      },
+      "navigation": {
+        "epochMs": 1795352490291,
+        "interactiveMs": 92.80000000004657,
+        "loadCompleteMs": 100,
+        "collectorPresent": true,
+        "pressToDocumentMs": 30.646240234375
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "2be73f4c9602ed8bb7b05d0821fb8f64609af588286bd0685a77a90e1ba99728"
+    },
+    {
+      "pair": 29,
+      "arm": "on-demand",
+      "passed": true,
+      "timings": {
+        "openMs": 184.115166,
+        "popupTargetObservedMs": 101.472375,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 128.15687500000013,
+        "scanMs": 101.35916599999996
+      },
+      "navigation": {
+        "epochMs": 1795352497309.6,
+        "interactiveMs": 51.70000000001164,
+        "loadCompleteMs": 66.20000000001164,
+        "collectorPresent": false,
+        "pressToDocumentMs": 79.982421875
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "a22b534f00f0673b83ba25798729748608c8edd664d884549897e5b77f39da6f"
+    },
+    {
+      "pair": 30,
+      "arm": "eager",
+      "passed": true,
+      "timings": {
+        "openMs": 228.490125,
+        "popupTargetObservedMs": 143.114,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 129.6740420000001,
+        "scanMs": 134.37874999999985
+      },
+      "navigation": {
+        "epochMs": 1795352511528,
+        "interactiveMs": 91.79999999998836,
+        "loadCompleteMs": 100.70000000001164,
+        "collectorPresent": true,
+        "pressToDocumentMs": 79.625732421875
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "cdfcd6582295b7342dcbf10a4de31583f7965a5fbe52906e7fdf40ff9e899e47"
+    },
+    {
+      "pair": 30,
+      "arm": "on-demand",
+      "passed": true,
+      "timings": {
+        "openMs": 168.353333,
+        "popupTargetObservedMs": 46.617166,
+        "drivers": {
+          "open": "macOS pointer",
+          "scan": "CDP keyboard"
+        },
+        "documentPaintMs": null,
+        "firstScanToMissingHostMs": 131.47670800000014,
+        "scanMs": 125.54204200000004
+      },
+      "navigation": {
+        "epochMs": 1795352504165.9,
+        "interactiveMs": 88.40000000002328,
+        "loadCompleteMs": 101.29999999998836,
+        "collectorPresent": false,
+        "pressToDocumentMs": 26.538330078125
+      },
+      "phase": "browser checks complete",
+      "error": null,
+      "receipt_sha256": "a4bf23b7bead022967915e5e02d895aeddb18becf15b53a5dfa04fd5b5643fef"
+    }
+  ],
+  "redaction_verified_by_arm": {
+    "eager": true,
+    "on-demand": true
+  },
+  "complete": true,
+  "p95": {
+    "eager": {
+      "openMs": 349.339667,
+      "scanMs": 163.06379200000015,
+      "firstScanToMissingHostMs": 145.61341599999992,
+      "popupTargetObservedMs": 158.913333
+    },
+    "on-demand": {
+      "openMs": 392.172667,
+      "scanMs": 160.66954099999975,
+      "firstScanToMissingHostMs": 138.46883300000013,
+      "popupTargetObservedMs": 206.49875
+    }
+  },
+  "paired_median_open_improvement_ms": -25.092541999999995,
+  "paired_bootstrap_95_interval_ms": [
+    -44.82133400000001,
+    18.9179795
+  ],
+  "retain_candidate": false
+}

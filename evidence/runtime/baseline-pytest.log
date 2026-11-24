@@ -1,0 +1,25 @@
+82fe6e3749acccf80aecfd523e531be4302865e3
+Python 3.13.3
+Existing pipx runtime plus local pytest 8.2.0 and pytest-asyncio imported through a scoped directory. No installs or network requests.
+........................................................................ [ 24%]
+........................................................................ [ 48%]
+....F................................................................... [ 72%]
+........................................................................ [ 96%]
+..........                                                               [100%]
+=================================== FAILURES ===================================
+_________________ TestDataQuality.test_screenshot_files_exist __________________
+
+self = <tests.test_design_mcp.TestDataQuality object at 0x10d2f6d50>
+
+    def test_screenshot_files_exist(self):
+        """At least some screenshot directories should have files."""
+        screenshot_dir = BASE_DIR / "screenshots"
+        assert screenshot_dir.exists()
+        total = sum(1 for _ in screenshot_dir.rglob("*") if _.is_file())
+>       assert total >= 100
+E       assert 1 >= 100
+
+tests/test_design_mcp.py:389: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_design_mcp.py::TestDataQuality::test_screenshot_files_exist
+1 failed, 297 passed in 1.05s

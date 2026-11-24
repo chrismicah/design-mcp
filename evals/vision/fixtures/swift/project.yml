@@ -1,0 +1,31 @@
+name: ReviewFixture
+options:
+  deploymentTarget:
+    macOS: "13.0"
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    GENERATE_INFOPLIST_FILE: YES
+    CODE_SIGN_STYLE: Manual
+    CODE_SIGN_IDENTITY: "-"
+targets:
+  ReviewFixture:
+    type: application
+    platform: macOS
+    sources: [Application]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: org.designmcp.reviewfixture
+    scheme:
+      testTargets: [ReviewFixtureTests]
+  ReviewFixtureTests:
+    type: bundle.ui-testing
+    platform: macOS
+    sources:
+      - Tests
+      - ../../../../integrations/desktop/SwiftCapture.swift
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: org.designmcp.reviewfixture.tests
+    dependencies:
+      - target: ReviewFixture

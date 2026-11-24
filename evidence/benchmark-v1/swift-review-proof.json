@@ -1,0 +1,52 @@
+{
+  "scope": "Installed package and one owned SwiftUI fixture on hosted macOS. XCUITest drove the actual app window.",
+  "source": "1a682b76e7952429d04709f68271c35a976be86f",
+  "run": "https://github.com/chrismicah/design-mcp/actions/runs/44995163235",
+  "artifact": "swift-review-receipt",
+  "macos": "15.8.2",
+  "build": "24H232",
+  "architecture": "arm64",
+  "deployment_target": "13.0",
+  "checks": {
+    "actual_window_opened": true,
+    "native_button_clicked_and_new_control_hittable": true,
+    "same_window_dimensions": true,
+    "private_fixture_value_absent_from_geometry": true,
+    "missing_window_refused_without_writing": true,
+    "existing_capture_not_overwritten": true
+  },
+  "captures": {
+    "before": {
+      "geometry_sha256": "adaa1ddff303c1620c1379bb4becfd565bd42e201f42c9a60650c3863127e0cc",
+      "pixels_sha256": "173d80a4cea9e4c75d5ec56ebd5e493abfc17e7949fd574a4a793a6068bd7d4a",
+      "buttons": 4,
+      "result": {
+        "platform": "swift",
+        "viewport": [
+          900.0,
+          450.0
+        ],
+        "controls_reviewed": 5,
+        "findings": [],
+        "scope": "Visible control geometry and hit testing in the supplied capture"
+      }
+    },
+    "after": {
+      "geometry_sha256": "0310cf7187581299538c050c13b19b113d7b26bae50ea62dbb7a3a5f639be962",
+      "pixels_sha256": "95b39730ff37ade10797fc959b2a60a992a4b91386a1b059cc9994d2b1a9a081",
+      "buttons": 5,
+      "result": {
+        "platform": "swift",
+        "viewport": [
+          900.0,
+          450.0
+        ],
+        "controls_reviewed": 6,
+        "findings": [],
+        "scope": "Visible control geometry and hit testing in the supplied capture"
+      }
+    }
+  },
+  "receipt_sha256": "f7a8bbb4a1be43540f96d19f8360951330c8102e673279427c9d4dc84053750a",
+  "attachment_manifest_sha256": "9570ce08ed21262a3935931ad3cde38af37adea0c0c1f88aa833103ec79e5888"
+}

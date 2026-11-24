@@ -5,12 +5,15 @@ Also prints a distribution summary.
 import json
 from pathlib import Path
 
+from ..resources import data_file
 from ..schema import DesignPattern
 from .quality_scorer import score_pattern
 
 
 def main():
-    data_path = Path(__file__).parent.parent / "data" / "patterns.json"
+    data_path = data_file("patterns.json")
+    if not isinstance(data_path, Path) or not data_path.is_file():
+        raise SystemExit("Scoring requires a writable checkout containing design_mcp/data/patterns.json.")
 
     print(f"Loading patterns from {data_path}...")
     with open(data_path) as f:

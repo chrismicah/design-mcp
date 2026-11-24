@@ -1,0 +1,80 @@
+name: Installed Electron review proof
+
+on:
+  push:
+    branches: [design-mcp/desktop-app-review, design-mcp/electron-input-proof]
+
+permissions:
+  contents: read
+
+jobs:
+  electron:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Install the package and pinned Electron
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends xvfb xauth xdotool
+          python -m venv "$RUNNER_TEMP/design-review"
+          "$RUNNER_TEMP/design-review/bin/python" -m pip install .
+          npm install --prefix "$RUNNER_TEMP/review-electron" --no-audit --no-fund electron@43.4.0
+          "$RUNNER_TEMP/review-electron/node_modules/.bin/install-electron"
+          sandbox="$RUNNER_TEMP/review-electron/node_modules/electron/dist/chrome-sandbox"
+          sudo chown root:root "$sandbox"
+          sudo chmod 4755 "$sandbox"
+      - name: Review a real Electron window before and after keyboard input
+        run: |
+          cli="$RUNNER_TEMP/design-review/bin/design-mcp"
+          electron="$RUNNER_TEMP/review-electron/node_modules/electron/dist/electron"
+          # Use software rendering for the virtual X11 display.
+          timeout 45s xvfb-run -a -s '-screen 0 1280x900x24' "$electron" --disable-gpu \
+            evals/vision/electron_smoke.mjs "$cli" "$RUNNER_TEMP/electron-proof"
+      - name: Verify review waits for external keyboard input
+        run: |
+          cli="$RUNNER_TEMP/design-review/bin/design-mcp"
+          electron="$RUNNER_TEMP/review-electron/node_modules/electron/dist/electron"
+          timeout 45s xvfb-run -a -s '-screen 0 1280x900x24' bash -euc '
+            destination=$3
+            DESIGN_MCP_ELECTRON_MANUAL_INPUT=1 "$1" --disable-gpu evals/vision/electron_smoke.mjs "$2" "$destination" &
+            pid=$!
+            trap "kill $pid 2>/dev/null || true; wait $pid 2>/dev/null || true" EXIT
+            for ((i = 0; i < 150; i++)); do
+              test -s "$destination/ready" && break
+              kill -0 "$pid"
+              sleep 0.1
+            done
+            test "$(cat "$destination/ready")" = "$pid"
+            sleep 0.25
+            test ! -e "$destination/after.json"
+            window=$(xdotool search --onlyvisible --all --pid "$pid" --name "^Desk review fixture$")
+            xdotool windowfocus --sync "$window"
+            test "$(xdotool getwindowfocus)" = "$window"
+            xdotool key --clearmodifiers Tab Return
+            for ((i = 0; i < 100; i++)); do
+              jq -e . "$destination/receipt.json" >/dev/null 2>&1 && break
+              sleep 0.1
+            done
+            jq -e ".passed and .originalEvidencePreserved and (.input == \"external keyboard\")" "$destination/receipt.json"
+          ' -- "$electron" "$cli" "$RUNNER_TEMP/electron-external"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: electron-review-receipt
+          path: |
+            ${{ runner.temp }}/electron-proof/receipt.json
+            ${{ runner.temp }}/electron-proof/before.json
+            ${{ runner.temp }}/electron-proof/after.json
+            ${{ runner.temp }}/electron-proof/*.png
+            ${{ runner.temp }}/electron-external/receipt.json
+            ${{ runner.temp }}/electron-external/before.json
+            ${{ runner.temp }}/electron-external/after.json
+            ${{ runner.temp }}/electron-external/*.png
+          if-no-files-found: warn
+          retention-days: 7

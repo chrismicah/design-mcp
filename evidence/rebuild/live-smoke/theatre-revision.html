@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Turnaround · Stage management</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:wght@500&amp;family=Instrument+Sans&amp;display=swap">
+<style>
+:root {
+  color-scheme: light;
+  --paper: #f5efe2;
+  --ink: #27201d;
+  --cue: #842e3d;
+  --muted: #685750;
+  --rule: #a99b88;
+  --display: "Newsreader", Georgia, serif;
+  --body: "Instrument Sans", sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.45 var(--body); }
+main { width: min(1120px, calc(100% - 96px)); margin-inline: auto; padding-block: 45px 64px; }
+.masthead { padding-top: 17px; border-top: 4px solid var(--ink); }
+.department { font-size: 15px; margin: 0 0 33px; }
+h1 { margin: 0; font: 500 clamp(4.6rem, 11vw, 9.25rem)/.85 var(--display); letter-spacing: -.035em; }
+.controls { display: flex; align-items: center; gap: 8px; margin: 40px 0 21px; }
+button {
+  background: transparent;
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  min-height: 44px;
+  padding: 8px 16px;
+  font: inherit;
+  cursor: pointer;
+}
+button:hover { border-color: var(--ink); }
+button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+button:focus-visible { outline: 2px solid var(--cue); outline-offset: 3px; }
+table { width: 100%; border-collapse: collapse; border-bottom: 2px solid var(--ink); }
+th, td { text-align: start; }
+thead { border-top: 1px solid var(--rule); border-bottom: 2px solid var(--ink); }
+thead th { padding: 8px 0; font-size: .86rem; font-weight: 400; color: var(--muted); }
+thead th:last-child { padding-inline-start: 24px; }
+tbody th, tbody td { border-bottom: 1px solid var(--rule); }
+tbody th { width: 76%; padding: 27px 14px 22px 0; font: 500 clamp(3.15rem, 7vw, 6rem)/.96 var(--display); letter-spacing: -.035em; }
+tbody td { padding: 18px 24px; vertical-align: middle; font-size: 1.125rem; }
+tbody .delay { color: var(--paper); background: var(--cue); }
+.delay strong { display: block; font-size: clamp(1.25rem, 3.5vw, 2.15rem); line-height: 1.1; font-weight: 500; font-variant-numeric: tabular-nums; }
+.ready { color: var(--muted); }
+.announce { position: absolute; clip-path: inset(50%); width: 1px; height: 1px; overflow: hidden; }
+@media (max-width: 640px) {
+  main { width: calc(100% - 40px); padding-block: 26px 44px; }
+  .department { font-size: 14px; margin-bottom: 30px; }
+  h1 { font-size: clamp(3.1rem, 16.5vw, 5.25rem); }
+  .controls { margin: 32px 0 18px; }
+  tbody th { width: 66%; padding-block: 24px 18px; font-size: clamp(2.15rem, 12.6vw, 3.3rem); }
+  tbody td, thead th:last-child { padding-inline: 12px; }
+  tbody td { font-size: 1rem; }
+}
+</style>
+</head>
+<body>
+<main>
+  <header class="masthead">
+    <p class="department">Stage management</p>
+    <h1>Turnaround</h1>
+  </header>
+  <div class="controls" role="group" aria-label="Room filter">
+    <button type="button" aria-pressed="true" aria-controls="rooms" data-filter="all">All rooms</button>
+    <button type="button" aria-pressed="false" aria-controls="rooms" data-filter="late">Delayed only</button>
+  </div>
+  <p id="feedback" class="announce" role="status">Showing both rooms.</p>
+  <table aria-label="Room status">
+    <thead><tr><th scope="col">Room</th><th scope="col">Status</th></tr></thead>
+    <tbody id="rooms">
+      <tr><th scope="row">Studio B</th><td class="delay"><strong>6 min</strong> late</td></tr>
+      <tr id="ready"><th scope="row">Hall A</th><td class="ready">Ready</td></tr>
+    </tbody>
+  </table>
+</main>
+<script>
+const filters = [...document.querySelectorAll("[data-filter]")];
+const ready = document.querySelector("#ready");
+const feedback = document.querySelector("#feedback");
+const rooms = document.querySelector("#rooms");
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
+let fade;
+
+for (const filter of filters) {
+  filter.addEventListener("click", () => {
+    if (filter.getAttribute("aria-pressed") === "true") return;
+    const delayedOnly = filter.dataset.filter === "late";
+    for (const button of filters) button.setAttribute("aria-pressed", String(button === filter));
+    ready.hidden = delayedOnly;
+    feedback.textContent = delayedOnly ? "One delayed room. Studio B is six minutes late." : "Showing both rooms.";
+    fade?.cancel();
+    if (!reduceMotion.matches) {
+      fade = rooms.animate([{opacity: .78}, {opacity: 1}], {duration: 220, easing: "cubic-bezier(.22,1,.36,1)"});
+    }
+  });
+}
+</script>
+</body>
+</html>

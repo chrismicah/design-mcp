@@ -1,0 +1,11 @@
+# Independent pre-approval review
+
+Reviewer GPT-6.2 Sol, session `a33acea8`. Reviewed Fable 5.2's audit and plan, Opus 5.5's corpus evidence, and GPT-6.2 Astra's research receipts. This review covers baseline findings and the proposed experiment.
+
+| Subject | Rechecked | Verdict |
+| --- | --- | --- |
+| Installed MCP | Invoked the existing package from a temporary directory over stdio. Negotiated MCP, listed all tools, compared the custom color and default token calls. | Confirms 14 tools and the installed custom-color failure. Fresh installation is a separate check. [Stdio receipt](runtime/installed-stdio.json) |
+| Existing tests | Ran `pytest tests` with local dependencies and no downloads. | 297 pass and one failure from the missing screenshot corpus. The suite primarily exercises the root modules, so installed changes need their own coverage. [Test log](runtime/baseline-pytest.log) |
+| Corpus rubric | Challenged source and seed-ID priors, false credit for remote URLs, and missing mandatory direction fields. Replayed the revised rubric and matched all scored pattern IDs against the packaged input. | Content-based triage is suitable for candidate selection. Historical image taste remains unknown for most rows. Two viewed corpus assets ground the examples. An independent rev-2 sample checked 17 pattern dispositions, five supplemental records, and possible duplicate identity for all 26 merge candidates. [Rev-2 sample](content/REV2-SAMPLE.md) · [Corpus manifest](content/MANIFEST.md) · [Sample](content/judged_sample.md) |
+| Vision merge and templating | Checked every vision key and stored field. Replayed both resolver rules across packaged references and compared examples with runtime receipts. | 742 joins, nine UI-element changes. Found 91 layout and 2,494 component reference occurrences that stay unresolved on the resolver path. [Joins](content/vision-reconciliation.json) · [Template resolution](runtime/template-resolution.json) |
+| Rebuild proposal | Challenged removal of the entire legacy API, large default rollout, and extra approvals. Checked rules against the brief, the research evidence, and owner usage steering. | Retain a reversible legacy surface during the pilot. Six directions, source and render evidence, blind assessment before corpus expansion. Product work still needs the requested plan approval. [Plan](../PLAN.md) |

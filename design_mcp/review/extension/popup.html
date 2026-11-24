@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design MCP page review</title>
+<link rel="stylesheet" href="popup.css">
+<script src="collector.js" defer></script>
+<script src="mask.js" defer></script>
+<script src="popup.js" defer></script>
+</head>
+<body data-state="idle">
+<main>
+<section id="result" aria-label="Review result" hidden>
+<p id="finding"></p>
+<canvas id="where" role="img" aria-label="The part of the page this finding is about" hidden></canvas>
+<dl id="fix">
+<div><dt>Change</dt><dd id="change"></dd></div>
+<div><dt>Check</dt><dd id="check"></dd></div>
+</dl>
+<button id="open" class="primary" type="button">Open before and after</button>
+<p id="path"></p>
+</section>
+<h1 id="title">Find the first thing to fix on this page</h1>
+<button id="scan" class="primary" type="button" autofocus>Review this page</button>
+<p id="status" role="status">Scans only what you can see in this tab. Form fields are blanked out. Nothing is uploaded.</p>
+<p id="command" hidden><code id="command-text"></code></p>
+<form id="open-form">
+<label for="url">Review a public URL</label>
+<div class="row">
+<input id="url" type="text" inputmode="url" autocomplete="off" spellcheck="false" maxlength="2048" placeholder="example.com/status" aria-describedby="url-hint" required>
+<button id="review-url" type="submit">Review URL</button>
+</div>
+<p id="url-hint" role="status">Opens the review in its own tab.</p>
+</form>
+</main>
+</body>
+</html>

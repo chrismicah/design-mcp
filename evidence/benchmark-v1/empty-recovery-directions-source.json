@@ -1,0 +1,174 @@
+{
+  "first_candidate": {
+    "source_commit": "1171973b5b7f31cfe15dc26f6f99126d8f5dee2b",
+    "previous_commit": "d40c2b10aeb4deda88c11d9c8a4c27d99ad038a4",
+    "same_direct_schema_sha256": "405a026750c7ba2905b3b38c82bca99a4e7230803495ef0d0d288d68eaf26053",
+    "unrelated_replies_matched": 272,
+    "unrelated_fingerprint": "e0dbdf4e09a5d141f7cc7e3cce28adbaa3d3ec6ceb548a25ebf70e748c76c140",
+    "probes": [
+      {
+        "id": "empty-search",
+        "expected": "search-recovery",
+        "actual": "search-recovery",
+        "passed": true
+      },
+      {
+        "id": "empty-shifts",
+        "expected": "first-available-shift",
+        "actual": "first-available-shift",
+        "passed": true
+      },
+      {
+        "id": "empty-search-archived",
+        "expected": "search-recovery",
+        "actual": "search-recovery",
+        "passed": true
+      },
+      {
+        "id": "empty-shifts-archived",
+        "expected": "first-available-shift",
+        "actual": "first-available-shift",
+        "passed": true
+      },
+      {
+        "id": "library-alternative",
+        "expected": "search-recovery",
+        "actual": "search-recovery",
+        "passed": true
+      },
+      {
+        "id": "narrow-no-match",
+        "expected": "search-recovery",
+        "actual": "search-recovery",
+        "passed": true
+      },
+      {
+        "id": "reserve-remaining-slot",
+        "expected": "first-available-shift",
+        "actual": "first-available-shift",
+        "passed": true
+      },
+      {
+        "id": "no-upcoming-and-book",
+        "expected": "first-available-shift",
+        "actual": "object-hero",
+        "passed": false
+      },
+      {
+        "id": "editorial-article",
+        "expected": null,
+        "actual": "margin-front",
+        "passed": true
+      },
+      {
+        "id": "analytics",
+        "expected": null,
+        "actual": "exception-first",
+        "passed": true
+      },
+      {
+        "id": "rota",
+        "expected": null,
+        "actual": "exception-first",
+        "passed": true
+      },
+      {
+        "id": "other-empty",
+        "expected": null,
+        "actual": "margin-front",
+        "passed": true
+      }
+    ],
+    "failures": [
+      {
+        "id": "no-upcoming-and-book",
+        "expected": "first-available-shift",
+        "actual": "object-hero",
+        "passed": false
+      }
+    ]
+  },
+  "corrected_candidate": {
+    "source_commit": "bc2e2bdf532485a08c8979b4dd6c00b6c159b91e",
+    "previous_commit": "d40c2b10aeb4deda88c11d9c8a4c27d99ad038a4",
+    "same_direct_schema_sha256": "405a026750c7ba2905b3b38c82bca99a4e7230803495ef0d0d288d68eaf26053",
+    "unrelated_replies_matched": 272,
+    "unrelated_fingerprint": "e0dbdf4e09a5d141f7cc7e3cce28adbaa3d3ec6ceb548a25ebf70e748c76c140",
+    "probes": [
+      {
+        "id": "empty-search",
+        "expected": "search-recovery",
+        "actual": "search-recovery",
+        "passed": true
+      },
+      {
+        "id": "empty-shifts",
+        "expected": "first-available-shift",
+        "actual": "first-available-shift",
+        "passed": true
+      },
+      {
+        "id": "empty-search-archived",
+        "expected": "search-recovery",
+        "actual": "search-recovery",
+        "passed": true
+      },
+      {
+        "id": "empty-shifts-archived",
+        "expected": "first-available-shift",
+        "actual": "first-available-shift",
+        "passed": true
+      },
+      {
+        "id": "library-alternative",
+        "expected": "search-recovery",
+        "actual": "search-recovery",
+        "passed": true
+      },
+      {
+        "id": "narrow-no-match",
+        "expected": "search-recovery",
+        "actual": "search-recovery",
+        "passed": true
+      },
+      {
+        "id": "reserve-remaining-slot",
+        "expected": "first-available-shift",
+        "actual": "first-available-shift",
+        "passed": true
+      },
+      {
+        "id": "no-upcoming-and-book",
+        "expected": "first-available-shift",
+        "actual": "first-available-shift",
+        "passed": true
+      },
+      {
+        "id": "editorial-article",
+        "expected": null,
+        "actual": "margin-front",
+        "passed": true
+      },
+      {
+        "id": "analytics",
+        "expected": null,
+        "actual": "exception-first",
+        "passed": true
+      },
+      {
+        "id": "rota",
+        "expected": null,
+        "actual": "exception-first",
+        "passed": true
+      },
+      {
+        "id": "other-empty",
+        "expected": null,
+        "actual": "margin-front",
+        "passed": true
+      }
+    ],
+    "failures": []
+  },
+  "source_tests_passed": 76
+}

@@ -1,0 +1,168 @@
+name: Chrome review extension keyboard proof
+
+on:
+  push:
+    branches:
+      - design-mcp/vision-extension-proof
+      - design-mcp/review-integration
+      - design-mcp/large-text-contrast
+      - design-mcp/profile-review-isolation
+  pull_request:
+    branches: [master]
+    paths:
+      - 'design_mcp/review/**'
+      - 'design_mcp/cli.py'
+      - 'evals/vision/extension_smoke.mjs'
+      - 'evals/vision/chrome_x11.sh'
+      - 'evals/vision/locate_toolbar_marker.py'
+      - 'evals/vision/popup_capture.test.cjs'
+      - 'pyproject.toml'
+      - '.github/workflows/vision-extension-proof.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  popup:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Verify active-tab capture consistency
+        run: node --test evals/vision/popup_capture.test.cjs
+      - name: Install the package and isolated browser
+        shell: bash
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends xvfb xauth xdotool openbox x11-utils scrot
+          python -m venv "$RUNNER_TEMP/design-review"
+          "$RUNNER_TEMP/design-review/bin/python" -m pip install . 'pillow>=11,<13'
+          curl -fsSL https://storage.googleapis.com/chrome-for-testing-public/158.0.8127.36/linux64/chrome-linux64.zip -o "$RUNNER_TEMP/chrome.zip"
+          unzip -q "$RUNNER_TEMP/chrome.zip" -d "$RUNNER_TEMP/browser"
+          sudo install -o root -g root -m 4755 "$RUNNER_TEMP/browser/chrome-linux64/chrome_sandbox" /usr/local/sbin/chrome-devel-sandbox
+      - name: Verify the active-tab and pasted URL review journeys
+        shell: bash
+        run: |
+          cli="$RUNNER_TEMP/design-review/bin/design-mcp"
+          extension="$RUNNER_TEMP/review-extension"
+          chrome="$RUNNER_TEMP/browser/chrome-linux64/chrome"
+          proof="$RUNNER_TEMP/extension-proof"
+          cp -R "$("$cli" review --extension-path | head -1)" "$extension"
+          "$RUNNER_TEMP/design-review/bin/python" - "$extension/manifest.json" <<'PY'
+          from pathlib import Path
+          from PIL import Image, ImageDraw
+          import json, sys
+          path = Path(sys.argv[1])
+          manifest = json.loads(path.read_text())
+          icon = path.with_name('ci-toolbar-marker.png')
+          image = Image.new('RGBA', (16, 16), (18, 36, 56, 255))
+          ImageDraw.Draw(image).rectangle((2, 2, 13, 13), fill=(246, 27, 177, 255))
+          image.save(icon)
+          manifest['action']['default_icon'] = {'16': icon.name}
+          path.write_text(json.dumps(manifest))
+          PY
+          mkdir -p "$RUNNER_TEMP/browser-bin"
+          ln -s "$chrome" "$RUNNER_TEMP/browser-bin/google-chrome"
+          export PATH="$RUNNER_TEMP/browser-bin:$PATH"
+          node --version
+          CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox \
+            xvfb-run -a -s '-screen 0 1600x1040x24' bash evals/vision/chrome_x11.sh \
+            "$chrome" "$cli" "$extension" "$proof" "" --pasted-url-e2e
+          "$RUNNER_TEMP/design-review/bin/python" - "$proof" <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          import base64, hashlib, io, json, re, sys
+          root = Path(sys.argv[1])
+          proof_path = root/'extension-review.json'
+          proof = json.loads(proof_path.read_text())
+          assert proof['passed'], proof
+          assert proof['profileHistoryVerified'], proof
+          activations = proof['toolbarActivations']
+          assert [item['flow'] for item in activations] == ['active tab', 'pasted URL'], activations
+          assert all(item['method'] == 'toolbar-click' and len(item['point']) == 2 for item in activations), activations
+          assert len({item['windowId'] for item in activations}) == 1, activations
+          assert len({item['targetId'] for item in activations}) == 2, activations
+          preview = Path(proof['previewFolder'])
+          evidence = preview/'evidence.json'
+          html = (preview/'preview.html').read_text()
+          metadata = json.loads(evidence.read_text())
+          assert 'fixture-redaction-sentinel-' not in html + evidence.read_text()
+          assert metadata['frames'][0]['masks']['counts']['field'] == 1
+          content = base64.b64decode(re.search(r'data:image/png;base64,([A-Za-z0-9+/=]+)',html)[1])
+          assert hashlib.sha256(content).hexdigest() == metadata['frames'][0]['screenshot']['sha256']
+          with Image.open(io.BytesIO(content)) as image:
+              field = proof['field']
+              scale_x = image.width / field['viewport'][0]
+              scale_y = image.height / field['viewport'][1]
+              x, y = field['x'] * scale_x, field['y'] * scale_y
+              w, h = field['width'] * scale_x, field['height'] * scale_y
+              checked = image.convert('RGB').crop((round(x)+2, round(y)+2, round(x+w)-2, round(y+h)-2))
+              assert set(checked.getdata()) == {(138, 143, 152)}
+          proof['verifiedMaskInterior'] = True
+          proof['privateValueAbsentFromArtifacts'] = True
+          assert proof.get('pastedUrlE2e'), proof
+          pasted = json.loads(Path(proof['pastedEvidencePath']).read_text())
+          assert pasted['capture']['source'] == 'pasted-url', pasted
+          assert pasted['capture']['url'] == 'https://designsystem.digital.gov/templates/form-templates/address-form/', pasted
+          assert pasted['frames'][0]['masks']['counts']['field'] > 0, pasted
+          assert proof['pastedScreenshotSha256'] == pasted['frames'][0]['screenshot']['sha256'], proof
+          assert proof['pastedResult']['focus'] == 'open', proof
+          assert proof['pastedSubmitToCaptureMs'] > 0, proof
+          assert proof['localhostRejected']['resultHidden'], proof
+          assert proof['pastedResult']['previewVisible'], proof
+          proof_path.write_text(json.dumps(proof, indent=2)+'\n')
+          print('Verified active-tab and pasted-URL capture, masking, saved evidence, and keyboard preview.')
+          PY
+      - name: Verify the 3 to 1 contrast result from the installed browser path
+        if: github.ref_name == 'design-mcp/large-text-contrast'
+        shell: bash
+        run: |
+          proof="$RUNNER_TEMP/large-contrast-proof"
+          fixture="$RUNNER_TEMP/large-contrast.html"
+          python - "$fixture" <<'PY'
+          from pathlib import Path
+          import sys
+          original = Path('evals/vision/fixtures/shuttle-dispatch.html').read_text()
+          old = '.muted {color:#9d958d}'
+          assert original.count(old) == 1
+          Path(sys.argv[1]).write_text(original.replace(old, '.muted {color:#aaa; font-size:26px}'))
+          PY
+          CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox \
+            xvfb-run -a -s '-screen 0 1600x1040x24' bash evals/vision/chrome_x11.sh \
+              "$RUNNER_TEMP/browser/chrome-linux64/chrome" \
+              "$RUNNER_TEMP/design-review/bin/design-mcp" "$RUNNER_TEMP/review-extension" "$proof" "$fixture"
+          python - "$proof" <<'PY'
+          from pathlib import Path
+          import hashlib, json, sys
+          root = Path(sys.argv[1])
+          result = json.loads((root/'extension-review.json').read_text())
+          assert result['passed']
+          preview = Path(result['previewFolder'])/'preview.html'
+          html = preview.read_text()
+          assert 'Boarding begins at 6:30 p.m.' in html
+          assert 'text this size needs at least 3 to 1' in html
+          assert 'measures at least 3 to 1 against its background' in html
+          assert 'fixture-redaction-sentinel-' not in html
+          proof = {'passed': True, 'targetContrast': 3, 'previewSha256': hashlib.sha256(preview.read_bytes()).hexdigest()}
+          (root/'large-contrast-result.json').write_text(json.dumps(proof, indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: extension-review-receipt
+          path: |
+            ${{ runner.temp }}/extension-proof/extension-review.json
+            ${{ runner.temp }}/extension-proof/browser.log
+            ${{ runner.temp }}/extension-proof/window-manager.log
+            ${{ runner.temp }}/extension-proof/*.png
+            ${{ runner.temp }}/large-contrast-proof/*.json
+            ${{ runner.temp }}/large-contrast-proof/*.png
+          if-no-files-found: warn
+          retention-days: 7

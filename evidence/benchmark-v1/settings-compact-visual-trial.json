@@ -1,0 +1,990 @@
+{
+  "scope": "Isolated display-format study with the original strict settings generator prompt and live desktop and phone pair.",
+  "decision": "The compact arrangement improved both matched scores and passed 320, 390 and 1440 px geometry. It remains an experiment below the visual promotion threshold.",
+  "sources": {
+    "control": "676d80a7cee88ba0ce4a2d0189e4d5a7dfdca456",
+    "compact_visual_trial": "3143e2fa45db6df8011512a158ea774e3ce935c0",
+    "routing_correction": "3e430c204792ca35941291210f751fa6fa3a1e93"
+  },
+  "source_identity": "The final correction returned identical canonical tool payloads for the two display-format cases. The blind review covers the earlier compact build and is not a fresh generation with the routing correction.",
+  "contract": ".context/competitor-settings-live/format-compact-contract.md",
+  "browser": "Chrome/158.0.8127.36",
+  "playwriter": "0.12.0",
+  "critic_model": "gpt-6.1-terra",
+  "generation": {
+    "v2": {
+      "usage": {
+        "input_tokens": 58447,
+        "cached_input_tokens": 52736,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3542,
+        "reasoning_output_tokens": 0
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "design-mcp",
+          "tool": "direct",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "treatment_call": true,
+      "direct_call": true,
+      "status": "passed",
+      "case": "settings-language",
+      "arm": "v2",
+      "model": "gpt-6.1-terra",
+      "effort": "low",
+      "client": "codex-cli 0.170.0",
+      "prompt_sha256": "d3a3e7fadd93cab9e156db57cd5e324234150bf7c4c6ac55863739d7b82ecf33",
+      "shell_tool": false,
+      "elapsed_seconds": 70.22,
+      "exit_code": 0,
+      "trace_sha256": "d4dbefa21c52e93ace37f6e20441cff00554d93288c1f8e4400f07aefb747099",
+      "html_sha256": "02295d091d7628f0458de1e1d11fc8b654edc04a6ce8abbdf3b4a7b674fba67b"
+    },
+    "format-examples": {
+      "usage": {
+        "input_tokens": 58464,
+        "cached_input_tokens": 49024,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2522,
+        "reasoning_output_tokens": 0
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "design-mcp",
+          "tool": "direct",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "treatment_call": true,
+      "direct_call": true,
+      "status": "passed",
+      "observed_directions": [
+        "format-examples"
+      ],
+      "case": "settings-language",
+      "arm": "format-examples",
+      "model": "gpt-6.1-terra",
+      "effort": "low",
+      "client": "codex-cli 0.170.0",
+      "prompt_sha256": "d3a3e7fadd93cab9e156db57cd5e324234150bf7c4c6ac55863739d7b82ecf33",
+      "expected_direction": "format-examples",
+      "shell_tool": false,
+      "mcp_config_sha256": "9e376b00405c95f531510613d2a86c4be84c033252405585fd9526adf4af35d6",
+      "elapsed_seconds": 53.51,
+      "exit_code": 0,
+      "trace_sha256": "5bf1ab938bec75ec85ebf2f6f10f0b8a2e0c838e3dcdb482d20045a6e3a325e0",
+      "html_sha256": "163425d4edd0f386f374ff3768723325a7bb7ce1fa938e68d739396345a560f0"
+    }
+  },
+  "geometry": [
+    {
+      "arm": "control",
+      "width": 1440,
+      "height": 900,
+      "source_sha256": "02295d091d7628f0458de1e1d11fc8b654edc04a6ce8abbdf3b4a7b674fba67b",
+      "checks": {
+        "date_transition": true,
+        "temperature_transition": true,
+        "date_visible": true,
+        "temperature_visible": true,
+        "no_overflow": true,
+        "four_radio_targets_visible": true,
+        "reset_visible": false,
+        "no_scroll": true
+      },
+      "captures": {
+        "before": "ad253c0fa5a9299ed5bc14c3f3a3769a2950e01306bedaf922ecd315e4dbac51",
+        "both": "b34c45ff350155f316cf2ccb3c0097fd654529ad71b303c94abfffac82c3876e",
+        "reset": "20aeb1a2e636feb3f8be18c68257affb14ccc5c7856e2af21d024ca74a8e6ea9"
+      }
+    },
+    {
+      "arm": "control",
+      "width": 390,
+      "height": 844,
+      "source_sha256": "02295d091d7628f0458de1e1d11fc8b654edc04a6ce8abbdf3b4a7b674fba67b",
+      "checks": {
+        "date_transition": true,
+        "temperature_transition": true,
+        "date_visible": false,
+        "temperature_visible": false,
+        "no_overflow": true,
+        "four_radio_targets_visible": false,
+        "reset_visible": false,
+        "no_scroll": true
+      },
+      "captures": {
+        "before": "f0c9b2b19d83df0284babcd61b542340db71ace6c4361584f1ea0eeefbd236aa",
+        "both": "374d9bddcf01ef9f8a3d9d96b2eff5abf212e76935e07f6f49c8e62a68a000f5",
+        "reset": "13dfaea62db8ea65aceba8cab97f77cf03769918bab473f21273d1add2f147b2"
+      }
+    },
+    {
+      "arm": "control",
+      "width": 320,
+      "height": 700,
+      "source_sha256": "02295d091d7628f0458de1e1d11fc8b654edc04a6ce8abbdf3b4a7b674fba67b",
+      "checks": {
+        "date_transition": true,
+        "temperature_transition": true,
+        "date_visible": false,
+        "temperature_visible": false,
+        "no_overflow": false,
+        "four_radio_targets_visible": false,
+        "reset_visible": false,
+        "no_scroll": false
+      },
+      "captures": {
+        "before": "68a75804aa1a0ecb2e3909b372845b60ec6a7cc0708851a6efe6b67eeb524ac2",
+        "both": "66d837730df5c6b518f2ffc0cf985570fe3cd9e8d152749ab643198dcf10ba54",
+        "reset": "b26565be749257cee2eac3b38b8ebdea0fb5ac6309f1914d830a81b410e984fe"
+      }
+    },
+    {
+      "arm": "candidate",
+      "width": 1440,
+      "height": 900,
+      "source_sha256": "163425d4edd0f386f374ff3768723325a7bb7ce1fa938e68d739396345a560f0",
+      "checks": {
+        "date_transition": true,
+        "temperature_transition": true,
+        "date_visible": true,
+        "temperature_visible": true,
+        "no_overflow": true,
+        "four_radio_targets_visible": true,
+        "reset_visible": true,
+        "no_scroll": true
+      },
+      "captures": {
+        "before": "53e96c56158c76ee733133627db621992a90ae8e715620e7117e95d5a3a4d64d",
+        "both": "a2ba58c859e895751ef85ea4acb8e0062be10daba58d9ba235feaee5d3394a43",
+        "reset": "1fc89483865ac1bee904bb30833ebcfb6814b80383724b9c89f76f9723e014d2"
+      }
+    },
+    {
+      "arm": "candidate",
+      "width": 390,
+      "height": 844,
+      "source_sha256": "163425d4edd0f386f374ff3768723325a7bb7ce1fa938e68d739396345a560f0",
+      "checks": {
+        "date_transition": true,
+        "temperature_transition": true,
+        "date_visible": true,
+        "temperature_visible": true,
+        "no_overflow": true,
+        "four_radio_targets_visible": true,
+        "reset_visible": true,
+        "no_scroll": true
+      },
+      "captures": {
+        "before": "f9745a0783cb844a47e07c21123fb3388f9ec9e493f68f26d90b1b33689070c8",
+        "both": "05096e6858252aa41fef1410cbcd18bc749b0ce94b5b50c403dec9fcde0a8d12",
+        "reset": "0dba69ecefac4a93277bbbc8663d58c46e3c03444d5c9c6328c75daf5960cd54"
+      }
+    },
+    {
+      "arm": "candidate",
+      "width": 320,
+      "height": 700,
+      "source_sha256": "163425d4edd0f386f374ff3768723325a7bb7ce1fa938e68d739396345a560f0",
+      "checks": {
+        "date_transition": true,
+        "temperature_transition": true,
+        "date_visible": true,
+        "temperature_visible": true,
+        "no_overflow": true,
+        "four_radio_targets_visible": true,
+        "reset_visible": true,
+        "no_scroll": true
+      },
+      "captures": {
+        "before": "0ebcebadebe3de92e13a9ee9e76bb489fe944e0a6bbe1a6f8e8e35d95911a970",
+        "both": "44a0860b2511ead50cff408f7034edf94a6b0fb32604babe66b442c2552fcf50",
+        "reset": "819e73ec7c5d9b05d4526dec90054cfeb17c562e5195f020ef48b43c7affd370"
+      }
+    }
+  ],
+  "routing": {
+    "candidate_sha": "3e430c204792ca35941291210f751fa6fa3a1e93",
+    "changes": [
+      "settings-language",
+      "airport-regional"
+    ],
+    "arms": {
+      "control": {
+        "landing-ceramics": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "landing-repair": {
+          "id": "service-work-order",
+          "sha256": "752d16db2186c3999f2f37e8b0a5652e2be78676a821f4482fc62a1f12c34ece"
+        },
+        "landing-radio": {
+          "id": "broadcast-board",
+          "sha256": "8a7990d0d8659495693fd2dd71f8f3a67f6d9025b30aa24e9df01ed2ec5547d2"
+        },
+        "landing-festival": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "landing-archive": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "landing-energy": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "dashboard-coldchain": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "dashboard-venue": {
+          "id": "stage-call-sheet",
+          "sha256": "b938a2291dc3c98a930dd3f478ba459158bfaeeb8c1c7443c2f648765dab50c9"
+        },
+        "dashboard-harvest": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "dashboard-support": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "dashboard-energy": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "dashboard-library": {
+          "id": "exception-first",
+          "sha256": "8f160497a3603576f926abd095aefb3ddb8f73a8f56b41d861d1bf05b3d41e5f"
+        },
+        "form-venue": {
+          "id": "grouped-fieldsets",
+          "sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7"
+        },
+        "form-maintenance": {
+          "id": "grouped-fieldsets",
+          "sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7"
+        },
+        "form-label": {
+          "id": "grouped-fieldsets",
+          "sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7"
+        },
+        "form-garden": {
+          "id": "grouped-fieldsets",
+          "sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7"
+        },
+        "form-exhibition": {
+          "id": "grouped-fieldsets",
+          "sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7"
+        },
+        "form-invoice": {
+          "id": "grouped-fieldsets",
+          "sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7"
+        },
+        "mobile-train": {
+          "id": "platform-sign",
+          "sha256": "93d0fbb2b8633dbee89c897793eebec30a20855f7d9f6c29317a29126f2107d5"
+        },
+        "mobile-field": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "mobile-recital": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "mobile-court": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "mobile-pantry": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "mobile-gallery": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "settings-notifications": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "settings-reading": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "settings-team": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "settings-focus": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "settings-digest": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "settings-language": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "empty-saved": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "empty-drafts": {
+          "id": "margin-front",
+          "sha256": "d10cb3487491d4a81a80a783ca5ed5b064afd74465df692aea51429614f5400d"
+        },
+        "empty-search": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "empty-handoff": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "empty-exhibits": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "empty-shifts": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "airport-regional": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "guide-embedded": {
+          "id": "exception-first",
+          "sha256": "8f160497a3603576f926abd095aefb3ddb8f73a8f56b41d861d1bf05b3d41e5f"
+        },
+        "settings-notification-form": {
+          "id": "grouped-fieldsets",
+          "sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7"
+        }
+      },
+      "compact": {
+        "landing-ceramics": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "landing-repair": {
+          "id": "service-work-order",
+          "sha256": "752d16db2186c3999f2f37e8b0a5652e2be78676a821f4482fc62a1f12c34ece"
+        },
+        "landing-radio": {
+          "id": "broadcast-board",
+          "sha256": "8a7990d0d8659495693fd2dd71f8f3a67f6d9025b30aa24e9df01ed2ec5547d2"
+        },
+        "landing-festival": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "landing-archive": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "landing-energy": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "dashboard-coldchain": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "dashboard-venue": {
+          "id": "stage-call-sheet",
+          "sha256": "b938a2291dc3c98a930dd3f478ba459158bfaeeb8c1c7443c2f648765dab50c9"
+        },
+        "dashboard-harvest": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "dashboard-support": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "dashboard-energy": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "dashboard-library": {
+          "id": "exception-first",
+          "sha256": "8f160497a3603576f926abd095aefb3ddb8f73a8f56b41d861d1bf05b3d41e5f"
+        },
+        "form-venue": {
+          "id": "grouped-fieldsets",
+          "sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7"
+        },
+        "form-maintenance": {
+          "id": "grouped-fieldsets",
+          "sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7"
+        },
+        "form-label": {
+          "id": "grouped-fieldsets",
+          "sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7"
+        },
+        "form-garden": {
+          "id": "grouped-fieldsets",
+          "sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7"
+        },
+        "form-exhibition": {
+          "id": "grouped-fieldsets",
+          "sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7"
+        },
+        "form-invoice": {
+          "id": "grouped-fieldsets",
+          "sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7"
+        },
+        "mobile-train": {
+          "id": "platform-sign",
+          "sha256": "93d0fbb2b8633dbee89c897793eebec30a20855f7d9f6c29317a29126f2107d5"
+        },
+        "mobile-field": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "mobile-recital": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "mobile-court": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "mobile-pantry": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "mobile-gallery": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "settings-notifications": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "settings-reading": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "settings-team": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "settings-focus": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "settings-digest": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "settings-language": {
+          "id": "format-examples",
+          "sha256": "a9d821ad5caf01b5ba4b1a0a0770efb04a4bea818e35f4829e49674c39c9264a"
+        },
+        "empty-saved": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "empty-drafts": {
+          "id": "margin-front",
+          "sha256": "d10cb3487491d4a81a80a783ca5ed5b064afd74465df692aea51429614f5400d"
+        },
+        "empty-search": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "empty-handoff": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "empty-exhibits": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "empty-shifts": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "airport-regional": {
+          "id": "format-examples",
+          "sha256": "a9d821ad5caf01b5ba4b1a0a0770efb04a4bea818e35f4829e49674c39c9264a"
+        },
+        "guide-embedded": {
+          "id": "exception-first",
+          "sha256": "8f160497a3603576f926abd095aefb3ddb8f73a8f56b41d861d1bf05b3d41e5f"
+        },
+        "settings-notification-form": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        }
+      },
+      "routed": {
+        "landing-ceramics": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "landing-repair": {
+          "id": "service-work-order",
+          "sha256": "752d16db2186c3999f2f37e8b0a5652e2be78676a821f4482fc62a1f12c34ece"
+        },
+        "landing-radio": {
+          "id": "broadcast-board",
+          "sha256": "8a7990d0d8659495693fd2dd71f8f3a67f6d9025b30aa24e9df01ed2ec5547d2"
+        },
+        "landing-festival": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "landing-archive": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "landing-energy": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "dashboard-coldchain": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "dashboard-venue": {
+          "id": "stage-call-sheet",
+          "sha256": "b938a2291dc3c98a930dd3f478ba459158bfaeeb8c1c7443c2f648765dab50c9"
+        },
+        "dashboard-harvest": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "dashboard-support": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "dashboard-energy": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "dashboard-library": {
+          "id": "exception-first",
+          "sha256": "8f160497a3603576f926abd095aefb3ddb8f73a8f56b41d861d1bf05b3d41e5f"
+        },
+        "form-venue": {
+          "id": "grouped-fieldsets",
+          "sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7"
+        },
+        "form-maintenance": {
+          "id": "grouped-fieldsets",
+          "sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7"
+        },
+        "form-label": {
+          "id": "grouped-fieldsets",
+          "sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7"
+        },
+        "form-garden": {
+          "id": "grouped-fieldsets",
+          "sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7"
+        },
+        "form-exhibition": {
+          "id": "grouped-fieldsets",
+          "sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7"
+        },
+        "form-invoice": {
+          "id": "grouped-fieldsets",
+          "sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7"
+        },
+        "mobile-train": {
+          "id": "platform-sign",
+          "sha256": "93d0fbb2b8633dbee89c897793eebec30a20855f7d9f6c29317a29126f2107d5"
+        },
+        "mobile-field": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "mobile-recital": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "mobile-court": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "mobile-pantry": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "mobile-gallery": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "settings-notifications": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "settings-reading": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "settings-team": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "settings-focus": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "settings-digest": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "settings-language": {
+          "id": "format-examples",
+          "sha256": "a9d821ad5caf01b5ba4b1a0a0770efb04a4bea818e35f4829e49674c39c9264a"
+        },
+        "empty-saved": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "empty-drafts": {
+          "id": "margin-front",
+          "sha256": "d10cb3487491d4a81a80a783ca5ed5b064afd74465df692aea51429614f5400d"
+        },
+        "empty-search": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "empty-handoff": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "empty-exhibits": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "empty-shifts": {
+          "id": "object-hero",
+          "sha256": "839836a9f81b7ecde25308bb789fdc52e4a8b6d16f01da7fd8336ad1570969c1"
+        },
+        "airport-regional": {
+          "id": "format-examples",
+          "sha256": "a9d821ad5caf01b5ba4b1a0a0770efb04a4bea818e35f4829e49674c39c9264a"
+        },
+        "guide-embedded": {
+          "id": "exception-first",
+          "sha256": "8f160497a3603576f926abd095aefb3ddb8f73a8f56b41d861d1bf05b3d41e5f"
+        },
+        "settings-notification-form": {
+          "id": "grouped-fieldsets",
+          "sha256": "f0bf59a3006a3c89ef6c5ed2aa944544f77c336b059e4dc3a2298a036fa642d7"
+        }
+      }
+    }
+  },
+  "ballot": {
+    "calibration": {
+      "coherence": 7,
+      "originality": 5,
+      "craft": 6.5,
+      "usability": 6,
+      "basis": "The withheld repair intake is legible and clearly labeled, but its familiar layout limits originality and misplaced focus after an invalid number weakens recovery."
+    },
+    "screens": {
+      "A-1440": {
+        "coherence": 8,
+        "originality": 7.5,
+        "craft": 7.5,
+        "usability": 8,
+        "primary_action": {
+          "input": "Tab to the date radio, ArrowRight, Tab to temperature, ArrowRight.",
+          "expected": "The date becomes 21 November 2026 and the temperature becomes 20°C.",
+          "observed": "Both examples changed as expected. Changing the date left 68°F unchanged; changing the temperature left the selected date unchanged."
+        },
+        "edge_observation": "Shift+Tab twice and Enter activated Reset to default. Both default examples returned, and focus remained on the reset button.",
+        "fact_check": "Both examples were visible in A-1440-before.png and A-1440-after.png. No wrong-example change or scrolling was observed.",
+        "strength": "The large plum preview and serif examples make the result prominent, with clear selected radio states.",
+        "weakness": "The large separate preview competes with the settings and requires the eye to travel between each control and its result.",
+        "repair": "Place each example closer to its corresponding control while retaining the distinctive preview treatment.",
+        "arm": "v2",
+        "html_sha256": "02295d091d7628f0458de1e1d11fc8b654edc04a6ce8abbdf3b4a7b674fba67b",
+        "weighted": 7.75,
+        "before": {
+          "sha256": "ad253c0fa5a9299ed5bc14c3f3a3769a2950e01306bedaf922ecd315e4dbac51",
+          "file": "A-1440-before.png",
+          "tool_call_id": "item_2"
+        },
+        "after": {
+          "sha256": "b34c45ff350155f316cf2ccb3c0097fd654529ad71b303c94abfffac82c3876e",
+          "file": "A-1440-after.png",
+          "tool_call_id": "item_8"
+        },
+        "layout_width": 1425,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ]
+      },
+      "A-390": {
+        "coherence": 7,
+        "originality": 7,
+        "craft": 6.5,
+        "usability": 6,
+        "primary_action": {
+          "input": "Tab to the date radio, ArrowRight, Tab to temperature, ArrowRight.",
+          "expected": "The date becomes 21 November 2026 and the temperature becomes 20°C.",
+          "observed": "The accessibility tree reported both expected values, with each change leaving the other example unchanged. The examples were below the viewport and were not visually verified in the requested after capture."
+        },
+        "edge_observation": "Shift+Tab twice and Enter restored both default values in the accessibility tree; focus remained on Reset to default.",
+        "fact_check": "A-390-before.png and A-390-after.png do not show either preview example. The requested capture with both examples visible was not obtained. The review tool rejected End, so visual verification of the offscreen preview remains unsupported.",
+        "strength": "Stacked choices are legible and selected states remain clear.",
+        "weakness": "The preview is separated from the controls below a long stack, requiring avoidable scrolling to inspect the effects.",
+        "repair": "Use compact inline examples beside each group so both changes can be checked near their controls.",
+        "arm": "v2",
+        "html_sha256": "02295d091d7628f0458de1e1d11fc8b654edc04a6ce8abbdf3b4a7b674fba67b",
+        "weighted": 6.7,
+        "before": {
+          "sha256": "f0c9b2b19d83df0284babcd61b542340db71ace6c4361584f1ea0eeefbd236aa",
+          "file": "A-390-before.png",
+          "tool_call_id": "item_13"
+        },
+        "after": {
+          "sha256": "374d9bddcf01ef9f8a3d9d96b2eff5abf212e76935e07f6f49c8e62a68a000f5",
+          "file": "A-390-after.png",
+          "tool_call_id": "item_21"
+        },
+        "layout_width": 375,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ]
+      },
+      "B-1440": {
+        "coherence": 8.5,
+        "originality": 6.5,
+        "craft": 8,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Tab to the date radio, ArrowRight, Tab to temperature, ArrowRight.",
+          "expected": "The date becomes 21 November 2026 and the temperature becomes 20°C.",
+          "observed": "Both visible examples changed as expected. Each change left the other example unchanged."
+        },
+        "edge_observation": "Shift+Tab twice and Enter activated Reset. Both default examples returned, and focus remained on Reset.",
+        "fact_check": "B-1440-before.png and B-1440-after.png show both examples. No wrong-example change or scrolling was observed.",
+        "strength": "Each large example sits directly above its choices, making the relationship and state changes easy to follow.",
+        "weakness": "The restrained blue rows are clear but visually conventional, and Reset does not say what it resets.",
+        "repair": "Give Reset a more specific accessible and visible label, and introduce a more distinctive subject-specific detail.",
+        "arm": "format-examples",
+        "html_sha256": "163425d4edd0f386f374ff3768723325a7bb7ce1fa938e68d739396345a560f0",
+        "weighted": 7.8,
+        "before": {
+          "sha256": "53e96c56158c76ee733133627db621992a90ae8e715620e7117e95d5a3a4d64d",
+          "file": "B-1440-before.png",
+          "tool_call_id": "item_27"
+        },
+        "after": {
+          "sha256": "9f9f943abaffb9e2f47ab2f9c9a11f86dcb6ae02e550c23ee9931c5d98bdc418",
+          "file": "B-1440-after.png",
+          "tool_call_id": "item_33"
+        },
+        "layout_width": 1440,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ]
+      },
+      "B-390": {
+        "coherence": 8.5,
+        "originality": 6.5,
+        "craft": 8,
+        "usability": 9,
+        "primary_action": {
+          "input": "Tab to the date radio, ArrowRight, Tab to temperature, ArrowRight.",
+          "expected": "The date becomes 21 November 2026 and the temperature becomes 20°C.",
+          "observed": "Both visible examples changed as expected, and neither control changed the wrong example."
+        },
+        "edge_observation": "Shift+Tab twice and Enter restored November 21, 2026 and 68°F; focus remained on Reset.",
+        "fact_check": "B-390-before.png and B-390-after.png show both examples and controls without scrolling.",
+        "strength": "Both settings, examples, and Reset fit in the viewport; the selected and focused radio states are distinguishable.",
+        "weakness": "The title wraps into two lines while the visual treatment remains fairly generic.",
+        "repair": "Refine the narrow heading and add a distinctive visual detail without sacrificing the compact layout.",
+        "arm": "format-examples",
+        "html_sha256": "163425d4edd0f386f374ff3768723325a7bb7ce1fa938e68d739396345a560f0",
+        "weighted": 7.9,
+        "before": {
+          "sha256": "f9745a0783cb844a47e07c21123fb3388f9ec9e493f68f26d90b1b33689070c8",
+          "file": "B-390-before.png",
+          "tool_call_id": "item_38"
+        },
+        "after": {
+          "sha256": "9dbc3a5487101a44b8b61065b85ef9b5ba7348fe9a465092e6b7ffe145152ae0",
+          "file": "B-390-after.png",
+          "tool_call_id": "item_44"
+        },
+        "layout_width": 390,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ]
+      }
+    },
+    "preference": {
+      "winner": "B",
+      "reason": "B keeps each example next to its controls and shows the entire task at both widths. A has a more distinctive visual treatment, but its mobile preview sits below the viewport, preventing immediate visual confirmation."
+    },
+    "case": "settings-language",
+    "verified_screens": 4,
+    "required_screens": 4,
+    "browser": "Chrome/158.0.8127.36",
+    "evaluator_thread": "01a20796-d58f-7781-b63b-18f35cfaefa7",
+    "usage": {
+      "input_tokens": 733508,
+      "cached_input_tokens": 706432,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 2591,
+      "reasoning_output_tokens": 26
+    },
+    "trace_sha256": "58f40a086c987b54affdd699f909e68ed42108169260841f4c837a6bbbdb98cb",
+    "browser_audit_sha256": "147fd0d8cf10bbac46334237150c1acf4dac4a39a45fc46823173ee13ad97929"
+  },
+  "raw_browser_evidence": ".context/competitor-settings-live/settings-compact-browser/receipt.json"
+}

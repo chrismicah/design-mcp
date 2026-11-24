@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Morning shift · Linehaul</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:var(--paper,#fafaf7);color:var(--ink,#212724);font:16px/1.5 Inter,-apple-system,BlinkMacSystemFont,Arial,sans-serif}main,header{width:min(1160px,90%);margin:auto}header,.row{display:flex;align-items:center;justify-content:space-between;gap:1rem}header{padding:22px 0;border-bottom:1px solid currentColor}h1,h2,h3,p{margin:0}h1,h2,h3{line-height:1.05;letter-spacing:-.045em}h1{font-size:clamp(2.8rem,6vw,5.8rem)}h2{font-size:2rem}p+p{margin-top:1em}.brand{font-size:1.4rem;font-weight:750;letter-spacing:-.05em}.label{font:700 .75rem/1.4 ui-monospace,monospace;text-transform:uppercase;letter-spacing:.1em}button,summary,a{font:inherit;cursor:pointer}button{min-height:44px;padding:10px 18px;border:1px solid currentColor;background:transparent;color:inherit;border-radius:5px;font-weight:650}button:hover,summary:hover,a:hover{filter:brightness(.88);text-decoration:underline}.primary{color:white;background:var(--accent,#284a3a);border-color:transparent}a{color:inherit}button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #0086cb;outline-offset:4px}dialog{background:var(--paper,#fff);color:inherit;width:min(520px,90%);max-height:85dvh;border:1px solid;padding:28px;border-radius:8px}dialog::backdrop{background:#101923aa}dialog h2{margin-bottom:16px}dialog form{margin-top:24px}details{border-top:1px solid;padding:0}summary{padding:15px 0;font-weight:600}details p{padding-bottom:16px}svg{display:block;width:100%;height:auto}
+body{--paper:#f2f4f7;--ink:#19263b;--accent:#263c65}header{width:100%;padding:17px 5%;background:#19263b;color:white}main{padding:36px 0}h1{font-size:clamp(42px,6vw,68px)}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:25px 0 32px}.metric{padding:18px;background:white;border-top:3px solid #667fa0}.metric b{display:block;font-size:2.1rem;line-height:1.2}.metric:nth-child(2){border-color:#ad4b23}.panel{background:white;border:1px solid #cfd5dc;border-radius:8px;overflow:hidden}.panel>.row{padding:16px}.panel h2{font-size:1.45rem}table{width:100%;border-collapse:collapse;text-align:left;font-variant-numeric:tabular-nums}th,td{padding:15px 4%;border-top:1px solid #d7dde4}th{background:#e8edf3}.late{background:#fff3e7;color:#803513}.late:focus{outline:3px solid #ad4b23;outline-offset:-3px}#detail{padding:16px;background:#fff3e7}@media(max-width:550px){main{width:94%}.metric{padding:10px;font-size:.82rem}.metrics{gap:6px}.panel>.row{padding:10px}th,td{padding:12px 8px}.panel button{font-size:.89rem}}
+</style></head>
+<body><header><b class="brand">≋ Linehaul</b><span>Dispatch</span></header><main><h1>Morning shift</h1><div class="metrics"><div class="metric"><b>5</b>Active loads</div><div class="metric"><b>1</b>Delayed load</div><div class="metric"><b>9 min</b>Next arrival</div></div><section class="panel"><div class="row"><h2>Load board</h2><button id="focus-delay" class="primary" aria-expanded="false" aria-controls="detail">Focus delay</button></div><table><thead><tr><th>Load</th><th>Bay</th><th>Status</th></tr></thead><tbody><tr ><td><b>LS-055</b></td><td>2</td><td>Loading</td></tr><tr class="late" tabindex="-1"><td><b>LS-057</b></td><td>4</td><td>Delayed 19 min</td></tr><tr ><td><b>LS-059</b></td><td>1</td><td>Ready</td></tr><tr ><td><b>LS-061</b></td><td>3</td><td>Due in 9 min</td></tr><tr ><td><b>LS-063</b></td><td>5</td><td>Scheduled</td></tr></tbody></table><p id="detail" hidden><b>LS-057 · Bay 4</b><br>19 minutes behind schedule.</p></section></main>
+<script>
+const focusButton = document.querySelector('#focus-delay');
+focusButton.onclick = () => {
+  const detail = document.querySelector('#detail');
+  detail.hidden = !detail.hidden;
+  focusButton.setAttribute('aria-expanded', String(!detail.hidden));
+  focusButton.textContent = detail.hidden ? 'Focus delay' : 'Show all loads';
+  for (const row of document.querySelectorAll('tbody tr:not(.late)')) row.hidden = !detail.hidden;
+  if (!detail.hidden) document.querySelector('.late').focus();
+};
+</script>
+</body></html>

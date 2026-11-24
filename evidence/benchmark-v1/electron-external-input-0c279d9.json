@@ -1,0 +1,257 @@
+{
+  "scope": "Hosted Electron fixture verification and reference-Mac staging check",
+  "test_commit": "0c279d958fb6b9dc4148d9547a06f5f4c0d7d27f",
+  "reference_cli_source": "f17bd6f79fff62d1ec3e051b29d930ccb32b3a46",
+  "package_source_equal_to_reference": true,
+  "electron": "43.4.0",
+  "first_linux_attempt": {
+    "run": "https://github.com/chrismicah/design-mcp/actions/runs/45029819407",
+    "receipt": {
+      "electron": "43.4.0",
+      "platform": "linux",
+      "input": "X11 keyboard",
+      "initial": {
+        "focus": "reveal",
+        "status": "Control covered"
+      },
+      "error": "Error: UnknownVizError"
+    },
+    "phase": "before PNG capture",
+    "change": "ask Chromium to use software rendering under the virtual X11 display"
+  },
+  "runs": {
+    "linux": "https://github.com/chrismicah/design-mcp/actions/runs/45029926558",
+    "macos": "https://github.com/chrismicah/design-mcp/actions/runs/45029926480"
+  },
+  "replays": {
+    "linux": {
+      "review": {
+        "electron": "43.4.0",
+        "platform": "linux",
+        "input": "X11 keyboard",
+        "initial": {
+          "focus": "reveal",
+          "status": "Control covered"
+        },
+        "before": [
+          [
+            "control-not-hittable",
+            "r2"
+          ],
+          [
+            "control-clipped",
+            "r4"
+          ]
+        ],
+        "updated": {
+          "focus": "reveal",
+          "status": "Control revealed"
+        },
+        "after": [
+          [
+            "control-clipped",
+            "r4"
+          ]
+        ],
+        "originalEvidencePreserved": true,
+        "unsupportedSourceRefused": true,
+        "passed": true
+      },
+      "occlusion_pixels": {
+        "before": {
+          "dimensions": [
+            880,
+            640
+          ],
+          "point": [
+            54,
+            201
+          ],
+          "rgb": [
+            51,
+            51,
+            51
+          ]
+        },
+        "after": {
+          "dimensions": [
+            880,
+            640
+          ],
+          "point": [
+            54,
+            201
+          ],
+          "rgb": [
+            239,
+            231,
+            209
+          ]
+        }
+      },
+      "sha256": {
+        "before.json": "784d7e051a4303c92f98b2b232c5114aecc9a2602123df949047fce0ea0a8df0",
+        "before.png": "51c6a4986ef5bd80bf06eb68eafd4346541d590ca54e21eda459025c5614b021",
+        "after.json": "1b41d11726c7c1397011d33095a60bbc0d3ccc265c694abbd96afa3b481e9301",
+        "after.png": "30084eaac1bac6857316cddc20e861a539464c2772e752ec6e946927054ce87d",
+        "receipt.json": "ba185fc140b36040b8f8193950875aaace4ba03cb4d48797aea872e2dde13e7b"
+      }
+    },
+    "external": {
+      "review": {
+        "electron": "43.4.0",
+        "platform": "linux",
+        "input": "external keyboard",
+        "initial": {
+          "focus": "",
+          "status": "Control covered"
+        },
+        "before": [
+          [
+            "control-not-hittable",
+            "r2"
+          ],
+          [
+            "control-clipped",
+            "r4"
+          ]
+        ],
+        "updated": {
+          "focus": "reveal",
+          "status": "Control revealed"
+        },
+        "after": [
+          [
+            "control-clipped",
+            "r4"
+          ]
+        ],
+        "originalEvidencePreserved": true,
+        "passed": true
+      },
+      "occlusion_pixels": {
+        "before": {
+          "dimensions": [
+            880,
+            640
+          ],
+          "point": [
+            54,
+            201
+          ],
+          "rgb": [
+            51,
+            51,
+            51
+          ]
+        },
+        "after": {
+          "dimensions": [
+            880,
+            640
+          ],
+          "point": [
+            54,
+            201
+          ],
+          "rgb": [
+            239,
+            231,
+            209
+          ]
+        }
+      },
+      "sha256": {
+        "before.json": "784d7e051a4303c92f98b2b232c5114aecc9a2602123df949047fce0ea0a8df0",
+        "before.png": "26bd79256c6d97220e26bb69dc3f8dfc071b5810f552ceeef84283c6be9d2b1a",
+        "after.json": "1b41d11726c7c1397011d33095a60bbc0d3ccc265c694abbd96afa3b481e9301",
+        "after.png": "30084eaac1bac6857316cddc20e861a539464c2772e752ec6e946927054ce87d",
+        "receipt.json": "75190673b8f71b87fb17183157e2205dfc70b6a791c54ce5ef7553bd478afe0a"
+      }
+    },
+    "mac": {
+      "review": {
+        "electron": "43.4.0",
+        "platform": "darwin",
+        "input": "focused Electron webContents",
+        "initial": {
+          "focus": "reveal",
+          "status": "Control covered"
+        },
+        "before": [
+          [
+            "control-not-hittable",
+            "r2"
+          ],
+          [
+            "control-clipped",
+            "r4"
+          ]
+        ],
+        "updated": {
+          "focus": "reveal",
+          "status": "Control revealed"
+        },
+        "after": [
+          [
+            "control-clipped",
+            "r4"
+          ]
+        ],
+        "originalEvidencePreserved": true,
+        "unsupportedSourceRefused": true,
+        "passed": true
+      },
+      "occlusion_pixels": {
+        "before": {
+          "dimensions": [
+            880,
+            640
+          ],
+          "point": [
+            54,
+            201
+          ],
+          "rgb": [
+            51,
+            51,
+            51
+          ]
+        },
+        "after": {
+          "dimensions": [
+            880,
+            640
+          ],
+          "point": [
+            54,
+            201
+          ],
+          "rgb": [
+            238,
+            238,
+            238
+          ]
+        }
+      },
+      "sha256": {
+        "before.json": "869824de58b77a49c56b58f0137802b984f6bca7974dca1609e279dd79d77ed5",
+        "before.png": "cdb59b3074cdef69685e484da7eaa613c77e98d58443f11cbbf146821b4611fd",
+        "after.json": "fae84cd474028280bea60a9eedfccdd0b4910467574161d04b58a17ca46bc2b9",
+        "after.png": "0de5c1e611ebb75a952b9a1d2dbaf24cea93457195acf725995f16a95bd6fa92",
+        "receipt.json": "292af6cf65b5311c5a920a069421067512c3c6b3a062b5fa7ba222ee04241438"
+      }
+    }
+  },
+  "audit_negative_control": "Replacing after.png with before.png caused the expected occlusion-pixel assertion failure.",
+  "reference_mac_staging": {
+    "archive_sha256": "827f9f182566f46846377575b51c547b9926b111637313a373b6f717462aebac",
+    "archive_matches_pinned_digest": true,
+    "signature": "ad hoc, linker-signed",
+    "sealed_resources": "none",
+    "codesign_error": "code has no resources but signature indicates they must be present",
+    "gatekeeper_assessment": "same resource-seal error",
+    "launched": false,
+    "gpt_computer_use_interaction": "pending"
+  }
+}

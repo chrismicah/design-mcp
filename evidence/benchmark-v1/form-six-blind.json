@@ -1,0 +1,1151 @@
+{
+  "summary": {
+    "requested_pairs": 36,
+    "judged_pairs": 6,
+    "v2": 90.97222222222221,
+    "form-candidate": 92.36111111111111,
+    "difference": 1.3888888888889,
+    "wins_ties_losses": [
+      4,
+      0,
+      2
+    ],
+    "paired_bootstrap_95_interval": [
+      -1.388888888888881,
+      4.166666666666681
+    ],
+    "median_usage": {
+      "v2": {
+        "input_tokens": 64389.5,
+        "cached_input_tokens": 41600.0,
+        "output_tokens": 23072.0,
+        "elapsed_seconds": 468.74
+      },
+      "form-candidate": {
+        "input_tokens": 65024.0,
+        "cached_input_tokens": 50240.0,
+        "output_tokens": 21035.0,
+        "elapsed_seconds": 428.04999999999995
+      }
+    }
+  },
+  "cases": {
+    "form-venue": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44996867067",
+      "cells": {
+        "form-candidate": {
+          "generation": {
+            "usage": {
+              "input_tokens": 66094,
+              "cached_input_tokens": 59264,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 20392,
+              "reasoning_output_tokens": 14022
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "treatment_call": true,
+            "direct_call": true,
+            "status": "passed",
+            "case": "form-venue",
+            "arm": "form-candidate",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "93bc1ac386f7a04e0895e776a392cd0b7dc3df21416a4cd9465c375434e81e9f",
+            "mcp_config_sha256": "cce6ccd90952d46cccc7eda44c0331b996cecdbbfa97773caca65b2d1b3c4a09",
+            "elapsed_seconds": 415.01,
+            "exit_code": 0,
+            "trace_sha256": "9ce7be56a556091ab3f1b13e189ecb641067e28ebfe7130487b36f053c9836fb",
+            "html_sha256": "24850040a4d2c9e8abff16a84f2d792f7cb2b18f83730bca9418503ed1a5dce1"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "8080be9b7f567843d9c9b5f91826e8424f42dd7594279917be9525b46fbbcd23",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "42455fb9d583abf6a14d3aeb35159fcd936a58e066e66af7e09943dd9e584276",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 64393,
+              "cached_input_tokens": 41472,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 23610,
+              "reasoning_output_tokens": 17043
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "form-venue",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "93bc1ac386f7a04e0895e776a392cd0b7dc3df21416a4cd9465c375434e81e9f",
+            "elapsed_seconds": 481.52,
+            "exit_code": 0,
+            "trace_sha256": "7936afb2a5de0ecc2317e45d5ed6ae7f4fa2b9bf63638245f170fcad9c5a1f34",
+            "html_sha256": "17f691f05b87e5518112dec2f0a9f70f9fea589725f5dca3b4b7918ad2ba0f8e"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "34a7b79c5134db15c46c8ae43c8a8708e3f024637edd8e295fa013b03f25555b",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "e3481fc818ee59e8499999ad610e779a2a79f929675fd5f216aa07d2f7c4383d",
+              "viewport": 390,
+              "width": 375,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "form-venue",
+        "surface": "form",
+        "blind_key": {
+          "A": "form-candidate",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "\u201cReserve your seats\u201d leads directly to the time choices on desktop, and the compact mobile header keeps those choices and the submit button in one view."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "Section headings sit beside aligned fields on desktop and above them on mobile, with horizontal rules separating session choices from contact details."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The condensed sans serif steps down clearly from workshop title to form heading to field label, and bold weekdays remain easy to distinguish from the lighter times on mobile."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The Reserve seats button echoes the bowl\u2019s green glaze and stands out as the only solid dark control against the pale background at both widths."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Name and Email have legible labels at both widths, and both browser trees expose the full day-and-time radio names, the selected seat count and an empty status region."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "The form shows Saturday at 10 am, Sunday at 2 pm, name and email, and its Seats menu contains 1\u20134, with no interaction receipt for validation feedback or a local confirmation of the chosen details."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "\u201cYour reservation\u201d clearly identifies the desktop form, but the large title and bowl image put the first time choice halfway down the mobile screen."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "A vertical rule and generous gutter separate the desktop columns, and the mobile layout places the two time choices side by side while preserving consistent gaps between fields."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The large serif workshop title and smaller serif reservation heading establish two clear levels, while the sans-serif labels, times and seat numbers remain legible on mobile."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Blue connects the ceramic illustration to the submit button, and the filled blue seat segment makes the current count distinct from the three unfilled choices."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "The visible Name and Email address labels match their textbox names at both widths, and both browser trees identify the highlighted \u201c1\u201d segment as a checked \u201c1 seat\u201d radio."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both views show Saturday at 10 am, Sunday at 2 pm, name, email, all four seat counts and the reserve action, with validation feedback and a local confirmation of the chosen details unverified."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26479,
+          "cached_input_tokens": 17792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3941,
+          "reasoning_output_tokens": 3280
+        },
+        "scores": {
+          "form-candidate": 95.83333333333334,
+          "v2": 91.66666666666666
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "8080be9b7f567843d9c9b5f91826e8424f42dd7594279917be9525b46fbbcd23",
+          "A-390.png": "42455fb9d583abf6a14d3aeb35159fcd936a58e066e66af7e09943dd9e584276",
+          "B-1440.png": "34a7b79c5134db15c46c8ae43c8a8708e3f024637edd8e295fa013b03f25555b",
+          "B-390.png": "e3481fc818ee59e8499999ad610e779a2a79f929675fd5f216aa07d2f7c4383d"
+        },
+        "judge_prompt_sha256": "4d1da45012237f5df099a90af404f23b8c89ad476b94490a7893c12c821181b6"
+      }
+    },
+    "form-maintenance": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44996867067",
+      "cells": {
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 64114,
+              "cached_input_tokens": 41472,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 23252,
+              "reasoning_output_tokens": 16964
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "form-maintenance",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "4b42780238892376c38fbe354276fe0628559858c013748d7beaaf1b951b4cf1",
+            "elapsed_seconds": 473.22,
+            "exit_code": 0,
+            "trace_sha256": "e60216e14ea9d3a115607cdddd80b2245c22658bbd189c8a81b366b40f0300f3",
+            "html_sha256": "bb6a5cc3dea1e519d069e6a04559fa0b1d9e5a2d2e268c43b1bfb38bfed5c7f2"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "55e2fb362c95fe86c8fdcad8a729b74e76d6b584cdbec3dbec96c804a34368a4",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "6e481d58ed21ca4d01fb7a91b78c03ddce9bedb5a47c639ae6cdf685bef61275",
+              "viewport": 390,
+              "width": 375,
+              "pageErrors": []
+            }
+          }
+        },
+        "form-candidate": {
+          "generation": {
+            "usage": {
+              "input_tokens": 64950,
+              "cached_input_tokens": 58496,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 21678,
+              "reasoning_output_tokens": 16664
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "treatment_call": true,
+            "direct_call": true,
+            "status": "passed",
+            "case": "form-maintenance",
+            "arm": "form-candidate",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "4b42780238892376c38fbe354276fe0628559858c013748d7beaaf1b951b4cf1",
+            "mcp_config_sha256": "cce6ccd90952d46cccc7eda44c0331b996cecdbbfa97773caca65b2d1b3c4a09",
+            "elapsed_seconds": 441.09,
+            "exit_code": 0,
+            "trace_sha256": "4694df6c77cc0e7035877e46add0d97a39662ecbb191c3071bab110c25503563",
+            "html_sha256": "98b6767ae5e969dce37d68db83cd9e72848752390e2b1a53685f368adf25d44d"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "162aab22bf90ac3d3eeb9658581b0f2933bc7d808aa2d68abf5d53cc873f569a",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "91386d0cd1070b70f053a4eb865d622053544b10b5a2d7a0bdad74d4104c7f00",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "form-maintenance",
+        "surface": "form",
+        "blind_key": {
+          "A": "v2",
+          "B": "form-candidate"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, the two-line title establishes the problem immediately, and \u201cLight details\u201d leads through the fields to the prominent full-width \u201cPrepare request\u201d button."
+            },
+            "spacing": {
+              "score": 3,
+              "evidence": "Building and Location align neatly side by side on desktop, but retaining that row at 390 px clips the end of the \u201cName or number\u201d hint."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "Large serif headings distinguish the task and form, and the bold sans-serif urgency labels remain easy to distinguish from their smaller explanations on mobile."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Amber draws attention to the fixture in the plum stairwell, and the burgundy button makes the primary action easy to find on the cream form."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "At both widths, the visible labels match the browser-reported names for all three textboxes, the grouped urgency radios and the button, with keyboard traversal and focus visibility unverified."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "The shared-area form shows all three requested fields, both urgency choices and \u201cPrepare request\u201d with a browser-tab notice, while confirmation after valid submission remains unverified."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The compact banner identifies the common-area lighting task, and the \u201cLight details\u201d and \u201cUrgency\u201d sections lead to a \u201cPrepare request\u201d button fully visible at both widths."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "Desktop inputs share a left edge and widen from Building to Description, and the section labels move above the fields on mobile to give the inputs room."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The condensed headline stays legible over two lines on mobile, and the bold Location label separates clearly from the regular-weight instruction beneath it at both widths."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The amber lamp stands out in the dark teal hallway, and the solid green \u201cPrepare request\u201d button is easy to spot among the white controls."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "Both browser trees identify the \u201cLight details\u201d and \u201cUrgency\u201d groups and name each control in visible reading order, while keyboard operation and focus visibility remain unverified."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both views show the three requested fields, \u201cRoutine\u201d and \u201cSafety issue,\u201d and a page-local notice paired with \u201cPrepare request,\u201d with no interaction receipt showing confirmation after valid submission."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26340,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5088,
+          "reasoning_output_tokens": 4428
+        },
+        "scores": {
+          "v2": 87.5,
+          "form-candidate": 91.66666666666666
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "55e2fb362c95fe86c8fdcad8a729b74e76d6b584cdbec3dbec96c804a34368a4",
+          "A-390.png": "6e481d58ed21ca4d01fb7a91b78c03ddce9bedb5a47c639ae6cdf685bef61275",
+          "B-1440.png": "162aab22bf90ac3d3eeb9658581b0f2933bc7d808aa2d68abf5d53cc873f569a",
+          "B-390.png": "91386d0cd1070b70f053a4eb865d622053544b10b5a2d7a0bdad74d4104c7f00"
+        },
+        "judge_prompt_sha256": "bca0644f94dae23a652327541a7eae5badfb176d8ed4e43e855f783fa6c35b1f"
+      }
+    },
+    "form-label": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44996867067",
+      "cells": {
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 65498,
+              "cached_input_tokens": 41728,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 22510,
+              "reasoning_output_tokens": 16875
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "form-label",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "ceb21eda22c3b3d27af601949c14f909587a5de93687c1133c0fa147edd25f0b",
+            "elapsed_seconds": 456.64,
+            "exit_code": 0,
+            "trace_sha256": "d172649d6c86f46972ae6de2417967e7332e3c4ac301d1b147366fc440fa50a7",
+            "html_sha256": "95c19d6df6dac3a66c3515ffeb8192cc3564dfcc26966b254d2a687ca189d86e"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "8e6d27a7b6706a4ac0daa42d03c8a7428f74346253be58b47afed1a930b53e9c",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "340b40f3fe61e26bbd70f101a66208a90805401f19f6ff6691740d37f4a65d3b",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "form-candidate": {
+          "generation": {
+            "usage": {
+              "input_tokens": 65013,
+              "cached_input_tokens": 41472,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 19368,
+              "reasoning_output_tokens": 14087
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "treatment_call": true,
+            "direct_call": true,
+            "status": "passed",
+            "case": "form-label",
+            "arm": "form-candidate",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "ceb21eda22c3b3d27af601949c14f909587a5de93687c1133c0fa147edd25f0b",
+            "mcp_config_sha256": "cce6ccd90952d46cccc7eda44c0331b996cecdbbfa97773caca65b2d1b3c4a09",
+            "elapsed_seconds": 394.76,
+            "exit_code": 0,
+            "trace_sha256": "cc38ad8e56c453eb1511cfa6cbe9c4fe6e2c75b342f551c6259f2e68d9dbc57b",
+            "html_sha256": "d0e014bab8007774a799f5e95194b112abc969e774161661e25f76b42363888f"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "2844245fb6fd311f36d173911a94843e62ddead925a51f80e0f63da706767622",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "a4b3aa96e9ddb45641b9e61ba5be3f7fe0ad810f3da59035d38e61dc3a7042c2",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "form-label",
+        "surface": "form",
+        "blind_key": {
+          "A": "v2",
+          "B": "form-candidate"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The title and short instruction establish the task at a glance, and both layouts lead from the order fields through the reason choices to one prominent request button."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The inputs, row dividers and button share edges, and cropping the artwork into a compact mobile header keeps the entire form in view with distinct gaps between groups."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The serif title keeps \u201creturn label\u201d together at both widths, while bold sans-serif field labels remain distinct from the regular-weight choices."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The plum panel and pink record sleeve establish the store\u2019s identity, and the berry button stands out as the primary action on the cream form."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "Both browser trees name the form, textboxes, reason group, individual choices and button in visible reading order, with keyboard focus and status feedback unverified."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Order number, email, all three specified reasons and the request button match the brief, with no interaction receipt for confirmation naming the chosen reason, helpful messages for missing or invalid entries, or retention of entered values."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, the title identifies the task immediately and the \u201cOrder details\u201d and \u201cReason for return\u201d headings guide the reader to the request button."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "Section headings move from a separate desktop column to positions directly above their controls on mobile, while the radio rows retain even spacing and align with the button."
+            },
+            "typography": {
+              "score": 3,
+              "evidence": "The condensed headings are distinct from the field labels, though the narrow desktop column splits \u201cOrder details\u201d and the mobile title leaves \u201clabel\u201d on a line of its own."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Sage separates the illustrated area from the form, gold picks out the record\u2019s center, and deep teal makes the submit button easy to locate at both widths."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "Both browser trees confirm the two visible group names and individual labels for the textboxes, radios and button, with keyboard focus and status feedback unverified."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both views show the two requested fields, the exact three reasons and the request action, while confirmation naming the selected reason, helpful messages for missing or invalid entries, and preservation of input lack interaction evidence."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26152,
+          "cached_input_tokens": 17792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5467,
+          "reasoning_output_tokens": 4803
+        },
+        "scores": {
+          "v2": 91.66666666666666,
+          "form-candidate": 87.5
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "8e6d27a7b6706a4ac0daa42d03c8a7428f74346253be58b47afed1a930b53e9c",
+          "A-390.png": "340b40f3fe61e26bbd70f101a66208a90805401f19f6ff6691740d37f4a65d3b",
+          "B-1440.png": "2844245fb6fd311f36d173911a94843e62ddead925a51f80e0f63da706767622",
+          "B-390.png": "a4b3aa96e9ddb45641b9e61ba5be3f7fe0ad810f3da59035d38e61dc3a7042c2"
+        },
+        "judge_prompt_sha256": "26dc99676120c1d73353320e84862825c166c611958a195dea558ea2a6ed88c6"
+      }
+    },
+    "form-garden": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44996867067",
+      "cells": {
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 64386,
+              "cached_input_tokens": 41472,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 22882,
+              "reasoning_output_tokens": 16340
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "form-garden",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "1b94c52a52dd08e4aeb6ba98392a74c7859bffd667a177a996036fb31a36cc4a",
+            "elapsed_seconds": 464.26,
+            "exit_code": 0,
+            "trace_sha256": "70e1622105e63cb8974eaaa8c50d84036a9e49a7af9b7bef7d878386b5c0406f",
+            "html_sha256": "2458ce63f841b24ae525e826d0c0ede4ad9b910c394af5882e7e12d87dae904c"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "542c0b2af313f62f793e507628fabecfb996550bf6fa3ca4e65bd47429193462",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "82e4c474a133301d8be3b0fa9829e5bc03936cc616c50eb28c81fc0914dec728",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "form-candidate": {
+          "generation": {
+            "usage": {
+              "input_tokens": 64415,
+              "cached_input_tokens": 20352,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 22224,
+              "reasoning_output_tokens": 15145
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "treatment_call": true,
+            "direct_call": true,
+            "status": "passed",
+            "case": "form-garden",
+            "arm": "form-candidate",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "1b94c52a52dd08e4aeb6ba98392a74c7859bffd667a177a996036fb31a36cc4a",
+            "mcp_config_sha256": "cce6ccd90952d46cccc7eda44c0331b996cecdbbfa97773caca65b2d1b3c4a09",
+            "elapsed_seconds": 450.74,
+            "exit_code": 0,
+            "trace_sha256": "ef708a8a68105928bf88693e3f2830aa21bf02fc44e27366356ea5144d111199",
+            "html_sha256": "589d03799ab363c3ef43faef26259e074c600e35ae59c9e6d2a5a6526664474c"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "1702d22006e4f6ae9672884fe75af4ae271306145f63bc69cc9e9c3337a9ba09",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "92f85439e828e5076ff630308dc9973d1f6034079dea7a01a51d8f2d1bc9b038",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "form-garden",
+        "surface": "form",
+        "blind_key": {
+          "A": "v2",
+          "B": "form-candidate"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "The oversized invitation draws the first glance ahead of \u201cVolunteer signup\u201d on desktop, while the compact mobile banner gives the form more prominence."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The fields and button share both edges at each width, and the two shift choices stay visibly grouped when the illustrated panel moves above the form."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "Condensed headings distinguish the invitation and form title from the field labels, and large time numerals remain easy to scan in the narrow mobile choices."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The yellow \u201cSign up\u201d button echoes the sunflower and stands out from the cream fields, with dark green lettering that stays legible at both widths."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Both layouts show empty radio circles and mark the tools note optional, and both browser trees name the form, text fields, Shift group and individual day-and-time choices."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both views request a first name, offer Wednesday 5 pm and Saturday 9 am, and mark the tools note optional, but the supplied evidence ends before the requested shift confirmation."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "\u201cWhen can you lend a hand?\u201d leads directly into the two shift choices at both widths, and the desktop vine becomes a small sprig beside the mobile question."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The closely spaced shift rows align weekdays on the left and times on the right, with a larger gap before \u201cFirst name\u201d marking the next part of the form at both widths."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The serif question holds a balanced two-line break on both screens, and bold sans-serif weekdays are easy to distinguish from the lighter times."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The plum submit button echoes the pods in the garden illustration and gives the final action a distinct, high-contrast position against the pale background at both widths."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Both layouts show unselected radio circles, and both browser trees group the choices under the visible question, name each radio by weekday and time, and identify the \u201cSign up to volunteer\u201d button."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both widths show the exact shifts, first-name field, optional tools note and volunteer signup action, with no submitted view to verify that the confirmation repeats the chosen shift."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26161,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5371,
+          "reasoning_output_tokens": 4713
+        },
+        "scores": {
+          "v2": 91.66666666666666,
+          "form-candidate": 95.83333333333334
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "542c0b2af313f62f793e507628fabecfb996550bf6fa3ca4e65bd47429193462",
+          "A-390.png": "82e4c474a133301d8be3b0fa9829e5bc03936cc616c50eb28c81fc0914dec728",
+          "B-1440.png": "1702d22006e4f6ae9672884fe75af4ae271306145f63bc69cc9e9c3337a9ba09",
+          "B-390.png": "92f85439e828e5076ff630308dc9973d1f6034079dea7a01a51d8f2d1bc9b038"
+        },
+        "judge_prompt_sha256": "a9a6be86e87fdd0134b05b2644577b2caa0e3722747ebd88fe2d6d7016dfe405"
+      }
+    },
+    "form-exhibition": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44996867067",
+      "cells": {
+        "form-candidate": {
+          "generation": {
+            "usage": {
+              "input_tokens": 66119,
+              "cached_input_tokens": 41984,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 19121,
+              "reasoning_output_tokens": 13983
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "treatment_call": true,
+            "direct_call": true,
+            "status": "passed",
+            "case": "form-exhibition",
+            "arm": "form-candidate",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "4704e50326e6c6f8fc948714d7f9eb64a4d9b1b4a91295e5b3836a8b69c45734",
+            "mcp_config_sha256": "cce6ccd90952d46cccc7eda44c0331b996cecdbbfa97773caca65b2d1b3c4a09",
+            "elapsed_seconds": 389.81,
+            "exit_code": 0,
+            "trace_sha256": "ad6c3c2bf26c11f161da89e828240dce4cf8a82acac2ac9fcb039ca89ad17eb9",
+            "html_sha256": "ff740e62ca19d6cea272a4063b9fabf43a8834c0fb002d7b779743ed7dd95555"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "099ab5559091b6f3850c9861baf9087dde05431cd944e5a0a71847176f403397",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "693443bf7f6ab419323ced1d59ab2dfd78a887c9d5e612b0068269abff70bec6",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 65922,
+              "cached_input_tokens": 53376,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 22892,
+              "reasoning_output_tokens": 16469
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "form-exhibition",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "4704e50326e6c6f8fc948714d7f9eb64a4d9b1b4a91295e5b3836a8b69c45734",
+            "elapsed_seconds": 463.85,
+            "exit_code": 0,
+            "trace_sha256": "0531ade33c5861f74954572e5b61af9ce9b160366ffb96528db942e466c2ddcb",
+            "html_sha256": "2f9061e6294add3eb18d70e7b1c996253946c67f43d0c74078a8480a539e1c7f"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "a6750620cb525231bede8795bbd2bb7441bff5b3a5cfdbf4f511b86c345c9b73",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "be2e352ab37131cca9aefabe89ff023df3d413be764c60ff41da3ce9f8aed6f0",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "form-exhibition",
+        "surface": "form",
+        "blind_key": {
+          "A": "form-candidate",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, the title identifies the request immediately, the Contact details and Visit details headings establish the input order, and the filled button marks the final action."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "Section headings sit beside aligned fields on desktop and directly above them on the phone, where horizontal rules separate the groups and both visit choices fit side by side."
+            },
+            "typography": {
+              "score": 3,
+              "evidence": "The bold condensed title, section headings and field labels remain distinct at both widths, with one awkward line break splitting the 1\u201325 range in the phone introduction."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The gallery arch and confirmation button share a deep teal, connecting the action to the museum illustration and making it easy to locate among the white fields."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "Both browser trees corroborate the visible field labels, named sections and grouped radio choices, with focus and submission feedback unobserved in the initial views."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both layouts show contact name, email, the 1\u201325 range, Quiet visit and Guided visit, with the resulting confirmation summary and stated local handling unverified."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "The desktop title leads into the contact fields, while the phone\u2019s high-contrast sculpture strip creates a competing focal point between the title and the first input."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "Name and email share a row on desktop and stack on the phone, with the range kept beside the stepper and the paired visit choices aligned at both widths."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The serif title stays legible on one line even on the phone, and the italic privacy note and bold sans-serif labels clearly distinguish guidance from field names."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Forest green connects the masthead, gallery print and confirmation button, and the muted minus distinguishes the lower-limit state from the active plus."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Both browser trees name the radio choices and stepper buttons, expose a status region, and mark the visibly muted \u201cDecrease group size\u201d button disabled at 1."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "The contact fields, 1\u201325 stepper and both visit choices lead to \u201cConfirm request\u201d at both widths, with the resulting size-and-type summary and on-page privacy promise still unverified."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26306,
+          "cached_input_tokens": 17792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 6827,
+          "reasoning_output_tokens": 6169
+        },
+        "scores": {
+          "form-candidate": 87.5,
+          "v2": 91.66666666666666
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "099ab5559091b6f3850c9861baf9087dde05431cd944e5a0a71847176f403397",
+          "A-390.png": "693443bf7f6ab419323ced1d59ab2dfd78a887c9d5e612b0068269abff70bec6",
+          "B-1440.png": "a6750620cb525231bede8795bbd2bb7441bff5b3a5cfdbf4f511b86c345c9b73",
+          "B-390.png": "be2e352ab37131cca9aefabe89ff023df3d413be764c60ff41da3ce9f8aed6f0"
+        },
+        "judge_prompt_sha256": "b4b9ad140d8178f1d4ae42af6021697992106d4e875385799316ce410662eaca"
+      }
+    },
+    "form-invoice": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44996867067",
+      "cells": {
+        "form-candidate": {
+          "generation": {
+            "usage": {
+              "input_tokens": 65035,
+              "cached_input_tokens": 58752,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 27544,
+              "reasoning_output_tokens": 22189
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "treatment_call": true,
+            "direct_call": true,
+            "status": "passed",
+            "case": "form-invoice",
+            "arm": "form-candidate",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "f482c0746fdd5fa9370765404787b76ab18cb4273584a7a9daddb1cf2de43fc2",
+            "mcp_config_sha256": "cce6ccd90952d46cccc7eda44c0331b996cecdbbfa97773caca65b2d1b3c4a09",
+            "elapsed_seconds": 558.12,
+            "exit_code": 0,
+            "trace_sha256": "96ed603295f0d6c065a6a4bb1db259700cf5a2b217d449637c1f353fbf50d92a",
+            "html_sha256": "2787181043809a865c13a74093db8370f3b5138f7afd6fc50d6ac28a16e163ec"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "b33a8b7d36ec782015526607953a8d7dfd47a9eb8b11c9a011746c90d34a68e4",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "68de589a12c13e02beff179ae9dde6258227eb4b18fe8ad7be6c9ba19a7150e2",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 64368,
+              "cached_input_tokens": 58752,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 24378,
+              "reasoning_output_tokens": 18015
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "form-invoice",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "f482c0746fdd5fa9370765404787b76ab18cb4273584a7a9daddb1cf2de43fc2",
+            "elapsed_seconds": 495.04,
+            "exit_code": 0,
+            "trace_sha256": "86a19922e83ec360e77b56e8e249a6ecd72247b3d61e7d41f9f602cfcf7c8feb",
+            "html_sha256": "9d6b6ef2ee748e5e2f56535a0e9efdfaf390ca152d1fd86f13fd425284321599"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "6e8ef85273d878355b2d3ac146e47ce6cc59bda003c0790924653c3785a95012",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "7d4ac55e3887c538ab5117d6a47a3ffa659b769edeaf0ed79d51f41fc518af5e",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "form-invoice",
+        "surface": "form",
+        "blind_key": {
+          "A": "form-candidate",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The quote title leads the desktop panel and becomes a compact mobile header, giving both views a clear reading order from Format to Review request."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The desktop inputs share a left edge, and at 390 px the labels move above their controls while horizontal rules keep each field group distinct."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The bold title breaks cleanly across two lines at both widths, and the heavier field labels remain easy to distinguish from the copy range and email example."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The gold stitch stands out in the deep green book illustration, and the solid teal review button is easy to locate among the pale outlined controls."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Both views show text labels and empty radio circles, and both browser trees identify the named format options, quantity field, email field and review button within the Quote details form."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both widths show Paperback, Hardcover, the 1\u2013100 copy range, contact email and Review request, but the supplied evidence ends before validation, the summary or a return to editing."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "The large quote heading and gold review button frame the fields at both widths, though the standalone book illustration occupies the first 185 pixels of the mobile card before the task is named."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "Each label sits closer to its own control than to the preceding field, and even at 390 px the format cards fit side by side and the copy range stays beside the quantity input."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The condensed quote heading stays on one line at both widths, and the bold field labels remain distinct from the lighter range hint and email example."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The gold of the book cover and loose thread returns on the review button, drawing attention to the action against the ivory form."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "The visible labels and empty selection circles match both browser trees, which identify the Book format group, each radio option, the quantity and email fields, and the review button."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both widths explicitly identify independent bookbinding and show both formats, the 1\u2013100 range, contact email and Review request, while validation, summary and editing remain unverified."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26098,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4638,
+          "reasoning_output_tokens": 3983
+        },
+        "scores": {
+          "form-candidate": 95.83333333333334,
+          "v2": 91.66666666666666
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "b33a8b7d36ec782015526607953a8d7dfd47a9eb8b11c9a011746c90d34a68e4",
+          "A-390.png": "68de589a12c13e02beff179ae9dde6258227eb4b18fe8ad7be6c9ba19a7150e2",
+          "B-1440.png": "6e8ef85273d878355b2d3ac146e47ce6cc59bda003c0790924653c3785a95012",
+          "B-390.png": "7d4ac55e3887c538ab5117d6a47a3ffa659b769edeaf0ed79d51f41fc518af5e"
+        },
+        "judge_prompt_sha256": "f0c64ec3fd50a61deb7f8da53cd70496f2bce6652aaa193eb4f78f3652af7407"
+      }
+    }
+  },
+  "scope": "Form-only branch experiment, six of six form briefs from the frozen 36-brief set."
+}

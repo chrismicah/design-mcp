@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Spur | Union departure</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 var(--body),system-ui,sans-serif;font-variant-numeric:tabular-nums}h1,h2,p,dl,dd{margin:0}h1,h2{line-height:1.04}button{cursor:pointer;font:inherit;font-weight:650;min-height:48px;background:var(--accent);color:var(--on);border:0;padding:12px 20px}button:hover{filter:brightness(.94)}:focus-visible{outline:2px solid var(--ink);outline-offset:4px;box-shadow:0 0 0 4px var(--paper)}.cap{font-size:.75rem;letter-spacing:.1em;font-weight:700;text-transform:uppercase}.between{display:flex;justify-content:space-between;align-items:center;gap:12px}
+body{--paper:#f7f5ef;--ink:#111;--accent:#fc0;--on:#111;--body:"Atkinson Hyperlegible"}main{max-width:420px;margin:5vh auto}header{padding:16px 20px}.brand{font:bold italic 32px "Archivo Narrow",sans-serif}.sign{background:var(--ink);color:var(--paper);padding:28px 24px;border-bottom:8px solid var(--accent)}h1{font:700 42px/1 "Archivo Narrow",sans-serif;letter-spacing:-.04em}time{display:block;font-size:80px;line-height:1.1}.badge{background:var(--accent);color:var(--ink);padding:5px 12px;display:inline-block;margin-top:24px;font-weight:700}.controls{padding:24px 20px}.controls button{width:100%;border:2px solid;font-weight:750}#ticket{padding:20px 0;border-bottom:2px dashed;animation:rise .28s ease-out}#ticket b{display:block;font:700 34px monospace}details,.alternative{border-top:1px solid #91918b;padding:16px 0}summary{cursor:pointer}.alternative{margin-top:32px}@keyframes rise{from{transform:translateY(12px);opacity:0}}@media(max-width:450px){main{margin:0 auto}.sign{min-height:36svh;display:grid;align-content:center;justify-items:start}}@media(prefers-reduced-motion:reduce){#ticket{animation:none}}
+</style></head><body><main><header class="between"><strong class="brand">Spur</strong><span>Commuter rail</span></header><section class="sign"><h1><time datetime="08:42">08:42</time>Union</h1><span class="badge">Platform 3</span></section><section class="controls" aria-label="Ticket and travel options"><button aria-controls="ticket" aria-expanded="false">Show ticket TKT-0837</button><div aria-live="polite"><div id="ticket" hidden><span class="cap">Commuter ticket</span><b>TKT-0837</b>08:42 to Union · Platform 3</div></div><p class="alternative between"><span>Alternative to Union</span><strong>08:58</strong></p><details><summary>Weekly pass</summary><p>One pass for a week of rail travel.</p></details></section></main>
+<script>
+const button = document.querySelector('button');
+const ticket = document.querySelector('#ticket');
+button.onclick = () => {
+  ticket.hidden = !ticket.hidden;
+  button.setAttribute('aria-expanded', String(!ticket.hidden));
+  button.textContent = ticket.hidden ? 'Show ticket TKT-0837' : 'Hide ticket TKT-0837';
+};
+</script></body></html>

@@ -1,0 +1,70 @@
+{
+  "direction": {
+    "id": "object-hero",
+    "surface": "landing",
+    "title": "Object hero: the product is the page",
+    "summary": "One featured product, shot like a specimen, with the buy control fixed to the object. Use for single-item launches.",
+    "type": {
+      "display": "Fraunces",
+      "body": "Instrument Sans",
+      "ratio": 4.0,
+      "tracking": -0.03,
+      "weight": 600,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#2a1610",
+      "paper": "#f3ebe0",
+      "accent": "#6b2148"
+    },
+    "layout": {
+      "skeleton": "7/5 split; the product image sits left, offset 1 column, and overlaps into a facts band",
+      "focus": "the featured product, with its price and one provenance fact beside it",
+      "desktop": "product name as a 72px display line over the image edge; brief facts (size, notes, date) as a 3-line ledger",
+      "mobile": "product full-width at 62vh, ledger below, sticky add bar",
+      "rhythm": "96px between bands; the ledger uses a 24px baseline"
+    },
+    "imagery": {
+      "subject": "the product on a plain surface with a few raw-material props",
+      "crop": "tight, with the product cut by the right edge",
+      "fallback": "a CSS label block: product name in ink on a material-tone panel"
+    },
+    "motion": {
+      "trigger": "add to bag",
+      "effect": "bag count ticks and the pill settles 4px",
+      "duration_ms": 240,
+      "reduced": "instant count change"
+    },
+    "action": {
+      "instruction": "One primary action attached to the product. Fill it from the brief's product, size and price, and never repeat it in a hero band",
+      "label": "Add [product], [size] — [price]"
+    },
+    "why": "A first-time buyer needs one choice, not a catalogue. Making the object the hero and stating the brief's exact facts reads warm and exact.",
+    "sources": [
+      {
+        "url": "https://assets.awwwards.com/awards/submissions/2026/09/6aacf2ed22405670949235.jpg",
+        "observation": "Agrumea Farm hero: the product jars are the hero on cream paper with an oxblood shape and type set on a curve; the only CTA is a small pill on the featured jar ('Scopri il prodotto').",
+        "strength": "evidence"
+      },
+      {
+        "url": "https://www.apple.com/v/macbook-air/z/built/styles/main.built.css",
+        "observation": ".typography-hero-headline is 64px; .typography-body is 17px (a ratio of about 3.8).",
+        "strength": "evidence"
+      }
+    ],
+    "credit": "Agrumea Farm site (Awwwards submission; designer not verified)"
+  },
+  "interaction": {
+    "accent_foreground": "#f3ebe0",
+    "easing": "ease-out",
+    "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+    "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+    "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+  },
+  "assumptions": [
+    "Use landing as the surface.",
+    "Use only the project facts and assets in the brief."
+  ],
+  "questions": [],
+  "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Verify the action, reading order and legibility at 390 px."
+}

@@ -1,0 +1,384 @@
+{
+  "calibration": {
+    "example": "Legible repair intake with clear labels, familiar layout and misplaced focus after an invalid number",
+    "coherence": 7,
+    "originality": 4,
+    "craft": 6,
+    "usability": 6
+  },
+  "screens": {
+    "A-1440": {
+      "coherence": 8,
+      "originality": 7,
+      "craft": 7.5,
+      "usability": 8,
+      "weighted_score": 7.6,
+      "primary_action": {
+        "input": "Tab to the specimen radio, ArrowRight to Harriman, then Tab and Enter on Full specimen and Etched detail.",
+        "expected": "Select Harriman and return both photographs to etched detail.",
+        "observed": "Selection, description and record link changed to Harriman; both photographs changed to full sections and back. Focus remained visible. Captures: A-1440-before and A-1440-after."
+      },
+      "edge_observation": "About the collection focused its destination section; the next Tab focused View the Harriman museum record. No clipping or control-finding delay was apparent.",
+      "fact_check": "Pitts visibly has a large dark inclusion; Harriman visibly has crossing bands. The Harriman link points to Smithsonian object nmnhmineralsciences_1021031, but the destination record and scientific claims were not independently verified.",
+      "strength": "Large side-by-side textures make the difference immediately visible.",
+      "weakness": "The trace action competes visually with the comparison and the photograph controls sit apart from the specimen selectors.",
+      "repair": "Group the view controls closer to the specimen selectors and give the trace action a clearer supporting role.",
+      "arm": "comparison-selectors",
+      "html_sha256": "ccd9b18bcbd9d387cc0bd8f0cfa8c61b143fe57df15a3e722987b7ff9e7a3283",
+      "weighted": 7.6,
+      "before": {
+        "sha256": "9c8a90d73a111c5bcc37767f273eda21981f3d3a3e1bd104d7d0e084c9824b3f",
+        "file": "A-1440-before.png",
+        "tool_call_id": "item_2"
+      },
+      "after": {
+        "sha256": "d0d9b3580b3ef0e6b4588b22b70315b119d5b37ff8ed0a375ea776e236645b3e",
+        "file": "A-1440-after.png",
+        "tool_call_id": "item_11"
+      },
+      "layout_width": 1425,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        }
+      ]
+    },
+    "A-390": {
+      "coherence": 7.5,
+      "originality": 7,
+      "craft": 7,
+      "usability": 6.5,
+      "weighted_score": 7.1,
+      "primary_action": {
+        "input": "Tab to Pitts, ArrowRight to Harriman, then activate Full specimen and Etched detail with Enter.",
+        "expected": "Inspect each specimen and return to Harriman etched detail.",
+        "observed": "The large image changed from Pitts to Harriman and the view buttons worked. Harriman's bands are legible in the large image; Pitts's dark inclusion is legible when selected. Captures: A-390-before and A-390-after."
+      },
+      "edge_observation": "About the collection moved focus to the section; the next Tab reached the Harriman record link. No horizontal clipping was evident.",
+      "fact_check": "The other specimen remains only as a small selector thumbnail, too small for a readable texture comparison. The linked record's identity and scientific claims were not independently verified.",
+      "strength": "The selected texture is large and the active specimen remains labeled.",
+      "weakness": "The two actual textures cannot be inspected together at a readable scale; comparison depends on switching and memory.",
+      "repair": "Show both labeled detail images at readable width in a compact vertical comparison, while retaining specimen selection.",
+      "arm": "comparison-selectors",
+      "html_sha256": "ccd9b18bcbd9d387cc0bd8f0cfa8c61b143fe57df15a3e722987b7ff9e7a3283",
+      "weighted": 7.05,
+      "before": {
+        "sha256": "928f30f2f9f40bee4a7c5e05d65b5bdb5ada2374428998ef53b85da1b4f00d6c",
+        "file": "A-390-before.png",
+        "tool_call_id": "item_19"
+      },
+      "after": {
+        "sha256": "0734a3179f355b806b006197e99a78f1e353a0deb6df7eb62732a105516c1bf8",
+        "file": "A-390-after.png",
+        "tool_call_id": "item_28"
+      },
+      "layout_width": 375,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        }
+      ]
+    },
+    "B-1440": {
+      "coherence": 8.5,
+      "originality": 7,
+      "craft": 8,
+      "usability": 8.5,
+      "weighted_score": 7.95,
+      "primary_action": {
+        "input": "Tab to Pitts, ArrowRight to Harriman, then activate Full specimen and Etched detail with Enter.",
+        "expected": "Select Harriman and compare both photographs in each view.",
+        "observed": "Both images switched together, the Harriman description and record link updated, and focus stayed visible. Captures: B-1440-before and B-1440-after."
+      },
+      "edge_observation": "About the collection focused the destination section; the next Tab focused the Harriman museum record. No clipping or control-finding delay was apparent.",
+      "fact_check": "The dark Pitts inclusion and Harriman crossing bands are visible without reading captions. The linked Smithsonian record and scientific explanation were not independently verified.",
+      "strength": "The aligned controls and similarly sized images make the comparison direct.",
+      "weakness": "The selected specimen changes the side description while both images remain equally prominent, making the purpose of selection somewhat subtle.",
+      "repair": "Add a restrained visual association between the selected radio and its corresponding image.",
+      "arm": "contact-sheet",
+      "html_sha256": "e2707c84adefbd173266dac54d7e4005fb53b3a29a0d860d043bd3e51f480a6b",
+      "weighted": 7.95,
+      "before": {
+        "sha256": "35373df72253a249b280af89a165b47009a64cff410c5fdf16cae07ef6e4f15a",
+        "file": "B-1440-before.png",
+        "tool_call_id": "item_37"
+      },
+      "after": {
+        "sha256": "3bc69cbe168c48a44157e996331fe6079a676037a19b169d54742f286127c917",
+        "file": "B-1440-after.png",
+        "tool_call_id": "item_45"
+      },
+      "layout_width": 1425,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        }
+      ]
+    },
+    "B-390": {
+      "coherence": 8,
+      "originality": 7,
+      "craft": 7,
+      "usability": 7.5,
+      "weighted_score": 7.4,
+      "primary_action": {
+        "input": "Tab to Pitts, ArrowRight to Harriman, then activate Full specimen and Etched detail with Enter.",
+        "expected": "Inspect both textures together and return to Harriman etched detail.",
+        "observed": "Both labeled images remained visible together and switched between full and detail. Captures: B-390-before and B-390-after. Pitts's dark inclusion is easy to identify; Harriman's crossing bands are visible but finer and less immediately distinct."
+      },
+      "edge_observation": "About the collection focused the destination section; the next Tab reached the Harriman record link. No horizontal clipping was evident.",
+      "fact_check": "Both actual textures are visible together, but the shallow crops remove parts of each image; fine structure is less readable than in A's larger selected image. The destination record and scientific claims were not independently verified.",
+      "strength": "Both specimen identities and textures stay in the same viewport, allowing direct comparison without relying on captions.",
+      "weakness": "The shallow mobile image crops sacrifice specimen context and fine detail; selecting Harriman produces little visible change near the images.",
+      "repair": "Increase image height or provide an accessible enlarge action while keeping both labeled specimens available for comparison.",
+      "arm": "contact-sheet",
+      "html_sha256": "e2707c84adefbd173266dac54d7e4005fb53b3a29a0d860d043bd3e51f480a6b",
+      "weighted": 7.4,
+      "before": {
+        "sha256": "28b6e560aec8c4b0f3acfa8b843edbe941c4541b578145c473a721fc22721faa",
+        "file": "B-390-before.png",
+        "tool_call_id": "item_52"
+      },
+      "after": {
+        "sha256": "82be45fcd3bd26946415a4de63a89978de14bb97f24800d0ea0a95be2ce249ec",
+        "file": "B-390-after.png",
+        "tool_call_id": "item_60"
+      },
+      "layout_width": 375,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        }
+      ]
+    }
+  },
+  "preference": {
+    "winner": "B",
+    "reason": "B keeps both actual textures visible together at phone width and places the view controls predictably above the comparison. A offers a larger individual mobile image, but its other specimen is only a thumbnail. Both desktop views support the requested keyboard flow."
+  },
+  "case": "specimen-exhibit",
+  "verified_screens": 4,
+  "required_screens": 4,
+  "browser": "Chrome/158.0.8127.36",
+  "evaluator_thread": "01a206b2-14c7-7563-8ffb-6a5174321bf7",
+  "usage": {
+    "input_tokens": 599797,
+    "cached_input_tokens": 563840,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2648,
+    "reasoning_output_tokens": 0
+  },
+  "trace_sha256": "7ecc1dc3e19f424feb63d4ff20cc2bd5057fd289bedcf485ba15809bbc81de3a",
+  "browser_audit_sha256": "ddee6599243b0747ef0508fd236d42b8f95495c053839e7ccec97d03e01c9e88",
+  "source": {
+    "date": "2026-11-22",
+    "critic_model": "gpt-6.1-terra",
+    "critic_effort": "low",
+    "captures": ".context/creative-research-2026-11-22/notebook-ballot/captures",
+    "task": "You're visiting a natural history exhibit. Compare how the two etched metal specimens differ. Use the keyboard to inspect Pitts and Harriman at both widths. Return to Full specimen, then Etched detail. Look for the dark inclusion on Pitts and the crossing bands on Harriman. Leave the final capture on Harriman Etched detail. At phone width, can you inspect the two actual textures together at a readable scale? Compare which structure is easier to identify without relying on the caption. For the edge after the final capture, use the About the collection link and see whether you can find the correct Harriman museum record with keyboard focus. Grade design and originality and report evidence of any clipping, delay in finding the controls, or lost specimen context. On mobile verify the actual detail is legible rather than relying on the caption."
+  }
+}

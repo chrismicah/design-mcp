@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Alto Carmo · Cinder Supply</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:var(--paper,#fafaf7);color:var(--ink,#212724);font:16px/1.5 Inter,-apple-system,BlinkMacSystemFont,Arial,sans-serif}main,header{width:min(1160px,90%);margin:auto}header,.row{display:flex;align-items:center;justify-content:space-between;gap:1rem}header{padding:22px 0;border-bottom:1px solid currentColor}h1,h2,h3,p{margin:0}h1,h2,h3{line-height:1.05;letter-spacing:-.045em}h1{font-size:clamp(2.8rem,6vw,5.8rem)}h2{font-size:2rem}p+p{margin-top:1em}.brand{font-size:1.4rem;font-weight:750;letter-spacing:-.05em}.label{font:700 .75rem/1.4 ui-monospace,monospace;text-transform:uppercase;letter-spacing:.1em}button,summary,a{font:inherit;cursor:pointer}button{min-height:44px;padding:10px 18px;border:1px solid currentColor;background:transparent;color:inherit;border-radius:5px;font-weight:650}button:hover,summary:hover,a:hover{filter:brightness(.88);text-decoration:underline}.primary{color:white;background:var(--accent,#284a3a);border-color:transparent}a{color:inherit}button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #0086cb;outline-offset:4px}dialog{background:var(--paper,#fff);color:inherit;width:min(520px,90%);max-height:85dvh;border:1px solid;padding:28px;border-radius:8px}dialog::backdrop{background:#101923aa}dialog h2{margin-bottom:16px}dialog form{margin-top:24px}details{border-top:1px solid;padding:0}summary{padding:15px 0;font-weight:600}details p{padding-bottom:16px}svg{display:block;width:100%;height:auto}
+body{--paper:#f7f1e5;--ink:#35251e;--accent:#703d31}.brand,h1,.pouch strong{font-family:Georgia,serif}.feature{display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:8%;margin:5vh 0}.still{height:clamp(380px,65vh,630px);background:radial-gradient(ellipse at 35% 20%,#ecbd92,#bf825e);display:grid;place-items:center;overflow:hidden}.pouch{width:45%;aspect-ratio:.63;transform:rotate(-7deg);background:linear-gradient(100deg,#5d382d,#885443 12%,#684033 85%,#442e26);box-shadow:15px 25px 23px #643b3355;border-top:12px double #4e3027;border-bottom:10px solid #55392f;display:grid;align-items:center}.pack{margin:10%;padding:14% 7%;background:#ecdbaf;text-align:center;border-top:6px solid #562b29}.pack strong{display:block;font-size:clamp(24px,4vw,52px);line-height:.95;margin:.4em 0}.info h1{margin:.2em 0}.notes{font:italic 1.6rem Georgia,serif}.spec{margin:2rem 0}.spec div{padding:.7em 0;border-bottom:1px solid #cbbba7}.info .primary{width:100%}@media(max-width:680px){.feature{grid-template-columns:1fr;gap:25px;margin:20px 0}.still{height:210px}.pouch{width:108px}.pack{margin:6%}.pack small{font-size:9px}.spec{margin:1rem 0}}
+</style></head>
+<body><header><b class="brand">Cinder Supply</b><button id="bag">Bag (<span id="count">0</span>)</button></header><main><section class="feature"><div class="still" aria-hidden="true"><div class="pouch"><div class="pack"><small>CINDER SUPPLY</small><strong>Alto<br>Carmo</strong><small>250 g</small></div></div></div><div class="info"><span class="label">Small-batch coffee</span><h1>Alto Carmo</h1><p class="notes">Cacao &amp; plum</p><div class="spec"><div class="row"><span>Roasted</span><b>November 19</b></div><div class="row"><span>One bag · 250 g</span><b>$19</b></div></div><button class="primary" id="add">Add one bag · $19</button></div></section></main><dialog aria-labelledby="dialog-title"><h2 id="dialog-title">Your bag</h2><p id="contents"></p><form method="dialog"><button>Continue shopping</button></form></dialog>
+<script>
+let quantity = 0;
+function openBag() {
+  document.querySelector('#contents').textContent = quantity ? 'Alto Carmo · 250 g × ' + quantity + ' · $' + quantity * 19 : 'Your bag is empty.';
+  document.querySelector('dialog').showModal();
+}
+document.querySelector('#bag').onclick = openBag;
+document.querySelector('#add').onclick = () => {
+  document.querySelector('#count').textContent = ++quantity;
+  openBag();
+};
+</script>
+</body></html>

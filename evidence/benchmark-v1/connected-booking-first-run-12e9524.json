@@ -1,0 +1,457 @@
+{
+  "install_sha": "12e9524bc2f38e7f3b7fc205c64d80dc315983c2",
+  "client": "fresh Codex with only Design MCP, empty working directory, subscription client",
+  "model": "GPT-6 Luna low",
+  "browser": "Chrome/158.0.8127.36",
+  "comparison_scope": "First task and a one-word follow-up in the same client session",
+  "visible_delta": {
+    "1440": {
+      "before": false,
+      "keyboard-friday": false,
+      "pointer-tuesday": false
+    },
+    "390": {
+      "before": true,
+      "keyboard-friday": true,
+      "pointer-tuesday": true
+    },
+    "320": {
+      "before": true,
+      "keyboard-friday": true,
+      "pointer-tuesday": true
+    }
+  },
+  "sessions_match": true,
+  "clarification_turns": 0,
+  "checks": {
+    "initial": {
+      "milliseconds": 68116,
+      "usage": {
+        "input_tokens": 55876,
+        "cached_input_tokens": 35968,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3486,
+        "reasoning_output_tokens": 0
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "design-mcp",
+          "tool": "direct",
+          "status": "completed"
+        }
+      ],
+      "prompt_sha256": "8d31277b5c22efa1f9d3ec7b65922e60238a20112695ee6e0c7e0e5d6e783d92",
+      "trace_sha256": "0a224ea392ce6ba3a61755f16c3756c2ca52587372bba8e50f003c0ae4c3708d",
+      "html_sha256": "a622163c28975c8cb25d866488dc8079960a09d19ee8a0e0d73e5941641d67b4",
+      "observed_input": {
+        "brief": "Create a public booking page for Second Spin, a local bike shop at 41 Elm Street. It offers one tune-up service: takes 48 hours and costs $85. Bookings are Tuesday to Saturday. Visitor must be able to choose one of those days by keyboard or pointer and see a booking summary. Do not invent availability, dates, fees or contact details. User intent: make it feel premium. Local behavior only; deliver as one complete HTML file with inline CSS/JS and original artwork; Google Fonts are the only allowed remote resources.",
+        "surface": "form"
+      },
+      "panels": [
+        {
+          "width": 1440,
+          "checks": {
+            "facts": true,
+            "days": true,
+            "fits_width": true,
+            "reduced_motion_preference": true,
+            "keyboard_booking": true,
+            "pointer_booking": true,
+            "summary_visible": true
+          },
+          "captures": [
+            {
+              "phase": "before",
+              "selected": null,
+              "active": null,
+              "visibleFocus": false,
+              "summary": "Choose a booking day to add it to your summary.",
+              "summaryInView": true,
+              "pixel_dimensions": [
+                1440,
+                900
+              ],
+              "sha256": "535d366dfe6b1768cd7c9f9335131bf16e1bd6d7c5538f98261387d87108af42",
+              "file": ".context/release-five-hour/first-run-journey/exact-12e9524/live-record/initial-1440-before.png"
+            },
+            {
+              "phase": "keyboard-friday",
+              "selected": "Friday",
+              "active": "Friday",
+              "visibleFocus": true,
+              "summary": "Booking day: Friday",
+              "summaryInView": true,
+              "pixel_dimensions": [
+                1440,
+                900
+              ],
+              "sha256": "dc4721509f966f87d3a91203ca17ea0cc54f0eb47e91752f59b15691c67c4436",
+              "file": ".context/release-five-hour/first-run-journey/exact-12e9524/live-record/initial-1440-friday.png"
+            },
+            {
+              "phase": "pointer-tuesday",
+              "selected": "Tuesday",
+              "active": "Tuesday",
+              "visibleFocus": false,
+              "summary": "Booking day: Tuesday",
+              "summaryInView": true,
+              "pixel_dimensions": [
+                1440,
+                900
+              ],
+              "sha256": "f8613718843dc7a2b202ee5d20b6b0e81d1a8914e686b0cada46c904230370de",
+              "file": ".context/release-five-hour/first-run-journey/exact-12e9524/live-record/initial-1440-tuesday.png"
+            }
+          ]
+        },
+        {
+          "width": 390,
+          "checks": {
+            "facts": true,
+            "days": true,
+            "fits_width": true,
+            "reduced_motion_preference": true,
+            "keyboard_booking": true,
+            "pointer_booking": true,
+            "summary_visible": false
+          },
+          "captures": [
+            {
+              "phase": "before",
+              "selected": null,
+              "active": null,
+              "visibleFocus": false,
+              "summary": "Choose a booking day to add it to your summary.",
+              "summaryInView": false,
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "sha256": "314c83a3ea6cef9c77f9e34c91398bc055f5aa6bb24b85be3b2a51cb7f0908ef",
+              "file": ".context/release-five-hour/first-run-journey/exact-12e9524/live-record/initial-390-before.png"
+            },
+            {
+              "phase": "keyboard-friday",
+              "selected": "Friday",
+              "active": "Friday",
+              "visibleFocus": true,
+              "summary": "Booking day: Friday",
+              "summaryInView": false,
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "sha256": "55f9d94a9c0af9c63fb96e07302069550c4bc1c13bf7291e02d5d0fe20850a9d",
+              "file": ".context/release-five-hour/first-run-journey/exact-12e9524/live-record/initial-390-friday.png"
+            },
+            {
+              "phase": "pointer-tuesday",
+              "selected": "Tuesday",
+              "active": "Tuesday",
+              "visibleFocus": false,
+              "summary": "Booking day: Tuesday",
+              "summaryInView": false,
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "sha256": "e4cd7429cf258542ca06af3dd13ff3a5fa4a8501659d3a9188a4ad0b7183da27",
+              "file": ".context/release-five-hour/first-run-journey/exact-12e9524/live-record/initial-390-tuesday.png"
+            },
+            {
+              "phase": "scroll-to-summary",
+              "selected": "Tuesday",
+              "active": "Tuesday",
+              "visibleFocus": true,
+              "summary": "Booking day: Tuesday",
+              "summaryInView": false,
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "sha256": "39c4a321aa1408af79bc2bb6c2debea3112227f0fe8bd1a3a6e9f3d2eb3e9d16",
+              "file": ".context/release-five-hour/first-run-journey/exact-12e9524/live-record/initial-390-summary.png"
+            }
+          ]
+        },
+        {
+          "width": 320,
+          "checks": {
+            "facts": true,
+            "days": true,
+            "fits_width": true,
+            "reduced_motion_preference": true,
+            "keyboard_booking": true,
+            "pointer_booking": true,
+            "summary_visible": true
+          },
+          "captures": [
+            {
+              "phase": "before",
+              "selected": null,
+              "active": null,
+              "visibleFocus": false,
+              "summary": "Choose a booking day to add it to your summary.",
+              "summaryInView": false,
+              "pixel_dimensions": [
+                320,
+                700
+              ],
+              "sha256": "b555a2e34520a94833692fdaaa2c76e8c64fe9ae81476d4343c2dd74c350cc43",
+              "file": ".context/release-five-hour/first-run-journey/exact-12e9524/live-record/initial-320-before.png"
+            },
+            {
+              "phase": "keyboard-friday",
+              "selected": "Friday",
+              "active": "Friday",
+              "visibleFocus": true,
+              "summary": "Booking day: Friday",
+              "summaryInView": true,
+              "pixel_dimensions": [
+                320,
+                700
+              ],
+              "sha256": "22eb12806feaf580fa7a6540fa2bddb945fc6c2cbbcad54859f9b20590c6f278",
+              "file": ".context/release-five-hour/first-run-journey/exact-12e9524/live-record/initial-320-friday.png"
+            },
+            {
+              "phase": "pointer-tuesday",
+              "selected": "Tuesday",
+              "active": "Tuesday",
+              "visibleFocus": false,
+              "summary": "Booking day: Tuesday",
+              "summaryInView": true,
+              "pixel_dimensions": [
+                320,
+                700
+              ],
+              "sha256": "4a1d6cbe88e931ec5b2ab67973f8ac7885e7b54ee45d2332d817955e9f5d8e09",
+              "file": ".context/release-five-hour/first-run-journey/exact-12e9524/live-record/initial-320-tuesday.png"
+            }
+          ]
+        }
+      ]
+    },
+    "calmer": {
+      "milliseconds": 64237,
+      "usage": {
+        "input_tokens": 101716,
+        "cached_input_tokens": 78080,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 6785,
+        "reasoning_output_tokens": 0
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "design-mcp",
+          "tool": "react",
+          "status": "completed"
+        }
+      ],
+      "prompt_sha256": "4418427c2a96f454039784b52e0ae9cc18d066a8457579e09056060f72879c18",
+      "trace_sha256": "e71c8deb3ad93978f6f991bcb74c8f64225795699a9394e76d7e4de4a725e92d",
+      "html_sha256": "91cc5d66f9c7357273b5efaac855c7b8ae25a08b4e6d027e392a2cca5e0f81d0",
+      "observed_input": {
+        "direction_id": "grouped-fieldsets",
+        "reaction": "calmer"
+      },
+      "panels": [
+        {
+          "width": 1440,
+          "checks": {
+            "facts": true,
+            "days": true,
+            "fits_width": true,
+            "reduced_motion_preference": true,
+            "keyboard_booking": true,
+            "pointer_booking": true,
+            "summary_visible": true
+          },
+          "captures": [
+            {
+              "phase": "before",
+              "selected": null,
+              "active": null,
+              "visibleFocus": false,
+              "summary": "Choose a booking day to add it to your summary.",
+              "summaryInView": true,
+              "pixel_dimensions": [
+                1440,
+                900
+              ],
+              "sha256": "535d366dfe6b1768cd7c9f9335131bf16e1bd6d7c5538f98261387d87108af42",
+              "file": ".context/release-five-hour/first-run-journey/exact-12e9524/live-record/calmer-1440-before.png"
+            },
+            {
+              "phase": "keyboard-friday",
+              "selected": "Friday",
+              "active": "Friday",
+              "visibleFocus": true,
+              "summary": "Booking day: Friday",
+              "summaryInView": true,
+              "pixel_dimensions": [
+                1440,
+                900
+              ],
+              "sha256": "dc4721509f966f87d3a91203ca17ea0cc54f0eb47e91752f59b15691c67c4436",
+              "file": ".context/release-five-hour/first-run-journey/exact-12e9524/live-record/calmer-1440-friday.png"
+            },
+            {
+              "phase": "pointer-tuesday",
+              "selected": "Tuesday",
+              "active": "Tuesday",
+              "visibleFocus": false,
+              "summary": "Booking day: Tuesday",
+              "summaryInView": true,
+              "pixel_dimensions": [
+                1440,
+                900
+              ],
+              "sha256": "f8613718843dc7a2b202ee5d20b6b0e81d1a8914e686b0cada46c904230370de",
+              "file": ".context/release-five-hour/first-run-journey/exact-12e9524/live-record/calmer-1440-tuesday.png"
+            }
+          ]
+        },
+        {
+          "width": 390,
+          "checks": {
+            "facts": true,
+            "days": true,
+            "fits_width": true,
+            "reduced_motion_preference": true,
+            "keyboard_booking": true,
+            "pointer_booking": true,
+            "summary_visible": false
+          },
+          "captures": [
+            {
+              "phase": "before",
+              "selected": null,
+              "active": null,
+              "visibleFocus": false,
+              "summary": "Choose a booking day to add it to your summary.",
+              "summaryInView": false,
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "sha256": "34a4f2db609fb580d983e26e82b89d3a047bfe055ec5dc8d01504d6500f24bcc",
+              "file": ".context/release-five-hour/first-run-journey/exact-12e9524/live-record/calmer-390-before.png"
+            },
+            {
+              "phase": "keyboard-friday",
+              "selected": "Friday",
+              "active": "Friday",
+              "visibleFocus": true,
+              "summary": "Booking day: Friday",
+              "summaryInView": false,
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "sha256": "349af70153c50581d0c51df0bb3aee021a545d121ae12f81352591f42e061f91",
+              "file": ".context/release-five-hour/first-run-journey/exact-12e9524/live-record/calmer-390-friday.png"
+            },
+            {
+              "phase": "pointer-tuesday",
+              "selected": "Tuesday",
+              "active": "Tuesday",
+              "visibleFocus": false,
+              "summary": "Booking day: Tuesday",
+              "summaryInView": false,
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "sha256": "5f032ec7f79c07b3f5e0dfeb050dd738a631d1893b42a65a72f0ce7e3e67eafd",
+              "file": ".context/release-five-hour/first-run-journey/exact-12e9524/live-record/calmer-390-tuesday.png"
+            },
+            {
+              "phase": "scroll-to-summary",
+              "selected": "Tuesday",
+              "active": "Tuesday",
+              "visibleFocus": true,
+              "summary": "Booking day: Tuesday",
+              "summaryInView": false,
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "sha256": "252543c392c325e56c2a508f909dde7cfe078231ad4d2bf21d94ed1e6b47a3be",
+              "file": ".context/release-five-hour/first-run-journey/exact-12e9524/live-record/calmer-390-summary.png"
+            }
+          ]
+        },
+        {
+          "width": 320,
+          "checks": {
+            "facts": true,
+            "days": true,
+            "fits_width": true,
+            "reduced_motion_preference": true,
+            "keyboard_booking": true,
+            "pointer_booking": true,
+            "summary_visible": true
+          },
+          "captures": [
+            {
+              "phase": "before",
+              "selected": null,
+              "active": null,
+              "visibleFocus": false,
+              "summary": "Choose a booking day to add it to your summary.",
+              "summaryInView": false,
+              "pixel_dimensions": [
+                320,
+                700
+              ],
+              "sha256": "56600c44a9cd51126e82184aed89d5cfcbc701e36139fdab1efeeca9747a2962",
+              "file": ".context/release-five-hour/first-run-journey/exact-12e9524/live-record/calmer-320-before.png"
+            },
+            {
+              "phase": "keyboard-friday",
+              "selected": "Friday",
+              "active": "Friday",
+              "visibleFocus": true,
+              "summary": "Booking day: Friday",
+              "summaryInView": true,
+              "pixel_dimensions": [
+                320,
+                700
+              ],
+              "sha256": "26801c509c3330ff79bb642635304a86f62d13f88f51720955f5b8aa4b083028",
+              "file": ".context/release-five-hour/first-run-journey/exact-12e9524/live-record/calmer-320-friday.png"
+            },
+            {
+              "phase": "pointer-tuesday",
+              "selected": "Tuesday",
+              "active": "Tuesday",
+              "visibleFocus": false,
+              "summary": "Booking day: Tuesday",
+              "summaryInView": true,
+              "pixel_dimensions": [
+                320,
+                700
+              ],
+              "sha256": "b0497422165681eb507139db9ad0855512658a3879e2057a054451cf094e78e4",
+              "file": ".context/release-five-hour/first-run-journey/exact-12e9524/live-record/calmer-320-tuesday.png"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "result": "fail",
+  "reasons": [
+    "All three desktop PNGs remained byte-identical after calmer.",
+    "Both drafts put the selected booking summary below the initial 390 px viewport."
+  ],
+  "notes": [
+    "All booking input and facts checks passed on both drafts at 1440, 390, and 320 CSS px.",
+    "The first client sent an explicit form hint. This comparison cannot establish unhinted routing.",
+    "The form calmer response specified spacing before a primary button. The draft uses a radio group without a primary button.",
+    "This is functional and pixel-delta evidence. Independent design scoring has not run on these drafts."
+  ]
+}

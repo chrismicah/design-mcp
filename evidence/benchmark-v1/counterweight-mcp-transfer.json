@@ -1,0 +1,394 @@
+{
+  "test": {
+    "case": "counterweight-transfer",
+    "arms": [
+      "candidate",
+      "control"
+    ],
+    "browser": "Chrome/160.0.8178.0",
+    "require_unhinted_direct": true,
+    "directions": {
+      "candidate": "performance-program",
+      "control": "object-hero"
+    },
+    "task": "You and another visitor want a shared-weight duet for up to £60 and need the 20:40 train. At each width and in each anonymous candidate, capture -before on first load. Locate the chosen duet, pair fare and explanation of shared weight. Tab to the option for a one-minute-longer walk and activate it. Verify that Hinge stays selected, arrives 20:31 and misses the assumed 20:30 buffer cutoff. By keyboard choose Call/Response and verify that 19:34 plus a nine-minute walk gives 19:43 with £48 for two. Capture -after. Restore the usual eight-minute walk and confirm 19:42 and visible focus. Capture -edge. If a required input or output is absent, report the specific absence. In the visual score name the visual mechanism, what it helps you understand about the two shows, and which part looks generic or hard to use.",
+    "brief": "Build a creative page for Counterweight, a fictional dance festival. Two visitors want to choose a duet with shared-weight choreography for £60 or less and catch their 20:40 train. Hinge costs £60 for two, ends at 20:16, and shows joined hands carrying a mirrored counterlean. Call/Response costs £48 for two, ends at 19:34, and shows one gesture answering another without shared weight. Usual estimated walks to the station are 14 minutes from Hinge and 8 from Call/Response. Assume a ten-minute station buffer. Start with Hinge and usual walk selected. Let visitors choose either duet and toggle a one-minute-longer walk. Keep the chosen duet, exact pair fare, selected pace, estimated arrival, and buffer outcome visible and consistent. When Hinge misses the buffer, keep it selected and show that Call/Response still fits. Explain the decisive difference in choreography, using original artwork if useful. This is a preview with no payment."
+  },
+  "installed": {
+    "control": "d4c4d707aaecf2f6816a0dd51afc85ff48020070",
+    "candidate": "310bade38082c137160fc4e9100978db53852db3"
+  },
+  "generation": {
+    "candidate": {
+      "usage": {
+        "input_tokens": 59034,
+        "cached_input_tokens": 53120,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 6231,
+        "reasoning_output_tokens": 35
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "design-mcp",
+          "tool": "direct",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "treatment_call": true,
+      "direct_call": true,
+      "status": "passed",
+      "observed_directions": [
+        "performance-program"
+      ],
+      "unhinted_direct": true,
+      "case": "counterweight-transfer",
+      "arm": "candidate",
+      "model": "gpt-6.1-terra",
+      "effort": "low",
+      "client": "codex-cli 0.170.0",
+      "prompt_sha256": "ddcd5475a1556d688f1e3a44a146d26e9b9a52c974231b7d76e9fbd45c2e1647",
+      "expected_direction": "performance-program",
+      "require_unhinted_direct": true,
+      "shell_tool": false,
+      "mcp_config_sha256": "15cb7d574a7bf02bead0a5599591e296f777264a42cc22472e193ce9b1b18c8e",
+      "elapsed_seconds": 120.45,
+      "exit_code": 0,
+      "trace_sha256": "ff269dddb2c78e4e7a1835399d2304bc5f112eb5d63be08e7bd0cc0ea4b7cea7",
+      "html_sha256": "518abd4a29223b5c0a859b71443fe63fc24c4400609b8edb7bf81334822eb7b4"
+    },
+    "control": {
+      "usage": {
+        "input_tokens": 58921,
+        "cached_input_tokens": 52992,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 5916,
+        "reasoning_output_tokens": 0
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "design-mcp",
+          "tool": "direct",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "treatment_call": true,
+      "direct_call": true,
+      "status": "passed",
+      "observed_directions": [
+        "object-hero"
+      ],
+      "unhinted_direct": true,
+      "case": "counterweight-transfer",
+      "arm": "control",
+      "model": "gpt-6.1-terra",
+      "effort": "low",
+      "client": "codex-cli 0.170.0",
+      "prompt_sha256": "ddcd5475a1556d688f1e3a44a146d26e9b9a52c974231b7d76e9fbd45c2e1647",
+      "expected_direction": "object-hero",
+      "require_unhinted_direct": true,
+      "shell_tool": false,
+      "mcp_config_sha256": "3474c571ef4a59db7cebace84904f980322a56d3e86d0e0914c155d07d220d4b",
+      "elapsed_seconds": 114.44,
+      "exit_code": 0,
+      "trace_sha256": "aa43026421dac99071f47ce862e1fa1f175713f1e9a0907d1356da58ec969e08",
+      "html_sha256": "56edd9b5fe3e18850759e3a2e0c37ae8c711dc04c481d5d6949414e30cde466b"
+    }
+  },
+  "verified_live_review": {
+    "calibration": {
+      "example": "Legible repair intake with clear labels, familiar layout, and misplaced focus after an invalid number",
+      "coherence": 7,
+      "originality": 4,
+      "craft": 6,
+      "usability": 5
+    },
+    "screens": {
+      "A-1440": {
+        "coherence": 8.5,
+        "originality": 8,
+        "craft": 8,
+        "usability": 8,
+        "primary_action": {
+          "input": "Tab to the extra-minute checkbox and press Space; Shift+Tab to the duet group and press ArrowDown.",
+          "expected": "Hinge remains selected at 20:31 and misses the buffer; Call/Response then shows 19:43 and £48 for two.",
+          "observed": "All expected results appeared. Hinge showed a 15-minute walk and nine minutes at the station; Call/Response showed a nine-minute walk."
+        },
+        "edge_observation": "Tab and Space restored the eight-minute walk and 19:42. A conspicuous yellow focus ring remained on the checkbox.",
+        "fact_check": "Hinge is £60 for two and the copy explains the shared counterlean. Call/Response does not share weight. The displayed times and buffer arithmetic are consistent; real-world schedules and walking estimates were not independently verified.",
+        "strength": "The changing paired-figure illustration distinguishes physical contact from answering gestures, while the large arrival time makes the train consequence easy to find.",
+        "weakness": "The conventional switch and result panel are less distinctive than the illustration. In the missed-buffer message, the suggested alternative's loss of shared weight is not stated alongside the suggestion.",
+        "repair": "State that Call/Response does not share weight directly in the missed-buffer recommendation.",
+        "arm": "candidate",
+        "html_sha256": "518abd4a29223b5c0a859b71443fe63fc24c4400609b8edb7bf81334822eb7b4",
+        "weighted": 8.15,
+        "before": {
+          "sha256": "11bf4512a17d9f12934753ef3886a734b45957fed1b1675e1c343ac2461470f7",
+          "file": "A-1440-before.png",
+          "tool_call_id": "item_2"
+        },
+        "after": {
+          "sha256": "f044f11e3ff091757cf60142f5ff77c3020414465c5e45fc3a3989e3c43acbdc",
+          "file": "A-1440-after.png",
+          "tool_call_id": "item_9"
+        },
+        "layout_width": 1425,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Space"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Space"
+          }
+        ]
+      },
+      "A-390": {
+        "coherence": 8,
+        "originality": 8,
+        "craft": 8,
+        "usability": 7.5,
+        "primary_action": {
+          "input": "Tab to the extra-minute checkbox and press Space; Shift+Tab and ArrowDown select Call/Response.",
+          "expected": "Hinge reaches 20:31 and misses the buffer; Call/Response reaches 19:43 for £48 for two.",
+          "observed": "The requested states and figures appeared, with the longer walk retained across the selection."
+        },
+        "edge_observation": "Tab and Space restored eight minutes and 19:42, with a visible yellow focus ring on the switch.",
+        "fact_check": "Hinge's shared-weight explanation and £60 pair fare are present. Call/Response is £48 and does not share weight. Arithmetic is consistent; underlying real-world estimates were not independently verified.",
+        "strength": "The stacked illustration and changing figures explain the two relationships clearly, and the focused option and arrival result fit the narrow viewport.",
+        "weakness": "The large introductory illustration pushes the choice and fare below the initial viewport; the result panel is a fairly conventional summary.",
+        "repair": "Shorten the mobile introduction or bring a compact choice summary higher while retaining the illustration.",
+        "arm": "candidate",
+        "html_sha256": "518abd4a29223b5c0a859b71443fe63fc24c4400609b8edb7bf81334822eb7b4",
+        "weighted": 7.9,
+        "before": {
+          "sha256": "9589e20f468344d340d70d7ee71fa64ae1771b9e8f8b7f59651fcdcf717780df",
+          "file": "A-390-before.png",
+          "tool_call_id": "item_15"
+        },
+        "after": {
+          "sha256": "75ef3aae97dd96b558bdbfee7498dc1e46fd6782a902c766dbaf9bf037f30098",
+          "file": "A-390-after.png",
+          "tool_call_id": "item_22"
+        },
+        "layout_width": 375,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Space"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowDown"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Space"
+          }
+        ]
+      },
+      "B-1440": {
+        "coherence": 8,
+        "originality": 7,
+        "craft": 8,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Tab to the walk radio group and press ArrowRight; Shift+Tab to Call/Response and press Space.",
+          "expected": "Hinge remains selected at 20:31 and misses the buffer; Call/Response then shows 19:43 and £48 for two.",
+          "observed": "All expected results appeared, including the nine-minute walk and 57 minutes before departure."
+        },
+        "edge_observation": "Tab and ArrowLeft restored the eight-minute option and 19:42. The selected radio had a visible focus outline.",
+        "fact_check": "Hinge is identified as shared weight at £60 for two. The missed-buffer suggestion explicitly says Call/Response lacks shared weight. The displayed arithmetic is consistent; real-world estimates were not independently verified.",
+        "strength": "Side-by-side contact diagrams make the distinction between a counterlean and separate answering gestures immediately comparable; the evening panel ties the selection to fare and train.",
+        "weakness": "The two similarly structured cards and editorial serif treatment feel familiar, and the arrival details sit near the bottom of the initial viewport.",
+        "repair": "Give the comparison a more distinctive visual rhythm and raise the arrival result without reducing label clarity.",
+        "arm": "control",
+        "html_sha256": "56edd9b5fe3e18850759e3a2e0c37ae8c711dc04c481d5d6949414e30cde466b",
+        "weighted": 7.8,
+        "before": {
+          "sha256": "21d2a198507542cfb6aa9525442feee52da9ed5fb84527b86726dabf36945dc3",
+          "file": "B-1440-before.png",
+          "tool_call_id": "item_27"
+        },
+        "after": {
+          "sha256": "f1799f5bab7c6dd5984a5fdcb2ae2819850d5e055c4658f74ac6d6212aed8c3c",
+          "file": "B-1440-after.png",
+          "tool_call_id": "item_34"
+        },
+        "layout_width": 1425,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Space"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowLeft"
+          }
+        ]
+      },
+      "B-390": {
+        "coherence": 6.5,
+        "originality": 7,
+        "craft": 5.5,
+        "usability": 6.5,
+        "primary_action": {
+          "input": "Tab to the walk radio group and press ArrowRight; Shift+Tab to Call/Response and press Space.",
+          "expected": "Hinge reaches 20:31 and misses the buffer; Call/Response reaches 19:43 for £48 for two.",
+          "observed": "The accessibility output reported all requested states. The after capture shows the selected Call/Response and £48; the 19:43 result is below the captured viewport."
+        },
+        "edge_observation": "Tab and ArrowLeft restored the eight-minute radio and the accessibility output reported 19:42. The focus outline is visible at the bottom of the edge capture; the arrival itself is below the viewport.",
+        "fact_check": "The rendered cards show Hinge at £60 and Call/Response at £48. The accessible output reports the expected time arithmetic and says the alternative lacks shared weight. Real-world estimates were not independently verified.",
+        "strength": "The two contact diagrams remain adjacent, preserving the comparison between shared weight and separate gestures.",
+        "weakness": "The narrow two-column cards clip the Call/Response title and crop the figures. The long card stack separates the selection from the arrival result, making the flow harder to scan.",
+        "repair": "Stack or otherwise widen the cards at mobile widths, allow the full title to wrap, and keep the resulting arrival closer to the controls.",
+        "arm": "control",
+        "html_sha256": "56edd9b5fe3e18850759e3a2e0c37ae8c711dc04c481d5d6949414e30cde466b",
+        "weighted": 6.45,
+        "before": {
+          "sha256": "1bd8692e1e6e32f69287830cd701c6aa1b18c77840d8e545251b86e72ef99f39",
+          "file": "B-390-before.png",
+          "tool_call_id": "item_40"
+        },
+        "after": {
+          "sha256": "f662d0648748fc9a94aee6a48e1d8b962a489b9e1caa77ec28ccc2458ef2ee79",
+          "file": "B-390-after.png",
+          "tool_call_id": "item_47"
+        },
+        "layout_width": 375,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Space"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowLeft"
+          }
+        ]
+      }
+    },
+    "preference": {
+      "winner": "A",
+      "reason": "Both candidates complete the keyboard flow and show consistent calculations. A retains legible labels, a clear focus indicator, and a visible result at mobile width; B's narrow cards visibly clip the alternative's title and figures. B's explicit warning that the alternative lacks shared weight is a useful detail A should adopt."
+    },
+    "case": "counterweight-transfer",
+    "verified_screens": 4,
+    "required_screens": 4,
+    "browser": "Chrome/160.0.8178.0",
+    "evaluator_thread": "01a20861-f879-7b33-834f-50669ece8d9f",
+    "usage": {
+      "input_tokens": 611399,
+      "cached_input_tokens": 549376,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 2836,
+      "reasoning_output_tokens": 0
+    },
+    "trace_sha256": "1c67a5d2e099fb8777459095f0381740d94f1f26b4769ad466a6542d2b28476c",
+    "browser_audit_sha256": "da60302bad93bf978e8cc00f0a03520b245bd4a0b6678eb9134143ce18950245"
+  }
+}

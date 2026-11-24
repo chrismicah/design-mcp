@@ -1,0 +1,269 @@
+{
+  "calibration": {
+    "coherence": 7,
+    "originality": 4,
+    "craft": 6,
+    "usability": 6,
+    "reason": "Clear labels and a legible, familiar layout support the task, but misplaced focus after invalid input is a meaningful usability and craft flaw."
+  },
+  "screens": {
+    "A-1440": {
+      "coherence": 8.5,
+      "originality": 8,
+      "craft": 8,
+      "usability": 8,
+      "primary_action": {
+        "input": "Tab to the 6 m footbridge row, then Enter.",
+        "expected": "Set 6 m and show the path closed, ferry stopped and footbridge closed.",
+        "observed": "All three statuses updated, the count became 3 of 3, and the waterline reached the 6 m mark. Focus remained visible on the footbridge row."
+      },
+      "edge_observation": "Shift+Tab twice and Enter set 2 m. The path was closed; ferry and footbridge remained listed as level not reached.",
+      "fact_check": "The rendered waterline aligns with 6 m and agrees with the displayed value and threshold labels. Real-world closure thresholds are not independently verified.",
+      "strength": "The large cross-section connects each crossing to its elevation, with results visible alongside it.",
+      "weakness": "The threshold rows look like status rows, so their direct-jump behavior is not obvious.",
+      "repair": "Give the rows an explicit selection affordance or short instruction while retaining the visible focus outline.",
+      "arm": "v2",
+      "html_sha256": "32f3b87d85e54c1ee3c451cb8a26cf739a8cf7810b543e7ac106ebf1d96e842f",
+      "weighted": 8.15,
+      "before": {
+        "sha256": "89c7a47ce3052577605ca661bcf693b72f95bf7123c3afb382af870bec48be3f",
+        "file": "A-1440-before.png",
+        "tool_call_id": "item_2"
+      },
+      "after": {
+        "sha256": "95757308ff4a0db52e48166e4e7a563b61fe53b8d63c3ddc5dcd40763ee88b25",
+        "file": "A-1440-after.png",
+        "tool_call_id": "item_10"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ]
+    },
+    "A-390": {
+      "coherence": 8.5,
+      "originality": 8,
+      "craft": 8,
+      "usability": 8,
+      "primary_action": {
+        "input": "Tab to the 6 m footbridge row, then Enter.",
+        "expected": "Set 6 m and show all three affected crossings.",
+        "observed": "The value became 6 m, the waterline reached 6 m, and all three closure statuses appeared. The complete result was readable within the initial 390 by 844 viewport."
+      },
+      "edge_observation": "Shift+Tab twice and Enter set 2 m; only the path was marked closed, while the other two rows said level not reached.",
+      "fact_check": "The 6 m waterline matches the displayed level and diagram scale. Real-world thresholds are unsupported by the view.",
+      "strength": "The diagram, control and complete status list fit together on the first mobile viewport.",
+      "weakness": "The diagram labels are small, and the rows' ability to set a level is visually implicit.",
+      "repair": "Increase diagram label legibility and indicate that threshold rows are selectable.",
+      "arm": "v2",
+      "html_sha256": "32f3b87d85e54c1ee3c451cb8a26cf739a8cf7810b543e7ac106ebf1d96e842f",
+      "weighted": 8.15,
+      "before": {
+        "sha256": "0f5ece628d73e5d0a195d2e9b513a8301a0f454faa8fdc8403d9c596230c59e8",
+        "file": "A-390-before.png",
+        "tool_call_id": "item_16"
+      },
+      "after": {
+        "sha256": "753ae01e76cdefed06f274a24db8af99d3f0fbc5ffe4250b7fb97029e96926ed",
+        "file": "A-390-after.png",
+        "tool_call_id": "item_22"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Shift+Tab"
+        },
+        {
+          "action": "key",
+          "value": "Enter"
+        }
+      ]
+    },
+    "B-1440": {
+      "coherence": 9,
+      "originality": 8.5,
+      "craft": 8.5,
+      "usability": 9,
+      "primary_action": {
+        "input": "Tab to the selected 4 m radio, then ArrowRight.",
+        "expected": "Select 6 m and list the path, ferry and footbridge closures.",
+        "observed": "6 m became selected, all three results appeared, and the waterline rose to the 6 m guide. Focus remained visible on 6 m."
+      },
+      "edge_observation": "Two ArrowLeft presses selected 2 m and left only the riverside path in the result list.",
+      "fact_check": "The 6 m waterline aligns with the 6 m guide and the result heading. Real-world closure thresholds are not independently verified.",
+      "strength": "The clear level choices and concise results make the requested comparison quick.",
+      "weakness": "The illustrated ferry remains drawn below the 6 m waterline, which can read as submerged even though the text says it stops.",
+      "repair": "Place the ferry at the selected water surface or explicitly depict it as out of service.",
+      "arm": "social",
+      "html_sha256": "6c865202d697125bf3cc70a0edd4d57dc32d2144423c35a3e653cd7766230339",
+      "weighted": 8.75,
+      "before": {
+        "sha256": "18adeafb178f58f94dafcb2dac3f8c175f1e5bce2a0511b10d4a53c4d11ed78d",
+        "file": "B-1440-before.png",
+        "tool_call_id": "item_27"
+      },
+      "after": {
+        "sha256": "e6be9ffd15d8056d4298bcaadd4aa18341a00f8aa6f318a741bbcbbf7b1576ee",
+        "file": "B-1440-after.png",
+        "tool_call_id": "item_30"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ]
+    },
+    "B-390": {
+      "coherence": 9,
+      "originality": 8.5,
+      "craft": 8.5,
+      "usability": 9,
+      "primary_action": {
+        "input": "Tab to the selected 4 m radio, then ArrowRight.",
+        "expected": "Select 6 m and show all three affected crossings.",
+        "observed": "6 m became selected, the three results appeared, and the waterline aligned with 6 m. The complete result and diagram were readable within the initial 390 by 844 viewport."
+      },
+      "edge_observation": "Two ArrowLeft presses selected 2 m and the result list contained only the riverside path closure.",
+      "fact_check": "The selected value, result heading and 6 m waterline agree. Real-world thresholds are unsupported by the view.",
+      "strength": "The choices and complete result precede the compact illustration, keeping the task easy to scan.",
+      "weakness": "The small ferry appears below the selected water surface at 6 m, making the illustration less literal.",
+      "repair": "Keep the ferry aligned with the water surface and distinguish its stopped state visually.",
+      "arm": "social",
+      "html_sha256": "6c865202d697125bf3cc70a0edd4d57dc32d2144423c35a3e653cd7766230339",
+      "weighted": 8.75,
+      "before": {
+        "sha256": "9f7b9cbdaba5c0a2f652e8e73f1d0ee793fb24ee6fb4a0d5789dbaeba1c8f066",
+        "file": "B-390-before.png",
+        "tool_call_id": "item_35"
+      },
+      "after": {
+        "sha256": "d41badcee0bf2ea93fd799d30fc6670c588127bc9656bd82b012cfa618a2516b",
+        "file": "B-390-after.png",
+        "tool_call_id": "item_38"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ]
+    }
+  },
+  "preference": {
+    "winner": "B",
+    "reason": "B makes the three level choices explicit, reaches 6 m with one arrow key from the default, and presents only the applicable closures. Its mobile result is complete and easy to scan in the first viewport. A's cross-section is strong, but its direct-jump rows are less discoverable."
+  },
+  "case": "social-river",
+  "verified_screens": 4,
+  "required_screens": 4,
+  "browser": "Chrome/157.0.8103.79",
+  "evaluator_thread": "01a20508-1fdb-71f3-a7ee-798a7bba67c4",
+  "usage": {
+    "input_tokens": 668208,
+    "cached_input_tokens": 645248,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2472,
+    "reasoning_output_tokens": 17
+  },
+  "trace_sha256": "2efeb97cdff96dc870b5786b8e13c19c68a90a74d982fd658bde07d4def508ac",
+  "browser_audit_sha256": "f211615c5ae0e94c7b893bc97d035e30268c401aab7e30eca5c07906cfd416ad",
+  "critic_model": "gpt-6.1-terra",
+  "critic_effort": "low",
+  "confirmation_of_round": 5,
+  "audited_sha256": "2d96ad8bdced744f35f967463786999970ac8a997b7cb12f4944df4924cab3fa"
+}

@@ -1,0 +1,486 @@
+{
+  "scope": "Exact 36 frozen briefs via installed stdio direct with only the brief argument.",
+  "tasks_sha256": "4f352a2a8449911c07188a8e5e311bd5454caf2616d1dfa9b25fa80f590f94d5",
+  "frozen_source": "fd6035d8732d177b811f81a0f5863e99134a85ca",
+  "tested_source": "2fcd31221671590152401d958b904141e438e453",
+  "frozen": {
+    "direction_distribution": {
+      "object-hero": 32,
+      "stage-call-sheet": 1,
+      "exception-first": 1,
+      "platform-sign": 1,
+      "margin-front": 1
+    },
+    "surface_counts": {
+      "dashboard": {
+        "briefs": 6,
+        "exact_surface": 2,
+        "returned": {
+          "landing": 4,
+          "dashboard": 2
+        }
+      },
+      "empty-state": {
+        "briefs": 6,
+        "exact_surface": 0,
+        "returned": {
+          "landing": 5,
+          "editorial": 1
+        }
+      },
+      "form": {
+        "briefs": 6,
+        "exact_surface": 0,
+        "returned": {
+          "landing": 6
+        }
+      },
+      "landing": {
+        "briefs": 6,
+        "exact_surface": 6,
+        "returned": {
+          "landing": 6
+        }
+      },
+      "mobile": {
+        "briefs": 6,
+        "exact_surface": 1,
+        "returned": {
+          "mobile": 1,
+          "landing": 5
+        }
+      },
+      "settings": {
+        "briefs": 6,
+        "exact_surface": 0,
+        "returned": {
+          "landing": 6
+        }
+      }
+    },
+    "clarification_questions": 0
+  },
+  "tested": {
+    "direction_distribution": {
+      "object-hero": 24,
+      "service-work-order": 1,
+      "broadcast-board": 1,
+      "stage-call-sheet": 1,
+      "exception-first": 1,
+      "grouped-fieldsets": 6,
+      "platform-sign": 1,
+      "margin-front": 1
+    },
+    "surface_counts": {
+      "dashboard": {
+        "briefs": 6,
+        "exact_surface": 2,
+        "returned": {
+          "landing": 4,
+          "dashboard": 2
+        }
+      },
+      "empty-state": {
+        "briefs": 6,
+        "exact_surface": 0,
+        "returned": {
+          "landing": 5,
+          "editorial": 1
+        }
+      },
+      "form": {
+        "briefs": 6,
+        "exact_surface": 6,
+        "returned": {
+          "form": 6
+        }
+      },
+      "landing": {
+        "briefs": 6,
+        "exact_surface": 6,
+        "returned": {
+          "landing": 6
+        }
+      },
+      "mobile": {
+        "briefs": 6,
+        "exact_surface": 1,
+        "returned": {
+          "mobile": 1,
+          "landing": 5
+        }
+      },
+      "settings": {
+        "briefs": 6,
+        "exact_surface": 0,
+        "returned": {
+          "landing": 6
+        }
+      }
+    },
+    "clarification_questions": 0
+  },
+  "tested_median_compact_utf8_bytes": 3497.0,
+  "cases": {
+    "landing-ceramics": {
+      "surface_requested": "landing",
+      "surface_returned": "landing",
+      "direction_id": "object-hero",
+      "questions": 0,
+      "payload_bytes": 3497,
+      "brief_sha256": "04af2c685a5db0d3696d9dd0849c8634adccce39f680f00b90985a889553d5f7",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "landing-repair": {
+      "surface_requested": "landing",
+      "surface_returned": "landing",
+      "direction_id": "service-work-order",
+      "questions": 0,
+      "payload_bytes": 3788,
+      "brief_sha256": "b30494cba27c798a2c5d6c827c93d69b916828352f9ab0953d6d8bffe5c7f84f",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "landing-radio": {
+      "surface_requested": "landing",
+      "surface_returned": "landing",
+      "direction_id": "broadcast-board",
+      "questions": 0,
+      "payload_bytes": 3512,
+      "brief_sha256": "80358b45ca5abdad80b47fcbb1ea5e8986782b1aa38f7790fd74bf3b73df8f90",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "landing-festival": {
+      "surface_requested": "landing",
+      "surface_returned": "landing",
+      "direction_id": "object-hero",
+      "questions": 0,
+      "payload_bytes": 3497,
+      "brief_sha256": "b237dea179c3dcc2606a12cfc9483d5b1d317a922bbaf9952b4ac797cf836299",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "landing-archive": {
+      "surface_requested": "landing",
+      "surface_returned": "landing",
+      "direction_id": "object-hero",
+      "questions": 0,
+      "payload_bytes": 3497,
+      "brief_sha256": "3299a354f5bece7b679cbcb23a75987e16163ade8ecb186b48b0eca922b08e87",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "landing-energy": {
+      "surface_requested": "landing",
+      "surface_returned": "landing",
+      "direction_id": "object-hero",
+      "questions": 0,
+      "payload_bytes": 3497,
+      "brief_sha256": "242df6d14ecfcdbb43ff35556bf95495d9419dacef1c1fe5439ae80d08b36e6c",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "dashboard-coldchain": {
+      "surface_requested": "dashboard",
+      "surface_returned": "landing",
+      "direction_id": "object-hero",
+      "questions": 0,
+      "payload_bytes": 3497,
+      "brief_sha256": "1f20e7096877908996cf9a497f84bc7573d0b54af2d753840c05d5e218e4d692",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "dashboard-venue": {
+      "surface_requested": "dashboard",
+      "surface_returned": "dashboard",
+      "direction_id": "stage-call-sheet",
+      "questions": 0,
+      "payload_bytes": 3610,
+      "brief_sha256": "b736ed0ddae66f54116fc8ebb48f8a65cae6eea21ec25e234f8e69412d91be18",
+      "frozen_surface_returned": "dashboard",
+      "frozen_direction_id": "stage-call-sheet"
+    },
+    "dashboard-harvest": {
+      "surface_requested": "dashboard",
+      "surface_returned": "landing",
+      "direction_id": "object-hero",
+      "questions": 0,
+      "payload_bytes": 3497,
+      "brief_sha256": "cdd24b40dd0e1528e5707057ee5b03186b3091e7aa91046cc8a8180e5db3e443",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "dashboard-support": {
+      "surface_requested": "dashboard",
+      "surface_returned": "landing",
+      "direction_id": "object-hero",
+      "questions": 0,
+      "payload_bytes": 3497,
+      "brief_sha256": "41e3295aec009b45a2885ae4a92161f9fbd9ad1d900fd69906c45b1dd8a62cdd",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "dashboard-energy": {
+      "surface_requested": "dashboard",
+      "surface_returned": "landing",
+      "direction_id": "object-hero",
+      "questions": 0,
+      "payload_bytes": 3497,
+      "brief_sha256": "bb4b1fbd16ca7d7df5edb7e8f7444c7d4416a6e03afb91c37b0d67b4d1d1e186",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "dashboard-library": {
+      "surface_requested": "dashboard",
+      "surface_returned": "dashboard",
+      "direction_id": "exception-first",
+      "questions": 0,
+      "payload_bytes": 2875,
+      "brief_sha256": "d66c3549416b069bc23d4e64f2cf2da94cbdcebeb5a4e0b4bbb1ec7bd7107074",
+      "frozen_surface_returned": "dashboard",
+      "frozen_direction_id": "exception-first"
+    },
+    "form-venue": {
+      "surface_requested": "form",
+      "surface_returned": "form",
+      "direction_id": "grouped-fieldsets",
+      "questions": 0,
+      "payload_bytes": 4394,
+      "brief_sha256": "d04744638eeda17a179916239be1e100d4d3d382d72607da4822c416041e8d06",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "form-maintenance": {
+      "surface_requested": "form",
+      "surface_returned": "form",
+      "direction_id": "grouped-fieldsets",
+      "questions": 0,
+      "payload_bytes": 4394,
+      "brief_sha256": "0c0ec8af56c1ef03e35bfa6df4b3d62856e2236398e4dbbf97fd161c15e24d17",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "form-label": {
+      "surface_requested": "form",
+      "surface_returned": "form",
+      "direction_id": "grouped-fieldsets",
+      "questions": 0,
+      "payload_bytes": 4394,
+      "brief_sha256": "26e786bb899231a32498131bd4384f90a5ad5c8b367c1527dc92ed7e6d28d727",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "form-garden": {
+      "surface_requested": "form",
+      "surface_returned": "form",
+      "direction_id": "grouped-fieldsets",
+      "questions": 0,
+      "payload_bytes": 4394,
+      "brief_sha256": "a09ee83f2a179ea54f5cebfc2209b081c4a203278fe769090f32dd7d39b72028",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "form-exhibition": {
+      "surface_requested": "form",
+      "surface_returned": "form",
+      "direction_id": "grouped-fieldsets",
+      "questions": 0,
+      "payload_bytes": 4394,
+      "brief_sha256": "1736f246666ab6af9cb563685cbbe4b53bfa38b7266ff8f3c27c15f78775470d",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "form-invoice": {
+      "surface_requested": "form",
+      "surface_returned": "form",
+      "direction_id": "grouped-fieldsets",
+      "questions": 0,
+      "payload_bytes": 4394,
+      "brief_sha256": "ea5f59357d912fd1d8a6e97f57a53b680e507d0a342077c3a2541724d97ccd6a",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "mobile-train": {
+      "surface_requested": "mobile",
+      "surface_returned": "mobile",
+      "direction_id": "platform-sign",
+      "questions": 0,
+      "payload_bytes": 2939,
+      "brief_sha256": "6f01f118b04818b53753a1e456daf3e1c578fc299773b8af660aeb4747d6901c",
+      "frozen_surface_returned": "mobile",
+      "frozen_direction_id": "platform-sign"
+    },
+    "mobile-field": {
+      "surface_requested": "mobile",
+      "surface_returned": "landing",
+      "direction_id": "object-hero",
+      "questions": 0,
+      "payload_bytes": 3497,
+      "brief_sha256": "ea53632eb388e8e5d2a22e84e7c06002f956df4e100354b5da26f6bf5d5d6885",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "mobile-recital": {
+      "surface_requested": "mobile",
+      "surface_returned": "landing",
+      "direction_id": "object-hero",
+      "questions": 0,
+      "payload_bytes": 3497,
+      "brief_sha256": "867b36708962fc1a7a20a11efe9845b0b346dc863712d708998a221266b8b85d",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "mobile-court": {
+      "surface_requested": "mobile",
+      "surface_returned": "landing",
+      "direction_id": "object-hero",
+      "questions": 0,
+      "payload_bytes": 3497,
+      "brief_sha256": "35ddfff61e49de9bf84b90f13f36193dea45afdf36a60ca6b78572110efeeb33",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "mobile-pantry": {
+      "surface_requested": "mobile",
+      "surface_returned": "landing",
+      "direction_id": "object-hero",
+      "questions": 0,
+      "payload_bytes": 3497,
+      "brief_sha256": "5417d033db42c0f67609f2970c02e6fae3f0084e595651f644e36116f36df915",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "mobile-gallery": {
+      "surface_requested": "mobile",
+      "surface_returned": "landing",
+      "direction_id": "object-hero",
+      "questions": 0,
+      "payload_bytes": 3497,
+      "brief_sha256": "9b16931430cf096d3a9c2c20182746d43a584917028397d52154f9f4ac20a7c6",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "settings-notifications": {
+      "surface_requested": "settings",
+      "surface_returned": "landing",
+      "direction_id": "object-hero",
+      "questions": 0,
+      "payload_bytes": 3497,
+      "brief_sha256": "347367bac20c35268ba23afbb43adf162cf41a7d6c780e45aab747d675862cde",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "settings-reading": {
+      "surface_requested": "settings",
+      "surface_returned": "landing",
+      "direction_id": "object-hero",
+      "questions": 0,
+      "payload_bytes": 3497,
+      "brief_sha256": "97af714c1f643f403c2cdc2c335fce7bc4ae868305c7f4ce2a97bc50c147c5ea",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "settings-team": {
+      "surface_requested": "settings",
+      "surface_returned": "landing",
+      "direction_id": "object-hero",
+      "questions": 0,
+      "payload_bytes": 3497,
+      "brief_sha256": "fe41fb5278ed2ce9af24d8fcc8f15b520ba01b94801b73261f6d89739368ac57",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "settings-focus": {
+      "surface_requested": "settings",
+      "surface_returned": "landing",
+      "direction_id": "object-hero",
+      "questions": 0,
+      "payload_bytes": 3497,
+      "brief_sha256": "dac6e820e54f92e58fafe3f7996c775976b222d0b2b892acb3dc6cffac725cb8",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "settings-digest": {
+      "surface_requested": "settings",
+      "surface_returned": "landing",
+      "direction_id": "object-hero",
+      "questions": 0,
+      "payload_bytes": 3497,
+      "brief_sha256": "badae2e2fad8484d9fe06af06eb98678d37ad316cf5aed9fa7a2ef98948e3c09",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "settings-language": {
+      "surface_requested": "settings",
+      "surface_returned": "landing",
+      "direction_id": "object-hero",
+      "questions": 0,
+      "payload_bytes": 3497,
+      "brief_sha256": "44b34fe330dc28356614d17e19f8d473789e0366679bb28efd5d6489a4ab35ae",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "empty-saved": {
+      "surface_requested": "empty-state",
+      "surface_returned": "landing",
+      "direction_id": "object-hero",
+      "questions": 0,
+      "payload_bytes": 3497,
+      "brief_sha256": "45473220c9b12f73e4db58e1df9fbe1b017be3af3bf965b35fbd460b8e8b3fe9",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "empty-drafts": {
+      "surface_requested": "empty-state",
+      "surface_returned": "editorial",
+      "direction_id": "margin-front",
+      "questions": 0,
+      "payload_bytes": 2677,
+      "brief_sha256": "260caf60b8e0d4dccd0d107de36d0649e1e2729458f07554ec4cc54bbf10cf8a",
+      "frozen_surface_returned": "editorial",
+      "frozen_direction_id": "margin-front"
+    },
+    "empty-search": {
+      "surface_requested": "empty-state",
+      "surface_returned": "landing",
+      "direction_id": "object-hero",
+      "questions": 0,
+      "payload_bytes": 3497,
+      "brief_sha256": "d06580257f6e7bb2c99e66738c00443944f0932e070a95cbcc4c3c27f3c7f8d1",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "empty-handoff": {
+      "surface_requested": "empty-state",
+      "surface_returned": "landing",
+      "direction_id": "object-hero",
+      "questions": 0,
+      "payload_bytes": 3497,
+      "brief_sha256": "ae23e8b341c2dfc67dcf4261598c21c3ed0f72c141235cb2d0c8521f3d70dfed",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "empty-exhibits": {
+      "surface_requested": "empty-state",
+      "surface_returned": "landing",
+      "direction_id": "object-hero",
+      "questions": 0,
+      "payload_bytes": 3497,
+      "brief_sha256": "1a70e35de5a81469efce7e141ec1de82391973be2d87069b22c8f61cddb9a5e0",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    },
+    "empty-shifts": {
+      "surface_requested": "empty-state",
+      "surface_returned": "landing",
+      "direction_id": "object-hero",
+      "questions": 0,
+      "payload_bytes": 3497,
+      "brief_sha256": "6d9e437089615b395a301e35b2952f62dd1fb11d03395217ccd15032e5ae9432",
+      "frozen_surface_returned": "landing",
+      "frozen_direction_id": "object-hero"
+    }
+  }
+}

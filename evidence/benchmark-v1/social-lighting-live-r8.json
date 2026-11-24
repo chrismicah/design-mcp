@@ -1,0 +1,330 @@
+{
+  "source": {
+    "task": "social-lighting",
+    "round": 8,
+    "direction_catalog_sha256": "85fb9c2751130d75ac0e4890a1d7a3fadd2d92c692f1668f5b5f80b4381893b3",
+    "critic_model": "gpt-6.1-terra",
+    "critic_effort": "low",
+    "playwriter": "0.12.0",
+    "series": "optical-bench"
+  },
+  "generation": {
+    "v2": {
+      "model": "gpt-6.2-sol",
+      "effort": "low",
+      "elapsed_seconds": 100.4,
+      "usage": {
+        "input_tokens": 62281,
+        "cached_input_tokens": 35456,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 4688,
+        "reasoning_output_tokens": 42
+      },
+      "html_sha256": "aa95720824d60b8e8f7e836c6dfb320434016bfb4bef8210de83e8bd452bf841",
+      "trace_sha256": "bd2c3429fab0cd5ab3d78f7cded7beb73f3ffde79a9cb3a2788db5ad71b6d448",
+      "expected_direction": "ground-plane"
+    },
+    "social": {
+      "model": "gpt-6.2-sol",
+      "effort": "low",
+      "elapsed_seconds": 96.86,
+      "usage": {
+        "input_tokens": 62752,
+        "cached_input_tokens": 50560,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 4474,
+        "reasoning_output_tokens": 52
+      },
+      "html_sha256": "6f5ce91a370794d847f22f09e99023603f656ebd181a72794e814a87490969a1",
+      "trace_sha256": "0c6776cf51c51b82d1414a8c12540062c037ef25e62b8537db83cd68a636519e",
+      "expected_direction": "cue-stage"
+    }
+  },
+  "ballot": {
+    "calibration": {
+      "example": "Legible repair intake with clear labels, familiar layout, and misplaced focus after an invalid number",
+      "coherence": 7,
+      "originality": 4,
+      "craft": 6,
+      "usability": 6
+    },
+    "screens": {
+      "A-1440": {
+        "coherence": 8,
+        "originality": 7,
+        "craft": 8,
+        "usability": 8,
+        "primary_action": {
+          "input": "Tab, then ArrowRight twice",
+          "expected": "Select Flood and show its blue backlight on the stage.",
+          "observed": "Flood became the checked radio and received visible focus. The heading and description changed to Flood and Blue backlight; the stage changed to a blue glow behind an outlined figure."
+        },
+        "edge_observation": "ArrowLeft selected Static with visible focus; the stage changed to a white diagonal beam and long shadow. Tab moved focus out of the document, while the dark selected segment and Static heading remained visible.",
+        "fact_check": "Flood and Blue backlight, and Static and Hard white side light, match the visible scenes. The stage is an illustration, so its physical accuracy is not established.",
+        "strength": "The large stage and immediate radio selection make the lighting differences easy to compare.",
+        "weakness": "The selected radio's small colored dot is less distinct than the filled segment, and the stage illustration provides no textual description in the inspected accessibility tree.",
+        "repair": "Add a cue-specific accessible description of the stage and strengthen the checked marker independently of color.",
+        "captures": [
+          "A-1440-before.png",
+          "A-1440-after.png",
+          "A-1440-edge.png"
+        ],
+        "arm": "social",
+        "html_sha256": "6f5ce91a370794d847f22f09e99023603f656ebd181a72794e814a87490969a1",
+        "weighted": 7.7,
+        "before": {
+          "sha256": "d96f2a9ba6c791889454aeec62030ed9364abf5a3f6d958cf63048e6fc601639",
+          "file": "A-1440-before.png",
+          "tool_call_id": "item_2"
+        },
+        "after": {
+          "sha256": "c6e9f5f0a34178c094a501bc96b86693b2942b5b7bdd8109c57d019056dca0bc",
+          "file": "A-1440-after.png",
+          "tool_call_id": "item_6"
+        },
+        "layout_width": 1440,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "ArrowLeft"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          }
+        ]
+      },
+      "A-390": {
+        "coherence": 8,
+        "originality": 7,
+        "craft": 8,
+        "usability": 8,
+        "primary_action": {
+          "input": "Tab, then ArrowRight twice",
+          "expected": "Select Flood and show its blue backlight on the stage.",
+          "observed": "Flood became checked and visibly focused; its name and Blue backlight appeared below a blue-lit figure."
+        },
+        "edge_observation": "ArrowLeft selected Static and showed a white side beam and shadow. After Tab moved focus out of the document, Static remained identifiable through its filled segment and heading.",
+        "fact_check": "Both requested cue names and descriptions appeared and the rendered lighting changed accordingly. Physical lighting accuracy was not tested.",
+        "strength": "The stage, three controls, and cue description fit together in the narrow viewport.",
+        "weakness": "The illustrated stage has no textual description in the inspected accessibility tree.",
+        "repair": "Provide a cue-specific accessible stage description while retaining the compact control layout.",
+        "captures": [
+          "A-390-before.png",
+          "A-390-after.png",
+          "A-390-edge.png"
+        ],
+        "arm": "social",
+        "html_sha256": "6f5ce91a370794d847f22f09e99023603f656ebd181a72794e814a87490969a1",
+        "weighted": 7.7,
+        "before": {
+          "sha256": "7dd4f79d354d980db334b28ee03159054414945398bfec761cbcc0d1618aa81c",
+          "file": "A-390-before.png",
+          "tool_call_id": "item_12"
+        },
+        "after": {
+          "sha256": "9e1ef310f0c9ce30c364d5d81223c09162b0c89a985b7ade0de44bd304fe2da9",
+          "file": "A-390-after.png",
+          "tool_call_id": "item_16"
+        },
+        "layout_width": 390,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "ArrowLeft"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          }
+        ]
+      },
+      "B-1440": {
+        "coherence": 9,
+        "originality": 8.5,
+        "craft": 8.5,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Tab three times, then Enter",
+          "expected": "Select Flood and show its blue backlight on the stage.",
+          "observed": "Flood became pressed and visibly focused, with the Flood heading and Blue backlight description. The stage transitioned from amber to a blue silhouette with a forward shadow."
+        },
+        "edge_observation": "Shift+Tab and Enter selected Static; its name and Hard white side light appeared, and the settled scene showed a beam from the right and a shadow to the left. A further Shift+Tab focused Dusk while Static remained visibly filled and pressed.",
+        "fact_check": "The cue text and accessible image descriptions agree with the settled rendered scenes. The immediate after capture caught the transition before the blue scene settled; the settled capture confirms the final state. Physical lighting accuracy was not tested.",
+        "strength": "The theatrical typography, curtain, floor perspective, and distinct light paths form a cohesive stage presentation.",
+        "weakness": "During the transition, the new cue label appears before the stage has visually settled, briefly presenting a mixed scene.",
+        "repair": "Shorten or clarify the transition so the cue label and lighting state are easier to associate immediately.",
+        "captures": [
+          "B-1440-before.png",
+          "B-1440-after.png",
+          "B-1440-after-settled.png",
+          "B-1440-edge.png",
+          "B-1440-edge-settled.png"
+        ],
+        "arm": "v2",
+        "html_sha256": "aa95720824d60b8e8f7e836c6dfb320434016bfb4bef8210de83e8bd452bf841",
+        "weighted": 8.65,
+        "before": {
+          "sha256": "ba0a7559a94dc6e403217a5bedba430433a8e86e0e53b040f6225b2a70552f1c",
+          "file": "B-1440-before.png",
+          "tool_call_id": "item_21"
+        },
+        "after": {
+          "sha256": "2c3a7ca2a5c4e52b9fe721495d82d69579e11b428fb0deee80b6e3b3e6600ddc",
+          "file": "B-1440-after.png",
+          "tool_call_id": "item_26"
+        },
+        "layout_width": 1440,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          }
+        ]
+      },
+      "B-390": {
+        "coherence": 9,
+        "originality": 8.5,
+        "craft": 8.5,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Tab three times, then Enter",
+          "expected": "Select Flood and show its blue backlight on the stage.",
+          "observed": "Flood became pressed and visibly focused; its name and description appeared, and the stage settled into a blue backlit silhouette with a forward shadow."
+        },
+        "edge_observation": "Shift+Tab and Enter selected Static. After another Shift+Tab, Dusk had the focus outline while Static remained filled and its name and hard white side light description remained visible. The settled stage showed the side beam and leftward shadow.",
+        "fact_check": "The requested names and descriptions match the settled scenes and accessible image text. The immediate after capture shows an in-progress transition; physical lighting accuracy was not tested.",
+        "strength": "The tall stage composition, cue text, and all three controls remain visible together at 390 CSS pixels.",
+        "weakness": "The label updates before the transition finishes, briefly leaving the previous lighting visible under the new cue name.",
+        "repair": "Make the transition faster or otherwise signal that the lighting preview is changing.",
+        "captures": [
+          "B-390-before.png",
+          "B-390-after.png",
+          "B-390-after-settled.png",
+          "B-390-edge.png",
+          "B-390-edge-settled.png"
+        ],
+        "arm": "v2",
+        "html_sha256": "aa95720824d60b8e8f7e836c6dfb320434016bfb4bef8210de83e8bd452bf841",
+        "weighted": 8.65,
+        "before": {
+          "sha256": "0e3a498b9e77112eeb2c07ad16a61ee773f6a34586d336e8d14eefae42a8855e",
+          "file": "B-390-before.png",
+          "tool_call_id": "item_35"
+        },
+        "after": {
+          "sha256": "36af860190ad5a040f61167ffbed2e73a0322b5597032f295b992a8abe8b924f",
+          "file": "B-390-after.png",
+          "tool_call_id": "item_40"
+        },
+        "layout_width": 390,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          }
+        ]
+      }
+    },
+    "preference": {
+      "winner": "B",
+      "reason": "B gives the stage a stronger theatrical identity and makes the direction of light and resulting shadows especially legible. Its selected state remains distinct from keyboard focus, and the stage has cue-specific accessible descriptions. Both views completed the requested keyboard task; B's transition timing is its main observed weakness."
+    },
+    "case": "social-lighting",
+    "verified_screens": 4,
+    "required_screens": 4,
+    "browser": "Chrome/157.0.8103.79",
+    "evaluator_thread": "01a2050c-f76b-7d52-858d-2cfd55ab0c27",
+    "usage": {
+      "input_tokens": 650299,
+      "cached_input_tokens": 620416,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 2979,
+      "reasoning_output_tokens": 24
+    },
+    "trace_sha256": "98e254def8203b9bbe88f764b3fe75de206c24783062eb31e6139fd91602c404",
+    "browser_audit_sha256": "f15ee5df9c4041a494a4e4d88baee74f8d88246500224f6a3bc87810ab1972c9"
+  },
+  "ballot_sha256": "e172926447d6d04d614dc4f5285c1cc06e97a7f378b9fc2c79080cec6bdb5268",
+  "decision": "The new performer did not retain the prior lighting clarity and lacked cue-specific accessible descriptions. Preserve round 4 and test a smaller repair against it."
+}

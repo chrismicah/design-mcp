@@ -1,0 +1,301 @@
+{
+  "calibration": {
+    "coherence": 7,
+    "originality": 5,
+    "craft": 6.5,
+    "usability": 6,
+    "basis": "Estimated from the supplied description: clear labels and a familiar layout support use, while misplaced focus after invalid input is a material usability defect. The example was not viewed."
+  },
+  "screens": {
+    "A-1440": {
+      "coherence": 8,
+      "originality": 7,
+      "craft": 8,
+      "usability": 8,
+      "primary_action": {
+        "input": "Tab, Space, Right, Right, Right",
+        "expected": "Select Tuesday, then Friday, with the selection and price visible.",
+        "observed": "Friday was checked and focused; the summary showed Friday and $85 without scrolling. Captured A-1440-before and A-1440-after."
+      },
+      "edge_observation": "Two Left presses selected Wednesday and updated the summary. The dark selected fill and outer focus outline are distinct, though the outline is fairly subtle.",
+      "fact_check": "The visible choices were Tuesday through Saturday. Tune-up, $85, 48 hours and 41 Elm Street remained present. These values were consistent across the views; no independent source was supplied to verify them.",
+      "strength": "The wheel illustration and restrained dark-and-pale split give the booking form a coherent bicycle-shop identity.",
+      "weakness": "The supporting summary repeats service information in a relatively large tinted panel; the keyboard focus outline is understated.",
+      "repair": "Strengthen the focus outline and reduce the summary's visual bulk while retaining the selected day and price.",
+      "arm": "current",
+      "html_sha256": "a622163c28975c8cb25d866488dc8079960a09d19ee8a0e0d73e5941641d67b4",
+      "weighted": 7.7,
+      "before": {
+        "sha256": "535d366dfe6b1768cd7c9f9335131bf16e1bd6d7c5538f98261387d87108af42",
+        "file": "A-1440-before.png",
+        "tool_call_id": "item_2"
+      },
+      "after": {
+        "sha256": "dc4721509f966f87d3a91203ca17ea0cc54f0eb47e91752f59b15691c67c4436",
+        "file": "A-1440-after.png",
+        "tool_call_id": "item_8"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Space"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ]
+    },
+    "A-390": {
+      "coherence": 8,
+      "originality": 7,
+      "craft": 7.5,
+      "usability": 7.5,
+      "primary_action": {
+        "input": "Tab, Space, Right, Right, Right",
+        "expected": "Select Friday and check its visibility alongside the price.",
+        "observed": "Friday's selected control and the $85 service price were visible without scrolling; the summary was below the viewport. Captured A-390-before and A-390-after."
+      },
+      "edge_observation": "Two Left presses selected Wednesday. After scrolling, the summary showed Wednesday and $85. The selected fill remained visible after focus left the radio group.",
+      "fact_check": "Tuesday through Saturday, 48 hours, $85 and 41 Elm Street were displayed. Their accuracy against an external source was not established.",
+      "strength": "The five day controls fit in one row and the price is prominent.",
+      "weakness": "The tall introduction pushes the summary below the initial viewport, separating its selected-day confirmation from the controls.",
+      "repair": "Place a concise selected-day confirmation directly beneath the day controls and shorten the mobile introduction.",
+      "arm": "current",
+      "html_sha256": "a622163c28975c8cb25d866488dc8079960a09d19ee8a0e0d73e5941641d67b4",
+      "weighted": 7.5,
+      "before": {
+        "sha256": "314c83a3ea6cef9c77f9e34c91398bc055f5aa6bb24b85be3b2a51cb7f0908ef",
+        "file": "A-390-before.png",
+        "tool_call_id": "item_12"
+      },
+      "after": {
+        "sha256": "55f9d94a9c0af9c63fb96e07302069550c4bc1c13bf7291e02d5d0fe20850a9d",
+        "file": "A-390-after.png",
+        "tool_call_id": "item_18"
+      },
+      "layout_width": 375,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Space"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Space"
+        }
+      ]
+    },
+    "B-1440": {
+      "coherence": 8,
+      "originality": 7,
+      "craft": 8,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab, Space, Right, Right, Right",
+        "expected": "Select Friday and show the selected day and price.",
+        "observed": "Friday was checked and focused; 'Booking day: Friday' appeared directly beneath the controls and $85 remained visible without scrolling. Captured B-1440-before and B-1440-after."
+      },
+      "edge_observation": "Two Left presses selected Wednesday and changed the nearby status to Wednesday. The selected fill and outer focus outline are separate, although the outline is subtle.",
+      "fact_check": "The choices were Tuesday through Saturday; the displayed tune-up price was $85, turnaround 48 hours and address 41 Elm Street. External accuracy was not independently verified.",
+      "strength": "The selected-day status sits beside the decision, while the compact supporting details remain easy to scan.",
+      "weakness": "The pale details panel repeats the service facts, and the focus outline could be more conspicuous.",
+      "repair": "Increase focus-indicator contrast and simplify repeated details.",
+      "arm": "proposed",
+      "html_sha256": "dd3b74f88b71ab20706c7e66200efba97f858e06622406f59dc3385172e16f85",
+      "weighted": 7.8,
+      "before": {
+        "sha256": "6d4f5812cea0205d579a94994e0a55cb5c3ce5c356af94a7025ff9b2776830d2",
+        "file": "B-1440-before.png",
+        "tool_call_id": "item_28"
+      },
+      "after": {
+        "sha256": "16f947e5193b29b9c4cdf2db5c6ecad4875ea6e7650663409221b87b1730004a",
+        "file": "B-1440-after.png",
+        "tool_call_id": "item_34"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Space"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ]
+    },
+    "B-390": {
+      "coherence": 8,
+      "originality": 7,
+      "craft": 8,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab, Space, Right, Right, Right",
+        "expected": "Select Friday and show the selected day and price without scrolling.",
+        "observed": "The selected Friday control, 'Booking day: Friday' and $85 were all visible without scrolling. Captured B-390-before and B-390-after."
+      },
+      "edge_observation": "Two Left presses selected Wednesday and updated the nearby status. After scrolling, the details panel showed tune-up, 48 hours and $85; the selected fill persisted after focus left.",
+      "fact_check": "Tuesday through Saturday, $85, 48 hours and 41 Elm Street were displayed. External accuracy was not independently verified.",
+      "strength": "The compact introduction keeps the price, controls and explicit selection confirmation together in the initial viewport.",
+      "weakness": "The full supporting details panel extends below the initial viewport, and the focus ring is thin.",
+      "repair": "Make keyboard focus more prominent while keeping the nearby selected-day status.",
+      "arm": "proposed",
+      "html_sha256": "dd3b74f88b71ab20706c7e66200efba97f858e06622406f59dc3385172e16f85",
+      "weighted": 7.8,
+      "before": {
+        "sha256": "c89cbeec2fb7006a9e3907c65c5e4a08c4f3dd3c5a1a1dd9b73c12e8d1202750",
+        "file": "B-390-before.png",
+        "tool_call_id": "item_38"
+      },
+      "after": {
+        "sha256": "4c5c4dd76e983d1b74aac5057a76d592d8e2f29afac0ed2327c3d3b3d4a40990",
+        "file": "B-390-after.png",
+        "tool_call_id": "item_44"
+      },
+      "layout_width": 375,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Space"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Space"
+        }
+      ]
+    }
+  },
+  "preference": {
+    "winner": "B",
+    "reason": "Both views support the tested keyboard sequence and preserve the displayed facts. B places an explicit selected-day status directly under the controls, keeping it visible with the price on mobile; its supporting details are also more compact."
+  },
+  "case": "booking-calm-result-placement",
+  "verified_screens": 4,
+  "required_screens": 4,
+  "browser": "Chrome/158.0.8127.36",
+  "evaluator_thread": "01a206b4-d75d-78e2-a8d2-c4287f2c45b2",
+  "usage": {
+    "input_tokens": 794482,
+    "cached_input_tokens": 763264,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2656,
+    "reasoning_output_tokens": 54
+  },
+  "trace_sha256": "01a4a86d7f9eb031aeefc1d59509b7758202d909a799c833b585d2f136dc17ce",
+  "browser_audit_sha256": "ffd7e75755bce843ef28ffcddae13109c333fcb9a585edb56ef518d4cc0525ce",
+  "source": {
+    "candidate_commit": "2ec989ccbac139de40f81668f004d6c84a27d354",
+    "generation": "manual fixture repair of the generated alternate",
+    "critic_model": "gpt-6.1-terra",
+    "critic_effort": "low",
+    "captures": ".context/creative-research-2026-11-22/form-calm-geometry/mobile-placement-blind/captures",
+    "mac_replay": ".context/creative-research-2026-11-22/form-calm-geometry/mobile-placement-local/receipt.json"
+  }
+}

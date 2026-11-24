@@ -1,0 +1,483 @@
+{
+  "runtime_ref": "fd6035d8732d177b811f81a0f5863e99134a85ca",
+  "visual": {
+    "capture_url": "https://github.com/chrismicah/design-mcp/actions/runs/44984687051",
+    "summary": {
+      "requested_pairs": 36,
+      "judged_pairs": 2,
+      "none": 91.66666666666666,
+      "v2": 95.83333333333333,
+      "difference": 4.166666666666671,
+      "wins_ties_losses": [
+        1,
+        1,
+        0
+      ],
+      "paired_bootstrap_95_interval": [
+        0.0,
+        8.333333333333343
+      ]
+    },
+    "ratings": [
+      {
+        "case": "dashboard-venue",
+        "surface": "dashboard",
+        "blind_key": {
+          "A": "none",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "Studio B appears first at both widths, but its small \u201c6 min late\u201d badge draws less attention than the illustrated title."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The cards align room names on the left and status badges on the right, while the compact desktop filter expands to the card width on mobile."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The italic \u201crooms\u201d distinguishes the title from the upright serif room names, and the bold sans-serif filters and statuses stay legible on mobile."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Plum and gold establish the theatre setting, while the amber clock and delay badge distinguish Studio B from Hall A\u2019s green check and \u201cReady\u201d badge."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "Both browser trees identify the selected filter and pair each room heading with its status, though the filter button names omit the visible counts of 2 and 1."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "Both widths show Studio B as \u201c6 min late\u201d and Hall A as \u201cReady,\u201d with \u201cDelayed\u201d and \u201cAll rooms\u201d controls above the list."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, the prominent \u201c6 minutes late\u201d cell draws the eye directly to Studio B\u2019s row, with \u201cDelayed only\u201d immediately above the table."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The filter aligns with the table\u2019s left edge at both widths, and the mobile rows give the two-line delay label enough space to stay clearly grouped with Studio B."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The serif title shifts from one line on desktop to two on mobile, while bold sans-serif status text remains easy to distinguish from the large serif room names."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "White text on burgundy singles out the delay, a green check marks \u201cReady,\u201d and the dark fill identifies the selected \u201cAll rooms\u201d filter."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Both browser trees associate each status cell with a room row header, mark \u201cAll rooms\u201d as pressed and expose \u201c2 of 2 rooms\u201d as a status."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "Both views label the controls \u201cDelayed only\u201d and \u201cAll rooms\u201d and show the exact pairings of Studio B with \u201c6 minutes late\u201d and Hall A with \u201cReady.\u201d"
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 25557,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3438,
+          "reasoning_output_tokens": 2789
+        },
+        "scores": {
+          "none": 91.66666666666666,
+          "v2": 100
+        }
+      },
+      {
+        "case": "landing-ceramics",
+        "surface": "landing",
+        "blind_key": {
+          "A": "none",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The drawing leads into the product name, $46 price and prominent \u201cAdd to bag\u201d button on desktop, and mobile preserves that reading order in a single column."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "A generous desktop gutter separates the drawing from the details, while the mobile image, copy and full-width button share a left edge, with shipping tucked just below the button."
+            },
+            "typography": {
+              "score": 3,
+              "evidence": "The upright and italic product name scales cleanly from two lines to one, though the tiny uppercase \u201cSmall-batch pottery\u201d label takes effort to read at 390 px."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Clay red connects the studio mark, italic \u201cBowl\u201d and purchase button, whose white lettering stands out against the dark fill at both widths."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "At both widths the browser tree names the visible controls \u201cBag, empty\u201d and \u201cAdd to bag\u201d and includes a status region and image text describing the speckled glaze and brown rim."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "The bowl drawing, $46 price, Milwaukee throwing and glazing details, \u201cShips in 5 days\u201d and \u201cAdd to bag\u201d match the brief, with post-add confirmation unverified in the supplied empty-bag views."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The drawing and large product name identify the bowl immediately, and pairing $46 with the plum \u201cAdd to bag\u201d button makes the purchase action easy to find at both widths."
+            },
+            "spacing": {
+              "score": 3,
+              "evidence": "The desktop divider and even spacing group shipping with the purchase row, while roughly 150 px of empty space separates them on mobile."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The two-line desktop title fits on one legible line on mobile, and the bold serif price and emphasized \u201c5 days\u201d make the buying details easy to scan at either width."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "The ochre drawing and cream background give the page warmth, and the deep plum fill singles out the white purchase label at both widths."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "At both widths the visible zero count corresponds to \u201cBag, 0 items\u201d in the browser tree, which also exposes a level-one product heading, a named drawing, an \u201cAdd to bag\u201d button and a status region."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Kiln & Field\u2019s illustrated Oat Glaze Bowl has the requested $46 price, Milwaukee maker credit, five-day shipping and \u201cAdd to bag\u201d action, with confirmation unverified because both captures show zero items."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 25555,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4317,
+          "reasoning_output_tokens": 3612
+        },
+        "scores": {
+          "none": 91.66666666666666,
+          "v2": 91.66666666666666
+        }
+      }
+    ],
+    "renders": {
+      "dashboard-venue/none": {
+        "renderer": "0.12.0",
+        "browser": "Chrome/158.0.8127.36",
+        "input_sha256": "15935eb7057bf30845d7ffc326b4ef883fc6cc8c9b520a1adc5bfa1fb1d3b91d",
+        "captures": {
+          "1440": {
+            "viewport": 1440,
+            "width": 1440,
+            "height": 900,
+            "title": "Rehearsal rooms",
+            "h1": "Rehearsal rooms",
+            "loadedFonts": [
+              "DM Sans",
+              "Instrument Serif"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- banner: Stage management\n- main:\n  - heading \"Rehearsal rooms\" [level=1]:\n    - text: Rehearsal\n    - emphasis: rooms\n  - region \"Rehearsal room status\":\n    - group \"Filter rehearsal rooms\":\n      - button \"All rooms\" [pressed]\n      - button \"Delayed\"\n    - status\n    - list:\n      - listitem:\n        - heading \"Studio B\" [level=2]\n        - time: 6 min\n        - text: late\n      - listitem:\n        - heading \"Hall A\" [level=2]\n        - text: Ready",
+            "status": "rendered",
+            "sha256": "bc426501437c612486e01d63d32d2bafee6d758faaff6b36efc5481a87f6eb1f"
+          },
+          "390": {
+            "viewport": 390,
+            "width": 390,
+            "height": 844,
+            "title": "Rehearsal rooms",
+            "h1": "Rehearsal rooms",
+            "loadedFonts": [
+              "DM Sans",
+              "Instrument Serif"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- banner: Stage management\n- main:\n  - heading \"Rehearsal rooms\" [level=1]:\n    - text: Rehearsal\n    - emphasis: rooms\n  - region \"Rehearsal room status\":\n    - group \"Filter rehearsal rooms\":\n      - button \"All rooms\" [pressed]\n      - button \"Delayed\"\n    - status\n    - list:\n      - listitem:\n        - heading \"Studio B\" [level=2]\n        - time: 6 min\n        - text: late\n      - listitem:\n        - heading \"Hall A\" [level=2]\n        - text: Ready",
+            "status": "rendered",
+            "sha256": "2cface591ca3780d2cdb542c9bb24da7109f92a1e666fd56976ec9d0ad2231b3"
+          }
+        }
+      },
+      "dashboard-venue/v2": {
+        "renderer": "0.12.0",
+        "browser": "Chrome/158.0.8127.36",
+        "input_sha256": "7568885947b22dbd6933e687cac41401ea3db538f7dfb5071ac35718ff92b7f6",
+        "captures": {
+          "1440": {
+            "viewport": 1440,
+            "width": 1440,
+            "height": 900,
+            "title": "Rehearsal rooms",
+            "h1": "Rehearsal rooms",
+            "loadedFonts": [
+              "Instrument Sans",
+              "Newsreader"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- main:\n  - paragraph: Stage management\n  - heading \"Rehearsal rooms\" [level=1]\n  - region \"Rehearsal rooms\":\n    - group \"Filter rooms\":\n      - button \"All rooms\" [pressed]\n      - button \"Delayed only\"\n    - status: 2 of 2 rooms\n    - table \"Rehearsal room status\":\n      - rowgroup:\n        - row \"Room Status\":\n          - columnheader \"Room\"\n          - columnheader \"Status\"\n      - rowgroup:\n        - row \"Studio B 6 minutes late\":\n          - rowheader \"Studio B\"\n          - cell \"6 minutes late\"\n        - row \"Hall A Ready\":\n          - rowheader \"Hall A\"\n          - cell \"Ready\"",
+            "status": "rendered",
+            "sha256": "acf14f72bf9bba6c7f9c20156b477ee24d93a0743d8e2f416655d373b0d36ba9"
+          },
+          "390": {
+            "viewport": 390,
+            "width": 390,
+            "height": 844,
+            "title": "Rehearsal rooms",
+            "h1": "Rehearsal rooms",
+            "loadedFonts": [
+              "Instrument Sans",
+              "Newsreader"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- main:\n  - paragraph: Stage management\n  - heading \"Rehearsal rooms\" [level=1]\n  - region \"Rehearsal rooms\":\n    - group \"Filter rooms\":\n      - button \"All rooms\" [pressed]\n      - button \"Delayed only\"\n    - status: 2 of 2 rooms\n    - table \"Rehearsal room status\":\n      - rowgroup:\n        - row \"Room Status\":\n          - columnheader \"Room\"\n          - columnheader \"Status\"\n      - rowgroup:\n        - row \"Studio B 6 minutes late\":\n          - rowheader \"Studio B\"\n          - cell \"6 minutes late\"\n        - row \"Hall A Ready\":\n          - rowheader \"Hall A\"\n          - cell \"Ready\"",
+            "status": "rendered",
+            "sha256": "c23c0fde179c56ab144de6b4bddb313bc8ecf86ec14c16a8adb2fe6a524e2fb0"
+          }
+        }
+      },
+      "landing-ceramics/none": {
+        "renderer": "0.12.0",
+        "browser": "Chrome/158.0.8127.36",
+        "input_sha256": "57b6129001eb4b48ae92af55043c33f2082d81d10a31d456c232c976d2736c88",
+        "captures": {
+          "1440": {
+            "viewport": 1440,
+            "width": 1440,
+            "height": 900,
+            "title": "Oat Glaze Bowl | Kiln & Field",
+            "h1": "Oat Glaze Bowl",
+            "loadedFonts": [
+              "DM Sans",
+              "Fraunces"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- banner:\n  - text: Kiln & Field\n  - button \"Bag, empty\": Bag\n- main:\n  - region \"Oat Glaze Bowl\":\n    - figure:\n      - img \"Illustration of the Oat Glaze Bowl, with a pale speckled glaze and a warm brown rim\"\n    - paragraph: Small-batch pottery\n    - heading \"Oat Glaze Bowl\" [level=1]:\n      - text: Oat Glaze\n      - emphasis: Bowl\n    - paragraph: $46\n    - paragraph: Thrown and glazed by the maker in Milwaukee.\n    - button \"Add to bag\"\n    - paragraph: Ships in 5 days\n    - status",
+            "status": "rendered",
+            "sha256": "557a24a9fffa4f6a3668da935ddf95b463c5b16c11640540400643779d1b910d"
+          },
+          "390": {
+            "viewport": 390,
+            "width": 390,
+            "height": 844,
+            "title": "Oat Glaze Bowl | Kiln & Field",
+            "h1": "Oat Glaze Bowl",
+            "loadedFonts": [
+              "DM Sans",
+              "Fraunces"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- banner:\n  - text: Kiln & Field\n  - button \"Bag, empty\": Bag\n- main:\n  - region \"Oat Glaze Bowl\":\n    - figure:\n      - img \"Illustration of the Oat Glaze Bowl, with a pale speckled glaze and a warm brown rim\"\n    - paragraph: Small-batch pottery\n    - heading \"Oat Glaze Bowl\" [level=1]:\n      - text: Oat Glaze\n      - emphasis: Bowl\n    - paragraph: $46\n    - paragraph: Thrown and glazed by the maker in Milwaukee.\n    - button \"Add to bag\"\n    - paragraph: Ships in 5 days\n    - status",
+            "status": "rendered",
+            "sha256": "416f27c2a93f34c380ef6a71467b852446938b6e093d95a3c3da20c8c68fcb1b"
+          }
+        }
+      },
+      "landing-ceramics/v2": {
+        "renderer": "0.12.0",
+        "browser": "Chrome/158.0.8127.36",
+        "input_sha256": "8b38c73412739c571507bf92cd0e37d6e118b2950d0722a26830c4fe34d06afe",
+        "captures": {
+          "1440": {
+            "viewport": 1440,
+            "width": 1440,
+            "height": 900,
+            "title": "Oat Glaze Bowl | Kiln & Field",
+            "h1": "Oat Glaze Bowl",
+            "loadedFonts": [
+              "Fraunces",
+              "Instrument Sans"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- banner:\n  - text: Kiln & Field\n  - button \"Bag, 0 items\": Bag\n- main:\n  - figure:\n    - img \"Drawing of the Oat Glaze Bowl\"\n  - region \"Oat Glaze Bowl\":\n    - paragraph: Small-batch pottery\n    - heading \"Oat Glaze Bowl\" [level=1]:\n      - text: Oat Glaze\n      - emphasis: Bowl\n    - paragraph: Thrown and glazed by the maker in Milwaukee.\n    - paragraph:\n      - text: Ships in\n      - strong: 5 days\n    - paragraph: $46\n    - button \"Add to bag\"\n    - status",
+            "status": "rendered",
+            "sha256": "af8be76719393ab4ebc93a621b8de05a68c27e6906ed27371696d02267f8998b"
+          },
+          "390": {
+            "viewport": 390,
+            "width": 390,
+            "height": 844,
+            "title": "Oat Glaze Bowl | Kiln & Field",
+            "h1": "Oat Glaze Bowl",
+            "loadedFonts": [
+              "Fraunces",
+              "Instrument Sans"
+            ],
+            "language": "en",
+            "reducedMotion": true,
+            "pageErrors": [],
+            "accessibility": "- banner:\n  - text: Kiln & Field\n  - button \"Bag, 0 items\": Bag\n- main:\n  - figure:\n    - img \"Drawing of the Oat Glaze Bowl\"\n  - region \"Oat Glaze Bowl\":\n    - paragraph: Small-batch pottery\n    - heading \"Oat Glaze Bowl\" [level=1]:\n      - text: Oat Glaze\n      - emphasis: Bowl\n    - paragraph: Thrown and glazed by the maker in Milwaukee.\n    - paragraph:\n      - text: Ships in\n      - strong: 5 days\n    - paragraph: $46\n    - button \"Add to bag\"\n    - status",
+            "status": "rendered",
+            "sha256": "19a255a5ab48ca9193ef2325688fa91ebac5c4d785e6431dc795460625a9cd73"
+          }
+        }
+      }
+    }
+  },
+  "installation": {
+    "url": "https://github.com/chrismicah/design-mcp/actions/runs/44984617955",
+    "workflow_ref": "67ed9858413be79d2d37747f9232681b8da16348",
+    "result": "success",
+    "jobs": [
+      {
+        "name": "arm64 / Python 3.12",
+        "result": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "result": "success"
+          },
+          {
+            "name": "Check out the frozen runtime",
+            "result": "success"
+          },
+          {
+            "name": "Select the exact Python interpreter",
+            "result": "success"
+          },
+          {
+            "name": "Install from the clean checkout using pipx and uv",
+            "result": "success"
+          },
+          {
+            "name": "Post Select the exact Python interpreter",
+            "result": "success"
+          },
+          {
+            "name": "Post Check out the frozen runtime",
+            "result": "success"
+          },
+          {
+            "name": "Complete job",
+            "result": "success"
+          }
+        ]
+      },
+      {
+        "name": "arm64 / Python 3.13",
+        "result": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "result": "success"
+          },
+          {
+            "name": "Check out the frozen runtime",
+            "result": "success"
+          },
+          {
+            "name": "Select the exact Python interpreter",
+            "result": "success"
+          },
+          {
+            "name": "Install from the clean checkout using pipx and uv",
+            "result": "success"
+          },
+          {
+            "name": "Post Select the exact Python interpreter",
+            "result": "success"
+          },
+          {
+            "name": "Post Check out the frozen runtime",
+            "result": "success"
+          },
+          {
+            "name": "Complete job",
+            "result": "success"
+          }
+        ]
+      },
+      {
+        "name": "x86_64 / Python 3.12",
+        "result": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "result": "success"
+          },
+          {
+            "name": "Check out the frozen runtime",
+            "result": "success"
+          },
+          {
+            "name": "Select the exact Python interpreter",
+            "result": "success"
+          },
+          {
+            "name": "Install from the clean checkout using pipx and uv",
+            "result": "success"
+          },
+          {
+            "name": "Post Select the exact Python interpreter",
+            "result": "success"
+          },
+          {
+            "name": "Post Check out the frozen runtime",
+            "result": "success"
+          },
+          {
+            "name": "Complete job",
+            "result": "success"
+          }
+        ]
+      },
+      {
+        "name": "x86_64 / Python 3.13",
+        "result": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "result": "success"
+          },
+          {
+            "name": "Check out the frozen runtime",
+            "result": "success"
+          },
+          {
+            "name": "Select the exact Python interpreter",
+            "result": "success"
+          },
+          {
+            "name": "Install from the clean checkout using pipx and uv",
+            "result": "success"
+          },
+          {
+            "name": "Post Select the exact Python interpreter",
+            "result": "success"
+          },
+          {
+            "name": "Post Check out the frozen runtime",
+            "result": "success"
+          },
+          {
+            "name": "Complete job",
+            "result": "success"
+          }
+        ]
+      }
+    ]
+  }
+}

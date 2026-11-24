@@ -1,340 +1,141 @@
-# Design Intelligence MCP Server
+# Design MCP
 
-An MCP (Model Context Protocol) server that gives AI agents structured access to **7,000+ real-world design patterns** for higher-quality UI generation — including visual design analysis, anti-pattern detection, and actionable improvement suggestions.
+Turn a brief into one sourced art direction. The response gives the coding agent a focal element, type pairing, color roles, layout and mobile order, an interaction, and a reason for the direction.
 
-Instead of hallucinating layouts and guessing at component structures, AI agents can search proven design patterns, get semantic tokens, analyze code for visual quality, and generate complete design systems before writing code.
+## Install
 
-## Why This Exists
-
-Research shows that LLMs generate significantly better UI code when given:
-- **Explicit layout types** (prevents absolute positioning hallucination)
-- **Behavioral descriptions** (how patterns work, not just how they look)
-- **Semantic tokens** (avoids magic numbers and hardcoded colors)
-- **Component structure hints** (prevents hallucinated prop interfaces)
-- **Accessibility notes** (60% reduction in inaccessibility issues)
-- **Visual design rules** (color contrast, typography scales, spacing systems)
-
-This MCP server provides all of that from a curated database of real-world examples.
-
----
-
-## Quick Install
-
-### One command to add to Claude Code:
+Install the verified development build with either command. Both support an explicit `--python` option to select an installed interpreter.
 
 ```bash
-pip install git+https://github.com/chrismicah/design-mcp.git
-claude mcp add -s user design-mcp -- design-mcp serve
+pipx install 'git+https://github.com/chrismicah/design-mcp.git@18b87522a49c545dd6204c20762d6fd64145d375'
+# or
+uv tool install 'git+https://github.com/chrismicah/design-mcp.git@18b87522a49c545dd6204c20762d6fd64145d375'
 ```
 
-That's it. Works on **macOS, Linux, and Windows**.
+For a local checkout, pass `.` to your installer. [Candidate install matrix](https://github.com/chrismicah/design-mcp/actions/runs/45196397946)
 
-> **Tip:** Use a virtualenv or `pipx` if you prefer isolated installs:
-> ```bash
-> pipx install git+https://github.com/chrismicah/design-mcp.git
-> claude mcp add -s user design-mcp -- design-mcp serve
-> ```
+If Design MCP is already installed, add `--force` after `pipx install` or `uv tool install` in the matching command. Run `design-mcp doctor` and reconnect your MCP client after changing the installed version.
 
-### Verify it's working:
+Run `design-mcp doctor` in the installed environment. It reports the interpreter and executable, validates bundled resources, and uses a local stdio client to discover the selected tools and call one. Each check reports pass, fail, or skip. A failed check gives a nonzero exit status.
+
+If you see `Unknown command: doctor` or your client lists only the historical tools, run `command -v design-mcp` to see which launcher your shell found. Re-run the pinned install above with `--force` using the installer that owns that launcher. If you keep both installs, run `doctor` using the full path of the verified executable and use that same path as the MCP client's command. Reconnect and confirm that `direct`, `react`, and `check` appear. The old and new launchers can both report version `0.1.0`. [Launcher recovery test](evidence/benchmark-v1/stale-launcher-recovery.json)
+
+### Claude Code
 
 ```bash
-claude mcp list          # Should show design-mcp
-design-mcp version       # Should show 0.1.0
+claude mcp add design-mcp -s user -e DESIGN_MCP_SURFACE=v2 -- design-mcp serve
+claude mcp get design-mcp
 ```
 
-### Remove:
+An alternative in an active virtual environment is `python -m pip install .`. Use the full path to `design-mcp` when it is outside the client's PATH. The MCP runs over stdio and the direction tools use bundled data. They require no API key.
 
-```bash
-claude mcp remove design-mcp
+### Codex
+
+Add the server to your Codex configuration. The `writes` approval mode uses the read-only annotation on the three direction tools.
+
+```toml
+[mcp_servers.design-mcp]
+command = "design-mcp"
+args = ["serve"]
+default_tools_approval_mode = "writes"
+
+[mcp_servers.design-mcp.env]
+DESIGN_MCP_SURFACE = "v2"
 ```
 
----
+### Claude Desktop and Cursor
 
-## Alternative Installation Methods
-
-### From source (for development)
-
-```bash
-git clone https://github.com/chrismicah/design-mcp.git
-cd design-mcp
-pip install -e .
-claude mcp add -s user design-mcp -- design-mcp serve
-```
-
-### Claude Desktop
-
-Add to your config file:
-
-**macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`  
-**Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+Add this entry to Claude Desktop’s `claude_desktop_config.json` or Cursor’s `.cursor/mcp.json`. Set `command` to the path printed by `command -v design-mcp` if the client launches outside your shell environment.
 
 ```json
 {
   "mcpServers": {
     "design-mcp": {
       "command": "design-mcp",
-      "args": ["serve"]
+      "args": ["serve"],
+      "env": {"DESIGN_MCP_SURFACE": "v2"}
     }
   }
 }
 ```
 
-> If `design-mcp` isn't on your PATH, use the full path:  
-> `"command": "/path/to/venv/bin/design-mcp"` (macOS/Linux)  
-> `"command": "C:\\path\\to\\venv\\Scripts\\design-mcp.exe"` (Windows)
+## Give the agent a brief
 
-### Cursor
+> I need a site for a local bike repair shop. Second Spin does 48-hour tune-ups for $85. We are at 41 Elm Street and take bookings Tuesday to Saturday. Make booking easy to find and let a visitor pick a day to see the booking summary.
 
-Settings → MCP Servers → Add:
-- **Name:** `design-mcp`
-- **Command:** `design-mcp serve`
+The agent calls `direct` first. Give the audience, task, real content, and any existing brand constraints in the brief. Start with the brief alone so the tool can infer the surface. Use the optional surface argument when the project explicitly calls for one. A very short brief can produce one optional question with a default. If the brief asks for incompatible outcomes, have the agent ask which outcome to build. Apply the direction to the project's data, load its licensed typefaces, and test the main action.
 
-### Any MCP Client
+| Tool | Arguments | Result |
+| --- | --- | --- |
+| `direct` | `brief`, optional `surface` and `avoid` | One reviewed direction and its evidence. Surfaces are `landing`, `dashboard`, `mobile` (web), `portfolio`, `pricing`, `editorial`, `form`. |
+| `react` | `direction_id`, `reaction`, optional `comparison_id` | Concrete changes for “calmer”, “bolder”, “too generic”, or “more like A”. For a compared direction, pass its ID. |
+| `check` | `source_code` | Located source findings for recognized font, copy, surface, and composition patterns. Use a rendered browser to check geometry, imagery, active fonts, motion, and usability. |
 
-The server uses **stdio** transport. Point your client to:
+Try “calmer” after the first draft. The advice depends on the selected direction. On a form it suggests more space before a primary button. Other directions can adjust the type scale, accent, spacing, and motion. For the booking example, check that the chosen day appears beside the controls after selection on a phone. [Booking walkthrough and open checks](EVALS.md#candidate-decisions) · [Connected signup and dashboard tests](EVALS.md#connected-first-run-transfer)
 
-```
-command: design-mcp
-args: ["serve"]
-```
+## Review an existing interface
 
----
+- **Measure the current Chrome tab or a pasted URL.** Load the folder printed by `design-mcp review --extension-path` as an unpacked extension and connect its local host once. Use **Review this page** for the active tab or **Review URL** for a pasted public address. Both paths save a masked capture. The popup reports measured overflow, covered controls, and contrast on flat backgrounds. After upgrading, reload the extension from the installed path and reconnect the local host. [Extension setup](design_mcp/review/README.md#set-up-the-extension)
+- **Ask a vision-capable MCP client for a design critique.** Add `--review` to the installed server's `serve` arguments. Reconnect and use `review_page` to give the model a masked screenshot and layout facts. Connect Playwriter so the agent can also perform a visitor task and compare the resulting screens. [Setup and example prompt](design_mcp/review/README.md#visual-critique-and-a-live-task)
+- **Capture both widths from the terminal.** With Playwriter 0.12.0 installed, run `design-mcp review https://example.com --playwriter`. The command uses a separate Chrome profile, checks the page at 1440 and 390 CSS px, and saves a local preview. [Browser setup](design_mcp/review/README.md)
+- **Your SwiftUI or Electron app.** Copy the matching exporter from this repository into your UI test project. The Swift exporter needs an XCTest target. The Electron exporter reads a supplied BrowserWindow. Run `design-mcp review-app capture.json` to check recorded clipping and hittability. Keep raw desktop screenshots local, or redact visible input values before sharing. [Swift exporter](integrations/desktop/SwiftCapture.swift) · [Electron exporter](integrations/desktop/electron.mjs)
 
-## Usage
+GPT Computer Use tested both Chrome flows on the earlier `0978712` build. The active-tab scan flagged **2.6:1 contrast** and opened a saved comparison that supports keyboard access. A pasted URL returned a **1440 × 900** capture in **6.37 seconds** with five fields masked. A 404 returned focus to the address field and left the saved reviews untouched. These are single walkthrough timings. [Native Chrome receipt](evidence/benchmark-v1/release-native-chrome-0978712.json)
 
-Once connected, ask your AI agent things like:
+At the install pin, macOS CI captured SwiftUI and Electron before and after a reveal action. SwiftUI went from four to five hittable buttons. Electron cleared the covered control finding and retained the clipping finding. The installed CLI reproduced both results from the exported geometry. [Desktop capture receipts](evidence/benchmark-v1/release-ci-18b87522.json)
 
-- *"Search for dark mode dashboard designs in fintech"*
-- *"Get the full blueprint for Stripe's dashboard pattern"*
-- *"Analyze this code for design anti-patterns"*
-- *"Scan my project and tell me what to fix"*
-- *"Give me visual suggestions — colors, fonts, spacing — for a professional law firm app"*
-- *"Compare how Stripe vs Linear vs Notion handle their dashboards"*
-- *"What libraries should I use for a glassmorphism landing page with animations?"*
+## Compatibility
 
----
+The default serves `direct`, `react`, and `check` from the reviewed catalog. Set `DESIGN_MCP_SURFACE=both` to add the 14 historical pattern, token, library, and analysis tools, or `legacy` for the historical tools alone. In the legacy search, request `visual_recipes` or `design_system` explicitly in `fields` to include the corresponding guidance.
 
-## MCP Tools (12)
+The package requires Python 3.10 or later. Python 3.10 selects FastMCP 4.1.8. Python 3.11 and later select the 4.2 patch series starting at 4.2.4. [FastMCP 4.1.8](https://pypi.org/project/fastmcp/4.1.8/) · [FastMCP 4.2.4](https://pypi.org/project/fastmcp/4.2.4/)
 
-### Search & Discovery
+Reviewed directions work offline. A checkout or older installation with the bundled pattern corpus uses its local copy. In a slim installation, the first tool call that needs historical patterns fetches 10,092,399 bytes from a pinned Git commit and verifies SHA-256 `dd51bf8db34f9295253b846ee8719cfd9b76b775ff029f591e49d9e7d16806a5`. Later calls use the local cache. [Pinned pattern corpus](https://github.com/chrismicah/design-mcp/blob/82fe6e3749acccf80aecfd523e531be4302865e3/design_mcp/data/patterns.json)
 
-#### `search_design_patterns`
-Search 7,000+ design patterns with filters for page type, industry, platform, color mode, and visual style.
+Plain `design-mcp doctor` works offline and checks the selected tool surface. In a legacy mode it also checks the corpus and local cache. Run `design-mcp doctor --repair` to prepare that cache before going offline or to replace a corrupt copy. Repair uses a verified bundle when available and otherwise needs access to the pinned download.
 
-```python
-results = search_design_patterns(
-    query="analytics dashboard",
-    page_type="Dashboard",
-    industry="Fintech",
-    color_mode="dark",
-    limit=5
-)
-```
+The new direction library and the historical pattern data have separate roles. Historical metadata may be templated, incomplete, or missing its original screenshot. Treat source records as review inputs. The directions carry observable source evidence or clearly labelled hypotheses. The direction and results can be checked separately.
 
-#### `get_design_blueprint`
-Get the full blueprint for a specific pattern — layout info, component hints with code, behavioral descriptions, accessibility notes, and semantic tokens.
+### Existing source-checkout configurations
 
-#### `get_design_taxonomy`
-Browse the full taxonomy: 25 page types, 25 UX patterns, 47 UI elements, 15 industries, 16 visual styles.
+`python /path/to/design-mcp/server.py` still launches the 14-tool compatibility server. It uses the same implementation as the installed command. To move an existing configuration to the package, set `DESIGN_MCP_SURFACE=legacy` and use `design-mcp serve`. Use `both` to add the three direction tools. Old root-level `models` imports move to `design_mcp.models`.
 
-#### `compare_design_approaches`
-Compare how different products handle the same page type — side-by-side blueprints with layout strategies and key differences.
+The optional historical maintenance scripts write to `data/`. Run `python3 scripts/stage_legacy_data.py` from a source checkout before running those scripts. It seeds missing files from the verified snapshot and preserves any existing work. The MCP and review tools read their package resources independently.
 
-### Design Tokens & Behavior
+## Verified results
 
-#### `get_semantic_tokens`
-Get W3C-format semantic design tokens for consistent styling — colors, spacing, typography, borders. Supports light and dark themes.
+At `18b87522`, all eight macOS 15 cells passed on Intel and Apple Silicon with Python 3.10–3.13. The logs verify **16 pinned Git installs, 16 doctor calls, and 96 stdio smoke runs**. The earlier `0978712` package passed **eight clean installs and 48 stdio checks** on Apple Silicon Ventura 13.7.4. Current-package Ventura runtime remains unverified on both architectures. [Exact macOS 15 matrix](evidence/benchmark-v1/release-ci-18b87522.json) · [Earlier Ventura matrix](evidence/benchmark-v1/ventura-tart-0978712.json)
 
-#### `get_behavioral_pattern`
-Get behavioral specs for 7 common UX patterns: empty states, skeleton loading, error handling, onboarding flows, form validation, infinite scroll, command palettes.
+On the Apple Silicon reference Mac, the installed pin reached its first `direct` result in a median **624 ms** across five fresh server processes. Fifteen warm calls took a median **1.65 ms**. The same install passed offline startup and an explicit legacy cache repair from the pinned download. [Offline and startup results](evidence/benchmark-v1/release-cache-18b87522.json)
 
-### Code Analysis
+The PR branch's work-order booking study kept the selected date and price visible at 320, 390, and 1440 px through the first draft and a one-word revision. Blind comparisons favored the revised guidance at both widths. Its package passed all 14 hosted checks at `a700f82`, including 16 macOS 15 clean installs, 96 stdio runs, both Chrome review flows, SwiftUI and Electron fixtures. [Booking comparison](evidence/benchmark-v1/booking-work-order-first.json) · [Hosted receipt](evidence/benchmark-v1/release-ci-a700f82.json) · [Exact follow-up CI at `559aee8`](evidence/benchmark-v1/release-ci-559aee8.json)
 
-#### `analyze_and_devibecode`
-**Anti-pattern detector.** Paste raw "vibecoded" code and get a structured refactoring plan with 15 anti-pattern detectors across styling, layout, and accessibility.
+All 13 hosted checks passed at the install pin. The hosted Chrome extension reached a masked capture **2.36 seconds** after URL submission in that run. On the BenQ, the exact installed build saved and reopened both captures, switched to After by keyboard, and recovered in the same URL field after a 404. The native popup reported **0.74 seconds** for active-tab review and **1.37 seconds** for pasted URL review, one sample each. [Hosted checks](evidence/benchmark-v1/release-ci-18b87522.json) · [Native BenQ replay](evidence/benchmark-v1/release-native-benq-18b87522.json)
 
-```python
-result = analyze_and_devibecode("""
-    <div onClick={fn} className="bg-[#FF0000] w-[300px] absolute top-[20px]">
-        <input type="text" />
-    </div>
-""")
-# Returns: anti_patterns_found, severity_summary, refactoring_suggestions,
-#          recommended_layout, semantic_tokens, component_hints
-```
+At the `18b87522` pin, `review_page` returned original masked PNGs at 1440 × 900 and 390 × 844. The stdio session recovered after an HTTP 404 and an unsupported URL. [Installed review receipt](evidence/benchmark-v1/release-ci-18b87522.json)
 
-#### `scan_project`
-**Project-wide scanner.** Point at a directory and get a health score (0-100), per-file reports, visual analysis, priority fixes, and library recommendations.
+A standalone recovery comparison scored **8.20 desktop / 7.95 phone** for choosing a replacement tool and **7.80 at both widths** for recovering from a lift closure. Both prototypes passed scripted keyboard and touch checks. The installed MCP has a separate benchmark. [Prototype ballots and scope](EVALS.md#standalone-cabinet-and-train-recovery-repairs)
 
-```python
-result = scan_project(
-    project_path="/path/to/my-app/src",
-    max_files=50
-)
-# Returns: project_health_score, files_scanned, top_issues,
-#          visual_issues, recommended_libraries, file_reports
-```
+All 36 matched design briefs have blinded scores. The plain generator averaged 92.7 and frozen Design MCP v2 averaged 94.1, with 17 wins, 11 ties, and eight losses. The paired 95% interval of −0.46 to +3.13 points leaves the average advantage inconclusive. [Benchmark and receipts](EVALS.md)
 
-Detects 21 issue types across structural, visual, and accessibility domains:
-- **Structural:** div soup, missing flex/grid, redundant wrappers, absolute positioning abuse
-- **Styling:** magic hex colors, hardcoded pixels, inline styles, z-index abuse
-- **Accessibility:** missing ARIA, unlabeled inputs, removed focus indicators, interactive divs
-- **Visual:** low contrast (WCAG), color proliferation, spacing inconsistency, typography scale issues, broken heading hierarchy, missing dark mode
+The creative workflow tests different ways to present and use the same site before refining a candidate. Each scored round requires a fresh critic who uses the live site on desktop and phone. The verifier also keeps builder and critic sessions separate across rounds. [Creative round workflow](DESIGN-HARNESS.md#creative-rounds) · [Bakery study](EVALS.md#bakery-live-comparison) · [Editorial study](EVALS.md#creative-study-verification)
 
-#### `generate_refactored_code`
-Takes vibecoded code and generates a concrete refactoring plan mapped to a specific component library (shadcn/ui, Mantine, Chakra UI, NextUI, or Radix UI).
+River's strongest fixture scored 8.85 from one critic and 8.75 from a second at both widths. A film-vault study tested five rounds and reached 8.45 at both widths in its strongest ballot. The release target is 9.5 from both critics. The daily source report collects leads from Show HN, research, and dated awards including Japan's MUUUUU.ORG. [Vault study](EVALS.md#vault-contact-strip-study) · [Festival study](EVALS.md#counterweight-festival-live-study) · [Creative research and reviews](research/CREATIVE-ROUNDS.md) · [Source review workflow](DESIGN-HARNESS.md#recurring-improvement)
 
-### Visual Design
+The installed `18b87522` benchmark routed **15 of 36** briefs to the intended surface with only a brief supplied. It matched all six forms and six landing pages. Settings and empty states remain uncovered as exact surfaces. [Exact installed routing](https://github.com/chrismicah/design-mcp/blob/f009b852759f7427356cf08c307c68d904cb094b/evidence/benchmark-v1/release-direct-routing-18b87522.json) · [Earlier comparison](evidence/benchmark-v1/current-direct-routing.json)
 
-#### `get_visual_suggestions`
-**Visual design system generator.** Analyzes code for color, typography, and spacing quality, then generates a complete design system with actionable CSS/Tailwind values.
+In a targeted two-brief comparison, the radio and repair-shop directions averaged 97.9 versus 89.6 for frozen v2. The listening demo and booking summary passed keyboard checks at 1440 and 390 CSS px. [Matched visual results](evidence/benchmark-v1/specific-landing-visual.json) · [Browser actions](evidence/benchmark-v1/specific-landing-actions.json)
 
-```python
-result = get_visual_suggestions(
-    source_code=my_code,
-    primary_color="#3b82f6",     # Optional — auto-detects from code
-    brand_style="professional",  # clean_modern|editorial|geometric|friendly|professional|brutalist
-    spacing_density="comfortable" # compact|comfortable|spacious
-)
-# Returns: visual_analysis, color_palette (with shades 50-950),
-#          typography (font pairing + type scale), spacing system,
-#          CSS variables, Tailwind config, Google Fonts URL, quick_wins
-```
+## Verify locally
 
-**Includes:**
-- Color palette generator (11 shades, light/dark themes, CSS variables, complementary/analogous)
-- 6 curated font pairings by brand personality
-- Type scales (major third, perfect fourth)
-- 3 spacing density systems (compact, comfortable, spacious)
-- Quick wins prioritizer (top 5 highest-impact visual fixes)
-
-### Libraries
-
-#### `get_library_recommendations`
-Get recommended frontend libraries based on your project needs — maps use cases, UI elements, and visual styles to the best React libraries.
-
-```python
-result = get_library_recommendations(
-    use_case="dashboard",
-    ui_elements=["Data Table", "Modal", "Button"],
-    needs_charts=True
-)
-# Returns: shadcn/ui, Recharts, Tailwind — with install commands + code examples
-```
-
-#### `get_library_details`
-Get full details for any of 18 supported libraries — components list, install command, code examples, and what it pairs with.
-
-**Supported libraries:** shadcn/ui, Radix UI, Mantine, Chakra UI, NextUI, React Bits, Tailwind CSS, Panda CSS, Vanilla Extract, Framer Motion, GSAP, React Spring, Three.js/R3F, Lottie, tsParticles, D3.js, Recharts, Victory.
-
----
-
-## Data Sources
-
-| Source | Patterns | Description |
-|--------|----------|-------------|
-| webui-7kbal | 6,134 | HuggingFace dataset — real websites with accessibility trees |
-| Dribbble | 284 | Popular web & product design shots from professional designers |
-| Awwwards | 300 | Site of the Day winners — award-winning web design |
-| Curated | 90 | Hand-picked patterns from top SaaS products (Stripe, Linear, Notion, etc.) |
-| Landbook | 90 | Landing page gallery screenshots |
-
-**Total: 7,080 patterns**, all quality-scored 0-10, with 742 vision-analyzed screenshots.
-
-### Data Completeness
-
-| Field | Coverage |
-|-------|----------|
-| Semantic tokens | 100% (7,080/7,080) |
-| Behavioral descriptions | 97% (6,882/7,080) |
-| Accessibility notes | 97% (6,882/7,080) |
-| Component hints | 47% (3,356/7,080) |
-| Vision analysis (colors, layout) | 742 screenshots |
-
----
-
-## Running Tests
+From a source checkout with an active virtual environment, install the test dependencies and run the suites.
 
 ```bash
-pip install pytest pytest-asyncio
-python -m pytest tests/ -v
+python -m pip install -e . pytest pytest-asyncio
+python -m pytest tests evals
+python scripts/smoke_design_mcp.py design-mcp serve
 ```
 
-**212 tests** covering:
-- Schema validation (16 tests)
-- Database operations (25 tests)
-- Anti-pattern analyzer (49 tests)
-- Visual analyzer — colors, spacing, typography, palette generation (36 tests)
-- Server tools (28 tests)
-- Library recommendations (30 tests)
-- Integration workflows (28 tests)
+The smoke script exercises every tool in the selected mode. Set `DESIGN_MCP_SURFACE` to verify each mode. [Live smoke](SMOKE-RECEIPTS.md) · [Baseline](evidence/baseline/README.md) · [Comparison](evidence/rebuild/comparison/README.md) · [Corpus audit](CONTENT-AUDIT.md)
 
----
-
-## Project Structure
-
-```
-design-mcp/
-├── server.py                    # FastMCP server — 12 MCP tools
-├── schema.py                    # Pydantic models (DesignPattern, Platform, LayoutType)
-├── database.py                  # JSON database with search/filter/ranking
-├── models/
-│   ├── analyzer.py              # Structural anti-pattern detector (15 detectors)
-│   └── visual_analyzer.py       # Visual design analyzer (colors, typography, spacing)
-├── data/
-│   ├── patterns.json            # 7,080 design patterns (11.7 MB, optimized)
-│   ├── vision_results.json      # 742 screenshot analysis results
-│   ├── libraries.json           # 18 libraries with mapping rules
-│   ├── taxonomy.json            # Tag taxonomy
-│   ├── tokens/
-│   │   └── semantic_tokens.json # Light/dark semantic token sets
-│   ├── layout_templates.json    # Layout code templates
-│   ├── behavioral_templates.json # 14 behavioral pattern templates
-│   └── component_code.json      # 17 component code templates (shadcn/ui TSX)
-├── screenshots/                 # 742 high-res design screenshots
-│   ├── dribbble/                # 284 popular shots
-│   ├── awwwards/                # 300 SOTD winners
-│   ├── curated/                 # 68 top SaaS products
-│   └── landbook/                # 90 landing pages
-├── scripts/                     # Data ingestion, scraping, enrichment scripts
-└── tests/
-    ├── test_analyzer.py         # Anti-pattern detector tests
-    ├── test_visual_analyzer.py  # Visual analyzer tests
-    ├── test_database.py         # Database tests
-    ├── test_schema.py           # Schema validation tests
-    ├── test_server.py           # Server tool tests
-    ├── test_libraries.py        # Library recommendation tests
-    └── test_design_mcp.py       # Integration tests
-```
-
----
-
-## Using on Another Machine
-
-Just install and add — all pattern data is bundled. No API keys needed.
-
-```bash
-pip install git+https://github.com/chrismicah/design-mcp.git
-claude mcp add -s user design-mcp -- design-mcp serve
-```
-
-### Screenshots (optional, 600 MB)
-
-The 742 design screenshots are stored in Git LFS and **not downloaded by default**. The MCP runs entirely off `data/patterns.json` — screenshots are only needed if you want to browse source designs or re-run vision analysis.
-
-```bash
-# Only if you want the screenshots:
-git lfs pull
-```
-
----
-
-## Tech Stack
-
-- **[FastMCP](https://github.com/jlowin/fastmcp)** — MCP server framework
-- **[Pydantic](https://docs.pydantic.dev/)** — Schema validation
-- **Python 3.12+** — No external AI/ML dependencies required
-
-## License
-
-MIT
+The development harness covers visual review, Playwriter setup, GPT Computer Use acceptance, and recurring public source discovery. [Development harness](DESIGN-HARNESS.md) · [Connect Playwriter](evals/v1/README.md#connect-playwriter) · [Release gates](RELEASE-GOAL.md#current-install-candidate)

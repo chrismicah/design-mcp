@@ -1,0 +1,828 @@
+{
+  "design_mcp_git_pin": "c7fd37eb5caec0d56342f21033b8650c09affd41",
+  "uiux_pro_max_git_pin": "a38d04c3d5c298c851dbe5e6ee1965ee3de42cb5",
+  "scope": "One frozen saved-trails brief with one verified context call per generator. A fresh live ballot verifies the interaction on each arm. Scores belong to the 0\u201310 live rubric.",
+  "asset_policy": "Local font-free assets or only Google Fonts CSS and font requests from the two allowed hosts. The same policy applies to both arms.",
+  "spec": {
+    "case": "empty-saved",
+    "brief": "Build a saved trails screen for a hiking app that starts empty. Suggest one nearby route named Cedar Bend, 2.4 miles. Let the visitor save it from the empty state and see it in their list, then remove it to return to the initial state.",
+    "arms": [
+      "v2",
+      "uiux-pro-max"
+    ],
+    "browser": "Chrome/158.0.8127.36",
+    "task": "Open the app in its empty state and capture -before. By keyboard, find the suggestion for Cedar Bend and confirm its distance is 2.4 miles. Save the suggestion and confirm exactly one Cedar Bend in the saved list. Capture -after. Remove the saved trail and confirm the empty state and actionable suggestion return without a page transition. Capture -edge. At both desktop and phone widths report which control is reached first, whether the task is possible without guessing, and whether the named route and distance are visible before action."
+  },
+  "arms": {
+    "v2": {
+      "generation": {
+        "usage": {
+          "input_tokens": 58402,
+          "cached_input_tokens": 52480,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3868,
+          "reasoning_output_tokens": 0
+        },
+        "tool_calls": [
+          {
+            "type": "mcp_tool_call",
+            "server": "design-mcp",
+            "tool": "direct",
+            "status": "completed"
+          }
+        ],
+        "client_errors": [],
+        "treatment_call": true,
+        "direct_call": true,
+        "status": "passed",
+        "case": "empty-saved",
+        "arm": "v2",
+        "model": "gpt-6.1-terra",
+        "effort": "low",
+        "client": "codex-cli 0.170.0",
+        "prompt_sha256": "8b420a371021d9d6f803f8219126309a585ed64f17abde06b2d3b17ea4ee1536",
+        "shell_tool": false,
+        "elapsed_seconds": 76.91,
+        "exit_code": 0,
+        "trace_sha256": "1c796adb066f31c88d06d1834220fbaffcb950453f3f0e4337f47e5365688a35",
+        "html_sha256": "1fbc1013c803d036b09a36279b4d3d7489a53bf6837d39352c1dd81f9f1e6e1e"
+      },
+      "preflight": {
+        "browser": "Chrome/158.0.8127.36",
+        "fixture": "1fbc1013c803d036b09a36279b4d3d7489a53bf6837d39352c1dd81f9f1e6e1e",
+        "rows": [
+          {
+            "text": "Trail notes\nSaved 0\n\nYour collection\n\nSaved trails\n\n0 trails\n\nNearby\n\nA little room for adventure\n\nYour list is waiting.\n\nSave a trail to keep it close for your next outing.\n\nCedar Bend\n2.4 miles\n\nA nearby trail to get you started\n\nSave Cedar Bend\nMake room for the outdoors.\nSaved trails",
+            "scroll": 0,
+            "width": 305,
+            "headings": [
+              "Saved trails",
+              "Your list is waiting."
+            ],
+            "focus": "Trail notes\nSaved 0\n\nYour collection\n\nSaved trails\n\n0 trails\n\nNearby\n\nA little r",
+            "buttons": [
+              "Save Cedar Bend"
+            ],
+            "errors": [],
+            "external": [],
+            "font_requests": [
+              "https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Instrument+Sans:wght@400;500;600;700&display=swap",
+              "https://fonts.gstatic.com/s/instrumentsans/v4/pxiTypc9vsFDm051Uf6KVwgkfoSxQ0GsQv8ToedPibnr0SZe1ZuWi3g.woff2",
+              "https://fonts.gstatic.com/s/fraunces/v38/6NUh8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K7iN7hzFUPJH58nib1603gg7S2nfgRYIcaRyTCf7Tp05GNyXk.woff2"
+            ],
+            "state": "entry",
+            "viewport": [
+              320,
+              700
+            ],
+            "file": ".context/competitor-empty-trails/verified-v2/320-entry.png",
+            "sha256": "2c31fcd5770b8808a322de83efe343c47c2c1685ba8c5ea16b9559f24493f628"
+          },
+          {
+            "text": "Trail notes\nSaved 1\n\nYour collection\n\nSaved trails\n\n1 trail\n\nNearby\n\nYour saved trail\n\nReady when you are.\n\nCedar Bend is saved here for your next outing.\n\nCedar Bend\n2.4 miles\n\nSaved to your list\n\nRemove Cedar Bend\nMake room for the outdoors.\nSaved trails\n\nCedar Bend saved to your list.",
+            "scroll": 283,
+            "width": 305,
+            "headings": [
+              "Saved trails",
+              "Ready when you are."
+            ],
+            "focus": "Remove Cedar Bend",
+            "buttons": [
+              "Remove Cedar Bend"
+            ],
+            "errors": [],
+            "external": [],
+            "font_requests": [
+              "https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Instrument+Sans:wght@400;500;600;700&display=swap",
+              "https://fonts.gstatic.com/s/instrumentsans/v4/pxiTypc9vsFDm051Uf6KVwgkfoSxQ0GsQv8ToedPibnr0SZe1ZuWi3g.woff2",
+              "https://fonts.gstatic.com/s/fraunces/v38/6NUh8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K7iN7hzFUPJH58nib1603gg7S2nfgRYIcaRyTCf7Tp05GNyXk.woff2"
+            ],
+            "state": "saved",
+            "viewport": [
+              320,
+              700
+            ],
+            "file": ".context/competitor-empty-trails/verified-v2/320-saved.png",
+            "sha256": "3d269cc4c35cc7b3df27c288e4c93dee5f5ac5282f02de415fb37851856d6113"
+          },
+          {
+            "text": "Trail notes\nSaved 0\n\nYour collection\n\nSaved trails\n\n0 trails\n\nNearby\n\nA little room for adventure\n\nYour list is waiting.\n\nSave a trail to keep it close for your next outing.\n\nCedar Bend\n2.4 miles\n\nA nearby trail to get you started\n\nSave Cedar Bend\nMake room for the outdoors.\nSaved trails\n\nCedar Bend removed from your list.",
+            "scroll": 283,
+            "width": 305,
+            "headings": [
+              "Saved trails",
+              "Your list is waiting."
+            ],
+            "focus": "Save Cedar Bend",
+            "buttons": [
+              "Save Cedar Bend"
+            ],
+            "errors": [],
+            "external": [],
+            "font_requests": [
+              "https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Instrument+Sans:wght@400;500;600;700&display=swap",
+              "https://fonts.gstatic.com/s/instrumentsans/v4/pxiTypc9vsFDm051Uf6KVwgkfoSxQ0GsQv8ToedPibnr0SZe1ZuWi3g.woff2",
+              "https://fonts.gstatic.com/s/fraunces/v38/6NUh8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K7iN7hzFUPJH58nib1603gg7S2nfgRYIcaRyTCf7Tp05GNyXk.woff2"
+            ],
+            "state": "recovery",
+            "viewport": [
+              320,
+              700
+            ],
+            "file": ".context/competitor-empty-trails/verified-v2/320-recovery.png",
+            "sha256": "786366c50936c28244e31e551259c0cd86b35e365a33fd4db4ced3e9b612c95f"
+          },
+          {
+            "text": "Trail notes\nSaved 0\n\nYour collection\n\nSaved trails\n\n0 trails\n\nNearby\n\nA little room for adventure\n\nYour list is waiting.\n\nSave a trail to keep it close for your next outing.\n\nCedar Bend\n2.4 miles\n\nA nearby trail to get you started\n\nSave Cedar Bend\nMake room for the outdoors.\nSaved trails",
+            "scroll": 0,
+            "width": 375,
+            "headings": [
+              "Saved trails",
+              "Your list is waiting."
+            ],
+            "focus": "Trail notes\nSaved 0\n\nYour collection\n\nSaved trails\n\n0 trails\n\nNearby\n\nA little r",
+            "buttons": [
+              "Save Cedar Bend"
+            ],
+            "errors": [],
+            "external": [],
+            "font_requests": [
+              "https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Instrument+Sans:wght@400;500;600;700&display=swap",
+              "https://fonts.gstatic.com/s/instrumentsans/v4/pxiTypc9vsFDm051Uf6KVwgkfoSxQ0GsQv8ToedPibnr0SZe1ZuWi3g.woff2",
+              "https://fonts.gstatic.com/s/fraunces/v38/6NUh8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K7iN7hzFUPJH58nib1603gg7S2nfgRYIcaRyTCf7Tp05GNyXk.woff2"
+            ],
+            "state": "entry",
+            "viewport": [
+              390,
+              844
+            ],
+            "file": ".context/competitor-empty-trails/verified-v2/390-entry.png",
+            "sha256": "954f957ee934755017911d5750c9ef722e505ae7d82f93a4c6275570896e0cd3"
+          },
+          {
+            "text": "Trail notes\nSaved 1\n\nYour collection\n\nSaved trails\n\n1 trail\n\nNearby\n\nYour saved trail\n\nReady when you are.\n\nCedar Bend is saved here for your next outing.\n\nCedar Bend\n2.4 miles\n\nSaved to your list\n\nRemove Cedar Bend\nMake room for the outdoors.\nSaved trails\n\nCedar Bend saved to your list.",
+            "scroll": 0,
+            "width": 375,
+            "headings": [
+              "Saved trails",
+              "Ready when you are."
+            ],
+            "focus": "Remove Cedar Bend",
+            "buttons": [
+              "Remove Cedar Bend"
+            ],
+            "errors": [],
+            "external": [],
+            "font_requests": [
+              "https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Instrument+Sans:wght@400;500;600;700&display=swap",
+              "https://fonts.gstatic.com/s/instrumentsans/v4/pxiTypc9vsFDm051Uf6KVwgkfoSxQ0GsQv8ToedPibnr0SZe1ZuWi3g.woff2",
+              "https://fonts.gstatic.com/s/fraunces/v38/6NUh8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K7iN7hzFUPJH58nib1603gg7S2nfgRYIcaRyTCf7Tp05GNyXk.woff2"
+            ],
+            "state": "saved",
+            "viewport": [
+              390,
+              844
+            ],
+            "file": ".context/competitor-empty-trails/verified-v2/390-saved.png",
+            "sha256": "cf81c6fefbe4a2faea9097dfffd25ca80a6b153dc6985be63ef5dbc208996310"
+          },
+          {
+            "text": "Trail notes\nSaved 0\n\nYour collection\n\nSaved trails\n\n0 trails\n\nNearby\n\nA little room for adventure\n\nYour list is waiting.\n\nSave a trail to keep it close for your next outing.\n\nCedar Bend\n2.4 miles\n\nA nearby trail to get you started\n\nSave Cedar Bend\nMake room for the outdoors.\nSaved trails\n\nCedar Bend removed from your list.",
+            "scroll": 0,
+            "width": 375,
+            "headings": [
+              "Saved trails",
+              "Your list is waiting."
+            ],
+            "focus": "Save Cedar Bend",
+            "buttons": [
+              "Save Cedar Bend"
+            ],
+            "errors": [],
+            "external": [],
+            "font_requests": [
+              "https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Instrument+Sans:wght@400;500;600;700&display=swap",
+              "https://fonts.gstatic.com/s/instrumentsans/v4/pxiTypc9vsFDm051Uf6KVwgkfoSxQ0GsQv8ToedPibnr0SZe1ZuWi3g.woff2",
+              "https://fonts.gstatic.com/s/fraunces/v38/6NUh8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K7iN7hzFUPJH58nib1603gg7S2nfgRYIcaRyTCf7Tp05GNyXk.woff2"
+            ],
+            "state": "recovery",
+            "viewport": [
+              390,
+              844
+            ],
+            "file": ".context/competitor-empty-trails/verified-v2/390-recovery.png",
+            "sha256": "019aad5c3cd719512b54b5c06fadec4619b7dac63926180dd928e9c12de10beb"
+          },
+          {
+            "text": "Trail notes\nSaved 0\n\nYour collection\n\nSaved trails\n\n0 trails\n\nNearby\n\nA little room for adventure\n\nYour list is waiting.\n\nSave a trail to keep it close for your next outing.\n\nCedar Bend\n2.4 miles\n\nA nearby trail to get you started\n\nSave Cedar Bend\nMake room for the outdoors.\nSaved trails",
+            "scroll": 0,
+            "width": 1440,
+            "headings": [
+              "Saved trails",
+              "Your list is waiting."
+            ],
+            "focus": "Trail notes\nSaved 0\n\nYour collection\n\nSaved trails\n\n0 trails\n\nNearby\n\nA little r",
+            "buttons": [
+              "Save Cedar Bend"
+            ],
+            "errors": [],
+            "external": [],
+            "font_requests": [
+              "https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Instrument+Sans:wght@400;500;600;700&display=swap",
+              "https://fonts.gstatic.com/s/instrumentsans/v4/pxiTypc9vsFDm051Uf6KVwgkfoSxQ0GsQv8ToedPibnr0SZe1ZuWi3g.woff2",
+              "https://fonts.gstatic.com/s/fraunces/v38/6NUh8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K7iN7hzFUPJH58nib1603gg7S2nfgRYIcaRyTCf7Tp05GNyXk.woff2"
+            ],
+            "state": "entry",
+            "viewport": [
+              1440,
+              900
+            ],
+            "file": ".context/competitor-empty-trails/verified-v2/1440-entry.png",
+            "sha256": "db2a7c64cf4a11dc3897ccd378aee919dae8ca9aec198785aa060cae77ee9856"
+          },
+          {
+            "text": "Trail notes\nSaved 1\n\nYour collection\n\nSaved trails\n\n1 trail\n\nNearby\n\nYour saved trail\n\nReady when you are.\n\nCedar Bend is saved here for your next outing.\n\nCedar Bend\n2.4 miles\n\nSaved to your list\n\nRemove Cedar Bend\nMake room for the outdoors.\nSaved trails\n\nCedar Bend saved to your list.",
+            "scroll": 0,
+            "width": 1440,
+            "headings": [
+              "Saved trails",
+              "Ready when you are."
+            ],
+            "focus": "Remove Cedar Bend",
+            "buttons": [
+              "Remove Cedar Bend"
+            ],
+            "errors": [],
+            "external": [],
+            "font_requests": [
+              "https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Instrument+Sans:wght@400;500;600;700&display=swap",
+              "https://fonts.gstatic.com/s/instrumentsans/v4/pxiTypc9vsFDm051Uf6KVwgkfoSxQ0GsQv8ToedPibnr0SZe1ZuWi3g.woff2",
+              "https://fonts.gstatic.com/s/fraunces/v38/6NUh8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K7iN7hzFUPJH58nib1603gg7S2nfgRYIcaRyTCf7Tp05GNyXk.woff2"
+            ],
+            "state": "saved",
+            "viewport": [
+              1440,
+              900
+            ],
+            "file": ".context/competitor-empty-trails/verified-v2/1440-saved.png",
+            "sha256": "2b30e34a1b07a4494a85ec2acae60af4a56d470bd096e4a907c55f418f4c8686"
+          },
+          {
+            "text": "Trail notes\nSaved 0\n\nYour collection\n\nSaved trails\n\n0 trails\n\nNearby\n\nA little room for adventure\n\nYour list is waiting.\n\nSave a trail to keep it close for your next outing.\n\nCedar Bend\n2.4 miles\n\nA nearby trail to get you started\n\nSave Cedar Bend\nMake room for the outdoors.\nSaved trails\n\nCedar Bend removed from your list.",
+            "scroll": 0,
+            "width": 1440,
+            "headings": [
+              "Saved trails",
+              "Your list is waiting."
+            ],
+            "focus": "Save Cedar Bend",
+            "buttons": [
+              "Save Cedar Bend"
+            ],
+            "errors": [],
+            "external": [],
+            "font_requests": [
+              "https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Instrument+Sans:wght@400;500;600;700&display=swap",
+              "https://fonts.gstatic.com/s/instrumentsans/v4/pxiTypc9vsFDm051Uf6KVwgkfoSxQ0GsQv8ToedPibnr0SZe1ZuWi3g.woff2",
+              "https://fonts.gstatic.com/s/fraunces/v38/6NUh8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K7iN7hzFUPJH58nib1603gg7S2nfgRYIcaRyTCf7Tp05GNyXk.woff2"
+            ],
+            "state": "recovery",
+            "viewport": [
+              1440,
+              900
+            ],
+            "file": ".context/competitor-empty-trails/verified-v2/1440-recovery.png",
+            "sha256": "260b45dee63aac83eaa7ef161cfc13b2ea23439c9c233bf8a561a94769a2a986"
+          }
+        ]
+      }
+    },
+    "uiux-pro-max": {
+      "generation": {
+        "usage": {
+          "input_tokens": 58538,
+          "cached_input_tokens": 46080,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4926,
+          "reasoning_output_tokens": 22
+        },
+        "tool_calls": [
+          {
+            "type": "mcp_tool_call",
+            "server": "uiux-pro-max",
+            "tool": "design_guidance",
+            "status": "completed"
+          }
+        ],
+        "client_errors": [],
+        "treatment_call": true,
+        "status": "passed",
+        "uiux_guidance_received": true,
+        "case": "empty-saved",
+        "arm": "uiux-pro-max",
+        "model": "gpt-6.1-terra",
+        "effort": "low",
+        "client": "codex-cli 0.170.0",
+        "prompt_sha256": "8b420a371021d9d6f803f8219126309a585ed64f17abde06b2d3b17ea4ee1536",
+        "shell_tool": false,
+        "mcp_config_sha256": "f85a155dbece9372aa49070e7e3892fea4ad01de4ea165f0bba5624de5365929",
+        "elapsed_seconds": 94.79,
+        "exit_code": 0,
+        "trace_sha256": "88985d5ef5ca2d4a31b7b75c517f90a9bc8cb4cceba993d668492646f7581ba1",
+        "html_sha256": "7ed158945ed4bdefe1ae6425e299d20b60d2890d6be5cf6ad33ef2d51a2b08dc"
+      },
+      "preflight": {
+        "browser": "Chrome/158.0.8127.36",
+        "fixture": "7ed158945ed4bdefe1ae6425e299d20b60d2890d6be5cf6ad33ef2d51a2b08dc",
+        "rows": [
+          {
+            "text": "Trailside\nYour trails\n\nYour collection\n\nSaved trails\n\nKeep a little inspiration for your next walk.\n\n0 saved\nYour next adventure starts here\n\nSave a trail and it\u2019ll be waiting here whenever you\u2019re ready to head out.\n\nA trail nearby\n\u2733\nCedar Bend\n\n2.4 miles\n\nSave trail",
+            "scroll": 0,
+            "width": 305,
+            "headings": [
+              "Saved trails",
+              "Your next adventure starts here",
+              "Cedar Bend"
+            ],
+            "focus": "Trailside\nYour trails\n\nYour collection\n\nSaved trails\n\nKeep a little inspiration ",
+            "buttons": [
+              "Save trail"
+            ],
+            "errors": [],
+            "external": [],
+            "font_requests": [
+              "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Varela+Round&display=swap",
+              "https://fonts.gstatic.com/s/varelaround/v21/w8gdH283Tvk__Lua32TysjIfp8uPLdshZg.woff2",
+              "https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K6z9mXg.woff2"
+            ],
+            "state": "entry",
+            "viewport": [
+              320,
+              700
+            ],
+            "file": ".context/competitor-empty-trails/verified-uiux-pro-max/320-entry.png",
+            "sha256": "f5517f463f7f74576b995feb03187efb08d019933816ecb55343566a73a39fcc"
+          },
+          {
+            "text": "Trailside\nYour trails\n\nYour collection\n\nSaved trails\n\nKeep a little inspiration for your next walk.\n\n1 saved\nCedar Bend\n\n2.4 miles\n\nRemove\nCedar Bend saved.",
+            "scroll": 0,
+            "width": 320,
+            "headings": [
+              "Saved trails",
+              "Cedar Bend"
+            ],
+            "focus": "Remove Cedar Bend from saved trails",
+            "buttons": [
+              "Remove Cedar Bend from saved trails"
+            ],
+            "errors": [],
+            "external": [],
+            "font_requests": [
+              "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Varela+Round&display=swap",
+              "https://fonts.gstatic.com/s/varelaround/v21/w8gdH283Tvk__Lua32TysjIfp8uPLdshZg.woff2",
+              "https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K6z9mXg.woff2"
+            ],
+            "state": "saved",
+            "viewport": [
+              320,
+              700
+            ],
+            "file": ".context/competitor-empty-trails/verified-uiux-pro-max/320-saved.png",
+            "sha256": "060eb3f99cfa1d47f42a2a286a232af6d98c85e502a84539f94d80de06d568d5"
+          },
+          {
+            "text": "Trailside\nYour trails\n\nYour collection\n\nSaved trails\n\nKeep a little inspiration for your next walk.\n\n0 saved\nYour next adventure starts here\n\nSave a trail and it\u2019ll be waiting here whenever you\u2019re ready to head out.\n\nA trail nearby\n\u2733\nCedar Bend\n\n2.4 miles\n\nSave trail\nCedar Bend removed from saved trails.",
+            "scroll": 471,
+            "width": 305,
+            "headings": [
+              "Saved trails",
+              "Your next adventure starts here",
+              "Cedar Bend"
+            ],
+            "focus": "Save trail",
+            "buttons": [
+              "Save trail"
+            ],
+            "errors": [],
+            "external": [],
+            "font_requests": [
+              "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Varela+Round&display=swap",
+              "https://fonts.gstatic.com/s/varelaround/v21/w8gdH283Tvk__Lua32TysjIfp8uPLdshZg.woff2",
+              "https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K6z9mXg.woff2"
+            ],
+            "state": "recovery",
+            "viewport": [
+              320,
+              700
+            ],
+            "file": ".context/competitor-empty-trails/verified-uiux-pro-max/320-recovery.png",
+            "sha256": "5ae21ed61926376b4feed33fd3a17829225e3403675fd957bbf86ecec7698314"
+          },
+          {
+            "text": "Trailside\nYour trails\n\nYour collection\n\nSaved trails\n\nKeep a little inspiration for your next walk.\n\n0 saved\nYour next adventure starts here\n\nSave a trail and it\u2019ll be waiting here whenever you\u2019re ready to head out.\n\nA trail nearby\n\u2733\nCedar Bend\n\n2.4 miles\n\nSave trail",
+            "scroll": 0,
+            "width": 375,
+            "headings": [
+              "Saved trails",
+              "Your next adventure starts here",
+              "Cedar Bend"
+            ],
+            "focus": "Trailside\nYour trails\n\nYour collection\n\nSaved trails\n\nKeep a little inspiration ",
+            "buttons": [
+              "Save trail"
+            ],
+            "errors": [],
+            "external": [],
+            "font_requests": [
+              "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Varela+Round&display=swap",
+              "https://fonts.gstatic.com/s/varelaround/v21/w8gdH283Tvk__Lua32TysjIfp8uPLdshZg.woff2",
+              "https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K6z9mXg.woff2"
+            ],
+            "state": "entry",
+            "viewport": [
+              390,
+              844
+            ],
+            "file": ".context/competitor-empty-trails/verified-uiux-pro-max/390-entry.png",
+            "sha256": "65a895f54403cc0c14b61f5d0233ac008b1fbefd2345808528a2b3732f722f1a"
+          },
+          {
+            "text": "Trailside\nYour trails\n\nYour collection\n\nSaved trails\n\nKeep a little inspiration for your next walk.\n\n1 saved\nCedar Bend\n\n2.4 miles\n\nRemove\nCedar Bend saved.",
+            "scroll": 0,
+            "width": 390,
+            "headings": [
+              "Saved trails",
+              "Cedar Bend"
+            ],
+            "focus": "Remove Cedar Bend from saved trails",
+            "buttons": [
+              "Remove Cedar Bend from saved trails"
+            ],
+            "errors": [],
+            "external": [],
+            "font_requests": [
+              "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Varela+Round&display=swap",
+              "https://fonts.gstatic.com/s/varelaround/v21/w8gdH283Tvk__Lua32TysjIfp8uPLdshZg.woff2",
+              "https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K6z9mXg.woff2"
+            ],
+            "state": "saved",
+            "viewport": [
+              390,
+              844
+            ],
+            "file": ".context/competitor-empty-trails/verified-uiux-pro-max/390-saved.png",
+            "sha256": "11c905f383685e1973c444d3664720ab09d8d98d944939abc183e6f6d89a9b78"
+          },
+          {
+            "text": "Trailside\nYour trails\n\nYour collection\n\nSaved trails\n\nKeep a little inspiration for your next walk.\n\n0 saved\nYour next adventure starts here\n\nSave a trail and it\u2019ll be waiting here whenever you\u2019re ready to head out.\n\nA trail nearby\n\u2733\nCedar Bend\n\n2.4 miles\n\nSave trail\nCedar Bend removed from saved trails.",
+            "scroll": 260,
+            "width": 375,
+            "headings": [
+              "Saved trails",
+              "Your next adventure starts here",
+              "Cedar Bend"
+            ],
+            "focus": "Save trail",
+            "buttons": [
+              "Save trail"
+            ],
+            "errors": [],
+            "external": [],
+            "font_requests": [
+              "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Varela+Round&display=swap",
+              "https://fonts.gstatic.com/s/varelaround/v21/w8gdH283Tvk__Lua32TysjIfp8uPLdshZg.woff2",
+              "https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K6z9mXg.woff2"
+            ],
+            "state": "recovery",
+            "viewport": [
+              390,
+              844
+            ],
+            "file": ".context/competitor-empty-trails/verified-uiux-pro-max/390-recovery.png",
+            "sha256": "a4b203bc159d8096cb4d45f6b8514a0d6520fd3d2bddf075f786196b7eaa4182"
+          },
+          {
+            "text": "Trailside\nYour trails\n\nYour collection\n\nSaved trails\n\nKeep a little inspiration for your next walk.\n\n0 saved\nYour next adventure starts here\n\nSave a trail and it\u2019ll be waiting here whenever you\u2019re ready to head out.\n\nA trail nearby\n\u2733\nCedar Bend\n\n2.4 miles\n\nSave trail",
+            "scroll": 0,
+            "width": 1440,
+            "headings": [
+              "Saved trails",
+              "Your next adventure starts here",
+              "Cedar Bend"
+            ],
+            "focus": "Trailside\nYour trails\n\nYour collection\n\nSaved trails\n\nKeep a little inspiration ",
+            "buttons": [
+              "Save trail"
+            ],
+            "errors": [],
+            "external": [],
+            "font_requests": [
+              "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Varela+Round&display=swap",
+              "https://fonts.gstatic.com/s/varelaround/v21/w8gdH283Tvk__Lua32TysjIfp8uPLdshZg.woff2",
+              "https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K6z9mXg.woff2"
+            ],
+            "state": "entry",
+            "viewport": [
+              1440,
+              900
+            ],
+            "file": ".context/competitor-empty-trails/verified-uiux-pro-max/1440-entry.png",
+            "sha256": "d31889322a5fa52557d5a052190317053834ffd9886edc357ac23887bed1362e"
+          },
+          {
+            "text": "Trailside\nYour trails\n\nYour collection\n\nSaved trails\n\nKeep a little inspiration for your next walk.\n\n1 saved\nCedar Bend\n\n2.4 miles\n\nRemove\nCedar Bend saved.",
+            "scroll": 0,
+            "width": 1440,
+            "headings": [
+              "Saved trails",
+              "Cedar Bend"
+            ],
+            "focus": "Remove Cedar Bend from saved trails",
+            "buttons": [
+              "Remove Cedar Bend from saved trails"
+            ],
+            "errors": [],
+            "external": [],
+            "font_requests": [
+              "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Varela+Round&display=swap",
+              "https://fonts.gstatic.com/s/varelaround/v21/w8gdH283Tvk__Lua32TysjIfp8uPLdshZg.woff2",
+              "https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K6z9mXg.woff2"
+            ],
+            "state": "saved",
+            "viewport": [
+              1440,
+              900
+            ],
+            "file": ".context/competitor-empty-trails/verified-uiux-pro-max/1440-saved.png",
+            "sha256": "a1b235fbd9017df27de3c5dafab95bf950747052d5f8cda12264b8b21371130d"
+          },
+          {
+            "text": "Trailside\nYour trails\n\nYour collection\n\nSaved trails\n\nKeep a little inspiration for your next walk.\n\n0 saved\nYour next adventure starts here\n\nSave a trail and it\u2019ll be waiting here whenever you\u2019re ready to head out.\n\nA trail nearby\n\u2733\nCedar Bend\n\n2.4 miles\n\nSave trail\nCedar Bend removed from saved trails.",
+            "scroll": 0,
+            "width": 1440,
+            "headings": [
+              "Saved trails",
+              "Your next adventure starts here",
+              "Cedar Bend"
+            ],
+            "focus": "Save trail",
+            "buttons": [
+              "Save trail"
+            ],
+            "errors": [],
+            "external": [],
+            "font_requests": [
+              "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Varela+Round&display=swap",
+              "https://fonts.gstatic.com/s/varelaround/v21/w8gdH283Tvk__Lua32TysjIfp8uPLdshZg.woff2",
+              "https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K6z9mXg.woff2"
+            ],
+            "state": "recovery",
+            "viewport": [
+              1440,
+              900
+            ],
+            "file": ".context/competitor-empty-trails/verified-uiux-pro-max/1440-recovery.png",
+            "sha256": "e81359bfbc5fa8c8e8a9d83ac5b921461cc3ba439f57ace47f71e57faacffb2b"
+          }
+        ]
+      }
+    }
+  },
+  "ballot": {
+    "calibration": {
+      "coherence": 7,
+      "originality": 4,
+      "craft": 6.5,
+      "usability": 6,
+      "reason": "The repair intake is legible and clearly labeled, but its familiar layout is not especially distinctive and misplaced focus after an invalid number impairs recovery."
+    },
+    "screens": {
+      "A-1440": {
+        "coherence": 8.5,
+        "originality": 7.5,
+        "craft": 8,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Tab, then Enter",
+          "expected": "Reach Save Cedar Bend and add one trail.",
+          "observed": "The first Tab reached Save Cedar Bend. Enter produced a count of 1 trail and one Cedar Bend entry, with focus on Remove Cedar Bend."
+        },
+        "edge_observation": "Enter on Remove restored the empty state, the 0-trail count, and the actionable suggestion at the same URL. Focus returned to Save Cedar Bend.",
+        "fact_check": "Cedar Bend and 2.4 miles were visible before action. The task was possible without guessing. The displayed distance was verified in the interface; its real-world accuracy was not independently verified.",
+        "strength": "The illustrated landscape and editorial type give the empty state a clear, unified character.",
+        "weakness": "The illustration takes more space than the route details and action.",
+        "repair": "Reduce the illustration's share slightly or elevate the suggestion details while retaining the composition.",
+        "captures": [
+          "A-1440-before.png",
+          "A-1440-after.png",
+          "A-1440-edge.png"
+        ],
+        "arm": "v2",
+        "html_sha256": "1fbc1013c803d036b09a36279b4d3d7489a53bf6837d39352c1dd81f9f1e6e1e",
+        "weighted": 8.1,
+        "before": {
+          "sha256": "db2a7c64cf4a11dc3897ccd378aee919dae8ca9aec198785aa060cae77ee9856",
+          "file": ".context/competitor-empty-trails/blind/captures/A-1440-before.png",
+          "tool_call_id": "item_2"
+        },
+        "after": {
+          "sha256": "2b30e34a1b07a4494a85ec2acae60af4a56d470bd096e4a907c55f418f4c8686",
+          "file": ".context/competitor-empty-trails/blind/captures/A-1440-after.png",
+          "tool_call_id": "item_5"
+        },
+        "layout_width": 1440,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ]
+      },
+      "A-390": {
+        "coherence": 8,
+        "originality": 7.5,
+        "craft": 7.5,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Tab, then Enter",
+          "expected": "Reach Save Cedar Bend and add one trail.",
+          "observed": "The first Tab reached Save Cedar Bend. Enter produced a count of 1 trail and one Cedar Bend entry, with focus on Remove Cedar Bend."
+        },
+        "edge_observation": "Enter on Remove restored the empty state, suggestion and save control at the same URL; focus returned to Save Cedar Bend.",
+        "fact_check": "Cedar Bend and 2.4 miles were visible in the initial viewport before action. The task was possible without guessing. The distance's real-world accuracy was not independently verified.",
+        "strength": "The stacked composition preserves the illustration, route details and full-width action in the initial viewport.",
+        "weakness": "The route and button sit near the bottom of the initial viewport, leaving little vertical margin.",
+        "repair": "Shorten the illustration or vertical spacing so the suggestion has more breathing room on shorter phones.",
+        "captures": [
+          "A-390-before.png",
+          "A-390-after.png",
+          "A-390-edge.png"
+        ],
+        "arm": "v2",
+        "html_sha256": "1fbc1013c803d036b09a36279b4d3d7489a53bf6837d39352c1dd81f9f1e6e1e",
+        "weighted": 7.85,
+        "before": {
+          "sha256": "954f957ee934755017911d5750c9ef722e505ae7d82f93a4c6275570896e0cd3",
+          "file": ".context/competitor-empty-trails/blind/captures/A-390-before.png",
+          "tool_call_id": "item_9"
+        },
+        "after": {
+          "sha256": "e0f5e78d7a4e4064e40528d167af4175b8239cecc6d87ff43819abb9b2ed4994",
+          "file": ".context/competitor-empty-trails/blind/captures/A-390-after.png",
+          "tool_call_id": "item_12"
+        },
+        "layout_width": 375,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ]
+      },
+      "B-1440": {
+        "coherence": 8,
+        "originality": 6.5,
+        "craft": 8,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Tab, then Enter",
+          "expected": "Reach Save trail and add one Cedar Bend entry.",
+          "observed": "The first Tab reached Save trail. Enter produced 1 saved and one Cedar Bend article, with focus on its Remove control."
+        },
+        "edge_observation": "Enter on Remove restored the empty state and actionable suggestion at the same URL. Focus returned to Save trail.",
+        "fact_check": "Cedar Bend and 2.4 miles were visible before action. The task was possible without guessing. The distance's real-world accuracy was not independently verified.",
+        "strength": "The separate suggestion and saved-trail article make the state change easy to recognize; the focus ring is conspicuous.",
+        "weakness": "The generic Save trail label depends on its surrounding card for the route identity.",
+        "repair": "Include Cedar Bend in the button's accessible name so the action remains specific when reached by keyboard or assistive technology.",
+        "captures": [
+          "B-1440-before.png",
+          "B-1440-after.png",
+          "B-1440-edge.png"
+        ],
+        "arm": "uiux-pro-max",
+        "html_sha256": "7ed158945ed4bdefe1ae6425e299d20b60d2890d6be5cf6ad33ef2d51a2b08dc",
+        "weighted": 7.65,
+        "before": {
+          "sha256": "d31889322a5fa52557d5a052190317053834ffd9886edc357ac23887bed1362e",
+          "file": ".context/competitor-empty-trails/blind/captures/B-1440-before.png",
+          "tool_call_id": "item_17"
+        },
+        "after": {
+          "sha256": "a1b235fbd9017df27de3c5dafab95bf950747052d5f8cda12264b8b21371130d",
+          "file": ".context/competitor-empty-trails/blind/captures/B-1440-after.png",
+          "tool_call_id": "item_20"
+        },
+        "layout_width": 1440,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ]
+      },
+      "B-390": {
+        "coherence": 7.5,
+        "originality": 6.5,
+        "craft": 7,
+        "usability": 7.5,
+        "primary_action": {
+          "input": "Tab, then Enter",
+          "expected": "Reach Save trail and add one Cedar Bend entry.",
+          "observed": "The first Tab reached Save trail and brought the control into view. Enter produced 1 saved and one Cedar Bend article, with focus on Remove."
+        },
+        "edge_observation": "Enter on Remove restored the empty state and actionable suggestion at the same URL. Focus returned to Save trail, with the page scrolled to show it.",
+        "fact_check": "Cedar Bend and 2.4 miles were below the initial viewport, but became visible when Tab brought the save control into view. The task was possible without guessing after navigating to the suggestion. The distance's real-world accuracy was not independently verified.",
+        "strength": "Keyboard focus follows the state change and the saved card remains compact and legible.",
+        "weakness": "The large empty-state panel and suggestion artwork push the route name, distance and action below the initial viewport.",
+        "repair": "Compress the empty-state panel and artwork on narrow screens so the suggestion details appear sooner.",
+        "captures": [
+          "B-390-before.png",
+          "B-390-after.png",
+          "B-390-edge.png"
+        ],
+        "arm": "uiux-pro-max",
+        "html_sha256": "7ed158945ed4bdefe1ae6425e299d20b60d2890d6be5cf6ad33ef2d51a2b08dc",
+        "weighted": 7.1,
+        "before": {
+          "sha256": "65a895f54403cc0c14b61f5d0233ac008b1fbefd2345808528a2b3732f722f1a",
+          "file": ".context/competitor-empty-trails/blind/captures/B-390-before.png",
+          "tool_call_id": "item_24"
+        },
+        "after": {
+          "sha256": "11c905f383685e1973c444d3664720ab09d8d98d944939abc183e6f6d89a9b78",
+          "file": ".context/competitor-empty-trails/blind/captures/B-390-after.png",
+          "tool_call_id": "item_27"
+        },
+        "layout_width": 390,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ]
+      }
+    },
+    "preference": {
+      "winner": "A",
+      "reason": "Both designs completed the keyboard save and recovery flow. A has a more distinctive editorial composition and shows the route, distance and action in the initial phone viewport; B requires navigation down to its suggestion."
+    },
+    "unsupported_claims": [
+      "The displayed 2.4-mile distance was observed in both interfaces, but no independent geographic source was consulted.",
+      "Persistence across reloads and behavior beyond the tested save-and-remove flow were not tested."
+    ],
+    "case": "empty-saved",
+    "verified_screens": 4,
+    "required_screens": 4,
+    "browser": "Chrome/158.0.8127.36",
+    "evaluator_thread": "01a207ef-feda-7bb0-856b-4c02acc81cb1",
+    "usage": {
+      "input_tokens": 358929,
+      "cached_input_tokens": 309760,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 2538,
+      "reasoning_output_tokens": 0
+    },
+    "trace_sha256": "792a8067c6151c745d3d531e8fb88d06957ebcfadd0716442fa95d715c7e4af0",
+    "browser_audit_sha256": "150d94da3d3d25b06fd9a89fb70d85364d7499e12caad23da8504f7f3130434c"
+  }
+}

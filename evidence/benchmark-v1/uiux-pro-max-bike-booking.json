@@ -1,0 +1,215 @@
+{
+  "summary": {
+    "requested_pairs": 36,
+    "judged_pairs": 1,
+    "v2": 91.66666666666666,
+    "uiux-pro-max": 100,
+    "difference": 8.333333333333343,
+    "wins_ties_losses": [
+      1,
+      0,
+      0
+    ],
+    "median_usage": {
+      "v2": {
+        "input_tokens": 62552,
+        "cached_input_tokens": 40192,
+        "output_tokens": 21876,
+        "elapsed_seconds": 444.16
+      },
+      "uiux-pro-max": {
+        "input_tokens": 64427,
+        "cached_input_tokens": 31488,
+        "output_tokens": 24443,
+        "elapsed_seconds": 496.58
+      }
+    }
+  },
+  "cases": {
+    "landing-repair": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/45003880052",
+      "cells": {
+        "uiux-pro-max": {
+          "generation": {
+            "usage": {
+              "input_tokens": 64427,
+              "cached_input_tokens": 31488,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 24443,
+              "reasoning_output_tokens": 19335
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "uiux-pro-max",
+                "tool": "design_guidance",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "treatment_call": true,
+            "status": "passed",
+            "case": "landing-repair",
+            "arm": "uiux-pro-max",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "b2c2a44f5ad2fa66d6b17b7fd987d52389ea0a3f4bba0f9fb149e08582fda49c",
+            "mcp_config_sha256": "f85a155dbece9372aa49070e7e3892fea4ad01de4ea165f0bba5624de5365929",
+            "elapsed_seconds": 496.58,
+            "exit_code": 0,
+            "trace_sha256": "82079c2acc8099bc35e606eebb206dd883c8781054cafc3ebc71299ae759c58d",
+            "html_sha256": "e6873dcf9b15811aa5ce07712cd1c685fe62a4d8cf369ee535e9f92543f25154"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "b016b5d0428d4207feac48140e60a04cac39f66f60e1c2b17476a9e9811f764e",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "3c185caafb42fc0bc97cd37545a661fd169bb4f97aa91e0475993df93de9c3b9",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 62552,
+              "cached_input_tokens": 40192,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 21876,
+              "reasoning_output_tokens": 15403
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "direct_call": true,
+            "status": "passed",
+            "case": "landing-repair",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "b2c2a44f5ad2fa66d6b17b7fd987d52389ea0a3f4bba0f9fb149e08582fda49c",
+            "elapsed_seconds": 444.16,
+            "exit_code": 0,
+            "trace_sha256": "b39275349b0bf777d015ae5bef9e907bd85d825e30bde9f664f87bc66f35b27f",
+            "html_sha256": "44eb406ca04f5747b3eb1ee822a0b019e7b44d87af84546c526c4b8a4f5828de"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "53a281e3db402e889ccd87e399fdd8e9b105fc4df835ce0b06a93b96f829e194",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "9b313f6049e772eb34bf2ac323d318fdc138447a6313f57a5d0433cf0774d887",
+              "viewport": 390,
+              "width": 375,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "landing-repair",
+        "surface": "landing",
+        "blind_key": {
+          "A": "uiux-pro-max",
+          "B": "v2"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The headline and price strip establish the offer at a glance, and the \u201cBook a tune-up\u201d link and \u201cPick a day\u201d heading make the next step prominent at both widths."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The desktop panels share top and bottom edges, and the mobile layout keeps all five day choices in one evenly spaced row directly above the summary."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "Heavy condensed type emphasizes the service and price, while the simpler weekday labels and summary rows stay legible at 390 pixels."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Deep green connects the repair poster to the booking link, yellow highlights the address and price, and pale mint groups the summary details."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "Visible radio circles cue selection, and both browser trees expose full weekday names in the \u201cBooking day\u201d group and a status role for the summary\u2019s day value."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "Second Spin explicitly offers $85 tune-ups in 48 hours at 41 Elm Street, states that bookings run Tuesday to Saturday, and places the five day choices above the booking summary."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 3,
+              "evidence": "The booking link and \u201cChoose a day\u201d heading are easy to find at both widths, though the bicycle poster dominates the upper half on mobile and the price first appears below the weekday choices."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The heading, five-button row and summary share a left edge at both widths, with a larger gap before the summary that separates the choice from its details."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The two-line serif headline stays clear of the bicycle on mobile, and the bold sans-serif weekdays and regular-weight summary labels are easy to scan."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Plum ties the bicycle poster, booking link and $85 price together, while dark lettering on cream keeps the weekday choices and summary readable."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "Both browser trees expose a named booking group and five radios with full weekday names, with the summary\u2019s \u201cSelect a day\u201d prompt exposed as a plain definition."
+            },
+            "fidelity": {
+              "score": 4,
+              "evidence": "Second Spin shows Tuesday through Saturday as the five booking choices, explains that picking a day previews the booking, and lists the $85 tune-up, 48-hour turnaround and 41 Elm Street in the summary."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 25946,
+          "cached_input_tokens": 11776,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5182,
+          "reasoning_output_tokens": 4521
+        },
+        "scores": {
+          "uiux-pro-max": 100,
+          "v2": 91.66666666666666
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "b016b5d0428d4207feac48140e60a04cac39f66f60e1c2b17476a9e9811f764e",
+          "A-390.png": "3c185caafb42fc0bc97cd37545a661fd169bb4f97aa91e0475993df93de9c3b9",
+          "B-1440.png": "53a281e3db402e889ccd87e399fdd8e9b105fc4df835ce0b06a93b96f829e194",
+          "B-390.png": "9b313f6049e772eb34bf2ac323d318fdc138447a6313f57a5d0433cf0774d887"
+        },
+        "judge_prompt_sha256": "c6216c8e68f72ecf18321c76e31c1bf2240e5e5c96e3598d71c672911977f146"
+      }
+    }
+  }
+}

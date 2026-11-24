@@ -1,0 +1,89 @@
+{
+  "pin": "96310517ffcc484f4f820434c1cf51c16f763cec",
+  "scope": "Frozen ceramics generation. The generator used the comparator and also invoked the command tool twice. No visual ballot admitted.",
+  "generation": {
+    "usage": {
+      "input_tokens": 131194,
+      "cached_input_tokens": 99840,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 22274,
+      "reasoning_output_tokens": 13575
+    },
+    "tool_calls": [
+      {
+        "type": "mcp_tool_call",
+        "server": "design-library",
+        "tool": "list_styles",
+        "status": "completed"
+      },
+      {
+        "type": "mcp_tool_call",
+        "server": "design-library",
+        "tool": "search_designs",
+        "status": "completed"
+      },
+      {
+        "type": "command_execution",
+        "server": null,
+        "tool": null,
+        "status": "completed"
+      },
+      {
+        "type": "command_execution",
+        "server": null,
+        "tool": null,
+        "status": "completed"
+      },
+      {
+        "type": "mcp_tool_call",
+        "server": "design-library",
+        "tool": "get_style_guide",
+        "status": "completed"
+      },
+      {
+        "type": "mcp_tool_call",
+        "server": "design-library",
+        "tool": "search_designs",
+        "status": "completed"
+      },
+      {
+        "type": "mcp_tool_call",
+        "server": "design-library",
+        "tool": "search_designs",
+        "status": "completed"
+      },
+      {
+        "type": "mcp_tool_call",
+        "server": "design-library",
+        "tool": "get_design",
+        "status": "completed"
+      },
+      {
+        "type": "mcp_tool_call",
+        "server": "design-library",
+        "tool": "get_design",
+        "status": "completed"
+      },
+      {
+        "type": "mcp_tool_call",
+        "server": "design-library",
+        "tool": "search_designs",
+        "status": "completed"
+      }
+    ],
+    "client_errors": [],
+    "treatment_call": true,
+    "status": "unpermitted-tool-call",
+    "case": "landing-ceramics",
+    "arm": "design-library",
+    "model": "gpt-6.2-sol",
+    "effort": "max",
+    "client": "codex-cli 0.170.0",
+    "prompt_sha256": "1b7e4408d51fd57e448b6c6af2541f70db8a3a9291f546c5217d05b4bda1950f",
+    "mcp_config_sha256": "7313367ed14db2b1dc58fcc35efe89025cb7c573c4d3bf2a51ed76020529af51",
+    "elapsed_seconds": 460.52,
+    "exit_code": 0,
+    "trace_sha256": "f802d3153157be9085a58a94ce26eba24deb528813be2497b1bdfe134d9fee9b",
+    "html_sha256": "3f1cf426cbef1ae9520ee07124c87eb78b162b5fe70f245e1ba514c4d579f198"
+  }
+}

@@ -1,0 +1,257 @@
+{
+  "calibration": {
+    "example": "Legible repair intake with clear labels, familiar layout and misplaced focus after an invalid number",
+    "coherence": 7,
+    "originality": 4,
+    "craft": 6,
+    "usability": 6
+  },
+  "screens": {
+    "A-1440": {
+      "coherence": 9,
+      "originality": 8,
+      "craft": 9,
+      "usability": 9,
+      "primary_action": {
+        "input": "Tab, then Right Arrow",
+        "expected": "Select 6 m and show all three closures.",
+        "observed": "6 m received visible focus; the riverside path, ferry and footbridge closures appeared."
+      },
+      "edge_observation": "Two Left Arrows selected 2 m. Only the riverside path closure remained; the waterline aligned with the 2 m mark and was readily discernible within five seconds.",
+      "fact_check": "At 6 m the water surface meets the 6 m line at the footbridge. The three requested outcomes are visible. Actual local closure conditions were not independently verified.",
+      "strength": "The cross-section connects each crossing and threshold directly to the water level.",
+      "weakness": "The large title consumes substantial space alongside the task.",
+      "repair": "Reduce the title slightly to give the closure list more prominence.",
+      "arm": "original",
+      "html_sha256": "6c865202d697125bf3cc70a0edd4d57dc32d2144423c35a3e653cd7766230339",
+      "weighted": 8.7,
+      "before": {
+        "sha256": "f0b0f429014cc9d04e3f6c5353132fb4759cc61a73f42af3e59f8d6e0c42221c",
+        "file": "A-1440-before.png",
+        "tool_call_id": "item_2"
+      },
+      "after": {
+        "sha256": "b1f1c3e8f68d7e1963ef839c9bd1f22cbb2a596621a552da02850f458d1e61a3",
+        "file": "A-1440-after.png",
+        "tool_call_id": "item_5"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ]
+    },
+    "A-390": {
+      "coherence": 9,
+      "originality": 8,
+      "craft": 9,
+      "usability": 9,
+      "primary_action": {
+        "input": "Tab, then Right Arrow",
+        "expected": "Select 6 m and show all three closures.",
+        "observed": "6 m received visible focus and all three outcomes were readable in the first 390 × 844 viewport."
+      },
+      "edge_observation": "Two Left Arrows selected 2 m and left only the riverside path closure. The waterline aligned with the 2 m guide and was discernible within five seconds.",
+      "fact_check": "At 6 m the visible water surface meets the 6 m guide at the footbridge. The diagram and all three outcomes fit in the first viewport. Actual local closure conditions were not independently verified.",
+      "strength": "The compact stacked layout keeps the controls, outcomes and labeled illustration together.",
+      "weakness": "The crossing drawings are small on mobile.",
+      "repair": "Increase the contrast or size of crossing details while keeping the outcome list in the first viewport.",
+      "arm": "original",
+      "html_sha256": "6c865202d697125bf3cc70a0edd4d57dc32d2144423c35a3e653cd7766230339",
+      "weighted": 8.7,
+      "before": {
+        "sha256": "8b5c2d0642531944ae6170a03577ae588b5268902eb2070f4a11f4e497d75184",
+        "file": "A-390-before.png",
+        "tool_call_id": "item_10"
+      },
+      "after": {
+        "sha256": "c200a9f7092fbc4c37ef67051f8c3b36a939d3679fadebb1f1a54ae3ec948fbf",
+        "file": "A-390-after.png",
+        "tool_call_id": "item_13"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ]
+    },
+    "B-1440": {
+      "coherence": 7.5,
+      "originality": 8.5,
+      "craft": 8,
+      "usability": 8,
+      "primary_action": {
+        "input": "Tab, then Right Arrow",
+        "expected": "Select 6 m and show all three closures.",
+        "observed": "6 m received visible focus; the riverside path, ferry and footbridge closures appeared."
+      },
+      "edge_observation": "Two Left Arrows selected 2 m and left only the riverside path closure. The visible horizontal water line aligned with the 2 m mark and was discernible within five seconds.",
+      "fact_check": "At 6 m the visible water line lies near the 6 m mark at the top of the tank. The tank is an abstract scale study; its terraces do not identify the individual crossings. Actual local closure conditions were not independently verified.",
+      "strength": "The porcelain-and-glass scale study is distinctive and the controls have clear focus.",
+      "weakness": "The image does not explain which terrace corresponds to each closure.",
+      "repair": "Label the terraces or connect each one to its crossing and height.",
+      "arm": "repair",
+      "html_sha256": "72fc2fdeaff74cd22f26386c432d4a03c0c437557b97ee74eda0d07047fcde2d",
+      "weighted": 8.0,
+      "before": {
+        "sha256": "dc8d8d85c1f2a98a15ae1388f6281da0c07a599aba6fc287a50475a30cca3a38",
+        "file": "B-1440-before.png",
+        "tool_call_id": "item_19"
+      },
+      "after": {
+        "sha256": "024912aa35a768ab45cd85cfe5ff39e0465318505ffb830c72ee535f82936356",
+        "file": "B-1440-after.png",
+        "tool_call_id": "item_22"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ]
+    },
+    "B-390": {
+      "coherence": 7.5,
+      "originality": 8.5,
+      "craft": 7.5,
+      "usability": 8,
+      "primary_action": {
+        "input": "Tab, then Right Arrow",
+        "expected": "Select 6 m and show all three closures.",
+        "observed": "6 m received visible focus and all three outcomes were readable in the first 390 × 844 viewport."
+      },
+      "edge_observation": "Two Left Arrows selected 2 m and left only the riverside path closure. The water line aligned with the 2 m guide and was discernible within five seconds.",
+      "fact_check": "At 6 m the water line is near the top 6 m guide, though its fine line is small. All three outcomes fit in the first viewport. Actual local closure conditions were not independently verified.",
+      "strength": "The closure list remains concise and readable above the image.",
+      "weakness": "The small, abstract tank requires the reader to connect the image to crossings without labels.",
+      "repair": "Add crossing labels to the scale and strengthen the mobile waterline.",
+      "arm": "repair",
+      "html_sha256": "72fc2fdeaff74cd22f26386c432d4a03c0c437557b97ee74eda0d07047fcde2d",
+      "weighted": 7.9,
+      "before": {
+        "sha256": "8077eb7304c3c8b5ef2ce8eb27b55737a0d5b13d84aad1f0579102976dfb5175",
+        "file": "B-390-before.png",
+        "tool_call_id": "item_27"
+      },
+      "after": {
+        "sha256": "aefe47d43603d449aeb3367df34e238057d23d7406539ba407cd4f794a406877",
+        "file": "B-390-after.png",
+        "tool_call_id": "item_30"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ]
+    }
+  },
+  "preference": {
+    "winner": "A",
+    "reason": "Both views support the keyboard task and show all three outcomes in the first mobile viewport. A makes the relationship between water height and each named crossing immediately legible in the illustration, while B's distinctive tank leaves that relationship abstract."
+  },
+  "case": "social-river",
+  "verified_screens": 4,
+  "required_screens": 4,
+  "browser": "Chrome/158.0.8127.36",
+  "evaluator_thread": "01a2061e-9388-7401-bc77-7c2e75902ce6",
+  "usage": {
+    "input_tokens": 493649,
+    "cached_input_tokens": 457728,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2372,
+    "reasoning_output_tokens": 0
+  },
+  "trace_sha256": "b10fce7368aeaa24241557906efe45526850782b47b63766dc59e2cfb5d3c398",
+  "browser_audit_sha256": "380fc628c0c74341daeae2cef0fdd16a7b785883fed7ca6a25abf50886b915c2",
+  "assets": {
+    "frames": {
+      "2": {
+        "guide_from_top_pct": 64.50527,
+        "original_png_sha256": "a1894a7720aa47badf647a5b17cd182b1f63dc3eb17b5743707983a7c4dbd427",
+        "webp_sha256": "e143297af3d4c18a08ade5fabc4c85651e5fb5c52a47b362422311a3770cebf4",
+        "webp_bytes": 9012
+      },
+      "4": {
+        "guide_from_top_pct": 37.930721,
+        "original_png_sha256": "d6cc3462ae96609e34348595ef297c8e1ca162666e71c1955eabdc2e51112c8d",
+        "webp_sha256": "765b22b7d8c6a2b8172d2caaf50e9baba7e13514fd98fa554af7211077daf4f9",
+        "webp_bytes": 9326
+      },
+      "6": {
+        "guide_from_top_pct": 11.356169,
+        "original_png_sha256": "a09e4289f1e5ef39ca15cf59a0f1901fa09dd7d8b85fb425a4a097cd475f267b",
+        "webp_sha256": "6d6e7256b2b67592d6c1b4ec65972540da4b3570f7eba891a36461a7d668898d",
+        "webp_bytes": 9886
+      }
+    },
+    "pin": {
+      "original_sha256": "6c865202d697125bf3cc70a0edd4d57dc32d2144423c35a3e653cd7766230339",
+      "repair_sha256": "72fc2fdeaff74cd22f26386c432d4a03c0c437557b97ee74eda0d07047fcde2d"
+    }
+  },
+  "scope": "Matched draft comparison with the archived round-five River candidate. Both versions show the same closure facts. The experimental tank is an authored design treatment, not a retrieval result.",
+  "decision": "Keep the original. The prototype passed its keyboard, aspect-ratio and visibility checks at 320, 390 and 1440 px. The blind critic preferred the original’s clearer crossing-to-height relationship."
+}

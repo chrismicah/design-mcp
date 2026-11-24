@@ -2,7 +2,7 @@
 import pytest
 from pydantic import ValidationError
 
-from schema import DesignPattern, Platform, LayoutType
+from design_mcp.schema import DesignPattern, Platform, LayoutType
 
 
 class TestRequiredFields:

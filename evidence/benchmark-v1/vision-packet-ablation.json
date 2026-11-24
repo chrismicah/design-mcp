@@ -1,0 +1,94 @@
+{
+  "fixture_sha256": "7568885947b22dbd6933e687cac41401ea3db538f7dfb5071ac35718ff92b7f6",
+  "prompt_sha256": "fc073ad7b093e1a61f5bc37b0e76414122368e66a3f2709d2ce409cc37a99436",
+  "model": "gpt-6.2-astra",
+  "effort": "max",
+  "source_image_hashes": [
+    "acf14f72bf9bba6c7f9c20156b477ee24d93a0743d8e2f416655d373b0d36ba9",
+    "c23c0fde179c56ab144de6b4bddb313bc8ecf86ec14c16a8adb2fe6a524e2fb0",
+    "5fa669adf7714e764c078c0209124471683a58cac80c3626c8dea006e6705978",
+    "e05a7cbc443bdb70ba1737902713676d0dc0037cdabb8e4aed395a40b5fc3693"
+  ],
+  "packet_image_hashes": {
+    "full": [
+      "acf14f72bf9bba6c7f9c20156b477ee24d93a0743d8e2f416655d373b0d36ba9",
+      "c23c0fde179c56ab144de6b4bddb313bc8ecf86ec14c16a8adb2fe6a524e2fb0",
+      "5fa669adf7714e764c078c0209124471683a58cac80c3626c8dea006e6705978",
+      "e05a7cbc443bdb70ba1737902713676d0dc0037cdabb8e4aed395a40b5fc3693"
+    ],
+    "compact": [
+      "38d35652aa0b04e48794baf9b6f5c9ecc51631640e61983607938babe700a88f"
+    ]
+  },
+  "optional_crops": 0,
+  "results": {
+    "compact": {
+      "ballot": {
+        "hierarchy_region": "masthead",
+        "hierarchy_problem": "dominance",
+        "hierarchy_evidence": "The 90px desktop title and the two-line, 99px-tall mobile title give the board name more visual weight than Studio B\u2019s \u201c6 minutes late\u201d alert.",
+        "proposed_repair": "Set the title\u2019s font size to clamp(36px, 4vw, 56px) so the delayed room stands out on both screens.",
+        "desktop_room_after_filter": "Studio B",
+        "mobile_room_after_filter": "Studio B",
+        "filter_evidence": "At both widths, \u201cDelayed only\u201d becomes selected and the count changes from \u201c2 of 2 rooms\u201d to \u201c1 of 2 rooms\u201d. Hall A (\u201cReady\u201d) disappears, leaving Studio B (\u201c6 minutes late\u201d). Selecting \u201cAll rooms\u201d restores both rows."
+      },
+      "usage": {
+        "input_tokens": 21043,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1848,
+        "reasoning_output_tokens": 1649
+      },
+      "elapsed_seconds": 49.98,
+      "trace_sha256": "036002f2ac5f5bd66e5af21b78dce26d22f0295dd18d17512d99821e5c0a6314"
+    },
+    "full": {
+      "ballot": {
+        "hierarchy_region": "masthead",
+        "hierarchy_problem": "dominance",
+        "hierarchy_evidence": "The 90px desktop title draws the eye before Studio B\u2019s delay. On mobile, the 52.65px title wraps to two lines, and Studio B\u2019s row starts 346px from the top.",
+        "proposed_repair": "Reduce the title to 48px on desktop and 32px on mobile so it fits on one mobile line and gives the room names more prominence.",
+        "desktop_room_after_filter": "Studio B",
+        "mobile_room_after_filter": "Studio B",
+        "filter_evidence": "At both widths, selecting \u201cDelayed only\u201d changes the count from \u201c2 of 2 rooms\u201d to \u201c1 of 2 rooms.\u201d Studio B remains visible with \u201c6 minutes late.\u201d Hall A, marked \u201cReady,\u201d disappears. Returning to \u201cAll rooms\u201d restores both rows."
+      },
+      "usage": {
+        "input_tokens": 24546,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2005,
+        "reasoning_output_tokens": 1796
+      },
+      "elapsed_seconds": 53.87,
+      "trace_sha256": "8f86059c3d8f29212e85e977007ec9ea1bb9e0d0baae38d558794696f04bc643"
+    }
+  },
+  "input_savings_fraction": 0.14271164344496046,
+  "hierarchy_category_agrees": true,
+  "both_identified_studio_b": true,
+  "meets_numeric_gate": false,
+  "scope": "Controlled archived evidence replay on one synthetic fixture. Both arms used the same prompt and browser facts. Each arm was scored in an independent session.",
+  "full_geometry": [
+    [
+      1440,
+      900
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      1440,
+      900
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "compact_geometry": [
+    696,
+    744
+  ],
+  "decision": "Retain full-size release evidence. Do not scale this image packet. Reduce the number of frontier calls in the next cost experiment."
+}

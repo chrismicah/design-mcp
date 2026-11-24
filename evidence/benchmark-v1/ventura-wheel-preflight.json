@@ -1,0 +1,3320 @@
+{
+  "scope": "Binary-only dependency resolution and an independent check of advertised PyPI wheel tags. The managed interpreter URLs come from uv's catalog. There is no guest OS or installation in this check.",
+  "source_commit": "e1cd4eb82bc60269ce42223523f73a862c0086a5",
+  "uv": "uv 0.13.9 (6b2d39dcc 2026-11-17 aarch64-apple-darwin)",
+  "macos_target": "13.0",
+  "pyproject_sha256": "ae2efd75b11abbef9b15ab67196f84bbd4a638642a7b515a1f6656dbcdbba4f3",
+  "input_requirements": {
+    "runtime": [
+      "fastmcp==4.1.8; python_version < '3.11'",
+      "fastmcp~=4.2.4; python_version >= '3.11'",
+      "anyio>=4",
+      "pydantic>=2.0.0",
+      "httpx>=0.25.0",
+      "mcp>=2.3.0,<3",
+      "packaging>=23",
+      "platformdirs>=4.0"
+    ],
+    "build_backend": [
+      "setuptools>=68.0",
+      "wheel"
+    ],
+    "installers": [
+      "pipx",
+      "uv"
+    ]
+  },
+  "unique_release_metadata_reads": 96,
+  "wheels": {
+    "aiofile-3.8.8-py3-none-any.whl": {
+      "version": "3.8.8",
+      "sha256": "41e8845cce055779cd77713d949a339deb012eab605b857765e8f8e52a5ed811",
+      "metadata_sha256": "9c1ec7660533ee517c909fdeb15f61a4d0fce4ce5bdb62d4b5099e9e5f6e868b"
+    },
+    "annotated_types-0.8.0-py3-none-any.whl": {
+      "version": "0.8.0",
+      "sha256": "f072f4d804ea359e4eaf198b1af7a8b0943881a87f31bb764f8bf219bb9419e0",
+      "metadata_sha256": "a6e8e5b10c8fd2f596bba53e015cd37f6279fb5cec26ce0c5e9968625be4fefa"
+    },
+    "anyio-4.16.0-py3-none-any.whl": {
+      "version": "4.16.0",
+      "sha256": "c66ae634e0b8228396b801741beb3294326d4b6102f7bba4041c0dfb58c29026",
+      "metadata_sha256": "0ea1314e4706d64fe828b76006f7c790b193979f9fb18c6ce416939a89fca1ff"
+    },
+    "attrs-26.1.0-py3-none-any.whl": {
+      "version": "26.1.0",
+      "sha256": "c647aa4a12dfbad9333ca4e71fe62ddc36f4e63b2d260a37a8b83d2f043ac309",
+      "metadata_sha256": "a882bf941fb4a0bb748d0194df544121cc130f5fb15a710ab6b804c17d2899b7"
+    },
+    "authlib-1.9.10-py2.py3-none-any.whl": {
+      "version": "1.9.10",
+      "sha256": "c62d10e1b23945c6d4c578a16170bfefe4879bd23d4be62edea494993dce70aa",
+      "metadata_sha256": "17a013844c651d7fb0870394f952a93f79f5bc3703bc67d4690a2837d97101ed"
+    },
+    "beartype-0.23.1-py3-none-any.whl": {
+      "version": "0.23.1",
+      "sha256": "4461b4dc57e3fdd6c8a8464b22cf118002eea107c33e9fef651c69068ab3cce3",
+      "metadata_sha256": "3975286c753c157530214442d8d9a80f2fd67ee0049f0edeef665724bdfaee5d"
+    },
+    "cachetools-7.3.3-py3-none-any.whl": {
+      "version": "7.3.3",
+      "sha256": "32305addec0581cae6d4f7952d01d078dbc521f922650eba395b9d25b7481843",
+      "metadata_sha256": "6c5d8cb68617c0f0d97cce95fc651607cfb831a79ae4b4748c5f5938a401b4cf"
+    },
+    "caio-0.9.25-cp310-cp310-macosx_10_9_universal2.whl": {
+      "version": "0.9.25",
+      "sha256": "ca6c8ecda611478b6016cb94d23fd3eb7124852b985bdec7ecaad9f3116b9619",
+      "metadata_sha256": "7f4340e77b588477f5000ef3de852baefd22204cfbbfba67b7603461367a4535"
+    },
+    "certifi-2026.11.20-py3-none-any.whl": {
+      "version": "2026.11.20",
+      "sha256": "7422df25243767b9877031a2248cb14d09ddac9beee846f4cef3d5c9191d488f",
+      "metadata_sha256": "6959a4fa5a31855d093cdd90f5724ea5403dbdcec1402b4b4f00a6825dfdd5f7"
+    },
+    "cffi-2.1.1-cp310-cp310-macosx_11_0_arm64.whl": {
+      "version": "2.1.1",
+      "sha256": "ca82be1a1d406ecfe1d25dc16cb33488e5a16bf4438c9fb590484ea29d92478b",
+      "metadata_sha256": "2255e530e3f80593a354e3d84a29966924d0e10309d1e3a6d50f845ab7d8df66"
+    },
+    "click-8.5.1-py3-none-any.whl": {
+      "version": "8.5.1",
+      "sha256": "8bb5376d2006950386f8c6427613334a2acadc5f559cb80e638d00b4df957e37",
+      "metadata_sha256": "d6ec5ff9b41fc09d046eb431973dae2eec594dba3a853d03f369c4e3b2fde9b6"
+    },
+    "cryptography-50.0.2-cp39-abi3-macosx_11_0_arm64.whl": {
+      "version": "50.0.2",
+      "sha256": "0ec5f09541743261e66e291b4a0cbf0fb2997aeaab6d9e9c740b9dba1b58d1c2",
+      "metadata_sha256": "7423990cc0948676ef47a71ea62a476ece4c76245e6bebd1c3a71f03c4ffc0f4"
+    },
+    "cyclopts-4.25.3-py3-none-any.whl": {
+      "version": "4.25.3",
+      "sha256": "40e76b3153ea90e885abd8d3a4d8184db5a5eec2fde8540025aae8d72fc973fc",
+      "metadata_sha256": "b3b249e052a7bb248532731cd6add4a50bd0034067001cb0eab8d70007e86bb9"
+    },
+    "dnspython-2.8.0-py3-none-any.whl": {
+      "version": "2.8.0",
+      "sha256": "01d9bbc4a2d76bf0db7c1f729812ded6d912bd318d3b1cf81d30c0f845dbf3af",
+      "metadata_sha256": "60c7d4eaba092cded2f7345920285ee9dc1d38bc5175af429cf32ad88e0cbbaa"
+    },
+    "docstring_parser-0.18.0-py3-none-any.whl": {
+      "version": "0.18.0",
+      "sha256": "b3fcbed555c47d8479be0796ef7e19c2670d428d72e96da63f3a40122860374b",
+      "metadata_sha256": "d327fa6f57f9d666866df08051263cf35541797d2b615c489d23d26a937931bb"
+    },
+    "email_validator-2.4.0-py3-none-any.whl": {
+      "version": "2.4.0",
+      "sha256": "4454e41c4e1c6b6caee34a1dc71d5e736791562be8fd179b02e298f796522684",
+      "metadata_sha256": "ab1beed8e657175623e05e2c7e4c583b7edd6d4429fb98ad7a52dfeafd5d6908"
+    },
+    "exceptiongroup-1.3.2-py3-none-any.whl": {
+      "version": "1.3.2",
+      "sha256": "41c6a70dfec22050d3d8b43386b059a4dc0bca3f3d40a40971cb206fff1785af",
+      "metadata_sha256": "d752b87a09e1f52347697aeb4bedfde0cc9dcd1523d8e296476014c989297bca"
+    },
+    "fastmcp-4.1.8-py3-none-any.whl": {
+      "version": "4.1.8",
+      "sha256": "7b5e7f3aa1b7c372d7f7284c7ea686f5a6d3d1db96d4c609029b67848c083ba1",
+      "metadata_sha256": "8cab040f0a7c8d94adff5d96940d2a0bf305f5f064a5774865caeb7a5ed44728"
+    },
+    "fastmcp_slim-4.1.8-py3-none-any.whl": {
+      "version": "4.1.8",
+      "sha256": "2686ea58fe1112816101be10892ed2028aaf774c6205546c259be6e5f0c83530",
+      "metadata_sha256": "f03624127e9be50203734ea1446bee7edb97cf0de039d804e284d81a6494c4d9"
+    },
+    "griffelib-2.3.0-py3-none-any.whl": {
+      "version": "2.3.0",
+      "sha256": "1b8f9cd525681c26b1d6d574faa1371651e8459ca51d209684f50b8096ae06e0",
+      "metadata_sha256": "4f397441ecd2ac6b3a2988ebd5ae1cdd35e63d1a98d0cb4739e59efac2de3f7f"
+    },
+    "h11-0.16.0-py3-none-any.whl": {
+      "version": "0.16.0",
+      "sha256": "63cf8bbe7522de3bf65932fda1d9c2772064ffb3dae62d55932da54b31cb6c86",
+      "metadata_sha256": "97f4efb9cc00826f0408076983adc1a1e48e8f2cabf403aaf250f724e081440d"
+    },
+    "httpcore-1.0.9-py3-none-any.whl": {
+      "version": "1.0.9",
+      "sha256": "2d400746a40668fc9dec9810239072b40b4484b640a8c38fd654a024c7a1bf55",
+      "metadata_sha256": "e26eca5c3d288fe9e6446af9bcbca1038ba688629d5c8a2886c47d74718d87a2"
+    },
+    "httpcore2-2.14.0-py3-none-any.whl": {
+      "version": "2.14.0",
+      "sha256": "4c4f64f4b544afeb778c42c0ffb5941b29e671157e90ed3f6dc787c4bca90cd1",
+      "metadata_sha256": "90dbad5b9cfd0139b08dfc909e1d4945e3e55d7a026da0c01fb7431f55599e74"
+    },
+    "httpx-0.28.1-py3-none-any.whl": {
+      "version": "0.28.1",
+      "sha256": "d909fcccc110f8c7faf814ca82a9a4d816bc5a6dbfea25d6591d6985b8ba59ad",
+      "metadata_sha256": "293bfab7bf587fcd0825f1bd8eed8e6303285ba14801b15659853827cbe30796"
+    },
+    "httpx2-2.14.0-py3-none-any.whl": {
+      "version": "2.14.0",
+      "sha256": "9d20c13a10bae1773a0be3b0f1e5beeb4bdd549bc3a2ba18efa32897c65403e4",
+      "metadata_sha256": "6a505e035636347b3b576a8e7cf24b68a2927a38d014665d5d667646add8703e"
+    },
+    "idna-3.20-py3-none-any.whl": {
+      "version": "3.20",
+      "sha256": "ab7ae7122974553370f0bdb919e1a960b2cd1bc1ef0276416d896db81c14582c",
+      "metadata_sha256": "e7cbd26e23ce60f6cb3a151d2adf3b1b087bb8f10ac2d9d6db70fdccbf3bb041"
+    },
+    "joserfc-1.7.7-py3-none-any.whl": {
+      "version": "1.7.7",
+      "sha256": "06979cfbab78bc802f14c0358f32969826cc26720e13cb38926ffdc86bc0cb2c",
+      "metadata_sha256": "deda57b23e00df134eb11724c7445da370332408bcaba40d5e3d60a95bf6af2f"
+    },
+    "jsonref-1.1.0-py3-none-any.whl": {
+      "version": "1.1.0",
+      "sha256": "590dc7773df6c21cbf948b5dac07a72a251db28b0238ceecce0a2abfa8ec30a9",
+      "metadata_sha256": "359440e713faba3bfafb813ef8cc4fa3a0851817aa2565abf10893c63271522d"
+    },
+    "jsonschema-4.26.0-py3-none-any.whl": {
+      "version": "4.26.0",
+      "sha256": "d489f15263b8d200f8387e64b4c3a75f06629559fb73deb8fdfb525f2dab50ce",
+      "metadata_sha256": "d0c9ccdfa30c3cdc57b048c2be21123dfb0c2f4d6bef2e8324dcb4eac985cfcf"
+    },
+    "jsonschema_path-0.5.0-py3-none-any.whl": {
+      "version": "0.5.0",
+      "sha256": "2790a070bc7abb08ea3dbe4d340ece4efadf639223001f020c7503229ba068e2",
+      "metadata_sha256": "58f330f40347bb7422168ffbb1dfc79a55ae9539108b473cbebd5f6894ca5924"
+    },
+    "jsonschema_specifications-2025.9.1-py3-none-any.whl": {
+      "version": "2025.9.1",
+      "sha256": "98802fee3a11ee76ecaca44429fda8a41bff98b00a0f2838151b113f210cc6fe",
+      "metadata_sha256": "91810d8f79384375ad0c0cf631e06903e2790b030d3fad2f1ad657b20ddd839e"
+    },
+    "markdown_it_py-4.3.0-py3-none-any.whl": {
+      "version": "4.3.0",
+      "sha256": "7aa1511a46c39138de78d9eba92ce47e63124d8003fc98b3a351909e04239efa",
+      "metadata_sha256": "a9ff25f0e776d677ab8f6e85d7db1f5b07fe64ca9da0dd809873d48f24b03e2f"
+    },
+    "mcp-2.3.0-py3-none-any.whl": {
+      "version": "2.3.0",
+      "sha256": "dd0c44c089d16453e8ae31a3877a0054d7a2314caaa81f5e0541b9b1734b2377",
+      "metadata_sha256": "d9348a2813cdf05df82f7852afb9f13d8a8035d62c3a5e07fb9657bc5382aad7"
+    },
+    "mcp_types-2.3.0-py3-none-any.whl": {
+      "version": "2.3.0",
+      "sha256": "968efdbdaedfab06adae40d378a34395f1090c5921d4be3c9cde283aaf76d91d",
+      "metadata_sha256": "9df9fb5f5ca5d2ca3c74b2d9fc1b1e9d753e84ab22be14f177a1cbed5e94c419"
+    },
+    "mdurl-0.1.2-py3-none-any.whl": {
+      "version": "0.1.2",
+      "sha256": "84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8",
+      "metadata_sha256": "c7baac0b363d92cf55f1f3a313f4bb0564bff27343e6a0a4e9d7ff03afc8a6c7"
+    },
+    "openapi_pydantic-0.6.0-py3-none-any.whl": {
+      "version": "0.6.0",
+      "sha256": "8bd6d548a250da37db96f461bcd52b3468e8834ad7d6db14b00a6b2ebbd163a3",
+      "metadata_sha256": "440437b0809af729c66eaad3dc9f35d1a773b9ff901203aa52b7bc44c1b23fe0"
+    },
+    "opentelemetry_api-1.45.2-py3-none-any.whl": {
+      "version": "1.45.2",
+      "sha256": "2cbd737377e710ee740d261c94e93fa0f08e6d037c18f17513cc0a2d94479a34",
+      "metadata_sha256": "0b58654ba1b29b21bbbb90f03286d24425e752c219e556b80dae93f839b7e33f"
+    },
+    "packaging-26.3-py3-none-any.whl": {
+      "version": "26.3",
+      "sha256": "d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c",
+      "metadata_sha256": "4f190d2f0b312b3086058cee64ab4333bf3ce67fb78b4c2bdb43899049b29f4d"
+    },
+    "pathable-0.6.0-py3-none-any.whl": {
+      "version": "0.6.0",
+      "sha256": "82c4ca6c98c502ad12e0d4e9779b6210afee93c38990988c8c5d1b49bdcdf566",
+      "metadata_sha256": "0e6a4f486bd9ef0a19219736e547de4704282f9f329739d3933b90a1ec7eb2bc"
+    },
+    "platformdirs-4.12.4-py3-none-any.whl": {
+      "version": "4.12.4",
+      "sha256": "78bfb9db2a8471ed7eebe3c3c932da413911042994e699b384fbb4493fa872d7",
+      "metadata_sha256": "4d323d20aac704762b5cceb2262efcc4e1a96248cfe9ad473d9a560ac6a1f622"
+    },
+    "py_key_value_aio-0.4.6-py3-none-any.whl": {
+      "version": "0.4.6",
+      "sha256": "820b30c7959fc738ea3d00160cdb10cd258f51e38737b2add530defeea1ded77",
+      "metadata_sha256": "79ea0a86b640ae9c01d810ac9c5ca0de3aaa314bce25b77e350ba52fdb5be4af"
+    },
+    "pycparser-3.11-py3-none-any.whl": {
+      "version": "3.11",
+      "sha256": "51d5a8ba2be0bbe440b99d2112604c95bbbc3c2748a64260186c541e1729cd80",
+      "metadata_sha256": "f3711214301b5595f24eb4fe232a70836a6187ab4a93e895d0307006456ed41a"
+    },
+    "pydantic-2.14.4-py3-none-any.whl": {
+      "version": "2.14.4",
+      "sha256": "653a2ad9f6d8858529c77c72717d0ea991d6c6837fe683246b2f4b2bbfc3fadc",
+      "metadata_sha256": "5d722dd4d4d25910be858c847dc61d0ca53d641ed016db61da937c8af49e35a9"
+    },
+    "pydantic_core-2.50.5-cp310-cp310-macosx_11_0_arm64.whl": {
+      "version": "2.50.5",
+      "sha256": "55e0d60384a9b14641749d2ba6721f82409248288f066b95d555c6dd484273d2",
+      "metadata_sha256": "680b0b965140b7d57c09767852ad8cb1687367b17c0c2c9ca96a02a393174d87"
+    },
+    "pydantic_settings-2.15.0-py3-none-any.whl": {
+      "version": "2.15.0",
+      "sha256": "0ba092c291c94baceb5eff768aa0d56400a457585bc0175925a5a5510303da42",
+      "metadata_sha256": "6691150c88c5b235044f99d561ef91dcc1a137ba6f8e38bacc939d8a5babf947"
+    },
+    "pygments-2.21.0-py3-none-any.whl": {
+      "version": "2.21.0",
+      "sha256": "2363c69b61c4a97c838da3b130dcd6468f4848992b21a82f2a63ec34377137d9",
+      "metadata_sha256": "330104a10adc8a587e3f98f4e207557125ca0c1d489e129334da5acb2b813a03"
+    },
+    "pyjwt-2.15.1-py3-none-any.whl": {
+      "version": "2.15.1",
+      "sha256": "42d59d631f7768a1028a64c7ff581a9bf7519804daf91fc5b6c56e30eec5e193",
+      "metadata_sha256": "f13089db8caff0efbdec85ab5c3fa281a3cc76d5b708c74fab427c98e1f29a0d"
+    },
+    "pyperclip-1.11.0-py3-none-any.whl": {
+      "version": "1.11.0",
+      "sha256": "299403e9ff44581cb9ba2ffeed69c7aa96a008622ad0c46cb575ca75b5b84273",
+      "metadata_sha256": "5be71d55f75049c5c28dd982a99ff31c34fa822640a80d3805148c6dbc9448ac"
+    },
+    "python_dotenv-1.2.4-py3-none-any.whl": {
+      "version": "1.2.4",
+      "sha256": "42269a8a5b3fd54ffa6f3d84b18abed50064717576b4ecf03dc4a55d8aa04fdc",
+      "metadata_sha256": "89701376846132aefd76202d07dad6e84febe4a426a12973004e13018af15c41"
+    },
+    "python_multipart-0.0.32-py3-none-any.whl": {
+      "version": "0.0.32",
+      "sha256": "ff6d3f776f16878c894e52e107296ffc890e913c611b1a4ec6c44e2821fe2e23",
+      "metadata_sha256": "0e39107098c0a6bbbd47b9ba29b252a4b061f80f50693da06ce421358a203913"
+    },
+    "pyyaml-6.0.4-cp310-cp310-macosx_11_0_arm64.whl": {
+      "version": "6.0.4",
+      "sha256": "e39017e1cef43d03b2ba427f60213e4b36dbc6fb092235fa3de3a510ce064d3c",
+      "metadata_sha256": "45e5d23e958fbc6502a0e96777921072545f2f2fb9978d27ef1a1ce9c180f765"
+    },
+    "referencing-0.37.0-py3-none-any.whl": {
+      "version": "0.37.0",
+      "sha256": "381329a9f99628c9069361716891d34ad94af76e461dcb0335825aecc7692231",
+      "metadata_sha256": "a67968d8e03aa45e650fc2ff0d07796676db1a7841ce8e810bf2dba5af689464"
+    },
+    "rich-15.0.0-py3-none-any.whl": {
+      "version": "15.0.0",
+      "sha256": "33bd4ef74232fb73fe9279a257718407f169c09b78a87ad3d296f548e27de0bb",
+      "metadata_sha256": "455015cb0b237a24819d91236152ad0e71b2be39a83cbe6afa0e29ea8aafa550"
+    },
+    "rich_rst-2.2.0-py3-none-any.whl": {
+      "version": "2.2.0",
+      "sha256": "1ea1c43813dc4a8d86475fce27ffb74e0ada3d4656c9f8130ba2a59868055fe9",
+      "metadata_sha256": "ca8b0b60c89db906ee5f5d86ce86995ee522f83fa7538c686884a356edb9a09d"
+    },
+    "rpds_py-0.30.0-cp310-cp310-macosx_11_0_arm64.whl": {
+      "version": "0.30.0",
+      "sha256": "4cc2206b76b4f576934f0ed374b10d7ca5f457858b157ca52064bdfc26b9fc00",
+      "metadata_sha256": "3d483a85d90018b0d75e321e3795121cb4658e7e8296e5f2af3a27ed53f88d61"
+    },
+    "sse_starlette-3.5.1-py3-none-any.whl": {
+      "version": "3.5.1",
+      "sha256": "a6cdcfec47b952911b1d99a7b8056429b5984039b875bf6575174220364b551f",
+      "metadata_sha256": "5931c63ac3943f1035237a1ada52fb7c09cda0379ddf89c461889730e65e8cad"
+    },
+    "starlette-1.7.0-py3-none-any.whl": {
+      "version": "1.7.0",
+      "sha256": "67f8e99895493dd2911a03f11314af6ceebeae4e704bb9f43dfc6a9db151c93e",
+      "metadata_sha256": "bb99192bfa57ca9de6fbe4260f1a6e2a7c60c8cba54217413c049e402b06d2bb"
+    },
+    "tomli-2.5.0-py3-none-any.whl": {
+      "version": "2.5.0",
+      "sha256": "32a7b79ac57a2e83670ce329ccf675798bc5a2094783a63676866b70503f2e2b",
+      "metadata_sha256": "db3dcc9ba38b7c7fe8021b68b66112b8df90840ca826acfa55b3698f76992eb1"
+    },
+    "truststore-0.10.5-py3-none-any.whl": {
+      "version": "0.10.5",
+      "sha256": "9aaaedaefaf06d8b206278cf8b5012bc897f485a874503501e12d776df78951c",
+      "metadata_sha256": "3aa1222ab6468e1e01b751aeda8db44afca8117297c93cb497c8d27e8f37e17b"
+    },
+    "typing_extensions-4.16.0-py3-none-any.whl": {
+      "version": "4.16.0",
+      "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8",
+      "metadata_sha256": "2140da00d62dde967f52d0be0ae28444f1d6a3fe603f52c83c23988c32122d5a"
+    },
+    "typing_inspection-0.4.5-py3-none-any.whl": {
+      "version": "0.4.5",
+      "sha256": "bc210535442b39e1bf2805e0c7a17dfd6a4ace760c84c7f7d16245d23a6b1c39",
+      "metadata_sha256": "5143a2b62f3dcf4202e44c2b48d661a1251059f65fc4a996040278adc4a8c5eb"
+    },
+    "uncalled_for-0.5.0-py3-none-any.whl": {
+      "version": "0.5.0",
+      "sha256": "57ce9a40573918fbc9f5f4406e5420177d608ce47a7bb8341a2038585327b399",
+      "metadata_sha256": "65f679d50c54482abd3fa3076a96610a251d5ef8476054c2546aeffd7e205234"
+    },
+    "uvicorn-0.54.0-py3-none-any.whl": {
+      "version": "0.54.0",
+      "sha256": "505bdb0f318731d45f1f712071fc781a8981f6847a31c902c9f5e652d4f67faf",
+      "metadata_sha256": "a308e83961793f6114221aefe9e046ef587da0fc986c4dc50ace1ee43fbe9bcb"
+    },
+    "watchfiles-1.3.0-cp310-abi3-macosx_11_0_arm64.whl": {
+      "version": "1.3.0",
+      "sha256": "bbc1198edfdc90fda0600f825aa94150f428dfcbf8138746f55998e0e660d64c",
+      "metadata_sha256": "ba585baa9af3fdcdb897e9e6f5711a7551aa994c617318e898b3ec749383f73a"
+    },
+    "websockets-16.1.1-cp310-cp310-macosx_11_0_arm64.whl": {
+      "version": "16.1.1",
+      "sha256": "9246a0d063cfcbcc85f2359dd6876d681213f4790832272aa16641b4ed5d64d4",
+      "metadata_sha256": "4fe5ed6baf299524b650fc34da13a008b75d8fc5c23d12b46339a9cfcbee526f"
+    },
+    "setuptools-84.2.1-py3-none-any.whl": {
+      "version": "84.2.1",
+      "sha256": "ca140b45d5325a9478f880e351484f62fef15f336462e449ca0c03c873d589c2",
+      "metadata_sha256": "d75de8ba0d3304a3d74484fb9f340edb87ef02712da4fa02a2ed92e71b0572dd"
+    },
+    "wheel-0.48.0-py3-none-any.whl": {
+      "version": "0.48.0",
+      "sha256": "3217dcc807155e45db462d7ef2431f5ddda0d7273b700d05a67b271ceb1287ab",
+      "metadata_sha256": "03f655da3a6dd010d9ac41d4771d5d973109cb662a1e10eb9d967535ffd145f8"
+    },
+    "argcomplete-3.8.0-py3-none-any.whl": {
+      "version": "3.8.0",
+      "sha256": "1fcc7b143e22a22b04629773a40751fb78976bc9cc0912f1fef6c70b51b48ef9",
+      "metadata_sha256": "b90f124bfdf71c6aa3e740b3c289a7a50304d87e9246f5e101999224de9a4698"
+    },
+    "filelock-4.1.0-py3-none-any.whl": {
+      "version": "4.1.0",
+      "sha256": "2ce9818e3e2d8f284c1a964414447ef148d42a5fd5e2a477a7118e574b293ec1",
+      "metadata_sha256": "24aff10a11a2544d36c3af1ae4964287d36a016661ac55023c29548c2501ae45"
+    },
+    "pipx-1.17.12-py3-none-any.whl": {
+      "version": "1.17.12",
+      "sha256": "f78052862c4b764155a33b8050e5dc181aca766167cbe833126131e4debae23d",
+      "metadata_sha256": "b692aa8a64c469ff570f80e05c474a6a9c7756e6151378d21a025b711ca11fb4"
+    },
+    "userpath-1.9.2-py3-none-any.whl": {
+      "version": "1.9.2",
+      "sha256": "2cbf01a23d655a1ff8fc166dfb78da1b641d1ceabf0fe5f970767d380b14e89d",
+      "metadata_sha256": "5036ea2024f48dc69289bdce02d3aebad8d53eda892846f70ba99752c647ef93"
+    },
+    "uv-0.13.9-py3-none-macosx_11_0_arm64.whl": {
+      "version": "0.13.9",
+      "sha256": "66c512266d633bef48384a1f53003f41f2a8e7b36fe6e7fbfd3e0fd52d96fa63",
+      "metadata_sha256": "3d7a16584f536474489b8632f1c00f42d6edb2c4620e382c0087e2a202bc18e7"
+    },
+    "cffi-2.1.1-cp310-cp310-macosx_10_15_x86_64.whl": {
+      "version": "2.1.1",
+      "sha256": "baed1e86cc735622097354b9d1281406caf42ff42a886d29faa8e8d1630333be",
+      "metadata_sha256": "2255e530e3f80593a354e3d84a29966924d0e10309d1e3a6d50f845ab7d8df66"
+    },
+    "cryptography-48.0.1-cp39-abi3-macosx_10_9_universal2.whl": {
+      "version": "48.0.1",
+      "sha256": "4fdc69f8e4316bcf0c8c8ec1f26f285d12e8142d88d96c876a59a03be3f6ae67",
+      "metadata_sha256": "eb0177ac13bd74e0668aa81910ddeb553295d46533fdb6ce2468dc1aaf959d61"
+    },
+    "pydantic_core-2.50.5-cp310-cp310-macosx_10_12_x86_64.whl": {
+      "version": "2.50.5",
+      "sha256": "302517f9f5589e07ead02d38fbb443947a211461b39b18f46948b20941fa8d98",
+      "metadata_sha256": "680b0b965140b7d57c09767852ad8cb1687367b17c0c2c9ca96a02a393174d87"
+    },
+    "pyyaml-6.0.4-cp310-cp310-macosx_10_15_x86_64.whl": {
+      "version": "6.0.4",
+      "sha256": "78be5a1b05a5d1fd46d0290393e5deeb581fa617585462c1b84f7c6b0cb1e489",
+      "metadata_sha256": "45e5d23e958fbc6502a0e96777921072545f2f2fb9978d27ef1a1ce9c180f765"
+    },
+    "rpds_py-0.30.0-cp310-cp310-macosx_10_12_x86_64.whl": {
+      "version": "0.30.0",
+      "sha256": "679ae98e00c0e8d68a7fda324e16b90fd5260945b45d3b824c892cec9eea3288",
+      "metadata_sha256": "3d483a85d90018b0d75e321e3795121cb4658e7e8296e5f2af3a27ed53f88d61"
+    },
+    "watchfiles-1.3.0-cp310-abi3-macosx_10_12_x86_64.whl": {
+      "version": "1.3.0",
+      "sha256": "000b9688fc8133037a8b075c8ebf98f32844ff8964dda61e85c1db547dafc441",
+      "metadata_sha256": "ba585baa9af3fdcdb897e9e6f5711a7551aa994c617318e898b3ec749383f73a"
+    },
+    "websockets-16.1.1-cp310-cp310-macosx_10_9_x86_64.whl": {
+      "version": "16.1.1",
+      "sha256": "5bfd1ac19b1b9986a9c95a82d5e23a391ebb09e12c34d7be6094b86efcc35731",
+      "metadata_sha256": "4fe5ed6baf299524b650fc34da13a008b75d8fc5c23d12b46339a9cfcbee526f"
+    },
+    "uv-0.13.9-py3-none-macosx_10_12_x86_64.whl": {
+      "version": "0.13.9",
+      "sha256": "c16ed11e013557536b3e60065f1b912f6407bd6518e041b961e23ef9e6b4fbf5",
+      "metadata_sha256": "3d7a16584f536474489b8632f1c00f42d6edb2c4620e382c0087e2a202bc18e7"
+    },
+    "aiofile-3.12.3-py3-none-any.whl": {
+      "version": "3.12.3",
+      "sha256": "5c1bcc9e929c50834608e8cc1a4cc1d7503eb60c15a535b779fd39e2f372c017",
+      "metadata_sha256": "1b83d4e27beb963912da06f65d5589d1cf4b8a38fadb4d3aa49ac0c5f4bcdbba"
+    },
+    "cachetools-8.0.2-py3-none-any.whl": {
+      "version": "8.0.2",
+      "sha256": "502bf3c17c6e35d78ccdaa70da8c7001b28634541f5cde0dee33c93bb252277d",
+      "metadata_sha256": "d25a736a14080655c30d13696b0c9c757e6c3e622c2d55dde5ba8ef7d68edc20"
+    },
+    "caio-0.12.10-cp311-cp311-macosx_10_9_universal2.whl": {
+      "version": "0.12.10",
+      "sha256": "f09366a7eaaa23f7dbf19c14802a3ba57b72e9efec463b89a8ff77bcbe3c8c09",
+      "metadata_sha256": "c5b40774bb93a571320f9ce1168f3d84bcef6252c6b94f1aea20a852facbb357"
+    },
+    "cffi-2.1.1-cp311-cp311-macosx_11_0_arm64.whl": {
+      "version": "2.1.1",
+      "sha256": "398aff33cee2767e3e781d2554c54bd0dff386bb437581e0d8011fde1a942ec1",
+      "metadata_sha256": "2255e530e3f80593a354e3d84a29966924d0e10309d1e3a6d50f845ab7d8df66"
+    },
+    "cryptography-50.0.2-cp311-abi3-macosx_11_0_arm64.whl": {
+      "version": "50.0.2",
+      "sha256": "fa8f5efb344d6908a1ce62f4a24e2e5780f825d6f53f5f50ec5ffacac72936cb",
+      "metadata_sha256": "7423990cc0948676ef47a71ea62a476ece4c76245e6bebd1c3a71f03c4ffc0f4"
+    },
+    "cyclopts-5.5.2-py3-none-any.whl": {
+      "version": "5.5.2",
+      "sha256": "4fbe863ebace1c65dafc6520c82217915b103d27fbd1d8fcd168f2abcca3a12a",
+      "metadata_sha256": "d4641c372ecb1e83ffc1e369e7efdbc63639aeaaf38cc0521a2c45460e411152"
+    },
+    "dnspython-2.9.2-py3-none-any.whl": {
+      "version": "2.9.2",
+      "sha256": "af15f7d385a6ae2fb35a796fde2138004c8c42c7389090e2addc83e3b3340fd8",
+      "metadata_sha256": "ebfd66c52097ea571595fd686e8bf123e65b3e408575f727357dae7dd8c10aa1"
+    },
+    "fastmcp-4.2.4-py3-none-any.whl": {
+      "version": "4.2.4",
+      "sha256": "fddc1fe906ad0c202862469ecc5b8bf69dbc81a1ea8141112399c72449527cd4",
+      "metadata_sha256": "94cba1248dacdc39e65a177c1fba52fbaaef018ffb252fc24b539744a868cc3f"
+    },
+    "fastmcp_slim-4.2.4-py3-none-any.whl": {
+      "version": "4.2.4",
+      "sha256": "d8c4ecad3b7ad6cb4c0a26c0d05c66af74033753d39601bee5290a10cf102a24",
+      "metadata_sha256": "d1277494ff01c2c4b0bc47c689c52869c58e762d473cebea5a9e6bc1ae624218"
+    },
+    "griffelib-2.4.1-py3-none-any.whl": {
+      "version": "2.4.1",
+      "sha256": "76bc562f936ad1ce198d2cf6d0731bd5c92a7d934b69ef828ef22ee0ffdb62ce",
+      "metadata_sha256": "4b9fdc46420bc99285f122d3252c98ed81b88e51e5d2c45c9cbf645218cc00eb"
+    },
+    "httpcore2-2.16.2-py3-none-any.whl": {
+      "version": "2.16.2",
+      "sha256": "16051ae2a42f776007543f32de9349a317b23d2cbb4e1456b4bac0e88b87419a",
+      "metadata_sha256": "f13430b39ef492d90faaf3d3faa70886557d1bf621d7ce411e0a1c9b00caabef"
+    },
+    "httpx2-2.16.2-py3-none-any.whl": {
+      "version": "2.16.2",
+      "sha256": "f05c13aade4c45dbf1c9060647a1058f0acad62398fad96e741269edb33d46f5",
+      "metadata_sha256": "8cb454b83f94ed17f8ffbb5b555f61d515d9c2e4925b8fdc3e789469706408f7"
+    },
+    "joserfc-1.8.0-py3-none-any.whl": {
+      "version": "1.8.0",
+      "sha256": "176b836ac7ed9a46a88629e24076314b475f33a75d0bad7f26146e572eed7c79",
+      "metadata_sha256": "8e80f074d870fd4f6f5fb837c478469091446169f12c071df5066101907ee4db"
+    },
+    "platformdirs-4.14.8-py3-none-any.whl": {
+      "version": "4.14.8",
+      "sha256": "1e34af590de4d978631b751eb2202f2fee4497537a17c1720b12fcf57b331392",
+      "metadata_sha256": "86f6a26cac5ad2321ddb4e44fb5cd42ea97ab69d75824d3f66d544dc35ba7c50"
+    },
+    "py_key_value_aio-0.5.0-py3-none-any.whl": {
+      "version": "0.5.0",
+      "sha256": "14268b72d1e2b94268c5b457a9bb065e9ee031c6617fa9c5adac795a776ccbfa",
+      "metadata_sha256": "bd6165b9b879e3d336595002994367c2cc84082a94f372db8c45df1212a1984c"
+    },
+    "pycparser-3.12-py3-none-any.whl": {
+      "version": "3.12",
+      "sha256": "a076f3f489b39b43ed13563a1dafe42447445bec2e294154ec5c57fcdda4c85e",
+      "metadata_sha256": "e919b291615d54a2328a0da6128cd9d95601ad04d27cec48eeb75e0d57c3b6ad"
+    },
+    "pydantic_core-2.50.5-cp311-cp311-macosx_11_0_arm64.whl": {
+      "version": "2.50.5",
+      "sha256": "40d5da89a632e6c6c938f93fdf54c534882d258a80f51ccfe1650cdedc12e82c",
+      "metadata_sha256": "680b0b965140b7d57c09767852ad8cb1687367b17c0c2c9ca96a02a393174d87"
+    },
+    "pydantic_settings-2.16.3-py3-none-any.whl": {
+      "version": "2.16.3",
+      "sha256": "d1db16a2d34006323a1b42c0640898da58adfbad7ec30baaa9e2b18aafc08999",
+      "metadata_sha256": "f030273d71bb05874d7fcc9aa896e70837f35601d4d061f39786170a22e25805"
+    },
+    "python_multipart-0.0.34-py3-none-any.whl": {
+      "version": "0.0.34",
+      "sha256": "ebacd224bd686eee2f9aa1066a657affe07435a185834e05e5235e2e59173e91",
+      "metadata_sha256": "0a216ef9cbb89e6ad41b9577fdd2ee421738e3b8b8fee7a933c4d990904e6eca"
+    },
+    "pyyaml-6.0.4-cp311-cp311-macosx_11_0_arm64.whl": {
+      "version": "6.0.4",
+      "sha256": "730788375056c43d3ac15bd894c9cd2fb7a931a38b302f408620c64b3ef176ed",
+      "metadata_sha256": "45e5d23e958fbc6502a0e96777921072545f2f2fb9978d27ef1a1ce9c180f765"
+    },
+    "rpds_py-2026.9.1-cp311-cp311-macosx_11_0_arm64.whl": {
+      "version": "2026.9.1",
+      "sha256": "3231c4c0e521dafa5be0c9f114ee2c2ad46650836f2d72caa86801950c3e7044",
+      "metadata_sha256": "93808b9ff27aabe26d9a4f03b28422d1d05c3fb8716d88f3826e7ddf4b0b258b"
+    },
+    "sse_starlette-3.7.0-py3-none-any.whl": {
+      "version": "3.7.0",
+      "sha256": "f1d3136caa12d129284fca3d2ded79bc9af943320b6472712955fea52a6d3eea",
+      "metadata_sha256": "696e0f3d5a1a702a7af8d32cdd596b714dca8f9dee2ccc4be75eeb6b2a01ca23"
+    },
+    "starlette-1.10.0-py3-none-any.whl": {
+      "version": "1.10.0",
+      "sha256": "478c0ab3b4ced6e82719849c118fa406f0278a3499c1a898cd15cd31bdc38ce4",
+      "metadata_sha256": "97b97206e2e6e29b5283cd401a9c8d0a75738705f3fbc7f5db1fc487dfafdc9a"
+    },
+    "uncalled_for-0.6.2-py3-none-any.whl": {
+      "version": "0.6.2",
+      "sha256": "bcac08897ceb7113b52e6c8070eead4da1610ae23e6e0d0e9f2a6c4bba7905cb",
+      "metadata_sha256": "550c3bb2ed063a998a0a0b1e6664f4e51db28dac810c6f0118237dd129af220e"
+    },
+    "websockets-17.4-cp311-cp311-macosx_11_0_arm64.whl": {
+      "version": "17.4",
+      "sha256": "b8451f31ae24620cc9372acd2728d87922f2bb0cae3fa57aed68b152844cdf08",
+      "metadata_sha256": "44c13cba2bf7f1b8adec49e89259c2cb2bd5e1a17d2eb89c01261282a0c3f846"
+    },
+    "filelock-4.3.0-py3-none-any.whl": {
+      "version": "4.3.0",
+      "sha256": "f933f39f7e01249a4a49b9abab30edc6d4b874624c3de5dd0b0d137aa8adb979",
+      "metadata_sha256": "dbb4ca3c0b2f9beb379c19c22b48520897674db74b4e5744d6d4366d8629b200"
+    },
+    "pipx-1.18.19-py3-none-any.whl": {
+      "version": "1.18.19",
+      "sha256": "f93b4c137a9424a311aa98090ef220f560e470092d30b43eb824722479a4e589",
+      "metadata_sha256": "a61d108dd2597adad8e21df85598fbed83aa4ec667dbd345c15703292ebc2811"
+    },
+    "cffi-2.1.1-cp311-cp311-macosx_10_15_x86_64.whl": {
+      "version": "2.1.1",
+      "sha256": "c8d2c9fd1f2d16f780d15127abb050d13d1a76c03a4bd87d7e4980e45e511e12",
+      "metadata_sha256": "2255e530e3f80593a354e3d84a29966924d0e10309d1e3a6d50f845ab7d8df66"
+    },
+    "cryptography-48.0.1-cp311-abi3-macosx_10_9_universal2.whl": {
+      "version": "48.0.1",
+      "sha256": "3e4a1a3232eef2e6c732827d5722db29a0cc8b27af2a4d865b094cf954be9ca1",
+      "metadata_sha256": "eb0177ac13bd74e0668aa81910ddeb553295d46533fdb6ce2468dc1aaf959d61"
+    },
+    "pydantic_core-2.50.5-cp311-cp311-macosx_10_12_x86_64.whl": {
+      "version": "2.50.5",
+      "sha256": "bcc830e4f48499fd30a870f07c30752273ae2ddccce34d65d51c9fc880c380ab",
+      "metadata_sha256": "680b0b965140b7d57c09767852ad8cb1687367b17c0c2c9ca96a02a393174d87"
+    },
+    "pyyaml-6.0.4-cp311-cp311-macosx_10_15_x86_64.whl": {
+      "version": "6.0.4",
+      "sha256": "180ac792c958c2173f6e4467c55ae5f73ab1a9a624ee29fc7095c56d5e3a4055",
+      "metadata_sha256": "45e5d23e958fbc6502a0e96777921072545f2f2fb9978d27ef1a1ce9c180f765"
+    },
+    "rpds_py-2026.9.1-cp311-cp311-macosx_10_12_x86_64.whl": {
+      "version": "2026.9.1",
+      "sha256": "2711d29b653b3bce48a63d18b9c6b53274669e6d6c4094dddeb4d9a0e45128b2",
+      "metadata_sha256": "93808b9ff27aabe26d9a4f03b28422d1d05c3fb8716d88f3826e7ddf4b0b258b"
+    },
+    "websockets-17.4-cp311-cp311-macosx_10_9_x86_64.whl": {
+      "version": "17.4",
+      "sha256": "75b32cf33ea40f945f226f97bc1d43151e1a5adff21f420b5e63c468b1a28114",
+      "metadata_sha256": "44c13cba2bf7f1b8adec49e89259c2cb2bd5e1a17d2eb89c01261282a0c3f846"
+    },
+    "caio-0.12.10-cp312-cp312-macosx_10_13_universal2.whl": {
+      "version": "0.12.10",
+      "sha256": "c396c9a850681bf51dcc9943468260f6fa7861498f84b5f3b9413e9d3283cbec",
+      "metadata_sha256": "c5b40774bb93a571320f9ce1168f3d84bcef6252c6b94f1aea20a852facbb357"
+    },
+    "cffi-2.1.1-cp312-cp312-macosx_11_0_arm64.whl": {
+      "version": "2.1.1",
+      "sha256": "f81b3b8f3d4e343550fa4baa0e479bba9f2d29ce9c2e9b51d1ce1718d7442fcf",
+      "metadata_sha256": "2255e530e3f80593a354e3d84a29966924d0e10309d1e3a6d50f845ab7d8df66"
+    },
+    "pydantic_core-2.50.5-cp312-cp312-macosx_11_0_arm64.whl": {
+      "version": "2.50.5",
+      "sha256": "a9bcf23628860d5a90cacdc188ee3b7d0547a38eb985214f03e7002a6ca0e558",
+      "metadata_sha256": "680b0b965140b7d57c09767852ad8cb1687367b17c0c2c9ca96a02a393174d87"
+    },
+    "pyyaml-6.0.4-cp312-cp312-macosx_11_0_arm64.whl": {
+      "version": "6.0.4",
+      "sha256": "4d30c2f186612bd2f9f07c08a4c96721af59cfc8da3ec7cb27dfa2834e8bb019",
+      "metadata_sha256": "45e5d23e958fbc6502a0e96777921072545f2f2fb9978d27ef1a1ce9c180f765"
+    },
+    "rpds_py-2026.9.1-cp312-cp312-macosx_11_0_arm64.whl": {
+      "version": "2026.9.1",
+      "sha256": "e21c1429e205828ea886a2293a4a2c8e01f4c25d9893ca330e97a6cf73f52e7b",
+      "metadata_sha256": "93808b9ff27aabe26d9a4f03b28422d1d05c3fb8716d88f3826e7ddf4b0b258b"
+    },
+    "websockets-17.4-cp312-cp312-macosx_11_0_arm64.whl": {
+      "version": "17.4",
+      "sha256": "bcad49104711f88b2b7c3ba166de172857d837248205e541b044a552558fecc3",
+      "metadata_sha256": "44c13cba2bf7f1b8adec49e89259c2cb2bd5e1a17d2eb89c01261282a0c3f846"
+    },
+    "cffi-2.1.1-cp312-cp312-macosx_10_15_x86_64.whl": {
+      "version": "2.1.1",
+      "sha256": "c8c69575568085ba0b1b10c0249d779a214aea6f6522e949a0fc9fb0fcb449d0",
+      "metadata_sha256": "2255e530e3f80593a354e3d84a29966924d0e10309d1e3a6d50f845ab7d8df66"
+    },
+    "pydantic_core-2.50.5-cp312-cp312-macosx_10_12_x86_64.whl": {
+      "version": "2.50.5",
+      "sha256": "24d23de96195ff9637e5940a7fbde3bea6a355b26fb5f491737dd803aa5d5a93",
+      "metadata_sha256": "680b0b965140b7d57c09767852ad8cb1687367b17c0c2c9ca96a02a393174d87"
+    },
+    "pyyaml-6.0.4-cp312-cp312-macosx_10_15_x86_64.whl": {
+      "version": "6.0.4",
+      "sha256": "1088ad740f50c13178dad16fbc2fa1f634c791d42c7009fdb390e38e5b90b788",
+      "metadata_sha256": "45e5d23e958fbc6502a0e96777921072545f2f2fb9978d27ef1a1ce9c180f765"
+    },
+    "rpds_py-2026.9.1-cp312-cp312-macosx_10_12_x86_64.whl": {
+      "version": "2026.9.1",
+      "sha256": "50906f5aea24b5a865cbd0a589698288631d9f3a54c3a937c83aefa95a0d14af",
+      "metadata_sha256": "93808b9ff27aabe26d9a4f03b28422d1d05c3fb8716d88f3826e7ddf4b0b258b"
+    },
+    "websockets-17.4-cp312-cp312-macosx_10_13_x86_64.whl": {
+      "version": "17.4",
+      "sha256": "7390e060f830b3d132f484b21ac2783a2d227b682ef62bb8146e1c1b4ca0e45a",
+      "metadata_sha256": "44c13cba2bf7f1b8adec49e89259c2cb2bd5e1a17d2eb89c01261282a0c3f846"
+    },
+    "caio-0.12.10-cp313-cp313-macosx_10_13_universal2.whl": {
+      "version": "0.12.10",
+      "sha256": "6b8e0724415ae86889df59af2d44fd6a531851ebc62c9cfdb1cc8235c929524d",
+      "metadata_sha256": "c5b40774bb93a571320f9ce1168f3d84bcef6252c6b94f1aea20a852facbb357"
+    },
+    "cffi-2.1.1-cp313-cp313-macosx_11_0_arm64.whl": {
+      "version": "2.1.1",
+      "sha256": "19ee6127ee34de7d83ce3d371ebc5ed91addbdcc39f9ab15ce4eb35a4e534971",
+      "metadata_sha256": "2255e530e3f80593a354e3d84a29966924d0e10309d1e3a6d50f845ab7d8df66"
+    },
+    "pydantic_core-2.50.5-cp313-cp313-macosx_11_0_arm64.whl": {
+      "version": "2.50.5",
+      "sha256": "639a51931869c0594d8723b2f529c547db1aa33dc9571d001dc205d896170c08",
+      "metadata_sha256": "680b0b965140b7d57c09767852ad8cb1687367b17c0c2c9ca96a02a393174d87"
+    },
+    "pyyaml-6.0.4-cp313-cp313-macosx_11_0_arm64.whl": {
+      "version": "6.0.4",
+      "sha256": "9d4211f080920629a90c9e31c51e326fb70cfae38f18d4128b9913c23642bace",
+      "metadata_sha256": "45e5d23e958fbc6502a0e96777921072545f2f2fb9978d27ef1a1ce9c180f765"
+    },
+    "rpds_py-2026.9.1-cp313-cp313-macosx_11_0_arm64.whl": {
+      "version": "2026.9.1",
+      "sha256": "eba5d173f7d5708b22a93815017a4611873ed54db9f268077c0dd1ed99cfc858",
+      "metadata_sha256": "93808b9ff27aabe26d9a4f03b28422d1d05c3fb8716d88f3826e7ddf4b0b258b"
+    },
+    "websockets-17.4-cp313-cp313-macosx_11_0_arm64.whl": {
+      "version": "17.4",
+      "sha256": "74e46409666c358b93fce0d8c6f4cb107d8dd7cba1302a38d49adf6fa8193c7e",
+      "metadata_sha256": "44c13cba2bf7f1b8adec49e89259c2cb2bd5e1a17d2eb89c01261282a0c3f846"
+    },
+    "cffi-2.1.1-cp313-cp313-macosx_10_15_x86_64.whl": {
+      "version": "2.1.1",
+      "sha256": "9d2055050ea716bd38b7f7f1579c275386646b4894c155a3e2f3cd62ed41b7c6",
+      "metadata_sha256": "2255e530e3f80593a354e3d84a29966924d0e10309d1e3a6d50f845ab7d8df66"
+    },
+    "pydantic_core-2.50.5-cp313-cp313-macosx_10_12_x86_64.whl": {
+      "version": "2.50.5",
+      "sha256": "e5d5d77a9446f44688a5ef420d92c9facac0865ef5565215db54be184ab7906f",
+      "metadata_sha256": "680b0b965140b7d57c09767852ad8cb1687367b17c0c2c9ca96a02a393174d87"
+    },
+    "pyyaml-6.0.4-cp313-cp313-macosx_10_15_x86_64.whl": {
+      "version": "6.0.4",
+      "sha256": "61eef2f08e977b725f37a8d1663f5a222c6f09207ac0794030d5fca062e7c96e",
+      "metadata_sha256": "45e5d23e958fbc6502a0e96777921072545f2f2fb9978d27ef1a1ce9c180f765"
+    },
+    "rpds_py-2026.9.1-cp313-cp313-macosx_10_12_x86_64.whl": {
+      "version": "2026.9.1",
+      "sha256": "a36b70596407634ca82d4b989a3729074a008537a0522e4c8046a67c729103e9",
+      "metadata_sha256": "93808b9ff27aabe26d9a4f03b28422d1d05c3fb8716d88f3826e7ddf4b0b258b"
+    },
+    "websockets-17.4-cp313-cp313-macosx_10_13_x86_64.whl": {
+      "version": "17.4",
+      "sha256": "156221ad7638b5abccefd6f798916bf3f8ffd6ac51480eb4ba5b05df914ccbf3",
+      "metadata_sha256": "44c13cba2bf7f1b8adec49e89259c2cb2bd5e1a17d2eb89c01261282a0c3f846"
+    }
+  },
+  "matrix": [
+    {
+      "architecture": "arm64",
+      "python": "3.10.22",
+      "managed_interpreter_url": "https://releases.astral.sh/github/python-build-standalone/releases/download/20261009/cpython-3.10.22%2B20261009-aarch64-apple-darwin-install_only_stripped.tar.gz",
+      "groups": {
+        "runtime": {
+          "aiofile": {
+            "wheel": "aiofile-3.8.8-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "annotated-types": {
+            "wheel": "annotated_types-0.8.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "anyio": {
+            "wheel": "anyio-4.16.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "attrs": {
+            "wheel": "attrs-26.1.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "authlib": {
+            "wheel": "authlib-1.9.10-py2.py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "beartype": {
+            "wheel": "beartype-0.23.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "cachetools": {
+            "wheel": "cachetools-7.3.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "caio": {
+            "wheel": "caio-0.9.25-cp310-cp310-macosx_10_9_universal2.whl",
+            "matched_tag": "cp310-cp310-macosx_10_9_universal2"
+          },
+          "certifi": {
+            "wheel": "certifi-2026.11.20-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "cffi": {
+            "wheel": "cffi-2.1.1-cp310-cp310-macosx_11_0_arm64.whl",
+            "matched_tag": "cp310-cp310-macosx_11_0_arm64"
+          },
+          "click": {
+            "wheel": "click-8.5.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "cryptography": {
+            "wheel": "cryptography-50.0.2-cp39-abi3-macosx_11_0_arm64.whl",
+            "matched_tag": "cp39-abi3-macosx_11_0_arm64"
+          },
+          "cyclopts": {
+            "wheel": "cyclopts-4.25.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "dnspython": {
+            "wheel": "dnspython-2.8.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "docstring-parser": {
+            "wheel": "docstring_parser-0.18.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "email-validator": {
+            "wheel": "email_validator-2.4.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "exceptiongroup": {
+            "wheel": "exceptiongroup-1.3.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "fastmcp": {
+            "wheel": "fastmcp-4.1.8-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "fastmcp-slim": {
+            "wheel": "fastmcp_slim-4.1.8-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "griffelib": {
+            "wheel": "griffelib-2.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "h11": {
+            "wheel": "h11-0.16.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpcore": {
+            "wheel": "httpcore-1.0.9-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpcore2": {
+            "wheel": "httpcore2-2.14.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpx": {
+            "wheel": "httpx-0.28.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpx2": {
+            "wheel": "httpx2-2.14.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "idna": {
+            "wheel": "idna-3.20-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "joserfc": {
+            "wheel": "joserfc-1.7.7-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonref": {
+            "wheel": "jsonref-1.1.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonschema": {
+            "wheel": "jsonschema-4.26.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonschema-path": {
+            "wheel": "jsonschema_path-0.5.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonschema-specifications": {
+            "wheel": "jsonschema_specifications-2025.9.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "markdown-it-py": {
+            "wheel": "markdown_it_py-4.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "mcp": {
+            "wheel": "mcp-2.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "mcp-types": {
+            "wheel": "mcp_types-2.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "mdurl": {
+            "wheel": "mdurl-0.1.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "openapi-pydantic": {
+            "wheel": "openapi_pydantic-0.6.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "opentelemetry-api": {
+            "wheel": "opentelemetry_api-1.45.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "packaging": {
+            "wheel": "packaging-26.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pathable": {
+            "wheel": "pathable-0.6.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "platformdirs": {
+            "wheel": "platformdirs-4.12.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "py-key-value-aio": {
+            "wheel": "py_key_value_aio-0.4.6-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pycparser": {
+            "wheel": "pycparser-3.11-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pydantic": {
+            "wheel": "pydantic-2.14.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pydantic-core": {
+            "wheel": "pydantic_core-2.50.5-cp310-cp310-macosx_11_0_arm64.whl",
+            "matched_tag": "cp310-cp310-macosx_11_0_arm64"
+          },
+          "pydantic-settings": {
+            "wheel": "pydantic_settings-2.15.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pygments": {
+            "wheel": "pygments-2.21.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pyjwt": {
+            "wheel": "pyjwt-2.15.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pyperclip": {
+            "wheel": "pyperclip-1.11.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "python-dotenv": {
+            "wheel": "python_dotenv-1.2.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "python-multipart": {
+            "wheel": "python_multipart-0.0.32-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pyyaml": {
+            "wheel": "pyyaml-6.0.4-cp310-cp310-macosx_11_0_arm64.whl",
+            "matched_tag": "cp310-cp310-macosx_11_0_arm64"
+          },
+          "referencing": {
+            "wheel": "referencing-0.37.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "rich": {
+            "wheel": "rich-15.0.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "rich-rst": {
+            "wheel": "rich_rst-2.2.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "rpds-py": {
+            "wheel": "rpds_py-0.30.0-cp310-cp310-macosx_11_0_arm64.whl",
+            "matched_tag": "cp310-cp310-macosx_11_0_arm64"
+          },
+          "sse-starlette": {
+            "wheel": "sse_starlette-3.5.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "starlette": {
+            "wheel": "starlette-1.7.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "tomli": {
+            "wheel": "tomli-2.5.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "truststore": {
+            "wheel": "truststore-0.10.5-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "typing-extensions": {
+            "wheel": "typing_extensions-4.16.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "typing-inspection": {
+            "wheel": "typing_inspection-0.4.5-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "uncalled-for": {
+            "wheel": "uncalled_for-0.5.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "uvicorn": {
+            "wheel": "uvicorn-0.54.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "watchfiles": {
+            "wheel": "watchfiles-1.3.0-cp310-abi3-macosx_11_0_arm64.whl",
+            "matched_tag": "cp310-abi3-macosx_11_0_arm64"
+          },
+          "websockets": {
+            "wheel": "websockets-16.1.1-cp310-cp310-macosx_11_0_arm64.whl",
+            "matched_tag": "cp310-cp310-macosx_11_0_arm64"
+          }
+        },
+        "build_backend": {
+          "packaging": {
+            "wheel": "packaging-26.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "setuptools": {
+            "wheel": "setuptools-84.2.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "wheel": {
+            "wheel": "wheel-0.48.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          }
+        },
+        "installers": {
+          "argcomplete": {
+            "wheel": "argcomplete-3.8.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "click": {
+            "wheel": "click-8.5.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "filelock": {
+            "wheel": "filelock-4.1.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "packaging": {
+            "wheel": "packaging-26.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pipx": {
+            "wheel": "pipx-1.17.12-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "platformdirs": {
+            "wheel": "platformdirs-4.12.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "tomli": {
+            "wheel": "tomli-2.5.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "userpath": {
+            "wheel": "userpath-1.9.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "uv": {
+            "wheel": "uv-0.13.9-py3-none-macosx_11_0_arm64.whl",
+            "matched_tag": "py3-none-macosx_11_0_arm64"
+          }
+        }
+      }
+    },
+    {
+      "architecture": "x86_64",
+      "python": "3.10.22",
+      "managed_interpreter_url": "https://releases.astral.sh/github/python-build-standalone/releases/download/20261009/cpython-3.10.22%2B20261009-x86_64-apple-darwin-install_only_stripped.tar.gz",
+      "groups": {
+        "runtime": {
+          "aiofile": {
+            "wheel": "aiofile-3.8.8-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "annotated-types": {
+            "wheel": "annotated_types-0.8.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "anyio": {
+            "wheel": "anyio-4.16.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "attrs": {
+            "wheel": "attrs-26.1.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "authlib": {
+            "wheel": "authlib-1.9.10-py2.py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "beartype": {
+            "wheel": "beartype-0.23.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "cachetools": {
+            "wheel": "cachetools-7.3.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "caio": {
+            "wheel": "caio-0.9.25-cp310-cp310-macosx_10_9_universal2.whl",
+            "matched_tag": "cp310-cp310-macosx_10_9_universal2"
+          },
+          "certifi": {
+            "wheel": "certifi-2026.11.20-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "cffi": {
+            "wheel": "cffi-2.1.1-cp310-cp310-macosx_10_15_x86_64.whl",
+            "matched_tag": "cp310-cp310-macosx_10_15_x86_64"
+          },
+          "click": {
+            "wheel": "click-8.5.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "cryptography": {
+            "wheel": "cryptography-48.0.1-cp39-abi3-macosx_10_9_universal2.whl",
+            "matched_tag": "cp39-abi3-macosx_10_9_universal2"
+          },
+          "cyclopts": {
+            "wheel": "cyclopts-4.25.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "dnspython": {
+            "wheel": "dnspython-2.8.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "docstring-parser": {
+            "wheel": "docstring_parser-0.18.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "email-validator": {
+            "wheel": "email_validator-2.4.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "exceptiongroup": {
+            "wheel": "exceptiongroup-1.3.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "fastmcp": {
+            "wheel": "fastmcp-4.1.8-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "fastmcp-slim": {
+            "wheel": "fastmcp_slim-4.1.8-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "griffelib": {
+            "wheel": "griffelib-2.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "h11": {
+            "wheel": "h11-0.16.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpcore": {
+            "wheel": "httpcore-1.0.9-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpcore2": {
+            "wheel": "httpcore2-2.14.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpx": {
+            "wheel": "httpx-0.28.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpx2": {
+            "wheel": "httpx2-2.14.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "idna": {
+            "wheel": "idna-3.20-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "joserfc": {
+            "wheel": "joserfc-1.7.7-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonref": {
+            "wheel": "jsonref-1.1.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonschema": {
+            "wheel": "jsonschema-4.26.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonschema-path": {
+            "wheel": "jsonschema_path-0.5.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonschema-specifications": {
+            "wheel": "jsonschema_specifications-2025.9.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "markdown-it-py": {
+            "wheel": "markdown_it_py-4.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "mcp": {
+            "wheel": "mcp-2.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "mcp-types": {
+            "wheel": "mcp_types-2.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "mdurl": {
+            "wheel": "mdurl-0.1.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "openapi-pydantic": {
+            "wheel": "openapi_pydantic-0.6.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "opentelemetry-api": {
+            "wheel": "opentelemetry_api-1.45.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "packaging": {
+            "wheel": "packaging-26.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pathable": {
+            "wheel": "pathable-0.6.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "platformdirs": {
+            "wheel": "platformdirs-4.12.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "py-key-value-aio": {
+            "wheel": "py_key_value_aio-0.4.6-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pycparser": {
+            "wheel": "pycparser-3.11-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pydantic": {
+            "wheel": "pydantic-2.14.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pydantic-core": {
+            "wheel": "pydantic_core-2.50.5-cp310-cp310-macosx_10_12_x86_64.whl",
+            "matched_tag": "cp310-cp310-macosx_10_12_x86_64"
+          },
+          "pydantic-settings": {
+            "wheel": "pydantic_settings-2.15.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pygments": {
+            "wheel": "pygments-2.21.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pyjwt": {
+            "wheel": "pyjwt-2.15.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pyperclip": {
+            "wheel": "pyperclip-1.11.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "python-dotenv": {
+            "wheel": "python_dotenv-1.2.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "python-multipart": {
+            "wheel": "python_multipart-0.0.32-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pyyaml": {
+            "wheel": "pyyaml-6.0.4-cp310-cp310-macosx_10_15_x86_64.whl",
+            "matched_tag": "cp310-cp310-macosx_10_15_x86_64"
+          },
+          "referencing": {
+            "wheel": "referencing-0.37.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "rich": {
+            "wheel": "rich-15.0.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "rich-rst": {
+            "wheel": "rich_rst-2.2.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "rpds-py": {
+            "wheel": "rpds_py-0.30.0-cp310-cp310-macosx_10_12_x86_64.whl",
+            "matched_tag": "cp310-cp310-macosx_10_12_x86_64"
+          },
+          "sse-starlette": {
+            "wheel": "sse_starlette-3.5.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "starlette": {
+            "wheel": "starlette-1.7.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "tomli": {
+            "wheel": "tomli-2.5.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "truststore": {
+            "wheel": "truststore-0.10.5-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "typing-extensions": {
+            "wheel": "typing_extensions-4.16.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "typing-inspection": {
+            "wheel": "typing_inspection-0.4.5-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "uncalled-for": {
+            "wheel": "uncalled_for-0.5.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "uvicorn": {
+            "wheel": "uvicorn-0.54.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "watchfiles": {
+            "wheel": "watchfiles-1.3.0-cp310-abi3-macosx_10_12_x86_64.whl",
+            "matched_tag": "cp310-abi3-macosx_10_12_x86_64"
+          },
+          "websockets": {
+            "wheel": "websockets-16.1.1-cp310-cp310-macosx_10_9_x86_64.whl",
+            "matched_tag": "cp310-cp310-macosx_10_9_x86_64"
+          }
+        },
+        "build_backend": {
+          "packaging": {
+            "wheel": "packaging-26.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "setuptools": {
+            "wheel": "setuptools-84.2.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "wheel": {
+            "wheel": "wheel-0.48.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          }
+        },
+        "installers": {
+          "argcomplete": {
+            "wheel": "argcomplete-3.8.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "click": {
+            "wheel": "click-8.5.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "filelock": {
+            "wheel": "filelock-4.1.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "packaging": {
+            "wheel": "packaging-26.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pipx": {
+            "wheel": "pipx-1.17.12-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "platformdirs": {
+            "wheel": "platformdirs-4.12.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "tomli": {
+            "wheel": "tomli-2.5.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "userpath": {
+            "wheel": "userpath-1.9.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "uv": {
+            "wheel": "uv-0.13.9-py3-none-macosx_10_12_x86_64.whl",
+            "matched_tag": "py3-none-macosx_10_12_x86_64"
+          }
+        }
+      }
+    },
+    {
+      "architecture": "arm64",
+      "python": "3.11.18",
+      "managed_interpreter_url": "https://releases.astral.sh/github/python-build-standalone/releases/download/20261110/cpython-3.11.18%2B20261110-aarch64-apple-darwin-install_only_stripped.tar.gz",
+      "groups": {
+        "runtime": {
+          "aiofile": {
+            "wheel": "aiofile-3.12.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "annotated-types": {
+            "wheel": "annotated_types-0.8.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "anyio": {
+            "wheel": "anyio-4.16.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "attrs": {
+            "wheel": "attrs-26.1.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "authlib": {
+            "wheel": "authlib-1.9.10-py2.py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "beartype": {
+            "wheel": "beartype-0.23.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "cachetools": {
+            "wheel": "cachetools-8.0.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "caio": {
+            "wheel": "caio-0.12.10-cp311-cp311-macosx_10_9_universal2.whl",
+            "matched_tag": "cp311-cp311-macosx_10_9_universal2"
+          },
+          "certifi": {
+            "wheel": "certifi-2026.11.20-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "cffi": {
+            "wheel": "cffi-2.1.1-cp311-cp311-macosx_11_0_arm64.whl",
+            "matched_tag": "cp311-cp311-macosx_11_0_arm64"
+          },
+          "click": {
+            "wheel": "click-8.5.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "cryptography": {
+            "wheel": "cryptography-50.0.2-cp311-abi3-macosx_11_0_arm64.whl",
+            "matched_tag": "cp311-abi3-macosx_11_0_arm64"
+          },
+          "cyclopts": {
+            "wheel": "cyclopts-5.5.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "dnspython": {
+            "wheel": "dnspython-2.9.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "docstring-parser": {
+            "wheel": "docstring_parser-0.18.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "email-validator": {
+            "wheel": "email_validator-2.4.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "exceptiongroup": {
+            "wheel": "exceptiongroup-1.3.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "fastmcp": {
+            "wheel": "fastmcp-4.2.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "fastmcp-slim": {
+            "wheel": "fastmcp_slim-4.2.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "griffelib": {
+            "wheel": "griffelib-2.4.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "h11": {
+            "wheel": "h11-0.16.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpcore": {
+            "wheel": "httpcore-1.0.9-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpcore2": {
+            "wheel": "httpcore2-2.16.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpx": {
+            "wheel": "httpx-0.28.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpx2": {
+            "wheel": "httpx2-2.16.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "idna": {
+            "wheel": "idna-3.20-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "joserfc": {
+            "wheel": "joserfc-1.8.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonref": {
+            "wheel": "jsonref-1.1.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonschema": {
+            "wheel": "jsonschema-4.26.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonschema-path": {
+            "wheel": "jsonschema_path-0.5.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonschema-specifications": {
+            "wheel": "jsonschema_specifications-2025.9.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "markdown-it-py": {
+            "wheel": "markdown_it_py-4.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "mcp": {
+            "wheel": "mcp-2.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "mcp-types": {
+            "wheel": "mcp_types-2.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "mdurl": {
+            "wheel": "mdurl-0.1.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "openapi-pydantic": {
+            "wheel": "openapi_pydantic-0.6.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "opentelemetry-api": {
+            "wheel": "opentelemetry_api-1.45.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "packaging": {
+            "wheel": "packaging-26.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pathable": {
+            "wheel": "pathable-0.6.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "platformdirs": {
+            "wheel": "platformdirs-4.14.8-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "py-key-value-aio": {
+            "wheel": "py_key_value_aio-0.5.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pycparser": {
+            "wheel": "pycparser-3.12-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pydantic": {
+            "wheel": "pydantic-2.14.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pydantic-core": {
+            "wheel": "pydantic_core-2.50.5-cp311-cp311-macosx_11_0_arm64.whl",
+            "matched_tag": "cp311-cp311-macosx_11_0_arm64"
+          },
+          "pydantic-settings": {
+            "wheel": "pydantic_settings-2.16.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pygments": {
+            "wheel": "pygments-2.21.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pyjwt": {
+            "wheel": "pyjwt-2.15.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pyperclip": {
+            "wheel": "pyperclip-1.11.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "python-dotenv": {
+            "wheel": "python_dotenv-1.2.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "python-multipart": {
+            "wheel": "python_multipart-0.0.34-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pyyaml": {
+            "wheel": "pyyaml-6.0.4-cp311-cp311-macosx_11_0_arm64.whl",
+            "matched_tag": "cp311-cp311-macosx_11_0_arm64"
+          },
+          "referencing": {
+            "wheel": "referencing-0.37.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "rich": {
+            "wheel": "rich-15.0.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "rich-rst": {
+            "wheel": "rich_rst-2.2.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "rpds-py": {
+            "wheel": "rpds_py-2026.9.1-cp311-cp311-macosx_11_0_arm64.whl",
+            "matched_tag": "cp311-cp311-macosx_11_0_arm64"
+          },
+          "sse-starlette": {
+            "wheel": "sse_starlette-3.7.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "starlette": {
+            "wheel": "starlette-1.10.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "truststore": {
+            "wheel": "truststore-0.10.5-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "typing-extensions": {
+            "wheel": "typing_extensions-4.16.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "typing-inspection": {
+            "wheel": "typing_inspection-0.4.5-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "uncalled-for": {
+            "wheel": "uncalled_for-0.6.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "uvicorn": {
+            "wheel": "uvicorn-0.54.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "watchfiles": {
+            "wheel": "watchfiles-1.3.0-cp310-abi3-macosx_11_0_arm64.whl",
+            "matched_tag": "cp310-abi3-macosx_11_0_arm64"
+          },
+          "websockets": {
+            "wheel": "websockets-17.4-cp311-cp311-macosx_11_0_arm64.whl",
+            "matched_tag": "cp311-cp311-macosx_11_0_arm64"
+          }
+        },
+        "build_backend": {
+          "packaging": {
+            "wheel": "packaging-26.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "setuptools": {
+            "wheel": "setuptools-84.2.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "wheel": {
+            "wheel": "wheel-0.48.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          }
+        },
+        "installers": {
+          "argcomplete": {
+            "wheel": "argcomplete-3.8.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "click": {
+            "wheel": "click-8.5.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "filelock": {
+            "wheel": "filelock-4.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "packaging": {
+            "wheel": "packaging-26.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pipx": {
+            "wheel": "pipx-1.18.19-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "platformdirs": {
+            "wheel": "platformdirs-4.14.8-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "userpath": {
+            "wheel": "userpath-1.9.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "uv": {
+            "wheel": "uv-0.13.9-py3-none-macosx_11_0_arm64.whl",
+            "matched_tag": "py3-none-macosx_11_0_arm64"
+          }
+        }
+      }
+    },
+    {
+      "architecture": "x86_64",
+      "python": "3.11.18",
+      "managed_interpreter_url": "https://releases.astral.sh/github/python-build-standalone/releases/download/20261110/cpython-3.11.18%2B20261110-x86_64-apple-darwin-install_only_stripped.tar.gz",
+      "groups": {
+        "runtime": {
+          "aiofile": {
+            "wheel": "aiofile-3.12.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "annotated-types": {
+            "wheel": "annotated_types-0.8.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "anyio": {
+            "wheel": "anyio-4.16.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "attrs": {
+            "wheel": "attrs-26.1.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "authlib": {
+            "wheel": "authlib-1.9.10-py2.py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "beartype": {
+            "wheel": "beartype-0.23.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "cachetools": {
+            "wheel": "cachetools-8.0.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "caio": {
+            "wheel": "caio-0.12.10-cp311-cp311-macosx_10_9_universal2.whl",
+            "matched_tag": "cp311-cp311-macosx_10_9_universal2"
+          },
+          "certifi": {
+            "wheel": "certifi-2026.11.20-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "cffi": {
+            "wheel": "cffi-2.1.1-cp311-cp311-macosx_10_15_x86_64.whl",
+            "matched_tag": "cp311-cp311-macosx_10_15_x86_64"
+          },
+          "click": {
+            "wheel": "click-8.5.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "cryptography": {
+            "wheel": "cryptography-48.0.1-cp311-abi3-macosx_10_9_universal2.whl",
+            "matched_tag": "cp311-abi3-macosx_10_9_universal2"
+          },
+          "cyclopts": {
+            "wheel": "cyclopts-5.5.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "dnspython": {
+            "wheel": "dnspython-2.9.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "docstring-parser": {
+            "wheel": "docstring_parser-0.18.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "email-validator": {
+            "wheel": "email_validator-2.4.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "exceptiongroup": {
+            "wheel": "exceptiongroup-1.3.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "fastmcp": {
+            "wheel": "fastmcp-4.2.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "fastmcp-slim": {
+            "wheel": "fastmcp_slim-4.2.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "griffelib": {
+            "wheel": "griffelib-2.4.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "h11": {
+            "wheel": "h11-0.16.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpcore": {
+            "wheel": "httpcore-1.0.9-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpcore2": {
+            "wheel": "httpcore2-2.16.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpx": {
+            "wheel": "httpx-0.28.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpx2": {
+            "wheel": "httpx2-2.16.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "idna": {
+            "wheel": "idna-3.20-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "joserfc": {
+            "wheel": "joserfc-1.8.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonref": {
+            "wheel": "jsonref-1.1.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonschema": {
+            "wheel": "jsonschema-4.26.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonschema-path": {
+            "wheel": "jsonschema_path-0.5.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonschema-specifications": {
+            "wheel": "jsonschema_specifications-2025.9.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "markdown-it-py": {
+            "wheel": "markdown_it_py-4.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "mcp": {
+            "wheel": "mcp-2.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "mcp-types": {
+            "wheel": "mcp_types-2.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "mdurl": {
+            "wheel": "mdurl-0.1.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "openapi-pydantic": {
+            "wheel": "openapi_pydantic-0.6.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "opentelemetry-api": {
+            "wheel": "opentelemetry_api-1.45.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "packaging": {
+            "wheel": "packaging-26.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pathable": {
+            "wheel": "pathable-0.6.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "platformdirs": {
+            "wheel": "platformdirs-4.14.8-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "py-key-value-aio": {
+            "wheel": "py_key_value_aio-0.5.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pycparser": {
+            "wheel": "pycparser-3.12-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pydantic": {
+            "wheel": "pydantic-2.14.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pydantic-core": {
+            "wheel": "pydantic_core-2.50.5-cp311-cp311-macosx_10_12_x86_64.whl",
+            "matched_tag": "cp311-cp311-macosx_10_12_x86_64"
+          },
+          "pydantic-settings": {
+            "wheel": "pydantic_settings-2.16.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pygments": {
+            "wheel": "pygments-2.21.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pyjwt": {
+            "wheel": "pyjwt-2.15.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pyperclip": {
+            "wheel": "pyperclip-1.11.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "python-dotenv": {
+            "wheel": "python_dotenv-1.2.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "python-multipart": {
+            "wheel": "python_multipart-0.0.34-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pyyaml": {
+            "wheel": "pyyaml-6.0.4-cp311-cp311-macosx_10_15_x86_64.whl",
+            "matched_tag": "cp311-cp311-macosx_10_15_x86_64"
+          },
+          "referencing": {
+            "wheel": "referencing-0.37.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "rich": {
+            "wheel": "rich-15.0.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "rich-rst": {
+            "wheel": "rich_rst-2.2.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "rpds-py": {
+            "wheel": "rpds_py-2026.9.1-cp311-cp311-macosx_10_12_x86_64.whl",
+            "matched_tag": "cp311-cp311-macosx_10_12_x86_64"
+          },
+          "sse-starlette": {
+            "wheel": "sse_starlette-3.7.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "starlette": {
+            "wheel": "starlette-1.10.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "truststore": {
+            "wheel": "truststore-0.10.5-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "typing-extensions": {
+            "wheel": "typing_extensions-4.16.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "typing-inspection": {
+            "wheel": "typing_inspection-0.4.5-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "uncalled-for": {
+            "wheel": "uncalled_for-0.6.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "uvicorn": {
+            "wheel": "uvicorn-0.54.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "watchfiles": {
+            "wheel": "watchfiles-1.3.0-cp310-abi3-macosx_10_12_x86_64.whl",
+            "matched_tag": "cp310-abi3-macosx_10_12_x86_64"
+          },
+          "websockets": {
+            "wheel": "websockets-17.4-cp311-cp311-macosx_10_9_x86_64.whl",
+            "matched_tag": "cp311-cp311-macosx_10_9_x86_64"
+          }
+        },
+        "build_backend": {
+          "packaging": {
+            "wheel": "packaging-26.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "setuptools": {
+            "wheel": "setuptools-84.2.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "wheel": {
+            "wheel": "wheel-0.48.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          }
+        },
+        "installers": {
+          "argcomplete": {
+            "wheel": "argcomplete-3.8.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "click": {
+            "wheel": "click-8.5.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "filelock": {
+            "wheel": "filelock-4.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "packaging": {
+            "wheel": "packaging-26.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pipx": {
+            "wheel": "pipx-1.18.19-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "platformdirs": {
+            "wheel": "platformdirs-4.14.8-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "userpath": {
+            "wheel": "userpath-1.9.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "uv": {
+            "wheel": "uv-0.13.9-py3-none-macosx_10_12_x86_64.whl",
+            "matched_tag": "py3-none-macosx_10_12_x86_64"
+          }
+        }
+      }
+    },
+    {
+      "architecture": "arm64",
+      "python": "3.12.16",
+      "managed_interpreter_url": "https://releases.astral.sh/github/python-build-standalone/releases/download/20261110/cpython-3.12.16%2B20261110-aarch64-apple-darwin-install_only_stripped.tar.gz",
+      "groups": {
+        "runtime": {
+          "aiofile": {
+            "wheel": "aiofile-3.12.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "annotated-types": {
+            "wheel": "annotated_types-0.8.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "anyio": {
+            "wheel": "anyio-4.16.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "attrs": {
+            "wheel": "attrs-26.1.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "authlib": {
+            "wheel": "authlib-1.9.10-py2.py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "beartype": {
+            "wheel": "beartype-0.23.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "cachetools": {
+            "wheel": "cachetools-8.0.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "caio": {
+            "wheel": "caio-0.12.10-cp312-cp312-macosx_10_13_universal2.whl",
+            "matched_tag": "cp312-cp312-macosx_10_13_universal2"
+          },
+          "certifi": {
+            "wheel": "certifi-2026.11.20-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "cffi": {
+            "wheel": "cffi-2.1.1-cp312-cp312-macosx_11_0_arm64.whl",
+            "matched_tag": "cp312-cp312-macosx_11_0_arm64"
+          },
+          "click": {
+            "wheel": "click-8.5.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "cryptography": {
+            "wheel": "cryptography-50.0.2-cp311-abi3-macosx_11_0_arm64.whl",
+            "matched_tag": "cp311-abi3-macosx_11_0_arm64"
+          },
+          "cyclopts": {
+            "wheel": "cyclopts-5.5.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "dnspython": {
+            "wheel": "dnspython-2.9.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "docstring-parser": {
+            "wheel": "docstring_parser-0.18.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "email-validator": {
+            "wheel": "email_validator-2.4.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "exceptiongroup": {
+            "wheel": "exceptiongroup-1.3.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "fastmcp": {
+            "wheel": "fastmcp-4.2.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "fastmcp-slim": {
+            "wheel": "fastmcp_slim-4.2.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "griffelib": {
+            "wheel": "griffelib-2.4.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "h11": {
+            "wheel": "h11-0.16.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpcore": {
+            "wheel": "httpcore-1.0.9-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpcore2": {
+            "wheel": "httpcore2-2.16.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpx": {
+            "wheel": "httpx-0.28.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpx2": {
+            "wheel": "httpx2-2.16.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "idna": {
+            "wheel": "idna-3.20-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "joserfc": {
+            "wheel": "joserfc-1.8.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonref": {
+            "wheel": "jsonref-1.1.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonschema": {
+            "wheel": "jsonschema-4.26.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonschema-path": {
+            "wheel": "jsonschema_path-0.5.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonschema-specifications": {
+            "wheel": "jsonschema_specifications-2025.9.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "markdown-it-py": {
+            "wheel": "markdown_it_py-4.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "mcp": {
+            "wheel": "mcp-2.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "mcp-types": {
+            "wheel": "mcp_types-2.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "mdurl": {
+            "wheel": "mdurl-0.1.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "openapi-pydantic": {
+            "wheel": "openapi_pydantic-0.6.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "opentelemetry-api": {
+            "wheel": "opentelemetry_api-1.45.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "packaging": {
+            "wheel": "packaging-26.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pathable": {
+            "wheel": "pathable-0.6.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "platformdirs": {
+            "wheel": "platformdirs-4.14.8-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "py-key-value-aio": {
+            "wheel": "py_key_value_aio-0.5.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pycparser": {
+            "wheel": "pycparser-3.12-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pydantic": {
+            "wheel": "pydantic-2.14.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pydantic-core": {
+            "wheel": "pydantic_core-2.50.5-cp312-cp312-macosx_11_0_arm64.whl",
+            "matched_tag": "cp312-cp312-macosx_11_0_arm64"
+          },
+          "pydantic-settings": {
+            "wheel": "pydantic_settings-2.16.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pygments": {
+            "wheel": "pygments-2.21.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pyjwt": {
+            "wheel": "pyjwt-2.15.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pyperclip": {
+            "wheel": "pyperclip-1.11.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "python-dotenv": {
+            "wheel": "python_dotenv-1.2.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "python-multipart": {
+            "wheel": "python_multipart-0.0.34-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pyyaml": {
+            "wheel": "pyyaml-6.0.4-cp312-cp312-macosx_11_0_arm64.whl",
+            "matched_tag": "cp312-cp312-macosx_11_0_arm64"
+          },
+          "referencing": {
+            "wheel": "referencing-0.37.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "rich": {
+            "wheel": "rich-15.0.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "rich-rst": {
+            "wheel": "rich_rst-2.2.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "rpds-py": {
+            "wheel": "rpds_py-2026.9.1-cp312-cp312-macosx_11_0_arm64.whl",
+            "matched_tag": "cp312-cp312-macosx_11_0_arm64"
+          },
+          "sse-starlette": {
+            "wheel": "sse_starlette-3.7.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "starlette": {
+            "wheel": "starlette-1.10.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "truststore": {
+            "wheel": "truststore-0.10.5-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "typing-extensions": {
+            "wheel": "typing_extensions-4.16.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "typing-inspection": {
+            "wheel": "typing_inspection-0.4.5-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "uncalled-for": {
+            "wheel": "uncalled_for-0.6.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "uvicorn": {
+            "wheel": "uvicorn-0.54.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "watchfiles": {
+            "wheel": "watchfiles-1.3.0-cp310-abi3-macosx_11_0_arm64.whl",
+            "matched_tag": "cp310-abi3-macosx_11_0_arm64"
+          },
+          "websockets": {
+            "wheel": "websockets-17.4-cp312-cp312-macosx_11_0_arm64.whl",
+            "matched_tag": "cp312-cp312-macosx_11_0_arm64"
+          }
+        },
+        "build_backend": {
+          "packaging": {
+            "wheel": "packaging-26.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "setuptools": {
+            "wheel": "setuptools-84.2.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "wheel": {
+            "wheel": "wheel-0.48.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          }
+        },
+        "installers": {
+          "argcomplete": {
+            "wheel": "argcomplete-3.8.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "click": {
+            "wheel": "click-8.5.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "filelock": {
+            "wheel": "filelock-4.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "packaging": {
+            "wheel": "packaging-26.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pipx": {
+            "wheel": "pipx-1.18.19-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "platformdirs": {
+            "wheel": "platformdirs-4.14.8-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "userpath": {
+            "wheel": "userpath-1.9.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "uv": {
+            "wheel": "uv-0.13.9-py3-none-macosx_11_0_arm64.whl",
+            "matched_tag": "py3-none-macosx_11_0_arm64"
+          }
+        }
+      }
+    },
+    {
+      "architecture": "x86_64",
+      "python": "3.12.16",
+      "managed_interpreter_url": "https://releases.astral.sh/github/python-build-standalone/releases/download/20261110/cpython-3.12.16%2B20261110-x86_64-apple-darwin-install_only_stripped.tar.gz",
+      "groups": {
+        "runtime": {
+          "aiofile": {
+            "wheel": "aiofile-3.12.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "annotated-types": {
+            "wheel": "annotated_types-0.8.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "anyio": {
+            "wheel": "anyio-4.16.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "attrs": {
+            "wheel": "attrs-26.1.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "authlib": {
+            "wheel": "authlib-1.9.10-py2.py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "beartype": {
+            "wheel": "beartype-0.23.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "cachetools": {
+            "wheel": "cachetools-8.0.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "caio": {
+            "wheel": "caio-0.12.10-cp312-cp312-macosx_10_13_universal2.whl",
+            "matched_tag": "cp312-cp312-macosx_10_13_universal2"
+          },
+          "certifi": {
+            "wheel": "certifi-2026.11.20-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "cffi": {
+            "wheel": "cffi-2.1.1-cp312-cp312-macosx_10_15_x86_64.whl",
+            "matched_tag": "cp312-cp312-macosx_10_15_x86_64"
+          },
+          "click": {
+            "wheel": "click-8.5.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "cryptography": {
+            "wheel": "cryptography-48.0.1-cp311-abi3-macosx_10_9_universal2.whl",
+            "matched_tag": "cp311-abi3-macosx_10_9_universal2"
+          },
+          "cyclopts": {
+            "wheel": "cyclopts-5.5.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "dnspython": {
+            "wheel": "dnspython-2.9.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "docstring-parser": {
+            "wheel": "docstring_parser-0.18.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "email-validator": {
+            "wheel": "email_validator-2.4.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "exceptiongroup": {
+            "wheel": "exceptiongroup-1.3.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "fastmcp": {
+            "wheel": "fastmcp-4.2.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "fastmcp-slim": {
+            "wheel": "fastmcp_slim-4.2.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "griffelib": {
+            "wheel": "griffelib-2.4.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "h11": {
+            "wheel": "h11-0.16.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpcore": {
+            "wheel": "httpcore-1.0.9-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpcore2": {
+            "wheel": "httpcore2-2.16.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpx": {
+            "wheel": "httpx-0.28.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpx2": {
+            "wheel": "httpx2-2.16.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "idna": {
+            "wheel": "idna-3.20-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "joserfc": {
+            "wheel": "joserfc-1.8.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonref": {
+            "wheel": "jsonref-1.1.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonschema": {
+            "wheel": "jsonschema-4.26.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonschema-path": {
+            "wheel": "jsonschema_path-0.5.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonschema-specifications": {
+            "wheel": "jsonschema_specifications-2025.9.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "markdown-it-py": {
+            "wheel": "markdown_it_py-4.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "mcp": {
+            "wheel": "mcp-2.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "mcp-types": {
+            "wheel": "mcp_types-2.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "mdurl": {
+            "wheel": "mdurl-0.1.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "openapi-pydantic": {
+            "wheel": "openapi_pydantic-0.6.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "opentelemetry-api": {
+            "wheel": "opentelemetry_api-1.45.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "packaging": {
+            "wheel": "packaging-26.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pathable": {
+            "wheel": "pathable-0.6.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "platformdirs": {
+            "wheel": "platformdirs-4.14.8-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "py-key-value-aio": {
+            "wheel": "py_key_value_aio-0.5.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pycparser": {
+            "wheel": "pycparser-3.12-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pydantic": {
+            "wheel": "pydantic-2.14.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pydantic-core": {
+            "wheel": "pydantic_core-2.50.5-cp312-cp312-macosx_10_12_x86_64.whl",
+            "matched_tag": "cp312-cp312-macosx_10_12_x86_64"
+          },
+          "pydantic-settings": {
+            "wheel": "pydantic_settings-2.16.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pygments": {
+            "wheel": "pygments-2.21.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pyjwt": {
+            "wheel": "pyjwt-2.15.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pyperclip": {
+            "wheel": "pyperclip-1.11.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "python-dotenv": {
+            "wheel": "python_dotenv-1.2.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "python-multipart": {
+            "wheel": "python_multipart-0.0.34-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pyyaml": {
+            "wheel": "pyyaml-6.0.4-cp312-cp312-macosx_10_15_x86_64.whl",
+            "matched_tag": "cp312-cp312-macosx_10_15_x86_64"
+          },
+          "referencing": {
+            "wheel": "referencing-0.37.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "rich": {
+            "wheel": "rich-15.0.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "rich-rst": {
+            "wheel": "rich_rst-2.2.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "rpds-py": {
+            "wheel": "rpds_py-2026.9.1-cp312-cp312-macosx_10_12_x86_64.whl",
+            "matched_tag": "cp312-cp312-macosx_10_12_x86_64"
+          },
+          "sse-starlette": {
+            "wheel": "sse_starlette-3.7.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "starlette": {
+            "wheel": "starlette-1.10.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "truststore": {
+            "wheel": "truststore-0.10.5-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "typing-extensions": {
+            "wheel": "typing_extensions-4.16.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "typing-inspection": {
+            "wheel": "typing_inspection-0.4.5-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "uncalled-for": {
+            "wheel": "uncalled_for-0.6.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "uvicorn": {
+            "wheel": "uvicorn-0.54.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "watchfiles": {
+            "wheel": "watchfiles-1.3.0-cp310-abi3-macosx_10_12_x86_64.whl",
+            "matched_tag": "cp310-abi3-macosx_10_12_x86_64"
+          },
+          "websockets": {
+            "wheel": "websockets-17.4-cp312-cp312-macosx_10_13_x86_64.whl",
+            "matched_tag": "cp312-cp312-macosx_10_13_x86_64"
+          }
+        },
+        "build_backend": {
+          "packaging": {
+            "wheel": "packaging-26.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "setuptools": {
+            "wheel": "setuptools-84.2.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "wheel": {
+            "wheel": "wheel-0.48.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          }
+        },
+        "installers": {
+          "argcomplete": {
+            "wheel": "argcomplete-3.8.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "click": {
+            "wheel": "click-8.5.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "filelock": {
+            "wheel": "filelock-4.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "packaging": {
+            "wheel": "packaging-26.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pipx": {
+            "wheel": "pipx-1.18.19-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "platformdirs": {
+            "wheel": "platformdirs-4.14.8-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "userpath": {
+            "wheel": "userpath-1.9.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "uv": {
+            "wheel": "uv-0.13.9-py3-none-macosx_10_12_x86_64.whl",
+            "matched_tag": "py3-none-macosx_10_12_x86_64"
+          }
+        }
+      }
+    },
+    {
+      "architecture": "arm64",
+      "python": "3.13.18",
+      "managed_interpreter_url": "https://releases.astral.sh/github/python-build-standalone/releases/download/20261110/cpython-3.13.18%2B20261110-aarch64-apple-darwin-install_only_stripped.tar.gz",
+      "groups": {
+        "runtime": {
+          "aiofile": {
+            "wheel": "aiofile-3.12.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "annotated-types": {
+            "wheel": "annotated_types-0.8.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "anyio": {
+            "wheel": "anyio-4.16.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "attrs": {
+            "wheel": "attrs-26.1.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "authlib": {
+            "wheel": "authlib-1.9.10-py2.py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "beartype": {
+            "wheel": "beartype-0.23.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "cachetools": {
+            "wheel": "cachetools-8.0.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "caio": {
+            "wheel": "caio-0.12.10-cp313-cp313-macosx_10_13_universal2.whl",
+            "matched_tag": "cp313-cp313-macosx_10_13_universal2"
+          },
+          "certifi": {
+            "wheel": "certifi-2026.11.20-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "cffi": {
+            "wheel": "cffi-2.1.1-cp313-cp313-macosx_11_0_arm64.whl",
+            "matched_tag": "cp313-cp313-macosx_11_0_arm64"
+          },
+          "click": {
+            "wheel": "click-8.5.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "cryptography": {
+            "wheel": "cryptography-50.0.2-cp311-abi3-macosx_11_0_arm64.whl",
+            "matched_tag": "cp311-abi3-macosx_11_0_arm64"
+          },
+          "cyclopts": {
+            "wheel": "cyclopts-5.5.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "dnspython": {
+            "wheel": "dnspython-2.9.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "docstring-parser": {
+            "wheel": "docstring_parser-0.18.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "email-validator": {
+            "wheel": "email_validator-2.4.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "exceptiongroup": {
+            "wheel": "exceptiongroup-1.3.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "fastmcp": {
+            "wheel": "fastmcp-4.2.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "fastmcp-slim": {
+            "wheel": "fastmcp_slim-4.2.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "griffelib": {
+            "wheel": "griffelib-2.4.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "h11": {
+            "wheel": "h11-0.16.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpcore": {
+            "wheel": "httpcore-1.0.9-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpcore2": {
+            "wheel": "httpcore2-2.16.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpx": {
+            "wheel": "httpx-0.28.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpx2": {
+            "wheel": "httpx2-2.16.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "idna": {
+            "wheel": "idna-3.20-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "joserfc": {
+            "wheel": "joserfc-1.8.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonref": {
+            "wheel": "jsonref-1.1.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonschema": {
+            "wheel": "jsonschema-4.26.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonschema-path": {
+            "wheel": "jsonschema_path-0.5.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonschema-specifications": {
+            "wheel": "jsonschema_specifications-2025.9.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "markdown-it-py": {
+            "wheel": "markdown_it_py-4.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "mcp": {
+            "wheel": "mcp-2.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "mcp-types": {
+            "wheel": "mcp_types-2.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "mdurl": {
+            "wheel": "mdurl-0.1.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "openapi-pydantic": {
+            "wheel": "openapi_pydantic-0.6.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "opentelemetry-api": {
+            "wheel": "opentelemetry_api-1.45.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "packaging": {
+            "wheel": "packaging-26.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pathable": {
+            "wheel": "pathable-0.6.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "platformdirs": {
+            "wheel": "platformdirs-4.14.8-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "py-key-value-aio": {
+            "wheel": "py_key_value_aio-0.5.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pycparser": {
+            "wheel": "pycparser-3.12-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pydantic": {
+            "wheel": "pydantic-2.14.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pydantic-core": {
+            "wheel": "pydantic_core-2.50.5-cp313-cp313-macosx_11_0_arm64.whl",
+            "matched_tag": "cp313-cp313-macosx_11_0_arm64"
+          },
+          "pydantic-settings": {
+            "wheel": "pydantic_settings-2.16.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pygments": {
+            "wheel": "pygments-2.21.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pyjwt": {
+            "wheel": "pyjwt-2.15.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pyperclip": {
+            "wheel": "pyperclip-1.11.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "python-dotenv": {
+            "wheel": "python_dotenv-1.2.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "python-multipart": {
+            "wheel": "python_multipart-0.0.34-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pyyaml": {
+            "wheel": "pyyaml-6.0.4-cp313-cp313-macosx_11_0_arm64.whl",
+            "matched_tag": "cp313-cp313-macosx_11_0_arm64"
+          },
+          "referencing": {
+            "wheel": "referencing-0.37.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "rich": {
+            "wheel": "rich-15.0.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "rich-rst": {
+            "wheel": "rich_rst-2.2.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "rpds-py": {
+            "wheel": "rpds_py-2026.9.1-cp313-cp313-macosx_11_0_arm64.whl",
+            "matched_tag": "cp313-cp313-macosx_11_0_arm64"
+          },
+          "sse-starlette": {
+            "wheel": "sse_starlette-3.7.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "starlette": {
+            "wheel": "starlette-1.10.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "truststore": {
+            "wheel": "truststore-0.10.5-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "typing-extensions": {
+            "wheel": "typing_extensions-4.16.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "typing-inspection": {
+            "wheel": "typing_inspection-0.4.5-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "uncalled-for": {
+            "wheel": "uncalled_for-0.6.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "uvicorn": {
+            "wheel": "uvicorn-0.54.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "watchfiles": {
+            "wheel": "watchfiles-1.3.0-cp310-abi3-macosx_11_0_arm64.whl",
+            "matched_tag": "cp310-abi3-macosx_11_0_arm64"
+          },
+          "websockets": {
+            "wheel": "websockets-17.4-cp313-cp313-macosx_11_0_arm64.whl",
+            "matched_tag": "cp313-cp313-macosx_11_0_arm64"
+          }
+        },
+        "build_backend": {
+          "packaging": {
+            "wheel": "packaging-26.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "setuptools": {
+            "wheel": "setuptools-84.2.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "wheel": {
+            "wheel": "wheel-0.48.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          }
+        },
+        "installers": {
+          "argcomplete": {
+            "wheel": "argcomplete-3.8.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "click": {
+            "wheel": "click-8.5.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "filelock": {
+            "wheel": "filelock-4.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "packaging": {
+            "wheel": "packaging-26.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pipx": {
+            "wheel": "pipx-1.18.19-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "platformdirs": {
+            "wheel": "platformdirs-4.14.8-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "userpath": {
+            "wheel": "userpath-1.9.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "uv": {
+            "wheel": "uv-0.13.9-py3-none-macosx_11_0_arm64.whl",
+            "matched_tag": "py3-none-macosx_11_0_arm64"
+          }
+        }
+      }
+    },
+    {
+      "architecture": "x86_64",
+      "python": "3.13.18",
+      "managed_interpreter_url": "https://releases.astral.sh/github/python-build-standalone/releases/download/20261110/cpython-3.13.18%2B20261110-x86_64-apple-darwin-install_only_stripped.tar.gz",
+      "groups": {
+        "runtime": {
+          "aiofile": {
+            "wheel": "aiofile-3.12.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "annotated-types": {
+            "wheel": "annotated_types-0.8.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "anyio": {
+            "wheel": "anyio-4.16.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "attrs": {
+            "wheel": "attrs-26.1.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "authlib": {
+            "wheel": "authlib-1.9.10-py2.py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "beartype": {
+            "wheel": "beartype-0.23.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "cachetools": {
+            "wheel": "cachetools-8.0.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "caio": {
+            "wheel": "caio-0.12.10-cp313-cp313-macosx_10_13_universal2.whl",
+            "matched_tag": "cp313-cp313-macosx_10_13_universal2"
+          },
+          "certifi": {
+            "wheel": "certifi-2026.11.20-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "cffi": {
+            "wheel": "cffi-2.1.1-cp313-cp313-macosx_10_15_x86_64.whl",
+            "matched_tag": "cp313-cp313-macosx_10_15_x86_64"
+          },
+          "click": {
+            "wheel": "click-8.5.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "cryptography": {
+            "wheel": "cryptography-48.0.1-cp311-abi3-macosx_10_9_universal2.whl",
+            "matched_tag": "cp311-abi3-macosx_10_9_universal2"
+          },
+          "cyclopts": {
+            "wheel": "cyclopts-5.5.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "dnspython": {
+            "wheel": "dnspython-2.9.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "docstring-parser": {
+            "wheel": "docstring_parser-0.18.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "email-validator": {
+            "wheel": "email_validator-2.4.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "exceptiongroup": {
+            "wheel": "exceptiongroup-1.3.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "fastmcp": {
+            "wheel": "fastmcp-4.2.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "fastmcp-slim": {
+            "wheel": "fastmcp_slim-4.2.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "griffelib": {
+            "wheel": "griffelib-2.4.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "h11": {
+            "wheel": "h11-0.16.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpcore": {
+            "wheel": "httpcore-1.0.9-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpcore2": {
+            "wheel": "httpcore2-2.16.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpx": {
+            "wheel": "httpx-0.28.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "httpx2": {
+            "wheel": "httpx2-2.16.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "idna": {
+            "wheel": "idna-3.20-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "joserfc": {
+            "wheel": "joserfc-1.8.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonref": {
+            "wheel": "jsonref-1.1.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonschema": {
+            "wheel": "jsonschema-4.26.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonschema-path": {
+            "wheel": "jsonschema_path-0.5.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "jsonschema-specifications": {
+            "wheel": "jsonschema_specifications-2025.9.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "markdown-it-py": {
+            "wheel": "markdown_it_py-4.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "mcp": {
+            "wheel": "mcp-2.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "mcp-types": {
+            "wheel": "mcp_types-2.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "mdurl": {
+            "wheel": "mdurl-0.1.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "openapi-pydantic": {
+            "wheel": "openapi_pydantic-0.6.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "opentelemetry-api": {
+            "wheel": "opentelemetry_api-1.45.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "packaging": {
+            "wheel": "packaging-26.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pathable": {
+            "wheel": "pathable-0.6.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "platformdirs": {
+            "wheel": "platformdirs-4.14.8-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "py-key-value-aio": {
+            "wheel": "py_key_value_aio-0.5.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pycparser": {
+            "wheel": "pycparser-3.12-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pydantic": {
+            "wheel": "pydantic-2.14.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pydantic-core": {
+            "wheel": "pydantic_core-2.50.5-cp313-cp313-macosx_10_12_x86_64.whl",
+            "matched_tag": "cp313-cp313-macosx_10_12_x86_64"
+          },
+          "pydantic-settings": {
+            "wheel": "pydantic_settings-2.16.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pygments": {
+            "wheel": "pygments-2.21.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pyjwt": {
+            "wheel": "pyjwt-2.15.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pyperclip": {
+            "wheel": "pyperclip-1.11.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "python-dotenv": {
+            "wheel": "python_dotenv-1.2.4-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "python-multipart": {
+            "wheel": "python_multipart-0.0.34-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pyyaml": {
+            "wheel": "pyyaml-6.0.4-cp313-cp313-macosx_10_15_x86_64.whl",
+            "matched_tag": "cp313-cp313-macosx_10_15_x86_64"
+          },
+          "referencing": {
+            "wheel": "referencing-0.37.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "rich": {
+            "wheel": "rich-15.0.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "rich-rst": {
+            "wheel": "rich_rst-2.2.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "rpds-py": {
+            "wheel": "rpds_py-2026.9.1-cp313-cp313-macosx_10_12_x86_64.whl",
+            "matched_tag": "cp313-cp313-macosx_10_12_x86_64"
+          },
+          "sse-starlette": {
+            "wheel": "sse_starlette-3.7.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "starlette": {
+            "wheel": "starlette-1.10.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "truststore": {
+            "wheel": "truststore-0.10.5-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "typing-extensions": {
+            "wheel": "typing_extensions-4.16.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "typing-inspection": {
+            "wheel": "typing_inspection-0.4.5-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "uncalled-for": {
+            "wheel": "uncalled_for-0.6.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "uvicorn": {
+            "wheel": "uvicorn-0.54.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "watchfiles": {
+            "wheel": "watchfiles-1.3.0-cp310-abi3-macosx_10_12_x86_64.whl",
+            "matched_tag": "cp310-abi3-macosx_10_12_x86_64"
+          },
+          "websockets": {
+            "wheel": "websockets-17.4-cp313-cp313-macosx_10_13_x86_64.whl",
+            "matched_tag": "cp313-cp313-macosx_10_13_x86_64"
+          }
+        },
+        "build_backend": {
+          "packaging": {
+            "wheel": "packaging-26.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "setuptools": {
+            "wheel": "setuptools-84.2.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "wheel": {
+            "wheel": "wheel-0.48.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          }
+        },
+        "installers": {
+          "argcomplete": {
+            "wheel": "argcomplete-3.8.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "click": {
+            "wheel": "click-8.5.1-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "filelock": {
+            "wheel": "filelock-4.3.0-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "packaging": {
+            "wheel": "packaging-26.3-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "pipx": {
+            "wheel": "pipx-1.18.19-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "platformdirs": {
+            "wheel": "platformdirs-4.14.8-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "userpath": {
+            "wheel": "userpath-1.9.2-py3-none-any.whl",
+            "matched_tag": "py3-none-any"
+          },
+          "uv": {
+            "wheel": "uv-0.13.9-py3-none-macosx_10_12_x86_64.whl",
+            "matched_tag": "py3-none-macosx_10_12_x86_64"
+          }
+        }
+      }
+    }
+  ],
+  "missing_wheels": [],
+  "observed_utc": "2026-11-22T14:37:28.897743+00:00",
+  "wheel_file_selections": 604,
+  "managed_interpreter_head_checks": [
+    {
+      "architecture": "arm64",
+      "python": "3.10.22",
+      "status": 200
+    },
+    {
+      "architecture": "x86_64",
+      "python": "3.10.22",
+      "status": 200
+    },
+    {
+      "architecture": "arm64",
+      "python": "3.11.18",
+      "status": 200
+    },
+    {
+      "architecture": "x86_64",
+      "python": "3.11.18",
+      "status": 200
+    },
+    {
+      "architecture": "arm64",
+      "python": "3.12.16",
+      "status": 200
+    },
+    {
+      "architecture": "x86_64",
+      "python": "3.12.16",
+      "status": 200
+    },
+    {
+      "architecture": "arm64",
+      "python": "3.13.18",
+      "status": 200
+    },
+    {
+      "architecture": "x86_64",
+      "python": "3.13.18",
+      "status": 200
+    }
+  ],
+  "raw_probe_sha256": "4511a2fd5865543e9eef0df8879ed1d3a0debfcbbfe008d8911140f4ef73d903",
+  "probe_source_sha256": "ba0bcc6d26ef71a1354ad4c61da26d629eba1124c172979b945e91e006efab5a",
+  "resolver_log_sha256": "6f0eb5b275679d3b8c2991257ac957f8e5493b56bd862e9a9660545d84440a63",
+  "previous_receipt": {
+    "source_commit_field": "0.13.9",
+    "pyproject_matches_current_receipt": true,
+    "matrix_and_wheels_match_current_receipt": true,
+    "scope": "The historical probe overwrote its source commit with a dependency version. The recorded pyproject digest matches the verified revision.",
+    "archive_sha256": "6d6e18c2a1c8f7d0aa5ca1ea3043df9a18fb084b7817d0173914a543f11d41c5",
+    "archive_commit": "7e15ea943e5163ca9effeb501db976a6bdde7885",
+    "archive_path": "evidence/benchmark-v1/ventura-wheel-preflight.json",
+    "resolver_target_controls": [
+      {
+        "architecture": "arm64",
+        "macos_target": "13.0",
+        "exit_code": 1,
+        "observed": "rejected platform tag"
+      },
+      {
+        "architecture": "arm64",
+        "macos_target": "14.0",
+        "exit_code": 0,
+        "observed": "resolved"
+      },
+      {
+        "architecture": "x86_64",
+        "macos_target": "13.0",
+        "exit_code": 1,
+        "observed": "rejected platform tag"
+      },
+      {
+        "architecture": "x86_64",
+        "macos_target": "14.0",
+        "exit_code": 0,
+        "observed": "resolved"
+      }
+    ]
+  },
+  "verified_tart_input": {
+    "archive_commit": "e1cd4eb82bc60269ce42223523f73a862c0086a5",
+    "hashes": {
+      "candidate.tar": "ade74d7f75b68d044e77e81a1f0f158be7da5883f0d928983c43a57a5f738e00",
+      "uv": "0e17c316d23b33b4e840669f516f5cb7f5c1faa816ebd3824052ab50082ecefb",
+      "inside_guest.sh": "de12b1e6b4e92514f164857a2291cb1ffdab71a02870ab7e26b74b2e2a4b1ffd",
+      "input-check.log": "6ca64490fc9dcd98ffd86844084bb6f7f1f63af23048ee72864e378fc5e227c4"
+    },
+    "guest_booted": false
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "case": "settings-notifications",
+  "scope": "Separate keyboard persistence replay. The false-save control is generated from the frozen v2 HTML with the storage write removed.",
+  "initial_run": "https://github.com/chrismicah/design-mcp/actions/runs/45000665787",
+  "initial_failure": "The capture renderer cleared localStorage and sessionStorage before every navigation, including the reload under test.",
+  "corrected_run": "https://github.com/chrismicah/design-mcp/actions/runs/45000936717",
+  "commit": "a3c641013c2954af8bfd8bd6d2a71182c6d9964a",
+  "arms": {
+    "none": {
+      "input_sha256": "488c7a132f0a5353512a1c426ab037e3c5e99132954ef4c9c703b1e0a0b783eb",
+      "views": {
+        "1440": {
+          "capture_sha256": "074151f0cf72d3d179d4227be5450701897860f412651b1a607f997f8265464c",
+          "defaultsPassed": true,
+          "dirty": true,
+          "savedVisible": true,
+          "stored": {
+            "bookingReminders": false,
+            "eventAnnouncements": true
+          },
+          "reopened": {
+            "booking": false,
+            "events": true
+          },
+          "reopenedStored": {
+            "bookingReminders": false,
+            "eventAnnouncements": true
+          },
+          "displayedStored": true,
+          "recordMatches": true,
+          "reopenedRecordMatches": true,
+          "persistenceFailed": false,
+          "staysLocal": true,
+          "sent": [],
+          "pageErrors": [],
+          "passed": true,
+          "saved_sha256": "e38b778fda82e9fb1aba17921627b2003b860477366d96f5eef8ea5654bd8d8b",
+          "reloaded_sha256": "aaf9b2ebc26bb3e1e5930683598d0ffef99eaf9b0afdce533d0f5db19b541069"
+        },
+        "390": {
+          "capture_sha256": "73d4b68c2e71b6245d37dd98e40b6b9e256c1eeaadec56c2d82edcbe0ea4a93c",
+          "defaultsPassed": true,
+          "dirty": true,
+          "savedVisible": true,
+          "stored": {
+            "bookingReminders": false,
+            "eventAnnouncements": true
+          },
+          "reopened": {
+            "booking": false,
+            "events": true
+          },
+          "reopenedStored": {
+            "bookingReminders": false,
+            "eventAnnouncements": true
+          },
+          "displayedStored": true,
+          "recordMatches": true,
+          "reopenedRecordMatches": true,
+          "persistenceFailed": false,
+          "staysLocal": true,
+          "sent": [],
+          "pageErrors": [],
+          "passed": true,
+          "saved_sha256": "37ebd5bd423fdf963225d1c1ed3eb8dd59452b4e079e01cdfe1c7d022b063ef4",
+          "reloaded_sha256": "6681e73cf000e6c713536dd8767e11cdc03a23e9a205e56b9e3d712da6c3fc7f"
+        }
+      }
+    },
+    "v2": {
+      "input_sha256": "1f87744c9e930c2c254d6d068b8fd656465ddd4bbd96331294e4c7e903c6ad28",
+      "views": {
+        "1440": {
+          "capture_sha256": "89346b9e4e3a08ed589f81535b7187e1bdd7ebf5d78a52523dc9b3fa6b28f131",
+          "defaultsPassed": true,
+          "dirty": true,
+          "savedVisible": true,
+          "stored": {
+            "bookingReminders": false,
+            "eventAnnouncements": true
+          },
+          "reopened": {
+            "booking": false,
+            "events": true
+          },
+          "reopenedStored": {
+            "bookingReminders": false,
+            "eventAnnouncements": true
+          },
+          "displayedStored": true,
+          "recordMatches": true,
+          "reopenedRecordMatches": true,
+          "persistenceFailed": false,
+          "staysLocal": true,
+          "sent": [],
+          "pageErrors": [],
+          "passed": true,
+          "saved_sha256": "a8c8cd0d7ff5bee8119bb808217982ebc9c9fca49d9d605d08d93887d8397f86",
+          "reloaded_sha256": "c780f6c06e204ceab6f39fe6e9ecab34c7efe0fdf7ba6c0f88a52be4b9586e1a"
+        },
+        "390": {
+          "capture_sha256": "f6da7aac698b31e810b5b93ad4a91c34b71916d978867a8810d04779da824ab0",
+          "defaultsPassed": true,
+          "dirty": true,
+          "savedVisible": true,
+          "stored": {
+            "bookingReminders": false,
+            "eventAnnouncements": true
+          },
+          "reopened": {
+            "booking": false,
+            "events": true
+          },
+          "reopenedStored": {
+            "bookingReminders": false,
+            "eventAnnouncements": true
+          },
+          "displayedStored": true,
+          "recordMatches": true,
+          "reopenedRecordMatches": true,
+          "persistenceFailed": false,
+          "staysLocal": true,
+          "sent": [],
+          "pageErrors": [],
+          "passed": true,
+          "saved_sha256": "113ca0fc196558ee2797046d8bea13718ffd25337c4347c56074eb3bb3fd3d5b",
+          "reloaded_sha256": "a553e2d166ae2c0c01ef18fee9f09ab21964b39a23e8390cd36a6ade1eea03c9"
+        }
+      }
+    },
+    "false-save-control": {
+      "input_sha256": "a01a837902fed69366a12110477d69819ea29c2dea7f052041bcffa7e6f4d466",
+      "views": {
+        "1440": {
+          "capture_sha256": "89346b9e4e3a08ed589f81535b7187e1bdd7ebf5d78a52523dc9b3fa6b28f131",
+          "defaultsPassed": true,
+          "dirty": true,
+          "savedVisible": true,
+          "stored": null,
+          "reopened": {
+            "booking": true,
+            "events": false
+          },
+          "reopenedStored": null,
+          "displayedStored": false,
+          "recordMatches": false,
+          "reopenedRecordMatches": false,
+          "persistenceFailed": true,
+          "staysLocal": true,
+          "sent": [],
+          "pageErrors": [],
+          "passed": false,
+          "saved_sha256": "a8c8cd0d7ff5bee8119bb808217982ebc9c9fca49d9d605d08d93887d8397f86",
+          "reloaded_sha256": "89346b9e4e3a08ed589f81535b7187e1bdd7ebf5d78a52523dc9b3fa6b28f131"
+        },
+        "390": {
+          "capture_sha256": "f6da7aac698b31e810b5b93ad4a91c34b71916d978867a8810d04779da824ab0",
+          "defaultsPassed": true,
+          "dirty": true,
+          "savedVisible": true,
+          "stored": null,
+          "reopened": {
+            "booking": true,
+            "events": false
+          },
+          "reopenedStored": null,
+          "displayedStored": false,
+          "recordMatches": false,
+          "reopenedRecordMatches": false,
+          "persistenceFailed": true,
+          "staysLocal": true,
+          "sent": [],
+          "pageErrors": [],
+          "passed": false,
+          "saved_sha256": "113ca0fc196558ee2797046d8bea13718ffd25337c4347c56074eb3bb3fd3d5b",
+          "reloaded_sha256": "f6da7aac698b31e810b5b93ad4a91c34b71916d978867a8810d04779da824ab0"
+        }
+      }
+    }
+  }
+}

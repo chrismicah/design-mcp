@@ -4,7 +4,7 @@ import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from models.visual_analyzer import (
+from design_mcp.models.visual_analyzer import (
     hex_to_rgb, relative_luminance, contrast_ratio, rgb_to_hsl,
     color_distance, extract_colors, detect_color_contrast_issues,
     detect_color_palette_issues, detect_spacing_inconsistency,

@@ -1,2 +1,4 @@
-"""Design Intelligence MCP Server — 7,000+ real-world design patterns for AI agents."""
+"""Design MCP provides reviewed art direction for interface briefs."""
+
 __version__ = "0.1.0"
+DEFAULT_SURFACE = "v2"

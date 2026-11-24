@@ -11,7 +11,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from server import (
+from design_mcp.server import (
     search_design_patterns,
     get_design_blueprint,
     get_semantic_tokens,

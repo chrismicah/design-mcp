@@ -1,0 +1,389 @@
+{
+  "query": "commuter rail mobile ticket",
+  "search_design_patterns": [
+    {
+      "id": "webui7k-1656614406725",
+      "name": "Funérailles",
+      "page_type": "Landing Page",
+      "layout_notes": "<div className=\"min-h-screen bg-background\">\n  <NavBar />\n  <main>\n    {/* Hero */}\n    <section className=\"py-24 sm:py-32\">\n      <div className=\"mx-auto max-w-7xl px-6 lg:px-8 text-center\">\n        <h1 className=\"text-4xl font-bold sm:text-6xl\">Headline</h1>\n        <p className=\"mt-6 text-lg text-muted-foreground max-w-2xl mx-auto\">Subheadline</p>\n        <div className=\"mt-10 flex justify-center gap-4\">\n          <Button size=\"lg\">Get Started</Button>\n          <Button variant=\"outline\" size=\"lg\">Learn More</Button>\n        </div>\n      </div>\n    </section>\n    {/* Social Proof */}\n    <section className=\"border-y bg-muted/50 py-12\">\n      <LogoBar />\n    </section>\n    {/* Features */}\n    <section className=\"py-24\">\n      <FeatureGrid columns={3} />\n    </section>\n    {/* Testimonials */}\n    <section className=\"bg-muted/50 py-24\">\n      <TestimonialCarousel />\n    </section>\n    {/* CTA */}\n    <section className=\"py-24 text-center\">\n      <CTASection />\n    </section>\n  </main>\n  <Footer />\n</div>",
+      "behavioral_description": "Hero-driven landing page with a bold above-the-fold section. Large headline with subtext and primary CTA button. Below-fold sections present features in alternating layout (text-left/image-right, then reversed). Social proof section with logos or testimonials. Final CTA section before footer. Hero CTA has a hover glow/scale effect. Scroll-triggered fade-in animations for below-fold sections (staggered by 100ms per element). Sticky nav appears after scrolling past hero. Mobile: hamburger menu with slide-in drawer.",
+      "semantic_tokens": {
+        "color-accent": "#dc9522",
+        "color-background": "#ffffff",
+        "color-background-card": "#ffffff",
+        "color-background-secondary": "#f2f6fc",
+        "color-border": "#c8daf7",
+        "color-error": "#ef4444",
+        "color-foreground": "#0a1f40",
+        "color-foreground-muted": "#3a81f6",
+        "color-foreground-secondary": "#0d67fa",
+        "color-info": "#3b82f6",
+        "color-primary": "#3b82f6",
+        "color-primary-foreground": "#ffffff",
+        "color-ring": "#629af7",
+        "color-success": "#22c55e",
+        "color-warning": "#f59e0b",
+        "font-size-2xl": "1.5rem",
+        "font-size-3xl": "1.875rem",
+        "font-size-base": "1rem",
+        "font-size-display": "clamp(2.25rem, 5vw, 3.75rem)",
+        "font-size-lg": "1.125rem",
+        "font-size-sm": "0.875rem",
+        "font-size-xl": "1.25rem",
+        "font-size-xs": "0.75rem",
+        "radius-lg": "0.75rem",
+        "radius-md": "0.5rem",
+        "radius-sm": "0.25rem",
+        "radius-xl": "1rem",
+        "spacing-2xl": "3rem",
+        "spacing-lg": "1.5rem",
+        "spacing-md": "1rem",
+        "spacing-section": "4rem",
+        "spacing-sm": "0.5rem",
+        "spacing-xl": "2rem",
+        "spacing-xs": "0.25rem"
+      },
+      "source_url": "https://eglisesjb.com/funerailles.html"
+    }
+  ],
+  "get_design_system": {
+    "font_system": {
+      "_why": "Font is the #1 tell of AI-generated UI. LLMs default to font-sans with no OpenType features.",
+      "imports": {
+        "inter": "@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');",
+        "geist": "@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap');",
+        "geist_mono": "@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap');"
+      },
+      "root_css": "* { font-family: 'Inter', system-ui, sans-serif; font-feature-settings: 'cv02' 1, 'cv03' 1, 'cv11' 1; } body { -webkit-font-smoothing: antialiased; }",
+      "tabular_css": ".t { font-variant-numeric: tabular-nums; font-feature-settings: 'tnum' 1, 'cv02' 1; }",
+      "tailwind_classes": {
+        "hero_kpi_value": "text-[2.75rem] font-semibold tracking-[-0.04em] text-zinc-50 leading-[1] tabular-nums",
+        "hero_kpi_label": "text-[10.5px] font-medium uppercase tracking-[0.06em] text-zinc-600",
+        "hero_kpi_delta": "text-[11px] font-medium tabular-nums",
+        "hero_kpi_subtext": "text-[11px] text-zinc-700",
+        "secondary_kpi_value": "text-[20px] font-semibold tracking-[-0.02em] text-zinc-200 tabular-nums",
+        "secondary_kpi_label": "text-[10px] text-zinc-600",
+        "secondary_kpi_delta": "text-[10.5px] font-medium tabular-nums",
+        "section_heading": "text-[12px] font-medium text-zinc-400",
+        "page_title": "text-[13px] font-semibold text-zinc-300",
+        "table_header": "text-[9.5px] font-medium uppercase tracking-[0.08em] text-zinc-700",
+        "table_cell_primary": "text-[11.5px] font-medium text-zinc-300",
+        "table_cell": "text-[11.5px] text-zinc-600",
+        "table_cell_amount": "text-[11.5px] font-semibold text-right tabular-nums",
+        "table_cell_dim": "text-[10.5px] text-zinc-700 text-right tabular-nums whitespace-nowrap",
+        "sidebar_item": "text-[12.5px] font-medium",
+        "sidebar_label": "text-[10px] font-medium uppercase tracking-[0.08em] text-zinc-700",
+        "chart_axis": "text-[9px] text-zinc-700 tabular-nums",
+        "chart_title": "text-[12px] font-medium text-zinc-400",
+        "chart_legend": "text-[10px] text-zinc-600",
+        "chart_footer_label": "text-[10px] text-zinc-600",
+        "chart_footer_value": "text-[11.5px] font-medium text-zinc-400 tabular-nums",
+        "tab_button": "text-[10.5px] font-medium",
+        "pagination": "text-[10px] text-zinc-700 tabular-nums",
+        "status_dot_text": "text-[10.5px]",
+        "allocation_label": "text-[11px] text-zinc-400",
+        "allocation_value": "text-[11px] font-medium text-zinc-300 tabular-nums",
+        "meta_label": "text-[10px] font-medium uppercase tracking-[0.06em] text-zinc-700"
+      },
+      "anti_defaults": [
+        "NEVER use text-base (16px) in a dashboard. Use text-[11.5px] for table cells, text-[12.5px] for nav.",
+        "NEVER use default Tailwind tracking. Hero KPIs: tracking-[-0.04em]. Secondary KPIs: tracking-[-0.02em]. Table headers: tracking-[0.08em].",
+        "ALWAYS add tabular-nums to any number. Add 't' utility class from root CSS.",
+        "ALWAYS add font-feature-settings: 'cv02' 1, 'cv03' 1, 'cv11' 1 to root.",
+        "Table headers are 9.5px uppercase with 0.08em tracking. Table cells are 11.5px. These sizes DIFFER.",
+        "Dates and secondary data columns use text-[10.5px] text-zinc-700 — nearly invisible but present."
+      ]
+    },
+    "spacing_system": {
+      "_why": "AI-generated UIs have varying, arbitrary spacing. Human-designed UIs lock to a single vertical rhythm.",
+      "vertical_rhythm": {
+        "_critical": "ALL vertical gaps between major sections use mt-5 (20px). This is the LOCKED rhythm token. Do not vary it.",
+        "between_sections": "mt-5",
+        "within_card": "Uses smaller tokens: mt-1, mt-1.5, mt-2, mt-2.5 — but sections are ALWAYS mt-5.",
+        "larger_break": "mb-8 ONLY between conceptual groups (KPI zone → content zone). Never between sibling cards."
+      },
+      "page_level": {
+        "content_padding": "px-6 pt-5",
+        "header_height": "h-12",
+        "header_padding": "px-6"
+      },
+      "card_level": {
+        "hero_card": "px-6 pt-5 pb-4",
+        "secondary_card": "px-4 py-3",
+        "chart_card": "no outer padding — header uses px-5 pt-4, chart area uses px-5, footer uses mx-5",
+        "table_card": "p-0 overflow-hidden, header area uses px-5 h-10",
+        "allocation_card": "p-4"
+      },
+      "table_cells": {
+        "row_padding": "py-[9px]",
+        "cell_padding_x": "px-4 (body) or px-5 (first/last columns)",
+        "header_padding": "py-2"
+      },
+      "sidebar": {
+        "width": "w-[220px]",
+        "header_height": "h-12",
+        "item_padding": "px-2.5 py-[5px]",
+        "item_gap": "gap-[1px]",
+        "section_label_spacing": "mt-5 mb-1",
+        "icon_size": "w-[14px] h-[14px]",
+        "logo_size": "w-[22px] h-[22px]",
+        "border_radius": "rounded-[5px]"
+      },
+      "gap_tokens": {
+        "card_grid": "gap-3",
+        "table_aside": "gap-4",
+        "inline_divider": "w-px h-3"
+      },
+      "anti_defaults": [
+        "ALL section gaps are mt-5 (20px). Not mt-4, not mt-6. LOCKED rhythm.",
+        "Card grid gap is gap-3 (12px), NOT gap-4 or gap-5. Tighter = more intentional.",
+        "Table row padding is py-[9px], NOT py-3 or py-4. Non-standard = non-mechanical.",
+        "Sidebar is w-[220px], NOT w-64 (256px) or w-[240px]. Narrower sidebar = more content room.",
+        "Sidebar items use py-[5px], NOT py-2 (8px). Header uses h-12, not py-4.",
+        "Chart card has NO uniform padding. Header, chart area, and footer each have independent padding."
+      ]
+    },
+    "global_anti_patterns": {
+      "_critical": "The 15 MOST COMMON AI design mistakes. Every pattern was identified from real AI-generated output across 3 critique iterations.",
+      "patterns": [
+        {
+          "name": "The Equal Grid",
+          "description": "4 stat cards in a row, all same size.",
+          "fix": "Hero KPI gets full-width card. Secondary KPIs are 3 cols, compact. Never 4 identical cards."
+        },
+        {
+          "name": "The Orphaned Component",
+          "description": "Standalone stat pills or metric rows floating between sections with no parent container.",
+          "fix": "Dock supplementary stats inside the chart card as a footer row with border-t separator."
+        },
+        {
+          "name": "The Uniform Spacing",
+          "description": "Every gap between sections is different (sometimes 16px, sometimes 24px, sometimes 32px).",
+          "fix": "Lock ALL section gaps to mt-5 (20px). Use gap-3 for card grids. Consistency > variation."
+        },
+        {
+          "name": "The Flat Table",
+          "description": "Every table column uses the same font size, weight, and color.",
+          "fix": "Primary column: font-medium text-zinc-300. Amounts: font-semibold + colored. IDs/dates: text-zinc-600/700."
+        },
+        {
+          "name": "The Glass Card",
+          "description": "backdrop-blur + bg-white/10 on cards.",
+          "fix": "Solid bg-[#101012] border border-[#1a1a1e]. Three elevation tiers, not glass."
+        },
+        {
+          "name": "The Gradient Button",
+          "description": "bg-gradient-to-r on primary buttons.",
+          "fix": "Ghost button: h-[26px] px-2.5 border border-[#1e1e22] text-[10.5px] text-zinc-500."
+        },
+        {
+          "name": "The 16px Body",
+          "description": "Using text-base (16px) anywhere in a dashboard.",
+          "fix": "Table cells: 11.5px. Nav: 12.5px. Section heads: 12px. Hero value: 2.75rem. Nothing uses 16px."
+        },
+        {
+          "name": "The Centered Everything",
+          "description": "justify-center and text-center on stat cards.",
+          "fix": "Left-align everything. Right-align amounts and dates only."
+        },
+        {
+          "name": "The Icon Container",
+          "description": "40px colored circle with icon inside stat cards.",
+          "fix": "No icons in stat cards. Sidebar icons: 14px with opacity-40 (inactive) / opacity-90 (active)."
+        },
+        {
+          "name": "The Rainbow Status",
+          "description": "Full colored badges for status.",
+          "fix": "5px dot (w-[5px] h-[5px] rounded-full) + text-[10.5px]. One color per semantic meaning."
+        },
+        {
+          "name": "The Default Font",
+          "description": "font-sans with no tracking, no font-feature-settings, no tabular-nums.",
+          "fix": "Root CSS: font-feature-settings 'cv02','cv03','cv11'. Hero: tracking-[-0.04em]. Table headers: tracking-[0.08em]."
+        },
+        {
+          "name": "The Purple Default",
+          "description": "Using indigo/purple as primary accent.",
+          "fix": "Match the domain. Finance: emerald. Projects: violet. Infra: blue."
+        },
+        {
+          "name": "The Wrapping Date",
+          "description": "Date column too narrow, 'Mar 7' wraps to two lines.",
+          "fix": "Date cells: whitespace-nowrap, fixed column width (w-[62px]), abbreviated format ('Mar 7' not 'March 7, 2026')."
+        },
+        {
+          "name": "The Stacked Bar",
+          "description": "Tiny stacked horizontal bar trying to show 5 allocation segments. Cash at 4% is invisible.",
+          "fix": "Individual progress bars per category (h-[3px] each), OR remove the bar and just show the number."
+        },
+        {
+          "name": "The One-Surface Dark Mode",
+          "description": "All cards use the same bg color. No depth perception.",
+          "fix": "Three tiers: hero #101012, secondary #0e0e10, table headers #0c0c0e. Borders: #1a1a1e / #16161a / #131315."
+        }
+      ]
+    },
+    "elevation": {
+      "base": "#0a0a0c",
+      "level_1_hero": "#101012",
+      "level_1_content": "#101012",
+      "level_0_secondary": "#0e0e10",
+      "level_0_inline": "#0c0c0e",
+      "border_strong": "#1a1a1e",
+      "border_subtle": "#16161a",
+      "border_faint": "#131315",
+      "hover_overlay": "white/[0.012]",
+      "active_overlay": "white/[0.06]",
+      "active_overlay_subtle": "white/[0.03]"
+    },
+    "elevation_rules": [
+      "Hero KPI card uses bg-[#101012] border-[#1a1a1e] — strongest elevation.",
+      "Secondary stat cards use bg-[#0e0e10] border-[#16161a] — one step lower.",
+      "Chart and table cards use bg-[#101012] border-[#1a1a1e] — same as hero for content.",
+      "Table header row uses bg-[#0c0c0e] — sunken into card.",
+      "Sidebar uses base bg-[#0a0a0c] — same as page background, not elevated.",
+      "Borders use SPECIFIC hex values, NOT rgba(). Three tiers: #1a1a1e / #16161a / #131315.",
+      "Hover uses white/[0.012] — barely perceptible. Not white/[0.02] or white/[0.04]."
+    ],
+    "color_tokens": {
+      "bg": "#0a0a0c",
+      "surface": "#101012",
+      "surface_secondary": "#0e0e10",
+      "surface_sunken": "#0c0c0e",
+      "fg": "#fafafa",
+      "fg_bright": "#zinc-200",
+      "fg_secondary": "#zinc-400",
+      "fg_muted": "#zinc-500",
+      "fg_dim": "#zinc-600",
+      "fg_ghost": "#zinc-700",
+      "border_strong": "#1a1a1e",
+      "border_subtle": "#16161a",
+      "border_faint": "#131315"
+    },
+    "delta_colors": {
+      "_why": "V3 learning: use /80 and /60 opacity, not /70. And reduce red further than green — red draws more attention naturally.",
+      "positive": {
+        "class": "text-emerald-400/80",
+        "secondary": "text-emerald-400/70",
+        "dot": "bg-emerald-500/50"
+      },
+      "negative": {
+        "class": "text-red-400/60",
+        "secondary": "text-red-400/50",
+        "dot": "bg-red-500/50"
+      },
+      "warning": {
+        "class": "text-amber-400/60",
+        "dot": "bg-amber-400/50"
+      },
+      "neutral": {
+        "class": "text-zinc-500"
+      }
+    },
+    "component_classes": {
+      "hero_kpi": {
+        "_note": "FULL-WIDTH hero KPI. This is the most important number on the page. It gets its own card, full width, largest text.",
+        "wrapper": "rounded-lg border border-[#1a1a1e] bg-[#101012] px-6 pt-5 pb-4",
+        "layout": "flex items-start justify-between",
+        "label": "text-[10.5px] font-medium uppercase tracking-[0.06em] text-zinc-600",
+        "value": "mt-1.5 text-[2.75rem] font-semibold tracking-[-0.04em] text-zinc-50 leading-[1] tabular-nums",
+        "delta_row": "mt-2 flex items-baseline gap-1.5",
+        "delta_positive": "text-[11px] font-medium text-emerald-400/80 tabular-nums",
+        "delta_negative": "text-[11px] font-medium text-red-400/60 tabular-nums",
+        "delta_subtext": "text-[11px] text-zinc-700",
+        "sparkline_area": "mt-2 (right side of flex, 120x44px SVG sparkline, stroke #d4d4d8 opacity 0.25, area fill gradient to transparent)"
+      },
+      "secondary_kpi": {
+        "_note": "Compact stat cards below hero. 3 in a row. Value and delta on same line using flex justify-between.",
+        "wrapper": "rounded-md border border-[#16161a] bg-[#0e0e10] px-4 py-3 flex items-baseline justify-between",
+        "inner": "flex flex-col",
+        "label": "text-[10px] text-zinc-600",
+        "value": "text-[20px] font-semibold tracking-[-0.02em] text-zinc-200 tabular-nums",
+        "delta_positive": "text-[10.5px] font-medium text-emerald-400/70 tabular-nums",
+        "delta_negative": "text-[10.5px] font-medium text-red-400/50 tabular-nums"
+      },
+      "sidebar": {
+        "container": "fixed left-0 top-0 bottom-0 w-[220px] border-r border-[#1a1a1e] bg-[#0a0a0c] flex flex-col z-10",
+        "header": "px-4 h-12 flex items-center gap-2",
+        "logo_icon": "w-[22px] h-[22px] rounded-[5px] flex items-center justify-center text-[10px] font-bold text-white leading-none",
+        "logo_text": "text-[13px] font-semibold text-zinc-100 tracking-[-0.01em]",
+        "nav_section": "flex-1 px-2 pt-1 flex flex-col gap-[1px]",
+        "nav_item": "flex items-center gap-2 px-2.5 py-[5px] rounded-[5px] text-[12.5px] font-medium text-zinc-500 hover:text-zinc-300 hover:bg-white/[0.03] transition-colors duration-150",
+        "nav_item_active": "flex items-center gap-2 px-2.5 py-[5px] rounded-[5px] text-[12.5px] font-medium text-zinc-200 bg-white/[0.06]",
+        "nav_icon": "w-[14px] h-[14px] opacity-40",
+        "nav_icon_active": "w-[14px] h-[14px] opacity-90",
+        "section_label": "px-2.5 mt-5 mb-1 text-[10px] font-medium uppercase tracking-[0.08em] text-zinc-700",
+        "user_area": "px-2 py-2 border-t border-[#1a1a1e]",
+        "user_item": "flex items-center gap-2 px-2.5 py-[5px] rounded-[5px] hover:bg-white/[0.03] transition-colors duration-150 cursor-pointer",
+        "user_avatar": "w-[22px] h-[22px] rounded-full bg-zinc-800 flex items-center justify-center text-[9px] font-medium text-zinc-400",
+        "user_name": "text-[12.5px] text-zinc-500"
+      },
+      "table": {
+        "_note": "V3 table has real typographic hierarchy: CLIENT is the only bold column, AMOUNT is the only semibold, REF/TYPE/DATE are dimmed.",
+        "wrapper": "rounded-lg border border-[#1a1a1e] bg-[#101012] overflow-hidden",
+        "header_bar": "flex items-center justify-between px-5 h-10",
+        "header_title": "text-[12px] font-medium text-zinc-400",
+        "header_action": "text-[10.5px] text-zinc-600 hover:text-zinc-400 transition-colors",
+        "thead_row": "border-y border-[#16161a] bg-[#0c0c0e]",
+        "th": "px-4 py-2 text-left text-[9.5px] font-medium uppercase tracking-[0.08em] text-zinc-700",
+        "th_right": "px-4 py-2 text-right text-[9.5px] font-medium uppercase tracking-[0.08em] text-zinc-700",
+        "body_row": "border-b border-[#131315] hover:bg-white/[0.012] transition-colors duration-75",
+        "body_row_last": "hover:bg-white/[0.012] transition-colors duration-75",
+        "cell_dim": "px-5 py-[9px] text-[11.5px] text-zinc-600 tabular-nums",
+        "cell_primary": "px-4 py-[9px] text-[11.5px] font-medium text-zinc-300",
+        "cell_secondary": "px-4 py-[9px] text-[11.5px] text-zinc-600",
+        "cell_amount_positive": "px-4 py-[9px] text-[11.5px] font-semibold text-right tabular-nums text-emerald-400/80",
+        "cell_amount_negative": "px-4 py-[9px] text-[11.5px] font-semibold text-right tabular-nums text-red-400/60",
+        "cell_date": "pr-5 pl-4 py-[9px] text-[10.5px] text-zinc-700 text-right tabular-nums whitespace-nowrap",
+        "cell_status": "px-4 py-[9px]",
+        "status_badge": "inline-flex items-center gap-1 text-[10.5px] text-zinc-600",
+        "status_dot": "w-[5px] h-[5px] rounded-full",
+        "pagination": "px-5 py-2 flex items-center justify-between text-[10px] text-zinc-700 border-t border-[#16161a] tabular-nums"
+      },
+      "chart": {
+        "_note": "V3: chart is full-width, stats are DOCKED as footer row inside the card — not orphaned outside.",
+        "wrapper": "rounded-lg border border-[#1a1a1e] bg-[#101012]",
+        "header": "flex items-center justify-between px-5 pt-4 pb-0",
+        "title": "text-[12px] font-medium text-zinc-400",
+        "legend_item": "flex items-center gap-1 text-[10px] text-zinc-600",
+        "legend_dot": "w-1 h-1 rounded-full",
+        "chart_area": "h-[240px] relative px-5 pt-3",
+        "y_axis": "absolute left-0 top-3 bottom-0 w-[42px] flex flex-col justify-between py-1 pr-2 text-right text-[9px] text-zinc-700 tabular-nums",
+        "x_axis": "ml-[42px] flex justify-between px-5 pt-1 text-[9px] text-zinc-700 tabular-nums",
+        "grid_line": "stroke rgba(255,255,255,0.025) — no stroke-dasharray for cleaner look, OR stroke-dasharray='3 3' for subtle dash",
+        "primary_line": "stroke #b4b4ba stroke-width 1.25 fill none",
+        "end_dot": "circle r=2.5 fill=#b4b4ba at the end of primary line",
+        "projected_line": "stroke #2a2a30 stroke-width 1 stroke-dasharray='3 4' fill none",
+        "area_gradient": "linearGradient from rgba(180,180,186,0.05) at top to rgba(180,180,186,0) at 80%",
+        "footer": "mx-5 mt-3 mb-4 pt-3 border-t border-[#16161a] flex items-center",
+        "footer_stat": "flex-1 flex items-baseline gap-1.5 px-1",
+        "footer_label": "text-[10px] text-zinc-600",
+        "footer_value": "text-[11.5px] font-medium text-zinc-400 tabular-nums",
+        "footer_divider": "w-px h-3 bg-[#1e1e22]"
+      },
+      "header": {
+        "wrapper": "flex items-center justify-between px-6 h-12 border-b border-[#1a1a1e]",
+        "page_title": "text-[13px] font-semibold text-zinc-300",
+        "tab_group": "flex items-center rounded-[5px] border border-[#1e1e22] overflow-hidden",
+        "tab": "w-8 h-[26px] text-[10.5px] font-medium text-zinc-600 hover:text-zinc-400 transition-colors text-center",
+        "tab_active": "w-8 h-[26px] text-[10.5px] font-medium text-zinc-300 bg-white/[0.06] text-center",
+        "ghost_button": "h-[26px] px-2.5 rounded-[5px] text-[10.5px] font-medium text-zinc-500 hover:text-zinc-300 border border-[#1e1e22] hover:border-[#2a2a2e] transition-colors"
+      },
+      "allocation": {
+        "_note": "V3: Individual progress bars per category, NOT a stacked bar. Plus secondary metrics (Rebalance, Risk Score) to fill dead space.",
+        "wrapper": "rounded-lg border border-[#1a1a1e] bg-[#101012] p-4",
+        "title": "text-[12px] font-medium text-zinc-400 mb-4",
+        "item_row": "flex items-center justify-between mb-1",
+        "item_label": "text-[11px] text-zinc-400",
+        "item_value": "text-[11px] font-medium text-zinc-300 tabular-nums",
+        "progress_track": "w-full h-[3px] rounded-full bg-[#1a1a1e]",
+        "progress_bar": "h-full rounded-full",
+        "item_spacing": "space-y-[11px]",
+        "secondary_section": "mt-5 pt-4 border-t border-[#16161a]",
+        "secondary_label": "text-[10px] font-medium uppercase tracking-[0.06em] text-zinc-700 mb-2",
+        "secondary_value_large": "text-[18px] font-semibold text-zinc-300 tabular-nums tracking-[-0.02em]",
+        "secondary_subtext": "text-[10px] text-zinc-700"
+      }
+    }
+  }
+}

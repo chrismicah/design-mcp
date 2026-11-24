@@ -1,0 +1,351 @@
+{
+  "browser": "Chrome/157.0.8103.79",
+  "exit_code": 0,
+  "renderer": "0.12.0",
+  "model": "gpt-6.2-astra",
+  "calibration": [
+    7,
+    4.5,
+    7,
+    6
+  ],
+  "screens": {
+    "1A-1440": {
+      "coherence": 9,
+      "originality": 8.5,
+      "craft": 9,
+      "usability": 9,
+      "primary_action": {
+        "input": "From the failed “chain saw” search, press Tab three times to “Search for pruning saw”, then Enter.",
+        "expected": "Show one available Folding Pruning Saw and leave keyboard focus easy to locate.",
+        "observed": "The field changed to “pruning saw” and retained a visible focus ring. One Folding Pruning Saw appeared with an “Available” badge. The status read “1 match. Folding Pruning Saw is available.”"
+      },
+      "edge_observation": "Select All and Backspace emptied the focused field. “Enter a tool name” replaced the result. The pruning-saw suggestion and “1 tool available” remained visible.",
+      "weakness": "The small “1 tool available” beside the suggestion leaves the reader to infer which query the count describes.",
+      "repair": "Change the count to “1 pruning saw available” beside the suggestion.",
+      "strength": "The pegboard changes from a dashed outline of the missing chain saw to a solid drawing of the available folding saw. The illustration communicates the search outcome.",
+      "captures": [
+        "1A-1440-before.png",
+        "1A-1440-after.png"
+      ],
+      "kind": "repair",
+      "case": "empty-search",
+      "html_sha256": "00c4e8cc563b1641d35860a913ce68bad0862929bafb0e3b0cb69ff456135a7c",
+      "screenshots": {
+        "before": {
+          "sha256": "0349f8efc78365954b61b4e4c9e024eb1d249fec2552df10973f532e60b62b46",
+          "path": ".context/factory/benchmark-v1/compact-live-review/blind-repair-trial/captures/1A-1440-before.png",
+          "tool_call": "item_2"
+        },
+        "after": {
+          "sha256": "f9ba608f491b8a22c78d069957e58ff6e0b1fd8ca1d04ae1b549431d97b3dd5b",
+          "path": ".context/factory/benchmark-v1/compact-live-review/blind-repair-trial/captures/1A-1440-after.png",
+          "tool_call": "item_7"
+        }
+      },
+      "weighted": 8.85
+    },
+    "1A-390": {
+      "coherence": 9,
+      "originality": 8.5,
+      "craft": 8.5,
+      "usability": 9,
+      "primary_action": {
+        "input": "Press Tab three times to the full-width “Search for pruning saw” button, then Enter.",
+        "expected": "Find the available saw and keep the result and keyboard focus visible at phone width.",
+        "observed": "“Folding Pruning Saw” and its checked “Available” badge appeared above the illustration. The outlined search field held “pruning saw”. The status also named the available tool."
+      },
+      "edge_observation": "Select All and Backspace cleared the field in place. The saw result disappeared. “Enter a tool name”, the suggestion, and “1 tool available” were visible.",
+      "weakness": "The drawing of the unavailable chain saw takes up nearly half the no-match panel on the phone.",
+      "repair": "Make the illustration shallower in the mobile no-match state and keep the larger drawing for the available tool.",
+      "strength": "The yellow suggestion spans the text column above the artwork. After activation, the tool name and availability occupy that same prominent position.",
+      "captures": [
+        "1A-390-before.png",
+        "1A-390-after.png"
+      ],
+      "kind": "repair",
+      "case": "empty-search",
+      "html_sha256": "00c4e8cc563b1641d35860a913ce68bad0862929bafb0e3b0cb69ff456135a7c",
+      "screenshots": {
+        "before": {
+          "sha256": "f607de9a442f588f407fb8c1039cbcab7099ea286454edd5d2ff18a6aeace6e4",
+          "path": ".context/factory/benchmark-v1/compact-live-review/blind-repair-trial/captures/1A-390-before.png",
+          "tool_call": "item_11"
+        },
+        "after": {
+          "sha256": "06fdcd3d3925fc72b24875a4dafcb2defae1b7035adc1a65b6d49ef2619e40e4",
+          "path": ".context/factory/benchmark-v1/compact-live-review/blind-repair-trial/captures/1A-390-after.png",
+          "tool_call": "item_16"
+        }
+      },
+      "weighted": 8.75
+    },
+    "1B-1440": {
+      "coherence": 8,
+      "originality": 8.5,
+      "craft": 8.5,
+      "usability": 7,
+      "primary_action": {
+        "input": "From “chain saw”, press Tab three times to “Search for pruning saw”, then Enter.",
+        "expected": "Show one available Folding Pruning Saw with a clear focus target.",
+        "observed": "One Folding Pruning Saw appeared with “Available”. Focus visibly outlined the heading “1 match for ‘pruning saw’”. The search field contained “pruning saw” and the status region was empty."
+      },
+      "edge_observation": "Two Shift+Tabs returned focus to the field through Search. Select All and Backspace emptied it. The old match heading, Folding Pruning Saw, and “Available” all remained visible.",
+      "weakness": "An empty query still presents the pruning saw as a current match.",
+      "repair": "When the field becomes empty, remove the old result and show an empty-search prompt with focus still in the field.",
+      "strength": "The visible outline on the match-count heading locates the new result immediately above the illustrated tool.",
+      "captures": [
+        "1B-1440-before.png",
+        "1B-1440-after.png"
+      ],
+      "kind": "control",
+      "case": "empty-search",
+      "html_sha256": "e5ec03657c90a6d37a5245497188d3ede2c139416a230936f2df60cb749e6a0e",
+      "screenshots": {
+        "before": {
+          "sha256": "0349f8efc78365954b61b4e4c9e024eb1d249fec2552df10973f532e60b62b46",
+          "path": ".context/factory/benchmark-v1/compact-live-review/blind-repair-trial/captures/1B-1440-before.png",
+          "tool_call": "item_20"
+        },
+        "after": {
+          "sha256": "3ceda7d0762d22ec01fa5e822f21cd6318e256a3be846e3fb114dd193eb1eae8",
+          "path": ".context/factory/benchmark-v1/compact-live-review/blind-repair-trial/captures/1B-1440-after.png",
+          "tool_call": "item_25"
+        }
+      },
+      "weighted": 8.05
+    },
+    "1B-390": {
+      "coherence": 8,
+      "originality": 8.5,
+      "craft": 8.5,
+      "usability": 7,
+      "primary_action": {
+        "input": "Press Tab three times to “Search for pruning saw”, then Enter.",
+        "expected": "Show the available saw and make the result easy to locate on the narrow screen.",
+        "observed": "Focus moved to the visibly outlined “1 match for ‘pruning saw’” heading. Folding Pruning Saw and its “Available” badge appeared directly below it. The status region was empty."
+      },
+      "edge_observation": "After two Shift+Tabs, Select All and Backspace cleared the focused field. The panel continued to show one match for “pruning saw” and the available tool.",
+      "weakness": "The blank field and the card still naming “pruning saw” give conflicting accounts of the search.",
+      "repair": "Replace the match card with “Enter a tool name” as soon as the last character is deleted.",
+      "strength": "The recovery button, focused result heading, and availability badge are all readable above the illustration without scrolling.",
+      "captures": [
+        "1B-390-before.png",
+        "1B-390-after.png"
+      ],
+      "kind": "control",
+      "case": "empty-search",
+      "html_sha256": "e5ec03657c90a6d37a5245497188d3ede2c139416a230936f2df60cb749e6a0e",
+      "screenshots": {
+        "before": {
+          "sha256": "f607de9a442f588f407fb8c1039cbcab7099ea286454edd5d2ff18a6aeace6e4",
+          "path": ".context/factory/benchmark-v1/compact-live-review/blind-repair-trial/captures/1B-390-before.png",
+          "tool_call": "item_31"
+        },
+        "after": {
+          "sha256": "1d75c79287d3385d22ce362380ac3a635afd5a13f0aec6008289364e95b37f1b",
+          "path": ".context/factory/benchmark-v1/compact-live-review/blind-repair-trial/captures/1B-390-after.png",
+          "tool_call": "item_36"
+        }
+      },
+      "weighted": 8.05
+    },
+    "2A-1440": {
+      "coherence": 9,
+      "originality": 8,
+      "craft": 9,
+      "usability": 9,
+      "primary_action": {
+        "input": "Press Tab to “Reserve shift” on the Wednesday 4–6 pm Packing card, then Enter.",
+        "expected": "Show exactly one upcoming Packing booking and move focus to an understandable confirmation.",
+        "observed": "One Packing card appeared under “Upcoming shifts” with “Wednesday 4–6 pm” and “Shift booked”. A visible focus outline enclosed the whole booked card. The reserve button disappeared."
+      },
+      "edge_observation": "After one reload, exactly one Packing booking remained with the same time and confirmation. Focus returned to the document body.",
+      "weakness": "The small “Shift booked” badge is easy to overlook beneath the large Packing title on the wide card.",
+      "repair": "Increase the confirmation text size and place the checked label beside the day and time.",
+      "strength": "The bold time, packing-box illustration, and card-wide focus outline make it easy to verify which shift received the booking.",
+      "captures": [
+        "2A-1440-before.png",
+        "2A-1440-after.png"
+      ],
+      "kind": "repair",
+      "case": "empty-shifts",
+      "html_sha256": "21cdf533be573e09b84de19877850f1fb3cf8e950e3cb45899db9c4507f62788",
+      "screenshots": {
+        "before": {
+          "sha256": "ad65a613133e6a60cf68fa827af7625767ca4e283de3889b8ae1f9f9732276e0",
+          "path": ".context/factory/benchmark-v1/compact-live-review/blind-repair-trial/captures/2A-1440-before.png",
+          "tool_call": "item_43"
+        },
+        "after": {
+          "sha256": "9d18fa1ee6bf5c3fd19288299816922ee0940b0c583a105bec6fdfabb6f2ae0c",
+          "path": ".context/factory/benchmark-v1/compact-live-review/blind-repair-trial/captures/2A-1440-after.png",
+          "tool_call": "item_46"
+        }
+      },
+      "weighted": 8.7
+    },
+    "2A-390": {
+      "coherence": 9,
+      "originality": 8,
+      "craft": 9,
+      "usability": 9,
+      "primary_action": {
+        "input": "Press Tab to the full-width “Reserve shift” button, then Space.",
+        "expected": "Reserve Wednesday 4–6 pm Packing once and keep the confirmation and shift details visible together.",
+        "observed": "The empty schedule and reserve button gave way to one Packing card. Focus outlined the card containing Wednesday, 4–6 pm, and the checked “Shift booked” label."
+      },
+      "edge_observation": "One reload preserved exactly one Wednesday 4–6 pm Packing booking and its “Shift booked” label. Focus returned to the document body.",
+      "weakness": "Before booking, “No upcoming shifts” sits directly above an available Wednesday shift. The empty message leaves whose schedule it describes unclear.",
+      "repair": "Change the empty row to “You haven’t booked a shift yet.”",
+      "strength": "The weekday and bold time stack beside the parcel illustration, leaving the full card width for the reserve button.",
+      "captures": [
+        "2A-390-before.png",
+        "2A-390-after.png"
+      ],
+      "kind": "repair",
+      "case": "empty-shifts",
+      "html_sha256": "21cdf533be573e09b84de19877850f1fb3cf8e950e3cb45899db9c4507f62788",
+      "screenshots": {
+        "before": {
+          "sha256": "21bf63cecaab1ec7f983b4b6efdcfc8a8d4db7dac68f3c83e665df4b3f25010c",
+          "path": ".context/factory/benchmark-v1/compact-live-review/blind-repair-trial/captures/2A-390-before.png",
+          "tool_call": "item_49"
+        },
+        "after": {
+          "sha256": "61121279dcb0a267f120ea59e1cb08b162f4d0085575574db6dec4ffecbc5e26",
+          "path": ".context/factory/benchmark-v1/compact-live-review/blind-repair-trial/captures/2A-390-after.png",
+          "tool_call": "item_52"
+        }
+      },
+      "weighted": 8.7
+    },
+    "2B-1440": {
+      "coherence": 8.5,
+      "originality": 8,
+      "craft": 8.5,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Press Tab to “Reserve shift” on the Wednesday 4–6 pm Packing card, then Enter.",
+        "expected": "Show one booked shift with a visible, focused confirmation.",
+        "observed": "One Packing card showed Wednesday 4–6 pm. Focus moved directly to the outlined “Shift booked” paragraph beneath the time. The reserve button disappeared."
+      },
+      "edge_observation": "After one reload, the single booking, time, and “Shift booked” confirmation remained. Focus returned to the document body.",
+      "weakness": "The time range is smaller and lighter than “Wednesday”, although both are needed to identify the slot.",
+      "repair": "Give “4–6 pm” at least the same size and weight as the weekday.",
+      "strength": "Keyboard focus lands directly on the checked confirmation, making the outcome easy to find on a wide card.",
+      "captures": [
+        "2B-1440-before.png",
+        "2B-1440-after.png"
+      ],
+      "kind": "control",
+      "case": "empty-shifts",
+      "html_sha256": "9d4e9a3af73d94e3871c9c243db0bd2c5861d7525a9dcd92d87a3b0241259175",
+      "screenshots": {
+        "before": {
+          "sha256": "abf75a636f691a3eb9869e6d51a31076a28c59347a00871511ef468ee11e3f80",
+          "path": ".context/factory/benchmark-v1/compact-live-review/blind-repair-trial/captures/2B-1440-before.png",
+          "tool_call": "item_55"
+        },
+        "after": {
+          "sha256": "11833982117c10d1576ffd69cfd0192aad3e4b7001d6684ac692cf3a66e584cb",
+          "path": ".context/factory/benchmark-v1/compact-live-review/blind-repair-trial/captures/2B-1440-after.png",
+          "tool_call": "item_58"
+        }
+      },
+      "weighted": 8.35
+    },
+    "2B-390": {
+      "coherence": 8.5,
+      "originality": 8,
+      "craft": 8,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Press Tab to “Reserve shift”, then Space.",
+        "expected": "Show one Wednesday 4–6 pm Packing booking and move focus to its confirmation.",
+        "observed": "One booked Packing card appeared with the correct day and time. Focus outlined the full-width green “Shift booked” paragraph where the reserve button had been."
+      },
+      "edge_observation": "One reload preserved exactly one booked Packing entry for Wednesday 4–6 pm. Its confirmation remained and focus returned to the document body.",
+      "weakness": "The full-width, outlined “Shift booked” paragraph has the shape and placement of another button.",
+      "repair": "Use a compact checked status beneath the time and move the visible focus outline to the booked card.",
+      "strength": "The confirmation occupies the same place as the action just taken, so the change is easy to spot on the phone.",
+      "captures": [
+        "2B-390-before.png",
+        "2B-390-after.png"
+      ],
+      "kind": "control",
+      "case": "empty-shifts",
+      "html_sha256": "9d4e9a3af73d94e3871c9c243db0bd2c5861d7525a9dcd92d87a3b0241259175",
+      "screenshots": {
+        "before": {
+          "sha256": "29d3345065e5c68f9e1e0481a9a48238915a1c082704f48480a88acce26a7abe",
+          "path": ".context/factory/benchmark-v1/compact-live-review/blind-repair-trial/captures/2B-390-before.png",
+          "tool_call": "item_61"
+        },
+        "after": {
+          "sha256": "d8a7d9c2f3e21db7ae9492bfe8574859c4bff561139f360b53fea70f6a8380a1",
+          "path": ".context/factory/benchmark-v1/compact-live-review/blind-repair-trial/captures/2B-390-after.png",
+          "tool_call": "item_64"
+        }
+      },
+      "weighted": 8.25
+    }
+  },
+  "preference": {
+    "1": {
+      "winner": "A",
+      "reason": "Both suggestions found the available saw at both widths. A put focus in the editable query, supplied a status naming the saw, and removed the match when the field was cleared. B kept the old result below an empty field."
+    },
+    "2": {
+      "winner": "A",
+      "reason": "Both pages confirmed one booking and preserved it after reload at both widths. A gave the time more visual weight and focused the complete booking, keeping Packing, Wednesday 4–6 pm, and the confirmation together. B’s phone confirmation looked like a second action."
+    }
+  },
+  "usage": {
+    "input_tokens": 1278824,
+    "cached_input_tokens": 1245056,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 8372,
+    "reasoning_output_tokens": 4405
+  },
+  "evaluator_thread": "01a202a8-a041-7cc0-9274-fb8ea2f7b9fc",
+  "uncached_input_tokens": 33768,
+  "trace_sha256": "0853c85c4ab1ea73d2db2eb0b8e88f3e867f34ed0a753336eeec1aebd52649cc",
+  "browser_audit_sha256": "31358ce21f0f138cdfc380f2a36015e36c1514c9aa70d9675c8db593b3476a8a",
+  "prompt_sha256": "d1f3fdd293d8483624d38bc143491ac98c32d17953ae326ce052310749d82837",
+  "verified_screens": 8,
+  "scope": "Blind live comparison of two critique repair fixtures against their original layouts.",
+  "driver_commit": "55d62715ba262e0e0fdeb7d89b614e0b611a93e7",
+  "pairs": {
+    "empty-search": {
+      "control": 8.05,
+      "repair": 8.8
+    },
+    "empty-shifts": {
+      "control": 8.3,
+      "repair": 8.7
+    }
+  },
+  "observed_cost_comparison": {
+    "prior_raw_playwriter": {
+      "input": 1932037,
+      "uncached": 147205,
+      "output": 22122,
+      "seconds": 636.4
+    },
+    "compact": {
+      "input": 1278824,
+      "uncached": 33768,
+      "output": 8372,
+      "seconds": 314.4
+    },
+    "percent_lower": {
+      "input": 33.8,
+      "uncached": 77.1,
+      "output": 62.2,
+      "seconds": 50.6
+    },
+    "scope": "Same critic model and eight-view task coverage. Different treatment pages and tool surfaces."
+  },
+  "local_proof_directory": ".context/factory/benchmark-v1/compact-live-review/blind-repair-trial"
+}

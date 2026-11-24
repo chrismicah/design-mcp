@@ -7,8 +7,8 @@ from pathlib import Path
 # Ensure project root is on sys.path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from schema import DesignPattern, Platform, LayoutType
-from database import DesignDatabase
+from design_mcp.schema import DesignPattern, Platform, LayoutType
+from design_mcp.database import DesignDatabase
 
 
 @pytest.fixture

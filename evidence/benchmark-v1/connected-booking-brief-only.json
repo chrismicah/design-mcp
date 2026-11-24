@@ -1,0 +1,1726 @@
+{
+  "protocol": {
+    "source_commit": "0978712149674ad7fd5738c53d4b7966ba163b43",
+    "model": "gpt-6-luna",
+    "reasoning": "low",
+    "fresh_thread": "01a20718-96b1-73c2-8e12-345ffbd08225",
+    "user_messages": 2,
+    "clarification_turns": 0,
+    "direction": "service-work-order",
+    "brief_sha256": "431f864deaa33b9ab1582fe93e4b8a4e669713bace9a8f9ab4d6c76f5148afa1",
+    "initial": {
+      "usage": {
+        "input_tokens": 56213,
+        "cached_input_tokens": 18176,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2858,
+        "reasoning_output_tokens": 0
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "design-mcp",
+          "tool": "direct",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "treatment_call": true,
+      "direct_call": true,
+      "status": "passed",
+      "milliseconds": 60037,
+      "exit_code": 0,
+      "sessions": [
+        "01a20718-96b1-73c2-8e12-345ffbd08225"
+      ],
+      "prompt_sha256": "e38c16c9702aa4ddfa6f40a16ae2599d2872c8078231b30ff1702931d1b08bd8",
+      "trace_sha256": "cdc02d881b4d285b7a63b32e550b58ee22a021dda605654d75ca6949100c5bd9",
+      "html_sha256": "151e62c71a9e28947ee8e2bfbffd066d0d819c720596f1ddd30eb03df2be1fa7"
+    },
+    "calmer": {
+      "usage": {
+        "input_tokens": 102038,
+        "cached_input_tokens": 46464,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 5598,
+        "reasoning_output_tokens": 0
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "design-mcp",
+          "tool": "react",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "treatment_call": true,
+      "status": "passed",
+      "milliseconds": 53595,
+      "exit_code": 0,
+      "sessions": [
+        "01a20718-96b1-73c2-8e12-345ffbd08225"
+      ],
+      "prompt_sha256": "4418427c2a96f454039784b52e0ae9cc18d066a8457579e09056060f72879c18",
+      "trace_sha256": "efdc3b37091c0fb246caa5ac5ba40b036e0365a1baecfccbdb091d7dcc620ce5",
+      "html_sha256": "f048c97b76246006d1112b987f52cf6868e7db5d7a62b774e0d36132f0d59f6b"
+    }
+  },
+  "initial_message": "Build the public booking page requested below.\n\nUse the documented Design MCP workflow. Call the connected direct tool once with the\nbrief verbatim as its only argument. Use a reasonable default for an optional question.\nReturn one complete HTML file in an html code fence. Keep behavior local and any\nartwork original. Use inline CSS and JavaScript and only Google Fonts for remote\nresources. Use no shell, file writes, or other tools. If the next user message is\na one-word reaction, call react with the exact word and the returned direction ID.\nApply that advice while keeping the booking facts and the working behavior. Return\nthe full revised HTML in the same format.\n\nBrief:\nSecond Spin is a local bike shop at 41 Elm Street. It offers a tune-up that takes 48 hours for $85. Bookings are Tuesday to Saturday. Let a visitor choose one of those days by keyboard or pointer and see the booking summary, with no invented availability, dates, fees or contact details. make it feel premium.\n",
+  "reaction": "calmer",
+  "browser": {
+    "browser": "Chrome/158.0.8127.36",
+    "pages": {
+      "initial": {
+        "html_sha256": "151e62c71a9e28947ee8e2bfbffd066d0d819c720596f1ddd30eb03df2be1fa7",
+        "screens": [
+          {
+            "width": 1440,
+            "checks": {
+              "facts": true,
+              "days": true,
+              "fits_width": true,
+              "reduced_motion_preference": true,
+              "keyboard_booking": true,
+              "pointer_booking": true,
+              "feedback_visible_after_both_actions": true,
+              "tap_targets": true
+            },
+            "evidence": [
+              {
+                "title": "Second Spin \u2014 Tune-up booking",
+                "controls": [
+                  {
+                    "value": "tuesday",
+                    "label": "Tuesday",
+                    "w": 207.671875,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "wednesday",
+                    "label": "Wednesday",
+                    "w": 207.6875,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "thursday",
+                    "label": "Thursday",
+                    "w": 207.671875,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "friday",
+                    "label": "Friday",
+                    "w": 207.6875,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "saturday",
+                    "label": "Saturday",
+                    "w": 207.671875,
+                    "h": 54,
+                    "inView": true
+                  }
+                ],
+                "scroll": [
+                  0,
+                  0
+                ],
+                "selected": null,
+                "active": null,
+                "selectedVisible": false,
+                "live": null,
+                "summaryBounds": {
+                  "x": 1082.203125,
+                  "y": 352,
+                  "width": 84.78125,
+                  "height": 18,
+                  "top": 352,
+                  "right": 1166.984375,
+                  "bottom": 370,
+                  "left": 1082.203125
+                },
+                "visibleFocus": false,
+                "summary": "Choose a day",
+                "summaryInView": true,
+                "font": "\"Instrument Serif\", Georgia, serif",
+                "size": "68px",
+                "color": "rgb(21, 43, 52)",
+                "loadedFonts": [
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "Instrument Serif"
+                ],
+                "width": 1440,
+                "clientWidth": 1440,
+                "scrollWidth": 1440,
+                "reducedMotion": true,
+                "errors": [],
+                "phase": "before",
+                "screenshot": ".context/first-run-brief-only/browser/initial-1440-before.png",
+                "pixel_dimensions": [
+                  1440,
+                  900
+                ],
+                "sha256": "06344ed6ddcf120ca44a9c559111141eeb8dc1d88cb0c74c17f3a24229c31172"
+              },
+              {
+                "title": "Second Spin \u2014 Tune-up booking",
+                "controls": [
+                  {
+                    "value": "tuesday",
+                    "label": "Tuesday",
+                    "w": 207.671875,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "wednesday",
+                    "label": "Wednesday",
+                    "w": 207.6875,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "thursday",
+                    "label": "Thursday",
+                    "w": 207.671875,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "friday",
+                    "label": "Friday",
+                    "w": 207.6875,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "saturday",
+                    "label": "Saturday",
+                    "w": 207.671875,
+                    "h": 54,
+                    "inView": true
+                  }
+                ],
+                "scroll": [
+                  0,
+                  0
+                ],
+                "selected": "friday",
+                "active": "friday",
+                "selectedVisible": true,
+                "live": null,
+                "summaryBounds": {
+                  "x": 1127.1875,
+                  "y": 355,
+                  "width": 39.796875,
+                  "height": 18,
+                  "top": 355,
+                  "right": 1166.984375,
+                  "bottom": 373,
+                  "left": 1127.1875
+                },
+                "visibleFocus": true,
+                "summary": "Friday",
+                "summaryInView": true,
+                "font": "\"Instrument Serif\", Georgia, serif",
+                "size": "68px",
+                "color": "rgb(21, 43, 52)",
+                "loadedFonts": [
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "Instrument Serif"
+                ],
+                "width": 1440,
+                "clientWidth": 1440,
+                "scrollWidth": 1440,
+                "reducedMotion": true,
+                "errors": [],
+                "phase": "keyboard-friday",
+                "screenshot": ".context/first-run-brief-only/browser/initial-1440-friday.png",
+                "pixel_dimensions": [
+                  1440,
+                  900
+                ],
+                "sha256": "253737ed2aad28d7d14cff540847f5a10f806e0848c608f4784940abc9ea8070"
+              },
+              {
+                "title": "Second Spin \u2014 Tune-up booking",
+                "controls": [
+                  {
+                    "value": "tuesday",
+                    "label": "Tuesday",
+                    "w": 207.671875,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "wednesday",
+                    "label": "Wednesday",
+                    "w": 207.6875,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "thursday",
+                    "label": "Thursday",
+                    "w": 207.671875,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "friday",
+                    "label": "Friday",
+                    "w": 207.6875,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "saturday",
+                    "label": "Saturday",
+                    "w": 207.671875,
+                    "h": 54,
+                    "inView": true
+                  }
+                ],
+                "scroll": [
+                  0,
+                  0
+                ],
+                "selected": "tuesday",
+                "active": "tuesday",
+                "selectedVisible": true,
+                "live": null,
+                "summaryBounds": {
+                  "x": 1113.6875,
+                  "y": 355,
+                  "width": 53.296875,
+                  "height": 18,
+                  "top": 355,
+                  "right": 1166.984375,
+                  "bottom": 373,
+                  "left": 1113.6875
+                },
+                "visibleFocus": false,
+                "summary": "Tuesday",
+                "summaryInView": true,
+                "font": "\"Instrument Serif\", Georgia, serif",
+                "size": "68px",
+                "color": "rgb(21, 43, 52)",
+                "loadedFonts": [
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "Instrument Serif"
+                ],
+                "width": 1440,
+                "clientWidth": 1440,
+                "scrollWidth": 1440,
+                "reducedMotion": true,
+                "errors": [],
+                "phase": "pointer-tuesday",
+                "screenshot": ".context/first-run-brief-only/browser/initial-1440-tuesday.png",
+                "pixel_dimensions": [
+                  1440,
+                  900
+                ],
+                "sha256": "d258e14712a95b2d2ce4fae901784218a7e7a5d5ea89e80a4a25377cb486b354"
+              }
+            ]
+          },
+          {
+            "width": 390,
+            "checks": {
+              "facts": true,
+              "days": true,
+              "fits_width": true,
+              "reduced_motion_preference": true,
+              "keyboard_booking": true,
+              "pointer_booking": true,
+              "feedback_visible_after_both_actions": true,
+              "tap_targets": true
+            },
+            "evidence": [
+              {
+                "title": "Second Spin \u2014 Tune-up booking",
+                "controls": [
+                  {
+                    "value": "tuesday",
+                    "label": "Tuesday",
+                    "w": 142,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "wednesday",
+                    "label": "Wednesday",
+                    "w": 142,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "thursday",
+                    "label": "Thursday",
+                    "w": 142,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "friday",
+                    "label": "Friday",
+                    "w": 142,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "saturday",
+                    "label": "Saturday",
+                    "w": 142,
+                    "h": 54,
+                    "inView": true
+                  }
+                ],
+                "scroll": [
+                  0,
+                  0
+                ],
+                "selected": null,
+                "active": null,
+                "selectedVisible": false,
+                "live": null,
+                "summaryBounds": {
+                  "x": 249.21875,
+                  "y": 586,
+                  "width": 84.78125,
+                  "height": 18,
+                  "top": 586,
+                  "right": 334,
+                  "bottom": 604,
+                  "left": 249.21875
+                },
+                "visibleFocus": false,
+                "summary": "Choose a day",
+                "summaryInView": true,
+                "font": "\"Instrument Serif\", Georgia, serif",
+                "size": "42px",
+                "color": "rgb(21, 43, 52)",
+                "loadedFonts": [
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "Instrument Serif"
+                ],
+                "width": 390,
+                "clientWidth": 375,
+                "scrollWidth": 375,
+                "reducedMotion": true,
+                "errors": [],
+                "phase": "before",
+                "screenshot": ".context/first-run-brief-only/browser/initial-390-before.png",
+                "pixel_dimensions": [
+                  390,
+                  844
+                ],
+                "sha256": "4165f825ec2fd0be45b10efb7d22bb76636600302b120f45e95cd33c67baeb05"
+              },
+              {
+                "title": "Second Spin \u2014 Tune-up booking",
+                "controls": [
+                  {
+                    "value": "tuesday",
+                    "label": "Tuesday",
+                    "w": 142,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "wednesday",
+                    "label": "Wednesday",
+                    "w": 142,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "thursday",
+                    "label": "Thursday",
+                    "w": 142,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "friday",
+                    "label": "Friday",
+                    "w": 142,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "saturday",
+                    "label": "Saturday",
+                    "w": 142,
+                    "h": 54,
+                    "inView": true
+                  }
+                ],
+                "scroll": [
+                  0,
+                  0
+                ],
+                "selected": "friday",
+                "active": "friday",
+                "selectedVisible": true,
+                "live": null,
+                "summaryBounds": {
+                  "x": 294.203125,
+                  "y": 589,
+                  "width": 39.796875,
+                  "height": 18,
+                  "top": 589,
+                  "right": 334,
+                  "bottom": 607,
+                  "left": 294.203125
+                },
+                "visibleFocus": true,
+                "summary": "Friday",
+                "summaryInView": true,
+                "font": "\"Instrument Serif\", Georgia, serif",
+                "size": "42px",
+                "color": "rgb(21, 43, 52)",
+                "loadedFonts": [
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "Instrument Serif"
+                ],
+                "width": 390,
+                "clientWidth": 375,
+                "scrollWidth": 375,
+                "reducedMotion": true,
+                "errors": [],
+                "phase": "keyboard-friday",
+                "screenshot": ".context/first-run-brief-only/browser/initial-390-friday.png",
+                "pixel_dimensions": [
+                  390,
+                  844
+                ],
+                "sha256": "7a74429d1663456e16133621e39dfec386f0c00e97c9710810ed550706b5e43f"
+              },
+              {
+                "title": "Second Spin \u2014 Tune-up booking",
+                "controls": [
+                  {
+                    "value": "tuesday",
+                    "label": "Tuesday",
+                    "w": 142,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "wednesday",
+                    "label": "Wednesday",
+                    "w": 142,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "thursday",
+                    "label": "Thursday",
+                    "w": 142,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "friday",
+                    "label": "Friday",
+                    "w": 142,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "saturday",
+                    "label": "Saturday",
+                    "w": 142,
+                    "h": 54,
+                    "inView": true
+                  }
+                ],
+                "scroll": [
+                  0,
+                  0
+                ],
+                "selected": "tuesday",
+                "active": "tuesday",
+                "selectedVisible": true,
+                "live": null,
+                "summaryBounds": {
+                  "x": 280.703125,
+                  "y": 589,
+                  "width": 53.296875,
+                  "height": 18,
+                  "top": 589,
+                  "right": 334,
+                  "bottom": 607,
+                  "left": 280.703125
+                },
+                "visibleFocus": false,
+                "summary": "Tuesday",
+                "summaryInView": true,
+                "font": "\"Instrument Serif\", Georgia, serif",
+                "size": "42px",
+                "color": "rgb(21, 43, 52)",
+                "loadedFonts": [
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "Instrument Serif"
+                ],
+                "width": 390,
+                "clientWidth": 375,
+                "scrollWidth": 375,
+                "reducedMotion": true,
+                "errors": [],
+                "phase": "pointer-tuesday",
+                "screenshot": ".context/first-run-brief-only/browser/initial-390-tuesday.png",
+                "pixel_dimensions": [
+                  390,
+                  844
+                ],
+                "sha256": "625dd64ea6646e6e64f29f34b38dd48f7b2292421f9c59ff8ce97fecf444ad8a"
+              }
+            ]
+          },
+          {
+            "width": 320,
+            "checks": {
+              "facts": true,
+              "days": true,
+              "fits_width": true,
+              "reduced_motion_preference": true,
+              "keyboard_booking": true,
+              "pointer_booking": true,
+              "feedback_visible_after_both_actions": true,
+              "tap_targets": true
+            },
+            "evidence": [
+              {
+                "title": "Second Spin \u2014 Tune-up booking",
+                "controls": [
+                  {
+                    "value": "tuesday",
+                    "label": "Tuesday",
+                    "w": 107,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "wednesday",
+                    "label": "Wednesday",
+                    "w": 107,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "thursday",
+                    "label": "Thursday",
+                    "w": 107,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "friday",
+                    "label": "Friday",
+                    "w": 107,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "saturday",
+                    "label": "Saturday",
+                    "w": 107,
+                    "h": 54,
+                    "inView": true
+                  }
+                ],
+                "scroll": [
+                  0,
+                  0
+                ],
+                "selected": null,
+                "active": null,
+                "selectedVisible": false,
+                "live": null,
+                "summaryBounds": {
+                  "x": 179.21875,
+                  "y": 643.15625,
+                  "width": 84.78125,
+                  "height": 18,
+                  "top": 643.15625,
+                  "right": 264,
+                  "bottom": 661.15625,
+                  "left": 179.21875
+                },
+                "visibleFocus": false,
+                "summary": "Choose a day",
+                "summaryInView": true,
+                "font": "\"Instrument Serif\", Georgia, serif",
+                "size": "42px",
+                "color": "rgb(21, 43, 52)",
+                "loadedFonts": [
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "Instrument Serif"
+                ],
+                "width": 320,
+                "clientWidth": 305,
+                "scrollWidth": 305,
+                "reducedMotion": true,
+                "errors": [],
+                "phase": "before",
+                "screenshot": ".context/first-run-brief-only/browser/initial-320-before.png",
+                "pixel_dimensions": [
+                  320,
+                  700
+                ],
+                "sha256": "37d8b81a5f473a64c059980684cb0c09b07f74f04e4a97c5a6df33b1b206d3ec"
+              },
+              {
+                "title": "Second Spin \u2014 Tune-up booking",
+                "controls": [
+                  {
+                    "value": "tuesday",
+                    "label": "Tuesday",
+                    "w": 107,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "wednesday",
+                    "label": "Wednesday",
+                    "w": 107,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "thursday",
+                    "label": "Thursday",
+                    "w": 107,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "friday",
+                    "label": "Friday",
+                    "w": 107,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "saturday",
+                    "label": "Saturday",
+                    "w": 107,
+                    "h": 54,
+                    "inView": true
+                  }
+                ],
+                "scroll": [
+                  0,
+                  0
+                ],
+                "selected": "friday",
+                "active": "friday",
+                "selectedVisible": true,
+                "live": null,
+                "summaryBounds": {
+                  "x": 224.203125,
+                  "y": 646.15625,
+                  "width": 39.796875,
+                  "height": 18,
+                  "top": 646.15625,
+                  "right": 264,
+                  "bottom": 664.15625,
+                  "left": 224.203125
+                },
+                "visibleFocus": true,
+                "summary": "Friday",
+                "summaryInView": true,
+                "font": "\"Instrument Serif\", Georgia, serif",
+                "size": "42px",
+                "color": "rgb(21, 43, 52)",
+                "loadedFonts": [
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "Instrument Serif"
+                ],
+                "width": 320,
+                "clientWidth": 305,
+                "scrollWidth": 305,
+                "reducedMotion": true,
+                "errors": [],
+                "phase": "keyboard-friday",
+                "screenshot": ".context/first-run-brief-only/browser/initial-320-friday.png",
+                "pixel_dimensions": [
+                  320,
+                  700
+                ],
+                "sha256": "ccbb3ea5eac2fa1dc04c57bd7d49e83e0b12356bb283555313212c675e02de8c"
+              },
+              {
+                "title": "Second Spin \u2014 Tune-up booking",
+                "controls": [
+                  {
+                    "value": "tuesday",
+                    "label": "Tuesday",
+                    "w": 107,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "wednesday",
+                    "label": "Wednesday",
+                    "w": 107,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "thursday",
+                    "label": "Thursday",
+                    "w": 107,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "friday",
+                    "label": "Friday",
+                    "w": 107,
+                    "h": 54,
+                    "inView": true
+                  },
+                  {
+                    "value": "saturday",
+                    "label": "Saturday",
+                    "w": 107,
+                    "h": 54,
+                    "inView": true
+                  }
+                ],
+                "scroll": [
+                  0,
+                  0
+                ],
+                "selected": "tuesday",
+                "active": "tuesday",
+                "selectedVisible": true,
+                "live": null,
+                "summaryBounds": {
+                  "x": 210.703125,
+                  "y": 646.15625,
+                  "width": 53.296875,
+                  "height": 18,
+                  "top": 646.15625,
+                  "right": 264,
+                  "bottom": 664.15625,
+                  "left": 210.703125
+                },
+                "visibleFocus": false,
+                "summary": "Tuesday",
+                "summaryInView": true,
+                "font": "\"Instrument Serif\", Georgia, serif",
+                "size": "42px",
+                "color": "rgb(21, 43, 52)",
+                "loadedFonts": [
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "Instrument Serif"
+                ],
+                "width": 320,
+                "clientWidth": 305,
+                "scrollWidth": 305,
+                "reducedMotion": true,
+                "errors": [],
+                "phase": "pointer-tuesday",
+                "screenshot": ".context/first-run-brief-only/browser/initial-320-tuesday.png",
+                "pixel_dimensions": [
+                  320,
+                  700
+                ],
+                "sha256": "46ef9bda684986d5ebd154dbed381e35db013c4853389bf68e05b4b68acfdade"
+              }
+            ]
+          }
+        ],
+        "source": ".context/first-run-brief-only/brief-only/initial/index.html"
+      },
+      "calmer": {
+        "html_sha256": "f048c97b76246006d1112b987f52cf6868e7db5d7a62b774e0d36132f0d59f6b",
+        "screens": [
+          {
+            "width": 1440,
+            "checks": {
+              "facts": true,
+              "days": true,
+              "fits_width": true,
+              "reduced_motion_preference": true,
+              "keyboard_booking": true,
+              "pointer_booking": true,
+              "feedback_visible_after_both_actions": true,
+              "tap_targets": true
+            },
+            "evidence": [
+              {
+                "title": "Second Spin \u2014 Tune-up booking",
+                "controls": [
+                  {
+                    "value": "tuesday",
+                    "label": "Tuesday",
+                    "w": 198.671875,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "wednesday",
+                    "label": "Wednesday",
+                    "w": 198.6875,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "thursday",
+                    "label": "Thursday",
+                    "w": 198.671875,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "friday",
+                    "label": "Friday",
+                    "w": 198.6875,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "saturday",
+                    "label": "Saturday",
+                    "w": 198.671875,
+                    "h": 56,
+                    "inView": true
+                  }
+                ],
+                "scroll": [
+                  0,
+                  0
+                ],
+                "selected": null,
+                "active": null,
+                "selectedVisible": false,
+                "live": null,
+                "summaryBounds": {
+                  "x": 1074.203125,
+                  "y": 400,
+                  "width": 84.78125,
+                  "height": 18,
+                  "top": 400,
+                  "right": 1158.984375,
+                  "bottom": 418,
+                  "left": 1074.203125
+                },
+                "visibleFocus": false,
+                "summary": "Choose a day",
+                "summaryInView": true,
+                "font": "\"Instrument Serif\", Georgia, serif",
+                "size": "72px",
+                "color": "rgb(21, 43, 52)",
+                "loadedFonts": [
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "Instrument Serif"
+                ],
+                "width": 1440,
+                "clientWidth": 1440,
+                "scrollWidth": 1440,
+                "reducedMotion": true,
+                "errors": [],
+                "phase": "before",
+                "screenshot": ".context/first-run-brief-only/browser/calmer-1440-before.png",
+                "pixel_dimensions": [
+                  1440,
+                  900
+                ],
+                "sha256": "c9803179d2f344a32ff4d35fb0de608c18b9790b93acbc26dd181cdd9d18511a"
+              },
+              {
+                "title": "Second Spin \u2014 Tune-up booking",
+                "controls": [
+                  {
+                    "value": "tuesday",
+                    "label": "Tuesday",
+                    "w": 198.671875,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "wednesday",
+                    "label": "Wednesday",
+                    "w": 198.6875,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "thursday",
+                    "label": "Thursday",
+                    "w": 198.671875,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "friday",
+                    "label": "Friday",
+                    "w": 198.6875,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "saturday",
+                    "label": "Saturday",
+                    "w": 198.671875,
+                    "h": 56,
+                    "inView": true
+                  }
+                ],
+                "scroll": [
+                  0,
+                  0
+                ],
+                "selected": "friday",
+                "active": "friday",
+                "selectedVisible": true,
+                "live": null,
+                "summaryBounds": {
+                  "x": 1119.1875,
+                  "y": 403,
+                  "width": 39.796875,
+                  "height": 18,
+                  "top": 403,
+                  "right": 1158.984375,
+                  "bottom": 421,
+                  "left": 1119.1875
+                },
+                "visibleFocus": true,
+                "summary": "Friday",
+                "summaryInView": true,
+                "font": "\"Instrument Serif\", Georgia, serif",
+                "size": "72px",
+                "color": "rgb(21, 43, 52)",
+                "loadedFonts": [
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "Instrument Serif"
+                ],
+                "width": 1440,
+                "clientWidth": 1440,
+                "scrollWidth": 1440,
+                "reducedMotion": true,
+                "errors": [],
+                "phase": "keyboard-friday",
+                "screenshot": ".context/first-run-brief-only/browser/calmer-1440-friday.png",
+                "pixel_dimensions": [
+                  1440,
+                  900
+                ],
+                "sha256": "a54bfd07e26e8231750cbcff2043bec55341ec61b15bbf090de9b56eef2c679f"
+              },
+              {
+                "title": "Second Spin \u2014 Tune-up booking",
+                "controls": [
+                  {
+                    "value": "tuesday",
+                    "label": "Tuesday",
+                    "w": 198.671875,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "wednesday",
+                    "label": "Wednesday",
+                    "w": 198.6875,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "thursday",
+                    "label": "Thursday",
+                    "w": 198.671875,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "friday",
+                    "label": "Friday",
+                    "w": 198.6875,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "saturday",
+                    "label": "Saturday",
+                    "w": 198.671875,
+                    "h": 56,
+                    "inView": true
+                  }
+                ],
+                "scroll": [
+                  0,
+                  0
+                ],
+                "selected": "tuesday",
+                "active": "tuesday",
+                "selectedVisible": true,
+                "live": null,
+                "summaryBounds": {
+                  "x": 1105.6875,
+                  "y": 403,
+                  "width": 53.296875,
+                  "height": 18,
+                  "top": 403,
+                  "right": 1158.984375,
+                  "bottom": 421,
+                  "left": 1105.6875
+                },
+                "visibleFocus": false,
+                "summary": "Tuesday",
+                "summaryInView": true,
+                "font": "\"Instrument Serif\", Georgia, serif",
+                "size": "72px",
+                "color": "rgb(21, 43, 52)",
+                "loadedFonts": [
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "Instrument Serif"
+                ],
+                "width": 1440,
+                "clientWidth": 1440,
+                "scrollWidth": 1440,
+                "reducedMotion": true,
+                "errors": [],
+                "phase": "pointer-tuesday",
+                "screenshot": ".context/first-run-brief-only/browser/calmer-1440-tuesday.png",
+                "pixel_dimensions": [
+                  1440,
+                  900
+                ],
+                "sha256": "983087d6f995f2357fc5ab52cc943035e7d7192e118fb829e48bb7a35555e1d5"
+              }
+            ]
+          },
+          {
+            "width": 390,
+            "checks": {
+              "facts": true,
+              "days": true,
+              "fits_width": true,
+              "reduced_motion_preference": true,
+              "keyboard_booking": true,
+              "pointer_booking": true,
+              "feedback_visible_after_both_actions": true,
+              "tap_targets": true
+            },
+            "evidence": [
+              {
+                "title": "Second Spin \u2014 Tune-up booking",
+                "controls": [
+                  {
+                    "value": "tuesday",
+                    "label": "Tuesday",
+                    "w": 135,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "wednesday",
+                    "label": "Wednesday",
+                    "w": 135,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "thursday",
+                    "label": "Thursday",
+                    "w": 135,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "friday",
+                    "label": "Friday",
+                    "w": 135,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "saturday",
+                    "label": "Saturday",
+                    "w": 135,
+                    "h": 56,
+                    "inView": true
+                  }
+                ],
+                "scroll": [
+                  0,
+                  0
+                ],
+                "selected": null,
+                "active": null,
+                "selectedVisible": false,
+                "live": null,
+                "summaryBounds": {
+                  "x": 243.21875,
+                  "y": 649,
+                  "width": 84.78125,
+                  "height": 18,
+                  "top": 649,
+                  "right": 328,
+                  "bottom": 667,
+                  "left": 243.21875
+                },
+                "visibleFocus": false,
+                "summary": "Choose a day",
+                "summaryInView": true,
+                "font": "\"Instrument Serif\", Georgia, serif",
+                "size": "45px",
+                "color": "rgb(21, 43, 52)",
+                "loadedFonts": [
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "Instrument Serif"
+                ],
+                "width": 390,
+                "clientWidth": 375,
+                "scrollWidth": 375,
+                "reducedMotion": true,
+                "errors": [],
+                "phase": "before",
+                "screenshot": ".context/first-run-brief-only/browser/calmer-390-before.png",
+                "pixel_dimensions": [
+                  390,
+                  844
+                ],
+                "sha256": "ee428b54260b7ea744fed72e85c7496c289025c135104c71f09b614d04a12d74"
+              },
+              {
+                "title": "Second Spin \u2014 Tune-up booking",
+                "controls": [
+                  {
+                    "value": "tuesday",
+                    "label": "Tuesday",
+                    "w": 135,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "wednesday",
+                    "label": "Wednesday",
+                    "w": 135,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "thursday",
+                    "label": "Thursday",
+                    "w": 135,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "friday",
+                    "label": "Friday",
+                    "w": 135,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "saturday",
+                    "label": "Saturday",
+                    "w": 135,
+                    "h": 56,
+                    "inView": true
+                  }
+                ],
+                "scroll": [
+                  0,
+                  0
+                ],
+                "selected": "friday",
+                "active": "friday",
+                "selectedVisible": true,
+                "live": null,
+                "summaryBounds": {
+                  "x": 288.203125,
+                  "y": 652,
+                  "width": 39.796875,
+                  "height": 18,
+                  "top": 652,
+                  "right": 328,
+                  "bottom": 670,
+                  "left": 288.203125
+                },
+                "visibleFocus": true,
+                "summary": "Friday",
+                "summaryInView": true,
+                "font": "\"Instrument Serif\", Georgia, serif",
+                "size": "45px",
+                "color": "rgb(21, 43, 52)",
+                "loadedFonts": [
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "Instrument Serif"
+                ],
+                "width": 390,
+                "clientWidth": 375,
+                "scrollWidth": 375,
+                "reducedMotion": true,
+                "errors": [],
+                "phase": "keyboard-friday",
+                "screenshot": ".context/first-run-brief-only/browser/calmer-390-friday.png",
+                "pixel_dimensions": [
+                  390,
+                  844
+                ],
+                "sha256": "37f19b10e72a8011aecb633125dd6907cc258b0ece6a23b9cae9bcd2ba2e7d27"
+              },
+              {
+                "title": "Second Spin \u2014 Tune-up booking",
+                "controls": [
+                  {
+                    "value": "tuesday",
+                    "label": "Tuesday",
+                    "w": 135,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "wednesday",
+                    "label": "Wednesday",
+                    "w": 135,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "thursday",
+                    "label": "Thursday",
+                    "w": 135,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "friday",
+                    "label": "Friday",
+                    "w": 135,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "saturday",
+                    "label": "Saturday",
+                    "w": 135,
+                    "h": 56,
+                    "inView": true
+                  }
+                ],
+                "scroll": [
+                  0,
+                  0
+                ],
+                "selected": "tuesday",
+                "active": "tuesday",
+                "selectedVisible": true,
+                "live": null,
+                "summaryBounds": {
+                  "x": 274.703125,
+                  "y": 652,
+                  "width": 53.296875,
+                  "height": 18,
+                  "top": 652,
+                  "right": 328,
+                  "bottom": 670,
+                  "left": 274.703125
+                },
+                "visibleFocus": false,
+                "summary": "Tuesday",
+                "summaryInView": true,
+                "font": "\"Instrument Serif\", Georgia, serif",
+                "size": "45px",
+                "color": "rgb(21, 43, 52)",
+                "loadedFonts": [
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "Instrument Serif"
+                ],
+                "width": 390,
+                "clientWidth": 375,
+                "scrollWidth": 375,
+                "reducedMotion": true,
+                "errors": [],
+                "phase": "pointer-tuesday",
+                "screenshot": ".context/first-run-brief-only/browser/calmer-390-tuesday.png",
+                "pixel_dimensions": [
+                  390,
+                  844
+                ],
+                "sha256": "07d56bc3b0356629a4929dee6714e6ad18b1e571459036433a4903e5922f498a"
+              }
+            ]
+          },
+          {
+            "width": 320,
+            "checks": {
+              "facts": true,
+              "days": true,
+              "fits_width": true,
+              "reduced_motion_preference": true,
+              "keyboard_booking": true,
+              "pointer_booking": true,
+              "feedback_visible_after_both_actions": false,
+              "tap_targets": true
+            },
+            "evidence": [
+              {
+                "title": "Second Spin \u2014 Tune-up booking",
+                "controls": [
+                  {
+                    "value": "tuesday",
+                    "label": "Tuesday",
+                    "w": 100,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "wednesday",
+                    "label": "Wednesday",
+                    "w": 100,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "thursday",
+                    "label": "Thursday",
+                    "w": 100,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "friday",
+                    "label": "Friday",
+                    "w": 100,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "saturday",
+                    "label": "Saturday",
+                    "w": 100,
+                    "h": 56,
+                    "inView": true
+                  }
+                ],
+                "scroll": [
+                  0,
+                  0
+                ],
+                "selected": null,
+                "active": null,
+                "selectedVisible": false,
+                "live": null,
+                "summaryBounds": {
+                  "x": 173.21875,
+                  "y": 729.09375,
+                  "width": 84.78125,
+                  "height": 18,
+                  "top": 729.09375,
+                  "right": 258,
+                  "bottom": 747.09375,
+                  "left": 173.21875
+                },
+                "visibleFocus": false,
+                "summary": "Choose a day",
+                "summaryInView": false,
+                "font": "\"Instrument Serif\", Georgia, serif",
+                "size": "45px",
+                "color": "rgb(21, 43, 52)",
+                "loadedFonts": [
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "Instrument Serif"
+                ],
+                "width": 320,
+                "clientWidth": 305,
+                "scrollWidth": 305,
+                "reducedMotion": true,
+                "errors": [],
+                "phase": "before",
+                "screenshot": ".context/first-run-brief-only/browser/calmer-320-before.png",
+                "pixel_dimensions": [
+                  320,
+                  700
+                ],
+                "sha256": "a8154296c96d09d24b987a9a4bdf6d91b73392f435afa7e66ddfba36d024cac7"
+              },
+              {
+                "title": "Second Spin \u2014 Tune-up booking",
+                "controls": [
+                  {
+                    "value": "tuesday",
+                    "label": "Tuesday",
+                    "w": 100,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "wednesday",
+                    "label": "Wednesday",
+                    "w": 100,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "thursday",
+                    "label": "Thursday",
+                    "w": 100,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "friday",
+                    "label": "Friday",
+                    "w": 100,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "saturday",
+                    "label": "Saturday",
+                    "w": 100,
+                    "h": 56,
+                    "inView": true
+                  }
+                ],
+                "scroll": [
+                  0,
+                  0
+                ],
+                "selected": "friday",
+                "active": "friday",
+                "selectedVisible": true,
+                "live": null,
+                "summaryBounds": {
+                  "x": 218.203125,
+                  "y": 732.09375,
+                  "width": 39.796875,
+                  "height": 18,
+                  "top": 732.09375,
+                  "right": 258,
+                  "bottom": 750.09375,
+                  "left": 218.203125
+                },
+                "visibleFocus": true,
+                "summary": "Friday",
+                "summaryInView": false,
+                "font": "\"Instrument Serif\", Georgia, serif",
+                "size": "45px",
+                "color": "rgb(21, 43, 52)",
+                "loadedFonts": [
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "Instrument Serif"
+                ],
+                "width": 320,
+                "clientWidth": 305,
+                "scrollWidth": 305,
+                "reducedMotion": true,
+                "errors": [],
+                "phase": "keyboard-friday",
+                "screenshot": ".context/first-run-brief-only/browser/calmer-320-friday.png",
+                "pixel_dimensions": [
+                  320,
+                  700
+                ],
+                "sha256": "3d8632ab64efd6b20e6fad797377ee6e3d2b7bdb339b45cc229e953997dd3d40"
+              },
+              {
+                "title": "Second Spin \u2014 Tune-up booking",
+                "controls": [
+                  {
+                    "value": "tuesday",
+                    "label": "Tuesday",
+                    "w": 100,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "wednesday",
+                    "label": "Wednesday",
+                    "w": 100,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "thursday",
+                    "label": "Thursday",
+                    "w": 100,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "friday",
+                    "label": "Friday",
+                    "w": 100,
+                    "h": 56,
+                    "inView": true
+                  },
+                  {
+                    "value": "saturday",
+                    "label": "Saturday",
+                    "w": 100,
+                    "h": 56,
+                    "inView": true
+                  }
+                ],
+                "scroll": [
+                  0,
+                  0
+                ],
+                "selected": "tuesday",
+                "active": "tuesday",
+                "selectedVisible": true,
+                "live": null,
+                "summaryBounds": {
+                  "x": 204.703125,
+                  "y": 732.09375,
+                  "width": 53.296875,
+                  "height": 18,
+                  "top": 732.09375,
+                  "right": 258,
+                  "bottom": 750.09375,
+                  "left": 204.703125
+                },
+                "visibleFocus": false,
+                "summary": "Tuesday",
+                "summaryInView": false,
+                "font": "\"Instrument Serif\", Georgia, serif",
+                "size": "45px",
+                "color": "rgb(21, 43, 52)",
+                "loadedFonts": [
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "IBM Plex Sans",
+                  "Instrument Serif"
+                ],
+                "width": 320,
+                "clientWidth": 305,
+                "scrollWidth": 305,
+                "reducedMotion": true,
+                "errors": [],
+                "phase": "pointer-tuesday",
+                "screenshot": ".context/first-run-brief-only/browser/calmer-320-tuesday.png",
+                "pixel_dimensions": [
+                  320,
+                  700
+                ],
+                "sha256": "e17f1af310da42bb8063076ae195369d8f68410ee2263f3f179c44d59517517d"
+              }
+            ]
+          }
+        ],
+        "source": ".context/first-run-brief-only/brief-only/calmer/index.html"
+      }
+    },
+    "visible_delta": {
+      "1440": {
+        "before": true,
+        "keyboard-friday": true,
+        "pointer-tuesday": true
+      },
+      "390": {
+        "before": true,
+        "keyboard-friday": true,
+        "pointer-tuesday": true
+      },
+      "320": {
+        "before": true,
+        "keyboard-friday": true,
+        "pointer-tuesday": true
+      }
+    }
+  },
+  "other_briefs_stdio": {
+    "tools": [
+      "check",
+      "direct",
+      "react"
+    ],
+    "startup_to_tool_discovery_ms": 435.4,
+    "cases": {
+      "vague": {
+        "brief": "Make it feel premium.",
+        "direction": "object-hero",
+        "surface": "landing",
+        "questions": [
+          {
+            "question": "What will people use this screen for?",
+            "options": [
+              "Explore an offering",
+              "Work with information",
+              "Read a story"
+            ],
+            "default": "Explore an offering"
+          }
+        ],
+        "assumptions": [
+          "Use landing as the surface.",
+          "Use only the project facts and assets in the brief."
+        ],
+        "elapsed_ms": 60.3
+      },
+      "contradictory": {
+        "brief": "Make a dashboard for a shift lead. Hide every nonessential timing detail at first load and show every nonessential timing detail in full at first load.",
+        "direction": "exception-first",
+        "surface": "dashboard",
+        "questions": [],
+        "assumptions": [
+          "Use dashboard as the surface.",
+          "Use only the project facts and assets in the brief."
+        ],
+        "elapsed_ms": 2.0
+      },
+      "routine": {
+        "brief": "A mobile signup for a ceramics class. Collect name and email.",
+        "direction": "grouped-fieldsets",
+        "surface": "form",
+        "questions": [],
+        "assumptions": [
+          "Use form as the surface.",
+          "Use only the project facts and assets in the brief."
+        ],
+        "elapsed_ms": 1.7
+      }
+    }
+  },
+  "scope": "Fresh client session on the README package pin. No surface hint. Separate installed stdio replies for vague, contradictory and routine briefs.",
+  "result": "Pass at 1440 and 390. At 320 the changed day in the revised summary is below the 700 px viewport."
+}

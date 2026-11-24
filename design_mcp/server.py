@@ -1,70 +1,77 @@
 from fastmcp import FastMCP
+from anyio import to_thread
+from mcp.types import ToolAnnotations
+from . import DEFAULT_SURFACE
 from .schema import DesignPattern, Platform, LayoutType
 from .database import DesignDatabase
+from .resources import ResourceError, read_json
+from .directions import check, direct, react
+from .palettes import generate_accessible_palette
 from .models.analyzer import analyze_code, infer_component_type
 from .models.visual_analyzer import (
     analyze_visual, generate_color_palette,
     FONT_PAIRINGS, TYPE_SCALE, SPACING_SYSTEM,
-    extract_colors, contrast_ratio
+    extract_colors, contrast_ratio, hex_to_rgb, rgb_to_hsl
 )
 from typing import Optional
+from functools import cache, partial
 from pathlib import Path
-import json
 import os
 
-# Resolve paths relative to this file
-BASE_DIR = Path(__file__).parent
+SURFACE = os.environ.get("DESIGN_MCP_SURFACE", DEFAULT_SURFACE).strip().lower()
+if SURFACE not in {"legacy", "both", "v2"}:
+    raise ValueError("DESIGN_MCP_SURFACE must be legacy, both, or v2")
 
-mcp = FastMCP(
-    "DesignIntelligence",
-    instructions="Provides AI agents with structured access to real-world design patterns, "
-                 "UI blueprints, and semantic tokens for high-fidelity UI generation."
+instructions = (
+    "Start with direct for a new interface brief. Apply one sourced design direction to the actual content. "
+    "Use react for short feedback and check to locate static design issues."
+    if SURFACE != "legacy"
+    else "Provides structured access to design patterns, UI blueprints, and semantic tokens."
 )
+mcp = FastMCP("DesignIntelligence", instructions=instructions)
+if SURFACE != "legacy":
+    local_read = ToolAnnotations(readOnlyHint=True, destructiveHint=False, idempotentHint=True, openWorldHint=False)
+    mcp.tool(direct, annotations=local_read)
+    mcp.tool(react, annotations=local_read)
+    mcp.tool(check, annotations=local_read)
 
-db = DesignDatabase(str(BASE_DIR / "data" / "patterns.json"))
 
-# Load indexed token sets and decision trees for resolution
-_token_sets = []
-_decision_trees_indexed = []
-_anti_pattern_fixes = {}
-_visual_recipes = {}
-_anti_generic = {}
+def enable_browser_review():
+    from .review.tool import review_page
 
-def _load_indexed_data():
-    global _token_sets, _decision_trees_indexed, _anti_pattern_fixes, _visual_recipes, _anti_generic
-    token_path = BASE_DIR / "data" / "tokens" / "token_sets.json"
-    if token_path.exists():
-        with open(token_path) as f:
-            _token_sets = json.load(f)
-    tree_path = BASE_DIR / "data" / "decision_trees_indexed.json"
-    if tree_path.exists():
-        with open(tree_path) as f:
-            _decision_trees_indexed = json.load(f)
-    fix_path = BASE_DIR / "data" / "anti_pattern_fixes.json"
-    if fix_path.exists():
-        with open(fix_path) as f:
-            _anti_pattern_fixes = json.load(f)
-    recipe_path = BASE_DIR / "data" / "visual_recipes.json"
-    if recipe_path.exists():
-        with open(recipe_path) as f:
-            _visual_recipes = json.load(f)
-    anti_generic_path = BASE_DIR / "data" / "anti_generic_system.json"
-    if anti_generic_path.exists():
-        with open(anti_generic_path) as f:
-            _anti_generic = json.load(f)
+    mcp.tool(review_page, annotations=ToolAnnotations(
+        readOnlyHint=True, destructiveHint=False, idempotentHint=False, openWorldHint=True,
+    ))
 
-_load_indexed_data()
+
+def legacy_tool(function):
+    if SURFACE != "v2":
+        mcp.tool(function)
+    return function
+
+
+db = DesignDatabase()
+
+
+async def _search_patterns(**filters) -> list[DesignPattern]:
+    # A cold legacy lookup can wait for the network while direction tools stay available.
+    return await to_thread.run_sync(partial(db.search, **filters))
+
+
+# Only the legacy handlers that use these shared tables need to load them.
+_reference = cache(read_json)
 
 
 def _resolve_tokens(pattern_dict: dict) -> dict:
     """Resolve indexed token reference to actual token dict."""
+    _token_sets = _reference("tokens/token_sets.json")
     tokens = pattern_dict.get("semantic_tokens")
     if isinstance(tokens, int) and 0 <= tokens < len(_token_sets):
         pattern_dict["semantic_tokens"] = _token_sets[tokens]
     elif isinstance(tokens, str):
         # Legacy string ref — resolve from old token file
         try:
-            old_tokens = json.load(open(BASE_DIR / "data" / "tokens" / "semantic_tokens.json"))
+            old_tokens = read_json("tokens/semantic_tokens.json")
             pattern_dict["semantic_tokens"] = old_tokens.get(tokens, {})
         except Exception:
             pass
@@ -73,6 +80,7 @@ def _resolve_tokens(pattern_dict: dict) -> dict:
 
 def _resolve_decision_tree(pattern_dict: dict) -> dict:
     """Resolve indexed decision tree reference."""
+    _decision_trees_indexed = _reference("decision_trees_indexed.json")
     tree = pattern_dict.get("decision_tree")
     if isinstance(tree, int) and 0 <= tree < len(_decision_trees_indexed):
         pattern_dict["decision_tree"] = _decision_trees_indexed[tree]
@@ -82,7 +90,7 @@ def _resolve_decision_tree(pattern_dict: dict) -> dict:
 # ============================================================
 # TOOL 1: Search Design Patterns
 # ============================================================
-@mcp.tool()
+@legacy_tool
 async def search_design_patterns(
     query: str,
     page_type: Optional[str] = None,
@@ -112,7 +120,7 @@ async def search_design_patterns(
         List of design pattern blueprints with metadata, layout info,
         behavioral descriptions, and component hints.
     """
-    results = db.search(
+    results = await _search_patterns(
         query=query,
         page_type=page_type,
         platform=platform,
@@ -121,7 +129,8 @@ async def search_design_patterns(
         visual_style=visual_style,
         limit=limit
     )
-    blueprints = [_to_blueprint(r) for r in results]
+    include_guidance = bool(fields and {"visual_recipes", "design_system"}.intersection(fields))
+    blueprints = [_to_blueprint(r, include_guidance=include_guidance) for r in results]
     if fields:
         blueprints = [{k: v for k, v in bp.items() if k in fields or k == "id"} for bp in blueprints]
     return blueprints
@@ -130,7 +139,7 @@ async def search_design_patterns(
 # ============================================================
 # TOOL 2: Get Full Blueprint
 # ============================================================
-@mcp.tool()
+@legacy_tool
 async def get_design_blueprint(pattern_id: str, detailed: bool = False) -> dict:
     """
     Get the full design blueprint for a specific pattern.
@@ -145,10 +154,12 @@ async def get_design_blueprint(pattern_id: str, detailed: bool = False) -> dict:
     Returns:
         Complete design blueprint with layout, behavior, tokens, and component structure.
     """
-    pattern = db.get(pattern_id)
+    pattern = await to_thread.run_sync(db.get, pattern_id)
     if not pattern:
         return {"error": f"Pattern '{pattern_id}' not found"}
     if detailed:
+        _token_sets = _reference("tokens/token_sets.json")
+        _decision_trees_indexed = _reference("decision_trees_indexed.json")
         dump = pattern.model_dump(exclude_none=True)
         # Resolve indexed references even in detailed mode
         if isinstance(dump.get("semantic_tokens"), int):
@@ -164,7 +175,7 @@ async def get_design_blueprint(pattern_id: str, detailed: bool = False) -> dict:
 # ============================================================
 # TOOL 3: Get Semantic Tokens
 # ============================================================
-@mcp.tool()
+@legacy_tool
 async def get_semantic_tokens(
     style: Optional[str] = None,
     primary_color: Optional[str] = None,
@@ -189,7 +200,6 @@ async def get_semantic_tokens(
     if primary_color:
         mode = color_mode or ("light" if style == "light" else "dark")
         try:
-            from scripts.rebuild_pipeline import generate_accessible_palette
             tokens, scale, accent_scale = generate_accessible_palette(primary_color, mode)
             return {
                 "tokens": tokens,
@@ -198,10 +208,11 @@ async def get_semantic_tokens(
                 "color_mode": mode,
                 "wcag_aa_verified": True,
             }
-        except Exception:
-            pass
-    
+        except ValueError as error:
+            return {"error": f"Invalid primary color: {error}"}
+
     # Return curated token sets from the indexed collection
+    _token_sets = _reference("tokens/token_sets.json")
     if _token_sets:
         # Find light vs dark token sets
         light_sets = []
@@ -229,15 +240,13 @@ async def get_semantic_tokens(
             return result
     
     # Fallback to old file
-    tokens_path = BASE_DIR / "data" / "tokens" / "semantic_tokens.json"
-    with open(tokens_path) as f:
-        return json.load(f)
+    return read_json("tokens/semantic_tokens.json")
 
 
 # ============================================================
 # TOOL 4: Get Taxonomy
 # ============================================================
-@mcp.tool()
+@legacy_tool
 async def get_design_taxonomy() -> dict:
     """
     Get the full taxonomy of design categories available in the database.
@@ -247,15 +256,13 @@ async def get_design_taxonomy() -> dict:
     Returns:
         Complete taxonomy with all available filter values.
     """
-    taxonomy_path = BASE_DIR / "data" / "taxonomy.json"
-    with open(taxonomy_path) as f:
-        return json.load(f)
+    return read_json("taxonomy.json")
 
 
 # ============================================================
 # TOOL 5: Get Behavioral Pattern
 # ============================================================
-@mcp.tool()
+@legacy_tool
 async def get_behavioral_pattern(pattern_name: str) -> dict:
     """
     Get the behavioral specification for a common UX pattern.
@@ -283,7 +290,7 @@ async def get_behavioral_pattern(pattern_name: str) -> dict:
 # ============================================================
 # TOOL 6: Compare Patterns
 # ============================================================
-@mcp.tool()
+@legacy_tool
 async def compare_design_approaches(
     page_type: str,
     limit: int = 3
@@ -300,7 +307,7 @@ async def compare_design_approaches(
     Returns:
         Comparison object with patterns and a summary of key differences.
     """
-    results = db.search(page_type=page_type, limit=limit)
+    results = await _search_patterns(page_type=page_type, limit=limit)
     return {
         "page_type": page_type,
         "examples": [_to_blueprint(r) for r in results],
@@ -311,7 +318,7 @@ async def compare_design_approaches(
 # ============================================================
 # TOOL 7: Analyze and Devibecode
 # ============================================================
-@mcp.tool()
+@legacy_tool
 async def analyze_and_devibecode(source_code: str) -> dict:
     """
     Static analysis anti-pattern detector for vibecoded UI code.
@@ -326,6 +333,10 @@ async def analyze_and_devibecode(source_code: str) -> dict:
         Analysis results with anti-patterns found, recommended layout,
         semantic tokens, component structure suggestions, and severity summary.
     """
+    _token_sets = _reference("tokens/token_sets.json")
+    _decision_trees_indexed = _reference("decision_trees_indexed.json")
+    _anti_pattern_fixes = _reference("anti_pattern_fixes.json")
+    _visual_recipes = _reference("visual_recipes.json")
     try:
         analysis = analyze_code(source_code)
         findings = analysis["findings"]
@@ -352,7 +363,7 @@ async def analyze_and_devibecode(source_code: str) -> dict:
         suggested_component_structure = []
 
         try:
-            results = db.search(query=component_type, limit=3)
+            results = await _search_patterns(query=component_type, limit=3)
             if results:
                 top = results[0]
                 if top.layout_type:
@@ -374,6 +385,8 @@ async def analyze_and_devibecode(source_code: str) -> dict:
                 for r in results:
                     for hint in r.component_hints:
                         suggested_component_structure.append(hint)
+        except ResourceError:
+            raise
         except Exception:
             pass
 
@@ -383,9 +396,7 @@ async def analyze_and_devibecode(source_code: str) -> dict:
                 semantic_tokens_to_apply = _token_sets[0]
             else:
                 try:
-                    tokens_path = BASE_DIR / "data" / "tokens" / "semantic_tokens.json"
-                    with open(tokens_path) as f:
-                        tokens = json.load(f)
+                    tokens = read_json("tokens/semantic_tokens.json")
                     semantic_tokens_to_apply = tokens.get("dark", tokens.get("light", {}))
                 except Exception:
                     pass
@@ -455,6 +466,8 @@ async def analyze_and_devibecode(source_code: str) -> dict:
             "detected_component_type": component_type,
         }
 
+    except ResourceError:
+        raise
     except Exception:
         return {
             "anti_patterns_found": [],
@@ -471,7 +484,7 @@ async def analyze_and_devibecode(source_code: str) -> dict:
 # ============================================================
 # TOOL 7.5: Get Anti-Generic Design System
 # ============================================================
-@mcp.tool()
+@legacy_tool
 async def get_design_system(
     page_type: Optional[str] = "Dashboard",
     color_mode: Optional[str] = "dark",
@@ -493,6 +506,7 @@ async def get_design_system(
         Complete design system with font imports, Tailwind classes for every component,
         color tokens, spacing values, layout patterns, and anti-patterns to avoid.
     """
+    _anti_generic = _reference("anti_generic_system.json")
     if not _anti_generic:
         return {"error": "Anti-generic design system not loaded"}
 
@@ -548,7 +562,7 @@ async def get_design_system(
 # ============================================================
 # TOOL 8: Get Library Recommendations
 # ============================================================
-@mcp.tool()
+@legacy_tool
 async def get_library_recommendations(
     use_case: Optional[str] = None,
     ui_elements: Optional[list[str]] = None,
@@ -634,7 +648,7 @@ async def get_library_recommendations(
         # Also search our patterns DB for matching examples
         pattern_examples = []
         if use_case:
-            results = db.search(query=use_case, limit=3)
+            results = await _search_patterns(query=use_case, limit=3)
             for r in results:
                 pattern_examples.append({
                     "name": r.name,
@@ -650,6 +664,8 @@ async def get_library_recommendations(
             "total_libraries": len(recommendations),
         }
 
+    except ResourceError:
+        raise
     except Exception:
         return {
             "recommendations": [],
@@ -662,7 +678,7 @@ async def get_library_recommendations(
 # ============================================================
 # TOOL 9: Get Library Details
 # ============================================================
-@mcp.tool()
+@legacy_tool
 async def get_library_details(library_name: str) -> dict:
     """
     Get detailed information about a specific frontend library including
@@ -710,7 +726,7 @@ async def get_library_details(library_name: str) -> dict:
 # ============================================================
 # TOOL 10: Scan Project for Anti-Patterns
 # ============================================================
-@mcp.tool()
+@legacy_tool
 async def scan_project(
     project_path: str,
     file_extensions: Optional[list[str]] = None,
@@ -868,6 +884,7 @@ async def scan_project(
         ]
         
         # Build priority fix list with CONCRETE code examples
+        _anti_pattern_fixes = _reference("anti_pattern_fixes.json")
         priority_fixes = []
         seen_fix_types = set()
         for report in file_reports:
@@ -970,7 +987,7 @@ async def scan_project(
 # ============================================================
 # TOOL 11: Generate Refactored Code
 # ============================================================
-@mcp.tool()
+@legacy_tool
 async def generate_refactored_code(
     source_code: str,
     target_library: str = "shadcn-ui",
@@ -994,6 +1011,9 @@ async def generate_refactored_code(
         Refactoring plan with before/after code mappings, import statements,
         and step-by-step transformation instructions.
     """
+    _token_sets = _reference("tokens/token_sets.json")
+    _anti_pattern_fixes = _reference("anti_pattern_fixes.json")
+    _visual_recipes = _reference("visual_recipes.json")
     try:
         # Analyze the code
         analysis = analyze_code(source_code)
@@ -1012,7 +1032,7 @@ async def generate_refactored_code(
             target_lib = next((l for l in libs_data["libraries"] if l["id"] == "shadcn-ui"), None)
         
         # Search for matching design patterns
-        pattern_results = db.search(query=component_type, limit=3)
+        pattern_results = await _search_patterns(query=component_type, limit=3)
         design_reference = []
         for p in pattern_results:
             ref = {"name": p.name, "page_type": p.page_type}
@@ -1186,52 +1206,12 @@ def _get_import_path(lib: dict) -> str:
 
 def _load_libraries() -> dict:
     """Load the libraries reference database."""
-    libs_path = BASE_DIR / "data" / "libraries.json"
-    with open(libs_path) as f:
-        return json.load(f)
-
-def _load_reference_data():
-    """Load reference data files (tokens, templates, component code) for resolving references."""
-    data = {"tokens": {}, "layouts": {}, "behaviors": {}, "component_code": {}}
-    try:
-        tokens_path = BASE_DIR / "data" / "tokens" / "semantic_tokens.json"
-        if tokens_path.exists():
-            with open(tokens_path) as f:
-                data["tokens"] = json.load(f)
-    except Exception:
-        pass
-    try:
-        layouts_path = BASE_DIR / "data" / "layout_templates.json"
-        if layouts_path.exists():
-            with open(layouts_path) as f:
-                data["layouts"] = json.load(f)
-    except Exception:
-        pass
-    try:
-        behaviors_path = BASE_DIR / "data" / "behavioral_templates.json"
-        if behaviors_path.exists():
-            with open(behaviors_path) as f:
-                data["behaviors"] = json.load(f)
-    except Exception:
-        pass
-    try:
-        code_path = BASE_DIR / "data" / "component_code.json"
-        if code_path.exists():
-            with open(code_path) as f:
-                data["component_code"] = json.load(f)
-    except Exception:
-        pass
-    return data
-
-
-# Load reference data once at startup
-_ref_data = _load_reference_data()
-
+    return read_json("libraries.json")
 
 def _resolve_legacy_tokens(value):
     """Resolve legacy string token reference to actual token set."""
     if isinstance(value, str) and value in ("light", "dark"):
-        return _ref_data["tokens"].get(value, value)
+        return _reference("tokens/semantic_tokens.json").get(value, value)
     return value
 
 
@@ -1239,7 +1219,7 @@ def _resolve_layout(value, page_type):
     """Resolve layout template reference to actual code."""
     if isinstance(value, str) and value.startswith("[template:"):
         pt = value[10:-1]
-        return _ref_data["layouts"].get(pt, value)
+        return _reference("layout_templates.json").get(pt, value)
     return value
 
 
@@ -1253,7 +1233,7 @@ def _resolve_component_code(hints):
             code = h.get("code", "")
             if isinstance(code, str) and code.startswith("[component:"):
                 name = code[11:-1]
-                template = _ref_data["component_code"].get(name, {})
+                template = _reference("component_code.json").get(name, {})
                 h = dict(h)
                 h["code"] = template.get("code", code)
             resolved.append(h)
@@ -1262,9 +1242,13 @@ def _resolve_component_code(hints):
     return resolved
 
 
-def _to_blueprint(pattern: DesignPattern) -> dict:
+def _to_blueprint(pattern: DesignPattern, *, include_guidance: bool = True) -> dict:
     """Convert a full pattern to a comprehensive blueprint with all actionable data.
     Resolves references to actual tokens, layout code, and component code."""
+    _token_sets = _reference("tokens/token_sets.json")
+    _decision_trees_indexed = _reference("decision_trees_indexed.json")
+    _visual_recipes = _reference("visual_recipes.json")
+    _anti_generic = _reference("anti_generic_system.json")
     # Resolve tokens from index
     raw_tokens = pattern.semantic_tokens
     if isinstance(raw_tokens, int):
@@ -1385,8 +1369,8 @@ def _to_blueprint(pattern: DesignPattern) -> dict:
         "semantic_tokens": resolved,
         "component_hints": _resolve_component_code(pattern.component_hints),
         "decision_tree": resolved_tree,
-        "visual_recipes": visual_recipes,
-        "design_system": design_system,
+        "visual_recipes": visual_recipes if include_guidance else None,
+        "design_system": design_system if include_guidance else None,
         "source_url": pattern.source_url,
     }
     # Remove None/empty values to save tokens
@@ -1503,7 +1487,7 @@ def _generate_comparison_summary(patterns: list[DesignPattern]) -> str:
 # ============================================================
 # TOOL 12: Visual Design Suggestions
 # ============================================================
-@mcp.tool()
+@legacy_tool
 async def get_visual_recipe(
     recipe: Optional[str] = None,
     page_type: Optional[str] = None,
@@ -1526,6 +1510,7 @@ async def get_visual_recipe(
     Returns:
         Visual recipes with ready-to-use CSS and Tailwind classes.
     """
+    _visual_recipes = _reference("visual_recipes.json")
     if not _visual_recipes:
         return {"error": "Visual recipes not loaded"}
 
@@ -1561,7 +1546,7 @@ async def get_visual_recipe(
     return _visual_recipes
 
 
-@mcp.tool()
+@legacy_tool
 async def get_visual_suggestions(
     source_code: str,
     primary_color: Optional[str] = None,
@@ -1613,7 +1598,6 @@ async def get_visual_suggestions(
                     if name not in ('white', 'black', 'slate', 'gray', 'zinc', 'neutral', 'stone'):
                         color_counts[c['hex']] += 1
                 elif c.get('source') == 'hex':
-                    from models.visual_analyzer import hex_to_rgb, rgb_to_hsl
                     r, g, b = hex_to_rgb(c['hex'])
                     h, s, l = rgb_to_hsl(r, g, b)
                     if s > 15 and 10 < l < 90:  # Chromatic, not too dark/light

@@ -1,0 +1,42 @@
+{
+  "case": "social-river",
+  "round": 5,
+  "critic_model": "gpt-6-luna",
+  "critic_effort": "low",
+  "reviewer_session": "01a20500-f5a7-70b3-9e10-a785e9edb2ce",
+  "usage": {
+    "input_tokens": 1707702,
+    "cached_input_tokens": 1635840,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 4426,
+    "reasoning_output_tokens": 1014
+  },
+  "trace_sha256": "868885b668ed9e2909abb3e3b73477007f214e3b62821d8dcea2c93d73c0bf81",
+  "browser_audit_sha256": "57a31b0c9fc0c054e38512bce9cd4da3501b1d1364dae9dc2389a74c9de249c8",
+  "status": "ineligible",
+  "missing_post_capture_input": [
+    "A-390-after"
+  ],
+  "reason": "The critic left views without exercising the required 2 m edge action in those visits.",
+  "repair": "Recognize actual keyboard-driven slider changes, preserve the post-capture edge gate, and repeat the exact builds with explicit same-visit instructions.",
+  "second_attempt": {
+    "status": "ineligible",
+    "reviewer_session": "01a20504-2189-7d03-9b1a-a126d65f4b87",
+    "usage": {
+      "input_tokens": 4603539,
+      "cached_input_tokens": 4503808,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 4156,
+      "reasoning_output_tokens": 0
+    },
+    "trace_sha256": "6f38c3e694afc83a46bf1c09c0b1d8f2473a9614b84961f68c584727e451f268",
+    "browser_audit_sha256": "efd237f448b39485b22b077ecef5ce3bfbcda44906a74808edcb9bfde1a056ac",
+    "missing_post_capture_input": [
+      "A-390-after"
+    ],
+    "range_shortcuts_attempted": [
+      "End"
+    ],
+    "repair": "Allow standard range navigation in the river study and prevent a view switch until an edge-check key has been sent."
+  }
+}

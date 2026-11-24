@@ -1,0 +1,313 @@
+{
+  "source": {
+    "task": "social-river",
+    "round": 3,
+    "direction_catalog_sha256": "c1f9c6f3700e4d6936902553e0d689727be4551abde37bc2b35c8fca1a61ca8a",
+    "critic_model": "gpt-6.1-terra",
+    "critic_effort": "low",
+    "playwriter": "0.12.0"
+  },
+  "generation": {
+    "v2": {
+      "model": "gpt-6.2-sol",
+      "effort": "low",
+      "elapsed_seconds": 83.74,
+      "usage": {
+        "input_tokens": 62068,
+        "cached_input_tokens": 50304,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3881,
+        "reasoning_output_tokens": 102
+      },
+      "html_sha256": "32f3b87d85e54c1ee3c451cb8a26cf739a8cf7810b543e7ac106ebf1d96e842f",
+      "trace_sha256": "042e25df64ddf1562275c02d083ac310871c9ac73359e894acee73c5cda014a6",
+      "expected_direction": "margin-front"
+    },
+    "social": {
+      "model": "gpt-6.2-sol",
+      "effort": "low",
+      "elapsed_seconds": 97.1,
+      "usage": {
+        "input_tokens": 62638,
+        "cached_input_tokens": 50304,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 4510,
+        "reasoning_output_tokens": 47
+      },
+      "html_sha256": "8844124dc3dc3c32a5949c37232efd2428b13b3cdb81d181c37cefa7fe2ba73f",
+      "trace_sha256": "f1ade1728f6ee744a41c79801751bac7e37ef81228725f39148cb8eaaa4b3d98",
+      "expected_direction": "level-cross-section"
+    }
+  },
+  "ballot": {
+    "calibration": {
+      "example": "Legible repair intake with clear labels, familiar layout and misplaced focus after an invalid number",
+      "coherence": 7,
+      "originality": 4,
+      "craft": 6,
+      "usability": 6
+    },
+    "screens": {
+      "A-1440": {
+        "coherence": 7,
+        "originality": 7,
+        "craft": 6,
+        "usability": 7,
+        "primary_action": {
+          "input": "Tab to the 6 m footbridge row and press Enter",
+          "expected": "Set 6 m, show all three closures and align the water surface with 6 m.",
+          "observed": "The value changed to 6 m and the list reported the path closed, ferry stopped and footbridge closed. The immediate capture showed the water surface between 4 m and 6 m."
+        },
+        "edge_observation": "Shift+Tab twice and Enter set 2 m. The path alone was marked closed; ferry and footbridge remained listed as level not reached.",
+        "fact_check": "The status text matches the specified thresholds. The captured water surface did not match the selected value immediately after either change; a transition may account for this, but its settled state was not verified. Real-world closure thresholds are unsupported by a visible source.",
+        "strength": "The cross-section, large level readout and closure rows are readable together.",
+        "weakness": "The closure rows do not visibly advertise that they are direct level controls, and the immediate graphic can contradict the text.",
+        "repair": "Make threshold shortcuts visibly actionable and synchronize the water surface with the reported level, including during transitions.",
+        "arm": "v2",
+        "html_sha256": "32f3b87d85e54c1ee3c451cb8a26cf739a8cf7810b543e7ac106ebf1d96e842f",
+        "weighted": 6.8,
+        "before": {
+          "sha256": "89c7a47ce3052577605ca661bcf693b72f95bf7123c3afb382af870bec48be3f",
+          "file": "A-1440-before.png",
+          "tool_call_id": "item_2"
+        },
+        "after": {
+          "sha256": "a9db741a5b871a595e964d5d437afd160a0afb0bff3668914f46e0ce977a220b",
+          "file": "A-1440-after.png",
+          "tool_call_id": "item_10"
+        },
+        "layout_width": 1440,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ]
+      },
+      "A-390": {
+        "coherence": 7,
+        "originality": 7,
+        "craft": 6,
+        "usability": 7,
+        "primary_action": {
+          "input": "Tab to the 6 m footbridge row and press Enter",
+          "expected": "Set 6 m, show all three closures and align the water surface with 6 m.",
+          "observed": "The value changed to 6 m and all three rows showed closure or stoppage. The immediate capture placed the surface between 4 m and 6 m."
+        },
+        "edge_observation": "Shift+Tab twice and Enter set 2 m. Only the path was marked closed; the other two rows said level not reached.",
+        "fact_check": "The closure text matches the specified thresholds. The immediate 2 m capture still showed water above 4 m; the settled visual state was not verified. Real-world thresholds have no visible source.",
+        "strength": "The full control and status list fit in the initial mobile viewport with a clear focus outline.",
+        "weakness": "The small cross-section labels and undisclosed row shortcuts make the graphic and direct jump harder to discover.",
+        "repair": "Label the rows as level shortcuts and ensure the diagram promptly reflects the chosen value.",
+        "arm": "v2",
+        "html_sha256": "32f3b87d85e54c1ee3c451cb8a26cf739a8cf7810b543e7ac106ebf1d96e842f",
+        "weighted": 6.8,
+        "before": {
+          "sha256": "0f5ece628d73e5d0a195d2e9b513a8301a0f454faa8fdc8403d9c596230c59e8",
+          "file": "A-390-before.png",
+          "tool_call_id": "item_17"
+        },
+        "after": {
+          "sha256": "7d345c19a42a0c2663547e74f2ad0ce3ebd188abf6129c5669252db02ae0fc1f",
+          "file": "A-390-after.png",
+          "tool_call_id": "item_23"
+        },
+        "layout_width": 390,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ]
+      },
+      "B-1440": {
+        "coherence": 8.5,
+        "originality": 8,
+        "craft": 8.5,
+        "usability": 9,
+        "primary_action": {
+          "input": "Tab to the selected 4 m radio, then press ArrowRight",
+          "expected": "Select 6 m, show all three closures and place the water surface at 6 m.",
+          "observed": "6 m became selected, all three closures appeared, and the water surface aligned with the 6 m line."
+        },
+        "edge_observation": "Two ArrowLeft presses selected 2 m; the closure list contained only the riverside path and the water aligned with 2 m.",
+        "fact_check": "The rendered water and closure list agree with the specified thresholds at both tested levels. Real-world thresholds have no visible source.",
+        "strength": "Explicit level choices and a labeled cross-section make the relationship between water height and closures easy to inspect.",
+        "weakness": "The diagram uses considerable space relative to the short result list.",
+        "repair": "Give the result panel slightly more prominence while retaining the clear threshold labels.",
+        "arm": "social",
+        "html_sha256": "8844124dc3dc3c32a5949c37232efd2428b13b3cdb81d181c37cefa7fe2ba73f",
+        "weighted": 8.45,
+        "before": {
+          "sha256": "469f83aaaa4fe1f7a2590f79075c0025fb4114035ae777726707b5a25270ae57",
+          "file": "B-1440-before.png",
+          "tool_call_id": "item_29"
+        },
+        "after": {
+          "sha256": "a5a5a414f15759aef24549cc5461d3ea90193ad7f9f8dbbd33f41eee866adfba",
+          "file": "B-1440-after.png",
+          "tool_call_id": "item_32"
+        },
+        "layout_width": 1440,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "ArrowLeft"
+          },
+          {
+            "action": "key",
+            "value": "ArrowLeft"
+          }
+        ]
+      },
+      "B-390": {
+        "coherence": 8,
+        "originality": 8,
+        "craft": 8,
+        "usability": 8,
+        "primary_action": {
+          "input": "Tab to the selected 4 m radio, then press ArrowRight",
+          "expected": "Select 6 m, show all three closures and place the water surface at 6 m.",
+          "observed": "6 m became selected and the water aligned with the 6 m line. The accessibility view reported all three closures; the full result list extended below the captured viewport."
+        },
+        "edge_observation": "Two ArrowLeft presses selected 2 m. The accessibility view reported only the riverside path; the visible diagram aligned the water with 2 m.",
+        "fact_check": "The diagram and accessible result agree with the specified thresholds. The full mobile result list was not visually inspected after scrolling. The review tool reported a 390 px viewport with a 375 px layout width. Real-world thresholds have no visible source.",
+        "strength": "The level choices remain prominent and keyboard focus is clearly visible.",
+        "weakness": "The tall illustration pushes the closure results below the initial viewport.",
+        "repair": "Reduce the mobile figure height or bring the current closure summary closer to the level selector.",
+        "arm": "social",
+        "html_sha256": "8844124dc3dc3c32a5949c37232efd2428b13b3cdb81d181c37cefa7fe2ba73f",
+        "weighted": 8.0,
+        "before": {
+          "sha256": "296f0a7ab0ffe6ce6d0564826fa2346a4d2cde8943380ae426a9d326b9d64af7",
+          "file": "B-390-before.png",
+          "tool_call_id": "item_37"
+        },
+        "after": {
+          "sha256": "65336ecedef832b92ab009677b4b71b24c06c42f4e9fb7d8fad28cf353875420",
+          "file": "B-390-after.png",
+          "tool_call_id": "item_40"
+        },
+        "layout_width": 375,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "ArrowLeft"
+          },
+          {
+            "action": "key",
+            "value": "ArrowLeft"
+          }
+        ]
+      }
+    },
+    "preference": {
+      "winner": "B",
+      "reason": "B offers discoverable level choices and its captured water surface matches the selected height at both tested levels. Its mobile results require more scrolling, but the primary keyboard interaction and visual feedback were clearer."
+    },
+    "case": "social-river",
+    "verified_screens": 4,
+    "required_screens": 4,
+    "browser": "Chrome/157.0.8103.79",
+    "evaluator_thread": "01a204ee-bc6a-7832-a18b-91feadc075d7",
+    "usage": {
+      "input_tokens": 457185,
+      "cached_input_tokens": 432768,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 2586,
+      "reasoning_output_tokens": 0
+    },
+    "trace_sha256": "918d689e6d34e66580d8930180e0600c34c83b91ce093cf7502f3e1a1089e2c9",
+    "browser_audit_sha256": "9d0d4ad272ad8cbb96d377d72aafb9a8aa480d399a868237d962517fbb9bbd7f"
+  },
+  "ballot_sha256": "1b81fa8241f066f7ac6628d46b15e74aac84f9ca46ba322f21253b3562c3b235",
+  "decision": "Round 3 makes the primary keyboard task and selected waterline clearer. The 390 px view pushes closures below the fold and scores below round 1. Preserve round 1 as best and bring the result above the chart in round 4."
+}

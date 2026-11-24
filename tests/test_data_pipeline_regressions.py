@@ -25,14 +25,14 @@ from collections import Counter
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from schema import DesignPattern, Platform, LayoutType
-from database import DesignDatabase
-from models.visual_analyzer import (
+from design_mcp.schema import DesignPattern, Platform, LayoutType
+from design_mcp.database import DesignDatabase
+from design_mcp.models.visual_analyzer import (
     hex_to_rgb, rgb_to_hsl, relative_luminance, contrast_ratio
 )
 
 BASE_DIR = Path(__file__).parent.parent
-DATA_DIR = BASE_DIR / "data"
+DATA_DIR = BASE_DIR / "design_mcp" / "data"
 
 
 # ============================================================
@@ -414,7 +414,7 @@ class TestServerResolution:
     @pytest.mark.asyncio
     async def test_search_returns_resolved_tokens(self):
         """search_design_patterns must return real token dicts, not indexes."""
-        from server import search_design_patterns
+        from design_mcp.server import search_design_patterns
         results = await search_design_patterns("dashboard", limit=3)
         for r in results:
             tokens = r.get("semantic_tokens")
@@ -430,7 +430,7 @@ class TestServerResolution:
     @pytest.mark.asyncio
     async def test_blueprint_returns_resolved_tokens(self):
         """get_design_blueprint must return real token dicts."""
-        from server import search_design_patterns, get_design_blueprint
+        from design_mcp.server import search_design_patterns, get_design_blueprint
         results = await search_design_patterns("landing page", limit=1)
         if results:
             bp = await get_design_blueprint(results[0]["id"])
@@ -444,7 +444,7 @@ class TestServerResolution:
     @pytest.mark.asyncio
     async def test_blueprint_includes_decision_tree(self):
         """get_design_blueprint should include resolved decision trees for Dashboard patterns."""
-        from server import search_design_patterns, get_design_blueprint
+        from design_mcp.server import search_design_patterns, get_design_blueprint
         results = await search_design_patterns("dashboard", page_type="Dashboard", limit=1)
         if results:
             bp = await get_design_blueprint(results[0]["id"])
@@ -458,7 +458,7 @@ class TestServerResolution:
     @pytest.mark.asyncio
     async def test_search_returns_behavioral_descriptions(self):
         """Search results must have non-empty behavioral descriptions."""
-        from server import search_design_patterns
+        from design_mcp.server import search_design_patterns
         results = await search_design_patterns("dashboard", limit=5)
         for r in results:
             behavior = r.get("behavioral_description", "")
@@ -470,7 +470,7 @@ class TestServerResolution:
     @pytest.mark.asyncio
     async def test_scan_project_returns_code_fixes(self):
         """scan_project priority_fixes should include before/after code."""
-        from server import scan_project
+        from design_mcp.server import scan_project
         result = await scan_project(
             project_path=str(BASE_DIR / "tests"),
             file_extensions=[".py"]

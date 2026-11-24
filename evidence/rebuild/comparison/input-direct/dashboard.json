@@ -1,0 +1,65 @@
+{
+  "direction": {
+    "id": "exception-first",
+    "surface": "dashboard",
+    "title": "Exception first: the problem owns the screen",
+    "summary": "The most urgent item is promoted out of the list into a full-width strip, with its position in the queue; every other row stays quiet. Use for time-pressured operations queues.",
+    "type": {
+      "display": "IBM Plex Sans Condensed",
+      "body": "IBM Plex Sans",
+      "ratio": 2.5,
+      "tracking": -0.02,
+      "weight": 600,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#EEF0EC",
+      "paper": "#14181B",
+      "accent": "#FFAA72"
+    },
+    "layout": {
+      "skeleton": "exception strip on top (item ID, location, deviation), the full queue table below, a due-next rail on the right",
+      "focus": "the deviation value at 40px tabular figures, with an 'n / total' position label",
+      "desktop": "12-col; strip spans 12, table 8, rail 4 holding the next item due",
+      "mobile": "strip, then rail, then table as stacked rows",
+      "rhythm": "8px base; 40px rows; no cards"
+    },
+    "imagery": {
+      "subject": "none; location codes act as the visuals",
+      "crop": "n/a",
+      "fallback": "location code set at 24px tabular figures"
+    },
+    "motion": {
+      "trigger": "deviation changes",
+      "effect": "the value cross-fades; the strip edge pulses once",
+      "duration_ms": 240,
+      "reduced": "value swaps, no pulse"
+    },
+    "action": {
+      "instruction": "Focus jumps the table filter to the exception. Fill it from the brief's most urgent item",
+      "label": "Focus [item ID] at [location]"
+    },
+    "why": "An operator on the clock should see the one problem before the list. Calm comes from making everything except the exception quiet.",
+    "sources": [
+      {
+        "url": "https://linear.app/",
+        "observation": "Linear's home page product mock (server HTML) shows one focused issue 'DRV-8852' with a '1 / 84' queue position, a sidebar of 'Inbox | My issues | Reviews', and a properties rail ('In Progress | Medium | Karri'): one item in focus, its place in the queue, and its state beside it.",
+        "strength": "evidence"
+      }
+    ],
+    "credit": "Linear (Linear Orbit), home page product mock"
+  },
+  "interaction": {
+    "accent_foreground": "#14181B",
+    "easing": "ease-out",
+    "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+    "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+    "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+  },
+  "assumptions": [
+    "Use dashboard as the surface.",
+    "Use only the project facts and assets in the brief."
+  ],
+  "questions": [],
+  "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Verify the action, reading order and legibility at 390 px."
+}

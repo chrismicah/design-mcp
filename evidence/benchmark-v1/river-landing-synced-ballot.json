@@ -1,0 +1,245 @@
+{
+  "calibration": {
+    "example": "Legible repair intake with clear labels, familiar layout, and misplaced focus after an invalid number.",
+    "coherence": 7,
+    "originality": 4,
+    "craft": 6,
+    "usability": 6
+  },
+  "screens": {
+    "A-1440": {
+      "coherence": 8,
+      "originality": 8,
+      "craft": 7,
+      "usability": 8,
+      "primary_action": {
+        "input": "Tab to the selected 4 m radio, then ArrowRight to 6 m.",
+        "expected": "Show the crossings affected at 6 m.",
+        "observed": "The selected 6 m control and result list show the riverside path closed, ferry stopped, and footbridge closed. Captured A-1440-before and A-1440-after."
+      },
+      "edge_observation": "At exactly 2 m, reached with two ArrowLeft presses, the visible result lists only the riverside path closure. Captured A-1440-edge.",
+      "fact_check": "At 6 m the picture shows a moored ferry beside a FERRY CLOSED sign, with water above the bridge deck and railing visible. At 2 m it labels a submerged path, although the path itself is hard to distinguish beneath the water. The interface provides no independent source for the thresholds or real-world crossing status.",
+      "strength": "The scene connects rising water with physical landmarks, and keyboard focus is clear.",
+      "weakness": "The submerged-path label points into water where the path is difficult to identify; the scene relies on the text for that fact.",
+      "repair": "Make the path and its submerged boundary identifiable at 2 m, with a precise callout.",
+      "arm": "proposed",
+      "html_sha256": "488c6c91b6c2387db96e033e45f3c4955cecc0f73185ef313a457b794dcf7038",
+      "weighted": 7.8,
+      "before": {
+        "sha256": "973b354eb5aa22f9b7477e27d1525947d09daee27d75438572927dfb089f5fbe",
+        "file": "A-1440-before.png",
+        "tool_call_id": "item_2"
+      },
+      "after": {
+        "sha256": "d123916939b27a8d6f7cae4ebf8315574a95d6f743e0c2fca20f7769d1e951dc",
+        "file": "A-1440-after.png",
+        "tool_call_id": "item_5"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ],
+      "confirmed_levels": [
+        6,
+        2
+      ]
+    },
+    "A-390": {
+      "coherence": 7.5,
+      "originality": 8,
+      "craft": 7,
+      "usability": 8,
+      "primary_action": {
+        "input": "Tab to 4 m, then ArrowRight to 6 m.",
+        "expected": "Show all three affected crossings alongside the controls.",
+        "observed": "The 6 m selection and all three result lines fit with the controls in the 390 by 844 viewport. Captured A-390-before and A-390-after."
+      },
+      "edge_observation": "At exactly 2 m, reached with two ArrowLeft presses, the screen lists only the riverside path closure. Captured A-390-edge.",
+      "fact_check": "At 6 m the ferry is tethered near a small FERRY CLOSED sign and the bridge deck is under water; the railing remains visible. The submerged-bridge label overlaps part of the small scene. At 2 m the submerged-path label points into water, but the path is not readily discernible. Real-world thresholds are unsupported by a visible source.",
+      "strength": "The full answer and controls remain visible without scrolling.",
+      "weakness": "The small illustration and overlaid callout make the physical evidence harder to read on a phone.",
+      "repair": "Reposition callouts and clarify the crossing outlines at mobile scale.",
+      "arm": "proposed",
+      "html_sha256": "488c6c91b6c2387db96e033e45f3c4955cecc0f73185ef313a457b794dcf7038",
+      "weighted": 7.65,
+      "before": {
+        "sha256": "b23c3ae4949a0b0d804713be45366b0731cf7890e5cd46e03c2591eee805cd73",
+        "file": "A-390-before.png",
+        "tool_call_id": "item_11"
+      },
+      "after": {
+        "sha256": "0089379046fd399c3400eac204a6c5bca7d679aac7ca462cdeaf17c2998a0942",
+        "file": "A-390-after.png",
+        "tool_call_id": "item_14"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ],
+      "confirmed_levels": [
+        6,
+        2
+      ]
+    },
+    "B-1440": {
+      "coherence": 8,
+      "originality": 7.5,
+      "craft": 7.5,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab to 4 m, then ArrowRight to 6 m.",
+        "expected": "Show the three affected crossings at 6 m.",
+        "observed": "The 6 m selection shows the riverside path closed, ferry stopped, and footbridge closed. Captured B-1440-before and B-1440-after."
+      },
+      "edge_observation": "At exactly 2 m, reached with two ArrowLeft presses, the result lists only the riverside path closure. Captured B-1440-edge.",
+      "fact_check": "The diagram labels each threshold and raises the water to the bridge at 6 m. The ferry is highlighted beside a landing, but there is no visible mooring or stop marker; the text supplies its stopped status. Its fixed position leaves it above the water at 2 m and below the surface at 6 m, so the diagram can obscure the physical relationship. The thresholds are not independently sourced on screen.",
+      "strength": "The cross-section and labeled thresholds make the sequence of closures easy to compare.",
+      "weakness": "The fixed ferry behaves like a threshold symbol but looks like a physical boat, creating a misleading water relationship.",
+      "repair": "Either label the diagram as schematic and use a clear stopped-service symbol, or make the boat float with the water and visibly indicate closure.",
+      "arm": "current",
+      "html_sha256": "6c865202d697125bf3cc70a0edd4d57dc32d2144423c35a3e653cd7766230339",
+      "weighted": 7.85,
+      "before": {
+        "sha256": "f0b0f429014cc9d04e3f6c5353132fb4759cc61a73f42af3e59f8d6e0c42221c",
+        "file": "B-1440-before.png",
+        "tool_call_id": "item_19"
+      },
+      "after": {
+        "sha256": "6314abde3f7a9d85fab36f58b78d2b176485eaca32ba2e3401fbef628f852820",
+        "file": "B-1440-after.png",
+        "tool_call_id": "item_22"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ],
+      "confirmed_levels": [
+        6,
+        2
+      ]
+    },
+    "B-390": {
+      "coherence": 8,
+      "originality": 7.5,
+      "craft": 7.5,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab to 4 m, then ArrowRight to 6 m.",
+        "expected": "Show all three affected crossings alongside the controls.",
+        "observed": "The selected control and all three results fit in the 390 by 844 viewport, with the threshold diagram also visible. Captured B-390-before and B-390-after."
+      },
+      "edge_observation": "At exactly 2 m, reached with two ArrowLeft presses, the visible result lists only the riverside path closure. Captured B-390-edge.",
+      "fact_check": "Threshold labels remain legible on the phone, and water reaches the bridge line at 6 m. The highlighted ferry has no explicit stopped marker and appears underwater at 6 m and above water at 2 m. The result text conveys the service state; the image alone does not. Real-world threshold claims have no visible source.",
+      "strength": "Controls, answer, and labeled diagram fit together in the phone viewport.",
+      "weakness": "The small ferry and its fixed vertical position make the picture's physical meaning ambiguous.",
+      "repair": "Add a legible stopped-service cue and distinguish threshold markers from objects in the water.",
+      "arm": "current",
+      "html_sha256": "6c865202d697125bf3cc70a0edd4d57dc32d2144423c35a3e653cd7766230339",
+      "weighted": 7.85,
+      "before": {
+        "sha256": "8b5c2d0642531944ae6170a03577ae588b5268902eb2070f4a11f4e497d75184",
+        "file": "B-390-before.png",
+        "tool_call_id": "item_28"
+      },
+      "after": {
+        "sha256": "738132f7b7f8435539df5e2951f81f51e3f05e24fb020960435df54a44bcb041",
+        "file": "B-390-after.png",
+        "tool_call_id": "item_31"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ],
+      "confirmed_levels": [
+        6,
+        2
+      ]
+    }
+  },
+  "preference": {
+    "winner": "B",
+    "reason": "B keeps the controls, complete answer, and threshold comparison readable together on the phone. Its fixed ferry creates a material visual ambiguity that should be corrected, but the labeled cross-section communicates the closure sequence more clearly overall."
+  },
+  "case": "social-river",
+  "verified_screens": 4,
+  "required_screens": 4,
+  "browser": "Chrome/158.0.8127.36",
+  "evaluator_thread": "01a206fc-8c46-76b1-bac5-ee4aff817017",
+  "usage": {
+    "input_tokens": 504926,
+    "cached_input_tokens": 456320,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2694,
+    "reasoning_output_tokens": 11
+  },
+  "trace_sha256": "aa1f65c72c312d209b4131eb45e9db5a055caad9d6335147a071dc56e3ce10a5",
+  "browser_audit_sha256": "8959227273bb3d8c10d14d5f4918b2578b9af02d35831973326ef828afc72ed8"
+}

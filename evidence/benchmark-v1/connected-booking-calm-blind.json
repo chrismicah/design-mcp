@@ -1,0 +1,320 @@
+{
+  "calibration": {
+    "coherence": 7,
+    "originality": 4,
+    "craft": 6,
+    "usability": 5,
+    "basis": "A legible, familiar repair intake is coherent but not especially distinctive. Misplaced focus after invalid input is a material recovery problem."
+  },
+  "screens": {
+    "A-1440": {
+      "coherence": 8,
+      "originality": 6.5,
+      "craft": 7.5,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab, Space, Right three times",
+        "expected": "Select Friday and show the selection and price.",
+        "observed": "Friday became checked and focused; the summary showed Friday and $85 without scrolling. Captured A-1440-before and A-1440-after."
+      },
+      "edge_observation": "Two Left presses selected Wednesday and updated the summary. The selected day has a dark teal fill and a separate outer focus outline, although the outline is subtle.",
+      "fact_check": "Tuesday through Saturday are offered. The page shows $85, 48 hours and 41 Elm Street; the price and turnaround remain in the Wednesday summary. No independent source was supplied to verify these business facts.",
+      "strength": "The wheel illustration ties the quiet supporting section to the bike service, while the form and summary fit in one viewport.",
+      "weakness": "The pale supporting section and illustration compete somewhat with the headline, and the focus outline is easy to miss against the selected fill.",
+      "repair": "Increase focus-ring contrast and separation, and soften or reposition the wheel behind the headline.",
+      "arm": "proposed",
+      "html_sha256": "18821128a5c31e1a1dd94d67c01a4d71ac71305bf5d8bf23d6c19e49267ba153",
+      "weighted": 7.55,
+      "before": {
+        "sha256": "7a341dc0a66be032347ef8bb1d2e70caf81882e0879baf584513bc8e21b6ab33",
+        "file": "A-1440-before.png",
+        "tool_call_id": "item_2"
+      },
+      "after": {
+        "sha256": "2f8a12eb86c923aba4e8c72d046b78f504348be0be6c7f9e8e6f02914bff67ad",
+        "file": "A-1440-after.png",
+        "tool_call_id": "item_8"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Space"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ]
+    },
+    "A-390": {
+      "coherence": 8,
+      "originality": 6.5,
+      "craft": 7,
+      "usability": 8,
+      "primary_action": {
+        "input": "Tab, Space, Right three times",
+        "expected": "Select Friday and show the selection and price.",
+        "observed": "Friday became checked and focused. The selected control and $85 were visible without scrolling; the summary was below the viewport. Captured A-390-before and A-390-after."
+      },
+      "edge_observation": "Two Left presses selected Wednesday; the accessibility view reported a Wednesday summary. The review tool rejected PageDown and End, so the below-fold summary was not visually inspected after scrolling.",
+      "fact_check": "The rendered page shows Tuesday through Saturday, $85, 48 hours and 41 Elm Street. The accessibility view retained $85 and 48 hours with Wednesday. Independent verification of the business facts was not available.",
+      "strength": "All five day choices and the price remain visible together at the initial scroll position.",
+      "weakness": "The tall supporting section pushes the summary below the fold; the focus outline around the filled selection is subtle.",
+      "repair": "Condense the supporting section on mobile and strengthen the focus ring so the summary and keyboard state are easier to find.",
+      "arm": "proposed",
+      "html_sha256": "18821128a5c31e1a1dd94d67c01a4d71ac71305bf5d8bf23d6c19e49267ba153",
+      "weighted": 7.35,
+      "before": {
+        "sha256": "cca5626b6215d48cd1857ee3dc0b8b17446542bb0d31b9202cc7a128df13c20d",
+        "file": "A-390-before.png",
+        "tool_call_id": "item_13"
+      },
+      "after": {
+        "sha256": "2944dd71ad24d090502060b3f3a4b813ed33d061bf1050f92c5314aafa60bfda",
+        "file": "A-390-after.png",
+        "tool_call_id": "item_19"
+      },
+      "layout_width": 375,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Space"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        }
+      ]
+    },
+    "B-1440": {
+      "coherence": 8.5,
+      "originality": 7,
+      "craft": 8,
+      "usability": 8.5,
+      "primary_action": {
+        "input": "Tab, Space, Right three times",
+        "expected": "Select Friday and show the selection and price.",
+        "observed": "Friday became checked and focused; Friday and $85 appeared in the summary without scrolling. Captured B-1440-before and B-1440-after."
+      },
+      "edge_observation": "Two Left presses selected Wednesday and updated the summary. Selection uses a teal fill with an additional outer focus outline, but the outline is subtle.",
+      "fact_check": "Tuesday through Saturday are offered. The page shows $85, 48 hours and 41 Elm Street; price and turnaround remain in the Wednesday summary. No independent source was supplied to verify these business facts.",
+      "strength": "The dark supporting panel gives the wheel and shop identity a clear, distinct place beside the light booking form.",
+      "weakness": "The large headline overlaps the wheel, and the focus outline has limited separation from the selected state.",
+      "repair": "Give the headline and wheel more breathing room and use a more conspicuous, offset focus ring.",
+      "arm": "current",
+      "html_sha256": "a622163c28975c8cb25d866488dc8079960a09d19ee8a0e0d73e5941641d67b4",
+      "weighted": 7.95,
+      "before": {
+        "sha256": "535d366dfe6b1768cd7c9f9335131bf16e1bd6d7c5538f98261387d87108af42",
+        "file": "B-1440-before.png",
+        "tool_call_id": "item_27"
+      },
+      "after": {
+        "sha256": "dc4721509f966f87d3a91203ca17ea0cc54f0eb47e91752f59b15691c67c4436",
+        "file": "B-1440-after.png",
+        "tool_call_id": "item_33"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Space"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ]
+    },
+    "B-390": {
+      "coherence": 8.5,
+      "originality": 7,
+      "craft": 7.5,
+      "usability": 8,
+      "primary_action": {
+        "input": "Tab, Space, Right three times",
+        "expected": "Select Friday and show the selection and price.",
+        "observed": "Friday became checked and focused. The selected control and $85 were visible without scrolling; the summary was below the viewport. Captured B-390-before and B-390-after."
+      },
+      "edge_observation": "Two Left presses selected Wednesday; the accessibility view reported a Wednesday summary. The below-fold summary was not visually verified after scrolling because the review tool did not provide a usable scroll command in this session.",
+      "fact_check": "The rendered page shows Tuesday through Saturday, $85, 48 hours and 41 Elm Street. The accessibility view retained $85 and 48 hours with Wednesday. Independent verification of the business facts was not available.",
+      "strength": "The dark introductory panel clearly separates the shop identity from the booking task, and all day choices fit on one row.",
+      "weakness": "The supporting panel consumes substantial vertical space, leaving the summary below the initial viewport; the focus outline is subtle.",
+      "repair": "Shorten the mobile introduction and make the focus indicator more distinct from the selected fill.",
+      "arm": "current",
+      "html_sha256": "a622163c28975c8cb25d866488dc8079960a09d19ee8a0e0d73e5941641d67b4",
+      "weighted": 7.75,
+      "before": {
+        "sha256": "314c83a3ea6cef9c77f9e34c91398bc055f5aa6bb24b85be3b2a51cb7f0908ef",
+        "file": "B-390-before.png",
+        "tool_call_id": "item_37"
+      },
+      "after": {
+        "sha256": "55f9d94a9c0af9c63fb96e07302069550c4bc1c13bf7291e02d5d0fe20850a9d",
+        "file": "B-390-after.png",
+        "tool_call_id": "item_43"
+      },
+      "layout_width": 375,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "Space"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowDown"
+        },
+        {
+          "action": "key",
+          "value": "ArrowDown"
+        },
+        {
+          "action": "key",
+          "value": "ArrowDown"
+        }
+      ]
+    }
+  },
+  "preference": {
+    "winner": "B",
+    "reason": "Both views completed the tested keyboard flow and exposed the same booking facts. B's dark supporting panel creates a clearer hierarchy and a stronger visual identity while preserving the legibility of the booking form."
+  },
+  "limitations": "The 390-wide review views reported a layout width of 375 CSS pixels. Mobile summaries were read through the review tool's accessibility output, not visually inspected after scrolling. Business facts were checked for consistency within the views, not against an external source.",
+  "case": "booking-calm-reaction",
+  "verified_screens": 4,
+  "required_screens": 4,
+  "browser": "Chrome/158.0.8127.36",
+  "evaluator_thread": "01a20637-cc54-78b3-95dc-bbfa1a63304f",
+  "usage": {
+    "input_tokens": 771090,
+    "cached_input_tokens": 707328,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2661,
+    "reasoning_output_tokens": 0
+  },
+  "trace_sha256": "97246fd52986b85843254f1396cf0cbe6e74e8edbba852150df8183175f747b1",
+  "browser_audit_sha256": "d830f81c427ef07609b56496aa64fe1059875d7c197989a00dfe5c028fa3cc86",
+  "trial": {
+    "status": "rejected",
+    "scope": "One matched booking brief with the original draft and the same reaction. Exact installed control and a trial source package with a single prompt change.",
+    "main_change": "Remove dark fill from the decorative intro while preserving booking form and live summary.",
+    "preflight_all_sizes_passed": [
+      1440,
+      390,
+      320
+    ],
+    "receipt_hashes": {
+      "ballot": "d56fa86b6bd7b920af329515b14c5b7925e9763298588111441716bd5e46ba2b",
+      "preflight": "76b8c2f18bd400bf6ec4e8d6586441f886901698c9d798d28cd3178af9435d0d",
+      "contract": "d52a3ccda85e2adf57043d6cb940c1c61ead386512eacb4201ae9080d7212d00",
+      "trial_source": "844a168f6dc9fb849a2abf040cb4637e87258c11b9cc0cf940f454fe6e4ae7bd"
+    },
+    "artifacts": {
+      "ballot": ".context/release-five-hour/form-calm-reaction-focused/blind/audited.json",
+      "preflight": ".context/release-five-hour/form-calm-reaction-focused/browser/receipt.json",
+      "contract": ".context/release-five-hour/form-calm-reaction-focused/CONTRACT.md",
+      "trial_source": ".context/release-five-hour/form-calm-reaction-focused/source/design_mcp/directions.py"
+    }
+  }
+}

@@ -1,0 +1,58 @@
+name: Paired public URL review timing
+
+on:
+  push:
+    branches: [design-mcp/public-url-timing]
+
+permissions:
+  contents: read
+
+jobs:
+  timing:
+    runs-on: macos-15
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Install both revisions and the shared browser tools
+        shell: bash
+        env:
+          BEFORE: 7bccfc14d4ce5652f81ee85f14bd56ee452a4aae
+          AFTER: ${{ github.sha }}
+        run: |
+          proof="$RUNNER_TEMP/url-timing-proof"
+          mkdir "$proof"
+          for arm in BEFORE AFTER; do
+            python -m venv "$RUNNER_TEMP/$arm"
+            "$RUNNER_TEMP/$arm/bin/python" -m pip install "git+$GITHUB_SERVER_URL/$GITHUB_REPOSITORY.git@${!arm}"
+            "$RUNNER_TEMP/$arm/bin/python" -I - "${!arm}" <<'PY'
+          from importlib.metadata import distribution
+          import json, sys
+          assert json.loads(distribution('design-mcp').read_text('direct_url.json'))['vcs_info']['commit_id'] == sys.argv[1]
+          PY
+            "$RUNNER_TEMP/$arm/bin/python" -m pip freeze --exclude design-mcp > "$proof/$arm-dependencies.txt"
+          done
+          cmp "$proof/BEFORE-dependencies.txt" "$proof/AFTER-dependencies.txt"
+          npm install --prefix "$RUNNER_TEMP/playwriter" --ignore-scripts --no-fund --no-audit 'playwriter@0.12.0'
+          curl -fsSL https://storage.googleapis.com/chrome-for-testing-public/158.0.8127.36/mac-arm64/chrome-mac-arm64.zip -o "$RUNNER_TEMP/chrome.zip"
+          unzip -q "$RUNNER_TEMP/chrome.zip" -d "$RUNNER_TEMP/browser"
+      - name: Alternate ten pairs of fresh-profile captures
+        shell: bash
+        run: |
+          chrome="$RUNNER_TEMP/browser/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
+          cd "$RUNNER_TEMP"
+          python "$GITHUB_WORKSPACE/evals/vision/time_public_url.py" \
+            --before "$RUNNER_TEMP/BEFORE/bin/design-mcp" --after "$RUNNER_TEMP/AFTER/bin/design-mcp" \
+            --playwriter "$RUNNER_TEMP/playwriter/node_modules/.bin/playwriter" --chrome "$chrome" \
+            --out "$RUNNER_TEMP/url-timing-proof/report.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: public-url-timing
+          path: ${{ runner.temp }}/url-timing-proof/
+          if-no-files-found: error
+          retention-days: 7

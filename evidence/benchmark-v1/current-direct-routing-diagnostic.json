@@ -1,0 +1,104 @@
+{
+  "scope": "Replay installed routing in process and separate missing catalog surfaces from classifier misses. Match the returned surface, direction ID, and clarification count to each archived stdio result.",
+  "source": "2fcd31221671590152401d958b904141e438e453",
+  "tasks_sha256": "4f352a2a8449911c07188a8e5e311bd5454caf2616d1dfa9b25fa80f590f94d5",
+  "verified_package_paths": [
+    "design_mcp/directions.py",
+    "design_mcp/direction_records.py",
+    "design_mcp/data/directions.json"
+  ],
+  "archived_stdio_rows_reproduced": 36,
+  "supported_surfaces": [
+    "dashboard",
+    "editorial",
+    "form",
+    "landing",
+    "mobile",
+    "portfolio",
+    "pricing"
+  ],
+  "counts": {
+    "exact": 15,
+    "no-classifier-match": 8,
+    "other-surface-inferred": 1,
+    "no-reviewed-surface": 12
+  },
+  "catalog_gaps": {
+    "empty-state": 6,
+    "settings": 6
+  },
+  "classifier_misses": [
+    {
+      "case": "dashboard-coldchain",
+      "expected": "dashboard",
+      "inferred": null,
+      "returned": "landing",
+      "direction_id": "object-hero",
+      "result": "no-classifier-match"
+    },
+    {
+      "case": "dashboard-harvest",
+      "expected": "dashboard",
+      "inferred": null,
+      "returned": "landing",
+      "direction_id": "object-hero",
+      "result": "no-classifier-match"
+    },
+    {
+      "case": "dashboard-support",
+      "expected": "dashboard",
+      "inferred": null,
+      "returned": "landing",
+      "direction_id": "object-hero",
+      "result": "no-classifier-match"
+    },
+    {
+      "case": "dashboard-energy",
+      "expected": "dashboard",
+      "inferred": null,
+      "returned": "landing",
+      "direction_id": "object-hero",
+      "result": "no-classifier-match"
+    },
+    {
+      "case": "mobile-field",
+      "expected": "mobile",
+      "inferred": null,
+      "returned": "landing",
+      "direction_id": "object-hero",
+      "result": "no-classifier-match"
+    },
+    {
+      "case": "mobile-recital",
+      "expected": "mobile",
+      "inferred": null,
+      "returned": "landing",
+      "direction_id": "object-hero",
+      "result": "no-classifier-match"
+    },
+    {
+      "case": "mobile-court",
+      "expected": "mobile",
+      "inferred": null,
+      "returned": "landing",
+      "direction_id": "object-hero",
+      "result": "no-classifier-match"
+    },
+    {
+      "case": "mobile-pantry",
+      "expected": "mobile",
+      "inferred": "landing",
+      "returned": "landing",
+      "direction_id": "object-hero",
+      "result": "other-surface-inferred"
+    },
+    {
+      "case": "mobile-gallery",
+      "expected": "mobile",
+      "inferred": null,
+      "returned": "landing",
+      "direction_id": "object-hero",
+      "result": "no-classifier-match"
+    }
+  ]
+}

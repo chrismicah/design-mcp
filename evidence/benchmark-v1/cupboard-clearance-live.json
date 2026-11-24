@@ -1,0 +1,4289 @@
+{
+  "fixture": "Fictional tool library. Cabinet clearance 42 ±1 mm and swing stop 12°. Flat needs a 15° reset; Pocket is withdrawn at 17:56. Use Fine at 18:25.",
+  "scope": "Standalone designs, no MCP-assisted generation in this comparison. No host desktop input.",
+  "repair_before_scoring": "The first generated fixture added a tool head to an already assembled dimension and overflowed at 320 px. Both arms were corrected before scoring. The repaired and frozen eligible runs are included here.",
+  "installed_direction": {
+    "source_commit": "3350fea8beeaca85369b9dd643d8f9d961fbbfd4",
+    "brief": "Make the town tool library site for a first-time borrower who needs a PH2 tool tonight. The cabinet has 42 ±1 mm between the screw and the face rail, and a cleat limits swing to 12°. The desk is open 18:00–19:00. The borrower can arrive from 18:10. Stubby is 45–46 mm with direct drive and ready 18:00. Flat is 27–28 mm, needs 15° to reset and is ready 18:00. Pocket is 37–38 mm, needs 10° and is ready 18:00. Fine is 31–32 mm, needs 6° and is ready 18:25. A selected Pocket is withdrawn at 17:56 because the ratchet jams; let the visitor choose the replacement. Show the trade-off clearly and make the site visually expressive, fast, and accessible on phone.",
+    "matched_checkout_package": true,
+    "direction": {
+      "id": "object-hero",
+      "surface": "landing",
+      "title": "Object hero: the product is the page",
+      "summary": "One featured product presented as a specimen, with the details and buy control in a single purchase block.",
+      "type": {
+        "display": "Fraunces",
+        "body": "Instrument Sans",
+        "ratio": 4.0,
+        "tracking": -0.03,
+        "weight": 600,
+        "license": "OFL-1.1"
+      },
+      "palette": {
+        "ink": "#2a1610",
+        "paper": "#f3ebe0",
+        "accent": "#6b2148"
+      },
+      "layout": {
+        "skeleton": "7/5 split; the product image sits left, offset 1 column, and overlaps into a facts band",
+        "focus": "the featured product and one supplied detail that helps a buyer choose it, such as a tasting note, material, or finish",
+        "desktop": "Put the product name at the image edge. Give the deciding detail its own line. Keep the remaining facts and the add control together on the same column edges.",
+        "mobile": "At 390 px, use a shallow product crop up to 35% of the visible height. Keep the product name, deciding detail, size, price, supplied purchase facts, and add control together in reading order. Put the action in flow so it cannot cover a fact.",
+        "rhythm": "96px between bands; the ledger uses a 24px baseline"
+      },
+      "imagery": {
+        "subject": "the product on a plain surface. If it has a label, make the product name and supplied variant or size the strongest lettering.",
+        "crop": "tight, with the product cut by the right edge",
+        "fallback": "Use the product name and its deciding detail as specimen typography when product imagery is unavailable."
+      },
+      "motion": {
+        "trigger": "add to bag",
+        "effect": "bag count ticks and the pill settles 4px",
+        "duration_ms": 240,
+        "reduced": "instant count change"
+      },
+      "action": {
+        "instruction": "One primary action attached to the product. Fill it from the brief's product, size and price, and never repeat it in a hero band",
+        "label": "Add [product], [size] — [price]"
+      },
+      "why": "A first-time buyer needs one choice, not a catalogue. Making the object the hero and stating the brief's exact facts reads warm and exact.",
+      "sources": [
+        {
+          "url": "https://assets.awwwards.com/awards/submissions/2026/09/6aacf2ed22405670949235.jpg",
+          "observation": "Agrumea Farm hero: the product jars are the hero on cream paper with an oxblood shape and type set on a curve; the only CTA is a small pill on the featured jar ('Scopri il prodotto').",
+          "strength": "evidence"
+        },
+        {
+          "url": "https://www.apple.com/v/macbook-air/z/built/styles/main.built.css",
+          "observation": ".typography-hero-headline is 64px; .typography-body is 17px (a ratio of about 3.8).",
+          "strength": "evidence"
+        }
+      ],
+      "credit": "Agrumea Farm site (Awwwards submission; designer not verified)"
+    }
+  },
+  "completed_scored_rounds": 5,
+  "confirmation_included": true,
+  "rounds": [
+    {
+      "round": 1,
+      "description": "Text comparison → cabinet cutaway",
+      "review_directory": ".context/cupboard-live/blind-repaired",
+      "checked_directory": ".context/cupboard-live/check-repaired",
+      "review_pixels": [
+        {
+          "file": "A-1440-after.png",
+          "sha256": "a702ff942a89849ff54f031494ae775bb59154a3f5f7c9ac97f297857d7d3d0b",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "A-1440-before.png",
+          "sha256": "dbbda29f8a24f29e6c5a8e90faa90d40cc9c4c8b13573ff0942d61ace09af02e",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "A-1440-edge.png",
+          "sha256": "1d094a23fd0b57919e18887e495b0997adf77bbf9a49c6cf1e2df64fbcbd014d",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "A-390-after.png",
+          "sha256": "30e513c4cf1a7ceab9e0385fce62bca30b7cf52e1014bec8a5f439bc39801031",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "A-390-before.png",
+          "sha256": "2582cada129e584760157511a7f4d0fa031a2d0a223053c22c679ceb52073da2",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "A-390-edge.png",
+          "sha256": "cbde77a7487bb16ceb4cb04fd8e6ced7389e71564d6599214eb94481269d043d",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "B-1440-after.png",
+          "sha256": "0396538b92cfb6fc3daab7120ca1d14d04c325a8f55bda0a41c70f0676a044b9",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "B-1440-before.png",
+          "sha256": "5f6b889f2b65da61201ca11be22a388721603f585ea9b8a8c3160771cee9de59",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "B-1440-edge.png",
+          "sha256": "8a441fb02f0cf834e52d51541872d33556740fd63ac0b424d462dde2e76922ea",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "B-390-after.png",
+          "sha256": "b6c084a279596e5c870c55a65d2111d3bdb7c66d847b866fc6299b2978310f3b",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "B-390-before.png",
+          "sha256": "ec9faa9932514b572d52e69b7274c4220d1846222e6852dc2be20cf2681eef43",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "B-390-edge.png",
+          "sha256": "e86418ef884f92c648c72a67b1559d6f035c019d3113f684e4342b3f77e0cd35",
+          "size": [
+            390,
+            844
+          ]
+        }
+      ],
+      "audit": {
+        "identity": "ec1765d679439de6fa3df57040907d0621e959bfe1e934488d466e92e005d7d1",
+        "trace": "3bb6441b3455bf769cb09825adf8f71c5e6e50259252bd40437fcb2d9004acad"
+      },
+      "ballot": {
+        "calibration": {
+          "example": "Legible repair intake with clear labels, familiar layout and misplaced focus after an invalid number.",
+          "coherence": 7,
+          "originality": 4,
+          "craft": 6,
+          "usability": 6
+        },
+        "screens": {
+          "A-1440": {
+            "coherence": 8.5,
+            "originality": 8,
+            "craft": 8,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab twice and Enter to inspect Flat; Tab and Enter to choose Pocket.",
+              "expected": "Explain Flat's failure and select the earliest qualifying pickup.",
+              "observed": "Flat's status reports 28 mm against the 41 mm low limit and a 15° reset against the 12° stop. Pocket becomes selected for 18:10, with a 38 mm maximum height and 10° reset."
+            },
+            "edge_observation": "Tab and Enter on the simulated 17:56 update leaves Pocket selected but disabled and marked withdrawn. Focus moves to a visible receipt explaining the jam and giving Fine's 32 mm maximum, 6° reset and 18:25 pickup. Fine is one Tab away. Enter selects it; the Pocket withdrawal and receipt remain visible. Captures: A-1440-before, A-1440-after, A-1440-edge.",
+            "fact_check": "The supplied dimensions support a conditional fit prediction, not a guarantee: hand clearance is explicitly unverified. Flat's 28 mm maximum is below the 41 mm minimum opening, but its 15° reset exceeds the available 12° by 3°. Pocket is initially the earliest qualifying option at 18:10. The withdrawal is a simulated update; no real tool movement is established.",
+            "strength": "The paired recess and sweep diagrams make the two different constraints tangible, while the table puts pickup and tool measures alongside the actions.",
+            "weakness": "The wedge diagram needs its nearby text to identify the two angles, and the disabled Pocket button still says 'Choose Pocket' while pressed, which can blur the difference between a prior selection and an available choice.",
+            "repair": "Label the 12° stop and 15° required sweep directly on the diagram; give the withdrawn control a clear unavailable label while retaining the prior-selection receipt.",
+            "arm": "section",
+            "html_sha256": "7f7f9d53eefead43aca8da81cb7b4b22ad3aced9456245a0d93ff89d0de57e1b",
+            "weighted": 8.15,
+            "before": {
+              "sha256": "dbbda29f8a24f29e6c5a8e90faa90d40cc9c4c8b13573ff0942d61ace09af02e",
+              "file": "A-1440-before.png",
+              "tool_call_id": "item_2"
+            },
+            "after": {
+              "sha256": "a702ff942a89849ff54f031494ae775bb59154a3f5f7c9ac97f297857d7d3d0b",
+              "file": "A-1440-after.png",
+              "tool_call_id": "item_10"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "A-390": {
+            "coherence": 8,
+            "originality": 8,
+            "craft": 7.5,
+            "usability": 7.5,
+            "primary_action": {
+              "input": "Tab twice and Enter for Flat; Tab and Enter for Pocket.",
+              "expected": "Inspect the thinner ratchet and select Pocket for 18:10.",
+              "observed": "The same Flat comparison appears and Pocket is selected for 18:10. The keyboard sequence works at phone width."
+            },
+            "edge_observation": "The simulated update focuses the visible withdrawal receipt; Pocket remains pressed but disabled. The receipt shows Fine's evidence and the next Tab reaches Choose Fine. Enter selects Fine for 18:25 at 32 mm maximum and 6°, with the old withdrawal still clear. Captures: A-390-before, A-390-after, A-390-edge.",
+            "fact_check": "The opening view shows the 42 ±1 mm opening, 12° swing, Flat's 28 mm versus 41 mm and 15° versus 12°, and the tool rows without guessing. Hand clearance remains unverified; the simulated state is not evidence of a physical withdrawal.",
+            "strength": "The opening remains readable and the compact diagrams explain why fitting in height does not mean the ratchet can reset.",
+            "weakness": "Small diagram copy and compressed table headings demand close reading; the initial Fine row sits at the bottom edge of the viewport.",
+            "repair": "Increase diagram and table-label text size and provide a little more breathing room without separating tool dimensions from their actions.",
+            "arm": "section",
+            "html_sha256": "7f7f9d53eefead43aca8da81cb7b4b22ad3aced9456245a0d93ff89d0de57e1b",
+            "weighted": 7.8,
+            "before": {
+              "sha256": "2582cada129e584760157511a7f4d0fa031a2d0a223053c22c679ceb52073da2",
+              "file": "A-390-before.png",
+              "tool_call_id": "item_16"
+            },
+            "after": {
+              "sha256": "30e513c4cf1a7ceab9e0385fce62bca30b7cf52e1014bec8a5f439bc39801031",
+              "file": "A-390-after.png",
+              "tool_call_id": "item_24"
+            },
+            "layout_width": 375,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-1440": {
+            "coherence": 7.5,
+            "originality": 5,
+            "craft": 7.5,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab twice and Enter to inspect Flat; Tab and Enter to choose Pocket.",
+              "expected": "Explain Flat's failure and select the earliest qualifying pickup.",
+              "observed": "Flat's status gives 28 mm versus 41 mm and 15° versus 12°. Pocket is selected for 18:10 with a 38 mm maximum and 10° reset."
+            },
+            "edge_observation": "The simulated 17:56 update leaves Pocket pressed but disabled and focuses the visible jam receipt. Fine's dimensions and 18:25 pickup are in that receipt, and Choose Fine is reachable with one Tab. Enter selects Fine at 32 mm maximum and 6°; Pocket's withdrawal remains visible. Captures: B-1440-before, B-1440-after, B-1440-edge.",
+            "fact_check": "The displayed measures support a conditional fit prediction; hand clearance is unverified. Flat is 3° short of its required reset despite clearing the minimum opening. Pocket initially qualifies earliest at 18:10. No physical movement is verified.",
+            "strength": "The prose explicitly states the 3° shortfall, and the recovery receipt and keyboard focus make the substitute easy to find.",
+            "weakness": "The opening is a plain text block with substantial unused space; it states the mechanical relationship but offers no visual explanation of the cleat or swing.",
+            "repair": "Add a restrained, directly labelled spatial explanation of height and reset swing, preserving the concise numerical prose.",
+            "arm": "table",
+            "html_sha256": "7c34290f4847c2f120ec84b1913852cce9b89820400a8a41dc1b96ac96fd07f8",
+            "weighted": 6.85,
+            "before": {
+              "sha256": "5f6b889f2b65da61201ca11be22a388721603f585ea9b8a8c3160771cee9de59",
+              "file": "B-1440-before.png",
+              "tool_call_id": "item_29"
+            },
+            "after": {
+              "sha256": "0396538b92cfb6fc3daab7120ca1d14d04c325a8f55bda0a41c70f0676a044b9",
+              "file": "B-1440-after.png",
+              "tool_call_id": "item_37"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-390": {
+            "coherence": 7.5,
+            "originality": 5,
+            "craft": 7.5,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab twice and Enter for Flat; Tab and Enter for Pocket.",
+              "expected": "Inspect Flat and select Pocket for 18:10.",
+              "observed": "Flat's comparison is reported and Pocket is selected for 18:10 using the keyboard."
+            },
+            "edge_observation": "After the simulated update, focus lands on the visible receipt; Pocket remains pressed but disabled. Fine's 32 mm maximum, 6° reset and 18:25 pickup are visible, and one Tab reaches its action. Enter selects Fine and the old withdrawal stays visible. Captures: B-390-before, B-390-after, B-390-edge.",
+            "fact_check": "The phone opening explicitly shows the low-limit height, angle shortfall and unverified hand clearance. The table shows initial pickup times and dimensions. These are displayed scenario facts, not proof that a real tool moved.",
+            "strength": "The phone opening is concise and legible: the full Flat explanation and all four tool rows fit in the initial view.",
+            "weakness": "The prose requires the reader to construct the physical geometry mentally, and the table's small headings are cramped.",
+            "repair": "Use a compact labelled geometry cue and enlarge the table headings while keeping the recovery action adjacent to its evidence.",
+            "arm": "table",
+            "html_sha256": "7c34290f4847c2f120ec84b1913852cce9b89820400a8a41dc1b96ac96fd07f8",
+            "weighted": 6.85,
+            "before": {
+              "sha256": "ec9faa9932514b572d52e69b7274c4220d1846222e6852dc2be20cf2681eef43",
+              "file": "B-390-before.png",
+              "tool_call_id": "item_42"
+            },
+            "after": {
+              "sha256": "b6c084a279596e5c870c55a65d2111d3bdb7c66d847b866fc6299b2978310f3b",
+              "file": "B-390-after.png",
+              "tool_call_id": "item_50"
+            },
+            "layout_width": 375,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          }
+        },
+        "preference": {
+          "winner": "A",
+          "reason": "Both views completed the keyboard flow and preserved the withdrawal evidence. A's two-part visual mechanism gives the height and swing limits a useful spatial explanation, making the key distinction more memorable. Its small phone labels and ambiguous withdrawn button prevent a higher score."
+        },
+        "case": "cupboard-clearance",
+        "verified_screens": 4,
+        "required_screens": 4,
+        "browser": "Chrome/160.0.8178.0",
+        "evaluator_thread": "01a20887-8df4-75e3-b381-832cd4e3346e",
+        "usage": {
+          "input_tokens": 574434,
+          "cached_input_tokens": 544128,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2958,
+          "reasoning_output_tokens": 0
+        },
+        "trace_sha256": "3bb6441b3455bf769cb09825adf8f71c5e6e50259252bd40437fcb2d9004acad",
+        "browser_audit_sha256": "53c2a2ded23119684e4605f75729f3eb91f967ba9faf9b36014c6d4be2783309"
+      },
+      "journeys": [
+        {
+          "arm": "table",
+          "build": "7c34290f4847c2f120ec84b1913852cce9b89820400a8a41dc1b96ac96fd07f8",
+          "viewport": [
+            1440,
+            900
+          ],
+          "input": "keyboard",
+          "opening_tool_bottoms": [
+            385.5,
+            452.5,
+            539.8,
+            627.2
+          ],
+          "withdrawal_focus": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+          "fine_focused": true,
+          "confirmation_visible": null,
+          "selection_figure": null,
+          "facts": {
+            "flat": "Flat fits at 28 mm, below the 41 mm low limit. Its 15° reset needs 3° more than the 12° stop.",
+            "pocket": "Pocket selected for 18:10. Its 38 mm maximum and 10° reset both fit.",
+            "withdrawn": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+            "fine": "Fine selected for 18:25. Its 32 mm maximum and 6° reset both fit."
+          },
+          "frames": [
+            {
+              "file": "table-1440-initial.png",
+              "sha256": "5f6b889f2b65da61201ca11be22a388721603f585ea9b8a8c3160771cee9de59",
+              "phase": "initial"
+            },
+            {
+              "file": "table-1440-flat.png",
+              "sha256": "bdf9c2668130c276bb364ef31f92bdad1b0161c8fd14d1c84fd2cc15e8cce462",
+              "phase": "flat"
+            },
+            {
+              "file": "table-1440-pocket.png",
+              "sha256": "c91095784f8b6cd5d9d13e7ebd38226b8d308c769df2b7e721b2384d35d93036",
+              "phase": "pocket"
+            },
+            {
+              "file": "table-1440-withdrawn.png",
+              "sha256": "0396538b92cfb6fc3daab7120ca1d14d04c325a8f55bda0a41c70f0676a044b9",
+              "phase": "withdrawn"
+            },
+            {
+              "file": "table-1440-replacement.png",
+              "sha256": "8a441fb02f0cf834e52d51541872d33556740fd63ac0b424d462dde2e76922ea",
+              "phase": "replacement"
+            }
+          ]
+        },
+        {
+          "arm": "table",
+          "build": "7c34290f4847c2f120ec84b1913852cce9b89820400a8a41dc1b96ac96fd07f8",
+          "viewport": [
+            390,
+            844
+          ],
+          "input": "keyboard",
+          "opening_tool_bottoms": [
+            632.7,
+            697.7,
+            762.7,
+            827.7
+          ],
+          "withdrawal_focus": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+          "fine_focused": true,
+          "confirmation_visible": null,
+          "selection_figure": null,
+          "facts": {
+            "flat": "Flat fits at 28 mm, below the 41 mm low limit. Its 15° reset needs 3° more than the 12° stop.",
+            "pocket": "Pocket selected for 18:10. Its 38 mm maximum and 10° reset both fit.",
+            "withdrawn": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+            "fine": "Fine selected for 18:25. Its 32 mm maximum and 6° reset both fit."
+          },
+          "frames": [
+            {
+              "file": "table-390-initial.png",
+              "sha256": "ec9faa9932514b572d52e69b7274c4220d1846222e6852dc2be20cf2681eef43",
+              "phase": "initial"
+            },
+            {
+              "file": "table-390-flat.png",
+              "sha256": "fe97e9ee014d296f92212f77e9fc61006be448fa0aa3342c2b8e8548e61e4a73",
+              "phase": "flat"
+            },
+            {
+              "file": "table-390-pocket.png",
+              "sha256": "50048d43706ce469826970ae3177d4748bf5165fb5ccf882e3bf77ed66459b7f",
+              "phase": "pocket"
+            },
+            {
+              "file": "table-390-withdrawn.png",
+              "sha256": "b6c084a279596e5c870c55a65d2111d3bdb7c66d847b866fc6299b2978310f3b",
+              "phase": "withdrawn"
+            },
+            {
+              "file": "table-390-replacement.png",
+              "sha256": "e86418ef884f92c648c72a67b1559d6f035c019d3113f684e4342b3f77e0cd35",
+              "phase": "replacement"
+            }
+          ]
+        },
+        {
+          "arm": "table",
+          "build": "7c34290f4847c2f120ec84b1913852cce9b89820400a8a41dc1b96ac96fd07f8",
+          "viewport": [
+            320,
+            700
+          ],
+          "input": "pointer/reduced-motion",
+          "opening_tool_bottoms": [
+            723.5,
+            788.5,
+            853.5,
+            918.5
+          ],
+          "withdrawal_focus": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+          "fine_focused": true,
+          "confirmation_visible": null,
+          "selection_figure": null,
+          "facts": {
+            "flat": "Flat fits at 28 mm, below the 41 mm low limit. Its 15° reset needs 3° more than the 12° stop.",
+            "pocket": "Pocket selected for 18:10. Its 38 mm maximum and 10° reset both fit.",
+            "withdrawn": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+            "fine": "Fine selected for 18:25. Its 32 mm maximum and 6° reset both fit."
+          },
+          "frames": [
+            {
+              "file": "table-320-initial.png",
+              "sha256": "ef50a6af7ec6a7e69ac3c09d811d6473dc255ed3aeb1ff59b8bb70b55750da58",
+              "phase": "initial"
+            },
+            {
+              "file": "table-320-flat.png",
+              "sha256": "01fb1ed4745c98a451c06b9f1387cadc12147bd0d2eaf1f3cc098a2c8d83b6f0",
+              "phase": "flat"
+            },
+            {
+              "file": "table-320-pocket.png",
+              "sha256": "54cb03d56d2982fafa1fd0e662c35d30ccd807a51bff3721f44f3e01ae417017",
+              "phase": "pocket"
+            },
+            {
+              "file": "table-320-withdrawn.png",
+              "sha256": "c5a8dad1adb4c2cfab3e9917380a3fa66bd059d8e1d233cd2a158e94e07d0edf",
+              "phase": "withdrawn"
+            },
+            {
+              "file": "table-320-replacement.png",
+              "sha256": "0712abb9707b6753014fc870db6d626c9edb65b6b17c8ed61ab02ebafb1f7d34",
+              "phase": "replacement"
+            }
+          ]
+        },
+        {
+          "arm": "section",
+          "build": "7f7f9d53eefead43aca8da81cb7b4b22ad3aced9456245a0d93ff89d0de57e1b",
+          "viewport": [
+            1440,
+            900
+          ],
+          "input": "keyboard",
+          "opening_tool_bottoms": [
+            385.5,
+            452.5,
+            539.8,
+            627.2
+          ],
+          "withdrawal_focus": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+          "fine_focused": true,
+          "confirmation_visible": null,
+          "selection_figure": null,
+          "facts": {
+            "flat": "Flat fits at 28 mm, below the 41 mm low limit. Its 15° reset needs 3° more than the 12° stop.",
+            "pocket": "Pocket selected for 18:10. Its 38 mm maximum and 10° reset both fit.",
+            "withdrawn": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+            "fine": "Fine selected for 18:25. Its 32 mm maximum and 6° reset both fit."
+          },
+          "frames": [
+            {
+              "file": "section-1440-initial.png",
+              "sha256": "dbbda29f8a24f29e6c5a8e90faa90d40cc9c4c8b13573ff0942d61ace09af02e",
+              "phase": "initial"
+            },
+            {
+              "file": "section-1440-flat.png",
+              "sha256": "19fdd68dc0a0d362a80145dd32dbf4ea051eabda35a709867e1dcd4a59f10ddf",
+              "phase": "flat"
+            },
+            {
+              "file": "section-1440-pocket.png",
+              "sha256": "d896bd43b25c076c2bb670e2256c483d1db329a29771062e155d13bc0bbf2fc1",
+              "phase": "pocket"
+            },
+            {
+              "file": "section-1440-withdrawn.png",
+              "sha256": "a702ff942a89849ff54f031494ae775bb59154a3f5f7c9ac97f297857d7d3d0b",
+              "phase": "withdrawn"
+            },
+            {
+              "file": "section-1440-replacement.png",
+              "sha256": "1d094a23fd0b57919e18887e495b0997adf77bbf9a49c6cf1e2df64fbcbd014d",
+              "phase": "replacement"
+            }
+          ]
+        },
+        {
+          "arm": "section",
+          "build": "7f7f9d53eefead43aca8da81cb7b4b22ad3aced9456245a0d93ff89d0de57e1b",
+          "viewport": [
+            390,
+            844
+          ],
+          "input": "keyboard",
+          "opening_tool_bottoms": [
+            657.4,
+            722.4,
+            787.4,
+            852.4
+          ],
+          "withdrawal_focus": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+          "fine_focused": true,
+          "confirmation_visible": null,
+          "selection_figure": null,
+          "facts": {
+            "flat": "Flat fits at 28 mm, below the 41 mm low limit. Its 15° reset needs 3° more than the 12° stop.",
+            "pocket": "Pocket selected for 18:10. Its 38 mm maximum and 10° reset both fit.",
+            "withdrawn": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+            "fine": "Fine selected for 18:25. Its 32 mm maximum and 6° reset both fit."
+          },
+          "frames": [
+            {
+              "file": "section-390-initial.png",
+              "sha256": "2582cada129e584760157511a7f4d0fa031a2d0a223053c22c679ceb52073da2",
+              "phase": "initial"
+            },
+            {
+              "file": "section-390-flat.png",
+              "sha256": "af017311ffc8dfb4d4cb06bf84fc246161b000f56644ea38707a6c279fdaf411",
+              "phase": "flat"
+            },
+            {
+              "file": "section-390-pocket.png",
+              "sha256": "e7bc4cd9293424b710592144ab4c8bfb73313031840a12c2885614eae68a8e21",
+              "phase": "pocket"
+            },
+            {
+              "file": "section-390-withdrawn.png",
+              "sha256": "30e513c4cf1a7ceab9e0385fce62bca30b7cf52e1014bec8a5f439bc39801031",
+              "phase": "withdrawn"
+            },
+            {
+              "file": "section-390-replacement.png",
+              "sha256": "cbde77a7487bb16ceb4cb04fd8e6ced7389e71564d6599214eb94481269d043d",
+              "phase": "replacement"
+            }
+          ]
+        },
+        {
+          "arm": "section",
+          "build": "7f7f9d53eefead43aca8da81cb7b4b22ad3aced9456245a0d93ff89d0de57e1b",
+          "viewport": [
+            320,
+            700
+          ],
+          "input": "pointer/reduced-motion",
+          "opening_tool_bottoms": [
+            768.3,
+            833.3,
+            898.3,
+            963.3
+          ],
+          "withdrawal_focus": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+          "fine_focused": true,
+          "confirmation_visible": null,
+          "selection_figure": null,
+          "facts": {
+            "flat": "Flat fits at 28 mm, below the 41 mm low limit. Its 15° reset needs 3° more than the 12° stop.",
+            "pocket": "Pocket selected for 18:10. Its 38 mm maximum and 10° reset both fit.",
+            "withdrawn": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+            "fine": "Fine selected for 18:25. Its 32 mm maximum and 6° reset both fit."
+          },
+          "frames": [
+            {
+              "file": "section-320-initial.png",
+              "sha256": "663f80c1925b9505dd52892d5e46a959b89d664d005cc2b9926d85a8fd3f1d9f",
+              "phase": "initial"
+            },
+            {
+              "file": "section-320-flat.png",
+              "sha256": "268dca36c7068e73e8fade285c40f332849152cdb2909c69ca40adbc3edf88e3",
+              "phase": "flat"
+            },
+            {
+              "file": "section-320-pocket.png",
+              "sha256": "7fd98766658e71c8986a336f6a705cde3aad76194fa6b719a4317a1378b8d65c",
+              "phase": "pocket"
+            },
+            {
+              "file": "section-320-withdrawn.png",
+              "sha256": "d9f79d2f64ad6b020f1cee84b6ab22698efda7dd5fe591ec7198d1fbebbc8bbe",
+              "phase": "withdrawn"
+            },
+            {
+              "file": "section-320-replacement.png",
+              "sha256": "fb9f079c2d06f408e925ba4c3e9adf885ccdf5d9c34b7897c60ae1065421a1f2",
+              "phase": "replacement"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "description": "Cabinet cutaway → directly labelled dimensions",
+      "review_directory": ".context/cupboard-live/blind-round2",
+      "checked_directory": ".context/cupboard-live/check-round2",
+      "review_pixels": [
+        {
+          "file": "A-1440-after.png",
+          "sha256": "a702ff942a89849ff54f031494ae775bb59154a3f5f7c9ac97f297857d7d3d0b",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "A-1440-before.png",
+          "sha256": "dbbda29f8a24f29e6c5a8e90faa90d40cc9c4c8b13573ff0942d61ace09af02e",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "A-1440-edge.png",
+          "sha256": "1d094a23fd0b57919e18887e495b0997adf77bbf9a49c6cf1e2df64fbcbd014d",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "A-390-after.png",
+          "sha256": "30e513c4cf1a7ceab9e0385fce62bca30b7cf52e1014bec8a5f439bc39801031",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "A-390-before.png",
+          "sha256": "2582cada129e584760157511a7f4d0fa031a2d0a223053c22c679ceb52073da2",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "A-390-edge.png",
+          "sha256": "cbde77a7487bb16ceb4cb04fd8e6ced7389e71564d6599214eb94481269d043d",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "B-1440-after.png",
+          "sha256": "240d89956a95503f3822eb73bca9702e1e398657faf2033eeaa7137c1bc00893",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "B-1440-before.png",
+          "sha256": "cc074df251da6c110efd271a7c53594694fe4a4daf63ca145ab24fb46564cb97",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "B-1440-edge.png",
+          "sha256": "7ee76ad487a1bc09a30fb36955009e9b01a64d2577bcc7ed32d15b3111967acb",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "B-390-after.png",
+          "sha256": "de21ebf013514238945f83750cc5bd8ef9eaa4033a13069e6d3321bc0a3116dd",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "B-390-before.png",
+          "sha256": "e38f9303c43a19d05661f314f3c05241ff7f0861846f474a68fc2c8591811103",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "B-390-edge.png",
+          "sha256": "9f61ce1ad2880c9b5729956dbd7641022c12a6c21c6a47e99b3d2f7ba0634171",
+          "size": [
+            390,
+            844
+          ]
+        }
+      ],
+      "audit": {
+        "identity": "949cac8cfaffd1503dfb92e866c4309b36bb4feca140a2177a3deb48f763d5d3",
+        "trace": "6d4d561e7887561889b0ebb114e860918452895f2cfc731bd0cf9813679a1520"
+      },
+      "ballot": {
+        "calibration": {
+          "example": "Legible repair intake with clear labels, familiar layout, and misplaced focus after an invalid number.",
+          "coherence": 7,
+          "originality": 4,
+          "craft": 6,
+          "usability": 6
+        },
+        "screens": {
+          "A-1440": {
+            "coherence": 8,
+            "originality": 7,
+            "craft": 7.5,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab to Inspect Flat and press Enter; Tab to Choose Pocket and press Enter.",
+              "expected": "Explain Flat's limits and select the earliest qualifying pickup.",
+              "observed": "Flat's status reports 28 mm against the 41 mm low limit and a reset 3° beyond the stop. Pocket becomes selected for 18:10, with a 38 mm maximum and 10° reset."
+            },
+            "edge_observation": "After keyboard activation of the simulated 17:56 update, Pocket remains pressed but disabled; the page says its ratchet jammed and it was withdrawn. Focus moves to the conflict explanation, which gives Fine's 32 mm, 6°, and 18:25 evidence. One Tab reaches Choose Fine. Enter selects it for 18:25; the old withdrawal and reason remain visible.",
+            "fact_check": "The measurements support a dimensional prediction, not a confirmed physical fit: hand clearance is explicitly unverified. Flat's 28 mm maximum is 13 mm below the 41 mm minimum opening, but its 15° reset exceeds the 12° swing by 3°. Pocket initially qualifies at 18:10. No physical pickup or movement was verified.",
+            "strength": "The paired height and sweep diagrams make two different constraints visible, and the conflict is focused and adjacent to the replacement.",
+            "weakness": "The sweep graphic lacks direct labels on its colored areas, and the disabled button still reads Choose Pocket after withdrawal.",
+            "repair": "Label the stop and required sweep directly, and change the disabled action label to Unavailable.",
+            "arm": "table",
+            "html_sha256": "7f7f9d53eefead43aca8da81cb7b4b22ad3aced9456245a0d93ff89d0de57e1b",
+            "weighted": 7.6,
+            "before": {
+              "sha256": "dbbda29f8a24f29e6c5a8e90faa90d40cc9c4c8b13573ff0942d61ace09af02e",
+              "file": "A-1440-before.png",
+              "tool_call_id": "item_2"
+            },
+            "after": {
+              "sha256": "a702ff942a89849ff54f031494ae775bb59154a3f5f7c9ac97f297857d7d3d0b",
+              "file": "A-1440-after.png",
+              "tool_call_id": "item_10"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "A-390": {
+            "coherence": 7.5,
+            "originality": 7,
+            "craft": 7,
+            "usability": 7.5,
+            "primary_action": {
+              "input": "Tab to Inspect Flat, Enter, then Tab to Choose Pocket and Enter.",
+              "expected": "Inspect Flat and select Pocket for 18:10.",
+              "observed": "The same dimensional explanation and Pocket selection were available by keyboard."
+            },
+            "edge_observation": "The simulated update focused the visible withdrawal explanation. Pocket remained pressed and disabled; Fine's evidence appeared in the explanation and its button was one Tab away. Enter selected Fine for 18:25 with 32 mm maximum and 6° reset; the old withdrawal remained visible.",
+            "fact_check": "The opening view shows the 42 ±1 mm opening, 12° swing, Flat's 28 mm and 41 mm comparison, and 15° reset. Hand clearance remains unverified; a real-world fit or loan cannot be inferred.",
+            "strength": "The opening, schematic and all four driver rows fit into a compact vertical reading order without horizontal scrolling.",
+            "weakness": "The schematic text and table headings are small, while the colored sweep still requires cross-reading the prose to identify each limit. The disabled Pocket button retains an actionable label.",
+            "repair": "Increase the small diagram and table labels, label the sweep in place, and state Unavailable on the withdrawn control.",
+            "arm": "table",
+            "html_sha256": "7f7f9d53eefead43aca8da81cb7b4b22ad3aced9456245a0d93ff89d0de57e1b",
+            "weighted": 7.25,
+            "before": {
+              "sha256": "2582cada129e584760157511a7f4d0fa031a2d0a223053c22c679ceb52073da2",
+              "file": "A-390-before.png",
+              "tool_call_id": "item_16"
+            },
+            "after": {
+              "sha256": "30e513c4cf1a7ceab9e0385fce62bca30b7cf52e1014bec8a5f439bc39801031",
+              "file": "A-390-after.png",
+              "tool_call_id": "item_24"
+            },
+            "layout_width": 375,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-1440": {
+            "coherence": 8.5,
+            "originality": 7.5,
+            "craft": 8.5,
+            "usability": 8.5,
+            "primary_action": {
+              "input": "Tab to Inspect Flat and press Enter; Tab to Choose Pocket and press Enter.",
+              "expected": "Explain Flat's fit and failure, then select Pocket for the earliest qualifying pickup.",
+              "observed": "Flat's status gives 28 mm versus 41 mm and 15° versus 12°. Pocket is selected for 18:10, with its 38 mm maximum and 10° reset stated."
+            },
+            "edge_observation": "The simulated 17:56 update leaves Pocket pressed but disabled and labels it Unavailable. Focus moves to the withdrawal explanation, which names the jam and gives Fine's 32 mm, 6°, and 18:25 evidence. One Tab reaches Choose Fine; Enter selects it, while the withdrawal remains visible.",
+            "fact_check": "The displayed dimensions support a predicted fit on height and reset only. Flat has 13 mm height clearance at the low opening limit but needs 3° more swing than available. Pocket initially qualifies at 18:10. Hand clearance and an actual loan are not verified.",
+            "strength": "Direct labels attach 41 mm, 28 mm, 15° reset and 12° stop to the drawing; the unavailable state is explicit and recovery is keyboard reachable.",
+            "weakness": "The drawing is schematic and the side cleat's physical relationship to the sweep is still somewhat abstract. The conflict text describes Fine as fitting without repeating the hand-clearance qualification.",
+            "repair": "Connect the cleat and sweep more explicitly in the diagram and qualify the substitute as a dimensional fit pending hand-clearance verification.",
+            "arm": "section",
+            "html_sha256": "733dd963562a1d6e2cd7827eff21bb29470ffa454247cb3279a7ca1374de06af",
+            "weighted": 8.2,
+            "before": {
+              "sha256": "cc074df251da6c110efd271a7c53594694fe4a4daf63ca145ab24fb46564cb97",
+              "file": "B-1440-before.png",
+              "tool_call_id": "item_29"
+            },
+            "after": {
+              "sha256": "240d89956a95503f3822eb73bca9702e1e398657faf2033eeaa7137c1bc00893",
+              "file": "B-1440-after.png",
+              "tool_call_id": "item_37"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-390": {
+            "coherence": 8,
+            "originality": 7.5,
+            "craft": 8,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab to Inspect Flat, Enter, then Tab to Choose Pocket and Enter.",
+              "expected": "Inspect Flat and select Pocket for 18:10.",
+              "observed": "The keyboard flow produced the Flat explanation and selected Pocket for 18:10."
+            },
+            "edge_observation": "The update focused the withdrawal explanation, with Pocket still pressed, disabled and marked Unavailable. Fine's evidence was visible and its action was reached with one Tab. Enter selected Fine for 18:25, 32 mm maximum and 6° reset; the earlier withdrawal remained visible. The confirmation status was below the captured viewport but present in the accessibility output.",
+            "fact_check": "The phone opening shows the 41 mm and 28 mm labels, 12° stop, 15° reset, and the 13 mm and 3° differences without calculation. These predict dimensional compatibility only; hand clearance is unverified and no real tool movement was observed.",
+            "strength": "The compact opening places directly labeled comparisons and all four choices on the initial screen.",
+            "weakness": "The diagram and table labels are small on phone, and the selected Fine confirmation falls below the captured viewport after activation.",
+            "repair": "Give the diagram labels more room and place the selection confirmation immediately beside the focused choice on small screens.",
+            "arm": "section",
+            "html_sha256": "733dd963562a1d6e2cd7827eff21bb29470ffa454247cb3279a7ca1374de06af",
+            "weighted": 7.85,
+            "before": {
+              "sha256": "e38f9303c43a19d05661f314f3c05241ff7f0861846f474a68fc2c8591811103",
+              "file": "B-390-before.png",
+              "tool_call_id": "item_43"
+            },
+            "after": {
+              "sha256": "de21ebf013514238945f83750cc5bd8ef9eaa4033a13069e6d3321bc0a3116dd",
+              "file": "B-390-after.png",
+              "tool_call_id": "item_51"
+            },
+            "layout_width": 375,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          }
+        },
+        "preference": {
+          "winner": "B",
+          "reason": "B puts the limiting measurements directly on the diagrams, names the clearance and swing differences, and labels the withdrawn action Unavailable. Both versions support the tested keyboard recovery, but B makes the evidence and conflict easier to interpret at both widths."
+        },
+        "unsupported_claims": [
+          "A guaranteed physical fit is unsupported because hand clearance is unverified.",
+          "A real reservation, pickup, withdrawal, or physical tool movement is unsupported by this simulated interface."
+        ],
+        "case": "cupboard-clearance",
+        "verified_screens": 4,
+        "required_screens": 4,
+        "browser": "Chrome/160.0.8178.0",
+        "evaluator_thread": "01a20889-e9af-7ff2-a601-6df42636d8e3",
+        "usage": {
+          "input_tokens": 576373,
+          "cached_input_tokens": 522112,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3123,
+          "reasoning_output_tokens": 0
+        },
+        "trace_sha256": "6d4d561e7887561889b0ebb114e860918452895f2cfc731bd0cf9813679a1520",
+        "browser_audit_sha256": "face2d095a95281ccba5808fe9903e4c9a67aab0a42626142506a3bb30badecb"
+      },
+      "journeys": [
+        {
+          "arm": "table",
+          "build": "7f7f9d53eefead43aca8da81cb7b4b22ad3aced9456245a0d93ff89d0de57e1b",
+          "viewport": [
+            1440,
+            900
+          ],
+          "input": "keyboard",
+          "opening_tool_bottoms": [
+            385.5,
+            452.5,
+            539.8,
+            627.2
+          ],
+          "withdrawal_focus": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+          "fine_focused": true,
+          "confirmation_visible": null,
+          "selection_figure": null,
+          "facts": {
+            "flat": "Flat fits at 28 mm, below the 41 mm low limit. Its 15° reset needs 3° more than the 12° stop.",
+            "pocket": "Pocket selected for 18:10. Its 38 mm maximum and 10° reset both fit.",
+            "withdrawn": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+            "fine": "Fine selected for 18:25. Its 32 mm maximum and 6° reset both fit."
+          },
+          "frames": [
+            {
+              "file": "table-1440-initial.png",
+              "sha256": "dbbda29f8a24f29e6c5a8e90faa90d40cc9c4c8b13573ff0942d61ace09af02e",
+              "phase": "initial"
+            },
+            {
+              "file": "table-1440-flat.png",
+              "sha256": "19fdd68dc0a0d362a80145dd32dbf4ea051eabda35a709867e1dcd4a59f10ddf",
+              "phase": "flat"
+            },
+            {
+              "file": "table-1440-pocket.png",
+              "sha256": "d896bd43b25c076c2bb670e2256c483d1db329a29771062e155d13bc0bbf2fc1",
+              "phase": "pocket"
+            },
+            {
+              "file": "table-1440-withdrawn.png",
+              "sha256": "a702ff942a89849ff54f031494ae775bb59154a3f5f7c9ac97f297857d7d3d0b",
+              "phase": "withdrawn"
+            },
+            {
+              "file": "table-1440-replacement.png",
+              "sha256": "1d094a23fd0b57919e18887e495b0997adf77bbf9a49c6cf1e2df64fbcbd014d",
+              "phase": "replacement"
+            }
+          ]
+        },
+        {
+          "arm": "table",
+          "build": "7f7f9d53eefead43aca8da81cb7b4b22ad3aced9456245a0d93ff89d0de57e1b",
+          "viewport": [
+            390,
+            844
+          ],
+          "input": "keyboard",
+          "opening_tool_bottoms": [
+            657.4,
+            722.4,
+            787.4,
+            852.4
+          ],
+          "withdrawal_focus": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+          "fine_focused": true,
+          "confirmation_visible": null,
+          "selection_figure": null,
+          "facts": {
+            "flat": "Flat fits at 28 mm, below the 41 mm low limit. Its 15° reset needs 3° more than the 12° stop.",
+            "pocket": "Pocket selected for 18:10. Its 38 mm maximum and 10° reset both fit.",
+            "withdrawn": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+            "fine": "Fine selected for 18:25. Its 32 mm maximum and 6° reset both fit."
+          },
+          "frames": [
+            {
+              "file": "table-390-initial.png",
+              "sha256": "2582cada129e584760157511a7f4d0fa031a2d0a223053c22c679ceb52073da2",
+              "phase": "initial"
+            },
+            {
+              "file": "table-390-flat.png",
+              "sha256": "af017311ffc8dfb4d4cb06bf84fc246161b000f56644ea38707a6c279fdaf411",
+              "phase": "flat"
+            },
+            {
+              "file": "table-390-pocket.png",
+              "sha256": "e7bc4cd9293424b710592144ab4c8bfb73313031840a12c2885614eae68a8e21",
+              "phase": "pocket"
+            },
+            {
+              "file": "table-390-withdrawn.png",
+              "sha256": "30e513c4cf1a7ceab9e0385fce62bca30b7cf52e1014bec8a5f439bc39801031",
+              "phase": "withdrawn"
+            },
+            {
+              "file": "table-390-replacement.png",
+              "sha256": "cbde77a7487bb16ceb4cb04fd8e6ced7389e71564d6599214eb94481269d043d",
+              "phase": "replacement"
+            }
+          ]
+        },
+        {
+          "arm": "table",
+          "build": "7f7f9d53eefead43aca8da81cb7b4b22ad3aced9456245a0d93ff89d0de57e1b",
+          "viewport": [
+            320,
+            700
+          ],
+          "input": "pointer/reduced-motion",
+          "opening_tool_bottoms": [
+            768.3,
+            833.3,
+            898.3,
+            963.3
+          ],
+          "withdrawal_focus": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+          "fine_focused": true,
+          "confirmation_visible": null,
+          "selection_figure": null,
+          "facts": {
+            "flat": "Flat fits at 28 mm, below the 41 mm low limit. Its 15° reset needs 3° more than the 12° stop.",
+            "pocket": "Pocket selected for 18:10. Its 38 mm maximum and 10° reset both fit.",
+            "withdrawn": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+            "fine": "Fine selected for 18:25. Its 32 mm maximum and 6° reset both fit."
+          },
+          "frames": [
+            {
+              "file": "table-320-initial.png",
+              "sha256": "663f80c1925b9505dd52892d5e46a959b89d664d005cc2b9926d85a8fd3f1d9f",
+              "phase": "initial"
+            },
+            {
+              "file": "table-320-flat.png",
+              "sha256": "268dca36c7068e73e8fade285c40f332849152cdb2909c69ca40adbc3edf88e3",
+              "phase": "flat"
+            },
+            {
+              "file": "table-320-pocket.png",
+              "sha256": "7fd98766658e71c8986a336f6a705cde3aad76194fa6b719a4317a1378b8d65c",
+              "phase": "pocket"
+            },
+            {
+              "file": "table-320-withdrawn.png",
+              "sha256": "d9f79d2f64ad6b020f1cee84b6ab22698efda7dd5fe591ec7198d1fbebbc8bbe",
+              "phase": "withdrawn"
+            },
+            {
+              "file": "table-320-replacement.png",
+              "sha256": "fb9f079c2d06f408e925ba4c3e9adf885ccdf5d9c34b7897c60ae1065421a1f2",
+              "phase": "replacement"
+            }
+          ]
+        },
+        {
+          "arm": "section",
+          "build": "733dd963562a1d6e2cd7827eff21bb29470ffa454247cb3279a7ca1374de06af",
+          "viewport": [
+            1440,
+            900
+          ],
+          "input": "keyboard",
+          "opening_tool_bottoms": [
+            363.4,
+            430.4,
+            517.7,
+            584.7
+          ],
+          "withdrawal_focus": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+          "fine_focused": true,
+          "confirmation_visible": null,
+          "selection_figure": null,
+          "facts": {
+            "flat": "Flat fits at 28 mm, below the 41 mm low limit. Its 15° reset needs 3° more than the 12° stop.",
+            "pocket": "Pocket selected for 18:10. Its 38 mm maximum and 10° reset both fit.",
+            "withdrawn": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+            "fine": "Fine selected for 18:25. Its 32 mm maximum and 6° reset both fit."
+          },
+          "frames": [
+            {
+              "file": "section-1440-initial.png",
+              "sha256": "cc074df251da6c110efd271a7c53594694fe4a4daf63ca145ab24fb46564cb97",
+              "phase": "initial"
+            },
+            {
+              "file": "section-1440-flat.png",
+              "sha256": "c41c9316e8ec5b55f8cb25f8891b3ca3dc719c5a047cd7106e821c38a1374d58",
+              "phase": "flat"
+            },
+            {
+              "file": "section-1440-pocket.png",
+              "sha256": "1bcfb27d3d16809bd5bf64a3fab4a356793e7566ba9f3451d635a7ce3dde968f",
+              "phase": "pocket"
+            },
+            {
+              "file": "section-1440-withdrawn.png",
+              "sha256": "240d89956a95503f3822eb73bca9702e1e398657faf2033eeaa7137c1bc00893",
+              "phase": "withdrawn"
+            },
+            {
+              "file": "section-1440-replacement.png",
+              "sha256": "7ee76ad487a1bc09a30fb36955009e9b01a64d2577bcc7ed32d15b3111967acb",
+              "phase": "replacement"
+            }
+          ]
+        },
+        {
+          "arm": "section",
+          "build": "733dd963562a1d6e2cd7827eff21bb29470ffa454247cb3279a7ca1374de06af",
+          "viewport": [
+            390,
+            844
+          ],
+          "input": "keyboard",
+          "opening_tool_bottoms": [
+            595.3,
+            652.3,
+            709.3,
+            766.3
+          ],
+          "withdrawal_focus": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+          "fine_focused": true,
+          "confirmation_visible": null,
+          "selection_figure": null,
+          "facts": {
+            "flat": "Flat fits at 28 mm, below the 41 mm low limit. Its 15° reset needs 3° more than the 12° stop.",
+            "pocket": "Pocket selected for 18:10. Its 38 mm maximum and 10° reset both fit.",
+            "withdrawn": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+            "fine": "Fine selected for 18:25. Its 32 mm maximum and 6° reset both fit."
+          },
+          "frames": [
+            {
+              "file": "section-390-initial.png",
+              "sha256": "e38f9303c43a19d05661f314f3c05241ff7f0861846f474a68fc2c8591811103",
+              "phase": "initial"
+            },
+            {
+              "file": "section-390-flat.png",
+              "sha256": "d3887989fe093372df1a0bacfddb80221495a4c1ef5c8007f07c418a208dbc1b",
+              "phase": "flat"
+            },
+            {
+              "file": "section-390-pocket.png",
+              "sha256": "a7c2d1862cbd11bb97159c47e35eeb2b5cfac0496ba11d928079dc364ad53882",
+              "phase": "pocket"
+            },
+            {
+              "file": "section-390-withdrawn.png",
+              "sha256": "de21ebf013514238945f83750cc5bd8ef9eaa4033a13069e6d3321bc0a3116dd",
+              "phase": "withdrawn"
+            },
+            {
+              "file": "section-390-replacement.png",
+              "sha256": "9f61ce1ad2880c9b5729956dbd7641022c12a6c21c6a47e99b3d2f7ba0634171",
+              "phase": "replacement"
+            }
+          ]
+        },
+        {
+          "arm": "section",
+          "build": "733dd963562a1d6e2cd7827eff21bb29470ffa454247cb3279a7ca1374de06af",
+          "viewport": [
+            320,
+            700
+          ],
+          "input": "pointer/reduced-motion",
+          "opening_tool_bottoms": [
+            624.4,
+            681.4,
+            738.4,
+            795.4
+          ],
+          "withdrawal_focus": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+          "fine_focused": true,
+          "confirmation_visible": null,
+          "selection_figure": null,
+          "facts": {
+            "flat": "Flat fits at 28 mm, below the 41 mm low limit. Its 15° reset needs 3° more than the 12° stop.",
+            "pocket": "Pocket selected for 18:10. Its 38 mm maximum and 10° reset both fit.",
+            "withdrawn": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+            "fine": "Fine selected for 18:25. Its 32 mm maximum and 6° reset both fit."
+          },
+          "frames": [
+            {
+              "file": "section-320-initial.png",
+              "sha256": "4eab1926209d3196891357087e6730fdf4bec7a758a20774607f5e9f77c37acf",
+              "phase": "initial"
+            },
+            {
+              "file": "section-320-flat.png",
+              "sha256": "bcb15f9593eff51d48965aca9af7e882b87f77203b3699064ded191c428ffe7c",
+              "phase": "flat"
+            },
+            {
+              "file": "section-320-pocket.png",
+              "sha256": "17b74ceb0d7c56cfde9fa65fd94baca5cf84b96923dd233eeffa9666f4e88ef3",
+              "phase": "pocket"
+            },
+            {
+              "file": "section-320-withdrawn.png",
+              "sha256": "d9110707b0161db978a5f23d7af3aa517c97de67b258ff5300219e5ab3377a67",
+              "phase": "withdrawn"
+            },
+            {
+              "file": "section-320-replacement.png",
+              "sha256": "1d89ea6d7062ae395981e4a7dcd0190b17cc83949f695ef5a4042297f6d52d21",
+              "phase": "replacement"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "description": "Fixed dimensions → selection-linked schematic",
+      "review_directory": ".context/cupboard-live/blind-round3",
+      "checked_directory": ".context/cupboard-live/check-round3",
+      "review_pixels": [
+        {
+          "file": "A-1440-after.png",
+          "sha256": "7379318f909d15ff7d41716356ae8874f3ce1c662d8c20e324633e6c3159f669",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "A-1440-before.png",
+          "sha256": "cb3d7df0a89e735c205f7c7301b1e7238eb2d6c13bccb9e361949e90cea360ab",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "A-1440-edge.png",
+          "sha256": "3a6fe8ec07699222aa2ebad0d6cb31cd1390cddafe3521148d4704ff07d25305",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "A-390-after.png",
+          "sha256": "475ed4f1e30eb6a74f48ab12bbece11580b00304bf64c0277b9cb9efd02e28b7",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "A-390-before.png",
+          "sha256": "8be0c57c195565a379edb78c3bad644c2b6fc7f43a87f250646147f48c2c225c",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "A-390-edge.png",
+          "sha256": "e0960125cafc3b5af52e5aa2ea090b760af69c57a7e202b3bdb8976465eaa351",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "B-1440-after.png",
+          "sha256": "240d89956a95503f3822eb73bca9702e1e398657faf2033eeaa7137c1bc00893",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "B-1440-before.png",
+          "sha256": "cc074df251da6c110efd271a7c53594694fe4a4daf63ca145ab24fb46564cb97",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "B-1440-edge.png",
+          "sha256": "7ee76ad487a1bc09a30fb36955009e9b01a64d2577bcc7ed32d15b3111967acb",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "B-390-after.png",
+          "sha256": "de21ebf013514238945f83750cc5bd8ef9eaa4033a13069e6d3321bc0a3116dd",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "B-390-before.png",
+          "sha256": "e38f9303c43a19d05661f314f3c05241ff7f0861846f474a68fc2c8591811103",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "B-390-edge.png",
+          "sha256": "9f61ce1ad2880c9b5729956dbd7641022c12a6c21c6a47e99b3d2f7ba0634171",
+          "size": [
+            390,
+            844
+          ]
+        }
+      ],
+      "audit": {
+        "identity": "49f13493e44ad8fd2e7cffc8fced1ef925e8ceed00ec528be901a3d329b55c92",
+        "trace": "6ef5b7efbd230dc8154591c20e4ea30c86cfcbdca439e5b15c292e1aa6897b22"
+      },
+      "ballot": {
+        "calibration": {
+          "example": "Legible repair intake with clear labels, familiar layout, and misplaced focus after an invalid number",
+          "coherence": 7,
+          "originality": 4,
+          "craft": 6,
+          "usability": 6
+        },
+        "screens": {
+          "A-1440": {
+            "coherence": 8.5,
+            "originality": 7.5,
+            "craft": 8,
+            "usability": 8.5,
+            "primary_action": {
+              "input": "Tab to Inspect Flat and press Enter; Tab to Choose Pocket and press Enter.",
+              "expected": "Explain Flat's clearance and reset, then select the earliest qualifying pickup.",
+              "observed": "Flat's 28 mm maximum fits the 41 mm minimum opening by 13 mm, but its 15° reset exceeds the 12° swing by 3°. Pocket became selected for 18:10, with a 38 mm maximum and 10° reset."
+            },
+            "edge_observation": "Tab and Enter on the simulated 17:56 update left Pocket pressed but disabled and marked withdrawn because its ratchet jammed. Focus moved to the visible conflict message, which states Fine's 32 mm maximum, 6° reset, and 18:25 pickup. Tab reached Choose Fine; Enter selected it. Pocket's withdrawal and reason remained visible. The Fine schematic then showed 9 mm height clearance and 6° swing to spare.",
+            "fact_check": "The stated measurements support a dimensional prediction: Pocket is the earliest initially qualifying choice. They do not establish actual fit because hand clearance is explicitly unverified. After each selection, the schematic is labeled for the selected Pocket or Fine and updates its dimensions; it supplies relevant schematic evidence, not proof of a physical fit. No real movement or reservation was verified.",
+            "strength": "The paired clearance and swing diagrams change with the chosen tool, connecting the limiting dimensions to the decision. Conflict focus and the next keyboard action are clear.",
+            "weakness": "The swing graphic is abstract and its small angle difference depends on labels. The disabled Pocket control remains pressed during the conflict, so its selection is stale until the user chooses a replacement.",
+            "repair": "Make the invalid selection state explicit in the control label and strengthen the visual distinction between available swing and required reset.",
+            "captures": [
+              "A-1440-before.png",
+              "A-1440-after.png",
+              "A-1440-edge.png"
+            ],
+            "arm": "section",
+            "html_sha256": "97bf2a7d2e54c8833fe50e0731ba385f59baec2fbd92bd9bc5ed8a27229abedd",
+            "weighted": 8.1,
+            "before": {
+              "sha256": "cb3d7df0a89e735c205f7c7301b1e7238eb2d6c13bccb9e361949e90cea360ab",
+              "file": "A-1440-before.png",
+              "tool_call_id": "item_2"
+            },
+            "after": {
+              "sha256": "7379318f909d15ff7d41716356ae8874f3ce1c662d8c20e324633e6c3159f669",
+              "file": "A-1440-after.png",
+              "tool_call_id": "item_10"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "A-390": {
+            "coherence": 8,
+            "originality": 7,
+            "craft": 7,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab to Inspect Flat, Enter, Tab to Choose Pocket, Enter.",
+              "expected": "Inspect the limiting dimensions and select Pocket for 18:10.",
+              "observed": "The same Flat explanation appeared and Pocket was selected for 18:10. The drawing changed to Pocket with 38 mm and 10°."
+            },
+            "edge_observation": "Keyboard activation of the 17:56 update focused the visible withdrawal message; Pocket remained pressed but unavailable. Fine's substitute evidence appeared in the message, and the next Tab reached Choose Fine. Enter selected Fine at 18:25; the schematic showed 32 mm and 6°, while Pocket's withdrawal remained visible.",
+            "fact_check": "The opening shows 42 ±1 mm and 12°; Flat's 28 mm maximum is 13 mm below the 41 mm low limit but needs 15° to reset, 3° beyond the stop. Pocket initially qualifies for 18:10. Pocket and Fine are represented by their respective updated schematics, though hand clearance remains unverified.",
+            "strength": "The opening keeps the task, limits, diagrams, and all four choices in a compact vertical scan. The conflict message receives focus and the substitute is reachable by the next Tab.",
+            "weakness": "The two side-by-side schematic panels and their measurement labels become very small. The Fine button is partly below the viewport in the conflict capture, and the measured layout width was 375 CSS pixels for the requested 390-pixel view.",
+            "repair": "Enlarge or stack the diagrams at phone width and ensure the focused conflict and complete substitute action can be seen together where space permits.",
+            "captures": [
+              "A-390-before.png",
+              "A-390-after.png",
+              "A-390-edge.png"
+            ],
+            "arm": "section",
+            "html_sha256": "97bf2a7d2e54c8833fe50e0731ba385f59baec2fbd92bd9bc5ed8a27229abedd",
+            "weighted": 7.5,
+            "before": {
+              "sha256": "8be0c57c195565a379edb78c3bad644c2b6fc7f43a87f250646147f48c2c225c",
+              "file": "A-390-before.png",
+              "tool_call_id": "item_16"
+            },
+            "after": {
+              "sha256": "475ed4f1e30eb6a74f48ab12bbece11580b00304bf64c0277b9cb9efd02e28b7",
+              "file": "A-390-after.png",
+              "tool_call_id": "item_24"
+            },
+            "layout_width": 375,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-1440": {
+            "coherence": 7,
+            "originality": 7.5,
+            "craft": 7,
+            "usability": 7.5,
+            "primary_action": {
+              "input": "Tab to Inspect Flat and press Enter; Tab to Choose Pocket and press Enter.",
+              "expected": "Understand Flat's failure and select Pocket for the earliest suitable pickup.",
+              "observed": "The status explained Flat's 28 mm versus 41 mm and 15° versus 12° limits. Pocket became selected for 18:10 with a stated 38 mm maximum and 10° reset, while the large drawing continued to describe Flat."
+            },
+            "edge_observation": "The 17:56 simulation left Pocket pressed but disabled and focused the conflict message. It explained the jam and gave Fine's 32 mm maximum, 6° reset, and 18:25 pickup. The next Tab reached Choose Fine; Enter selected it and retained the Pocket withdrawal. The drawing still showed Flat's 28 mm and 15°.",
+            "fact_check": "Pocket initially qualifies against the stated dimensional limits, subject to unverified hand clearance. After both Pocket and Fine selections, the labeled drawing describes Flat, not the selected tool. It explains Flat's rejection but juxtaposes that evidence with the selected tool's separate facts; it does not visually prove Pocket or Fine's fit. No real tool movement was observed.",
+            "strength": "The larger common-pivot swing graphic and explicit 'Can’t reset' heading make Flat's failure easy to understand. The keyboard recovery and withdrawal record work.",
+            "weakness": "The prominent static Flat drawing remains beside a selected Pocket or Fine, creating a mismatch between the most visible physical evidence and the current choice.",
+            "repair": "Update the diagram and heading to the inspected or selected tool, or clearly frame Flat as a fixed comparison and add equivalent evidence for the selection.",
+            "captures": [
+              "B-1440-before.png",
+              "B-1440-after.png",
+              "B-1440-edge.png"
+            ],
+            "arm": "table",
+            "html_sha256": "733dd963562a1d6e2cd7827eff21bb29470ffa454247cb3279a7ca1374de06af",
+            "weighted": 7.25,
+            "before": {
+              "sha256": "cc074df251da6c110efd271a7c53594694fe4a4daf63ca145ab24fb46564cb97",
+              "file": "B-1440-before.png",
+              "tool_call_id": "item_29"
+            },
+            "after": {
+              "sha256": "240d89956a95503f3822eb73bca9702e1e398657faf2033eeaa7137c1bc00893",
+              "file": "B-1440-after.png",
+              "tool_call_id": "item_37"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-390": {
+            "coherence": 6.5,
+            "originality": 7,
+            "craft": 6.5,
+            "usability": 7,
+            "primary_action": {
+              "input": "Tab to Inspect Flat, Enter, Tab to Choose Pocket, Enter.",
+              "expected": "Explain Flat's limits and select Pocket for 18:10.",
+              "observed": "Flat's explanation and Pocket's selection status appeared. The physical panel remained labeled Flat and retained 28 mm and 15° after Pocket was selected."
+            },
+            "edge_observation": "The 17:56 update focused the withdrawal message while Pocket remained pressed and unavailable. Fine's evidence was in the focused message, and Tab then Enter selected Fine for 18:25 at 32 mm maximum and 6° reset. Pocket's withdrawal remained visible; the drawing still represented Flat.",
+            "fact_check": "The visible opening states 42 ±1 mm and 12°; Flat fits in height at 28 mm versus 41 mm but cannot reset within 12° because it needs 15°. Pocket is the earliest initial dimensional match at 18:10. Fine is the later substitute at 18:25. The static Flat diagram is not evidence of either selected tool's fit; hand clearance is unverified.",
+            "strength": "The phone opening presents a readable Flat failure narrative and the full choice table in a single compact view. The withdrawal and suggested substitute are keyboard reachable.",
+            "weakness": "The prominent Flat illustration persists through both choices, and the phone viewport makes the Fine action partly visible below the conflict. The requested 390-pixel view reported a 375 CSS-pixel layout width.",
+            "repair": "Connect the physical drawing to the current choice and increase the distinction between its evidence and the recovery message; keep the complete substitute action visible near the conflict.",
+            "captures": [
+              "B-390-before.png",
+              "B-390-after.png",
+              "B-390-edge.png"
+            ],
+            "arm": "table",
+            "html_sha256": "733dd963562a1d6e2cd7827eff21bb29470ffa454247cb3279a7ca1374de06af",
+            "weighted": 6.75,
+            "before": {
+              "sha256": "e38f9303c43a19d05661f314f3c05241ff7f0861846f474a68fc2c8591811103",
+              "file": "B-390-before.png",
+              "tool_call_id": "item_43"
+            },
+            "after": {
+              "sha256": "de21ebf013514238945f83750cc5bd8ef9eaa4033a13069e6d3321bc0a3116dd",
+              "file": "B-390-after.png",
+              "tool_call_id": "item_51"
+            },
+            "layout_width": 375,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          }
+        },
+        "preference": {
+          "winner": "A",
+          "reason": "Both versions support the tested keyboard recovery and preserve the withdrawal. B explains Flat's geometry more clearly at opening, but A updates the physical evidence for Pocket and Fine, making the main decision more coherent across the full flow."
+        },
+        "unsupported_claims": [
+          "A real tool was moved, reserved, collected, or physically tested.",
+          "The measurements alone establish a complete physical fit; both views state that hand clearance is unverified."
+        ],
+        "case": "cupboard-clearance",
+        "verified_screens": 4,
+        "required_screens": 4,
+        "browser": "Chrome/160.0.8178.0",
+        "evaluator_thread": "01a2088b-d10f-7b23-9d0e-cce7e4ab80e7",
+        "usage": {
+          "input_tokens": 537493,
+          "cached_input_tokens": 503808,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3318,
+          "reasoning_output_tokens": 0
+        },
+        "trace_sha256": "6ef5b7efbd230dc8154591c20e4ea30c86cfcbdca439e5b15c292e1aa6897b22",
+        "browser_audit_sha256": "9a3fe63e99e33a2bc476f8f1644da6a49c0fa6a97352290006522a2682541a8a"
+      },
+      "journeys": [
+        {
+          "arm": "table",
+          "build": "733dd963562a1d6e2cd7827eff21bb29470ffa454247cb3279a7ca1374de06af",
+          "viewport": [
+            1440,
+            900
+          ],
+          "input": "keyboard",
+          "opening_tool_bottoms": [
+            363.4,
+            430.4,
+            517.7,
+            584.7
+          ],
+          "withdrawal_focus": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+          "fine_focused": true,
+          "confirmation_visible": null,
+          "selection_figure": {},
+          "facts": {
+            "flat": "Flat fits at 28 mm, below the 41 mm low limit. Its 15° reset needs 3° more than the 12° stop.",
+            "pocket": "Pocket selected for 18:10. Its 38 mm maximum and 10° reset both fit.",
+            "withdrawn": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+            "fine": "Fine selected for 18:25. Its 32 mm maximum and 6° reset both fit."
+          },
+          "frames": [
+            {
+              "file": "table-1440-initial.png",
+              "sha256": "cc074df251da6c110efd271a7c53594694fe4a4daf63ca145ab24fb46564cb97",
+              "phase": "initial"
+            },
+            {
+              "file": "table-1440-flat.png",
+              "sha256": "c41c9316e8ec5b55f8cb25f8891b3ca3dc719c5a047cd7106e821c38a1374d58",
+              "phase": "flat"
+            },
+            {
+              "file": "table-1440-pocket.png",
+              "sha256": "1bcfb27d3d16809bd5bf64a3fab4a356793e7566ba9f3451d635a7ce3dde968f",
+              "phase": "pocket"
+            },
+            {
+              "file": "table-1440-withdrawn.png",
+              "sha256": "240d89956a95503f3822eb73bca9702e1e398657faf2033eeaa7137c1bc00893",
+              "phase": "withdrawn"
+            },
+            {
+              "file": "table-1440-replacement.png",
+              "sha256": "7ee76ad487a1bc09a30fb36955009e9b01a64d2577bcc7ed32d15b3111967acb",
+              "phase": "replacement"
+            }
+          ]
+        },
+        {
+          "arm": "table",
+          "build": "733dd963562a1d6e2cd7827eff21bb29470ffa454247cb3279a7ca1374de06af",
+          "viewport": [
+            390,
+            844
+          ],
+          "input": "keyboard",
+          "opening_tool_bottoms": [
+            595.3,
+            652.3,
+            709.3,
+            766.3
+          ],
+          "withdrawal_focus": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+          "fine_focused": true,
+          "confirmation_visible": null,
+          "selection_figure": {},
+          "facts": {
+            "flat": "Flat fits at 28 mm, below the 41 mm low limit. Its 15° reset needs 3° more than the 12° stop.",
+            "pocket": "Pocket selected for 18:10. Its 38 mm maximum and 10° reset both fit.",
+            "withdrawn": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+            "fine": "Fine selected for 18:25. Its 32 mm maximum and 6° reset both fit."
+          },
+          "frames": [
+            {
+              "file": "table-390-initial.png",
+              "sha256": "e38f9303c43a19d05661f314f3c05241ff7f0861846f474a68fc2c8591811103",
+              "phase": "initial"
+            },
+            {
+              "file": "table-390-flat.png",
+              "sha256": "d3887989fe093372df1a0bacfddb80221495a4c1ef5c8007f07c418a208dbc1b",
+              "phase": "flat"
+            },
+            {
+              "file": "table-390-pocket.png",
+              "sha256": "a7c2d1862cbd11bb97159c47e35eeb2b5cfac0496ba11d928079dc364ad53882",
+              "phase": "pocket"
+            },
+            {
+              "file": "table-390-withdrawn.png",
+              "sha256": "de21ebf013514238945f83750cc5bd8ef9eaa4033a13069e6d3321bc0a3116dd",
+              "phase": "withdrawn"
+            },
+            {
+              "file": "table-390-replacement.png",
+              "sha256": "9f61ce1ad2880c9b5729956dbd7641022c12a6c21c6a47e99b3d2f7ba0634171",
+              "phase": "replacement"
+            }
+          ]
+        },
+        {
+          "arm": "table",
+          "build": "733dd963562a1d6e2cd7827eff21bb29470ffa454247cb3279a7ca1374de06af",
+          "viewport": [
+            320,
+            700
+          ],
+          "input": "pointer/reduced-motion",
+          "opening_tool_bottoms": [
+            624.4,
+            681.4,
+            738.4,
+            795.4
+          ],
+          "withdrawal_focus": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+          "fine_focused": true,
+          "confirmation_visible": null,
+          "selection_figure": {},
+          "facts": {
+            "flat": "Flat fits at 28 mm, below the 41 mm low limit. Its 15° reset needs 3° more than the 12° stop.",
+            "pocket": "Pocket selected for 18:10. Its 38 mm maximum and 10° reset both fit.",
+            "withdrawn": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+            "fine": "Fine selected for 18:25. Its 32 mm maximum and 6° reset both fit."
+          },
+          "frames": [
+            {
+              "file": "table-320-initial.png",
+              "sha256": "4eab1926209d3196891357087e6730fdf4bec7a758a20774607f5e9f77c37acf",
+              "phase": "initial"
+            },
+            {
+              "file": "table-320-flat.png",
+              "sha256": "bcb15f9593eff51d48965aca9af7e882b87f77203b3699064ded191c428ffe7c",
+              "phase": "flat"
+            },
+            {
+              "file": "table-320-pocket.png",
+              "sha256": "17b74ceb0d7c56cfde9fa65fd94baca5cf84b96923dd233eeffa9666f4e88ef3",
+              "phase": "pocket"
+            },
+            {
+              "file": "table-320-withdrawn.png",
+              "sha256": "d9110707b0161db978a5f23d7af3aa517c97de67b258ff5300219e5ab3377a67",
+              "phase": "withdrawn"
+            },
+            {
+              "file": "table-320-replacement.png",
+              "sha256": "1d89ea6d7062ae395981e4a7dcd0190b17cc83949f695ef5a4042297f6d52d21",
+              "phase": "replacement"
+            }
+          ]
+        },
+        {
+          "arm": "section",
+          "build": "97bf2a7d2e54c8833fe50e0731ba385f59baec2fbd92bd9bc5ed8a27229abedd",
+          "viewport": [
+            1440,
+            900
+          ],
+          "input": "keyboard",
+          "opening_tool_bottoms": [
+            363.4,
+            430.4,
+            517.7,
+            584.7
+          ],
+          "withdrawal_focus": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+          "fine_focused": true,
+          "confirmation_visible": null,
+          "selection_figure": {
+            "name": "Fine ratchet",
+            "height": "32 mm",
+            "angle": "6° reset",
+            "availability": ""
+          },
+          "facts": {
+            "flat": "Flat fits at 28 mm, below the 41 mm low limit. Its 15° reset needs 3° more than the 12° stop.",
+            "pocket": "Pocket selected for 18:10. Its 38 mm maximum and 10° reset both fit.",
+            "withdrawn": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+            "fine": "Fine selected for 18:25. Its 32 mm maximum and 6° reset both fit."
+          },
+          "frames": [
+            {
+              "file": "section-1440-initial.png",
+              "sha256": "cb3d7df0a89e735c205f7c7301b1e7238eb2d6c13bccb9e361949e90cea360ab",
+              "phase": "initial"
+            },
+            {
+              "file": "section-1440-flat.png",
+              "sha256": "8f2fdf19edf94cffc8b100bd6fbdb156f9ed215641849daf49d733abb5057c5d",
+              "phase": "flat"
+            },
+            {
+              "file": "section-1440-pocket.png",
+              "sha256": "274490c734608abd3d2cdf9444366a03e6431869814c9e2b61fb4a6338237886",
+              "phase": "pocket"
+            },
+            {
+              "file": "section-1440-withdrawn.png",
+              "sha256": "9f65929b0a5dd6243fc754a2e98d3cf8d4ffeb5d9a62fb8dc857d20a59b8db2d",
+              "phase": "withdrawn"
+            },
+            {
+              "file": "section-1440-replacement.png",
+              "sha256": "4313886327e79adaac0beb1c13e6e9ea0a2de972e53bc796e5cbadf7651131e0",
+              "phase": "replacement"
+            }
+          ]
+        },
+        {
+          "arm": "section",
+          "build": "97bf2a7d2e54c8833fe50e0731ba385f59baec2fbd92bd9bc5ed8a27229abedd",
+          "viewport": [
+            390,
+            844
+          ],
+          "input": "keyboard",
+          "opening_tool_bottoms": [
+            608.0,
+            665.0,
+            722.0,
+            779.0
+          ],
+          "withdrawal_focus": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+          "fine_focused": true,
+          "confirmation_visible": null,
+          "selection_figure": {
+            "name": "Fine ratchet",
+            "height": "32 mm",
+            "angle": "6° reset",
+            "availability": ""
+          },
+          "facts": {
+            "flat": "Flat fits at 28 mm, below the 41 mm low limit. Its 15° reset needs 3° more than the 12° stop.",
+            "pocket": "Pocket selected for 18:10. Its 38 mm maximum and 10° reset both fit.",
+            "withdrawn": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+            "fine": "Fine selected for 18:25. Its 32 mm maximum and 6° reset both fit."
+          },
+          "frames": [
+            {
+              "file": "section-390-initial.png",
+              "sha256": "8be0c57c195565a379edb78c3bad644c2b6fc7f43a87f250646147f48c2c225c",
+              "phase": "initial"
+            },
+            {
+              "file": "section-390-flat.png",
+              "sha256": "311cb31dcd4a31311b795de082db241cd51cb6f1b37caf3c9a4224ad8017d67b",
+              "phase": "flat"
+            },
+            {
+              "file": "section-390-pocket.png",
+              "sha256": "fe73154805706de702841d48886d2a46bd5171456ca1b1faf1548fb0e62bedb7",
+              "phase": "pocket"
+            },
+            {
+              "file": "section-390-withdrawn.png",
+              "sha256": "a519dc07294f0988d7be0f1a2c0965237e6c0dbf37e87db39c1d3e99bf9c8c08",
+              "phase": "withdrawn"
+            },
+            {
+              "file": "section-390-replacement.png",
+              "sha256": "734638b2eb384ec22725662c2c18d7d0cfcb8e722fcf0b9a2e2438d51b58f2aa",
+              "phase": "replacement"
+            }
+          ]
+        },
+        {
+          "arm": "section",
+          "build": "97bf2a7d2e54c8833fe50e0731ba385f59baec2fbd92bd9bc5ed8a27229abedd",
+          "viewport": [
+            320,
+            700
+          ],
+          "input": "pointer/reduced-motion",
+          "opening_tool_bottoms": [
+            637.1,
+            694.1,
+            751.1,
+            808.1
+          ],
+          "withdrawal_focus": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+          "fine_focused": true,
+          "confirmation_visible": null,
+          "selection_figure": {
+            "name": "Fine ratchet",
+            "height": "32 mm",
+            "angle": "6° reset",
+            "availability": ""
+          },
+          "facts": {
+            "flat": "Flat fits at 28 mm, below the 41 mm low limit. Its 15° reset needs 3° more than the 12° stop.",
+            "pocket": "Pocket selected for 18:10. Its 38 mm maximum and 10° reset both fit.",
+            "withdrawn": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+            "fine": "Fine selected for 18:25. Its 32 mm maximum and 6° reset both fit."
+          },
+          "frames": [
+            {
+              "file": "section-320-initial.png",
+              "sha256": "8e9181e5592dc8c6ad0120a0a6e5694f0da23f77d43b62fc29a926e6ca99ec71",
+              "phase": "initial"
+            },
+            {
+              "file": "section-320-flat.png",
+              "sha256": "143249d3efa469381f7a50df5ee1fbf2edd342a5f19cade750e27fa9fbd60447",
+              "phase": "flat"
+            },
+            {
+              "file": "section-320-pocket.png",
+              "sha256": "e5ff717008a03c4a94435cb664a5a6ade7dea9fa3f639e608ddea4a70780d7f1",
+              "phase": "pocket"
+            },
+            {
+              "file": "section-320-withdrawn.png",
+              "sha256": "bc958dc48ada752357ab3fa53d962b53cadbd33426eef433c52ca3069f4535af",
+              "phase": "withdrawn"
+            },
+            {
+              "file": "section-320-replacement.png",
+              "sha256": "c28f44fa1c41f05bb03ee717730260ff43c3d582c252764514bf1fddc0064b3e",
+              "phase": "replacement"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "round": 4,
+      "description": "Below-list status → result beside focused choice",
+      "review_directory": ".context/cupboard-live/blind-round4",
+      "checked_directory": ".context/cupboard-live/check-round4",
+      "review_pixels": [
+        {
+          "file": "A-1440-after.png",
+          "sha256": "7379318f909d15ff7d41716356ae8874f3ce1c662d8c20e324633e6c3159f669",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "A-1440-before.png",
+          "sha256": "cb3d7df0a89e735c205f7c7301b1e7238eb2d6c13bccb9e361949e90cea360ab",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "A-1440-edge.png",
+          "sha256": "3a6fe8ec07699222aa2ebad0d6cb31cd1390cddafe3521148d4704ff07d25305",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "A-390-after.png",
+          "sha256": "475ed4f1e30eb6a74f48ab12bbece11580b00304bf64c0277b9cb9efd02e28b7",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "A-390-before.png",
+          "sha256": "8be0c57c195565a379edb78c3bad644c2b6fc7f43a87f250646147f48c2c225c",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "A-390-edge.png",
+          "sha256": "e0960125cafc3b5af52e5aa2ea090b760af69c57a7e202b3bdb8976465eaa351",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "B-1440-after.png",
+          "sha256": "73c9728c039e9692944d82a7b0825f1d8fe9b4ba414790f52df11515411137ad",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "B-1440-before.png",
+          "sha256": "1bb46447b79c0b7c9e28547c78d1f01fff640605baa593e7c06a48f9b97cf1cb",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "B-1440-edge.png",
+          "sha256": "6087dfc9c036f3297e4ec3caad975bdc88e581bfe6be44147191c1da17e84963",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "B-390-after.png",
+          "sha256": "cb3cfcd69ef78853ff2eea12d232ebc6db5cb82e21cd3006211fff6da9e1c9f2",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "B-390-before.png",
+          "sha256": "5233dbd6eb1548cb577cbf291d3a205c9590a1b2588a3229f45be163130ba2c0",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "B-390-edge.png",
+          "sha256": "42817c171f2b4d3f055343d8d3c753d28dd15da6114c60691dc76340b77912d3",
+          "size": [
+            390,
+            844
+          ]
+        }
+      ],
+      "audit": {
+        "identity": "50188499d369b15abd84b4fed246f021e810f34531152c4078941fa0dd57dc02",
+        "trace": "278fc74a6a7487313011d90633657759ef4953fd0b7c809de10c1ca97a9ad886"
+      },
+      "ballot": {
+        "calibration": {
+          "coherence": 7,
+          "originality": 4,
+          "craft": 6,
+          "usability": 6,
+          "reason": "Clear labels and a legible, familiar layout support the task, but misplaced focus after invalid input is a material usability defect."
+        },
+        "screens": {
+          "A-1440": {
+            "coherence": 8,
+            "originality": 7,
+            "craft": 8,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab to Inspect Flat and press Enter; Tab to Choose Pocket and press Enter.",
+              "expected": "Explain Flat's limits, then select Pocket for the earliest suitable pickup.",
+              "observed": "Flat reports 28 mm against a 41 mm low opening limit, but its 15° reset exceeds the 12° swing by 3°. Pocket is selected for 18:10, with a 38 mm maximum height and 10° reset."
+            },
+            "edge_observation": "Tab and Enter on the simulated 17:56 update leaves Pocket selected but disabled and withdrawn because its ratchet jammed. Focus moves to the visible conflict explanation, which gives Fine's 32 mm, 6° and 18:25 evidence; the next Tab reaches Choose Fine. Enter selects Fine, shows 9 mm height and 6° swing spare, and preserves the Pocket withdrawal and reason.",
+            "fact_check": "The measurements support a prediction against the stated height and swing limits, not a confirmed physical fit: hand clearance is explicitly unverified. Pocket initially qualifies at 18:10. The schematic changes from Flat to Pocket and then Fine, with matching measurements; it supplies comparative evidence, though it remains schematic. No real tool movement is established.",
+            "strength": "The two diagrams make the limiting height and swing legible alongside the table, and the focused conflict explains the recovery.",
+            "weakness": "The initial Flat illustration dominates even though Pocket is the earliest qualifying choice; the reset-angle mechanism requires interpretation.",
+            "repair": "Label the initial schematic as the current inspection and add a short explanation of reset angle beside the swing diagram.",
+            "captures": [
+              "A-1440-before.png",
+              "A-1440-after.png",
+              "A-1440-edge.png"
+            ],
+            "arm": "table",
+            "html_sha256": "97bf2a7d2e54c8833fe50e0731ba385f59baec2fbd92bd9bc5ed8a27229abedd",
+            "weighted": 7.7,
+            "before": {
+              "sha256": "cb3d7df0a89e735c205f7c7301b1e7238eb2d6c13bccb9e361949e90cea360ab",
+              "file": "A-1440-before.png",
+              "tool_call_id": "item_2"
+            },
+            "after": {
+              "sha256": "7379318f909d15ff7d41716356ae8874f3ce1c662d8c20e324633e6c3159f669",
+              "file": "A-1440-after.png",
+              "tool_call_id": "item_10"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "A-390": {
+            "coherence": 8,
+            "originality": 7,
+            "craft": 7,
+            "usability": 7.5,
+            "primary_action": {
+              "input": "Tab to Inspect Flat, Enter, then Tab to Choose Pocket and Enter.",
+              "expected": "Inspect Flat and select Pocket for 18:10.",
+              "observed": "The same Flat explanation and Pocket selection are available by keyboard. Pocket's 38 mm maximum and 10° reset meet the displayed limits."
+            },
+            "edge_observation": "The 17:56 update focuses the withdrawal explanation while Pocket remains the disabled, pressed choice. Fine's evidence is in that explanation and its action is reachable with the next Tab. Enter selects Fine at 32 mm maximum, 6° reset and 18:25; the old withdrawal remains visible.",
+            "fact_check": "The opening shows 42 ±1 mm and a 12° maximum swing. Flat has 13 mm height spare at the 41 mm low limit but needs 3° more swing. Pocket is the earliest qualifying measured choice. The drawing follows Pocket and Fine and illustrates their stated comparisons; hand clearance and physical fit remain unverified.",
+            "strength": "The opening puts the task, both limits, schematic and driver rows in a compact vertical sequence.",
+            "weakness": "Diagram annotations are very small, and the Fine action sits at the bottom edge of the conflict capture, requiring scrolling or keyboard focus to bring it fully into view.",
+            "repair": "Increase diagram label size and keep the substitute action close to the conflict explanation on narrow screens.",
+            "captures": [
+              "A-390-before.png",
+              "A-390-after.png",
+              "A-390-edge.png"
+            ],
+            "arm": "table",
+            "html_sha256": "97bf2a7d2e54c8833fe50e0731ba385f59baec2fbd92bd9bc5ed8a27229abedd",
+            "weighted": 7.4,
+            "before": {
+              "sha256": "8be0c57c195565a379edb78c3bad644c2b6fc7f43a87f250646147f48c2c225c",
+              "file": "A-390-before.png",
+              "tool_call_id": "item_16"
+            },
+            "after": {
+              "sha256": "475ed4f1e30eb6a74f48ab12bbece11580b00304bf64c0277b9cb9efd02e28b7",
+              "file": "A-390-after.png",
+              "tool_call_id": "item_24"
+            },
+            "layout_width": 375,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-1440": {
+            "coherence": 8.2,
+            "originality": 7,
+            "craft": 8.2,
+            "usability": 8.3,
+            "primary_action": {
+              "input": "Tab to Inspect Flat and press Enter; Tab to Choose Pocket and press Enter.",
+              "expected": "Explain Flat's failure and select Pocket for the earliest suitable pickup.",
+              "observed": "Flat's row explains the 28 mm maximum against the 41 mm low limit and the 15° reset against the 12° stop. Pocket is selected for 18:10 with 38 mm maximum height and 10° reset."
+            },
+            "edge_observation": "The simulated update leaves Pocket pressed but unavailable, records its 17:56 jam withdrawal, and focuses the conflict explanation. The explanation gives Fine's measured limits and 18:25 pickup; Tab reaches Choose Fine. Enter selects Fine at 32 mm maximum and 6° reset, while the Pocket withdrawal remains clear.",
+            "fact_check": "The stated limits support a predicted fit, not a guarantee: hand clearance remains unverified. Pocket initially qualifies at 18:10. The drawing is labeled Pocket after its selection and Fine after the substitute selection, and its dimensions change accordingly. It is relevant schematic evidence, not proof of real-world operation or movement.",
+            "strength": "Feedback appears next to the affected row, while the conflict explicitly says Fine meets the measured limits.",
+            "weakness": "The height and angle graphics still rely on small labels and do not explain the ratchet reset mechanism in plain language.",
+            "repair": "Add a concise reset-angle explanation and enlarge the diagram annotations.",
+            "captures": [
+              "B-1440-before.png",
+              "B-1440-after.png",
+              "B-1440-edge.png"
+            ],
+            "arm": "section",
+            "html_sha256": "b117f3db4898dd1b96562b1d1aa9dc1ecb1ae87dfe0a9f858834b34ba7985e22",
+            "weighted": 7.86,
+            "before": {
+              "sha256": "1bb46447b79c0b7c9e28547c78d1f01fff640605baa593e7c06a48f9b97cf1cb",
+              "file": "B-1440-before.png",
+              "tool_call_id": "item_29"
+            },
+            "after": {
+              "sha256": "73c9728c039e9692944d82a7b0825f1d8fe9b4ba414790f52df11515411137ad",
+              "file": "B-1440-after.png",
+              "tool_call_id": "item_37"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-390": {
+            "coherence": 8.2,
+            "originality": 7,
+            "craft": 7.5,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab to Inspect Flat, Enter, then Tab to Choose Pocket and Enter.",
+              "expected": "Inspect Flat and select Pocket for 18:10.",
+              "observed": "Flat's row receives the detailed explanation; Pocket's row confirms selection and its 38 mm maximum and 10° reset."
+            },
+            "edge_observation": "At 17:56, Pocket remains the disabled, pressed choice and the focused conflict gives the jam reason plus Fine's 32 mm, 6° and 18:25 evidence. Fine is reachable with the next Tab and can be selected with Enter. Its row confirms the choice while the old withdrawal remains visible.",
+            "fact_check": "The phone opening visibly states the 42 ±1 mm opening, 12° swing, tool dimensions and pickup times. Flat has 13 mm height spare but falls 3° short of its required reset. The selected schematic follows Pocket and Fine and supports comparison against the stated dimensions; hand clearance is unverified and no real withdrawal is established.",
+            "strength": "Row-local selection feedback keeps the result close to the action, and the conflict supplies the substitute's evidence.",
+            "weakness": "The two-column schematic has tiny annotations, and after the update the Fine action is below the initial conflict viewport.",
+            "repair": "Use larger diagram labels and bring the substitute action into the conflict area on phone.",
+            "captures": [
+              "B-390-before.png",
+              "B-390-after.png",
+              "B-390-edge.png"
+            ],
+            "arm": "section",
+            "html_sha256": "b117f3db4898dd1b96562b1d1aa9dc1ecb1ae87dfe0a9f858834b34ba7985e22",
+            "weighted": 7.66,
+            "before": {
+              "sha256": "5233dbd6eb1548cb577cbf291d3a205c9590a1b2588a3229f45be163130ba2c0",
+              "file": "B-390-before.png",
+              "tool_call_id": "item_43"
+            },
+            "after": {
+              "sha256": "cb3cfcd69ef78853ff2eea12d232ebc6db5cb82e21cd3006211fff6da9e1c9f2",
+              "file": "B-390-after.png",
+              "tool_call_id": "item_51"
+            },
+            "layout_width": 375,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          }
+        },
+        "preference": {
+          "winner": "B",
+          "reason": "Both complete the same keyboard flow and preserve the withdrawal. B places inspection and selection feedback beside the relevant row and qualifies the substitute against the measured limits, making the evidence easier to connect to the choice, especially on phone."
+        },
+        "case": "cupboard-clearance",
+        "verified_screens": 4,
+        "required_screens": 4,
+        "browser": "Chrome/160.0.8178.0",
+        "evaluator_thread": "01a2088d-f418-7541-9ed2-af3ffcaa9030",
+        "usage": {
+          "input_tokens": 582076,
+          "cached_input_tokens": 546560,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3137,
+          "reasoning_output_tokens": 0
+        },
+        "trace_sha256": "278fc74a6a7487313011d90633657759ef4953fd0b7c809de10c1ca97a9ad886",
+        "browser_audit_sha256": "cea46598c4ecb270e7d82014cb07657942abd15c8bf24b947c10378efcaa0f79"
+      },
+      "journeys": [
+        {
+          "arm": "table",
+          "build": "97bf2a7d2e54c8833fe50e0731ba385f59baec2fbd92bd9bc5ed8a27229abedd",
+          "viewport": [
+            1440,
+            900
+          ],
+          "input": "keyboard",
+          "opening_tool_bottoms": [
+            363.4,
+            430.4,
+            517.7,
+            584.7
+          ],
+          "withdrawal_focus": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+          "fine_focused": true,
+          "confirmation_visible": true,
+          "selection_figure": {
+            "name": "Fine ratchet",
+            "height": "32 mm",
+            "angle": "6° reset",
+            "availability": ""
+          },
+          "facts": {
+            "flat": "Flat fits at 28 mm, below the 41 mm low limit. Its 15° reset needs 3° more than the 12° stop.",
+            "pocket": "Pocket selected for 18:10. Its 38 mm maximum and 10° reset both fit.",
+            "withdrawn": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+            "fine": "Fine selected for 18:25. Its 32 mm maximum and 6° reset both fit."
+          },
+          "frames": [
+            {
+              "file": "table-1440-initial.png",
+              "sha256": "cb3d7df0a89e735c205f7c7301b1e7238eb2d6c13bccb9e361949e90cea360ab",
+              "phase": "initial"
+            },
+            {
+              "file": "table-1440-flat.png",
+              "sha256": "8f2fdf19edf94cffc8b100bd6fbdb156f9ed215641849daf49d733abb5057c5d",
+              "phase": "flat"
+            },
+            {
+              "file": "table-1440-pocket.png",
+              "sha256": "274490c734608abd3d2cdf9444366a03e6431869814c9e2b61fb4a6338237886",
+              "phase": "pocket"
+            },
+            {
+              "file": "table-1440-withdrawn.png",
+              "sha256": "9f65929b0a5dd6243fc754a2e98d3cf8d4ffeb5d9a62fb8dc857d20a59b8db2d",
+              "phase": "withdrawn"
+            },
+            {
+              "file": "table-1440-replacement.png",
+              "sha256": "ae1a8b11765fe1d18a914392f2b1a412c5a8c88381d2789f666bffae10bdf2ea",
+              "phase": "replacement"
+            }
+          ]
+        },
+        {
+          "arm": "table",
+          "build": "97bf2a7d2e54c8833fe50e0731ba385f59baec2fbd92bd9bc5ed8a27229abedd",
+          "viewport": [
+            390,
+            844
+          ],
+          "input": "keyboard",
+          "opening_tool_bottoms": [
+            608.0,
+            665.0,
+            722.0,
+            779.0
+          ],
+          "withdrawal_focus": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+          "fine_focused": true,
+          "confirmation_visible": false,
+          "selection_figure": {
+            "name": "Fine ratchet",
+            "height": "32 mm",
+            "angle": "6° reset",
+            "availability": ""
+          },
+          "facts": {
+            "flat": "Flat fits at 28 mm, below the 41 mm low limit. Its 15° reset needs 3° more than the 12° stop.",
+            "pocket": "Pocket selected for 18:10. Its 38 mm maximum and 10° reset both fit.",
+            "withdrawn": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+            "fine": "Fine selected for 18:25. Its 32 mm maximum and 6° reset both fit."
+          },
+          "frames": [
+            {
+              "file": "table-390-initial.png",
+              "sha256": "8be0c57c195565a379edb78c3bad644c2b6fc7f43a87f250646147f48c2c225c",
+              "phase": "initial"
+            },
+            {
+              "file": "table-390-flat.png",
+              "sha256": "311cb31dcd4a31311b795de082db241cd51cb6f1b37caf3c9a4224ad8017d67b",
+              "phase": "flat"
+            },
+            {
+              "file": "table-390-pocket.png",
+              "sha256": "fe73154805706de702841d48886d2a46bd5171456ca1b1faf1548fb0e62bedb7",
+              "phase": "pocket"
+            },
+            {
+              "file": "table-390-withdrawn.png",
+              "sha256": "a519dc07294f0988d7be0f1a2c0965237e6c0dbf37e87db39c1d3e99bf9c8c08",
+              "phase": "withdrawn"
+            },
+            {
+              "file": "table-390-replacement.png",
+              "sha256": "eb021799a62a89b48d10a3108db37151d220e422086c8c603aea89491240b287",
+              "phase": "replacement"
+            }
+          ]
+        },
+        {
+          "arm": "table",
+          "build": "97bf2a7d2e54c8833fe50e0731ba385f59baec2fbd92bd9bc5ed8a27229abedd",
+          "viewport": [
+            320,
+            700
+          ],
+          "input": "pointer/reduced-motion",
+          "opening_tool_bottoms": [
+            637.1,
+            694.1,
+            751.1,
+            808.1
+          ],
+          "withdrawal_focus": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+          "fine_focused": true,
+          "confirmation_visible": false,
+          "selection_figure": {
+            "name": "Fine ratchet",
+            "height": "32 mm",
+            "angle": "6° reset",
+            "availability": ""
+          },
+          "facts": {
+            "flat": "Flat fits at 28 mm, below the 41 mm low limit. Its 15° reset needs 3° more than the 12° stop.",
+            "pocket": "Pocket selected for 18:10. Its 38 mm maximum and 10° reset both fit.",
+            "withdrawn": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine fits at 32 mm and 6°. Its first pickup is 18:25.",
+            "fine": "Fine selected for 18:25. Its 32 mm maximum and 6° reset both fit."
+          },
+          "frames": [
+            {
+              "file": "table-320-initial.png",
+              "sha256": "8e9181e5592dc8c6ad0120a0a6e5694f0da23f77d43b62fc29a926e6ca99ec71",
+              "phase": "initial"
+            },
+            {
+              "file": "table-320-flat.png",
+              "sha256": "143249d3efa469381f7a50df5ee1fbf2edd342a5f19cade750e27fa9fbd60447",
+              "phase": "flat"
+            },
+            {
+              "file": "table-320-pocket.png",
+              "sha256": "e5ff717008a03c4a94435cb664a5a6ade7dea9fa3f639e608ddea4a70780d7f1",
+              "phase": "pocket"
+            },
+            {
+              "file": "table-320-withdrawn.png",
+              "sha256": "bc958dc48ada752357ab3fa53d962b53cadbd33426eef433c52ca3069f4535af",
+              "phase": "withdrawn"
+            },
+            {
+              "file": "table-320-replacement.png",
+              "sha256": "c28f44fa1c41f05bb03ee717730260ff43c3d582c252764514bf1fddc0064b3e",
+              "phase": "replacement"
+            }
+          ]
+        },
+        {
+          "arm": "section",
+          "build": "b117f3db4898dd1b96562b1d1aa9dc1ecb1ae87dfe0a9f858834b34ba7985e22",
+          "viewport": [
+            1440,
+            900
+          ],
+          "input": "keyboard",
+          "opening_tool_bottoms": [
+            363.4,
+            430.4,
+            517.7,
+            584.7
+          ],
+          "withdrawal_focus": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine meets the measured height and swing limits at 32 mm and 6°. Its first pickup is 18:25.",
+          "fine_focused": true,
+          "confirmation_visible": true,
+          "selection_figure": {
+            "name": "Fine ratchet",
+            "height": "32 mm",
+            "angle": "6° reset",
+            "availability": ""
+          },
+          "facts": {
+            "flat": "Flat fits at 28 mm, below the 41 mm low limit. Its 15° reset needs 3° more than the 12° stop.",
+            "pocket": "Pocket selected for 18:10. Its 38 mm maximum and 10° reset both fit.",
+            "withdrawn": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine meets the measured height and swing limits at 32 mm and 6°. Its first pickup is 18:25.",
+            "fine": "Fine selected for 18:25. Its 32 mm maximum and 6° reset both fit."
+          },
+          "frames": [
+            {
+              "file": "section-1440-initial.png",
+              "sha256": "1bb46447b79c0b7c9e28547c78d1f01fff640605baa593e7c06a48f9b97cf1cb",
+              "phase": "initial"
+            },
+            {
+              "file": "section-1440-flat.png",
+              "sha256": "8accbb3adb421a7d3107dd31fb49759b59a9db68e1f15824cf6a84c216bae79d",
+              "phase": "flat"
+            },
+            {
+              "file": "section-1440-pocket.png",
+              "sha256": "ec033ed452067d4dd75202ddeb13b22323f0a39f9ab8b57949034806ead8a0a6",
+              "phase": "pocket"
+            },
+            {
+              "file": "section-1440-withdrawn.png",
+              "sha256": "73c9728c039e9692944d82a7b0825f1d8fe9b4ba414790f52df11515411137ad",
+              "phase": "withdrawn"
+            },
+            {
+              "file": "section-1440-replacement.png",
+              "sha256": "4dc5d88c2a20f8c1831ef1eedcf9b898f551b3202097a463358bc3a63db6bd2a",
+              "phase": "replacement"
+            }
+          ]
+        },
+        {
+          "arm": "section",
+          "build": "b117f3db4898dd1b96562b1d1aa9dc1ecb1ae87dfe0a9f858834b34ba7985e22",
+          "viewport": [
+            390,
+            844
+          ],
+          "input": "keyboard",
+          "opening_tool_bottoms": [
+            606.0,
+            663.0,
+            720.0,
+            777.0
+          ],
+          "withdrawal_focus": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine meets the measured height and swing limits at 32 mm and 6°. Its first pickup is 18:25.",
+          "fine_focused": true,
+          "confirmation_visible": true,
+          "selection_figure": {
+            "name": "Fine ratchet",
+            "height": "32 mm",
+            "angle": "6° reset",
+            "availability": ""
+          },
+          "facts": {
+            "flat": "Flat fits at 28 mm, below the 41 mm low limit. Its 15° reset needs 3° more than the 12° stop.",
+            "pocket": "Pocket selected for 18:10. Its 38 mm maximum and 10° reset both fit.",
+            "withdrawn": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine meets the measured height and swing limits at 32 mm and 6°. Its first pickup is 18:25.",
+            "fine": "Fine selected for 18:25. Its 32 mm maximum and 6° reset both fit."
+          },
+          "frames": [
+            {
+              "file": "section-390-initial.png",
+              "sha256": "5233dbd6eb1548cb577cbf291d3a205c9590a1b2588a3229f45be163130ba2c0",
+              "phase": "initial"
+            },
+            {
+              "file": "section-390-flat.png",
+              "sha256": "f3f5c9da8b4101a103840193dcd63a8c02e5e7fa03af621b8239e0b03a107a60",
+              "phase": "flat"
+            },
+            {
+              "file": "section-390-pocket.png",
+              "sha256": "66a1d796dd6f1efb14a0db6208be5d93c9d1dd4bc5b6441f644f27c53aaf366a",
+              "phase": "pocket"
+            },
+            {
+              "file": "section-390-withdrawn.png",
+              "sha256": "52851a6ac59ca5ce8b1c55b0c2e8a1a67fbc7b3914ca32f7193ffb57a8ba08b6",
+              "phase": "withdrawn"
+            },
+            {
+              "file": "section-390-replacement.png",
+              "sha256": "572dde62ee8a2ff8a57bf06a6ce0b7dfa1dd5533ef362c67a197ef9fdafa25a4",
+              "phase": "replacement"
+            }
+          ]
+        },
+        {
+          "arm": "section",
+          "build": "b117f3db4898dd1b96562b1d1aa9dc1ecb1ae87dfe0a9f858834b34ba7985e22",
+          "viewport": [
+            320,
+            700
+          ],
+          "input": "pointer/reduced-motion",
+          "opening_tool_bottoms": [
+            635.1,
+            692.1,
+            749.1,
+            806.1
+          ],
+          "withdrawal_focus": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine meets the measured height and swing limits at 32 mm and 6°. Its first pickup is 18:25.",
+          "fine_focused": true,
+          "confirmation_visible": true,
+          "selection_figure": {
+            "name": "Fine ratchet",
+            "height": "32 mm",
+            "angle": "6° reset",
+            "availability": ""
+          },
+          "facts": {
+            "flat": "Flat fits at 28 mm, below the 41 mm low limit. Its 15° reset needs 3° more than the 12° stop.",
+            "pocket": "Pocket selected for 18:10. Its 38 mm maximum and 10° reset both fit.",
+            "withdrawn": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine meets the measured height and swing limits at 32 mm and 6°. Its first pickup is 18:25.",
+            "fine": "Fine selected for 18:25. Its 32 mm maximum and 6° reset both fit."
+          },
+          "frames": [
+            {
+              "file": "section-320-initial.png",
+              "sha256": "7eaef1507f5bd9face55fc0e781276a13d4de91f3bdcf427cc8ac02dabd8cae9",
+              "phase": "initial"
+            },
+            {
+              "file": "section-320-flat.png",
+              "sha256": "af5cea28545035f6fc0598e711d001a7a8b296d84642a0509274e0cd3d5d4352",
+              "phase": "flat"
+            },
+            {
+              "file": "section-320-pocket.png",
+              "sha256": "9a4a12f814b1315c727cca269309472962a99a12fd7df2da1f7c5e0e9925b26f",
+              "phase": "pocket"
+            },
+            {
+              "file": "section-320-withdrawn.png",
+              "sha256": "7e36c9a73a2f8730d1183f3727114a4c5633abfb870deb274047d9d912729dc4",
+              "phase": "withdrawn"
+            },
+            {
+              "file": "section-320-replacement.png",
+              "sha256": "ca41cf87b28763bcee115a094532016e3e89ae24a1f32f2b1284957c6ec299d1",
+              "phase": "replacement"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "round": 5,
+      "description": "Single-tool section → four profiles on one measured limit",
+      "review_directory": ".context/cupboard-live/blind-round5",
+      "checked_directory": ".context/cupboard-live/check-round5",
+      "review_pixels": [
+        {
+          "file": "A-1440-after.png",
+          "sha256": "c44fc05e2b0a9c06da72e71d92a94987948f648308d5063ca2215fa9960d1944",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "A-1440-before.png",
+          "sha256": "c19fe354d0616e554c845ba1b03992b5751c5c365f3c38637a05eb53589fd5e4",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "A-1440-edge.png",
+          "sha256": "c7c09c90a316a2c6ed6325e1c0f4c6982d3928f6e2710785ba719f3acd1dd12b",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "A-390-after.png",
+          "sha256": "6aafbc608d431fe5a0fb332847fadbb9acfa89489346b8ca9f00b9f97616d7d1",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "A-390-before.png",
+          "sha256": "8bede174b12fd7b6d5674d1fe2c81bb82cb0fa7ab71bee01fd93efe8f63227e2",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "A-390-edge.png",
+          "sha256": "9411b0daeffc80bf36a36f4324c3af0532b3473c24dea43346db995f0a92fe08",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "B-1440-after.png",
+          "sha256": "42a0ace96319d81b1bfac722f3c57cc892edd9c5bedf1cbcb3aca14eac117b78",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "B-1440-before.png",
+          "sha256": "1bb46447b79c0b7c9e28547c78d1f01fff640605baa593e7c06a48f9b97cf1cb",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "B-1440-edge.png",
+          "sha256": "6087dfc9c036f3297e4ec3caad975bdc88e581bfe6be44147191c1da17e84963",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "B-390-after.png",
+          "sha256": "cb3cfcd69ef78853ff2eea12d232ebc6db5cb82e21cd3006211fff6da9e1c9f2",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "B-390-before.png",
+          "sha256": "5233dbd6eb1548cb577cbf291d3a205c9590a1b2588a3229f45be163130ba2c0",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "B-390-edge.png",
+          "sha256": "42817c171f2b4d3f055343d8d3c753d28dd15da6114c60691dc76340b77912d3",
+          "size": [
+            390,
+            844
+          ]
+        }
+      ],
+      "audit": {
+        "identity": "a25e02fe304c3b2ceda18bd72ebbb4a39774cf77c3bc098c81a692967f813082",
+        "trace": "20dd4db303485c07d582654f68d5aaa145473175f6ca88ac27ecd03bbf482699"
+      },
+      "ballot": {
+        "calibration": {
+          "coherence": 7,
+          "originality": 4,
+          "craft": 6,
+          "usability": 6,
+          "reason": "Clear labels and legibility support the task, but a familiar layout has modest originality and misplaced focus after invalid input materially weakens recovery."
+        },
+        "screens": {
+          "A-1440": {
+            "coherence": 8.5,
+            "originality": 8,
+            "craft": 8,
+            "usability": 8.5,
+            "primary_action": {
+              "input": "Tab to Inspect Flat, Enter; Tab to Choose Pocket, Enter.",
+              "expected": "Explain Flat's limiting reset angle and select the earliest qualifying pickup.",
+              "observed": "Flat reports 28 mm against the 41 mm low limit, but its 15° reset exceeds the 12° swing by 3°. Pocket is selected for 18:10, with a 38 mm maximum and 10° reset."
+            },
+            "edge_observation": "After the simulated 17:56 update, Pocket remains pressed but is disabled and marked withdrawn because its ratchet jammed. Focus moves to the visible withdrawal explanation, which gives Fine's 32 mm, 6° and 18:25 evidence; Tab reaches Choose Fine. Selecting it confirms those values and retains the Pocket withdrawal.",
+            "fact_check": "The measurements support a prediction against the stated height and swing limits, not a guaranteed physical fit: hand clearance is explicitly unverified. On opening, one shared-baseline illustration shows all four maximum assembled heights against 41 mm: Stubby 46, Flat 28, Pocket 38 and Fine 32 mm. After Pocket and Fine are chosen, the corresponding profile is highlighted and the swing diagram describes that choice. The schematic supplies comparative dimensional evidence, not proof of actual operation. The stock change is simulated; no real tool movement is established.",
+            "strength": "The common baseline makes the height comparison immediate, while the separate swing graphic exposes why the thinnest tool fails.",
+            "weakness": "The small angular drawing needs its numerical labels and status text to explain the reset constraint; schematic profiles do not establish hand clearance.",
+            "repair": "Make the angle comparison more legible and explicitly connect the selected profile to the measured clearance without implying a complete physical fit.",
+            "captures": [
+              "A-1440-before",
+              "A-1440-after",
+              "A-1440-edge"
+            ],
+            "arm": "section",
+            "html_sha256": "d86595d0997aa4e28f76b1264a7878061c11b53f8f3d3220cb253ad0a1227746",
+            "weighted": 8.25,
+            "before": {
+              "sha256": "c19fe354d0616e554c845ba1b03992b5751c5c365f3c38637a05eb53589fd5e4",
+              "file": "A-1440-before.png",
+              "tool_call_id": "item_2"
+            },
+            "after": {
+              "sha256": "c44fc05e2b0a9c06da72e71d92a94987948f648308d5063ca2215fa9960d1944",
+              "file": "A-1440-after.png",
+              "tool_call_id": "item_10"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "A-390": {
+            "coherence": 8,
+            "originality": 8,
+            "craft": 7.5,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab to Inspect Flat, Enter; Tab to Choose Pocket, Enter.",
+              "expected": "Inspect Flat and select Pocket for 18:10.",
+              "observed": "The same Flat explanation appears and Pocket is selected for 18:10 with 38 mm maximum height and 10° reset."
+            },
+            "edge_observation": "The simulated update leaves Pocket pressed and unavailable, moves focus to the withdrawal explanation, and presents Fine's evidence. One Tab reaches Choose Fine; Enter selects it for 18:25 at 32 mm and 6°. The old withdrawal remains visible.",
+            "fact_check": "The opening viewport shows all four schematic profiles on one baseline against the 41 mm low limit, plus the Flat swing comparison and driver rows. Pocket and Fine become the highlighted profiles after selection. These are comparative schematics; hand clearance and actual fit remain unverified.",
+            "strength": "The full comparison and action table fit into a compact opening view, with visible keyboard focus and a working recovery.",
+            "weakness": "The profile labels and swing annotations are small. After the conflict, the Fine action begins below the viewport and requires scrolling or keyboard focus to reveal it.",
+            "repair": "Increase diagram label size and bring the substitute action closer to its explanation on narrow screens.",
+            "captures": [
+              "A-390-before",
+              "A-390-after",
+              "A-390-edge"
+            ],
+            "arm": "section",
+            "html_sha256": "d86595d0997aa4e28f76b1264a7878061c11b53f8f3d3220cb253ad0a1227746",
+            "weighted": 7.9,
+            "before": {
+              "sha256": "8bede174b12fd7b6d5674d1fe2c81bb82cb0fa7ab71bee01fd93efe8f63227e2",
+              "file": "A-390-before.png",
+              "tool_call_id": "item_16"
+            },
+            "after": {
+              "sha256": "6aafbc608d431fe5a0fb332847fadbb9acfa89489346b8ca9f00b9f97616d7d1",
+              "file": "A-390-after.png",
+              "tool_call_id": "item_24"
+            },
+            "layout_width": 375,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-1440": {
+            "coherence": 8,
+            "originality": 7.5,
+            "craft": 7.5,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab to Inspect Flat, Enter; Tab to Choose Pocket, Enter.",
+              "expected": "Explain Flat's failure and select the earliest qualifying pickup.",
+              "observed": "Flat's 28 mm height clears the 41 mm low limit by 13 mm, but its 15° reset exceeds the 12° swing by 3°. Pocket is selected for 18:10 at 38 mm and 10°."
+            },
+            "edge_observation": "At the simulated 17:56 update, Pocket remains pressed but becomes disabled and withdrawn for a jammed ratchet. Focus moves to the visible explanation. Fine's 32 mm, 6° and 18:25 evidence is present, and the next Tab reaches its action. Choosing Fine retains the withdrawal and confirms the substitute.",
+            "fact_check": "The opening physical schematic depicts only Flat against the 41 mm opening, not all four heights in one illustration; the table provides the other numeric heights. After choosing Pocket and Fine, the heading and numeric dimensions describe the selected tool, but the same generic physical silhouette is reused, so its shape is not independent evidence of each tool's geometry. The measured height and swing support a limited prediction; hand clearance and a real fit are unverified. The withdrawal is simulated.",
+            "strength": "The cabinet cross-section makes the meaning of the low opening and the selected tool's spare height easy to grasp.",
+            "weakness": "Comparing all four heights requires reading the table or changing selection, and the generic silhouette can imply more physical specificity than the schematic provides.",
+            "repair": "Add a shared-scale comparison of all four assembled heights and label the selected silhouette as generic.",
+            "captures": [
+              "B-1440-before",
+              "B-1440-after",
+              "B-1440-edge"
+            ],
+            "arm": "table",
+            "html_sha256": "b117f3db4898dd1b96562b1d1aa9dc1ecb1ae87dfe0a9f858834b34ba7985e22",
+            "weighted": 7.75,
+            "before": {
+              "sha256": "1bb46447b79c0b7c9e28547c78d1f01fff640605baa593e7c06a48f9b97cf1cb",
+              "file": "B-1440-before.png",
+              "tool_call_id": "item_29"
+            },
+            "after": {
+              "sha256": "42a0ace96319d81b1bfac722f3c57cc892edd9c5bedf1cbcb3aca14eac117b78",
+              "file": "B-1440-after.png",
+              "tool_call_id": "item_37"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-390": {
+            "coherence": 7.5,
+            "originality": 7.5,
+            "craft": 7.5,
+            "usability": 7.5,
+            "primary_action": {
+              "input": "Tab to Inspect Flat, Enter; Tab to Choose Pocket, Enter.",
+              "expected": "Inspect Flat and select Pocket for 18:10.",
+              "observed": "Flat's height and reset failure are explained, and Pocket is selected for 18:10 with a 38 mm maximum and 10° reset."
+            },
+            "edge_observation": "Pocket remains pressed but unavailable after the simulated jam; focus moves to the withdrawal explanation. Fine's evidence is in that explanation, and Tab reaches Choose Fine. Enter selects Fine at 32 mm, 6° and 18:25 while the old withdrawal remains clear.",
+            "fact_check": "The opening viewport illustrates Flat alone under a 41 mm opening, with a separate swing schematic; all four numeric heights are visible in the table but not compared in one physical illustration. The generic schematic is relabeled and dimensioned for Pocket and then Fine, so its numeric comparison supports the stated limits, while its shape does not prove the selected tool's physical geometry. Hand clearance remains unverified.",
+            "strength": "The phone opening stays compact, with the selected height and swing presented before the available-driver rows.",
+            "weakness": "The tiny dimension labels are harder to read, and the Fine action sits below the conflict explanation and initially below the viewport.",
+            "repair": "Enlarge the dimensions, include a shared-scale four-tool comparison, and place the substitute action immediately with its evidence.",
+            "captures": [
+              "B-390-before",
+              "B-390-after",
+              "B-390-edge"
+            ],
+            "arm": "table",
+            "html_sha256": "b117f3db4898dd1b96562b1d1aa9dc1ecb1ae87dfe0a9f858834b34ba7985e22",
+            "weighted": 7.5,
+            "before": {
+              "sha256": "5233dbd6eb1548cb577cbf291d3a205c9590a1b2588a3229f45be163130ba2c0",
+              "file": "B-390-before.png",
+              "tool_call_id": "item_43"
+            },
+            "after": {
+              "sha256": "cb3cfcd69ef78853ff2eea12d232ebc6db5cb82e21cd3006211fff6da9e1c9f2",
+              "file": "B-390-after.png",
+              "tool_call_id": "item_51"
+            },
+            "layout_width": 375,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          }
+        },
+        "preference": {
+          "winner": "A",
+          "reason": "Both complete the keyboard selection and recovery, but A shows all four maximum assembled heights against the same low limit at both widths before interaction. B's cabinet schematic is understandable for one selection, yet its reused generic silhouette and single-tool view make comparison less direct."
+        },
+        "case": "cupboard-clearance",
+        "verified_screens": 4,
+        "required_screens": 4,
+        "browser": "Chrome/160.0.8178.0",
+        "evaluator_thread": "01a2088f-e89a-7aa3-9bfc-26d01c15826c",
+        "usage": {
+          "input_tokens": 556021,
+          "cached_input_tokens": 520704,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3109,
+          "reasoning_output_tokens": 0
+        },
+        "trace_sha256": "20dd4db303485c07d582654f68d5aaa145473175f6ca88ac27ecd03bbf482699",
+        "browser_audit_sha256": "b36129f69cff32d8ead7336bc9963cb7937664a040615f95ad8b7ccc0ff3b0cf"
+      },
+      "journeys": [
+        {
+          "arm": "table",
+          "build": "b117f3db4898dd1b96562b1d1aa9dc1ecb1ae87dfe0a9f858834b34ba7985e22",
+          "viewport": [
+            1440,
+            900
+          ],
+          "input": "keyboard",
+          "opening_tool_bottoms": [
+            363.4,
+            430.4,
+            517.7,
+            584.7
+          ],
+          "withdrawal_focus": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine meets the measured height and swing limits at 32 mm and 6°. Its first pickup is 18:25.",
+          "fine_focused": true,
+          "confirmation_visible": true,
+          "selection_figure": {
+            "name": "Fine ratchet",
+            "height": "32 mm",
+            "angle": "6° reset",
+            "availability": ""
+          },
+          "facts": {
+            "flat": "Flat fits at 28 mm, below the 41 mm low limit. Its 15° reset needs 3° more than the 12° stop.",
+            "pocket": "Pocket selected for 18:10. Its 38 mm maximum and 10° reset both fit.",
+            "withdrawn": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine meets the measured height and swing limits at 32 mm and 6°. Its first pickup is 18:25.",
+            "fine": "Fine selected for 18:25. Its 32 mm maximum and 6° reset both fit."
+          },
+          "frames": [
+            {
+              "file": "table-1440-initial.png",
+              "sha256": "1bb46447b79c0b7c9e28547c78d1f01fff640605baa593e7c06a48f9b97cf1cb",
+              "phase": "initial"
+            },
+            {
+              "file": "table-1440-flat.png",
+              "sha256": "8accbb3adb421a7d3107dd31fb49759b59a9db68e1f15824cf6a84c216bae79d",
+              "phase": "flat"
+            },
+            {
+              "file": "table-1440-pocket.png",
+              "sha256": "ec033ed452067d4dd75202ddeb13b22323f0a39f9ab8b57949034806ead8a0a6",
+              "phase": "pocket"
+            },
+            {
+              "file": "table-1440-withdrawn.png",
+              "sha256": "42a0ace96319d81b1bfac722f3c57cc892edd9c5bedf1cbcb3aca14eac117b78",
+              "phase": "withdrawn"
+            },
+            {
+              "file": "table-1440-replacement.png",
+              "sha256": "46bbeaa185416396877ef644a9ca99b6232314221c317b9162923a114fb6764c",
+              "phase": "replacement"
+            }
+          ]
+        },
+        {
+          "arm": "table",
+          "build": "b117f3db4898dd1b96562b1d1aa9dc1ecb1ae87dfe0a9f858834b34ba7985e22",
+          "viewport": [
+            390,
+            844
+          ],
+          "input": "keyboard",
+          "opening_tool_bottoms": [
+            606.0,
+            663.0,
+            720.0,
+            777.0
+          ],
+          "withdrawal_focus": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine meets the measured height and swing limits at 32 mm and 6°. Its first pickup is 18:25.",
+          "fine_focused": true,
+          "confirmation_visible": true,
+          "selection_figure": {
+            "name": "Fine ratchet",
+            "height": "32 mm",
+            "angle": "6° reset",
+            "availability": ""
+          },
+          "facts": {
+            "flat": "Flat fits at 28 mm, below the 41 mm low limit. Its 15° reset needs 3° more than the 12° stop.",
+            "pocket": "Pocket selected for 18:10. Its 38 mm maximum and 10° reset both fit.",
+            "withdrawn": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine meets the measured height and swing limits at 32 mm and 6°. Its first pickup is 18:25.",
+            "fine": "Fine selected for 18:25. Its 32 mm maximum and 6° reset both fit."
+          },
+          "frames": [
+            {
+              "file": "table-390-initial.png",
+              "sha256": "5233dbd6eb1548cb577cbf291d3a205c9590a1b2588a3229f45be163130ba2c0",
+              "phase": "initial"
+            },
+            {
+              "file": "table-390-flat.png",
+              "sha256": "f3f5c9da8b4101a103840193dcd63a8c02e5e7fa03af621b8239e0b03a107a60",
+              "phase": "flat"
+            },
+            {
+              "file": "table-390-pocket.png",
+              "sha256": "66a1d796dd6f1efb14a0db6208be5d93c9d1dd4bc5b6441f644f27c53aaf366a",
+              "phase": "pocket"
+            },
+            {
+              "file": "table-390-withdrawn.png",
+              "sha256": "52851a6ac59ca5ce8b1c55b0c2e8a1a67fbc7b3914ca32f7193ffb57a8ba08b6",
+              "phase": "withdrawn"
+            },
+            {
+              "file": "table-390-replacement.png",
+              "sha256": "20b333e2e01aba96709692240ff391aa43c732b7abe0cbfbd671bb3d5ad21840",
+              "phase": "replacement"
+            }
+          ]
+        },
+        {
+          "arm": "table",
+          "build": "b117f3db4898dd1b96562b1d1aa9dc1ecb1ae87dfe0a9f858834b34ba7985e22",
+          "viewport": [
+            320,
+            700
+          ],
+          "input": "pointer/reduced-motion",
+          "opening_tool_bottoms": [
+            635.1,
+            692.1,
+            749.1,
+            806.1
+          ],
+          "withdrawal_focus": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine meets the measured height and swing limits at 32 mm and 6°. Its first pickup is 18:25.",
+          "fine_focused": true,
+          "confirmation_visible": true,
+          "selection_figure": {
+            "name": "Fine ratchet",
+            "height": "32 mm",
+            "angle": "6° reset",
+            "availability": ""
+          },
+          "facts": {
+            "flat": "Flat fits at 28 mm, below the 41 mm low limit. Its 15° reset needs 3° more than the 12° stop.",
+            "pocket": "Pocket selected for 18:10. Its 38 mm maximum and 10° reset both fit.",
+            "withdrawn": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine meets the measured height and swing limits at 32 mm and 6°. Its first pickup is 18:25.",
+            "fine": "Fine selected for 18:25. Its 32 mm maximum and 6° reset both fit."
+          },
+          "frames": [
+            {
+              "file": "table-320-initial.png",
+              "sha256": "7eaef1507f5bd9face55fc0e781276a13d4de91f3bdcf427cc8ac02dabd8cae9",
+              "phase": "initial"
+            },
+            {
+              "file": "table-320-flat.png",
+              "sha256": "af5cea28545035f6fc0598e711d001a7a8b296d84642a0509274e0cd3d5d4352",
+              "phase": "flat"
+            },
+            {
+              "file": "table-320-pocket.png",
+              "sha256": "9a4a12f814b1315c727cca269309472962a99a12fd7df2da1f7c5e0e9925b26f",
+              "phase": "pocket"
+            },
+            {
+              "file": "table-320-withdrawn.png",
+              "sha256": "7e36c9a73a2f8730d1183f3727114a4c5633abfb870deb274047d9d912729dc4",
+              "phase": "withdrawn"
+            },
+            {
+              "file": "table-320-replacement.png",
+              "sha256": "ca41cf87b28763bcee115a094532016e3e89ae24a1f32f2b1284957c6ec299d1",
+              "phase": "replacement"
+            }
+          ]
+        },
+        {
+          "arm": "section",
+          "build": "d86595d0997aa4e28f76b1264a7878061c11b53f8f3d3220cb253ad0a1227746",
+          "viewport": [
+            1440,
+            900
+          ],
+          "input": "keyboard",
+          "opening_tool_bottoms": [
+            363.4,
+            430.4,
+            517.7,
+            584.7
+          ],
+          "withdrawal_focus": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine meets the measured height and swing limits at 32 mm and 6°. Its first pickup is 18:25.",
+          "fine_focused": true,
+          "confirmation_visible": true,
+          "selection_figure": {
+            "name": "Fine ratchet",
+            "height": "32 mm",
+            "angle": "6° reset",
+            "availability": ""
+          },
+          "facts": {
+            "flat": "Flat fits at 28 mm, below the 41 mm low limit. Its 15° reset needs 3° more than the 12° stop.",
+            "pocket": "Pocket selected for 18:10. Its 38 mm maximum and 10° reset both fit.",
+            "withdrawn": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine meets the measured height and swing limits at 32 mm and 6°. Its first pickup is 18:25.",
+            "fine": "Fine selected for 18:25. Its 32 mm maximum and 6° reset both fit."
+          },
+          "frames": [
+            {
+              "file": "section-1440-initial.png",
+              "sha256": "c19fe354d0616e554c845ba1b03992b5751c5c365f3c38637a05eb53589fd5e4",
+              "phase": "initial"
+            },
+            {
+              "file": "section-1440-flat.png",
+              "sha256": "9ed6d49273a7295023d7e017a435c9c70c54e37ad2890816ca0b0aa91bdcce69",
+              "phase": "flat"
+            },
+            {
+              "file": "section-1440-pocket.png",
+              "sha256": "8da9af3386387332ed2ecc28619d59e1263f3fa081d0a35ec77ecd02101d6253",
+              "phase": "pocket"
+            },
+            {
+              "file": "section-1440-withdrawn.png",
+              "sha256": "02d26946ffe85b06276dbf064302327b86fd14271b876db2cbf06f88d47ea546",
+              "phase": "withdrawn"
+            },
+            {
+              "file": "section-1440-replacement.png",
+              "sha256": "b9cb606a3b405b1fc0ed80f63b09d03c384ad86d2c2db0ec99f6d5b199d0ae20",
+              "phase": "replacement"
+            }
+          ]
+        },
+        {
+          "arm": "section",
+          "build": "d86595d0997aa4e28f76b1264a7878061c11b53f8f3d3220cb253ad0a1227746",
+          "viewport": [
+            390,
+            844
+          ],
+          "input": "keyboard",
+          "opening_tool_bottoms": [
+            609.3,
+            666.3,
+            723.3,
+            780.3
+          ],
+          "withdrawal_focus": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine meets the measured height and swing limits at 32 mm and 6°. Its first pickup is 18:25.",
+          "fine_focused": true,
+          "confirmation_visible": true,
+          "selection_figure": {
+            "name": "Fine ratchet",
+            "height": "32 mm",
+            "angle": "6° reset",
+            "availability": ""
+          },
+          "facts": {
+            "flat": "Flat fits at 28 mm, below the 41 mm low limit. Its 15° reset needs 3° more than the 12° stop.",
+            "pocket": "Pocket selected for 18:10. Its 38 mm maximum and 10° reset both fit.",
+            "withdrawn": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine meets the measured height and swing limits at 32 mm and 6°. Its first pickup is 18:25.",
+            "fine": "Fine selected for 18:25. Its 32 mm maximum and 6° reset both fit."
+          },
+          "frames": [
+            {
+              "file": "section-390-initial.png",
+              "sha256": "8bede174b12fd7b6d5674d1fe2c81bb82cb0fa7ab71bee01fd93efe8f63227e2",
+              "phase": "initial"
+            },
+            {
+              "file": "section-390-flat.png",
+              "sha256": "f13a726046cd7409e6b4d6f39b8f6415a76a10d9b476b00ada5b2c6f9560fbd2",
+              "phase": "flat"
+            },
+            {
+              "file": "section-390-pocket.png",
+              "sha256": "39a6a2282508673c18ae00d599c24725b4070455d13252398d267b20546eb920",
+              "phase": "pocket"
+            },
+            {
+              "file": "section-390-withdrawn.png",
+              "sha256": "37de3391ab2e698279fa29fbb7e930d68702583de65effb541235ebd42698d38",
+              "phase": "withdrawn"
+            },
+            {
+              "file": "section-390-replacement.png",
+              "sha256": "e54bcb39321bf6880f81ff783640bc3fd077e509c7068611b80e62c2d72004b4",
+              "phase": "replacement"
+            }
+          ]
+        },
+        {
+          "arm": "section",
+          "build": "d86595d0997aa4e28f76b1264a7878061c11b53f8f3d3220cb253ad0a1227746",
+          "viewport": [
+            320,
+            700
+          ],
+          "input": "pointer/reduced-motion",
+          "opening_tool_bottoms": [
+            655.8,
+            712.8,
+            769.8,
+            826.8
+          ],
+          "withdrawal_focus": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine meets the measured height and swing limits at 32 mm and 6°. Its first pickup is 18:25.",
+          "fine_focused": true,
+          "confirmation_visible": true,
+          "selection_figure": {
+            "name": "Fine ratchet",
+            "height": "32 mm",
+            "angle": "6° reset",
+            "availability": ""
+          },
+          "facts": {
+            "flat": "Flat fits at 28 mm, below the 41 mm low limit. Its 15° reset needs 3° more than the 12° stop.",
+            "pocket": "Pocket selected for 18:10. Its 38 mm maximum and 10° reset both fit.",
+            "withdrawn": "Pocket was selected for 18:10. The desk withdrew it at 17:56 because its ratchet jammed. Fine meets the measured height and swing limits at 32 mm and 6°. Its first pickup is 18:25.",
+            "fine": "Fine selected for 18:25. Its 32 mm maximum and 6° reset both fit."
+          },
+          "frames": [
+            {
+              "file": "section-320-initial.png",
+              "sha256": "130440729f0fcbb110ec4ed7402bf79eeb7b355849e11e8d6088584e67288c33",
+              "phase": "initial"
+            },
+            {
+              "file": "section-320-flat.png",
+              "sha256": "2ba888fb68f2adebc143d8a930667ce32b2fb910cc697de9d092f37a6c2db15a",
+              "phase": "flat"
+            },
+            {
+              "file": "section-320-pocket.png",
+              "sha256": "5f7e7cc5cd88d66652e0b845c6580ccda6745e987d69903137505d6340f0dc56",
+              "phase": "pocket"
+            },
+            {
+              "file": "section-320-withdrawn.png",
+              "sha256": "c3aa0a03d1b10ada104b619d70097b806d8ff5f5e6696ea121a0b65da302ad07",
+              "phase": "withdrawn"
+            },
+            {
+              "file": "section-320-replacement.png",
+              "sha256": "949d317ea22cfa609b6720c6290756e14820172f98e42c46d795ab7be0cf0b27",
+              "phase": "replacement"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "round": 6,
+      "description": "Fresh confirmation of the frozen best",
+      "review_directory": ".context/cupboard-live/blind-confirmation",
+      "checked_directory": ".context/cupboard-live/check-confirmation",
+      "review_pixels": [
+        {
+          "file": "A-1440-after.png",
+          "sha256": "c44fc05e2b0a9c06da72e71d92a94987948f648308d5063ca2215fa9960d1944",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "A-1440-before.png",
+          "sha256": "c19fe354d0616e554c845ba1b03992b5751c5c365f3c38637a05eb53589fd5e4",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "A-1440-edge.png",
+          "sha256": "c7c09c90a316a2c6ed6325e1c0f4c6982d3928f6e2710785ba719f3acd1dd12b",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "A-390-after.png",
+          "sha256": "6aafbc608d431fe5a0fb332847fadbb9acfa89489346b8ca9f00b9f97616d7d1",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "A-390-before.png",
+          "sha256": "8bede174b12fd7b6d5674d1fe2c81bb82cb0fa7ab71bee01fd93efe8f63227e2",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "A-390-edge.png",
+          "sha256": "f35f0a5effcf0bf458b40fc7b8d0fe7e42a7a8cefa7d82521a889a6be8cf64c6",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "B-1440-after.png",
+          "sha256": "240d89956a95503f3822eb73bca9702e1e398657faf2033eeaa7137c1bc00893",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "B-1440-before.png",
+          "sha256": "cc074df251da6c110efd271a7c53594694fe4a4daf63ca145ab24fb46564cb97",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "B-1440-edge.png",
+          "sha256": "7ee76ad487a1bc09a30fb36955009e9b01a64d2577bcc7ed32d15b3111967acb",
+          "size": [
+            1440,
+            900
+          ]
+        },
+        {
+          "file": "B-390-after.png",
+          "sha256": "de21ebf013514238945f83750cc5bd8ef9eaa4033a13069e6d3321bc0a3116dd",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "B-390-before.png",
+          "sha256": "e38f9303c43a19d05661f314f3c05241ff7f0861846f474a68fc2c8591811103",
+          "size": [
+            390,
+            844
+          ]
+        },
+        {
+          "file": "B-390-edge.png",
+          "sha256": "9f61ce1ad2880c9b5729956dbd7641022c12a6c21c6a47e99b3d2f7ba0634171",
+          "size": [
+            390,
+            844
+          ]
+        }
+      ],
+      "audit": {
+        "identity": "f97f9fbde5801a875949a8a3bc5d096af99ac995cdaf703729499446f9f0a63d",
+        "trace": "470a5034127fb08b0b002aba86fb95e567444f9b371c441e593a7727720aeae9"
+      },
+      "ballot": {
+        "calibration": {
+          "example": "Legible repair intake with clear labels, familiar layout and misplaced focus after an invalid number",
+          "coherence": 7,
+          "originality": 4,
+          "craft": 6,
+          "usability": 6
+        },
+        "screens": {
+          "A-1440": {
+            "coherence": 8.5,
+            "originality": 7.5,
+            "craft": 8,
+            "usability": 8.5,
+            "primary_action": {
+              "input": "Tab twice, Enter to inspect Flat; Tab, Enter to choose Pocket; Tab, Enter to simulate the 17:56 stock update.",
+              "expected": "Explain Flat's failure, select Pocket for 18:10, then present the withdrawal and a reachable substitute.",
+              "observed": "Flat's explanation appeared. Pocket was selected for 18:10 with a 38 mm maximum and 10° reset. The simulated update left Pocket pressed but unavailable, reported its jam and moved focus to the withdrawal explanation. Fine's 32 mm, 6° and 18:25 evidence appeared there; its button was one Tab away."
+            },
+            "edge_observation": "Tab and Enter selected Fine for 18:25. Its 32 mm maximum and 6° reset were confirmed; Pocket's 17:56 withdrawal and reason remained visible. The drawing changed from highlighted Pocket to highlighted Fine, with the corresponding swing comparison.",
+            "fact_check": "The supplied dimensions predict fit against the measured height and swing limits, but not hand clearance. The 42 ±1 mm opening has a 41 mm low limit. Flat's 28 mm maximum leaves 13 mm, yet its 15° reset exceeds the 12° swing by 3°. Pocket is the earliest qualifying choice at 18:10. On opening, one schematic compares all four maximum heights—46, 28, 38 and 32 mm—against the same 41 mm line. It is schematic evidence, not proof of real-world clearance or a tool movement.",
+            "strength": "The common baseline and limit make the height comparison immediate, while the selected profile and swing diagram follow the choice.",
+            "weakness": "The compact swing graphic needs its numerical labels and text to explain the mechanism; the profiles do not depict the cabinet or hand clearance.",
+            "repair": "Make the pivot and physical stop clearer while retaining the shared height comparison and explicit unverified-clearance caveat.",
+            "arm": "section",
+            "html_sha256": "d86595d0997aa4e28f76b1264a7878061c11b53f8f3d3220cb253ad0a1227746",
+            "weighted": 8.1,
+            "before": {
+              "sha256": "c19fe354d0616e554c845ba1b03992b5751c5c365f3c38637a05eb53589fd5e4",
+              "file": "A-1440-before.png",
+              "tool_call_id": "item_2"
+            },
+            "after": {
+              "sha256": "c44fc05e2b0a9c06da72e71d92a94987948f648308d5063ca2215fa9960d1944",
+              "file": "A-1440-after.png",
+              "tool_call_id": "item_10"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "A-390": {
+            "coherence": 8,
+            "originality": 7.5,
+            "craft": 7.5,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab twice and Enter on Flat; Tab and Enter on Pocket; Tab and Enter on the simulated update.",
+              "expected": "Complete the same selection and recovery path by keyboard.",
+              "observed": "Flat's 28 mm and 15° explanation appeared; Pocket was selected for 18:10. After the update, Pocket remained pressed but disabled, the jam and 17:56 withdrawal appeared, and focus moved to the explanation. Fine's evidence was readable there and its action was reachable with the next Tab."
+            },
+            "edge_observation": "Enter on Fine selected it for 18:25 at 32 mm maximum and 6° reset. The withdrawal remained visible. The common schematic highlighted Pocket after its selection and Fine after the substitute selection.",
+            "fact_check": "The opening phone screen shows all four profiles and maximum heights against the 41 mm line, plus the 12° versus 15° Flat swing graphic. It supports a measured fit prediction only; hand clearance is expressly unverified. Pocket initially qualifies earliest at 18:10. The viewport was requested at 390 CSS pixels; review metadata reported a 375-pixel layout width.",
+            "strength": "The opening retains the comparison, constraints and driver rows in a compact vertical layout.",
+            "weakness": "Diagram labels and table headings are small; at the conflict, the Fine action falls below the focused explanation and requires scrolling or Tab navigation.",
+            "repair": "Increase diagram and table label size and keep the substitute action visibly adjacent to its explanation on narrow screens.",
+            "arm": "section",
+            "html_sha256": "d86595d0997aa4e28f76b1264a7878061c11b53f8f3d3220cb253ad0a1227746",
+            "weighted": 7.75,
+            "before": {
+              "sha256": "8bede174b12fd7b6d5674d1fe2c81bb82cb0fa7ab71bee01fd93efe8f63227e2",
+              "file": "A-390-before.png",
+              "tool_call_id": "item_16"
+            },
+            "after": {
+              "sha256": "6aafbc608d431fe5a0fb332847fadbb9acfa89489346b8ca9f00b9f97616d7d1",
+              "file": "A-390-after.png",
+              "tool_call_id": "item_24"
+            },
+            "layout_width": 375,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-1440": {
+            "coherence": 7,
+            "originality": 8,
+            "craft": 7.5,
+            "usability": 7.5,
+            "primary_action": {
+              "input": "Tab twice, Enter on Flat; Tab, Enter on Pocket; Tab, Enter on the simulated 17:56 update.",
+              "expected": "Explain Flat, select Pocket, then show the conflict and enable a deliberate substitute choice.",
+              "observed": "The Flat explanation confirmed 28 mm against 41 mm and a 15° reset against a 12° stop. Pocket was selected for 18:10. The update left Pocket pressed but disabled, disclosed the jam and withdrawal, and focused the explanation. It named Fine's 32 mm, 6° and 18:25; Choose Fine was one Tab away."
+            },
+            "edge_observation": "Fine was selected for 18:25 with a 32 mm maximum and 6° reset. Pocket's withdrawal remained clear. The physical drawing continued to describe Flat at 28 mm and 15°, both after Pocket and after Fine were chosen.",
+            "fact_check": "The dimensions predict measured height and swing fit, but hand clearance remains unverified. Pocket is the earliest qualifying choice at 18:10. The opening illustration shows only Flat in a 41 mm recess, plus its reset sweep; it does not visually compare all four maximum heights. After either qualifying choice, the drawing is evidence about Flat and is juxtaposed with the selected tool's separate facts, not physical evidence for that selection.",
+            "strength": "The cabinet recess, dimension lines and shared-pivot sweep explain why Flat can fit vertically yet fail to reset.",
+            "weakness": "The prominent static Flat illustration competes with the selected Pocket or Fine result and cannot substantiate those choices.",
+            "repair": "Update the physical illustration and sweep for the selected tool, and add a shared comparison of all four maximum heights against the low limit.",
+            "arm": "table",
+            "html_sha256": "733dd963562a1d6e2cd7827eff21bb29470ffa454247cb3279a7ca1374de06af",
+            "weighted": 7.5,
+            "before": {
+              "sha256": "cc074df251da6c110efd271a7c53594694fe4a4daf63ca145ab24fb46564cb97",
+              "file": "B-1440-before.png",
+              "tool_call_id": "item_29"
+            },
+            "after": {
+              "sha256": "240d89956a95503f3822eb73bca9702e1e398657faf2033eeaa7137c1bc00893",
+              "file": "B-1440-after.png",
+              "tool_call_id": "item_37"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          },
+          "B-390": {
+            "coherence": 6.5,
+            "originality": 8,
+            "craft": 7,
+            "usability": 7,
+            "primary_action": {
+              "input": "Tab twice and Enter on Flat; Tab and Enter on Pocket; Tab and Enter on the simulated update.",
+              "expected": "Inspect, select and recover using the keyboard.",
+              "observed": "Pocket was selected for 18:10. The update retained it as pressed but unavailable, showed the 17:56 jam withdrawal, and focused the explanation containing Fine's 32 mm, 6° and 18:25 evidence. The next Tab reached Choose Fine."
+            },
+            "edge_observation": "Fine was selected for 18:25 with 32 mm maximum height and 6° reset; the old withdrawal remained visible. The drawing still showed Flat's 28 mm and 15° geometry rather than Fine or Pocket.",
+            "fact_check": "On opening, the phone view illustrates Flat alone in the recess and its reset sweep; it does not compare the four maximum heights in one physical illustration. The table supplies the other dimensions. The measures support a conditional fit prediction, not verified hand clearance or a real tool movement. Pocket initially qualifies earliest at 18:10. The requested width was 390 CSS pixels; review metadata reported a 375-pixel layout width.",
+            "strength": "The opening presents the physical reason for Flat's failure and keeps the driver list close beneath it.",
+            "weakness": "Small drawing labels and the persistent Flat example make the selection evidence harder to connect; the Fine confirmation sits below the visible portion of the edge capture.",
+            "repair": "Make the illustration reflect the selected tool and bring the selected confirmation into view near its focused action.",
+            "arm": "table",
+            "html_sha256": "733dd963562a1d6e2cd7827eff21bb29470ffa454247cb3279a7ca1374de06af",
+            "weighted": 7.15,
+            "before": {
+              "sha256": "e38f9303c43a19d05661f314f3c05241ff7f0861846f474a68fc2c8591811103",
+              "file": "B-390-before.png",
+              "tool_call_id": "item_43"
+            },
+            "after": {
+              "sha256": "de21ebf013514238945f83750cc5bd8ef9eaa4033a13069e6d3321bc0a3116dd",
+              "file": "B-390-after.png",
+              "tool_call_id": "item_51"
+            },
+            "layout_width": 375,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              },
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "Enter"
+              }
+            ]
+          }
+        },
+        "preference": {
+          "winner": "A",
+          "reason": "A compares all four maximum heights against the same low limit before interaction and updates its highlighted profile and swing evidence with the selected tool. B explains Flat's physical mechanism more vividly, but its unchanged Flat drawing does not support the Pocket or Fine choices. Both completed the keyboard recovery and retained the withdrawal."
+        },
+        "unsupported_claims": [
+          "A guaranteed physical fit is unsupported because hand clearance is unverified.",
+          "A real reservation, stock movement or physical tool movement is not established by the simulated selection and update."
+        ],
+        "case": "cupboard-clearance",
+        "verified_screens": 4,
+        "required_screens": 4,
+        "browser": "Chrome/160.0.8178.0",
+        "evaluator_thread": "01a20891-c606-7da0-88f1-ab76dd469238",
+        "usage": {
+          "input_tokens": 548785,
+          "cached_input_tokens": 514688,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3276,
+          "reasoning_output_tokens": 0
+        },
+        "trace_sha256": "470a5034127fb08b0b002aba86fb95e567444f9b371c441e593a7727720aeae9",
+        "browser_audit_sha256": "96ecaf9f062dada071437f342b7207e51978081701a1087b384e5b7b981c6a01"
+      },
+      "journeys": []
+    }
+  ]
+}

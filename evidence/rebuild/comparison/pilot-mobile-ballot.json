@@ -1,0 +1,134 @@
+{
+  "case": "mobile",
+  "model": "gpt-6.2-astra",
+  "effort": "max",
+  "prompt_sha256": "6e7377170fa016a216dee3a1257bd10af375e09caeea847d76dea73c3d684713",
+  "image_sha256": {
+    "A-1440.png": "57e8453a0640264f3cc22c5c55ab30a7fc9c1d3ac6adec1b11a1b2302a0df857",
+    "A-1440-blur.png": "4badd29657929fcbf9bb6548ac6a831698965e49b962899cd9ac8e40f7507dd2",
+    "A-390.png": "e6c7b972dd525d392deaa9366609b787688a849b99874178538e024d4fc99bbe",
+    "A-390-blur.png": "32c421680fded8ed4f14ffb9886cccdb3ba4451400144e496783ef07fe671dbb",
+    "B-1440.png": "9798e72066e1a9964307f3511ddaa2b74e5d6934fd5999e1b894010dfc3988db",
+    "B-1440-blur.png": "68f24e9269cdcf767874de6d9290bb08ec0a2af54a005905e50f163314cf5be5",
+    "B-390.png": "7db3ca2c7d30e0290f9cad1c82c564835f760a9f0ca7f83747511cf3a90b1ccd",
+    "B-390-blur.png": "b5d79faea40ba04aa4fc3ebebb9b6e0a1f0468236cad35e034867b6895cd3b6d",
+    "C-1440.png": "668295612e08207251ac1dc89159c393b658e0c3ca2f5b2952d50373a34b85d0",
+    "C-1440-blur.png": "ccdaf71db25224bb07bc18dba8352df6785fd90331eb651ef191c378beadcfe4",
+    "C-390.png": "eccfd32f0584bf1c9808f96f2998fd128260033a761057f6d60fb630ab91f1de",
+    "C-390-blur.png": "8f27e8235f0417e244bcf31f47a23c0c4112d850877ce46fbb9fe913a8acba24",
+    "D-1440.png": "b67e399e589890cc0dd5cb93a7e4560221574556bcf81ac799c42a5d2630bdf8",
+    "D-1440-blur.png": "6f66a237ea817c9a12a2794094d10a1ecbff208268d33716a7bb8a34e941a72e",
+    "D-390.png": "baa5a9015300ebbac00e7bcb1d78c6ebb5572ace47a12e13877966995ce21018",
+    "D-390-blur.png": "15ea0df0de06698946628a796abef94ae0b98fd25fc40caee804b915fed74fc4"
+  },
+  "blind_key": {
+    "A": "C",
+    "B": "L",
+    "C": "D",
+    "D": "N"
+  },
+  "usage": {
+    "input_tokens": 38358,
+    "cached_input_tokens": 0,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 7739,
+    "reasoning_output_tokens": 6591
+  },
+  "scores": {
+    "C": 10,
+    "L": 9,
+    "D": 8,
+    "N": 8
+  },
+  "verdict": {
+    "A": {
+      "task_focus": {
+        "score": 2,
+        "evidence": "08:42, Union and Platform 3 read straight down the board. The next element is the yellow \u201cShow ticket TKT-0837\u201d button."
+      },
+      "distinctiveness": {
+        "score": 2,
+        "evidence": "In both grayscale blurs, the oversized time, shorter station name and compact platform plate retain the shape of a rail departure board."
+      },
+      "craft": {
+        "score": 2,
+        "evidence": "Yellow picks out the two details a walking rider needs to find quickly. The compact platform badge and wide ticket button have distinct shapes, while thin rules keep the secondary rows quiet."
+      },
+      "mobile": {
+        "score": 2,
+        "evidence": "At 390 px the board fills the width, the inset ticket button fits on one line, and both the alternative time and weekly pass remain in view."
+      },
+      "evidence_in_use": {
+        "score": 2,
+        "evidence": "Platform 3 marks where to board, TKT-0837 identifies the ticket on the button, and 08:58 sits opposite \u201cAlternative to Union\u201d for immediate comparison with 08:42."
+      }
+    },
+    "B": {
+      "task_focus": {
+        "score": 2,
+        "evidence": "Union heads the ticket, 08:42 sits beside Platform 3, and a wide blue \u201cReveal ticket\u201d button completes the reading order."
+      },
+      "distinctiveness": {
+        "score": 2,
+        "evidence": "The branching track beneath Union echoes the Spur name. In blur, the dark destination panel, paired time and platform, and bottom action strip still read as one rail pass."
+      },
+      "craft": {
+        "score": 2,
+        "evidence": "The gold platform badge is centered beside the large departure time, making the pair easy to scan. A dashed perforation marks the transition to the ticket action."
+      },
+      "mobile": {
+        "score": 2,
+        "evidence": "At 390 px, 08:42 and Platform 3 still fit side by side with space between them. The tiny uppercase captions are secondary to those legible values and the full-width button."
+      },
+      "evidence_in_use": {
+        "score": 1,
+        "evidence": "Union, 08:42 and Platform 3 structure the ticket, and the next-departure row exposes 08:58. The visible ticket action says only \u201cReveal ticket,\u201d leaving its identifier unspecified."
+      }
+    },
+    "C": {
+      "task_focus": {
+        "score": 2,
+        "evidence": "08:42 is the first prominent value. Union and Platform 3 share the board\u2019s lower edge, directly above the yellow button naming the ticket."
+      },
+      "distinctiveness": {
+        "score": 2,
+        "evidence": "Both blurs preserve the station-sign layout, with a large time at upper left and a destination opposite a rectangular platform marker along the bottom."
+      },
+      "craft": {
+        "score": 1,
+        "evidence": "Union and Platform 3 align well on one row. The deep empty band above them separates the boarding details from 08:42, making one departure take two glances to read."
+      },
+      "mobile": {
+        "score": 2,
+        "evidence": "At 390 px the destination and platform fit on one row, the ticket number is legible on the wide button, and both secondary choices fit beneath it."
+      },
+      "evidence_in_use": {
+        "score": 1,
+        "evidence": "The board pairs Union with Platform 3, and TKT-0837 identifies the action. The closed \u201cAlternative departure\u201d row omits 08:58, the fact a rider needs to compare trains."
+      }
+    },
+    "D": {
+      "task_focus": {
+        "score": 2,
+        "evidence": "The oversized 08:42 leads into Union and a dedicated platform row. The amber \u201cReveal ticket\u201d button stands apart from the two secondary choices below."
+      },
+      "distinctiveness": {
+        "score": 1,
+        "evidence": "The dashed tear line suggests a ticket. In both blurs the dominant shape is a familiar rounded card with a dark header, a label-and-value row and a button."
+      },
+      "craft": {
+        "score": 2,
+        "evidence": "The departure and platform labels share a left inset. The bold 3 is easy to locate in its own white band, and amber is reserved for the ticket action."
+      },
+      "mobile": {
+        "score": 2,
+        "evidence": "The clock scales down at 390 px while the platform number stays prominent. The inset button, 08:58 alternative and weekly pass are all legible in the same view."
+      },
+      "evidence_in_use": {
+        "score": 1,
+        "evidence": "08:42 anchors the card, 3 gets a dedicated platform row, and 08:58 directly labels the alternative. The button names the reveal action but gives no visible TKT-0837 identifier."
+      }
+    }
+  },
+  "trace_sha256": "c9081b26b658e474d934a15ff5aabedf1ec1d0549c2432bbcd68038c4215b6aa"
+}

@@ -1,0 +1,46 @@
+{
+  "scope": "Deterministic CLI fixture and replay of frozen provider traces. Shapes and tool replies in the fixture are synthetic.",
+  "previous_parser_commit": "53e1898269b306deb005fb393004292d75e6b380",
+  "candidate_parser_sha256": "ab92eddaf892a954130160d0b3a759a83b89b2f17a17423e439a9605b7a29a10",
+  "frozen_pairs_replayed": 36,
+  "frozen_cells_exact_prompt_and_parser_parity": 72,
+  "frozen_trace_identity_sha256": "3c9137b0156639ebc0197cf845dcb54e95a4dd1e60a04f3c6562aafdc3c537b4",
+  "fixture_arms": {
+    "none": {
+      "status": "passed",
+      "unhinted_direct": null,
+      "prompt_sha256": "1ac8e7b90fd6977fa19939d9d2ef846d537968c8d1a1e3ce0b45e03823c104f2",
+      "trace_sha256": "772d9eb89d6b069b859df2ca9999aae1902317bf644c39d4aa63f64ae910d0fe"
+    },
+    "router": {
+      "status": "passed",
+      "unhinted_direct": true,
+      "prompt_sha256": "1ac8e7b90fd6977fa19939d9d2ef846d537968c8d1a1e3ce0b45e03823c104f2",
+      "trace_sha256": "520ed16a07338fd2e8f7fae706c11f70e201e477111b605b9c111c5a52a22295"
+    },
+    "candidate": {
+      "status": "passed",
+      "unhinted_direct": true,
+      "prompt_sha256": "1ac8e7b90fd6977fa19939d9d2ef846d537968c8d1a1e3ce0b45e03823c104f2",
+      "trace_sha256": "e7c3e8606d72084b2fbf51e55439d70d5b7fa843d145340c8f3a7686fc6ea65a"
+    }
+  },
+  "local_suite": {
+    "passed": 489,
+    "subtests_passed": 110,
+    "log_sha256": "dae744cb866c57cf910179844a5a99f650836914f815383b76e7a925fbafea2a"
+  },
+  "negative_control": {
+    "input_change": "supplied surface dashboard alongside the exact brief",
+    "status": "hinted-or-changed-direct",
+    "tool_reply_direction": "exception-first",
+    "trace_preserved": true,
+    "html_preserved": true,
+    "trace_sha256": "c5c438fa07d0382f5c2468cb406ad193b129ba9903ad266495857a9d1754383f"
+  },
+  "held_out_spec_sha256": "fcd60990d263e6c1e44cf5534078b3830902018d9a541e6045adbd0127cd7ed7",
+  "historical_maintenance_preflight_arms": [
+    "none",
+    "v2"
+  ]
+}

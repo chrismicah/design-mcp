@@ -1,0 +1,44 @@
+{
+  "scope": "Preflight for the corpus rollout. No rows were removed from the legacy snapshot.",
+  "source": "7178dabbe16f1bc8cddd2a900530ce87f8ba9b22",
+  "historical_commit": "82fe6e3749acccf80aecfd523e531be4302865e3",
+  "historical_corpus_sha256": "dd51bf8db34f9295253b846ee8719cfd9b76b775ff029f591e49d9e7d16806a5",
+  "mirrors_byte_identical": true,
+  "audit_file_hashes": {
+    "evidence/content/score_content.py": "1cb6728f858686514f049f2ff6dad2dcab4771c936872204708f857a7a38c6b6",
+    "evidence/content/judged_sample.md": "6ac278dc7e549292a1329a539cd9172c7a711764926772bbc79c4a1e5581369a",
+    "evidence/content/action_list.csv": "85b1b36f521a53ecf72a3b3f3321cb62be907e472d343ffbdd22f4fbb74fe531",
+    "evidence/content/patterns_scored.csv": "5c5e19391f8e3994578c46b88017666a91d9590e32d4333a4fb0dfe3dac9afca",
+    "evidence/content/supplemental_scored.csv": "ff149efe7a243702e89f6ee6583f13345d167d3cdfc06c68cc7ac4fd4754ea81",
+    "evidence/content/distribution.json": "a0fc28fac267aab70f008051a28429531d142ff1d99f072afe333d9057cfa6fc",
+    "evidence/content/distribution.svg": "22ee94317b7509a04cbea2ca001857a6045df13977484100e66e7e2aa5c0926c"
+  },
+  "pattern_ids_reconciled": 7080,
+  "pattern_dispositions": {
+    "cull": 6285,
+    "cull-unless-blob-recovered": 277,
+    "keep-as-reference": 22,
+    "merge-duplicate": 26,
+    "rewrite-from-source": 470
+  },
+  "supplemental_dispositions": {
+    "cull": 1,
+    "fix-invalid-values": 1,
+    "keep-as-reference": 29,
+    "rewrite": 240
+  },
+  "curated_catalog_sha256": "fe395b5c1bfa1d22542d2d2b0e6de79cdff7a35ed606acfb5b12ef1c15639c65",
+  "curated_direction_ids": [
+    "object-hero",
+    "exception-first",
+    "stage-call-sheet",
+    "platform-sign",
+    "ground-plane",
+    "scale-ledger",
+    "margin-front",
+    "broadcast-board",
+    "service-work-order"
+  ],
+  "audited_legacy_ids_in_curated_catalog": 0,
+  "legacy_corpus_excluded_from_wheel": true
+}

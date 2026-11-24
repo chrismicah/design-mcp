@@ -1,0 +1,229 @@
+{
+  "calibration": {
+    "coherence": 7,
+    "originality": 4,
+    "craft": 6,
+    "usability": 6,
+    "reason": "Clear labels and legibility support the task; the familiar layout limits originality, and misplaced focus after an invalid number is a meaningful usability defect."
+  },
+  "screens": {
+    "A-1440": {
+      "coherence": 8,
+      "originality": 8,
+      "craft": 7.5,
+      "usability": 8,
+      "primary_action": {
+        "input": "Tab to the selected 4 m radio, then ArrowRight.",
+        "expected": "Select 6 m and show all three closure outcomes.",
+        "observed": "6 m was selected with visible focus; the riverside path, ferry and footbridge outcomes appeared."
+      },
+      "edge_observation": "Two ArrowLeft presses selected 2 m. Only the riverside path closure remained. The water line aligned with the 2 m mark and was identifiable within five seconds.",
+      "fact_check": "At 6 m, the visible water line meets the 6 m mark near the tank top. The listed outcomes match the requested scenario; their real-world accuracy is unsupported by this review.",
+      "strength": "The physical scale study gives the thresholds a distinctive, tangible form.",
+      "weakness": "The 2 m guide label crowds the closure heading area, and the long gap between marks and tank makes comparison less immediate.",
+      "repair": "Give the scale labels a dedicated column and extend unobtrusive guide lines toward the water contact.",
+      "arm": "repair",
+      "html_sha256": "86235c189df026e00fa304b4ff2b81e9490cb1c9a51b9dcf62734d395f9f9816",
+      "weighted": 7.9,
+      "before": {
+        "sha256": "04770d5476a70f0fef0ed1b9f5d5849f3c3d0aad618fe4846768336875deb418",
+        "file": "A-1440-before.png",
+        "tool_call_id": "item_2"
+      },
+      "after": {
+        "sha256": "bc1bb92f7154c86c056805bcef13b965030e0bcae8e8fc2239eaaa247c2b47be",
+        "file": "A-1440-after.png",
+        "tool_call_id": "item_5"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ]
+    },
+    "A-390": {
+      "coherence": 8,
+      "originality": 8,
+      "craft": 7,
+      "usability": 8,
+      "primary_action": {
+        "input": "Tab to 4 m, then ArrowRight.",
+        "expected": "Select 6 m and show all three closure outcomes.",
+        "observed": "6 m was selected and all three outcomes were readable in the first 390 \u00d7 844 viewport."
+      },
+      "edge_observation": "Two ArrowLeft presses selected 2 m; only the riverside path closure remained. The water line aligned with the 2 m mark and could be identified within five seconds, although the image and labels were small.",
+      "fact_check": "The 6 m water contact aligns with the top mark. The closure statements match the requested scenario; independent real-world verification was not available.",
+      "strength": "The controls, results and scale study all fit in the first viewport.",
+      "weakness": "The miniature tank and small threshold labels make the visual comparison less comfortable.",
+      "repair": "Enlarge the scale study or simplify the labels while retaining the results above it.",
+      "arm": "repair",
+      "html_sha256": "86235c189df026e00fa304b4ff2b81e9490cb1c9a51b9dcf62734d395f9f9816",
+      "weighted": 7.8,
+      "before": {
+        "sha256": "b8b49cc610e773ad80f766f5abd42f4f5ab0bb3d54997bcc7f8019ea59bb91fd",
+        "file": "A-390-before.png",
+        "tool_call_id": "item_13"
+      },
+      "after": {
+        "sha256": "14c3c5431e3f5c1587b19da3101394e89df9eabf02d0d9e4b6f7b04147624767",
+        "file": "A-390-after.png",
+        "tool_call_id": "item_16"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ]
+    },
+    "B-1440": {
+      "coherence": 8.5,
+      "originality": 8,
+      "craft": 8.5,
+      "usability": 9,
+      "primary_action": {
+        "input": "Tab to the selected 4 m radio, then ArrowRight.",
+        "expected": "Select 6 m and show all three closure outcomes.",
+        "observed": "6 m was selected with visible focus; the path, ferry and footbridge outcomes appeared."
+      },
+      "edge_observation": "Two ArrowLeft presses selected 2 m; only the riverside path closure remained. The water surface met the 2 m guide and was identifiable within five seconds.",
+      "fact_check": "At 6 m, the water surface meets the 6 m guide at the bridge deck. The displayed outcomes match the requested scenario; their real-world accuracy is unsupported by this review.",
+      "strength": "The labeled cross-section directly connects each threshold to a recognizable crossing.",
+      "weakness": "The large two-line title consumes substantial desktop space relative to the task.",
+      "repair": "Reduce the title footprint slightly and give the results column more breathing room.",
+      "arm": "original",
+      "html_sha256": "6c865202d697125bf3cc70a0edd4d57dc32d2144423c35a3e653cd7766230339",
+      "weighted": 8.45,
+      "before": {
+        "sha256": "f0b0f429014cc9d04e3f6c5353132fb4759cc61a73f42af3e59f8d6e0c42221c",
+        "file": "B-1440-before.png",
+        "tool_call_id": "item_21"
+      },
+      "after": {
+        "sha256": "6314abde3f7a9d85fab36f58b78d2b176485eaca32ba2e3401fbef628f852820",
+        "file": "B-1440-after.png",
+        "tool_call_id": "item_24"
+      },
+      "layout_width": 1440,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ]
+    },
+    "B-390": {
+      "coherence": 8.5,
+      "originality": 8,
+      "craft": 8.5,
+      "usability": 9,
+      "primary_action": {
+        "input": "Tab to 4 m, then ArrowRight.",
+        "expected": "Select 6 m and show all three closure outcomes.",
+        "observed": "6 m was selected and all three outcomes were readable in the first 390 \u00d7 844 viewport."
+      },
+      "edge_observation": "Two ArrowLeft presses selected 2 m; only the riverside path closure remained. The water surface aligned with the 2 m guide and could be identified within five seconds.",
+      "fact_check": "The 6 m water surface aligns with the bridge-level guide. The displayed outcomes match the requested scenario; independent real-world verification was not available.",
+      "strength": "Clear labels and horizontal guides remain legible alongside the full result list on mobile.",
+      "weakness": "Fine details in the ferry and terrain become small at this width.",
+      "repair": "Simplify fine illustration detail at mobile size while preserving the prominent guides.",
+      "arm": "original",
+      "html_sha256": "6c865202d697125bf3cc70a0edd4d57dc32d2144423c35a3e653cd7766230339",
+      "weighted": 8.45,
+      "before": {
+        "sha256": "8b5c2d0642531944ae6170a03577ae588b5268902eb2070f4a11f4e497d75184",
+        "file": "B-390-before.png",
+        "tool_call_id": "item_30"
+      },
+      "after": {
+        "sha256": "c200a9f7092fbc4c37ef67051f8c3b36a939d3679fadebb1f1a54ae3ec948fbf",
+        "file": "B-390-after.png",
+        "tool_call_id": "item_33"
+      },
+      "layout_width": 390,
+      "input_sequence": [
+        {
+          "action": "key",
+          "value": "Tab"
+        },
+        {
+          "action": "key",
+          "value": "ArrowRight"
+        }
+      ],
+      "edge_inputs": [
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        },
+        {
+          "action": "key",
+          "value": "ArrowLeft"
+        }
+      ]
+    }
+  },
+  "preference": {
+    "winner": "B",
+    "reason": "Both views support the keyboard task and show all three mobile outcomes. B makes the relationship between water height and recognizable crossings quicker to read at both widths, with larger, more direct scale labels."
+  },
+  "case": "social-river",
+  "verified_screens": 4,
+  "required_screens": 4,
+  "browser": "Chrome/158.0.8127.36",
+  "evaluator_thread": "01a2062a-7086-7bf1-acbf-0a9dd30a8747",
+  "usage": {
+    "input_tokens": 533792,
+    "cached_input_tokens": 505216,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2519,
+    "reasoning_output_tokens": 0
+  },
+  "trace_sha256": "0fe93e1d32b7ed0972e2215186ef8842c033407f38a61fb568f2117b73353ce7",
+  "browser_audit_sha256": "1938ac1844d2ed83661b8f23e60f9af9ee0f00579bcb691ee093d69722244e74"
+}

@@ -1,0 +1,634 @@
+[
+  {
+    "id": "object-hero",
+    "surface": "landing",
+    "title": "Object hero: the product is the page",
+    "summary": "One featured product presented as a specimen, with the details and buy control in a single purchase block.",
+    "tags": [
+      "single product",
+      "small-batch goods",
+      "provenance",
+      "first purchase"
+    ],
+    "type": {
+      "display": "Fraunces",
+      "body": "Instrument Sans",
+      "ratio": 4.0,
+      "tracking": -0.03,
+      "weight": 600,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#2a1610",
+      "paper": "#f3ebe0",
+      "accent": "#6b2148"
+    },
+    "layout": {
+      "skeleton": "7/5 split; the product image sits left, offset 1 column, and overlaps into a facts band",
+      "focus": "the featured product and one supplied detail that helps a buyer choose it, such as a tasting note, material, or finish",
+      "desktop": "Put the product name at the image edge. Give the deciding detail its own line. Keep the remaining facts and the add control together on the same column edges.",
+      "mobile": "At 390 px, use a shallow product crop up to 35% of the visible height. Keep the product name, deciding detail, size, price, supplied purchase facts, and add control together in reading order. Put the action in flow so it cannot cover a fact.",
+      "rhythm": "96px between bands; the ledger uses a 24px baseline"
+    },
+    "imagery": {
+      "subject": "the product on a plain surface. If it has a label, make the product name and supplied variant or size the strongest lettering.",
+      "crop": "tight, with the product cut by the right edge",
+      "fallback": "Use the product name and its deciding detail as specimen typography when product imagery is unavailable."
+    },
+    "motion": {
+      "trigger": "add to bag",
+      "effect": "bag count ticks and the pill settles 4px",
+      "duration_ms": 240,
+      "reduced": "instant count change"
+    },
+    "action": {
+      "instruction": "One primary action attached to the product. Fill it from the brief's product, size and price, and never repeat it in a hero band",
+      "label": "Add [product], [size] — [price]"
+    },
+    "why": "A first-time buyer needs one choice, not a catalogue. Making the object the hero and stating the brief's exact facts reads warm and exact.",
+    "sources": [
+      {
+        "url": "https://assets.awwwards.com/awards/submissions/2026/09/6aacf2ed22405670949235.jpg",
+        "observation": "Agrumea Farm hero: the product jars are the hero on cream paper with an oxblood shape and type set on a curve; the only CTA is a small pill on the featured jar ('Scopri il prodotto').",
+        "strength": "evidence"
+      },
+      {
+        "url": "https://www.apple.com/v/macbook-air/z/built/styles/main.built.css",
+        "observation": ".typography-hero-headline is 64px; .typography-body is 17px (a ratio of about 3.8).",
+        "strength": "evidence"
+      }
+    ],
+    "credit": "Agrumea Farm site (Awwwards submission; designer not verified)"
+  },
+  {
+    "id": "exception-first",
+    "surface": "dashboard",
+    "title": "Exception first: the problem owns the screen",
+    "summary": "The most urgent item is promoted out of the list into a full-width strip, with its position in the queue; every other row stays quiet. Use for time-pressured operations queues.",
+    "tags": [
+      "operations queue",
+      "dispatch",
+      "exception handling",
+      "time to act"
+    ],
+    "type": {
+      "display": "IBM Plex Sans Condensed",
+      "body": "IBM Plex Sans",
+      "ratio": 2.5,
+      "tracking": -0.02,
+      "weight": 600,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#EEF0EC",
+      "paper": "#14181B",
+      "accent": "#FFAA72"
+    },
+    "layout": {
+      "skeleton": "exception strip on top (item ID, location, deviation), the full queue table below, a due-next rail on the right",
+      "focus": "the deviation value at 40px tabular figures, with an 'n / total' position label",
+      "desktop": "12-col; strip spans 12, table 8, rail 4 holding the next item due",
+      "mobile": "strip, then rail, then table as stacked rows",
+      "rhythm": "8px base; 40px rows; no cards"
+    },
+    "imagery": {
+      "subject": "none; location codes act as the visuals",
+      "crop": "n/a",
+      "fallback": "location code set at 24px tabular figures"
+    },
+    "motion": {
+      "trigger": "deviation changes",
+      "effect": "the value cross-fades; the strip edge pulses once",
+      "duration_ms": 240,
+      "reduced": "value swaps, no pulse"
+    },
+    "action": {
+      "instruction": "Focus jumps the table filter to the exception. Fill it from the brief's most urgent item",
+      "label": "Focus [item ID] at [location]"
+    },
+    "why": "An operator on the clock should see the one problem before the list. Calm comes from making everything except the exception quiet.",
+    "sources": [
+      {
+        "url": "https://linear.app/",
+        "observation": "Linear's home page product mock (server HTML) shows one focused issue 'DRV-8852' with a '1 / 84' queue position, a sidebar of 'Inbox | My issues | Reviews', and a properties rail ('In Progress | Medium | Karri'): one item in focus, its place in the queue, and its state beside it.",
+        "strength": "evidence"
+      }
+    ],
+    "credit": "Linear (Linear Orbit), home page product mock"
+  },
+  {
+    "id": "stage-call-sheet",
+    "surface": "dashboard",
+    "title": "Stage call sheet",
+    "summary": "A working stage document. Put the room list on warm paper and mark the delayed room directly in its row. The list is the main composition.",
+    "tags": ["theatre", "theater", "stage manager", "stage management", "rehearsal", "turnaround board", "room readiness", "delayed rooms"],
+    "type": {
+      "display": "Newsreader",
+      "body": "Instrument Sans",
+      "ratio": 3.25,
+      "tracking": -0.035,
+      "weight": 500,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#27201D",
+      "paper": "#F5EFE2",
+      "accent": "#842E3D"
+    },
+    "layout": {
+      "skeleton": "Print-like masthead, then a single ruled cue ledger. Pair the room name and the actual status across the rule. Apply the accent to the delayed row's status cell and keep the ready row quiet.",
+      "focus": "A large room name beside a compact burgundy status cell showing the actual delay. No copy of the exception above the list and no secondary rail repeating room status.",
+      "desktop": "Align the masthead and ledger on one edge. Give the room name three quarters of the row with a narrow, consistently aligned status column. Place the filter above the ledger.",
+      "mobile": "Masthead, filter, then the same two-column ledger in document order. Wrap the status before squeezing the room name. Each room appears once.",
+      "rhythm": "Wide gap after the masthead. Thin rules and square edges mark the ledger. Use compact control text and generous row height."
+    },
+    "imagery": {
+      "subject": "The room names and cue marks carry the visual identity.",
+      "crop": "No image slot for the operations view.",
+      "fallback": "Use real room names and thin typographic rules."
+    },
+    "motion": {
+      "trigger": "The stage manager changes the room filter.",
+      "effect": "Fade the newly updated row list in from .78 opacity. Focus stays on the filter and the live status announces the new room count.",
+      "duration_ms": 220,
+      "reduced": "Apply filter and status immediately with the same focus behavior."
+    },
+    "action": {
+      "instruction": "Use two pressed-state buttons above the rows to choose the full room list or delays only. The same control switches the list back. Retain each room's exact supplied status.",
+      "label": "Delayed only"
+    },
+    "why": "Stage management reads a cue against its corresponding information. Aligning each delay with its room reduces scanning while the paper, rules, and cue color relate the tool to that work.",
+    "sources": [
+      {
+        "url": "https://www.theatrecrafts.com/pages/home/topics/stage-management/the-prompt-book/",
+        "observation": "The Prompt Book explains that the deputy stage manager uses the book to run rehearsals. It describes cues set opposite the corresponding script lines with lines connecting each cue to its trigger. The color palette and filter treatment are original adaptations.",
+        "strength": "evidence"
+      }
+    ],
+    "credit": "Theatrecrafts, The Prompt Book"
+  },
+  {
+    "id": "platform-sign",
+    "surface": "mobile",
+    "title": "Platform sign: departure as signage",
+    "summary": "Time and place set like a station sign; the credential opens in one tap. Use for on-the-move transit, tickets or boarding.",
+    "tags": [
+      "transit",
+      "departure",
+      "mobile ticket",
+      "glanceable"
+    ],
+    "type": {
+      "display": "Archivo Narrow",
+      "body": "Atkinson Hyperlegible",
+      "ratio": 3.5,
+      "tracking": -0.02,
+      "weight": 700,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#111111",
+      "paper": "#f7f5ef",
+      "accent": "#ffcc00"
+    },
+    "layout": {
+      "skeleton": "one station sign for the current departure, followed by its ticket action and a quieter list of other choices",
+      "focus": "time, destination and platform form one compact unit a moving rider can read at a glance",
+      "desktop": "Use a narrow centered lane. Keep the destination and platform badge close to the time. Let the sign height follow its content.",
+      "mobile": "At 390 px group the time, destination and platform above a full-width ticket control. When the brief supplies a later option, show its time on the closed row so the rider can compare without opening it.",
+      "rhythm": "16px base; 32px between blocks"
+    },
+    "imagery": {
+      "subject": "none",
+      "crop": "n/a",
+      "fallback": "yellow platform badge"
+    },
+    "motion": {
+      "trigger": "reveal credential",
+      "effect": "the credential slides up from the sign band to show the code",
+      "duration_ms": 280,
+      "reduced": "instant swap"
+    },
+    "action": {
+      "instruction": "The button names the credential from the brief, not 'View'",
+      "label": "Show ticket [ticket ID]"
+    },
+    "why": "A walking rider reads at a glance. Signage-scale numerals and a single reveal beat card-stacked layouts for speed.",
+    "sources": [
+      {
+        "url": "https://design-system.service.gov.uk/components/button/",
+        "observation": "GOV.UK: 'Write button text in sentence case, describing the action it performs.'",
+        "strength": "evidence"
+      },
+      {
+        "url": "https://www.apple.com/v/macbook-air/z/built/styles/main.built.css",
+        "observation": ".typography-body is 17px at -0.022em, a readable body floor.",
+        "strength": "evidence"
+      }
+    ],
+    "credit": "GOV.UK Design System (Government Digital Service)"
+  },
+  {
+    "id": "ground-plane",
+    "surface": "portfolio",
+    "title": "Ground plane: full-bleed built work",
+    "summary": "The lead project opens as a full-bleed site photograph under a serif title; the other projects sit small and off the grid. Use for spatial practices.",
+    "tags": [
+      "landscape architecture",
+      "architecture",
+      "spatial practice",
+      "case study"
+    ],
+    "type": {
+      "display": "Instrument Serif",
+      "body": "Archivo",
+      "ratio": 5.0,
+      "tracking": -0.04,
+      "weight": 400,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#22261F",
+      "paper": "#E9EFF0",
+      "accent": "#465733"
+    },
+    "layout": {
+      "skeleton": "full-bleed lead project; title split across two lines; secondary projects offset at 1/3 width; contact in a quiet footer",
+      "focus": "lead project title at 120px, with its scale and completion year from the brief",
+      "desktop": "Title bottom-left on an opaque paper panel overlapping the image edge. Facts align in a right-hand column.",
+      "mobile": "image at 70vh; title below it, not overlaid",
+      "rhythm": "160px section gaps; empty space as the material"
+    },
+    "imagery": {
+      "subject": "the built site at ground or eye level, with planting or material in the foreground",
+      "crop": "horizon at the lower third",
+      "fallback": "site-plan line drawing in ink on paper"
+    },
+    "motion": {
+      "trigger": "scroll into a project",
+      "effect": "the image scales 1.04 to 1 (the one signature move)",
+      "duration_ms": 400,
+      "reduced": "static"
+    },
+    "action": {
+      "instruction": "Primary link opens the lead case study; contact is plain text",
+      "label": "Open the [project] case study"
+    },
+    "why": "Spacious and material: built work needs room. A serif display paired with a quiet sans and a full-bleed ground reads as real work, not a template.",
+    "sources": [
+      {
+        "url": "https://assets.awwwards.com/awards/submissions/2026/02/69a01956b8d34010634085.png",
+        "observation": "Studio Dado (viewed): the serif display 'FORM FOLLOWS FEELING' is set full-bleed over warm material photography, with a small sans nav on an offset grid.",
+        "strength": "evidence"
+      },
+      {
+        "url": "https://studiod.nu/en/",
+        "observation": "Studio D live HTML: 'Spatial design at eye level', positioning spatial practice in plain words.",
+        "strength": "evidence"
+      }
+    ],
+    "credit": "Studio Dado (Awwwards submission); Studio D"
+  },
+  {
+    "id": "scale-ledger",
+    "surface": "pricing",
+    "title": "Scale ledger: plans as stops on one quantity",
+    "summary": "Plans are compared along the single quantity buyers pay for, not shown as identical cards. Use when tiers differ mainly by an amount.",
+    "tags": [
+      "pricing",
+      "usage tiers",
+      "subscription",
+      "plan comparison"
+    ],
+    "type": {
+      "display": "Bricolage Grotesque",
+      "body": "Atkinson Hyperlegible",
+      "ratio": 3.0,
+      "tracking": -0.03,
+      "weight": 700,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#15171c",
+      "paper": "#fbfaf7",
+      "accent": "#1f6f5c"
+    },
+    "layout": {
+      "skeleton": "a horizontal bar from 0 to the largest tier's quantity, with each plan as a stop; feature differences listed under each stop",
+      "focus": "the recommended middle stop, labelled with its quantity and key feature",
+      "desktop": "bar spans 10 cols, with stops placed proportionally; prices sit above the stops",
+      "mobile": "bar turns vertical; stops become rows",
+      "rhythm": "12px base; 48px between the bar and the details"
+    },
+    "imagery": {
+      "subject": "none; the bar is the image",
+      "crop": "n/a",
+      "fallback": "n/a"
+    },
+    "motion": {
+      "trigger": "select a stop",
+      "effect": "the fill moves to the stop",
+      "duration_ms": 300,
+      "reduced": "instant fill"
+    },
+    "action": {
+      "instruction": "Continue with the chosen plan, naming the plan and price from the brief",
+      "label": "Continue with [plan] — [price]/[period]"
+    },
+    "why": "Buyers pay for a quantity. One proportional scale makes the choice legible, and naming the plan and price on the button is assured, not loud.",
+    "sources": [
+      {
+        "url": "https://design-system.service.gov.uk/components/button/",
+        "observation": "GOV.UK: button text should describe 'the action it performs'.",
+        "strength": "evidence"
+      }
+    ],
+    "credit": "house target; GOV.UK Design System (GDS)"
+  },
+  {
+    "id": "margin-front",
+    "surface": "editorial",
+    "title": "Margin front: feature at reading width",
+    "summary": "The lead story runs at reading width with an italic deck; secondary items run in a narrow margin column. Use for small editorial homes.",
+    "tags": [
+      "magazine",
+      "field report",
+      "editorial home",
+      "recipe"
+    ],
+    "type": {
+      "display": "Newsreader",
+      "body": "Source Sans 3",
+      "ratio": 4.5,
+      "tracking": -0.03,
+      "weight": 500,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#1d2a2e",
+      "paper": "#efe9dc",
+      "accent": "#a3401f"
+    },
+    "layout": {
+      "skeleton": "feature title across 8 cols, standfirst at 62ch; a 3-col margin column holds the secondary dispatch and a recipe card",
+      "focus": "feature title, with byline and read time from the brief",
+      "desktop": "asymmetric 8/1/3 split; the title breaks into the margin",
+      "mobile": "feature first, then dispatch, then recipe",
+      "rhythm": "28px baseline; 1px rules instead of boxes"
+    },
+    "imagery": {
+      "subject": "the feature's setting or material, top-down",
+      "crop": "wide strip, 3:1",
+      "fallback": "an ink rule plus a large italic drop numeral of the read time"
+    },
+    "motion": {
+      "trigger": "Open the feature by tap or keyboard",
+      "effect": "Reveal the standfirst and underline the active link as the reading view opens",
+      "duration_ms": 240,
+      "reduced": "Open the reading view immediately and preserve focus"
+    },
+    "action": {
+      "instruction": "Headline and button both open the feature",
+      "label": "Read [feature title]"
+    },
+    "why": "Tactile, observant reading wants a comfortable measure and print logic: rules, margins and an italic voice instead of card grids.",
+    "sources": [
+      {
+        "url": "https://practicaltypography.com/line-length.html",
+        "observation": "Butterick: 'Aim for an average line length of 45–90 characters, including spaces.'",
+        "strength": "evidence"
+      }
+    ],
+    "credit": "Butterick's Practical Typography (Matthew Butterick)"
+  },
+  {
+    "id": "broadcast-board",
+    "surface": "landing",
+    "title": "Broadcast board",
+    "summary": "Put the current program and the listener control in a single station masthead, with the schedule directly below.",
+    "tags": [
+      "radio station",
+      "listen live",
+      "community radio",
+      "livestream",
+      "on air",
+      "now playing",
+      "broadcast"
+    ],
+    "type": {
+      "display": "Barlow Condensed",
+      "body": "Atkinson Hyperlegible Next",
+      "ratio": 4.4,
+      "tracking": -0.023,
+      "weight": 700,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#151F29",
+      "paper": "#F6F3E8",
+      "accent": "#F7DE46"
+    },
+    "layout": {
+      "skeleton": "Build one wide dark station band with the station name as a wordmark, followed by one program row and a full-width schedule strip. Align the three bands to a shared grid.",
+      "focus": "The current show title and the adjacent listener control. Present today's supplied schedule only once.",
+      "desktop": "Use the full top width for the masthead. Set the show title on the left and put the presenter, current state and listener control in the same aligned row at the far edge. Use ruled lines to connect them.",
+      "mobile": "Station, show title and host, listener control with visible state, then the schedule. Keep the complete control above the end of the first viewport when content fits.",
+      "rhythm": "Keep the broadcast data tightly grouped. Use a single larger break before the schedule. Keep desktop and narrow DOM order the same."
+    },
+    "imagery": {
+      "subject": "An original status mark or small waveform attached to the listener control.",
+      "crop": "No hero crop. Keep any mark inside the control or masthead with space around the program title.",
+      "fallback": "Use type, ruled lines, a status word and a shape. Do not make up a broadcast frequency, schedule entry, or signal reading."
+    },
+    "motion": {
+      "trigger": "the listener starts or stops the demo",
+      "effect": "Change the control's pressed state and show a brief sweep of the status mark.",
+      "duration_ms": 250,
+      "reduced": "Update state and text instantly without animating the mark."
+    },
+    "action": {
+      "instruction": "Expose a keyboard operable control next to a short state confirmation. Preserve any demo-only restriction and avoid autoplay.",
+      "label": "Listen live"
+    },
+    "why": "The station's identity comes from its current program and its listening action. A full-width program row gives the title the scale of an on-air board without borrowing the composition of a product launch.",
+    "sources": [
+      {
+        "url": "https://www.kexp.org/",
+        "observation": "KEXP's main PlayerControlTray and player launcher both expose a Listen Live button. The wording identifies the next action directly.",
+        "strength": "evidence"
+      }
+    ],
+    "credit": "KEXP live player, observed control wording. Original layout and color direction."
+  },
+  {
+    "id": "service-work-order",
+    "surface": "landing",
+    "title": "Service work order",
+    "summary": "Make selection and the updating work order the page's visual focus. Integrate the price, current choice and turnaround in one receipt.",
+    "tags": [
+      "repair shop",
+      "tune-up",
+      "service booking",
+      "service estimate",
+      "appointment",
+      "booking summary",
+      "bookings"
+    ],
+    "type": {
+      "display": "Barlow Condensed",
+      "body": "IBM Plex Sans",
+      "ratio": 2.8,
+      "tracking": -0.025,
+      "weight": 700,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#153247",
+      "paper": "#E8EFF4",
+      "accent": "#F3B644"
+    },
+    "layout": {
+      "skeleton": "Lead with the work order. Set the service name and price on its first rule. Put the choice next to the result. Start the work order directly below the site header.",
+      "focus": "The actual booking controls and the selected value in the same work order.",
+      "desktop": "Use side-by-side choice and result columns under the service name. Fit the price, choice group and its live result within a 900 px viewport. Put supporting imagery and details below the work order.",
+      "mobile": "Keep the service title and price above a short native radio group and its result. At 360 px and below use two equal minmax(0,1fr) columns, 44 px targets and labels that wrap. At 320 × 700, fit the short group and its result with no scroll. With longer lists prioritize the selected option and its result.",
+      "rhythm": "Give the work order a short heading and comfortable control spacing. Let any decorative details follow the action."
+    },
+    "imagery": {
+      "subject": "A small repair detail, drawn from the actual service in the brief.",
+      "crop": "Crop to a functional detail and place it outside the choice and summary area.",
+      "fallback": "A bordered label in the margin can carry one useful service fact from the brief. Omit it when the work order already contains the same fact."
+    },
+    "motion": {
+      "trigger": "a booking choice changes",
+      "effect": "Briefly emphasize the changed summary row and update the accessible status.",
+      "duration_ms": 260,
+      "reduced": "Update the summary and accessible status immediately."
+    },
+    "action": {
+      "instruction": "Use one labeled native group for a single selection. Update one visible polite status in the work order, and leave the service price and terms in place. Describe the actual selection state; show confirmation only when required by the brief.",
+      "label": "Choose [day or option]"
+    },
+    "why": "A work order has useful visual structure before it has branding. Putting the choice and its consequences in one composition keeps the service and task recognizable at a glance.",
+    "sources": [
+      {
+        "url": "https://design-system.service.gov.uk/components/radios/",
+        "observation": "GOV.UK specifies radios when users can select only one option from a list.",
+        "strength": "evidence"
+      },
+      {
+        "url": "https://design-system.service.gov.uk/patterns/check-answers/",
+        "observation": "The check-answers pattern uses a summary list with labels and values so users can verify what they entered.",
+        "strength": "evidence"
+      }
+    ],
+    "credit": "GOV.UK Design System radio and check-answers patterns. Original work-order layout and color direction."
+  },
+  {
+    "id": "grouped-fieldsets",
+    "surface": "form",
+    "title": "Grouped details",
+    "summary": "A compact worksheet for entering related facts together. A reader can find a field again by its group and its persistent label.",
+    "tags": ["related fields", "multiple fields", "contact details", "intake", "address", "name and email"],
+    "type": {
+      "display": "Barlow Semi Condensed",
+      "body": "Source Sans 3",
+      "ratio": 2.5,
+      "tracking": -0.02,
+      "weight": 600,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#203136",
+      "paper": "#F5F8F6",
+      "accent": "#175F55"
+    },
+    "layout": {
+      "skeleton": "Set a short task title over a ruled worksheet. Include only the fields the task needs. Wrap related inputs in a fieldset with one visible legend. When there is just one group, its legend can supply the title.",
+      "focus": "The first field of the active group, aligned with its legend across the rule.",
+      "desktop": "Within 54rem, give short legends at least 12rem or the width of their text, and stack labeled controls in a right column up to 32rem wide. If the tracks no longer leave room for the inputs, move the legends over their fields. Start each group on a rule. Align the primary button with the inputs.",
+      "mobile": "At 390px use 16px side gutters, with each legend above its fields. Keep short task phrases and numeric ranges together. Adjust title size or break before the phrase if needed, and let longer text wrap. Read label, hint, input, then inline error. Put the action after the last field.",
+      "rhythm": "Use 16px input text in controls at least 44px high. Keep 4px from label to input, 12px between fields and 32px between fieldsets. Leave 24px before the primary button."
+    },
+    "imagery": {
+      "subject": "The inputs carry the composition. Size each for its expected answer.",
+      "crop": "For a short value, allow its expected character count plus padding. Longer text can use the available measure.",
+      "fallback": "Plain native inputs and a 1px rule at each group boundary."
+    },
+    "motion": {
+      "trigger": "The user submits the entered details.",
+      "effect": "Announce pending while sending. Keep values on failure and offer retry. On success, focus a confirmation heading describing the actual result and fade in the receipt text.",
+      "duration_ms": 220,
+      "reduced": "Show the same result immediately with the same focus and announcement."
+    },
+    "action": {
+      "instruction": "Name the button for its effect, such as ‘Save address’ or ‘Request repair’ when that operation is available. In a local preview, ‘Review answers’ opens the entered values with an Edit action. Show a receipt only after a successful submission.",
+      "label": "[Task verb] [object]"
+    },
+    "why": "Grouping by meaning lets someone check a related set of answers in one pass. Varying field widths gives a clue to the length of each answer.",
+    "sources": [
+      {
+        "url": "https://designsystem.digital.gov/templates/form-templates/#accessibility-guidance",
+        "observation": "USWDS places related controls in a fieldset with a named legend, keeps the controls in document order and aligns validation messages with their inputs.",
+        "strength": "evidence"
+      },
+      {
+        "url": "https://designsystem.digital.gov/templates/form-templates/address-form/",
+        "observation": "The Address form example puts street, city, state and ZIP under one mailing-address legend. Each input has a visible label, and the ZIP input uses a shorter width.",
+        "strength": "evidence"
+      }
+    ],
+    "credit": "U.S. Web Design System, Form templates and Address form. The side legends, typography and colors are original."
+  },
+  {
+    "id": "question-column",
+    "surface": "form",
+    "title": "One question",
+    "summary": "Give one answer the width of a reading column. A large question leads directly into the response, with open paper on either side.",
+    "tags": ["one question", "single question", "one decision", "single decision", "vote", "poll", "rsvp", "single field", "one field", "email only", "waitlist"],
+    "type": {
+      "display": "Spectral",
+      "body": "DM Sans",
+      "ratio": 3.25,
+      "tracking": -0.025,
+      "weight": 500,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#30242A",
+      "paper": "#FBF6EF",
+      "accent": "#75354D"
+    },
+    "layout": {
+      "skeleton": "Make the question itself the heading and the field's label or the radio group's legend. Follow with one answer area. Include a Back link only when there is a previous step to revisit.",
+      "focus": "The question and its answer share one left edge. The question is the largest text on the surface.",
+      "desktop": "Start a 32rem column two grid tracks into a 12-column page. Set the question at 52px. Stack the supplied choices as labeled radio rows, or use one input when the answer is free text. Place the button against the same edge.",
+      "mobile": "At 390px use 20px side gutters and a 36px question. Order any real Back link, question, necessary hint, answer, inline correction, then the button. Let long labels wrap inside a tap target at least 44px high.",
+      "rhythm": "Leave 32px between the question block and the answer area. Separate choice rows by 8px and leave 24px before the primary button."
+    },
+    "imagery": {
+      "subject": "The live answer is the visual element. A selected radio has a solid center as well as an accent outline.",
+      "crop": "Let each answer label use the column width next to its control.",
+      "fallback": "Use the browser's radio mark or a labeled text box."
+    },
+    "motion": {
+      "trigger": "The reader activates the button after answering.",
+      "effect": "On a valid answer, focus the next question if there is one. On completion, focus a confirmation showing the accepted answer and fade in that text. Preserve the answer when the reader returns to edit it.",
+      "duration_ms": 200,
+      "reduced": "Move focus and show the answer immediately."
+    },
+    "action": {
+      "instruction": "Selecting a radio only changes the answer. Use native arrow-key navigation. Confirm the answer on activation and allow editing. Use ‘Continue’ only if a real next step opens.",
+      "label": "Confirm answer"
+    },
+    "why": "The eye and the keyboard reach the same decision in sequence. Making the heading do the work of the label lets the reader hear the question once.",
+    "sources": [
+      {
+        "url": "https://design-system.service.gov.uk/patterns/question-pages/#start-by-asking-one-question-per-page",
+        "observation": "GOV.UK shows the question serving as the main heading inside a legend for a group, or as the label for a single input. The answer controls and one forward action follow it.",
+        "strength": "evidence"
+      }
+    ],
+    "credit": "GOV.UK Design System, Question pages. The offset column, serif scale and plum palette are original."
+  }
+]

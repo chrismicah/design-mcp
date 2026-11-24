@@ -1,0 +1,70 @@
+name: Installed Electron review on macOS
+
+on:
+  push:
+    branches: [design-mcp/electron-mac-proof, design-mcp/review-integration, design-mcp/electron-input-proof]
+  pull_request:
+    branches: [master]
+    paths:
+      - 'design_mcp/desktop_review.py'
+      - 'design_mcp/cli.py'
+      - 'integrations/desktop/electron.mjs'
+      - 'evals/vision/electron_smoke.mjs'
+      - 'evals/vision/fixtures/electron-review.*'
+      - 'pyproject.toml'
+      - '.github/workflows/electron-mac-proof.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  electron:
+    runs-on: macos-15
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Install Design MCP and the pinned Electron runtime
+        shell: bash
+        run: |
+          python -m venv "$RUNNER_TEMP/design-review"
+          "$RUNNER_TEMP/design-review/bin/python" -m pip install .
+          npm install --prefix "$RUNNER_TEMP/review-electron" --no-audit --no-fund electron@43.4.0
+          "$RUNNER_TEMP/review-electron/node_modules/.bin/install-electron"
+      - name: Capture and exercise the owned app window
+        shell: bash
+        run: |
+          sw_vers
+          uname -m
+          cli="$RUNNER_TEMP/design-review/bin/design-mcp"
+          electron="$RUNNER_TEMP/review-electron/node_modules/electron/dist/Electron.app/Contents/MacOS/Electron"
+          "$electron" evals/vision/electron_smoke.mjs "$cli" "$RUNNER_TEMP/electron-proof"
+      - name: Package and run the signed development fixture
+        if: github.ref_name == 'design-mcp/electron-input-proof'
+        shell: bash
+        run: |
+          runtime="$RUNNER_TEMP/review-electron/node_modules/electron/dist/Electron.app"
+          fixture="$RUNNER_TEMP/Design MCP Electron Review Fixture.app"
+          cli="$RUNNER_TEMP/design-review/bin/design-mcp"
+          bash evals/vision/package_electron_fixture.sh "$runtime" "$fixture"
+          "$fixture/Contents/MacOS/Electron" "$cli" "$RUNNER_TEMP/electron-packaged-proof"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: electron-mac-receipt
+          path: |
+            ${{ runner.temp }}/electron-proof/receipt.json
+            ${{ runner.temp }}/electron-proof/before.json
+            ${{ runner.temp }}/electron-proof/after.json
+            ${{ runner.temp }}/electron-proof/*.png
+            ${{ runner.temp }}/electron-packaged-proof/receipt.json
+            ${{ runner.temp }}/electron-packaged-proof/before.json
+            ${{ runner.temp }}/electron-packaged-proof/after.json
+            ${{ runner.temp }}/electron-packaged-proof/*.png
+          if-no-files-found: warn
+          retention-days: 7

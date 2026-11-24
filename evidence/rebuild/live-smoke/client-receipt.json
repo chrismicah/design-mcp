@@ -1,0 +1,151 @@
+{
+  "candidate_commit": "52540b5a46d6ac8639d1f7aeb0f5f4931faa0a1a",
+  "client": "codex-cli 0.170.0",
+  "model": "gpt-6.2-sol",
+  "surface": "v2",
+  "runtime": "candidate checkout via Python 3.13.3 with FastMCP 3.1.0 from the existing pipx dependency environment",
+  "tool": {
+    "server": "design-mcp-qa",
+    "tool": "direct",
+    "arguments": {
+      "brief": "Make this feel premium. Build a theatre turnaround board so a stage manager can find the room that's running late. Studio B is six minutes late and Hall A is ready. They need to filter to delayed rooms and switch back to all rooms. Keep the facts as given. Build one polished, responsive HTML page. The filters should work with mouse and keyboard and update the visible rows and accessible status.",
+      "surface": "dashboard"
+    },
+    "status": "completed"
+  },
+  "direct_result": {
+    "direction": {
+      "id": "exception-first",
+      "surface": "dashboard",
+      "title": "Exception first: the problem owns the screen",
+      "summary": "The most urgent item is promoted out of the list into a full-width strip, with its position in the queue; every other row stays quiet. Use for time-pressured operations queues.",
+      "type": {
+        "display": "IBM Plex Sans Condensed",
+        "body": "IBM Plex Sans",
+        "ratio": 2.5,
+        "tracking": -0.02,
+        "weight": 600,
+        "license": "OFL-1.1"
+      },
+      "palette": {
+        "ink": "#EEF0EC",
+        "paper": "#14181B",
+        "accent": "#FFAA72"
+      },
+      "layout": {
+        "skeleton": "exception strip on top (item ID, location, deviation), the full queue table below, a due-next rail on the right",
+        "focus": "the deviation value at 40px tabular figures, with an 'n / total' position label",
+        "desktop": "12-col; strip spans 12, table 8, rail 4 holding the next item due",
+        "mobile": "strip, then rail, then table as stacked rows",
+        "rhythm": "8px base; 40px rows; no cards"
+      },
+      "imagery": {
+        "subject": "none; location codes act as the visuals",
+        "crop": "n/a",
+        "fallback": "location code set at 24px tabular figures"
+      },
+      "motion": {
+        "trigger": "deviation changes",
+        "effect": "the value cross-fades; the strip edge pulses once",
+        "duration_ms": 240,
+        "reduced": "value swaps, no pulse"
+      },
+      "action": {
+        "instruction": "Focus jumps the table filter to the exception. Fill it from the brief's most urgent item",
+        "label": "Focus [item ID] at [location]"
+      },
+      "why": "An operator on the clock should see the one problem before the list. Calm comes from making everything except the exception quiet.",
+      "sources": [
+        {
+          "url": "https://linear.app/",
+          "observation": "Linear's home page product mock (server HTML) shows one focused issue 'DRV-8852' with a '1 / 84' queue position, a sidebar of 'Inbox | My issues | Reviews', and a properties rail ('In Progress | Medium | Karri'): one item in focus, its place in the queue, and its state beside it.",
+          "strength": "evidence"
+        }
+      ],
+      "credit": "Linear (Linear Orbit), home page product mock"
+    },
+    "font_stylesheet": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed%3Awght%40600&family=IBM+Plex+Sans&display=swap",
+    "interaction": {
+      "accent_foreground": "#14181B",
+      "easing": "ease-out",
+      "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+      "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+      "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+    },
+    "assumptions": [
+      "Use dashboard as the surface.",
+      "Use only the project facts and assets in the brief."
+    ],
+    "questions": [],
+    "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Load the named fonts and verify they render. Test the action, reading order and legibility at 390 px."
+  },
+  "usage": {
+    "input_tokens": 67567,
+    "cached_input_tokens": 27392,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2443,
+    "reasoning_output_tokens": 0
+  },
+  "client_log_elapsed_seconds_approx": 55.7,
+  "sha256": {
+    "site/stage.html": "cb608b4fd03fc1ea1bc5dbea45bcc8e396d90883adb8bc952c620d00e99c4634",
+    "stage-desktop-filtered.png": "db807339effb548bad3a25da2b3f3397f9893936c8eb650991fc4772f26efae1",
+    "stage-390-filtered.png": "41b89d2633971b868fa6eba5a0f5170d1b833ebc46b1b01a1a4c593145151b38",
+    "theatre-mobile.png": "5ad3941197e7183c9fcfe30d65792c060c808f77eafdabc2ae897e64f38a79cf",
+    "linehaul-filtered.png": "b3f06a9d3ae9c2bafa2bf60234dd80f7dc74732ce562fac631d5d01544a01fa4",
+    "linehaul-390-filtered.png": "9cae0b2a80566afd16f5693751d0ded1c024da90d84aa9dcbe50b683f796973e"
+  },
+  "supplemental_stdio": {
+    "check": {
+      "finding_count": 0,
+      "findings": [],
+      "scope": "Source checks. A zero count needs rendered verification.",
+      "render_checks": [
+        "layout and overflow",
+        "type scale and loaded fonts",
+        "imagery and contrast",
+        "full interaction and reduced motion"
+      ],
+      "truncated": false
+    },
+    "react": {
+      "direction_id": "exception-first",
+      "changes": {
+        "type_ratio": 2.5,
+        "accent_usage": "Restrict the accent to the main control and focal marker.",
+        "spacing": "Increase negative space around the focal block by 20%.",
+        "motion_ms": 300
+      },
+      "why": "Strengthen the breathing room without losing the primary action.",
+      "keep": [
+        "primary task",
+        "project content",
+        "brand constraints",
+        "accessibility"
+      ]
+    }
+  },
+  "config": {
+    "command": "<Python from existing design-mcp dependency environment>",
+    "args": [
+      "-m",
+      "design_mcp.cli",
+      "serve"
+    ],
+    "required": true,
+    "default_tools_approval_mode": "writes",
+    "env": {
+      "DESIGN_MCP_SURFACE": "v2",
+      "PYTHONPATH": "<candidate checkout>",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "before_fix": {
+    "candidate_commit": "d2e79dc",
+    "tool": "direct",
+    "status": "failed",
+    "error": {
+      "message": "MCP tool call requires approval, but approval policy is never"
+    }
+  }
+}

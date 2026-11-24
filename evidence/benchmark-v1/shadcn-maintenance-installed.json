@@ -1,0 +1,91 @@
+{
+  "scope": "Installed shadcn stdio retrieval and relevance gate. No model or render.",
+  "case": "form-maintenance",
+  "brief_sha256": "0c0ec8af56c1ef03e35bfa6df4b3d62856e2236398e4dbbf97fd161c15e24d17",
+  "calls": {
+    "frozen-brief": {
+      "tool": "search_items_in_registries",
+      "arguments_sha256": "7afc3a3279997aa0fb1961a68b8e67291e0caa62a7bbabd58d3be2b1937a5029",
+      "payload_sha256": "7454ae0d5c1b2fec33ffa254501277bdf3cec4051639e690cd647459ea2a584a",
+      "response_bytes": 449,
+      "status": "empty",
+      "returned_names": [],
+      "matching_preregistered_items": [],
+      "passed": true,
+      "milliseconds": 230
+    },
+    "named-search": {
+      "tool": "search_items_in_registries",
+      "arguments_sha256": "e7d9479b3ce2e93972220023782772c841f787efac083dd799f2d6b89bcb8d66",
+      "payload_sha256": "1d956c8dcda6f5dfa222913279cfa5d511895cabfde6af6ce0d89259ed025b12",
+      "response_bytes": 269,
+      "status": "matches",
+      "returned_names": [
+        "field"
+      ],
+      "matching_preregistered_items": [
+        "field"
+      ],
+      "passed": true,
+      "milliseconds": 63
+    },
+    "named-details": {
+      "tool": "view_items_in_registries",
+      "arguments_sha256": "115770e00039e4efaa6329a0e4b49067b6cf2bf4249f5021917ed5fe2e052a7a",
+      "payload_sha256": "603ec9033d917428ff08bd7a225679de5e80a7f4eb246ae178d12805b49f19c8",
+      "response_bytes": 466,
+      "status": "matches",
+      "returned_names": [
+        "field",
+        "input",
+        "radio-group",
+        "textarea"
+      ],
+      "matching_preregistered_items": [
+        "field",
+        "input",
+        "radio-group",
+        "textarea"
+      ],
+      "passed": true,
+      "milliseconds": 132
+    },
+    "named-example": {
+      "tool": "get_item_examples_from_registries",
+      "arguments_sha256": "f3ed69f6f336e186dd94b6f1c219bd7340792dce43499c4498c64ad81c78f8c0",
+      "payload_sha256": "7dc600c16e99f83cba6b22fd3eb78b68aa0e970b68ae85c12279f4517b0284ba",
+      "response_bytes": 6036,
+      "status": "matches",
+      "returned_names": [
+        "field-demo"
+      ],
+      "matching_preregistered_items": [
+        "field-demo"
+      ],
+      "passed": true,
+      "milliseconds": 153
+    },
+    "nonsense": {
+      "tool": "search_items_in_registries",
+      "arguments_sha256": "0eb884e0c8c9277437e386b8e429191bbd9146e24b461e945d10c6436b460e75",
+      "payload_sha256": "b7f891d7e8fc6c2c0c3c09cd6218f56f4e03a445236f2f67193bc35be1ad7760",
+      "response_bytes": 221,
+      "status": "empty",
+      "returned_names": [],
+      "matching_preregistered_items": [],
+      "passed": true,
+      "milliseconds": 58
+    }
+  },
+  "competitor": "shadcn",
+  "pin": "shadcn@4.23.0",
+  "tasks_sha256": "4f352a2a8449911c07188a8e5e311bd5454caf2616d1dfa9b25fa80f590f94d5",
+  "runner": "macos-15 arm64",
+  "workflow_commit": "cbb531aacae1342180b0d2334b7b63ab26e32dca",
+  "job": "https://github.com/chrismicah/design-mcp/actions/runs/45020916961/job/137203401793",
+  "artifact_receipt_sha256": "ddd3e79adebfddad15cd0d37827366815341272c06c28813cc2516de31c7c7e9",
+  "first_attempt": {
+    "run": "https://github.com/chrismicah/design-mcp/actions/runs/45020846588",
+    "failure": "The checkout action pin was missing two characters, so runner setup ended before npm installation."
+  }
+}

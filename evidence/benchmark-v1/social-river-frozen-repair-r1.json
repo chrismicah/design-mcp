@@ -1,0 +1,226 @@
+{
+  "scope": "targeted draft repair",
+  "round": 1,
+  "frozen_parent_round": 5,
+  "critic_model": "gpt-6.1-terra",
+  "critic_effort": "low",
+  "draft_repair": {
+    "original_sha256": "6c865202d697125bf3cc70a0edd4d57dc32d2144423c35a3e653cd7766230339",
+    "repair_sha256": "d4823572c8382ba33bd1941939472dd2d028ab013c9ae6fe1722f25bdbcc0c85"
+  },
+  "audited_sha256": "8c9a909de6e28f6a27d73ed582760bfe7728c77579929b974fea7a40664da1cc",
+  "decision": "Retain the physical ferry-state repair on this draft. The paired score improved at both widths and remains below 9.5. Retrieval promotion is a separate measurement.",
+  "ballot": {
+    "calibration": {
+      "example": "Legible repair intake with clear labels, familiar layout, and misplaced focus after an invalid number",
+      "coherence": 7,
+      "originality": 4,
+      "craft": 6,
+      "usability": 6
+    },
+    "screens": {
+      "A-1440": {
+        "coherence": 8.5,
+        "originality": 8,
+        "craft": 8.5,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Tab, then ArrowRight",
+          "expected": "Select 6 m and show the path, ferry, and footbridge closures.",
+          "observed": "6 m received visible focus and selection; all three closures appeared."
+        },
+        "edge_observation": "ArrowRight wrapped from 6 m to 2 m; only the riverside path closure remained.",
+        "fact_check": "The water surface aligns with the 6 m line, and the ferry is shown at the surface with a Stopped label. Actual local thresholds and live conditions are unsupported by the view.",
+        "strength": "The cross-section, threshold lines, and closure list make the consequence of the selection easy to compare.",
+        "weakness": "The illustration occupies much more space than the actionable closure list, and the graphic has no explicit indication that it is illustrative rather than live data.",
+        "repair": "Add a concise data source and update time, or clearly label the display as an illustrative scenario.",
+        "arm": "repair",
+        "html_sha256": "d4823572c8382ba33bd1941939472dd2d028ab013c9ae6fe1722f25bdbcc0c85",
+        "weighted": 8.35,
+        "before": {
+          "sha256": "2661554c9f9c93ee602afd7b79cb1981edb59b5fc690bb98e83d263a3ddfcec9",
+          "file": "A-1440-before.png",
+          "tool_call_id": "item_2"
+        },
+        "after": {
+          "sha256": "35ae24bf6b77272cb5a8726e13753e475bba1c88ff57ef5d3f15dc521d21a661",
+          "file": "A-1440-after.png",
+          "tool_call_id": "item_5"
+        },
+        "layout_width": 1440,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          }
+        ]
+      },
+      "A-390": {
+        "coherence": 8.5,
+        "originality": 8,
+        "craft": 8.5,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Tab, then ArrowRight",
+          "expected": "Select 6 m and show all three closures within the first viewport.",
+          "observed": "6 m received visible focus and selection; the complete three-item list and cross-section fit within the 390 \u00d7 844 viewport."
+        },
+        "edge_observation": "ArrowRight wrapped to 2 m, leaving only the riverside path closure.",
+        "fact_check": "The water surface aligns with 6 m and the ferry sits at the surface; Stopped reinforces the list. Real crossing conditions and thresholds are unsupported by the view.",
+        "strength": "The controls, complete result, and diagram are readable together without scrolling at the tested viewport.",
+        "weakness": "The small illustration makes the ferry and path details less distinct, and the source of the closure thresholds is absent.",
+        "repair": "Keep the compact layout but add a concise source or scenario label and preserve legible diagram details.",
+        "arm": "repair",
+        "html_sha256": "d4823572c8382ba33bd1941939472dd2d028ab013c9ae6fe1722f25bdbcc0c85",
+        "weighted": 8.35,
+        "before": {
+          "sha256": "d8f0dfb1fd4ceb69ab9813916b44d17b1e2b62a936f6a21f7774618f8af35a1d",
+          "file": "A-390-before.png",
+          "tool_call_id": "item_9"
+        },
+        "after": {
+          "sha256": "e0e008253b0d46595d08a8907eb22f6b2af08dcb51e55174f5409705062661fe",
+          "file": "A-390-after.png",
+          "tool_call_id": "item_12"
+        },
+        "layout_width": 390,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          }
+        ]
+      },
+      "B-1440": {
+        "coherence": 7.5,
+        "originality": 8,
+        "craft": 7,
+        "usability": 8,
+        "primary_action": {
+          "input": "Tab, then ArrowRight",
+          "expected": "Select 6 m and show the path, ferry, and footbridge closures.",
+          "observed": "6 m received visible focus and selection; all three closures appeared."
+        },
+        "edge_observation": "ArrowRight wrapped to 2 m; only the riverside path closure remained.",
+        "fact_check": "The water surface aligns with the 6 m line, but the ferry remains at the 4 m line visibly underwater while the text says it stops. Actual local thresholds and live conditions are unsupported by the view.",
+        "strength": "The threshold diagram and concise list give the selected level a clear visual hierarchy.",
+        "weakness": "The submerged ferry conflicts with the depicted water surface and makes the illustration harder to trust.",
+        "repair": "Move the ferry with the water surface and show its stopped status explicitly.",
+        "arm": "original",
+        "html_sha256": "6c865202d697125bf3cc70a0edd4d57dc32d2144423c35a3e653cd7766230339",
+        "weighted": 7.65,
+        "before": {
+          "sha256": "18adeafb178f58f94dafcb2dac3f8c175f1e5bce2a0511b10d4a53c4d11ed78d",
+          "file": "B-1440-before.png",
+          "tool_call_id": "item_15"
+        },
+        "after": {
+          "sha256": "cf8ce74d4d08c0ccd7e9b0a9d06dc855117c3e22b9811b9fb286506eca674bbf",
+          "file": "B-1440-after.png",
+          "tool_call_id": "item_18"
+        },
+        "layout_width": 1440,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          }
+        ]
+      },
+      "B-390": {
+        "coherence": 7.5,
+        "originality": 8,
+        "craft": 7,
+        "usability": 8,
+        "primary_action": {
+          "input": "Tab, then ArrowRight",
+          "expected": "Select 6 m and show all three closures within the first viewport.",
+          "observed": "6 m received visible focus and selection; the complete list and cross-section fit within the 390 \u00d7 844 viewport."
+        },
+        "edge_observation": "ArrowRight wrapped to 2 m, leaving only the riverside path closure.",
+        "fact_check": "The water surface reaches 6 m, but the ferry remains at 4 m beneath it. Real crossing conditions and thresholds are unsupported by the view.",
+        "strength": "The full result is visible at once, with clear controls and a visible keyboard focus indicator.",
+        "weakness": "The small submerged ferry gives a misleading physical picture and has no stopped indicator in the diagram.",
+        "repair": "Place the ferry at the selected water surface, add a stopped label, and identify the source or illustrative nature of the thresholds.",
+        "arm": "original",
+        "html_sha256": "6c865202d697125bf3cc70a0edd4d57dc32d2144423c35a3e653cd7766230339",
+        "weighted": 7.65,
+        "before": {
+          "sha256": "9f7b9cbdaba5c0a2f652e8e73f1d0ee793fb24ee6fb4a0d5789dbaeba1c8f066",
+          "file": "B-390-before.png",
+          "tool_call_id": "item_22"
+        },
+        "after": {
+          "sha256": "b35a90045dc668a2ac4eb4479bf9800294e7155b4705ae2631ca48a99c2b705c",
+          "file": "B-390-after.png",
+          "tool_call_id": "item_25"
+        },
+        "layout_width": 390,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          }
+        ]
+      }
+    },
+    "preference": {
+      "winner": "A",
+      "reason": "Both versions support the keyboard task and fit the complete result in the tested mobile viewport. A also places the ferry at the selected water surface and labels it stopped, while B leaves it underwater at 6 m."
+    },
+    "case": "social-river",
+    "verified_screens": 4,
+    "required_screens": 4,
+    "browser": "Chrome/157.0.8103.79",
+    "evaluator_thread": "01a20511-aa2b-7ad1-b048-08d2bf6dd965",
+    "usage": {
+      "input_tokens": 483375,
+      "cached_input_tokens": 465152,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 2229,
+      "reasoning_output_tokens": 0
+    },
+    "trace_sha256": "de7151ebdef13b53ce312ed4ae39da644a2a9886a6beb97ab2e35cf3a0b894e3",
+    "browser_audit_sha256": "63e6884b3a834b4e64e999d8ef2f39b8a52ee0e6f08673eebb1f815c84f33565"
+  }
+}

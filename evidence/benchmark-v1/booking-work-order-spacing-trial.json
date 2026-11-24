@@ -1,0 +1,1422 @@
+{
+  "disposition": "Reverted. The matched trial improved on the frozen page, but a fresh connected replay left the day offscreen at 320 × 700 on both turns.",
+  "install_control": "0978712149674ad7fd5738c53d4b7966ba163b43",
+  "candidate": "37dd4f2402c632a772c2c2db05518850f2d2c0dd",
+  "clean_install": {
+    "method": "uv tool install using exact archived source and empty tool directories",
+    "python": "Resolved 65 packages in 779ms",
+    "log_sha256": "dc1a3f59f4a78e0e97495503008e9d2559cda5a63ee6e020a1633d8069bdcef1"
+  },
+  "stdio_comparison": {
+    "verified_sha": "37dd4f2402c632a772c2c2db05518850f2d2c0dd",
+    "unchanged": 73,
+    "changes": [
+      {
+        "direction": "service-work-order",
+        "reaction": "calmer",
+        "before": "Increase negative space around the focal block by 20%.",
+        "after": "Add breathing room beside the work order on wide screens. On phones, reduce the size and vertical padding of the supporting introduction. Keep the existing spacing and tap target sizes inside the work order. At 320 × 700, the changed day and its selection control must both stay visible after selection."
+      },
+      {
+        "direction": "service-work-order",
+        "reaction": "quieter",
+        "before": "Increase negative space around the focal block by 20%.",
+        "after": "Add breathing room beside the work order on wide screens. On phones, reduce the size and vertical padding of the supporting introduction. Keep the existing spacing and tap target sizes inside the work order. At 320 × 700, the changed day and its selection control must both stay visible after selection."
+      },
+      {
+        "direction": "service-work-order",
+        "reaction": "more calm",
+        "before": "Increase negative space around the focal block by 20%.",
+        "after": "Add breathing room beside the work order on wide screens. On phones, reduce the size and vertical padding of the supporting introduction. Keep the existing spacing and tap target sizes inside the work order. At 320 × 700, the changed day and its selection control must both stay visible after selection."
+      },
+      {
+        "direction": "service-work-order",
+        "reaction": "less loud",
+        "before": "Increase negative space around the focal block by 20%.",
+        "after": "Add breathing room beside the work order on wide screens. On phones, reduce the size and vertical padding of the supporting introduction. Keep the existing spacing and tap target sizes inside the work order. At 320 × 700, the changed day and its selection control must both stay visible after selection."
+      }
+    ]
+  },
+  "matched_blind": {
+    "calibration": {
+      "coherence": 7,
+      "originality": 4,
+      "craft": 6,
+      "usability": 5,
+      "reason": "Clear labels and a legible, familiar layout support the task, but misplaced focus after invalid input materially impedes recovery."
+    },
+    "screens": {
+      "A-1440": {
+        "coherence": 8,
+        "originality": 5.5,
+        "craft": 8,
+        "usability": 8,
+        "primary_action": {
+          "input": "Tab, Space, ArrowRight three times",
+          "expected": "Focus and select Friday, with the summary showing Friday.",
+          "observed": "Friday received a clear focus outline and orange selection; the adjacent summary showed Friday. Both were readable together."
+        },
+        "edge_observation": "ArrowLeft twice selected Wednesday and changed the summary to Wednesday.",
+        "fact_check": "The page states $85, 48 hours and 41 Elm Street. These are page claims; their real-world accuracy was not independently verified.",
+        "strength": "The restrained type hierarchy, generous margins and separated controls make the day choices and summary easy to scan together.",
+        "weakness": "The page calls this service booking, but selection only updates a summary and does not confirm a booking; no next booking action is visible.",
+        "repair": "Explain the next step for making a booking, or label the interaction as choosing a preferred day.",
+        "arm": "current",
+        "html_sha256": "03452f13144fce5ec1e5ab351bc8779828f56913c567f86a6daeb3a69ec0e9f7",
+        "weighted": 7.25,
+        "before": {
+          "sha256": "583d9303fc111a0274059127f324f498e29cd6f3f44cf3698f4a4aae2e42f404",
+          "file": "A-1440-before.png",
+          "tool_call_id": "item_2"
+        },
+        "after": {
+          "sha256": "a50d3cd3220e14dd1f8530e81625d8f47f63685fc7ed38cab0766e6af8b6a2c2",
+          "file": "A-1440-after.png",
+          "tool_call_id": "item_8"
+        },
+        "layout_width": 1440,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Space"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "ArrowLeft"
+          },
+          {
+            "action": "key",
+            "value": "ArrowLeft"
+          }
+        ]
+      },
+      "A-390": {
+        "coherence": 7.5,
+        "originality": 5.5,
+        "craft": 7.5,
+        "usability": 7.5,
+        "primary_action": {
+          "input": "Tab, Space, ArrowRight three times",
+          "expected": "Focus and select Friday, with the summary showing Friday.",
+          "observed": "Friday had a visible focus outline and orange selection, and the Friday summary was visible below it without extra scrolling."
+        },
+        "edge_observation": "ArrowLeft twice selected Wednesday and the accessibility representation reported Wednesday in the summary.",
+        "fact_check": "The page states $85 and 48 hours; 41 Elm Street appeared in the accessibility representation below the initial viewport. Real-world accuracy was not independently verified. The review tool reported a 390-pixel viewport and 375-pixel layout width.",
+        "strength": "The stacked layout and generous spacing remain calm, while the selected day and summary result fit together in the captured viewport.",
+        "weakness": "The address and the note that selection does not confirm a booking fall below the initial viewport. The larger vertical spacing delays that qualification.",
+        "repair": "Bring the booking qualification closer to the choices and reduce vertical spacing enough to expose more of the summary.",
+        "arm": "current",
+        "html_sha256": "03452f13144fce5ec1e5ab351bc8779828f56913c567f86a6daeb3a69ec0e9f7",
+        "weighted": 6.9,
+        "before": {
+          "sha256": "6c2f50a8db4a6faf5858406b0636803d68cb72e9df000ddf33696145dc515c79",
+          "file": "A-390-before.png",
+          "tool_call_id": "item_12"
+        },
+        "after": {
+          "sha256": "7f8f1d8502f0093652d692212b2d5083b7d5adc3f9783053f898b2a8e8aef451",
+          "file": "A-390-after.png",
+          "tool_call_id": "item_18"
+        },
+        "layout_width": 375,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Space"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "ArrowLeft"
+          },
+          {
+            "action": "key",
+            "value": "ArrowLeft"
+          }
+        ]
+      },
+      "B-1440": {
+        "coherence": 8,
+        "originality": 5.5,
+        "craft": 8,
+        "usability": 8,
+        "primary_action": {
+          "input": "Tab, Space, ArrowRight three times",
+          "expected": "Focus and select Friday, with the summary showing Friday.",
+          "observed": "Friday received a clear focus outline and orange selection; the adjacent summary showed Friday. Both were readable together."
+        },
+        "edge_observation": "ArrowLeft twice selected Wednesday and changed the summary to Wednesday.",
+        "fact_check": "The page states $85, 48 hours and 41 Elm Street. These are page claims; their real-world accuracy was not independently verified.",
+        "strength": "The compact, orderly controls and quiet supporting text make the primary choice easy to find; the summary sits alongside it.",
+        "weakness": "The booking label suggests a fuller transaction, while the visible note says selecting a day does not confirm one and gives no next step.",
+        "repair": "Provide the next booking step or clarify that this is a preferred-day selection.",
+        "arm": "proposed",
+        "html_sha256": "7cd7ce1f35e87c4e6cf8c2b49379db5c3a20d09b097fca1bd8d9931ac731a7e7",
+        "weighted": 7.25,
+        "before": {
+          "sha256": "87bda0895b4b03abd5061dce2ea7dc36bf0910b7b77b9809a74cab1776973460",
+          "file": "B-1440-before.png",
+          "tool_call_id": "item_23"
+        },
+        "after": {
+          "sha256": "9835cb54c409a807840dd5c8e9b04852b7491a29456580de2e2261ea059978a8",
+          "file": "B-1440-after.png",
+          "tool_call_id": "item_29"
+        },
+        "layout_width": 1440,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Space"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "ArrowLeft"
+          },
+          {
+            "action": "key",
+            "value": "ArrowLeft"
+          }
+        ]
+      },
+      "B-390": {
+        "coherence": 8,
+        "originality": 5.5,
+        "craft": 8,
+        "usability": 8,
+        "primary_action": {
+          "input": "Tab, Space, ArrowRight three times",
+          "expected": "Focus and select Friday, with the summary showing Friday.",
+          "observed": "Friday had a visible focus outline and orange selection, and the Friday summary was visible below it without extra scrolling."
+        },
+        "edge_observation": "ArrowLeft twice selected Wednesday and the accessibility representation reported Wednesday in the summary.",
+        "fact_check": "The page states $85 and 48 hours; 41 Elm Street appeared in the accessibility representation below the initial viewport. Real-world accuracy was not independently verified. The review tool reported a 390-pixel viewport and 375-pixel layout width.",
+        "strength": "Tighter but still comfortable spacing keeps the choices, result and non-confirmation note visible together. The hierarchy remains calm and the action is easy to locate.",
+        "weakness": "The address remains below the initial viewport, and the note does not say how to complete a booking.",
+        "repair": "Add a clear next booking step and consider bringing the address closer to the service details.",
+        "arm": "proposed",
+        "html_sha256": "7cd7ce1f35e87c4e6cf8c2b49379db5c3a20d09b097fca1bd8d9931ac731a7e7",
+        "weighted": 7.25,
+        "before": {
+          "sha256": "5643decb3fd649ff8b4a7d7d1eab03d6a15ff2c940062c988b7b8567636f6124",
+          "file": "B-390-before.png",
+          "tool_call_id": "item_33"
+        },
+        "after": {
+          "sha256": "10df25224e38930478d60795bd3d591cfa486cede3cdffbe6ae760c48724cc21",
+          "file": "B-390-after.png",
+          "tool_call_id": "item_39"
+        },
+        "layout_width": 375,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Space"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "ArrowLeft"
+          },
+          {
+            "action": "key",
+            "value": "ArrowLeft"
+          }
+        ]
+      }
+    },
+    "preference": {
+      "winner": "B",
+      "reason": "Both designs support the tested keyboard sequence and keep focus, selection and result visible together. B's more compact mobile spacing also exposes the non-confirmation note in the initial viewport while preserving readable controls."
+    },
+    "case": "booking-work-order-spacing",
+    "verified_screens": 4,
+    "required_screens": 4,
+    "browser": "Chrome/158.0.8127.36",
+    "evaluator_thread": "01a2071c-8a9d-7e53-a7ee-abb766ac65ec",
+    "usage": {
+      "input_tokens": 682364,
+      "cached_input_tokens": 635136,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 2382,
+      "reasoning_output_tokens": 0
+    },
+    "trace_sha256": "3054057479cad35a9ab46c917b9d6e27923aaec288fbb1496285a4c01e1d4b09",
+    "browser_audit_sha256": "1c4015ae7c49bf1f0f40dafe2674aedaabf3a84df34391a75b70033534d51311"
+  },
+  "matched_browser": {
+    "initial": {
+      "html_sha256": "03452f13144fce5ec1e5ab351bc8779828f56913c567f86a6daeb3a69ec0e9f7",
+      "screens": [
+        {
+          "viewport_width": 1440,
+          "failed": [],
+          "frames": [
+            {
+              "phase": "before",
+              "sha256": "583d9303fc111a0274059127f324f498e29cd6f3f44cf3698f4a4aae2e42f404",
+              "pixel_dimensions": [
+                1440,
+                900
+              ],
+              "size": "68px",
+              "summaryBounds": {
+                "x": 1074.203125,
+                "y": 391,
+                "width": 84.78125,
+                "height": 18,
+                "top": 391,
+                "right": 1158.984375,
+                "bottom": 409,
+                "left": 1074.203125
+              },
+              "selectedVisible": false,
+              "summaryInView": true,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/spacing-browser/initial-1440-before.png"
+            },
+            {
+              "phase": "keyboard-friday",
+              "sha256": "a50d3cd3220e14dd1f8530e81625d8f47f63685fc7ed38cab0766e6af8b6a2c2",
+              "pixel_dimensions": [
+                1440,
+                900
+              ],
+              "size": "68px",
+              "summaryBounds": {
+                "x": 1119.1875,
+                "y": 394,
+                "width": 39.796875,
+                "height": 18,
+                "top": 394,
+                "right": 1158.984375,
+                "bottom": 412,
+                "left": 1119.1875
+              },
+              "selectedVisible": true,
+              "summaryInView": true,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/spacing-browser/initial-1440-friday.png"
+            },
+            {
+              "phase": "pointer-tuesday",
+              "sha256": "459e42df7589579a217280858c79565d48bb3cb68b8624fb4dbd9b13f8cb2cc3",
+              "pixel_dimensions": [
+                1440,
+                900
+              ],
+              "size": "68px",
+              "summaryBounds": {
+                "x": 1105.6875,
+                "y": 394,
+                "width": 53.296875,
+                "height": 18,
+                "top": 394,
+                "right": 1158.984375,
+                "bottom": 412,
+                "left": 1105.6875
+              },
+              "selectedVisible": true,
+              "summaryInView": true,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/spacing-browser/initial-1440-tuesday.png"
+            }
+          ]
+        },
+        {
+          "viewport_width": 390,
+          "failed": [],
+          "frames": [
+            {
+              "phase": "before",
+              "sha256": "6c2f50a8db4a6faf5858406b0636803d68cb72e9df000ddf33696145dc515c79",
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "size": "42px",
+              "summaryBounds": {
+                "x": 243.21875,
+                "y": 635,
+                "width": 84.78125,
+                "height": 18,
+                "top": 635,
+                "right": 328,
+                "bottom": 653,
+                "left": 243.21875
+              },
+              "selectedVisible": false,
+              "summaryInView": true,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/spacing-browser/initial-390-before.png"
+            },
+            {
+              "phase": "keyboard-friday",
+              "sha256": "7f8f1d8502f0093652d692212b2d5083b7d5adc3f9783053f898b2a8e8aef451",
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "size": "42px",
+              "summaryBounds": {
+                "x": 288.203125,
+                "y": 638,
+                "width": 39.796875,
+                "height": 18,
+                "top": 638,
+                "right": 328,
+                "bottom": 656,
+                "left": 288.203125
+              },
+              "selectedVisible": true,
+              "summaryInView": true,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/spacing-browser/initial-390-friday.png"
+            },
+            {
+              "phase": "pointer-tuesday",
+              "sha256": "fba4a551c66c107300ffbd5e4d939e84646d5c326a841204d93f77761e290fe4",
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "size": "42px",
+              "summaryBounds": {
+                "x": 274.703125,
+                "y": 638,
+                "width": 53.296875,
+                "height": 18,
+                "top": 638,
+                "right": 328,
+                "bottom": 656,
+                "left": 274.703125
+              },
+              "selectedVisible": true,
+              "summaryInView": true,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/spacing-browser/initial-390-tuesday.png"
+            }
+          ]
+        },
+        {
+          "viewport_width": 320,
+          "failed": [
+            "feedback_visible_after_both_actions"
+          ],
+          "frames": [
+            {
+              "phase": "before",
+              "sha256": "73e0566edd78a8412f4260aafec5e958e46dc1b9ef590119b66518fcac62493d",
+              "pixel_dimensions": [
+                320,
+                700
+              ],
+              "size": "42px",
+              "summaryBounds": {
+                "x": 173.21875,
+                "y": 710.15625,
+                "width": 84.78125,
+                "height": 18,
+                "top": 710.15625,
+                "right": 258,
+                "bottom": 728.15625,
+                "left": 173.21875
+              },
+              "selectedVisible": false,
+              "summaryInView": false,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/spacing-browser/initial-320-before.png"
+            },
+            {
+              "phase": "keyboard-friday",
+              "sha256": "1691a26bc999bcb323bac7134901fdd5e52cc4a82b275c220333742f0aa6d2bd",
+              "pixel_dimensions": [
+                320,
+                700
+              ],
+              "size": "42px",
+              "summaryBounds": {
+                "x": 218.203125,
+                "y": 713.15625,
+                "width": 39.796875,
+                "height": 18,
+                "top": 713.15625,
+                "right": 258,
+                "bottom": 731.15625,
+                "left": 218.203125
+              },
+              "selectedVisible": true,
+              "summaryInView": false,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/spacing-browser/initial-320-friday.png"
+            },
+            {
+              "phase": "pointer-tuesday",
+              "sha256": "231052ef5dc4f2965422c8fb35e08d0c61b90f26f2ae9bc630dbb5ec29658c96",
+              "pixel_dimensions": [
+                320,
+                700
+              ],
+              "size": "42px",
+              "summaryBounds": {
+                "x": 204.703125,
+                "y": 713.15625,
+                "width": 53.296875,
+                "height": 18,
+                "top": 713.15625,
+                "right": 258,
+                "bottom": 731.15625,
+                "left": 204.703125
+              },
+              "selectedVisible": true,
+              "summaryInView": false,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/spacing-browser/initial-320-tuesday.png"
+            }
+          ]
+        }
+      ]
+    },
+    "calmer": {
+      "html_sha256": "7cd7ce1f35e87c4e6cf8c2b49379db5c3a20d09b097fca1bd8d9931ac731a7e7",
+      "screens": [
+        {
+          "viewport_width": 1440,
+          "failed": [],
+          "frames": [
+            {
+              "phase": "before",
+              "sha256": "87bda0895b4b03abd5061dce2ea7dc36bf0910b7b77b9809a74cab1776973460",
+              "pixel_dimensions": [
+                1440,
+                900
+              ],
+              "size": "76px",
+              "summaryBounds": {
+                "x": 1082.203125,
+                "y": 383.46875,
+                "width": 84.78125,
+                "height": 18,
+                "top": 383.46875,
+                "right": 1166.984375,
+                "bottom": 401.46875,
+                "left": 1082.203125
+              },
+              "selectedVisible": false,
+              "summaryInView": true,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/spacing-browser/calmer-1440-before.png"
+            },
+            {
+              "phase": "keyboard-friday",
+              "sha256": "9835cb54c409a807840dd5c8e9b04852b7491a29456580de2e2261ea059978a8",
+              "pixel_dimensions": [
+                1440,
+                900
+              ],
+              "size": "76px",
+              "summaryBounds": {
+                "x": 1127.1875,
+                "y": 386.46875,
+                "width": 39.796875,
+                "height": 18,
+                "top": 386.46875,
+                "right": 1166.984375,
+                "bottom": 404.46875,
+                "left": 1127.1875
+              },
+              "selectedVisible": true,
+              "summaryInView": true,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/spacing-browser/calmer-1440-friday.png"
+            },
+            {
+              "phase": "pointer-tuesday",
+              "sha256": "13d211c4b058abafc0959213f679835526e65a9d362a0af76a03abb18a4f1698",
+              "pixel_dimensions": [
+                1440,
+                900
+              ],
+              "size": "76px",
+              "summaryBounds": {
+                "x": 1113.6875,
+                "y": 386.46875,
+                "width": 53.296875,
+                "height": 18,
+                "top": 386.46875,
+                "right": 1166.984375,
+                "bottom": 404.46875,
+                "left": 1113.6875
+              },
+              "selectedVisible": true,
+              "summaryInView": true,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/spacing-browser/calmer-1440-tuesday.png"
+            }
+          ]
+        },
+        {
+          "viewport_width": 390,
+          "failed": [],
+          "frames": [
+            {
+              "phase": "before",
+              "sha256": "5643decb3fd649ff8b4a7d7d1eab03d6a15ff2c940062c988b7b8567636f6124",
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "size": "42.9px",
+              "summaryBounds": {
+                "x": 249.21875,
+                "y": 562,
+                "width": 84.78125,
+                "height": 18,
+                "top": 562,
+                "right": 334,
+                "bottom": 580,
+                "left": 249.21875
+              },
+              "selectedVisible": false,
+              "summaryInView": true,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/spacing-browser/calmer-390-before.png"
+            },
+            {
+              "phase": "keyboard-friday",
+              "sha256": "10df25224e38930478d60795bd3d591cfa486cede3cdffbe6ae760c48724cc21",
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "size": "42.9px",
+              "summaryBounds": {
+                "x": 294.203125,
+                "y": 565,
+                "width": 39.796875,
+                "height": 18,
+                "top": 565,
+                "right": 334,
+                "bottom": 583,
+                "left": 294.203125
+              },
+              "selectedVisible": true,
+              "summaryInView": true,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/spacing-browser/calmer-390-friday.png"
+            },
+            {
+              "phase": "pointer-tuesday",
+              "sha256": "7bc6222c25d5f2216ffd5dd017bbdc36e9dabc35860d8a3094fde61971a3b276",
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "size": "42.9px",
+              "summaryBounds": {
+                "x": 280.703125,
+                "y": 565,
+                "width": 53.296875,
+                "height": 18,
+                "top": 565,
+                "right": 334,
+                "bottom": 583,
+                "left": 280.703125
+              },
+              "selectedVisible": true,
+              "summaryInView": true,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/spacing-browser/calmer-390-tuesday.png"
+            }
+          ]
+        },
+        {
+          "viewport_width": 320,
+          "failed": [],
+          "frames": [
+            {
+              "phase": "before",
+              "sha256": "698e1c89d7b843f1e499e76c1ae53a72ec517901ab8670617567d86bb9a4c700",
+              "pixel_dimensions": [
+                320,
+                700
+              ],
+              "size": "40px",
+              "summaryBounds": {
+                "x": 179.21875,
+                "y": 549,
+                "width": 84.78125,
+                "height": 18,
+                "top": 549,
+                "right": 264,
+                "bottom": 567,
+                "left": 179.21875
+              },
+              "selectedVisible": false,
+              "summaryInView": true,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/spacing-browser/calmer-320-before.png"
+            },
+            {
+              "phase": "keyboard-friday",
+              "sha256": "f2903dc79d84bd16d167bfc555ae3eb643a752bd25f7b34bd4effea5f2deb9ae",
+              "pixel_dimensions": [
+                320,
+                700
+              ],
+              "size": "40px",
+              "summaryBounds": {
+                "x": 224.203125,
+                "y": 552,
+                "width": 39.796875,
+                "height": 18,
+                "top": 552,
+                "right": 264,
+                "bottom": 570,
+                "left": 224.203125
+              },
+              "selectedVisible": true,
+              "summaryInView": true,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/spacing-browser/calmer-320-friday.png"
+            },
+            {
+              "phase": "pointer-tuesday",
+              "sha256": "7aeb1729e9a6a8c003cbf9ca954acaf4bdd5cbaa06c2d0635df6ca22bb373c8b",
+              "pixel_dimensions": [
+                320,
+                700
+              ],
+              "size": "40px",
+              "summaryBounds": {
+                "x": 210.703125,
+                "y": 552,
+                "width": 53.296875,
+                "height": 18,
+                "top": 552,
+                "right": 264,
+                "bottom": 570,
+                "left": 210.703125
+              },
+              "selectedVisible": true,
+              "summaryInView": true,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/spacing-browser/calmer-320-tuesday.png"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "fresh_replay": {
+    "source_commit": "37dd4f2402c632a772c2c2db05518850f2d2c0dd",
+    "model": "gpt-6-luna",
+    "reasoning": "low",
+    "user_messages": 2,
+    "clarification_turns": 0,
+    "direction": "service-work-order",
+    "initial": {
+      "usage": {
+        "input_tokens": 55367,
+        "cached_input_tokens": 44160,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2947,
+        "reasoning_output_tokens": 0
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "design-mcp",
+          "tool": "direct",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "treatment_call": true,
+      "direct_call": true,
+      "status": "passed",
+      "milliseconds": 60543,
+      "exit_code": 0,
+      "sessions": [
+        "01a2071f-e94e-7201-a7fd-429c5508c78e"
+      ],
+      "prompt_sha256": "e38c16c9702aa4ddfa6f40a16ae2599d2872c8078231b30ff1702931d1b08bd8",
+      "trace_sha256": "44956c14ea340fbc0b366ebfefa5b64194baec85e199949850e2929c493db24b",
+      "html_sha256": "a1cdbe2f40d6af199b634b708dd92efff7d1b247820bc3215b0201a8612f769e"
+    },
+    "calmer": {
+      "usage": {
+        "input_tokens": 99570,
+        "cached_input_tokens": 63232,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 5805,
+        "reasoning_output_tokens": 0
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "design-mcp",
+          "tool": "react",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "treatment_call": true,
+      "status": "passed",
+      "milliseconds": 58276,
+      "exit_code": 0,
+      "sessions": [
+        "01a2071f-e94e-7201-a7fd-429c5508c78e"
+      ],
+      "prompt_sha256": "4418427c2a96f454039784b52e0ae9cc18d066a8457579e09056060f72879c18",
+      "trace_sha256": "241b8bc3e07146f0acab6d0451401672c6100e0f1c26cb897bec2c8c4821f36c",
+      "html_sha256": "cbe19a7ed4c4bf94787b335b56584eeb58c67d9e875e0059abf3fdb1b4aaddc4"
+    }
+  },
+  "fresh_browser": {
+    "initial": {
+      "html_sha256": "a1cdbe2f40d6af199b634b708dd92efff7d1b247820bc3215b0201a8612f769e",
+      "screens": [
+        {
+          "viewport_width": 1440,
+          "failed": [],
+          "frames": [
+            {
+              "phase": "before",
+              "sha256": "4eb281b36452c9ba407302b34977efc48e66bc8869f7d46e5e48b61e4cad5b75",
+              "pixel_dimensions": [
+                1440,
+                900
+              ],
+              "size": "88px",
+              "summaryBounds": {
+                "x": 1129.34375,
+                "y": 464.953125,
+                "width": 85.65625,
+                "height": 18,
+                "top": 464.953125,
+                "right": 1215,
+                "bottom": 482.953125,
+                "left": 1129.34375
+              },
+              "selectedVisible": false,
+              "summaryInView": true,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/candidate/browser/initial-1440-before.png"
+            },
+            {
+              "phase": "keyboard-friday",
+              "sha256": "4be74bd75540eae2168d59b54e3061a1ec4d625cb9bf5d61d25bedaf1bdf142d",
+              "pixel_dimensions": [
+                1440,
+                900
+              ],
+              "size": "88px",
+              "summaryBounds": {
+                "x": 1174.484375,
+                "y": 464.953125,
+                "width": 40.515625,
+                "height": 18,
+                "top": 464.953125,
+                "right": 1215,
+                "bottom": 482.953125,
+                "left": 1174.484375
+              },
+              "selectedVisible": true,
+              "summaryInView": true,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/candidate/browser/initial-1440-friday.png"
+            },
+            {
+              "phase": "pointer-tuesday",
+              "sha256": "ddf93c09d65338ec2f29c4f02584e1a458bd47bb7c2d71a7c1cea3ed6cae2325",
+              "pixel_dimensions": [
+                1440,
+                900
+              ],
+              "size": "88px",
+              "summaryBounds": {
+                "x": 1161.046875,
+                "y": 464.953125,
+                "width": 53.953125,
+                "height": 18,
+                "top": 464.953125,
+                "right": 1215,
+                "bottom": 482.953125,
+                "left": 1161.046875
+              },
+              "selectedVisible": true,
+              "summaryInView": true,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/candidate/browser/initial-1440-tuesday.png"
+            }
+          ]
+        },
+        {
+          "viewport_width": 390,
+          "failed": [],
+          "frames": [
+            {
+              "phase": "before",
+              "sha256": "0cc0e162439dc7b860f831b64eaf05c941844d33b64027c7aba0c29f0b598099",
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "size": "48px",
+              "summaryBounds": {
+                "x": 248.34375,
+                "y": 783.84375,
+                "width": 85.65625,
+                "height": 18,
+                "top": 783.84375,
+                "right": 334,
+                "bottom": 801.84375,
+                "left": 248.34375
+              },
+              "selectedVisible": false,
+              "summaryInView": true,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/candidate/browser/initial-390-before.png"
+            },
+            {
+              "phase": "keyboard-friday",
+              "sha256": "009fac9bef286381a34c4f374104230fa8ce01ca392ed040b048f58fefbde4d5",
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "size": "48px",
+              "summaryBounds": {
+                "x": 293.484375,
+                "y": 783.84375,
+                "width": 40.515625,
+                "height": 18,
+                "top": 783.84375,
+                "right": 334,
+                "bottom": 801.84375,
+                "left": 293.484375
+              },
+              "selectedVisible": true,
+              "summaryInView": true,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/candidate/browser/initial-390-friday.png"
+            },
+            {
+              "phase": "pointer-tuesday",
+              "sha256": "a4b0b20176d6a88a7291085be5912b10c030e0aaae66862a887eb7010480ace4",
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "size": "48px",
+              "summaryBounds": {
+                "x": 280.046875,
+                "y": 783.84375,
+                "width": 53.953125,
+                "height": 18,
+                "top": 783.84375,
+                "right": 334,
+                "bottom": 801.84375,
+                "left": 280.046875
+              },
+              "selectedVisible": true,
+              "summaryInView": true,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/candidate/browser/initial-390-tuesday.png"
+            }
+          ]
+        },
+        {
+          "viewport_width": 320,
+          "failed": [
+            "feedback_visible_after_both_actions"
+          ],
+          "frames": [
+            {
+              "phase": "before",
+              "sha256": "41140c74cb82f2a99c6da6439bfccfeb5a0dd40817946695122a6721cb51bb39",
+              "pixel_dimensions": [
+                320,
+                700
+              ],
+              "size": "48px",
+              "summaryBounds": {
+                "x": 178.34375,
+                "y": 783.84375,
+                "width": 85.65625,
+                "height": 18,
+                "top": 783.84375,
+                "right": 264,
+                "bottom": 801.84375,
+                "left": 178.34375
+              },
+              "selectedVisible": false,
+              "summaryInView": false,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/candidate/browser/initial-320-before.png"
+            },
+            {
+              "phase": "keyboard-friday",
+              "sha256": "8909eb6d0d5f9494bba1b7be0af4718d6c355e3d82024eb0d1e092ba0335a14f",
+              "pixel_dimensions": [
+                320,
+                700
+              ],
+              "size": "48px",
+              "summaryBounds": {
+                "x": 223.484375,
+                "y": 783.84375,
+                "width": 40.515625,
+                "height": 18,
+                "top": 783.84375,
+                "right": 264,
+                "bottom": 801.84375,
+                "left": 223.484375
+              },
+              "selectedVisible": true,
+              "summaryInView": false,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/candidate/browser/initial-320-friday.png"
+            },
+            {
+              "phase": "pointer-tuesday",
+              "sha256": "b15fc7d9bcb2cb2239a502d96a35a6294eaa1d432c583c9727b4135f9a7b40b3",
+              "pixel_dimensions": [
+                320,
+                700
+              ],
+              "size": "48px",
+              "summaryBounds": {
+                "x": 210.046875,
+                "y": 783.84375,
+                "width": 53.953125,
+                "height": 18,
+                "top": 783.84375,
+                "right": 264,
+                "bottom": 801.84375,
+                "left": 210.046875
+              },
+              "selectedVisible": true,
+              "summaryInView": false,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/candidate/browser/initial-320-tuesday.png"
+            }
+          ]
+        }
+      ]
+    },
+    "calmer": {
+      "html_sha256": "cbe19a7ed4c4bf94787b335b56584eeb58c67d9e875e0059abf3fdb1b4aaddc4",
+      "screens": [
+        {
+          "viewport_width": 1440,
+          "failed": [],
+          "frames": [
+            {
+              "phase": "before",
+              "sha256": "d8c2c7d07d01144d849cffc30ba9761b6ad379cb823ae23c076d17b43c4cfa4b",
+              "pixel_dimensions": [
+                1440,
+                900
+              ],
+              "size": "82px",
+              "summaryBounds": {
+                "x": 1122.71875,
+                "y": 506.3125,
+                "width": 84.78125,
+                "height": 18,
+                "top": 506.3125,
+                "right": 1207.5,
+                "bottom": 524.3125,
+                "left": 1122.71875
+              },
+              "selectedVisible": false,
+              "summaryInView": true,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/candidate/browser/calmer-1440-before.png"
+            },
+            {
+              "phase": "keyboard-friday",
+              "sha256": "7ea2d306af61020e8d94f70eb946f7095038f8790049cec77930869fd04c30e7",
+              "pixel_dimensions": [
+                1440,
+                900
+              ],
+              "size": "82px",
+              "summaryBounds": {
+                "x": 1167.703125,
+                "y": 506.3125,
+                "width": 39.796875,
+                "height": 18,
+                "top": 506.3125,
+                "right": 1207.5,
+                "bottom": 524.3125,
+                "left": 1167.703125
+              },
+              "selectedVisible": true,
+              "summaryInView": true,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/candidate/browser/calmer-1440-friday.png"
+            },
+            {
+              "phase": "pointer-tuesday",
+              "sha256": "8da71b00376678736a4ae1a10e5f7b17429f5680b735aa4fda37eaa10adeb430",
+              "pixel_dimensions": [
+                1440,
+                900
+              ],
+              "size": "82px",
+              "summaryBounds": {
+                "x": 1154.203125,
+                "y": 506.3125,
+                "width": 53.296875,
+                "height": 18,
+                "top": 506.3125,
+                "right": 1207.5,
+                "bottom": 524.3125,
+                "left": 1154.203125
+              },
+              "selectedVisible": true,
+              "summaryInView": true,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/candidate/browser/calmer-1440-tuesday.png"
+            }
+          ]
+        },
+        {
+          "viewport_width": 390,
+          "failed": [],
+          "frames": [
+            {
+              "phase": "before",
+              "sha256": "135b643f7340ae2609aaaef503529c5ecf840ffe8ec05a2b280adc17c30dd834",
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "size": "48px",
+              "summaryBounds": {
+                "x": 249.21875,
+                "y": 749.671875,
+                "width": 84.78125,
+                "height": 18,
+                "top": 749.671875,
+                "right": 334,
+                "bottom": 767.671875,
+                "left": 249.21875
+              },
+              "selectedVisible": false,
+              "summaryInView": true,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/candidate/browser/calmer-390-before.png"
+            },
+            {
+              "phase": "keyboard-friday",
+              "sha256": "907aca67c090fd86cf43ae178900235451cf295e06832bc1bd21aa5cb9f464db",
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "size": "48px",
+              "summaryBounds": {
+                "x": 294.203125,
+                "y": 749.671875,
+                "width": 39.796875,
+                "height": 18,
+                "top": 749.671875,
+                "right": 334,
+                "bottom": 767.671875,
+                "left": 294.203125
+              },
+              "selectedVisible": true,
+              "summaryInView": true,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/candidate/browser/calmer-390-friday.png"
+            },
+            {
+              "phase": "pointer-tuesday",
+              "sha256": "9e5eb3fd59c71976d23a7a20f802e9c709ceca0d2a255681de6edafdb730cc37",
+              "pixel_dimensions": [
+                390,
+                844
+              ],
+              "size": "48px",
+              "summaryBounds": {
+                "x": 280.703125,
+                "y": 749.671875,
+                "width": 53.296875,
+                "height": 18,
+                "top": 749.671875,
+                "right": 334,
+                "bottom": 767.671875,
+                "left": 280.703125
+              },
+              "selectedVisible": true,
+              "summaryInView": true,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/candidate/browser/calmer-390-tuesday.png"
+            }
+          ]
+        },
+        {
+          "viewport_width": 320,
+          "failed": [
+            "feedback_visible_after_both_actions"
+          ],
+          "frames": [
+            {
+              "phase": "before",
+              "sha256": "ea801e85531ec9767fd5650f75eeaddaf03d3061168232f7b550eddef97b2bc9",
+              "pixel_dimensions": [
+                320,
+                700
+              ],
+              "size": "48px",
+              "summaryBounds": {
+                "x": 179.21875,
+                "y": 749.671875,
+                "width": 84.78125,
+                "height": 18,
+                "top": 749.671875,
+                "right": 264,
+                "bottom": 767.671875,
+                "left": 179.21875
+              },
+              "selectedVisible": false,
+              "summaryInView": false,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/candidate/browser/calmer-320-before.png"
+            },
+            {
+              "phase": "keyboard-friday",
+              "sha256": "6009fe4c5fa36f993331588d619cf7bd0de52d7cfc185e53d4023c90d4f7a376",
+              "pixel_dimensions": [
+                320,
+                700
+              ],
+              "size": "48px",
+              "summaryBounds": {
+                "x": 224.203125,
+                "y": 749.671875,
+                "width": 39.796875,
+                "height": 18,
+                "top": 749.671875,
+                "right": 264,
+                "bottom": 767.671875,
+                "left": 224.203125
+              },
+              "selectedVisible": true,
+              "summaryInView": false,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/candidate/browser/calmer-320-friday.png"
+            },
+            {
+              "phase": "pointer-tuesday",
+              "sha256": "1f3a297df4ea57d0bb5a93e7e53deccc805b6d365e86cfa11d581b8e294a8d95",
+              "pixel_dimensions": [
+                320,
+                700
+              ],
+              "size": "48px",
+              "summaryBounds": {
+                "x": 210.703125,
+                "y": 749.671875,
+                "width": 53.296875,
+                "height": 18,
+                "top": 749.671875,
+                "right": 264,
+                "bottom": 767.671875,
+                "left": 210.703125
+              },
+              "selectedVisible": true,
+              "summaryInView": false,
+              "scroll": [
+                0,
+                0
+              ],
+              "file": ".context/first-run-brief-only/candidate/browser/calmer-320-tuesday.png"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "browser": "Chrome/158.0.8127.36",
+  "next_experiment": "Use a visible, compact date result inside the work order action area in direct and react. Compare that layout against its fixed source at both common and minimum phone widths, then regenerate."
+}

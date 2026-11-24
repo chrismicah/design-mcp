@@ -1,0 +1,279 @@
+{
+  "summary": {
+    "requested_pairs": 36,
+    "judged_pairs": 1,
+    "v2": 95.83333333333334,
+    "design-library": 87.5,
+    "difference": -8.333333333333343,
+    "wins_ties_losses": [
+      0,
+      0,
+      1
+    ],
+    "median_usage": {
+      "v2": {
+        "input_tokens": 63205,
+        "cached_input_tokens": 40448,
+        "output_tokens": 25536,
+        "elapsed_seconds": 518.5
+      },
+      "design-library": {
+        "input_tokens": 117266,
+        "cached_input_tokens": 90880,
+        "output_tokens": 23700,
+        "elapsed_seconds": 483.81
+      }
+    }
+  },
+  "cases": {
+    "landing-ceramics": {
+      "render_run": "https://github.com/chrismicah/design-mcp/actions/runs/44996915299",
+      "cells": {
+        "v2": {
+          "generation": {
+            "usage": {
+              "input_tokens": 63205,
+              "cached_input_tokens": 40448,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 25536,
+              "reasoning_output_tokens": 16340
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-mcp",
+                "tool": "direct",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "treatment_call": true,
+            "direct_call": true,
+            "status": "passed",
+            "case": "landing-ceramics",
+            "arm": "v2",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "1b7e4408d51fd57e448b6c6af2541f70db8a3a9291f546c5217d05b4bda1950f",
+            "shell_tool": false,
+            "elapsed_seconds": 518.5,
+            "exit_code": 0,
+            "trace_sha256": "5f47eb57131b85227f3331bf28875a3d0778098e036f8d071085dd361f884a7f",
+            "html_sha256": "c858de19fe1b6d9fd489964f7eb10fbaae19295d2225e7ed79271495e72566f3"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "829810dba72db024a346957bf608aecbf1fb4fd9c8c50d2cd2943f2253e1abdc",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "c66f15395202bb815da1dda77649fa5529b035c1a0276d6a45de0e8447e8cb47",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        },
+        "design-library": {
+          "generation": {
+            "usage": {
+              "input_tokens": 117266,
+              "cached_input_tokens": 90880,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 23700,
+              "reasoning_output_tokens": 15130
+            },
+            "tool_calls": [
+              {
+                "type": "mcp_tool_call",
+                "server": "design-library",
+                "tool": "list_styles",
+                "status": "completed"
+              },
+              {
+                "type": "mcp_tool_call",
+                "server": "design-library",
+                "tool": "search_designs",
+                "status": "completed"
+              },
+              {
+                "type": "mcp_tool_call",
+                "server": "design-library",
+                "tool": "get_style_guide",
+                "status": "completed"
+              },
+              {
+                "type": "mcp_tool_call",
+                "server": "design-library",
+                "tool": "search_designs",
+                "status": "completed"
+              },
+              {
+                "type": "mcp_tool_call",
+                "server": "design-library",
+                "tool": "search_designs",
+                "status": "completed"
+              },
+              {
+                "type": "mcp_tool_call",
+                "server": "design-library",
+                "tool": "get_design",
+                "status": "completed"
+              },
+              {
+                "type": "mcp_tool_call",
+                "server": "design-library",
+                "tool": "get_design",
+                "status": "completed"
+              }
+            ],
+            "client_errors": [],
+            "treatment_call": true,
+            "status": "passed",
+            "case": "landing-ceramics",
+            "arm": "design-library",
+            "model": "gpt-6.2-sol",
+            "effort": "max",
+            "client": "codex-cli 0.170.0",
+            "prompt_sha256": "1b7e4408d51fd57e448b6c6af2541f70db8a3a9291f546c5217d05b4bda1950f",
+            "shell_tool": false,
+            "mcp_config_sha256": "7313367ed14db2b1dc58fcc35efe89025cb7c573c4d3bf2a51ed76020529af51",
+            "elapsed_seconds": 483.81,
+            "exit_code": 0,
+            "trace_sha256": "5069623a3b92a8b435aa8d79b129ef582605d181ec10356845f96f2ab09be167",
+            "html_sha256": "32a66d87345ec346b5a72ffb297e2db313f507f73b49100ba4468265934cde24"
+          },
+          "browser": "Chrome/158.0.8127.36",
+          "renderer": "0.12.0",
+          "captures": {
+            "1440": {
+              "sha256": "982b0e85619dfee80f8ec87c9579f61e4b57307e72a3e7c214137472bfedb77c",
+              "viewport": 1440,
+              "width": 1440,
+              "pageErrors": []
+            },
+            "390": {
+              "sha256": "b03c30669661bcf5f763afa170c0b8dc35a2ef4014e81a9660d87a300bcb16e7",
+              "viewport": 390,
+              "width": 390,
+              "pageErrors": []
+            }
+          }
+        }
+      },
+      "ballot": {
+        "case": "landing-ceramics",
+        "surface": "landing",
+        "blind_key": {
+          "A": "v2",
+          "B": "design-library"
+        },
+        "verdict": {
+          "A": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "The drawing and prominent product name identify the bowl at a glance, and the price and shipping row leads directly to \u201cAdd to bag\u201d at both widths."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "A generous gutter separates the desktop artwork from the details, while shared side margins and a rule above the purchase details keep the mobile stack organized."
+            },
+            "typography": {
+              "score": 4,
+              "evidence": "The bold serif title breaks cleanly after \u201cGlaze\u201d on desktop and fits on one line on mobile, where the sans-serif maker credit and shipping label remain easy to read."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Plum connects the studio mark to the purchase button, whose solid fill stands out against the oat background and warm bowl drawing."
+            },
+            "accessibility": {
+              "score": 4,
+              "evidence": "At both widths, the browser tree identifies the bowl illustration, names the visible controls \u201cAdd to bag\u201d and \u201cBag, 0 items,\u201d and exposes an empty status region."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "The textured drawing, $46 price, five-day shipping and Milwaukee throwing and glazing credit match the brief, with confirmation after adding one bowl unverified at both widths."
+            }
+          },
+          "B": {
+            "hierarchy": {
+              "score": 4,
+              "evidence": "At both widths, the product name leads straight to the $46 price, and the broad \u201cAdd to bag\u201d button anchors the detail column with shipping immediately below."
+            },
+            "spacing": {
+              "score": 4,
+              "evidence": "The desktop gutter separates the drawing from the buying details, and on mobile the title, price and button align with the drawing\u2019s left edge while the shipping note stays close to the button."
+            },
+            "typography": {
+              "score": 3,
+              "evidence": "The tall serif title stays legible on one mobile line and the sans-serif price is distinct, though the small italic \u201cBowl illustration\u201d caption is harder to read against the stippling."
+            },
+            "color": {
+              "score": 4,
+              "evidence": "Dark olive ties the purchase button to the bag-count badge, and light lettering makes both easy to pick out against the warm ivory page."
+            },
+            "accessibility": {
+              "score": 3,
+              "evidence": "Both browser trees name the controls and describe the bowl\u2019s foot, rim and throwing rings, with the zero-item bag count as the sole documented purchase-status cue."
+            },
+            "fidelity": {
+              "score": 3,
+              "evidence": "Both layouts show the stippled bowl drawing, small-batch Milwaukee maker credit, $46 price and five-day shipping, while the supplied evidence ends at the empty bag before any one-bowl confirmation."
+            }
+          }
+        },
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "usage": {
+          "input_tokens": 26185,
+          "cached_input_tokens": 17792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4394,
+          "reasoning_output_tokens": 3722
+        },
+        "scores": {
+          "v2": 95.83333333333334,
+          "design-library": 87.5
+        },
+        "image_variant": "full",
+        "image_sha256": {
+          "A-1440.png": "829810dba72db024a346957bf608aecbf1fb4fd9c8c50d2cd2943f2253e1abdc",
+          "A-390.png": "c66f15395202bb815da1dda77649fa5529b035c1a0276d6a45de0e8447e8cb47",
+          "B-1440.png": "982b0e85619dfee80f8ec87c9579f61e4b57307e72a3e7c214137472bfedb77c",
+          "B-390.png": "b03c30669661bcf5f763afa170c0b8dc35a2ef4014e81a9660d87a300bcb16e7"
+        },
+        "judge_prompt_sha256": "356e375ef30424ea5779d59ca3e4541aae4e380d575edf84a1a44f6aa1ff1206"
+      }
+    }
+  },
+  "screenshots_attempt": {
+    "status": "mcp-unused-or-failed",
+    "arm": "screenshots",
+    "client": "codex-cli 0.170.0",
+    "model": "gpt-6.2-sol",
+    "effort": "max",
+    "shell_tool": false,
+    "prompt_sha256": "1b7e4408d51fd57e448b6c6af2541f70db8a3a9291f546c5217d05b4bda1950f",
+    "trace_sha256": "7c699eb7e66d1ffe3f0d5771c47977e51b649fbc4ea5902ed06bf2cde1ed42b8",
+    "usage": {
+      "input_tokens": 40598,
+      "cached_input_tokens": 19840,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 26254,
+      "reasoning_output_tokens": 17091
+    },
+    "treatment_call": false,
+    "tool_calls": [],
+    "client_errors": []
+  },
+  "pins": {
+    "design-mcp": "fd6035d8732d177b811f81a0f5863e99134a85ca",
+    "design-library": "96310517ffcc484f4f820434c1cf51c16f763cec",
+    "screenshots": "1.1.1"
+  }
+}

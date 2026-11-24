@@ -1,0 +1,275 @@
+{
+  "head": "3ef13cdd9014468eda42cb23a2fd36626cce0337",
+  "observed_utc": "2026-11-23T09:53:06.545141+00:00",
+  "source": "Exact-head GitHub jobs and their downloaded fixture captures. These Chrome screenshots came from the hosted runner.",
+  "checks_passed": 13,
+  "checks_observed": 13,
+  "artifacts": {
+    "native": {
+      "before_buttons": 4,
+      "after_buttons": 5,
+      "before_findings": [],
+      "after_findings": []
+    },
+    "electron": {
+      "before": [
+        [
+          "control-not-hittable",
+          "r2"
+        ],
+        [
+          "control-clipped",
+          "r4"
+        ]
+      ],
+      "after": [
+        [
+          "control-clipped",
+          "r4"
+        ]
+      ],
+      "focus": "reveal"
+    },
+    "chrome": {
+      "pasted_url_pass": true,
+      "active_tab_pass": true,
+      "pasted_submit_to_capture_ms": 2591,
+      "private_value_absent": true
+    },
+    "images": [
+      {
+        "path": ".context/letterpress/exact-ci/swift-review-receipt/swift-proof/after.png",
+        "sha256": "5e3d63305eabd973d0ca9f448bc0bafaa2aac6b6ab9dbbd92b460e66169881c5",
+        "size": [
+          900,
+          450
+        ]
+      },
+      {
+        "path": ".context/letterpress/exact-ci/swift-review-receipt/swift-proof/before.png",
+        "sha256": "c90ae01369f8355ecec8903b320f151f99273bf7c2f232a1fc0683385f3f3882",
+        "size": [
+          900,
+          450
+        ]
+      },
+      {
+        "path": ".context/letterpress/exact-ci/electron-mac-receipt/electron-proof/after.png",
+        "sha256": "0de5c1e611ebb75a952b9a1d2dbaf24cea93457195acf725995f16a95bd6fa92",
+        "size": [
+          880,
+          640
+        ]
+      },
+      {
+        "path": ".context/letterpress/exact-ci/electron-mac-receipt/electron-proof/before.png",
+        "sha256": "cdb59b3074cdef69685e484da7eaa613c77e98d58443f11cbbf146821b4611fd",
+        "size": [
+          880,
+          640
+        ]
+      },
+      {
+        "path": ".context/letterpress/exact-ci/extension-review-receipt/extension-proof/pasted-url-preview.png",
+        "sha256": "210e4b2b828bf9d8a7b482eea6cbbe41c67c31b3ca3d2ff1c4284775ae35fb9b",
+        "size": [
+          1440,
+          797
+        ]
+      },
+      {
+        "path": ".context/letterpress/exact-ci/extension-review-receipt/extension-proof/pasted-url-result.png",
+        "sha256": "e7ff1b34d816395510bf544f91a7a5bb7328171d4ba8539f33c4fd5dd7d15189",
+        "size": [
+          1440,
+          797
+        ]
+      },
+      {
+        "path": ".context/letterpress/exact-ci/extension-review-receipt/extension-proof/popup-idle.png",
+        "sha256": "119b46570c6d018c60d7dbc2e87e3a73afa7ec03d44810ac6cfcf9f91ece4721",
+        "size": [
+          372,
+          276
+        ]
+      },
+      {
+        "path": ".context/letterpress/exact-ci/extension-review-receipt/extension-proof/popup-result.png",
+        "sha256": "82e64950d99abf50d22610112492e27d685479d5bd566eb6e9f0e702d66394cb",
+        "size": [
+          372,
+          600
+        ]
+      },
+      {
+        "path": ".context/letterpress/exact-ci/extension-review-receipt/extension-proof/preview-after.png",
+        "sha256": "0c033be23d19c7bf08626879c9b6975d247fd3bef8ff63e493dfc4606f998239",
+        "size": [
+          1440,
+          797
+        ]
+      },
+      {
+        "path": ".context/letterpress/exact-ci/extension-review-receipt/extension-proof/preview-before.png",
+        "sha256": "fc03f06d0dc79a270f88f2d5a7c5edbf38c4f53b72e66dc7f88b2fe478f583ac",
+        "size": [
+          1440,
+          797
+        ]
+      }
+    ]
+  },
+  "runs": [
+    {
+      "conclusion": "success",
+      "headSha": "3ef13cdd9014468eda42cb23a2fd36626cce0337",
+      "jobs": [
+        {
+          "name": "electron",
+          "url": "https://github.com/chrismicah/design-mcp/actions/runs/45149449621/job/137606835509",
+          "steps": [
+            "Install Design MCP and the pinned Electron runtime"
+          ]
+        }
+      ],
+      "status": "completed",
+      "url": "https://github.com/chrismicah/design-mcp/actions/runs/45149449621",
+      "workflowName": "Installed Electron review on macOS"
+    },
+    {
+      "conclusion": "success",
+      "headSha": "3ef13cdd9014468eda42cb23a2fd36626cce0337",
+      "jobs": [
+        {
+          "name": "native",
+          "url": "https://github.com/chrismicah/design-mcp/actions/runs/45149449623/job/137606835290",
+          "steps": [
+            "Install Design MCP and generate the fixture project",
+            "Open the Swift app, exercise the native control, and review captured geometry"
+          ]
+        }
+      ],
+      "status": "completed",
+      "url": "https://github.com/chrismicah/design-mcp/actions/runs/45149449623",
+      "workflowName": "Native Swift review proof"
+    },
+    {
+      "conclusion": "success",
+      "headSha": "3ef13cdd9014468eda42cb23a2fd36626cce0337",
+      "jobs": [
+        {
+          "name": "popup",
+          "url": "https://github.com/chrismicah/design-mcp/actions/runs/45149449679/job/137606835066",
+          "steps": [
+            "Verify active-tab capture consistency",
+            "Install the package and isolated browser",
+            "Verify the active-tab and pasted URL review journeys"
+          ]
+        }
+      ],
+      "status": "completed",
+      "url": "https://github.com/chrismicah/design-mcp/actions/runs/45149449679",
+      "workflowName": "Chrome review extension keyboard proof"
+    },
+    {
+      "conclusion": "success",
+      "headSha": "3ef13cdd9014468eda42cb23a2fd36626cce0337",
+      "jobs": [
+        {
+          "name": "sources",
+          "url": "https://github.com/chrismicah/design-mcp/actions/runs/45149449818/job/137606836478",
+          "steps": [
+            "Test source parsing",
+            "Test live critique verification",
+            "Collect public leads for review"
+          ]
+        }
+      ],
+      "status": "completed",
+      "url": "https://github.com/chrismicah/design-mcp/actions/runs/45149449818",
+      "workflowName": "Design source review"
+    },
+    {
+      "conclusion": "success",
+      "headSha": "3ef13cdd9014468eda42cb23a2fd36626cce0337",
+      "jobs": [
+        {
+          "name": "arm64 / Python 3.12",
+          "url": "https://github.com/chrismicah/design-mcp/actions/runs/45149449830/job/137606835913",
+          "steps": [
+            "Install from the pinned Git revision using pipx and uv"
+          ]
+        },
+        {
+          "name": "arm64 / Python 3.11",
+          "url": "https://github.com/chrismicah/design-mcp/actions/runs/45149449830/job/137606836080",
+          "steps": [
+            "Install from the pinned Git revision using pipx and uv"
+          ]
+        },
+        {
+          "name": "arm64 / Python 3.13",
+          "url": "https://github.com/chrismicah/design-mcp/actions/runs/45149449830/job/137606836260",
+          "steps": [
+            "Install from the pinned Git revision using pipx and uv"
+          ]
+        },
+        {
+          "name": "x86_64 / Python 3.10",
+          "url": "https://github.com/chrismicah/design-mcp/actions/runs/45149449830/job/137606836283",
+          "steps": [
+            "Install from the pinned Git revision using pipx and uv"
+          ]
+        },
+        {
+          "name": "x86_64 / Python 3.11",
+          "url": "https://github.com/chrismicah/design-mcp/actions/runs/45149449830/job/137606836289",
+          "steps": [
+            "Install from the pinned Git revision using pipx and uv"
+          ]
+        },
+        {
+          "name": "x86_64 / Python 3.12",
+          "url": "https://github.com/chrismicah/design-mcp/actions/runs/45149449830/job/137606836297",
+          "steps": [
+            "Install from the pinned Git revision using pipx and uv"
+          ]
+        },
+        {
+          "name": "arm64 / Python 3.10",
+          "url": "https://github.com/chrismicah/design-mcp/actions/runs/45149449830/job/137606836338",
+          "steps": [
+            "Install from the pinned Git revision using pipx and uv"
+          ]
+        },
+        {
+          "name": "x86_64 / Python 3.13",
+          "url": "https://github.com/chrismicah/design-mcp/actions/runs/45149449830/job/137606836441",
+          "steps": [
+            "Install from the pinned Git revision using pipx and uv"
+          ]
+        }
+      ],
+      "status": "completed",
+      "url": "https://github.com/chrismicah/design-mcp/actions/runs/45149449830",
+      "workflowName": "Portable package install and doctor"
+    },
+    {
+      "conclusion": "success",
+      "headSha": "3ef13cdd9014468eda42cb23a2fd36626cce0337",
+      "jobs": [
+        {
+          "name": "review",
+          "url": "https://github.com/chrismicah/design-mcp/actions/runs/45149449858/job/137606835958",
+          "steps": [
+            "Install the candidate and the pinned browser tools"
+          ]
+        }
+      ],
+      "status": "completed",
+      "url": "https://github.com/chrismicah/design-mcp/actions/runs/45149449858",
+      "workflowName": "Installed public URL review proof"
+    }
+  ],
+  "successful_install_cells": 8
+}

@@ -13,7 +13,7 @@ from urllib.parse import quote, urljoin
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 import httpx
-from schema import DesignPattern, Platform, LayoutType
+from design_mcp.schema import DesignPattern, Platform, LayoutType
 
 BASE_DIR = Path(__file__).parent.parent
 SCREENSHOTS_DIR = BASE_DIR / "screenshots"

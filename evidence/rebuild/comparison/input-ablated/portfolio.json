@@ -1,0 +1,56 @@
+{
+  "direction": {
+    "id": "ground-plane",
+    "surface": "portfolio",
+    "title": "Ground plane: full-bleed built work",
+    "summary": "The lead project opens as a full-bleed site photograph under a serif title; the other projects sit small and off the grid. Use for spatial practices.",
+    "type": {
+      "display": "Instrument Serif",
+      "body": "Archivo",
+      "ratio": 5.0,
+      "tracking": -0.04,
+      "weight": 400,
+      "license": "OFL-1.1"
+    },
+    "palette": {
+      "ink": "#22261F",
+      "paper": "#E9EFF0",
+      "accent": "#465733"
+    },
+    "layout": {
+      "skeleton": "full-bleed lead project; title split across two lines; secondary projects offset at 1/3 width; contact in a quiet footer",
+      "focus": "lead project title at 120px, with its scale and completion year from the brief",
+      "desktop": "Title bottom-left on an opaque paper panel overlapping the image edge. Facts align in a right-hand column.",
+      "mobile": "image at 70vh; title below it, not overlaid",
+      "rhythm": "160px section gaps; empty space as the material"
+    },
+    "imagery": {
+      "subject": "the built site at ground or eye level, with planting or material in the foreground",
+      "crop": "horizon at the lower third",
+      "fallback": "site-plan line drawing in ink on paper"
+    },
+    "motion": {
+      "trigger": "scroll into a project",
+      "effect": "the image scales 1.04 to 1 (the one signature move)",
+      "duration_ms": 400,
+      "reduced": "static"
+    },
+    "action": {
+      "instruction": "Primary link opens the lead case study; contact is plain text",
+      "label": "Open the [project] case study"
+    }
+  },
+  "interaction": {
+    "accent_foreground": "#E9EFF0",
+    "easing": "ease-out",
+    "focus": "Use a two-tone focus ring (2 px paper with 2 px ink outside) on the primary control.",
+    "accent_role": "Use the accent as a focal fill under accent_foreground. Check contrast before using it as text.",
+    "keyboard": "Expose the primary control by keyboard and announce pending and completed states."
+  },
+  "assumptions": [
+    "Use portfolio as the surface.",
+    "Use only the project facts and assets in the brief."
+  ],
+  "questions": [],
+  "handoff": "Apply the composition to the actual content. Preserve the task and brand constraints. Fill label slots only with facts supplied by the brief. Use the source as design evidence. Verify the action, reading order and legibility at 390 px."
+}

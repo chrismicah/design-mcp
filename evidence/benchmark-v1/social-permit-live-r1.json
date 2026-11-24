@@ -1,0 +1,373 @@
+{
+  "source": {
+    "task": "social-permit",
+    "round": 1,
+    "direction_catalog_sha256": "5944434e30b86a6ef7b77091733da10c56873d5bc65b7ae598bcb99fd08cd36b",
+    "critic_model": "gpt-6.1-terra",
+    "critic_effort": "low",
+    "playwriter": "0.12.0"
+  },
+  "generation": {
+    "v2": {
+      "model": "gpt-6.2-sol",
+      "effort": "low",
+      "elapsed_seconds": 60.63,
+      "usage": {
+        "input_tokens": 60032,
+        "cached_input_tokens": 43392,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2204,
+        "reasoning_output_tokens": 0
+      },
+      "html_sha256": "7f0226e30ec6dcab99a54de5c88fccef2ad65d9ed261ae986f091cacc5c4748b",
+      "trace_sha256": "8cbe21978308f950ccea18f9246199bc586043b4d3dc7db850517e3614334b48",
+      "expected_direction": "grouped-fieldsets"
+    },
+    "social": {
+      "model": "gpt-6.2-sol",
+      "effort": "low",
+      "elapsed_seconds": 53.26,
+      "usage": {
+        "input_tokens": 62852,
+        "cached_input_tokens": 50304,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2300,
+        "reasoning_output_tokens": 0
+      },
+      "html_sha256": "cc99dac3ced3e4caecb1aa695b3c6932a8b78be7e943f84a590d34c49dd330e6",
+      "trace_sha256": "5c49692597e58701adf778cbe881e62a78cd06e62087e9bebe060d0f42e293e3",
+      "expected_direction": "grouped-fieldsets"
+    }
+  },
+  "ballot": {
+    "calibration": {
+      "example": "Legible repair intake with clear labels, familiar layout and misplaced focus after an invalid number",
+      "coherence": 7,
+      "originality": 4,
+      "craft": 6,
+      "usability": 6
+    },
+    "screens": {
+      "A-1440": {
+        "coherence": 8,
+        "originality": 4,
+        "craft": 7.5,
+        "usability": 8,
+        "primary_action": {
+          "input": "Tab through Name and Room to Submit permit; press Enter with both answers empty.",
+          "expected": "Explain both missing answers and focus the first field needing correction.",
+          "observed": "Displayed 'Enter your name.' and 'Choose Oak or Elm.' Focus moved visibly to Name."
+        },
+        "edge_observation": "Typed Jamie, used Tab and ArrowRight to select Elm, then submitted. The confirmation showed Jamie and Elm and focused its heading. No edit control was visible.",
+        "fact_check": "Both required-answer messages and the confirmation values were observed. Actual permit issuance or persistence was not verified.",
+        "strength": "Clear field-level messages, strong focus indication and a compact aligned form.",
+        "weakness": "The confirmation offers no visible way to correct details, and the familiar form has little distinctive character.",
+        "repair": "Add an Edit details action that returns to the populated form; introduce a restrained library-specific visual detail.",
+        "captures": [
+          "A-1440-before",
+          "A-1440-after",
+          "A-1440-corrected"
+        ],
+        "arm": "social",
+        "html_sha256": "cc99dac3ced3e4caecb1aa695b3c6932a8b78be7e943f84a590d34c49dd330e6",
+        "weighted": 6.7,
+        "before": {
+          "sha256": "379814d6ef421f0f37b05c098da0987e95212e08c42e7279e9b75ada6201a92e",
+          "file": "A-1440-before.png",
+          "tool_call_id": "item_2"
+        },
+        "after": {
+          "sha256": "db56a2af94ada9997fddfaf2595d9282b9da0844e3aafd9369653b40fa917cb9",
+          "file": "A-1440-after.png",
+          "tool_call_id": "item_7"
+        },
+        "layout_width": 1440,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "text",
+            "value": "Jamie"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ]
+      },
+      "A-390": {
+        "coherence": 8,
+        "originality": 4,
+        "craft": 7.5,
+        "usability": 8,
+        "primary_action": {
+          "input": "Tab to Submit permit and press Enter with both answers empty.",
+          "expected": "Explain both missing answers and focus Name.",
+          "observed": "Both field-level messages appeared and focus moved visibly to Name."
+        },
+        "edge_observation": "Keyboard entry of Jamie and selection of Elm produced a confirmation containing both values, with focus on the confirmation heading. No edit control was visible.",
+        "fact_check": "The observed form and confirmation fit the 390 CSS-pixel viewport. Permit issuance and persistence were not verified.",
+        "strength": "The stacked labels, full-width name field and error messages remain legible without visible clipping.",
+        "weakness": "The confirmation has no visible correction route and leaves substantial unused space.",
+        "repair": "Provide an Edit details action and use the confirmation space to make the next available step explicit.",
+        "captures": [
+          "A-390-before",
+          "A-390-after",
+          "A-390-corrected"
+        ],
+        "arm": "social",
+        "html_sha256": "cc99dac3ced3e4caecb1aa695b3c6932a8b78be7e943f84a590d34c49dd330e6",
+        "weighted": 6.7,
+        "before": {
+          "sha256": "e6bd38433b77879351eeebef33abc74452138cccca89b0780c3525f28f1a04a5",
+          "file": "A-390-before.png",
+          "tool_call_id": "item_15"
+        },
+        "after": {
+          "sha256": "8622750774801b50ec3ef2c3b76aed95a827423051baa28e788ae7825973439e",
+          "file": "A-390-after.png",
+          "tool_call_id": "item_20"
+        },
+        "layout_width": 390,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "text",
+            "value": "Jamie"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ]
+      },
+      "B-1440": {
+        "coherence": 8,
+        "originality": 4.5,
+        "craft": 8,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Tab through Name and Room to Confirm permit details; press Enter with both answers empty.",
+          "expected": "Explain both missing answers and focus Name.",
+          "observed": "Displayed 'Enter your name.' and 'Choose Oak or Elm.' Focus moved visibly to Name."
+        },
+        "edge_observation": "Typed Jamie, selected Elm with ArrowRight and submitted. The confirmation showed Jamie and Elm, focused its heading and displayed an Edit details button. The edit button was not exercised.",
+        "fact_check": "The confirmation values and visible edit control were observed. Editing, permit issuance and persistence were not verified.",
+        "strength": "The wider, evenly sized room choices and clear section rules create an orderly form; the confirmation exposes a correction action.",
+        "weakness": "The desktop confirmation heading wraps in a narrow left column despite ample available space.",
+        "repair": "Give the confirmation heading more width while keeping the values and edit action aligned.",
+        "captures": [
+          "B-1440-before",
+          "B-1440-after",
+          "B-1440-corrected"
+        ],
+        "arm": "v2",
+        "html_sha256": "7f0226e30ec6dcab99a54de5c88fccef2ad65d9ed261ae986f091cacc5c4748b",
+        "weighted": 7.05,
+        "before": {
+          "sha256": "07a9df199dbadd054764c36cc712e72c99b9bd2144cd2a039db67f705b0272fd",
+          "file": "B-1440-before.png",
+          "tool_call_id": "item_29"
+        },
+        "after": {
+          "sha256": "aaf00e2752b67f3866c3d5b2b2a748bb01d70c1a6536880db09a2788c70f85d0",
+          "file": "B-1440-after.png",
+          "tool_call_id": "item_34"
+        },
+        "layout_width": 1440,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "text",
+            "value": "Jamie"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ]
+      },
+      "B-390": {
+        "coherence": 8,
+        "originality": 4.5,
+        "craft": 8,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Tab to Confirm permit details and press Enter with both answers empty.",
+          "expected": "Explain both missing answers and focus Name.",
+          "observed": "Both field-level messages appeared and focus moved visibly to Name."
+        },
+        "edge_observation": "Keyboard entry of Jamie and selection of Elm produced a confirmation containing both values. Focus moved to its heading and an Edit details button appeared; that button was not exercised.",
+        "fact_check": "The observed form, errors and confirmation fit the 390 CSS-pixel viewport. Editing, permit issuance and persistence were not verified.",
+        "strength": "Equal-width room choices, visible error text and a clear confirmation fit the mobile layout.",
+        "weakness": "The visual language is orderly but generic, with the section rules doing most of the decorative work.",
+        "repair": "Add a modest subject-specific detail while retaining the clear mobile spacing and controls.",
+        "captures": [
+          "B-390-before",
+          "B-390-after",
+          "B-390-corrected"
+        ],
+        "arm": "v2",
+        "html_sha256": "7f0226e30ec6dcab99a54de5c88fccef2ad65d9ed261ae986f091cacc5c4748b",
+        "weighted": 7.05,
+        "before": {
+          "sha256": "599a43dadb33ff4ca01b763c6843dfd0a8b6864142afc253bf1314a28dd95690",
+          "file": "B-390-before.png",
+          "tool_call_id": "item_42"
+        },
+        "after": {
+          "sha256": "643decbd50d9da16444afa45cd8a7a1338585354b770b86b8b478d966698a178",
+          "file": "B-390-after.png",
+          "tool_call_id": "item_47"
+        },
+        "layout_width": 390,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "text",
+            "value": "Jamie"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ]
+      }
+    },
+    "preference": {
+      "winner": "B",
+      "reason": "Both designs completed the tested keyboard flow and explained both errors. B adds a visible Edit details action on confirmation and gives the room choices more balanced space, though the edit action itself remains untested."
+    },
+    "case": "social-permit",
+    "verified_screens": 4,
+    "required_screens": 4,
+    "browser": "Chrome/157.0.8103.79",
+    "evaluator_thread": "01a204e9-c14f-7f23-825f-09dc8aa4a8f3",
+    "usage": {
+      "input_tokens": 791866,
+      "cached_input_tokens": 750848,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 2624,
+      "reasoning_output_tokens": 0
+    },
+    "trace_sha256": "b054dda03b1b7de7304c51b98e37ec9d5d4230c9641a60b5365cae2abec02bc5",
+    "browser_audit_sha256": "dbfbc7880f186fc47a09990bfe96c3a20ac7520abd238fdf5e02985196995c18"
+  },
+  "ballot_sha256": "4e3fb289672eaf968c6942104e61a2342649a423cad48c4758dfbd1471c5d712",
+  "decision": "Both form drafts retrieved the same direction and passed the specified empty and corrected keyboard submissions. The control's extra Edit details action explained its higher usability rating. This result supplies a guard against breaking the task, not evidence of changed form routing."
+}

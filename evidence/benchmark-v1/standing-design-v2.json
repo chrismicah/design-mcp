@@ -1,0 +1,17 @@
+{
+  "purpose": "Plan and challenge the standing live-design review workflow",
+  "model": "gpt-6.2-astra",
+  "effort": "max",
+  "completed_turn": true,
+  "usage": {
+    "input_tokens": 20026,
+    "cached_input_tokens": 0,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 8510,
+    "reasoning_output_tokens": 7943
+  },
+  "prompt_sha256": "270240120248bdb9c16df7521e2a67e6552597830e0f6392ef75ccd1fa91b427",
+  "trace_sha256": "5e0a27874b7abaccda0cc6d43d80cf6f0ad4f18cf6e105b136e11a7a895ab05c",
+  "plan": "Add **one live-review record per candidate build**. Before code, freeze the required screens, viewports, fixtures, tasks and expected outcomes. The writer\u2019s first-pass art direction names the subject-specific purpose, deliberate omissions, 4\u20136 named hex colors, type roles, layout and one distinctive focal element. Avoid stock fonts, palettes and grids, eyebrow copy and decorative motion. Include exact action labels, responsive layout, visible keyboard focus, contrast, reduced motion, useful errors and empty states in the checks.\n\n**Blind live review**\n\nCalibrate a separate skeptical local evaluator once per rubric version using three independently scored examples, including a polished design with a broken primary action. Withhold the third score until the evaluator grades it, then compare criterion-level reasoning. Use unrelated development briefs and exclude close variants of the historical 36. Keep that benchmark\u2019s treatment/control assignments, six dimensions and scores frozen.\n\nGive the evaluator the user goal, frozen tasks and an anonymous live target in a fresh context. Use Playwriter for sites, XCUITest or macOS Accessibility for Swift, and Playwright on the packaged Electron app with native accessibility for menus. The evaluator navigates and chooses an input within each task. A local runner binds the running build\u2019s digest, session, screen, action, observed outcome and before/after captures. Reject builder-recorded tours, click logs without outcomes and captures from another build. Missing evidence leaves a round unscored. A witnessed task failure counts against functionality.\n\n**Selection and stopping**\n\nAfter live review, score each screen from 0\u201310 on design quality (30%), originality (30%), craft (20%) and functionality (20%). Rank whole builds by their lowest weighted screen score, breaking ties by mean screen score. Compare unrounded values.\n\nRound 1 establishes the best. A strict improvement over the best resets consecutive misses and calls for refinement. A tie or loss adds a miss and calls for an aesthetic pivot if continuing. Stop at round 15 or the first round from 5 onward with two consecutive misses. For example, weakest-screen scores of 9.0, 9.2, 9.4, 9.1 and 9.3 stop at round 5 and preserve build 3. Release still requires **9.5 on every screen**. Deliver the strongest build\u2019s per-screen criterion scores, final screenshot and one sentence of critique per round.\n\n**Next experiment**\n\nBlind-review two versions of a new two-screen bookmark editor in random order. Both display \u201cSaved,\u201d but one loses edits. Pass if the evaluator enters a fresh value, captures its fate after reopening on both builds, and scores the faulty editor lower on functionality. The runner must reject a swapped capture. Budget one local review pass per build and zero paid inference.",
+  "next_experiment_status": "specified"
+}

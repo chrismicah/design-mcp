@@ -1,0 +1,486 @@
+{
+  "rule": "axe-core 4.14.1 color-contrast",
+  "method": "Sample the background under changed glyph pixels after making unresolved text transparent. Verify the source foreground, including a worst-case soft-light bound for SVG labels, and record the strongest actual pixel contrast to confirm the text was visible.",
+  "cases": {
+    "landing": {
+      "html_sha256": "e89aa74a478023404c8bdd0af15fa5d015fc356a8aa53a206e27749758287db9",
+      "viewports": {
+        "1440": {
+          "initial": {
+            "passed_nodes": 12,
+            "violations": [],
+            "sampling": {
+              "hashes": [
+                "13cd840eac637b27769c7cd46d1a32f305d722232d5198fea23a62cec8258a61",
+                "2736e47772b5e88763dc82aaa33ec6a56f2c4ed8ab8a2d756f44075ac1b6bf6e"
+              ],
+              "targets": [
+                {
+                  "target": "text[x=\"35\"]",
+                  "visible_pixels": 647,
+                  "declared_foreground_rgb": [
+                    42,
+                    22,
+                    16
+                  ],
+                  "conservative_foreground_rgb": [
+                    54,
+                    31,
+                    24
+                  ],
+                  "background_min_ratio": 12.706470920275517,
+                  "observed_peak_ratio": 14.922355902901147,
+                  "required_ratio": 4.5,
+                  "passed": true
+                },
+                {
+                  "target": "text[x=\"13\"]",
+                  "visible_pixels": 1206,
+                  "declared_foreground_rgb": [
+                    42,
+                    22,
+                    16
+                  ],
+                  "conservative_foreground_rgb": [
+                    54,
+                    31,
+                    24
+                  ],
+                  "background_min_ratio": 12.679494144669624,
+                  "observed_peak_ratio": 14.91414586445581,
+                  "required_ratio": 3.0,
+                  "passed": true
+                },
+                {
+                  "target": "text[x=\"12\"]",
+                  "visible_pixels": 2198,
+                  "declared_foreground_rgb": [
+                    42,
+                    22,
+                    16
+                  ],
+                  "conservative_foreground_rgb": [
+                    54,
+                    31,
+                    24
+                  ],
+                  "background_min_ratio": 12.254101552100833,
+                  "observed_peak_ratio": 14.869595275687534,
+                  "required_ratio": 3.0,
+                  "passed": true
+                },
+                {
+                  "target": "text[y=\"161\"]",
+                  "visible_pixels": 213,
+                  "declared_foreground_rgb": [
+                    107,
+                    33,
+                    72
+                  ],
+                  "conservative_foreground_rgb": [
+                    119,
+                    44,
+                    85
+                  ],
+                  "background_min_ratio": 7.610685804854969,
+                  "observed_peak_ratio": 8.987331472447067,
+                  "required_ratio": 4.5,
+                  "passed": true
+                },
+                {
+                  "target": "text[y=\"176\"]",
+                  "visible_pixels": 246,
+                  "declared_foreground_rgb": [
+                    107,
+                    33,
+                    72
+                  ],
+                  "conservative_foreground_rgb": [
+                    119,
+                    44,
+                    85
+                  ],
+                  "background_min_ratio": 7.504530903058673,
+                  "observed_peak_ratio": 8.98003137722436,
+                  "required_ratio": 4.5,
+                  "passed": true
+                },
+                {
+                  "target": "text[x=\"15\"]",
+                  "visible_pixels": 475,
+                  "declared_foreground_rgb": [
+                    42,
+                    22,
+                    16
+                  ],
+                  "conservative_foreground_rgb": [
+                    54,
+                    31,
+                    24
+                  ],
+                  "background_min_ratio": 11.337743665876872,
+                  "observed_peak_ratio": 13.965052959968553,
+                  "required_ratio": 4.5,
+                  "passed": true
+                },
+                {
+                  "target": "text[x=\"190\"]",
+                  "visible_pixels": 154,
+                  "declared_foreground_rgb": [
+                    42,
+                    22,
+                    16
+                  ],
+                  "conservative_foreground_rgb": [
+                    54,
+                    31,
+                    24
+                  ],
+                  "background_min_ratio": 9.844042703395694,
+                  "observed_peak_ratio": 11.324348456120905,
+                  "required_ratio": 4.5,
+                  "passed": true
+                }
+              ]
+            }
+          },
+          "after": {
+            "passed_nodes": 8,
+            "violations": []
+          }
+        },
+        "390": {
+          "initial": {
+            "passed_nodes": 12,
+            "violations": [],
+            "sampling": {
+              "hashes": [
+                "a089f5cdea41b103d32248799028a580f7f181a076e9e6464d79667a1e449e6d",
+                "d220c7505e3b99b349646c8a0c2640f97f998f704bbd56e74107ff8ef5dbd9a3"
+              ],
+              "targets": [
+                {
+                  "target": "text[x=\"35\"]",
+                  "visible_pixels": 200,
+                  "declared_foreground_rgb": [
+                    42,
+                    22,
+                    16
+                  ],
+                  "conservative_foreground_rgb": [
+                    54,
+                    31,
+                    24
+                  ],
+                  "background_min_ratio": 12.788664475138363,
+                  "observed_peak_ratio": 14.481083844098917,
+                  "required_ratio": 4.5,
+                  "passed": true
+                },
+                {
+                  "target": "text[x=\"13\"]",
+                  "visible_pixels": 331,
+                  "declared_foreground_rgb": [
+                    42,
+                    22,
+                    16
+                  ],
+                  "conservative_foreground_rgb": [
+                    54,
+                    31,
+                    24
+                  ],
+                  "background_min_ratio": 12.706470920275517,
+                  "observed_peak_ratio": 14.78864584767697,
+                  "required_ratio": 3.0,
+                  "passed": true
+                },
+                {
+                  "target": "text[x=\"12\"]",
+                  "visible_pixels": 594,
+                  "declared_foreground_rgb": [
+                    42,
+                    22,
+                    16
+                  ],
+                  "conservative_foreground_rgb": [
+                    54,
+                    31,
+                    24
+                  ],
+                  "background_min_ratio": 12.174241778223854,
+                  "observed_peak_ratio": 14.68684595302172,
+                  "required_ratio": 3.0,
+                  "passed": true
+                },
+                {
+                  "target": "text[y=\"161\"]",
+                  "visible_pixels": 64,
+                  "declared_foreground_rgb": [
+                    107,
+                    33,
+                    72
+                  ],
+                  "conservative_foreground_rgb": [
+                    119,
+                    44,
+                    85
+                  ],
+                  "background_min_ratio": 7.606508976503406,
+                  "observed_peak_ratio": 6.245167957734665,
+                  "required_ratio": 4.5,
+                  "passed": true
+                },
+                {
+                  "target": "text[y=\"176\"]",
+                  "visible_pixels": 76,
+                  "declared_foreground_rgb": [
+                    107,
+                    33,
+                    72
+                  ],
+                  "conservative_foreground_rgb": [
+                    119,
+                    44,
+                    85
+                  ],
+                  "background_min_ratio": 7.549181788012257,
+                  "observed_peak_ratio": 8.72699930684114,
+                  "required_ratio": 4.5,
+                  "passed": true
+                },
+                {
+                  "target": "text[x=\"15\"]",
+                  "visible_pixels": 147,
+                  "declared_foreground_rgb": [
+                    42,
+                    22,
+                    16
+                  ],
+                  "conservative_foreground_rgb": [
+                    54,
+                    31,
+                    24
+                  ],
+                  "background_min_ratio": 11.36372258461962,
+                  "observed_peak_ratio": 13.337842502098484,
+                  "required_ratio": 4.5,
+                  "passed": true
+                },
+                {
+                  "target": "text[x=\"190\"]",
+                  "visible_pixels": 52,
+                  "declared_foreground_rgb": [
+                    42,
+                    22,
+                    16
+                  ],
+                  "conservative_foreground_rgb": [
+                    54,
+                    31,
+                    24
+                  ],
+                  "background_min_ratio": 9.824434915047535,
+                  "observed_peak_ratio": 5.983009153676016,
+                  "required_ratio": 4.5,
+                  "passed": true
+                }
+              ]
+            }
+          },
+          "after": {
+            "passed_nodes": 8,
+            "violations": []
+          }
+        }
+      }
+    },
+    "mobile": {
+      "html_sha256": "5e822b90ee21bf2fd5edc5ffbbf605c7b026e2cd5fbd8f8b85b2e43e220ebe2b",
+      "viewports": {
+        "1440": {
+          "initial": {
+            "passed_nodes": 9,
+            "violations": [],
+            "sampling": {
+              "hashes": [
+                "ab7807f6257624c10dca6014339f78a360ecfda3bc53666afbdc8e7e38708edc",
+                "12aaf2c5a7e11e25f7d54447f75fead092565a0bdf55c50cb684a58eded8dff2"
+              ],
+              "targets": [
+                {
+                  "target": "#platform > span",
+                  "visible_pixels": 455,
+                  "declared_foreground_rgb": [
+                    17,
+                    17,
+                    17
+                  ],
+                  "conservative_foreground_rgb": [
+                    17,
+                    17,
+                    17
+                  ],
+                  "background_min_ratio": 12.489028356147196,
+                  "observed_peak_ratio": 12.489028356147196,
+                  "required_ratio": 4.5,
+                  "passed": true
+                },
+                {
+                  "target": "#platform > strong",
+                  "visible_pixels": 1081,
+                  "declared_foreground_rgb": [
+                    17,
+                    17,
+                    17
+                  ],
+                  "conservative_foreground_rgb": [
+                    17,
+                    17,
+                    17
+                  ],
+                  "background_min_ratio": 12.489028356147196,
+                  "observed_peak_ratio": 12.489028356147196,
+                  "required_ratio": 3.0,
+                  "passed": true
+                }
+              ]
+            }
+          },
+          "after": {
+            "passed_nodes": 11,
+            "violations": [],
+            "sampling": {
+              "hashes": [
+                "d41117558d1bc89118093b3973372a822f7c751965ba30ff93982a21275be04c",
+                "810d647890d7ba96181a19f1d8ff72ec0ee011b9c9e548e5e541d87ae8063120"
+              ],
+              "targets": [
+                {
+                  "target": "#platform > span",
+                  "visible_pixels": 455,
+                  "declared_foreground_rgb": [
+                    17,
+                    17,
+                    17
+                  ],
+                  "conservative_foreground_rgb": [
+                    17,
+                    17,
+                    17
+                  ],
+                  "background_min_ratio": 12.489028356147196,
+                  "observed_peak_ratio": 12.489028356147196,
+                  "required_ratio": 4.5,
+                  "passed": true
+                },
+                {
+                  "target": "#platform > strong",
+                  "visible_pixels": 1081,
+                  "declared_foreground_rgb": [
+                    17,
+                    17,
+                    17
+                  ],
+                  "conservative_foreground_rgb": [
+                    17,
+                    17,
+                    17
+                  ],
+                  "background_min_ratio": 12.489028356147196,
+                  "observed_peak_ratio": 12.489028356147196,
+                  "required_ratio": 3.0,
+                  "passed": true
+                }
+              ]
+            }
+          }
+        },
+        "390": {
+          "initial": {
+            "passed_nodes": 10,
+            "violations": [],
+            "sampling": {
+              "hashes": [
+                "3fbd65cbde8cc070139475eb4c70136caf80df43c5131e70035cacde52ce5dd1",
+                "4641e17c1ad0f0bddd86d2f7fd17cb9fb6c7bc6bc5d41007d33ee10df8bfedf8"
+              ],
+              "targets": [
+                {
+                  "target": "#platform > strong",
+                  "visible_pixels": 597,
+                  "declared_foreground_rgb": [
+                    17,
+                    17,
+                    17
+                  ],
+                  "conservative_foreground_rgb": [
+                    17,
+                    17,
+                    17
+                  ],
+                  "background_min_ratio": 12.489028356147196,
+                  "observed_peak_ratio": 12.489028356147196,
+                  "required_ratio": 3.0,
+                  "passed": true
+                }
+              ]
+            }
+          },
+          "after": {
+            "passed_nodes": 12,
+            "violations": [],
+            "sampling": {
+              "hashes": [
+                "120c1326aa52da61de021a83769bd1c8e136ce2f72e03d5fd4da936281a717cb",
+                "df3a3e98d4358a8d112e31e3e1cf2482d69d11204c46ce996f7e5bd3b95b543b"
+              ],
+              "targets": [
+                {
+                  "target": "#platform > strong",
+                  "visible_pixels": 597,
+                  "declared_foreground_rgb": [
+                    17,
+                    17,
+                    17
+                  ],
+                  "conservative_foreground_rgb": [
+                    17,
+                    17,
+                    17
+                  ],
+                  "background_min_ratio": 12.489028356147196,
+                  "observed_peak_ratio": 12.489028356147196,
+                  "required_ratio": 3.0,
+                  "passed": true
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "passed": true,
+  "run": "https://github.com/chrismicah/design-mcp/actions/runs/44998128777",
+  "source": "c63b31aa4da9cb61f64b2a3803b87ccbfe437d3a",
+  "dispatcher_regression": {
+    "action_run": "https://github.com/chrismicah/design-mcp/actions/runs/44990418447",
+    "html_sha256": "46a99d5d1e31ad28071234921375b31cf31378e1cb1dfa22a8d4c5b80b510e14",
+    "matching_stdio_sha256": "8f160497a3603576f926abd095aefb3ddb8f73a8f56b41d861d1bf05b3d41e5f",
+    "brief_sha256": "0f2a9ba73130f47dd252b81f1da5af2da8384324e7da4ab0311e34e6909a1f62",
+    "direction_id": "exception-first",
+    "actions": {
+      "1440": {
+        "passed": true,
+        "focus": "Focused load \u00b7 LS-057",
+        "sha256": "8338642123a580ecfbce7f1a5459d96afc213ac4026f7cf14456b0bd483d76a7"
+      },
+      "390": {
+        "passed": true,
+        "focus": "Focused load \u00b7 LS-057",
+        "sha256": "a4cdace5ecfc5289dd2e3f46cc46998566fc257dc8c15be26edab98addebc73f"
+      }
+    }
+  }
+}

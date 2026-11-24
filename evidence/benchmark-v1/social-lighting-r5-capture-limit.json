@@ -1,0 +1,21 @@
+{
+  "case": "social-lighting",
+  "round": 5,
+  "attempt": 1,
+  "status": "ineligible",
+  "problem": "The client replaced two oversize image blocks with truncated serialized text.",
+  "trace_sha256": "ea86cba928ff079bd34f03df0b5fad0857379ce1b7102ccaa9bcd2048861179b",
+  "captures": {
+    "B-1440-before": {
+      "archive_bytes": 816744,
+      "archive_sha256": "4112c6dfe8389cc3d98eaab70cb54c1244dbf4aba82a4588279d11d487a74782",
+      "client_image_block": false
+    },
+    "B-1440-after": {
+      "archive_bytes": 818323,
+      "archive_sha256": "ec8dccf5342f57f2e5e8f2c130adf3511ae016af29dc31734edbbcf0482e9249",
+      "client_image_block": false
+    }
+  },
+  "decision": "Keep the raw source and pixels. Remove procedural grain and rerun the independent critic with full PNG verification."
+}

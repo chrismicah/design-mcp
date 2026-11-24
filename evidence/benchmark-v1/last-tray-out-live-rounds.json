@@ -1,0 +1,2012 @@
+{
+  "benchmark": "Last tray out",
+  "criteria": "Coherence and originality 30% each. Craft and usability 20% each.",
+  "task": "Select the oven order with the later start while having both bakes ready by noon. Reverse the selection and verify the alternative is still visible.",
+  "control": "Same synthetic timings, initial choice, and locally embedded typefaces across all rounds.",
+  "threshold": 9.5,
+  "release_passed": false,
+  "scope": "Independent live prototype review and isolated simulated browser viewports. Neither an installed-MCP change nor a native physical-device run.",
+  "authoring": "Fixtures authored from the signed-off concept workshop. Critics used fresh tool-only sessions, blinded at each pair.",
+  "best_observed_round": 4,
+  "frames": 216,
+  "rounds": [
+    {
+      "round": 1,
+      "change": "Oven face and proportioned strips",
+      "deterministic_browser": "Chrome/158.0.8127.36",
+      "preflight_frames": 36,
+      "preflight_widths": [
+        1440,
+        390,
+        320
+      ],
+      "preflight_modes": [
+        "no-preference",
+        "reduce"
+      ],
+      "touch_width": 390,
+      "preflight_receipt": ".context/creative-concepts/tray/preflight-sealed/receipt.json",
+      "review_receipt": ".context/creative-concepts/tray/ballot-01/audited.json",
+      "setup": {
+        "baseline": {
+          "fixture": "plain",
+          "path": ".context/creative-concepts/tray/plain/index.html",
+          "sha256": "4f20f3eb77c90d618e68e3f277eb14fae984d87c31d09e7ee57d47e4bc17b901",
+          "bytes": 72982,
+          "scores": {
+            "1440": 7.4,
+            "390": 7.4
+          },
+          "review_labels": {
+            "1440": "A-1440",
+            "390": "A-390"
+          },
+          "preflight_choice_images": {
+            "active-1440": {
+              "file": ".context/creative-concepts/tray/preflight-sealed/plain-1440-no-preference-change.png",
+              "sha256": "52869f053fadfe9c1ea924ba3697e8a47f1f8fc1ad8285f928c7fd592f47a851",
+              "dimensions": [
+                1440,
+                900
+              ]
+            },
+            "active-390": {
+              "file": ".context/creative-concepts/tray/preflight-sealed/plain-390-no-preference-change.png",
+              "sha256": "7f14b1eeac7403ca993a2d5ba6ccf8189f61b620fc85a6a4f377c1d8a30c6daa",
+              "dimensions": [
+                390,
+                844
+              ]
+            },
+            "active-320": {
+              "file": ".context/creative-concepts/tray/preflight-sealed/plain-320-no-preference-change.png",
+              "sha256": "523030fef2412f826b264014f1ca5287895bf1c4e95ff97abbe0a7d8d926c417",
+              "dimensions": [
+                320,
+                700
+              ]
+            }
+          }
+        },
+        "candidate": {
+          "fixture": "steel",
+          "path": ".context/creative-concepts/tray/steel/index.html",
+          "sha256": "e9ad3cc8c50e59e3024d4aca57c3131923cae2e1fe953fa827edd3932d1b9fd3",
+          "bytes": 76580,
+          "scores": {
+            "1440": 7.65,
+            "390": 7.4
+          },
+          "review_labels": {
+            "1440": "B-1440",
+            "390": "B-390"
+          },
+          "preflight_choice_images": {
+            "active-1440": {
+              "file": ".context/creative-concepts/tray/preflight-sealed/steel-1440-no-preference-change.png",
+              "sha256": "2118c57b9cfaae429505585324e7da347c759d70212f761f353d3eceed2deb4c",
+              "dimensions": [
+                1440,
+                900
+              ]
+            },
+            "active-390": {
+              "file": ".context/creative-concepts/tray/preflight-sealed/steel-390-no-preference-change.png",
+              "sha256": "5df8381b4d8399684b2a243138806ca882c2717f16183c5534ac7190205b7dce",
+              "dimensions": [
+                390,
+                844
+              ]
+            },
+            "active-320": {
+              "file": ".context/creative-concepts/tray/preflight-sealed/steel-320-no-preference-change.png",
+              "sha256": "2cd23927309da185bbd0801001afd76f06bb0d98e5cc195546f0c3c7d3464499",
+              "dimensions": [
+                320,
+                700
+              ]
+            }
+          }
+        }
+      },
+      "review": {
+        "calibration": {
+          "example": "Legible repair intake with clear labels, familiar layout, and misplaced focus after an invalid number",
+          "coherence": 7,
+          "originality": 4,
+          "craft": 6,
+          "usability": 6
+        },
+        "screens": {
+          "A-1440": {
+            "coherence": 8,
+            "originality": 6,
+            "craft": 8,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab, then ArrowRight",
+              "expected": "Select Rolls first, the order with the later oven start.",
+              "observed": "Rolls first became checked and focused; the prominent oven-on time changed from 10:47 am to 10:55 am. Captures: A-1440-before and A-1440-after."
+            },
+            "edge_observation": "ArrowLeft returned selection and focus to Biscuits first. The prominent oven-on time returned to 10:47 am, and the Rolls first schedule remained visible.",
+            "fact_check": "For Rolls first, the oven starts at 10:55 am, rolls go in at 11:11 am and finish at 11:35 am. Change the oven from 375°F to 425°F at 11:35 am; biscuits go in at 11:44 am and finish at noon. These finish times follow from the displayed durations and changeover; the first finish is not explicitly labeled. The large number is explicitly labeled oven-on, but the separate 12:00 pm heading could more clearly say finish. There is no timeline graphic.",
+            "strength": "My eye went first to the oversized 10:47, then to its oven-on label and the order controls. Both schedules are easy to compare on one screen.",
+            "weakness": "The end of the first bake and the start of the second must be inferred from the changeover range.",
+            "repair": "Label both tray finish times and the temperature-change action directly.",
+            "arm": "baseline",
+            "html_sha256": "4f20f3eb77c90d618e68e3f277eb14fae984d87c31d09e7ee57d47e4bc17b901",
+            "weighted": 7.4,
+            "before": {
+              "sha256": "3679312338883ff627111db9ccadd4376351c2bf357276acfa2bed466019c9a4",
+              "file": "A-1440-before.png",
+              "tool_call_id": "item_2"
+            },
+            "after": {
+              "sha256": "52869f053fadfe9c1ea924ba3697e8a47f1f8fc1ad8285f928c7fd592f47a851",
+              "file": "A-1440-after.png",
+              "tool_call_id": "item_5"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              }
+            ],
+            "confirmed_sequence": [
+              "Rolls first at 10:55",
+              "Biscuits first at 10:47"
+            ]
+          },
+          "A-390": {
+            "coherence": 8,
+            "originality": 6,
+            "craft": 8,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab, then ArrowRight",
+              "expected": "Select Rolls first.",
+              "observed": "Rolls first became checked and focused, and the oven-on time changed to 10:55 am. Captures: A-390-before and A-390-after."
+            },
+            "edge_observation": "ArrowLeft restored Biscuits first and 10:47 am; the alternative schedule remained visible.",
+            "fact_check": "Rolls first: oven on 10:55 am; rolls in 11:11 am and out 11:35 am; change temperature at 11:35 am; biscuits in 11:44 am and out at noon. The two bake finishes are calculated from the displayed durations, rather than individually labeled. The oven-on label distinguishes the large time from the first-tray time; noon is not explicitly labeled as the final finish beside the comparison heading. No timeline graphic is present.",
+            "strength": "My eye went first to the large 10:47 under Turn the oven on. Both radio controls and both written schedules are readable in the initial 390 × 844 viewport.",
+            "weakness": "The compact schedule requires mental arithmetic to identify each tray's finish.",
+            "repair": "Add explicit tray-out times while preserving the compact comparison.",
+            "arm": "baseline",
+            "html_sha256": "4f20f3eb77c90d618e68e3f277eb14fae984d87c31d09e7ee57d47e4bc17b901",
+            "weighted": 7.4,
+            "before": {
+              "sha256": "466008a9e893ccfade0ac2905359cb5d686cede2d2789670045ca32ddd7f84ad",
+              "file": "A-390-before.png",
+              "tool_call_id": "item_8"
+            },
+            "after": {
+              "sha256": "7f14b1eeac7403ca993a2d5ba6ccf8189f61b620fc85a6a4f377c1d8a30c6daa",
+              "file": "A-390-after.png",
+              "tool_call_id": "item_11"
+            },
+            "layout_width": 390,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              }
+            ],
+            "confirmed_sequence": [
+              "Rolls first at 10:55",
+              "Biscuits first at 10:47"
+            ]
+          },
+          "B-1440": {
+            "coherence": 8,
+            "originality": 7.5,
+            "craft": 7.5,
+            "usability": 7.5,
+            "primary_action": {
+              "input": "Tab, then ArrowRight",
+              "expected": "Select Rolls first.",
+              "observed": "Rolls first became checked and focused; the prominent oven-on time changed to 10:55 am. Captures: B-1440-before and B-1440-after."
+            },
+            "edge_observation": "ArrowLeft restored Biscuits first and 10:47 am. The Rolls first schedule and graphic remained visible.",
+            "fact_check": "Rolls first: oven on 10:55 am; rolls in 11:11 am and out 11:35 am; raise temperature at 11:35 am; biscuits in 11:44 am and out at noon. The graphic distinguishes preheat, bake, and temperature change and aligns both final bake ends with noon. The later-starting Rolls first bar begins farther right, consistent with 10:55 versus 10:47, although the start has no time tick and is easy to confuse with the first bake boundary. Individual bake finish times are inferred from the written durations.",
+            "strength": "My eye went first to the large amber 10:47, then to the two segmented schedule bars. The graphic makes the sequence and shared finish visually apparent.",
+            "weakness": "The bars have no labeled start or intermediate time ticks, and their fine pattern makes precise boundaries harder to interpret.",
+            "repair": "Label the oven-on, first-tray-in, changeover, and finish boundaries directly; simplify the bar texture.",
+            "arm": "candidate",
+            "html_sha256": "e9ad3cc8c50e59e3024d4aca57c3131923cae2e1fe953fa827edd3932d1b9fd3",
+            "weighted": 7.65,
+            "before": {
+              "sha256": "2e516fe6f799835566268c7d04b5017baeca5f4e737e74378d832887995549af",
+              "file": "B-1440-before.png",
+              "tool_call_id": "item_15"
+            },
+            "after": {
+              "sha256": "8ba0f0c1a158fa3c69d435af43bd3d28038361aa20e0ed7e5a0352e91427fa60",
+              "file": "B-1440-after.png",
+              "tool_call_id": "item_18"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              }
+            ],
+            "confirmed_sequence": [
+              "Rolls first at 10:55",
+              "Biscuits first at 10:47"
+            ]
+          },
+          "B-390": {
+            "coherence": 7.5,
+            "originality": 7.5,
+            "craft": 7,
+            "usability": 7.5,
+            "primary_action": {
+              "input": "Tab, then ArrowRight",
+              "expected": "Select Rolls first.",
+              "observed": "Rolls first became checked and focused, and the oven-on time changed to 10:55 am. Captures: B-390-before and B-390-after."
+            },
+            "edge_observation": "ArrowLeft restored Biscuits first and 10:47 am; the Rolls first schedule remained visible.",
+            "fact_check": "Rolls first: oven on 10:55 am; rolls in 11:11 am and out 11:35 am; raise temperature at 11:35 am; biscuits in 11:44 am and out at noon. The segmented bars convey preheat, baking, and the temperature change; both end at the noon marker, and the later order starts farther right. Their unlabeled boundaries do not independently establish exact start or first-bake times. First-tray finish is inferred from the displayed duration.",
+            "strength": "My eye went first to the amber 10:47 in the dark inset, then to the filled selected control. Both controls, both written schedules, and both graphics fit in the initial 390 × 844 viewport.",
+            "weakness": "The narrow bars and small legend are harder to read than the schedule text; the first bake boundary can be mistaken for oven start without consulting the labels.",
+            "repair": "Use simpler, larger segments with direct boundary labels and explicit tray-out times.",
+            "arm": "candidate",
+            "html_sha256": "e9ad3cc8c50e59e3024d4aca57c3131923cae2e1fe953fa827edd3932d1b9fd3",
+            "weighted": 7.4,
+            "before": {
+              "sha256": "3bba9c8407e6168e7877f442f1224e1d2b7f9bc9cb8cd12204b30592968dd2f1",
+              "file": "B-390-before.png",
+              "tool_call_id": "item_21"
+            },
+            "after": {
+              "sha256": "cdd6ec79f88011b20fc4cf7152205d5e56a0e95bc8ef013fb46966ce22fef99c",
+              "file": "B-390-after.png",
+              "tool_call_id": "item_24"
+            },
+            "layout_width": 390,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              }
+            ],
+            "confirmed_sequence": [
+              "Rolls first at 10:55",
+              "Biscuits first at 10:47"
+            ]
+          }
+        },
+        "preference": {
+          "winner": "A",
+          "reason": "Both versions support the keyboard task and keep both schedules visible on the phone. A presents the comparison more cleanly; B's graphic adds sequence information, but its unlabeled, finely patterned boundaries introduce ambiguity at the exact moments the baker needs to identify."
+        },
+        "unsupported_claims": [
+          "Neither view explicitly labels the individual tray finish times; those times are calculated from the displayed durations and changeovers.",
+          "The bars in B do not provide labeled intermediate time ticks, so exact boundary times cannot be verified from the graphic alone."
+        ],
+        "case": "last-tray-out",
+        "verified_screens": 4,
+        "required_screens": 4,
+        "browser": "Chrome/158.0.8127.36",
+        "evaluator_thread": "01a20727-fce4-7b43-a4f5-7546e2257ef7",
+        "usage": {
+          "input_tokens": 349824,
+          "cached_input_tokens": 327040,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2584,
+          "reasoning_output_tokens": 0
+        },
+        "trace_sha256": "58710077db3ad78c47fa326af6c2e0813c713e43f4910f171c608b0a0951d0ad",
+        "browser_audit_sha256": "93aa091fca0ac2fee5d070ea038fb3b20048c127cf150ffa0018081aecbb8047"
+      }
+    },
+    {
+      "round": 2,
+      "change": "Direct times on the strips",
+      "deterministic_browser": "Chrome/158.0.8127.36",
+      "preflight_frames": 36,
+      "preflight_widths": [
+        1440,
+        390,
+        320
+      ],
+      "preflight_modes": [
+        "no-preference",
+        "reduce"
+      ],
+      "touch_width": 390,
+      "preflight_receipt": ".context/creative-concepts/tray/preflight-r02/receipt.json",
+      "review_receipt": ".context/creative-concepts/tray/ballot-02/audited.json",
+      "setup": {
+        "baseline": {
+          "fixture": "steel",
+          "path": ".context/creative-concepts/tray/steel/index.html",
+          "sha256": "e9ad3cc8c50e59e3024d4aca57c3131923cae2e1fe953fa827edd3932d1b9fd3",
+          "bytes": 76580,
+          "scores": {
+            "1440": 7.5,
+            "390": 7.5
+          },
+          "review_labels": {
+            "1440": "A-1440",
+            "390": "A-390"
+          },
+          "preflight_choice_images": {
+            "active-1440": {
+              "file": ".context/creative-concepts/tray/preflight-r02/steel-1440-no-preference-change.png",
+              "sha256": "18110e6ff022bcc783d34b558bce303d55a0081f7fb8fa0fd9faa9f02e1f0a2c",
+              "dimensions": [
+                1440,
+                900
+              ]
+            },
+            "active-390": {
+              "file": ".context/creative-concepts/tray/preflight-r02/steel-390-no-preference-change.png",
+              "sha256": "5df8381b4d8399684b2a243138806ca882c2717f16183c5534ac7190205b7dce",
+              "dimensions": [
+                390,
+                844
+              ]
+            },
+            "active-320": {
+              "file": ".context/creative-concepts/tray/preflight-r02/steel-320-no-preference-change.png",
+              "sha256": "2cd23927309da185bbd0801001afd76f06bb0d98e5cc195546f0c3c7d3464499",
+              "dimensions": [
+                320,
+                700
+              ]
+            }
+          }
+        },
+        "candidate": {
+          "fixture": "stamped",
+          "path": ".context/creative-concepts/tray/stamped/index.html",
+          "sha256": "8d8a6c45a83a2649384c848803487c44535cd665f2c9b10ccaa468d76843af9d",
+          "bytes": 78071,
+          "scores": {
+            "1440": 7.95,
+            "390": 7.5
+          },
+          "review_labels": {
+            "1440": "B-1440",
+            "390": "B-390"
+          },
+          "preflight_choice_images": {
+            "active-1440": {
+              "file": ".context/creative-concepts/tray/preflight-r02/stamped-1440-no-preference-change.png",
+              "sha256": "a1bfb754e773498cd3d4b3416f3dbd8753cbe5f24779018908b7cbf570473c94",
+              "dimensions": [
+                1440,
+                900
+              ]
+            },
+            "active-390": {
+              "file": ".context/creative-concepts/tray/preflight-r02/stamped-390-no-preference-change.png",
+              "sha256": "bc8f451fdf54180cb7a7e2bd36d5cc52b007b18c5cd6332be3eb20f345ad468f",
+              "dimensions": [
+                390,
+                844
+              ]
+            },
+            "active-320": {
+              "file": ".context/creative-concepts/tray/preflight-r02/stamped-320-no-preference-change.png",
+              "sha256": "7fc116072df4e7c55448e7d2601a8cec1c7907728e82d074ef476975ac42a08a",
+              "dimensions": [
+                320,
+                700
+              ]
+            }
+          }
+        }
+      },
+      "review": {
+        "calibration": {
+          "example": "Legible repair intake with clear labels, familiar layout, and misplaced focus after an invalid number.",
+          "coherence": 7,
+          "originality": 4,
+          "craft": 6,
+          "usability": 6
+        },
+        "screens": {
+          "A-1440": {
+            "coherence": 8,
+            "originality": 7,
+            "craft": 7,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab, then ArrowRight",
+              "expected": "Select Rolls first, the order with the later oven start.",
+              "observed": "Rolls first became checked and focused; the prominent oven-on time changed from 10:47 am to 10:55 am. Captured A-1440-before and A-1440-after."
+            },
+            "edge_observation": "ArrowLeft returned to Biscuits first and changed the prominent oven-on time back to 10:47 am. The Rolls first schedule remained visible.",
+            "fact_check": "Rolls first: oven on at 10:55 am; rolls in at 11:11 am and finished at 11:35 am; change temperature from 375 °F to 425 °F from 11:35 to 11:44 am; biscuits finish at noon. The first bake finish and second tray start are calculated from the displayed durations and changeover, rather than explicitly labeled as such. The graphic shows preheat, baking, changeover, and a shared noon endpoint, but does not label its start or segment boundaries with times.",
+            "strength": "My eye went first to the large amber 10:47, clearly labeled 'Turn the oven on.' Both schedules are visible side by side with the selection control.",
+            "weakness": "The small unlabelled timeline segments require matching the legend and written times; the textured bake bars make precise boundaries harder to read.",
+            "repair": "Label the timeline boundaries with times and identify each bake so the graphic distinguishes oven start, first tray, and finish directly.",
+            "arm": "baseline",
+            "html_sha256": "e9ad3cc8c50e59e3024d4aca57c3131923cae2e1fe953fa827edd3932d1b9fd3",
+            "weighted": 7.5,
+            "before": {
+              "sha256": "2e516fe6f799835566268c7d04b5017baeca5f4e737e74378d832887995549af",
+              "file": "A-1440-before.png",
+              "tool_call_id": "item_2"
+            },
+            "after": {
+              "sha256": "99ffbfc7dca29601a638ecbae73fc88ce39f64295f538a197922b4255c3e17f4",
+              "file": "A-1440-after.png",
+              "tool_call_id": "item_5"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              }
+            ],
+            "confirmed_sequence": [
+              "Rolls first at 10:55",
+              "Biscuits first at 10:47"
+            ]
+          },
+          "A-390": {
+            "coherence": 8,
+            "originality": 7,
+            "craft": 7,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab, then ArrowRight",
+              "expected": "Select Rolls first and show its later oven start.",
+              "observed": "Rolls first became checked and visibly focused, and the large time changed to 10:55 am. Captured A-390-before and A-390-after."
+            },
+            "edge_observation": "ArrowLeft restored Biscuits first and 10:47 am; the Rolls first schedule remained visible.",
+            "fact_check": "Rolls first starts the oven at 10:55 am, puts rolls in at 11:11 am, changes temperature from 11:35 to 11:44 am, finishes rolls at 11:35 am and biscuits at noon. The bake finishes are derived from the displayed timings. The bars align at noon, but their boundaries have no time labels, so their exact correspondence to the written schedule is difficult to verify visually.",
+            "strength": "My eye went first to the amber 10:47 under 'Turn the oven on.' Both radio controls and both written schedules fit and are readable in the first phone viewport.",
+            "weakness": "The timeline bars and legend are small; without boundary labels, the oven start and first bake depend on the separate text.",
+            "repair": "Add legible start and transition labels without pushing the comparison out of the initial viewport.",
+            "arm": "baseline",
+            "html_sha256": "e9ad3cc8c50e59e3024d4aca57c3131923cae2e1fe953fa827edd3932d1b9fd3",
+            "weighted": 7.5,
+            "before": {
+              "sha256": "3bba9c8407e6168e7877f442f1224e1d2b7f9bc9cb8cd12204b30592968dd2f1",
+              "file": "A-390-before.png",
+              "tool_call_id": "item_8"
+            },
+            "after": {
+              "sha256": "cdd6ec79f88011b20fc4cf7152205d5e56a0e95bc8ef013fb46966ce22fef99c",
+              "file": "A-390-after.png",
+              "tool_call_id": "item_11"
+            },
+            "layout_width": 390,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              }
+            ],
+            "confirmed_sequence": [
+              "Rolls first at 10:55",
+              "Biscuits first at 10:47"
+            ]
+          },
+          "B-1440": {
+            "coherence": 8.5,
+            "originality": 7,
+            "craft": 8,
+            "usability": 8.5,
+            "primary_action": {
+              "input": "Tab, then ArrowRight",
+              "expected": "Select Rolls first and show the later start.",
+              "observed": "Rolls first became checked and focused, and the prominent time changed from 10:47 am to 10:55 am. Captured B-1440-before and B-1440-after."
+            },
+            "edge_observation": "ArrowLeft restored Biscuits first and the 10:47 am oven-on time. The Rolls first schedule remained visible.",
+            "fact_check": "Rolls first: oven on at 10:55 am; rolls in at 11:11 am and out at 11:35 am; temperature changes from 375 °F to 425 °F over 11:35–11:44 am; biscuits finish at noon. The timeline labels agree with those boundaries and the written schedule; the roll finish and biscuit start are inferred from the labeled changeover.",
+            "strength": "My eye went first to the oversized amber 10:47 under the oven-on label. The timeline adds labeled transition times and makes the shared noon finish easy to compare.",
+            "weakness": "The timeline labels are small, and the graphic does not explicitly name which bake occupies each amber segment.",
+            "repair": "Increase the boundary-label size and name the two bake segments or explicitly label their finish times.",
+            "arm": "candidate",
+            "html_sha256": "8d8a6c45a83a2649384c848803487c44535cd665f2c9b10ccaa468d76843af9d",
+            "weighted": 7.95,
+            "before": {
+              "sha256": "ec130b858f892daf7fb59e5ccf3b61f5b74acfa30e9514ab7537860b7d91b149",
+              "file": "B-1440-before.png",
+              "tool_call_id": "item_15"
+            },
+            "after": {
+              "sha256": "be4c2b54657db290b9cc5c89c51220d9bffdfbe62919d896c32879076b8422e6",
+              "file": "B-1440-after.png",
+              "tool_call_id": "item_18"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              }
+            ],
+            "confirmed_sequence": [
+              "Rolls first at 10:55",
+              "Biscuits first at 10:47"
+            ]
+          },
+          "B-390": {
+            "coherence": 8,
+            "originality": 7,
+            "craft": 7,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab, then ArrowRight",
+              "expected": "Select Rolls first and retain a visible comparison.",
+              "observed": "Rolls first became checked and visibly focused, and the large oven-on time changed to 10:55 am. Captured B-390-before and B-390-after."
+            },
+            "edge_observation": "ArrowLeft restored Biscuits first and 10:47 am; the alternative schedule remained visible in the same viewport.",
+            "fact_check": "The later order starts the oven at 10:55 am, starts rolls at 11:11 am, changes temperature from 11:35 to 11:44 am, finishes rolls at 11:35 am and biscuits at noon. The labeled graphic agrees with the written boundaries, though the bake finishes are inferred. The review tool reported a 390-pixel viewport and a 375-pixel layout width.",
+            "strength": "My eye went first to the large amber 10:47. Both controls, timelines, and written schedule details are present in the first phone viewport.",
+            "weakness": "The timeline labels are very small and crowded, particularly 11:35 and 11:44 on the rolls row; this makes the graphic less immediately readable than the larger written details.",
+            "repair": "Give transition labels more room or provide a compact, readable textual sequence for each tray.",
+            "arm": "candidate",
+            "html_sha256": "8d8a6c45a83a2649384c848803487c44535cd665f2c9b10ccaa468d76843af9d",
+            "weighted": 7.5,
+            "before": {
+              "sha256": "adba418218090e5be835acdedd4f74535d66872fea928451c99f795f7a14a201",
+              "file": "B-390-before.png",
+              "tool_call_id": "item_21"
+            },
+            "after": {
+              "sha256": "1ae546ef0d5196bd43a47d04ac57f66a762d1a4fbb3c12ad792c8d9fd7a70b10",
+              "file": "B-390-after.png",
+              "tool_call_id": "item_24"
+            },
+            "layout_width": 375,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              }
+            ],
+            "confirmed_sequence": [
+              "Rolls first at 10:55",
+              "Biscuits first at 10:47"
+            ]
+          }
+        },
+        "preference": {
+          "winner": "B",
+          "reason": "Both versions support the task and keyboard recovery, but B labels the timeline boundaries, making the difference between oven start, first tray, changeover, and noon more verifiable. Its phone labels need more space."
+        },
+        "unsupported_claims": [
+          "Neither view explicitly labels both individual bake finish times; those times are derived from the displayed durations and changeover.",
+          "Actual baking outcomes were not tested."
+        ],
+        "case": "last-tray-out",
+        "verified_screens": 4,
+        "required_screens": 4,
+        "browser": "Chrome/158.0.8127.36",
+        "evaluator_thread": "01a20729-daf9-79b2-9d85-a72ed66e96ca",
+        "usage": {
+          "input_tokens": 317328,
+          "cached_input_tokens": 296960,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2515,
+          "reasoning_output_tokens": 0
+        },
+        "trace_sha256": "290f8c86bfc6d2cef92ae9cdceedb241f45fb073f3dbba8220b05a5dde9bfc0c",
+        "browser_audit_sha256": "1b5b1ddd40dc815389a827761155e84d877c7c13a0b12e73ae6a707f3228f322"
+      }
+    },
+    {
+      "round": 3,
+      "change": "Tray names in each interval",
+      "deterministic_browser": "Chrome/158.0.8127.36",
+      "preflight_frames": 36,
+      "preflight_widths": [
+        1440,
+        390,
+        320
+      ],
+      "preflight_modes": [
+        "no-preference",
+        "reduce"
+      ],
+      "touch_width": 390,
+      "preflight_receipt": ".context/creative-concepts/tray/preflight-r03/receipt.json",
+      "review_receipt": ".context/creative-concepts/tray/ballot-03/audited.json",
+      "setup": {
+        "baseline": {
+          "fixture": "stamped",
+          "path": ".context/creative-concepts/tray/stamped/index.html",
+          "sha256": "8d8a6c45a83a2649384c848803487c44535cd665f2c9b10ccaa468d76843af9d",
+          "bytes": 78071,
+          "scores": {
+            "1440": 7.6,
+            "390": 7.4
+          },
+          "review_labels": {
+            "1440": "B-1440",
+            "390": "B-390"
+          },
+          "preflight_choice_images": {
+            "active-1440": {
+              "file": ".context/creative-concepts/tray/preflight-r03/stamped-1440-no-preference-change.png",
+              "sha256": "1d2107c37022cbbe37ee399994b8b3bd1e75180854689bc59de57016cb561d39",
+              "dimensions": [
+                1440,
+                900
+              ]
+            },
+            "active-390": {
+              "file": ".context/creative-concepts/tray/preflight-r03/stamped-390-no-preference-change.png",
+              "sha256": "357d98699cae894dfd3e8a21f438605a20054b636b4035a5baed0bd28a36f8de",
+              "dimensions": [
+                390,
+                844
+              ]
+            },
+            "active-320": {
+              "file": ".context/creative-concepts/tray/preflight-r03/stamped-320-no-preference-change.png",
+              "sha256": "4883ac59cc3075fe90b25e4b79a200a1612c51a7b6ce648450430a6126b3fdf5",
+              "dimensions": [
+                320,
+                700
+              ]
+            }
+          }
+        },
+        "candidate": {
+          "fixture": "trays",
+          "path": ".context/creative-concepts/tray/trays/index.html",
+          "sha256": "e38183a3f1b51ed47b782dbfc3139fb02d4709154e8a8b8121642024298e8ff2",
+          "bytes": 78634,
+          "scores": {
+            "1440": 8.1,
+            "390": 7.9
+          },
+          "review_labels": {
+            "1440": "A-1440",
+            "390": "A-390"
+          },
+          "preflight_choice_images": {
+            "active-1440": {
+              "file": ".context/creative-concepts/tray/preflight-r03/trays-1440-no-preference-change.png",
+              "sha256": "2a3abcbed35f9e0cd3cfcb0c75dfb3511ff83705a9cbd047f87a2c7e4502e1fc",
+              "dimensions": [
+                1440,
+                900
+              ]
+            },
+            "active-390": {
+              "file": ".context/creative-concepts/tray/preflight-r03/trays-390-no-preference-change.png",
+              "sha256": "961c1a15e3016275c144d2f6652999f69f57f03cdfd6182bed43f3f55986ac69",
+              "dimensions": [
+                390,
+                844
+              ]
+            },
+            "active-320": {
+              "file": ".context/creative-concepts/tray/preflight-r03/trays-320-no-preference-change.png",
+              "sha256": "00261d97c199b0a2a7d3359eff0eef7c1cc56e9bffa991553bdc7a42f38e1482",
+              "dimensions": [
+                320,
+                700
+              ]
+            }
+          }
+        }
+      },
+      "review": {
+        "calibration": {
+          "example": "Legible repair intake with clear labels, familiar layout and misplaced focus after an invalid number",
+          "coherence": 7,
+          "originality": 4,
+          "craft": 6,
+          "usability": 6
+        },
+        "screens": {
+          "A-1440": {
+            "coherence": 8.5,
+            "originality": 7.5,
+            "craft": 8,
+            "usability": 8.5,
+            "primary_action": {
+              "input": "Tab, then ArrowRight",
+              "expected": "Select Rolls first, the order with the later oven start.",
+              "observed": "Rolls first became checked and focused; the prominent oven-on time changed from 10:47 am to 10:55 am. Captures: A-1440-before.png and A-1440-after.png."
+            },
+            "edge_observation": "ArrowLeft restored Biscuits first and 10:47 am. Both schedules remained visible; the selected marker moved back to Biscuits first.",
+            "fact_check": "Rolls first: oven on 10:55 am, rolls in 11:11 am and out 11:35 am; change from 375°F to 425°F starting at 11:35 am, complete at 11:44 am; biscuits finish at noon. The labeled bars show preheat, each named bake and changeover, with endpoints consistent with the written times. The large number is clearly labeled oven-on, though the bake finish times must be read from the timeline.",
+            "strength": "My eye went first to the large gold 10:47, then to the parallel schedules. Named bake segments make the sequence easy to follow.",
+            "weakness": "The graphic's small time labels and compact legend require close reading.",
+            "repair": "Increase timeline label and legend size while retaining the named segments.",
+            "arm": "candidate",
+            "html_sha256": "e38183a3f1b51ed47b782dbfc3139fb02d4709154e8a8b8121642024298e8ff2",
+            "weighted": 8.1,
+            "before": {
+              "sha256": "78874b3dfaf45351c1d24b61aec786a0f64b5a8a77d2d96959607cb926fb4bf5",
+              "file": "A-1440-before.png",
+              "tool_call_id": "item_2"
+            },
+            "after": {
+              "sha256": "fde6aa867110b87ef76d0ef2a5dc8177b63c58f752e3846462f29e3fa5dbdbb4",
+              "file": "A-1440-after.png",
+              "tool_call_id": "item_5"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              }
+            ],
+            "confirmed_sequence": [
+              "Rolls first at 10:55",
+              "Biscuits first at 10:47"
+            ]
+          },
+          "A-390": {
+            "coherence": 8.5,
+            "originality": 7.5,
+            "craft": 7.5,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab, then ArrowRight",
+              "expected": "Select Rolls first and show its later oven-on time.",
+              "observed": "Rolls first became checked and focused, and the headline changed to 10:55 am. Captures: A-390-before.png and A-390-after.png."
+            },
+            "edge_observation": "ArrowLeft restored Biscuits first and 10:47 am. The Rolls first schedule remained visible in the same view.",
+            "fact_check": "Rolls first starts the oven at 10:55 am, puts rolls in at 11:11 am, changes temperature from 11:35 to 11:44 am, ends the rolls at 11:35 am and the biscuits at noon. The graphic agrees with those boundaries and names both bake segments. Oven start is labeled separately from first tray in and the noon endpoint.",
+            "strength": "My eye went first to the large gold 10:47. Both controls and both complete timelines appear in the first phone viewport, with the selected order marked.",
+            "weakness": "The graphic labels are very small and the changeover end labels drop below the other time labels; they are harder to read than the accompanying schedule details.",
+            "repair": "Enlarge and space the timeline labels, preserving the explicit bake names and first-viewport comparison.",
+            "arm": "candidate",
+            "html_sha256": "e38183a3f1b51ed47b782dbfc3139fb02d4709154e8a8b8121642024298e8ff2",
+            "weighted": 7.9,
+            "before": {
+              "sha256": "8ea0ab25ff9c65e29d8ee67058413552b458c60cff46a7fb13ac1cfde96d95dd",
+              "file": "A-390-before.png",
+              "tool_call_id": "item_8"
+            },
+            "after": {
+              "sha256": "0d311f0209615294109d25b6c59540e28f1be5c48a157257d931bfbb5d389417",
+              "file": "A-390-after.png",
+              "tool_call_id": "item_11"
+            },
+            "layout_width": 375,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              }
+            ],
+            "confirmed_sequence": [
+              "Rolls first at 10:55",
+              "Biscuits first at 10:47"
+            ]
+          },
+          "B-1440": {
+            "coherence": 8,
+            "originality": 7,
+            "craft": 7.5,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab, then ArrowRight",
+              "expected": "Select Rolls first, the order with the later oven start.",
+              "observed": "Rolls first became checked and focused, and the prominent time changed from 10:47 am to 10:55 am. Captures: B-1440-before.png and B-1440-after.png."
+            },
+            "edge_observation": "ArrowLeft restored Biscuits first and 10:47 am. Both schedule comparisons remained visible.",
+            "fact_check": "Rolls first: oven on 10:55 am; rolls in 11:11 am and finished 11:35 am; temperature changes from 375°F to 425°F during 11:35–11:44 am; biscuits finish at noon. Bar boundaries agree with the written times, but the gold bake segments have no product names, so identifying which tray ends at each boundary requires combining the order heading with the timing notes. The headline is labeled oven-on, not first bake or finish.",
+            "strength": "My eye went first to the large gold 10:47; the side-by-side comparison makes the eight-minute difference discoverable.",
+            "weakness": "The unlabeled gold segments show duration but do not directly identify rolls versus biscuits.",
+            "repair": "Label each bake segment with its tray name and keep the boundary times legible.",
+            "arm": "baseline",
+            "html_sha256": "8d8a6c45a83a2649384c848803487c44535cd665f2c9b10ccaa468d76843af9d",
+            "weighted": 7.6,
+            "before": {
+              "sha256": "ec130b858f892daf7fb59e5ccf3b61f5b74acfa30e9514ab7537860b7d91b149",
+              "file": "B-1440-before.png",
+              "tool_call_id": "item_15"
+            },
+            "after": {
+              "sha256": "fd41af6638b898d64d35b0482cd63bedae8cdb20484e92d98550782698e663a3",
+              "file": "B-1440-after.png",
+              "tool_call_id": "item_18"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              }
+            ],
+            "confirmed_sequence": [
+              "Rolls first at 10:55",
+              "Biscuits first at 10:47"
+            ]
+          },
+          "B-390": {
+            "coherence": 8,
+            "originality": 7,
+            "craft": 7,
+            "usability": 7.5,
+            "primary_action": {
+              "input": "Tab, then ArrowRight",
+              "expected": "Select Rolls first and show its later oven-on time.",
+              "observed": "Rolls first became checked and focused, and the headline changed to 10:55 am. Captures: B-390-before.png and B-390-after.png."
+            },
+            "edge_observation": "ArrowLeft restored Biscuits first and 10:47 am. The alternative remained visible.",
+            "fact_check": "Rolls first starts at 10:55 am, puts rolls in at 11:11 am, ends rolls and begins the temperature change at 11:35 am, completes the change at 11:44 am and finishes biscuits at noon. The graphic boundaries agree with the written schedule, but its bake bars lack tray names. Oven-on and first-tray-in are separately labeled; the noon endpoint is visible.",
+            "strength": "My eye went first to the large gold 10:47. Both controls and both timelines fit in the first phone viewport.",
+            "weakness": "The timeline times are tiny, the 11:35 and 11:44 labels are crowded, and neither bake segment names its tray.",
+            "repair": "Add tray names and increase spacing or use a more readable mobile timeline treatment.",
+            "arm": "baseline",
+            "html_sha256": "8d8a6c45a83a2649384c848803487c44535cd665f2c9b10ccaa468d76843af9d",
+            "weighted": 7.4,
+            "before": {
+              "sha256": "adba418218090e5be835acdedd4f74535d66872fea928451c99f795f7a14a201",
+              "file": "B-390-before.png",
+              "tool_call_id": "item_21"
+            },
+            "after": {
+              "sha256": "1ae546ef0d5196bd43a47d04ac57f66a762d1a4fbb3c12ad792c8d9fd7a70b10",
+              "file": "B-390-after.png",
+              "tool_call_id": "item_24"
+            },
+            "layout_width": 375,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              }
+            ],
+            "confirmed_sequence": [
+              "Rolls first at 10:55",
+              "Biscuits first at 10:47"
+            ]
+          }
+        },
+        "preference": {
+          "winner": "A",
+          "reason": "Both completed the keyboard selection and reversal and retained both schedules. A names the bake segments directly, making the timeline more useful for identifying which tray is in the oven and when it finishes."
+        },
+        "unsupported_claims": [
+          "Real-world baking results and actual oven performance were not tested; the timing assessment checks the rendered schedules and their arithmetic.",
+          "The review tool reported a 390-pixel viewport with a 375-pixel layout width for both phone views."
+        ],
+        "case": "last-tray-out",
+        "verified_screens": 4,
+        "required_screens": 4,
+        "browser": "Chrome/158.0.8127.36",
+        "evaluator_thread": "01a2072c-fa6a-7a73-a8f8-7ba72a3ecd85",
+        "usage": {
+          "input_tokens": 375959,
+          "cached_input_tokens": 345600,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2456,
+          "reasoning_output_tokens": 0
+        },
+        "trace_sha256": "dea24ba70d2fc8bdd70ed4ac609da2c3c06d320df3efcb4097edc52276e7c4e4",
+        "browser_audit_sha256": "edd00c73e73d53936d3baf76511f77930d53beecb0a0957818d440cd3cc4ef11"
+      }
+    },
+    {
+      "round": 4,
+      "change": "Uncompressed schedule on phones",
+      "deterministic_browser": "Chrome/158.0.8127.36",
+      "preflight_frames": 36,
+      "preflight_widths": [
+        1440,
+        390,
+        320
+      ],
+      "preflight_modes": [
+        "no-preference",
+        "reduce"
+      ],
+      "touch_width": 390,
+      "preflight_receipt": ".context/creative-concepts/tray/preflight-r04/receipt.json",
+      "review_receipt": ".context/creative-concepts/tray/ballot-04/audited.json",
+      "setup": {
+        "baseline": {
+          "fixture": "trays",
+          "path": ".context/creative-concepts/tray/trays/index.html",
+          "sha256": "e38183a3f1b51ed47b782dbfc3139fb02d4709154e8a8b8121642024298e8ff2",
+          "bytes": 78634,
+          "scores": {
+            "1440": 8.1,
+            "390": 7.55
+          },
+          "review_labels": {
+            "1440": "B-1440",
+            "390": "B-390"
+          },
+          "preflight_choice_images": {
+            "active-1440": {
+              "file": ".context/creative-concepts/tray/preflight-r04/trays-1440-no-preference-change.png",
+              "sha256": "2a3abcbed35f9e0cd3cfcb0c75dfb3511ff83705a9cbd047f87a2c7e4502e1fc",
+              "dimensions": [
+                1440,
+                900
+              ]
+            },
+            "active-390": {
+              "file": ".context/creative-concepts/tray/preflight-r04/trays-390-no-preference-change.png",
+              "sha256": "11498a9efc4b3b74db315e713c8c4cdde5ad61571e883cf7292a669f95cfa09f",
+              "dimensions": [
+                390,
+                844
+              ]
+            },
+            "active-320": {
+              "file": ".context/creative-concepts/tray/preflight-r04/trays-320-no-preference-change.png",
+              "sha256": "00261d97c199b0a2a7d3359eff0eef7c1cc56e9bffa991553bdc7a42f38e1482",
+              "dimensions": [
+                320,
+                700
+              ]
+            }
+          }
+        },
+        "candidate": {
+          "fixture": "rack",
+          "path": ".context/creative-concepts/tray/rack/index.html",
+          "sha256": "8c3fc0772b1a6308c91cbed5ae0039141b7f5e9dd36e28d1f2fc9e3cda1db380",
+          "bytes": 79282,
+          "scores": {
+            "1440": 8.1,
+            "390": 8.05
+          },
+          "review_labels": {
+            "1440": "A-1440",
+            "390": "A-390"
+          },
+          "preflight_choice_images": {
+            "active-1440": {
+              "file": ".context/creative-concepts/tray/preflight-r04/rack-1440-no-preference-change.png",
+              "sha256": "88fac27e4aa158387679110a31795ab106a0c8bc1c888a8ab3e25e90292a446a",
+              "dimensions": [
+                1440,
+                900
+              ]
+            },
+            "active-390": {
+              "file": ".context/creative-concepts/tray/preflight-r04/rack-390-no-preference-change.png",
+              "sha256": "dc05b9de89e265b518e78ba02c3561ca59e6227221b951fb71828bcbd1e8d136",
+              "dimensions": [
+                390,
+                844
+              ]
+            },
+            "active-320": {
+              "file": ".context/creative-concepts/tray/preflight-r04/rack-320-no-preference-change.png",
+              "sha256": "4b42d1ee2dff480e735be5a2ab1e34ceb4ec06c2169312c7b86f8461cf66c5f8",
+              "dimensions": [
+                320,
+                700
+              ]
+            }
+          }
+        }
+      },
+      "review": {
+        "calibration": {
+          "example": "Legible repair intake with clear labels, familiar layout and misplaced focus after an invalid number",
+          "coherence": 7,
+          "originality": 4,
+          "craft": 6.5,
+          "usability": 6
+        },
+        "screens": {
+          "A-1440": {
+            "coherence": 8.5,
+            "originality": 7.5,
+            "craft": 8,
+            "usability": 8.5,
+            "primary_action": {
+              "input": "Tab, then ArrowRight",
+              "expected": "Select Rolls first and show the later oven start.",
+              "observed": "Rolls first became checked and visibly focused; the prominent oven-on time changed from 10:47 am to 10:55 am. Captured A-1440-before and A-1440-after."
+            },
+            "edge_observation": "ArrowLeft returned selection and focus to Biscuits first, restored 10:47 am, and left the Rolls first schedule visible.",
+            "fact_check": "Rolls first: oven on at 10:55 am, rolls in at 11:11 am and out at 11:35 am; change temperature from 375°F to 425°F starting at 11:35 am, reaching it at 11:44 am; biscuits finish at noon. The desktop bars show preheat, each bake and changeover with endpoints consistent with the written times. The large 10:55 is explicitly labeled oven on, while first tray in and noon are separately labeled.",
+            "strength": "My eye went first to the large amber oven-on time. Both schedules and their relative start times are easy to compare at once.",
+            "weakness": "The timeline labels and legend are small, and individual bake finish times require reading the bar boundaries rather than a written finish field.",
+            "repair": "Add explicit first-tray-out and final-tray-out labels and enlarge the timeline labels.",
+            "arm": "candidate",
+            "html_sha256": "8c3fc0772b1a6308c91cbed5ae0039141b7f5e9dd36e28d1f2fc9e3cda1db380",
+            "weighted": 8.1,
+            "before": {
+              "sha256": "78874b3dfaf45351c1d24b61aec786a0f64b5a8a77d2d96959607cb926fb4bf5",
+              "file": "A-1440-before.png",
+              "tool_call_id": "item_2"
+            },
+            "after": {
+              "sha256": "fde6aa867110b87ef76d0ef2a5dc8177b63c58f752e3846462f29e3fa5dbdbb4",
+              "file": "A-1440-after.png",
+              "tool_call_id": "item_5"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              }
+            ],
+            "confirmed_sequence": [
+              "Rolls first at 10:55",
+              "Biscuits first at 10:47"
+            ]
+          },
+          "A-390": {
+            "coherence": 8.5,
+            "originality": 7,
+            "craft": 8.5,
+            "usability": 8.5,
+            "primary_action": {
+              "input": "Tab, then ArrowRight",
+              "expected": "Select Rolls first and show 10:55 am.",
+              "observed": "Rolls first became checked and visibly focused, and the oven-on time changed to 10:55 am. Captured A-390-before and A-390-after."
+            },
+            "edge_observation": "ArrowLeft restored Biscuits first and 10:47 am; the Rolls first schedule remained visible.",
+            "fact_check": "The selected order shows oven on at 10:55 am, first tray in at 11:11 am and changeover at 11:35–11:44 am. From the stated durations, rolls end at 11:35 am and biscuits at noon. The labels distinguish oven start from first tray and deadline. No timeline graphic is shown at this width.",
+            "strength": "My eye went first to the large 10:47 oven-on time. Both controls and both schedule summaries are readable in the first 390-by-844 viewport.",
+            "weakness": "Without the graphic or explicit bake-end fields, the first finish must be calculated from the changeover time.",
+            "repair": "Add concise tray-out times to each schedule while retaining the compact comparison.",
+            "arm": "candidate",
+            "html_sha256": "8c3fc0772b1a6308c91cbed5ae0039141b7f5e9dd36e28d1f2fc9e3cda1db380",
+            "weighted": 8.05,
+            "before": {
+              "sha256": "a6c0270ec6b22bdbc7d7edf1df9d1d882b37dde39a490f2aa579808d3ac45396",
+              "file": "A-390-before.png",
+              "tool_call_id": "item_8"
+            },
+            "after": {
+              "sha256": "dc05b9de89e265b518e78ba02c3561ca59e6227221b951fb71828bcbd1e8d136",
+              "file": "A-390-after.png",
+              "tool_call_id": "item_11"
+            },
+            "layout_width": 390,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              }
+            ],
+            "confirmed_sequence": [
+              "Rolls first at 10:55",
+              "Biscuits first at 10:47"
+            ]
+          },
+          "B-1440": {
+            "coherence": 8.5,
+            "originality": 7.5,
+            "craft": 8,
+            "usability": 8.5,
+            "primary_action": {
+              "input": "Tab, then ArrowRight",
+              "expected": "Select Rolls first and show the later oven start.",
+              "observed": "Rolls first became checked and visibly focused; the prominent time changed from 10:47 am to 10:55 am. Captured B-1440-before and B-1440-after."
+            },
+            "edge_observation": "ArrowLeft restored Biscuits first and 10:47 am; the alternative schedule remained visible.",
+            "fact_check": "Rolls first: oven on at 10:55 am, rolls in at 11:11 am and out at 11:35 am; change from 375°F to 425°F during 11:35–11:44 am; biscuits finish at noon. The bars show the same start and end boundaries as the written schedule. Oven-on, first-tray-in and noon are separately labeled.",
+            "strength": "My eye went first to the large amber oven-on time. The aligned bars make the later start and shared noon finish apparent.",
+            "weakness": "Small timeline labels and an implicit first-tray finish require careful reading.",
+            "repair": "Increase timeline label size and state each tray's finish time explicitly.",
+            "arm": "baseline",
+            "html_sha256": "e38183a3f1b51ed47b782dbfc3139fb02d4709154e8a8b8121642024298e8ff2",
+            "weighted": 8.1,
+            "before": {
+              "sha256": "78874b3dfaf45351c1d24b61aec786a0f64b5a8a77d2d96959607cb926fb4bf5",
+              "file": "B-1440-before.png",
+              "tool_call_id": "item_15"
+            },
+            "after": {
+              "sha256": "790dcec8bb435e3e6eb50f5d42f9e6fc820c1e9a99d3a0743f34121518da22de",
+              "file": "B-1440-after.png",
+              "tool_call_id": "item_18"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              }
+            ],
+            "confirmed_sequence": [
+              "Rolls first at 10:55",
+              "Biscuits first at 10:47"
+            ]
+          },
+          "B-390": {
+            "coherence": 8,
+            "originality": 7.5,
+            "craft": 7,
+            "usability": 7.5,
+            "primary_action": {
+              "input": "Tab, then ArrowRight",
+              "expected": "Select Rolls first and show 10:55 am.",
+              "observed": "Rolls first became checked and visibly focused, and the oven-on time changed to 10:55 am. Captured B-390-before and B-390-after."
+            },
+            "edge_observation": "ArrowLeft restored Biscuits first and 10:47 am; the Rolls first schedule remained visible.",
+            "fact_check": "Oven on is 10:55 am, rolls enter at 11:11 am and end at 11:35 am, the temperature changes during 11:35–11:44 am, and biscuits end at noon. The graphic adds the sequence and relative duration of preheat, bakes and changeover; its start and end labels agree with the written schedule. The large time is labeled oven on, although the dense small timeline labels take more effort to distinguish.",
+            "strength": "My eye went first to the large oven-on time. Both controls and both timelines appear in the first viewport, and the graphic preserves the comparison of durations.",
+            "weakness": "Timeline labels are tiny and crowded, with changeover endpoints staggered beneath the bars. The review tool reported a 375 CSS-pixel layout width within the requested 390-pixel viewport.",
+            "repair": "Use a less compressed mobile timeline or prioritize larger, explicitly labeled start and finish times.",
+            "arm": "baseline",
+            "html_sha256": "e38183a3f1b51ed47b782dbfc3139fb02d4709154e8a8b8121642024298e8ff2",
+            "weighted": 7.55,
+            "before": {
+              "sha256": "8ea0ab25ff9c65e29d8ee67058413552b458c60cff46a7fb13ac1cfde96d95dd",
+              "file": "B-390-before.png",
+              "tool_call_id": "item_21"
+            },
+            "after": {
+              "sha256": "0d311f0209615294109d25b6c59540e28f1be5c48a157257d931bfbb5d389417",
+              "file": "B-390-after.png",
+              "tool_call_id": "item_24"
+            },
+            "layout_width": 375,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              }
+            ],
+            "confirmed_sequence": [
+              "Rolls first at 10:55",
+              "Biscuits first at 10:47"
+            ]
+          }
+        },
+        "preference": {
+          "winner": "A",
+          "reason": "The desktop views rendered equivalently in this review and both supported the keyboard task. On the phone, A's compact text comparison is easier to read, while B retains useful graphics but compresses their labels."
+        },
+        "unsupported_claims": [
+          "The first-tray finish on A's phone view is calculated from the displayed timing information; it is not explicitly labeled as a bake finish there.",
+          "The reported B phone layout width is review-tool metadata; its underlying cause was not investigated."
+        ],
+        "case": "last-tray-out",
+        "verified_screens": 4,
+        "required_screens": 4,
+        "browser": "Chrome/158.0.8127.36",
+        "evaluator_thread": "01a2072e-c1a1-70b2-af1f-9ffcd98fa43e",
+        "usage": {
+          "input_tokens": 343681,
+          "cached_input_tokens": 305920,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2494,
+          "reasoning_output_tokens": 0
+        },
+        "trace_sha256": "2098d942a4b6225ac3c12b883b1178f8143e662824dc80b60c965364e07de4ed",
+        "browser_audit_sha256": "d2b869c4da7584c78e2b70c1890da44ff8fb396eaed1eb32ff898de65357af9f"
+      }
+    },
+    {
+      "round": 5,
+      "change": "Light enamel ledge and side-by-side desktop",
+      "deterministic_browser": "Chrome/158.0.8127.36",
+      "preflight_frames": 36,
+      "preflight_widths": [
+        1440,
+        390,
+        320
+      ],
+      "preflight_modes": [
+        "no-preference",
+        "reduce"
+      ],
+      "touch_width": 390,
+      "preflight_receipt": ".context/creative-concepts/tray/preflight-r05/receipt.json",
+      "review_receipt": ".context/creative-concepts/tray/ballot-05/audited.json",
+      "setup": {
+        "baseline": {
+          "fixture": "rack",
+          "path": ".context/creative-concepts/tray/rack/index.html",
+          "sha256": "8c3fc0772b1a6308c91cbed5ae0039141b7f5e9dd36e28d1f2fc9e3cda1db380",
+          "bytes": 79282,
+          "scores": {
+            "1440": 7.85,
+            "390": 7.5
+          },
+          "review_labels": {
+            "1440": "B-1440",
+            "390": "B-390"
+          },
+          "preflight_choice_images": {
+            "active-1440": {
+              "file": ".context/creative-concepts/tray/preflight-r05/rack-1440-no-preference-change.png",
+              "sha256": "2a3abcbed35f9e0cd3cfcb0c75dfb3511ff83705a9cbd047f87a2c7e4502e1fc",
+              "dimensions": [
+                1440,
+                900
+              ]
+            },
+            "active-390": {
+              "file": ".context/creative-concepts/tray/preflight-r05/rack-390-no-preference-change.png",
+              "sha256": "dc05b9de89e265b518e78ba02c3561ca59e6227221b951fb71828bcbd1e8d136",
+              "dimensions": [
+                390,
+                844
+              ]
+            },
+            "active-320": {
+              "file": ".context/creative-concepts/tray/preflight-r05/rack-320-no-preference-change.png",
+              "sha256": "4b42d1ee2dff480e735be5a2ab1e34ceb4ec06c2169312c7b86f8461cf66c5f8",
+              "dimensions": [
+                320,
+                700
+              ]
+            }
+          }
+        },
+        "candidate": {
+          "fixture": "enamel",
+          "path": ".context/creative-concepts/tray/enamel/index.html",
+          "sha256": "48570a3778f0fca0947a11e1ccc55d4a6c21f1f97e84a6d35bc08a5852f8e07f",
+          "bytes": 81943,
+          "scores": {
+            "1440": 7.85,
+            "390": 7.7
+          },
+          "review_labels": {
+            "1440": "A-1440",
+            "390": "A-390"
+          },
+          "preflight_choice_images": {
+            "active-1440": {
+              "file": ".context/creative-concepts/tray/preflight-r05/enamel-1440-no-preference-change.png",
+              "sha256": "9d70de6a027685648f35540163fe6b235a2e55bb9b5b102ff7ef7d21eb5cd9c4",
+              "dimensions": [
+                1440,
+                900
+              ]
+            },
+            "active-390": {
+              "file": ".context/creative-concepts/tray/preflight-r05/enamel-390-no-preference-change.png",
+              "sha256": "c90dba419934ebbbf50db97626743ee0892d88392e8dfd3923832c086b15d0c3",
+              "dimensions": [
+                390,
+                844
+              ]
+            },
+            "active-320": {
+              "file": ".context/creative-concepts/tray/preflight-r05/enamel-320-no-preference-change.png",
+              "sha256": "351d8c1383c34af507d84e17f4de33ed37dade1fe8c1b3511582014df5e2670e",
+              "dimensions": [
+                320,
+                700
+              ]
+            }
+          }
+        }
+      },
+      "review": {
+        "calibration": {
+          "coherence": 7,
+          "originality": 4,
+          "craft": 6.5,
+          "usability": 6,
+          "reason": "Clear labels and legibility support the task, while the familiar layout limits originality and misplaced focus after invalid input interrupts recovery."
+        },
+        "screens": {
+          "A-1440": {
+            "coherence": 8.5,
+            "originality": 7,
+            "craft": 8,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab, then ArrowRight",
+              "expected": "Select Rolls first and show the later oven start.",
+              "observed": "Rolls first became checked and focused; the prominent oven-on time changed from 10:47 to 10:55 am. Captures: A-1440-before and A-1440-after."
+            },
+            "edge_observation": "ArrowLeft restored Biscuits first and 10:47 am. The Rolls first schedule remained visible alongside it.",
+            "fact_check": "For Rolls first, the oven starts at 10:55 am, rolls enter at 11:11 and end at 11:35, the temperature changes from 375°F to 425°F during 11:35–11:44, and biscuits end at noon. The desktop timeline agrees with those times and shows preheat, each bake, and changeover. The large 10:55 is explicitly labeled oven-on, though the nearby noon marker could be clearer as the final bake's finish.",
+            "strength": "The large labeled start time and side-by-side timelines make the eight-minute difference easy to find. My eye went first to the oversized 10:47.",
+            "weakness": "The first bake's finish is conveyed by a timeline tick and the start of changeover rather than an explicit finish label.",
+            "repair": "Label both tray finish times directly and identify noon as the final tray out.",
+            "arm": "candidate",
+            "html_sha256": "48570a3778f0fca0947a11e1ccc55d4a6c21f1f97e84a6d35bc08a5852f8e07f",
+            "weighted": 7.85,
+            "before": {
+              "sha256": "780bac08f2c4c46f0470ab73d18588bb9e0b8a22646a673c3d26147933c9a9c6",
+              "file": "A-1440-before.png",
+              "tool_call_id": "item_2"
+            },
+            "after": {
+              "sha256": "2342889451f832e02d5f35585b52d102a556cdcced736c784aa6b058f6f18c8b",
+              "file": "A-1440-after.png",
+              "tool_call_id": "item_5"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              }
+            ],
+            "confirmed_sequence": [
+              "Rolls first at 10:55",
+              "Biscuits first at 10:47"
+            ]
+          },
+          "A-390": {
+            "coherence": 8.5,
+            "originality": 6.5,
+            "craft": 8,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab, then ArrowRight",
+              "expected": "Select Rolls first and show 10:55 am.",
+              "observed": "Rolls first became checked with a visible focus outline; the oven-on time changed to 10:55 am. Captures: A-390-before and A-390-after."
+            },
+            "edge_observation": "ArrowLeft restored Biscuits first and 10:47 am; the Rolls first comparison remained visible.",
+            "fact_check": "Rolls first: oven on 10:55 am, rolls in 11:11 and finished 11:35, temperature change 11:35–11:44, biscuits finished at noon. The first finish is inferred from the changeover start and stated duration. The desktop timeline graphic is absent at this width.",
+            "strength": "My eye went first to the large 10:47. Both controls and both schedules are readable in the first 390-by-844 viewport.",
+            "weakness": "The compact schedule omits explicit tray finish times, leaving the baker to infer the first finish and associate the shared noon marker with the second.",
+            "repair": "Add concise first-tray-out and last-tray-out labels to each mobile schedule.",
+            "arm": "candidate",
+            "html_sha256": "48570a3778f0fca0947a11e1ccc55d4a6c21f1f97e84a6d35bc08a5852f8e07f",
+            "weighted": 7.7,
+            "before": {
+              "sha256": "1bf372278c81775e476ab5789b8de10076c12b0a475586df6099a68f15abf9f6",
+              "file": "A-390-before.png",
+              "tool_call_id": "item_8"
+            },
+            "after": {
+              "sha256": "c90dba419934ebbbf50db97626743ee0892d88392e8dfd3923832c086b15d0c3",
+              "file": "A-390-after.png",
+              "tool_call_id": "item_11"
+            },
+            "layout_width": 390,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              }
+            ],
+            "confirmed_sequence": [
+              "Rolls first at 10:55",
+              "Biscuits first at 10:47"
+            ]
+          },
+          "B-1440": {
+            "coherence": 8,
+            "originality": 7.5,
+            "craft": 8,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab, then ArrowRight",
+              "expected": "Select Rolls first and show the later oven start.",
+              "observed": "Rolls first became checked and focused, and the oven-on time changed from 10:47 to 10:55 am. Captures: B-1440-before and B-1440-after."
+            },
+            "edge_observation": "ArrowLeft restored Biscuits first and 10:47 am; the alternative schedule remained visible.",
+            "fact_check": "For Rolls first, oven on is 10:55 am, rolls enter at 11:11 and finish at 11:35, temperature changes from 375°F to 425°F over 11:35–11:44, and biscuits finish at noon. The timeline's preheat, bake and changeover boundaries agree with the written timings. The first bake's end is not explicitly labeled as a finish.",
+            "strength": "My eye went first to the oversized warm-colored 10:47. Stacked timelines align their noon endpoints and make the phases comparable.",
+            "weakness": "Muted supporting text on the dark background is less immediately legible, and the schedule requires interpreting the changeover boundary as the first bake's finish.",
+            "repair": "Increase supporting-text contrast and label each tray's finish directly.",
+            "arm": "baseline",
+            "html_sha256": "8c3fc0772b1a6308c91cbed5ae0039141b7f5e9dd36e28d1f2fc9e3cda1db380",
+            "weighted": 7.85,
+            "before": {
+              "sha256": "78874b3dfaf45351c1d24b61aec786a0f64b5a8a77d2d96959607cb926fb4bf5",
+              "file": "B-1440-before.png",
+              "tool_call_id": "item_15"
+            },
+            "after": {
+              "sha256": "2a3abcbed35f9e0cd3cfcb0c75dfb3511ff83705a9cbd047f87a2c7e4502e1fc",
+              "file": "B-1440-after.png",
+              "tool_call_id": "item_18"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              }
+            ],
+            "confirmed_sequence": [
+              "Rolls first at 10:55",
+              "Biscuits first at 10:47"
+            ]
+          },
+          "B-390": {
+            "coherence": 8,
+            "originality": 7,
+            "craft": 7.5,
+            "usability": 7.5,
+            "primary_action": {
+              "input": "Tab, then ArrowRight",
+              "expected": "Select Rolls first and show 10:55 am.",
+              "observed": "Rolls first became checked with a visible focus outline; the oven-on time changed to 10:55 am. Captures: B-390-before and B-390-after."
+            },
+            "edge_observation": "ArrowLeft restored Biscuits first and 10:47 am; the Rolls first schedule remained visible.",
+            "fact_check": "Rolls first: oven on 10:55 am, rolls in 11:11 and finished 11:35, temperature change 11:35–11:44, biscuits finished at noon. The first finish is inferred from the changeover start and stated duration. The desktop timeline graphic is absent at this width.",
+            "strength": "My eye went first to the gold 10:47. Both controls and both schedules fit and are readable in the first 390-by-844 viewport.",
+            "weakness": "The small muted labels compete with the dark panels, and neither tray's finish is explicitly named in its schedule.",
+            "repair": "Brighten secondary labels and add explicit tray-out times.",
+            "arm": "baseline",
+            "html_sha256": "8c3fc0772b1a6308c91cbed5ae0039141b7f5e9dd36e28d1f2fc9e3cda1db380",
+            "weighted": 7.5,
+            "before": {
+              "sha256": "a6c0270ec6b22bdbc7d7edf1df9d1d882b37dde39a490f2aa579808d3ac45396",
+              "file": "B-390-before.png",
+              "tool_call_id": "item_21"
+            },
+            "after": {
+              "sha256": "dc05b9de89e265b518e78ba02c3561ca59e6227221b951fb71828bcbd1e8d136",
+              "file": "B-390-after.png",
+              "tool_call_id": "item_24"
+            },
+            "layout_width": 390,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              }
+            ],
+            "confirmed_sequence": [
+              "Rolls first at 10:55",
+              "Biscuits first at 10:47"
+            ]
+          }
+        },
+        "preference": {
+          "winner": "A",
+          "reason": "Both versions support the requested keyboard task and keep the alternative visible. A's lighter surfaces and clearer supporting text make the dense schedule easier to scan, particularly on the phone."
+        },
+        "unsupported_claims": [
+          "No claim is made about real oven performance; the timing check uses the durations stated in the views.",
+          "No screen-reader operation or physical-device testing was performed."
+        ],
+        "case": "last-tray-out",
+        "verified_screens": 4,
+        "required_screens": 4,
+        "browser": "Chrome/158.0.8127.36",
+        "evaluator_thread": "01a20730-3dac-7573-99fb-e15efcbd3c00",
+        "usage": {
+          "input_tokens": 317328,
+          "cached_input_tokens": 296960,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2416,
+          "reasoning_output_tokens": 0
+        },
+        "trace_sha256": "e4444a5ddde5ed691f9d459eb666533bef2bf9e396a7880f52f64969319e6314",
+        "browser_audit_sha256": "fee330fa67ec099fb48ff27faa19658c1a0ecabdd056c88b969e6e35ea4e0f9d"
+      }
+    },
+    {
+      "round": 6,
+      "change": "Explicit first tray out and last tray out",
+      "deterministic_browser": "Chrome/158.0.8127.36",
+      "preflight_frames": 36,
+      "preflight_widths": [
+        1440,
+        390,
+        320
+      ],
+      "preflight_modes": [
+        "no-preference",
+        "reduce"
+      ],
+      "touch_width": 390,
+      "preflight_receipt": ".context/creative-concepts/tray/preflight-r06/receipt.json",
+      "review_receipt": ".context/creative-concepts/tray/ballot-06/audited.json",
+      "setup": {
+        "baseline": {
+          "fixture": "enamel",
+          "path": ".context/creative-concepts/tray/enamel/index.html",
+          "sha256": "48570a3778f0fca0947a11e1ccc55d4a6c21f1f97e84a6d35bc08a5852f8e07f",
+          "bytes": 81943,
+          "scores": {
+            "1440": 7.6,
+            "390": 7.5
+          },
+          "review_labels": {
+            "1440": "A-1440",
+            "390": "A-390"
+          },
+          "preflight_choice_images": {
+            "active-1440": {
+              "file": ".context/creative-concepts/tray/preflight-r06/enamel-1440-no-preference-change.png",
+              "sha256": "a3a6db13e4afc4b48ba1d9238697ccf98343938cc27647b1c99b365f1b7ea39e",
+              "dimensions": [
+                1440,
+                900
+              ]
+            },
+            "active-390": {
+              "file": ".context/creative-concepts/tray/preflight-r06/enamel-390-no-preference-change.png",
+              "sha256": "c90dba419934ebbbf50db97626743ee0892d88392e8dfd3923832c086b15d0c3",
+              "dimensions": [
+                390,
+                844
+              ]
+            },
+            "active-320": {
+              "file": ".context/creative-concepts/tray/preflight-r06/enamel-320-no-preference-change.png",
+              "sha256": "351d8c1383c34af507d84e17f4de33ed37dade1fe8c1b3511582014df5e2670e",
+              "dimensions": [
+                320,
+                700
+              ]
+            }
+          }
+        },
+        "candidate": {
+          "fixture": "finish",
+          "path": ".context/creative-concepts/tray/finish/index.html",
+          "sha256": "e7b8abe34f49fdb1977539664acf55e33bef984c9330b231cdb7abe8b0da8554",
+          "bytes": 82022,
+          "scores": {
+            "1440": 7.95,
+            "390": 7.95
+          },
+          "review_labels": {
+            "1440": "B-1440",
+            "390": "B-390"
+          },
+          "preflight_choice_images": {
+            "active-1440": {
+              "file": ".context/creative-concepts/tray/preflight-r06/finish-1440-no-preference-change.png",
+              "sha256": "937132e3b725a7db59f190b46af7933eaf8a59a4f9961599c9e07f1600d754ae",
+              "dimensions": [
+                1440,
+                900
+              ]
+            },
+            "active-390": {
+              "file": ".context/creative-concepts/tray/preflight-r06/finish-390-no-preference-change.png",
+              "sha256": "534a9e0a86e66033d182e4b3bb89a5fc9226148eb6ae86fad16baf76da8ff24f",
+              "dimensions": [
+                390,
+                844
+              ]
+            },
+            "active-320": {
+              "file": ".context/creative-concepts/tray/preflight-r06/finish-320-no-preference-change.png",
+              "sha256": "8e0cbc00d6c59e897d35ce5d270faef9954f5aa1b065527132670b88913e1a24",
+              "dimensions": [
+                320,
+                700
+              ]
+            }
+          }
+        }
+      },
+      "review": {
+        "calibration": {
+          "example": "Legible repair intake with clear labels, familiar layout and misplaced focus after an invalid number",
+          "coherence": 7,
+          "originality": 4,
+          "craft": 6,
+          "usability": 6
+        },
+        "screens": {
+          "A-1440": {
+            "coherence": 8,
+            "originality": 7,
+            "craft": 7.5,
+            "usability": 8,
+            "primary_action": {
+              "input": "Tab, then ArrowRight",
+              "expected": "Select rolls first and show the later oven start.",
+              "observed": "Rolls first became checked, received visible focus, and the prominent oven-on time changed from 10:47 to 10:55 am. Captures: A-1440-before and A-1440-after."
+            },
+            "edge_observation": "ArrowLeft returned to biscuits first and changed the prominent oven-on time back to 10:47 am. Both schedules remained visible.",
+            "fact_check": "Rolls first: oven on 10:55 am; rolls in 11:11 and out 11:35; change from 375°F to 425°F over 11:35–11:44; biscuits in 11:44 and out at noon. The desktop graphic shows preheat, bakes and changeover in proportion and its labeled start and end agree with the written schedule. First-tray finish must be read from the graphic or inferred from the duration; the written detail gives only the first-tray entry time.",
+            "strength": "My eye went first to the oversized 10:47 oven-on time in the dark panel. The side-by-side timelines make the eight-minute difference and changeover tangible.",
+            "weakness": "The standalone 12:00 pm marker is less explicit than the labeled oven-on and first-tray times, and the small timeline labels require close reading.",
+            "repair": "Label noon as the last tray out and explicitly include each first-tray finish time in the written details.",
+            "arm": "baseline",
+            "html_sha256": "48570a3778f0fca0947a11e1ccc55d4a6c21f1f97e84a6d35bc08a5852f8e07f",
+            "weighted": 7.6,
+            "before": {
+              "sha256": "780bac08f2c4c46f0470ab73d18588bb9e0b8a22646a673c3d26147933c9a9c6",
+              "file": "A-1440-before.png",
+              "tool_call_id": "item_2"
+            },
+            "after": {
+              "sha256": "2342889451f832e02d5f35585b52d102a556cdcced736c784aa6b058f6f18c8b",
+              "file": "A-1440-after.png",
+              "tool_call_id": "item_5"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              }
+            ],
+            "confirmed_sequence": [
+              "Rolls first at 10:55",
+              "Biscuits first at 10:47"
+            ]
+          },
+          "A-390": {
+            "coherence": 8,
+            "originality": 7,
+            "craft": 7.5,
+            "usability": 7.5,
+            "primary_action": {
+              "input": "Tab, then ArrowRight",
+              "expected": "Select rolls first and show 10:55 am.",
+              "observed": "Rolls first became checked with visible focus and the oven-on time changed to 10:55 am. Captures: A-390-before and A-390-after."
+            },
+            "edge_observation": "ArrowLeft restored biscuits first and 10:47 am; the rolls-first alternative remained visible.",
+            "fact_check": "The written rolls-first schedule shows oven on 10:55, first tray in 11:11, and changeover 11:35–11:44 am. With the stated durations, rolls end at 11:35 and biscuits at noon. The desktop timeline graphic is absent at this width, so its rendered endpoints cannot be checked in this view.",
+            "strength": "My eye went first to the large 10:47 time. Both controls and both written schedule summaries are readable within the first 390 × 844 viewport.",
+            "weakness": "The phone view removes the graphic and does not directly label the first-tray finish or the noon marker as the last-tray finish.",
+            "repair": "Add explicit first- and last-tray finish labels to the compact summaries.",
+            "arm": "baseline",
+            "html_sha256": "48570a3778f0fca0947a11e1ccc55d4a6c21f1f97e84a6d35bc08a5852f8e07f",
+            "weighted": 7.5,
+            "before": {
+              "sha256": "1bf372278c81775e476ab5789b8de10076c12b0a475586df6099a68f15abf9f6",
+              "file": "A-390-before.png",
+              "tool_call_id": "item_8"
+            },
+            "after": {
+              "sha256": "c90dba419934ebbbf50db97626743ee0892d88392e8dfd3923832c086b15d0c3",
+              "file": "A-390-after.png",
+              "tool_call_id": "item_11"
+            },
+            "layout_width": 390,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              }
+            ],
+            "confirmed_sequence": [
+              "Rolls first at 10:55",
+              "Biscuits first at 10:47"
+            ]
+          },
+          "B-1440": {
+            "coherence": 8.5,
+            "originality": 7,
+            "craft": 8,
+            "usability": 8.5,
+            "primary_action": {
+              "input": "Tab, then ArrowRight",
+              "expected": "Select rolls first and show the later oven start.",
+              "observed": "Rolls first became checked, received visible focus, and the prominent oven-on time changed from 10:47 to 10:55 am. Captures: B-1440-before and B-1440-after."
+            },
+            "edge_observation": "ArrowLeft returned to biscuits first and changed the prominent oven-on time back to 10:47 am. Both schedules remained visible.",
+            "fact_check": "Rolls first: oven on 10:55 am; rolls in 11:11 and out 11:35; change from 375°F to 425°F over 11:35–11:44; biscuits in 11:44 and out at noon. The graphic shows the preheat, bake and changeover sequence and agrees with the written start and finish labels. Its first-tray end also agrees with the explicit 11:11–11:35 range.",
+            "strength": "My eye went first to the oversized 10:47 oven-on time. Explicit first-tray in–out ranges and 'Last tray out 12:00 pm' distinguish start, first bake and final finish.",
+            "weakness": "The small timeline labels and legend are comparatively hard to scan, and the second tray's entry time is conveyed through the changeover endpoint rather than a dedicated label.",
+            "repair": "Increase timeline label legibility and name the second-tray entry time explicitly.",
+            "arm": "candidate",
+            "html_sha256": "e7b8abe34f49fdb1977539664acf55e33bef984c9330b231cdb7abe8b0da8554",
+            "weighted": 7.95,
+            "before": {
+              "sha256": "465185522badd4029dd93728872215d8341666e72b3fd081d3c5b060b67470f2",
+              "file": "B-1440-before.png",
+              "tool_call_id": "item_15"
+            },
+            "after": {
+              "sha256": "b1c0c66be75f2f46241c23842626075f022bf78a5d48af01aafbd5347ed5b49b",
+              "file": "B-1440-after.png",
+              "tool_call_id": "item_18"
+            },
+            "layout_width": 1440,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              }
+            ],
+            "confirmed_sequence": [
+              "Rolls first at 10:55",
+              "Biscuits first at 10:47"
+            ]
+          },
+          "B-390": {
+            "coherence": 8.5,
+            "originality": 7,
+            "craft": 8,
+            "usability": 8.5,
+            "primary_action": {
+              "input": "Tab, then ArrowRight",
+              "expected": "Select rolls first and show 10:55 am.",
+              "observed": "Rolls first became checked with visible focus and the oven-on time changed to 10:55 am. Captures: B-390-before and B-390-after."
+            },
+            "edge_observation": "ArrowLeft restored biscuits first and 10:47 am; the rolls-first alternative remained visible.",
+            "fact_check": "The view explicitly shows oven on at 10:55, rolls in–out 11:11–11:35, changeover 11:35–11:44, and last tray out at noon. The stated 16-minute biscuit bake supports an 11:44 entry and noon finish. The desktop timeline graphic is absent at this width, so its rendered endpoints cannot be checked here.",
+            "strength": "My eye went first to the large 10:47 time. Both controls and both written schedule summaries are readable in the first 390 × 844 viewport; explicit finish labels reduce confusion.",
+            "weakness": "The second-tray entry is implicit in the changeover endpoint, and the graphic's duration comparison is unavailable on the phone.",
+            "repair": "Add a compact 'second tray in' label while retaining the readable first-viewport comparison.",
+            "arm": "candidate",
+            "html_sha256": "e7b8abe34f49fdb1977539664acf55e33bef984c9330b231cdb7abe8b0da8554",
+            "weighted": 7.95,
+            "before": {
+              "sha256": "2ee503016a6ff78227efc3f92ddc843b3a65a75d97854bfe9f11585f4e588163",
+              "file": "B-390-before.png",
+              "tool_call_id": "item_21"
+            },
+            "after": {
+              "sha256": "534a9e0a86e66033d182e4b3bb89a5fc9226148eb6ae86fad16baf76da8ff24f",
+              "file": "B-390-after.png",
+              "tool_call_id": "item_24"
+            },
+            "layout_width": 390,
+            "input_sequence": [
+              {
+                "action": "key",
+                "value": "Tab"
+              },
+              {
+                "action": "key",
+                "value": "ArrowRight"
+              }
+            ],
+            "edge_inputs": [
+              {
+                "action": "key",
+                "value": "ArrowLeft"
+              }
+            ],
+            "confirmed_sequence": [
+              "Rolls first at 10:55",
+              "Biscuits first at 10:47"
+            ]
+          }
+        },
+        "preference": {
+          "winner": "B",
+          "reason": "Both versions support the tested keyboard path and preserve the comparison. B makes the first bake's end and the last tray's noon finish explicit, reducing ambiguity on both desktop and phone."
+        },
+        "unsupported_claims": [
+          "The interface provides planning times; actual oven readiness and bake completion were not physically verified.",
+          "No claim is made about revision history or generator identity."
+        ],
+        "case": "last-tray-out",
+        "verified_screens": 4,
+        "required_screens": 4,
+        "browser": "Chrome/158.0.8127.36",
+        "evaluator_thread": "01a20732-0346-7d40-9b7a-c04591b62ffe",
+        "usage": {
+          "input_tokens": 582584,
+          "cached_input_tokens": 535424,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2586,
+          "reasoning_output_tokens": 0
+        },
+        "trace_sha256": "9f5d8bd767ac2fef06714378ddd69949bdf94e92026d2eb22a7ac6d6f1ca19aa",
+        "browser_audit_sha256": "17320bfa14856cd6c617a23f1d5f40d8a2180d7dfdd2920a56658a517d4d041c"
+      }
+    }
+  ]
+}

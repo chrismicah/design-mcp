@@ -1,0 +1,199 @@
+{
+  "sha": "cca8a601f79d7eb9cf8e74f655f282a649f84913",
+  "workflows": {
+    "portable": {
+      "workflow": "Portable package install and doctor",
+      "run": "https://github.com/chrismicah/design-mcp/actions/runs/45091859581",
+      "jobs": {
+        "arm64 / Python 3.11": "https://github.com/chrismicah/design-mcp/actions/runs/45091859581/job/137422986524",
+        "arm64 / Python 3.12": "https://github.com/chrismicah/design-mcp/actions/runs/45091859581/job/137422986716",
+        "x86_64 / Python 3.10": "https://github.com/chrismicah/design-mcp/actions/runs/45091859581/job/137422986723",
+        "arm64 / Python 3.10": "https://github.com/chrismicah/design-mcp/actions/runs/45091859581/job/137422986729",
+        "x86_64 / Python 3.11": "https://github.com/chrismicah/design-mcp/actions/runs/45091859581/job/137422986735",
+        "x86_64 / Python 3.13": "https://github.com/chrismicah/design-mcp/actions/runs/45091859581/job/137422986767",
+        "arm64 / Python 3.13": "https://github.com/chrismicah/design-mcp/actions/runs/45091859581/job/137422986817",
+        "x86_64 / Python 3.12": "https://github.com/chrismicah/design-mcp/actions/runs/45091859581/job/137422986855"
+      }
+    },
+    "chrome": {
+      "workflow": "Chrome review extension keyboard proof",
+      "run": "https://github.com/chrismicah/design-mcp/actions/runs/45091859513",
+      "jobs": {
+        "popup": "https://github.com/chrismicah/design-mcp/actions/runs/45091859513/job/137422986304"
+      }
+    },
+    "url": {
+      "workflow": "Installed public URL review proof",
+      "run": "https://github.com/chrismicah/design-mcp/actions/runs/45091859471",
+      "jobs": {
+        "review": "https://github.com/chrismicah/design-mcp/actions/runs/45091859471/job/137422986073"
+      }
+    },
+    "swift": {
+      "workflow": "Native Swift review proof",
+      "run": "https://github.com/chrismicah/design-mcp/actions/runs/45091859689",
+      "jobs": {
+        "native": "https://github.com/chrismicah/design-mcp/actions/runs/45091859689/job/137422986853"
+      }
+    },
+    "electron": {
+      "workflow": "Installed Electron review on macOS",
+      "run": "https://github.com/chrismicah/design-mcp/actions/runs/45091859554",
+      "jobs": {
+        "electron": "https://github.com/chrismicah/design-mcp/actions/runs/45091859554/job/137422986359"
+      }
+    }
+  },
+  "portable": {
+    "os": "macOS 15",
+    "installers": [
+      "pipx",
+      "uv"
+    ],
+    "clean_install_checks": 16,
+    "tool_counts": {
+      "default": [
+        3,
+        4
+      ],
+      "legacy": [
+        14,
+        15
+      ],
+      "combined": [
+        17,
+        18
+      ]
+    },
+    "review_smoke": "rejects non-web URLs; the separate installed public URL CLI and local MCP image trials exercise successful captures"
+  },
+  "chrome": {
+    "browser": "Chrome/158.0.8127.36",
+    "source": "installed extension in fresh hosted Linux profile",
+    "active_tab": {
+      "missing_host_recovered": true,
+      "keyboard_comparison": true,
+      "mask_interior_verified": true
+    },
+    "pasted_url": {
+      "submit_to_visible_capture_ms": 2463,
+      "masked_fields": 5,
+      "capture_sha256": "e05db072bae5eff4242495d1cb45e6a9a0fc1f1dfc80197148b5d3bcb1ba2986",
+      "meaningful_empty_result": "No issues flagged in this view. Checked sideways scroll, covered buttons and text contrast on flat backgrounds.",
+      "keyboard_open_and_reload_preserved_result": true
+    },
+    "captures": [
+      {
+        "file": ".context/release-five-hour/ci-chrome-cca8a60/extension-proof/popup-result.png",
+        "pixels": [
+          372,
+          600
+        ],
+        "sha256": "f141003d017efb599fd1d54f45a7241088eee19baaa09ae808b234ae6b77df5e"
+      },
+      {
+        "file": ".context/release-five-hour/ci-chrome-cca8a60/extension-proof/preview-after.png",
+        "pixels": [
+          1440,
+          797
+        ],
+        "sha256": "38e4ecd5df6685f7be48f5d7c6e495e729a1bd53ad80bb5dda0d6203c7af73e1"
+      },
+      {
+        "file": ".context/release-five-hour/ci-chrome-cca8a60/extension-proof/pasted-url-result.png",
+        "pixels": [
+          1440,
+          797
+        ],
+        "sha256": "deb31825771d90f6ed00f48d2e8a2680532004f83f6bece0d9b05387ad58d9e9"
+      },
+      {
+        "file": ".context/release-five-hour/ci-chrome-cca8a60/extension-proof/pasted-url-preview.png",
+        "pixels": [
+          1440,
+          797
+        ],
+        "sha256": "210e4b2b828bf9d8a7b482eea6cbbe41c67c31b3ca3d2ff1c4284775ae35fb9b"
+      }
+    ]
+  },
+  "public_address_form": {
+    "widths": [
+      1440,
+      390
+    ],
+    "masked": {
+      "field": 9,
+      "editable": 0,
+      "frame": 0
+    },
+    "regions": 16
+  },
+  "native": {
+    "swift": {
+      "controls": [
+        5,
+        6
+      ],
+      "captures": [
+        {
+          "file": ".context/release-five-hour/ci-swift-cca8a60/swift-proof/before.png",
+          "pixels": [
+            900,
+            450
+          ],
+          "sha256": "b3288b7e088cbd64ebafb478077b102d203484bb9baf23ee5e2e372cd2fcbd90"
+        },
+        {
+          "file": ".context/release-five-hour/ci-swift-cca8a60/swift-proof/after.png",
+          "pixels": [
+            900,
+            450
+          ],
+          "sha256": "7e006b8af0489ed058136e213802fe375c3810fc35aa16b3ff5e4c3869bca0f6"
+        }
+      ]
+    },
+    "electron": {
+      "before": [
+        [
+          "control-not-hittable",
+          "r2"
+        ],
+        [
+          "control-clipped",
+          "r4"
+        ]
+      ],
+      "after": [
+        [
+          "control-clipped",
+          "r4"
+        ]
+      ],
+      "captures": [
+        {
+          "file": ".context/release-five-hour/ci-electron-cca8a60/electron-proof/before.png",
+          "pixels": [
+            880,
+            640
+          ],
+          "sha256": "cdb59b3074cdef69685e484da7eaa613c77e98d58443f11cbbf146821b4611fd"
+        },
+        {
+          "file": ".context/release-five-hour/ci-electron-cca8a60/electron-proof/after.png",
+          "pixels": [
+            880,
+            640
+          ],
+          "sha256": "0de5c1e611ebb75a952b9a1d2dbaf24cea93457195acf725995f16a95bd6fa92"
+        }
+      ]
+    }
+  },
+  "source_tests": {
+    "passing": 542,
+    "passing_subtests": 117,
+    "warnings": 1
+  }
+}

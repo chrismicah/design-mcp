@@ -1,0 +1,402 @@
+{
+  "scope": "One equal-prompt settings comparison with distinct builders and one independent live Playwriter critic.",
+  "branch_head": "a700f82a64116ffe2ef052f0bbf95c540b3c9ba9",
+  "browser": "Chrome/158.0.8127.36",
+  "playwriter": "0.12.0",
+  "spec": {
+    "case": "settings-language",
+    "brief": "Build account display settings for a visitor center. Visitors can switch the example 2026-11-21 between 'November 21, 2026' and '21 November 2026'. They can choose Celsius or Fahrenheit and see 20°C or 68°F. Include a visible reset to the initial US date and Fahrenheit.",
+    "arms": [
+      "v2",
+      "uiux-pro-max"
+    ],
+    "browser": "Chrome/158.0.8127.36",
+    "task": "Start with the default date format and Fahrenheit. Capture before with both examples visible. Use only the keyboard to select day-first date order and Celsius. Verify the visible examples show 21 November 2026 and 20°C, then capture after. Use the keyboard to activate the visible Reset action. Verify the initial November 21, 2026 and 68°F examples both return and focus is understandable. Report if any change affects the wrong example or requires avoidable scrolling. Compare the visual hierarchy and state clarity at both widths."
+  },
+  "generators": {
+    "v2": {
+      "source_commit": "676d80a7cee88ba0ce4a2d0189e4d5a7dfdca456",
+      "usage": {
+        "input_tokens": 58447,
+        "cached_input_tokens": 52736,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3542,
+        "reasoning_output_tokens": 0
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "design-mcp",
+          "tool": "direct",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "treatment_call": true,
+      "direct_call": true,
+      "status": "passed",
+      "case": "settings-language",
+      "arm": "v2",
+      "model": "gpt-6.1-terra",
+      "effort": "low",
+      "client": "codex-cli 0.170.0",
+      "prompt_sha256": "d3a3e7fadd93cab9e156db57cd5e324234150bf7c4c6ac55863739d7b82ecf33",
+      "shell_tool": false,
+      "elapsed_seconds": 70.22,
+      "exit_code": 0,
+      "trace_sha256": "d4dbefa21c52e93ace37f6e20441cff00554d93288c1f8e4400f07aefb747099",
+      "html_sha256": "02295d091d7628f0458de1e1d11fc8b654edc04a6ce8abbdf3b4a7b674fba67b"
+    },
+    "uiux-pro-max": {
+      "source_commit": "a38d04c3d5c298c851dbe5e6ee1965ee3de42cb5",
+      "usage": {
+        "input_tokens": 58443,
+        "cached_input_tokens": 46336,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 4651,
+        "reasoning_output_tokens": 0
+      },
+      "tool_calls": [
+        {
+          "type": "mcp_tool_call",
+          "server": "uiux-pro-max",
+          "tool": "design_guidance",
+          "status": "completed"
+        }
+      ],
+      "client_errors": [],
+      "treatment_call": true,
+      "status": "passed",
+      "uiux_guidance_received": true,
+      "case": "settings-language",
+      "arm": "uiux-pro-max",
+      "model": "gpt-6.1-terra",
+      "effort": "low",
+      "client": "codex-cli 0.170.0",
+      "prompt_sha256": "d3a3e7fadd93cab9e156db57cd5e324234150bf7c4c6ac55863739d7b82ecf33",
+      "shell_tool": false,
+      "mcp_config_sha256": "f85a155dbece9372aa49070e7e3892fea4ad01de4ea165f0bba5624de5365929",
+      "elapsed_seconds": 90.45,
+      "exit_code": 0,
+      "trace_sha256": "0adb9f8ac2d799276de86bc7e711b5219a89b8ded8339301295ffca86e1406af",
+      "html_sha256": "8e94e0d32acb57994bd22ce6db030b1b941f8ce91ff73d0dfa6b4009055b17cc"
+    }
+  },
+  "keyboard_checks": {
+    "date_change_preserves_temperature": true,
+    "temperature_change_preserves_date": true,
+    "reset_restores_both": true,
+    "focus_stays_on_reset": true,
+    "all_four_views": true
+  },
+  "phone_visual_limitation": "The live values appeared in the accessibility tree after changes and reset. Neither phone capture showed both values in the viewport.",
+  "ballot": {
+    "calibration": {
+      "coherence": 7,
+      "originality": 4,
+      "craft": 6,
+      "usability": 5.5,
+      "basis": "Provisional ratings from the supplied description: clear labels and legibility support coherence, while the familiar layout limits originality and misplaced focus after invalid input materially harms recovery."
+    },
+    "screens": {
+      "A-1440": {
+        "coherence": 8.5,
+        "originality": 8,
+        "craft": 8,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Tab to the selected date radio, ArrowRight, Tab, ArrowRight.",
+          "expected": "Day-first date and Celsius selected; preview shows 21 November 2026 and 20°C.",
+          "observed": "Both selections and preview values changed as expected. Changing the date left 68°F unchanged."
+        },
+        "edge_observation": "Shift+Tab twice and Enter restored both defaults. Focus remained on Reset to default.",
+        "fact_check": "Both preview values were visible in the before and after captures. 68°F equals 20°C. No wrong-example change or scrolling was observed.",
+        "strength": "The large plum preview gives the output a clear focal point beside the controls.",
+        "weakness": "The temperature legend crosses a horizontal rule, making the section separation look awkward.",
+        "repair": "Give the temperature heading a clean break in the rule and retain the prominent side-by-side preview.",
+        "arm": "v2",
+        "html_sha256": "02295d091d7628f0458de1e1d11fc8b654edc04a6ce8abbdf3b4a7b674fba67b",
+        "weighted": 8.25,
+        "before": {
+          "sha256": "ad253c0fa5a9299ed5bc14c3f3a3769a2950e01306bedaf922ecd315e4dbac51",
+          "file": "A-1440-before.png",
+          "tool_call_id": "item_2"
+        },
+        "after": {
+          "sha256": "b34c45ff350155f316cf2ccb3c0097fd654529ad71b303c94abfffac82c3876e",
+          "file": "A-1440-after.png",
+          "tool_call_id": "item_8"
+        },
+        "layout_width": 1425,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ]
+      },
+      "A-390": {
+        "coherence": 7.5,
+        "originality": 7.5,
+        "craft": 7,
+        "usability": 6.5,
+        "primary_action": {
+          "input": "Tab to the date radio, ArrowRight, Tab, ArrowRight.",
+          "expected": "Day-first date and Celsius selected; both changed examples visible.",
+          "observed": "The selected controls changed correctly and the accessibility tree reported 21 November 2026 and 20°C. The preview was below the viewport in the capture."
+        },
+        "edge_observation": "Shift+Tab back to Reset and Enter restored both default radio selections and the accessibility-tree preview values; focus remained on Reset.",
+        "fact_check": "A-390-before and A-390-after were captured, but neither shows both preview examples. Their values were reported by the accessibility tree, not visually verified in those captures. The stacked layout requires scrolling to inspect the preview; no wrong-example change was reported in the tree.",
+        "strength": "Full-width choices are easy to distinguish and retain clear selected styling.",
+        "weakness": "The preview is separated from the controls by a long vertical layout, making immediate visual comparison require scrolling.",
+        "repair": "Place compact current examples nearer their respective controls or reduce vertical spacing so feedback is visible sooner.",
+        "arm": "v2",
+        "html_sha256": "02295d091d7628f0458de1e1d11fc8b654edc04a6ce8abbdf3b4a7b674fba67b",
+        "weighted": 7.2,
+        "before": {
+          "sha256": "f0c9b2b19d83df0284babcd61b542340db71ace6c4361584f1ea0eeefbd236aa",
+          "file": "A-390-before.png",
+          "tool_call_id": "item_13"
+        },
+        "after": {
+          "sha256": "e8586181ffd8164c3ba7255d520d086243ade20d8547990d71a8e0c62d7f7909",
+          "file": "A-390-after.png",
+          "tool_call_id": "item_23"
+        },
+        "layout_width": 375,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ]
+      },
+      "B-1440": {
+        "coherence": 8,
+        "originality": 5.5,
+        "craft": 8,
+        "usability": 8.5,
+        "primary_action": {
+          "input": "Tab to the selected date radio, ArrowRight, Tab, ArrowRight.",
+          "expected": "Day-first date and Celsius selected; preview shows 21 November 2026 and 20°C.",
+          "observed": "Both selections and preview values changed as expected. The date change left 68°F unchanged."
+        },
+        "edge_observation": "Shift+Tab twice and Enter restored both defaults, retained focus on Reset to defaults, and produced a Defaults restored status.",
+        "fact_check": "Both preview values were visible in the before and after captures. No wrong-example change or scrolling was observed.",
+        "strength": "Explicit Month first and Day first labels, examples inside each choice, and reset feedback make the state understandable.",
+        "weakness": "The small preview values compete with several nested panels and are less prominent than the controls.",
+        "repair": "Increase the preview values' prominence and simplify the surrounding panel treatment.",
+        "arm": "uiux-pro-max",
+        "html_sha256": "8e94e0d32acb57994bd22ce6db030b1b941f8ce91ff73d0dfa6b4009055b17cc",
+        "weighted": 7.35,
+        "before": {
+          "sha256": "bb216e702a595af68c1763d9e83e203dfdf1fbca3c5dd533b4f19187c0c4928a",
+          "file": "B-1440-before.png",
+          "tool_call_id": "item_30"
+        },
+        "after": {
+          "sha256": "c35d4ac8aec164926d3b06deceef44eb025de94012a841003e04008222baaa3a",
+          "file": "B-1440-after.png",
+          "tool_call_id": "item_36"
+        },
+        "layout_width": 1425,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ]
+      },
+      "B-390": {
+        "coherence": 7.5,
+        "originality": 5,
+        "craft": 7,
+        "usability": 7,
+        "primary_action": {
+          "input": "Tab to the date radio, ArrowRight, Tab, ArrowRight.",
+          "expected": "Day-first date and Celsius selected; both changed examples visible.",
+          "observed": "The selected controls changed correctly and the accessibility tree reported 21 November 2026 and 20°C. The live preview values were below the viewport in the capture."
+        },
+        "edge_observation": "Shift+Tab back to Reset and Enter restored both default radio selections and accessibility-tree preview values; focus stayed on Reset and the status reported Defaults restored.",
+        "fact_check": "B-390-before and B-390-after were captured, but neither shows both live-preview values. Their values were reported by the accessibility tree, not visually verified in those captures. Scrolling is needed to inspect the preview; no wrong-example change was reported in the tree.",
+        "strength": "Both date and temperature choices fit in the initial viewport, with examples embedded in the choices and a clear focus ring.",
+        "weakness": "The narrow two-column date choices wrap their examples, while the separate live preview falls below the viewport.",
+        "repair": "Reduce the header and panel height or bring compact live results closer to the controls; allow date options more width.",
+        "arm": "uiux-pro-max",
+        "html_sha256": "8e94e0d32acb57994bd22ce6db030b1b941f8ce91ff73d0dfa6b4009055b17cc",
+        "weighted": 6.55,
+        "before": {
+          "sha256": "7b00b270cc12ce89488b9037d2735113f61093c4295ad32fc87536f88d0ae4ed",
+          "file": "B-390-before.png",
+          "tool_call_id": "item_41"
+        },
+        "after": {
+          "sha256": "66983f218324f5f0553481dc495cc93e4dbb59f3831b196af9c04f641c1ed753",
+          "file": "B-390-after.png",
+          "tool_call_id": "item_47"
+        },
+        "layout_width": 375,
+        "input_sequence": [
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          },
+          {
+            "action": "key",
+            "value": "Tab"
+          },
+          {
+            "action": "key",
+            "value": "ArrowRight"
+          }
+        ],
+        "edge_inputs": [
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Shift+Tab"
+          },
+          {
+            "action": "key",
+            "value": "Enter"
+          }
+        ]
+      }
+    },
+    "preference": {
+      "winner": "A",
+      "reason": "A has a more distinctive and coherent visual identity and makes the desktop preview the clear focal point. B provides more explicit choice labels and reset feedback, and its mobile controls fit more compactly, but its hierarchy is more conventional and the preview is understated. Both mobile layouts require scrolling to visually inspect the live preview."
+    },
+    "unsupported_claims": [
+      "Visual verification of both live-preview values at 390 pixels is not supported by the captured screenshots; the reported values come from the accessibility tree.",
+      "Persistence across reloads, screen-reader announcements, and behavior beyond the exercised keyboard flow were not tested."
+    ],
+    "case": "settings-language",
+    "verified_screens": 4,
+    "required_screens": 4,
+    "browser": "Chrome/158.0.8127.36",
+    "evaluator_thread": "01a2077d-f136-78d2-bca5-fc681ef2f57e",
+    "usage": {
+      "input_tokens": 721501,
+      "cached_input_tokens": 691712,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 2712,
+      "reasoning_output_tokens": 24
+    },
+    "trace_sha256": "041c0845088c1187bb90dfe7913085a89bdaa30ab4d442117142159aed8c8db5",
+    "browser_audit_sha256": "67fc14d4bce578d8fc550933c08ddf2f9a6d298fa8eb56e206087552e088f1a3"
+  },
+  "local_receipts": {
+    "verified_run": ".context/competitor-settings-live/blind-strict",
+    "excluded_setup_and_unused_tool_attempts": ".context/competitor-settings-live/attempt-receipt.json"
+  }
+}
