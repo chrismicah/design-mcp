@@ -2,7 +2,7 @@
 
 The Chrome extension and review CLI scan a page locally and show the first measured issue. The optional MCP tool sends the captured image and layout facts to your connected client for visual critique.
 
-Both Chrome paths reached a saved review in hosted testing of the README install pin, `18b87522`. GPT Computer Use verified the same journeys on the reference Mac with the earlier `0978712` build. The active-tab flow opened a saved contrast comparison and reached After by keyboard. The pasted-address flow recovered from an HTTP 404, captured the public address form, and reopened the same masked preview. The earlier installed MCP also returned original masked images at both widths. [Hosted results at the install pin](../../evidence/benchmark-v1/release-ci-18b87522.json) · [Reference Mac walkthrough](../../evidence/benchmark-v1/release-native-chrome-0978712.json) · [MCP image receipts](../../evidence/benchmark-v1/release-mcp-images-0978712.json)
+Both Chrome paths reached a saved review in hosted testing and in native Chrome on the BenQ at the README install pin, `18b87522`. The active-tab flow opened a saved contrast comparison and reached After by keyboard. The pasted-address flow recovered from an HTTP 404, captured the public address form, and reopened the same masked preview. The installed MCP also returned original masked images at both widths. [Hosted results at the install pin](../../evidence/benchmark-v1/release-ci-18b87522.json) · [Native BenQ walkthrough](../../evidence/benchmark-v1/release-native-benq-18b87522.json)
 
 ## Three ways in
 
@@ -110,7 +110,6 @@ Repeat the installed browser acceptance steps on the reference Mac.
 ## Known gaps
 
 - The popup and preview still need independent live review and a 9.5 per screen release score.
-- The reference Mac still needs a GPT Computer Use replay of both Chrome paths on `18b87522`.
 - The Chrome popup's findings come from the three local checks. For model critique, use `review_page` in a vision-capable client. The saved After view is available for the local contrast finding.
 - The reference Mac walkthrough observed the recolor in After. A pixel-level check of the recolor remains open.
 - For live keyboard and focus evidence, run a separate Playwriter task. The local checks measure the captured state.
