@@ -35,3 +35,12 @@ commit excludes a negated appointment phrase from consultation
 ranking. That exclusion applies only when landing and contact intent
 are both present. Genuine appointment requests and explicit form
 overrides are controls. Keep the previous routing miss in the receipt.
+
+The combined candidate bd1e7aa passed 75 direction tests. Source stdio
+returned the same 48 frozen replies, five form overrides, and genuine
+booking control. Only the intended action field changed for four
+existing practice routes. The untouched dental brief changed from
+service-work-order to direct-consultation. This source comparison
+awaits clean-install parity and a test that the guidance
+transfers through generation.
+[Exact source stdio replies](../evidence/benchmark-v1/note-retention-source-stdio.json)
